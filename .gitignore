@@ -1,3 +1,7 @@
+# Astro
+.astro/
+.wrangler/
+
 # Logs
 logs
 *.log
