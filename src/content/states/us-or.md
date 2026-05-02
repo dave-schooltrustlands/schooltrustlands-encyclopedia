@@ -5,9 +5,9 @@ iso: US-OR
 admissionNumber: 33
 admittedDate: 1859-02-14
 eraCohort: 4
-eraName: Antebellum Doubling
+eraName: The Antebellum Doubling
 federalGrantAcres: 3400000
-governanceForm: Ex officio State Land Board (Governor, Secretary of State, Treasurer)
+governanceForm: "Ex officio State Land Board (Governor, Secretary of State, Treasurer)"
 permanentFundCorpus:
   value: 2000000000
   asOf: 2025-06-30

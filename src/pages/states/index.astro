@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('states');
+
+const cohorts = new Map<number, { eraName: string; entries: typeof entries }>();
+for (const entry of entries) {
+  const c = entry.data.eraCohort;
+  if (!cohorts.has(c)) {
+    cohorts.set(c, { eraName: entry.data.eraName, entries: [] });
+  }
+  cohorts.get(c)!.entries.push(entry);
+}
+
+const orderedCohorts = [...cohorts.entries()]
+  .sort(([a], [b]) => a - b)
+  .map(([cohort, group]) => ({
+    cohort,
+    eraName: group.eraName,
+    entries: group.entries.sort(
+      (a, b) => a.data.admissionNumber - b.data.admissionNumber,
+    ),
+  }));
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Encyclopedia — School Trust Lands</title>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <main class="mx-auto max-w-prose p-8">
+      <p class="text-sm">
+        <a href="/" class="text-blue-700 underline">← Home</a>
+      </p>
+      <h1 class="mt-4 text-4xl font-bold tracking-tight">Encyclopedia Entries</h1>
+      <p class="mt-4 text-slate-700">
+        Fifty states, grouped by era cohort and numbered in order of admission.
+      </p>
+
+      {orderedCohorts.map((group) => (
+        <section class="mt-10">
+          <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
+            Chapter {group.cohort} — {group.eraName}
+          </h2>
+          <ol class="mt-4 space-y-1.5">
+            {group.entries.map((entry) => (
+              <li class="flex flex-wrap items-baseline gap-x-2">
+                <span class="tabular-nums text-slate-500">
+                  {entry.data.admissionNumber}.
+                </span>
+                <a
+                  href={`/states/${entry.data.iso.toLowerCase()}/`}
+                  class="font-medium text-blue-700 underline"
+                >
+                  {entry.data.name}
+                </a>
+                <span class="text-slate-500">
+                  — {dateFmt.format(entry.data.admittedDate)}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </main>
+  </body>
+</html>

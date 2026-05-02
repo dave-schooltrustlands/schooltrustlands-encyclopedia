@@ -1,0 +1,105 @@
+---
+name: New York
+fips: "36"
+iso: US-NY
+admissionNumber: 11
+admittedDate: 1788-07-26
+eraCohort: 1
+eraName: The Founding Floor
+federalGrantAcres: null
+governanceForm: ""
+permanentFundCorpus: null
+latestDistribution: null
+substrateVersion: "1.3"
+lastReviewed: 2026-05-01
+---
+
+*Admission #11 (July 26, 1788). Era: Original 13 (no federal grant). Draft: Pass 1 prototype, 2026-04-30.*
+
+New York is the project's clearest illustration that the federal section-16-and-36 template did not invent the idea of a permanent school endowment — it codified an idea that had already been improvised by sovereign states. As one of the original thirteen, New York entered the Union with no admission act, no compact-form school grant, and no federal trust language to bind future generations. What it built instead, beginning in 1805, was a state-derived Common School Fund capitalized by the sale of approximately five hundred thousand acres of state-owned land. That fund was constitutionalized in 1821, restated in 1846, and carried forward in different form through the 1894 constitution still in force today. Alongside it, New York preserved a constitutional educational governance body — the Board of Regents — that predates the United States Constitution itself. The architecture is parallel to the federal-grant compact-trust template that anchors the wider project, but the source of the corpus is sovereign state action rather than federal-state agreement, and the modern enforcement story runs not through trust-breach litigation but through state-constitutional adequacy doctrine.
+
+New York ratified the United States Constitution at Poughkeepsie on July 26, 1788, becoming the eleventh state to do so.[^ny-1] Because New York's lands were never federal public lands — the State held its own ungranted territory at and after independence — the Land Ordinance of 1785 and the Northwest Ordinance of 1787 simply did not apply.[^ny-2] The federal section-16 grant template emerged from those ordinances and from the later admission acts that drew on them; New York predates the template entirely. The schema entry for federal grant acreage is, accordingly, zero, and the absence is itself the finding.[^ny-3]
+
+What New York built in place of a federal grant began with the Regents. In 1784, four years before ratification, the Legislature chartered The Regents of the University of the State of New York as a corporation to oversee education throughout the new state.[^ny-4] The 1894 constitution carries that 1784 corporation forward verbatim: "The corporation created in the year one thousand seven hundred eighty-four, under the name of The Regents of the University of the State of New York, is hereby continued under the name of The University of the State of New York. It shall be governed and its corporate powers, which may be increased, modified or diminished by the legislature, shall be exercised by not less than nine regents."[^ny-5] The modern body has seventeen members elected by joint ballot of the Legislature for staggered five-year terms — one from each of the state's thirteen judicial districts plus four at-large — and its writ extends across K-12, higher education, libraries, museums, and professional licensure.[^ny-6] It is older than the federal Constitution, older than every section-16 admission grant in the country, and uniquely among the states it occupies a constitutional anchor for educational governance that no public-land state can match.
+
+Public-school *funding* is a distinct architectural problem from public-school *governance*, and New York addressed it in 1795 with an early common-school appropriation statute that the Court of Appeals has since identified as the beginning of public-education funding in the state.[^ny-7] The 1795 act lapsed; the durable answer came a decade later. On April 2, 1805, the Legislature created the Common School Fund by appropriating the net proceeds of the first five hundred thousand acres of vacant and unappropriated state lands — to be designated and sold by the Surveyor-General — as a permanent fund for common schools.[^ny-8] The 1805 statute did not yet establish a distribution mechanism; it created the corpus and required that proceeds be invested. Distribution waited until the 1812 Common Schools Act, passed under Governor DeWitt Clinton's prodding, which built the statewide common-school system on top of the 1805 capitalization and provided for distribution of fund income once a statutory revenue threshold was met.[^ny-9] Between 1805 and 1812, in other words, New York invented — without an admission-act compact and without federal supervision — the structural pattern that the 1850 Wisconsin admission, the 1859 Oregon admission, and every public-land state admission afterward would adopt: dedicated lands sold; proceeds invested as a permanent fund; income distributed to common schools.
+
+The pattern was constitutionalized in stages. The 1821 Constitution added a perpetual-fund clause covering proceeds of state lands and the existing Common School Fund, with interest "inviolably appropriated and applied to the support of common schools throughout this state."[^ny-10] The 1846 Constitution restated the protection in fund-capital terms: the capital of the common-school fund, the literature fund, and the United States deposit fund "shall be preserved inviolate," and Common School Fund revenues were to be applied to common schools.[^ny-11] These are lockbox provisions structurally identical in operation to the irreducibility clauses that the post-1859 wave of public-land state constitutions would adopt for federal-grant trust funds. The substantive doctrine — corpus preserved, income exclusively dedicated — does not depend on whether the seed capital came from a federal compact or from sovereign state action. New York worked it out first.
+
+The 1894 Constitution, drafted at the constitutional convention that produced the document still in force, made three further moves. Article IX, section 1 (later renumbered Article XI, section 1, by the 1938 convention) added the modern free-common-schools clause: "The legislature shall provide for the maintenance and support of a system of free common schools, wherein all the children of this state may be educated."[^ny-12] Article IX, section 2 (now Article XI, section 2) continued the 1784 Regents corporation. Article IX, section 4 (now Article XI, section 3) added New York's so-called Blaine Amendment, prohibiting the use of public funds in aid of denominational schools.[^ny-13] The 1894 free-common-schools clause is the load-bearing provision in modern New York school-funding doctrine, and the pattern of the historic education-funds preservation language across the 1846, 1894, 1938, and 1962 renumberings deserves specialist constitutional-history review before any current-status assertion is made; the substrate flags this as an open verification item.[^ny-14]
+
+The Common School Fund did not run cleanly from 1805 forward. A Columbia University financial history of the State by Don C. Sowers, published in 1914, reports that the proceeds of the original five-hundred-thousand-acre school-land set-aside were loaned to individuals and corporations between 1805 and 1822, some of whom failed, producing a documented loss of $61,641 to the fund.[^ny-15] Sowers characterizes the broader management of state land sales in the same period as careless. The figure is from a secondary source and primary corroboration in Comptroller and legislative records would strengthen the finding, but the broad point — that an early state-derived permanent fund with no federal compact backstop is exposed to exactly the same fiduciary risks that the section-16 admission grants would later face — is not in serious dispute. New York's nineteenth-century experience also produced a long and consequential rate-bill episode. From 1819 to 1853, Common School Fund income and local matching funds were not enough to pay teacher salaries, so districts charged patrons in proportion to pupil attendance; the eventual transition to fully free schools came after a sustained political contest.[^ny-16]
+
+The clearest property-integrity case in the New York school-fund-adjacent record comes from a small disputed schoolhouse sale in 1953. Voters in the former Ross Mills common-school district in Columbia County approved selling a closed schoolhouse to the Ross Mills Church of God for $2,000 despite a $3,000 offer from Ross Grange No. 305. The Court of Appeals, in *Matter of Ross v. Wilson* (1955), held that school officials disposing of school property were not required to conduct a public auction, but they did have a duty to seek the best obtainable price and could not deliberately prefer a lower-price purchaser over a higher responsible offer.[^ny-17] The case is not a Common School Fund case, and the dollars at stake are trivial; what *Ross* supplies is a recognizable fiduciary-like rule for school-property disposition in a state whose larger trust architecture has long since been converted into financial portfolio form. It is the closest New York analogue to the kind of best-price duty that public-land states locate in their admission-act trust language.
+
+The center of gravity in modern New York school-funding doctrine, however, is the Article XI, section 1 free-common-schools clause and the adequacy litigation it generated. *Board of Education, Levittown Union Free School District v. Nyquist* (1982) was the first major Article XI challenge — a statewide funding-equity claim grounded in inter-district disparities. The Court of Appeals rejected the equity claim but left room for future challenges alleging deprivation of minimally adequate educational opportunity.[^ny-18] *Levittown* is best read as the doctrinal posture that the Campaign for Fiscal Equity litigation would substantially narrow.
+
+The first CFE ruling, *Campaign for Fiscal Equity, Inc. v. State* (CFE I, 1995), held that plaintiffs had stated a justiciable Article XI claim grounded in denial of the opportunity for a sound basic education to New York City schoolchildren.[^ny-19] The doctrinal pivot was substantial: the court treated Article XI section 1 not as aspirational legislative direction but as judicially enforceable. Eight years later, in *Campaign for Fiscal Equity, Inc. v. State* (CFE II, 2003), the Court of Appeals reached the merits and held that New York City students were in fact being denied the opportunity for a sound basic education, that the State's then-existing funding system violated the state constitution, and that the State was required to determine the cost of compliance and enact reforms.[^ny-20] CFE II is the defining modern construction of Article XI section 1 and is widely read alongside Pennsylvania's *William Penn School District v. Pennsylvania Department of Education* (2023) as the leading state-constitutional adequacy ruling in the country. The November 2006 final settlement of the CFE litigation drove the creation of Foundation Aid in 2007 — the formula that has since carried the bulk of the state's K-12 distributive obligation.[^ny-21]
+
+CFE was not the end of the doctrinal series. *Paynter v. State* (2003) narrowed CFE's reach by rejecting an Education Article claim where the pleaded causal theory turned on concentrated poverty and racial isolation rather than on inadequate state-provided educational inputs caused by the funding system.[^ny-22] *New York Civil Liberties Union v. State* (2005) clarified pleading requirements after CFE, requiring plaintiffs to identify specific deprivations of a sound basic education and state-caused failures.[^ny-23] *Aristy-Farer v. State* (2017) allowed some Education Article claims to proceed but limited broad statewide allegations that lacked district-specific pleading, restating that Article XI section 1 guarantees opportunity for a sound basic education rather than equal funding or any particular aid level.[^ny-24] And *Maisto v. State* (Appellate Division, Third Department, 2021) held that plaintiffs in eight small-city school districts had established an Education Article violation for at-risk students based on inadequate inputs, poor outputs, and a causal connection to state funding shortfalls — including more than $1.1 billion in Foundation Aid not received by the districts.[^ny-25] *Maisto* is the modern structural-deprivation case in a state whose school obligation runs through constitutional adequacy rather than admission-compact trust.
+
+Two further pieces of the modern architecture matter for the project's purposes. New York's state lottery, established in 1967, is constitutionally dedicated to education aid and is a meaningful K-12 revenue stream — distinct from the Common School Fund in source and structure.[^ny-26] And the Adirondack and Catskill Forest Preserves, protected by the "forever wild" clause of Article XIV, comprise tens of millions of acres of constitutionally protected public lands. These are not school-trust lands and must not be conflated with them; the constitutional purpose is wilderness preservation, not school funding.[^ny-27] The substrate flags the conflation risk explicitly.
+
+Today, the Common School Fund persists in form but its fiscal weight is small relative to General Fund K-12 appropriations, which run in the tens of billions of dollars annually. The Comptroller holds the corpus; the Regents head the broader education system; Foundation Aid does most of the distributive work. Modern Common School Fund corpus and annual-distribution figures are not top-line items in state finance reporting and are flagged in the substrate as targeted retrieval items for the next research pass.[^ny-28]
+
+The New York story, then, is the project's clearest example of architectural priority. New York built the permanent-fund pattern before the federal government did; it constitutionalized the lockbox in 1821 and 1846, before any public-land state had occasion to do so for a federal-grant fund; it preserved a constitutional educational governance body older than the Constitution itself; and when the original fund's fiscal weight diminished over time, it built modern enforcement on a free-common-schools clause that the Court of Appeals construed as judicially enforceable. The compact-trust framework central to the wider project does not reach New York, because no compact exists. But the underlying problem the framework addresses — a public asset dedicated to schoolchildren, exposed to fiduciary risks, requiring constitutional protection and judicial enforcement — has been worked through in New York for longer than in any other state. The architecture is parallel; the source of the corpus is sovereign state action; the doctrinal tools are state-constitutional adequacy rather than admission-act trust. For a project that argues that the duty to schoolchildren is foundational to American democratic order, New York is a useful comparator precisely because it shows the duty arising without any federal compact prompt at all.
+
+---
+
+## Footnotes
+
+[^ny-1]: Resolution of the New York Convention, July 26, 1788, https://avalon.law.yale.edu/18th_century/ratny.asp.
+
+[^ny-2]: Land Ordinance of May 20, 1785; Northwest Ordinance of July 13, 1787. The 1785 ordinance reserved section sixteen of every township in the federal public domain for the maintenance of public schools; the 1787 ordinance committed the federal government to encouraging schools and the means of education. Neither applied to New York's own lands.
+
+[^ny-3]: New York — Fifty States Schema File, school_grant section (substrate file 11_NY_NewYork_v0.3_[INTERNAL].md). The schema's section-16 acreage field is set to zero, with the absence treated as the operative finding.
+
+[^ny-4]: An Act for granting certain Privileges to the College heretofore called King's College, May 1, 1784 (rechartering Columbia and creating the Regents); see N.Y. Const. art. XI, § 2 (continuing the 1784 corporation), https://law.justia.com/constitution/new-york/article-xi/section-2/.
+
+[^ny-5]: N.Y. Const. art. XI, § 2 (current text), https://law.justia.com/constitution/new-york/article-xi/section-2/.
+
+[^ny-6]: New York State Education Department, "Board of Regents," https://www.regents.nysed.gov/.
+
+[^ny-7]: *Matter of United Jewish Community of Blooming Grove, Inc. v. Washingtonville Cent. Sch. Dist.*, 2024 NY Slip Op 062, *2-*3 (N.Y. 2024) (tracing public-school funding from the 1795 statute), https://law.justia.com/cases/new-york/court-of-appeals/2024/62.html.
+
+[^ny-8]: 1805 N.Y. Laws ch. 66 (Apr. 2, 1805); see Edward A. Fitzpatrick *et al.*, *A Text Book on New York School Law* 151, https://upload.wikimedia.org/wikipedia/commons/3/33/A_text_book_on_New_York_school_law%2C_including_the_revised_education_law%2C_the_decisions_of_courts_and_the_rulings_and_decisions_of_state_superintendents_and_the_commissioner_of_education_%28IA_textbookonnewyor02fine%29.pdf.
+
+[^ny-9]: 1812 N.Y. Laws ch. 242 (June 19, 1812); see *United Jewish Community*, *supra* note 7; DeWitt Clinton, Message of the Governor (1812) (urging the statewide common-school system).
+
+[^ny-10]: 1821 N.Y. Const. art. VII, § 10, https://history.nycourts.gov/wp-content/uploads/2018/11/Publications_1821-NY-Constitution.pdf.
+
+[^ny-11]: 1846 N.Y. Const. art. IX, § 1, https://history.nycourts.gov/wp-content/uploads/2019/01/Publications_1846-NY-Constitution-compressed.pdf.
+
+[^ny-12]: 1894 N.Y. Const. art. IX, § 1; see also current N.Y. Const. art. XI, § 1 (renumbered by the 1938 Constitutional Convention), https://law.justia.com/constitution/new-york/article-xi/section-1/.
+
+[^ny-13]: N.Y. Const. art. XI, § 3, https://law.justia.com/constitution/new-york/article-xi/section-3/.
+
+[^ny-14]: New York — Fifty States Schema File, state_constitution.amendments and gaps_flagged sections; the renumbering and partial repeal path of the historic education-funds clause across 1894, 1938, and 1962 is flagged for specialist review. The current Article XI text does not carry the 1846/1894-style fund-preservation clause forward in the same form.
+
+[^ny-15]: Don C. Sowers, *The Financial History of New York State from 1789 to 1912* 364 (Columbia University Studies in History, Economics and Public Law, 1914), https://www.slideshare.net/slideshow/the-financial-history-of-new-york-state-from-1789-to-1912-don-c-sowers/278913618.
+
+[^ny-16]: 1911 *Encyclopaedia Britannica*, "New York" (rate-bill financing and free-school transition), https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/New_York; Fitzpatrick, *Text Book on New York School Law*, *supra* note 8, at 151.
+
+[^ny-17]: *Matter of Ross v. Wilson*, 308 N.Y. 605, 610-13, 127 N.E.2d 697 (1955), https://www.casemine.com/judgement/us/5914ca27add7b049347f81fd.
+
+[^ny-18]: *Board of Education, Levittown Union Free School District v. Nyquist*, 57 N.Y.2d 27 (1982), https://law.justia.com/cases/new-york/court-of-appeals/1982/57-n-y-2d-27-0.html.
+
+[^ny-19]: *Campaign for Fiscal Equity, Inc. v. State* (CFE I), 86 N.Y.2d 307 (1995), https://law.justia.com/cases/new-york/court-of-appeals/1995/86-n-y-2d-307-0.html.
+
+[^ny-20]: *Campaign for Fiscal Equity, Inc. v. State* (CFE II), 100 N.Y.2d 893 (2003), https://www.casemine.com/judgement/us/5914b7e7add7b04934781ecb.
+
+[^ny-21]: New York Education Law, Foundation Aid provisions enacted in 2007; see *Maisto v. State*, 2021 NY Slip Op 03350 (App. Div. 3d Dep't 2021), https://law.justia.com/cases/new-york/appellate-division-third-department/2021/528550.html.
+
+[^ny-22]: *Paynter v. State*, 100 N.Y.2d 434, 439-41, 797 N.E.2d 1225 (2003), https://case-law.vlex.com/vid/paynter-v-state-of-886041370.
+
+[^ny-23]: *New York Civil Liberties Union v. State*, 4 N.Y.3d 175, 178-81 (2005), https://law.justia.com/cases/new-york/court-of-appeals/2017/75.html.
+
+[^ny-24]: *Aristy-Farer v. State*, 29 N.Y.3d 501, 505, 510-15 (2017), https://www.nycourts.gov/Reporter/3dseries/2017/2017_05175.htm.
+
+[^ny-25]: *Maisto v. State*, 2021 NY Slip Op 03350, *1-*2, *31-*35 (App. Div. 3d Dep't 2021), https://law.justia.com/cases/new-york/appellate-division-third-department/2021/528550.html.
+
+[^ny-26]: N.Y. Const. art. VII, § 19 (lottery proceeds dedicated to education aid); New York State Gaming Commission, "Lottery," https://www.gaming.ny.gov/gaming/.
+
+[^ny-27]: N.Y. Const. art. XIV, § 1 ("The lands of the state, now owned or hereafter acquired, constituting the forest preserve as now fixed by law, shall be forever kept as wild forest lands"); New York — Fifty States Schema File, current_management.notes (flagging the conflation risk explicitly).
+
+[^ny-28]: New York — Fifty States Schema File, current_management section and gaps_flagged.permanent_fund_corpus_estimate_usd; modern corpus and distribution figures are recommended for the next research pass against the Comptroller's Annual Comprehensive Financial Report.
