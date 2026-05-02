@@ -1,2 +1,4 @@
 /map/  /atlas/  301
 /map   /atlas/  301
+/states/:iso/  /reading/:iso/  301
+/states/:iso   /reading/:iso/  301
