@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/mnt/c/Users/drdav/My Drive/Claude Cowork/**)",
+      "Read(./**)",
+      "Write(./**)",
+      "Edit(./**)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(python3 *)",
+      "Bash(pip *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(sed *)",
+      "Bash(awk *)",
+      "Bash(wc *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(tippecanoe *)",
+      "Bash(ogr2ogr *)",
+      "Bash(pagefind *)",
+      "Bash(curl *)",
+      "Bash(which *)",
+      "Bash(echo *)",
+      "Bash(diff *)"
+    ],
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf $HOME*)"
+    ]
+  }
+}
