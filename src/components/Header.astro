@@ -76,6 +76,34 @@ import '../styles/global.css';
           showSubResults: true,
           showImages: false,
         });
+
+        // Decorate result links: append ?q= (always — fuels JS fallback)
+        // and #:~:text= (for browsers with native Text Fragments) so the
+        // first matched word scrolls into view and highlights on arrival.
+        const supportsFragments = 'fragmentDirective' in document;
+        el.addEventListener(
+          'click',
+          (ev) => {
+            const a = ev.target instanceof Element ? ev.target.closest('a') : null;
+            if (!a || !el.contains(a)) return;
+            const input = el.querySelector('input');
+            const q = input instanceof HTMLInputElement ? input.value.trim() : '';
+            if (!q) return;
+            try {
+              const u = new URL(a.href, window.location.origin);
+              if (u.origin !== window.location.origin) return;
+              u.searchParams.set('q', q);
+              const first = q.split(/\s+/).filter(Boolean)[0];
+              if (supportsFragments && first) {
+                u.hash = `:~:text=${encodeURIComponent(first)}`;
+              }
+              a.href = u.toString();
+            } catch (_) {
+              /* ignore malformed URLs */
+            }
+          },
+          true,
+        );
       } else {
         el.innerHTML =
           '<span class="text-xs text-slate-400">Search index unavailable in dev mode — run a production build.</span>';
@@ -94,6 +122,51 @@ import '../styles/global.css';
           if (input instanceof HTMLInputElement) input.focus();
         }
       });
+    }
+
+    // ?q= fallback for browsers without Text Fragment support: walk text
+    // nodes in <main> and wrap case-insensitive matches in <mark>. Modern
+    // browsers (those with document.fragmentDirective) get the native
+    // ::target-text highlight from the URL hash and don't need this.
+    const params = new URLSearchParams(window.location.search);
+    const q = (params.get('q') || '').trim();
+    if (q && !('fragmentDirective' in document)) {
+      const root = document.querySelector('main');
+      if (root) {
+        const terms = q
+          .split(/\s+/)
+          .filter((t) => t.length > 1)
+          .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        if (terms.length > 0) {
+          const re = new RegExp(`(${terms.join('|')})`, 'gi');
+          const skip = new Set(['SCRIPT', 'STYLE', 'MARK', 'CODE', 'PRE']);
+          const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+              if (!node.parentElement) return NodeFilter.FILTER_REJECT;
+              if (skip.has(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+              return re.test(node.nodeValue || '')
+                ? NodeFilter.FILTER_ACCEPT
+                : NodeFilter.FILTER_REJECT;
+            },
+          });
+          const targets = [];
+          let n;
+          while ((n = walker.nextNode())) targets.push(n);
+          let firstMark = null;
+          for (const node of targets) {
+            const span = document.createElement('span');
+            span.innerHTML = (node.nodeValue || '').replace(
+              re,
+              '<mark>$1</mark>',
+            );
+            if (!firstMark) firstMark = span.querySelector('mark');
+            node.parentNode.replaceChild(span, node);
+          }
+          if (firstMark) {
+            firstMark.scrollIntoView({ behavior: 'auto', block: 'center' });
+          }
+        }
+      }
     }
   });
 </script>

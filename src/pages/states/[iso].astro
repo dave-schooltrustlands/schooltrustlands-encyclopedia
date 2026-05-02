@@ -47,9 +47,9 @@ const num = new Intl.NumberFormat('en-US');
         <p class="text-sm uppercase tracking-wide text-slate-500">
           {data.iso} · FIPS {data.fips} · Admission #{data.admissionNumber}
         </p>
-        <h1 class="mt-2 text-4xl font-bold tracking-tight">{data.name}</h1>
+        <h1 data-pagefind-weight="10" class="mt-2 text-4xl font-bold tracking-tight">{data.name}</h1>
         <dl class="mt-4 grid grid-cols-1 gap-x-8 gap-y-2 text-sm sm:grid-cols-2">
-          <div>
+          <div data-pagefind-weight="20">
             <dt class="inline font-semibold text-slate-700">Admitted:</dt>
             <dd class="inline text-slate-600"> {dateFmt.format(data.admittedDate)}</dd>
           </div>
