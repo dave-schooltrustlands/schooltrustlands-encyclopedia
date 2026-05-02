@@ -30,7 +30,13 @@
       "Bash(curl *)",
       "Bash(which *)",
       "Bash(echo *)",
-      "Bash(diff *)"
+      "Bash(diff *)",
+      "Bash(for *)",
+      "Bash(while *)",
+      "Bash(if *)",
+      "Bash(case *)",
+      "Bash(time *)",
+      "Bash(until *)"
     ],
     "deny": [
       "Bash(sudo *)",
