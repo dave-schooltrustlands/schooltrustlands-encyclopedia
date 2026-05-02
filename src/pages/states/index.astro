@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Header from '../../components/Header.astro';
 
 const entries = await getCollection('states');
 
@@ -38,11 +39,9 @@ const dateFmt = new Intl.DateTimeFormat('en-US', {
     <title>Encyclopedia — School Trust Lands</title>
   </head>
   <body class="min-h-screen bg-slate-50 text-slate-900">
+    <Header />
     <main class="mx-auto max-w-prose p-8">
-      <p class="text-sm">
-        <a href="/" class="text-blue-700 underline">← Home</a>
-      </p>
-      <h1 class="mt-4 text-4xl font-bold tracking-tight">Encyclopedia Entries</h1>
+      <h1 class="text-4xl font-bold tracking-tight">Encyclopedia Entries</h1>
       <p class="mt-4 text-slate-700">
         Fifty states, grouped by era cohort and numbered in order of admission.
       </p>

@@ -1,0 +1,38 @@
+---
+---
+<header
+  data-pagefind-ignore
+  class="border-b border-slate-200 bg-white"
+>
+  <div class="mx-auto flex max-w-prose flex-wrap items-center justify-between gap-4 p-4">
+    <a
+      href="/"
+      class="text-base font-semibold tracking-tight text-slate-900 hover:text-slate-700"
+    >
+      School Trust Lands Encyclopedia
+    </a>
+    <nav class="flex items-center gap-4 text-sm">
+      <a href="/states/" class="text-blue-700 hover:underline">All states</a>
+      <div id="search" class="w-72"></div>
+    </nav>
+  </div>
+</header>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('search');
+    if (!el) return;
+    if (typeof window.PagefindUI === 'function') {
+      new window.PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+      });
+    } else {
+      el.innerHTML =
+        '<span class="text-xs text-slate-400">Search index unavailable in dev mode — run a production build.</span>';
+    }
+  });
+</script>
