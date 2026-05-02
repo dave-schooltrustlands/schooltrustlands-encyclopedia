@@ -3,21 +3,31 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
+type EssayProps = { kind: 'essay'; entry: CollectionEntry<'essays'> };
+type StateProps = { kind: 'state'; entry: CollectionEntry<'states'> };
+type Props = EssayProps | StateProps;
+
 export async function getStaticPaths() {
-  const entries = await getCollection('essays');
-  return entries.map((entry) => ({
+  const essays = await getCollection('essays');
+  const states = await getCollection('states');
+
+  const essayPaths = essays.map((entry) => ({
     params: { slug: entry.slug.replace(/^\d+-/, '') },
-    props: { entry },
+    props: { kind: 'essay' as const, entry },
   }));
+
+  // State ISOs always carry the `us-` prefix, so they don't collide with
+  // any essay slug (chapter slugs are post-stripping like `founding-floor`,
+  // never starting with `us-`).
+  const statePaths = states.map((entry) => ({
+    params: { slug: entry.data.iso.toLowerCase() },
+    props: { kind: 'state' as const, entry },
+  }));
+
+  return [...essayPaths, ...statePaths];
 }
 
-interface Props {
-  entry: CollectionEntry<'essays'>;
-}
-
-const { entry } = Astro.props;
-const { Content } = await entry.render();
-const { data } = entry;
+const props = Astro.props as Props;
 
 const dateFmt = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -25,6 +35,19 @@ const dateFmt = new Intl.DateTimeFormat('en-US', {
   day: 'numeric',
 });
 const num = new Intl.NumberFormat('en-US');
+const usd = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+});
+
+const { Content } =
+  props.kind === 'essay'
+    ? await props.entry.render()
+    : await props.entry.render();
+
+const pageTitle =
+  props.kind === 'essay' ? props.entry.data.title : props.entry.data.name;
 ---
 
 <!doctype html>
@@ -33,25 +56,89 @@ const num = new Intl.NumberFormat('en-US');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>{data.title} — School Trust Lands Encyclopedia</title>
+    <title>{pageTitle} — School Trust Lands Encyclopedia</title>
   </head>
   <body class="min-h-screen bg-slate-50 text-slate-900">
     <Header />
     <main class="mx-auto max-w-prose p-4 sm:p-8">
-      <header class="border-b border-slate-200 pb-6">
-        <p class="text-sm uppercase tracking-wide text-slate-500">
-          Reading Room · {data.era}
-        </p>
-        <h1 data-pagefind-weight="10" class="mt-2 text-4xl font-bold tracking-tight">{data.title}</h1>
-        <p class="mt-4 text-xs text-slate-500">
-          {num.format(data.wordCount)} words · Substrate {data.sourceVersion} · Last synced {dateFmt.format(data.lastSynced)}
-        </p>
-        <p class="mt-3">
-          <a href="/reading/" class="text-sm text-blue-700 underline hover:text-blue-900">
-            ← Back to Reading Room
-          </a>
-        </p>
-      </header>
+      {props.kind === 'essay' && (
+        <header class="border-b border-slate-200 pb-6">
+          <p class="text-sm uppercase tracking-wide text-slate-500">
+            Reading Room · {props.entry.data.era}
+          </p>
+          <h1 data-pagefind-weight="10" class="mt-2 text-4xl font-bold tracking-tight">
+            {props.entry.data.title}
+          </h1>
+          <p class="mt-4 text-xs text-slate-500">
+            {num.format(props.entry.data.wordCount)} words · Substrate {props.entry.data.sourceVersion} · Last synced {dateFmt.format(props.entry.data.lastSynced)}
+          </p>
+          <p class="mt-3">
+            <a href="/reading/" class="text-sm text-blue-700 underline hover:text-blue-900">
+              ← Back to Reading Room
+            </a>
+          </p>
+        </header>
+      )}
+
+      {props.kind === 'state' && (
+        <header class="border-b border-slate-200 pb-6">
+          <p class="text-sm uppercase tracking-wide text-slate-500">
+            {props.entry.data.iso} · FIPS {props.entry.data.fips} · Admission #{props.entry.data.admissionNumber}
+          </p>
+          <h1 data-pagefind-weight="10" class="mt-2 text-4xl font-bold tracking-tight">
+            {props.entry.data.name}
+          </h1>
+          <dl class="mt-4 grid grid-cols-1 gap-x-8 gap-y-2 text-sm sm:grid-cols-2">
+            <div data-pagefind-weight="20">
+              <dt class="inline font-semibold text-slate-700">Admitted:</dt>
+              <dd class="inline text-slate-600"> {dateFmt.format(props.entry.data.admittedDate)}</dd>
+            </div>
+            <div>
+              <dt class="inline font-semibold text-slate-700">Era:</dt>
+              <dd class="inline text-slate-600"> {props.entry.data.eraName} (cohort {props.entry.data.eraCohort})</dd>
+            </div>
+            {props.entry.data.federalGrantAcres !== null && (
+              <div>
+                <dt class="inline font-semibold text-slate-700">Federal grant:</dt>
+                <dd class="inline text-slate-600">
+                  {props.entry.data.federalGrantAcres === 0
+                    ? ' none (state-derived)'
+                    : ` ${num.format(props.entry.data.federalGrantAcres)} acres`}
+                </dd>
+              </div>
+            )}
+            <div>
+              <dt class="inline font-semibold text-slate-700">Governance:</dt>
+              <dd class="inline text-slate-600"> {props.entry.data.governanceForm}</dd>
+            </div>
+            {props.entry.data.permanentFundCorpus && (
+              <div>
+                <dt class="inline font-semibold text-slate-700">Permanent fund:</dt>
+                <dd class="inline text-slate-600">
+                  {' '}{usd.format(props.entry.data.permanentFundCorpus.value)}
+                  {props.entry.data.permanentFundCorpus.asOf && (
+                    <span> (as of {dateFmt.format(props.entry.data.permanentFundCorpus.asOf)})</span>
+                  )}
+                </dd>
+              </div>
+            )}
+            {props.entry.data.latestDistribution && (
+              <div>
+                <dt class="inline font-semibold text-slate-700">
+                  {props.entry.data.latestDistribution.fiscalYear
+                    ? `FY${props.entry.data.latestDistribution.fiscalYear} distribution:`
+                    : 'Recent distribution:'}
+                </dt>
+                <dd class="inline text-slate-600"> {usd.format(props.entry.data.latestDistribution.value)}</dd>
+              </div>
+            )}
+          </dl>
+          <p class="mt-4 text-xs text-slate-500">
+            Substrate v{props.entry.data.substrateVersion} · Last reviewed {dateFmt.format(props.entry.data.lastReviewed)}
+          </p>
+        </header>
+      )}
+
       <article class="prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline">
         <Content />
       </article>
