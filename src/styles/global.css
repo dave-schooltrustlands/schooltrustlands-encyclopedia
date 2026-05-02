@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: theme('fontFamily.serif');
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  nav,
+  header,
+  footer,
+  button,
+  input,
+  select,
+  textarea,
+  .font-sans {
+    font-family: theme('fontFamily.sans');
+  }
+
+  h1 {
+    letter-spacing: -0.02em;
+  }
+
+  h2,
+  h3 {
+    letter-spacing: -0.01em;
+  }
+
+  /* Restrained accent — one muted blue for body links. */
+  .prose a,
+  a.text-blue-700 {
+    color: theme('colors.accent.DEFAULT');
+  }
+  .prose a:hover,
+  a.text-blue-700:hover {
+    color: theme('colors.accent.dark');
+  }
+
+  /* Footnote ref / back-ref tap targets. The visible glyph stays
+     small, but the clickable rect is expanded via padding so
+     touch users can hit it reliably. */
+  .prose a[data-footnote-ref],
+  .prose a.data-footnote-backref {
+    display: inline-block;
+    min-width: 44px;
+    min-height: 24px;
+    padding: 0 0.35rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+}
