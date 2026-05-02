@@ -59,7 +59,11 @@ const num = new Intl.NumberFormat('en-US');
           {data.federalGrantAcres !== null && (
             <div>
               <dt class="inline font-semibold text-slate-700">Federal grant:</dt>
-              <dd class="inline text-slate-600"> {num.format(data.federalGrantAcres)} acres</dd>
+              <dd class="inline text-slate-600">
+                {data.federalGrantAcres === 0
+                  ? ' none (state-derived)'
+                  : ` ${num.format(data.federalGrantAcres)} acres`}
+              </dd>
             </div>
           )}
           <div>
