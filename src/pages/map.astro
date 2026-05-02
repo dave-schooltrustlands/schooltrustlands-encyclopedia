@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import Header from '../components/Header.astro';
 
+const isDev = import.meta.env.DEV;
+
 const entries = await getCollection('states');
 
 const fipsToEntry: Record<string, { iso: string; name: string; admittedDate: string; eraCohort: number; eraName: string }> = {};
@@ -60,10 +62,12 @@ const COHORT_LABELS: Record<number, string> = {
         class="mt-6 h-[60vh] min-h-[420px] w-full overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
       >
       </div>
-      <pre
-        id="map-error"
-        class="mt-2 hidden whitespace-pre-wrap rounded border border-red-200 bg-red-50 p-3 text-xs text-red-800"
-      ></pre>
+      {isDev && (
+        <pre
+          id="map-error"
+          class="mt-2 hidden whitespace-pre-wrap rounded border border-red-200 bg-red-50 p-3 text-xs text-red-800"
+        ></pre>
+      )}
 
       <script
         type="application/json"
@@ -147,6 +151,7 @@ const COHORT_LABELS: Record<number, string> = {
             states: {
               type: 'vector',
               url: PMTILES_URL,
+              promoteId: 'GEOID',
             },
           },
           layers: [
@@ -254,18 +259,22 @@ const COHORT_LABELS: Record<number, string> = {
         const entry = fipsToEntry[fips];
         const stateName = f.properties.NAME ?? entry?.name ?? '';
 
-        // Reset previous hover state, set new.
+        // Reset previous hover state, set new — only if the feature has an id
+        // (promoteId on the source should make this always true, but tile-edge
+        // features can occasionally come back without one).
         if (hoveredFips !== null && hoveredFips !== f.id) {
           map.setFeatureState(
             { source: 'states', sourceLayer: 'states', id: hoveredFips },
             { hover: false },
           );
         }
-        hoveredFips = f.id;
-        map.setFeatureState(
-          { source: 'states', sourceLayer: 'states', id: hoveredFips },
-          { hover: true },
-        );
+        if (f.id !== undefined) {
+          hoveredFips = f.id;
+          map.setFeatureState(
+            { source: 'states', sourceLayer: 'states', id: hoveredFips },
+            { hover: true },
+          );
+        }
 
         map.getCanvas().style.cursor = entry ? 'pointer' : 'default';
 
@@ -277,7 +286,7 @@ const COHORT_LABELS: Record<number, string> = {
       });
 
       map.on('mouseleave', 'states-fill', () => {
-        if (hoveredFips !== null) {
+        if (hoveredFips !== null && hoveredFips !== undefined) {
           map.setFeatureState(
             { source: 'states', sourceLayer: 'states', id: hoveredFips },
             { hover: false },
