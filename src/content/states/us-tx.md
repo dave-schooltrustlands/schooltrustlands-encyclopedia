@@ -6,9 +6,11 @@ admissionNumber: 28
 admittedDate: 1845-12-29
 eraCohort: 2
 eraName: Statehood Without the Federal Floor
-federalGrantAcres: null
-governanceForm: ""
-permanentFundCorpus: null
+federalGrantAcres: 0
+governanceForm: "Commissioner of the General Land Office (statewide elected, four-year term — currently Dawn Buckingham, elected November 2022); School Land Board (three members: GLO Commissioner plus two gubernatorial appointees confirmed by the Senate); 15-member elected State Board of Education (representing 15 single-member districts statewide)."
+permanentFundCorpus:
+  value: 56000000000
+  asOf: null
 latestDistribution: null
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01

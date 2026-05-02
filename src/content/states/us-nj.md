@@ -6,8 +6,8 @@ admissionNumber: 3
 admittedDate: 1787-12-18
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory body; thirteen members appointed by the Governor with Senate advice and consent). No school-trust board exists because there is no federal-grant school trust. The constitutional Fund for the Support of Free Public Schools (Article VIII § 4 ¶ 2) is administered through the state treasury rather than by a dedicated trustee board."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

@@ -6,10 +6,14 @@ admissionNumber: 48
 admittedDate: 1912-02-14
 eraCohort: 6
 eraName: "The Twentieth-Century High-Water Mark and Two Outliers"
-federalGrantAcres: null
-governanceForm: ""
-permanentFundCorpus: null
-latestDistribution: null
+federalGrantAcres: 10900000
+governanceForm: "State Land Commissioner — gubernatorial appointee with Senate consent under A.R.S. Title 37; heads the Arizona State Land Department. Trust corpus (Permanent Land Endowment Trust Fund) is invested by the Arizona State Treasurer's Office under guidelines set by statute and the State Board of Investment."
+permanentFundCorpus:
+  value: 8000000000
+  asOf: null
+latestDistribution:
+  value: 350000000
+  fiscalYear: null
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---

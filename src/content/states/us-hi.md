@@ -6,8 +6,13 @@ admissionNumber: 50
 admittedDate: 1959-08-21
 eraCohort: 6
 eraName: "The Twentieth-Century High-Water Mark and Two Outliers"
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 1400000
+governanceForm: "No unified ceded-lands trust board. DLNR is led by the Board of Land and
+Natural Resources (gubernatorial appointees). DHHL is led by the Hawaiian
+Homes Commission. OHA is governed by an independently-elected Board of
+Trustees (nine seats, statewide and island-district elections under Article
+XII § 5). HIDOE is governed by the constitutionally-established State Board
+of Education (gubernatorial-appointed since 2011 under Article X § 3)."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

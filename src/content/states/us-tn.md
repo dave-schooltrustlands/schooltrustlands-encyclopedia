@@ -6,8 +6,8 @@ admissionNumber: 16
 admittedDate: 1796-06-01
 eraCohort: 2
 eraName: Statehood Without the Federal Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (9 appointed members + 1 student member + 1 ex officio THEC executive director, per Tenn. Code Ann. § 49-1-301). Commissioner of Education leads TDOE. No school-trust trustee board exists."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

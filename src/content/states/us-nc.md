@@ -6,8 +6,8 @@ admissionNumber: 12
 admittedDate: 1789-11-21
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (constitutional body, Article IX § 4); separate State Education Assistance Authority Board (statutory, for higher-education trust-style funds and escheats). No school-trust trustee board exists because there is no federal-grant school trust."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

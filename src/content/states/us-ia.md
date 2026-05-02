@@ -6,8 +6,8 @@ admissionNumber: 29
 admittedDate: 1846-12-28
 eraCohort: 4
 eraName: The Antebellum Doubling
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 1000000
+governanceForm: "No consolidated state trust-lands board comparable to Oregon's State Land Board. Residual school-fund administration is statutory and distributed across state and (historically) county-level officials."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

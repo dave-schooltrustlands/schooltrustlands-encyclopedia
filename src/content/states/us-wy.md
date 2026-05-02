@@ -6,10 +6,14 @@ admissionNumber: 44
 admittedDate: 1890-07-10
 eraCohort: 5
 eraName: Reconstruction and the Western Stack
-federalGrantAcres: null
-governanceForm: ""
-permanentFundCorpus: null
-latestDistribution: null
+federalGrantAcres: 3470000
+governanceForm: "Board of Land Commissioners (constitutional, Article 18 § 3): Governor, Secretary of State, State Treasurer, State Auditor, and Superintendent of Public Instruction — five statewide elected executive officers serving ex officio. OSLI staffs the board and administers leasing, royalty collection, and land management."
+permanentFundCorpus:
+  value: 4500000000
+  asOf: null
+latestDistribution:
+  value: 200000000
+  fiscalYear: null
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---

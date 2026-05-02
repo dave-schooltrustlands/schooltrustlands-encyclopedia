@@ -6,8 +6,8 @@ admissionNumber: 42
 admittedDate: 1889-11-11
 eraCohort: 5
 eraName: Reconstruction and the Western Stack
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 2376391
+governanceForm: "Commissioner of Public Lands (statewide elected, four-year term, constitutional under Article III) heads the DNR; the Board of Natural Resources (statutory) sets policy and approves transactions, with the Commissioner serving as chair. Current Commissioner is Hilary Franz (elected 2016, re-elected 2020) — verify successor for the 2024 election cycle in Pass 2."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

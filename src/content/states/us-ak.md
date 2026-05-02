@@ -6,8 +6,11 @@ admissionNumber: 49
 admittedDate: 1959-01-03
 eraCohort: 6
 eraName: "The Twentieth-Century High-Water Mark and Two Outliers"
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 104450000
+governanceForm: "DNR: Commissioner appointed by the Governor (AS 38.04). APFC: six-member Board
+of Trustees — Commissioner of Revenue, one other Cabinet member designated by
+the Governor, and four public members appointed by the Governor for staggered
+four-year terms (AS 37.13). NO constitutional school-trust board exists."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

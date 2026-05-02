@@ -6,8 +6,8 @@ admissionNumber: 26
 admittedDate: 1837-01-26
 eraCohort: 3
 eraName: The Northwest Ordinance Template
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 1067397
+governanceForm: "State Board of Education (eight members elected statewide to staggered eight-year terms) — constitutionally created. Trust-land operational management is statutory and distributed across DNR (lands), Treasury (fund corpus), and MDE (educational distribution)."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

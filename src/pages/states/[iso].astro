@@ -70,13 +70,20 @@ const num = new Intl.NumberFormat('en-US');
             <div>
               <dt class="inline font-semibold text-slate-700">Permanent fund:</dt>
               <dd class="inline text-slate-600">
-                {' '}{usd.format(data.permanentFundCorpus.value)} (as of {dateFmt.format(data.permanentFundCorpus.asOf)})
+                {' '}{usd.format(data.permanentFundCorpus.value)}
+                {data.permanentFundCorpus.asOf && (
+                  <span> (as of {dateFmt.format(data.permanentFundCorpus.asOf)})</span>
+                )}
               </dd>
             </div>
           )}
           {data.latestDistribution && (
             <div>
-              <dt class="inline font-semibold text-slate-700">FY{data.latestDistribution.fiscalYear} distribution:</dt>
+              <dt class="inline font-semibold text-slate-700">
+                {data.latestDistribution.fiscalYear
+                  ? `FY${data.latestDistribution.fiscalYear} distribution:`
+                  : 'Recent distribution:'}
+              </dt>
               <dd class="inline text-slate-600"> {usd.format(data.latestDistribution.value)}</dd>
             </div>
           )}

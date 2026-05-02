@@ -6,10 +6,14 @@ admissionNumber: 32
 admittedDate: 1858-05-11
 eraCohort: 4
 eraName: The Antebellum Doubling
-federalGrantAcres: null
-governanceForm: ""
-permanentFundCorpus: null
-latestDistribution: null
+federalGrantAcres: 2874951
+governanceForm: "DNR Commissioner manages day-to-day; Executive Council (Governor, Lt. Gov., Sec. of State, State Auditor, Attorney General) approves certain transactions; School Trust Lands Director (independent statutory advocate per Minn. Stat. § 127A.353)"
+permanentFundCorpus:
+  value: 2500000000
+  asOf: null
+latestDistribution:
+  value: 60000000
+  fiscalYear: null
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---

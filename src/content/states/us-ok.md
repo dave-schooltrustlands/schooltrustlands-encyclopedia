@@ -6,10 +6,14 @@ admissionNumber: 46
 admittedDate: 1907-11-16
 eraCohort: 6
 eraName: "The Twentieth-Century High-Water Mark and Two Outliers"
-federalGrantAcres: null
-governanceForm: ""
-permanentFundCorpus: null
-latestDistribution: null
+federalGrantAcres: 3095760
+governanceForm: "Commissioners of the Land Office: Governor (President), Lieutenant Governor, State Auditor and Inspector, Superintendent of Public Instruction, and President of the Oklahoma State Board of Agriculture (all ex officio statewide elected officials). Day-to-day operations run by a Secretary appointed by the Commissioners."
+permanentFundCorpus:
+  value: 2500000000
+  asOf: null
+latestDistribution:
+  value: 110000000
+  fiscalYear: null
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---

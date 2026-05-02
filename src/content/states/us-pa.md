@@ -6,8 +6,8 @@ admissionNumber: 2
 admittedDate: 1787-12-12
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory body); separate Independent Fiscal Office and Basic Education Funding Commission inform funding policy. No school-trust board exists because there is no school trust."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

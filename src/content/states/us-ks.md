@@ -6,8 +6,8 @@ admissionNumber: 34
 admittedDate: 1861-01-29
 eraCohort: 5
 eraName: Reconstruction and the Western Stack
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 2900000
+governanceForm: "No single ex-officio constitutional land board. State Treasurer (constitutionally elected) administers the Permanent School Fund corpus; State Board of Education (constitutionally established under Article 6) oversees distributions and education-policy questions; Board of Regents manages university trust lands. [GAP — confirm current statutory framework and whether any active school-trust land management agency remains.]"
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

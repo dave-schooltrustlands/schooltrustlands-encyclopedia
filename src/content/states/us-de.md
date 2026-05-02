@@ -6,8 +6,8 @@ admissionNumber: 1
 admittedDate: 1787-12-07
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory body under 14 Del. C. § 104); State School Fund managed under Treasurer's office. No school-trust trustee board exists because there is no federal-grant school trust."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

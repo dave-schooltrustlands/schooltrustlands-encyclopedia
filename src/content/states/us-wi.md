@@ -6,9 +6,11 @@ admissionNumber: 30
 admittedDate: 1848-05-29
 eraCohort: 4
 eraName: The Antebellum Doubling
-federalGrantAcres: null
-governanceForm: ""
-permanentFundCorpus: null
+federalGrantAcres: 982329
+governanceForm: "Board of Commissioners of Public Lands — ex-officio: Secretary of State, State Treasurer, Attorney General (per Wisconsin Constitution Article X § 7). One of the country's cleanest constitutionally-defined ex-officio fiduciary boards."
+permanentFundCorpus:
+  value: 1500000000
+  asOf: null
 latestDistribution: null
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01

@@ -6,8 +6,8 @@ admissionNumber: 20
 admittedDate: 1817-12-10
 eraCohort: 3
 eraName: The Northwest Ordinance Template
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 1067840
+governanceForm: "No consolidated state trust-lands board. The Secretary of State (statewide elected) supervises through the Office of Sixteenth Section Lands; each local school district administers the 16th-section lands within its boundaries; the State Board of Education and the Mississippi Department of Education have ancillary roles."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

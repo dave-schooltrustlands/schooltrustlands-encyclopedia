@@ -6,10 +6,14 @@ admissionNumber: 47
 admittedDate: 1912-01-06
 eraCohort: 6
 eraName: "The Twentieth-Century High-Water Mark and Two Outliers"
-federalGrantAcres: null
-governanceForm: ""
-permanentFundCorpus: null
-latestDistribution: null
+federalGrantAcres: 8711324
+governanceForm: "Commissioner of Public Lands (statewide elected, four-year term, two-term limit) — current Commissioner is Stephanie Garcia Richard (elected 2018, re-elected 2022). The Land Grant Permanent Fund is invested by the State Investment Council under the State Investment Officer."
+permanentFundCorpus:
+  value: 30000000000
+  asOf: null
+latestDistribution:
+  value: 1100000000
+  fiscalYear: null
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---

@@ -6,8 +6,8 @@ admissionNumber: 41
 admittedDate: 1889-11-08
 eraCohort: 5
 eraName: Reconstruction and the Western Stack
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 5198258
+governanceForm: "Montana Board of Land Commissioners (Land Board): Governor, Superintendent of Public Instruction, Auditor, Attorney General, Secretary of State (constitutional ex-officio five-member board, Article X, § 4 of the 1972 Constitution)"
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

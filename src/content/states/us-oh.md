@@ -6,8 +6,8 @@ admissionNumber: 17
 admittedDate: 1803-03-01
 eraCohort: 3
 eraName: The Northwest Ordinance Template
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 724266
+governanceForm: "No consolidated state trust-lands board. Residual trust-fund administration is statutory and distributed among the Department of Education, the State Treasurer, and (historically) township and county school authorities."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

@@ -6,10 +6,14 @@ admissionNumber: 45
 admittedDate: 1896-01-04
 eraCohort: 5
 eraName: Reconstruction and the Western Stack
-federalGrantAcres: null
-governanceForm: ""
-permanentFundCorpus: null
-latestDistribution: null
+federalGrantAcres: 5844196
+governanceForm: SITLA Board of Trustees + School and Institutional Trust Lands Administration; advocacy through the Land Trusts Protection and Advocacy Office (Title 53D)
+permanentFundCorpus:
+  value: 3200000000
+  asOf: null
+latestDistribution:
+  value: 106000000
+  fiscalYear: 2024
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---

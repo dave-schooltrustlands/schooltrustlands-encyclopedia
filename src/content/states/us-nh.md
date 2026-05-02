@@ -6,8 +6,8 @@ admissionNumber: 9
 admittedDate: 1788-06-21
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory body under RSA 186); Commissioner of Education appointed by the Governor with consent of the Executive Council. No school-trust board exists because there is no school trust."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

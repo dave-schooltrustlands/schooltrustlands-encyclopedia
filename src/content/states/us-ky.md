@@ -6,8 +6,8 @@ admissionNumber: 15
 admittedDate: 1792-06-01
 eraCohort: 2
 eraName: Statehood Without the Federal Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "Kentucky Board of Education (statutory body under KRS 156.029); no constitutional trustee board for the Common School Fund. K-12 governance flows through KDE under the Commissioner of Education."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

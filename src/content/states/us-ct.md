@@ -6,8 +6,8 @@ admissionNumber: 5
 admittedDate: 1788-01-09
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory; gubernatorial appointees with legislative confirmation); the State Treasurer (statewide elected) is custodian / investor of the School Fund corpus. There is no constitutional ex-officio trustee board in the public-land-state sense."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

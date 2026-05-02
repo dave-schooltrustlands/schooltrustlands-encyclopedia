@@ -6,8 +6,8 @@ admissionNumber: 11
 admittedDate: 1788-07-26
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "Board of Regents (17 members, elected by joint ballot of the Legislature, staggered five-year terms; constitutional body under Article XI § 2). The Common School Fund corpus is held by the Comptroller; the Regents do not function as fund trustees in the public-land-state sense."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

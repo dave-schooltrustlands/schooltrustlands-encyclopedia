@@ -6,8 +6,8 @@ admissionNumber: 7
 admittedDate: 1788-04-28
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "Maryland State Board of Education (statutory body, ~14 members, gubernatorial appointment with Senate consent); separate Accountability and Implementation Board (AIB) oversees the Blueprint for Maryland's Future. No school-trust board exists because there is no school trust."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

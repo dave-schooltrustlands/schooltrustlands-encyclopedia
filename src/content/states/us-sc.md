@@ -6,8 +6,8 @@ admissionNumber: 8
 admittedDate: 1788-05-23
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory body); Superintendent of Education (constitutional statewide elected officer, Article VI § 7); Education Oversight Committee (statutory). No school-trust board exists because there is no school trust."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

@@ -6,8 +6,8 @@ admissionNumber: 6
 admittedDate: 1788-02-06
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "Board of Elementary and Secondary Education (BESE), statutory body under Mass. Gen. Laws ch. 15; Secretary of Education in Governor's cabinet. No school-trust board exists because there is no school trust."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

@@ -6,8 +6,8 @@ admissionNumber: 36
 admittedDate: 1864-10-31
 eraCohort: 5
 eraName: Reconstruction and the Western Stack
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 3900000
+governanceForm: "No single ex-officio constitutional land board on the Oregon / Utah pattern. State Board of Examiners (Governor, Secretary of State, Attorney General — Article 5, § 21) plays a fiscal-claims oversight role. State Treasurer (constitutionally elected) administers the Permanent School Fund corpus. The State Board of Finance has investment authority over state funds. [GAP — confirm current statutory framework; identify whether any board is named specifically for school-trust land management.]"
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

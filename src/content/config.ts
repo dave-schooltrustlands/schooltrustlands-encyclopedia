@@ -15,13 +15,13 @@ const states = defineCollection({
     permanentFundCorpus: z
       .object({
         value: z.number(),
-        asOf: z.date(),
+        asOf: z.date().nullable(),
       })
       .nullable(),
     latestDistribution: z
       .object({
         value: z.number(),
-        fiscalYear: z.number().int(),
+        fiscalYear: z.number().int().nullable(),
       })
       .nullable(),
     substrateVersion: z.string().default('1.3'),

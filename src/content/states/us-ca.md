@@ -6,8 +6,8 @@ admissionNumber: 31
 admittedDate: 1850-09-09
 eraCohort: 4
 eraName: The Antebellum Doubling
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 5500000
+governanceForm: "State Lands Commission: Lieutenant Governor, State Controller, Director of Finance (statutory composition under Pub. Res. Code § 6101 et seq.)"
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

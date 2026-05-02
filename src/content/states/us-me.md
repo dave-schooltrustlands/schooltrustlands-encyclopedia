@@ -6,8 +6,8 @@ admissionNumber: 23
 admittedDate: 1820-03-15
 eraCohort: 2
 eraName: Statehood Without the Federal Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory, nine members appointed by the Governor with legislative confirmation under Title 20-A M.R.S.A.). No school-trust board exists because there is no federal-grant school trust. Public Reserved Lands are managed by the Bureau of Parks and Lands under DACF, with revenue flowing to a dedicated Public Reserved Lands Management Fund rather than to a school trust."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

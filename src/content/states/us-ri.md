@@ -6,8 +6,8 @@ admissionNumber: 13
 admittedDate: 1790-05-29
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "Council on Elementary and Secondary Education (statutory body, appointed by Governor with Senate advice and consent); Commissioner of Elementary and Secondary Education (selected by the Council). No school-trust board exists because there is no school trust."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

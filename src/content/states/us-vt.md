@@ -6,8 +6,8 @@ admissionNumber: 14
 admittedDate: 1791-03-04
 eraCohort: 2
 eraName: Statehood Without the Federal Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory body under 16 V.S.A. § 161); Secretary of Education (executive-branch officer under the Governor). No school-trust board exists at the state level because there is no unified state school trust; town school-rights are administered by selectboards / school boards in each town."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

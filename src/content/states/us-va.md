@@ -6,8 +6,8 @@ admissionNumber: 10
 admittedDate: 1788-06-25
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "Virginia Board of Education (nine members appointed by the Governor, confirmed by the General Assembly, four-year staggered terms; established by Article VIII § 4 of the 1971 Constitution; composition and powers set by Code of Virginia Title 22.1). The Board of Education has statutory authority to make Literary Fund loans and approve disbursements; the State Treasurer holds custody. There is no ex-officio executive trustee board."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

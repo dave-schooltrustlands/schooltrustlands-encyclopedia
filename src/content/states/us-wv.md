@@ -6,8 +6,8 @@ admissionNumber: 35
 admittedDate: 1863-06-20
 eraCohort: 2
 eraName: Statehood Without the Federal Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "West Virginia Board of Education (constitutional general-supervision body, statutorily composed under W. Va. Code § 18-2-1 — nine voting members appointed by the Governor with Senate consent for staggered nine-year terms, plus three ex officio non-voting members). The Board is not a fiduciary trustee of the School Fund corpus; corpus custody and investment lie with the State Treasurer and WVIMB respectively."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"

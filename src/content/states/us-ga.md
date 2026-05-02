@@ -6,8 +6,8 @@ admissionNumber: 4
 admittedDate: 1788-01-02
 eraCohort: 1
 eraName: The Founding Floor
-federalGrantAcres: null
-governanceForm: ""
+federalGrantAcres: 0
+governanceForm: "State Board of Education (constitutionally created, Article VIII § II — gubernatorially appointed by congressional district); State School Superintendent (separately-elected statewide constitutional officer, Article VIII § III). Georgia Lottery Corporation governed by its own Board. No school-trust board exists because there is no school-land trust in the SITLA sense."
 permanentFundCorpus: null
 latestDistribution: null
 substrateVersion: "1.3"
