@@ -139,7 +139,15 @@ const pageTitle =
         </header>
       )}
 
-      <article class="prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline">
+      <article
+        class:list={[
+          'prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline',
+          // Each essay's body starts with `# Title` — already shown in the
+          // page header above. Hide the duplicate without editing the
+          // immutable source file.
+          props.kind === 'essay' && '[&>h1:first-child]:hidden',
+        ]}
+      >
         <Content />
       </article>
     </main>
