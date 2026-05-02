@@ -9,67 +9,15 @@
 // Run via the `prebuild` npm hook so dist/ always reflects the current
 // substrate. Never hand-edit the output JSONs.
 
-import { readdirSync, readFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readdirSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readFrontmatter } from './_lib/frontmatter.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = resolve(here, '..');
 const statesDir = join(repo, 'src/content/states');
 const outDir = join(repo, 'src/data/map-layers');
-
-// --- minimal frontmatter reader ---
-// Frontmatter is well-formed and authored by the migration scripts, so a
-// targeted reader is enough; pulling in js-yaml just for this would be
-// disproportionate.
-function readFrontmatter(path) {
-  const text = readFileSync(path, 'utf8');
-  const m = text.match(/^---\n([\s\S]*?)\n---/);
-  if (!m) throw new Error(`No frontmatter in ${path}`);
-  const lines = m[1].split('\n');
-
-  const out = {};
-  let i = 0;
-  while (i < lines.length) {
-    const line = lines[i];
-    if (!line || line.startsWith('#')) { i++; continue; }
-    const top = line.match(/^([A-Za-z][A-Za-z0-9]*):\s*(.*)$/);
-    if (!top) { i++; continue; }
-    const [, key, raw] = top;
-    if (raw === '' || raw === undefined) {
-      // Nested map starting next line.
-      const nested = {};
-      i++;
-      while (i < lines.length && /^\s+/.test(lines[i])) {
-        const sub = lines[i].match(/^\s+([A-Za-z][A-Za-z0-9]*):\s*(.*)$/);
-        if (sub) nested[sub[1]] = parseScalar(sub[2]);
-        i++;
-      }
-      out[key] = nested;
-    } else {
-      out[key] = parseScalar(raw);
-      i++;
-    }
-  }
-  return out;
-}
-
-function parseScalar(raw) {
-  const v = raw.trim();
-  if (v === '' || v === 'null' || v === '~') return null;
-  if (v === 'true') return true;
-  if (v === 'false') return false;
-  // Quoted string.
-  const q = v.match(/^"(.*)"$/) || v.match(/^'(.*)'$/);
-  if (q) return q[1];
-  // ISO date.
-  if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
-  // Number.
-  if (/^-?\d+(\.\d+)?$/.test(v)) return Number(v);
-  // Bare string (era names, governance forms — though governance forms are
-  // typically quoted).
-  return v;
-}
 
 // --- lens classifiers ---
 const fmtUSD = new Intl.NumberFormat('en-US', {

@@ -1,7 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import RoomLayout from '../../layouts/RoomLayout.astro';
 
 const entries = (await getCollection('essays')).sort(
   (a, b) => a.data.order - b.data.order,
@@ -29,52 +28,35 @@ const totalWords = entries.reduce((sum, e) => sum + e.data.wordCount, 0);
 const routeSlug = (slug: string) => slug.replace(/^\d+-/, '');
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Reading Room — School Trust Lands Encyclopedia</title>
-  </head>
-  <body class="min-h-screen bg-slate-50 text-slate-900">
-    <Header />
-    <main class="mx-auto max-w-prose p-4 sm:p-8">
-      <header class="border-b border-slate-200 pb-6">
-        <p class="text-sm uppercase tracking-wide text-slate-500">Reading Room</p>
-        <h1 class="mt-2 text-4xl font-bold tracking-tight">Schools of the Republic</h1>
-        <p class="mt-4 text-slate-700">
-          Part I: the synthesizing argument. Six era chapters, a Prologue, a
-          Comparative Atlas, and a Conclusion — {num.format(totalWords)} words across {entries.length} entries.
-        </p>
-      </header>
-
-      {groups.filter((g) => g.entries.length > 0).map((group) => (
-        <section class="mt-10">
-          <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
-            {group.heading}
-          </h2>
-          <ol class="mt-4 space-y-3">
-            {group.entries.map((entry) => (
-              <li class="flex flex-wrap items-baseline gap-x-2">
-                <span class="tabular-nums text-slate-500">
-                  {entry.data.order}.
-                </span>
-                <a
-                  href={`/reading/${routeSlug(entry.slug)}/`}
-                  class="font-medium text-blue-700 underline"
-                >
-                  {entry.data.title}
-                </a>
-                <span class="text-slate-500">
-                  — {num.format(entry.data.wordCount)} words
-                </span>
-              </li>
-            ))}
-          </ol>
-        </section>
-      ))}
-    </main>
-    <Footer />
-  </body>
-</html>
+<RoomLayout
+  room="reading"
+  title="Schools of the Republic"
+  subtitle={`Part I: the synthesizing argument. Six era chapters, a Prologue, a Comparative Atlas, and a Conclusion — ${num.format(totalWords)} words across ${entries.length} entries.`}
+  width="prose"
+>
+  {groups.filter((g) => g.entries.length > 0).map((group) => (
+    <section class="mt-10">
+      <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
+        {group.heading}
+      </h2>
+      <ol class="mt-4 space-y-3">
+        {group.entries.map((entry) => (
+          <li class="flex flex-wrap items-baseline gap-x-2">
+            <span class="tabular-nums text-slate-500">
+              {entry.data.order}.
+            </span>
+            <a
+              href={`/reading/${routeSlug(entry.slug)}/`}
+              class="font-medium text-blue-700 underline"
+            >
+              {entry.data.title}
+            </a>
+            <span class="text-slate-500">
+              — {num.format(entry.data.wordCount)} words
+            </span>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</RoomLayout>

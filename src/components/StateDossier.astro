@@ -1,13 +1,11 @@
 ---
-// Right-rail dossier listing the five non-Reading rooms for a given state.
-// Per Plan_v2.1 it sits on every state-scoped page across rooms; for now
-// it's a skeleton — each row is "Coming later". As other rooms launch
-// they'll hydrate the corresponding row with a real link + summary.
-//
-// Not wired into any page yet. Intentional: the consumer pages and the
-// breadcrumb/RoomLayout pattern aren't designed yet, and threading this
-// in across Atlas + Reading + the eventual Counting House is best done
-// once when those decisions are made.
+// Right-rail dossier listing the six rooms for a given state. Atlas links
+// to the cross-state map; the other rooms link to state-scoped routes
+// where they exist. Counting House row is hydrated with a one-line
+// financial summary derived from src/data/finance/states.json so the
+// dossier doesn't drift from the canonical numbers.
+
+import financeData from '../data/finance/states.json';
 
 interface Props {
   iso: string; // lowercase, e.g. "us-or"
@@ -16,12 +14,66 @@ interface Props {
 
 const { iso, name } = Astro.props;
 
+type FinanceRecord = {
+  stateIso: string;
+  displayName: string;
+  corpus: { value: number | null; confidence: string };
+  distribution: { value: number | null; fiscalYear: string | null; confidence: string };
+  transparency: { status: string };
+  federalGrantAcres: { value: number };
+};
+
+const finance = (financeData as FinanceRecord[]).find((r) => r.stateIso === iso);
+
+const usdShort = (n: number) => {
+  if (n >= 1_000_000_000) return `$${(n / 1_000_000_000).toFixed(n >= 10_000_000_000 ? 0 : 1)}B`;
+  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(n >= 100_000_000 ? 0 : 1)}M`;
+  return `$${n.toLocaleString('en-US')}`;
+};
+
+function countingSummary(rec: FinanceRecord | undefined): string {
+  if (!rec) return 'No financial data';
+  if (rec.federalGrantAcres.value === 0) return 'State-derived; no federal trust';
+  const parts: string[] = [];
+  if (rec.corpus.value !== null) {
+    parts.push(`${usdShort(rec.corpus.value)} corpus`);
+  } else if (rec.corpus.confidence === 'awaiting-disclosure') {
+    parts.push('Awaiting corpus');
+  }
+  if (rec.distribution.value !== null) {
+    const fy = rec.distribution.fiscalYear ? ` FY${rec.distribution.fiscalYear}` : '';
+    parts.push(`${usdShort(rec.distribution.value)} distributed${fy}`);
+  } else if (rec.distribution.confidence === 'awaiting-disclosure') {
+    parts.push('awaiting distribution');
+  }
+  return parts.length > 0 ? parts.join('; ') : 'Awaiting State Disclosures';
+}
+
 const rooms = [
-  { id: 'atlas', label: 'Atlas Room', status: 'live', href: '/atlas/' },
-  { id: 'counting', label: 'Counting House', status: 'coming', href: null },
-  { id: 'records', label: 'Records Room', status: 'coming', href: null },
-  { id: 'court', label: 'Court Room', status: 'coming', href: null },
-  { id: 'breach', label: 'Breach & Recovery', status: 'coming', href: null },
+  {
+    id: 'reading',
+    label: 'Reading Room',
+    href: `/reading/${iso}/`,
+    summary: 'State encyclopedia entry',
+    status: 'live' as const,
+  },
+  {
+    id: 'atlas',
+    label: 'Atlas',
+    href: '/atlas/',
+    summary: 'Find this state on the map',
+    status: 'live' as const,
+  },
+  {
+    id: 'counting',
+    label: 'Counting House',
+    href: `/counting/${iso}/`,
+    summary: countingSummary(finance),
+    status: 'live' as const,
+  },
+  { id: 'records', label: 'Records Room', href: null, summary: null, status: 'coming' as const },
+  { id: 'court', label: 'Court Room', href: null, summary: null, status: 'coming' as const },
+  { id: 'breach', label: 'Breach & Recovery', href: null, summary: null, status: 'coming' as const },
 ];
 ---
 
@@ -36,16 +88,21 @@ const rooms = [
   >
     {name} across the library
   </h2>
-  <ul class="mt-3 space-y-2">
+  <ul class="mt-3 space-y-3">
     {rooms.map((room) => (
-      <li class="flex items-baseline justify-between gap-3">
-        <span class="font-medium text-slate-700">{room.label}</span>
-        {room.status === 'live' && room.href ? (
-          <a href={room.href} class="text-blue-700 underline hover:text-blue-900">
-            Open →
-          </a>
-        ) : (
-          <span class="text-slate-400">Coming later</span>
+      <li>
+        <div class="flex items-baseline justify-between gap-3">
+          <span class="font-medium text-slate-700">{room.label}</span>
+          {room.status === 'live' && room.href ? (
+            <a href={room.href} class="text-blue-700 underline hover:text-blue-900">
+              Open →
+            </a>
+          ) : (
+            <span class="text-slate-400">Coming later</span>
+          )}
+        </div>
+        {room.summary && (
+          <p class="mt-0.5 text-xs text-slate-500">{room.summary}</p>
         )}
       </li>
     ))}

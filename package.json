@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/build-map-layers.mjs && astro build && pagefind --site dist",
+    "build": "node scripts/build-map-layers.mjs && node scripts/build-finance-data.mjs && astro build && pagefind --site dist",
     "preview": "astro preview",
     "build:layers": "node scripts/build-map-layers.mjs",
+    "build:finance": "node scripts/build-finance-data.mjs",
     "astro": "astro"
   },
   "dependencies": {

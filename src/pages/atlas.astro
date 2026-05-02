@@ -1,6 +1,5 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import RoomLayout from '../layouts/RoomLayout.astro';
 
 import eraCohort from '../data/map-layers/era-cohort.json';
 import corpus from '../data/map-layers/corpus.json';
@@ -95,80 +94,66 @@ for (const r of eraCohort as LensRecord[]) {
 }
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Atlas — School Trust Lands Encyclopedia</title>
-  </head>
-  <body class="min-h-screen bg-slate-50 text-slate-900">
-    <Header />
-    <main class="mx-auto max-w-5xl p-4 sm:p-8">
-      <p class="text-sm uppercase tracking-wide text-slate-500">Atlas Room</p>
-      <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-        Four lenses on the school-trust map
-      </h1>
-      <p class="mt-3 text-slate-700">
-        Switch the lens to recolor the same fifty states by a different
-        question. Click a state to open its encyclopedia entry.
-      </p>
-
-      <div class="mt-6">
-        <fieldset
-          id="lens-switcher"
-          class="flex flex-wrap gap-2"
-          aria-label="Map lens"
-        >
-          <legend class="sr-only">Map lens</legend>
-          {LENSES.map((lens, i) => (
-            <label
-              class="cursor-pointer rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 has-[:checked]:border-slate-900 has-[:checked]:bg-slate-900 has-[:checked]:text-white"
-            >
-              <input
-                type="radio"
-                name="lens"
-                value={lens.id}
-                class="sr-only"
-                checked={i === 0}
-              />
-              {lens.label}
-            </label>
-          ))}
-        </fieldset>
-        <p id="lens-description" class="mt-3 text-sm text-slate-600">
-          {LENSES[0].description}
-        </p>
-      </div>
-
-      <div
-        id="map"
-        class="mt-6 h-[60vh] min-h-[420px] w-full overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+<RoomLayout
+  room="atlas"
+  title="Four lenses on the school-trust map"
+  subtitle="Switch the lens to recolor the same fifty states by a different question. Click a state to open its encyclopedia entry."
+  width="full"
+>
+  <Fragment slot="header-extras">
+    <div class="mt-6">
+      <fieldset
+        id="lens-switcher"
+        class="flex flex-wrap gap-2"
+        aria-label="Map lens"
       >
-      </div>
-      {isDev && (
-        <pre
-          id="map-error"
-          class="mt-2 hidden whitespace-pre-wrap rounded border border-red-200 bg-red-50 p-3 text-xs text-red-800"
-        ></pre>
-      )}
-
-      <script
-        type="application/json"
-        id="atlas-data"
-        set:html={JSON.stringify({ lenses: LENSES, fipsToInfo })}
-      />
-
-      <ol id="legend" class="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2"></ol>
-
-      <p class="mt-6 text-xs text-slate-500">
-        Lens data derived at build time from <code>src/content/states/*.md</code>{' '}
-        — substrate v1.3. Categorical buckets and color assignments are documented
-        in <code>scripts/build-map-layers.mjs</code>.
+        <legend class="sr-only">Map lens</legend>
+        {LENSES.map((lens, i) => (
+          <label
+            class="cursor-pointer rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 has-[:checked]:border-slate-900 has-[:checked]:bg-slate-900 has-[:checked]:text-white"
+          >
+            <input
+              type="radio"
+              name="lens"
+              value={lens.id}
+              class="sr-only"
+              checked={i === 0}
+            />
+            {lens.label}
+          </label>
+        ))}
+      </fieldset>
+      <p id="lens-description" class="mt-3 text-sm text-slate-600">
+        {LENSES[0].description}
       </p>
-    </main>
-    <Footer />
+    </div>
+  </Fragment>
+
+  <div
+    id="map"
+    class="mt-6 h-[60vh] min-h-[420px] w-full overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+  >
+  </div>
+  {isDev && (
+    <pre
+      id="map-error"
+      class="mt-2 hidden whitespace-pre-wrap rounded border border-red-200 bg-red-50 p-3 text-xs text-red-800"
+    ></pre>
+  )}
+
+  <script
+    type="application/json"
+    id="atlas-data"
+    set:html={JSON.stringify({ lenses: LENSES, fipsToInfo })}
+  />
+
+  <ol id="legend" class="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2"></ol>
+
+  <p class="mt-6 text-xs text-slate-500">
+    Lens data derived at build time from <code>src/content/states/*.md</code>{' '}
+    — substrate v1.3. Categorical buckets and color assignments are documented
+    in <code>scripts/build-map-layers.mjs</code>.
+  </p>
 
     <script>
       import maplibregl from 'maplibre-gl';
@@ -432,5 +417,4 @@ for (const r of eraCohort as LensRecord[]) {
       // Initial legend.
       renderLegend(lensesById[activeLensId]);
     </script>
-  </body>
-</html>
+</RoomLayout>
