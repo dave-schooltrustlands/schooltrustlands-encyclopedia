@@ -33,6 +33,7 @@ const routeSlug = (slug: string) => slug.replace(/^\d+-/, '');
   title="Schools of the Republic"
   subtitle={`Part I: the synthesizing argument. Six era chapters, a Prologue, a Comparative Atlas, and a Conclusion — ${num.format(totalWords)} words across ${entries.length} entries.`}
   width="prose"
+  sourceId="reading-toc"
 >
   {groups.filter((g) => g.entries.length > 0).map((group) => (
     <section class="mt-10">

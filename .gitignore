@@ -2,6 +2,12 @@
 .astro/
 .wrangler/
 
+# Build-derived data: regenerated from src/content/states/*.md on every
+# `npm run dev` and `npm run build` via scripts/build-{map-layers,finance-
+# data}.mjs. Committing them caused stale-substrate drift (Day_10 #6).
+src/data/map-layers/
+src/data/finance/
+
 # Logs
 logs
 *.log

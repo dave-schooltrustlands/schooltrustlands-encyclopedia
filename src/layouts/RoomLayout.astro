@@ -16,7 +16,15 @@ interface Props {
   title: string;
   subtitle?: string;
   width?: 'prose' | 'full';
-  pageTitle?: string; // <title>; defaults to `${title} — School Trust Lands Encyclopedia`
+  pageTitle?: string; // <title>; defaults to `${title} · School Trust Lands Encyclopedia`
+  // Plan_v2.1 Q8 seam: future feedback form constructs context from
+  // these. Render now even though no consumer exists yet — retrofitting
+  // metadata across six rooms in twelve months is more work than
+  // threading it through templates today.
+  sourceId: string;
+  // Optional Pagefind facet overrides (era for essays, etc.). Room
+  // and state are emitted automatically as facets when present.
+  pagefindEra?: string;
 }
 
 const {
@@ -26,6 +34,8 @@ const {
   subtitle,
   width = 'prose',
   pageTitle,
+  sourceId,
+  pagefindEra,
 } = Astro.props;
 
 interface RoomDef {
@@ -86,7 +96,22 @@ const breadcrumb = state
   ? `${currentRoom?.name ?? room} › ${state.name}`
   : currentRoom?.name ?? room;
 
-const resolvedTitle = pageTitle ?? `${title} — School Trust Lands Encyclopedia`;
+// Title chain uses middle dot (·) so multi-segment titles like
+// "Oregon · Counting House · School Trust Lands Encyclopedia" stay
+// readable. Em-dashes were dropped after Day_10 #5.
+const roomNameMap: Record<RoomId, string> = {
+  reading: 'Reading Room',
+  atlas: 'Atlas',
+  counting: 'Counting House',
+  records: 'Records Room',
+  court: 'Court Room',
+  'breach-recovery': 'Breach & Recovery',
+};
+const resolvedTitle =
+  pageTitle ??
+  (state
+    ? `${state.name} · ${roomNameMap[room]} · School Trust Lands Encyclopedia`
+    : `${title} · School Trust Lands Encyclopedia`);
 
 const mainClass =
   width === 'full'
@@ -102,7 +127,18 @@ const mainClass =
     <meta name="generator" content={Astro.generator} />
     <title>{resolvedTitle}</title>
   </head>
-  <body class="min-h-screen bg-slate-50 text-slate-900">
+  <body
+    class="min-h-screen bg-slate-50 text-slate-900"
+    data-source-id={sourceId}
+    data-room={room}
+    data-state={state?.iso}
+  >
+    <span data-pagefind-meta={`room:${room}`} hidden></span>
+    {state && <span data-pagefind-meta={`state:${state.iso}`} hidden></span>}
+    {state && <span data-pagefind-filter={`state:${state.iso}`} hidden></span>}
+    <span data-pagefind-filter={`room:${room}`} hidden></span>
+    {pagefindEra && <span data-pagefind-meta={`era:${pagefindEra}`} hidden></span>}
+    {pagefindEra && <span data-pagefind-filter={`era:${pagefindEra}`} hidden></span>}
     <Header />
 
     <nav

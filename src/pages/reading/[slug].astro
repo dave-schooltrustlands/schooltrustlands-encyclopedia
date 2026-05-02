@@ -45,6 +45,8 @@ const layoutProps =
     ? {
         title: props.entry.data.title,
         subtitle: `Era: ${props.entry.data.era}`,
+        sourceId: `essay-${props.entry.slug}-${props.entry.data.sourceVersion}`,
+        pagefindEra: props.entry.data.era,
       }
     : {
         title: props.entry.data.name,
@@ -53,6 +55,7 @@ const layoutProps =
           iso: props.entry.data.iso.toLowerCase(),
           name: props.entry.data.name,
         },
+        sourceId: `state-${props.entry.data.iso.toLowerCase()}-v${props.entry.data.substrateVersion}`,
       };
 ---
 

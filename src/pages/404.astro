@@ -1,0 +1,96 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Not found · School Trust Lands Encyclopedia</title>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <Header />
+    <main class="mx-auto max-w-prose p-4 sm:p-8">
+      <p class="text-sm uppercase tracking-wide text-slate-500">404 · Not found</p>
+
+      <div id="generic-404">
+        <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+          We couldn't find that page.
+        </h1>
+        <p class="mt-4 text-slate-700">
+          The URL you followed doesn't match anything in the encyclopedia. Try one of:
+        </p>
+        <ul class="mt-4 space-y-2 text-blue-700">
+          <li><a href="/" class="underline hover:text-blue-900">Home</a></li>
+          <li><a href="/reading/" class="underline hover:text-blue-900">Reading Room</a> — the synthesizing argument</li>
+          <li><a href="/atlas/" class="underline hover:text-blue-900">Atlas</a> — the map with four lenses</li>
+          <li><a href="/counting/" class="underline hover:text-blue-900">Counting House</a> — the financial table</li>
+          <li><a href="/states/" class="underline hover:text-blue-900">All states</a> — flat list by cohort</li>
+        </ul>
+      </div>
+
+      <div id="reserved-private" class="hidden">
+        <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+          Reserved: private board materials
+        </h1>
+        <p class="mt-4 text-slate-700">
+          The library architecture (Plan_v2.1) reserves the
+          <code class="rounded bg-slate-100 px-1.5 py-0.5 text-sm">/private/</code>
+          URL pattern for board-only working materials. Content launches when access controls and the editorial workflow are built. If you reached this URL by mistake, head back to
+          <a href="/" class="text-blue-700 underline hover:text-blue-900">the public encyclopedia</a>.
+        </p>
+      </div>
+
+      <div id="reserved-feedback" class="hidden">
+        <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+          Reserved: public feedback form
+        </h1>
+        <p class="mt-4 text-slate-700">
+          The library architecture (Plan_v2.1) reserves the
+          <code class="rounded bg-slate-100 px-1.5 py-0.5 text-sm">/feedback/</code>
+          URL pattern for the public correction-and-comment form. The form launches once the underlying intake workflow exists. In the meantime, source corrections can be filed as
+          <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia/issues" rel="noopener" class="text-blue-700 underline hover:text-blue-900">issues on GitHub</a>.
+        </p>
+      </div>
+
+      <div id="reserved-api" class="hidden">
+        <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+          Reserved: programmatic API
+        </h1>
+        <p class="mt-4 text-slate-700">
+          The library architecture (Plan_v2.1) reserves the
+          <code class="rounded bg-slate-100 px-1.5 py-0.5 text-sm">/api/</code>
+          URL pattern for a future programmatic API. Until that ships, the canonical machine-readable surface is the per-build derived JSON committed under
+          <code class="rounded bg-slate-100 px-1.5 py-0.5 text-sm">src/data/</code>
+          on
+          <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia/tree/main/src/data" rel="noopener" class="text-blue-700 underline hover:text-blue-900">GitHub</a>.
+        </p>
+      </div>
+    </main>
+    <Footer />
+
+    <script is:inline>
+      // Cloudflare serves dist/404.html for any unmatched route. Show the
+      // matching reserved-route message when the path is one of the three
+      // Plan_v2.1 Q8-reserved patterns; otherwise show the generic 404.
+      (() => {
+        const path = window.location.pathname;
+        const generic = document.getElementById('generic-404');
+        const reservedFor = path.startsWith('/private/')
+          ? 'reserved-private'
+          : path.startsWith('/feedback/')
+            ? 'reserved-feedback'
+            : path.startsWith('/api/')
+              ? 'reserved-api'
+              : null;
+        if (reservedFor) {
+          generic.classList.add('hidden');
+          document.getElementById(reservedFor).classList.remove('hidden');
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -76,9 +76,10 @@ const confidenceLabels: Record<string, string> = {
 <RoomLayout
   room="counting"
   state={{ iso: record.stateIso, name: record.displayName }}
-  title={`${record.displayName} — financial profile`}
+  title={`${record.displayName} financial profile`}
   subtitle={`${record.eraCohort} (cohort ${record.eraCohortNumber}) · ${govLabels[record.governanceForm]}`}
   width="prose"
+  sourceId={`finance-${record.stateIso}-v${record.substrateVersion}`}
 >
   <p class="mt-3 text-xs text-slate-500">
     Substrate v{record.substrateVersion} · Last reviewed {record.lastReviewed} ·{' '}

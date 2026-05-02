@@ -50,6 +50,7 @@ const transparencyLabels: Record<string, string> = {
   title="Counting House"
   subtitle="Permanent funds, distributions, and transparency status across all 50 states. Every figure carries a confidence indicator. Empty cells are an editorial signal: where the substrate doesn't have a verified value, the badge tells you why."
   width="full"
+  sourceId="finance-states-json"
 >
   <p class="mt-4 text-xs text-slate-500">
     {records.length} states · derived from substrate frontmatter at build time. Click any column header to sort. Click a state name for the full financial card.
@@ -104,6 +105,50 @@ const transparencyLabels: Record<string, string> = {
   </section>
 
   <div class="mt-6 overflow-x-auto rounded-md border border-slate-200 bg-white shadow-sm">
+    <style>
+      /* Mobile: stack each row as a card with cell labels prefixed.
+         Day-10 noted the 50-row table was unreadable on phones via
+         horizontal scroll. */
+      @media (max-width: 639px) {
+        #counting-table thead {
+          position: absolute;
+          left: -10000px;
+        }
+        #counting-table,
+        #counting-table tbody,
+        #counting-table tr,
+        #counting-table td {
+          display: block;
+          width: 100%;
+        }
+        #counting-table tr {
+          border-bottom: 1px solid #e2e8f0;
+          padding: 0.75rem 1rem;
+        }
+        #counting-table td {
+          padding: 0.25rem 0;
+          text-align: left !important;
+        }
+        #counting-table td::before {
+          content: attr(data-label);
+          display: inline-block;
+          min-width: 9rem;
+          font-size: 0.7rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.025em;
+          color: #64748b;
+          margin-right: 0.5rem;
+        }
+        #counting-table td:first-child {
+          font-size: 1.05rem;
+          padding-bottom: 0.5rem;
+        }
+        #counting-table td:first-child::before {
+          display: none;
+        }
+      }
+    </style>
     <table id="counting-table" class="min-w-full divide-y divide-slate-200 text-sm">
       <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
         <tr>
@@ -120,6 +165,8 @@ const transparencyLabels: Record<string, string> = {
         {records.map((r) => (
           <tr
             class="counting-row"
+            data-source-id={`finance-${r.stateIso}`}
+            data-state={r.stateIso}
             data-display-name={r.displayName}
             data-era-cohort-number={r.eraCohortNumber}
             data-governance-form={r.governanceForm}
@@ -128,14 +175,14 @@ const transparencyLabels: Record<string, string> = {
             data-transparency={r.transparency.status}
             data-grant-acres={r.federalGrantAcres.value}
           >
-            <td class="px-3 py-2 font-medium">
+            <td data-label="State" class="px-3 py-2 font-medium">
               <a href={`/counting/${r.stateIso}/`} class="text-blue-700 underline hover:text-blue-900">
                 {r.displayName}
               </a>
             </td>
-            <td class="px-3 py-2 text-slate-600">{r.eraCohortNumber}</td>
-            <td class="px-3 py-2 text-slate-600">{govLabels[r.governanceForm] ?? r.governanceForm}</td>
-            <td class="px-3 py-2 text-right tabular-nums">
+            <td data-label="Era" class="px-3 py-2 text-slate-600">{r.eraCohortNumber}</td>
+            <td data-label="Governance" class="px-3 py-2 text-slate-600">{govLabels[r.governanceForm] ?? r.governanceForm}</td>
+            <td data-label="Corpus" class="px-3 py-2 text-right tabular-nums">
               {r.corpus.value !== null ? (
                 <span>{usd.format(r.corpus.value)}</span>
               ) : r.corpus.confidence === 'not-applicable' ? (
@@ -146,7 +193,7 @@ const transparencyLabels: Record<string, string> = {
                 </span>
               )}
             </td>
-            <td class="px-3 py-2 text-right tabular-nums">
+            <td data-label="Distribution" class="px-3 py-2 text-right tabular-nums">
               {r.distribution.value !== null ? (
                 <span>
                   {usd.format(r.distribution.value)}
@@ -162,10 +209,10 @@ const transparencyLabels: Record<string, string> = {
                 </span>
               )}
             </td>
-            <td class="px-3 py-2 text-slate-600">
+            <td data-label="Transparency" class="px-3 py-2 text-slate-600">
               {transparencyLabels[r.transparency.status] ?? r.transparency.status}
             </td>
-            <td class="px-3 py-2 text-right tabular-nums">
+            <td data-label="Federal grant" class="px-3 py-2 text-right tabular-nums">
               {r.federalGrantAcres.value > 0 ? (
                 <span>{num.format(r.federalGrantAcres.value)} ac</span>
               ) : (

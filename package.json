@@ -3,10 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "node scripts/build-map-layers.mjs && node scripts/build-finance-data.mjs && astro build && pagefind --site dist",
+    "dev": "npm run build:data && astro dev",
+    "start": "npm run build:data && astro dev",
+    "build": "npm run build:data && astro build && pagefind --site dist",
     "preview": "astro preview",
+    "build:data": "node scripts/build-map-layers.mjs && node scripts/build-finance-data.mjs",
     "build:layers": "node scripts/build-map-layers.mjs",
     "build:finance": "node scripts/build-finance-data.mjs",
     "astro": "astro"
