@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('states');
@@ -100,5 +101,6 @@ const num = new Intl.NumberFormat('en-US');
         <Content />
       </article>
     </main>
+    <Footer />
   </body>
 </html>

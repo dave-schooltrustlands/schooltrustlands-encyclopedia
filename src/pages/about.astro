@@ -1,0 +1,96 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>About — School Trust Lands Encyclopedia</title>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <Header />
+    <main class="mx-auto max-w-prose p-8">
+      <article class="prose prose-slate max-w-none">
+        <h1>About this encyclopedia</h1>
+
+        <p>
+          The School Trust Lands Encyclopedia is a state-by-state reference on the
+          federal land grants, constitutional architecture, permanent funds, and
+          ongoing fiduciary disputes that shape American school trust lands. Each
+          entry traces one state's trust from its admission act through its present
+          corpus, governance form, and live litigation. The encyclopedia is
+          organized into six era cohorts mirroring the synthesizing argument in
+          <em>Schools of the Republic</em>.
+        </p>
+
+        <h2>Who is behind this</h2>
+
+        <p>
+          The site is operated by an interim entity, the Operating Advocates for
+          School Trust Lands (OASTL), pending the formal adoption of a successor
+          organization, Advocates for School Trust Lands (ASTL). OASTL exists to
+          carry the public-facing scholarship and advocacy work forward without
+          waiting on the corporate steps. Editorial responsibility currently rests
+          with Dave Sullivan and Margaret Bird; the substrate and synthesis are
+          their joint work.
+        </p>
+
+        <h2>Methodology</h2>
+
+        <p>
+          Each entry is generated from a hand-curated source document — the v0.4
+          substrate — held in a private repository and never published verbatim.
+          A Python migration script extracts the bibliographic frontmatter and a
+          subset of quantitative fields (federal grant acres, governance form,
+          permanent-fund corpus, latest distribution) and renders each state as an
+          Astro content page. The migration is merge-preserving: hand-edited values
+          on the website are never overwritten by re-running the script. The site
+          is a static build; there is no database and no server-side runtime.
+        </p>
+
+        <h2>Known limitations</h2>
+
+        <p>
+          As of substrate v1.3, only one state (Oregon) has fully hand-verified
+          financial figures in the page header. The other forty-nine carry partial
+          data: most have a federal grant acreage and a governance description,
+          but permanent-fund corpus and latest-distribution figures are populated
+          only when the substrate value is unambiguous and pinned to a date. Where
+          a year is given but no calendar day, the date field is left null rather
+          than fabricated.
+        </p>
+
+        <p>
+          The visual design is interim. There is no logo, no signature typeface,
+          and no brand color system; those decisions are deferred until Margaret
+          can weigh in on the public identity. The library architecture — sources,
+          jurisdictions, table-of-authorities cross-references — is pending and
+          will replace the current flat footnote structure on each entry.
+        </p>
+
+        <h2>How to cite</h2>
+
+        <p>
+          Cite individual entries as: <em>Sullivan and Bird, Schools of the
+          Republic v1.3, schooltrustlands.net/states/&#123;slug&#125;/, retrieved
+          YYYY-MM-DD.</em> A pre-filled citation appears in the footer of every
+          page.
+        </p>
+
+        <h2>Contact and corrections</h2>
+
+        <p>
+          The site source — including this page and the migration scripts — lives on
+          <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia"
+            >GitHub</a
+          >. Open an issue there for corrections, citation requests, or
+          methodology questions.
+        </p>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

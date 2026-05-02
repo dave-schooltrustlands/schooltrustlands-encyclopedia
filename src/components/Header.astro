@@ -2,20 +2,64 @@
 ---
 <header
   data-pagefind-ignore
-  class="border-b border-slate-200 bg-white"
+  class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur"
 >
-  <div class="mx-auto flex max-w-prose flex-wrap items-center justify-between gap-4 p-4">
+  <div class="mx-auto flex max-w-5xl flex-wrap items-center gap-3 px-4 py-3 sm:gap-4">
     <a
       href="/"
-      class="text-base font-semibold tracking-tight text-slate-900 hover:text-slate-700"
+      class="mr-auto inline-flex min-h-[44px] items-center text-base font-semibold tracking-tight text-slate-900 hover:text-slate-700"
     >
       School Trust Lands Encyclopedia
     </a>
-    <nav class="flex items-center gap-4 text-sm">
-      <a href="/map/" class="text-blue-700 hover:underline">Map</a>
-      <a href="/states/" class="text-blue-700 hover:underline">All states</a>
-      <div id="search" class="w-72"></div>
+    <nav class="flex items-center gap-1 text-sm sm:gap-3">
+      <a
+        href="/map/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Map</a
+      >
+      <a
+        href="/states/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >All states</a
+      >
+      <a
+        href="/about/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >About</a
+      >
+      <button
+        id="search-toggle"
+        type="button"
+        aria-label="Open search"
+        aria-expanded="false"
+        aria-controls="search-panel"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-slate-700 hover:bg-slate-100 sm:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
     </nav>
+  </div>
+  <div
+    id="search-panel"
+    class="hidden border-t border-slate-200 bg-white px-4 py-3 sm:block sm:border-t-0 sm:bg-transparent sm:px-0 sm:py-0"
+  >
+    <div class="mx-auto max-w-5xl sm:flex sm:justify-end sm:px-4 sm:pb-3">
+      <div id="search" class="w-full sm:w-72"></div>
+    </div>
   </div>
 </header>
 
@@ -24,16 +68,31 @@
 <script is:inline>
   window.addEventListener('DOMContentLoaded', () => {
     const el = document.getElementById('search');
-    if (!el) return;
-    if (typeof window.PagefindUI === 'function') {
-      new window.PagefindUI({
-        element: '#search',
-        showSubResults: true,
-        showImages: false,
+    if (el) {
+      if (typeof window.PagefindUI === 'function') {
+        new window.PagefindUI({
+          element: '#search',
+          showSubResults: true,
+          showImages: false,
+        });
+      } else {
+        el.innerHTML =
+          '<span class="text-xs text-slate-400">Search index unavailable in dev mode — run a production build.</span>';
+      }
+    }
+
+    const toggle = document.getElementById('search-toggle');
+    const panel = document.getElementById('search-panel');
+    if (toggle && panel) {
+      toggle.addEventListener('click', () => {
+        const open = panel.classList.toggle('hidden') === false;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close search' : 'Open search');
+        if (open) {
+          const input = panel.querySelector('input');
+          if (input instanceof HTMLInputElement) input.focus();
+        }
       });
-    } else {
-      el.innerHTML =
-        '<span class="text-xs text-slate-400">Search index unavailable in dev mode — run a production build.</span>';
     }
   });
 </script>

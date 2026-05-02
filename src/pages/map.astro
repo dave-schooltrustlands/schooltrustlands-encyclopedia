@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const isDev = import.meta.env.DEV;
 
@@ -89,6 +90,7 @@ const COHORT_LABELS: Record<number, string> = {
         ))}
       </ol>
     </main>
+    <Footer />
 
     <script>
       import maplibregl from 'maplibre-gl';

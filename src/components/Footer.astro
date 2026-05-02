@@ -1,0 +1,44 @@
+---
+const today = new Date().toISOString().slice(0, 10);
+const slug = Astro.url.pathname.replace(/^\/+|\/+$/g, '') || '';
+const citePath = slug ? `/${slug}/` : '/';
+---
+<footer
+  data-pagefind-ignore
+  class="mt-16 border-t border-slate-200 bg-white"
+>
+  <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-slate-600">
+    <p>
+      Built by <strong>Advocates for School Trust Lands</strong>. Encyclopedia
+      content is licensed
+      <a
+        href="https://creativecommons.org/licenses/by/4.0/"
+        rel="license noopener"
+        class="text-blue-700 underline hover:text-blue-900"
+        >CC&nbsp;BY&nbsp;4.0</a
+      >; site code is
+      <a
+        href="https://opensource.org/licenses/MIT"
+        rel="license noopener"
+        class="text-blue-700 underline hover:text-blue-900"
+        >MIT</a
+      >.
+    </p>
+    <p class="mt-3">
+      Source on
+      <a
+        href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia"
+        rel="noopener"
+        class="text-blue-700 underline hover:text-blue-900"
+        >GitHub</a
+      >. Issues and corrections welcome there.
+    </p>
+    <p class="mt-3 text-slate-500">
+      <span class="font-semibold text-slate-700">Cite as:</span>
+      Sullivan and Bird, <em>Schools of the Republic</em> v1.3,
+      <span class="break-all">schooltrustlands.net{citePath}</span>, retrieved
+      {today}.
+    </p>
+    <p class="mt-3 text-xs text-slate-500">Substrate v1.3.</p>
+  </div>
+</footer>
