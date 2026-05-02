@@ -1,5 +1,27 @@
 import { defineCollection, z } from 'astro:content';
 
+const essays = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    era: z.enum([
+      'prologue',
+      'founding-floor',
+      'state-derived',
+      'northwest-ordinance',
+      'antebellum-doubling',
+      'reconstruction-western',
+      'twentieth-century',
+      'comparative-atlas',
+      'conclusion',
+    ]),
+    order: z.number(),
+    wordCount: z.number(),
+    sourceVersion: z.string(),
+    lastSynced: z.coerce.date(),
+  }),
+});
+
 const states = defineCollection({
   type: 'content',
   schema: z.object({
@@ -29,4 +51,4 @@ const states = defineCollection({
   }),
 });
 
-export const collections = { states };
+export const collections = { states, essays };
