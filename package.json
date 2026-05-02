@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "node scripts/build-map-layers.mjs && astro build && pagefind --site dist",
     "preview": "astro preview",
+    "build:layers": "node scripts/build-map-layers.mjs",
     "astro": "astro"
   },
   "dependencies": {
