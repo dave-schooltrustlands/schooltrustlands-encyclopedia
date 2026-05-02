@@ -60,6 +60,10 @@ const COHORT_LABELS: Record<number, string> = {
         class="mt-6 h-[60vh] min-h-[420px] w-full overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
       >
       </div>
+      <pre
+        id="map-error"
+        class="mt-2 hidden whitespace-pre-wrap rounded border border-red-200 bg-red-50 p-3 text-xs text-red-800"
+      ></pre>
 
       <script
         type="application/json"
@@ -85,7 +89,19 @@ const COHORT_LABELS: Record<number, string> = {
     <script>
       import maplibregl from 'maplibre-gl';
       import 'maplibre-gl/dist/maplibre-gl.css';
-      import { Protocol } from 'pmtiles';
+      import { Protocol, PMTiles, FileSource } from 'pmtiles';
+
+      const errBox = document.getElementById('map-error');
+      const showErr = (label, e) => {
+        const msg = `[${label}] ${e?.message ?? e}\n${e?.stack ?? ''}`;
+        console.error(label, e);
+        if (errBox) {
+          errBox.classList.remove('hidden');
+          errBox.textContent = (errBox.textContent ? errBox.textContent + '\n\n' : '') + msg;
+        }
+      };
+      window.addEventListener('error', (ev) => showErr('window.error', ev.error || ev.message));
+      window.addEventListener('unhandledrejection', (ev) => showErr('unhandledrejection', ev.reason));
 
       const dataNode = document.getElementById('map-data');
       const { fipsToEntry, cohortColors: COHORT_COLORS } = JSON.parse(
@@ -94,6 +110,27 @@ const COHORT_LABELS: Record<number, string> = {
 
       const protocol = new Protocol();
       maplibregl.addProtocol('pmtiles', protocol.tile);
+
+      // Pre-fetch the .pmtiles archive (~51 KB) as an ArrayBuffer and register it
+      // with the protocol via FileSource. PMTiles' default FetchSource issues HTTP
+      // byte-range requests, but Cloudflare Pages returns the full file on Range
+      // requests (HTTP 200, no Accept-Ranges header), which causes FetchSource to
+      // throw "Server returned no content-length header or content-length exceeding
+      // request." Loading the whole archive once and serving slices from memory
+      // avoids the dependency on byte-range support entirely.
+      const PMTILES_KEY = '/us-states.pmtiles';
+      const PMTILES_URL = `pmtiles://${PMTILES_KEY}`;
+      try {
+        const resp = await fetch(PMTILES_KEY);
+        if (!resp.ok) throw new Error(`fetch ${PMTILES_KEY} → HTTP ${resp.status}`);
+        const buf = await resp.arrayBuffer();
+        const file = new File([buf], PMTILES_KEY, {
+          type: 'application/octet-stream',
+        });
+        protocol.add(new PMTiles(new FileSource(file)));
+      } catch (e) {
+        showErr('pmtiles preload', e);
+      }
 
       // Build a MapLibre 'match' expression: STATEFP (string) → cohort color.
       const matchExpr = ['match', ['get', 'STATEFP']];
@@ -109,7 +146,7 @@ const COHORT_LABELS: Record<number, string> = {
           sources: {
             states: {
               type: 'vector',
-              url: 'pmtiles:///us-states.pmtiles',
+              url: PMTILES_URL,
             },
           },
           layers: [
@@ -165,6 +202,15 @@ const COHORT_LABELS: Record<number, string> = {
         minZoom: 2,
         maxZoom: 6,
         attributionControl: false,
+      });
+
+      map.on('error', (e) => showErr('maplibre.error', e?.error || e));
+      map.on('sourcedataloading', (e) => {
+        if (e.sourceId === 'states') console.log('[map] sourcedataloading', e);
+      });
+      map.on('sourcedata', (e) => {
+        if (e.sourceId === 'states' && e.isSourceLoaded)
+          console.log('[map] source loaded', e);
       });
 
       map.addControl(
