@@ -16,6 +16,8 @@ latestDistribution:
   fiscalYear: 2025
 substrateVersion: "1.3"
 lastReviewed: 2026-04-29
+summary: "Oregon is OASTL's home state and the live test case for school-trust accountability. Strong constitutional architecture (1857), early land loss through the 1887 Infamous Act, the 2017–2022 Elliott State Forest decoupling, and the January 2026 Court of Appeals standing victory in Advocates for School Trust Lands v. State of Oregon."
+currentIssue: "Active litigation — Coos County 24CV38372; appellate posture from the January 2026 standing victory."
 ---
 
 *Admission #33 (Feb. 14, 1859). Era: Antebellum. Draft: Pass 1 prototype, 2026-04-29.*

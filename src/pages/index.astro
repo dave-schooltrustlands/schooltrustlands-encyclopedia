@@ -8,32 +8,158 @@ import Footer from '../components/Footer.astro';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>School Trust Lands Encyclopedia</title>
+    <title>Schools of the Republic — A public library of America's school trust lands</title>
+    <meta
+      name="description"
+      content="Schools of the Republic — a public library of America's school trust lands. Read the encyclopedia, find your state, map the architecture, audit the ledger."
+    />
   </head>
   <body class="min-h-screen bg-slate-50 text-slate-900">
     <Header />
-    <main class="mx-auto max-w-prose p-4 sm:p-8">
-      <h1 class="text-4xl font-bold tracking-tight">School Trust Lands Encyclopedia</h1>
-      <p class="mt-6 text-lg text-slate-700">
-        A state-by-state reference on the federal land grants, constitutional architecture,
-        permanent funds, and ongoing fiduciary disputes that shape America's school trust lands.
-      </p>
-      <p class="mt-4 text-slate-700">
-        Each entry traces one state's trust from its admission act through its present-day
-        corpus, governance, and litigation. The encyclopedia is organized into six era cohorts
-        — the Founding Floor, statehood without the federal grant, the Northwest Ordinance
-        template, the Antebellum doubling, Reconstruction and the Western stack, and the
-        twentieth-century high-water mark — mirroring the synthesizing argument in
-        <em>Schools of the Republic</em>.
-      </p>
-      <p class="mt-8">
-        <a
-          href="/states/"
-          class="inline-block rounded-md bg-slate-900 px-5 py-3 font-semibold text-white hover:bg-slate-700"
-        >
-          Browse the encyclopedia →
-        </a>
-      </p>
+    <main class="mx-auto max-w-5xl p-4 sm:p-8">
+      <section class="border-b border-slate-200 pb-10">
+        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+          Schools of the Republic
+        </h1>
+        <p class="mt-3 text-lg text-slate-600 sm:text-xl">
+          A public library of America's school trust lands
+        </p>
+        <p class="mt-6 text-base font-medium text-slate-800 sm:text-lg">
+          America gave land to its schools. This is the ledger of what happened next.
+        </p>
+        <div class="prose prose-slate mt-6 max-w-none">
+          <p>
+            In 1785, before the Constitution, the United States began setting aside public land
+            for public schools. Some states turned that inheritance into permanent funds worth
+            billions. Others sold it, raided it, or quietly let it disappear.
+          </p>
+          <p>
+            This library is for inspecting what happened. The same fifty states appear across six
+            rooms — read the history, find your state, map the architecture, audit the ledger,
+            follow the case law, see where breaches hit the floor and where recovery has held.
+            Every figure carries a confidence badge. Every blank cell is a deliberate signal.
+          </p>
+          <p>
+            Start with your state, the national map, or the short guide to how the school-trust
+            compact worked — and how it drifted.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10" aria-label="Three doors">
+        <ul class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <li class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow">
+            <a href="/start/" class="block">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Start Here
+              </p>
+              <h2 class="mt-2 text-xl font-semibold tracking-tight text-blue-700 underline-offset-2 hover:underline">
+                What are school trust lands?
+              </h2>
+              <p class="mt-3 text-sm text-slate-700">
+                The 1785 land ordinance, the trust that followed, the drift, and how to read
+                what's on this site. Ten minutes.
+              </p>
+            </a>
+          </li>
+          <li class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow">
+            <a href="/reading/" class="block">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Find Your State
+              </p>
+              <h2 class="mt-2 text-xl font-semibold tracking-tight text-blue-700 underline-offset-2 hover:underline">
+                Reading Room
+              </h2>
+              <p class="mt-3 text-sm text-slate-700">
+                Every state has an entry. Read your state's full encyclopedia entry, or jump to
+                its row in the Counting House and its polygon on the Atlas.
+              </p>
+            </a>
+          </li>
+          <li class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow">
+            <a href="/atlas/" class="block">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                See the National Pattern
+              </p>
+              <h2 class="mt-2 text-xl font-semibold tracking-tight text-blue-700 underline-offset-2 hover:underline">
+                Atlas
+              </h2>
+              <p class="mt-3 text-sm text-slate-700">
+                One map, four lenses. Era cohort, fund corpus, federal grant acreage,
+                transparency status. The same fifty states answer four different questions.
+              </p>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mt-12" aria-label="Featured entry points">
+        <h2 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          Featured entries
+        </h2>
+        <ul class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <li class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 class="text-lg font-semibold tracking-tight">
+              <a href="/reading/us-or/" class="text-blue-700 underline hover:text-blue-900">
+                Oregon — the live test case
+              </a>
+            </h3>
+            <p class="mt-2 text-sm text-slate-700">
+              Strong constitutional architecture (1857), the Elliott State Forest decoupling
+              (2017–2022), and the January 2026 Court of Appeals standing victory in
+              <em>Advocates for School Trust Lands v. State of Oregon</em>. The case OASTL is
+              currently litigating.
+            </p>
+          </li>
+          <li class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 class="text-lg font-semibold tracking-tight">
+              <a href="/reading/us-ut/" class="text-blue-700 underline hover:text-blue-900">
+                Utah — the recovery case
+              </a>
+            </h3>
+            <p class="mt-2 text-sm text-slate-700">
+              Constituency rebuilt what architecture alone could not protect. The clearest
+              national model for how a breached trust gets back on track.
+            </p>
+          </li>
+          <li class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 class="text-lg font-semibold tracking-tight">
+              <a href="/reading/us-ms/" class="text-blue-700 underline hover:text-blue-900">
+                Mississippi — the lost inheritance
+              </a>
+            </h3>
+            <p class="mt-2 text-sm text-slate-700">
+              Section 16 history shows what depletion looks like when no recovery occurred.
+              Sixteenth sections sold for as little as $1 per acre in the 1820s.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mt-10 rounded-md border border-slate-200 bg-white p-5 text-sm text-slate-700 shadow-sm">
+        <p>
+          Three rooms are live today: Reading Room, Atlas, Counting House. Three more open later
+          in 2026: Records Room (curated primary sources, opening month 3), Court Room (case law
+          and litigation, opening month 5–6), Breach &amp; Recovery (drift case studies, opening
+          month 6–9).
+        </p>
+      </section>
+
+      <section
+        class="mt-10 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-5 shadow-sm"
+        aria-label="Why some numbers are blank"
+      >
+        <h2 class="text-base font-semibold tracking-tight text-amber-900">
+          Why some numbers are blank
+        </h2>
+        <p class="mt-2 text-sm text-amber-900">
+          You'll see "Awaiting State Disclosures" badges across this library. Twelve states
+          publish complete school-trust accounting today. Thirty-eight don't. The Counting House
+          makes that visible because that absence is the finding — not a defect of this site.
+          Visible incompleteness with correction pathways is the fastest path to credibility, and
+          it's the only way a public ledger of public trusts can earn its name.
+        </p>
+      </section>
     </main>
     <Footer />
   </body>

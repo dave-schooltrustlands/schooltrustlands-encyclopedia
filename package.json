@@ -2,6 +2,7 @@
   "name": "schooltrustlands-encyclopedia",
   "type": "module",
   "version": "0.0.1",
+  "description": "Schools of the Republic — a public library of America's school trust lands.",
   "scripts": {
     "dev": "npm run build:data && astro dev",
     "start": "npm run build:data && astro dev",

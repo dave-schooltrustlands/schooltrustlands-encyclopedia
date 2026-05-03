@@ -52,6 +52,26 @@ const transparencyLabels: Record<string, string> = {
   width="full"
   sourceId="finance-states-json"
 >
+  <aside
+    class="mt-6 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-5 text-base text-amber-900 shadow-sm"
+    aria-label="How to read this table"
+  >
+    <p class="text-sm font-semibold uppercase tracking-wide text-amber-900">
+      Read this first.
+    </p>
+    <p class="mt-3">
+      This table covers all fifty states. Twelve states publish complete school-trust
+      accounting; thirty-eight do not. Where you see "Awaiting State Disclosures," that
+      absence is the finding — the state has a school trust but has not publicly disclosed
+      the figure. Where you see an em-dash ("not applicable"), the state has no federal
+      school trust of this type. Click any state name for the per-state card with sources.
+    </p>
+    <p class="mt-3">
+      The fastest path to credibility for a public ledger of public trusts is visible
+      incompleteness with correction pathways. We are showing you the gaps, on purpose.
+    </p>
+  </aside>
+
   <p class="mt-4 text-xs text-slate-500">
     {records.length} states · derived from substrate frontmatter at build time. Click any column header to sort. Click a state name for the full financial card.
   </p>

@@ -56,6 +56,11 @@ const states = defineCollection({
       .nullable(),
     substrateVersion: z.string().default('1.3'),
     lastReviewed: z.date(),
+    // Optional editorial overrides for the StateDossierCard at the top
+    // of the state page. When absent, the card falls back to a generic
+    // template assembled from era/admission/governance/grant fields.
+    summary: z.string().optional(),
+    currentIssue: z.string().optional(),
   }),
 });
 

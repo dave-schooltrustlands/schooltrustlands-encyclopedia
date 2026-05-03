@@ -8,86 +8,159 @@ import Footer from '../components/Footer.astro';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>About — School Trust Lands Encyclopedia</title>
+    <title>About · Schools of the Republic</title>
+    <meta
+      name="description"
+      content="Schools of the Republic — a public library of America's school trust lands, by the Advocates for School Trust Lands. Mission, team, substrate, and methodology."
+    />
   </head>
-  <body class="min-h-screen bg-slate-50 text-slate-900">
+  <body class="min-h-screen bg-slate-50 text-slate-900" data-source-id="about-page">
     <Header />
     <main class="mx-auto max-w-prose p-4 sm:p-8">
-      <article class="prose prose-slate max-w-none">
-        <h1>About this encyclopedia</h1>
+      <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+        <h1>About this library</h1>
 
         <p>
-          The School Trust Lands Encyclopedia is a state-by-state reference on the
-          federal land grants, constitutional architecture, permanent funds, and
-          ongoing fiduciary disputes that shape American school trust lands. Each
-          entry traces one state's trust from its admission act through its present
-          corpus, governance form, and live litigation. The encyclopedia is
-          organized into six era cohorts mirroring the synthesizing argument in
-          <em>Schools of the Republic</em>.
+          <em>Schools of the Republic</em> is a public library of America's school trust lands.
+          Three rooms are live today — the Reading Room (the synthesizing argument and a
+          per-state encyclopedia entry for every state), the Atlas (one map under four lenses),
+          and the Counting House (the financial table with a confidence badge on every figure).
+          Three more rooms — Records Room (curated primary sources), Court Room (case law and
+          litigation timelines), and Breach &amp; Recovery (drift case studies) — open over the
+          course of 2026. The library exists because the country gave itself a forever gift in
+          1785 and then mostly forgot it; this is one attempt to make the inheritance legible
+          again.
         </p>
 
-        <h2>Who is behind this</h2>
+        <h2>The team</h2>
 
         <p>
-          The site is operated by an interim entity, the Operating Advocates for
-          School Trust Lands (OASTL), pending the formal adoption of a successor
-          organization, Advocates for School Trust Lands (ASTL). OASTL exists to
-          carry the public-facing scholarship and advocacy work forward without
-          waiting on the corporate steps. Editorial responsibility currently rests
-          with Dave Sullivan and Margaret Bird; the substrate and synthesis are
-          their joint work.
+          The library is a project of the <strong>Advocates for School Trust Lands</strong>.
+          Editorial responsibility currently rests with a small core team:
+        </p>
+        <ul>
+          <li>
+            <strong>Dave Sullivan</strong> — CEO; co-author of <em>Schools of the Republic</em>
+            and the <em>Sacred Compact</em> white paper. Strategic direction, substrate
+            maintenance, and final review of public-facing work.
+          </li>
+          <li>
+            <strong>Margaret Bird</strong> — co-author and domain expert; longtime national
+            authority on school-trust-lands law and policy. Substantive review of book chapters
+            and trustee-facing memos.
+          </li>
+          <li>
+            <strong>Daniel Zene Crowe</strong> — OASTL General Counsel; lead on the live
+            Coos County litigation (<em>24CV38372</em>) and its appellate posture.
+          </li>
+          <li>
+            <strong>Natalie Scott</strong> — case lead on the prior Coos County matter
+            (<em>23CV39056</em>) and the Oregon Supreme Court petition (<em>S072734</em>);
+            drafting, filing, and citation discipline.
+          </li>
+          <li>
+            <strong>Laura</strong> — legal research bridge across both cases.
+          </li>
+        </ul>
+
+        <h2>The substrate</h2>
+
+        <p>
+          Every page on this site renders from a hand-curated source document — the
+          <em>Schools of the Republic</em> v1.3 substrate — held in a private repository and
+          never published verbatim. The Reading Room essays are derived from the synthesizing
+          book and the <em>Sacred Compact</em> white paper. The Atlas and Counting House are
+          built at compile time from per-state frontmatter. Primary sources cited across the
+          library include federal admission acts, state constitutions, court opinions in the
+          school-trust line, attorneys-general opinions, state land department reports and
+          newsroom documents, and materials filed in the live Coos County litigation.
         </p>
 
-        <h2>Methodology</h2>
+        <h2>The methodology</h2>
 
         <p>
-          Each entry is generated from a hand-curated source document — the v0.4
-          substrate — held in a private repository and never published verbatim.
-          A Python migration script extracts the bibliographic frontmatter and a
-          subset of quantitative fields (federal grant acres, governance form,
-          permanent-fund corpus, latest distribution) and renders each state as an
-          Astro content page. The migration is merge-preserving: hand-edited values
-          on the website are never overwritten by re-running the script. The site
-          is a static build; there is no database and no server-side runtime.
+          The site is organized around a small set of editorial commitments. <em>Visible
+          incompleteness</em>: where a state has not publicly disclosed a figure, the substrate
+          says so with an "Awaiting State Disclosures" badge rather than guessing or omitting
+          the row; where a state structurally has no federal trust, the cell shows an em-dash
+          (an "authoritative no") rather than reading as a data gap. <em>Single source of
+          truth</em>: every figure on the Atlas, the Counting House, and the per-state cards is
+          derived at build time from the same per-state frontmatter, so the rooms cannot drift
+          apart. <em>Six-room library architecture</em>: the surfaces are organized as rooms in
+          a working library, not as marketing pages, and three of those rooms are explicitly
+          marked "opening later" rather than dressed up as finished today. <em>Extensibility
+          seams</em>: the source-id, room, and state metadata threaded through every page exist
+          so that the future feedback form, programmatic API, and Records Room intake workflows
+          can latch onto a stable substrate without retrofitting six rooms of templates.
         </p>
 
-        <h2>Known limitations</h2>
+        <h2>How to contribute</h2>
 
         <p>
-          As of substrate v1.3, only one state (Oregon) has fully hand-verified
-          financial figures in the page header. The other forty-nine carry partial
-          data: most have a federal grant acreage and a governance description,
-          but permanent-fund corpus and latest-distribution figures are populated
-          only when the substrate value is unambiguous and pinned to a date. Where
-          a year is given but no calendar day, the date field is left null rather
-          than fabricated.
+          Corrections, citation requests, and methodology questions are welcome. For now the
+          intake mechanism is GitHub Issues at the
+          <a
+            href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia"
+            rel="noopener"
+            >project repository</a>; a public <code>/feedback/</code> form opens once the
+          underlying intake workflow exists. If you have a public source for a figure
+          currently flagged "Awaiting State Disclosures," please attach it on an issue — the
+          Records Room (when it opens) will accept those contributions directly.
         </p>
 
+        <h2>Toward a Public Ledger</h2>
+
         <p>
-          The visual design is interim. There is no logo, no signature typeface,
-          and no brand color system; those decisions are deferred until Margaret
-          can weigh in on the public identity. The library architecture — sources,
-          jurisdictions, table-of-authorities cross-references — is pending and
-          will replace the current flat footnote structure on each entry.
+          What you see today is the encyclopedia floor. The library is being built toward a
+          parcel-level, drillable, public ledger of the school-trust system — a structure that
+          grows from this floor, state by state. The short public framing of that direction is
+          on a separate page: <a href="/about/future-ledger/">Toward a Public Ledger →</a>.
+          The full strategic essay is in the Reading Room as
+          <a href="/reading/the-eighth-anchor/"><em>The Eighth Anchor</em></a>.
         </p>
 
         <h2>How to cite</h2>
 
         <p>
-          Cite individual entries as: <em>Sullivan and Bird, Schools of the
-          Republic v1.3, schooltrustlands.net/states/&#123;slug&#125;/, retrieved
-          YYYY-MM-DD.</em> A pre-filled citation appears in the footer of every
-          page.
+          Cite individual entries as: <em>Sullivan and Bird, Schools of the Republic v1.3,
+          schooltrustlands.net/&#123;path&#125;/, retrieved YYYY-MM-DD.</em> A pre-filled
+          citation appears in the footer of every page.
         </p>
 
-        <h2>Contact and corrections</h2>
+        <h2>Technical notes</h2>
 
         <p>
-          The site source — including this page and the migration scripts — lives on
-          <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia"
-            >GitHub</a
-          >. Open an issue there for corrections, citation requests, or
-          methodology questions.
+          The site is operated by an interim entity, the Operating Advocates for School Trust
+          Lands (OASTL), pending the formal adoption of a successor organization, Advocates for
+          School Trust Lands (ASTL). OASTL exists to carry the public-facing scholarship and
+          advocacy work forward without waiting on the corporate steps.
+        </p>
+
+        <p>
+          Each per-state entry is generated by a Python migration script that extracts
+          bibliographic frontmatter and a subset of quantitative fields (federal grant acres,
+          governance form, permanent-fund corpus, latest distribution) from the v0.4 substrate
+          and renders each state as an Astro content page. The migration is merge-preserving:
+          hand-edited values on the website are never overwritten by re-running the script.
+          The site is a static build deployed on Cloudflare Pages; there is no database and no
+          server-side runtime.
+        </p>
+
+        <p>
+          As of substrate v1.3, only one state (Oregon) has fully hand-verified financial
+          figures plus per-state editorial copy in the dossier card. The other forty-nine carry
+          partial data: most have a federal grant acreage and a governance description, but
+          permanent-fund corpus and latest-distribution figures are populated only when the
+          substrate value is unambiguous and pinned to a date. Where a year is given but no
+          calendar day, the date field is left null rather than fabricated. Per-state editorial
+          copy will hydrate over time as the editorial workstream catches up to the
+          substrate.
+        </p>
+
+        <p>
+          The visual design is interim. There is no logo, no signature typeface, and no brand
+          color system yet; those decisions are deferred until they can be made deliberately
+          rather than by default.
         </p>
       </article>
     </main>

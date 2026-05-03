@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import StateDossier from '../../components/StateDossier.astro';
+import StateDossierCard from '../../components/StateDossierCard.astro';
 
 type EssayProps = { kind: 'essay'; entry: CollectionEntry<'essays'> };
 type StateProps = { kind: 'state'; entry: CollectionEntry<'states'> };
@@ -124,6 +125,21 @@ const layoutProps =
         Substrate v{props.entry.data.substrateVersion} · Last reviewed {dateFmt.format(props.entry.data.lastReviewed)}
       </p>
     </Fragment>
+  )}
+
+  {props.kind === 'state' && (
+    <section class="mt-8">
+      <StateDossierCard
+        iso={props.entry.data.iso.toLowerCase()}
+        name={props.entry.data.name}
+        admittedDate={props.entry.data.admittedDate}
+        eraName={props.entry.data.eraName}
+        governanceForm={props.entry.data.governanceForm}
+        federalGrantAcres={props.entry.data.federalGrantAcres}
+        summary={props.entry.data.summary}
+        currentIssue={props.entry.data.currentIssue}
+      />
+    </section>
   )}
 
   <article
