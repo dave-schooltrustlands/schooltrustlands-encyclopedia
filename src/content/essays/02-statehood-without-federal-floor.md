@@ -1,5 +1,6 @@
 ---
 title: "Chapter 2: Statehood Without the Federal Floor"
+sourceWork: "Schools of the Republic v1.3"
 slug: "02-statehood-without-federal-floor"
 era: "state-derived"
 order: 2

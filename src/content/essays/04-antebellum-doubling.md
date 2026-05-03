@@ -1,5 +1,6 @@
 ---
 title: "Chapter 4: The Antebellum Doubling"
+sourceWork: "Schools of the Republic v1.3"
 slug: "04-antebellum-doubling"
 era: "antebellum-doubling"
 order: 4

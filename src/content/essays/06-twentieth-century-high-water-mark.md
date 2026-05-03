@@ -1,5 +1,6 @@
 ---
 title: "Chapter 6: The Twentieth-Century High-Water Mark and Two Outliers"
+sourceWork: "Schools of the Republic v1.3"
 slug: "06-twentieth-century-high-water-mark"
 era: "twentieth-century"
 order: 6

@@ -4,21 +4,29 @@ const essays = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    era: z.enum([
-      'prologue',
-      'founding-floor',
-      'state-derived',
-      'northwest-ordinance',
-      'antebellum-doubling',
-      'reconstruction-western',
-      'twentieth-century',
-      'comparative-atlas',
-      'conclusion',
-    ]),
+    // `era` is Part-I-only (Schools of the Republic chapter cohort).
+    // Sacred Compact and Vision essays don't carry an era — they're
+    // organized by sourceWork and sectionId instead.
+    era: z
+      .enum([
+        'prologue',
+        'founding-floor',
+        'state-derived',
+        'northwest-ordinance',
+        'antebellum-doubling',
+        'reconstruction-western',
+        'twentieth-century',
+        'comparative-atlas',
+        'conclusion',
+      ])
+      .optional(),
+    sourceWork: z.string(),
+    sectionId: z.string().optional(),
     order: z.number(),
     wordCount: z.number(),
     sourceVersion: z.string(),
     lastSynced: z.coerce.date(),
+    audience: z.string().optional(),
   }),
 });
 

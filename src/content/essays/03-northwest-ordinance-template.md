@@ -1,5 +1,6 @@
 ---
 title: "Chapter 3: The Northwest Ordinance Template"
+sourceWork: "Schools of the Republic v1.3"
 slug: "03-northwest-ordinance-template"
 era: "northwest-ordinance"
 order: 3

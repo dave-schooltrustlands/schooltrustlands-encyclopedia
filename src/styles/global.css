@@ -55,4 +55,21 @@
     text-align: center;
     line-height: 1.2;
   }
+
+  /* [CITE PENDING] flags in Sacred Compact + Vision essays.
+     Visible-incompleteness rule (Plan_v2.1 editorial discipline #1):
+     show the open citation, don't suppress it. Slate background +
+     italic so the marker reads as editorial scaffolding, not as
+     authorial voice. The eventual citation pass (B-038) replaces
+     each span with the real footnote ref. */
+  .cite-pending {
+    background-color: theme('colors.slate.100');
+    color: theme('colors.slate.500');
+    font-style: italic;
+    font-size: 0.85em;
+    padding: 0.05em 0.35em;
+    border-radius: 0.2rem;
+    border: 1px dashed theme('colors.slate.300');
+    white-space: normal;
+  }
 }

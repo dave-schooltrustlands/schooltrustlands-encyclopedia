@@ -1,5 +1,6 @@
 ---
 title: "Chapter 1: The Founding Floor"
+sourceWork: "Schools of the Republic v1.3"
 slug: "01-founding-floor"
 era: "founding-floor"
 order: 1

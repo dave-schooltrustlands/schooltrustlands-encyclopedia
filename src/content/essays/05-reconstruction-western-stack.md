@@ -1,5 +1,6 @@
 ---
 title: "Chapter 5: Reconstruction and the Western Stack"
+sourceWork: "Schools of the Republic v1.3"
 slug: "05-reconstruction-western-stack"
 era: "reconstruction-western"
 order: 5

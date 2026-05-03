@@ -1,5 +1,6 @@
 ---
 title: "Conclusion: Architecture, Constituency, and the Recovery That Is Possible"
+sourceWork: "Schools of the Republic v1.3"
 slug: "08-conclusion"
 era: "conclusion"
 order: 8

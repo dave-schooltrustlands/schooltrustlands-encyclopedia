@@ -1,5 +1,6 @@
 ---
 title: "Prologue: Before the Section Lines"
+sourceWork: "Schools of the Republic v1.3"
 slug: "00-prologue"
 era: "prologue"
 order: 0

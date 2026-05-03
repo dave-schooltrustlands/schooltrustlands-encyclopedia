@@ -1,5 +1,6 @@
 ---
 title: "Comparative Atlas"
+sourceWork: "Schools of the Republic v1.3"
 slug: "07-comparative-atlas"
 era: "comparative-atlas"
 order: 7

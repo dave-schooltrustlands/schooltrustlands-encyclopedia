@@ -2,62 +2,147 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import RoomLayout from '../../layouts/RoomLayout.astro';
 
-const entries = (await getCollection('essays')).sort(
+type Essay = CollectionEntry<'essays'>;
+
+const all = (await getCollection('essays')).sort(
   (a, b) => a.data.order - b.data.order,
 );
 
-type Essay = CollectionEntry<'essays'>;
-
-const groups: { heading: string; entries: Essay[] }[] = [
-  { heading: 'Prologue', entries: [] },
-  { heading: 'Era chapters', entries: [] },
-  { heading: 'Comparative Atlas', entries: [] },
-  { heading: 'Conclusion', entries: [] },
-];
-
-for (const e of entries) {
-  if (e.data.era === 'prologue') groups[0].entries.push(e);
-  else if (e.data.era === 'comparative-atlas') groups[2].entries.push(e);
-  else if (e.data.era === 'conclusion') groups[3].entries.push(e);
-  else groups[1].entries.push(e);
+// Group by sourceWork. Order within each group preserved by `order`.
+const works: Map<string, Essay[]> = new Map();
+for (const e of all) {
+  const k = e.data.sourceWork;
+  if (!works.has(k)) works.set(k, []);
+  works.get(k)!.push(e);
 }
 
 const num = new Intl.NumberFormat('en-US');
-const totalWords = entries.reduce((sum, e) => sum + e.data.wordCount, 0);
 
-const routeSlug = (slug: string) => slug.replace(/^\d+-/, '');
+const partIWords = (works.get('Schools of the Republic v1.3') ?? []).reduce(
+  (sum, e) => sum + e.data.wordCount,
+  0,
+);
+const sacredWords = (works.get('Sacred Compact white paper v5.0') ?? []).reduce(
+  (sum, e) => sum + e.data.wordCount,
+  0,
+);
+
+const routeSlug = (entry: Essay) =>
+  entry.slug.startsWith('sacred-compact-') || entry.slug === 'the-eighth-anchor'
+    ? entry.slug
+    : entry.slug.replace(/^\d+-/, '');
+
+// Sub-grouping inside Part I (Prologue / Era / Atlas / Conclusion) per
+// Week 1 TOC; preserved here so the Reading Room landing still reads
+// like a book outline rather than a flat list.
+function partISubgroups(entries: Essay[]) {
+  const groups: { heading: string; entries: Essay[] }[] = [
+    { heading: 'Prologue', entries: [] },
+    { heading: 'Era chapters', entries: [] },
+    { heading: 'Comparative Atlas', entries: [] },
+    { heading: 'Conclusion', entries: [] },
+  ];
+  for (const e of entries) {
+    const era = e.data.era;
+    if (era === 'prologue') groups[0].entries.push(e);
+    else if (era === 'comparative-atlas') groups[2].entries.push(e);
+    else if (era === 'conclusion') groups[3].entries.push(e);
+    else groups[1].entries.push(e);
+  }
+  return groups.filter((g) => g.entries.length > 0);
+}
 ---
 
 <RoomLayout
   room="reading"
-  title="Schools of the Republic"
-  subtitle={`Part I: the synthesizing argument. Six era chapters, a Prologue, a Comparative Atlas, and a Conclusion — ${num.format(totalWords)} words across ${entries.length} entries.`}
+  title="Reading Room"
+  subtitle="Three works that together carry the school-trust argument: the synthesizing book (Part I), the white paper that names the deeper pattern, and a forward-looking pitch."
   width="prose"
   sourceId="reading-toc"
 >
-  {groups.filter((g) => g.entries.length > 0).map((group) => (
-    <section class="mt-10">
-      <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
-        {group.heading}
-      </h2>
-      <ol class="mt-4 space-y-3">
-        {group.entries.map((entry) => (
-          <li class="flex flex-wrap items-baseline gap-x-2">
-            <span class="tabular-nums text-slate-500">
-              {entry.data.order}.
-            </span>
+  <section class="mt-10">
+    <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
+      Part I — Schools of the Republic v1.3
+    </h2>
+    <p class="mt-2 text-sm text-slate-600">
+      The synthesizing argument. Six era chapters with a Prologue, a Comparative
+      Atlas, and a Conclusion — {num.format(partIWords)} words.
+    </p>
+    {partISubgroups(works.get('Schools of the Republic v1.3') ?? []).map((sub) => (
+      <div class="mt-6">
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500">{sub.heading}</h3>
+        <ol class="mt-2 space-y-2">
+          {sub.entries.map((entry) => (
+            <li class="flex flex-wrap items-baseline gap-x-2">
+              <span class="tabular-nums text-slate-500">{entry.data.order}.</span>
+              <a
+                href={`/reading/${routeSlug(entry)}/`}
+                class="font-medium text-blue-700 underline"
+              >
+                {entry.data.title}
+              </a>
+              <span class="text-slate-500">— {num.format(entry.data.wordCount)} words</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))}
+  </section>
+
+  <section class="mt-12">
+    <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
+      The Sacred Compact
+    </h2>
+    <p class="mt-2 text-sm text-slate-600">
+      Sullivan and Bird's white paper v5.0 — {num.format(sacredWords)} words across eight sections. <a href="/reading/sacred-compact/" class="text-blue-700 underline hover:text-blue-900">Section overview →</a>
+    </p>
+    <ol class="mt-4 space-y-2">
+      {(works.get('Sacred Compact white paper v5.0') ?? []).map((entry) => (
+        <li class="flex flex-wrap items-baseline gap-x-2">
+          <a
+            href={`/reading/${entry.slug}/`}
+            class="font-medium text-blue-700 underline"
+          >
+            {entry.data.title.replace(/^Sacred Compact: /, '')}
+          </a>
+          <span class="text-slate-500">— {num.format(entry.data.wordCount)} words</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
+      Vision
+    </h2>
+    <ol class="mt-4 space-y-2">
+      {(works.get('Vision v2') ?? []).map((entry) => (
+        <li>
+          <div class="flex flex-wrap items-baseline gap-x-2">
             <a
-              href={`/reading/${routeSlug(entry.slug)}/`}
+              href={`/reading/${entry.slug}/`}
               class="font-medium text-blue-700 underline"
             >
               {entry.data.title}
             </a>
-            <span class="text-slate-500">
-              — {num.format(entry.data.wordCount)} words
-            </span>
-          </li>
-        ))}
-      </ol>
-    </section>
-  ))}
+            <span class="text-slate-500">— {num.format(entry.data.wordCount)} words</span>
+          </div>
+          {entry.data.audience && (
+            <p class="mt-0.5 text-xs text-slate-500">(For {entry.data.audience}.)</p>
+          )}
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
+      Per-state encyclopedia (50 states)
+    </h2>
+    <p class="mt-2 text-sm text-slate-600">
+      Each state's school-trust history at <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">/reading/us-XX/</code>.
+      Browse via the <a href="/states/" class="text-blue-700 underline hover:text-blue-900">all-states index</a>
+      {' '}or the <a href="/atlas/" class="text-blue-700 underline hover:text-blue-900">interactive map</a>.
+    </p>
+  </section>
 </RoomLayout>
