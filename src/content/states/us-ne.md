@@ -12,6 +12,10 @@ permanentFundCorpus:
   value: 2000000000
   asOf: null
 latestDistribution: null
+trustAcresRemaining: 1250911
+trustAcresRemainingConfidence: verified
+trustAcresRemainingAsOf: "FY 2024"
+trustAcresRemainingSource: "ASTL Nebraska Report (Tonia Day, FY 2024) and Nebraska Board of Educational Lands and Funds, 2024–2025 Annual Report (1,250,911 surface acres; 1.6 million subsurface acres)."
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---
@@ -61,35 +65,11 @@ A further notable amendment is the 2006 LB 1006 expansion of the common-school f
 
 ## The modern fund
 
-The Nebraska financial picture today reflects the retained-asset Plains profile. As of June 30, 2025, BELF reported 1,251,057.919 leased K-12 school trust surface acres — roughly 1.25 million acres of the original 2.8 million still in trust ownership.[^ne-27] The Permanent School Fund corpus, managed by the Nebraska Investment Council, exceeds $2 billion, among the stronger Plains-state corpora. BELF's 2024-2025 annual report lists 2025 trust-revenue disbursements totaling $129,176,784.79 — meaningful in the context of Nebraska K-12 finance, though still well below the Western retention-state tier (New Mexico's Land Grant Permanent Fund exceeded $30 billion at recent counts).[^ne-28] BELF maintains a standalone agency website describing itself as trustee of lands "contributed by the federal government in 1867" — an unusually direct framing of the trust relationship for a contemporary state agency.[^ne-29]
+The Nebraska financial picture today reflects the retained-asset Plains profile. As of June 30, 2025, BELF reported 1,251,057.919 leased K-12 school trust surface acres — roughly 1.25 million acres of the original 2.8 million still in trust ownership.[^ne-27] The subsurface picture is larger and less often noticed: BELF holds approximately 1.6 million school subsurface acres scattered across the state, with mineral revenue still dominated by oil and gas but with wind and solar leases representing a steadily growing share of the portfolio.[^ne-27a] The Permanent School Fund corpus, managed by the Nebraska Investment Council, exceeds $2 billion, among the stronger Plains-state corpora. BELF's 2024-2025 annual report lists 2025 trust-revenue disbursements totaling $129,176,784.79 — meaningful in the context of Nebraska K-12 finance, though still well below the Western retention-state tier (New Mexico's Land Grant Permanent Fund exceeded $30 billion at recent counts).[^ne-28] BELF maintains a standalone agency website describing itself as trustee of lands "contributed by the federal government in 1867" — an unusually direct framing of the trust relationship for a contemporary state agency.[^ne-29] The office is run day-to-day by Director Kelly Sudbeck, an attorney trained in trust law whose stated charge is to act with undivided loyalty to the schools as beneficiary; ASTL credits the BELF land office with roughly doubling annual revenue across the prior twenty-five years.[^ne-27b] The split-investment architecture — agricultural rents and bonuses distributed currently while mineral royalties and land-sale payments are deposited to the permanent fund — has produced an unusual comparative performance figure: between 2002 and 2012, the lands themselves returned approximately twelve percent on the distributable revenue stream while the invested permanent fund returned roughly six percent on its corpus, a gap that gives Nebraska a current-distribution case to make against the more aggressive permanent-fund model exemplified by North Dakota.[^ne-27c]
 
 Nebraska's school-trust story is, then, the project's example of moderate paper architecture with a retained-asset base and an enforcement posture structurally constrained by the AG's seat at the trustee table. The architecture works: Article VII's irreducibility, separateness, and exclusive-use language are real, the BELF is constitutionally fixed in its core function, and the AG opinion series consistently defends the trust corpus against legislative encroachment. The architecture has limits: the 1972 amendment made trustee tenure statutory, Belker authorized legislative direction of dispositional outcomes, and the AG's structural conflict means that the most muscular form of fiduciary enforcement — direct litigation by the State's chief legal officer against the State as breaching trustee — is unlikely to materialize in Nebraska. Compared to Kansas, which liquidated its school-trust portfolio in the nineteenth century and now has little to defend, Nebraska retained a meaningful corpus and built a constitutional defense around it. Compared to Oregon, whose stronger paper architecture has now produced active appellate-level litigation over modern fiduciary breach, Nebraska's stronger-than-average paper has been enforced through a quieter and more episodic line of cases brought largely by private relators. Whether the Nebraska pattern continues to hold the corpus through the next round of disposition pressure — the kind of pressure visible in LB 711 and in the 2015 local-capture proposal — will depend in significant part on whether the structural enforcement chill the AG's trustee seat creates can be overcome from outside the Attorney General's office.
 
 ---
-
-<section class="astl-field-block">
-  <span class="eyebrow">From the field</span>
-  <h2>Notes from Advocates for School Trust Lands</h2>
-  <p class="byline">By <strong>Tonia Day</strong>, Advocates for School Trust Lands · originally published at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/nebraska">schooltrustlands.org</a> (data as of FY 2024)</p>
-
-  <p>At statehood on March 1, 1867, schools were granted almost three million acres by Congress to support Nebraska public schools. [ASTL-1] The school trust lands are part of a "sacred compact" between Nebraska and the United States. The enabling act requires the state to act with undivided loyalty as it manages the school lands in trust to support public schools.</p>
-
-  <p>Nebraska has 1,250,911 school surface acres remaining and 1.6 million school subsurface acres scattered around the state. These lands are managed by the Board of Educational Lands and Funds, comprised of five Board Members. The office is managed by Kelly Sudbeck, an attorney well versed in trust law whose purpose is to act with undivided loyalty to the school beneficiary. Their most significant accomplishments this fiscal year have been to maximize agricultural and renewable energy income.</p>
-
-  <p>The largest revenue source is agricultural rentals and bonuses. Mineral revenue is primarily from oil and gas but wind and solar are an increasing portion of the trust portfolio. In the last twenty-five years, the land office has managed to double the revenue.</p>
-
-  <p>Land-sale and nonrenewable revenue — both of which can only occur once — are saved and invested to provide continuing revenue to future generations of schools. Revenue from activities that can be repeated on a given parcel, such as ranching or agriculture, are distributed to schools on an annual basis. Investments in the ever-growing Permanent School Fund are then distributed annually to schools.</p>
-
-  <p>The Permanent School Fund is invested by the Nebraska Investment Council. Some states deposit all revenues from school lands into their permanent fund. By contrast, Nebraska and other states allocate only specific types of revenue directly to the Permanent School Fund, so their fund grows more slowly but they have more to distribute now. Mineral royalties and land-sale payments are deposited into the Fund whereas rent and bonuses from agricultural land — a majority of the revenue — are distributed to schools. From 2002 through 2012, in Nebraska, the land performed significantly better than the permanent fund, with a return on investment of 12% compared to 6% on the invested portion.</p>
-
-  <p>In Nebraska the revenue from the school trust lands is sent directly to the county school districts. The Enabling Act designates the "common schools" as the beneficiary. It is unclear from reading the annual report of the Board of Educational Lands and Funds whether there is a mechanism to ensure the revenue goes to the "common schools" as required in the trust documents.</p>
-
-  <p>Other western states distribute trust funds in different ways: Wisconsin to school libraries, Washington to school buildings, Arizona to classroom needs, Utah directly to each school for programs developed by parents, teachers, and the principal — and North Dakota to a per-pupil distribution. North Dakota's pattern is distinctive: it deposits all revenue from school trust lands into the Common Schools Trust Fund and adds Tobacco Settlement, unclaimed property, and oil-extraction-tax revenues. Net income is prudently invested. The fund's market value as of June 30, 2025, stood at $6,997,804,865 — growth of roughly 2,900% over 39 years. The 2023-2025 biennium distributed $500 million to North Dakota schools, equivalent to $2,160 per student. States that invest the full revenue stream — like North Dakota — have, over time, more money to support schools, just as people who save have more than those who spend everything they make.</p>
-
-  <p style="font-size: 0.85rem; opacity: 0.75;">[ASTL-1] 2,730,951 acres.</p>
-
-  <p class="attribution">© Advocates for School Trust Lands. Reproduced and lightly edited for the library by permission of the parent organization. Original at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/nebraska">schooltrustlands.org</a>.</p>
-</section>
 
 <section id="lb1072-faq" class="state-appendix">
   <span class="eyebrow">Appendix · 2026 legislative session</span>
@@ -254,3 +234,9 @@ Nebraska's school-trust story is, then, the project's example of moderate paper 
 [^ne-28]: *Id.*
 
 [^ne-29]: Nebraska Board of Educational Lands and Funds, https://belf.nebraska.gov/.
+
+[^ne-27a]: Advocates for School Trust Lands, "Nebraska" (Tonia Day, FY 2024), https://www.schooltrustlands.org/what-states-have-school-trust-lands/nebraska (1.6 million school subsurface acres scattered across the state; oil and gas as the dominant historical mineral revenue source; wind and solar leasing as a growing share of the trust portfolio).
+
+[^ne-27b]: *Id.* (BELF Director Kelly Sudbeck, attorney; agricultural and renewable-energy income as cited maximization priorities; revenue roughly doubled across the prior twenty-five years).
+
+[^ne-27c]: *Id.* (split-investment architecture: agricultural rents and bonuses distributed currently while mineral royalties and land-sale payments are deposited to the Permanent School Fund; 2002–2012 comparative returns of approximately 12% on land-distributed revenue versus approximately 6% on invested permanent-fund corpus).

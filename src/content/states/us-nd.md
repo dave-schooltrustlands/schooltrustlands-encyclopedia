@@ -14,6 +14,10 @@ permanentFundCorpus:
 latestDistribution:
   value: 270000000
   fiscalYear: null
+trustAcresRemaining: 700000
+trustAcresRemainingConfidence: verified
+trustAcresRemainingAsOf: "FY 2024"
+trustAcresRemainingSource: "ASTL North Dakota Report (Tonia Day, FY 2024) and North Dakota Department of Trust Lands (~700,000 surface acres remaining of original 2.5M-acre 1889 Omnibus grant; an additional ~2.6 million subsurface mineral acres)."
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---
@@ -65,6 +69,8 @@ The mineral-royalty windfall has not been entirely uncontested, but the conteste
 
 Today, North Dakota's school-trust portfolio comprises roughly 706,000 surface acres of trust lands still in state ownership, plus mineral (subsurface) acreage including substantial Bakken mineral interests, all administered by the North Dakota Department of Trust Lands as the operational arm of the constitutional Board of University and School Lands.[^nd-37] The Common Schools Trust Fund is the largest of several institutional permanent funds — the 1889 Enabling Act provided distinct grants for the university, the school of mines, normal schools, the school for the deaf, the reform school, and other named beneficiaries, each with its own permanent fund. Distributions to common schools from the Common Schools Trust Fund under the 2006 ten-percent five-year-average formula have moved into the $200–$300 million range in recent biennia, with the precise figure varying year by year and reporting category.[^nd-38]
 
+ASTL's field reporting fills in the operating discipline behind those numbers in ways the constitutional architecture description does not always reach. The Department of Trust Lands collects interest at the rate of one percent per thirty days on overdue royalty payments — a rate set explicitly to compensate the trust for the time value of money — where most states settle for materially lower statutory rates and absorb the timing leak.[^nd-38a] The agency has been an early adopter of Light Detection and Ranging (LiDAR) survey technology for tracking material removed from gravel pits and other surface-mining operations on trust lands, allowing the office to verify production quantities and bill royalties at full volume rather than at lessee-reported volumes — a small but durable corpus-protection upgrade in a category that historically leaks revenue across many jurisdictions.[^nd-38b] The growth trajectory ASTL flags is the headline contemporary fact: distributions to North Dakota K-12 schools moved from $77 million in the 2009–2011 biennium to $500 million in the 2023–2025 biennium, a roughly six-fold increase in fifteen years.[^nd-38c] Per-pupil that works out to approximately $2,160 — second among public-land states only to Wyoming, whose smaller K-12 enrollment elevates its per-pupil figure even where the absolute fund is comparable. The Common Schools Trust Fund's market value as of June 30, 2025 stood at $6,997,804,865, a roughly 2,900 percent increase over the $240 million market value reported 39 years earlier, with a five-year time-weighted total return of 5.68 percent; ASTL projects that by the next biennium the trust distribution may approach 25 percent of the state's K-12 share — the kind of beneficiary share that vindicates the inviolate-fund-and-five-year-average architecture as a sustained outcome rather than a paper claim.[^nd-38d]
+
 Where does this leave the North Dakota story in the architecture of the project? Three propositions, in order of analytical importance.
 
 First, the federal text matters. The 1889 Omnibus Act is not the 1859 Oregon Act and not the 1910 New Mexico-Arizona Act; it sits between them, on a measurable language-strength scale, with its own express null-and-void restoration mechanism and its own permanent-fund architecture. North Dakota is the first state admitted under that statute. If the federal text the project is teaching readers to recognize matters at all, it matters that the 1889 Omnibus Act took the post-Ohio template and added two textual upgrades — fund architecture and null-and-void — both of which would later become the load-bearing language of the 1910 Act. North Dakota is the bridge.
@@ -81,26 +87,6 @@ The project's broader thesis is that the trust is a forever gift to forever scho
 </blockquote>
 
 ---
-
-<section class="astl-field-block">
-  <span class="eyebrow">From the field</span>
-  <h2>Notes from Advocates for School Trust Lands</h2>
-  <p class="byline">By <strong>Tonia Day</strong>, Advocates for School Trust Lands · originally published at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/north-dakota">schooltrustlands.org</a> (data as of FY 2024)</p>
-
-  <p>At statehood, 2.5 million acres of school lands were granted in 1889 by Congress to North Dakota to support public schools. The school trust lands are part of a "sacred compact" or enabling act between North Dakota and Congress. The enabling act requires the state to act with undivided loyalty as it manages the lands in trust for public schools. North Dakota has 700,000 remaining surface acres and another 2.6 million mineral acres.</p>
-
-  <p>Investment income, oil-and-gas royalty payments, and the oil-extraction tax dominate the revenue stream from the school lands. The Department of Trust Lands collects 1% per 30 days for all royalty payments based on the time value of money — most states charge a much lower interest rate. The agency also works with operators of low- or non-producing wells to get the wells in production or let the lease expire. The agency has been an innovator in using Light Detection and Ranging (LiDAR) technology, which can track the amount of product removed from surface mines using laser light. This allows the agency to receive full payments for production on gravel pits and other surface mining. Their most significant accomplishment this year is the record K-12 distributions, which have gone from $77 million in biennium 2009–2011 to $500 million in biennium 2023–2025. Only Wyoming distributes more per student than North Dakota.</p>
-
-  <p>North Dakota deposits all revenue from the school trust lands into the Common Schools Trust Fund. In addition, North Dakota also deposits additional millions from the Tobacco Lawsuit Settlement, unclaimed property turned into the state, and the oil-extraction tax. From these deposits is deducted the trust expenses. Net income is prudently invested, and schools receive annual distributions based on a five-year average value of the Common Schools Trust Fund. States like North Dakota that invest all of their revenue in the Common School Trust Fund plus additional funds have, over time, more money to support schools — just as people who save have more money than those who spend everything they make. When prudently invested, the Common Schools Trust Fund will generate greater revenue to schools.</p>
-
-  <p>The North Dakota Common School Trust Fund has had phenomenal growth over the last 39 years, growing from a market value of just under $240 million to within a hair's breadth of $7 billion — a growth of 2,900%. As of June 30, 2025, the market value of the fund stands at $6,997,804,865. The fund is prudently invested and generating a total weighted 5-year return on investment of 5.68%.</p>
-
-  <p>The Common School Trust Fund is constitutionally established and recognized as a trust by the United States Supreme Court. It is intended to be a forever charitable trust. The obligations to protect and grow this forever trust were accepted by the state as a condition of statehood. The state of North Dakota committed to acting with undivided loyalty to both the lands and resulting funds for the sole benefit of schools. The state's commitment to the School Trust has reaped significant benefits to schools. It is anticipated that by next biennium, the Common School Trust Fund will distribute 25% of the state's share of education.</p>
-
-  <p>That investment return resulted in the Common School Trust Fund in biennium 2023–2025 distributing $500 million to North Dakota schools. That distribution is equivalent to $2,160 per student. Only Wyoming distributes more per student, and that is primarily because Wyoming has far fewer students in its public schools.</p>
-
-  <p class="attribution">© Advocates for School Trust Lands. Reproduced and lightly edited for the library by permission of the parent organization. Original at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/north-dakota">schooltrustlands.org</a>.</p>
-</section>
 
 ## Footnotes
 
@@ -179,3 +165,11 @@ The project's broader thesis is that the trust is a forever gift to forever scho
 [^nd-37]: North Dakota Department of Trust Lands, "About," https://www.land.nd.gov/about; *see also* surface-acreage estimates in North Dakota Pass 1/Pass 2 schema file, *supra* note 10. Acreage figures should be cross-checked against the most recent Department of Trust Lands annual report.
 
 [^nd-38]: North Dakota Department of Trust Lands annual reports; North Dakota Legislative Council, "Trust Fund Analysis" (July 2025), *supra* note 29. Precise distribution figures vary by biennium and reporting category.
+
+[^nd-38a]: Advocates for School Trust Lands, "North Dakota" (Tonia Day, FY 2024), https://www.schooltrustlands.org/what-states-have-school-trust-lands/north-dakota (1% per 30 days royalty interest collection rate, set to compensate the trust for the time value of money).
+
+[^nd-38b]: *Id.* (LiDAR adoption for tracking material removed from gravel pits and other surface-mining operations on trust lands; agency also actively works with operators of low-producing or non-producing wells to either restore production or expire the lease).
+
+[^nd-38c]: *Id.* (K-12 distribution growth from $77 million in biennium 2009–2011 to $500 million in biennium 2023–2025; equivalent to approximately $2,160 per student, second only to Wyoming among public-land states).
+
+[^nd-38d]: *Id.* (Common Schools Trust Fund market value of $6,997,804,865 as of June 30, 2025; approximately 2,900% growth over 39 years; 5.68% five-year time-weighted total return; ASTL projection that the trust may distribute 25% of the state's K-12 share by the next biennium).
