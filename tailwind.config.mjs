@@ -30,6 +30,15 @@ export default {
     'site-footer',
     'footer-credit',
     'footer-meta',
+    'launch-announcement',
+    'reading-card',
+    'cover',
+    'plss-pattern',
+    'meta',
+    'byline',
+    'abstract',
+    'toc',
+    'cta',
   ],
   theme: {
     extend: {

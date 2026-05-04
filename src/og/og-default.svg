@@ -16,9 +16,9 @@
   <!-- One section gold-filled (Section 16 echo, large, off-center) -->
   <rect x="900" y="105" width="100" height="105" fill="#B88A2E" opacity="0.35"/>
   <!-- Wordmark block -->
-  <text x="80" y="280" font-family="Source Serif 4, Georgia, serif" font-weight="900" font-size="84" fill="#1F2A44" letter-spacing="-1.5">Schools of the Republic</text>
-  <text x="80" y="335" font-family="Inter, sans-serif" font-weight="500" font-size="28" fill="#1D4F7C">A public library of America's school trust lands</text>
+  <text x="80" y="280" font-family="Source Serif 4, Georgia, serif" font-weight="900" font-size="78" fill="#1F2A44" letter-spacing="-1.5">America's School Trust Library</text>
+  <text x="80" y="335" font-family="Inter, sans-serif" font-weight="500" font-size="26" fill="#1D4F7C">An evidentiary archive of America's school trust lands and funds</text>
   <!-- Tagline at bottom -->
-  <text x="80" y="540" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-weight="600" font-size="32" fill="#17202A">America gave land to its schools.</text>
-  <text x="80" y="582" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-weight="600" font-size="32" fill="#17202A">This is the ledger of what happened next.</text>
+  <text x="80" y="540" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-weight="600" font-size="30" fill="#17202A">Lands and funds set aside since 1785</text>
+  <text x="80" y="582" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-weight="600" font-size="30" fill="#17202A">to support America's public K-12 schools.</text>
 </svg>

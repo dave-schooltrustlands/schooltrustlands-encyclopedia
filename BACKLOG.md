@@ -1,30 +1,61 @@
 # Backlog
 
-Open work captured during the Visual Rebuild (May 2026). The visual layer (palette, typography, layout primitives, PLSS-grid wordmark, OG default, footer rebuild, per-room accents, print stub) shipped in Tier 1; items below were Tier 2 reach goals that need out-of-band image acquisition and source-permission verification before they can land.
+Open work captured during the May 2026 site rebuild. Items below were either deferred to Handoff 2 by spec or surfaced as edge issues during the Session 1 implementation.
 
-## State dossier imagery (Tier 2 #7)
+## Handoff 2 — content migration and domain flip
 
-Three states identified for the first wave of dossier-card imagery, per the Visual Rebuild Handoff. The `.dossier-card` and `.dossier-image` primitives are already available in global CSS — once an image is sourced and committed, the dossier card can be applied at the top of each state's Reading Room entry.
+### Domain redirect
 
-- **Oregon** — Mitchell trial sketch from Oregon Historical Society (June 29, 1905 *Oregonian*). Source: https://www.oregonhistoryproject.org/articles/historical-records/land-fraud-trial-of-senator-john-mitchell/. Verify reuse permission before commit. Backup options: Elliott State Forest photograph from Oregon Department of Forestry public-domain release, or 1859 Oregon Admission Act scan from BLM GLO.
-- **Utah** — SITLA distribution chart or Utah trust-land map. Source: SITLA's annual report or BLM PLSS overlay.
-- **Mississippi** — Section 16 plat from BLM GLO records (`glorecords.blm.gov` — search by state, then meridian, then township).
+- `schooltrustlands.net` → `schooltrustlands.org` 301 redirect. Holds until content migration verified at `schooltrusts.net`. Cloudflare Pages dashboard, after Session 1 DNS propagates.
 
-Target paths: `/public/images/states/{or,ut,ms}-{slug}.jpg`. Wire each via the `<aside class="dossier-card">` HTML pattern at the top of the corresponding `/reading/us-{iso}/` entry.
+### OASTL section
 
-## Atlas parchment-map header strip (Tier 2 #8)
+- `/oastl/` route — referenced from `/about/`. Build out as state-affiliate landing once OASTL Google Site content is migrated.
+- `/court/oregon-current-case/` — case-docket page referenced from the footer. Currently 404. Land a stub or repoint footer to `/reading/us-or/` litigation section until the Court Room opens.
 
-Faded/desaturated detail from the 1873 GLO general map of US public surveys (Library of Congress: https://www.loc.gov/research-centers/geography-and-map/). Crop to ~1600×120, sepia/parchment tone, opacity 0.55. The `.atlas-header-strip` CSS is already in global.css; once the image is committed at `/public/images/atlas-header-strip.jpg`, drop the markup above the choropleth in `src/pages/atlas.astro`.
+### Bibliography source pages
 
-## Pull-quote demo on a Reading Room essay (Tier 2 #9)
+- `/reading/sources/swift-1911/` — full text of Fletcher Harper Swift, *History of Public Permanent Common School Funds, 1795–1905*. Linked from the Reading Room bibliography card with "Read it (in development)" CTA. Extract from Internet Archive or substrate.
+- `/reading/sources/hawk-2018/` — Hawk thesis on Oregon school trust lands. Linked from the Reading Room bibliography card. Extract from project's primary-sources substrate.
 
-The `.pull-quote` primitive is available globally. Editorial selection of which sentences to pull is a separate Sullivan/Bird pass — recommend Chapter 3 or the Sacred Compact opener as the first surface where a curated `<blockquote class="pull-quote">` lands.
+### Reading Room CTA targets
 
-## Footer link stubs
+- `/reading/schools-of-the-republic/` — encyclopedia book landing page. Reading Room Books card CTA points here; currently 404. Build a landing that surfaces the Part I ToC and links into the existing `/reading/00-prologue/` … `/reading/08-conclusion/` chapter URLs.
+- `/reading/sacred-compact-1/` — first section of the Sacred Compact. Reading Room Books card CTA points here; currently 404. Either route this to the existing `/reading/sacred-compact-prologue/` or `/reading/sacred-compact-i-the-question/`, or build a redirect.
 
-The footer (Visual Rebuild Handoff, Tier 1 #5) was installed verbatim and points to two paths that are not yet routed:
+## Image acquisition still pending
 
-- `/about/cite/` — citation guidance and corrections page (referenced from footer).
-- `/court/oregon-current-case/` — case docket page (referenced from footer for *Advocates for School Trust Lands v. State of Oregon*).
+The Reading Room cards and dossier primitives are wired to fall back to a `.plss-pattern` cover when a real image isn't available. The following images would replace those fallbacks once sourced.
 
-Both currently 404. Either land stub pages or update the footer to the existing equivalents (`/about/` for citation, the `/reading/us-or/` litigation section for case docket) until the Court Room opens.
+- **Cover thumbnails** for the three Books cards: `/img/covers/schools-of-the-republic-cover.jpg`, `/img/covers/sacred-compact-cover.jpg`, `/img/covers/eighth-anchor-cover.jpg`. Today they fall back to PLSS pattern via the `onerror` handler.
+- **Oregon Mitchell trial sketch** — Oregon Historical Society, June 29, 1905 *Oregonian*. Not in the L0 image corpus. Verify reuse permission. Source: <https://www.oregonhistoryproject.org/articles/historical-records/land-fraud-trial-of-senator-john-mitchell/>.
+- **Utah GLO township plat** — `public/img/states/ut-glo-plat.jpg`. The L0 corpus's UT folder has only land-use PDFs; need a proper GLO township plat from `glorecords.blm.gov` or a SITLA map.
+- **Mississippi Section 16 plat** — `public/img/states/ms-section-16.jpg`. The L0 corpus's MS folder is empty for land_use; source from BLM GLO.
+- **Northwest Ordinance scan** — `public/img/founding/northwest-ordinance-1787.jpg`. Available as PDF in L0 corpus (`US_Northwest_Ordinance_1787_autograph_*.pdf`); needs PDF→JPG conversion. No `convert`/`magick`/`pdftoppm` on the WSL build environment.
+- **GLO Land Office** — `public/img/sources/glo-office.jpg`. Available as PDF in L0 corpus (`US_GLO_Annual_Report_1918_*.pdf`); same PDF tooling gap.
+
+## Atlas parchment-map header strip
+
+The Royce 1899 Plate 1 image is now wired into `/atlas/` via the `.atlas-header-strip` primitive. The Visual Rebuild handoff originally specified the 1873 GLO general map of US public surveys (Library of Congress); if that's the preferred source, swap `/img/maps/royce-1899-plate-1.jpg` for the LOC map. <https://www.loc.gov/research-centers/geography-and-map/>.
+
+## OG PNG rendering on the build env
+
+`scripts/build-og-images.mjs` renders `src/og/og-default.svg` via sharp/libvips. Source Serif 4 and Inter aren't installed on the WSL build environment, so libvips falls back to DejaVu Serif (wider) and the new "America's School Trust Library" wordmark overflows the 1200px canvas at the spec'd 78px font-size. Resolution paths:
+
+1. Install Source Serif 4 + Inter on the build environment (apt or fontconfig user fonts).
+2. Re-run `node scripts/build-og-images.mjs` and commit the regenerated PNG.
+3. Or render the PNG once on a developer machine that has the fonts installed and commit.
+
+The SVG source is verbatim from the handoff and should not be modified to compensate for fallback fonts.
+
+## Image weight
+
+`public/img/sources/magna-carta-1215.jpg` is ~6 MB straight from the L0 corpus. Run a sharp resize/recompress pass before performance becomes an issue.
+
+## Pull-quote editorial pass
+
+Two pull quotes installed on the Oregon entry as Tier-2 demonstrators (Visual Rebuild Handoff). Editorial selection of pull quotes for the other 49 states is a Sullivan/Bird workstream — Reading Room essays (Chapter 3, Sacred Compact opener) recommended as next surfaces. The `.pull-quote` primitive is globally available.
+
+## State dossier imagery (Visual Rebuild Tier 2)
+
+Original Visual Rebuild Handoff Tier 2 imagery for Oregon, Utah, Mississippi remains pending — see "Image acquisition" above for current status. The `.dossier-card` and `.dossier-image` primitives stay ready in global CSS.

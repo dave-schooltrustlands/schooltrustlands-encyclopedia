@@ -17,7 +17,7 @@ interface Props {
   title: string;
   subtitle?: string;
   width?: 'prose' | 'full';
-  pageTitle?: string; // <title>; defaults to `${title} · Schools of the Republic`
+  pageTitle?: string; // <title>; defaults to `${title} · America's School Trust Library`
   // Plan_v2.1 Q8 seam: future feedback form constructs context from
   // these. Render now even though no consumer exists yet — retrofitting
   // metadata across six rooms in twelve months is more work than
@@ -98,7 +98,7 @@ const breadcrumb = state
   : currentRoom?.name ?? room;
 
 // Title chain uses middle dot (·) so multi-segment titles like
-// "Oregon · Counting House · Schools of the Republic" stay readable.
+// "Oregon · Counting House · America's School Trust Library" stay readable.
 // Em-dashes were dropped after Day_10 #5.
 const roomNameMap: Record<RoomId, string> = {
   reading: 'Reading Room',
@@ -111,8 +111,8 @@ const roomNameMap: Record<RoomId, string> = {
 const resolvedTitle =
   pageTitle ??
   (state
-    ? `${state.name} · ${roomNameMap[room]} · Schools of the Republic`
-    : `${title} · Schools of the Republic`);
+    ? `${state.name} · ${roomNameMap[room]} · America's School Trust Library`
+    : `${title} · America's School Trust Library`);
 
 const mainClass =
   width === 'full'

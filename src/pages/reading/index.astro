@@ -1,148 +1,250 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
 import RoomLayout from '../../layouts/RoomLayout.astro';
-
-type Essay = CollectionEntry<'essays'>;
-
-const all = (await getCollection('essays')).sort(
-  (a, b) => a.data.order - b.data.order,
-);
-
-// Group by sourceWork. Order within each group preserved by `order`.
-const works: Map<string, Essay[]> = new Map();
-for (const e of all) {
-  const k = e.data.sourceWork;
-  if (!works.has(k)) works.set(k, []);
-  works.get(k)!.push(e);
-}
-
-const num = new Intl.NumberFormat('en-US');
-
-const partIWords = (works.get('Schools of the Republic v1.3') ?? []).reduce(
-  (sum, e) => sum + e.data.wordCount,
-  0,
-);
-const sacredWords = (works.get('Sacred Compact white paper v5.0') ?? []).reduce(
-  (sum, e) => sum + e.data.wordCount,
-  0,
-);
-
-const routeSlug = (entry: Essay) =>
-  entry.slug.startsWith('sacred-compact-') || entry.slug === 'the-eighth-anchor'
-    ? entry.slug
-    : entry.slug.replace(/^\d+-/, '');
-
-// Sub-grouping inside Part I (Prologue / Era / Atlas / Conclusion) per
-// Week 1 TOC; preserved here so the Reading Room landing still reads
-// like a book outline rather than a flat list.
-function partISubgroups(entries: Essay[]) {
-  const groups: { heading: string; entries: Essay[] }[] = [
-    { heading: 'Prologue', entries: [] },
-    { heading: 'Era chapters', entries: [] },
-    { heading: 'Comparative Atlas', entries: [] },
-    { heading: 'Conclusion', entries: [] },
-  ];
-  for (const e of entries) {
-    const era = e.data.era;
-    if (era === 'prologue') groups[0].entries.push(e);
-    else if (era === 'comparative-atlas') groups[2].entries.push(e);
-    else if (era === 'conclusion') groups[3].entries.push(e);
-    else groups[1].entries.push(e);
-  }
-  return groups.filter((g) => g.entries.length > 0);
-}
 ---
 
 <RoomLayout
   room="reading"
   title="Reading Room"
-  subtitle="Three works that together carry the school-trust argument: the synthesizing book (Part I), the white paper that names the deeper pattern, and a forward-looking pitch."
+  subtitle="The library's books, papers, and primary sources."
   width="prose"
   sourceId="reading-toc"
 >
-  <section class="mt-10">
-    <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
-      Part I — Schools of the Republic v1.3
-    </h2>
-    <p class="mt-2 text-sm text-slate-600">
-      The synthesizing argument. Six era chapters with a Prologue, a Comparative
-      Atlas, and a Conclusion — {num.format(partIWords)} words.
-    </p>
-    {partISubgroups(works.get('Schools of the Republic v1.3') ?? []).map((sub) => (
-      <div class="mt-6">
-        <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500">{sub.heading}</h3>
-        <ol class="mt-2 space-y-2">
-          {sub.entries.map((entry) => (
-            <li class="flex flex-wrap items-baseline gap-x-2">
-              <span class="tabular-nums text-slate-500">{entry.data.order}.</span>
-              <a
-                href={`/reading/${routeSlug(entry)}/`}
-                class="font-medium text-blue-700 underline"
-              >
-                {entry.data.title}
-              </a>
-              <span class="text-slate-500">— {num.format(entry.data.wordCount)} words</span>
-            </li>
-          ))}
-        </ol>
+  <section class="reading-room mt-8">
+    <h2>Books</h2>
+
+    <article class="reading-card">
+      <div class="cover">
+        <img
+          src="/img/covers/schools-of-the-republic-cover.jpg"
+          alt="Schools of the Republic cover"
+          onerror="this.style.display='none'; this.parentElement.classList.add('plss-pattern')"
+        />
       </div>
-    ))}
-  </section>
+      <div class="meta">
+        <span class="eyebrow">Encyclopedia · 50 states</span>
+        <h2>Schools of the Republic</h2>
+        <div class="byline">Dave Sullivan and Margaret Bird · 2025 · Substrate v1.3</div>
+        <p class="abstract">
+          A fifty-state encyclopedia of America's school trust lands and funds. Part I: nine
+          chapters tracing the compact from 1785 to the present. Part II: a per-state entry
+          for every state, regrouped by era cohort with admission dates.
+        </p>
+        <details class="toc">
+          <summary>Annotated table of contents</summary>
+          <ol>
+            <li>
+              <strong>Part I — The Republic Builds.</strong> Nine chapters on the 1785 Land
+              Ordinance, the Northwest Ordinance, the school clause, the PERS backdrop, the
+              constitutional compact, doubled grants, and the drift.
+            </li>
+            <li>
+              <strong>Part II — Fifty States.</strong> Per-state entries with constitutional
+              architecture, admission-act provisions, permanent fund corpus, federal grant
+              acreage, and current trust-integrity status.
+            </li>
+          </ol>
+        </details>
+        <a href="/reading/schools-of-the-republic/" class="cta">Read the encyclopedia</a>
+      </div>
+    </article>
 
-  <section class="mt-12">
-    <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
-      The Sacred Compact
-    </h2>
-    <p class="mt-2 text-sm text-slate-600">
-      Sullivan and Bird's white paper v5.0 — {num.format(sacredWords)} words across eight sections. <a href="/reading/sacred-compact/" class="text-blue-700 underline hover:text-blue-900">Section overview →</a>
-    </p>
-    <ol class="mt-4 space-y-2">
-      {(works.get('Sacred Compact white paper v5.0') ?? []).map((entry) => (
-        <li class="flex flex-wrap items-baseline gap-x-2">
-          <a
-            href={`/reading/${entry.slug}/`}
-            class="font-medium text-blue-700 underline"
-          >
-            {entry.data.title.replace(/^Sacred Compact: /, '')}
-          </a>
-          <span class="text-slate-500">— {num.format(entry.data.wordCount)} words</span>
-        </li>
-      ))}
-    </ol>
-  </section>
+    <article class="reading-card">
+      <div class="cover">
+        <img
+          src="/img/covers/sacred-compact-cover.jpg"
+          alt="Sacred Compact cover"
+          onerror="this.style.display='none'; this.parentElement.classList.add('plss-pattern')"
+        />
+      </div>
+      <div class="meta">
+        <span class="eyebrow">White paper · 70 pages</span>
+        <h2>The Sacred Compact</h2>
+        <div class="byline">
+          Dave Sullivan and Margaret Bird · v5.0 (May 2026) · 207 footnotes
+        </div>
+        <p class="abstract">
+          A fiduciary-architecture analysis of America's school trust lands and funds. The
+          1785 land ordinance as the assumed floor; the trust as covenant; the drift from
+          compact to commodity; calling the state to account, both individual and
+          institutional.
+        </p>
+        <details class="toc">
+          <summary>Annotated table of contents</summary>
+          <ol>
+            <li>The compact, 1785–1789.</li>
+            <li>The trust mechanism: corpus, beneficiary, fiduciary.</li>
+            <li>Admission-era doublings and the school clause.</li>
+            <li>The drift — what fiduciary breach looks like in practice.</li>
+            <li>State accountability: individual and institutional.</li>
+            <li>Recovery: the path forward through litigation, transparency, and reform.</li>
+            <li>Anchor: a forever gift to forever schools for a forever democracy.</li>
+            <li>Conclusion: the public ledger of America's school trusts.</li>
+          </ol>
+        </details>
+        <a href="/reading/sacred-compact-1/" class="cta">Read the paper</a>
+      </div>
+    </article>
 
-  <section class="mt-12">
-    <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
-      Vision
-    </h2>
-    <ol class="mt-4 space-y-2">
-      {(works.get('Vision v2') ?? []).map((entry) => (
-        <li>
-          <div class="flex flex-wrap items-baseline gap-x-2">
+    <article class="reading-card">
+      <div class="cover">
+        <img
+          src="/img/covers/eighth-anchor-cover.jpg"
+          alt="The Eighth Anchor cover"
+          onerror="this.style.display='none'; this.parentElement.classList.add('plss-pattern')"
+        />
+      </div>
+      <div class="meta">
+        <span class="eyebrow">Vision essay · 9 pages</span>
+        <h2>The Eighth Anchor</h2>
+        <div class="byline">Dave Sullivan · v2 · May 2026</div>
+        <p class="abstract">
+          A pitch for ASTL's strategic next move: a parcel-level public ledger of America's
+          school trust lands. Naming the gap between current accounting practice and what
+          fiduciary integrity actually requires, and proposing a one-state prototype to
+          demonstrate what's possible.
+        </p>
+        <details class="toc">
+          <summary>Annotated table of contents</summary>
+          <ol>
+            <li>The seven existing anchors of public-trust accountability.</li>
+            <li>The eighth anchor: parcel-level public visibility.</li>
+            <li>Why now: AI-assisted development changes the cost equation.</li>
+            <li>Phase 0: $100K Oregon prototype, 3-4 months.</li>
+            <li>Phase 1: scale and the operational math.</li>
+          </ol>
+        </details>
+        <a href="/reading/the-eighth-anchor/" class="cta">Read the essay</a>
+      </div>
+    </article>
+
+    <h2>Bibliography</h2>
+    <p class="kicker">Foundational works for understanding America's school trusts.</p>
+
+    <article class="reading-card">
+      <div class="cover">
+        <div class="plss-pattern"></div>
+      </div>
+      <div class="meta">
+        <span class="eyebrow">Foundational · 1911</span>
+        <h2>History of Public Permanent Common School Funds in the United States, 1795–1905</h2>
+        <div class="byline">Fletcher Harper Swift · Columbia University · 1911</div>
+        <p class="abstract">
+          The seminal academic study of America's school trust funds. Comprehensive
+          state-by-state accounting of permanent common school funds from inception through
+          1905. Public domain. The standard reference; no comprehensive successor work has
+          been published since.
+        </p>
+        <details class="toc">
+          <summary>Read the source</summary>
+          <p>
+            Full text being added to the library at
+            <a href="/reading/sources/swift-1911/">/reading/sources/swift-1911/</a> (Handoff
+            2). Original on
+            <a href="https://archive.org/" target="_blank" rel="noopener">Internet Archive</a>.
+          </p>
+        </details>
+        <a href="/reading/sources/swift-1911/" class="cta">Read it (in development)</a>
+      </div>
+    </article>
+
+    <article class="reading-card">
+      <div class="cover">
+        <div class="plss-pattern"></div>
+      </div>
+      <div class="meta">
+        <span class="eyebrow">Foundational · 2018</span>
+        <h2>Hawk thesis on Oregon school trust lands</h2>
+        <div class="byline">Hawk · 2018</div>
+        <p class="abstract">
+          An exhaustive analysis of Oregon's school trust lands. Foundational reference for
+          the Oregon-specific case material in this library. Full citation and bibliographic
+          detail to follow.
+        </p>
+        <details class="toc">
+          <summary>Read the source</summary>
+          <p>
+            Full text being added to the library at
+            <a href="/reading/sources/hawk-2018/">/reading/sources/hawk-2018/</a> (Handoff
+            2). Original PDF in the project's primary-sources substrate.
+          </p>
+        </details>
+        <a href="/reading/sources/hawk-2018/" class="cta">Read it (in development)</a>
+      </div>
+    </article>
+
+    <article class="reading-card">
+      <div class="cover">
+        <div class="plss-pattern"></div>
+      </div>
+      <div class="meta">
+        <span class="eyebrow">Investigative · 1908</span>
+        <h2>Looters of the Public Domain</h2>
+        <div class="byline">S.A.D. Puter and Horace Stevens · 1908</div>
+        <p class="abstract">
+          Contemporaneous account of the Oregon land-fraud trials of the early 1900s.
+          Primary-source material on the Mitchell trial and the broader pattern of
+          public-land grift in the West. Public domain. Available on Internet Archive.
+        </p>
+        <details class="toc">
+          <summary>External source</summary>
+          <p>
+            Full text on
             <a
-              href={`/reading/${entry.slug}/`}
-              class="font-medium text-blue-700 underline"
-            >
-              {entry.data.title}
-            </a>
-            <span class="text-slate-500">— {num.format(entry.data.wordCount)} words</span>
-          </div>
-          {entry.data.audience && (
-            <p class="mt-0.5 text-xs text-slate-500">(For {entry.data.audience}.)</p>
-          )}
-        </li>
-      ))}
-    </ol>
-  </section>
+              href="https://archive.org/details/lootersofpublicd00puteuoft"
+              target="_blank"
+              rel="noopener"
+              >Internet Archive</a
+            >.
+          </p>
+        </details>
+        <a
+          href="https://archive.org/details/lootersofpublicd00puteuoft"
+          target="_blank"
+          rel="noopener"
+          class="cta">Read on Internet Archive →</a
+        >
+      </div>
+    </article>
 
-  <section class="mt-12">
-    <h2 class="border-b border-slate-300 pb-2 text-2xl font-semibold tracking-tight">
-      Per-state encyclopedia (50 states)
-    </h2>
-    <p class="mt-2 text-sm text-slate-600">
-      Each state's school-trust history at <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">/reading/us-XX/</code>.
-      Browse via the <a href="/states/" class="text-blue-700 underline hover:text-blue-900">all-states index</a>
-      {' '}or the <a href="/atlas/" class="text-blue-700 underline hover:text-blue-900">interactive map</a>.
+    <article class="reading-card">
+      <div class="cover">
+        <div class="plss-pattern"></div>
+      </div>
+      <div class="meta">
+        <span class="eyebrow">Academic · 2014</span>
+        <h2>Closing the Book on the School Trust Lands</h2>
+        <div class="byline">Heidelberg · National Agricultural Law Center · 2014</div>
+        <p class="abstract">
+          Recent academic analysis of state-level school trust lands accounting and reform
+          pathways. Cites Swift 1911 as the seminal reference and updates with 21st-century
+          data.
+        </p>
+        <details class="toc">
+          <summary>External source</summary>
+          <p>
+            <a
+              href="https://nationalaglawcenter.org/wp-content/uploads/assets/bibarticles/heidelberg_trust.pdf"
+              target="_blank"
+              rel="noopener"
+              >National Agricultural Law Center</a
+            >.
+          </p>
+        </details>
+        <a
+          href="https://nationalaglawcenter.org/wp-content/uploads/assets/bibarticles/heidelberg_trust.pdf"
+          target="_blank"
+          rel="noopener"
+          class="cta">Read the paper →</a
+        >
+      </div>
+    </article>
+
+    <p class="kicker" style="margin-top: 2rem;">
+      More titles being added in upcoming months. If you know of a book or paper that
+      belongs in this bibliography, suggest it via
+      <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia/issues"
+        >GitHub issues</a
+      >.
     </p>
   </section>
 </RoomLayout>
