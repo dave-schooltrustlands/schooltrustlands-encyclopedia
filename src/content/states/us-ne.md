@@ -91,6 +91,110 @@ Nebraska's school-trust story is, then, the project's example of moderate paper 
   <p class="attribution">© Advocates for School Trust Lands. Reproduced and lightly edited for the library by permission of the parent organization. Original at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/nebraska">schooltrustlands.org</a>.</p>
 </section>
 
+<section id="lb1072-faq" class="state-appendix">
+  <span class="eyebrow">Appendix · 2026 legislative session</span>
+  <h2>Nebraska LB1072 — FAQ</h2>
+  <p class="byline">From <a href="https://www.schooltrustlands.org/ne-faq" target="_blank" rel="noopener">Advocates for School Trust Lands</a>. The bill: a proposed $40 million transfer from the Permanent School Fund. The FAQ: 8 questions on what's at stake.</p>
+  <p class="cross-link">See also: <a href="/voices/the-seed-corn-crisis/">Voices — The Seed Corn Crisis (Tonia Day, March 23, 2026)</a> for the editorial framing of LB1072 in the context of the 1897 Sheldon Act and Arizona's Prop 123 cautionary tale.</p>
+
+  <details class="faq-q" open>
+    <summary>1. What exactly is the Permanent School Fund?</summary>
+    <p>The Permanent School Fund is Nebraska's oldest and largest educational endowment. It was created at statehood in 1867 when the federal government granted 2.8 million acres of land to Nebraska for the sole benefit of public schools. Today, 1.25 million acres remain.</p>
+    <p>This is not a "pot of money." It is a constitutional trust — a perpetual engine designed to support public schools forever.</p>
+    <p>The trust grows through:</p>
+    <ul>
+      <li>Land leases</li>
+      <li>Mineral and energy revenues</li>
+      <li>Investment earnings</li>
+    </ul>
+    <p>The principal must remain intact, and the earnings help fund Nebraska's K-12 system every year.</p>
+  </details>
+
+  <details class="faq-q">
+    <summary>2. Why is ASTL opposing the $40 million transfer in LB1072?</summary>
+    <p>Because the sweep treats trust earnings as if they were "extra." They're not. In trust law, interest is the engine of growth.</p>
+    <p>Sweeping $40M of accumulated earnings to cover a one-year budget gap:</p>
+    <ul>
+      <li>Reduces long-term fund growth</li>
+      <li>Shrinks future distributions to schools</li>
+      <li>Violates the trust's purpose</li>
+      <li>Sets a dangerous precedent</li>
+    </ul>
+    <p>This is the equivalent of raiding your retirement account to pay this month's bills. It solves a short-term problem but creates a much bigger one down the road.</p>
+  </details>
+
+  <details class="faq-q">
+    <summary>3. The $40M is still going to education. Why does it matter which fund it's in?</summary>
+    <p>Because the two funds are not the same.</p>
+    <p><strong>Permanent School Fund:</strong></p>
+    <ul>
+      <li>Constitutionally protected</li>
+      <li>Principal must remain intact</li>
+      <li>Earnings support schools forever</li>
+      <li>Cannot be spent down</li>
+    </ul>
+    <p><strong>Education Future Fund:</strong></p>
+    <ul>
+      <li>Created by statute</li>
+      <li>Can be spent down to zero</li>
+      <li>No constitutional protections</li>
+      <li>Subject to future political decisions</li>
+    </ul>
+    <p>Moving money from a protected trust to a spendable account is not neutral — it is a permanent loss of long-term value.</p>
+  </details>
+
+  <details class="faq-q">
+    <summary>4. The state has a $646 million deficit. Isn't this just common sense budgeting?</summary>
+    <p>No, real fiscal conservatism means protecting assets, not liquidating them. Using a perpetual endowment to cover an operating deficit is like a family selling its retirement fund to pay the electric bill. It works once, but it creates a long-term hole that is far more expensive to fill.</p>
+    <p>And Nebraska has a real-world warning to look at: Arizona Prop 123.</p>
+  </details>
+
+  <details class="faq-q">
+    <summary>5. What does Arizona's Prop 123 have to do with Nebraska?</summary>
+    <p>Everything. A decade ago, Arizona raised its trust distribution rate to 6.9% to solve a short-term budget problem. It was sold as a temporary fix.</p>
+    <p>Today, as Prop 123 sunsets:</p>
+    <ul>
+      <li>Arizona's Permanent Fund is $1.4 billion smaller than it should be</li>
+      <li>Schools face a $285 million annual shortfall</li>
+      <li>The state budget is in crisis</li>
+      <li>Lawmakers are gridlocked</li>
+    </ul>
+    <p>Arizona is now trapped between a weakened trust and a massive structural deficit. Nebraska is on the same path if LB1072 passes. Short-term fixes create long-term crises.</p>
+  </details>
+
+  <details class="faq-q">
+    <summary>6. Is this sweep even legal?</summary>
+    <p>There is significant doubt.</p>
+    <p><strong>Nebraska Constitution:</strong></p>
+    <ul>
+      <li>Article VII, Section 7: The fund "shall be perpetual."</li>
+      <li>Article VII, Section 8: Funds "shall not be transferred to any other fund for other uses."</li>
+    </ul>
+    <p>The 2007 Attorney General Opinion warned that diverting trust earnings violates the state's fiduciary obligations.</p>
+    <p>Proceeding with LB1072 invites costly litigation that Nebraska is positioned to lose. Advocates for School Trust Lands recently won a unanimous appellate ruling in Oregon and will consider acting in Nebraska if needed.</p>
+  </details>
+
+  <details class="faq-q">
+    <summary>7. Who are the beneficiaries of this trust?</summary>
+    <p>The beneficiaries are Nebraska's schoolchildren — not just the students in classrooms today, but those who will enter kindergarten in the future.</p>
+    <p>A trust is a promise across generations. Our job is to protect the fund, so our children and grandchildren inherit the same educational foundation we did.</p>
+  </details>
+
+  <details class="faq-q">
+    <summary>8. What can Nebraskans do?</summary>
+    <ul>
+      <li><a href="https://nebraskalegislature.gov/senators/senator_find.php" target="_blank" rel="noopener">Contact your state senator</a></li>
+      <li>Share this FAQ with your community</li>
+      <li>Follow <a href="https://www.schooltrustlands.org/" target="_blank" rel="noopener">ASTL</a> for updates</li>
+      <li>Support organizations defending trust integrity</li>
+      <li>Learn how to build a grass-roots Nebraska-led coalition at the upcoming <a href="https://www.schooltrustlands.org/" target="_blank" rel="noopener">ASTL conference</a></li>
+    </ul>
+    <p>Protecting the Permanent School Fund is not a partisan issue. It is a matter of constitutional duty, fiscal responsibility, and intergenerational fairness.</p>
+  </details>
+
+  <p class="attribution">© Advocates for School Trust Lands. Reproduced for the library by permission of the parent organization. Original at <a href="https://www.schooltrustlands.org/ne-faq" target="_blank" rel="noopener">schooltrustlands.org/ne-faq</a>.</p>
+</section>
+
 ## Footnotes
 
 [^ne-1]: Nebraska Enabling Act, Act of Apr. 19, 1864, ch. 59, 13 Stat. 47, https://www.govinfo.gov/content/pkg/STATUTE-13/pdf/STATUTE-13-Pg47-2.pdf.

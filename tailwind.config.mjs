@@ -41,6 +41,15 @@ export default {
     'astl-field-block',
     'attribution',
     'see-also',
+    'voices-article',
+    'voices-card',
+    'cta-box',
+    'dek',
+    'source-page',
+    'provisional-note',
+    'state-appendix',
+    'cross-link',
+    'faq-q',
   ],
   theme: {
     extend: {

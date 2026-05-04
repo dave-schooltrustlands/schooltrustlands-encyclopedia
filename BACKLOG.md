@@ -12,11 +12,6 @@ Open work captured during the May 2026 site rebuild. Items below were either def
 
 - `/oastl/` route — referenced from `/about/`. Build out as state-affiliate landing once OASTL Google Site content is migrated.
 
-### Bibliography source pages
-
-- `/reading/sources/swift-1911/` — full text of Fletcher Harper Swift, *History of Public Permanent Common School Funds, 1795–1905*. Linked from the Reading Room bibliography card with "Read it (in development)" CTA. Extract from Internet Archive or substrate.
-- `/reading/sources/hawk-2018/` — Hawk thesis on Oregon school trust lands. Linked from the Reading Room bibliography card. Extract from project's primary-sources substrate.
-
 ### Reading Room CTA targets
 
 - `/reading/schools-of-the-republic/` — encyclopedia book landing page. Reading Room Books card CTA points here; currently 404. Build a landing that surfaces the Part I ToC and links into the existing `/reading/00-prologue/` … `/reading/08-conclusion/` chapter URLs.
@@ -66,3 +61,15 @@ The 18 merged state pages (AK, AZ, CA, CO, ID, MN, MS, MT, NE, NV, NM, ND, OK, S
 ## State dossier imagery (Visual Rebuild Tier 2)
 
 Original Visual Rebuild Handoff Tier 2 imagery for Oregon, Utah, Mississippi remains pending — see "Image acquisition" above for current status. The `.dossier-card` and `.dossier-image` primitives stay ready in global CSS.
+
+## Hawk citation confirmation
+
+Awaiting Dave's email dig for primary library record of the Hawk thesis. The 2018 PDF filename reflects the digitization date; the thesis itself is from June 1949 by Norman B. Hawk (best read of degraded title-page OCR). When Dave returns the confirmed citation, update `/reading/sources/hawk-2018/` to remove the provisional notice and tighten the citation. If author or date differ materially from the OCR read, redraw rather than patch.
+
+## Voices contribution pipeline
+
+Currently we mirror ASTL Voices articles by hand on a per-PR basis. If ASTL publishes more Voices articles in coming months, mirror them in batches. Long-term, consider an RSS-driven sync if ASTL's site exposes one.
+
+## NE LB1072 status check
+
+The LB1072 FAQ appendix on `/reading/us-ne/#lb1072-faq` and the related Voices piece (`/voices/the-seed-corn-crisis/`) are gated to the 2026 Nebraska session. After the session closes (June 2026), revisit: convert the FAQ to a historical record ("LB1072 was [passed / defeated / amended] on [date]; the FAQ below documents the trust-defense argument made during the session"), or archive depending on outcome.

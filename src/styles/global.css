@@ -250,6 +250,118 @@
     color: var(--deep-navy);
   }
 
+  /* 3a. Voices — signed editorial articles (Session 2C). */
+  .voices-article {
+    max-width: 65ch;
+    margin: 0 auto;
+  }
+  .voices-article .byline {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--ink);
+    opacity: 0.75;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .voices-article .attribution {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--ink);
+    opacity: 0.65;
+  }
+  .cta-box {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--linen-card);
+    border-left: 3px solid var(--old-gold);
+    border-radius: 4px;
+  }
+  .cta-box::before {
+    content: "Call to action";
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--old-gold);
+    margin-bottom: 0.5rem;
+  }
+  .voices-card {
+    margin: 1.5rem 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-radius: 4px;
+  }
+  .voices-card h3 { margin-top: 0.4rem; margin-bottom: 0.3rem; }
+  .voices-card h3 a { color: var(--deep-navy); text-decoration: none; }
+  .voices-card h3 a:hover { text-decoration: underline; }
+  .voices-card .byline {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.75;
+    margin: 0 0 0.6rem;
+  }
+  .voices-card .dek {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 60ch;
+  }
+
+  /* 3c. Source page — Reading Room source-page primitive (Session 2C). */
+  .source-page .provisional-note {
+    margin: 1rem 0 1.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(204, 153, 51, 0.08);
+    border-left: 3px solid var(--old-gold);
+    font-size: 0.9rem;
+    border-radius: 3px;
+  }
+
+  /* 3d. State appendix — in-page appendix block (Session 2C, NE LB1072 FAQ). */
+  .state-appendix {
+    margin-top: 3rem;
+    padding: 1.75rem 2rem;
+    background: var(--archive-paper);
+    border: 1px solid var(--rule-border);
+    border-radius: 6px;
+  }
+  .state-appendix .byline,
+  .state-appendix .cross-link {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    margin: 0 0 0.75rem;
+  }
+  .state-appendix .cross-link { opacity: 0.85; }
+  .state-appendix .attribution {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--ink);
+    opacity: 0.65;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border);
+  }
+  .faq-q {
+    margin: 0.75rem 0;
+    padding: 0.75rem 1rem;
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-radius: 4px;
+  }
+  .faq-q summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+  }
+  .faq-q[open] summary { margin-bottom: 0.6rem; }
+  .faq-q p { margin: 0.4rem 0; }
+
   /* 3b. ASTL field block — distinct visual voice for merged ASTL annotations. */
   .astl-field-block {
     margin-top: 3rem;
