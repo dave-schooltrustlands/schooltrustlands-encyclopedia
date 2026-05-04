@@ -2,13 +2,16 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+// Toggle this to true after Margaret's review and approval call.
+const margaretApproved = false;
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead
       title="About · America's School Trust Library"
-      description="America's School Trust Library is the evidentiary archive of America's school trust lands and funds. A project of Advocates for School Trust Lands (ASTL), a national 501(c)(3) nonprofit."
+      description="A joint project of Advocates for School Trust Lands (ASTL) and Oregon Advocates for School Trust Lands (OASTL)."
     />
   </head>
   <body class="min-h-screen bg-archive-paper text-ink" data-source-id="about-page">
@@ -22,12 +25,16 @@ import Footer from '../components/Footer.astro';
           America's School Trust Library is the evidentiary archive of America's school trust lands and funds. It exists to make the legal architecture, financial scale, and political accountability of these trusts visible — to journalists, lawyers, legislators, trustees, and citizens.
         </p>
 
-        <h2>A project of ASTL</h2>
+        <h2>A joint project</h2>
+        <p>The Library is a joint project of two affiliated 501(c)(3) nonprofits:</p>
         <p>
-          The Library is a project of <strong>Advocates for School Trust Lands (ASTL)</strong>, a national 501(c)(3) nonprofit advancing fiduciary integrity in America's school trust lands and funds. ASTL is the parent organization. The Library is its public-facing research resource and public ledger.
+          <strong>Advocates for School Trust Lands (ASTL)</strong> is the national organization, founded to advance fiduciary integrity in America's school trust lands and funds across all twenty land-grant states. ASTL's organizational page lives at <a href="https://schooltrustlands.org" target="_blank" rel="noopener">schooltrustlands.org</a>.
         </p>
         <p>
-          ASTL also has a state-level affiliate in Oregon — <strong>Oregon Advocates for School Trust Lands (OASTL)</strong> — which is the active plaintiff in Oregon's current trust-breach litigation. OASTL's organizational page lives at <a href="https://oastl.org">oastl.org</a>; OASTL-specific case material lives in this Library at <a href="/oastl/">/oastl/</a> (in development).
+          <strong>Oregon Advocates for School Trust Lands (OASTL)</strong> is ASTL's Oregon affiliate and the active plaintiff in Oregon's current trust-breach litigation, including the January 2026 Court of Appeals standing victory in <em>Advocates for School Trust Lands v. State of Oregon</em>. OASTL's organizational page lives at <a href="https://oastl.org" target="_blank" rel="noopener">oastl.org</a>.
+        </p>
+        <p>
+          The Library is the public-facing evidentiary archive both organizations rely on. ASTL contributes the national scope and per-state field reporting; OASTL contributes the Oregon case docket, primary sources, and the working-test-case analysis that makes the architecture concrete. The two voices stay audible in the Reading Room — encyclopedia entries are the long, footnoted history; ASTL's per-state notes appear as the field annotation; OASTL substrate appears at <a href="/court/oregon-current-case/">/court/oregon-current-case/</a>, <a href="/reading/us-or/history/">/reading/us-or/history/</a>, and <a href="/reading/us-or/research/">/reading/us-or/research/</a>.
         </p>
 
         <h2>Substrate and method</h2>
@@ -40,20 +47,31 @@ import Footer from '../components/Footer.astro';
 
         <h2>Team</h2>
         <ul>
-          <li>Dave Sullivan — CEO, retired professor, lead OASTL plaintiff in Oregon's trust-breach litigation.</li>
-          <li>Margaret Bird — co-author, national domain authority on school trust lands.</li>
-          <li>Daniel Zene Crowe — OASTL General Counsel, lead on the 2024 Oregon case.</li>
-          <li>Natalie Scott — lead on the 2023 Oregon case (January 2026 Court of Appeals standing victory).</li>
-          <li>Laura — legal research bridge.</li>
+          <li><strong>Dave Sullivan</strong> — President, Oregon Advocates for School Trust Lands; retired professor; lead OASTL plaintiff in Oregon's trust-breach litigation.</li>
+          <li><strong>Margaret Bird</strong> — President, Advocates for School Trust Lands; national domain authority on school trust lands; co-author of the encyclopedia.</li>
+          <li><strong>Daniel Zene Crowe</strong> — OASTL General Counsel; lead on the 2024 Oregon case (Coos County 24CV38372).</li>
+          <li><strong>Natalie Scott</strong> — Lead on the 2023 Oregon case; argued the January 2026 Court of Appeals standing victory.</li>
+          <li><strong>Laura</strong> — Legal research bridge across both cases.</li>
         </ul>
 
         <h2>Contact and corrections</h2>
         <p>
-          For corrections, source additions, or story tips: <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia/issues">GitHub issues</a> or email contact via the parent organization at <a href="https://schooltrustlands.org">schooltrustlands.org</a>.
+          For corrections, source additions, or story tips: <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia/issues">GitHub issues</a>. For organizational contact, see <a href="https://schooltrustlands.org">schooltrustlands.org</a> (ASTL) or <a href="https://oastl.org">oastl.org</a> (OASTL). Citation guidance: <a href="/about/cite/">/about/cite/</a>.
         </p>
-        <p>
-          Citation guidance: see <a href="/about/cite/">/about/cite/</a>.
-        </p>
+
+        <hr class="archival-divider">
+
+        <section class={`signature-block ${margaretApproved ? 'approved' : 'pending'}`}>
+          <p class="signature-margaret">
+            <span class="name">Margaret Bird</span><br>
+            <span class="role">President, Advocates for School Trust Lands</span>
+            {!margaretApproved && <span class="pending-note"><em>Pending review and sign-off.</em></span>}
+          </p>
+          <p class="signature-dave">
+            <span class="name">Dave Sullivan</span><br>
+            <span class="role">President, Oregon Advocates for School Trust Lands</span>
+          </p>
+        </section>
       </article>
     </main>
     <Footer />

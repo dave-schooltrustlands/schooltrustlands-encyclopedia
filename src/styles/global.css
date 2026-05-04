@@ -615,6 +615,41 @@
       margin: 0 auto;
     }
   }
+
+  /* About-page joint signature block (ASTL + OASTL). Margaret's half is
+     dimmed until margaretApproved flips true in src/pages/about.astro. */
+  .signature-block {
+    margin: 2.5rem 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    font-family: var(--font-serif);
+  }
+  .signature-block p { margin: 0; }
+  .signature-block .name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+  }
+  .signature-block .role {
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  .signature-block .pending-note {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-top: 0.4rem;
+  }
+  .signature-block.pending .signature-margaret { opacity: 0.55; }
+  .signature-block.approved .signature-margaret { opacity: 1; }
+
+  @media (max-width: 600px) {
+    .signature-block { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
 }
 
 /* ---------------------------------------------------------------------
