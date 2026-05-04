@@ -14,6 +14,10 @@ permanentFundCorpus:
 latestDistribution:
   value: 175000000
   fiscalYear: null
+trustAcresRemaining: 2682861
+trustAcresRemainingConfidence: verified
+trustAcresRemainingAsOf: "FY 2024"
+trustAcresRemainingSource: "ASTL Colorado School Trust Lands and Fund (Tonia Day, FY 2024) and Colorado State Land Board, FY 2024-25 Income and Inventory Report. From the original 3.7M-acre 1876 grant, 2,682,861 surface acres remain (plus ~3.9M mineral acres)."
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---
@@ -87,7 +91,7 @@ The second channel is Building Excellent Schools Today, the BEST program, create
 
 The structural reservoir is the Stewardship Trust. As of the most recent State Land Board reporting, the Stewardship Trust contains 107 parcels totaling 296,647 acres — within the 295,000-to-300,000-acre constitutional band.[^co-41] The Board reviews designations every five years; if a parcel is removed (often through sale to a public entity such as a National Park), it must be replaced with acreage of equal or greater value. The 2017 Performance Audit alleged that the Land Board had failed to create management plans for some Stewardship Trust properties and lacked consistent appraisal processes — a finding that suggests stewardship has sometimes been more rhetorical than operational — but the structural envelope of the Stewardship Trust has held since 1996.[^co-42]
 
-The current scale of the Colorado school-trust portfolio is substantial. The State Land Board manages approximately 2,682,861 acres of common school surface estate and 3,894,936 acres of common school mineral estate, with the broader trust portfolio (including institutional trusts for the university, penitentiary, public buildings, and other named beneficiaries from the 1875 Enabling Act) bringing the totals to roughly 2.8 million surface and 4.0 million subsurface acres.[^co-43] In fiscal year 2024-25, total school trust gross revenue was $314,409,131, with mineral revenue contributing $215,771,652, surface and commercial revenue $41,246,543, and Permanent Fund interest income $57,390,936.[^co-44] Mineral revenue, specifically oil and gas royalties, has contributed approximately seventy-eight percent of total trust revenue over the last decade, totaling $1.5 billion.[^co-45] The dependency cuts both ways. It funded the modern fund's growth, and it also makes the trust acutely sensitive to energy market cycles: natural gas royalties fell forty-five percent in fiscal year 2023-24 due to market pricing, even as oil royalties remained steady at $140.5 million.[^co-46]
+The current scale of the Colorado school-trust portfolio is substantial. The State Land Board manages approximately 2,682,861 acres of common school surface estate and 3,894,936 acres of common school mineral estate, with the broader trust portfolio (including institutional trusts for the university, penitentiary, public buildings, and other named beneficiaries from the 1875 Enabling Act) bringing the totals to roughly 2.8 million surface and 4.0 million subsurface acres.[^co-43] In fiscal year 2024-25, total school trust gross revenue was $314,409,131, with mineral revenue contributing $215,771,652, surface and commercial revenue $41,246,543, and Permanent Fund interest income $57,390,936.[^co-44] Mineral revenue, specifically oil and gas royalties, has contributed approximately seventy-eight percent of total trust revenue over the last decade, totaling $1.5 billion.[^co-45] The dependency cuts both ways. It funded the modern fund's growth, and it also makes the trust acutely sensitive to energy market cycles: natural gas royalties fell forty-five percent in fiscal year 2023-24 due to market pricing, even as oil royalties remained steady at $140.5 million.[^co-46] Operating efficiency has, by national comparison, been a quiet bright spot: in FY 2024 the Land Board's management costs ran to roughly three percent of revenues earned, among the lowest of all school-trust-land states.[^co-46a] Two FY 2024 numbers from the field deserve to sit on the page next to the recovery story. Renewable-energy leases on trust lands generated approximately 550 megawatts of power; and the legislature transferred more than 8,500 additional acres of school trust lands into the state parks system, even as Colorado Parks and Wildlife continued to lease about 49,000 acres at an average of roughly $1.20 per acre — a rate so far below market that observers reasonably ask whether Colorado's schoolchildren are subsidizing the state's recreation portfolio.[^co-46a] The Land Board itself articulates the discipline that the rate disparity tests: as Field Operations Supervisor William Woolston has put it, "Grazing leases are a huge part of land stewardship for us. Grazing improves the land over time if you do it right. We expect lessees to maintain the long-term quality of trust lands because our agency needs to earn money not only for today's students, but also for future generations of children."[^co-46a]
 
 ## Open questions
 
@@ -105,41 +109,6 @@ That is the shape of the recovery. What it does not erase is the disposal-era lo
 </blockquote>
 
 ---
-
-<section class="astl-field-block">
-  <span class="eyebrow">From the field</span>
-  <h2>Notes from Advocates for School Trust Lands</h2>
-  <p class="byline">By <strong>Tonia Day</strong>, Advocates for School Trust Lands · originally published at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/colorado">schooltrustlands.org</a> (data as of June 30, 2024)</p>
-
-  <p>On August 1, 1876, Congress granted school and institutional lands in trust in exchange for Colorado agreeing to never tax the federal lands within its borders. Sections 16 and 36 in each six-mile-square township were set aside to support schools. Schools received 3.7 million acres and now hold almost 3 million surface acres and almost 4 million mineral acres. [ASTL-1]</p>
-
-  <p>These school trust lands were managed in FY2024 by Director Bill Ryan, under the direction of the five-member Colorado State Land Board. The Colorado Land Board is non-partisan and includes five citizen volunteers in education, agriculture, local government, natural resources, and an at-large position appointed by the governor. The board pledges its fiduciary duty: "The State Land Board, as the trustee, has a legal and ethical obligation to act solely in the best interest of our beneficiaries." The main office is at 1127 Sherman Street, Suite 300, Denver 80203 (slb.colorado.gov). In FY2024, management costs were approximately 3% of revenues earned — among the lowest of all the school trust land states.</p>
-
-  <p>The largest revenue sources are oil, gas, and minerals; grazing and agriculture; and renewable-energy commercial leases. In FY 2024, gross revenue on school lands topped all records at $282 million. The higher-than-anticipated revenue is largely a result of oil and gas leasing and royalty revenue. During this fiscal year an additional three miles of horizontal pipe were constructed for mineral extraction. Grazing and agriculture leases covered 96% of the land. The land office is making a strategic effort to diversify revenue opportunities with renewable leasing sources.</p>
-
-  <p>Colorado's first wind turbine was on trust land. Renewable energy on trust lands generated 550 megawatts of power. In FY2024, thanks to the legislature, over 8,500 additional acres of school trust lands became state parks. Colorado Parks and Wildlife lease over 49,000 acres averaging $1.20 per acre — a low rate that may make some wonder if the schools and children of Colorado are subsidizing parks for the state.</p>
-
-  <blockquote>
-    <p>"Grazing leases are a huge part of land stewardship for us. Grazing improves the land over time if you do it right. We expect lessees to maintain the long-term quality of trust lands because our agency needs to earn money not only for today's students, but also for future generations of children."</p>
-    <p>— William Woolston, Field Operations Supervisor</p>
-  </blockquote>
-
-  <p>Colorado's Constitution created the Stewardship Trust, a special management designation for approximately 10% of school trust lands. Even with this designation, the school lands are used as working land. The stewardship tools enable the land office to protect resources for the long-term benefit of beneficiaries while continuing to generate revenue in the short term.</p>
-
-  <p>The Public School Trust Fund is managed by the elected State Treasurer and the Permanent Fund Investment Board (PFIB), created in 2016 "to ensure reasonable growth of the endowment." Intergenerational trusts, like the Colorado School Trust, are to balance the benefits between the current generation and future generations. However, Colorado's current statutory distribution policies, set by the legislature, advantage almost exclusively the current beneficiaries at the expense of future generations. Non-renewable resources can only be produced once. Current schools are robbing future schools. The 2024 legislative session took initial steps to enhance distribution through investments in equities, which will expand earnings from the Permanent Public School Fund.</p>
-
-  <p>This year, $96 million was reinvested into the Permanent Fund. However, last fiscal year nothing was deposited. Interest earnings in FY2022 were a record high of more than $33 million — peanuts compared to what they would have been had all proceeds been invested in the Public School Permanent Fund.</p>
-
-  <p>The school trust has been the largest funding source for the B.E.S.T. program since it was created in 2008. The school trust has distributed more than $1 billion to B.E.S.T., which awards competitive capital-construction grants to school districts to build new school buildings (30%), repair roofs (30%), or enhance existing school structures (40%). $144 million was distributed to B.E.S.T. in each of the last two years. Other states deposit all net revenue and grow the pot through investing; Colorado spends most of theirs on B.E.S.T. and the Department of Education, which is not even a beneficiary. While Utah's school fund has grown to $4 billion, Wyoming's to $5 billion, North Dakota's and Arizona's each to $7 billion, New Mexico's to $28 billion, and Texas's to $57 billion — Colorado has spent most of every year's trust income on current school needs. Fiduciary duty requires current trustees to balance the distributions between current and future beneficiaries. Current trustees are not measuring and balancing as required by standard best practices for trustees.</p>
-
-  <p>The Public School Permanent Fund is invested along with the other institutional trusts created at statehood for the University of Colorado, Colorado State University, Fort Lewis College, parks, corrections, and public buildings. The school fund constitutes 99% of the combined fund. Unlike other state sovereign-wealth funds, Colorado's Permanent Fund Investment Board does not publish the 5-year time-weighted return net of fees that other endowments do.</p>
-
-  <p>Other states with similar enabling-act language invest all the annual net revenue from school lands into the permanent school fund and generally experience ever-rising distributions to their schools while balancing the intergenerational aspects of their trust. Tragically, Colorado is eating its seed corn.</p>
-
-  <p style="font-size: 0.85rem; opacity: 0.75;">[ASTL-1] For data, see slb.colorado.gov under About Us, then under Beneficiaries.</p>
-
-  <p class="attribution">© Advocates for School Trust Lands. Reproduced and lightly edited for the library by permission of the parent organization. Original at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/colorado">schooltrustlands.org</a>.</p>
-</section>
 
 ## Footnotes
 
@@ -240,3 +209,5 @@ That is the shape of the recovery. What it does not erase is the disposal-era lo
 [^co-48]: *Id.* (2023 working group recommendations convened by State Treasurer Dave Young).
 
 [^co-49]: Jason Blevins, "State Land Board may get room to weigh conservation, recreation," The Colorado Sun (May 14, 2025), https://coloradosun.com/2025/05/14/state-land-board-legislation/.
+
+[^co-46a]: Advocates for School Trust Lands, *Colorado School Trust Lands and Fund* (Tonia Day, FY 2024), https://www.schooltrustlands.org/what-states-have-school-trust-lands/colorado (FY 2024 management costs ~3% of revenue; renewable-energy leases generating ~550 MW; ~8,500 acres of school trust lands transferred into the state parks system in FY 2024; Colorado Parks and Wildlife lease of ~49,000 acres at ~$1.20 per acre; William Woolston, Field Operations Supervisor, on grazing-lease stewardship).
