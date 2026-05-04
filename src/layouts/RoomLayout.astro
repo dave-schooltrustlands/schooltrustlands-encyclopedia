@@ -1,4 +1,5 @@
 ---
+import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -122,13 +123,10 @@ const mainClass =
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{resolvedTitle}</title>
+    <BaseHead title={resolvedTitle} />
   </head>
   <body
-    class="min-h-screen bg-slate-50 text-slate-900"
+    class="min-h-screen bg-archive-paper text-ink"
     data-source-id={sourceId}
     data-room={room}
     data-state={state?.iso}
@@ -157,7 +155,7 @@ const mainClass =
             const base =
               'inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm transition';
             const variant = isCurrent
-              ? 'bg-accent text-white'
+              ? 'bg-[var(--room-accent)] text-white'
               : isComing
                 ? 'cursor-not-allowed text-slate-400'
                 : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900';

@@ -1,44 +1,31 @@
 ---
-const today = new Date().toISOString().slice(0, 10);
-const slug = Astro.url.pathname.replace(/^\/+|\/+$/g, '') || '';
-const citePath = slug ? `/${slug}/` : '/';
+// Footer copy is installed verbatim from Visual Rebuild Handoff v0.
+// Do not paraphrase. The wording was synthesized; rewriting introduces
+// drift. Two outbound paths (/about/cite/, /court/oregon-current-case/)
+// are stubs at time of footer install — track in BACKLOG.
 ---
-<footer
-  data-pagefind-ignore
-  class="mt-16 border-t border-slate-200 bg-white"
->
-  <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-slate-600">
+<footer data-pagefind-ignore class="site-footer">
+  <div class="footer-credit">
     <p>
-      A project of the <strong>Advocates for School Trust Lands</strong>.
-      <em>Schools of the Republic</em> encyclopedia substrate v1.3 (May 2026).
-      Library architecture per Plan_v2.1.
+      <strong>Schools of the Republic</strong> is published by Oregon Advocates for
+      School Trust Lands, an affiliate of <a href="https://schooltrustlands.org">Advocates
+      for School Trust Lands</a>. OASTL is a 501(c)(3) nonprofit organization.
     </p>
-    <p class="mt-3">
-      Encyclopedia content licensed
-      <a
-        href="https://creativecommons.org/licenses/by/4.0/"
-        rel="license noopener"
-        class="text-blue-700 underline hover:text-blue-900"
-        >CC&nbsp;BY&nbsp;4.0</a
-      >; site code
-      <a
-        href="https://opensource.org/licenses/MIT"
-        rel="license noopener"
-        class="text-blue-700 underline hover:text-blue-900"
-        >MIT</a
-      >. Source on
-      <a
-        href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia"
-        rel="noopener"
-        class="text-blue-700 underline hover:text-blue-900"
-        >GitHub</a
-      >; issues and corrections welcome there.
+  </div>
+  <div class="footer-meta">
+    <p>
+      Encyclopedia substrate v1.3 · Sacred Compact v5.0 · Library architecture per
+      Plan_v2.1 · Site rebuilt May 2026.
     </p>
-    <p class="mt-3 text-slate-500">
-      <span class="font-semibold text-slate-700">Cite as:</span>
-      Sullivan and Bird, <em>Schools of the Republic</em> v1.3,
-      <span class="break-all">schooltrustlands.net{citePath}</span>, retrieved
-      {today}.
+    <p>
+      Content licensed CC BY-SA 4.0 except where noted. Citation guidance and corrections:
+      <a href="/about/cite/">/about/cite</a>. Source repository:
+      <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia">GitHub</a>.
+    </p>
+    <p>
+      Active litigation: <em>Advocates for School Trust Lands v. State of Oregon</em>,
+      Coos County Circuit Court 24CV38372, Oregon Court of Appeals (2026).
+      <a href="/court/oregon-current-case/">Case docket</a>.
     </p>
   </div>
 </footer>

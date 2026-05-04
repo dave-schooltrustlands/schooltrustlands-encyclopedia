@@ -6,11 +6,38 @@ import '../styles/global.css';
   class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur"
 >
   <div class="mx-auto flex max-w-5xl flex-wrap items-center gap-3 px-4 py-3 sm:gap-4">
-    <a
-      href="/"
-      class="mr-auto inline-flex min-h-[44px] items-center text-base font-semibold tracking-tight text-slate-900 hover:text-slate-700"
-    >
-      Schools of the Republic
+    <a href="/" class="site-wordmark mr-auto min-h-[44px]">
+      <svg
+        class="plss-mark"
+        viewBox="0 0 60 60"
+        aria-hidden="true"
+      >
+        <!--
+          6×6 township grid. Sections numbered boustrophedon-style starting
+          top-right; Section 16 is dead center (geographically correct).
+          Section 36 (lower-left) is highlighted at reduced opacity for
+          post-1848 states that received both Sections 16 and 36.
+        -->
+        <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.55">
+          <rect x="0" y="0" width="60" height="60"></rect>
+          <line x1="10" y1="0" x2="10" y2="60"></line>
+          <line x1="20" y1="0" x2="20" y2="60"></line>
+          <line x1="30" y1="0" x2="30" y2="60"></line>
+          <line x1="40" y1="0" x2="40" y2="60"></line>
+          <line x1="50" y1="0" x2="50" y2="60"></line>
+          <line x1="0" y1="10" x2="60" y2="10"></line>
+          <line x1="0" y1="20" x2="60" y2="20"></line>
+          <line x1="0" y1="30" x2="60" y2="30"></line>
+          <line x1="0" y1="40" x2="60" y2="40"></line>
+          <line x1="0" y1="50" x2="60" y2="50"></line>
+        </g>
+        <rect x="30" y="20" width="10" height="10" fill="var(--old-gold)" opacity="0.9"></rect>
+        <rect x="0" y="50" width="10" height="10" fill="var(--old-gold)" opacity="0.55"></rect>
+      </svg>
+      <span class="wordmark-text">
+        <strong>Schools of the Republic</strong>
+        <em>A public library of America's school trust lands</em>
+      </span>
     </a>
     <nav class="flex items-center gap-1 text-sm sm:gap-3">
       <a
