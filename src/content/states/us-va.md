@@ -16,12 +16,14 @@ lastReviewed: 2026-05-01
 
 *Admission #10 (June 25, 1788, by ratification of the U.S. Constitution). Era: Original 13. Draft: Pass 1 prototype, 2026-04-30.*
 
-Virginia received no federal school-land grant, and on a literal reading of the project's grant-state schema that ought to be the end of the story. It is not. Virginia is, in two structural respects, upstream of the federal school-trust template that every later admitted state would inherit. It is the state whose 1784 cession of northwestern land claims created the federal public domain that the Land Ordinance of 1785 then quartered into townships with section sixteen reserved for schools. And it is the state whose legislature, five years before that cession, received Thomas Jefferson's *Bill for the More General Diffusion of Knowledge* — the 1779 proposal that supplied the rhetorical taproot for state-supported public education in the new republic. The bill failed. Its argument did not. It carried into the 1785 Ordinance, into the 1787 Northwest Ordinance, and into the education clauses of nearly every state constitution that followed. Virginia, in other words, did not receive the federal template. Virginia produced the conditions out of which the federal template emerged.
+Virginia received no federal school-land grant, and on a literal reading of the project's grant-state schema that ought to be the end of the story. It is not. Virginia is, in two structural respects, upstream of the federal school-trust template that every later admitted state would inherit. It is the state whose 1784 cession of northwestern land claims created the federal public domain that the Land Ordinance of 1785 then quartered into townships with section sixteen reserved for schools. And it is the state whose legislature, five years before that cession, received Thomas Jefferson's *Bill for the More General Diffusion of Knowledge* — the 1779 proposal that supplied the rhetorical taproot for state-supported public education in the new republic. The bill failed. Its argument did not. It carried into the 1785 Ordinance, into the 1787 Northwest Ordinance, and into the education clauses of nearly every state constitution that followed.
 
 <blockquote class="pull-quote">
   <p>Virginia did not receive the federal template. Virginia produced the conditions out of which the federal template emerged.</p>
   <cite>Schools of the Republic v1.3, Virginia</cite>
-</blockquote> That posture — upstream contributor rather than downstream beneficiary — is what the Original 13 chapter of the project has to make legible, and Virginia is its clearest case.
+</blockquote>
+
+That posture — upstream contributor rather than downstream beneficiary — is what the Original 13 chapter of the project has to make legible, and Virginia is its clearest case.
 
 Virginia ratified the U.S. Constitution on June 25, 1788, the tenth state to do so, and entered the Union without an admission act. There is no federal compact to read for "in trust" language because there is no federal grant to which such language could attach. The Commonwealth's lands within its modern boundaries were never federal public lands; the section-16 reservation never ran against them. The school-land template applied to the federal domain carved out of the cessions of the Original states, and not back to the ceding states themselves. This is a structural fact about the Northwest Territory and its successors, not an oversight to be litigated; the project notes the absence of federal trust text honestly and looks instead to the state-derived architecture, which is where Virginia's school-fund story actually lives.[^va-1]
 
@@ -40,7 +42,9 @@ Virginia's own state-derived school-funding architecture took its operative form
 <blockquote class="pull-quote">
   <p><em>McGahey</em> is one of the rare instances in which the U.S. Supreme Court treated a state-derived school fund with the doctrinal seriousness ordinarily reserved for federal-grant trusts.</p>
   <cite>Schools of the Republic v1.3, Virginia</cite>
-</blockquote>[^va-9] *McGahey* is Virginia's strongest early school-fund-integrity case. It is also one of the rare instances in which the U.S. Supreme Court treated a state-derived school fund with the doctrinal seriousness ordinarily reserved for federal-grant trusts.
+</blockquote>
+
+*McGahey* is Virginia's strongest early school-fund-integrity case.[^va-9]
 
 ## Modern Article VIII
 

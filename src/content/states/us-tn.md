@@ -28,12 +28,14 @@ Even the college-and-academy tracts did not survive as a perpetual corpus. Over 
 
 ## The 1835 perpetual-fund clause
 
-The 1834 Constitutional Convention installed that clause. Article XI, section X of the 1835 Constitution made the common school fund and "all the lands which have heretofore been appropriated by the General Assembly of this State for the use of common schools, and all such as shall hereafter be appropriated, shall remain a perpetual fund, the principal of which shall never be diminished by legislative appropriation; and the interest thereof shall be inviolably appropriated to the support and encouragement of common schools throughout the State."[^tn-9] The language is classically fiduciary. *Perpetual fund.* *Principal not diminished.* *Inviolably appropriated.* These are the same three structural commitments that Oregon's framers would write into Article VIII of their 1857 constitution two decades later, and that the Land Ordinance of 1785 had implicitly carried in its school-section reservation. Tennessee, having received no federal trust corpus to protect, manufactured one out of state-derived assets and protected it with state-constitutional language.
+The 1834 Constitutional Convention installed that clause. Article XI, section X of the 1835 Constitution made the common school fund and "all the lands which have heretofore been appropriated by the General Assembly of this State for the use of common schools, and all such as shall hereafter be appropriated, shall remain a perpetual fund, the principal of which shall never be diminished by legislative appropriation; and the interest thereof shall be inviolably appropriated to the support and encouragement of common schools throughout the State."[^tn-9] The language is classically fiduciary. *Perpetual fund.* *Principal not diminished.* *Inviolably appropriated.* These are the same three structural commitments that Oregon's framers would write into Article VIII of their 1857 constitution two decades later, and that the Land Ordinance of 1785 had implicitly carried in its school-section reservation.
 
 <blockquote class="pull-quote">
   <p>Tennessee, having received no federal trust corpus to protect, manufactured one out of state-derived assets and protected it with state-constitutional language.</p>
   <cite>Schools of the Republic v1.3, Tennessee</cite>
-</blockquote> The 1870 Constitution, drafted under Reconstruction, retained the architecture in its Article XI, section 12, added a poll-tax dedication for educational purposes, and embedded — in the segregationist climate of the era — separate-schools language that would later be superseded by federal constitutional law.[^tn-10] But the perpetual-fund structure remained intact for more than a century.
+</blockquote>
+
+The 1870 Constitution, drafted under Reconstruction, retained the architecture in its Article XI, section 12, added a poll-tax dedication for educational purposes, and embedded — in the segregationist climate of the era — separate-schools language that would later be superseded by federal constitutional law.[^tn-10] But the perpetual-fund structure remained intact for more than a century.
 
 ## The 1978 rewrite: removal of fund protection
 
@@ -49,7 +51,7 @@ The funding architecture has continued to evolve. In 2022, Governor Bill Lee sig
 
 What Tennessee illustrates, then, is what happens to a state-derived school-fund architecture when the constitutional protection is lifted. For 143 years, between 1835 and 1978, Tennessee carried fiduciary language at the constitutional level that did much of the work that Northwest-Ordinance section-16 trust language did in public-land states. When that language was removed in 1978, no replacement protection was put in its place. The school system survived — TISA appropriates billions annually, and the Tennessee Department of Education runs a recognizable modern K-12 system — but the architecture of fund protection is gone. What remains is the legislative-duty clause of the 1978 Article XI, section 12, the adequacy framework of the *Small Schools* trilogy, and a 1806 Compact whose education-land obligations were largely sold off in the nineteenth century to capitalize specific institutions. Tennessee is the project's clearest case of a state that built a school-fund trust out of state-derived materials, kept it intact for over a century, and then quietly dismantled the constitutional scaffolding that protected it.
 
-The seam between the federal-trust template and the state-derived template runs through Tennessee. So does the longer warning the state offers: that constitutional fiduciary architecture, once removed, does not reassemble itself.
+The seam between the federal-trust template and the state-derived template runs through Tennessee. So does the longer warning the state offers.
 
 <blockquote class="pull-quote">
   <p>Constitutional fiduciary architecture, once removed, does not reassemble itself.</p>

@@ -16,12 +16,14 @@ lastReviewed: 2026-05-01
 
 *Admission #34 (Jan. 29, 1861). Era: Civil War. Draft: Pass 1 prototype, 2026-04-30.*
 
-Kansas's school-trust story is, on paper, more modest than Oregon's and, in practice, more nearly complete. The state entered the Union with a doubled federal land grant of roughly 2.9 million acres for common schools, a constitution whose Article 6 walled off a perpetual school fund from ordinary legislative reach, and a litigated settlement, less than two years after admission, that the federal compact was binding and "irrevocable without United States consent."[^ks-1] And yet within a single generation the legislature had built statutory machinery for selling the school sections off, by 1915 had directed that any remaining or reverted school land was to be sold under statutory procedure, and by 1966 had submitted to the voters — and the voters had ratified — a wholesale replacement of Article 6 that authorized the legislature to manage, invest, or appropriate the perpetual school fund "both as to principal and income."[^ks-2] The Kansas case is the project's principal example of what Margaret Bird describes as drift: a slow, lawful, accreting hollowing of trust architecture, accomplished not by sudden seizure but by a long chain of statutes and amendments that each made local sense and that together converted a 2.9-million-acre land trust into a residual general-fund deposit.
+Kansas's school-trust story is, on paper, more modest than Oregon's and, in practice, more nearly complete. The state entered the Union with a doubled federal land grant of roughly 2.9 million acres for common schools, a constitution whose Article 6 walled off a perpetual school fund from ordinary legislative reach, and a litigated settlement, less than two years after admission, that the federal compact was binding and "irrevocable without United States consent."[^ks-1] And yet within a single generation the legislature had built statutory machinery for selling the school sections off, by 1915 had directed that any remaining or reverted school land was to be sold under statutory procedure, and by 1966 had submitted to the voters — and the voters had ratified — a wholesale replacement of Article 6 that authorized the legislature to manage, invest, or appropriate the perpetual school fund "both as to principal and income."[^ks-2] The Kansas case is the project's principal example of what Margaret Bird describes as drift.
 
 <blockquote class="pull-quote">
   <p>Drift: a slow, lawful, accreting hollowing of trust architecture, accomplished not by sudden seizure but by a long chain of statutes and amendments that each made local sense and that together converted a 2.9-million-acre land trust into a residual general-fund deposit.</p>
   <cite>Schools of the Republic v1.3, Kansas</cite>
-</blockquote> The directed-seizure half of the dual-force frame is mostly absent from the Kansas record. The drift half is the whole story.
+</blockquote>
+
+The directed-seizure half of the dual-force frame is mostly absent from the Kansas record. The drift half is the whole story.
 
 ## The 1861 Admission Act
 
@@ -58,8 +60,6 @@ The Attorney General record runs in parallel. From the mid-1970s forward, the Wa
 ## The fund today
 
 What sits at the end of all this is a small operating apparatus. Kansas's permanent school fund corpus and annual distribution today are modest compared with the Western public-land states that retained their grants. The Kansas State Treasurer's office administers what remains; the State Board of Education oversees distributions and educational policy; the Board of Regents manages some institutional and university trust lands separately. The Permanent School Fund corpus and annual distribution figures were not pinned in this pass and are flagged as gaps for follow-up; what is reasonably certain is that the school-fund line is a small fraction of the total Kansas K-12 funding picture, which is dominated by state-aid formula appropriations and local property taxes.[^ks-32] The forthcoming OASTL State-by-State Grading white paper will score Kansas against the four-category rubric; the architectural and historical record this entry sets out is the substrate that scoring rests on.
-
-Kansas is the project's marquee example of drift without seizure.
 
 <blockquote class="pull-quote">
   <p>Kansas is the project's marquee example of drift without seizure.</p>

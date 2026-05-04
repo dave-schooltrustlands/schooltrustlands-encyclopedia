@@ -16,12 +16,14 @@ lastReviewed: 2026-05-01
 
 *Admission #7 (Apr. 28, 1788). Era: Original 13 (no federal grant). Draft: Pass 1, 2026-04-30.*
 
-Maryland's school-funding story belongs to a different doctrinal universe than the public-land states. There is no federal admission-act grant, no school-trust corpus, no fiduciary trustee board, and no irreducible fund. Maryland was already a state — and had been for nearly a half-century — when Congress wrote the section-sixteen reservation into the Land Ordinance of 1785 and the Northwest Ordinance of 1787.[^md-1] Those ordinances applied to federal public lands ceded to the national government from the trans-Appalachian frontier; Maryland's lands traced to the Calvert family's 1632 charter, and at independence the State succeeded to the proprietary's interest in ungranted lands without any federal intermediation.[^md-2] The school-trust template Oregon, Idaho, and Wyoming would later inherit simply did not reach Maryland. What Maryland built instead is a state-derived constitutional mandate, enforced (when it has been enforced at all) through adequacy litigation rather than fiduciary doctrine.
+Maryland's school-funding story belongs to a different doctrinal universe than the public-land states. There is no federal admission-act grant, no school-trust corpus, no fiduciary trustee board, and no irreducible fund. Maryland was already a state — and had been for nearly a half-century — when Congress wrote the section-sixteen reservation into the Land Ordinance of 1785 and the Northwest Ordinance of 1787.[^md-1] Those ordinances applied to federal public lands ceded to the national government from the trans-Appalachian frontier; Maryland's lands traced to the Calvert family's 1632 charter, and at independence the State succeeded to the proprietary's interest in ungranted lands without any federal intermediation.[^md-2] The school-trust template Oregon, Idaho, and Wyoming would later inherit simply did not reach Maryland.
 
 <blockquote class="pull-quote">
   <p>What Maryland built instead is a state-derived constitutional mandate, enforced (when it has been enforced at all) through adequacy litigation rather than fiduciary doctrine.</p>
   <cite>Schools of the Republic v1.3, Maryland</cite>
-</blockquote> For the project's purposes, Maryland is a reminder that the school-trust framework — sections 16 and 36, "in trust" language, beneficiary classes named in admission acts — is a particular nineteenth-century invention. It is not the only way a state can promise to fund its schools, and Maryland's experience supplies a useful contrast precisely because the architectural language is so different.
+</blockquote>
+
+For the project's purposes, Maryland is a reminder that the school-trust framework — sections 16 and 36, "in trust" language, beneficiary classes named in admission acts — is a particular nineteenth-century invention. It is not the only way a state can promise to fund its schools, and Maryland's experience supplies a useful contrast precisely because the architectural language is so different.
 
 ## Ratification, no admission act, no compact
 

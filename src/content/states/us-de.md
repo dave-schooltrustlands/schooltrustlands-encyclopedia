@@ -25,7 +25,7 @@ Delaware's school-trust story begins with an absence. The First State entered th
 
 ## A no-grant state's slow build
 
-What Delaware built — over a slow century from the 1790s to the 1897 Constitution — was a state-derived analog to the federal trust template that other states would receive as a matter of right. The architecture is genuinely unusual among the Original 13. Most no-grant states simply have no permanent school fund at all; Pennsylvania, for instance, funds its schools out of general revenue with a constitutional duty but no segregated corpus. Delaware, by contrast, built a permanent fund of its own and gave it constitutional protection. The fund is small, the protection is real, and the doctrinal posture that follows is genuinely intermediate between the public-land states and the bare-duty Original 13.
+The architecture is genuinely unusual among the Original 13. Most no-grant states simply have no permanent school fund at all; Pennsylvania, for instance, funds its schools out of general revenue with a constitutional duty but no segregated corpus. Delaware, by contrast, built a permanent fund of its own and gave it constitutional protection. The fund is small, the protection is real, and the doctrinal posture that follows is genuinely intermediate between the public-land states and the bare-duty Original 13.
 
 ## Antebellum origins: 1796 fund, 1829 Free School Act
 

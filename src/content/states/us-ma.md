@@ -32,12 +32,14 @@ Three architectural commitments are folded into the opening clause. The first is
 
 ## Upstream of the federal template
 
-The clause's importance is not local. In 1787, when the Confederation Congress drafted the Northwest Ordinance to govern the federal lands northwest of the Ohio River, Article III of the Ordinance declared: "Religion, morality, and knowledge being necessary to good government and the happiness of mankind, schools and the means of education shall forever be encouraged."[^ma-6] The rhetorical genealogy is plain. Both clauses anchor public education in the requirements of self-government. Both name "knowledge" as a precondition of good government. Both declare a future-tense duty in language that imagines the requirement persisting forever. The Northwest Ordinance famously paired this aspirational clause with the operational mechanism — section 16 of every township reserved for the support of schools — that the Land Ordinance of 1785 had introduced two years earlier.[^ma-7] Massachusetts supplied the rhetorical envelope; the Confederation Congress supplied the land-grant mechanism. Adams's clause is upstream of the federal template, not downstream of it.
+The clause's importance is not local. In 1787, when the Confederation Congress drafted the Northwest Ordinance to govern the federal lands northwest of the Ohio River, Article III of the Ordinance declared: "Religion, morality, and knowledge being necessary to good government and the happiness of mankind, schools and the means of education shall forever be encouraged."[^ma-6] The rhetorical genealogy is plain. Both clauses anchor public education in the requirements of self-government. Both name "knowledge" as a precondition of good government. Both declare a future-tense duty in language that imagines the requirement persisting forever. The Northwest Ordinance famously paired this aspirational clause with the operational mechanism — section 16 of every township reserved for the support of schools — that the Land Ordinance of 1785 had introduced two years earlier.[^ma-7]
 
 <blockquote class="pull-quote">
   <p>Massachusetts supplied the rhetorical envelope; the Confederation Congress supplied the land-grant mechanism. Adams's clause is upstream of the federal template, not downstream of it.</p>
   <cite>Schools of the Republic v1.3, Massachusetts</cite>
-</blockquote> Every admission act from Ohio (1803) through Hawaii (1959) carries forward both halves of the inheritance: the Massachusetts rhetorical floor and the section-sixteen reservation. The white paper's argument that the school clause is the assumed civic floor of the American constitutional project — "the army has guns; the unborn children don't have a voice" — depends on this Massachusetts text being older than the federal template, not contemporary with it.
+</blockquote>
+
+Every admission act from Ohio (1803) through Hawaii (1959) carries forward both halves of the inheritance: the Massachusetts rhetorical floor and the section-sixteen reservation. The white paper's argument that the school clause is the assumed civic floor of the American constitutional project — "the army has guns; the unborn children don't have a voice" — depends on this Massachusetts text being older than the federal template, not contemporary with it.
 
 ## Nineteenth-century build-out
 
@@ -56,7 +58,9 @@ Massachusetts's contribution to the school-trust story is therefore not a corpus
 <blockquote class="pull-quote">
   <p>Where the public-land states defend a corpus, Massachusetts defends a clause. Adams gave the country its sentence; the country built section sixteen on top of it.</p>
   <cite>Schools of the Republic v1.3, Massachusetts</cite>
-</blockquote> That sentence supplied the rhetorical envelope that the Confederation Congress poured the section-sixteen mechanism into eight years later, and it has supplied the doctrinal floor for the Commonwealth's own funding-adequacy jurisprudence two centuries on. Where the public-land states defend a corpus, Massachusetts defends a clause. Where the public-land states tell stories of fraud and recovery, Massachusetts tells the story of the founding text that made it possible for those states to imagine themselves as having a school trust at all. The Original 13 protocol assigns this state a structural role in the survey: as the rhetorical antecedent without which the federal template would not have had its language ready to hand. Adams gave the country its sentence; the country built section sixteen on top of it.
+</blockquote>
+
+That sentence supplied the rhetorical envelope that the Confederation Congress poured the section-sixteen mechanism into eight years later, and it has supplied the doctrinal floor for the Commonwealth's own funding-adequacy jurisprudence two centuries on. Where the public-land states tell stories of fraud and recovery, Massachusetts tells the story of the founding text that made it possible for those states to imagine themselves as having a school trust at all. The Original 13 protocol assigns this state a structural role in the survey: as the rhetorical antecedent without which the federal template would not have had its language ready to hand.
 
 ---
 

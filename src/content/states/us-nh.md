@@ -18,12 +18,14 @@ lastReviewed: 2026-05-01
 
 New Hampshire's school-funding story is, in one sense, the simplest in the country: there is no school trust to speak of, because there were no federal lands to grant when the schoolhouse template was written. New Hampshire was the ninth state to ratify the United States Constitution, doing so on June 21, 1788, and that ratification — not an admission act — brought the new federal government into being.[^nh-1] The Land Ordinance of 1785, which reserved section sixteen of every surveyed township "for the maintenance of public schools within the said township," and the Northwest Ordinance of 1787, which committed the new republic to schools and the means of education as a condition of admitting new states, were both written to govern the federal public domain.[^nh-2] New Hampshire's lands were never federal public lands. There was, accordingly, no section-sixteen reservation, no enabling-act trust, no irreducible fund, and no Board of Land Commissioners. What New Hampshire has instead is older than the federal template, and arguably more consequential to it: the 1784 Constitution, drafted four years before ratification, which placed a duty on the legislature itself — not on a separate corpus of land — to maintain the conditions for self-government through public education.
 
-But the New Hampshire story is also, in a different sense, one of the longest in the country. The duty was on the books in 1784. It was not judicially enforced until 1993.
+But the New Hampshire story is also, in a different sense, one of the longest in the country.
 
 <blockquote class="pull-quote">
   <p>The duty was on the books in 1784. It was not judicially enforced until 1993.</p>
   <cite>Schools of the Republic v1.3, New Hampshire</cite>
-</blockquote> The 209-year latency between the adoption of Part II, Article 83 and the New Hampshire Supreme Court's first holding that Article 83 was a justiciable mandate is itself among the project's most striking findings — a constitutional commitment that lay textually present and doctrinally dormant across more than two centuries of state history before the *Claremont* decisions made it operative.
+</blockquote>
+
+The 209-year latency between the adoption of Part II, Article 83 and the New Hampshire Supreme Court's first holding that Article 83 was a justiciable mandate is itself among the project's most striking findings — a constitutional commitment that lay textually present and doctrinally dormant across more than two centuries of state history before the *Claremont* decisions made it operative.
 
 ## The 1784 Article 83 text
 
@@ -59,12 +61,14 @@ The most consequential recent development arrived on February 24, 2026. In a not
 
 In current administrative terms, New Hampshire's K-12 education is administered by the New Hampshire Department of Education and the State Board of Education, both creatures of statute under RSA Title XV. There is no school-trust board because there is no school trust. The state's share of K-12 funding is delivered primarily through adequacy aid (the post-*Claremont* formula) and SWEPT, supplemented by categorical and stabilization programs; the state's share of total K-12 funding is comparatively low among U.S. states, which has been the durable underlying complaint of every adequacy-line case since *Claremont I*. The New Hampshire Department of Natural and Cultural Resources, through its Division of Forests and Lands, manages substantial state forest acreage including the Connecticut Lakes Headwaters and other state-owned forest blocks, but these are general state public lands; their revenues flow to the state general fund and to the agency's own budget, not to schools as a trust beneficiary.[^nh-17] There is no permanent school-fund distribution analogous to public-land states.
 
-The 209-year latency between Article 83's adoption and *Claremont I* is, in the project's vocabulary, a particular form of drift — duty present in the text, dormant in the doctrine — followed by a thirty-year doctrinal awakening that is itself now under direct legislative-and-executive challenge. The Original 13 layer of the project's argument turns on the recognition that Article 83 articulated, in 1784, the same civic-project logic that the federal Land Ordinance of 1785 and the Northwest Ordinance of 1787 would translate into the section-sixteen reservation. Adams's pen drafted the floor on which both buildings stand. New Hampshire kept the floor; the federal template added landed walls.
+The 209-year latency between Article 83's adoption and *Claremont I* is, in the project's vocabulary, a particular form of drift — duty present in the text, dormant in the doctrine — followed by a thirty-year doctrinal awakening that is itself now under direct legislative-and-executive challenge. The Original 13 layer of the project's argument turns on the recognition that Article 83 articulated, in 1784, the same civic-project logic that the federal Land Ordinance of 1785 and the Northwest Ordinance of 1787 would translate into the section-sixteen reservation.
 
 <blockquote class="pull-quote">
   <p>Adams's pen drafted the floor on which both buildings stand. New Hampshire kept the floor; the federal template added landed walls.</p>
   <cite>Schools of the Republic v1.3, New Hampshire</cite>
-</blockquote> Both architectures depend, in the end, on the same underlying premise — that knowledge and learning, generally diffused through a community, are essential to the preservation of a free government — and both are presently being tested in court to see whether that premise still binds the legislators and magistrates who inherited it.
+</blockquote>
+
+Both architectures depend, in the end, on the same underlying premise — that knowledge and learning, generally diffused through a community, are essential to the preservation of a free government — and both are presently being tested in court to see whether that premise still binds the legislators and magistrates who inherited it.
 
 ---
 
