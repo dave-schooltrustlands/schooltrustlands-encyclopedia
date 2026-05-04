@@ -22,6 +22,11 @@ lastReviewed: 2026-05-01
 
 If Oregon's 1859 compact is the project's principal study in what an unguarded school trust looks like over a century and a half, New Mexico's 1910 compact is its principal study in what a *guarded* one looks like — and what the guards do, or fail to do, when given the strongest set of federal trust-protection tools Congress ever wrote into an admission act. New Mexico is the federal high-water mark. Section 10 of the New Mexico-Arizona Enabling Act of June 20, 1910, declares the granted lands held "in trust," voids any non-conforming disposition, names any such disposition a "breach of trust," and assigns the United States Attorney General the affirmative duty of suing the state to enforce the trust.[^nm-1] No earlier admission act, and no later one, packages those four protections together. The 1911 New Mexico Constitution then accepts those terms by compact, channels the resulting fund into a constitutionally separate and inviolate Land Grant Permanent Fund, and — uniquely among the public-land states — names a single statewide elected official, the Commissioner of Public Lands, as the sole fiduciary.[^nm-2] A century later, the corpus stands at roughly $30 billion and distributes more than $1.3 billion a year to public schools, universities, hospitals, and the Miners' Hospital, making it one of the largest sovereign-style permanent funds in the United States.[^nm-3] New Mexico is what the architecture can do when both Congress and the state take it seriously.
 
+<blockquote class="pull-quote">
+  <p>New Mexico is what the architecture can do when both Congress and the state take it seriously.</p>
+  <cite>From the encyclopedia entry for New Mexico</cite>
+</blockquote>
+
 ## I. The Federal High-Water Mark
 
 By the time Congress took up New Mexico statehood in earnest, federal land policy had moved a long way from the casual disposition of the antebellum admissions. Congress had watched the school-grant systems of Nebraska, Kansas, and other earlier western states absorbed by speculators at giveaway prices, and Theodore Roosevelt's Progressive-era administration had spent its political capital prosecuting the Oregon Land Fraud trials, which ran in parallel with the New Mexico statehood debates and reached all the way to a sitting United States senator.[^nm-4] When the New Mexico-Arizona Enabling Act was finally passed on June 20, 1910 (36 Stat. 557), Section 10 was drafted as if Congress did not intend to be embarrassed twice by the same kind of corruption.[^nm-5]
@@ -69,6 +74,11 @@ The cleanest test of whether Section 10's federal Attorney General enforcement c
 In 1915, the New Mexico Legislature enacted a statute authorizing the Commissioner of Public Lands, Robert P. Ervien, to spend three percent of the annual income from sales and leases of state trust lands on advertising "the resources and advantages of the state."[^nm-20] The premise was straightforward: better state-wide promotion would attract settlers, businesses, and capital, which in turn would increase the value of the remaining trust lands and the revenue they produced. The state argued, in effect, that the trust was the long-run beneficiary of the spending.
 
 The United States, acting through its Attorney General under the Section 10 enforcement clause, sued for an injunction. The Eighth Circuit affirmed an injunction against Ervien in 1917, *United States v. Ervien*, 246 F. 277 (8th Cir. 1917), and the Supreme Court affirmed in 1919.[^nm-21] Justice McKenna's opinion is brief and unsparing. The trust purposes enumerated in the 1910 Act, the Court held, are *exclusive*. General benefit to the state, even general benefit that might in time enrich the trust corpus, is not within the enumerated purposes. The Court read Section 10 the way Section 10 was drafted to be read: literally. "The lands and the moneys which the State received from them are dedicated to specific purposes," the Court wrote. "The purposes must be regarded; they must be performed; they admit of no substitution; they admit of no addition."[^nm-22]
+
+<blockquote class="pull-quote">
+  <p>The purposes must be regarded; they must be performed; they admit of no substitution; they admit of no addition.</p>
+  <cite>From <em>Ervien v. United States</em> (1919), quoted in the encyclopedia entry for New Mexico</cite>
+</blockquote>
 
 *Ervien* is the New Mexico-specific Section 10 enforcement case and the only one in the corpus to date in which the United States itself has been the plaintiff. It sets three doctrinal anchors: the trust purposes are exclusive, not illustrative; "indirect" benefit arguments do not save a non-conforming expenditure; and the federal AG enforcement clause is real and useable. Every subsequent New Mexico Supreme Court trust case cites or echoes *Ervien*'s reading.
 
@@ -139,6 +149,26 @@ Two qualifications keep the picture honest. First, the fund's revenue base is ro
 These qualifications are real. They do not change the overall picture. New Mexico is the federal high-water mark, and New Mexico has produced the corpus to show for it. Where Oregon's nineteenth-century compact left enough doctrinal room that the 1887 Infamous Act could fix prices below market and enable a fraud engine that reached the U.S. Senate, New Mexico's 1910 compact left no such room, and the New Mexico Supreme Court — backed by the dormant but real federal AG enforcement clause — has filled the room that remained with strict-fiduciary doctrine. The architecture is the strongest in the federation. The performance, while imperfect on the margins, has matched the architecture's promise far more closely than most of the public-land states. New Mexico is the federal-text-as-best case, and the white paper holds it up as the central comparator against which weaker state architectures must be measured.
 
 ---
+
+<section class="astl-field-block">
+  <span class="eyebrow">From the field</span>
+  <h2>Notes from Advocates for School Trust Lands</h2>
+  <p class="byline">By <strong>Scott Smith</strong>, Advocates for School Trust Lands · originally published at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/new-mexico">schooltrustlands.org</a></p>
+
+  <p>In 1910, due to the arid nature of New Mexico, Congress granted four sections per township for the support of public schools. Schools received 8,711,324 acres and now hold 6.8 million surface acres and 9.8 million mineral acres. These school trust lands are managed by the New Mexico State Land Office, led by Stephanie Garcia Richard, the statewide elected Commissioner of Public Lands. She is the first woman commissioner, the first Latina, and the first educator to be elected to that office. The State Land Office is at 310 Old Santa Fe Trail, Santa Fe, NM 87501; phone (505) 827-5760. The Commissioner is focused on raising as much money as possible while always keeping an eye toward stewardship and preserving the land for generations to come. She believes the land office can diversify the revenue that comes into the office by tripling the number of renewable-energy projects, promoting outdoor recreation, and encouraging new and innovative commercial development on the school trust land. With the largest continuous oil and gas resource potential ever assessed in the world sitting in southeastern New Mexico, and land that is prime for wind and solar development, Commissioner Garcia Richard is committed to working to make more money for New Mexico while protecting the health of the land.</p>
+
+  <p>During Fiscal Year 2022, the school trust lands generated $2.2 billion in gross revenue. In FY 2022, the lands earned the highest revenue in 128 years since statehood. The revenue from the school trust provided approximately one-fourth of all New Mexico school budgets — the highest percentage of a state's education budget in the nation.</p>
+
+  <p>The largest revenue source is clearly oil and gas. Other revenue sources include minerals, business parks, renewable energy, agriculture, master-planned communities, and housing developments. The largest distributive solar array in the state is on trust land.</p>
+
+  <p>All net revenue generated from the school lands is placed in the New Mexico Land Grant Permanent Fund, where it is prudently and profitably invested by professional investment staff with oversight by the State Investment Council. The State Investment Officer is hired and fired by an 11-member committee that includes the Governor, the State Treasurer, the State Land Commissioner, and others. The school funds are invested together with universities, hospitals, and other important institutional funds that were granted land at statehood. The School Fund currently comprises 87% of the funds.</p>
+
+  <p>Wise and prudent investment along with profitable oil-and-gas royalties and leases on the trust lands has led to rapid growth in the Land Grant Permanent Funds. The market value of the Permanent School Fund as of June 30, 2022 is over $21 billion. The five-year time-weighted return net of fees is 7.14%.</p>
+
+  <p>New Mexico has 89 school districts teaching over 330,000 students in K-12 public schools. The annual distribution to schools from the Land Grant Permanent Funds provides approximately one-fourth of the entire education budget. Through prudent management of lands and funds and honoring the school trust created at statehood, New Mexico fulfills the vision of Thomas Jefferson, Hugh Williamson, David Howell, Elbridge Gerry, and Jacob Reed, who first proposed granting lands to support public schools when they served on the Confederation Congress in 1784–1785.</p>
+
+  <p class="attribution">© Advocates for School Trust Lands. Reproduced and lightly edited for the library by permission of the parent organization. Original at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/new-mexico">schooltrustlands.org</a>.</p>
+</section>
 
 ## Footnotes
 

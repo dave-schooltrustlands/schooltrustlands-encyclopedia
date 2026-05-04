@@ -53,7 +53,15 @@ The SVG source is verbatim from the handoff and should not be modified to compen
 
 ## Pull-quote editorial pass
 
-Two pull quotes installed on the Oregon entry as Tier-2 demonstrators (Visual Rebuild Handoff). Editorial selection of pull quotes for the other 49 states is a Sullivan/Bird workstream — Reading Room essays (Chapter 3, Sacred Compact opener) recommended as next surfaces. The `.pull-quote` primitive is globally available.
+Pull quotes installed on the Oregon entry as Tier-2 demonstrators (Visual Rebuild Handoff) and on all 18 ASTL state entries (Session 2B1, May 2026). Pull-quote installation for the remaining 31 non-ASTL state entries is the structural pass of Session 2B2. Reading Room essays (Chapter 3, Sacred Compact opener) recommended as next surfaces beyond the state pages. The `.pull-quote` primitive is globally available.
+
+## ASTL state-page image migration (deferred from 2B1)
+
+ASTL's per-state pages reference Squarespace-hosted images (charts of state revenue / fund growth, photos of trust lands). Migrate selectively in a future pass — pick the 1–2 most editorially relevant per state and use the existing image pipeline (max 1600px, quality 82, under 500 KB). Skip until after the editorial pass is reviewed by Sullivan/Bird. Image references are in `_intake/ASTL_Crawl/per_page/*.images.txt` (cowork share, not in repo).
+
+## Sullivan/Bird editorial review of merged ASTL state pages
+
+The 18 merged state pages (AK, AZ, CA, CO, ID, MN, MS, MT, NE, NV, NM, ND, OK, SD, TX, UT, WA, WI) should be reviewed by Dave and Margaret in batch — probably as DOCX exports — before any of them are linked from the Atlas trust-integrity-lens or the Counting House detail cards. Schedule with Margaret's return.
 
 ## State dossier imagery (Visual Rebuild Tier 2)
 

@@ -20,6 +20,11 @@ lastReviewed: 2026-05-01
 
 Texas is the encyclopedia's anchor case for a deceptively simple proposition: a state can refuse a federal school-land grant and still build the largest school endowment in the United States. As of fiscal year 2024, the Texas Permanent School Fund held investment assets of approximately $56.9 billion, with mineral and surface acreage valued at several billion more, and distributed roughly $2.16 billion per year to the Available School Fund.[^tx-1] By 2025–26 valuation reporting, the corpus was being described in the $67 billion range, with biennial distributions reaching a record $4.8 billion.[^tx-2] No private American university endowment is larger; the New Mexico Land Grant Permanent Fund, often the runner-up among public-purpose education endowments, is roughly half its size. And every dollar of it is state-derived. There is no Section 16, no Section 36, no "in trust" clause in a federal enabling act, no Congress-conferred fiduciary covenant of the kind that disciplines the New Mexico, Arizona, or Oregon trusts. What Texas has instead is a sovereign reservation, a constitutionalized irreducible fund, two independently elected fiduciaries, and 175 million acres of retained public domain that — over 180 years and through one of the most consequential mineral revolutions in American history — produced an asset base no other state can match. The Texas case is the encyclopedia's structural answer to the question "what does a school trust look like when the federal floor is absent?" It looks like a state constitution doing the work that Congress did elsewhere — sometimes well, sometimes poorly, and always with the architecture located entirely in state law.
 
+<blockquote class="pull-quote">
+  <p>A state can refuse a federal school-land grant and still build the largest school endowment in the United States.</p>
+  <cite>From the encyclopedia entry for Texas</cite>
+</blockquote>
+
 ## Annexation, Retention, and the Sovereign Reservation
 
 The defining act of Texas school-trust history is the 1845 Joint Resolution for Annexing Texas to the United States.[^tx-3] Approved by Congress on March 1, 1845, the Joint Resolution did something no admission act before or since has done: it left the public domain of the incoming territory in the hands of the incoming state, on the express condition that those lands be applied first to the Republic's debts and then disposed of as the new state should direct. The operative paragraph, in the Resolution's verbatim language, reads:
@@ -146,9 +151,34 @@ The federal floor is, in Texas, entirely absent. There is no Section 16, no Sect
 
 That Texas can do this should temper the pessimism that the encyclopedia's federal-floor analysis sometimes invites. Federal admission-act text is helpful but not necessary. What is necessary is constitutionalized architecture — corpus, beneficiary class, fiduciary, segregation, perpetuity — combined with sufficient constituency interest to enforce the architecture across generations. Texas had both. Most of the original thirteen had neither, and built no comparable endowment. Oregon had the architecture but, by the time of the Elliott decoupling in 2017–22, was operating with a constituency too diffuse to defend the architecture from directed seizure. The Texas case demonstrates that the ceiling on a state's school-trust performance is not set by federal text. It is set by what the state's constitution does, and by who shows up to enforce it.
 
+<blockquote class="pull-quote">
+  <p>The ceiling on a state's school-trust performance is not set by federal text. It is set by what the state's constitution does, and by who shows up to enforce it.</p>
+  <cite>From the encyclopedia entry for Texas</cite>
+</blockquote>
+
 The asymmetry is also worth holding. Texas built the largest endowment in the country, and Texas has produced almost no trust-enforcement litigation. The two facts may be related: a fund that is large, conservatively managed, and politically undisputed has less litigation than a fund that is contested. Or they may simply reflect the Texas channel for school-finance grievance, which has flowed through Section 1 *Edgewood* litigation rather than Section 2/5 corpus litigation. Either way, the absence of a Texas *Lassen* — and the absence, so far, of a beneficiary-led trust-breach action against the SBOE or the GLO — leaves a doctrinal opening that the encyclopedia should mark. If the day comes that a Texas school district or schoolchildren's coalition mounts a Section 2/5 trust-enforcement action against the SBOE, the GLO, or the State of Texas as trustee, the doctrinal architecture is in place to support it. The 1876 Constitution, the AG opinions, and the *Standard v. Sadler*–*Durham* fiduciary line would all be available. What has been missing is not the law. It has been the lawsuit.
 
 ---
+
+<section class="astl-field-block">
+  <span class="eyebrow">From the field</span>
+  <h2>Notes from Advocates for School Trust Lands</h2>
+  <p class="byline">By <strong>Tonia Day</strong>, Advocates for School Trust Lands · originally published at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/texas">schooltrustlands.org</a> (data as of FY 2024)</p>
+
+  <p>Texas entered the Union as an independent republic in 1845 and retained all of its public lands. The Texas Permanent School Fund was created with a $2 million appropriation by the Texas Legislature in 1854, expressly to benefit public schools in Texas. In 1873, the Texas Legislature set aside one-half of the remaining public domain to benefit public schools. The Permanent School Fund consists of all land and all revenues derived from the land or other properties appropriated for the support of public schools. Today, the Texas General Land Office (GLO) manages over 12 million acres of school mineral rights and almost 1 million school surface acres. Most of the lands are scattered in the western part of Texas near El Paso.</p>
+
+  <p>In FY 2024, Texas generated $1,630,030,661 from its school trust lands. Oil and gas always generate the greatest revenue, followed by surface uses and minerals. Texas has 10.35 miles out from shore as its seaward boundary. All revenue from these shoreline submerged lands also goes to schools.</p>
+
+  <p>Beginning in 2007, under the direction of the Land Commissioner, the General Land Office invests the revenue from minerals, farming, grazing, and various other endeavors and deposits them in the Real Estate Special Fund Account (RESFA). This invested revenue is also part of the Texas Permanent School Fund. Revenue prior to FY 2007 was all invested in the Texas Permanent School Fund by the Texas Education Agency. States like Texas that invest all their revenue in their school fund have more money to support schools — just as people who save have more money than those who spend. Prudent investments, compounded over time, generate greater returns for schools.</p>
+
+  <p>The Texas Permanent School Fund is the largest school trust fund in the nation, and the second-largest educational endowment. One portion of the fund is invested by the Texas Education Agency. The Real Estate Special Fund Account (RESFA) is invested by the General Land Office primarily in large infrastructure investments. The total weighted return on all investments for FY 2024 was 7.31%, among the highest of all the states.</p>
+
+  <p>Because of the careful management and investment of the funds within both parts of the Permanent School Fund, $2,156,354,137 was distributed in FY 2024.</p>
+
+  <p>Various states use trust funding differently. Texas distributes billions for instructional materials, technology, and other expenses for public and charter schools. Wisconsin funds school libraries; Washington and Colorado build schools in rural parts of the state; Arizona funds classroom needs; Minnesota and South Dakota send much-needed additional funding directly to each local school district; Utah allows parents, teachers, and the principal elected in every school to develop programs to improve academic performance.</p>
+
+  <p class="attribution">© Advocates for School Trust Lands. Reproduced and lightly edited for the library by permission of the parent organization. Original at <a href="https://www.schooltrustlands.org/what-states-have-school-trust-lands/texas">schooltrustlands.org</a>.</p>
+</section>
 
 ## Footnotes
 
