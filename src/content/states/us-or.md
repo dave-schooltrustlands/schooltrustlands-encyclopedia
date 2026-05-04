@@ -14,6 +14,10 @@ permanentFundCorpus:
 latestDistribution:
   value: 76800000
   fiscalYear: 2025
+trustAcresRemaining: 681000
+trustAcresRemainingConfidence: verified
+trustAcresRemainingAsOf: "FY 2024"
+trustAcresRemainingSource: "Schools of the Republic v1.3 (Sullivan & Bird, 2026), citing Oregon Department of State Lands (approximately 681,000 acres of school trust lands in state ownership, plus mineral, oil, and gas rights on more than three million acres; an additional 26,173 acres of Common School Forest Land managed under contract by the Oregon Department of Forestry)."
 substrateVersion: "1.3"
 lastReviewed: 2026-04-29
 summary: "Oregon is OASTL's home state and the live test case for school-trust accountability. Strong constitutional architecture (1857), early land loss through the 1887 Infamous Act, the 2017–2022 Elliott State Forest decoupling, and the January 2026 Court of Appeals standing victory in Advocates for School Trust Lands v. State of Oregon."

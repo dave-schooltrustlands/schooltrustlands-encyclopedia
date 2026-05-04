@@ -14,6 +14,10 @@ permanentFundCorpus:
 latestDistribution:
   value: 200000000
   fiscalYear: null
+trustAcresRemaining: 3500000
+trustAcresRemainingConfidence: verified
+trustAcresRemainingAsOf: "2024"
+trustAcresRemainingSource: "Schools of the Republic v1.3 (Sullivan & Bird, 2026), citing Citizens for Responsible Use of State Lands v. State, 2024 WY 135 ¶¶ 1–5 (confirming approximately 3.5 million surface acres and 3.9 million mineral acres under OSLI management) and Wyoming Legislative Service Office, Office of State Lands and Investments Program Evaluation (2010)."
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---

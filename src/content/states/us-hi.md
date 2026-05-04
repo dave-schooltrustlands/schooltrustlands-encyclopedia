@@ -15,6 +15,8 @@ XII § 5). HIDOE is governed by the constitutionally-established State Board
 of Education (gubernatorial-appointed since 2011 under Article X § 3)."
 permanentFundCorpus: null
 latestDistribution: null
+trustAcresRemainingConfidence: na
+trustAcresRemainingSource: "Schools of the Republic v1.3 (Sullivan & Bird, 2026), citing Hawaii Admission Act § 5(b), (f). Hawaii is sui generis: the federal-grant section-grant framework does not apply. The 1959 Admission Act transferred ~1.4M acres of former Kingdom/Republic ceded lands as a single multi-purpose § 5(f) public trust with five enumerated beneficiary classes (public schools is one of five). There is no separately demarcated school-trust acreage; the entire ceded-lands estate is managed jointly by DLNR, DHHL, and OHA without a unified trustee for the school share."
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---

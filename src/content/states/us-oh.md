@@ -10,6 +10,10 @@ federalGrantAcres: 724266
 governanceForm: "No consolidated state trust-lands board. Residual trust-fund administration is statutory and distributed among the Department of Education, the State Treasurer, and (historically) township and county school authorities."
 permanentFundCorpus: null
 latestDistribution: null
+trustAcresRemaining: 1232
+trustAcresRemainingConfidence: awaiting
+trustAcresRemainingAsOf: "1985 (pre-transfer baseline; current figure pending verification)"
+trustAcresRemainingSource: "Schools of the Republic v1.3 (Sullivan & Bird, 2026), citing a 2013 legal summary reporting that immediately before the 1985 administrative transfer to the Director of Administrative Services, four school-land farms totaling 1,232 acres remained under two-year leases, plus small Columbiana County lots under renewable leases. From a federal grant of 704,204 acres at admission, Ohio's residual state-managed school-trust acreage at the close of the twentieth century had collapsed to roughly 0.2 percent of the original endowment. Current figures pending verification against state records."
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---
