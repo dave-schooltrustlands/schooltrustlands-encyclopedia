@@ -709,6 +709,28 @@
   @media (max-width: 600px) {
     .signature-block { grid-template-columns: 1fr; gap: 1.5rem; }
   }
+
+  /* Counting House per-state chart figure (e.g. SITFO market-value chart on /counting/us-ut/). */
+  .counting-chart {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-radius: 4px;
+  }
+  .counting-chart img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 0.6rem;
+  }
+  .counting-chart figcaption {
+    font-family: var(--font-sans);
+    font-size: 0.83rem;
+    color: var(--ink);
+    opacity: 0.85;
+    line-height: 1.5;
+  }
 }
 
 /* ---------------------------------------------------------------------
