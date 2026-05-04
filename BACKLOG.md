@@ -11,7 +11,6 @@ Open work captured during the May 2026 site rebuild. Items below were either def
 ### OASTL section
 
 - `/oastl/` route — referenced from `/about/`. Build out as state-affiliate landing once OASTL Google Site content is migrated.
-- `/court/oregon-current-case/` — case-docket page referenced from the footer. Currently 404. Land a stub or repoint footer to `/reading/us-or/` litigation section until the Court Room opens.
 
 ### Bibliography source pages
 
