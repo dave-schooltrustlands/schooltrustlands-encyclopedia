@@ -357,19 +357,6 @@
     margin-top: 0.5rem;
   }
 
-  /* Atlas Room — parchment-map header strip */
-  .atlas-header-strip {
-    margin-bottom: 1.25rem;
-    overflow: hidden;
-  }
-  .atlas-header-strip img {
-    display: block;
-    width: 100%;
-    height: auto;
-    opacity: 0.55;
-    filter: sepia(0.25);
-  }
-
   /* Homepage launch announcement (Rebuild Session 1, Section C.2) */
   .launch-announcement {
     background: var(--linen-card);

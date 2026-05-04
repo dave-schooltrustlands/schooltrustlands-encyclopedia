@@ -23,7 +23,6 @@ export default {
     'badge-conflict',
     'badge-pending',
     'eyebrow',
-    'atlas-header-strip',
     'site-wordmark',
     'plss-mark',
     'wordmark-text',
