@@ -590,6 +590,26 @@
   .reading-card .meta .toc ol li {
     margin-bottom: 0.2rem;
   }
+  .reading-card .meta .toc ol.numbered-toc {
+    list-style: decimal;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-left: 2rem;
+    margin: 0.5rem 0 1rem;
+  }
+  .reading-card .meta .toc ol.numbered-toc li {
+    margin-bottom: 0.35rem;
+  }
+  .reading-card .meta .toc ol.numbered-toc a {
+    color: var(--deep-navy);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .reading-card .meta .toc ol.numbered-toc a:hover {
+    color: var(--trust-blue);
+  }
   .reading-card .meta .cta {
     display: inline-block;
     padding: 0.4rem 1rem;
