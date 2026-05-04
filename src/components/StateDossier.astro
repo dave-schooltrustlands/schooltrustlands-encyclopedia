@@ -46,7 +46,7 @@ function countingSummary(rec: FinanceRecord | undefined): string {
   } else if (rec.distribution.confidence === 'awaiting-disclosure') {
     parts.push('awaiting distribution');
   }
-  return parts.length > 0 ? parts.join('; ') : 'Awaiting State Disclosures';
+  return parts.length > 0 ? parts.join('; ') : 'Awaiting State Disclosure';
 }
 
 const rooms = [
