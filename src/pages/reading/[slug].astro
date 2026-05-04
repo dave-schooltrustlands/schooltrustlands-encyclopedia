@@ -41,6 +41,35 @@ const usd = new Intl.NumberFormat('en-US', {
 
 const { Content } = await props.entry.render();
 
+// Cohort N → Reading Room chapter slug. Keys match the eraCohort
+// integers in state frontmatter; values are the essay slugs under
+// src/content/essays/ (with the leading NN- prefix stripped, per the
+// reading slug rule in getStaticPaths above).
+const COHORT_SLUGS: Record<number, string> = {
+  1: 'founding-floor',
+  2: 'statehood-without-federal-floor',
+  3: 'northwest-ordinance-template',
+  4: 'antebellum-doubling',
+  5: 'reconstruction-western-stack',
+  6: 'twentieth-century-high-water-mark',
+};
+
+const COHORT_TOOLTIPS: Record<number, string> = {
+  1: 'The Original 13 colonies, admitted before the 1785 Land Ordinance — no federal school grant, school funding built on state-derived foundations.',
+  2: 'States admitted from non-public-domain territory (Vermont, Kentucky, Tennessee, Maine, Texas, West Virginia) — no federal school grant, school funding built state-by-state.',
+  3: 'Public-land states admitted between 1803 and 1848 under the original section-16 template the Northwest Ordinance established.',
+  4: 'The doubled-grant cohort, 1846–1859 — California, Oregon, and the early Pacific admissions when Congress doubled the school-section grant from one section per township to two.',
+  5: 'The post-Civil-War cohort, 1861–1896 — Nebraska through Utah, admitted under the era’s expanded grant terms and shaped by railroad and mineral pressures.',
+  6: 'Twentieth-century admissions, 1907–1959 — Oklahoma, New Mexico, Arizona, Alaska, and Hawaii; the most carefully drafted federal trust instruments and the two sui-generis outliers.',
+};
+
+const CONFIDENCE_LABEL: Record<string, string> = {
+  verified: 'Verified',
+  awaiting: 'Awaiting disclosure',
+  unknown: 'Disclosure unknown',
+  na: 'Not applicable',
+};
+
 const layoutProps =
   props.kind === 'essay'
     ? {
@@ -51,7 +80,9 @@ const layoutProps =
       }
     : {
         title: props.entry.data.name,
-        subtitle: `${props.entry.data.iso} · FIPS ${props.entry.data.fips} · Admission #${props.entry.data.admissionNumber}`,
+        // FIPS strip is rendered in header-extras (below) so the FIPS
+        // code can be wrapped in <abbr> with an explanatory title;
+        // RoomLayout's subtitle prop only accepts a plain string.
         state: {
           iso: props.entry.data.iso.toLowerCase(),
           name: props.entry.data.name,
@@ -76,6 +107,17 @@ const layoutProps =
 
   {props.kind === 'state' && (
     <Fragment slot="header-extras">
+      <p class="state-id-strip mt-3 text-slate-700">
+        <span>{props.entry.data.iso}</span>
+        <span class="sep"> · </span>
+        <span class="fips">
+          <abbr title="Federal Information Processing Standards code — the Census Bureau's numerical identifier for this state, used for federal data cross-references">
+            FIPS {props.entry.data.fips}
+          </abbr>
+        </span>
+        <span class="sep"> · </span>
+        <span>Admission #{props.entry.data.admissionNumber}</span>
+      </p>
       <dl class="mt-4 grid grid-cols-1 gap-x-8 gap-y-2 text-sm sm:grid-cols-2">
         <div data-pagefind-weight="20">
           <dt class="inline font-semibold text-slate-700">Admitted:</dt>
@@ -83,7 +125,21 @@ const layoutProps =
         </div>
         <div>
           <dt class="inline font-semibold text-slate-700">Era:</dt>
-          <dd class="inline text-slate-600"> {props.entry.data.eraName} (cohort {props.entry.data.eraCohort})</dd>
+          <dd class="inline text-slate-600">
+            {' '}
+            {COHORT_SLUGS[props.entry.data.eraCohort] ? (
+              <a
+                href={`/reading/${COHORT_SLUGS[props.entry.data.eraCohort]}/`}
+                class="cohort-link"
+                title={COHORT_TOOLTIPS[props.entry.data.eraCohort]}
+              >
+                {props.entry.data.eraName}
+              </a>
+            ) : (
+              <span>{props.entry.data.eraName}</span>
+            )}
+            <span class="cohort-num"> (cohort {props.entry.data.eraCohort})</span>
+          </dd>
         </div>
         {props.entry.data.federalGrantAcres !== null && (
           <div>
@@ -92,6 +148,35 @@ const layoutProps =
               {props.entry.data.federalGrantAcres === 0
                 ? ' none (state-derived)'
                 : ` ${num.format(props.entry.data.federalGrantAcres)} acres`}
+            </dd>
+          </div>
+        )}
+        {props.entry.data.federalGrantAcres !== null && props.entry.data.federalGrantAcres > 0 && (
+          <div>
+            <dt class="inline font-semibold text-slate-700">Trust acres remaining:</dt>
+            <dd class="inline text-slate-600">
+              {props.entry.data.trustAcresRemaining ? (
+                <>
+                  {' '}{num.format(props.entry.data.trustAcresRemaining)} acres
+                  <span class="acres-percentage">
+                    ({Math.round(
+                      (props.entry.data.trustAcresRemaining /
+                        props.entry.data.federalGrantAcres) *
+                        100
+                    )}% of original grant)
+                  </span>
+                  {' '}<span class={`badge badge-${props.entry.data.trustAcresRemainingConfidence ?? 'verified'}`}>
+                    {CONFIDENCE_LABEL[props.entry.data.trustAcresRemainingConfidence ?? 'verified']}
+                  </span>
+                  {props.entry.data.trustAcresRemainingAsOf && (
+                    <span class="as-of"> · As of {props.entry.data.trustAcresRemainingAsOf}</span>
+                  )}
+                </>
+              ) : (
+                <>
+                  {' '}<span class="badge badge-unknown">Disclosure unknown</span>
+                </>
+              )}
             </dd>
           </div>
         )}

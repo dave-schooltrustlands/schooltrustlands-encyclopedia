@@ -14,6 +14,10 @@ permanentFundCorpus:
 latestDistribution:
   value: 106000000
   fiscalYear: 2024
+trustAcresRemaining: 3300000
+trustAcresRemainingConfidence: verified
+trustAcresRemainingAsOf: "FY 2024"
+trustAcresRemainingSource: "ASTL Utah Report (Scott Smith, FY 2024) and SITLA Annual Report"
 substrateVersion: "1.3"
 lastReviewed: 2026-05-01
 ---

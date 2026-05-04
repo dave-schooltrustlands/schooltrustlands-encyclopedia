@@ -433,6 +433,48 @@
   .badge-na        { background: var(--not-applicable); }
   .badge-conflict  { background: var(--source-conflict); }
   .badge-pending   { background: var(--pending); }
+  .badge-unknown   { background: var(--not-applicable); }
+
+  /* Per-state header polish (Session 5): cohort link + tooltip, FIPS
+     abbr, trust-acres-remaining row. Lives in src/pages/reading/[slug].astro. */
+  .cohort-link {
+    color: var(--deep-navy);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    cursor: help;
+  }
+  .cohort-link:hover { color: var(--trust-blue); }
+  .cohort-num {
+    color: var(--ink);
+    opacity: 0.7;
+    font-size: 0.9em;
+  }
+  .state-id-strip {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+  .state-id-strip .sep { color: var(--ink); opacity: 0.45; }
+  .fips abbr {
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: help;
+  }
+  .acres-percentage {
+    color: var(--ink);
+    opacity: 0.75;
+    font-size: 0.9em;
+    margin-left: 0.3rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .as-of {
+    font-family: var(--font-sans);
+    font-size: 0.82em;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-left: 0.3rem;
+  }
 
   /* Site wordmark in global header — PLSS-grid SVG + serif/sans text. */
   .site-wordmark {

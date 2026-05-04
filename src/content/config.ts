@@ -61,6 +61,15 @@ const states = defineCollection({
     // template assembled from era/admission/governance/grant fields.
     summary: z.string().optional(),
     currentIssue: z.string().optional(),
+    // Trust acres remaining today (current surface acreage of the
+    // school-trust estate). Renders only for federal-grant states; the
+    // template computes percentage of original grant from federalGrantAcres.
+    trustAcresRemaining: z.number().optional(),
+    trustAcresRemainingConfidence: z
+      .enum(['verified', 'awaiting', 'unknown', 'na'])
+      .optional(),
+    trustAcresRemainingAsOf: z.string().optional(),
+    trustAcresRemainingSource: z.string().optional(),
   }),
 });
 
