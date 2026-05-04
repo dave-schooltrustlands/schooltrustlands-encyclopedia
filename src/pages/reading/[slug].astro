@@ -172,6 +172,13 @@ const layoutProps =
                     <span class="as-of"> · As of {props.entry.data.trustAcresRemainingAsOf}</span>
                   )}
                 </>
+              ) : props.entry.data.trustAcresRemainingConfidence === 'na' ? (
+                <>
+                  {' '}<span
+                    class="badge badge-na"
+                    title={props.entry.data.trustAcresRemainingSource}
+                  >Not applicable</span>
+                </>
               ) : (
                 <>
                   {' '}<span class="badge badge-unknown">Disclosure unknown</span>
