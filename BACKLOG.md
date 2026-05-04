@@ -48,7 +48,15 @@ The SVG source is verbatim from the handoff and should not be modified to compen
 
 ## Pull-quote editorial pass
 
-Pull quotes installed on the Oregon entry as Tier-2 demonstrators (Visual Rebuild Handoff) and on all 18 ASTL state entries (Session 2B1, May 2026). Pull-quote installation for the remaining 31 non-ASTL state entries is the structural pass of Session 2B2. Reading Room essays (Chapter 3, Sacred Compact opener) recommended as next surfaces beyond the state pages. The `.pull-quote` primitive is globally available.
+Pull quotes installed on the Oregon entry as Tier-2 demonstrators (Visual Rebuild Handoff), on all 18 ASTL state entries (Session 2B1, May 2026), and on the 31 federal-grant + eastern non-ASTL entries (Session 2B2, May 2026). Reading Room essays (Chapter 3, Sacred Compact opener) recommended as next surfaces beyond the state pages. The `.pull-quote` primitive is globally available.
+
+## Hawaii and Wyoming sui-generis treatment
+
+Hawaii's Section 5(f) trust (Admission Act 1959) and Wyoming's mineral-driven Common School Permanent Land Fund are structural outliers — Hawaii because its trust runs through a five-purpose Admission Act framework with the Office of Hawaiian Affairs as a co-beneficiary, Wyoming because its modest 3.5-million-acre base produces a $4.9B fund through geology rather than acreage. Both pages received the standard 2B2 H2/PQ structural pass, but neither maps cleanly onto the section-sixteen / federal-grant template the rest of the cohort follows. When the next editorial pass tightens cross-state comparison framing (atlas trust-integrity lens, comparative tables), flag both as needing custom narrative scaffolding rather than slot-fill against a uniform template.
+
+## Texas as outlier
+
+Texas was admitted in 1845 by joint resolution of annexation rather than under the standard federal Enabling Act framework, and consequently received no section-sixteen federal school-land grant. The Texas Permanent School Fund derives from a separate state-constitutional dedication of public-domain lands at admission; the 2B1 Texas merge captured this, but the structural pass of 2B2 did not touch the entry because Texas is in the ASTL cohort. Future cross-state work should treat Texas as the principal "no federal grant, large state-derived corpus" case and avoid analytic framing that assumes federal-grant lineage.
 
 ## ASTL state-page image migration (deferred from 2B1)
 
