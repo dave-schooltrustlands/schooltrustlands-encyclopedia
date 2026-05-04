@@ -4,60 +4,119 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Updates · America's School Trust Library"
-  description="What's new in the library."
+  description="Week-by-week log of what's changed at schooltrusts.net."
   sourceId="updates"
 >
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <h1>Updates</h1>
-    <p class="kicker">A chronological log of significant additions and changes to the library.</p>
+    <p class="kicker">Week-by-week log of what's changed at America's School Trust Library.</p>
 
-    <h2>May 2026</h2>
-
-    <h3>Library renamed and rebranded as America's School Trust Library</h3>
     <p>
-      <em>Late May 2026.</em> The site renamed from "Schools of the Republic" to "America's
-      School Trust Library" with the tagline "An evidentiary archive of America's school trust
-      lands and funds." New canonical domain at schooltrusts.net. The book remains titled
-      <em>Schools of the Republic</em> (Sullivan &amp; Bird, 2025).
-    </p>
-
-    <h3>Reading Room restructured with content cards</h3>
-    <p>
-      <em>Late May 2026.</em> Each major content object — encyclopedia, white papers, vision
-      essay, bibliography entries — now lives in its own dossier-style card with cover,
-      abstract, and annotated table of contents.
-    </p>
-
-    <h3>Bibliography section added</h3>
-    <p>
-      <em>Late May 2026.</em> Foundational works on America's school trust lands now visible
-      in the Reading Room. Initial entries include Fletcher Harper Swift's 1911 study (the
-      seminal reference), the Hawk 2018 Oregon thesis, Puter &amp; Stevens 1908
-      <em>Looters of the Public Domain</em>, and Heidelberg's 2014 paper.
-    </p>
-
-    <h3>Visual identity rebuilt</h3>
-    <p>
-      <em>Mid-May 2026.</em> Site rebuilt with archival-paper background, Source Serif 4
-      typography, the PLSS-grid wordmark, and per-room subtle accents. Layout primitives
-      (chapter openers, pull quotes, dossier cards, archival dividers, confidence badges) are
-      now part of the design system.
-    </p>
-
-    <h3>Library opened</h3>
-    <p>
-      <em>Early May 2026.</em> Three rooms launched: Reading Room (encyclopedia, Sacred
-      Compact, Vision), Atlas (four-lens choropleth), Counting House (50-row sortable
-      financial table). Initial substrate: encyclopedia v1.3 (~45,000 words across 50
-      states), Sacred Compact white paper v5.0 (~70 pages, 207 footnotes), Vision v2 ("The
-      Eighth Anchor"). Domain at the time: schooltrustlands.net.
+      The substrate behind this library — the encyclopedia, the Sacred Compact white
+      paper, the Vision essay, the per-state research — began in <strong>late February
+      2026</strong>. The public library site at <a href="https://schooltrusts.net">schooltrusts.net</a>
+      opened in <strong>early May 2026</strong>. This page is the running site-side log.
+      Each week shows a one-line summary; click the week to expand for the daily detail.
     </p>
 
     <hr class="archival-divider" />
 
+    <article class="weekly-update">
+      <h2>Week of May 4, 2026</h2>
+      <p class="weekly-summary">
+        State-page editorial pass on the remaining 49 states (numbered headers and
+        pull-quotes); ASTL Voices articles, Hawk and Swift source pages, and Bibliography
+        card updates shipped as the /voices/ and /reading/sources/ surfaces. About page
+        rebranded as a joint ASTL + OASTL project. Site logo enlarged. Schools of the
+        Republic book cover deployed.
+      </p>
+      <details class="weekly-detail">
+        <summary>Daily detail</summary>
+        <ul>
+          <li>
+            <strong>Sunday May 4, 2026.</strong> Polish pass: site logo bumped from 36 to
+            64px (mobile-narrow keeps 40px); Schools of the Republic book cover
+            (ChatGPT-generated, archival paper + PLSS-grid motif) deployed to Reading
+            Room; /start/ badge description rewritten to match the four signals actually
+            in use (Verified / Awaiting State Disclosure / Disclosure unknown / em-dash);
+            /about/ rebranded as joint ASTL + OASTL with signed signature block (Margaret
+            pending review); Schools of the Republic Reading Room card overhauled —
+            Part I/II framing dropped, numbered chapter ToC with live links wired; this
+            Updates page rebuilt as a week-by-week collapsible log.
+          </li>
+          <li>
+            <strong>Sunday May 4, 2026 — earlier.</strong> Sessions 2B1 (18 ASTL-content
+            states restructured with section headers, pull-quotes, and "From the field —
+            ASTL" attributed merge blocks), 2B2 (31 non-ASTL states restructured with
+            eastern-variant header skeleton for the Original 13 + early-antebellum), 2C
+            (/voices/ collection of 7 ASTL editorial pieces; /reading/sources/swift-1911/
+            and /reading/sources/hawk-2018/ source pages; Bibliography card updates;
+            Nebraska LB1072 FAQ folded into the Nebraska entry as appendix). A
+            Cloudflare-Pages 25-MiB-per-file build failure (the Hawk PDF at 88 MiB) was
+            diagnosed and resolved by removing the oversize PDFs from the deploy and
+            linking to Internet Archive (Swift) or noting the L0 location pending a
+            hosted mirror (Hawk).
+          </li>
+        </ul>
+      </details>
+    </article>
+
+    <article class="weekly-update">
+      <h2>Week of April 27, 2026</h2>
+      <p class="weekly-summary">
+        Library MVP launched: three rooms (Reading Room, Atlas, Counting House) live with
+        encyclopedia v1.3, Sacred Compact white paper v5.0, and Vision v2 ("The Eighth
+        Anchor"). Visual identity rebuilt with archival palette and PLSS wordmark. Site
+        renamed from "Schools of the Republic" to "America's School Trust Library" and
+        migrated to schooltrusts.net.
+      </p>
+      <details class="weekly-detail">
+        <summary>Daily detail</summary>
+        <ul>
+          <li>
+            <strong>Friday May 1 – Saturday May 2.</strong> MVP build: Reading Room with
+            9 chapters of Sacred Compact (~70 pages, 207 footnotes), the encyclopedia
+            v1.3 covering all 50 states (~45,000 words), and Vision v2; Atlas with
+            four-lens choropleth; Counting House with 50-row sortable financial table
+            including per-state cards and side-by-side comparison. Three Q8-extensibility
+            seams (HTML data attributes, reserved-route 404s, Cloudflare Access for
+            /private/*) put in place for the Records / Court / Breach &amp; Recovery
+            rooms opening later in 2026.
+          </li>
+          <li>
+            <strong>Saturday May 2 evening.</strong> Visual identity rebuild — archival
+            paper background, Source Serif 4 typography, PLSS-grid wordmark, OG default
+            image, per-room subtle accents. Layout primitives (chapter openers,
+            pull-quotes, dossier cards, archival dividers, confidence badges) added to
+            the design system.
+          </li>
+          <li>
+            <strong>Sunday May 3.</strong> Site renamed from "Schools of the Republic" to
+            "America's School Trust Library" with the tagline "An evidentiary archive of
+            America's school trust lands and funds." (The book stays titled <em>Schools
+            of the Republic</em>.) Canonical domain moved to schooltrusts.net (with .org
+            and .com variants); the older schooltrustlands.net domain auto-renew was
+            disabled. Reading Room restructured into drop-shadow content cards.
+            Bibliography section seeded with Swift 1911, Hawk 2018, Puter &amp; Stevens
+            1908, and Heidelberg 2014. New /updates/ and /newsroom/ surfaces created.
+          </li>
+          <li>
+            <strong>Sunday May 3 — Session 2A.</strong> OASTL substantive content
+            migrated to the library: /court/oregon-current-case/ (resolved a prior 404),
+            /reading/us-or/history/ (Elliott founding, fire history, Zybach analysis),
+            /reading/us-or/research/ (active vs passive management, ESRF political-process
+            timeline 2009–2022). The OASTL Google Site at oastl.org and the ASTL site at
+            schooltrustlands.org were left untouched, symmetric organizational surfaces.
+          </li>
+        </ul>
+      </details>
+    </article>
+
+    <hr class="archival-divider" />
+
     <p>
-      This page is the library's running changelog. New entries appear at the top of the
-      relevant month. For the substrate's underlying version history, see the
+      Going forward, every site change is logged in the current week's entry as it ships.
+      For the substrate's underlying version history, see the
       <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia"
         >GitHub repository</a
       >.
