@@ -14,14 +14,13 @@ Open work captured during the May 2026 site rebuild. Items below were either def
 
 ### Reading Room CTA targets
 
-- `/reading/schools-of-the-republic/` — encyclopedia book landing page. Reading Room Books card CTA points here; currently 404. Build a landing that surfaces the Part I ToC and links into the existing `/reading/00-prologue/` … `/reading/08-conclusion/` chapter URLs.
 - `/reading/sacred-compact-1/` — first section of the Sacred Compact. Reading Room Books card CTA points here; currently 404. Either route this to the existing `/reading/sacred-compact-prologue/` or `/reading/sacred-compact-i-the-question/`, or build a redirect.
 
 ## Image acquisition still pending
 
 The Reading Room cards and dossier primitives are wired to fall back to a `.plss-pattern` cover when a real image isn't available. The following images would replace those fallbacks once sourced.
 
-- **Cover thumbnails** for the three Books cards: `/img/covers/schools-of-the-republic-cover.jpg`, `/img/covers/sacred-compact-cover.jpg`, `/img/covers/eighth-anchor-cover.jpg`. Today they fall back to PLSS pattern via the `onerror` handler.
+- **Six remaining Reading Room cover images.** Schools of the Republic shipped in Session 3 (May 4, 2026); Sacred Compact, The Eighth Anchor, Swift 1911, Hawk 1949, Puter & Stevens 1908, and Heidelberg 2014 still use the PLSS-pattern fallback. Two work-streams: (a) public-domain real covers from Internet Archive for Swift and Puter & Stevens; (b) synthetic covers for Sacred Compact, The Eighth Anchor, Hawk, and Heidelberg using the same prompt template that produced the Schools of the Republic cover, modified per work.
 - **Oregon Mitchell trial sketch** — Oregon Historical Society, June 29, 1905 *Oregonian*. Not in the L0 image corpus. Verify reuse permission. Source: <https://www.oregonhistoryproject.org/articles/historical-records/land-fraud-trial-of-senator-john-mitchell/>.
 - **Utah GLO township plat** — `public/img/states/ut-glo-plat.jpg`. The L0 corpus's UT folder has only land-use PDFs; need a proper GLO township plat from `glorecords.blm.gov` or a SITLA map.
 - **Mississippi Section 16 plat** — `public/img/states/ms-section-16.jpg`. The L0 corpus's MS folder is empty for land_use; source from BLM GLO.
@@ -46,9 +45,21 @@ The SVG source is verbatim from the handoff and should not be modified to compen
 
 `public/img/sources/magna-carta-1215.jpg` is ~6 MB straight from the L0 corpus. Run a sharp resize/recompress pass before performance becomes an issue.
 
-## Pull-quote editorial pass
+## Pull-quote editorial pass — extension to Reading Room essays
 
-Pull quotes installed on the Oregon entry as Tier-2 demonstrators (Visual Rebuild Handoff), on all 18 ASTL state entries (Session 2B1, May 2026), and on the 31 federal-grant + eastern non-ASTL entries (Session 2B2, May 2026). Reading Room essays (Chapter 3, Sacred Compact opener) recommended as next surfaces beyond the state pages. The `.pull-quote` primitive is globally available.
+Pull quotes installed on the Oregon entry as Tier-2 demonstrators (Visual Rebuild Handoff), on all 18 ASTL state entries (Session 2B1, May 2026), and on the 31 federal-grant + eastern non-ASTL entries (Session 2B2, May 2026). State coverage complete. Reading Room essays (Chapter 3, Sacred Compact opener) are the recommended next surfaces. The `.pull-quote` primitive is globally available.
+
+## Source Conflict badge implementation
+
+The `--source-conflict` color, `.badge-conflict` style, and `'source-conflict'` substrate label all exist as primitives. No card currently renders this badge, and the /start/ four-signals description was cut to match (Session 3, May 4, 2026). Implement when (a) the substrate has cells where two sources disagree, and (b) the editorial decision is to surface the disagreement rather than pick one source.
+
+## Schools of the Republic chapter-page polish
+
+Chapters 0–8 already render via `src/content/essays/0?-*.md` through the `[slug].astro` essay route (URLs: `/reading/prologue/`, `/reading/founding-floor/`, … `/reading/conclusion/`), and the Reading Room SoR card now links to them (Session 3). The /reading/schools-of-the-republic/ landing page still describes the book in Part I/II framing pointing at Sacred Compact essays for Part I, which is no longer how the chapters are routed. Rewrite that landing page as a clean book-front that mirrors the new card ToC and stops referring to Sacred Compact as a Part-I substitute.
+
+## About-page Margaret approval
+
+The /about/ page now ends with a joint signature block (ASTL + OASTL). Margaret's signature renders at 0.55 opacity with a "Pending review and sign-off" italic line until `margaretApproved` is flipped from `false` to `true` in `src/pages/about.astro`. Flip after Margaret's review and approval call.
 
 ## Hawaii and Wyoming sui-generis treatment
 
