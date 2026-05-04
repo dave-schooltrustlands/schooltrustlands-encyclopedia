@@ -250,6 +250,34 @@
     color: var(--deep-navy);
   }
 
+  /* 3b. ASTL field block — distinct visual voice for merged ASTL annotations. */
+  .astl-field-block {
+    margin-top: 3rem;
+    padding: 1.75rem 2rem;
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-left: 4px solid var(--trust-blue);
+    border-radius: 6px;
+  }
+  .astl-field-block .eyebrow { color: var(--trust-blue); }
+  .astl-field-block h2 { margin-top: 0.4rem; }
+  .astl-field-block .byline {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: var(--ink);
+    opacity: 0.8;
+    margin-bottom: 1.25rem;
+  }
+  .astl-field-block .attribution {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--ink);
+    opacity: 0.65;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border);
+  }
+
   /* 4. Section divider — § glyph centered on a quiet rule. */
   .archival-divider {
     border: 0;

@@ -38,6 +38,9 @@ export default {
     'abstract',
     'toc',
     'cta',
+    'astl-field-block',
+    'attribution',
+    'see-also',
   ],
   theme: {
     extend: {
