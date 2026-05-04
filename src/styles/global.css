@@ -443,10 +443,13 @@
     color: var(--deep-navy);
   }
   .plss-mark {
-    width: 36px;
-    height: 36px;
+    width: 64px;
+    height: 64px;
     color: var(--deep-navy);
     flex-shrink: 0;
+  }
+  @media (max-width: 640px) {
+    .plss-mark { width: 40px; height: 40px; }
   }
   .wordmark-text strong {
     font-family: var(--font-serif);
