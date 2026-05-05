@@ -1,0 +1,303 @@
+{
+  "_comment": "Map Room state-level data. Drives the toggle visualization on /maps/ landing AND template-rendered per-state pages at /maps/{abbr}/. States that received federal Section 16-style grants get an entry; states that never received federal grants render as gray on the landing visualization with no clickthrough. Oregon and Utah have bespoke full-page markdown that supersedes the template render. Acreage figures: 'originalGrantAcres' = federal grant at admission; 'currentSurfaceAcres' = present remaining trust-land surface; 'currentMineralAcres' = severed-mineral acreage where separately tracked. Source: Locating_State_School_Trust_Lands_2026-05-05 research synthesis.",
+
+  "_grayStates": ["me", "vt", "nh", "ma", "ct", "ri", "ny", "nj", "pa", "de", "md", "va", "nc", "sc", "ga", "ky", "tn", "wv"],
+  "_grayStatesNote": "These 18 states never received a federal Section 16 grant. They render in gray on the landing visualization with no clickthrough. Hawaii is excluded from this list because its §5(f) ceded-lands trust under the 1959 Admission Act is a substantive federal-derived regime; it gets its own page. Texas is excluded because its General Land Office operates a substantial state-created trust that warrants reporting.",
+
+  "states": [
+    {
+      "abbr": "co", "fips": "08", "state": "Colorado", "tier": "Strong",
+      "originalGrantAcres": 4540000, "currentSurfaceAcres": 2800000, "currentMineralAcres": 4000000,
+      "beneficiary": "Public schools (and other beneficiaries)",
+      "agency": "Colorado State Land Board", "agencyURL": "https://slb.colorado.gov",
+      "gisURL": "https://gis.colorado.gov/trustlands",
+      "contactName": "Emily Barbo", "contactEmail": "emily.barbo@state.co.us", "contactPhone": "720-854-3330",
+      "summary": "Colorado's State Land Board manages approximately 2.8 million surface acres and 4 million mineral acres, including a constitutionally distinct Stewardship Trust for conservation purposes. Public ArcGIS REST endpoint with downloadable lease documents, fully exposed PLSS Quarter-Quarter layer, frequent updates. One of the strongest public-facing trust-land GIS architectures in the country."
+    },
+    {
+      "abbr": "mt", "fips": "30", "state": "Montana", "tier": "Strong",
+      "originalGrantAcres": 5198000, "currentSurfaceAcres": 5200000, "currentMineralAcres": null,
+      "beneficiary": "Public schools (and other beneficiaries)",
+      "agency": "Montana DNRC, Trust Land Management Division",
+      "agencyURL": "https://dnrc.mt.gov/Trust-Land",
+      "gisURL": "https://tlmspublic.dnrc.mt.gov",
+      "contactName": "Moira Davin", "contactEmail": "mdavin@mt.gov", "contactPhone": "406-444-0465",
+      "summary": "Montana's DNRC Trust Land Management Division operates the TLMS public viewer and the Cadastral Web-Search service, both querying surface and severed mineral ownership separately, keyed to PLSS aliquots. Mineral acreage exceeds surface. Monthly cadence. The Public Access Map distinguishes physical location from legal accessibility — a parcel may be physically located but landlocked by private property."
+    },
+    {
+      "abbr": "nm", "fips": "35", "state": "New Mexico", "tier": "Strong",
+      "originalGrantAcres": 9100000, "currentSurfaceAcres": 9100000, "currentMineralAcres": 12980000,
+      "beneficiary": "Public schools (and other beneficiaries)",
+      "agency": "New Mexico State Land Office", "agencyURL": "https://www.nmstatelands.org",
+      "gisURL": "https://mapservice.nmstatelands.org/landstatus",
+      "contactName": "Joey Keefe", "contactEmail": "jkeefe@slo.state.nm.us", "contactPhone": "505-827-5762",
+      "summary": "New Mexico's State Land Office operates the most aliquot-friendly public tool in the nation. SLOConnect lease lookup queries by Township-Range-Section-Unit Letter; ONGARD database refreshes daily at 6:15 a.m. MT. Mineral acreage (~13M) exceeds surface (~9.1M). Surface, subsurface, and combined ownership tracked as distinct categories — a researcher confusing the three collapses the inventory by half."
+    },
+    {
+      "abbr": "az", "fips": "04", "state": "Arizona", "tier": "Strong",
+      "originalGrantAcres": 10000000, "currentSurfaceAcres": 9200000, "currentMineralAcres": 1100000,
+      "beneficiary": "Public schools (and other beneficiaries)",
+      "agency": "Arizona State Land Department", "agencyURL": "https://land.az.gov",
+      "gisURL": "https://gis.azland.gov",
+      "contactName": "Lynn Cordova", "contactEmail": "lcordova@azland.gov", "contactPhone": "602-542-2654",
+      "summary": "Arizona's State Land Department manages approximately 9.2 million acres of trust land — about 8 million dedicated to K-12 public schools — under the four-section Enabling Act grant template (Sections 2, 16, 32, 36). The ASLD Parcel Viewer exposes trust parcels with related layers including beneficiaries, mineral parcels, and oil/gas parcels. The April 2026 launch of the ASLD Community Portal expanded public access; updates are continuous."
+    },
+    {
+      "abbr": "ut", "fips": "49", "state": "Utah", "tier": "Strong",
+      "originalGrantAcres": 5800000, "currentSurfaceAcres": 3400000, "currentMineralAcres": 4500000,
+      "beneficiary": "Public schools (dominant) plus 11 other institutional beneficiaries",
+      "agency": "School and Institutional Trust Lands Administration (SITLA)", "agencyURL": "https://trustlands.utah.gov",
+      "gisURL": "https://platmap.trustlands.utah.gov",
+      "contactName": "Marla Kennedy", "contactEmail": "marlakennedy@utah.gov", "contactPhone": "801-538-5102",
+      "summary": "SITLA operates the most architecturally clean public-facing trust-land GIS in the country. The Digital Plat Map combines business records (lease, contract, ownership) with spatial data, exposes a queryable feature service, publishes weekly updates, and integrates with Utah SGID. Severed mineral estates as a distinct layer.",
+      "fullPage": "L4_Deliverables/Map_Room/States/ut_utah_v1_[PUBLIC].md"
+    },
+    {
+      "abbr": "nd", "fips": "38", "state": "North Dakota", "tier": "Strong",
+      "originalGrantAcres": 706600, "currentSurfaceAcres": 706600, "currentMineralAcres": 2600000,
+      "beneficiary": "Public schools (and other beneficiaries)",
+      "agency": "North Dakota Department of Trust Lands", "agencyURL": "https://www.land.nd.gov",
+      "gisURL": "https://lms.land.nd.gov",
+      "contactName": "Catelin Newell", "contactEmail": "cnewell@nd.gov", "contactPhone": "701-328-2810",
+      "summary": "North Dakota manages approximately 706,600 surface acres and 2.6 million mineral acres — a roughly 3.7-to-1 mineral-to-surface ratio, the most extreme inversion in the country. Article IX § 5 of the State Constitution mandates retention of mineral rights in all school-land sales. Active surface and mineral datasets published separately on NDGISHub."
+    },
+    {
+      "abbr": "mn", "fips": "27", "state": "Minnesota", "tier": "Strong",
+      "originalGrantAcres": 2874951, "currentSurfaceAcres": 2500000, "currentMineralAcres": 1000000,
+      "beneficiary": "Public schools (Permanent School Fund)",
+      "agency": "Minnesota DNR, Lands and Minerals + Office of School Trust Lands",
+      "agencyURL": "https://www.dnr.state.mn.us/lands_minerals", "gisURL": null,
+      "contactName": "Mark Waite", "contactEmail": "mark.waite@state.mn.us", "contactPhone": "651-259-5628",
+      "summary": "Minnesota's DNR Lands and Minerals division and the Office of School Trust Lands jointly manage approximately 2.5 million surface acres and 1 million severed-mineral-only acres. Weekly publication cadence; data accessible through the DNR's ArcGIS hub. Minnesota pioneered the permanent fund model alongside Michigan in the 1830s; the state retained substantial trust acreage where most of the upper Midwest did not."
+    },
+
+    {
+      "abbr": "wa", "fips": "53", "state": "Washington", "tier": "Good",
+      "originalGrantAcres": 3000000, "currentSurfaceAcres": 3000000, "currentMineralAcres": null,
+      "beneficiary": "Public schools (Common School Trust ≈1.8M acres) and other beneficiaries",
+      "agency": "Washington State Department of Natural Resources", "agencyURL": "https://www.dnr.wa.gov",
+      "gisURL": "https://www.dnr.wa.gov/maps",
+      "contactName": "Carlo Davis", "contactEmail": "carlo.davis@dnr.wa.gov", "contactPhone": "360-902-1101",
+      "summary": "Washington's DNR (under the Commissioner of Public Lands) administers approximately 3 million acres across multiple trust beneficiaries, of which the Common School Trust is the largest (≈1.8 million acres). The agency publishes weekly-to-monthly updates through its Open Access Hub, with more than 60 feature services. Specialized tooling includes 1:100,000 scale Public Lands Quadrangles. Mineral estate less consolidated publicly."
+    },
+    {
+      "abbr": "or", "fips": "41", "state": "Oregon", "tier": "Good",
+      "originalGrantAcres": 3399000, "currentSurfaceAcres": 681000, "currentMineralAcres": 768550,
+      "beneficiary": "Common School Fund (K–12 public schools)",
+      "agency": "Oregon Department of State Lands (DSL)", "agencyURL": "https://www.oregon.gov/dsl",
+      "gisURL": "https://maps.dsl.state.or.us/slis/",
+      "contactName": "Alyssa Rash", "contactEmail": "alyssa.rash@dsl.oregon.gov", "contactPhone": "971-900-7708",
+      "summary": "DSL publishes the State Land Inventory System (SLIS) ArcGIS feature service exposing most current trust-land ownership at parcel level, with surface and subsurface estate fields. Continual updates. Agency acknowledges in its own metadata that the data is 'currently not normalized' — for litigation, primary deeds and surveys remain controlling.",
+      "fullPage": "L4_Deliverables/Map_Room/States/or_oregon_v1_[PUBLIC].md"
+    },
+    {
+      "abbr": "id", "fips": "16", "state": "Idaho", "tier": "Good",
+      "originalGrantAcres": 3650000, "currentSurfaceAcres": 2500000, "currentMineralAcres": null,
+      "beneficiary": "Public schools (and other beneficiaries)",
+      "agency": "Idaho Department of Lands", "agencyURL": "https://www.idl.idaho.gov",
+      "gisURL": "https://landfolioportal.idl.idaho.gov",
+      "contactName": "Jane Kreller", "contactEmail": "jane.kreller@idl.idaho.gov", "contactPhone": "208-350-9670",
+      "summary": "Idaho's Department of Lands manages approximately 2.4 million acres of endowment land (out of an original 3.65 million-acre grant). The IDL GIS Program publishes a Data Hub with Activity Map, Leasing Opportunities Map, and Activity Report tools providing access to current and historical documents back to statehood. Continual updates. Surface ownership beyond IDL holdings is acknowledged as 'not complete.'"
+    },
+    {
+      "abbr": "wy", "fips": "56", "state": "Wyoming", "tier": "Good",
+      "originalGrantAcres": 4100000, "currentSurfaceAcres": 3500000, "currentMineralAcres": 3900000,
+      "beneficiary": "Public schools (and other beneficiaries)",
+      "agency": "Wyoming Office of State Lands and Investments", "agencyURL": "https://lands.wyo.gov",
+      "gisURL": "https://gis2.statelands.wyo.gov",
+      "contactName": "Courtney Kouba", "contactEmail": "courtney.kouba@wyo.gov", "contactPhone": "307-777-6629",
+      "summary": "Wyoming's OSLI manages approximately 3.5 million surface acres and 3.9 million mineral acres of school-trust land. Functional public viewer; the agency explicitly disclaims accuracy and recommends consulting primary survey records for legal certainty. Periodic update cadence. Wyoming's checkerboard-pattern townships in the Red Desert and elsewhere reflect indemnity selections from elsewhere in the public domain."
+    },
+
+    {
+      "abbr": "ca", "fips": "06", "state": "California", "tier": "Moderate",
+      "originalGrantAcres": 5534293, "currentSurfaceAcres": 469000, "currentMineralAcres": 790000,
+      "beneficiary": "Public schools",
+      "agency": "California State Lands Commission", "agencyURL": "https://www.slc.ca.gov",
+      "gisURL": "https://slc.ca.gov/gis/school-lands-map",
+      "contactName": "Sheri Pemberton", "contactEmail": "sheri.pemberton@slc.ca.gov", "contactPhone": "916-574-1992",
+      "summary": "The Commission manages approximately 469,000 acres of school trust land plus mineral-only severed estates beneath approximately 790,000 additional acres, on top of 4 million acres of sovereign tide and submerged lands (a distinct legal category). The school-trust GIS dataset has not been formally updated since 2018. Nineteen counties contain zero school lands. A meaningful transparency gap given the asset's scale."
+    },
+    {
+      "abbr": "nv", "fips": "32", "state": "Nevada", "tier": "Moderate",
+      "originalGrantAcres": 3937795, "currentSurfaceAcres": 3000, "currentMineralAcres": null,
+      "beneficiary": "Public schools",
+      "agency": "Nevada Division of State Lands", "agencyURL": "https://lands.nv.gov",
+      "gisURL": "https://lands.nv.gov/gis-mapping-data",
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Nevada received nearly 4 million acres at statehood under the 1864 Enabling Act but disposed of approximately 99.9% of that grant through statutory sales. The Division of State Lands manages approximately 344,580 acres of state lands today, of which only about 3,000 acres are school-trust. Remaining trust-derived value is in a permanent fund."
+    },
+    {
+      "abbr": "ok", "fips": "40", "state": "Oklahoma", "tier": "Moderate",
+      "originalGrantAcres": 1410000, "currentSurfaceAcres": 727500, "currentMineralAcres": 1100000,
+      "beneficiary": "Public schools (and other beneficiaries)",
+      "agency": "Oklahoma Commissioners of the Land Office", "agencyURL": "https://clo.ok.gov",
+      "gisURL": "https://arcgis.com/apps/webappviewer/index.html?id=abe2290e8407433ead313bef01c82730",
+      "contactName": "Tristan Newbold", "contactEmail": "tristan.newbold@clo.ok.gov", "contactPhone": "405-521-4013",
+      "summary": "Oklahoma's CLO manages approximately 725,000 surface acres and 1.1 million mineral acres. Aliquot detail is strong (to ~40 acres), with auction-driven update cadence. Important caveat: CLO data is licensed via WhiteStar with terms-of-use restrictions limiting use to 'personal, non-commercial use.'"
+    },
+    {
+      "abbr": "sd", "fips": "46", "state": "South Dakota", "tier": "Moderate",
+      "originalGrantAcres": 3354402, "currentSurfaceAcres": 750000, "currentMineralAcres": 5500000,
+      "beneficiary": "Public schools",
+      "agency": "South Dakota Office of School and Public Lands", "agencyURL": "https://sdpubliclands.com",
+      "gisURL": "https://sdbit.maps.arcgis.com",
+      "contactName": "Brock Greenfield", "contactEmail": "brock.greenfield@state.sd.us", "contactPhone": "605-773-3303",
+      "summary": "South Dakota manages approximately 750,000 surface acres and a substantial 5.5 million-acre mineral estate. The interactive map is published as a BIT-hosted ArcGIS feature service, but no direct shapefile download is offered — a transparency gap for researchers wanting offline analysis."
+    },
+    {
+      "abbr": "ne", "fips": "31", "state": "Nebraska", "tier": "Moderate",
+      "originalGrantAcres": 2731643, "currentSurfaceAcres": 1258000, "currentMineralAcres": null,
+      "beneficiary": "Public schools",
+      "agency": "Nebraska Board of Educational Lands and Funds", "agencyURL": "https://belf.nebraska.gov",
+      "gisURL": "https://belf.nebraska.gov/land_maps.html",
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Nebraska's BELF manages approximately 1.258 million acres on a roughly $1.5 billion fund. The agency's primary public-facing tool is county-by-county static PDF maps; a statewide GIS layer exists only as a low-profile NebraskaMAP layer. A notable transparency gap given the asset's scale."
+    },
+    {
+      "abbr": "ms", "fips": "28", "state": "Mississippi", "tier": "Moderate",
+      "originalGrantAcres": 825000, "currentSurfaceAcres": 640000, "currentMineralAcres": null,
+      "beneficiary": "Public schools (locally — by school district)",
+      "agency": "Mississippi Secretary of State (oversight); 101–108 local school districts (management)",
+      "agencyURL": "https://www.sos.ms.gov/public-lands/16th-section-lands", "gisURL": null,
+      "contactName": "Kendra James", "contactEmail": "kendra.james@sos.ms.gov", "contactPhone": "601-359-6349",
+      "summary": "Mississippi's Sixteenth Section Lands are unique in the country — managed locally by 101 to 108 individual school districts under Secretary of State oversight. Approximately 640,000 acres remain under district management. Mississippi Constitution § 211 prohibits sale. There is no statewide integrated trust-land GIS."
+    },
+    {
+      "abbr": "ak", "fips": "02", "state": "Alaska", "tier": "Moderate",
+      "originalGrantAcres": 105000000, "currentSurfaceAcres": 1112000, "currentMineralAcres": null,
+      "beneficiary": "Multiple (Mental Health Trust ≈1M acres; University of Alaska ≈112K + up to 360K authorized)",
+      "agency": "Alaska Department of Natural Resources, Trust Land Office", "agencyURL": "https://dnr.alaska.gov/mlw",
+      "gisURL": "https://arcgis.dnr.alaska.gov/arcgis/rest/services/OpenData/Ownership_MentalHealthTrustParcels",
+      "contactName": "Lorraine Henry", "contactEmail": "lorraine.henry@alaska.gov", "contactPhone": "907-269-8427",
+      "summary": "Alaska received 105.81 million acres at statehood under the 1958 Statehood Act — the largest state land grant in U.S. history. Trust lands are a subset: approximately 1 million acres of Mental Health Trust plus approximately 112,000 University of Alaska acres, with up to 360,000 additional authorized by a December 2022 federal omnibus. DNR Trust Land Office publishes parcel data through ArcGIS REST."
+    },
+    {
+      "abbr": "tx", "fips": "48", "state": "Texas", "tier": "Moderate",
+      "originalGrantAcres": null, "currentSurfaceAcres": 13000000, "currentMineralAcres": null,
+      "beneficiary": "Permanent School Fund (Texas-created, not federal)",
+      "agency": "Texas General Land Office", "agencyURL": "https://www.glo.texas.gov",
+      "gisURL": "https://glo.texas.gov/maps/land-lease-mapping-viewer",
+      "contactName": "Kimberly Hubbard", "contactEmail": "kimberly.hubbard@glo.texas.gov", "contactPhone": "512-936-9582",
+      "summary": "Texas is structurally a 'no federal grant' state — it entered the Union with its own public lands. However, Texas operates one of the largest and most active state-created trust-land programs in the country: approximately 13 million acres of Permanent School Fund lands managed by the GLO, including substantial mineral estate. Strong transparency posture for a non-federal trust regime."
+    },
+    {
+      "abbr": "wi", "fips": "55", "state": "Wisconsin", "tier": "Moderate",
+      "originalGrantAcres": 1500000, "currentSurfaceAcres": 76000, "currentMineralAcres": null,
+      "beneficiary": "Public schools (and other beneficiaries)",
+      "agency": "Wisconsin Board of Commissioners of Public Lands", "agencyURL": "https://bcpl.wisconsin.gov",
+      "gisURL": null,
+      "contactName": "Tia Nelson", "contactEmail": "tia.nelson@wisconsin.gov", "contactPhone": "608-267-2233",
+      "summary": "Wisconsin's BCPL manages approximately 76,000 acres of residual trust land on a fund of approximately $1.5 billion — a small remaining footprint relative to the original grant, but a substantial fund balance. Limited public-facing GIS tooling."
+    },
+    {
+      "abbr": "ar", "fips": "05", "state": "Arkansas", "tier": "Moderate",
+      "originalGrantAcres": 1067711, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Arkansas Commissioner of State Lands", "agencyURL": "https://cosl.org",
+      "gisURL": null,
+      "contactName": "Nikki Heck", "contactEmail": "nheck@cosl.org", "contactPhone": "501-683-3314",
+      "summary": "Arkansas's original Section 16 grant has been almost entirely disposed of. The Commissioner of State Lands' work today is dominated by the tax-delinquent property program rather than a residual school-trust cadastre; FY23 distributions to public schools were approximately $24.4 million from the residual permanent fund."
+    },
+    {
+      "abbr": "la", "fips": "22", "state": "Louisiana", "tier": "Moderate",
+      "originalGrantAcres": 807271, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Louisiana State Land Office", "agencyURL": "https://www.doa.la.gov/doa/sla",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Louisiana entered the Union in 1812 with a federal Section 16 school grant of approximately 807,000 acres. The grant was disposed of substantially through nineteenth-century statutory sales; remaining trust acreage is documented less consistently than in Western states. The State Land Office's primary public-facing role today is administration of submerged lands, mineral rights, and tax-adjudicated property programs."
+    },
+    {
+      "abbr": "hi", "fips": "15", "state": "Hawaii", "tier": "Moderate",
+      "originalGrantAcres": null, "currentSurfaceAcres": 1800000, "currentMineralAcres": null,
+      "beneficiary": "Native Hawaiian beneficiaries (§5(f) ceded-lands trust) and public schools",
+      "agency": "Hawaii Department of Land and Natural Resources", "agencyURL": "https://dlnr.hawaii.gov",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Hawaii's land regime is structurally distinct: the §5(f) ceded-lands trust under the 1959 Admission Act covers approximately 1.8 million acres administered by the DLNR Public Land Trust Information System. The Office of Hawaiian Affairs receives 20% pro rata of revenues per Act 178/2006. An additional 200,000+ acres of Hawaiian Home Lands are administered by the Department of Hawaiian Home Lands. Different legal framework than the Section 16/36 regime."
+    },
+
+    {
+      "abbr": "oh", "fips": "39", "state": "Ohio", "tier": "Liquidated",
+      "originalGrantAcres": 724266, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Ohio (residual fund administered through state agencies)", "agencyURL": "https://www.das.ohio.gov",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Ohio received approximately 724,000 acres under the original Section 16 grant (1803). The grant was disposed of essentially completely by the late nineteenth century. A residual permanent school fund persists; there is no cadastral inventory of trust lands to map."
+    },
+    {
+      "abbr": "in", "fips": "18", "state": "Indiana", "tier": "Liquidated",
+      "originalGrantAcres": 668578, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Indiana (residual fund)", "agencyURL": "https://www.in.gov",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Indiana received approximately 669,000 acres under the original Section 16 grant (1816). The grant was almost entirely disposed of in the nineteenth century. Residual permanent fund persists; no current cadastral trust-land inventory."
+    },
+    {
+      "abbr": "il", "fips": "17", "state": "Illinois", "tier": "Liquidated",
+      "originalGrantAcres": 996320, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Illinois (residual fund)", "agencyURL": "https://www.illinois.gov",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Illinois received approximately 996,000 acres under the original Section 16 grant (1818). The grant was disposed of essentially completely by the late nineteenth century. Residual permanent fund persists; no cadastral trust-land inventory."
+    },
+    {
+      "abbr": "mo", "fips": "29", "state": "Missouri", "tier": "Liquidated",
+      "originalGrantAcres": 1221813, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Missouri (residual fund)", "agencyURL": "https://dese.mo.gov",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Missouri received approximately 1.222 million acres under the original Section 16 grant (1820). The grant was disposed of essentially completely by the late nineteenth century. Residual permanent fund persists; no cadastral trust-land inventory."
+    },
+    {
+      "abbr": "al", "fips": "01", "state": "Alabama", "tier": "Liquidated",
+      "originalGrantAcres": 911627, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Alabama (residual fund)", "agencyURL": "https://www.alabamaachieves.org",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Alabama received approximately 912,000 acres under the original Section 16 grant (1819). The grant was disposed of essentially completely by the late nineteenth century. Residual permanent fund persists; no cadastral trust-land inventory."
+    },
+    {
+      "abbr": "mi", "fips": "26", "state": "Michigan", "tier": "Liquidated",
+      "originalGrantAcres": 1021867, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Michigan (residual fund)", "agencyURL": "https://www.michigan.gov",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Michigan received approximately 1.022 million acres under the original Section 16 grant (1837). Michigan pioneered the permanent fund model in 1835 — the structure under which a state sells its trust lands and invests the proceeds into a perpetual fund whose income supports schools. By the late nineteenth century the original lands had been fully alienated."
+    },
+    {
+      "abbr": "ia", "fips": "19", "state": "Iowa", "tier": "Liquidated",
+      "originalGrantAcres": 1000679, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Iowa (residual fund)", "agencyURL": "https://educate.iowa.gov",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Iowa received approximately 1.001 million acres under the original Section 16 grant (1846). The grant was disposed of essentially completely by the late nineteenth century. Residual permanent fund persists; no cadastral trust-land inventory."
+    },
+    {
+      "abbr": "fl", "fips": "12", "state": "Florida", "tier": "Liquidated",
+      "originalGrantAcres": 975000, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Florida (residual fund; distinct from Internal Improvement Trust Fund)",
+      "agencyURL": "https://floridadep.gov", "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Florida received approximately 975,000 acres under the original Section 16 grant (1845). The grant was disposed of essentially completely by the late nineteenth century. The 12+ million-acre Internal Improvement Trust Fund of conservation lands acquired through Florida Forever is a separate regime and not a residual federal school-trust cadastre."
+    },
+    {
+      "abbr": "ks", "fips": "20", "state": "Kansas", "tier": "Liquidated",
+      "originalGrantAcres": 2908041, "currentSurfaceAcres": 0, "currentMineralAcres": null,
+      "beneficiary": "Public schools (residual permanent fund only)",
+      "agency": "Kansas (residual fund)", "agencyURL": "https://www.ksde.org",
+      "gisURL": null,
+      "contactName": null, "contactEmail": null, "contactPhone": null,
+      "summary": "Kansas received approximately 2.908 million acres under the original Section 16 grant (1861). The Act of February 22, 1864 authorized statutory sales; the grant was disposed of completely by 1900. Residual permanent fund persists; no cadastral trust-land inventory."
+    }
+  ]
+}

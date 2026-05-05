@@ -84,4 +84,31 @@ const newsroom = defineCollection({
   }),
 });
 
-export const collections = { states, essays, newsroom };
+const maps = defineCollection({
+  type: 'content',
+  schema: z.object({
+    state: z.string(),
+    fips: z.string(),
+    abbr: z.string(),
+    tier: z.enum(['Strong', 'Good', 'Moderate', 'Liquidated']),
+    title: z.string(),
+    description: z.string(),
+    // Template-render-mode fields (optional for OR/UT bespoke pages,
+    // populated for the 30 template-rendered states from JSON if a
+    // future workflow ever syncs them into MD; today the template
+    // route reads these fields from src/data/map_room_states.json).
+    originalGrantAcres: z.number().nullable().optional(),
+    currentSurfaceAcres: z.number().optional(),
+    currentMineralAcres: z.number().nullable().optional(),
+    beneficiary: z.string().optional(),
+    agency: z.string().optional(),
+    agencyURL: z.string().optional(),
+    gisURL: z.string().nullable().optional(),
+    contactName: z.string().nullable().optional(),
+    contactEmail: z.string().nullable().optional(),
+    contactPhone: z.string().nullable().optional(),
+    summary: z.string().optional(),
+  }),
+});
+
+export const collections = { states, essays, newsroom, maps };

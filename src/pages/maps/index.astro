@@ -1,0 +1,657 @@
+---
+import RoomLayout from '../../layouts/RoomLayout.astro';
+import mapRoomData from '../../data/map_room_states.json';
+
+type StateRecord = {
+  abbr: string;
+  fips: string;
+  state: string;
+  tier: 'Strong' | 'Good' | 'Moderate' | 'Liquidated';
+  originalGrantAcres: number | null;
+  currentSurfaceAcres: number;
+  currentMineralAcres: number | null;
+  beneficiary: string;
+  agency: string;
+  agencyURL: string;
+  gisURL: string | null;
+  contactName: string | null;
+  contactEmail: string | null;
+  contactPhone: string | null;
+  summary: string;
+};
+
+const data = mapRoomData as unknown as {
+  _grayStates: string[];
+  states: StateRecord[];
+};
+
+const isDev = import.meta.env.DEV;
+
+// Color buckets for the two views.
+//
+// "Original grants": pale-to-saturated green by federal-grant acreage.
+// Texas/Hawaii (originalGrantAcres null but substantive trust) get a
+// distinct purple. The 18 _grayStates render in gray (no grant ever).
+//
+// "Current holdings": pale-to-saturated green by current-surface
+// acreage. Liquidated and discharged-duty states (currentSurfaceAcres
+// = 0 AND originalGrantAcres > 0) render red — the editorial point of
+// the toggle. Texas/Hawaii again get the purple "state-created /
+// §5(f)" hue. The 18 _grayStates render gray.
+//
+// Color palette: ColorBrewer Greens (sequential), with red #b91c1c
+// (red-700) for liquidated, purple #7c3aed (violet-600) for
+// state-created/§5(f), gray #cbd5e1 (slate-300) for never-granted.
+
+const GREEN_BUCKETS_ORIGINAL = [
+  { upperExclusive: 1_000_000, color: '#c7e9c0', label: 'Under 1 million acres' },
+  { upperExclusive: 3_000_000, color: '#a1d99b', label: '1–3 million acres' },
+  { upperExclusive: 6_000_000, color: '#41ab5d', label: '3–6 million acres' },
+  { upperExclusive: 10_000_000, color: '#238b45', label: '6–10 million acres' },
+  { upperExclusive: Infinity, color: '#005a32', label: '10 million+ acres (Alaska, Arizona)' },
+];
+const GREEN_BUCKETS_CURRENT = [
+  { upperExclusive: 100_000, color: '#c7e9c0', label: 'Under 100,000 acres' },
+  { upperExclusive: 1_000_000, color: '#a1d99b', label: '100,000 – 1 million acres' },
+  { upperExclusive: 3_000_000, color: '#41ab5d', label: '1–3 million acres' },
+  { upperExclusive: 6_000_000, color: '#238b45', label: '3–6 million acres' },
+  { upperExclusive: Infinity, color: '#005a32', label: '6 million+ acres' },
+];
+
+const COLOR_GRAY = '#cbd5e1';
+const COLOR_STATE_CREATED = '#7c3aed';
+const COLOR_LIQUIDATED = '#b91c1c';
+
+function pickGreen(buckets: typeof GREEN_BUCKETS_ORIGINAL, acres: number): string {
+  for (const b of buckets) {
+    if (acres < b.upperExclusive) return b.color;
+  }
+  return buckets[buckets.length - 1].color;
+}
+
+type FipsColor = { fips: string; color: string };
+
+function buildOriginalView(): FipsColor[] {
+  const out: FipsColor[] = [];
+  for (const s of data.states) {
+    if (s.originalGrantAcres === null) {
+      // Texas + Hawaii — substantive non-federal-Section-16 regimes.
+      out.push({ fips: s.fips, color: COLOR_STATE_CREATED });
+    } else if (s.originalGrantAcres === 0) {
+      // Defensive — none in the data, but treat zero as gray.
+      out.push({ fips: s.fips, color: COLOR_GRAY });
+    } else {
+      out.push({ fips: s.fips, color: pickGreen(GREEN_BUCKETS_ORIGINAL, s.originalGrantAcres) });
+    }
+  }
+  return out;
+}
+
+function buildCurrentView(): FipsColor[] {
+  const out: FipsColor[] = [];
+  for (const s of data.states) {
+    if (s.originalGrantAcres === null) {
+      // Texas + Hawaii — state-created / §5(f) regime; not part of the
+      // federal-grant story but substantive holdings today.
+      out.push({ fips: s.fips, color: COLOR_STATE_CREATED });
+    } else if (s.currentSurfaceAcres === 0 && s.originalGrantAcres > 0) {
+      // Discharged duty — the accountability mark.
+      out.push({ fips: s.fips, color: COLOR_LIQUIDATED });
+    } else {
+      out.push({ fips: s.fips, color: pickGreen(GREEN_BUCKETS_CURRENT, s.currentSurfaceAcres) });
+    }
+  }
+  return out;
+}
+
+const grayFips: { abbr: string; fips: string }[] = [];
+for (const abbr of data._grayStates) {
+  // Look up FIPS from the unified state list in src/content/states.
+  // Easier: hardcode the 18 FIPS here since this is a stable list and
+  // the Map Room JSON intentionally does not carry never-granted state
+  // entries. FIPS pulled from the Census Bureau's standard table.
+  const FIPS_MAP: Record<string, string> = {
+    me: '23', vt: '50', nh: '33', ma: '25', ct: '09', ri: '44',
+    ny: '36', nj: '34', pa: '42', de: '10', md: '24', va: '51',
+    nc: '37', sc: '45', ga: '13', ky: '21', tn: '47', wv: '54',
+  };
+  const fips = FIPS_MAP[abbr];
+  if (fips) grayFips.push({ abbr, fips });
+}
+
+// FIPS → state metadata for hover/click. Includes both the JSON
+// states (clickable) and the gray states (no-op with explanation).
+type FipsInfo = {
+  abbr: string;
+  name: string;
+  clickable: boolean;
+  tier: string | null;
+  originalGrantAcres: number | null;
+  currentSurfaceAcres: number | null;
+};
+const fipsInfo: Record<string, FipsInfo> = {};
+for (const s of data.states) {
+  fipsInfo[s.fips] = {
+    abbr: s.abbr,
+    name: s.state,
+    clickable: true,
+    tier: s.tier,
+    originalGrantAcres: s.originalGrantAcres,
+    currentSurfaceAcres: s.currentSurfaceAcres,
+  };
+}
+const GRAY_NAMES: Record<string, string> = {
+  me: 'Maine', vt: 'Vermont', nh: 'New Hampshire', ma: 'Massachusetts',
+  ct: 'Connecticut', ri: 'Rhode Island', ny: 'New York', nj: 'New Jersey',
+  pa: 'Pennsylvania', de: 'Delaware', md: 'Maryland', va: 'Virginia',
+  nc: 'North Carolina', sc: 'South Carolina', ga: 'Georgia',
+  ky: 'Kentucky', tn: 'Tennessee', wv: 'West Virginia',
+};
+for (const g of grayFips) {
+  fipsInfo[g.fips] = {
+    abbr: g.abbr,
+    name: GRAY_NAMES[g.abbr] ?? g.abbr.toUpperCase(),
+    clickable: false,
+    tier: null,
+    originalGrantAcres: null,
+    currentSurfaceAcres: null,
+  };
+}
+
+// Build the FIPS → color tables for both views. Gray states are
+// populated last so they overwrite any spurious entry.
+const originalFipsColors = [...buildOriginalView()];
+const currentFipsColors = [...buildCurrentView()];
+for (const g of grayFips) {
+  originalFipsColors.push({ fips: g.fips, color: COLOR_GRAY });
+  currentFipsColors.push({ fips: g.fips, color: COLOR_GRAY });
+}
+
+// Legend rows for each view.
+const ORIGINAL_LEGEND = [
+  ...GREEN_BUCKETS_ORIGINAL.map((b) => ({ color: b.color, label: b.label })),
+  { color: COLOR_STATE_CREATED, label: 'State-created or §5(f) regime (Texas, Hawaii)' },
+  { color: COLOR_GRAY, label: 'Never received a federal Section 16 grant' },
+];
+const CURRENT_LEGEND = [
+  ...GREEN_BUCKETS_CURRENT.map((b) => ({ color: b.color, label: b.label })),
+  { color: COLOR_LIQUIDATED, label: 'Received a grant and discharged the duty (corpus liquidated)' },
+  { color: COLOR_STATE_CREATED, label: 'State-created or §5(f) regime (Texas, Hawaii)' },
+  { color: COLOR_GRAY, label: 'Never received a federal Section 16 grant' },
+];
+
+const VIEWS = [
+  {
+    id: 'original',
+    label: 'Original grants',
+    description:
+      'Each state colored by the acreage of federal school-trust land it received at admission to the Union. The 18 states that never received a Section 16 grant render in gray.',
+    fipsColors: originalFipsColors,
+    legend: ORIGINAL_LEGEND,
+  },
+  {
+    id: 'current',
+    label: 'Current holdings',
+    description:
+      'Each state colored by the trust-land surface acreage it retains today. States that received a federal grant and discharged the duty by liquidating the corpus render in red — visually distinct from never-granted gray.',
+    fipsColors: currentFipsColors,
+    legend: CURRENT_LEGEND,
+  },
+];
+
+const num = new Intl.NumberFormat('en-US');
+
+const tierCounts = {
+  Strong: data.states.filter((s) => s.tier === 'Strong').length,
+  Good: data.states.filter((s) => s.tier === 'Good').length,
+  Moderate: data.states.filter((s) => s.tier === 'Moderate').length,
+  Liquidated: data.states.filter((s) => s.tier === 'Liquidated').length,
+};
+---
+
+<RoomLayout
+  room="maps"
+  title="The Map Room"
+  subtitle="A transparency directory: how each state publishes — or fails to publish — the locations of its school trust lands today."
+  width="full"
+  sourceId="maps-landing"
+>
+  <Fragment slot="header-extras">
+    <div class="mt-6">
+      <fieldset
+        id="view-switcher"
+        class="flex flex-wrap gap-2"
+        aria-label="Map view"
+      >
+        <legend class="sr-only">Map view</legend>
+        {VIEWS.map((view, i) => (
+          <label
+            class="cursor-pointer rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 has-[:checked]:border-slate-900 has-[:checked]:bg-slate-900 has-[:checked]:text-white"
+          >
+            <input
+              type="radio"
+              name="view"
+              value={view.id}
+              class="sr-only"
+              checked={i === 0}
+            />
+            {view.label}
+          </label>
+        ))}
+      </fieldset>
+      <p id="view-description" class="mt-3 text-sm text-slate-600">
+        {VIEWS[0].description}
+      </p>
+    </div>
+  </Fragment>
+
+  <article class="prose prose-slate mt-8 max-w-prose prose-a:text-blue-700 prose-a:underline">
+    <p>
+      Every state that received federal school-trust lands at admission to the
+      Union maintains some record of where those lands are now. The records vary
+      wildly in completeness, accuracy, and accessibility. In a few states,
+      anyone with a web browser can locate an individual 40-acre parcel of trust
+      land down to its quarter-quarter section. In others, the public is offered
+      nothing more than a county-level PDF map last revised before the
+      smartphone era. In nine states, the original Section 16 grants have been
+      so completely liquidated that there is, in cadastral terms, nothing left
+      to show.
+    </p>
+    <p>
+      This Map Room exists to make that variation legible. The {data.states.length}{' '}
+      states that received federal school-trust grants — or operate substantial
+      state-created or §5(f) trust regimes — each have their own page documenting
+      what the state publishes, how to access it, and what is missing. The
+      remaining {data._grayStates.length} states never received a federal Section 16 grant; they appear
+      in gray on the map below and have no page in this room.
+    </p>
+    <p>
+      Eventually — over the next year or two — the Map Room will host an
+      interactive parcel-level atlas where a reader can pick a state, see the
+      original 1859-or-equivalent grant footprint, and toggle to the surviving
+      holdings today. That work has begun; it is not yet built. What you'll find
+      below is the foundation: a transparency report, state by state, with a
+      country-level "before-and-after" toggle as the navigational entry point.
+    </p>
+  </article>
+
+  <div
+    id="map"
+    class="mt-6 h-[60vh] min-h-[420px] w-full overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+  >
+  </div>
+  {isDev && (
+    <pre
+      id="map-error"
+      class="mt-2 hidden whitespace-pre-wrap rounded border border-red-200 bg-red-50 p-3 text-xs text-red-800"
+    ></pre>
+  )}
+
+  <script
+    type="application/json"
+    id="maproom-data"
+    set:html={JSON.stringify({ views: VIEWS, fipsInfo })}
+  />
+
+  <ol id="legend" class="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2"></ol>
+
+  <p class="mt-6 text-xs text-slate-500">
+    Click any colored state to open its detailed Map Room transparency report.
+    Gray states have no page; click is a no-op. Color buckets and editorial
+    classifications are documented in <code>src/data/map_room_states.json</code>.
+  </p>
+
+  <section class="mt-12 max-w-prose">
+    <h2 class="text-2xl font-bold tracking-tight">The five-tier transparency classification</h2>
+    <p class="mt-3 text-slate-700">
+      Each colored state is also classified by the <em>quality of its public-facing
+      trust-land transparency</em>, separate from the size of the underlying trust:
+    </p>
+    <dl class="mt-4 space-y-4 text-slate-800">
+      <div>
+        <dt class="font-semibold">Strong ({tierCounts.Strong} states).</dt>
+        <dd class="mt-1 text-slate-700">
+          Active GIS services with parcel-level resolution; downloadable
+          shapefiles or live REST endpoints; aliquot-friendly search by
+          Township-Range-Section; weekly or continuous update cadence; surface
+          and mineral estates separately tracked. Colorado, Montana, New Mexico,
+          Arizona, Utah, North Dakota, Minnesota.
+        </dd>
+      </div>
+      <div>
+        <dt class="font-semibold">Good ({tierCounts.Good} states).</dt>
+        <dd class="mt-1 text-slate-700">
+          Functional public viewers with reasonable detail; downloadable data
+          available; surface estate well-tracked; mineral estate either less
+          consolidated or partially documented. Washington, Oregon, Idaho,
+          Wyoming.
+        </dd>
+      </div>
+      <div>
+        <dt class="font-semibold">Moderate ({tierCounts.Moderate} states).</dt>
+        <dd class="mt-1 text-slate-700">
+          Some public-facing tools, but with material gaps. May have static-only
+          data, county-by-county PDFs rather than statewide GIS, vintage
+          information that has not been updated in years, or terms-of-use
+          restrictions that limit research use. California, Nevada, Oklahoma,
+          South Dakota, Nebraska, Mississippi, Alaska, Texas, Wisconsin,
+          Arkansas, Louisiana, Hawaii.
+        </dd>
+      </div>
+      <div>
+        <dt class="font-semibold">Liquidated ({tierCounts.Liquidated} states).</dt>
+        <dd class="mt-1 text-slate-700">
+          States that received Section 16 grants at admission but disposed of
+          essentially all of their school-trust land before the modern era. Most
+          retain a residual permanent school fund derived from the long-ago
+          sale of the lands, but no trust-land cadastre to map. Ohio, Indiana,
+          Illinois, Missouri, Alabama, Michigan, Iowa, Florida, Kansas.
+        </dd>
+      </div>
+      <div>
+        <dt class="font-semibold">No federal grant ({data._grayStates.length} states).</dt>
+        <dd class="mt-1 text-slate-700">
+          The original thirteen colonies plus Kentucky, Tennessee, Maine,
+          Vermont, and West Virginia — each of which entered the Union without a
+          federal Section 16 grant. These render in gray on the map and have no
+          page.
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="mt-10 text-2xl font-bold tracking-tight">Why this matters</h2>
+    <p class="mt-3 text-slate-700">
+      A trust that cannot be mapped cannot be audited. A trust that cannot be
+      audited cannot be defended. The two-century drift of the school-trust
+      lands — from the original 1785 Land Ordinance reservation of "lot No. 16,
+      of every township, for the maintenance of public schools" to the
+      present-day patchwork of holdings in fewer than two dozen active states —
+      has occurred almost entirely outside the public's view. The Map Room is
+      one of several Library efforts to bring that drift into view. Once a
+      citizen, school-district trustee, journalist, or legislator can see the
+      actual locations of trust lands and the quality of the records that
+      document them, the conversation about whether the trusts are being
+      well-managed can begin from common ground.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-bold tracking-tight">What's coming</h2>
+    <p class="mt-3 text-slate-700">
+      <strong>Near-term (months).</strong> Substantive completion of the
+      per-state transparency reports, with full details replacing the Phase-0
+      stub for each state. Cross-linking from each state's Reading Room entry
+      to its Map Room report.
+    </p>
+    <p class="mt-3 text-slate-700">
+      <strong>Medium-term (quarter to year).</strong> Integration with the BLM
+      General Land Office historical patent records, allowing a reader to view
+      both the original federal patent for a Section 16 or Section 36 parcel
+      and the current state ownership status side by side.
+    </p>
+    <p class="mt-3 text-slate-700">
+      <strong>Long-term (one to two years).</strong> A parcel-level interactive
+      atlas where a reader picks a state, the page renders the original grant
+      footprint as a layer over present-day terrain, and the difference between
+      the two — the silent two-century alienation of public-school assets —
+      becomes visible at parcel resolution.
+    </p>
+  </section>
+
+  <script>
+    import maplibregl from 'maplibre-gl';
+    import 'maplibre-gl/dist/maplibre-gl.css';
+    import { Protocol, PMTiles, FileSource } from 'pmtiles';
+
+    const errBox = document.getElementById('map-error');
+    const showErr = (label: string, e: any) => {
+      const msg = `[${label}] ${e?.message ?? e}\n${e?.stack ?? ''}`;
+      console.error(label, e);
+      if (errBox) {
+        errBox.classList.remove('hidden');
+        errBox.textContent = (errBox.textContent ? errBox.textContent + '\n\n' : '') + msg;
+      }
+    };
+    window.addEventListener('error', (ev) => showErr('window.error', ev.error || ev.message));
+    window.addEventListener('unhandledrejection', (ev) => showErr('unhandledrejection', ev.reason));
+
+    const dataNode = document.getElementById('maproom-data');
+    const { views, fipsInfo } = JSON.parse(dataNode?.textContent || '{}');
+
+    const viewsById = Object.fromEntries(views.map((v: any) => [v.id, v]));
+    let activeViewId = views[0].id;
+
+    function buildMatchExpr(view: any) {
+      const expr: any[] = ['match', ['get', 'STATEFP']];
+      for (const r of view.fipsColors) {
+        expr.push(r.fips, r.color);
+      }
+      expr.push('#e2e8f0');
+      return expr;
+    }
+
+    function renderLegend(view: any) {
+      const ol = document.getElementById('legend');
+      if (!ol) return;
+      ol.innerHTML = '';
+      for (const c of view.legend) {
+        const li = document.createElement('li');
+        li.className = 'flex items-center gap-2';
+        const swatch = document.createElement('span');
+        swatch.className = 'inline-block h-4 w-4 flex-none rounded-sm border border-slate-300';
+        swatch.style.background = c.color;
+        const label = document.createElement('span');
+        label.className = 'text-slate-700';
+        label.textContent = c.label;
+        li.appendChild(swatch);
+        li.appendChild(label);
+        ol.appendChild(li);
+      }
+    }
+
+    function setViewDescription(view: any) {
+      const p = document.getElementById('view-description');
+      if (p) p.textContent = view.description;
+    }
+
+    const protocol = new Protocol();
+    maplibregl.addProtocol('pmtiles', protocol.tile);
+
+    const PMTILES_KEY = '/us-states.pmtiles';
+    const PMTILES_URL = `pmtiles://${PMTILES_KEY}`;
+    try {
+      const resp = await fetch(PMTILES_KEY);
+      if (!resp.ok) throw new Error(`fetch ${PMTILES_KEY} → HTTP ${resp.status}`);
+      const buf = await resp.arrayBuffer();
+      const file = new File([buf], PMTILES_KEY, {
+        type: 'application/octet-stream',
+      });
+      protocol.add(new PMTiles(new FileSource(file)));
+    } catch (e) {
+      showErr('pmtiles preload', e);
+    }
+
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: {
+        version: 8,
+        sources: {
+          states: {
+            type: 'vector',
+            url: PMTILES_URL,
+            promoteId: 'GEOID',
+          },
+        },
+        layers: [
+          {
+            id: 'background',
+            type: 'background',
+            paint: { 'background-color': '#f8fafc' },
+          },
+          {
+            id: 'states-fill',
+            type: 'fill',
+            source: 'states',
+            'source-layer': 'states',
+            paint: {
+              'fill-color': buildMatchExpr(viewsById[activeViewId]) as any,
+              'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                0.95,
+                0.78,
+              ],
+            },
+          },
+          {
+            id: 'states-outline',
+            type: 'line',
+            source: 'states',
+            'source-layer': 'states',
+            paint: {
+              'line-color': '#475569',
+              'line-width': 0.5,
+            },
+          },
+          {
+            id: 'states-outline-hover',
+            type: 'line',
+            source: 'states',
+            'source-layer': 'states',
+            paint: {
+              'line-color': '#0f172a',
+              'line-width': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                2,
+                0,
+              ],
+            },
+          },
+        ],
+      },
+      center: [-98.5, 39.5],
+      zoom: 3,
+      minZoom: 2,
+      maxZoom: 6,
+      attributionControl: false,
+    });
+
+    map.on('error', (e) => showErr('maplibre.error', e?.error || e));
+
+    map.addControl(
+      new maplibregl.AttributionControl({
+        customAttribution: 'US Census Bureau (cb_2023_us_state_20m)',
+        compact: true,
+      }),
+    );
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+
+    map.on('load', () => {
+      map.fitBounds(
+        [
+          [-125, 24],
+          [-66, 50],
+        ],
+        { padding: 20, animate: false },
+      );
+    });
+
+    const popup = new maplibregl.Popup({
+      closeButton: false,
+      closeOnClick: false,
+      offset: 6,
+    });
+
+    const numFmt = new Intl.NumberFormat('en-US');
+    let hoveredFips: any = null;
+
+    function popupHtml(fips: string) {
+      const info = fipsInfo[fips];
+      if (!info) return '';
+      const safe = (n: number | null) =>
+        n === null ? 'n/a' : numFmt.format(n);
+      if (!info.clickable) {
+        return `<div style="font-size:13px;line-height:1.35"><strong>${info.name}</strong><br/><span style="color:#64748b;font-size:11px">No federal Section 16 grant — no Map Room page.</span></div>`;
+      }
+      const tierBadge = info.tier
+        ? `<br/><span style="color:#0f172a">Transparency tier: <strong>${info.tier}</strong></span>`
+        : '';
+      const acresLine =
+        activeViewId === 'original'
+          ? info.originalGrantAcres === null
+            ? `<br/><span style="color:#0f172a">Original grant: state-created / §5(f) regime</span>`
+            : `<br/><span style="color:#0f172a">Original grant: ${safe(info.originalGrantAcres)} acres</span>`
+          : `<br/><span style="color:#0f172a">Current surface: ${safe(info.currentSurfaceAcres)} acres</span>`;
+      return `<div style="font-size:13px;line-height:1.35"><strong>${info.name}</strong>${tierBadge}${acresLine}<br/><span style="color:#64748b;font-size:11px">Click to open Map Room report →</span></div>`;
+    }
+
+    map.on('mousemove', 'states-fill', (e) => {
+      if (!e.features || e.features.length === 0) return;
+      const f = e.features[0];
+      const fips = (f.properties as any).STATEFP;
+      const info = fipsInfo[fips];
+
+      if (hoveredFips !== null && hoveredFips !== f.id) {
+        map.setFeatureState(
+          { source: 'states', sourceLayer: 'states', id: hoveredFips },
+          { hover: false },
+        );
+      }
+      if (f.id !== undefined) {
+        hoveredFips = f.id;
+        map.setFeatureState(
+          { source: 'states', sourceLayer: 'states', id: hoveredFips },
+          { hover: true },
+        );
+      }
+
+      map.getCanvas().style.cursor = info?.clickable ? 'pointer' : 'default';
+
+      popup.setLngLat(e.lngLat).setHTML(popupHtml(fips)).addTo(map);
+    });
+
+    map.on('mouseleave', 'states-fill', () => {
+      if (hoveredFips !== null && hoveredFips !== undefined) {
+        map.setFeatureState(
+          { source: 'states', sourceLayer: 'states', id: hoveredFips },
+          { hover: false },
+        );
+        hoveredFips = null;
+      }
+      map.getCanvas().style.cursor = '';
+      popup.remove();
+    });
+
+    map.on('click', 'states-fill', (e) => {
+      if (!e.features || e.features.length === 0) return;
+      const f = e.features[0];
+      const fips = (f.properties as any).STATEFP;
+      const info = fipsInfo[fips];
+      if (info?.clickable) {
+        window.location.href = `/maps/${info.abbr}/`;
+      }
+    });
+
+    function setView(id: string) {
+      const view = viewsById[id];
+      if (!view) return;
+      activeViewId = id;
+      if (map.getLayer('states-fill')) {
+        map.setPaintProperty('states-fill', 'fill-color', buildMatchExpr(view) as any);
+      }
+      renderLegend(view);
+      setViewDescription(view);
+    }
+
+    const switcher = document.getElementById('view-switcher');
+    if (switcher) {
+      switcher.addEventListener('change', (ev) => {
+        const t = ev.target;
+        if (t instanceof HTMLInputElement && t.name === 'view') {
+          setView(t.value);
+        }
+      });
+    }
+
+    renderLegend(viewsById[activeViewId]);
+  </script>
+</RoomLayout>

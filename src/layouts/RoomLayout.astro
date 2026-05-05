@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 type RoomId =
   | 'reading'
   | 'atlas'
+  | 'maps'
   | 'counting'
   | 'records'
   | 'court'
@@ -63,6 +64,13 @@ const ROOMS: RoomDef[] = [
     icon: '<polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>',
   },
   {
+    id: 'maps',
+    name: 'Map Room',
+    href: '/maps/',
+    // MapPin
+    icon: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+  },
+  {
     id: 'counting',
     name: 'Counting House',
     href: '/counting/',
@@ -103,6 +111,7 @@ const breadcrumb = state
 const roomNameMap: Record<RoomId, string> = {
   reading: 'Reading Room',
   atlas: 'Atlas',
+  maps: 'Map Room',
   counting: 'Counting House',
   records: 'Records Room',
   court: 'Court Room',
