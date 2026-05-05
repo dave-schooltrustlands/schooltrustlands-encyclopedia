@@ -28,7 +28,7 @@ South Dakota's school-trust story is, in some respects, the inverse of Oregon's.
 
 <blockquote class="pull-quote">
   <p>South Dakota is the principal nineteenth-century case study of paper architecture that actually held.</p>
-  <cite>From the encyclopedia entry for South Dakota</cite>
+  <cite>From the state dossier for South Dakota</cite>
 </blockquote>
 
 ## The 1889 Omnibus Act

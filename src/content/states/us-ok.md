@@ -28,7 +28,7 @@ Oklahoma's school-trust story is the country's clearest case study in what Congr
 
 <blockquote class="pull-quote">
   <p>Oklahoma was admitted with a school-trust corpus that was half land and half ledger entry — a structural fact that has shaped its endowment ever since.</p>
-  <cite>From the encyclopedia entry for Oklahoma</cite>
+  <cite>From the state dossier for Oklahoma</cite>
 </blockquote>
 
 ## The 1906 Enabling Act and the cash substitute

@@ -28,7 +28,7 @@ If Oregon's 1859 compact is the project's principal study in what an unguarded s
 
 <blockquote class="pull-quote">
   <p>New Mexico is what the architecture can do when both Congress and the state take it seriously.</p>
-  <cite>From the encyclopedia entry for New Mexico</cite>
+  <cite>From the state dossier for New Mexico</cite>
 </blockquote>
 
 ## I. The Federal High-Water Mark
@@ -81,7 +81,7 @@ The United States, acting through its Attorney General under the Section 10 enfo
 
 <blockquote class="pull-quote">
   <p>The purposes must be regarded; they must be performed; they admit of no substitution; they admit of no addition.</p>
-  <cite>From <em>Ervien v. United States</em> (1919), quoted in the encyclopedia entry for New Mexico</cite>
+  <cite>From <em>Ervien v. United States</em> (1919), quoted in the state dossier for New Mexico</cite>
 </blockquote>
 
 *Ervien* is the New Mexico-specific Section 10 enforcement case and the only one in the corpus to date in which the United States itself has been the plaintiff. It sets three doctrinal anchors: the trust purposes are exclusive, not illustrative; "indirect" benefit arguments do not save a non-conforming expenditure; and the federal AG enforcement clause is real and useable. Every subsequent New Mexico Supreme Court trust case cites or echoes *Ervien*'s reading.

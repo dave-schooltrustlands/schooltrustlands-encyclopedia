@@ -28,7 +28,7 @@ Minnesota is the state from which Oregon's school-trust template was copied. The
 
 <blockquote class="pull-quote">
   <p>Minnesota is the state from which Oregon's school-trust template was copied. The doubled grant was first written into Minnesota's 1857 Enabling Act; Oregon's 1859 Admission Act inherited the language, sometimes nearly verbatim.</p>
-  <cite>From the encyclopedia entry for Minnesota</cite>
+  <cite>From the state dossier for Minnesota</cite>
 </blockquote>
 
 ## Founding and the federal grant
@@ -55,7 +55,7 @@ The second note is the Braden mineral-rights revolution. State Auditor William W
 
 <blockquote class="pull-quote">
   <p>Because of Braden's policy, the school trust — rather than private speculators — became the long-run beneficiary of Mesabi royalties.</p>
-  <cite>From the encyclopedia entry for Minnesota</cite>
+  <cite>From the state dossier for Minnesota</cite>
 </blockquote>
 
 ## Twentieth-century doctrine and the dual-mandate problem

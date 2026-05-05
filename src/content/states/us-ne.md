@@ -44,7 +44,7 @@ The second is the constitutional inclusion of the Attorney General. The AG sits 
 
 <blockquote class="pull-quote">
   <p>The official who would, in the ordinary fiduciary scheme, prosecute breaches of trust against the State of Nebraska is, as a structural matter, a sitting trustee on the very board whose breaches would need to be prosecuted.</p>
-  <cite>From the encyclopedia entry for Nebraska</cite>
+  <cite>From the state dossier for Nebraska</cite>
 </blockquote>
 
 This second feature deserves to be flagged honestly rather than smoothed over. Nebraska's pattern of post-1947 trust-protective doctrine has come almost entirely through litigation initiated by private parties — Fred Ebke, Loren Belker, the Bessey and Anderson plaintiffs — rather than through the AG acting as the public's fiduciary attorney. The AG's office has produced a careful and substantively pro-trust series of formal opinions across the modern era; it has not been a litigating champion of beneficiary interests in the same way the federal government became one in the lieu-lands cases of the early twentieth century. Whether this absence is the price of the AG's trustee seat, the AG's caution in the face of the State's own potential exposure, or simply the path of least resistance is a question that should be asked rather than assumed.

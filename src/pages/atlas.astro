@@ -139,7 +139,7 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
 <RoomLayout
   room="atlas"
   title="Four lenses on the school-trust map"
-  subtitle="Switch the lens to recolor the same fifty states by a different question. Click a state to open its encyclopedia entry."
+  subtitle="Switch the lens to recolor the same fifty states by a different question. Click a state to open its state dossier."
   width="full"
   sourceId="atlas-map-layers"
 >
@@ -444,7 +444,7 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
           : '';
         const html = info
           ? `<div style="font-size:13px;line-height:1.35"><strong>${stateName}</strong>${lensLine}<br/><span style="color:#64748b;font-size:11px">Click to open entry →</span></div>`
-          : `<div style="font-size:13px;line-height:1.3"><strong>${stateName}</strong><br/><span style="color:#64748b;font-size:11px">No encyclopedia entry</span></div>`;
+          : `<div style="font-size:13px;line-height:1.3"><strong>${stateName}</strong><br/><span style="color:#64748b;font-size:11px">No state dossier</span></div>`;
 
         popup.setLngLat(e.lngLat).setHTML(html).addTo(map);
       });

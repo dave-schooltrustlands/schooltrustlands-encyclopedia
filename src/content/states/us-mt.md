@@ -24,7 +24,7 @@ Montana came into the Union as the third of four states admitted under a single 
 
 <blockquote class="pull-quote">
   <p>Strong state constitutional architecture, paired with a court willing to enforce it, can carry fiduciary discipline a long way even where the federal floor is comparatively weak.</p>
-  <cite>From the encyclopedia entry for Montana</cite>
+  <cite>From the state dossier for Montana</cite>
 </blockquote>
 
 ## Founding and the federal grant
@@ -47,7 +47,7 @@ Montana's school-trust doctrine has been built case by case, and the state's Sup
 
 <blockquote class="pull-quote">
   <p>The Land Board, "as the instrumentality administering the school trust," must administer the lands so as to secure "the largest legitimate advantage" to the beneficiary.</p>
-  <cite>From <em>State v. Stewart</em> (1913), quoted in the encyclopedia entry for Montana</cite>
+  <cite>From <em>State v. Stewart</em> (1913), quoted in the state dossier for Montana</cite>
 </blockquote>
 
 The modern apex of Montana school-trust enforcement is *Montanans for the Responsible Use of the School Trust v. State ex rel. Board of Land Commissioners*, decided in 1999.[^mt-17] (The case is sometimes referred to in shorthand as "Montrust"; the case-list reference to "*Montanans for the Coal Trust*" appears in some early project drafts but is a misremembering of the proper caption.) The plaintiffs challenged fourteen statutes governing Montana school trust lands. The district court permanently enjoined eleven of them. On appeal, the Montana Supreme Court affirmed in significant part: it invalidated a historic right-of-way statute that locked compensation values to 1972 classifications regardless of contemporary appraised value, and it invalidated a lease-transfer mechanism that could leave trust lands idle without compensation flowing to the trust. The court reaffirmed three propositions central to the project's broader framework. First, the Enabling Act grant created a trust binding on the State of Montana. Second, Montana is the trustee. Third, the Land Board's discretion is bounded by full-market-value and fiduciary obligations that statutes cannot legislate around.[^mt-18] *Montrust* is the case other states' trust advocates cite when they want a clean modern statement of state-as-trustee enforceability against legislative encroachment.

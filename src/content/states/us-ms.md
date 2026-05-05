@@ -24,7 +24,7 @@ Mississippi's school-trust story is the project's principal Southern case study 
 
 <blockquote class="pull-quote">
   <p>Mississippi is not chiefly a story of one large theft. It is a story of repeated, locally executed conversions of trust land into nominal-rent leases — ninety-nine years for $7.50, 320 acres for $170 a year, timber sold for $500 and resold the next week for $4,000.</p>
-  <cite>From the encyclopedia entry for Mississippi</cite>
+  <cite>From the state dossier for Mississippi</cite>
 </blockquote>
 
 ## Founding and the federal grant
@@ -41,7 +41,7 @@ But the no-sale rule was matched by — and substantially undone by — the leas
 
 <blockquote class="pull-quote">
   <p>The 1890 Constitution's strongest school-trust protection was outflanked by an amendment that satisfied its formal text while gutting its function.</p>
-  <cite>From the encyclopedia entry for Mississippi</cite>
+  <cite>From the state dossier for Mississippi</cite>
 </blockquote>
 
 What followed, throughout the middle decades of the twentieth century, was the long drift. Local school district boards (or, in the period before the 1978 reforms, county boards of supervisors) administered sixteenth-section lands lying within their boundaries.[^ms-13] Auditing was weak. The Office of Sixteenth Section Lands within the Secretary of State's office, which today exercises supervisory authority, did not become a meaningful state-level fiduciary backstop until late in the century. Long-term timber and mineral leases at submarket rents to politically-connected lessees became routine. Multi-decade renewal cycles locked in below-market rents through entire generations. Sixteenth-section funds were, in some districts and some periods, commingled with general district operating funds. The decentralized architecture means the quality of trust administration has always varied widely across Mississippi's eighty-two counties and roughly 140 school districts — some districts manage their lands prudently, others have a long history of insider lease deals — and that variance, rather than any single statewide policy, is the most accurate description of the historical record.[^ms-14]

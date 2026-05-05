@@ -26,7 +26,7 @@ Wisconsin's school-trust story is the bullish counterpart to Ohio's. The federal
 
 <blockquote class="pull-quote">
   <p>The federal floor was identical. The state architecture and the operational discipline made the difference.</p>
-  <cite>From the encyclopedia entry for Wisconsin</cite>
+  <cite>From the state dossier for Wisconsin</cite>
 </blockquote>
 
 ## Founding and the federal grant
@@ -55,7 +55,7 @@ The structurally important point — and this is what distinguishes Wisconsin fr
 
 <blockquote class="pull-quote">
   <p>The lands were sold but the <em>proceeds</em> were preserved. The 1850s scandals diminished the price the trust received per acre; they did not destroy the fund itself.</p>
-  <cite>From the encyclopedia entry for Wisconsin</cite>
+  <cite>From the state dossier for Wisconsin</cite>
 </blockquote>
 
 ## The modern fund

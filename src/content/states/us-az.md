@@ -28,7 +28,7 @@ Arizona's school-trust story is, on the federal side, the strongest in the count
 
 <blockquote class="pull-quote">
   <p>Even at the federal high-water mark, what the state does — how it structures its trustee, how it prices its leases, how it manages its corpus over decades — sets the ceiling on what beneficiaries actually receive.</p>
-  <cite>From the encyclopedia entry for Arizona</cite>
+  <cite>From the state dossier for Arizona</cite>
 </blockquote>
 
 ## The 1910 Enabling Act and Section 28
@@ -57,7 +57,7 @@ The mineral side of section 28 was tested in *Kadish v. Arizona State Land Depar
 
 <blockquote class="pull-quote">
   <p>The state's duties under the Enabling Act are those of a trustee, not those of "a good business manager."</p>
-  <cite>From <em>Kadish v. Arizona State Land Department</em>, quoted in the encyclopedia entry for Arizona</cite>
+  <cite>From <em>Kadish v. Arizona State Land Department</em>, quoted in the state dossier for Arizona</cite>
 </blockquote>
 
 The U.S. Supreme Court's 1989 affirmance addressed federal-court standing for state-court plaintiffs, an important doctrinal issue, but left the trust-violation reasoning intact.[^az-28] *Kadish* is the modern enforcement template for the "no submarket disposition" principle and a reminder that section 28's reach extends to every economic asset of the trust land — water and minerals as well as surface acres.

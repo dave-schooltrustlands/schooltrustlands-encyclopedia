@@ -28,7 +28,7 @@ North Dakota's school-trust story is not the story of a scandal. It is the story
 
 <blockquote class="pull-quote">
   <p>North Dakota is the bridge. It is where the language begins to harden into something closer to express trust.</p>
-  <cite>From the encyclopedia entry for North Dakota</cite>
+  <cite>From the state dossier for North Dakota</cite>
 </blockquote>
 
 ## Founding and the federal grant
@@ -83,7 +83,7 @@ The project's broader thesis is that the trust is a forever gift to forever scho
 
 <blockquote class="pull-quote">
   <p>The Omnibus quartet's federal floor and North Dakota's constitutional ceiling, together, held. That is the case for the architecture, made not by argument but by outcome.</p>
-  <cite>From the encyclopedia entry for North Dakota</cite>
+  <cite>From the state dossier for North Dakota</cite>
 </blockquote>
 
 ---

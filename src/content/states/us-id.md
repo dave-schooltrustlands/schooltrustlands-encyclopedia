@@ -24,7 +24,7 @@ Idaho's school-trust story is, on paper, one of the more architecturally substan
 
 <blockquote class="pull-quote">
   <p>Idaho is, by the project's standards, a comparatively well-defended trust — and the case law that defends it is one of the more useful doctrinal libraries in the country.</p>
-  <cite>From the encyclopedia entry for Idaho</cite>
+  <cite>From the state dossier for Idaho</cite>
 </blockquote>
 
 ## Founding and the federal grant
@@ -63,7 +63,7 @@ Idaho's school-trust story is, then, the project's principal western example of 
 
 <blockquote class="pull-quote">
   <p>The architectural commitments of Article IX have been treated by the Idaho courts as binding on the trustees, on the legislature, and on the voters in their amendment capacity.</p>
-  <cite>From the encyclopedia entry for Idaho</cite>
+  <cite>From the state dossier for Idaho</cite>
 </blockquote>
 
 ---

@@ -28,7 +28,7 @@ Colorado's school-trust story is the project's second clean recovery case, after
 
 <blockquote class="pull-quote">
   <p>Colorado is the leading example in the country of a public-land state successfully renegotiating, by constitutional amendment, the management philosophy of a nineteenth-century federal land grant.</p>
-  <cite>From the encyclopedia entry for Colorado</cite>
+  <cite>From the state dossier for Colorado</cite>
 </blockquote>
 
 ## Founding and the federal grant
@@ -105,7 +105,7 @@ That is the shape of the recovery. What it does not erase is the disposal-era lo
 
 <blockquote class="pull-quote">
   <p>Recovery is not the same as restoration. The questions a school trust does not finish answering tend to come back.</p>
-  <cite>From the encyclopedia entry for Colorado</cite>
+  <cite>From the state dossier for Colorado</cite>
 </blockquote>
 
 ---
