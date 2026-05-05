@@ -43,6 +43,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Tuesday May 5, 2026 (late evening) — Post-rewrite cleanup.</strong>
+            Four loose ends from today's stack of commits closed: the integrated-rewrite
+            commit (b39d8c0) renumbered the conclusion from 08 to 09 to make room for the
+            new Chapter 8 but the staging dropped the original 08's deletion, leaving both
+            files at HEAD with the same post-prefix-strip slug — old
+            <code>08-conclusion.md</code> now properly removed via <code>git rm</code>.
+            Reading Room landing's Schools of the Republic Table of Contents (the primary
+            reader-facing entry point at <a href="/reading/">/reading/</a>, distinct from
+            the booklet framing page at <a href="/reading/schools-of-the-republic/">/reading/schools-of-the-republic/</a>)
+            updated to include the new Chapter 8 between Comparative Atlas and Conclusion;
+            byline and abstract bumped from "nine-chapter" to "ten-chapter."
+            <code>README.md</code> at the repo root scrubbed of the residual "fifty-state
+            encyclopedia" framing the Library rebrand cleanup missed; meta-language now
+            consistent across public surfaces. The retired Vision-v2 page at
+            <code>/about/future-ledger/</code> still returns HTTP 200 against the deployed
+            site even though the source was deleted in commit <code>08d8736</code> and a
+            fresh build does not generate the path — surfaced as a Cloudflare Pages edge
+            cache concern that may need a manual purge from the dashboard.
+          </li>
+          <li>
             <strong>Tuesday May 5, 2026 (evening) — Schools of the Republic integrated rewrite + new Chapter 8.</strong>
             Style Guide v1.0 applied across all nine existing chapters in a single
             rewrite pass: reading level lowered to Flesch 40&ndash;60 (12th grade through
