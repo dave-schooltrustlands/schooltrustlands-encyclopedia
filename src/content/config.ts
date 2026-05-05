@@ -73,4 +73,15 @@ const states = defineCollection({
   }),
 });
 
-export const collections = { states, essays };
+const newsroom = defineCollection({
+  type: 'content',
+  schema: z.object({
+    date: z.date(),
+    weekOf: z.string(),
+    title: z.string(),
+    kicker: z.string(),
+    itemsCovered: z.number(),
+  }),
+});
+
+export const collections = { states, essays, newsroom };

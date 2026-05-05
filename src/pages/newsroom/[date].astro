@@ -1,0 +1,39 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+type Props = { entry: CollectionEntry<'newsroom'> };
+
+export async function getStaticPaths() {
+  const entries = await getCollection('newsroom');
+  return entries.map((entry) => ({
+    params: { date: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as Props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout
+  title={`${entry.data.title} · Newsroom · America's School Trust Library`}
+  description={entry.data.kicker}
+  sourceId={`newsroom-${entry.slug}`}
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">
+      <a href="/newsroom/" class="text-slate-500 hover:text-slate-700">Newsroom</a>
+    </p>
+    <Content />
+    <hr class="archival-divider" />
+    <p class="text-sm text-slate-600">
+      <em>
+        This entry was reviewed and edited by a named human editor before publication.
+        Newsroom drafts are produced by an AI surveillance pass over a defined source
+        list. The full editorial methodology is described at
+        <a href="/newsroom/">About the Newsroom</a>.
+      </em>
+    </p>
+  </article>
+</BaseLayout>
