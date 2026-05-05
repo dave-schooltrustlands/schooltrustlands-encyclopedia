@@ -17,6 +17,7 @@ const essays = defineCollection({
         'reconstruction-western',
         'twentieth-century',
         'comparative-atlas',
+        'enforcement',
         'conclusion',
       ])
       .optional(),

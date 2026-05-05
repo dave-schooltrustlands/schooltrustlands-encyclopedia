@@ -4,14 +4,14 @@ sourceWork: "Schools of the Republic v1.3"
 slug: "07-comparative-atlas"
 era: "comparative-atlas"
 order: 7
-wordCount: 1782
+wordCount: 2150
 sourceVersion: "Schools_of_the_Republic_v1.3"
 lastSynced: 2026-05-02
 ---
 
 # Comparative Atlas
 
-This section assembles cross-state views drawn from the fifty Pass-2-enriched state files. Each table is one angle on the substrate. Together they constitute the empirical floor on which the era chapters and the conclusion stand.
+This section assembles cross-state views drawn from the fifty Pass-2-enriched state files. Each table is one angle on the substrate. Together they form the empirical floor on which the era chapters and the conclusion stand.
 
 
 ## Table 1 — Admission timeline, federal-grant acreage, and language-strength score
@@ -155,6 +155,46 @@ Word counts of the per-state narrative entries in Part II of this volume. Length
 | RhodeIsland (RI) | Original 13 | 1,744 |
 
 *Total narrative content (Part II): 173,887 words across 50 states.*
+
+## Table 8 — Modern enforcement architecture by state
+
+The successful enforcement record is small but consistent across the public-land states. Three structural categories recur. The first is federal-court Supremacy Clause posture by school districts as direct beneficiaries — the *Branson* model. The second is state-court taxpayer or organizational standing under permissive state-court doctrines — the *Kadish* / *Forest Guardians* / *Montanans for the Responsible Use* model. The third is federal-AG enforcement under the 1894 and 1910 enabling-act language — the *Ervien* model, dormant since 1919 but doctrinally alive.[^atlas-1]
+
+The federal forum has a hard ceiling. *Papasan v. Allain*, 478 U.S. 265 (1986), holds that the Eleventh Amendment bars retrospective monetary relief from a state treasury for school-trust restoration. *Edelman v. Jordan*, 415 U.S. 651 (1974), and *Ex parte Young*, 209 U.S. 123 (1908), set the prospective-relief floor. State-court remedies under *Kadish* / *ASARCO* permissive-standing doctrine are therefore the operational forum for most modern enforcement work.[^atlas-2]
+
+| State | Lead enforcement case | Plaintiff form | Forum | Synthesis tag |
+|---|---|---|---|---|
+| Arizona (AZ) | *Kadish v. Arizona State Land Dep't*, 155 Ariz. 484 (1987), aff'd as *ASARCO Inc. v. Kadish*, 490 U.S. 605 (1989) | Education association + individual teacher; taxpayer standing | State court (federal trust law) | State-court standing anchor |
+| Arizona (AZ) | *Lassen v. Arizona*, 385 U.S. 458 (1967) | State Land Department vs. State Highway Department | Federal Supreme Court | Full-cash rule under § 28 |
+| Arizona (AZ) | *Forest Guardians v. Wells*, 201 Ariz. 255 (2001) | Non-profit | State court | Organizational standing under § 28 [VERIFY] |
+| Colorado (CO) | *Branson School District RE-82 v. Romer*, 161 F.3d 619 (10th Cir. 1998) | School district as beneficiary; Mountain States Legal Foundation as substitute bar | Federal Tenth Circuit | Federal Supremacy Clause anchor |
+| Idaho (ID) | *Idaho ex rel. Andrus v. Click*, 97 Idaho 791 (1976) | State on behalf of trust | State court | State-level enforcement of below-value conveyance [VERIFY] |
+| Minnesota (MN) | *Skeen v. State*, 505 N.W.2d 299 (Minn. 1993) | School districts | State court | Trust-adjacent equity / adequacy [VERIFY] |
+| Montana (MT) | *Montanans for the Responsible Use of the School Trust v. State* | Non-profit | State court | Eleven-statute injunction; private-attorney-general fees [VERIFY] |
+| New Mexico (NM) | *Ervien v. United States*, 251 U.S. 41 (1919) | United States Attorney General | Federal Supreme Court | Federal-AG enforcement (dormant since 1919) |
+| Oklahoma (OK) | *Oklahoma Education Association v. Nigh*, 642 P.2d 230 (1982) | Education association | State court | Below-market lease void as breach |
+| Oregon (OR) | *Advocates for School Trust Lands v. State of Oregon*, 346 Or App 668 (2026) | Non-profits (OASTL/ASTL) under Article VIII § 8 | State court | Beneficiary standing post-2000 amendment |
+| Washington (WA) | *County of Skamania v. State*, 102 Wn.2d 127 (1984) | County | State court | Statute reducing trust revenue void [VERIFY] |
+
+The pattern across the table is the same. Where enforcement worked, a non-profit organization or public entity served as the operational substitute for the absent specialist bar. *Branson* worked because Mountain States Legal Foundation was the substitute. *Kadish* worked because the Arizona Education Association was the substitute. *Forest Guardians* worked because the conservation non-profit was the substitute. *Montanans for the Responsible Use of the School Trust* worked because the organization itself was the substitute. *Advocates for School Trust Lands v. State of Oregon* (24CV38372) follows the same pattern — OASTL and ASTL act as the substitute. The historical record is unanimous on this point: the substitute-organization model is the operational answer to *parens patriae* enforcement capture in the school-trust context.[^atlas-3]
+
+The associational-standing branch traces to *Hunt v. Washington State Apple Advertising Comm'n*, 432 U.S. 333 (1977). The organizational-standing branch — mission-frustration and resource-diversion — traces to *Havens Realty Corp. v. Coleman*, 455 U.S. 363 (1982). Both ground non-profit standing for charitable-trust enforcement under Bogert § 869 and Restatement (Third) of Trusts § 107.[^atlas-4] The classical *parens patriae* enforcement architecture (Bogert §§ 411-417; Restatement § 95) sits underneath the non-profit substitute pattern, not above it: where the AG enforcer is structurally captured because it works for the trustee, the constituency-as-substitute carries the load.
+
+Several of the state-court citations in Table 8 — *Forest Guardians*, *Skeen*, *Skamania*, *Click*, *Montanans for the Responsible Use* — were drawn from the Synthesis v1 source list and should be Shepardized at the volume/page level before press. The Bogert section numbering shifts across editions and also needs an edition check. The Restatement (Third) numbering is stable.[^atlas-5]
+
+
+
+## Footnotes
+
+[^atlas-1]: For the three categories of the modern enforcement architecture, see Synthesis v1 — Trust law and fiduciary enforcement (Cowork-side, May 5, 2026). The federal-AG dormancy since *Ervien v. United States*, 251 U.S. 41 (1919), is documented in Chapter 6 § III.
+
+[^atlas-2]: *Papasan v. Allain*, 478 U.S. 265 (1986); *Edelman v. Jordan*, 415 U.S. 651 (1974); *Ex parte Young*, 209 U.S. 123 (1908). Combined doctrine: federal-court remedies against a state-as-trustee are largely prospective; retrospective surcharge against the state treasury is foreclosed.
+
+[^atlas-3]: For the bar-economics asymmetry that makes the non-profit substitute load-bearing, see Synthesis v1 § Q3 finding. The contingent-fee tort bar does not do equity reform of multi-decade administrative practice. The structural-reform bar that does has not historically owned public-lands trust law. The non-profit substitute is the operational answer.
+
+[^atlas-4]: *Hunt v. Washington State Apple Advertising Comm'n*, 432 U.S. 333 (1977) (associational standing); *Havens Realty Corp. v. Coleman*, 455 U.S. 363 (1982) (organizational standing on mission-frustration plus resource-diversion theory). On the underlying classical doctrine, Bogert §§ 411-417 (AG as charitable-trust enforcer) [VERIFY: Bogert section numbering shifts across editions]; Restatement (Third) of Trusts § 95 (parens patriae); Bogert § 869 (beneficiary enforcement); Restatement § 107 (beneficiary enforcement).
+
+[^atlas-5]: Synthesis v1 honesty disclosure on state-court citation verification: *Forest Guardians v. Wells*, 201 Ariz. 255, 34 P.3d 364 (2001); *Skeen v. State*, 505 N.W.2d 299 (Minn. 1993); *County of Skamania v. State*, 102 Wn.2d 127, 685 P.2d 576 (1984); *Idaho ex rel. Andrus v. Click*, 97 Idaho 791, 554 P.2d 969 (1976); *Montanans for the Responsible Use of the School Trust v. State* (cite incomplete in synthesis source). All five should be Shepardized at the volume/page level before press.
 
 
 
