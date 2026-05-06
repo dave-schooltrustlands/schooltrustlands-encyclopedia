@@ -9,6 +9,8 @@ lastSynced: 2026-05-02
 ---
 # Prologue — A Forever Gift
 
+![Figure 1. The Sacred Compact — eras of national land policy from the 1763 Proclamation Line through the 1910 New Mexico-Arizona Enabling Act. The compact was not signed at one moment; it was deposited in the geometry of the country across 125 years.](/images/sacred-compact/sacred-compact-eras.png)
+
 In May 1785, in a long surveying ordinance now mostly forgotten by everyone except cartographers and a small community of historians, the Confederation Congress put one sentence on the page. Section sixteen of every six-mile-square township in the new western country, the sentence said, would be reserved "for the maintenance of public schools."[^P-1]
 
 The men who voted for that sentence did not have a continent. They did not have a stable currency. They did not have a national bank, a permanent capital, a regular army, or — under the Articles of Confederation — the constitutional authority to tax their own citizens. They had a war debt of fifty-four million dollars, a population of around three million people scattered between the Atlantic and the Appalachians, and a vast unmapped Western territory whose Native nations did not regard the new government's title to it as binding. They had, in their hands, an asset they did not yet possess and a country they had not yet finished building.

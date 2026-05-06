@@ -9,6 +9,8 @@ lastSynced: 2026-05-02
 ---
 # V. The Counter-Architecture: Seven Anchors Plus a Watchful Crew
 
+![Figure 3. Anchors — the seven structural defenses (codified fiduciary duties; restoration mechanisms; individual and institutional accountability; direct distribution; advocacy; specialized legal defense; mandatory trustee education) and the eighth anchor — the watchful crew, the standing constituency without which the seven are decorative. The Library at schooltrusts.net is the eighth anchor as it exists today.](/images/sacred-compact/sacred-compact-anchors.png)
+
 ### What a counter-architecture has to do
 
 *Figure 3 (Anchors), at the head of this section, maps the seven structural defenses as anchors on a ship and names the eighth element — the standing constituency — as the crew that connects them. The argument below works through each pillar and then turns to what makes the architecture hold.*

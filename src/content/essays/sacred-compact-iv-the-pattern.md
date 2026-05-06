@@ -144,6 +144,8 @@ The next section is about what that instrument has to look like. The cases of Se
 
 ## IV.F — The Four Faces of Drift (and the Two Faces of Directed Seizure)
 
+![Figure 2. Drift — the three forces (Pull of the Present, Institution's Drift, Silent Current) that move an aspirational trust off course. The poster is the original three-force frame; Section IV.G adds the dual-force overlay (drift, accumulating slowly; directed seizure, breaking suddenly) that recasts the same dynamics under different time horizons. Both framings describe the same trust; the older shows what happens, the newer shows how fast.](/images/sacred-compact/sacred-compact-drifts.png)
+
 The model in this section identifies forces that compound to produce *drift* in any aspirational structure with intergenerational beneficiaries. The model also names the second pathology, *directed seizure*, that the same structures are vulnerable to. The two pathologies fracture trust architecture along distinct axes. Drift breaks the structure in four places. Directed seizure breaks it in two.[^IV-F-1]
 
 ### The four faces of drift

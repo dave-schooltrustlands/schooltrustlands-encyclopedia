@@ -11,6 +11,8 @@ lastSynced: 2026-05-02
 
 ## II.A — The Founding Moment
 
+![Figure 1. The Sacred Compact — eras of national land policy from the 1763 Proclamation Line through the 1910 New Mexico-Arizona Enabling Act. Each admission act extended the compact one state at a time.](/images/sacred-compact/sacred-compact-eras.png)
+
 *Figure 1, the timeline at the head of this section, traces the four eras through which national land policy moved from royal proclamation to settled school endowment. The narrative below treats the second of those eras — Land as War Financing, 1776–1783 — and its decisive turn into the third.*
 
 ### A republic on a knife-edge
