@@ -2,6 +2,40 @@
 
 Open work captured during the May 2026 site rebuild. Items below were either deferred to Handoff 2 by spec or surfaced as edge issues during the Session 1 implementation.
 
+## Phase 2 — Schools of the Republic image plates and per-state dossier integrations (May 2026 historical-foundations rewrite)
+
+The May 6, 2026 integrated rewrite (commit pending) staged image-plate placeholders and named per-state research the chapter integrations referenced but did not push down into the per-state pages. Two work-streams follow.
+
+### BOOK-006-IMAGES-PHASE-2 — period-newspaper image plates
+
+`[IMAGE PENDING]` placeholders staged in chapter prose during the May 6 rewrite. Each requires an archival fetch (newspapers.com subscription, Chronicling America, or relevant state historical society) before press. Captions are already written; only the image source is missing.
+
+- **Chapter 4 — California Redwood Company / Alien Sailor Scheme.** San Francisco / Eureka press, 1883–1889. [VERIFY paper + date.]
+- **Chapter 5 — Texas Capitol Syndicate / XIT Ranch.** *Chicago Tribune*, 1882–1885 (general syndicate coverage); Texas press, 1882–1888 (Capitol construction milestones / XIT lands).
+- **Chapter 5 — Florida Disston Purchase.** Florida and national press, 1881.
+- **Chapter 5 — New Mexico Santa Fe Ring.** *Las Vegas Optic* (often hostile) and *Santa Fe New Mexican* (often friendly), 1880s–1900s.
+- **Chapter 6 — Mesabi Iron Rescue.** *Duluth News Tribune* (Mesabi-discovery coverage) and *St. Paul Pioneer Press* (dummy-entry exposure), 1882–1895.
+- **Chapter 6 — *Ervien*–Larrazolo, New Mexico.** *Santa Fe New Mexican* coverage of the 1919 Supreme Court decision; cross-referenced from Chapter 8 footnote `[^ch8-21a]`.
+- **Chapter 6 — Stephen Puter / Oregon land-fraud era.** *Oregonian* coverage of the Mitchell trial and Heney prosecutions, 1903–1908.
+
+### BOOK-DOSSIER-PHASE-2 — per-state dossier additions
+
+The May 6 chapter integrations reference per-state material that should be propagated into the corresponding per-state dossier pages in a follow-up pass. Source synthesis: `Synthesis_v2_Historical_Foundations_Period_Press_Audits.md`, lines 78–80.
+
+- **Minnesota** — Mesabi Iron Rescue / William Wallace Braden as named reformer. Specific tract (NE quarter of Section 8, T58 R17, 60+ million tons of iron ore) needs Minnesota DNR Lands and Minerals or Minnesota Historical Society archival verification.
+- **Texas** — Capitol Syndicate XIT details + Relinquishment Act battles (J. T. Robison, Dan Moody era).
+- **Florida** — Disston Purchase + Internal Improvement Fund.
+- **California** — Henry George connection + Redwood Company Alien Sailor Scheme. The George connection (*Progress and Poverty* 1879 / *Our Land and Land Policy* 1871) needs source verification before press.
+- **Mississippi** — long-lease pattern + Dantzler / Dunnam / Blodgett cases + Ross A. Collins (state AG 1912–1920).
+- **Wisconsin** — BCPL reform tradition (1850s–early 1900s).
+- **Nebraska** — A.E. Sheldon's 1897 bill + 1910 commissioner's report + 1912 "Investigation" file.
+- **Alabama** — *State v. Schmidt* (1913–1914) + adverse-possession doctrine.
+- **Arizona** — 1888 Strauss "lump sale" agitation.
+
+### `[VERIFY]` flag closure pass
+
+The May 6 rewrite added 28+ `[VERIFY]` flags across the five integrated chapters, plus two new flags in Chapter 8 (`[^ch8-21a]`, `[^ch8-29a]`). The pre-publication press-pass closes these by Shepardizing case citations, verifying primary-document specifics (Jefferson 1784 committee report, 1783 Aboriginal Title Proclamation, etc.), and either confirming or removing the unverified specifics. Contested or thin areas the synthesis flagged: *Bagley v. State of Wisconsin* (cite); *Dantzler*, *Dunnam*, *Blodgett* (full cites); the Henry George connection; Mesabi specifics; *State v. Schmidt* full citation.
+
 ## Handoff 2 — content migration and domain flip
 
 ### Domain redirect

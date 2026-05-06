@@ -4,7 +4,7 @@ sourceWork: "Schools of the Republic v1.3"
 slug: "04-antebellum-doubling"
 era: "antebellum-doubling"
 order: 4
-wordCount: 4520
+wordCount: 5188
 sourceVersion: "Schools_of_the_Republic_v1.3"
 lastSynced: 2026-05-02
 ---
@@ -68,6 +68,22 @@ California's 1849 Constitution had a school provision. The 1879 Constitution tha
 K-12 finance in California today flows through Proposition 98 (1988), a voter-mandated constitutional minimum-spending guarantee from the general fund, layered with the Proposition 111 (1990) refinements.[^ch4-28] California has no school-trust permanent fund corpus to compare against Wisconsin's $1.6 billion or Minnesota's $2.5 billion, because the architecture that would have produced one was never installed. The honest sentence about California is the one this chapter has been building toward: **the architecture did not fail. It was never installed.** The grant happened; the trust did not.
 
 The Pass 2 research surfaced an additional finding worth pinning. Beginning in 2006 the Legislative Analyst's Office recommended transferring the projected $59 million School Land Bank Fund reserve to the Teachers' Retirement Fund because the State Lands Commission had made almost no land-bank investments for several years.[^ch4-29] In 2020 the Administration borrowed $49 million from the School Land Bank Fund through two interfund loans — a $32 million loan to the General Fund and a $17 million loan to the California Earthquake Safety Fund.[^ch4-30] That is what the residue of California's school grant looks like in the twenty-first century: a small statutory fund, periodically eyed for cash transfers to other state purposes, holding less than a tenth of one percent of the value that even a moderately well-managed corpus on the original 5.5 million acres might hold today. The interfund-loan pattern is a textbook anti-commingling concern — Bogert § 596 and Restatement (Third) of Trusts § 78(2) [VERIFY: Restatement § 78(2) cite per synthesis Claude/ChatGPT divergence; Bogert § 596 is the cleaner primary] both require trust assets to be kept segregated from the trustee's general funds, and a "loan" from a school-lands fund to the General Fund is the bookkeeping form anti-commingling doctrine was written to catch.
+
+### *The disposition era: Land Commission frauds and a worked example*
+
+The architectural absence had operational consequences during the long disposition era between the 1853 grant and the 1879 Constitution. The 1851 California Land Act and the State Surveyor-General's office produced two decades of contested school-section claims in which Mexican-grant confirmations, lieu-land selections, and timber claims fed a steady stream of litigation and a steadier stream of patents into private hands. The pattern was visible to contemporaries. Henry George drew on it in *Our Land and Land Policy* (1871) and *Progress and Poverty* (1879), tracing the speculative concentration of California land back to administrative decisions a working state government had made in plain view.[^ch4-george] [VERIFY: the direct California-school-lands connection in George's argument is flagged plausible but unverified by the synthesis; the broader public-lands argument is well documented.]
+
+The California Redwood Company's Alien Sailor Scheme (1883–1889) is the cohort's clearest worked example. Eureka mayor David Evans and cattle baron Joseph Russ recruited alien sailors, paid them $50 each to file timber claims under the 1878 Timber and Stone Act, and had the claims deeded to the syndicate on the same day they patented. The scheme moved redwood acreage into syndicate hands in volume; the federal indictments that followed produced limited recovery for the public domain. The pattern matters here because the school-section grant rode through the same survey, lieu-land, and timber-claim machinery that the Redwood Company exploited. Where the machinery was captured for one set of beneficiaries, it produced losses for the other.
+
+![Period coverage of the California Redwood Company Alien Sailor Scheme. San Francisco Examiner or Eureka press, 1883–1889. *[IMAGE PENDING — newspapers.com archival fetch, Phase 2.]*[VERIFY: date range; specific paper to be fixed at fetch.]](/images/schools-of-the-republic/california-redwood-alien-sailor-1883.png)
+
+The named-principals worked example sets up the broader pattern that the California per-state dossier carries in detail. The chapter notes the scheme; the dossier traces the indictments, the syndicate's later corporate history, and the residual title trail.
+
+## Illinois: fund-side drift in the same era
+
+California is a land-side case — the lands moved out of the public domain through survey, claim, and patent. Illinois is the antebellum era's clearest *fund-side* case, and it deserves a short pin in this chapter even though Illinois was admitted in 1818 on the older Northwest Ordinance single-section template. The state's school-fund corpus, built up across the 1830s and 1840s from section-16 sale proceeds, was largely lost through imprudent state-bond investments. The 1857 panic erased the bulk of it, and the Civil War and post-war years closed the gap. The 1859–60 Illinois General Assembly investigation produced a public record of where the corpus had gone — a contemporary reform attempt, naming the loss in a state document and treating it as a breach of duty rather than a market accident.[^ch4-illinois] [VERIFY: specific committee names and chairs to be Shepardized before press.]
+
+The Illinois pattern is the early federal-template counterpart to what California built without architecture: a state with the older single-section grant, the corpus extracted from the lands, and then the corpus itself walked into the wrong investments by the trustee. The two patterns are distinct and they are both visible in this period. Land-side drift moves the lands; fund-side drift moves the proceeds after the lands have already been sold. A school-trust framework that protects against one and not the other catches half the breach.
 
 ## Minnesota: the doubled-grant template, and a modern fix
 
@@ -160,6 +176,10 @@ By the eve of the Civil War the pattern that would define the school-lands inher
 [^ch4-29]: California Legislative Analyst's Office, 2006 Budget Analysis: State Lands Commission, https://lao.ca.gov/analysis_2006/resources/res_07_3560_anl06.html.
 
 [^ch4-30]: California State Lands Commission, 2024–2025 Annual School Lands Report at 2.
+
+[^ch4-george]: Henry George, *Our Land and Land Policy: National and State* (1871); Henry George, *Progress and Poverty* (1879). The treatises argue from California public-lands administration; the direct line from Land Commission school-section claims to George's argument is plausible but [VERIFY] flagged per synthesis honesty disclosure.
+
+[^ch4-illinois]: Illinois General Assembly, 1859–60 investigation of the school fund (committee report record). [VERIFY: specific committee names, chairs, and report citation to be Shepardized before press; the synthesis flags Illinois as the early case of fund-side drift but does not name the committee.] On the broader Illinois pattern, see John H. Krenkel, *Illinois Internal Improvements, 1818–1848* (1958), and the Illinois State Archives' antebellum school-fund records.
 
 [^ch4-31]: Enabling Act of Feb. 26, 1857, *supra* note 5.
 

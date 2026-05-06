@@ -4,7 +4,7 @@ sourceWork: "Schools of the Republic v1.3"
 slug: "03-northwest-ordinance-template"
 era: "northwest-ordinance"
 order: 3
-wordCount: 5650
+wordCount: 6400
 sourceVersion: "Schools_of_the_Republic_v1.3"
 lastSynced: 2026-05-02
 ---
@@ -70,6 +70,26 @@ Alabama's depletion ran through bank failure. After the 1827 Congressional act a
 **Florida (1845)** received the same single-section grant on the same lean template and disposed of most of it in the same way. The modern Florida architecture is unusual in that the federal section-16 trust corpus and the State School Fund are minor structural pieces. The dominant designated education-revenue stream is the Lottery Education Fund, set up by the 1986 amendment that added Article X § 15 to the Florida Constitution and operationalized when the lottery launched in 1988.[^ch3-17] The Lottery Education Fund is *not* a permanent corpus. It is annual designated revenue passing through the general fund. Florida looks, on a balance sheet, like it has a large education endowment. It does not. It has a stream of lottery dollars, vulnerable to redirection by the legislature in any given session, dressed in the constitutional clothing of a fund. The 1845 grant is a footnote. The old Article XII §§ 4–5 sacred-and-inviolate principal language survived in *Hampton v. State Board of Education* (1925), but the corpus it protected was already small.[^ch3-18]
 
 ## IV. Michigan, 1837: the centralization pivot
+
+### *The township-trustee era and its failure, 1803–1860s*
+
+To see why Michigan's move mattered, the township-trustee era has to be looked at on its own terms. The 1802 Ohio Enabling Act was explicit about where the grant went. Section 16 of every township ran "to the inhabitants of such township, for the use of schools." That was not loose drafting. It was Jeffersonian doctrine. The school lands belonged to the people who lived nearest the schoolhouse, administered by the trustees those people elected. Every Northwest Ordinance state from 1803 through Arkansas in 1836 took the grant on that pattern.
+
+The pattern did not work. The reasons were structural, not moral. A township in 1820 was, in legal terms, a thin entity. It could elect trustees; it could levy small assessments; it could keep a ledger if a literate volunteer was willing to keep one. What it could not do was *save*. There was no township investment vehicle, no professional staff to compound a corpus across decades, no audit office to catch a trustee who pocketed a section-16 rent. Income from leasing was usually consumed in the year it arrived — schoolhouse repairs, a teacher's quarterly pay, a stove for the winter. When trustees sold the section outright, the proceeds vanished into the same operating need.
+
+The corpus fared no better. A township could not realistically sue a trespasser cutting timber on section 16, because filing in distant federal or state court required money the township did not have and standing the township could not always demonstrate. Private leasing went on under nominal terms; squatters held tracts for years; sales went off at suppressed prices to neighbors of the trustees. The architecture had named a trustee with no fiduciary tools. The trustee did what was within reach.
+
+Early Ohio cases addressing township leasing of section-16 lands surface the pattern in the public record as early as the 1820s and 1830s. [VERIFY: specific Ohio reports cites needed; archival verification before press.] The cases are uneven on doctrine and on outcome, but they share a recurring fact pattern: a township-level lease at a price the court later found too low, a trespass the township could not prosecute, a corpus that had thinned without anyone in the chain of office having stolen anything.
+
+*Cooper v. Roberts*, 59 U.S. (18 How.) 173 (1855), is the foundational case on the failure of the township-as-trustee theory. The Supreme Court held that section 16 was a trust on the public faith of the *State* — not of the township — and that the State held in "the character of a trustee" for the school beneficiaries.[^ch3-4] *Cooper* did not invent the upward shift from town to capitol. It ratified it. By 1855 the practical relocation of fiduciary responsibility was already underway in several states, because townships had demonstrated across half a century that they could not hold the trust on their own.
+
+The upward consolidation that followed is best read not as fiduciary evolution but as *rescue*. Reformers in the state capitols were trying to find a legally competent sovereign entity capable of holding title, suing trespassers, and investing the corpus across generations. The township was a Euclidean square on a surveyor's plat, not an organic governance unit. The state, for all its political weakness in this era, was at least a juridical person with standing to sue, an attorney general's office, a treasurer, and a legislature that met annually. Michigan's 1835 framers built consolidation into the constitution from the start. Wisconsin moved early as well — its 1848 Constitution placed school lands under a state Board of Commissioners that became the longest-running fiduciary-grade administration in the section-16 record.[^ch3-bagley] Other Northwest Ordinance states made the move piecemeal across the 1840s and 1850s. [VERIFY: state-by-state consolidation chronology beyond Michigan and Wisconsin against the relevant state constitutional conventions and admission acts.]
+
+This is the chapter's first reform victory, and it deserves to be named as one. The story of section-16 corpus loss is not a single arc of drift. Running alongside it from the 1830s onward is a parallel arc of named reformers in state capitols pulling administration up the org chart because the local administration had failed. Centralization did not by itself preserve the corpus — the Michigan record below shows that limit clearly — but it solved the threshold problem the township-trustee era could not. After 1855 the section-16 trust had a trustee who could be sued.
+
+The doctrinal residue of the local-administration model survived in one place. Mississippi retained township-level administration of its sixteenth-section lands long after every other Northwest Ordinance state had centralized, and the consequences are treated in detail in Chapter 6 and the per-state dossier. The sixteenth-section pattern in Mississippi is the remaining live example of the model the rest of the country abandoned by 1860.
+
+### *The Michigan move*
 
 The most consequential structural innovation in this period happens in Michigan, the twenty-sixth state, admitted January 26, 1837. Michigan inherits the Ohio template like everyone else — section 16 of every township, lean federal text, no express trust language, the standard package.[^ch3-19] But Michigan's 1835 Constitution does something none of its predecessors did: it places school lands under a state-level **Superintendent of Public Instruction**, with operational administration through the State Treasurer. The grant still arrives "to the inhabitants of such township." The administration of the grant moves to the state capitol.
 
@@ -177,9 +197,11 @@ These ten states are the cautionary opening of the larger story. The Northwest O
 
 [^ch3-24]: Michigan Constitution of 1963, art. IX § 11 (as amended by Proposal A, 1994), https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-Article-IX-11.
 
-[^ch3-parens-patriae]: Bogert, *The Law of Trusts and Trustees* §§ 411–417 (Attorney General as enforcer of public charitable trusts); Restatement (Third) of Trusts § 95 (charitable-trust enforcement by the Attorney General as *parens patriae*). [VERIFY: Bogert section numbers; Restatement (Third) numbering stable per synthesis.] On the structural conflict when the state itself is the trustee, see Chapter 9 (BOOK-002).
+[^ch3-parens-patriae]: Bogert, *The Law of Trusts and Trustees* §§ 411–417 (Attorney General as enforcer of public charitable trusts); Restatement (Third) of Trusts § 95 (charitable-trust enforcement by the Attorney General as *parens patriae*). [VERIFY: Bogert section numbers; Restatement (Third) numbering stable per synthesis.] On the structural conflict when the state itself is the trustee, see Chapter 8 (BOOK-002).
 
 [^ch3-25]: *Lassen v. Arizona ex rel. Arizona Highway Department*, 385 U.S. 458 (1967), https://supreme.justia.com/cases/federal/us/385/458/ (applying strict-trust principles to the 1910 New Mexico–Arizona Enabling Act).
+
+[^ch3-bagley]: *Bagley v. State of Wisconsin* — case has been cited in secondary discussion of Wisconsin's early upward-consolidation pattern. [VERIFY: full citation needs Shepardizing; Wisconsin Board of Commissioners of Public Lands established by the 1848 Constitution and confirmed by early implementing legislation in the same year.]
 
 [^ch3-26]: *DeRolph v. State*, 78 Ohio St. 3d 193 (1997), with continuing orders through *DeRolph IV*, 97 Ohio St. 3d 434 (2002).
 

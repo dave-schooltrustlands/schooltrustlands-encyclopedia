@@ -4,7 +4,7 @@ sourceWork: "Schools of the Republic v1.3"
 slug: "05-reconstruction-western-stack"
 era: "reconstruction-western"
 order: 5
-wordCount: 7050
+wordCount: 8306
 sourceVersion: "Schools_of_the_Republic_v1.3"
 lastSynced: 2026-05-02
 ---
@@ -139,6 +139,36 @@ Utah is the book's central recovery case because Utah is the cleanest demonstrat
 
 In Margaret Bird's framing, drift and directed seizure are the dual forces that menace every school trust. Both were visible in Utah before 1989: drift across eight decades of liquidation and inattention; directed seizure in *Jensen* and the 1983 withdrawal that *Jensen* authorized. Both have been substantially neutralized in Utah since 1994, not because the architecture changed in any decisive way, but because a constituency was built that holds the architecture in place. **Architecture without constituency drifts. Constituency without architecture has no leverage. Both are required, and the constituency is the active ingredient — the part of the system that actually does the work of resisting the next attempt to seize the trust assets when somebody in power decides those assets would be more useful elsewhere.** Margaret Bird's anchor phrase belongs at the close of the Utah story: a *forever gift to forever schools for a forever democracy* requires, every generation, a constituency willing to remember that the gift exists and to insist that it be honored.
 
+## Beyond the cohort: Reconstruction-era dispositions outside the Western Stack
+
+The Western Stack architecture went up between 1861 and 1896. During the same decades, three of the era's largest school-lands dispositions happened outside the federal-grant cohort the chapter has just traced. Texas, admitted in 1845 on a state-created trust posture rather than a federal admission grant, traded the largest single school-lands disposition in American history for a building. Florida, under federal occupation lifted in 1877 and a state government scrambling for revenue, sold roughly four million acres of Internal Improvement Fund land to one buyer at twenty-five cents an acre. New Mexico Territory ran a parallel pattern — territorial-government access leveraged by a network of speculators — that would shape New Mexico's later trust posture once the 1910 Enabling Act brought it into the federal-grant framework. Each warrants a worked example or a paragraph here. The Western Stack architecture of 1889 and 1894 was Congress and state drafters absorbing exactly these lessons.
+
+### *Texas Capitol Syndicate / XIT Ranch (1882–1900)*
+
+The Texas legislature in 1879 set aside roughly 3,050,000 acres of public-school lands in the Panhandle to pay for construction of a new state capitol in Austin. The 1882 contract handed the lands to a Chicago syndicate — Capitol Freehold Land and Investment Co., principals Charles B. and John V. Farwell, Abner Taylor, and Mathias Schnell — in exchange for the building. The syndicate took title in tranches as construction progressed; the capitol opened in 1888; the lands became the XIT Ranch, at one point the largest fenced cattle operation in the country. Period press carried the transaction in detail: Texas papers tracked the legislative debates and the construction milestones; Chicago papers tracked the Farwell brothers and the syndicate financing; New York papers tracked the British capital flowing in behind it. The disposition is the largest single transfer of school-lands acreage in American history.[^ch5-xit]
+
+![Period coverage of the Texas Capitol Syndicate transaction. Chicago Tribune, 1882–1885. *[IMAGE PENDING — newspapers.com archival fetch, Phase 2.]*[VERIFY: date range; specific issues to be fixed at fetch.]](/images/schools-of-the-republic/texas-capitol-syndicate-1882.png)
+
+![Period coverage of the Capitol construction milestones and the XIT lands. Texas press, 1882–1888. *[IMAGE PENDING — Texas State Library archival fetch, Phase 2.]*[VERIFY: specific paper to be fixed at fetch.]](/images/schools-of-the-republic/texas-capitol-construction-press.png)
+
+The transaction sits inside Texas's distinctive state-created-trust posture: Texas, on annexation in 1845, retained its public lands rather than ceding them to the federal government, and the school lands flow from state grants and state statutes rather than from a federal admission act. The Texas page in the Map Room carries the doctrinal arc — state-created trust, the 1854 establishment of the Permanent School Fund, the 1876 Constitution's Article VII school provisions, the 1919 Relinquishment Act, and the modern School Land Board — in detail. The chapter notes the worked example because nothing else in the period transfers more acreage in a single disposition.
+
+### *Florida Disston Purchase (1881)*
+
+Florida is the era's other extreme transaction. Federal occupation lifted in 1877 left the state government with a depleted treasury, an underfunded Internal Improvement Fund, and creditors holding judgments against IIF lands. In 1881, Hamilton Disston of Philadelphia paid $1 million for approximately 4 million acres of IIF land at twenty-five cents an acre — at the time, the largest single individual land purchase in American history. The transaction cleared the IIF's immediate debt obligations and put a Pennsylvania industrialist's name on a Florida-shaped quarter of the state's swamp and pine country. Period coverage in *The New York Times*, the *Philadelphia Inquirer*, and the Florida press carried the price, the acreage, and the political backstory.[^ch5-disston]
+
+![Period coverage of the Florida Disston Purchase. Florida and national press, 1881. *[IMAGE PENDING — newspapers.com archival fetch, Phase 2.]*[VERIFY: specific paper and date to be fixed at fetch.]](/images/schools-of-the-republic/florida-disston-purchase-1881.png)
+
+The Disston Purchase is not a school-trust transaction in the Wisconsin or Utah sense. The IIF lands were not the section-16 federal-grant lands; they were state-internal-improvement lands accumulated under the 1850 Swamp Lands Act and similar federal cessions. But the transaction is the era's clearest demonstration that a state government in fiscal distress, with no architectural protection above the trustee chair, can move four million acres in a single afternoon.
+
+### *New Mexico Santa Fe Ring (1870s–1900s)*
+
+New Mexico Territory ran a third pattern. Through the 1870s and into the 1900s, a network of attorneys, judges, and territorial officials known to contemporaries as the Santa Fe Ring leveraged territorial-government access to acquire vast holdings touching the public domain, the Spanish and Mexican land grants the United States had assumed responsibility for confirming, and the school-section disposal pipeline. Thomas Benton Catron — territorial attorney general, U.S. attorney for New Mexico, and after 1912 statehood one of New Mexico's first two U.S. senators — was the network's central figure. Catron's land holdings reportedly exceeded two million acres at their peak. Period coverage was sharply divided: the *Santa Fe New Mexican* often ran with the Ring; the *Las Vegas Optic*, under editor Russell A. Kistler, ran consistently against it and provided a contemporaneous reform-side voice that named the network and its methods in the public record.[^ch5-santafe]
+
+![Period coverage of the Santa Fe Ring and Thomas Benton Catron. Las Vegas Optic and Santa Fe New Mexican, 1880s–1900s. *[IMAGE PENDING — Chronicling America archival fetch, Phase 2.]*[VERIFY: specific dates to be fixed at fetch.]](/images/schools-of-the-republic/new-mexico-santa-fe-ring-press.png)
+
+The Santa Fe Ring matters here because it shaped the territorial government that handled school-section disposal in the years before the 1910 Enabling Act installed New Mexico's modern trust architecture. The 1910 Act's express trust language, breach-of-trust nomenclature, and federal Attorney General enforcement standing — taken up in Chapter 6, and tested in *Ervien v. United States* in 1919 and treated again in Chapter 8 — were Congress drafting against exactly the territorial-period pattern the Ring had run. The reform-side press of the 1880s and 1890s named the breach in real time. The federal architecture of 1910 turned that naming into doctrine.
+
 ## What this era built
 
 By 1896 the school-trust framework had three load-bearing walls in place. The federal text had been rewritten twice — first in the 1889 Omnibus Act's permanent-fund and null-and-void clauses, then in the 1894 Utah Act's explicit permanent-fund architecture and quadrupled grant. The state constitutions had tightened: ex-officio executive boards on the Wisconsin pattern, irreducibility clauses, separate-fund clauses, beneficiary-class language that named the schools rather than gestured toward them. And new structural ideas — Colorado's expanded constitutional board with diversity-of-representation requirements, Idaho's eventual separation of investment authority from management authority, Utah's eventual direct-to-school distribution and independent advocacy office — were either introduced or seeded in this era and would propagate.
@@ -262,6 +292,12 @@ The next chapter goes to New Mexico and Arizona, 1910, where Congress wrote the 
 [^ch5-51]: Utah Code § 53D-2-102, enacted by Ch. 448, 2018 General Session; Utah Code § 53D-2-201 (LTPAO duties).
 
 [^ch5-52]: Utah Amendment B, *State School Fund Distribution Cap Increase Amendment* (2024), https://ballotpedia.org/Utah_Amendment_B,_State_School_Fund_Distribution_Cap_Increase_Amendment_(2024); Utah Constitution, Article X, § 5, effective 2025.
+
+[^ch5-xit]: J. Evetts Haley, *The XIT Ranch of Texas and the Early Days of the Llano Estacado* (1929; rev. ed. 1953), is the standard treatment. The 1879 Texas legislative act, the 1882 contract with the Capitol Freehold Land and Investment Co., and the construction milestones are documented in Texas State Library and Archives Commission, Capitol Building Commission records. [VERIFY: precise acreage figure (3,050,000 acres in widely cited sources; Texas General Land Office records carry the surveyed total) and contract dates to be fixed at press.] On the syndicate principals — Charles B. Farwell, John V. Farwell, Abner Taylor, Mathias Schnell — see Robert L. Wagner, *The Gigantic XIT Ranch* (1955), and the Newberry Library's Farwell family papers.
+
+[^ch5-disston]: Hamilton Disston Purchase, June 1881; ~4,000,000 acres of Internal Improvement Fund land at $0.25/acre, purchase price $1,000,000. See Junius Elmore Dovell, *History of the Everglades of Florida* (1947); Florida Internal Improvement Fund minutes, 1881; *The New York Times* coverage, June–July 1881. [VERIFY: precise contract date and acreage to be fixed at press; figures vary slightly across secondary sources.]
+
+[^ch5-santafe]: On the Santa Fe Ring, see Howard R. Lamar, *The Far Southwest, 1846–1912: A Territorial History* (1966; rev. ed. 2000); David L. Caffey, *Chasing the Santa Fe Ring: Power and Privilege in Territorial New Mexico* (2014). On Catron specifically, Victor Westphall, *Thomas Benton Catron and His Era* (1973). On the period press, Porter A. Stratton, *The Territorial Press of New Mexico, 1834–1912* (1969). [VERIFY: Catron's peak land holdings figure (~2 million acres in widely cited sources) and Russell A. Kistler's tenure dates at the *Las Vegas Optic* to be Shepardized before press.]
 
 
 
