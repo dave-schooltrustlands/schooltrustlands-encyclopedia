@@ -43,6 +43,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Tuesday May 5, 2026 (late evening) — About-page litigation-line removal; <code>/about/future-ledger/</code> retirement remains cache-blocked.</strong>
+            The "For the litigation team, see Oregon's current case" line was removed
+            from the About page's Team section. Per the editorial principle that
+            Library-institutional surfaces (About, Reading Room landing, Atlas, Counting
+            House, Map Room, Newsroom methodology) do not name lawyers, link to case
+            pages, or otherwise telegraph the Library as the public face of any one
+            lawsuit, the line was a half-undoing of the earlier founders-only Team
+            revision and shouldn't have been there. Litigation content remains where it
+            belongs at <a href="/court/oregon-current-case/">/court/oregon-current-case/</a>.
+            Separately: the <code>/about/future-ledger/</code> URL still returns
+            HTTP 200 against the deployed site, but an exhaustive repo grep for the
+            page's H1 (<em>Toward a Public Ledger</em>) and for the slug
+            <code>future-ledger</code> across <code>src/</code>, <code>public/</code>,
+            and the Astro config returns no rendering source. The page was deleted at
+            the source level in commit <code>08d8736</code> (EA-001) and a fresh build
+            does not generate the path. The live 200 is a Cloudflare Pages edge cache
+            artifact, not a repo defect — manual cache purge from the Cloudflare
+            dashboard is the remaining step.
+          </li>
+          <li>
             <strong>Tuesday May 5, 2026 (late evening) — Post-rewrite cleanup.</strong>
             Four loose ends from today's stack of commits closed: the integrated-rewrite
             commit (b39d8c0) renumbered the conclusion from 08 to 09 to make room for the
