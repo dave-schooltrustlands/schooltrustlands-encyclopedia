@@ -102,7 +102,22 @@ const rooms = [
           )}
         </div>
         {room.summary && (
-          <p class="mt-0.5 text-xs text-slate-500">{room.summary}</p>
+          <p class="mt-0.5 text-xs text-slate-500">
+            {room.summary}
+            {/* v9 D.1 — when the Counting-House summary surfaces an
+                "Awaiting" string, render the empty-shelf ornament
+                inline (Library Mode only). */}
+            {room.id === 'counting' &&
+              typeof room.summary === 'string' &&
+              /[Aa]waiting/.test(room.summary) && (
+                <img
+                  src="/ornaments/empty-shelf.svg"
+                  alt=""
+                  class="state-ornament"
+                  data-ornament="empty-shelf"
+                />
+              )}
+          </p>
         )}
       </li>
     ))}

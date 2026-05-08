@@ -5,7 +5,9 @@
  * Fires automatically on first home-page visit when body.mode-library is
  * set and localStorage `library-walking-tour-dismissed` is not set. Also
  * fires when any element with [data-open-walking-tour] is clicked
- * (IllustratedLobby's "Show me around the Library" button uses this).
+ * (the v7 IllustratedLobby's tour CTA was retired in v9; the trigger
+ * remains live for any future surface that wires a [data-open-walking-tour]
+ * button).
  *
  * Skip / Done / Esc all set the localStorage key permanently. Focus is
  * trapped inside the dialog while open.

@@ -1,5 +1,6 @@
 ---
 import RoomLayout from '../../layouts/RoomLayout.astro';
+import RoomBanner from '../../components/RoomBanner.astro';
 import financeData from '../../data/finance/states.json';
 
 type FinanceRecord = {
@@ -52,6 +53,8 @@ const transparencyLabels: Record<string, string> = {
   width="full"
   sourceId="finance-states-json"
 >
+  <RoomBanner room="counting" />
+
   <aside
     class="mt-6 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-5 text-base text-amber-900 shadow-sm"
     aria-label="How to read this table"
@@ -208,9 +211,20 @@ const transparencyLabels: Record<string, string> = {
               ) : r.corpus.confidence === 'not-applicable' ? (
                 <span class="text-slate-400" title="State-derived; never had a federal trust">—</span>
               ) : (
-                <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="Substrate has no verified value; awaiting state disclosure">
-                  Awaiting Disclosure
-                </span>
+                <>
+                  <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="Substrate has no verified value; awaiting state disclosure">
+                    Awaiting Disclosure
+                  </span>
+                  {/* v9 D.1 — Library Mode ornament. Empty-shelf for fully-
+                      undisclosed corpus; ghosted-ledger for partially-
+                      published states (the ledger exists but the public
+                      can't read the entries). */}
+                  {r.transparency.status === 'data-partially-published' ? (
+                    <img src="/ornaments/ghosted-ledger.svg" alt="" class="state-ornament" data-ornament="ghosted-ledger" />
+                  ) : (
+                    <img src="/ornaments/empty-shelf.svg" alt="" class="state-ornament" data-ornament="empty-shelf" />
+                  )}
+                </>
               )}
             </td>
             <td data-label="Distribution" class="px-3 py-2 text-right tabular-nums">
@@ -224,9 +238,16 @@ const transparencyLabels: Record<string, string> = {
               ) : r.distribution.confidence === 'not-applicable' ? (
                 <span class="text-slate-400" title="State-derived; never had a federal trust">—</span>
               ) : (
-                <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="Substrate has no verified value; awaiting state disclosure">
-                  Awaiting Disclosure
-                </span>
+                <>
+                  <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="Substrate has no verified value; awaiting state disclosure">
+                    Awaiting Disclosure
+                  </span>
+                  {r.transparency.status === 'data-partially-published' ? (
+                    <img src="/ornaments/ghosted-ledger.svg" alt="" class="state-ornament" data-ornament="ghosted-ledger" />
+                  ) : (
+                    <img src="/ornaments/empty-shelf.svg" alt="" class="state-ornament" data-ornament="empty-shelf" />
+                  )}
+                </>
               )}
             </td>
             <td data-label="Transparency" class="px-3 py-2 text-slate-600">

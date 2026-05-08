@@ -43,6 +43,25 @@
   class="vds-wrap"
   data-density-slider
 >
+  <span class="vds-label" aria-hidden="true">
+    <svg
+      class="vds-label-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+      <circle cx="12" cy="12" r="3"></circle>
+    </svg>
+    <span class="vds-label-text">View:</span>
+  </span>
   <div
     class="vds-pill"
     role="radiogroup"
@@ -75,12 +94,19 @@
       tabindex="-1"
     >Library</button>
   </div>
+  <button
+    type="button"
+    class="vds-help"
+    data-density-help
+    aria-label="What does this control do?"
+    title="What does this control do?"
+  >?</button>
   <div
     class="vds-tooltip"
     data-density-tooltip
     hidden
     aria-hidden="true"
-  >Choose how visual you want the Library to feel.</div>
+  >Choose how visual you want the Library to feel. <strong>Reference</strong> strips ornament for fast reading; <strong>Library</strong> turns the lights on.</div>
   <div
     class="vds-sr"
     data-density-live
@@ -95,6 +121,32 @@
     position: relative;
     display: inline-flex;
     align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--rule-border);
+    border-radius: 6px;
+    background: var(--linen-card, #fafaf7);
+    box-shadow: 0 1px 2px rgba(31, 42, 68, 0.04);
+  }
+
+  .vds-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--deep-navy);
+    user-select: none;
+  }
+  .vds-label-icon {
+    flex: 0 0 auto;
+    color: var(--deep-navy);
+    opacity: 0.85;
+  }
+  .vds-label-text {
+    line-height: 1;
   }
 
   .vds-pill {
@@ -107,6 +159,37 @@
     min-height: 36px;
     line-height: 1;
     font-family: var(--font-sans);
+  }
+
+  .vds-help {
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid var(--rule-border);
+    background: transparent;
+    color: var(--deep-navy);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    opacity: 0.7;
+    transition: background-color 120ms ease, opacity 120ms ease;
+  }
+  .vds-help:hover {
+    background: rgba(31, 42, 68, 0.06);
+    opacity: 1;
+  }
+  .vds-help:focus-visible {
+    outline: 2px solid var(--trust-blue);
+    outline-offset: 2px;
   }
 
   .vds-seg {
@@ -161,8 +244,7 @@
   .vds-tooltip {
     position: absolute;
     top: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0;
     background: var(--linen-card);
     color: var(--deep-navy);
     border: 1px solid var(--rule-border);
@@ -170,19 +252,23 @@
     padding: 8px 12px;
     font-family: var(--font-sans);
     font-size: 0.8rem;
-    line-height: 1.35;
-    white-space: nowrap;
+    line-height: 1.4;
+    max-width: 22rem;
     box-shadow: 0 6px 18px rgba(31, 42, 68, 0.12);
     z-index: 50;
     pointer-events: none;
+  }
+  .vds-tooltip strong {
+    color: var(--deep-navy);
+    font-weight: 700;
   }
 
   .vds-tooltip::before {
     content: '';
     position: absolute;
     top: -6px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
+    right: 14px;
+    transform: rotate(45deg);
     width: 10px;
     height: 10px;
     background: var(--linen-card);
@@ -211,14 +297,16 @@
       display: flex;
       justify-content: stretch;
     }
+    .vds-label {
+      flex: 0 0 auto;
+    }
     .vds-pill {
-      width: 100%;
+      flex: 1 1 auto;
     }
     .vds-seg {
       flex: 1 1 0;
     }
     .vds-tooltip {
-      white-space: normal;
       max-width: 90vw;
     }
   }
@@ -229,7 +317,7 @@
     var MODES = ['reference', 'standard', 'library'];
     var STORAGE_KEY = 'library-visual-density';
     var TOOLTIP_KEY = 'library-density-tooltip-dismissed';
-    var TOOLTIP_TIMEOUT_MS = 6000;
+    var TOOLTIP_TIMEOUT_MS = 10000;
 
     function init() {
       var wraps = document.querySelectorAll('[data-density-slider]');
@@ -240,6 +328,8 @@
       var segs = wrap.querySelectorAll('.vds-seg');
       var live = wrap.querySelector('[data-density-live]');
       var tooltip = wrap.querySelector('[data-density-tooltip]');
+      var helpBtn = wrap.querySelector('[data-density-help]');
+      var tooltipTimer = null;
 
       function readStored() {
         try {
@@ -274,9 +364,25 @@
       function dismissTooltip(permanent) {
         if (!tooltip) return;
         tooltip.hidden = true;
+        tooltip.setAttribute('aria-hidden', 'true');
+        if (tooltipTimer) {
+          clearTimeout(tooltipTimer);
+          tooltipTimer = null;
+        }
         if (permanent) {
           try { localStorage.setItem(TOOLTIP_KEY, '1'); } catch (_) { /* ignore */ }
         }
+      }
+
+      function showTooltip(opts) {
+        if (!tooltip) return;
+        opts = opts || {};
+        tooltip.hidden = false;
+        tooltip.setAttribute('aria-hidden', 'false');
+        if (tooltipTimer) clearTimeout(tooltipTimer);
+        tooltipTimer = setTimeout(function () {
+          dismissTooltip(opts.persistOnTimeout !== false);
+        }, TOOLTIP_TIMEOUT_MS);
       }
 
       function maybeShowTooltip() {
@@ -284,9 +390,7 @@
         try {
           if (localStorage.getItem(TOOLTIP_KEY) === '1') return;
         } catch (_) { /* if storage fails, just don't show */ return; }
-        tooltip.hidden = false;
-        tooltip.setAttribute('aria-hidden', 'false');
-        setTimeout(function () { dismissTooltip(true); }, TOOLTIP_TIMEOUT_MS);
+        showTooltip({ persistOnTimeout: true });
       }
 
       // Sync visible state to whatever the early-paint script applied.
@@ -339,6 +443,20 @@
         var nextSeg = wrap.querySelector('.vds-seg[data-mode="' + nextMode + '"]');
         if (nextSeg) nextSeg.focus();
       });
+
+      // Help button re-summons the tooltip on demand. Does not persist
+      // dismissal — the user is asking to see it.
+      if (helpBtn) {
+        helpBtn.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          if (!tooltip) return;
+          if (!tooltip.hidden) {
+            dismissTooltip(false);
+          } else {
+            showTooltip({ persistOnTimeout: false });
+          }
+        });
+      }
 
       maybeShowTooltip();
     }

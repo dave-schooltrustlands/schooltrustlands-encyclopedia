@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Site Update v9, Super-agent GAMMA, C.4 — /the-watchful-crew/ stewardship
+// ledger v1.
+//
+// The public, named record of who has held a Library office and what they
+// have left behind. The Library uses Margaret’s anchor phrase — “a forever
+// gift to forever schools for a forever democracy” — as the page tagline,
+// because the ledger is the institution’s answer to the question Margaret
+// keeps asking: who is going to keep watch?
+//
+// Architecture: each ledger entry is a record of a named office, a tenure,
+// and the artifacts produced under that office. Today’s seed has Margaret
+// and Dave; the same shape will hold State Correspondents, State
+// Co-Librarians, the Library Board, and per-page Contributors as the
+// roster grows.
+
+const founders = [
+  {
+    name: 'Margaret Bird',
+    office:
+      'Co-author; Eighth Anchor reframer; national school-trust-law authority',
+    tenure: 'Founding (April 2026 –)',
+    pseudonym: false,
+    artifacts: [
+      'Co-authorship of <em>Schools of the Republic</em>',
+      'The Eighth Anchor reframe of the <em>Sacred Compact</em>',
+      'The seven Margaret video transcripts filed at the Library’s L0 substrate',
+    ],
+  },
+  {
+    name: 'Dave Sullivan',
+    office:
+      'Founder; lead advocate, Oregon Advocates for School Trust Lands (OASTL); Knowledge Stack architect',
+    tenure: 'Founding (April 2026 –)',
+    pseudonym: false,
+    artifacts: [
+      'Co-authorship of <em>Schools of the Republic</em>',
+      'Lead authorship of the <em>Sacred Compact</em>',
+      'The Library architecture and the five-layer Knowledge Stack',
+    ],
+  },
+];
+
+// Future tiers: render only the headers in v1, with a short note that the
+// roster is being recruited. The tier shape is set so v1.x can drop entries
+// in without re-architecting.
+const futureTiers = [
+  {
+    title: 'State Co-Librarians',
+    note:
+      "The named curators of each state’s corner of the State Records section. Recruitment is ongoing through 2026 and 2027; the pseudonymity tier is available for state-lands-agency staff.",
+  },
+  {
+    title: 'State Correspondents',
+    note:
+      "Light-commitment watchers of school-trust news in their own states. The roster grows one state at a time as Newsroom items come in.",
+  },
+  {
+    title: 'Library Board',
+    note:
+      "Trustees of the Library itself. The first three to five Board members are being recruited from the library-science, archival, and digital-library-infrastructure communities.",
+  },
+  {
+    title: 'Contributors',
+    note:
+      "Library Card holders whose corrections, annotations, and source suggestions have been accepted into the editorial summaries. Contributors are credited on the source pages they have shaped; the per-page record is held with the page itself, and the cumulative record will surface here as the Library matures.",
+  },
+];
+---
+<BaseLayout
+  title="The Watchful Crew · America's School Trust Library"
+  description="The public stewardship ledger of America's School Trust Library — named offices, tenures, and the artifacts each contributor leaves behind."
+  sourceId="watchful-crew-ledger"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">The Watchful Crew</p>
+    <h1 class="mt-2">The Watchful Crew</h1>
+    <p class="kicker text-slate-600 italic">
+      <q>a forever gift to forever schools for a forever democracy.</q>
+      <span class="not-italic"> — Margaret Bird</span>
+    </p>
+
+    <h2>What this ledger is</h2>
+    <p>
+      The Watchful Crew is the Library’s public stewardship ledger: a named
+      record of who has held a Library office, the tenure they have served, and
+      the artifacts they have left behind. The page exists because a public
+      reference institution should be transparent about its own staffing, and
+      because the Eighth Anchor — the standing community without which the seven
+      structural anchors of the Sacred Compact are decorative — is people, with
+      names, doing specific work.
+    </p>
+    <p>
+      Today’s ledger is small. It will grow. The architecture supports adding
+      State Correspondents, State Co-Librarians, the Library Board, and named
+      Contributors as those roles are filled and consent is given. Where
+      pseudonymity is needed — particularly for state-lands-agency staff whose
+      participation under their real name could be professionally costly — the
+      verified pseudonym appears in place of the name, and the verification is
+      held confidentially by the Library Board.
+    </p>
+  </article>
+
+  <section class="ledger-tier mt-10">
+    <h2 class="text-2xl font-bold tracking-tight">Founders</h2>
+    <p class="mt-1 text-sm italic text-slate-600">
+      The two named founders of the Library, on the public record from day one.
+    </p>
+    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {founders.map((p) => (
+        <li class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+          <h3 class="text-lg font-semibold tracking-tight text-slate-900">
+            {p.name}
+          </h3>
+          <p class="mt-1 text-sm font-semibold text-slate-700">{p.office}</p>
+          <p class="mt-1 text-xs uppercase tracking-wide text-slate-500">
+            Tenure: {p.tenure}
+          </p>
+          <p class="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Artifacts
+          </p>
+          <ul class="mt-1 list-disc space-y-1 pl-5 text-sm text-slate-700">
+            {p.artifacts.map((a) => (
+              <li set:html={a}></li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="ledger-tiers mt-12">
+    <h2 class="text-2xl font-bold tracking-tight">In recruitment</h2>
+    <p class="mt-1 text-sm italic text-slate-600">
+      The next tiers of the ledger. Each entry below is a placeholder for a list
+      of named offices that fills in as the Library’s constituency is built.
+    </p>
+    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {futureTiers.map((t) => (
+        <li class="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-5">
+          <h3 class="text-lg font-semibold tracking-tight text-slate-900">
+            {t.title}
+          </h3>
+          <p class="mt-2 text-sm text-slate-700">{t.note}</p>
+          <p class="mt-3 text-xs italic text-slate-500">
+            Names land here as offices are filled.
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <article class="prose prose-slate mt-12 max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h2>How to join the ledger</h2>
+    <p>
+      The ledger is filled by the seven roles laid out at
+      <a href="/contribute/">How to contribute</a>. The path is the same in
+      every case: hold a named office, do the work the office calls for, and the
+      artifacts you produce — corrections, transcriptions, state pages,
+      Newsroom items, Board minutes — accrue to your name (or your verified
+      pseudonym) on this page.
+    </p>
+    <p>
+      For the catalog of bounded tasks the Library is currently looking for
+      hands on, see <a href="/missions/">Missions</a>.
+    </p>
+
+    <hr class="my-10" />
+
+    <p class="text-sm text-slate-600">
+      <em>Curated by Library editorial team, 2026-05-08.</em>
+    </p>
+  </article>
+</BaseLayout>

@@ -556,6 +556,13 @@
      styles render in Standard Mode (the default); mode-library.css and
      mode-reference.css differentiate them per mode.
      --------------------------------------------------------------------- */
+  /* v9: home-poster expander is visible only in Reference Mode (where the
+     poster is reduced to 22rem). Hidden by default in Standard/Library
+     since the inline poster is already shown at full width. */
+  .home-poster__expander {
+    display: none;
+  }
+
   .home-declaration {
     margin: 1.5rem 0 2rem;
   }
@@ -1001,3 +1008,101 @@ body[data-source-id^="essay-sacred-compact-interlude-"] main > header h1 {
     background: white;
   }
 }
+
+/* === v9 ornaments + seal CSS (Delta) =================================
+   Site Update v9, Super-agent DELTA — D.1 missing-data ornaments
+   and D.2 Library-seal placeholder. Base sizing only; mode-specific
+   reveal/hide rules live in mode-library.css and mode-reference.css.
+   --------------------------------------------------------------------- */
+
+/* Library seal — base. Sized per placement. Modes opt into / out of
+   visibility (Library Mode reveals all three placements; Reference
+   Mode hides them; Standard Mode keeps the small marks but suppresses
+   the lobby inlay so the home page stays uncluttered for the
+   calibration baseline). */
+.library-seal { display: block; }
+.library-seal--inlay {
+  width: 200px;
+  max-width: 50%;
+  opacity: 0.85;
+  margin: 2rem auto;
+}
+.library-seal--header {
+  width: 64px;
+  margin: 0 auto 0.5rem;
+}
+.library-seal--footer {
+  width: 32px;
+  opacity: 0.6;
+  margin: 1.25rem 0 0;
+}
+
+/* Lobby inlay wrapper — base centered block. Inert in Reference Mode
+   (hidden); Library Mode reveals; Standard Mode hides per the v9 brief
+   (the seal is a Library-Mode signature). */
+.library-seal-inlay {
+  display: none;
+  text-align: center;
+}
+
+/* About-page header mark wrapper and Footer seal mark wrapper —
+   declared so per-mode rules can target them cleanly. Visible in
+   Library Mode; suppressed in Reference Mode. */
+.library-seal-header-wrap {
+  display: none;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+.library-seal-footer-wrap {
+  display: none;
+  margin: 1rem 0 0;
+}
+
+/* State ornament — D.1 missing-data marker. Inline cue placed next
+   to "Awaiting State Disclosure" badges (Counting House) and the
+   Atlas line on the StateDossierCard. Hidden by default; Library
+   Mode reveals via mode-library.css; Reference Mode keeps hidden
+   (the badge or fallback text already carries the meaning). */
+.state-ornament {
+  display: none;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  opacity: 0.55;
+  color: var(--deep-navy);
+}
+
+/* Atlas legend variant — slightly larger ornaments for the legend
+   strip on /atlas/. Same hidden-by-default contract; mode-library
+   reveals. */
+.atlas-ornament-legend .state-ornament {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-left: 0;
+}
+
+/* Reference Mode fallback text for the locked-drawer ornament. The
+   span sits next to (or in place of) the SVG; Library Mode hides it,
+   Reference Mode reveals. */
+.state-ornament-fallback {
+  display: none;
+}
+/* === end v9 ornaments + seal CSS (Delta) =========================== */
+
+/* === v9 banner CSS (Beta) =============================================
+   Site Update v9, Super-agent BETA — sub-release v4.B image-as-anchor
+   wayfinding banners. Six per-room signature images at the top of each
+   room's index page, sourced from Library of Congress public-domain
+   photographs. Base layout rules here (mode-agnostic); per-mode
+   treatment in mode-library.css and mode-reference.css.
+   --------------------------------------------------------------------- */
+.room-banner {
+  display: block;
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  margin: 0 0 1.5rem;
+}
+/* === end v9 banner CSS (Beta) ====================================== */

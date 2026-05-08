@@ -1,0 +1,55 @@
+---
+// RoomBanner.astro
+//
+// v9 sub-release v4.B — image-as-anchor wayfinding banner. One signature
+// image per room, displayed at the top of every page in that room.
+// Functional, not decoration; persists across both Library and Reference
+// modes (with mode-specific CSS treatment in mode-library.css and
+// mode-reference.css).
+//
+// Sources are LOC public-domain photographs. See public/banners/CREDITS.md.
+
+interface Props {
+  /**
+   * Room id — must match a file in /public/banners/{room}.jpg.
+   * One of: reading, atlas, counting, maps, newsroom, voices.
+   */
+  room: 'reading' | 'atlas' | 'counting' | 'maps' | 'newsroom' | 'voices';
+  /**
+   * Accessible alt text. If absent, falls back to a generic per-room
+   * description. Pages with their own banner phrasing should override.
+   */
+  alt?: string;
+}
+
+const { room, alt } = Astro.props;
+
+// Per-room default alt text — describes the photograph, not the page,
+// so screen readers get evidentiary context (the photo IS substrate, in
+// the editorial register of the rest of the Library).
+const DEFAULT_ALT: Record<Props['room'], string> = {
+  reading:
+    "Photograph: the Main Reading Room of the Library of Congress (Theodor Horydczak, ca. 1890–1971), public domain.",
+  atlas:
+    "Bird's-eye view of San Francisco from the bay, looking south-west — historical panoramic map, Library of Congress, public domain.",
+  counting:
+    'Photograph: bank interior with counters and vault (Theodor Horydczak), Library of Congress, public domain.',
+  maps:
+    'Photograph: U.S. Geological Survey lithographic draftsmen correcting a printing (Harris & Ewing), Library of Congress, public domain.',
+  newsroom:
+    'Photograph: newsroom of the New York Times newspaper, "ten o\'clock is news room deadline," FSA/OWI Collection, Library of Congress, public domain.',
+  voices:
+    'Photograph: testimony before the U.S. Senate Civil Liberties Committee, July 1, 1937 (Harris & Ewing), Library of Congress, public domain.',
+};
+
+const resolvedAlt = alt ?? DEFAULT_ALT[room];
+---
+
+<img
+  src={`/banners/${room}.jpg`}
+  alt={resolvedAlt}
+  class="room-banner"
+  data-pagefind-ignore
+  loading="eager"
+  decoding="async"
+/>

@@ -37,13 +37,23 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
       </section>
 
       <section class="home-poster home-poster--top mt-6" aria-label="The Library's argument in one image">
-        <a href="/why/" class="block">
+        <a href="/why/" class="block home-poster__link">
           <img
             src="/img/hero/hero_v1_2026-05-06.png"
             alt="Three-panel diagram: 1785 the experiment begins; 240 years of drift; 2026 the architects of the next century's trusts."
-            class="w-full rounded-md shadow-md"
+            class="w-full rounded-md shadow-md home-poster__img"
           />
         </a>
+        <details class="home-poster__expander mt-2">
+          <summary>View full poster</summary>
+          <a href="/img/hero/hero_v1_2026-05-06.png" target="_blank" rel="noopener" class="block mt-2">
+            <img
+              src="/img/hero/hero_v1_2026-05-06.png"
+              alt="Three-panel diagram, expanded view: 1785 the experiment begins; 240 years of drift; 2026 the architects of the next century's trusts."
+              class="w-full rounded-md shadow-md home-poster__img--full"
+            />
+          </a>
+        </details>
         <p class="mt-3 text-center text-sm italic text-slate-600">
           America wrote a perpetual trust into the geometry of the country in 1785. Two centuries of data on what happens. The architecture for the next century's intergenerational trusts depends on it.
           <a href="/why/" class="ml-1 text-blue-700 underline">Why this matters →</a>
@@ -53,7 +63,7 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
       <section class="home-doors mt-10" aria-label="Three doors into the Library">
         <ul class="home-doors__grid">
           <li class="home-door home-door--1">
-            <a href="/reading/sacred-compact/" class="home-door__link">
+            <a href="/reading/" class="home-door__link">
               <span class="home-door__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 7v14"/>
@@ -94,8 +104,9 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
               </span>
               <h2 class="home-door__heading">Door 3 — Join the Watchful Crew</h2>
               <p class="home-door__subtitle">
-                Named offices, bounded missions, public stewardship. The standing community
-                without which the seven anchors are decorative.
+                Named offices, bounded missions, public stewardship. The watchdog citizens,
+                school-board members, journalists, and lawyers without which the seven anchors
+                are decorative.
               </p>
             </a>
           </li>
@@ -181,6 +192,19 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
       </section>
 
       <ReferenceDesk />
+
+      {/* v9 D.2 — lobby floor inlay. Library Mode only; Reference and
+          Standard Mode hide via mode-reference.css / default base.
+          The seal image lands separately (Cowork-side); onerror hides
+          gracefully until then. */}
+      <div class="library-seal-inlay" aria-hidden="true">
+        <img
+          src="/seal/library-seal-v1.png"
+          alt=""
+          class="library-seal library-seal--inlay"
+          onerror="this.style.display='none'"
+        />
+      </div>
     </main>
     <Footer />
   </body>

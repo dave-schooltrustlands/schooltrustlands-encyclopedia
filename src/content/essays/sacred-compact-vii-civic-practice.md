@@ -3,9 +3,9 @@ title: "Sacred Compact: VII. A Civic Practice for the AI Age"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "vii"
 order: 107
-wordCount: 2520
+wordCount: 2765
 sourceVersion: "Sacred_Compact_v5.0"
-lastSynced: 2026-05-07
+lastSynced: 2026-05-08
 ---
 # VII. A Civic Practice for the AI Age
 
@@ -40,6 +40,13 @@ For investors, the analogous move is to recognize that the institutional infrast
 ### For citizens
 
 Become part of the standing constituency.
+
+<aside class="boxed-insert">
+<p class="boxed-insert-title"><strong>The watchdog at the school-board meeting.</strong> <em>— Margaret Bird, in her own voice, drawn from the August 2025 video transcripts (PXL_20250810_182743763 — citizen role / watchdog).</em></p>
+<p>Most people do not realize they are the beneficiaries of this trust. It is for their children and grandchildren. So a parent's role is to ask their school board and their legislators: How are our school trust lands being managed? How much money are we getting from them?</p>
+<p>A regular citizen can be a watchdog. They can make sure that when decisions are made about leasing that land — for grazing, or mining, or development — the schools are getting a fair market return. This is not just government land; it is trust land. And just like any other trust, the trustee — which is the state — has a fiduciary duty to act in the best interest of the beneficiary.</p>
+<p>Citizens need to be informed, and they need to hold their leaders accountable. They need to make sure the trust is not being used for other political purposes or for things that do not directly benefit the schools. When parents and citizens speak up, the legislators listen. They realize this is a valuable asset that belongs to the people's children, and they are more likely to take their responsibility as trustees seriously.</p>
+</aside>
 
 The eighth element of the architecture — the one Section V identified as qualitatively different from the seven pillars — is the active enforcement community across generational time.[^VII-4] The school trust's failure modes were not, in their final form, failures of architecture. They were failures of the constituency around the architecture to keep showing up, generation after generation, as the founding generation tired and the second generation forgot why the founding generation had cared and the third generation never quite learned the story in the first place.
 

@@ -3,9 +3,9 @@ title: "Sacred Compact: Prologue — A Forever Gift"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "prologue"
 order: 100
-wordCount: 1520
+wordCount: 1865
 sourceVersion: "Sacred_Compact_v5.0"
-lastSynced: 2026-05-07
+lastSynced: 2026-05-08
 ---
 # Prologue — A Forever Gift
 
@@ -34,6 +34,14 @@ What drives both modes is a compounding mix of near-term cognitive bias, bureauc
 The structures are arriving fast. Peter Diamandis and Alex Wissner-Gross have proposed an AI Targeting Authority — a perpetual, autonomous body with its own resources, its own decision rules, its own legal personhood, its own capacity to act across generations. Climate trusts intended to bind tomorrow's legislatures to today's emissions commitments are entering charter windows in multiple jurisdictions. Sovereign wealth funds for citizens not yet born are being capitalized as fiscal assumptions for the next century. Longevity escrows, data trusts, compute reserves, programmatic down-shifting authorities — the vocabulary varies, the architectural impulse does not. Each is a structure designed to bind future generations to commitments made today.
 
 The school trust is the only one of these aspirational structures that has been pressure-tested across generational time. The data from that experiment arrives now, in 2026, or it arrives too late to inform the design of the others.
+
+### A note on how this analysis was produced
+
+There is a fact about this paper the reader should know at the outset, because it bears on what the paper claims and on what the paper is for.
+
+The cross-jurisdictional, cross-decade, cross-discipline synthesis the reader is about to encounter — the kind of reading that puts California's 1853 disposition next to Oregon's 1907 governor's message next to New Mexico's 1910 enabling-act language next to Utah's classroom-by-classroom transparency next to Cardozo's 1928 *Meinhard* opinion next to the carbon-accounting frames of 2026 — was not feasible, by any individual mind working alone, until very recently. The corpus is too large; the disciplines do not normally talk to each other; the lifetimes of working scholars do not overlap with the timescales the data covers. Until the past several years, the work that follows could not have been done at this scale by anyone. It can be done now because biological intelligence and artificial intelligence have begun to work in partnership in a way that holds thousands of pages in working memory at once and synthesizes across them. That is a tool, not a wonder; it is the chainsaw where there used to be a two-man crosscut saw. The point of the work is the schoolchildren the 1785 sentence was written to serve, past and present and future, and the architects whose decisions in 2026 will determine whether the next generation of perpetual structures serves theirs. The tool is the means.
+
+It is also part of what the architects of the AI-era trusts will need to understand about their own work. Cognitive partnership, in the durable institutional form, is itself one of the things a long-horizon structure has to engineer for, because the cognitive technology of any given century is itself part of the architecture and will not stay still. And the window in which this particular analysis can be produced is itself bounded; what biological and artificial intelligence can analyze together today is not guaranteed to be available tomorrow if the AI-era structures themselves drift or are captured. That is the second half of the urgency. The lessons must reach the architects now, both because the architects are designing now and because the analytic capacity that produced the lessons has its own duration, which no one in 2026 can responsibly estimate.
 
 That is what this paper is about.
 

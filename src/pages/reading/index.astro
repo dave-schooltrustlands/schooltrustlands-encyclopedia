@@ -1,6 +1,7 @@
 ---
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import ReferenceDesk from '../../components/ReferenceDesk.astro';
+import RoomBanner from '../../components/RoomBanner.astro';
 ---
 
 <RoomLayout
@@ -10,6 +11,7 @@ import ReferenceDesk from '../../components/ReferenceDesk.astro';
   width="prose"
   sourceId="reading-toc"
 >
+  <RoomBanner room="reading" />
   <section class="reading-lobby mt-6">
     <p class="lobby-intro">
       The Reading Room is the public face of America's School Trust Library —
@@ -106,6 +108,21 @@ import ReferenceDesk from '../../components/ReferenceDesk.astro';
 
       <article class="featured-book">
         <span class="featured-tag">Featured</span>
+        <h3 class="featured-title">The Sacred Compact</h3>
+        <p class="featured-byline">Sullivan and Bird · v5.0 · eight essays + three interludes</p>
+        <p class="featured-blurb">
+          The Library's analytic frame in eight essays. The Sacred Compact
+          reads the 1785 school-trust experiment as the longest-running
+          multi-generational fiduciary record America has produced — and as
+          the working manual for the AI-era trusts now being designed.
+        </p>
+        <a href="/reading/sacred-compact-prologue/" class="featured-link"
+          >Read this →</a
+        >
+      </article>
+
+      <article class="featured-book">
+        <span class="featured-tag">Featured</span>
         <h3 class="featured-title">Horace Mann's <em>Twelfth Annual Report</em></h3>
         <p class="featured-byline">Massachusetts Board of Education · 1848</p>
         <p class="featured-blurb">
@@ -117,21 +134,6 @@ import ReferenceDesk from '../../components/ReferenceDesk.astro';
         <a
           href="/reading/founders-library/mann-twelfth-annual-report-1848/"
           class="featured-link"
-          >Read this →</a
-        >
-      </article>
-
-      <article class="featured-book">
-        <span class="featured-tag">Featured</span>
-        <h3 class="featured-title">The Sacred Compact</h3>
-        <p class="featured-byline">Sullivan and Bird · v5.0 · eight essays + three interludes</p>
-        <p class="featured-blurb">
-          The Library's analytic frame in eight essays. The Sacred Compact
-          reads the 1785 school-trust experiment as the longest-running
-          multi-generational fiduciary record America has produced — and as
-          the working manual for the AI-era trusts now being designed.
-        </p>
-        <a href="/reading/sacred-compact-prologue/" class="featured-link"
           >Read this →</a
         >
       </article>

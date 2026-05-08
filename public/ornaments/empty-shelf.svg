@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  empty-shelf.svg — Site Update v9, Super-agent DELTA (D.1).
+
+  Editorial register: hand-drawn civic-archive ornament. Rendered in
+  Library Mode only as a marginal cue next to "Awaiting State Disclosure"
+  badges in the Counting House. The visual reading: the shelf was made
+  for the books; the books are not on it.
+
+  Stroke-only, currentColor, ~100x100 viewBox. Sized at 24x24 by the
+  .state-ornament class in global.css.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"
+     stroke="currentColor" stroke-width="1.5"
+     stroke-linecap="round" stroke-linejoin="round"
+     role="img" aria-hidden="true">
+  <!-- bookcase frame -->
+  <rect x="12" y="14" width="76" height="72" rx="1.5" />
+  <!-- top shelf line -->
+  <line x1="14" y1="44" x2="86" y2="44" />
+  <!-- middle shelf line (bottom of top shelf) — empty below -->
+  <line x1="14" y1="76" x2="86" y2="76" />
+  <!-- top shelf: four leaning/standing books -->
+  <!-- book 1 (upright, slim) -->
+  <rect x="20" y="22" width="8" height="22" />
+  <line x1="22" y1="26" x2="22" y2="40" />
+  <!-- book 2 (slightly leaning) -->
+  <path d="M30 44 L30 24 L40 22 L40 44 Z" />
+  <line x1="34" y1="28" x2="34" y2="42" />
+  <!-- gap (deliberate) -->
+  <!-- book 3 (squat, wide) -->
+  <rect x="48" y="30" width="14" height="14" />
+  <line x1="51" y1="33" x2="51" y2="41" />
+  <line x1="55" y1="33" x2="55" y2="41" />
+  <line x1="59" y1="33" x2="59" y2="41" />
+  <!-- book 4 (tall, leaning into the right wall) -->
+  <path d="M70 44 L70 20 L80 20 L80 44 Z" />
+  <line x1="75" y1="24" x2="75" y2="42" />
+  <!-- bottom shelf: empty. A faint dust mark / dot suggesting absence. -->
+  <circle cx="40" cy="64" r="0.7" fill="currentColor" stroke="none" opacity="0.6" />
+  <circle cx="58" cy="68" r="0.7" fill="currentColor" stroke="none" opacity="0.6" />
+  <!-- ground / floor line under the cabinet -->
+  <line x1="8" y1="88" x2="92" y2="88" stroke-dasharray="2 2" opacity="0.5" />
+</svg>

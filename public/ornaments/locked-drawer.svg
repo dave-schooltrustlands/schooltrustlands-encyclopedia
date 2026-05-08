@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  locked-drawer.svg — Site Update v9, Super-agent DELTA (D.1).
+
+  Editorial register: a single filing-cabinet drawer with a lock plate
+  and shackle padlock front-and-center. The visual reading: the
+  enabling-act citation chain exists somewhere, but it is not yet
+  available to the public archive.
+
+  Stroke-only, currentColor, ~100x100 viewBox. Sized at 24x24 by the
+  .state-ornament class in global.css.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"
+     stroke="currentColor" stroke-width="1.5"
+     stroke-linecap="round" stroke-linejoin="round"
+     role="img" aria-hidden="true">
+  <!-- drawer outline -->
+  <rect x="14" y="22" width="72" height="56" rx="2" />
+  <!-- top trim line -->
+  <line x1="14" y1="30" x2="86" y2="30" />
+  <!-- bottom trim line -->
+  <line x1="14" y1="70" x2="86" y2="70" />
+  <!-- drawer label / index card slot (small) -->
+  <rect x="22" y="34" width="24" height="6" />
+  <!-- index pull (handle) -->
+  <line x1="60" y1="36" x2="76" y2="36" stroke-width="2" />
+  <!-- lock plate -->
+  <rect x="42" y="48" width="16" height="14" rx="1" />
+  <!-- keyhole on lock plate -->
+  <circle cx="50" cy="53" r="1.5" fill="currentColor" stroke="none" />
+  <line x1="50" y1="54" x2="50" y2="58" stroke-width="2" />
+  <!-- padlock hanging in front (overlaps drawer below the plate) -->
+  <!-- shackle -->
+  <path d="M44 78 a6 6 0 0 1 12 0" />
+  <!-- body -->
+  <rect x="42" y="78" width="16" height="12" rx="1.5" />
+  <!-- padlock keyhole -->
+  <circle cx="50" cy="83" r="1.2" fill="currentColor" stroke="none" />
+  <line x1="50" y1="84" x2="50" y2="87" />
+</svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ghosted-ledger.svg — Site Update v9, Super-agent DELTA (D.1).
+
+  Editorial register: an open ledger silhouette with row lines rendered
+  in dashed, low-opacity strokes. The visual reading: the entries are
+  there, but not legible to the public — a redacted disclosure.
+
+  Stroke-only, currentColor, ~100x100 viewBox. Sized at 24x24 by the
+  .state-ornament class in global.css.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"
+     stroke="currentColor" stroke-width="1.5"
+     stroke-linecap="round" stroke-linejoin="round"
+     role="img" aria-hidden="true">
+  <!-- ledger outer outline (open book, two facing pages) -->
+  <path d="M10 22 L48 18 L50 22 L52 18 L90 22 L90 82 L52 80 L50 84 L48 80 L10 82 Z" />
+  <!-- spine -->
+  <line x1="50" y1="22" x2="50" y2="80" stroke-dasharray="1 2" opacity="0.5" />
+  <!-- left page rows (ghosted: dashed + low opacity) -->
+  <line x1="16" y1="32" x2="46" y2="31" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="16" y1="40" x2="46" y2="39" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="16" y1="48" x2="46" y2="47" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="16" y1="56" x2="46" y2="55" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="16" y1="64" x2="46" y2="63" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="16" y1="72" x2="46" y2="71" stroke-dasharray="2 2" opacity="0.45" />
+  <!-- right page rows -->
+  <line x1="54" y1="31" x2="84" y2="32" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="54" y1="39" x2="84" y2="40" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="54" y1="47" x2="84" y2="48" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="54" y1="55" x2="84" y2="56" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="54" y1="63" x2="84" y2="64" stroke-dasharray="2 2" opacity="0.45" />
+  <line x1="54" y1="71" x2="84" y2="72" stroke-dasharray="2 2" opacity="0.45" />
+  <!-- a redaction bar across one row on the left page (solid black box drawn as outlined rect with hatched fill via lines) -->
+  <rect x="20" y="50" width="22" height="4" />
+  <!-- a redaction bar on the right page, second-from-bottom row -->
+  <rect x="60" y="66" width="20" height="4" />
+</svg>

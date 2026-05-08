@@ -310,6 +310,17 @@ const confidenceLabels: Record<string, string> = {
       <span class:list={['inline-flex items-center rounded px-2 py-0.5 text-xs font-medium', confidenceClasses[record.corpus.confidence]]}>
         {confidenceLabels[record.corpus.confidence]}
       </span>
+      {/* v9 D.1 — Library Mode ornament next to "Awaiting State Disclosure".
+          The ornament reveals only in Library Mode (see mode-library.css);
+          Reference Mode keeps the plain badge. */}
+      {record.corpus.confidence === 'awaiting-disclosure' && (
+        <img
+          src="/ornaments/empty-shelf.svg"
+          alt=""
+          class="state-ornament"
+          data-ornament="empty-shelf"
+        />
+      )}
     </div>
     {record.corpus.asOf && (
       <p class="mt-1 text-sm text-slate-500">As of {record.corpus.asOf}</p>
@@ -332,6 +343,28 @@ const confidenceLabels: Record<string, string> = {
       <span class:list={['inline-flex items-center rounded px-2 py-0.5 text-xs font-medium', confidenceClasses[record.distribution.confidence]]}>
         {confidenceLabels[record.distribution.confidence]}
       </span>
+      {/* v9 D.1 — ghosted-ledger ornament when distribution is awaiting
+          disclosure but the state is partially-published (i.e. the
+          ledger exists but isn't fully legible to the public). Library
+          Mode only. */}
+      {record.distribution.confidence === 'awaiting-disclosure' &&
+        record.transparency.status === 'data-partially-published' && (
+          <img
+            src="/ornaments/ghosted-ledger.svg"
+            alt=""
+            class="state-ornament"
+            data-ornament="ghosted-ledger"
+          />
+        )}
+      {record.distribution.confidence === 'awaiting-disclosure' &&
+        record.transparency.status !== 'data-partially-published' && (
+          <img
+            src="/ornaments/empty-shelf.svg"
+            alt=""
+            class="state-ornament"
+            data-ornament="empty-shelf"
+          />
+        )}
     </div>
     {record.distribution.fiscalYear && (
       <p class="mt-1 text-sm text-slate-500">Fiscal year {record.distribution.fiscalYear}</p>

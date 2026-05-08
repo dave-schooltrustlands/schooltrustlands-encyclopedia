@@ -3,9 +3,9 @@ title: "Sacred Compact: II. The Sacred Compact — How America Built a Forever P
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "ii"
 order: 102
-wordCount: 19666
+wordCount: 19940
 sourceVersion: "Sacred_Compact_v5.0"
-lastSynced: 2026-05-07
+lastSynced: 2026-05-08
 ---
 # II. The Sacred Compact: How America Built a Forever Promise
 
@@ -70,6 +70,13 @@ The cumulative picture is the relevant one. In the world the framers operated in
 This matters here because the school endowment was an exception to the rule. Congress was setting aside Section 16 of every township for the maintenance of public schools — which is to say, for the benefit of children. Children had no freehold. Children had no vote. Children would in many cases never inherit a freehold. The framers were dedicating the most secure asset they could devise to a class with no political power to defend it.
 
 That is the intended design — and it is the structural seed of everything the rest of this paper diagnoses. The genius of the design is also its vulnerability. The framers built into the system a perpetual gift for a beneficiary class without political voice. They knew what they were doing. They did not have, and could not have engineered, an instrument to compensate for the dependency they were creating.
+
+<aside class="boxed-insert">
+<p class="boxed-insert-title"><strong>A gift from a parent.</strong> <em>— Margaret Bird, in her own voice, drawn from the August 2025 video transcripts (PXL_20250810_181828355).</em></p>
+<p>What if you had a gift from a parent, or from a grandparent, that was designed to support your family's education into the future? That would mean a lot to you. And that is exactly what our founding fathers did.</p>
+<p>In 1785, they created an idea where the land was given to the states — initially just sections in every township — and that land was given in trust to support public schools. Think of it as an endowment. It is a permanent fund that grows. We take the income from the land and put it into that fund, and we keep the principal. We only spend the income that comes from that investment.</p>
+<p>For 250 years, almost, we have had this growing endowment helping support our kids. Does it matter today? It matters more today than it ever did, because as our population grows, the needs of our schools grow. We have a stable source of funding that is independent of the tax rolls. And it is something we are obligated to protect. It is not just a nice gift; it is a legal obligation that the states have to keep this trust going for future generations.</p>
+</aside>
 
 ### The catalog of educational precedents
 

@@ -18,6 +18,17 @@ const margaretApproved = false;
     <Header />
     <main class="mx-auto max-w-prose p-4 sm:p-8">
       <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+        {/* v9 D.2 — small header mark for the Library seal. Library Mode
+            only; image lands later (Cowork-side). onerror handler keeps
+            the placeholder invisible until the asset is dropped in. */}
+        <p class="library-seal-header-wrap" aria-hidden="true">
+          <img
+            src="/seal/library-seal-v1.png"
+            alt=""
+            class="library-seal library-seal--header"
+            onerror="this.style.display='none'"
+          />
+        </p>
         <h1>About America's School Trust Library</h1>
 
         <h2>Mission</h2>

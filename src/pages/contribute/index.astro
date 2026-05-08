@@ -8,51 +8,101 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const LIBRARY_CARD_MAILTO =
   'mailto:library@schooltrusts.net?subject=Library%20Card%20signup';
 
+// Site Update v9, Super-agent GAMMA, C.1 — four-question role-frame rewrite.
+// Each role answers four questions concretely:
+//   1. What public office are you occupying?
+//   2. What is the smallest useful act?
+//   3. What artifact will you leave behind?
+//   4. What standing do you receive?
+// Pseudonymity tier preserved verbatim from the prior /contribute/ page (see
+// the "Pseudonymity" section below).
 const roles = [
   {
     name: 'Reader',
     commitment: 'No signup required',
-    body:
-      'The full Reading Room is open to the public — every editorial summary, every linked primary source, every state page in the Atlas. If you find an error or have a source to suggest, you can submit a correction without becoming a member. The simplest on-ramp.',
+    office:
+      "An ordinary citizen using a public reference library. Margaret's line — “Most people don’t realize they are the beneficiaries of this trust” — applies most directly here. As a reader you are exercising the most basic civic standing: knowing what is yours.",
+    act:
+      'Read one source page in the Reading Room or one state page in the Atlas, and follow the citation back to the primary document. If you find an error or have a source to suggest, submit a correction — you do not have to become a member to do that.',
+    artifact:
+      'A correction or source suggestion in the Library’s public record. Even unaccepted submissions are logged; accepted ones credit the next more-accurate version of the page.',
+    standing:
+      'The standing of any member of the public who has read the record. No byline, no card — but the right to ask the next, harder question.',
   },
   {
     name: 'Library Card holder',
     commitment: 'Free signup',
-    body:
-      'Email, state, role, and area of interest. Library Card holders receive the Newsroom, can submit corrections and annotations, and can suggest sources for the Founders’ Library or the Scholarship section. The entry tier for everyone who wants to be in the conversation.',
+    office:
+      'A registered patron of the Library. The card identifies you (real name or, where role conflict requires it, pseudonym verified by the Library Board) and gives you a place to stand inside the institution.',
+    act:
+      'Sign up: email, state, role, and one line about what brought you here. After that, the easiest contribution is a correction. Read a source page, find an error, submit it.',
+    artifact:
+      'Your name (or pseudonym) on the Library’s patron rolls; the Newsroom in your inbox; the standing to submit corrections, annotations, and source suggestions for the Founders’ Library and the Scholarship section.',
+    standing:
+      'The patron tier. The entry tier for everyone who wants to be in the conversation rather than only watching it.',
     cta: { href: LIBRARY_CARD_MAILTO, label: 'Get a Library Card' },
   },
   {
     name: 'Contributor',
     commitment: 'Issue-by-issue',
-    body:
-      'Library Card holders whose corrections, annotations, or source suggestions have been accepted into the editorial summaries. Contributors receive named or pseudonymous credit on the source pages they have contributed to.',
+    office:
+      'A Library Card holder whose corrections, annotations, or source suggestions have been accepted into the editorial summaries. The office is conferred page by page, not in advance.',
+    act:
+      'Submit a substantive correction or annotation that survives editorial review. Suggest a primary source the Library is missing. Each accepted submission is one act of contribution.',
+    artifact:
+      'A named or pseudonymous credit on the source page you contributed to. The credit is durable: it stays with the page across future revisions, with version history.',
+    standing:
+      'A public byline on a public reference work. The same kind of standing a copy-editor or research assistant earns at any serious editorial institution.',
   },
   {
     name: 'Title Steward',
     commitment: 'A few hours a year per title',
-    body:
-      'A community curator who has institutional access to a specific in-copyright reference work in the Scholarship section. The Title Steward writes and maintains that title’s editorial summary. Especially well-suited to law-school faculty teaching trust law, trust-and-estates attorneys with Westlaw access, school-finance officers, state-lands-agency staff, and library-science curators.',
+    office:
+      'A community curator of a specific in-copyright reference work in the Scholarship section. Especially well-suited to law-school faculty teaching trust law, trust-and-estates attorneys with Westlaw access, school-finance officers, state-lands-agency staff, and library-science curators with institutional access to the title.',
+    act:
+      'Refine the Library’s stub summary of a single title into something authoritative. Renewable annually; bounded — a few hours a year per title.',
+    artifact:
+      'The title’s editorial summary, with your byline as the maintaining steward. Open titles include Bogert’s “Law of Trusts and Trustees,” the Restatement (Third) of Trusts, the NEFA “Funding Public Schools in the United States and Indian Country” (2024), Souder & Fairfax 1996, and Culp et al. 2006.',
+    standing:
+      'Named curator of a reference-work entry in a public library. The most actively recruited role in the Library at present.',
     cta: { href: '/reading/scholarship/#tier-3', label: 'See open titles' },
   },
   {
     name: 'State Correspondent',
     commitment: 'Light, ongoing',
-    body:
-      'A Library Card holder who monitors school-trust news in their own state and submits Newsroom-eligible items. State Correspondents receive a state-specific Newsroom feed.',
+    office:
+      'A Library Card holder who watches school-trust news in their own state and reports what they see. The closest analogue to Margaret’s description of the regular citizen who shows up, asks the question, and refuses to look away.',
+    act:
+      'Submit Newsroom-eligible items from your state — board votes, budget moves, audit releases, court filings, agency turnover. One item is enough to start.',
+    artifact:
+      'Newsroom items credited to you (or your pseudonym). A state-specific Newsroom feed delivered to your inbox.',
+    standing:
+      'The named correspondent for your state. Light commitment, but a public office: when the Library cites a Newsroom item from your state, your name is on it.',
   },
   {
     name: 'State Co-Librarian',
     commitment: '5–10 hours a month after onboarding',
-    body:
-      'Curates a state’s corner of the State Records section: enabling act, original constitutional education clauses, key state Supreme Court decisions, period audit reports, AG opinions, reform-era statutes. Primary recruit pool: state-lands-agency staff. Pseudonymity tier available.',
+    office:
+      'The named curator of one state’s corner of the State Records section. The substantive expertise on each state’s school trust lives in the agency that manages those lands day-to-day; the Co-Librarian role brings that expertise into the Library. Primary recruit pool: state-lands-agency staff. Pseudonymity tier available for staff whose participation under their real name could be professionally costly.',
+    act:
+      'Curate the per-state record — enabling act, original constitutional education clauses, key state Supreme Court decisions, period audit reports, AG opinions, reform-era statutes — and validate, supplement, and correct what the Library says about your state.',
+    artifact:
+      'A maintained state corner of the State Records section, with your byline (or pseudonym) as the institutional steward.',
+    standing:
+      'Named co-librarian of a state corner of a public library. The role is scarce — one per state — and carries the institutional standing of the agency or expertise the Co-Librarian represents.',
     cta: { href: '/contribute/state-lands-agencies/', label: 'For state-lands-agency staff →' },
   },
   {
     name: 'Library Board',
     commitment: 'Governance',
-    body:
-      'Approves annual additions to the Founders’ Library and the Scholarship section, arbitrates editorial disputes, reviews retraction-and-correction protocols. The first three to five Board members are being recruited from library-science, archival, and digital-library-infrastructure backgrounds.',
+    office:
+      'A trustee of the Library itself. Separate from the operating boards of ASTL and OASTL, the Library Board provides editorial guidance, archival discipline, and the institutional memory of how a library posture differs from an advocacy posture.',
+    act:
+      'Approve annual additions to the Founders’ Library and the Scholarship section. Arbitrate editorial disputes. Review retraction-and-correction protocols. Hold the Library to its own stated method.',
+    artifact:
+      'Board minutes, annual editorial decisions, and the durable governance record of a public reference institution.',
+    standing:
+      'Library trustee. The first three to five Board members are being recruited from library-science, archival, and digital-library-infrastructure backgrounds.',
   },
 ];
 ---
@@ -78,6 +128,41 @@ const roles = [
       read, see <a href="/why/">Why this matters</a>.
     </p>
   </article>
+
+  {/* C.2 — Watchdog opening paragraph. Inserted above the role cards.
+      Margaret quotations are verbatim, marked as quotations, and attributed
+      to the L0 transcripts as substrate evidence. The Library does not yet
+      surface the Margaret transcripts at a public path; until that lands,
+      attribution is by footnote rather than a broken link. */}
+  <section class="watchdog-opening not-prose mt-10 rounded-lg border-l-4 border-slate-700 bg-slate-50 p-5 shadow-sm">
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+      The watchdog citizen
+    </p>
+    <h2 class="mt-1 text-2xl font-bold tracking-tight text-slate-900">
+      What contributors are actually doing
+    </h2>
+    <p class="mt-3 text-base text-slate-800">
+      The Library exists for a constituency that does not yet know it is one. As
+      Margaret Bird puts it: <q class="italic">Most people don’t realize they
+      are the beneficiaries of this trust.</q> The school-trust corpus was set
+      aside in 1785 for the schoolchildren of the Republic in perpetuity, and
+      that beneficiary class — every public-school child in every land-grant
+      state, plus the citizens who hold the trust on their behalf — has rarely
+      been told.
+    </p>
+    <p class="mt-3 text-base text-slate-800">
+      Telling them, and helping them act, is what the seven roles below are for.
+      Margaret’s second line names what the act looks like: <q class="italic">A
+      regular citizen can be a watchdog. … When parents and citizens speak up,
+      the legislators listen.</q> The Library’s job is to make speaking up
+      cheap, accurate, and durable. The contributor’s job is to speak up.
+    </p>
+    <p class="mt-3 text-xs italic text-slate-600">
+      Margaret Bird, video transcripts on file with the Library (L0 substrate,
+      2025–2026). The transcripts are being prepared for public release as
+      one of the open Library missions.
+    </p>
+  </section>
 
   <section class="hero-role not-prose mt-8 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-5 shadow-sm">
     <p class="text-xs font-semibold uppercase tracking-wide text-amber-900">
@@ -126,16 +211,42 @@ const roles = [
   <section class="roles mt-12">
     <h2 class="text-2xl font-bold tracking-tight">The roles we offer</h2>
     <p class="mt-1 text-sm italic text-slate-600">
-      Seven roles, ordered from lightest to heaviest commitment. Each role has a
-      defined operational task and confers institutional standing — named or, where
-      role conflicts require it, pseudonymous.
+      Seven roles, ordered from lightest to heaviest commitment. Each role answers
+      four questions: what public office you are occupying, what the smallest useful
+      act is, what artifact you will leave behind, and what standing the Library
+      confers in return. Named or, where role conflicts require it, pseudonymous.
     </p>
     <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
       {roles.map((r) => (
         <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
           <p class="text-xs uppercase tracking-wide text-slate-500">{r.commitment}</p>
           <h3 class="mt-1 text-lg font-semibold tracking-tight text-slate-900">{r.name}</h3>
-          <p class="mt-2 text-sm text-slate-700">{r.body}</p>
+          <dl class="mt-3 space-y-2 text-sm text-slate-700">
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Public office
+              </dt>
+              <dd class="mt-1">{r.office}</dd>
+            </div>
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Smallest useful act
+              </dt>
+              <dd class="mt-1">{r.act}</dd>
+            </div>
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Artifact you leave behind
+              </dt>
+              <dd class="mt-1">{r.artifact}</dd>
+            </div>
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Standing you receive
+              </dt>
+              <dd class="mt-1">{r.standing}</dd>
+            </div>
+          </dl>
           {r.cta && (
             <p class="mt-3 text-sm">
               <a href={r.cta.href} class="font-semibold text-blue-700 underline">
@@ -186,7 +297,7 @@ const roles = [
     <hr class="my-10" />
 
     <p class="text-sm text-slate-600">
-      <em>Curated by Library editorial team, 2026-05-07.</em>
+      <em>Curated by Library editorial team, 2026-05-08.</em>
     </p>
   </article>
 </BaseLayout>

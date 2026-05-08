@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Site Update v9, Super-agent GAMMA, C.3 — /missions/ board v1.
+//
+// Drawing on the National Archives Citizen Archivist model: a public list of
+// bounded, specific research and verification tasks the Library needs done,
+// each sized for an inner-circle contributor, each with a clear artifact at
+// the end. The page exists so that a Library Card holder, a State
+// Correspondent, or a curious reader can pick up exactly one task and finish
+// it, with a credit on the resulting page.
+//
+// Status vocabulary kept narrow: "open" (unclaimed, available), "in progress"
+// (claimed and underway), "assigned" (assigned to a specific contributor or
+// cohort, awaiting kickoff). The "claim it" affordance is a placeholder mailto
+// until Library Card v1.2 lands a real claim flow.
+//
+// Library-institutional register per repo memory: missions are framed as
+// research and verification, not advocacy or litigation. The Oregon 1859
+// Admissions Act mission is framed as a citation-chain mission, not a case
+// mission.
+
+const CLAIM_MAILTO = (title) =>
+  `mailto:library@schooltrusts.net?subject=${encodeURIComponent(
+    'Mission claim: ' + title
+  )}`;
+
+const missions = [
+  {
+    title: "Find Oregon's 1859 Admissions Act citation chain",
+    scope: 'Citation work',
+    effort: '4–8 hours',
+    status: 'open',
+    body:
+      "Trace the Oregon 1859 Admissions Act through to its codified successors and the state-court and federal-court opinions that have construed its school-trust grant. Produce a clean citation chain ready for the Library’s reference apparatus.",
+  },
+  {
+    title: 'Verify Utah school-trust 2024 fund-balance disclosure against state DOL',
+    scope: 'Verification',
+    effort: '2–4 hours',
+    status: 'assigned',
+    body:
+      "Compare the figure the Library currently shows for Utah’s 2024 fund balance against the Utah School and Institutional Trust Lands Administration (SITLA) and the state Division of Finance disclosures. Flag any discrepancy; cite both sources.",
+  },
+  {
+    title: "Locate Mississippi's most recent fund-corpus audit",
+    scope: 'Document retrieval',
+    effort: '2–4 hours',
+    status: 'open',
+    body:
+      "Identify and link the most recent publicly available audit of the Mississippi school-trust fund corpus. If no current audit exists, document the absence with a state-records-request trail.",
+  },
+  {
+    title: 'Verify CSF Reports for Oregon FY2022, FY2023, FY2024',
+    scope: 'Verification',
+    effort: '4–6 hours',
+    status: 'assigned',
+    body:
+      "Pull the Oregon Common School Fund annual reports for fiscal years 2022, 2023, and 2024. Verify the headline figures the Library currently displays match the source PDFs; note any year-over-year inconsistencies for the editorial team.",
+  },
+  {
+    title: 'Identify state-level enabling-act citations for the 50 states',
+    scope: 'Atlas — citation work',
+    effort: '6–10 hours per cluster',
+    status: 'open',
+    body:
+      "For each state cluster (one mission per cluster — typically 5–8 states), identify the enabling-act citation, the original constitutional school-trust clause, and the codified successor. Output is a per-state citation block for the Atlas.",
+  },
+  {
+    title: 'Transcribe the Margaret Bird interview transcripts',
+    scope: 'Transcription',
+    effort: '1–2 hours per recording',
+    status: 'in progress',
+    body:
+      "Transcribe the seven Margaret Bird video recordings (PXL_20250810_* and adjacent dates) currently held in the Library’s L0 substrate. Output is a clean Markdown transcript per recording, with timestamps, ready for public release as a Founders’ Library entry.",
+  },
+  {
+    title: 'Verify Bogert & Hess publisher citation (W.W. Norton vs. Belknap/Harvard)',
+    scope: 'Citation verification',
+    effort: '1–2 hours',
+    status: 'open',
+    body:
+      "Resolve a known ambiguity in the Library’s Scholarship section: the publisher of Bogert & Hess, “Law of Trusts and Trustees,” 2009 edition. Confirm against a library catalog (LOC or a major university library) and update the Library’s reference page accordingly.",
+  },
+  {
+    title: 'Tag and describe the historical photograph archive',
+    scope: 'Archival description',
+    effort: 'Ongoing — by batch',
+    status: 'open',
+    body:
+      "Work through the Library’s historical photograph archive (period images of one-room schoolhouses, land-grant survey crews, treasury vaults, period reading rooms). For each image, write a one-paragraph descriptive caption, tag the era and location, and cite the source institution.",
+  },
+  {
+    title: 'Confirm legislator contact addresses for the 2026 Oregon Legislature',
+    scope: 'Civic infrastructure',
+    effort: '2–3 hours',
+    status: 'open',
+    body:
+      "Pull the current contact roster for Oregon legislators (House and Senate) for the 2026 session. Verify district numbers and committee assignments. Output is a tidy CSV the Newsroom can use when alerting readers to a relevant hearing.",
+  },
+  {
+    title: 'Identify NASTL July 2026 conference location and speaker schedule',
+    scope: 'Calendar',
+    effort: '1–2 hours',
+    status: 'open',
+    body:
+      "Identify the location, dates, and posted speaker schedule for the National Association of State Trust Lands (NASTL) summer 2026 conference. Output is a single Library calendar entry plus any links the Newsroom will reference.",
+  },
+];
+
+const statusStyles = {
+  open: {
+    label: 'Open',
+    classes: 'bg-emerald-50 text-emerald-900 border border-emerald-300',
+  },
+  'in progress': {
+    label: 'In progress',
+    classes: 'bg-amber-50 text-amber-900 border border-amber-300',
+  },
+  assigned: {
+    label: 'Assigned',
+    classes: 'bg-slate-100 text-slate-700 border border-slate-300',
+  },
+};
+---
+<BaseLayout
+  title="Missions · America's School Trust Library"
+  description="Bounded, specific research and verification tasks the Library needs done. Each mission is sized for an inner-circle contributor, with a clear artifact at the end and a public credit on the resulting page."
+  sourceId="missions-board"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">Missions</p>
+    <h1 class="mt-2">Missions</h1>
+    <p class="kicker text-slate-600">
+      Bounded research tasks the Library needs done. Pick one, finish it, leave
+      something durable behind.
+    </p>
+
+    <h2>What is a mission?</h2>
+    <p>
+      A mission is a small, specific, finishable piece of Library work. The model
+      is the National Archives’ Citizen Archivist program: instead of asking
+      contributors to volunteer in the abstract, the institution publishes a
+      catalog of concrete tasks — transcribe this page, tag this photograph,
+      verify this citation — each sized to be completed in a sitting or two, and
+      each producing an artifact that lives in the public record.
+    </p>
+    <p>
+      The Library’s missions follow that pattern. Each one names a specific
+      gap in the substrate, an estimated effort, the kind of work involved, and
+      the artifact you will leave behind when it is done. Some missions are open
+      and unclaimed; some are in progress; some are already assigned to a
+      contributor or cohort and are listed here for transparency.
+    </p>
+    <p>
+      To claim a mission today, send a short note to the Library inbox saying
+      which mission you’re picking up and how to credit you. The “claim it”
+      buttons below open a pre-addressed email; a real claim flow lands with the
+      next Library Card release.
+    </p>
+  </article>
+
+  <section class="missions mt-12">
+    <h2 class="text-2xl font-bold tracking-tight">The board</h2>
+    <p class="mt-1 text-sm italic text-slate-600">
+      Ten missions in v1. The board grows as the Library’s reading turns up
+      gaps; check back, or subscribe to the Newsroom for new postings.
+    </p>
+    <ul class="mt-6 grid grid-cols-1 gap-4">
+      {missions.map((m) => {
+        const status = statusStyles[m.status] ?? statusStyles.open;
+        const isClaimable = m.status === 'open';
+        return (
+          <li class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <h3 class="text-lg font-semibold tracking-tight text-slate-900">
+                {m.title}
+              </h3>
+              <span class={`inline-block rounded px-2 py-1 text-xs font-semibold uppercase tracking-wide ${status.classes}`}>
+                {status.label}
+              </span>
+            </div>
+            <p class="mt-1 text-xs uppercase tracking-wide text-slate-500">
+              {m.scope} · Estimated effort: {m.effort}
+            </p>
+            <p class="mt-3 text-sm text-slate-700">{m.body}</p>
+            <p class="mt-4 text-sm">
+              {isClaimable ? (
+                <a
+                  href={CLAIM_MAILTO(m.title)}
+                  class="inline-block rounded-md bg-blue-700 px-3 py-2 font-semibold text-white shadow hover:bg-blue-800"
+                >
+                  Claim this mission
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  class="inline-block cursor-not-allowed rounded-md bg-slate-200 px-3 py-2 font-semibold text-slate-500 shadow-sm"
+                  aria-disabled="true"
+                >
+                  {m.status === 'in progress' ? 'In progress' : 'Already assigned'}
+                </button>
+              )}
+              <span class="ml-2 text-xs italic text-slate-500">
+                (placeholder during Library Card bring-up; emails go to library staff)
+              </span>
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <article class="prose prose-slate mt-12 max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h2>Why a mission board</h2>
+    <p>
+      The Library is built on a public substrate, but a substrate cannot keep
+      itself current. State agencies post new audits; legislatures hold new
+      hearings; books get re-issued by new publishers; photographs sit
+      undescribed on a hard drive. A mission board makes the maintenance work of
+      the Library visible — and shareable. It is also the surface a State
+      Correspondent or Co-Librarian can use to pick up something concrete on a
+      slow afternoon.
+    </p>
+    <p>
+      For background on the contributor roles these missions plug into, see
+      <a href="/contribute/">How to contribute</a>. For the public ledger of who
+      has done what, see
+      <a href="/the-watchful-crew/">The Watchful Crew</a>.
+    </p>
+
+    <hr class="my-10" />
+
+    <p class="text-sm text-slate-600">
+      <em>Curated by Library editorial team, 2026-05-08.</em>
+    </p>
+  </article>
+</BaseLayout>

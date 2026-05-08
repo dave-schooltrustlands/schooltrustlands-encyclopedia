@@ -26,20 +26,13 @@ body.mode-library {
 }
 
 /* ---------------------------------------------------------------------
-   Site Update v8 supersedes v7's IllustratedLobby SVG hero. The home
-   page now renders the same declaration + poster + three-door lobby in
-   every mode; Library Mode and Reference Mode differentiate via the
-   per-mode rules on .home-declaration and .home-door below. The
-   IllustratedLobby component is no longer rendered by index.astro;
-   the .illustrated-lobby rules below remain for any non-home use that
-   may opt back in by importing the component.
+   Site Update v9 retired the v7 IllustratedLobby SVG hero entirely;
+   the component file has been deleted and all .illustrated-lobby rules
+   removed. The home page renders the same declaration + poster +
+   three-door lobby in every mode; Library Mode and Reference Mode
+   differentiate via the per-mode rules on .home-declaration and
+   .home-door below.
    --------------------------------------------------------------------- */
-.illustrated-lobby {
-  display: none;
-}
-body.mode-library .illustrated-lobby {
-  display: block;
-}
 
 /* ---------------------------------------------------------------------
    v8 home-page declaration + three-door lobby — Library Mode treatment.
@@ -99,15 +92,6 @@ body.mode-library .reading-card:hover {
   box-shadow:
     0 8px 20px rgba(31, 42, 68, 0.12),
     0 2px 4px rgba(31, 42, 68, 0.08);
-}
-
-/* Generic lobby door hover (used inside the SVG / linked overlay). */
-body.mode-library .illustrated-lobby a.lobby-door {
-  cursor: pointer;
-  outline-offset: 4px;
-}
-body.mode-library .illustrated-lobby a.lobby-door:focus-visible {
-  outline: 3px solid var(--old-gold);
 }
 
 /* ---------------------------------------------------------------------
@@ -304,73 +288,126 @@ body.mode-library .library-mode-banner button:hover {
 }
 
 /* ---------------------------------------------------------------------
-   IllustratedLobby — wraps the inline SVG and the CTA below it.
+   Site Update v9 — modes amplification (A.3).
+
+   Make the Library Mode / Reference Mode split felt within 3 seconds of
+   toggling. Standard Mode is the calibration baseline; Library Mode
+   leans warmer, fuller, more chrome; Reference Mode (in mode-reference.css)
+   strips ornament more aggressively. The rules below add the amplification
+   on the Library side; the Reference side adds the matching strip rules.
    --------------------------------------------------------------------- */
-.illustrated-lobby {
-  margin: 1rem 0 2rem;
-  position: relative;
-}
-.illustrated-lobby .lobby-svg-wrap {
-  width: 100%;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(31, 42, 68, 0.08);
-  background: #F5EFDF;
-}
-.illustrated-lobby svg.lobby-svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.illustrated-lobby .lobby-cta-row {
-  text-align: center;
-  margin-top: 1.25rem;
-}
-.illustrated-lobby .lobby-tour-cta {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 0.6rem 1.4rem;
-  background: var(--deep-navy);
-  color: var(--linen-card);
-  border: 1px solid var(--deep-navy);
-  border-radius: 3px;
-  cursor: pointer;
-}
-.illustrated-lobby .lobby-tour-cta:hover {
-  background: var(--trust-blue);
-  border-color: var(--trust-blue);
-}
-.illustrated-lobby .lobby-thesis {
-  margin: 1rem auto 0;
-  max-width: 50ch;
-  text-align: center;
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  line-height: 1.55;
-  color: var(--deep-navy);
+
+/* Hero poster gets a warm gold frame and a subtle drop shadow. */
+body.mode-library .home-poster--top img {
+  border: 2px solid var(--old-gold);
+  box-shadow: 0 12px 32px rgba(31, 42, 68, 0.16),
+    0 2px 6px rgba(31, 42, 68, 0.08);
 }
 
-/* Hover state for the lobby doors (the SVG <a> wraps a <g class="door">). */
-body.mode-library .illustrated-lobby .door {
-  transition: transform 180ms ease, filter 180ms ease;
-  transform-origin: center bottom;
+/* Home declaration title leans into the heritage register with a slightly
+   warmer color cast and tighter letter-spacing — separate from Standard. */
+body.mode-library .home-declaration__title {
+  color: var(--deep-navy);
+  text-shadow: 0 1px 0 rgba(255, 253, 247, 0.6);
 }
-body.mode-library .illustrated-lobby a.lobby-door:hover .door {
-  transform: translateY(-3px);
-  filter: drop-shadow(0 0 6px rgba(184, 138, 46, 0.45));
+
+/* Fuller per-door card: warmer card background and saturated accent stripes
+   that sit at the FULL door width (not just the top), producing a clear
+   architectural cue per door. */
+body.mode-library .home-door {
+  background: linear-gradient(
+    to bottom,
+    var(--linen-card) 0%,
+    rgba(245, 239, 223, 0.6) 100%
+  );
+  border-top-width: 6px;
+  box-shadow:
+    0 2px 6px rgba(31, 42, 68, 0.08),
+    0 1px 2px rgba(31, 42, 68, 0.05);
+}
+
+/* Launch announcement — fuller treatment in Library Mode. */
+body.mode-library .launch-announcement {
+  background: linear-gradient(
+    to right,
+    rgba(184, 138, 46, 0.07) 0%,
+    var(--linen-card) 35%
+  );
+  border-left-width: 4px;
+}
+
+/* Pull-quote and CTA box ornament: visible bracket glyph in Library Mode. */
+body.mode-library .pull-quote {
+  border-left: 3px solid var(--old-gold);
+  background: rgba(184, 138, 46, 0.04);
+  font-style: italic;
+}
+
+/* Boxed insert: tan tint ON in Library Mode. */
+body.mode-library .boxed-insert {
+  background: rgba(184, 138, 46, 0.06);
+  border-left: 3px solid var(--old-gold);
 }
 
 /* Reduced-motion: kill the lift animations. The visuals still differentiate
    modes; we just don't move pixels for users who'd rather we didn't. */
 @media (prefers-reduced-motion: reduce) {
   body.mode-library .reading-card,
-  body.mode-library .illustrated-lobby .door {
+  body.mode-library .home-door {
     transition: none;
   }
   body.mode-library .reading-card:hover,
-  body.mode-library .illustrated-lobby a.lobby-door:hover .door {
+  body.mode-library .home-door:hover {
     transform: none;
   }
 }
+
+/* === v9 ornaments + seal CSS — Library Mode (Delta) ==================
+   Site Update v9, Super-agent DELTA. Reveals the missing-data
+   ornaments (D.1) and the Library seal placements (D.2) — Library Mode
+   only. Reference Mode keeps these hidden (mode-reference.css carries
+   the matching strip rules). Standard Mode is the calibration baseline
+   and inherits the global default (hidden) for the lobby inlay; it
+   reveals the small header/footer marks via the rules below.
+   --------------------------------------------------------------------- */
+
+/* D.1 — state-level missing-data ornaments. Inline reveal next to
+   "Awaiting" badges in the Counting House and on the StateDossierCard
+   Atlas line. The Atlas legend variant inherits the same display
+   toggle. */
+body.mode-library .state-ornament {
+  display: inline-block;
+}
+body.mode-library .atlas-ornament-legend .state-ornament {
+  display: inline-block;
+}
+
+/* D.2 — lobby floor inlay. Centered, restrained opacity. Library Mode
+   reveals; the global rule keeps it hidden in Standard. */
+body.mode-library .library-seal-inlay {
+  display: block;
+}
+
+/* D.2 — About-page header mark and Footer seal mark. Both reveal in
+   Library Mode. */
+body.mode-library .library-seal-header-wrap,
+body.mode-library .library-seal-footer-wrap {
+  display: block;
+}
+
+/* === end v9 ornaments + seal CSS — Library Mode (Delta) ============ */
+
+/* === v9 banner CSS — Library Mode (Beta) =============================
+   Site Update v9, Super-agent BETA. Library Mode treatment for the
+   per-room banners: full opacity, subtle warm frame, slight shadow.
+   The banner reads as a hung archival print on the wall above the
+   room's heading.
+   --------------------------------------------------------------------- */
+body.mode-library .room-banner {
+  border: 2px solid var(--rule-border);
+  box-shadow: 0 2px 4px rgba(31, 42, 68, 0.15);
+  border-radius: 4px;
+  opacity: 1;
+}
+/* === end v9 banner CSS — Library Mode (Beta) ====================== */
+

@@ -225,3 +225,143 @@ body.mode-reference main a {
 
 /* Slider control itself stays visible — it's how users get back out.
    No rule needed; we never hide it. (Documented for orchestrator.) */
+
+/* ---------------------------------------------------------------------
+   Site Update v9 — Reference Mode amplification (A.3).
+
+   Strip ornament more aggressively so the mode split is felt within 3
+   seconds of toggling. Library Mode (mode-library.css) carries the
+   matching fuller treatment. Standard Mode is the calibration baseline.
+   --------------------------------------------------------------------- */
+
+/* Home-poster on the homepage shrinks further and goes monochrome-ish:
+   small framed reference plate, not a hero image. */
+body.mode-reference .home-poster--top {
+  max-width: 22rem;
+}
+body.mode-reference .home-poster--top img {
+  filter: grayscale(0.7) contrast(0.95);
+  opacity: 0.9;
+}
+
+/* Reference Mode reveals the "View full poster" expander — the small
+   reference plate above is dignified but tiny; the expander is the
+   accessibility hatch back to the full-size argument. */
+body.mode-reference .home-poster__expander {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--trust-blue);
+  max-width: 22rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+body.mode-reference .home-poster__expander summary {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0.25rem 0;
+}
+body.mode-reference .home-poster__expander[open] summary {
+  margin-bottom: 0.5rem;
+}
+body.mode-reference .home-poster__expander img {
+  filter: none;
+  opacity: 1;
+  max-width: 100%;
+}
+
+/* Per-page hero / banner images: monochrome cast and subdued opacity,
+   so the page reads as a reference document with marginal illustration
+   rather than as a magazine spread. .room-banner is reserved for the
+   v9 banner work other agents are landing in this same release. */
+body.mode-reference main img,
+body.mode-reference .room-banner {
+  filter: grayscale(0.6);
+  opacity: 0.85;
+}
+
+/* Door icons and tooltip glyphs go away outright in Reference. */
+body.mode-reference .home-door__icon,
+body.mode-reference .vds-label-icon {
+  display: none !important;
+}
+
+/* Library Mode banner stays hidden in Reference (already covered above);
+   the launch-announcement gold left rule drops in Reference too. */
+body.mode-reference .launch-announcement {
+  border-left: 1px solid var(--rule-border);
+}
+
+/* Slider chrome itself — drop the card background and shadow in Reference,
+   a subtle plain-frame look instead. The slider remains visible. */
+body.mode-reference .vds-wrap {
+  background: transparent;
+  box-shadow: none;
+  border-color: var(--rule-border);
+}
+
+/* === v9 ornaments + seal CSS — Reference Mode (Delta) ================
+   Site Update v9, Super-agent DELTA. Reference Mode strips the
+   missing-data ornaments (D.1) and the Library seal placements (D.2)
+   per the visible-drama-is-Library-Mode-only rule from the handoff.
+   The "Awaiting Disclosure" badge text already carries the meaning;
+   the locked-drawer's text fallback is revealed in its place.
+   --------------------------------------------------------------------- */
+
+/* D.1 — strip all state-level ornaments. The Counting House badge
+   (already present) carries the disclosure-status meaning in
+   Reference Mode. The Atlas legend strip on /atlas/ is hidden as
+   well; the legend's prose copy is itself visible-drama, not the
+   ornament. */
+body.mode-reference .state-ornament {
+  display: none !important;
+}
+body.mode-reference .atlas-ornament-legend {
+  display: none !important;
+}
+
+/* D.1 — Reference Mode reveals the plain-text fallback that sits
+   next to (or in place of) the locked-drawer ornament on the
+   StateDossierCard. Library Mode keeps it hidden via the global
+   default. */
+body.mode-reference .state-ornament-fallback {
+  display: inline;
+}
+
+/* D.2 — strip all Library seal placements. The seal is a Library-
+   Mode signature; Reference Mode is text-first. */
+body.mode-reference .library-seal-inlay,
+body.mode-reference .library-seal-header-wrap,
+body.mode-reference .library-seal-footer-wrap {
+  display: none !important;
+}
+body.mode-reference .library-seal--header,
+body.mode-reference .library-seal--footer,
+body.mode-reference .library-seal--inlay {
+  display: none !important;
+}
+
+/* === end v9 ornaments + seal CSS — Reference Mode (Delta) ========== */
+
+/* === v9 banner CSS — Reference Mode (Beta) ===========================
+   Site Update v9, Super-agent BETA. Reference Mode treatment for the
+   per-room banners: subdued opacity, no frame, no shadow, shorter
+   maximum height. The banner is visible as wayfinding (wayfinding is
+   functional in both modes per the handoff) but reads as a marginal
+   illustration rather than as a magazine spread.
+   Note: an earlier rule above (~line 278) applies grayscale + 0.85
+   opacity to .room-banner alongside `main img`; the rules below
+   override the opacity tighter to 0.7 per the handoff spec and add
+   the structural strip (no frame, no shadow, no rounded corners,
+   shorter cap height). Order is intentional — Reference Mode treats
+   the banner as a quieter mark.
+   --------------------------------------------------------------------- */
+body.mode-reference .room-banner {
+  opacity: 0.7;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  max-height: 160px;
+}
+/* === end v9 banner CSS — Reference Mode (Beta) ==================== */

@@ -1,5 +1,6 @@
 ---
 import RoomLayout from '../layouts/RoomLayout.astro';
+import RoomBanner from '../components/RoomBanner.astro';
 
 import eraCohort from '../data/map-layers/era-cohort.json';
 import corpus from '../data/map-layers/corpus.json';
@@ -172,6 +173,8 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
     </div>
   </Fragment>
 
+  <RoomBanner room="atlas" />
+
   <section
     id="lens-explainer"
     class="mt-6 rounded-lg border border-slate-200 bg-white p-4 text-sm shadow-sm sm:p-5"
@@ -222,6 +225,32 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
     — substrate v1.3. Categorical buckets and color assignments are documented
     in <code>scripts/build-map-layers.mjs</code>.
   </p>
+
+  {/* v9 D.1 — missing-data ornament legend. Library Mode reveals the
+      ornament strip; Reference Mode hides it (the table-page text
+      already carries the same information). */}
+  <aside
+    class="atlas-ornament-legend mt-6 rounded-md border border-slate-200 bg-white p-4 text-sm text-slate-600 shadow-sm"
+    aria-label="Missing-data ornament legend"
+  >
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+      Where the map goes quiet
+    </p>
+    <ul class="mt-3 space-y-2">
+      <li class="flex items-start gap-2">
+        <img src="/ornaments/empty-shelf.svg" alt="" class="state-ornament" data-ornament="empty-shelf" />
+        <span><strong class="font-semibold text-slate-700">Empty shelf</strong> — no audit on file. The state has a federal trust but the figure is not in the public substrate. Counting House marks these "Awaiting Disclosure."</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <img src="/ornaments/ghosted-ledger.svg" alt="" class="state-ornament" data-ornament="ghosted-ledger" />
+        <span><strong class="font-semibold text-slate-700">Ghosted ledger</strong> — partial / redacted disclosure. Some figures are published; others are withheld. The ledger exists; the public can't read every entry.</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <img src="/ornaments/locked-drawer.svg" alt="" class="state-ornament" data-ornament="locked-drawer" />
+        <span><strong class="font-semibold text-slate-700">Locked drawer</strong> — enabling-act citation chain pending. The state's school-trust statute exists; the substrate has not yet linked it through to its source.</span>
+      </li>
+    </ul>
+  </aside>
 
     <script>
       import maplibregl from 'maplibre-gl';

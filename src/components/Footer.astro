@@ -2,8 +2,15 @@
 // Footer credit updated in Session 3 to the joint-project framing
 // (ASTL + OASTL, both 501(c)(3) nonprofits). The rest of the footer
 // is preserved verbatim from Visual Rebuild Handoff v0.
+//
+// Site Update v9, Super-agent GAMMA, C.5 — the persistent reference-desk
+// footer surface (Margaret + Dave, text-only placeholder until portraits
+// arrive) is mounted above the footer-credit block via the
+// ReferenceDeskFooter component.
+import ReferenceDeskFooter from './ReferenceDeskFooter.astro';
 ---
 <footer data-pagefind-ignore class="site-footer">
+  <ReferenceDeskFooter />
   <div class="footer-credit">
     <p>
       <strong>America's School Trust Library</strong> is a joint project of Advocates
@@ -25,6 +32,19 @@
       Active litigation: <em>Advocates for School Trust Lands v. State of Oregon</em>,
       Coos County Circuit Court 24CV38372, Oregon Court of Appeals (2026).
       <a href="/court/oregon-current-case/">Case docket</a>.
+    </p>
+    {/* v9 D.2 — small footer seal mark. Library Mode reveals; Reference
+        and Standard hide. The image lands separately Cowork-side; until
+        then onerror hides the broken-image glyph. Placed at the very
+        bottom of footer-meta so Gamma's reference-desk-footer block
+        above is unaffected. */}
+    <p class="library-seal-footer-wrap" aria-hidden="true">
+      <img
+        src="/seal/library-seal-v1.png"
+        alt=""
+        class="library-seal library-seal--footer"
+        onerror="this.style.display='none'"
+      />
     </p>
   </div>
 </footer>

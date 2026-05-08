@@ -16,6 +16,11 @@ interface Props {
   federalGrantAcres: number | null;
   summary?: string;
   currentIssue?: string;
+  // v9 D.1 — visible-drama hook. When the state has no enabling-act
+  // citation chain in the substrate, the Atlas-row line renders a
+  // locked-drawer SVG (Library Mode only) and a plain text marker in
+  // Reference Mode. Default false: card behaves exactly as before.
+  enablingActCitationChain?: boolean;
 }
 
 const {
@@ -27,6 +32,7 @@ const {
   federalGrantAcres,
   summary,
   currentIssue,
+  enablingActCitationChain = true,
 } = Astro.props;
 
 const num = new Intl.NumberFormat('en-US');
@@ -77,6 +83,20 @@ const resolvedIssue = currentIssue && currentIssue.trim().length > 0 ? currentIs
         <a href="/atlas/" class="text-blue-700 underline hover:text-blue-900">era cohort lens</a>
         <span class="text-slate-400"> · </span>
         <a href="/atlas/" class="text-blue-700 underline hover:text-blue-900">transparency lens</a>
+        {!enablingActCitationChain && (
+          <>
+            {' '}
+            <img
+              src="/ornaments/locked-drawer.svg"
+              alt=""
+              class="state-ornament"
+              data-ornament="locked-drawer"
+            />
+            <span class="state-ornament-fallback text-xs italic text-slate-500">
+              {' '}— enabling-act citation chain pending
+            </span>
+          </>
+        )}
       </li>
       <li>
         <span class="font-medium text-slate-700">The Counting House:</span>{' '}
