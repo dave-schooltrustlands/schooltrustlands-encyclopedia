@@ -31,23 +31,47 @@ const usdShort = (n: number) => {
   return `$${n.toLocaleString('en-US')}`;
 };
 
-function countingSummary(rec: FinanceRecord | undefined): string {
-  if (!rec) return 'No financial data';
-  if (rec.federalGrantAcres.value === 0) return 'State-derived; no federal trust';
+interface CountingSummary {
+  text: string;
+  awaitingDisclosure: boolean;
+}
+
+// v10 D.1 — return a structured summary instead of a regex-fragile string.
+// `awaitingDisclosure` is true whenever the state has a federal trust but
+// corpus and/or distribution figures are missing or marked
+// awaiting-disclosure. Callers should check the boolean for ornament
+// presence instead of pattern-matching the text.
+function countingSummary(rec: FinanceRecord | undefined): CountingSummary {
+  if (!rec) return { text: 'No financial data', awaitingDisclosure: false };
+  if (rec.federalGrantAcres.value === 0) {
+    return { text: 'State-derived; no federal trust', awaitingDisclosure: false };
+  }
   const parts: string[] = [];
+  let awaiting = false;
   if (rec.corpus.value !== null) {
     parts.push(`${usdShort(rec.corpus.value)} corpus`);
   } else if (rec.corpus.confidence === 'awaiting-disclosure') {
     parts.push('Awaiting corpus');
+    awaiting = true;
+  } else {
+    awaiting = true;
   }
   if (rec.distribution.value !== null) {
     const fy = rec.distribution.fiscalYear ? ` FY${rec.distribution.fiscalYear}` : '';
     parts.push(`${usdShort(rec.distribution.value)} distributed${fy}`);
   } else if (rec.distribution.confidence === 'awaiting-disclosure') {
     parts.push('awaiting distribution');
+    awaiting = true;
+  } else {
+    awaiting = true;
   }
-  return parts.length > 0 ? parts.join('; ') : 'Awaiting State Disclosure';
+  return {
+    text: parts.length > 0 ? parts.join('; ') : 'Awaiting State Disclosure',
+    awaitingDisclosure: awaiting,
+  };
 }
+
+const counting = countingSummary(finance);
 
 const rooms = [
   {
@@ -55,6 +79,7 @@ const rooms = [
     label: 'Reading Room',
     href: `/reading/${iso}/`,
     summary: 'State dossier',
+    awaitingDisclosure: false,
     status: 'live' as const,
   },
   {
@@ -62,18 +87,20 @@ const rooms = [
     label: 'Atlas',
     href: '/atlas/',
     summary: 'Find this state on the map',
+    awaitingDisclosure: false,
     status: 'live' as const,
   },
   {
     id: 'counting',
     label: 'Counting House',
     href: `/counting/${iso}/`,
-    summary: countingSummary(finance),
+    summary: counting.text,
+    awaitingDisclosure: counting.awaitingDisclosure,
     status: 'live' as const,
   },
-  { id: 'records', label: 'Records Room', href: null, summary: null, status: 'coming' as const },
-  { id: 'court', label: 'Court Room', href: null, summary: null, status: 'coming' as const },
-  { id: 'breach', label: 'Breach & Recovery', href: null, summary: null, status: 'coming' as const },
+  { id: 'records', label: 'Records Room', href: null, summary: null, awaitingDisclosure: false, status: 'coming' as const },
+  { id: 'court', label: 'Court Room', href: null, summary: null, awaitingDisclosure: false, status: 'coming' as const },
+  { id: 'breach', label: 'Breach & Recovery', href: null, summary: null, awaitingDisclosure: false, status: 'coming' as const },
 ];
 ---
 
@@ -104,19 +131,17 @@ const rooms = [
         {room.summary && (
           <p class="mt-0.5 text-xs text-slate-500">
             {room.summary}
-            {/* v9 D.1 — when the Counting-House summary surfaces an
-                "Awaiting" string, render the empty-shelf ornament
-                inline (Library Mode only). */}
-            {room.id === 'counting' &&
-              typeof room.summary === 'string' &&
-              /[Aa]waiting/.test(room.summary) && (
-                <img
-                  src="/ornaments/empty-shelf.svg"
-                  alt=""
-                  class="state-ornament"
-                  data-ornament="empty-shelf"
-                />
-              )}
+            {/* v10 D.1 — empty-shelf ornament keys off the structured
+                awaitingDisclosure boolean from countingSummary(), not a
+                regex against the rendered text. */}
+            {room.id === 'counting' && room.awaitingDisclosure && (
+              <img
+                src="/ornaments/empty-shelf.svg"
+                alt=""
+                class="state-ornament"
+                data-ornament="empty-shelf"
+              />
+            )}
           </p>
         )}
       </li>

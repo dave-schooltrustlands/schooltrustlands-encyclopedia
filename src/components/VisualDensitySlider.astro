@@ -106,7 +106,17 @@
     data-density-tooltip
     hidden
     aria-hidden="true"
-  >Choose how visual you want the Library to feel. <strong>Reference</strong> strips ornament for fast reading; <strong>Library</strong> turns the lights on.</div>
+  >
+    <div class="vds-tooltip-demo" aria-hidden="true">
+      <span class="vds-demo-pill">
+        <span class="vds-demo-thumb"></span>
+        <span class="vds-demo-seg" data-demo-mode="reference">Reference</span>
+        <span class="vds-demo-seg" data-demo-mode="standard">Standard</span>
+        <span class="vds-demo-seg" data-demo-mode="library">Library</span>
+      </span>
+    </div>
+    <p class="vds-tooltip-text">Choose how visual you want the Library to feel. <strong>Reference</strong> strips ornament for fast reading; <strong>Library</strong> turns the lights on.</p>
+  </div>
   <div
     class="vds-sr"
     data-density-live
@@ -261,6 +271,95 @@
   .vds-tooltip strong {
     color: var(--deep-navy);
     font-weight: 700;
+  }
+
+  /* v10 D.3 — animated mini-pill in the tooltip header. Cycles through
+     Reference → Standard → Library on a 5s loop while the tooltip is
+     visible (the 10s auto-dismiss leaves room for two full cycles).
+     Pure CSS; gated on prefers-reduced-motion below. */
+  .vds-tooltip-demo {
+    margin: 0 0 0.55rem;
+    display: flex;
+    justify-content: center;
+  }
+  .vds-demo-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: stretch;
+    border: 1px solid var(--rule-border);
+    border-radius: 999px;
+    background: transparent;
+    overflow: hidden;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1;
+    user-select: none;
+  }
+  .vds-demo-seg {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 0;
+    padding: 4px 9px;
+    color: var(--deep-navy);
+    text-align: center;
+    transition: color 220ms ease;
+  }
+  .vds-demo-thumb {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 33.3333%;
+    left: 0;
+    background: var(--deep-navy);
+    border-radius: 999px;
+    z-index: 1;
+    animation: vds-demo-thumb-cycle 5s ease-in-out infinite;
+  }
+  .vds-demo-seg[data-demo-mode='reference'] {
+    animation: vds-demo-text-reference 5s ease-in-out infinite;
+  }
+  .vds-demo-seg[data-demo-mode='standard'] {
+    animation: vds-demo-text-standard 5s ease-in-out infinite;
+  }
+  .vds-demo-seg[data-demo-mode='library'] {
+    animation: vds-demo-text-library 5s ease-in-out infinite;
+  }
+  @keyframes vds-demo-thumb-cycle {
+    0%, 22%   { left: 0%; }
+    33%, 55%  { left: 33.3333%; }
+    66%, 88%  { left: 66.6666%; }
+    100%      { left: 0%; }
+  }
+  @keyframes vds-demo-text-reference {
+    0%, 22%, 100%       { color: var(--linen-card, #fafaf7); }
+    33%, 55%, 66%, 88%  { color: var(--deep-navy); }
+  }
+  @keyframes vds-demo-text-standard {
+    0%, 22%, 66%, 88%, 100% { color: var(--deep-navy); }
+    33%, 55%                { color: var(--linen-card, #fafaf7); }
+  }
+  @keyframes vds-demo-text-library {
+    0%, 22%, 33%, 55%, 100% { color: var(--deep-navy); }
+    66%, 88%                { color: var(--linen-card, #fafaf7); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vds-demo-thumb,
+    .vds-demo-seg {
+      animation: none !important;
+    }
+    /* Static rest position: highlight the default (Standard) segment. */
+    .vds-demo-thumb {
+      left: 33.3333%;
+    }
+    .vds-demo-seg[data-demo-mode='standard'] {
+      color: var(--linen-card, #fafaf7);
+    }
+  }
+
+  .vds-tooltip-text {
+    margin: 0;
   }
 
   .vds-tooltip::before {

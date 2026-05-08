@@ -106,6 +106,23 @@ const missions = [
     body:
       "Identify the location, dates, and posted speaker schedule for the National Association of State Trust Lands (NASTL) summer 2026 conference. Output is a single Library calendar entry plus any links the Newsroom will reference.",
   },
+  {
+    title:
+      'Identify SLB trustees, Treasurer, and Secretary of State for each litigation-active state',
+    scope: 'Atlas — civic infrastructure',
+    effort: '~30 minutes per state',
+    status: 'open',
+    body:
+      "For each state with active or recently active school-trust litigation (Oregon, Wyoming, Arizona, Nebraska, and the comparative cohort), identify the State Land Board trustees, the State Treasurer, and the Secretary of State who currently sit ex officio on or near the school-trust apparatus. Output: a name + email + role per row, ready for the Atlas to reference. Sized so a State Correspondent can do one state in an afternoon.",
+  },
+  {
+    title: 'Index the Margaret Bird interview transcripts to the Sacred Compact essays',
+    scope: 'Substrate cross-link',
+    effort: '2–4 hours per transcript',
+    status: 'open',
+    body:
+      "Once a Margaret Bird transcript clears the transcription mission, cross-link its substantive moments to the eight essays of the Sacred Compact and the chapter cohorts of Schools of the Republic. Output is a per-transcript index — timestamp, the essay or chapter it speaks to, and a one-sentence editorial note — so the public-release transcript pages carry their own reference apparatus.",
+  },
 ];
 
 const statusStyles = {
@@ -163,8 +180,8 @@ const statusStyles = {
   <section class="missions mt-12">
     <h2 class="text-2xl font-bold tracking-tight">The board</h2>
     <p class="mt-1 text-sm italic text-slate-600">
-      Ten missions in v1. The board grows as the Library’s reading turns up
-      gaps; check back, or subscribe to the Newsroom for new postings.
+      Twelve missions on the board. The catalog grows as the Library’s reading
+      turns up gaps; check back, or subscribe to the Newsroom for new postings.
     </p>
     <ul class="mt-6 grid grid-cols-1 gap-4">
       {missions.map((m) => {

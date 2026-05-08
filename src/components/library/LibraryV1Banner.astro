@@ -1,6 +1,6 @@
 ---
 /**
- * LibraryV1Banner — explicit "first-pass" banner for Library Mode v1.
+ * LibraryV1Banner — discoverability surface for the visual-density slider.
  *
  * Visible at the top of every page (just below the header) when
  * body.mode-library is set, UNLESS localStorage
@@ -13,13 +13,18 @@
  *
  * The CSS hides the banner outside Library Mode, so this component is
  * safe to mount in BaseLayout regardless of which mode is active.
+ *
+ * v10 copy revision: post-IllustratedLobby retirement, the banner reframes
+ * itself as a pointer to the View slider in the header — the affordance
+ * that lets a reader switch out of Library Mode at any time.
  */
 ---
 
 <div class="library-mode-banner" data-state="visible">
   <p>
-    <strong>Library Mode v1</strong> — illustrations and walking-tour are first-pass.
-    Tell us what you think at <a href="/contribute/">/contribute/</a>.
+    <strong>Library Mode</strong> is the default visual register. The
+    <em>View</em> slider in the header lets you switch to <strong>Reference Mode</strong> —
+    text-forward, fast, accessible — at any time.
   </p>
   <div class="lmb-actions">
     <button type="button" class="lmb-dismiss-session">Dismiss for now</button>

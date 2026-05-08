@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import RoomBanner from '../components/RoomBanner.astro';
 
 type RoomId =
   | 'reading'
@@ -11,6 +12,19 @@ type RoomId =
   | 'records'
   | 'court'
   | 'breach-recovery';
+
+// Rooms that have a signature banner image in /public/banners/.
+// v10 sub-release v1.B — banner-above-h1 slot lives in RoomLayout so
+// every sub-page inherits the banner without re-mounting it per page.
+type BannerRoomId = 'reading' | 'atlas' | 'maps' | 'counting';
+const BANNER_ROOMS: ReadonlyArray<BannerRoomId> = [
+  'reading',
+  'atlas',
+  'maps',
+  'counting',
+];
+const isBannerRoom = (id: RoomId): id is BannerRoomId =>
+  (BANNER_ROOMS as ReadonlyArray<RoomId>).includes(id);
 
 interface Props {
   room: RoomId;
@@ -211,6 +225,9 @@ const mainClass =
     </nav>
 
     <main class={mainClass}>
+      <slot name="above-header">
+        {isBannerRoom(room) && <RoomBanner room={room} />}
+      </slot>
       <header class="border-b border-slate-200 pb-6">
         <h1 data-pagefind-weight="10" class="text-3xl font-bold tracking-tight sm:text-4xl">
           {title}
