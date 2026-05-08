@@ -1,0 +1,235 @@
+---
+/**
+ * WalkingTour — five-panel onboarding overlay for Library Mode.
+ *
+ * Fires automatically on first home-page visit when body.mode-library is
+ * set and localStorage `library-walking-tour-dismissed` is not set. Also
+ * fires when any element with [data-open-walking-tour] is clicked
+ * (IllustratedLobby's "Show me around the Library" button uses this).
+ *
+ * Skip / Done / Esc all set the localStorage key permanently. Focus is
+ * trapped inside the dialog while open.
+ *
+ * Copy register: librarian, not litigator. Newsroom panel mentions
+ * "court motions, hearings, settlements" generically — no lawyer names,
+ * no case numbers, no specific litigation. Per project memory:
+ * library-institutional surfaces don't telegraph litigation.
+ */
+---
+
+<div
+  class="library-walking-tour"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Walking tour of the Library"
+  data-open="false"
+>
+  <div class="lwt-scrim" data-lwt-scrim></div>
+
+  <div class="lwt-card" tabindex="-1">
+    <button
+      type="button"
+      class="lwt-skip"
+      data-lwt-skip
+      aria-label="Skip the walking tour"
+    >
+      Skip the tour
+    </button>
+
+    <div class="lwt-step is-active" data-step="1">
+      <h2>Welcome</h2>
+      <p>
+        Welcome to America's School Trust Library. This is a building made of
+        records. Six rooms; one substrate. The Library has 240 years of receipts
+        on America's school trust lands and funds — what was promised in 1785
+        and what's still on the books today. Come walk through.
+      </p>
+    </div>
+
+    <div class="lwt-step" data-step="2">
+      <h2>The Reading Room</h2>
+      <p>
+        The Reading Room is where the long-form arguments live. Sacred Compact,
+        the eight-essay framework. Schools of the Republic, the per-state
+        record. The Founders' Library and Scholarship surfaces. If you read one
+        thing on this site, start here.
+      </p>
+      <a href="/reading/" class="lwt-room-link" data-lwt-enter>Click to enter the Reading Room →</a>
+    </div>
+
+    <div class="lwt-step" data-step="3">
+      <h2>The Atlas and the Map Room</h2>
+      <p>
+        The Atlas is one map, four lenses — see the trust architecture as a
+        national pattern. The Map Room sits next door with state-by-state
+        transparency directories: who publishes the books, who hides them, who
+        never reported.
+      </p>
+      <a href="/atlas/" class="lwt-room-link" data-lwt-enter>Click to enter the Atlas →</a>
+    </div>
+
+    <div class="lwt-step" data-step="4">
+      <h2>The Counting House</h2>
+      <p>
+        The Counting House is the ledger. Every state, every fund, every figure
+        with a confidence badge. Twelve states publish complete accounting.
+        Thirty-eight don't. Visible incompleteness is the finding.
+      </p>
+      <a href="/counting/" class="lwt-room-link" data-lwt-enter>Click to enter the Counting House →</a>
+    </div>
+
+    <div class="lwt-step" data-step="5">
+      <h2>The Newsroom and Voices</h2>
+      <p>
+        The Newsroom logs the live record — court motions, hearings,
+        settlements. Voices is the editorial column where librarians and
+        contributors take a position on what the record shows. Want a Library
+        Card? It's free; it tracks your reading and lets you contribute.
+      </p>
+      <a href="/newsroom/" class="lwt-room-link" data-lwt-enter>Click to enter the Newsroom →</a>
+    </div>
+
+    <nav class="lwt-nav" aria-label="Walking tour navigation">
+      <button type="button" class="lwt-prev" data-lwt-prev disabled>← Back</button>
+      <div class="lwt-progress" data-lwt-progress aria-live="polite">1 of 5</div>
+      <button type="button" class="lwt-next" data-lwt-next>Next →</button>
+    </nav>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const STORAGE_KEY = 'library-walking-tour-dismissed';
+    const root = document.querySelector('.library-walking-tour');
+    if (!root) return;
+
+    const card = root.querySelector('.lwt-card');
+    const steps = Array.from(root.querySelectorAll('.lwt-step'));
+    const prevBtn = root.querySelector('[data-lwt-prev]');
+    const nextBtn = root.querySelector('[data-lwt-next]');
+    const skipBtn = root.querySelector('[data-lwt-skip]');
+    const scrim = root.querySelector('[data-lwt-scrim]');
+    const progress = root.querySelector('[data-lwt-progress]');
+    const total = steps.length;
+    let current = 1;
+    let lastFocus = null;
+
+    function setStep(n) {
+      current = Math.max(1, Math.min(total, n));
+      steps.forEach((el) => {
+        const s = Number(el.getAttribute('data-step'));
+        el.classList.toggle('is-active', s === current);
+      });
+      if (prevBtn) prevBtn.disabled = current === 1;
+      if (nextBtn) nextBtn.textContent = current === total ? 'Done' : 'Next →';
+      if (progress) progress.textContent = current + ' of ' + total;
+    }
+
+    function open() {
+      lastFocus = document.activeElement;
+      root.setAttribute('data-open', 'true');
+      setStep(1);
+      // Push focus into the dialog so screen readers and keyboard
+      // users land on the first interactive control.
+      requestAnimationFrame(() => {
+        if (card) card.focus();
+      });
+      document.addEventListener('keydown', onKeydown);
+    }
+
+    function close(persist) {
+      root.setAttribute('data-open', 'false');
+      document.removeEventListener('keydown', onKeydown);
+      if (persist) {
+        try {
+          localStorage.setItem(STORAGE_KEY, '1');
+        } catch (_) {
+          /* ignore quota / privacy mode */
+        }
+      }
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        try { lastFocus.focus(); } catch (_) {}
+      }
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        close(true);
+        return;
+      }
+      if (e.key === 'Tab') {
+        // Focus trap inside the card.
+        const focusables = root.querySelectorAll(
+          'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        if (current === total) {
+          close(true);
+        } else {
+          setStep(current + 1);
+        }
+      });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        setStep(current - 1);
+      });
+    }
+    if (skipBtn) {
+      skipBtn.addEventListener('click', function () {
+        close(true);
+      });
+    }
+    if (scrim) {
+      scrim.addEventListener('click', function () {
+        close(true);
+      });
+    }
+
+    // Triggers from outside: any element with data-open-walking-tour.
+    document.addEventListener('click', function (ev) {
+      const target = ev.target instanceof Element ? ev.target.closest('[data-open-walking-tour]') : null;
+      if (!target) return;
+      ev.preventDefault();
+      open();
+    });
+
+    // Auto-open on first home-page visit in Library Mode.
+    function maybeAutoOpen() {
+      if (!document.body.classList.contains('mode-library')) return;
+      const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+      if (!isHome) return;
+      let dismissed = null;
+      try {
+        dismissed = localStorage.getItem(STORAGE_KEY);
+      } catch (_) {
+        dismissed = '1'; // fail-closed if storage unavailable
+      }
+      if (!dismissed) {
+        // Small delay so the page paints first.
+        setTimeout(open, 600);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', maybeAutoOpen);
+    } else {
+      maybeAutoOpen();
+    }
+  })();
+</script>

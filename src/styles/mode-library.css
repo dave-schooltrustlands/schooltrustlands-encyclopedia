@@ -1,0 +1,347 @@
+/* ---------------------------------------------------------------------
+   Library Mode v1 stylesheet (Site Update v7).
+   Every selector is scoped to body.mode-library so Reference and Standard
+   modes are entirely unaffected. The orchestrator imports this file from
+   BaseLayout.astro and toggles the body class via the visual-density
+   slider; the slider's localStorage handler lives elsewhere.
+   --------------------------------------------------------------------- */
+
+/* Subtle paper-grain page tint. A very low-contrast warm radial — meant
+   to sit under everything as a "the lights are on inside the building"
+   tint, not as a visible texture. Restrained on purpose. */
+body.mode-library {
+  background:
+    radial-gradient(
+      ellipse at 50% -10%,
+      rgba(184, 138, 46, 0.045) 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(245, 239, 223, 0.35) 0%,
+      var(--archive-paper) 40%,
+      var(--archive-paper) 100%
+    ),
+    var(--archive-paper);
+}
+
+/* ---------------------------------------------------------------------
+   Home-page hero suppression.
+   In Library Mode, the IllustratedLobby replaces both the existing
+   text-block hero and the three-panel poster section.
+
+   Assumption (documented for the orchestrator):
+   index.astro currently has, as the first two children of <main>:
+     1. <section class="border-b border-slate-200 pb-10" style="background-image: ...">
+     2. <section class="home-poster home-poster--top mt-6">
+   We hide both via:
+     - body.mode-library main > section:first-of-type   (the text-block hero)
+     - body.mode-library .home-poster--top              (the poster band)
+   This is targeted by class for the poster (stable hook) and by
+   first-of-type position for the text hero (no unique class).
+   The footer poster (.home-poster--footer) remains visible in Library
+   Mode — it bookends the page and reinforces the thesis at exit, which
+   matches the lobby's wall-hanging treatment.
+   --------------------------------------------------------------------- */
+body.mode-library main > section:first-of-type {
+  display: none !important;
+}
+body.mode-library .home-poster--top {
+  display: none !important;
+}
+
+/* The illustrated lobby is hidden by default and revealed only in Library
+   Mode. Reference and Standard render the existing hero exactly as today. */
+.illustrated-lobby {
+  display: none;
+}
+body.mode-library .illustrated-lobby {
+  display: block;
+}
+
+/* Reading-card hover lift — a small architectural cue that the surfaces
+   are tactile in Library Mode. Reference/Standard keep the existing
+   shadow only (no transform). */
+body.mode-library .reading-card {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+body.mode-library .reading-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 20px rgba(31, 42, 68, 0.12),
+    0 2px 4px rgba(31, 42, 68, 0.08);
+}
+
+/* Generic lobby door hover (used inside the SVG / linked overlay). */
+body.mode-library .illustrated-lobby a.lobby-door {
+  cursor: pointer;
+  outline-offset: 4px;
+}
+body.mode-library .illustrated-lobby a.lobby-door:focus-visible {
+  outline: 3px solid var(--old-gold);
+}
+
+/* ---------------------------------------------------------------------
+   Room ornaments — small corner glyphs that pages opt into.
+   Hidden by default; only painted in Library Mode.
+   --------------------------------------------------------------------- */
+.room-ornament {
+  display: none;
+}
+body.mode-library .room-ornament {
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  opacity: 0.6;
+  pointer-events: none;
+  color: var(--deep-navy);
+}
+body.mode-library .room-ornament[data-position='top-right'] {
+  top: 1rem;
+  right: 1rem;
+}
+body.mode-library .room-ornament[data-position='bottom-right'] {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+/* ---------------------------------------------------------------------
+   Library v1 banner — sits just under the sticky header, max-width 65ch.
+   Linen-card background, slate text, gold left rule. Small and dignified.
+   --------------------------------------------------------------------- */
+.library-mode-banner {
+  display: none;
+}
+body.mode-library .library-mode-banner[data-state='visible'] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  max-width: 65ch;
+  margin: 0.75rem auto 0;
+  padding: 0.65rem 1rem 0.65rem 1.1rem;
+  background: var(--linen-card);
+  border: 1px solid var(--rule-border);
+  border-left: 3px solid var(--old-gold);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: #475569; /* slate-600 */
+  line-height: 1.5;
+}
+body.mode-library .library-mode-banner p {
+  margin: 0;
+  flex: 1 1 22rem;
+}
+body.mode-library .library-mode-banner strong {
+  color: var(--deep-navy);
+  font-weight: 600;
+}
+body.mode-library .library-mode-banner a {
+  color: var(--trust-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+body.mode-library .library-mode-banner .lmb-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+body.mode-library .library-mode-banner button {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  border: 1px solid var(--rule-border);
+  background: transparent;
+  color: #475569;
+  cursor: pointer;
+}
+body.mode-library .library-mode-banner button:hover {
+  background: var(--archive-paper);
+  color: var(--deep-navy);
+}
+
+/* ---------------------------------------------------------------------
+   Walking-tour overlay — five-panel onboarding for first-time Library
+   Mode visitors. Hidden until data-open="true"; focus-trapped while open.
+   --------------------------------------------------------------------- */
+.library-walking-tour {
+  display: none;
+}
+.library-walking-tour[data-open='true'] {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+}
+.library-walking-tour .lwt-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 42, 68, 0.55);
+  backdrop-filter: blur(2px);
+}
+.library-walking-tour .lwt-card {
+  position: relative;
+  max-width: 36rem;
+  width: calc(100vw - 2rem);
+  margin: clamp(2rem, 8vh, 6rem) auto 0;
+  background: var(--linen-card);
+  border: 1px solid var(--rule-border);
+  border-top: 4px solid var(--old-gold);
+  border-radius: 6px;
+  padding: 2rem 2rem 1.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  font-family: var(--font-serif);
+}
+.library-walking-tour .lwt-skip {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.85rem;
+  background: transparent;
+  border: 0;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: #64748b; /* slate-500 */
+  cursor: pointer;
+  padding: 0.4rem 0.5rem;
+}
+.library-walking-tour .lwt-skip:hover {
+  color: var(--deep-navy);
+  text-decoration: underline;
+}
+.library-walking-tour .lwt-step {
+  display: none;
+}
+.library-walking-tour .lwt-step.is-active {
+  display: block;
+}
+.library-walking-tour .lwt-step h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.6rem;
+  color: var(--deep-navy);
+}
+.library-walking-tour .lwt-step p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+  color: var(--ink);
+}
+.library-walking-tour .lwt-step .lwt-room-link {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--trust-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-top: 0.3rem;
+}
+.library-walking-tour .lwt-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule-border);
+}
+.library-walking-tour .lwt-nav button {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 3px;
+  border: 1px solid var(--rule-border);
+  background: var(--linen-card);
+  color: var(--deep-navy);
+  cursor: pointer;
+}
+.library-walking-tour .lwt-nav .lwt-next {
+  background: var(--deep-navy);
+  color: var(--linen-card);
+  border-color: var(--deep-navy);
+}
+.library-walking-tour .lwt-nav button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.library-walking-tour .lwt-progress {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: #64748b;
+  letter-spacing: 0.04em;
+}
+
+/* ---------------------------------------------------------------------
+   IllustratedLobby — wraps the inline SVG and the CTA below it.
+   --------------------------------------------------------------------- */
+.illustrated-lobby {
+  margin: 1rem 0 2rem;
+  position: relative;
+}
+.illustrated-lobby .lobby-svg-wrap {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(31, 42, 68, 0.08);
+  background: #F5EFDF;
+}
+.illustrated-lobby svg.lobby-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.illustrated-lobby .lobby-cta-row {
+  text-align: center;
+  margin-top: 1.25rem;
+}
+.illustrated-lobby .lobby-tour-cta {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  background: var(--deep-navy);
+  color: var(--linen-card);
+  border: 1px solid var(--deep-navy);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.illustrated-lobby .lobby-tour-cta:hover {
+  background: var(--trust-blue);
+  border-color: var(--trust-blue);
+}
+.illustrated-lobby .lobby-thesis {
+  margin: 1rem auto 0;
+  max-width: 50ch;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--deep-navy);
+}
+
+/* Hover state for the lobby doors (the SVG <a> wraps a <g class="door">). */
+body.mode-library .illustrated-lobby .door {
+  transition: transform 180ms ease, filter 180ms ease;
+  transform-origin: center bottom;
+}
+body.mode-library .illustrated-lobby a.lobby-door:hover .door {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 0 6px rgba(184, 138, 46, 0.45));
+}
+
+/* Reduced-motion: kill the lift animations. The visuals still differentiate
+   modes; we just don't move pixels for users who'd rather we didn't. */
+@media (prefers-reduced-motion: reduce) {
+  body.mode-library .reading-card,
+  body.mode-library .illustrated-lobby .door {
+    transition: none;
+  }
+  body.mode-library .reading-card:hover,
+  body.mode-library .illustrated-lobby a.lobby-door:hover .door {
+    transform: none;
+  }
+}

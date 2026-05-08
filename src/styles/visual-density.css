@@ -1,0 +1,22 @@
+/* Visual-density mode scaffolding. Per-mode visual rules live in
+   mode-reference.css (Sub-agent B), mode-standard.css (Sub-agent C),
+   and mode-library.css (Sub-agent D). */
+
+body.mode-reference,
+body.mode-standard,
+body.mode-library {
+  /* Mode-shared baseline; intentionally empty for now. */
+}
+
+/* Show only in the named mode (a small utility for components that
+   need to render different markup per mode without duplicating files). */
+.show-in-reference,
+.show-in-standard,
+.show-in-library {
+  display: none !important;
+}
+body.mode-reference .show-in-reference,
+body.mode-standard  .show-in-standard,
+body.mode-library   .show-in-library {
+  display: revert !important;
+}

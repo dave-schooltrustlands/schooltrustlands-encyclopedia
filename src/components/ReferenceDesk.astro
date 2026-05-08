@@ -1,0 +1,105 @@
+---
+/* ReferenceDesk (Site Update v7, Sub-agent C — Standard Mode footer surface).
+
+   Small dignified "On the Reference Desk" block listing the two human
+   librarians the public can write to. Mounted by the orchestrator on the
+   homepage and the Reading Room landing.
+
+   Library-institutional register (per repo memory): no case names, no
+   court numbers, no /court/* links. Dave's role line says "OASTL
+   litigation" because Reference Desk sits in the library-card register
+   the encyclopedia keeps for institutional surfaces — close enough to be
+   honest, far enough not to telegraph litigation. Margaret's role stays
+   editorial.
+
+   Hidden in Reference Mode by Sub-agent B's preempt rule on
+   `.reference-desk`. Visible in Standard Mode and Library Mode.
+
+   Component-scoped styles below; mode-standard.css duplicates the
+   essentials so the component still renders well if loaded outside the
+   layouts that pull mode-standard.css. The duplication is deliberate —
+   peers can mount this component anywhere.
+*/
+---
+<aside class="reference-desk" aria-label="On the Reference Desk">
+  <div class="rd-eyebrow">On the Reference Desk</div>
+  <ul class="rd-list">
+    <li class="rd-person">
+      <div class="rd-name">Margaret Bird</div>
+      <div class="rd-role">Editorial calibration; school-trust scholarship</div>
+      <a class="rd-cta" href="/contribute/">Get in touch with Margaret</a>
+    </li>
+    <li class="rd-person">
+      <div class="rd-name">Dave Sullivan</div>
+      <div class="rd-role">Library architecture; trust-records research</div>
+      <a class="rd-cta" href="/contribute/">Get in touch with Dave</a>
+    </li>
+  </ul>
+</aside>
+
+<style>
+  .reference-desk {
+    background: var(--linen-card, #FFFDF7);
+    border: 1px solid var(--rule-border, #D8D1C2);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem 1.5rem;
+    margin: 2.5rem 0 1.5rem;
+    max-width: 65ch;
+  }
+  .reference-desk .rd-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--old-gold, #B88A2E);
+    margin-bottom: 0.85rem;
+  }
+  .reference-desk .rd-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 2rem;
+  }
+  .reference-desk .rd-person {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .reference-desk .rd-person .rd-name {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--deep-navy, #1F2A44);
+    line-height: 1.25;
+  }
+  .reference-desk .rd-person .rd-role {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--ink, #17202A);
+    opacity: 0.8;
+    line-height: 1.4;
+  }
+  .reference-desk .rd-cta {
+    margin-top: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1F2A44);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    align-self: flex-start;
+  }
+  .reference-desk .rd-cta:hover {
+    color: var(--trust-blue, #1D4F7C);
+  }
+
+  @media (max-width: 600px) {
+    .reference-desk .rd-list {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+</style>

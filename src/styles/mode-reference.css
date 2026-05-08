@@ -1,0 +1,185 @@
+/* Reference Mode (Site Update v7, Sub-agent B) — strips ornamental layers; pure CSS, no HTML changes. */
+
+/* ---------------------------------------------------------------------
+   Scope: every rule below is prefixed with `body.mode-reference`. The
+   slider control (Sub-agent C) toggles that class on <body>; when it's
+   absent, this stylesheet is inert. No global selectors anywhere.
+   --------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------
+   1. Animations / transitions: kill ornamental motion site-wide while
+   in Reference Mode. Constrained inside the body scope so the rest of
+   the site is untouched.
+   --------------------------------------------------------------------- */
+body.mode-reference *,
+body.mode-reference *::before,
+body.mode-reference *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   2. Per-room banner stripes / hero ornament treatments.
+   --------------------------------------------------------------------- */
+body.mode-reference .home-poster,
+body.mode-reference .home-poster--top,
+body.mode-reference .home-poster--footer {
+  display: none !important;
+}
+
+/* Homepage hero: re-flatten the inline gradient + background image so the
+   hero section reads as a clean text-only intro on archive paper. The
+   first <section> in <main> on the homepage carries the inline style; we
+   override with high specificity and !important since the source is inline. */
+body.mode-reference main > section:first-of-type[style*="background-image"] {
+  background-image: none !important;
+  background: var(--archive-paper) !important;
+  padding: 1.5rem 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Launch announcement: keep visible but strip the gold-border ornament. */
+body.mode-reference .launch-announcement {
+  border-left: 1px solid var(--rule-border);
+  background: transparent;
+  border-radius: 0;
+  padding-left: 1rem;
+}
+body.mode-reference .launch-announcement .eyebrow {
+  /* Eyebrow inside it is hidden by the global eyebrow rule below. */
+}
+
+/* ---------------------------------------------------------------------
+   3. Icons (Sub-agent C will add `.nav-icon` inside header nav links;
+   Sub-agent D will add `.room-ornament` SVG corner ornaments per room).
+   Pre-emptive hide so peer integration activates them automatically.
+   HOOK CONTRACT: peer agents may add either class without further coord.
+   --------------------------------------------------------------------- */
+body.mode-reference header nav .nav-icon {
+  display: none !important;
+}
+body.mode-reference .room-ornament {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   4. Hover-state preview overlays — keep static treatment, kill motion.
+   The shadow stays modest; transitions are already nuked above.
+   --------------------------------------------------------------------- */
+body.mode-reference .reading-card {
+  box-shadow: 0 1px 2px rgba(31, 42, 68, 0.06);
+}
+body.mode-reference .dossier-card {
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------------------
+   5. "On the Reference Desk" decorative footer (Sub-agent C creates
+   `.reference-desk`). Reference Mode hides it — the librarians remain
+   text-linked elsewhere.
+   HOOK CONTRACT: Sub-agent C's class name is `.reference-desk`.
+   --------------------------------------------------------------------- */
+body.mode-reference .reference-desk {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   6. Decorative ornaments on prose.
+   --------------------------------------------------------------------- */
+
+/* Section divider: line stays (structural), § glyph drops. */
+body.mode-reference .archival-divider::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Sacred Compact interlude: the gold gradient line above the interlude. */
+body.mode-reference .sacred-compact-interlude::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Eyebrow small-caps labels: decorative, headings carry the meaning. */
+body.mode-reference .eyebrow {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   7. Pull-quote and CTA-box ornament strips.
+   --------------------------------------------------------------------- */
+body.mode-reference .pull-quote {
+  border-left: 1px solid var(--rule-border);
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+body.mode-reference .cta-box {
+  border-left: 1px solid var(--rule-border);
+  background: transparent;
+  border-radius: 0;
+}
+body.mode-reference .cta-box::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   8. Boxed insert: kill the tan tint, keep structure.
+   --------------------------------------------------------------------- */
+body.mode-reference .boxed-insert {
+  background: transparent;
+  border-left-color: var(--rule-border);
+}
+
+/* ---------------------------------------------------------------------
+   9. Walking-tour and Library Mode v1 banner (Sub-agent D).
+   HOOK CONTRACT: classes `.library-walking-tour` and `.library-mode-banner`.
+   --------------------------------------------------------------------- */
+body.mode-reference .library-walking-tour,
+body.mode-reference .library-mode-banner {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   10. Site wordmark gold marker: keep rect outline; gold fill rectangles
+   drop opacity to 0.3 for a quieter mark. Targets the two <rect> elements
+   inside `.plss-mark` that carry `fill="var(--old-gold)"`.
+   --------------------------------------------------------------------- */
+body.mode-reference .plss-mark rect[fill="var(--old-gold)"] {
+  opacity: 0.3 !important;
+}
+
+/* ---------------------------------------------------------------------
+   ENHANCEMENTS — librarian-friendly typographic register.
+   --------------------------------------------------------------------- */
+
+/* Tighter line-height. .prose keeps its 65ch max-width from global.css. */
+body.mode-reference {
+  line-height: 1.55;
+}
+body.mode-reference .prose {
+  line-height: 1.55;
+}
+
+/* Stronger heading separation: more space above h2, subtle 1px rule under. */
+body.mode-reference h2 {
+  margin-top: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--rule-border);
+}
+
+/* Print-style link decoration always-on. Underline body links permanently
+   instead of hover-only. Constrained to body links; nav links keep their
+   utility-class behavior to avoid double underlines stacking with the
+   hover:underline rule. */
+body.mode-reference .prose a,
+body.mode-reference main a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Slider control itself stays visible — it's how users get back out.
+   No rule needed; we never hide it. (Documented for orchestrator.) */

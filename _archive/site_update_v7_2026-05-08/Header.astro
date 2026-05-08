@@ -1,9 +1,5 @@
 ---
 import '../styles/global.css';
-import VisualDensitySlider from './VisualDensitySlider.astro';
-import NavIcon from './NavIcon.astro';
-import LibraryV1Banner from './library/LibraryV1Banner.astro';
-import WalkingTour from './library/WalkingTour.astro';
 ---
 <header
   data-pagefind-ignore
@@ -57,37 +53,37 @@ import WalkingTour from './library/WalkingTour.astro';
       <a
         href="/reading/"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="BookOpen" />Reading</a
+        >Reading</a
       >
       <a
         href="/atlas/"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="Compass" />Atlas</a
+        >Atlas</a
       >
       <a
         href="/maps/"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="Map" />Map&nbsp;Room</a
+        >Map&nbsp;Room</a
       >
       <a
         href="/counting/"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="ScrollText" />Counting&nbsp;House</a
+        >Counting&nbsp;House</a
       >
       <a
         href="/contribute/"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="HandHeart" />Contribute</a
+        >Contribute</a
       >
       <a
         href="/about/"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="Building2" />About</a
+        >About</a
       >
       <a
         href="/newsroom/"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="Newspaper" />Newsroom</a
+        >Newsroom</a
       >
       <a
         href="/updates/"
@@ -97,7 +93,7 @@ import WalkingTour from './library/WalkingTour.astro';
       <a
         href="/voices/"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="Mic" />Voices</a
+        >Voices</a
       >
       <a
         id="library-card-link"
@@ -114,7 +110,6 @@ import WalkingTour from './library/WalkingTour.astro';
         class="library-card-signout inline-flex min-h-[44px] items-center justify-center px-2 text-slate-500 hover:text-slate-700 hover:underline"
         >Sign&nbsp;out</a
       >
-      <VisualDensitySlider />
       <button
         id="search-toggle"
         type="button"
@@ -150,9 +145,6 @@ import WalkingTour from './library/WalkingTour.astro';
     </div>
   </div>
 </header>
-
-<LibraryV1Banner />
-<WalkingTour />
 
 <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
 <script is:inline src="/pagefind/pagefind-ui.js"></script>

@@ -1,0 +1,110 @@
+---
+/**
+ * RoomOrnament — small corner glyph for Library Mode pages.
+ *
+ * Pages opt in by mounting <RoomOrnament shape="book" /> inside a
+ * positioned container. The ornament absolute-positions itself in the
+ * named corner. mode-library.css hides .room-ornament outside Library
+ * Mode, so this component is safe to render on any page — it simply
+ * vanishes in Reference and Standard.
+ *
+ * Decorative only: aria-hidden="true" on the wrapping <aside>.
+ */
+
+interface Props {
+  shape: 'book' | 'scales' | 'compass' | 'map' | 'mic' | 'newspaper';
+  position?: 'top-right' | 'bottom-right';
+}
+
+const { shape, position = 'top-right' } = Astro.props;
+---
+
+<aside
+  class="room-ornament"
+  data-position={position}
+  data-shape={shape}
+  aria-hidden="true"
+>
+  <svg
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    {shape === 'book' && (
+      <g>
+        {/* Open book */}
+        <path d="M8 18 Q32 14 56 18 L56 50 Q32 46 8 50 Z" />
+        <line x1="32" y1="16" x2="32" y2="48" />
+        <path d="M14 24 Q22 22 30 23" />
+        <path d="M14 30 Q22 28 30 29" />
+        <path d="M34 23 Q42 22 50 24" />
+        <path d="M34 29 Q42 28 50 30" />
+      </g>
+    )}
+    {shape === 'scales' && (
+      <g>
+        {/* Scales of justice */}
+        <line x1="32" y1="10" x2="32" y2="54" />
+        <line x1="20" y1="54" x2="44" y2="54" />
+        <line x1="14" y1="20" x2="50" y2="20" />
+        <line x1="32" y1="20" x2="18" y2="34" />
+        <line x1="32" y1="20" x2="46" y2="34" />
+        <path d="M10 34 Q18 38 26 34" />
+        <path d="M38 34 Q46 38 54 34" />
+        <circle cx="32" cy="10" r="2" fill="currentColor" />
+      </g>
+    )}
+    {shape === 'compass' && (
+      <g>
+        {/* Compass rose */}
+        <circle cx="32" cy="32" r="22" />
+        <circle cx="32" cy="32" r="14" />
+        <polygon points="32,12 36,32 32,52 28,32" fill="currentColor" opacity="0.45" />
+        <polygon points="12,32 32,28 52,32 32,36" fill="currentColor" opacity="0.25" />
+        <circle cx="32" cy="32" r="2" fill="currentColor" />
+      </g>
+    )}
+    {shape === 'map' && (
+      <g>
+        {/* Folded map */}
+        <path d="M8 18 L24 14 L40 18 L56 14 L56 48 L40 52 L24 48 L8 52 Z" />
+        <line x1="24" y1="14" x2="24" y2="48" />
+        <line x1="40" y1="18" x2="40" y2="52" />
+        <path d="M14 28 Q20 26 24 28" opacity="0.7" />
+        <path d="M28 32 Q34 30 38 32" opacity="0.7" />
+        <path d="M44 26 Q50 24 54 26" opacity="0.7" />
+      </g>
+    )}
+    {shape === 'mic' && (
+      <g>
+        {/* Microphone */}
+        <rect x="24" y="10" width="16" height="28" rx="8" />
+        <path d="M16 32 Q16 46 32 46 Q48 46 48 32" />
+        <line x1="32" y1="46" x2="32" y2="56" />
+        <line x1="24" y1="56" x2="40" y2="56" />
+        <line x1="28" y1="20" x2="36" y2="20" opacity="0.6" />
+        <line x1="28" y1="26" x2="36" y2="26" opacity="0.6" />
+      </g>
+    )}
+    {shape === 'newspaper' && (
+      <g>
+        {/* Folded newspaper */}
+        <rect x="8" y="14" width="48" height="38" rx="2" />
+        <line x1="32" y1="14" x2="32" y2="52" opacity="0.7" />
+        <line x1="12" y1="22" x2="28" y2="22" />
+        <line x1="12" y1="28" x2="28" y2="28" />
+        <line x1="12" y1="34" x2="28" y2="34" opacity="0.6" />
+        <line x1="12" y1="40" x2="28" y2="40" opacity="0.6" />
+        <line x1="36" y1="22" x2="52" y2="22" />
+        <line x1="36" y1="28" x2="52" y2="28" opacity="0.6" />
+        <line x1="36" y1="34" x2="52" y2="34" opacity="0.6" />
+        <line x1="36" y1="40" x2="52" y2="40" opacity="0.6" />
+      </g>
+    )}
+  </svg>
+</aside>

@@ -7,14 +7,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Site Update v7 — visual-density mode stylesheets. The slider component
-   (header) toggles `body.mode-{reference,standard,library}`; each file
-   below is scoped to one of those classes and inert otherwise. */
-@import './visual-density.css';
-@import './mode-reference.css';
-@import './mode-standard.css';
-@import './mode-library.css';
-
 :root {
   /* Base palette */
   --ink:           #17202A;

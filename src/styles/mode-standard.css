@@ -1,0 +1,198 @@
+/* Standard Mode (Site Update v7, Sub-agent C) — the default register
+   everyone sees. Adds room-accent thin top borders, nav iconography
+   visibility, breadcrumb pill polish, and Reference Desk styling.
+
+   Scope: every rule below is prefixed with `body.mode-standard` (or
+   `body[data-source-id^="..."]` for surfaces that don't carry a
+   data-room attribute today). When the body class is absent — e.g. if a
+   user has explicitly toggled into Reference Mode — these rules go
+   inert. The orchestrator adds `mode-standard` as the default body
+   class.
+*/
+
+/* ---------------------------------------------------------------------
+   1. Per-room thin top border. The room-accent palette mapping echoes
+   global.css's `[data-room]` overrides but adds the surfaces global.css
+   doesn't yet cover (atlas, voices, newsroom).
+   --------------------------------------------------------------------- */
+
+body.mode-standard {
+  border-top: 4px solid var(--room-accent, var(--trust-blue));
+}
+
+/* Per-room overrides keyed off data-room on body. Reading uses a warmer
+   cream/champagne than the deep-navy var(--accent-reading) sets — the
+   room-accent color is also used elsewhere for in-prose ornaments, so we
+   override only the top-border color, not the var. */
+body.mode-standard[data-room='reading'] {
+  border-top-color: #F0E6CD;
+}
+body.mode-standard[data-room='counting'] {
+  border-top-color: var(--old-gold);
+}
+body.mode-standard[data-room='records'],
+body.mode-standard[data-room='maps'],
+body.mode-standard[data-room='map'] {
+  border-top-color: #4A6E8A;
+}
+body.mode-standard[data-room='atlas'] {
+  border-top-color: var(--sage);
+}
+body.mode-standard[data-room='voices'] {
+  border-top-color: var(--oxblood);
+}
+body.mode-standard[data-room='newsroom'] {
+  border-top-color: #475569;
+}
+body.mode-standard[data-room='court'] {
+  border-top-color: var(--oxblood);
+}
+body.mode-standard[data-room='breach-recovery'],
+body.mode-standard[data-room='breach'] {
+  border-top-color: var(--sage);
+}
+
+/* Source-id-prefix fallbacks for surfaces that don't carry a data-room
+   attribute today (homepage Atlas, Voices essays, Newsroom posts). The
+   orchestrator may later add the matching data-room values; until then
+   these selectors keep the top border colored correctly. */
+body.mode-standard[data-source-id^="atlas"] {
+  border-top-color: var(--sage);
+}
+body.mode-standard[data-source-id^="voices"] {
+  border-top-color: var(--oxblood);
+}
+body.mode-standard[data-source-id^="newsroom"] {
+  border-top-color: #475569;
+}
+
+/* ---------------------------------------------------------------------
+   2. Iconography in nav. Reference Mode preempt-hides `.nav-icon`
+   inside header nav (mode-reference.css §3); here in Standard Mode we
+   make sure the icon is visible and well-spaced when adopted. Library
+   Mode leaves them visible too.
+   --------------------------------------------------------------------- */
+
+body.mode-standard header nav .nav-icon {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-right: 0.35rem;
+  opacity: 0.85;
+}
+
+/* ---------------------------------------------------------------------
+   3. Breadcrumb pill polish. The orchestrator will adopt `.breadcrumbs`
+   on existing breadcrumb markup; this provides the styling hook. Active
+   in all modes (no body.mode-standard prefix) since breadcrumbs are
+   structural rather than ornamental.
+   --------------------------------------------------------------------- */
+
+.breadcrumbs {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--ink);
+  opacity: 0.85;
+  margin: 0.5rem 0 1rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.breadcrumbs li + li::before {
+  content: '→';
+  opacity: 0.5;
+  margin-right: 0.25rem;
+}
+.breadcrumbs a {
+  color: var(--deep-navy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.breadcrumbs .nav-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---------------------------------------------------------------------
+   4. Reference Desk styling. Component-scoped styles in the Astro
+   single-file component already cover most of this; the rules below
+   duplicate the essentials so the surface still reads correctly even if
+   the component's scoped styles aren't present (rare — but cheap
+   insurance). Visible in Standard Mode and Library Mode; Reference Mode
+   hides via mode-reference.css §5.
+   --------------------------------------------------------------------- */
+
+.reference-desk {
+  background: var(--linen-card);
+  border: 1px solid var(--rule-border);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem 1.5rem;
+  margin: 2.5rem 0 1.5rem;
+  max-width: 65ch;
+}
+.reference-desk .rd-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--old-gold);
+  margin-bottom: 0.85rem;
+}
+.reference-desk .rd-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 2rem;
+}
+.reference-desk .rd-person {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.reference-desk .rd-person .rd-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  line-height: 1.25;
+}
+.reference-desk .rd-person .rd-role {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--ink);
+  opacity: 0.8;
+  line-height: 1.4;
+}
+.reference-desk .rd-cta {
+  margin-top: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  align-self: flex-start;
+}
+.reference-desk .rd-cta:hover {
+  color: var(--trust-blue);
+}
+
+@media (max-width: 600px) {
+  .reference-desk .rd-list {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
