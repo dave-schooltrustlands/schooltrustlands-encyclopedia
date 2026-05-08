@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BookmarkButton from '../../../components/BookmarkButton.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('scholarship');
@@ -26,17 +27,20 @@ const byline = entry.data.authors ?? entry.data.author ?? '';
   sourceId={`scholarship-${entry.slug ?? entry.id}`}
 >
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline source-page">
-    <p class="text-xs uppercase tracking-wide text-slate-500">
-      <a href="/reading/scholarship/">Scholarship</a>
-      {isTier3 && (
-        <>
-          <span class="mx-1">·</span>
-          <span class="inline-block rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-amber-900">
-            Tier 3 · in-copyright · curator-recruitment open
-          </span>
-        </>
-      )}
-    </p>
+    <div class="not-prose mb-2 flex items-center justify-between gap-4">
+      <p class="text-xs uppercase tracking-wide text-slate-500">
+        <a href="/reading/scholarship/">Scholarship</a>
+        {isTier3 && (
+          <>
+            <span class="mx-1">·</span>
+            <span class="inline-block rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-amber-900">
+              Tier 3 · in-copyright · curator-recruitment open
+            </span>
+          </>
+        )}
+      </p>
+      <BookmarkButton title={entry.data.title} />
+    </div>
 
     <aside class="dossier-card not-prose mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">At a glance</span>

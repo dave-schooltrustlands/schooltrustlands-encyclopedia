@@ -1,0 +1,183 @@
+---
+name: Arizona
+fips: "04"
+iso: US-AZ
+admissionNumber: 48
+admittedDate: 1912-02-14
+eraCohort: 6
+eraName: "The Twentieth-Century High-Water Mark and Two Outliers"
+federalGrantAcres: 10900000
+governanceForm: "State Land Commissioner — gubernatorial appointee with Senate consent under A.R.S. Title 37; heads the Arizona State Land Department. Trust corpus (Permanent Land Endowment Trust Fund) is invested by the Arizona State Treasurer's Office under guidelines set by statute and the State Board of Investment."
+permanentFundCorpus:
+  value: 8000000000
+  asOf: null
+latestDistribution:
+  value: 350000000
+  fiscalYear: null
+trustAcresRemaining: 8024118
+trustAcresRemainingConfidence: verified
+trustAcresRemainingAsOf: "FY 2024"
+trustAcresRemainingSource: "ASTL Arizona Trust Lands Report (Tonia Day, FY 2024) and Arizona State Land Department, FY 2024 Annual Report. Schools received 9.49M acres of the original 10.9M-acre 1912 grant; 8,024,118 surface acres remain (plus 937,212 mineral acres), with ~542,961 acres caught in federal designations."
+substrateVersion: "1.3"
+lastReviewed: 2026-05-01
+---
+
+*Admission #48 (Feb. 14, 1912). Era: 20th-century admissions. Draft: Pass 1, 2026-04-30.*
+
+Arizona's school-trust story is, on the federal side, the strongest in the country. Nowhere else does the granting Act use harder language. The 1910 New Mexico-Arizona Enabling Act calls the lands "in trust," declares non-conforming dispositions a "breach of trust," voids them "any provision of the constitution or laws of the said State to the contrary notwithstanding," and authorizes the Attorney General of the United States to bring suit to enforce the trust against the state.[^az-1] These four features — express trust, breach-of-trust label, automatic nullity for substandard dispositions, and federal-AG enforcement — are the architectural high-water mark of school-grant federalism. Arizona shares them word-for-word with New Mexico; the two states are bound by the same statute. And yet the two states have arrived, a hundred and sixteen years later, at trust corpora that differ by roughly a factor of four. New Mexico's Land Grant Permanent Fund is in the neighborhood of $30 billion. Arizona's Permanent Land Endowment Trust Fund stands at roughly $8–10 billion.[^az-2] The federal floor is identical. The state-side architecture and operational discipline are not. Arizona is, for that reason, the project's central case study in a single proposition about state-side stewardship.
+
+<blockquote class="pull-quote">
+  <p>Even at the federal high-water mark, what the state does — how it structures its trustee, how it prices its leases, how it manages its corpus over decades — sets the ceiling on what beneficiaries actually receive.</p>
+  <cite>From the state dossier for Arizona</cite>
+</blockquote>
+
+## The 1910 Enabling Act and Section 28
+
+Arizona was admitted on February 14, 1912, the forty-eighth state and the last of the contiguous forty-eight. The federal predicate for that admission was the Act of June 20, 1910, which authorized both Arizona and New Mexico to draft constitutions and enter the Union.[^az-3] The 1910 Act is a single statute covering both territories, but its trust provisions for the two states are housed in different sections — a textual fact that has caused confusion in secondary literature and that bears stating clearly. New Mexico's parallel trust mandate appears in section 10. Arizona's appears in section 28.[^az-4] The school-section grant for Arizona — sections 2, 16, 32, and 36 in every township of public lands, the quadrupled grant — appears in section 24, at 36 Stat. 572.[^az-5] The operative trust language appears in section 28, at 36 Stat. 574–575. Section 28 is the load-bearing provision for everything that follows in this entry; when later cases speak of "the Enabling Act," they almost invariably mean section 28.
+
+The text of section 28 deserves close reading because it does the architectural work. The granted lands "shall be by the said state held in trust, to be disposed of in whole or in part only in manner as herein provided and for the several objects specified in the respective granting and confirmatory provisions." The "natural products and money proceeds" of those lands are subject to the same trust as the lands themselves. Disposition of any land or proceeds for an unauthorized object is "deemed a breach of trust." No mortgage or encumbrance is "valid in favor of any person or for any purpose or under any circumstances whatsoever." The lands "shall not be sold or leased, in whole or in part, except to the highest and best bidder at a public auction" in the county seat of the county where the lands lie, with prior advertisement. "All lands, leaseholds, timber and other products of land, before being offered, shall be appraised at their true value, and no sale or other disposal thereof shall be made for a consideration less than the value so ascertained." And every sale, lease, or contract "not made in substantial conformity with the provisions of this Act shall be null and void, any provision of the constitution or laws of the said State to the contrary notwithstanding."[^az-6] Subsequent amendments, particularly the 1999 amendment that authorized total-return investment for the trust funds, sit on top of this architecture without disturbing it.[^az-7]
+
+The grant was substantial — Arizona's total at admission ran to approximately 10.9 million acres for common schools and the twelve other named beneficiary institutions: three universities, schools for the deaf and blind, the school of mines, the normal schools, the military institute, the state hospital, the penitentiary, the miners' hospital, the pioneers' home, and the legislative-executive-judicial buildings fund.[^az-8] The Arizona State Land Department reports that approximately 8 million of the 9.2 million surface acres still in trust today are designated for K-12 public education; the remainder supports the institutional beneficiaries.[^az-9]
+
+Arizona's transition from territory to statehood was famously delayed by President William Howard Taft. The 1910 draft constitution included a provision allowing the recall of judges, and Taft vetoed the joint resolution for statehood in August 1911 on the ground that recall "would destroy the independence of the courts and lead to the tyranny of a popular majority."[^az-10] The Arizona electorate ratified a revised draft on February 9, 1911, removing the offending clause; admission followed on February 14, 1912; and the voters of Arizona promptly demonstrated their populist resolve by amending the recall provision back into the constitution at the first available election.[^az-11] That sequence is more than political color. It tells you what kind of state Arizona's framers thought they were building — one in which the sovereign people retained direct control over their government through initiative, referendum, and recall.[^az-12] Trust governance, however, would not follow that populist line.
+
+## Constitutional architecture and the trustee question
+
+Arizona's constitutional architecture for the trust mirrors the Enabling Act. Article X, sections 1 and 2, repeat the trust and breach-of-trust language verbatim from section 28; Article X, sections 3 through 7, build out the auction, appraisal, and permanent-fund mechanics; Article XX (the Ordinance) carries the state's irrevocable acceptance of the federal compact.[^az-13] Article XI, section 8, establishes the Permanent State School Fund and limits the apportionment of school-land rentals to common and high-school education.[^az-14] On the federal side and the state side, Arizona's text could not be stronger.
+
+The structural divergence from New Mexico, then, is not in the granting Act and not in the constitutional mirror. It is in the office that runs the trust. New Mexico's Commissioner of Public Lands is a constitutionally established statewide elected official, accountable directly to the New Mexico electorate. Arizona's State Land Commissioner, by contrast, is a gubernatorial appointee, confirmed by the State Senate, heading the Arizona State Land Department under A.R.S. Title 37.[^az-15] The Land Department itself was created by the State Land Code of 1915, three years after admission, consolidating trust-land management under a single executive agency.[^az-16] To mitigate concentration of authority in the Commissioner, Arizona created a five-member Board of Appeals, also gubernatorially appointed, which must approve all sales and commercial leases and serves as the administrative review body for appraisals and classifications.[^az-17] But the central reporting line runs from the Commissioner to the Governor, not from the Commissioner to the voters. Where New Mexico's Commissioner can run for re-election as a defender of trust corpus against legislative or executive incursion, Arizona's Commissioner serves at the pleasure of the appointing executive. The accountability runs through different channels and tracks different incentives. This is not, on the page of the Enabling Act, a difference. In the operational stewardship of the corpus over a century, it has been one of the principal differences.
+
+## Doctrine and enforcement
+
+The doctrinal anchor for modern enforcement of section 28 — and the foundation of the modern fiduciary doctrine governing every state admitted under the 1910 template — is *Lassen v. Arizona ex rel. Arizona Highway Department*, 385 U.S. 458 (1967), an Arizona-originating case. Beginning in 1929, the Arizona Highway Department had been acquiring rights-of-way and material sites across school-trust lands without paying the trust, on the theory that highway construction would enhance the value of the remaining land by an amount at least equal to the value of the land taken.[^az-18] The Arizona Supreme Court accepted that "conclusive presumption" of enhancement.[^az-19] The United States Supreme Court reversed. Justice Harlan's opinion drew two careful distinctions. On the procedural side, the Court held that section 28's auction and advertisement requirements did not apply when the state itself was the transferee for a public project, because requiring the state to bid at auction would be "an empty formality" — the state could simply use eminent domain if it lost.[^az-20] On the substantive side, however, the Court held that the state must compensate the trust in actual money for the "full appraised value" of the land used. The presumed-enhancement theory was rejected as too speculative to satisfy the Enabling Act's intent that the trust receive appropriate compensation to build its endowment.[^az-21] *Lassen* forced Arizona to pay millions into the school fund for thousands of miles of highway easements taken without payment since 1929; more importantly, it became the modern restatement of the fiduciary obligation that section 28 imposes on every state that holds 1910-Act lands.[^az-22] When subsequent courts in New Mexico, in the federal circuits, and in state courts elsewhere reach for a Supreme Court anchor on enabling-act trust enforcement, they reach for *Lassen*.
+
+Arizona built on that federal foundation with a distinctively Arizona contribution: a body of state-court doctrine that treats Article X as stricter than the federal floor. *Gladden Farms, Inc. v. State*, 129 Ariz. 516 (1981), invalidated the non-auction sale of trust land to the Arizona Division of Emergency Services for the Allenville flood-relocation community, holding that even a meritorious public purpose could not justify a fee transfer without auction and highest-best-bidder protection; trust lands cannot subsidize public programs, however desirable.[^az-23] *City of Sierra Vista v. Babbitt*, 129 Ariz. 524 (1981), the same-day companion, applied the rule to municipal acquisition.[^az-24] *Deer Valley Unified School District v. Superior Court*, 157 Ariz. 537 (1988), held that even a school district — itself a trust beneficiary — could not condemn school-trust land, because condemnation does not satisfy Arizona's constitutional requirements of public notice, public auction, and sale to the highest and best bidder.[^az-25] The opinion is central for what one might call Arizona's dual-floor doctrine: *Lassen* supplies the federal minimum, but Article X supplies stricter protection on top, and where the two diverge, the state floor controls. *Fain Land & Cattle Co. v. Hassell*, 163 Ariz. 587 (1990), pushed the doctrine further, invalidating Arizona's statutory trust-land exchange program because, although Congress had amended the Enabling Act to permit exchanges, the state constitution had not been amended to authorize them; an exchange functions as a sale and required auction.[^az-26] In each of these cases, the Arizona Supreme Court did the doctrinal work that elsewhere would have required either a federal court or congressional intervention.
+
+The mineral side of section 28 was tested in *Kadish v. Arizona State Land Department*, 858 F.2d 1316 (9th Cir. 1988), affirmed sub nom. *ASARCO Inc. v. Kadish*, 490 U.S. 605 (1989). Arizona statute A.R.S. § 27-234(B) authorized nonhydrocarbon mineral leases at a flat 5% royalty rate, bypassing the appraisal and "true value" mechanics that section 28 required. Frank Kadish and the Arizona Education Association challenged the statute. The Ninth Circuit held that minerals extracted from trust lands are "natural products" subject to the same fiduciary duties as the surface; the flat-rate royalty system violated the true-value and appraisal requirements; and — in the formulation that became most quoted — the trustee must prioritize the long-term interest of the beneficiaries even when that conflicts with short-term political or economic convenience.[^az-27]
+
+<blockquote class="pull-quote">
+  <p>The state's duties under the Enabling Act are those of a trustee, not those of "a good business manager."</p>
+  <cite>From <em>Kadish v. Arizona State Land Department</em>, quoted in the state dossier for Arizona</cite>
+</blockquote>
+
+The U.S. Supreme Court's 1989 affirmance addressed federal-court standing for state-court plaintiffs, an important doctrinal issue, but left the trust-violation reasoning intact.[^az-28] *Kadish* is the modern enforcement template for the "no submarket disposition" principle and a reminder that section 28's reach extends to every economic asset of the trust land — water and minerals as well as surface acres.
+
+The principle was extended to groundwater in *Farmers Investment Co. v. Pima Mining Co.*, 111 Ariz. 56, 523 P.2d 487 (1974), where the Arizona Supreme Court held that groundwater beneath trust land is a product of the land and that a lease allowing extraction without public auction violated the Enabling Act and Article X.[^az-29] That holding becomes important again in the modern era. And the principle was extended — restored, more accurately — in *Rumery v. Baier*, 231 Ariz. 275 (App. 2011), where the Court of Appeals invalidated A.R.S. § 37-527, a 2009 statute that had created a "Trust Land Management Fund" funded by up to ten percent of trust-land proceeds to pay State Land Department management costs. Up to $9.7 million had been appropriated for FY 2010 and roughly $10.5 million designated for FY 2011 under the diversion. The court held that using trust proceeds for the state's cost of administering the trust violated Article X, section 7; proceeds had to be deposited in the proper permanent funds, and transferred amounts had to be repaid.[^az-30] *Rumery* is the modern restoration case. The architecture, when invoked, still works.
+
+## The grazing-and-groundwater question
+
+Where the architecture has been less fully invoked is in the running, century-long management of grazing and agricultural leases — the operational floor that the cases never quite reach. A 1997 Auditor General performance review found that Arizona's grazing-lease rates were among the lowest in the Western states; the State Land Department had no clear criteria for granting rent reductions; and "preference rights" given to existing lessees suppressed competitive bidding.[^az-31] In fiscal year 1996, 8.5 million acres of grazing land generated only $2.6 million — roughly thirty cents per acre.[^az-32] Subsequent reforms included A.R.S. § 37-283, allowing the Department to collect a 25% surcharge when a lessee subleases trust land to a third party for profit; and a five-year Grazing Land Valuation Commission appointed by the Governor to appraise the "true value" of forage. But the Commission's methodology — comparing the "bundle of rights" in a state lease to private leases and applying significant downward adjustments — has continued to draw criticism for producing rates that fall short of the section 28 standard.[^az-33] *Forest Guardians v. Wells*, 201 Ariz. 255 (2001), tested the same lease structure from the opposite direction, with conservation bidders offering more than ranching bidders for grazing leases on roughly 16,000 acres in Pinal County. The Arizona Supreme Court, in a divided opinion, held that restoration and preservation must be considered as legitimate uses when proposed by the high bidder, while preserving the Commissioner's fact-based discretion to withdraw or reclassify land.[^az-34] The grazing-lease saga is the slowest-running illustration in this entry of how state-side operational discipline can fall short of federal architectural strength.
+
+The most recent installment of that pattern — and the most consequential modern fiduciary question on Arizona's books — concerns groundwater. A 2024 Auditor General review of agricultural leases, including those held by the Saudi-owned firm Fondomonte, found that the State Land Department had failed to adjust rental rates for seventeen years; had not required lessees to pay for or report the volume of groundwater used to irrigate alfalfa for export; and had set agricultural rental rates at fifty percent below market value as a matter of policy to account for lessee improvements, a practice the auditors found poorly documented and inconsistent with the true-value mandate.[^az-35] *Farmers Investment* held that groundwater under trust land is a "product of the land." Section 28 makes the natural products of trust land subject to the same trust as the lands themselves, and it requires true-value compensation. The unresolved fiduciary question — whether the failure to price groundwater consumed under agricultural leases is a continuing breach of section 28 — is one of the most consequential open questions in modern school-trust law, and it sits squarely on Arizona's docket.
+
+## The modern fund
+
+Two early-twenty-first-century constitutional amendments reshaped Arizona's modern trust governance. Proposition 102 (1998) expanded the Permanent Land Endowment Trust Fund's investment authority to include prudent equity securities, established the modern Board of Investment trustee mechanics, and adopted a total-return distribution formula — a substantial relaxation of the original conservative-investment posture, ratified by Congress in the Arizona Statehood and Enabling Act Amendments of 1999.[^az-36] Proposition 110 (2010) added a constitutional process for land exchanges to Article X, requiring independent appraisals, public hearings, and voter approval at a general election for each exchange — a careful response to the mid-century horse-trading scandals that the original constitutional prohibition on exchanges had been designed to prevent, and intended primarily to permit exchanges that would protect military installations like Luke Air Force Base from urban encroachment.[^az-37] Proposition 118 (2012) temporarily fixed the annual distribution at 2.5% of a five-year average market value, a conservative payout rate.[^az-38] Proposition 123 (2016) dramatically increased that rate to 6.9% for FY 2016 through FY 2025, channeling the additional distribution to K-12 schools as part of the settlement of *Cave Creek Unified School District v. Ducey* — Arizona's inflation-adjustment litigation under a 2000 voter-approved education-finance measure.[^az-39] Proposition 123 was — and remains — controversial. Opponents argued that a 6.9% distribution rate violates the fiduciary duty to preserve the corpus for future beneficiaries; the Enabling Act required congressional consent for changes to the trust; the timing and scope of that consent were litigated in *Pierce v. Ducey*, 965 F.3d 1085 (9th Cir. 2020), where the district court initially concluded that congressional consent was required, Congress later consented, and the Ninth Circuit vacated for lack of standing and mootness.[^az-40] The merits question — whether a distribution rate of 6.9% is consistent with the section 28 trust over multi-decade horizons — remains live as a policy question, though it is no longer live as litigation. The 6.9% rate is scheduled to revert to 2.5% in 2025, creating a "cliff" the legislature must navigate.[^az-41]
+
+Today, the Arizona State Land Department, currently led by State Land Commissioner Robyn Sahid at 1110 West Washington in Phoenix, manages approximately 9.2 million surface acres of trust land, with substantial subsurface mineral interests in addition.[^az-42] [^az-42a] The Permanent Land Endowment Trust Fund stands at roughly $8.8 billion as of June 2024, with the Common School Fund accounting for over 93 percent of the total; recent FY 2024 distributable earnings ran to $456.1 million, and total Department revenue ran to $361.6 million, the bulk of it from land sales and long-term leases.[^az-43] Significant urban-proximate auction sales — 165 acres in Maricopa County for $63 million; 2,340 acres in Phoenix for $56 million — reflect the Department's modern strategy of using "Zoning Banks" to prepare urban-fringe parcels for development.[^az-44] ASTL reports thirteen FY 2024 auctions generating $242 million; two long-term solar leases issued; roughly 7,200 acres treated for fire suppression; and that approximately 542,961 acres of school trust land remain inside federal designations (national monuments, parks, and the like) that suppress revenue generation Congress required.[^az-42a] The Permanent Common School Fund corpus, invested by the State Treasurer's Office under Director of Endowments Tim White at 1700 West Washington Street in Phoenix in a roughly 60/40 equity-indexing-to-active-fixed-income blend, has earned an annualized total return of about 8.24 percent over the past ten years.[^az-42a] In 2025 dollars, Arizona has built a serious trust corpus. The question is what that corpus would have been with different state-side decisions.
+
+The Common Sense Institute's 2025 report on Arizona's land-trust history offers one set of counterfactuals.[^az-45] The institute argues that Arizona has retained roughly 85 percent of its original land grant as physical land, where states like New Mexico liquidated more land early and invested the proceeds in capital markets and mineral production. Over the last century, Arizona's K-12 land trust has produced approximately $5.8 billion in cumulative distributions; CSI estimates that under a more aggressive early-liquidation-and-investment strategy (1913–1923), the fund could be worth on the order of $163 billion today, against the actual combined ~$19 billion (PLETF plus remaining land value).[^az-46] The counterfactual is contested — and other observers point out that the New Mexico corpus advantage is driven primarily by oil-and-gas royalty inflows from federally shared and state-trust mineral lands, not by liquidation timing.[^az-47] Whatever the precise mix of causes, the order of magnitude is consistent: Arizona's PLETF, at $8–10 billion, is a fraction of New Mexico's roughly $30 billion. Same federal text. Same admission date. Same quadrupled grant. Different outcomes.
+
+The lesson Arizona offers the rest of the project is, then, doubled. On the architectural side, the 1910 Act demonstrates what maximal federal trust language looks like — express trust, breach-of-trust label, automatic nullity for substandard dispositions, and federal-AG enforcement — and *Lassen* and *Kadish* demonstrate that the language can be enforced when invoked. On the operational side, Arizona demonstrates that even maximal federal architecture does not guarantee maximal results. An appointed Commissioner accountable to the Governor produces different stewardship from an elected Commissioner accountable to the voters. A century of submarket grazing leases produces a smaller corpus than a century of disciplined market pricing would have produced. A failure to price groundwater on agricultural leases produces continuing fiduciary exposure that no architectural reform can fix without operational follow-through. And a 6.9% payout rate stretched across a decade produces beneficiary distributions today at the cost of corpus tomorrow — a tradeoff section 28 does not make for the trustee.
+
+Arizona is the marquee comparator to New Mexico in the project's seven-pillar architecture argument: same federal floor, different state architecture, different outcomes. It is also the doctrinal jurisdiction of record for modern fiduciary enforcement under any 1910-template state, by virtue of *Lassen* and *Kadish*. And it is, increasingly, the modern proving ground — through the Fondomonte audit and the unresolved groundwater question — for whether section 28's "natural products" reach can be extended to the resources that twenty-first-century trust beneficiaries most need their trustees to defend. The text says it can. Arizona will be where that proposition is tested.
+
+---
+
+## Footnotes
+
+[^az-1]: New Mexico-Arizona Enabling Act of June 20, 1910, ch. 310, § 28, 36 Stat. 557, 574–75, https://govtrackus.s3.amazonaws.com/legislink/pdf/stat/36/STATUTE-36-Pg557.pdf; Arizona State Library, "Statutes At Large Volume 36 Page 557," https://azlibrary.gov/statehood-docs/739; Arizona State Library LOC-derived scan, https://apps.azlibrary.gov/files/docs/statehood/36Stat557_from_LOC_Collection.pdf.
+
+[^az-2]: Office of the Arizona State Treasurer, "Land Endowment Fund," https://www.aztreasury.gov/land-endowment-fund; Office of the Arizona State Treasurer, "June 30, 2024 Financial Report," https://www.azauditor.gov/sites/default/files/2024-10/OfficeOfTheArizonaStateTreasurerJune30_2024FinancialReport.pdf. New Mexico's Land Grant Permanent Fund corpus order-of-magnitude figure is drawn from the project's New Mexico file; comparative source in the Common Sense Institute report cited *infra* note 45.
+
+[^az-3]: Act of June 20, 1910, ch. 310, 36 Stat. 557, https://govtrackus.s3.amazonaws.com/legislink/pdf/stat/36/STATUTE-36-Pg557.pdf.
+
+[^az-4]: *Compare* New Mexico-Arizona Enabling Act § 10 (New Mexico trust provisions), *with id.* § 28 (Arizona trust provisions). The substantive trust language is parallel; the section numbers differ. *See also* Arizona Revised Statutes Enabling Act § 28 (FindLaw codification), https://codes.findlaw.com/az/enabling-act/az-rev-st-enabling-act-sec-28/.
+
+[^az-5]: Act of June 20, 1910, ch. 310, § 24, 36 Stat. 557, 572.
+
+[^az-6]: *Id.* § 28, 36 Stat. 574–75; Arizona Revised Statutes Enabling Act § 28, https://codes.findlaw.com/az/enabling-act/az-rev-st-enabling-act-sec-28/.
+
+[^az-7]: Arizona Statehood and Enabling Act Amendments of 1999, Pub. L. No. 106-133, 113 Stat. 1682, https://www.congress.gov/bill/106th-congress/house-bill/747.
+
+[^az-8]: Arizona State Land Department, "History of Arizona State Trust Land," https://land.az.gov/our-agency-mission/history-trust-land.
+
+[^az-9]: Arizona State Land Department, "Beneficiaries," https://land.az.gov/our-agency-mission/beneficiaries.
+
+[^az-10]: William H. Taft, "Message to the House of Representatives Returning Without Approval a Joint Resolution for the Admission of the Territories of New Mexico and Arizona into the Union as States" (Aug. 15, 1911), American Presidency Project, https://www.presidency.ucsb.edu/documents/message-the-house-representatives-returning-without-approval-joint-resolution-for-the.
+
+[^az-11]: Center for American Civics, "The Arizona Constitution: The 1912 Edition," https://civics.asu.edu/arizona-constitution/1912-edition; Arizona State Library, "State of Arizona Constitution Timeline," https://apps.azlibrary.gov/constitution/.
+
+[^az-12]: State Court Report, "The Arizona Constitution: Deeply Skeptical of Power," https://statecourtreport.org/our-work/analysis-opinion/arizona-constitution-deeply-skeptical-power.
+
+[^az-13]: Ariz. Const. art. X, §§ 1–11; Civics Education Initiative, "Arizona Constitution: Specified Duties of State Government," https://ccpr.wpcarey.asu.edu/sites/g/files/litvpz1326/files/azconstitution11-10.pdf; Ballotpedia, "Article 10, Arizona Constitution," https://ballotpedia.org/Article_10,_Arizona_Constitution.
+
+[^az-14]: Ariz. Const. art. XI, § 8, https://codes.findlaw.com/az/arizona-constitution/az-const-art-xi-sect-8.html.
+
+[^az-15]: A.R.S. tit. 37; Arizona State Land Department, "About the Department," https://land.az.gov/; Arizona Auditor General, "Land Department" Performance Audit Report 87-8, https://www.azauditor.gov/sites/default/files/2023-11/87-8_Report.pdf.
+
+[^az-16]: Ariz. Att'y Gen. Op. I00-028 (R00-042), https://www.azag.gov/opinions/i00-028-r00-042.
+
+[^az-17]: Arizona Auditor General Report 87-8, *supra* note 15.
+
+[^az-18]: *Lassen v. Arizona ex rel. Arizona Highway Department*, 385 U.S. 458, 460–62 (1967), https://supreme.justia.com/cases/federal/us/385/458/.
+
+[^az-19]: *State v. Lassen*, 99 Ariz. 161, 407 P.2d 747 (1965), https://law.justia.com/cases/arizona/supreme-court/1965/8620-0-0.html.
+
+[^az-20]: *Lassen*, 385 U.S. at 463–66.
+
+[^az-21]: *Id.* at 465–69.
+
+[^az-22]: *Mayer Unified School Dist. v. Winkleman*, 219 Ariz. 562, 201 P.3d 523, ¶¶ 2–3 (2009) (recounting 1929-onward uncompensated easement practice and *Lassen* recovery).
+
+[^az-23]: *Gladden Farms, Inc. v. State*, 129 Ariz. 516, 520–21, 633 P.2d 325, 329–30 (1981), https://law.justia.com/cases/arizona/supreme-court/1981/15374-2.html.
+
+[^az-24]: *City of Sierra Vista v. Babbitt*, 129 Ariz. 524, 633 P.2d 333 (1981), https://law.justia.com/cases/arizona/supreme-court/1981/15360-2.html.
+
+[^az-25]: *Deer Valley Unified School District v. Superior Court*, 157 Ariz. 537, 540–41, 760 P.2d 537, 540–41 (1988), https://law.justia.com/cases/arizona/supreme-court/1988/cv-86-0577-t-3.html.
+
+[^az-26]: *Fain Land & Cattle Co. v. Hassell*, 163 Ariz. 587, 596–98, 790 P.2d 242, 251–53 (1990), https://law.justia.com/cases/arizona/supreme-court/1990/cv-89-0186-sa-2.html.
+
+[^az-27]: *Kadish v. Arizona State Land Department*, 155 Ariz. 484, 496, 747 P.2d 1183, 1195 (1987), https://law.justia.com/cases/arizona/supreme-court/1987/cv-86-0238-t-3.html, *aff'd in relevant part*, 858 F.2d 1316 (9th Cir. 1988).
+
+[^az-28]: *ASARCO Inc. v. Kadish*, 490 U.S. 605, 630–33 (1989), https://supreme.justia.com/cases/federal/us/490/605/.
+
+[^az-29]: *Farmers Investment Co. v. Pima Mining Co.*, 111 Ariz. 56, 57–58, 523 P.2d 487, 488–89 (1974), https://law.justia.com/cases/arizona/supreme-court/1974/11439-0.html.
+
+[^az-30]: *Rumery v. Baier*, 231 Ariz. 275, 294 P.3d 113, ¶¶ 1–8, 23–26 (App. 2011), https://law.justia.com/cases/arizona/court-of-appeals-division-one-published/2011/cv-10-0807.html.
+
+[^az-31]: Arizona Auditor General, Performance Audit Report 97-6, "Arizona State Land Department," https://www.azauditor.gov/sites/default/files/2023-11/97-6.pdf.
+
+[^az-32]: *Id.*
+
+[^az-33]: A.R.S. § 37-283, https://www.azleg.gov/ars/37/00283.htm; A.R.S. § 37-285, https://www.azleg.gov/ars/37/00285.htm.
+
+[^az-34]: *Forest Guardians v. Wells*, 201 Ariz. 255, 257–63, 34 P.3d 364, 366–72, ¶¶ 1–27 (2001), https://law.justia.com/cases/arizona/supreme-court/2001/cv-00-0177-pr-1.html. The case divided the court; the dissent emphasized the Commissioner's withdrawal and classification authority, while the majority framed the rejection as an error of law.
+
+[^az-35]: Arizona Auditor General, Special Audit Report 24-101, "Arizona State Land Department — Assessment of Department's agricultural leasing process, groundwater reporting mechanisms, and Fondomonte's leases," https://www.azauditor.gov/sites/default/files/2024-02/24-101_Report_1.pdf.
+
+[^az-36]: Arizona Secretary of State, 1998 Publicity Pamphlet, Proposition 102, https://apps.azsos.gov/election/1998/Info/PubPamphlet/prop102.html; Arizona Statehood and Enabling Act Amendments of 1999, *supra* note 7.
+
+[^az-37]: Ariz. Const. art. X, § 12 (added 2010); Ballotpedia, "Article 10, Arizona Constitution," *supra* note 13; 50Constitutions, "Arizona Constitution Article X § 12," https://50constitutions.org/az/constitution/section-id-133473.
+
+[^az-38]: Arizona Secretary of State, 2012 Publicity Pamphlet, Proposition 118, https://apps.azsos.gov/election/2012/info/PubPamphlet/english/Prop118.htm.
+
+[^az-39]: Arizona Secretary of State, Proposition 123 ballot language, https://apps.azsos.gov/election/2016/Special/PropInfo/123-BallotLanguage.pdf; Ballotpedia, "Arizona Education Finance Amendment, Proposition 123 (May 2016)," https://ballotpedia.org/Arizona_Education_Finance_Amendment,_Proposition_123_(May_2016); Arizona Joint Legislative Budget Committee, "Proposition 123 of 2016 — Program Summary," https://www.azjlbc.gov/units/prop123of2016.pdf.
+
+[^az-40]: *Pierce v. Ducey*, 965 F.3d 1085, 1088–92 (9th Cir. 2020), https://law.justia.com/cases/federal/appellate-courts/ca9/19-17071/19-17071-2020-07-21.html.
+
+[^az-41]: AZ JLBC Proposition 123 Program Summary, *supra* note 39.
+
+[^az-42]: Arizona State Land Department, "Beneficiaries," *supra* note 9.
+
+[^az-43]: Arizona State Land Department, "FY 2024 Annual Report," https://land.az.gov/sites/default/files/2024-09/FY%202024%20Annual%20Report.pdf; Arizona Joint Legislative Budget Committee, "FY 2024 Appropriations Report — State Land Department," https://www.azjlbc.gov/24AR/lan.pdf; Office of the Arizona State Treasurer, "June 30, 2024 Financial Report," *supra* note 2.
+
+[^az-44]: ASLD FY 2024 Annual Report, *supra* note 43.
+
+[^az-45]: Common Sense Institute, "Building What Was Promised — Correcting the Missed Opportunity of Arizona's Land Grant," https://www.commonsenseinstituteus.org/arizona/research/energy-and-our-environment/building-what-was-promised-correcting-the-missed-opportunity-of-arizonas-land-grant-while-addressing-its-growing-need-for-space; Arizona Free News, "Report Finds Arizona Wasted Economic Opportunities Of State Trust Lands," https://azfreenews.com/2025/11/report-finds-arizona-wasted-economic-opportunities-of-state-trust-lands/.
+
+[^az-46]: *Id.*
+
+[^az-47]: KJZZ, "Policy expert argues Arizona has failed at trust land management over the last 100 years," https://www.kjzz.org/the-show/2025-12-23/policy-expert-argues-arizona-has-failed-at-trust-land-management-over-the-last-100-years; KJZZ, "GOP lawmakers question management of AZ trust land," https://www.kjzz.org/politics/2025-12-12/gop-lawmakers-question-management-of-az-trust-land-accuse-hobbs-of-demonizing-some-industries.
+
+[^az-42a]: Advocates for School Trust Lands, *Arizona Trust Lands Report* (Tonia Day, FY 2024), https://www.schooltrustlands.org/what-states-have-school-trust-lands/azizona (current Commissioner Robyn Sahid; Director of Endowments Tim White; ASLD office at 1110 West Washington in Phoenix; 542,961 acres of school trust caught in federal designations; thirteen FY 2024 auctions generating $242 million; 7,200 acres treated for fire suppression; ~60/40 equity/fixed-income allocation; 10-year annualized total return of 8.24 percent on the Permanent Common School Fund). The ASTL slug "azizona" is a typo in the source URL; the page itself concerns Arizona.

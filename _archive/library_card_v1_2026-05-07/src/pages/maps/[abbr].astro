@@ -1,0 +1,298 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import RoomLayout from '../../layouts/RoomLayout.astro';
+import mapRoomData from '../../data/map_room_states.json';
+
+type StateRecord = {
+  abbr: string;
+  fips: string;
+  state: string;
+  tier: 'Strong' | 'Good' | 'Moderate' | 'Liquidated';
+  originalGrantAcres: number | null;
+  currentSurfaceAcres: number;
+  currentMineralAcres: number | null;
+  beneficiary: string;
+  agency: string;
+  agencyURL: string;
+  gisURL: string | null;
+  contactName: string | null;
+  contactEmail: string | null;
+  contactPhone: string | null;
+  summary: string;
+};
+
+const data = mapRoomData as unknown as {
+  _grayStates: string[];
+  states: StateRecord[];
+};
+
+type BespokeProps = { kind: 'bespoke'; entry: CollectionEntry<'maps'> };
+type TemplateProps = { kind: 'template'; record: StateRecord };
+type GrayProps = { kind: 'gray'; abbr: string; name: string };
+type Props = BespokeProps | TemplateProps | GrayProps;
+
+const GRAY_NAMES: Record<string, string> = {
+  me: 'Maine', vt: 'Vermont', nh: 'New Hampshire', ma: 'Massachusetts',
+  ct: 'Connecticut', ri: 'Rhode Island', ny: 'New York', nj: 'New Jersey',
+  pa: 'Pennsylvania', de: 'Delaware', md: 'Maryland', va: 'Virginia',
+  nc: 'North Carolina', sc: 'South Carolina', ga: 'Georgia',
+  ky: 'Kentucky', tn: 'Tennessee', wv: 'West Virginia',
+};
+
+export async function getStaticPaths() {
+  // getStaticPaths runs in an isolated scope and cannot reference the
+  // module-level `data` const (Astro hoists this function). Re-derive
+  // from the JSON import directly.
+  const json = mapRoomData as unknown as {
+    _grayStates: string[];
+    states: StateRecord[];
+  };
+
+  const bespoke = await getCollection('maps');
+  const bespokeAbbrs = new Set(bespoke.map((e) => e.data.abbr));
+
+  const grayNames: Record<string, string> = {
+    me: 'Maine', vt: 'Vermont', nh: 'New Hampshire', ma: 'Massachusetts',
+    ct: 'Connecticut', ri: 'Rhode Island', ny: 'New York', nj: 'New Jersey',
+    pa: 'Pennsylvania', de: 'Delaware', md: 'Maryland', va: 'Virginia',
+    nc: 'North Carolina', sc: 'South Carolina', ga: 'Georgia',
+    ky: 'Kentucky', tn: 'Tennessee', wv: 'West Virginia',
+  };
+
+  const paths: Array<{ params: { abbr: string }; props: Props }> = [];
+
+  // Bespoke pages take precedence (OR, UT).
+  for (const entry of bespoke) {
+    paths.push({
+      params: { abbr: entry.data.abbr },
+      props: { kind: 'bespoke', entry } as BespokeProps,
+    });
+  }
+
+  // Template-rendered states: every JSON state that doesn't have a
+  // bespoke markdown override.
+  for (const s of json.states) {
+    if (bespokeAbbrs.has(s.abbr)) continue;
+    paths.push({
+      params: { abbr: s.abbr },
+      props: { kind: 'template', record: s } as TemplateProps,
+    });
+  }
+
+  // Gray-state thin pages — friendlier than a 404 for a curious reader
+  // who guessed the URL.
+  for (const abbr of json._grayStates) {
+    paths.push({
+      params: { abbr },
+      props: {
+        kind: 'gray',
+        abbr,
+        name: grayNames[abbr] ?? abbr.toUpperCase(),
+      } as GrayProps,
+    });
+  }
+
+  return paths;
+}
+
+const props = Astro.props as Props;
+const num = new Intl.NumberFormat('en-US');
+
+function fmtAcres(n: number | null | undefined, options?: { liquidatedFallback?: boolean }) {
+  if (n === null || n === undefined) return null;
+  if (n === 0 && options?.liquidatedFallback) return '0 (residual permanent fund only)';
+  return `≈${num.format(n)}`;
+}
+
+let layoutTitle = '';
+let layoutSubtitle: string | undefined;
+let stateInfo: { iso: string; name: string } | undefined;
+
+if (props.kind === 'bespoke') {
+  layoutTitle = props.entry.data.state;
+  layoutSubtitle = `Map Room — Transparency tier: ${props.entry.data.tier}`;
+  stateInfo = { iso: props.entry.data.abbr.toLowerCase(), name: props.entry.data.state };
+} else if (props.kind === 'template') {
+  layoutTitle = props.record.state;
+  layoutSubtitle = `Map Room — Transparency tier: ${props.record.tier}`;
+  stateInfo = { iso: props.record.abbr.toLowerCase(), name: props.record.state };
+} else {
+  layoutTitle = props.name;
+  layoutSubtitle = 'Map Room — No federal Section 16 grant';
+  stateInfo = { iso: props.abbr.toLowerCase(), name: props.name };
+}
+
+const Content =
+  props.kind === 'bespoke' ? (await props.entry.render()).Content : null;
+
+const sourceId =
+  props.kind === 'bespoke'
+    ? `maps-${props.entry.data.abbr}-bespoke`
+    : props.kind === 'template'
+      ? `maps-${props.record.abbr}-template`
+      : `maps-${props.abbr}-gray`;
+---
+
+<RoomLayout
+  room="maps"
+  state={stateInfo}
+  title={layoutTitle}
+  subtitle={layoutSubtitle}
+  width="prose"
+  sourceId={sourceId}
+>
+  <p class="mt-4">
+    <a href="/maps/" class="text-sm text-blue-700 underline hover:text-blue-900">
+      ← Back to the Map Room
+    </a>
+  </p>
+
+  {props.kind === 'bespoke' && Content && (
+    <article class="prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline [&>h1:first-child]:hidden">
+      <Content />
+    </article>
+  )}
+
+  {props.kind === 'template' && (
+    <article class="prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline">
+      <p>
+        <strong>Transparency tier: {props.record.tier}.</strong>{' '}
+        {props.record.summary}
+      </p>
+
+      <h2>At a glance</h2>
+      <table>
+        <tbody>
+          {props.record.originalGrantAcres !== null && (
+            <tr>
+              <th scope="row">Original federal grant acreage</th>
+              <td>
+                {props.record.originalGrantAcres === 0
+                  ? 'none'
+                  : fmtAcres(props.record.originalGrantAcres)}
+              </td>
+            </tr>
+          )}
+          {props.record.originalGrantAcres === null && (
+            <tr>
+              <th scope="row">Federal grant</th>
+              <td>State-created or §5(f) regime — no federal Section 16 grant</td>
+            </tr>
+          )}
+          <tr>
+            <th scope="row">Current trust-land surface acres</th>
+            <td>
+              {props.record.tier === 'Liquidated' || props.record.currentSurfaceAcres === 0
+                ? '0 (residual permanent fund only)'
+                : fmtAcres(props.record.currentSurfaceAcres)}
+            </td>
+          </tr>
+          {props.record.currentMineralAcres !== null && (
+            <tr>
+              <th scope="row">Current trust-land mineral acres</th>
+              <td>{fmtAcres(props.record.currentMineralAcres)}</td>
+            </tr>
+          )}
+          <tr>
+            <th scope="row">Beneficiary</th>
+            <td>{props.record.beneficiary}</td>
+          </tr>
+          <tr>
+            <th scope="row">Managing agency</th>
+            <td>{props.record.agency}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>To learn more</h2>
+      <ul>
+        <li>
+          <strong>Agency:</strong>{' '}
+          <a href={props.record.agencyURL} target="_blank" rel="noopener">
+            {props.record.agency}
+          </a>
+        </li>
+        {props.record.gisURL && (
+          <li>
+            <strong>Public GIS / parcel viewer:</strong>{' '}
+            <a href={props.record.gisURL} target="_blank" rel="noopener">
+              {props.record.gisURL}
+            </a>
+          </li>
+        )}
+        {(props.record.contactName || props.record.contactEmail || props.record.contactPhone) && (
+          <li>
+            <strong>Communications contact:</strong>{' '}
+            {props.record.contactName ?? ''}
+            {props.record.contactEmail && (
+              <>
+                {' '}({' '}
+                <a href={`mailto:${props.record.contactEmail}`}>{props.record.contactEmail}</a>
+                {props.record.contactPhone ? `, ${props.record.contactPhone}` : ''}
+                {' '})
+              </>
+            )}
+            {!props.record.contactEmail && props.record.contactPhone && (
+              <> ({props.record.contactPhone})</>
+            )}
+          </li>
+        )}
+      </ul>
+
+      {props.record.tier === 'Liquidated' ? (
+        <p>
+          This page is a Phase-0 stub. A complete report on the original grant,
+          the disposition history, and the residual permanent-fund administration
+          is forthcoming.
+        </p>
+      ) : (
+        <p>
+          This is a Phase-0 stub. A complete transparency report — covering the
+          original grant, current footprint, surface vs. mineral estate,
+          state-specific quirks, and a citizen-advocate workflow for verifying a
+          single parcel — is forthcoming as the Map Room build-out continues.
+          Anyone who has corrections or supplements is invited to contribute via
+          the Library contact form.
+        </p>
+      )}
+
+      <hr />
+      <p>
+        <em>
+          Last updated 2026-05-05. Source: Library research synthesis, on file in
+          the primary-source archive.
+        </em>
+      </p>
+    </article>
+  )}
+
+  {props.kind === 'gray' && (
+    <article
+      class="prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline"
+      data-pagefind-ignore
+    >
+      <p>
+        <strong>{props.name}</strong> never received a federal Section 16
+        school-trust grant. Like the other twelve original colonies and the few
+        post-1789 admissions carved from non-public-domain territory
+        (Kentucky, Tennessee, Maine, Vermont, West Virginia), {props.name}{' '}
+        entered the Union without the federal section-per-township floor that
+        defined every public-land state's school-trust architecture from 1803
+        onward.
+      </p>
+      <p>
+        That doesn't mean {props.name} has no school finance — every state
+        funds public education — but it does mean there is no federally-derived
+        trust-land cadastre to map, and so the Map Room has no transparency
+        report for this state. The Library's Reading Room covers the
+        state-derived path of school finance in <a href="/reading/statehood-without-federal-floor/">
+          Chapter 2: Statehood Without a Federal Floor
+        </a>.
+      </p>
+      <p>
+        For the federal-grant story, return to the <a href="/maps/">Map Room</a>{' '}
+        and click any colored state on the map.
+      </p>
+    </article>
+  )}
+</RoomLayout>

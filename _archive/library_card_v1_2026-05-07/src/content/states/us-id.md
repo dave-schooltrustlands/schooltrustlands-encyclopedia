@@ -1,0 +1,145 @@
+---
+name: Idaho
+fips: "16"
+iso: US-ID
+admissionNumber: 43
+admittedDate: 1890-07-03
+eraCohort: 5
+eraName: Reconstruction and the Western Stack
+federalGrantAcres: 2963698
+governanceForm: "State Board of Land Commissioners (constitutional, Article IX § 7): Governor, Secretary of State, Attorney General, State Controller, and Superintendent of Public Instruction. Investment of the permanent endowment fund corpus is handled by the Endowment Fund Investment Board (constitutional)."
+permanentFundCorpus: null
+latestDistribution: null
+trustAcresRemaining: 2100000
+trustAcresRemainingConfidence: verified
+trustAcresRemainingAsOf: "FY 2024"
+trustAcresRemainingSource: "ASTL Idaho School Trust Lands and Fund (Tonia Day, FY 2024) and Idaho Department of Lands. From the original ~3M-acre 1890 grant, schools today hold approximately 2.1 million surface acres and almost 3 million mineral acres."
+substrateVersion: "1.3"
+lastReviewed: 2026-05-01
+---
+
+*Admission #43 (July 3, 1890). Era: Late 19th Century.*
+
+Idaho's school-trust story is, on paper, one of the more architecturally substantial frameworks of the Late 19th Century admission cohort, and in practice one of the more vigorously litigated. The state entered the Union in 1890 with a doubled federal grant of sections sixteen and thirty-six, but the load-bearing weight of its trust regime sits in the 1889 state constitution rather than in the federal Admission Act. Article IX of that constitution does four distinctive things at once: it declares the public school endowment fund inviolate; it pledges the state's guaranty against loss; it names the five highest elected officials of the state as ex officio trustees; and, by amendment, it created the constitutional architecture under which a separate Endowment Fund Investment Board now manages the financial corpus. The Idaho Supreme Court, in a long and reasonably consistent line running from 1905 to 2012, has enforced that architecture against statutes and Land Board decisions that strayed from it. Idaho is, by the project's standards, a comparatively well-defended trust — and the case law that defends it is one of the more useful doctrinal libraries in the country.[^id-1]
+
+<blockquote class="pull-quote">
+  <p>Idaho is, by the project's standards, a comparatively well-defended trust — and the case law that defends it is one of the more useful doctrinal libraries in the country.</p>
+  <cite>From the state dossier for Idaho</cite>
+</blockquote>
+
+## Founding and the federal grant
+
+Idaho was admitted on July 3, 1890, by an Act of Congress that ran several pages in the Statutes at Large.[^id-2] The Admission Act was passed contemporaneously with Wyoming's, six months after the 1889 omnibus that had admitted North Dakota, South Dakota, Montana, and Washington. It granted the standard doubled section-16-and-36 template established for post-Ohio admissions: "sections numbered sixteen and thirty-six in every township of said State, and where such sections or any parts thereof have been sold or otherwise disposed of by or under the authority of any act of Congress, other lands equivalent thereto . . . are hereby granted to said State for the support of common schools."[^id-3] The total grant, calculated against Idaho's surveyed townships, comes to approximately three million acres at admission for the common-school grant, with additional institutional grants for the university, agricultural college, normal schools, capitol building, penitentiary, and other named beneficiaries.[^id-4] The federal text predates the 1894 Utah Enabling Act's quadrupled grant and the 1910 New Mexico-Arizona Enabling Act's express in-trust language. It uses the older, purposive form — "for the support of common schools" — without the fiduciary vocabulary, restoration mechanism, or federal Attorney General enforcement provision that Congress would later write into the New Mexico and Arizona compacts.[^id-5] But the U.S. Supreme Court had already supplied the doctrinal floor in *Cooper v. Roberts* (1855), holding that admission-act school grants of this kind created enforceable obligations as "sacred" duties on state public faith.[^id-6] *Lassen v. Arizona Highway Department* (1967) restated the principle in modern fiduciary terms, requiring full appraised-value compensation for trust-land use.[^id-7] Idaho holds its sections sixteen and thirty-six against that doctrinal floor.
+
+## Constitutional architecture
+
+The architectural weight of the Idaho regime, however, comes from Article IX of the 1889 state constitution, which Idaho voters ratified on November 5, 1889, and which took effect at admission eight months later. Article IX is, by the standards of its era, an unusually full school-trust framework. Section 3 establishes the public school permanent endowment fund as the proceeds of school lands and other named sources, declares that the principal "shall forever remain inviolate," and directs that interest and other income be applied exclusively to the support of public schools.[^id-8] Section 4 contains a state guaranty against loss or diversion of the public school fund — a structural commitment analogous to Utah's guaranty clause and rare among public-land states.[^id-9] Section 7 establishes the State Board of Land Commissioners as a five-member ex officio constitutional board comprising the Governor, Secretary of State, Attorney General, State Auditor (now State Controller), and Superintendent of Public Instruction, vesting in the board "direction, control, and disposition of the public lands of the state, under such regulations as may be prescribed by law."[^id-10] Section 8 directs the disposition of school lands, imposes minimum-price and maximum-acreage limits, requires public auction, and preserves the trust character of the proceeds.[^id-11] Section 11, as later amended, supplies broad trustee-law investment authority for the permanent endowment fund.[^id-12]
+
+The choice to name five elected officials, rather than three as Oregon had done a generation earlier, was deliberate. The Idaho framers wanted political accountability on the trustee body to be diffuse rather than concentrated, with the Attorney General and the Superintendent of Public Instruction added to the Governor, Secretary of State, and Auditor that most western states placed on their land boards. The Superintendent's seat ties an explicit education-system officer to the trustee body; the Attorney General's seat ties the state's chief law officer to it. Both have proven consequential in Idaho's modern litigation.
+
+A note on the project's prior characterization is in order. An earlier substrate pass described the Endowment Fund Investment Board (EFIB) as a constitutionally created body. That is not quite right, and the correction matters. The EFIB itself reports that the Idaho Legislature created the board in 1969 after voters approved a 1968 amendment to Article IX, section 11. Section 11 supplies the constitutional investment authority; the board that exercises that authority is statutory.[^id-13] What is constitutionally distinctive — and the substantive point that survives the correction — is the structural separation of investment authority from land-management authority. The Land Board, sitting as Article IX section 7's ex officio body, manages the lands and directs the Idaho Department of Lands. The EFIB, sitting under section 11's investment authority, manages the financial corpus. That split between management and investment is not the universal pattern among public-land states; in Utah, for example, the School and Institutional Trust Lands Administration and the State Treasurer divide the same functions only by statute, without the constitutional anchor on the investment side.[^id-14]
+
+## A century of case law
+
+Idaho's case law has, since 1905, repeatedly tested the architecture against state action and corrected the state when state action drifted from constitutional command. The first significant case was *Roach v. Gooding* in 1905, which construed the Admission Act's educational land grants and held that income from university land-sale and timber proceeds could be used only for the federally specified educational purposes.[^id-15] Five years later, in *Balderston v. Brady* (1910), the Idaho Supreme Court held that the State Board of Land Commissioners had no constitutional or statutory authority to relinquish or waive Idaho's title to sections sixteen and thirty-six granted for common-school purposes. *Balderston* is best characterized as a judicial prevention of attempted trust-asset abandonment rather than a remedy for completed diversion, but it established early in the state's history that courts would restrain ultra vires acts affecting school trust lands even when the trustees themselves were the ones proposing the abandonment.[^id-16] *Pike v. State Board of Land Commissioners* (1911) supplied the discretion side of the balance: the court characterized the Land Board as trustee or business manager for state lands and observed that courts will not substitute their business judgment for the Board's on policy or expediency, so long as the Board does not violate the constitution or statutes.[^id-17] *Pike* and *Balderston* together drew the bounded-discretion line that every later Idaho school-trust case has worked within.
+
+The first clean enforcement of the Article IX section 8 maximum-return mandate came in *East Side Blaine County Livestock Ass'n v. State Board of Land Commissioners* (1921). The court required the Land Board to put a school-land lease up for public auction where competitive bidding was constitutionally and statutorily required, observing that "the dominant purpose" of the relevant Article IX provisions and implementing statutes was "to obtain the greatest possible amount" for school-land leases for the school funds.[^id-18] *East Side Blaine County* is the earliest Idaho articulation of what Margaret Bird's framing would call the trust-beneficiary return principle — that lease and sale terms exist to serve the schoolchildren beneficiaries, not the lessees, the local economy, or the state's general fiscal convenience.
+
+Two 1939 decisions extended the doctrine in different directions. *United States v. Fenton*, decided in the federal District of Idaho, distinguished Idaho's sovereign revenues from common-school funds held in trust under the federal grant and state pledge, supporting the proposition that the school fund "does not belong to the state in its proprietary capacity" but is held for the benefit of the common schools.[^id-19] *State v. Peterson*, decided by the Idaho Supreme Court the same year, held that public school endowment funds are "trust funds of the highest order" and that the state, acting as trustee, was not barred by ordinary statutes of limitation from foreclosing a mortgage securing a loan of public school endowment money. *Peterson* is one of the strongest Idaho-jurisdiction statements that trust-fund recovery duties override ordinary state-funds treatment.[^id-20]
+
+The mid-twentieth century saw a series of Article IX amendments that adjusted operational details — the 1936 land-exchange authorization, the 1942 reduction of the minimum sale price from ten dollars to five dollars per acre, and the 1952 rewrite of disposition language — and a 1968 amendment to section 11 that opened the door to the 1969 legislative creation of EFIB.[^id-21] The next significant case-law moment came in 1986. *Moon v. State Board of Land Commissioners* held that interest earned on agency asset accounts containing school-land revenues was part of "the total money received from school lands" and had to be used for protection of the trust res or for school purposes; crediting that interest to the general fund violated the school endowment grants and the Idaho Constitution.[^id-22] *Moon* is a clean Idaho example of what the project's framework calls concealed conversion through cash-management accounting — the kind of leakage that does not show up as an asset sale but quietly drains beneficiary income year after year. The Idaho Attorney General applied *Moon* in a 1992 informal guideline to IDL Director Stanley F. Hamilton, advising that endowment-land interest had to be used for the trust res or for public schools and could not be credited to a general account; the AG's office described the constitutional command as plain.[^id-23]
+
+The most consequential modern Idaho school-trust litigation came at the turn of the twenty-first century. The *Idaho Watersheds Project* line of cases challenged Land Board administration of grazing leases and related statutory preferences. In one 1999 decision, the Idaho Supreme Court invalidated Idaho Code section 58-310B because it required the Land Board to consider effects on the livestock industry, the state economy, and local communities in grazing-lease decisions — criteria that benefited non-beneficiaries at the expense of the trust's maximum-return mandate under Article IX, section 8. The court held that statutory criteria favoring non-beneficiaries cannot override the constitutional fiduciary command to the Land Board.[^id-24] In a companion 1999 decision, the court invalidated voter-approved House Joint Resolution 6, which had purported to amend Article IX, sections 4 and 8; the Secretary of State now records HJR 6 as approved by voters but not effective, citing the *Idaho Watersheds* decision.[^id-25] The 1998-1999 amendment-and-litigation arc is one of the more striking moments in Idaho school-trust history: voters approved two amendment packages in 1998 (HJR 6 and HJR 8); HJR 6 was struck down by the state's highest court the next spring; voters then approved a narrower section 4 amendment in 2000 (HJR 1) authorizing a Land Bank Fund to hold sale proceeds temporarily for replacement-land acquisition, with unused proceeds and earnings returned to the permanent fund.[^id-26] The Secretary of State's official ballot pamphlet for HJR 1 preserves the contest: supporters framed the measure as a way to exchange unproductive land for productive land; opponents warned it could accelerate sell-offs and divert investment money from the permanent fund.[^id-27]
+
+The contemporary capstone of Idaho's school-trust case law is the *Wasden* line. *Wasden v. Board of Land Commissioners* (2010) held that although Article IX, section 8 gives the Land Board "broad discretion" to manage endowment property for "maximum long-term financial benefit," that discretion is not unrestrained: where the Board violates statutory law, it acts beyond the discretion granted by the Idaho Constitution.[^id-28] The 2012 *Wasden* decision, in continuing cottage-site lease litigation, leaned on *East Side Blaine County* and *Idaho Watersheds* to explain auction and maximum-return requirements, and reinforced that trustee discretion is measured against both Article IX and implementing statutes.[^id-29] The same year, in *Silver Eagle Mining Co. v. State*, the Idaho Supreme Court resolved title claims to mining claims on school endowment lands on claim-preclusion grounds but observed in dictum that both the Idaho Admission Act and Article IX, section 8 provide that school endowment lands may be disposed of only at public sale, and questioned whether equitable estoppel could divest the state of interests in school endowment lands.[^id-30] The Idaho Attorney General's 2010 Opinion No. 10-1, on the Endowment Fund Investment Board's administration of the Credit Enhancement Program for school district bonds, applied the same fiduciary frame to the financial-assets side, concluding that EFIB is bound by fiduciary duties imposed by the Admission Bill, the Idaho Constitution, and Idaho trust law, and that investment decisions must secure maximum long-term return and treat current and future beneficiaries impartially.[^id-31]
+
+A separate adequacy line — *Idaho Schools for Equal Educational Opportunity v. Evans* (1993) — must be distinguished from the Article IX trust line. *ISEEO* held that the Idaho Constitution's education clause imposes a state duty to provide a "thorough" system of public schools and that the existing funding scheme could be challenged for adequacy.[^id-32] The case construes the education clause rather than the Article IX trust provisions, and although it is the principal modern Idaho case at the intersection of education-clause and trust-funding litigation, it is not itself a school-trust enforcement decision against the state-as-trustee. The *ISEEO* line and the *Idaho Watersheds* / *Wasden* line address adjacent but distinct doctrinal questions; conflating them tends to understate the strength of Idaho's trust-enforcement record on the Article IX side.
+
+## The modern fund
+
+The contemporary architecture combines the constitutional five-member ex officio Land Board (which directs the Idaho Department of Lands, currently under Director Dustin Miller at 300 North 6th Street in Boise) with the statutory Endowment Fund Investment Board (which manages the permanent fund corpus under Article IX section 11's constitutional authority).[^id-33a] The EFIB itself is a nine-member body comprising six individuals "knowledgeable and experienced in financial matters and the placement or management of investment assets," one state senator, one state representative, and one public-school administrator.[^id-33a] The Idaho Department of Lands manages approximately 2.5 million acres of state endowment trust lands.[^id-33] On the revenue side, ASTL reports that timber dominates the operating mix at roughly 86 percent of total revenue, with rangeland, residential and commercial real estate, hunting and recreation, and oil-gas-and-mineral leases supplying the balance.[^id-33a] The EFIB-managed endowment fund balance was approximately $3.0 billion at the end of fiscal year 2023.[^id-34] In a comparison of returns on twelve sovereign-wealth funds prepared by the independent investment-consulting firm RVK, Idaho ranked fourth-highest over both five- and ten-year horizons — a striking placement given that the comparison set included far larger funds in Texas and New Mexico whose scale advantages access to many institutional investments.[^id-33a] On August 16, 2023, the Land Board approved a then-record $103.2 million distribution to endowment beneficiaries for fiscal year 2025.[^id-35] Idaho Department of Lands reported $52.3 million in fiscal year 2023 net income from endowment land at that point. Later public reporting has described another record FY2027 distribution of approximately $117.3 million, an endowment fund balance of approximately $3.6 billion, and $61.6 million in FY2025 IDL net revenue, though those later figures should be confirmed against IDL and EFIB annual reports before they are used as anchor numbers.[^id-36]
+
+Idaho's school-trust story is, then, the project's principal western example of a strong constitutional architecture vigorously defended by a long state-supreme-court line. The drift visible in some other states — quiet leakage, decades of inattention, beneficiary income disappearing into general-fund accounting without anyone in particular deciding to take it — is visible in Idaho mainly in the 1986 *Moon* episode, where it was caught and corrected. The directed-seizure pattern is visible in the 1998-1999 HJR 6 episode, where a constitutional amendment package designed to relax fiduciary discipline made it through both legislative and popular ratification before being struck down by the state's highest court on single-subject grounds. The recurring Idaho story, across the cases from *Roach* in 1905 through *Wasden* in 2012, is that the architectural commitments of Article IX have been treated by the Idaho courts as binding on the trustees, on the legislature, and on the voters in their amendment capacity. The two-board structure — ex officio Land Board for management, statutory EFIB under constitutional investment authority for the corpus — is the structural feature most worth prominent treatment in any cross-state rendering of the Idaho case. It is not, by itself, a guarantee of fiduciary performance; the *Idaho Watersheds* and *Wasden* litigation arose despite it. But it has, on the available record, supplied a more durable defense of the Idaho beneficiaries than the simpler arrangements found in some of Idaho's neighbors.
+
+<blockquote class="pull-quote">
+  <p>The architectural commitments of Article IX have been treated by the Idaho courts as binding on the trustees, on the legislature, and on the voters in their amendment capacity.</p>
+  <cite>From the state dossier for Idaho</cite>
+</blockquote>
+
+---
+
+## Footnotes
+
+[^id-1]: Idaho Admission Act, July 3, 1890, ch. 656, 26 Stat. 215, https://www.govinfo.gov/link/statute/26/217; Idaho Constitution, Article IX, https://legislature.idaho.gov/statutesrules/idconst/.
+
+[^id-2]: Idaho Admission Act, ch. 656, 26 Stat. 215, https://www.govinfo.gov/link/statute/26/217.
+
+[^id-3]: *Id.* § 4, 26 Stat. 215, 217.
+
+[^id-4]: *Id.* §§ 4-11; the approximately three-million-acre figure is derived from the standard township-section calculation across Idaho's surveyed townships and should be cross-checked against Idaho Department of Lands historical inventory and the Souder & Fairfax *State Trust Lands* survey.
+
+[^id-5]: Compare 1894 Utah Enabling Act, 28 Stat. 107 (quadrupled-section grant), and 1910 New Mexico-Arizona Enabling Act, 36 Stat. 557 (express in-trust, restoration, and federal Attorney General enforcement provisions), with the Idaho Admission Act's purposive "for the support of common schools" language.
+
+[^id-6]: *Cooper v. Roberts*, 59 U.S. (18 How.) 173 (1855), https://supreme.justia.com/cases/federal/us/59/173/.
+
+[^id-7]: *Lassen v. Arizona ex rel. Arizona Highway Department*, 385 U.S. 458 (1967), https://supreme.justia.com/cases/federal/us/385/458/.
+
+[^id-8]: Idaho Constitution, art. IX, § 3, https://law.justia.com/constitution/idaho/article-ix/section-3/.
+
+[^id-9]: Idaho Constitution, art. IX, § 4, https://law.justia.com/constitution/idaho/article-ix/section-4/.
+
+[^id-10]: Idaho Constitution, art. IX, § 7, https://law.justia.com/constitution/idaho/article-ix/section-7/. The State Auditor's office was renamed State Controller by amendment; the office's seat on the Land Board carried over.
+
+[^id-11]: Idaho Constitution, art. IX, § 8, https://law.justia.com/constitution/idaho/article-ix/section-8/.
+
+[^id-12]: Idaho Constitution, art. IX, § 11, https://law.justia.com/constitution/idaho/article-ix/section-11/.
+
+[^id-13]: Endowment Fund Investment Board, "History," https://efib.idaho.gov/history/ (the 1969 Idaho Legislature created EFIB after voters approved a 1968 amendment to Article IX, section 11); Idaho Secretary of State, Constitutional Amendment History 1960s-1970s, https://sos.idaho.gov/elect/inits/hst60_70.htm.
+
+[^id-14]: Compare Utah Code Ann. tit. 53C (School and Institutional Trust Lands Administration; statutory rather than constitutional split between management and investment).
+
+[^id-15]: *Roach v. Gooding*, 11 Idaho 244, 81 P. 642 (1905), https://case-law.vlex.com/vid/roach-v-gooding-889436584 (construing Idaho Admission Act §§ 5 and 8).
+
+[^id-16]: *Balderston v. Brady*, 17 Idaho 567, 107 P. 493 (1910), https://case-law.vlex.com/vid/balderston-v-brady-888462971.
+
+[^id-17]: *Pike v. State Board of Land Commissioners*, 19 Idaho 268, 287, 113 P. 447, 454 (1911), discussed in *Wasden v. Board of Land Commissioners*, https://law.justia.com/cases/idaho/supreme-court-civil/2010/wasden-20fix.html.
+
+[^id-18]: *East Side Blaine County Livestock Ass'n v. State Board of Land Commissioners*, 34 Idaho 807, 814, 198 P. 760, 763 (1921), https://app.midpage.ai/document/east-side-blaine-county-livestock-5171695.
+
+[^id-19]: *United States v. Fenton*, 27 F. Supp. 816, 819 (D. Idaho 1939), quoted in 1980 Idaho Att'y Gen. Ann. Rpt., Op. No. 80-18, https://ag.idaho.gov/content/uploads/2017/12/1980.pdf.
+
+[^id-20]: *State v. Peterson*, 61 Idaho 50, 97 P.2d 603 (1939), https://case-law.vlex.com/vid/state-v-peterson-6681-889067258.
+
+[^id-21]: Idaho Secretary of State, Constitutional Amendment History 1920s-1930s, https://sos.idaho.gov/elect/inits/hst20_30.htm; Constitutional Amendment History 1940s-1950s, https://sos.idaho.gov/elect/inits/hst40_50.htm; Constitutional Amendment History 1960s-1970s, https://sos.idaho.gov/elect/inits/hst60_70.htm.
+
+[^id-22]: *Moon v. State Board of Land Commissioners*, 111 Idaho 389, 394, 724 P.2d 125 (1986), discussed and quoted in 1992 Idaho Att'y Gen. Ann. Rpt. 114, https://ag.idaho.gov/content/uploads/2017/12/1992.pdf.
+
+[^id-23]: Selected Informal Guideline, Sept. 3, 1992, to Stanley F. Hamilton, Idaho Department of Lands, in 1992 Idaho Att'y Gen. Ann. Rpt. 111-115, https://ag.idaho.gov/content/uploads/2017/12/1992.pdf.
+
+[^id-24]: *Idaho Watersheds Project v. State Board of Land Commissioners*, 133 Idaho 64, 67, 982 P.2d 367, 370 (1999), https://caselaw.findlaw.com/id-supreme-court/1412199.html.
+
+[^id-25]: *Idaho Watersheds Project v. State Board of Land Commissioners*, 133 Idaho 55, 982 P.2d 358 (1999); Idaho Secretary of State, Constitutional Amendment History 1980s-1990s, https://sos.idaho.gov/elect/inits/hst80_90.htm.
+
+[^id-26]: Idaho Secretary of State, 1998 Constitutional Amendments, https://sos.idaho.gov/elect/inits/98amend.htm; 2000 Constitutional Amendments, https://archive.sos.idaho.gov/ELECT/Inits/2000/20AMEND.HTM.
+
+[^id-27]: Idaho Secretary of State, ballot arguments for HJR 1 (2000), https://sos.idaho.gov/elect/inits/00hjr_mn.htm; https://sos.idaho.gov/elect/inits/00hjr_st.htm.
+
+[^id-28]: *Wasden v. Board of Land Commissioners*, 150 Idaho 547, 249 P.3d 346 (2010), https://law.justia.com/cases/idaho/supreme-court-civil/2010/wasden-20fix.html.
+
+[^id-29]: *Wasden v. Board of Land Commissioners*, 153 Idaho 190, 280 P.3d 693 (2012), https://law.justia.com/cases/idaho/supreme-court-civil/2012/39084.html.
+
+[^id-30]: *Silver Eagle Mining Co. v. State*, 153 Idaho 176, 280 P.3d 679 (2012) (footnote 5), https://law.justia.com/cases/idaho/supreme-court-civil/2012/38059.html.
+
+[^id-31]: Idaho Att'y Gen. Op. No. 10-1 (2010), https://www.ag.idaho.gov/content/uploads/2018/04/Opinion10-1.pdf.
+
+[^id-32]: *Idaho Schools for Equal Educational Opportunity v. Evans*, 123 Idaho 573, 850 P.2d 724 (1993). Pin-cite from substrate; full holding to be confirmed against Idaho Reports.
+
+[^id-33]: Idaho Department of Lands, "State Board of Land Commissioners," https://www.idl.idaho.gov/about-us/land-board/.
+
+[^id-34]: Idaho Department of Lands, Press Release, "Endowment Beneficiaries to Receive Record High Distribution in Fiscal Year 2025" (Aug. 16, 2023), https://www.idl.idaho.gov/pressrelease/endowment-beneficiaries-to-receive-record-high-distribution-in-fiscal-year-2025/.
+
+[^id-35]: *Id.*
+
+[^id-36]: KOZE, "Endowment Beneficiaries to Receive Another Record High Distribution in Fiscal Year 2027" (Aug. 19, 2025), https://www.koze.com/2025/08/19/endowment-beneficiaries-to-receive-another-record-high-distribution-in-fiscal-year-2027/. The FY2027 figures should be confirmed against IDL and EFIB annual reports before being used as anchor numbers.
+
+[^id-33a]: Advocates for School Trust Lands, *Idaho School Trust Lands and Fund* (Tonia Day), https://www.schooltrustlands.org/what-states-have-school-trust-lands/idaho (current IDL Director Dustin Miller and Boise office address; nine-member EFIB composition under Idaho Code § 57-718; timber as ~86 percent of total revenue; RVK comparison ranking Idaho fourth-highest of twelve sovereign-wealth funds over five- and ten-year horizons).

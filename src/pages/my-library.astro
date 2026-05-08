@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../lib/supabase';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/sign-in?redirect=/my-library/');
+}
+
+let formMessage: { kind: 'ok' | 'err'; text: string } | null = null;
+
+if (Astro.request.method === 'POST') {
+  const fd = await Astro.request.formData();
+  const action = String(fd.get('action') ?? '');
+  if (action === 'remove') {
+    const id = String(fd.get('id') ?? '');
+    if (id) {
+      const { error } = await supabase
+        .from('bookmarks')
+        .delete()
+        .eq('user_id', user.id)
+        .eq('id', id);
+      formMessage = error
+        ? { kind: 'err', text: error.message }
+        : { kind: 'ok', text: 'Bookmark removed.' };
+    }
+  }
+}
+
+const { data: bookmarks } = await supabase
+  .from('bookmarks')
+  .select('id, url, title, created_at')
+  .eq('user_id', user.id)
+  .order('created_at', { ascending: false });
+
+const { data: profile } = await supabase
+  .from('profiles')
+  .select('display_name')
+  .eq('id', user.id)
+  .single();
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+
+const greeting = profile?.display_name
+  ? `Welcome back, ${profile.display_name}.`
+  : 'Welcome back.';
+---
+
+<BaseLayout
+  title="My Library · America's School Trust Library"
+  sourceId="my-library"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>My Library</h1>
+    <p class="kicker">{greeting}</p>
+
+    {formMessage && (
+      <div class:list={['flash', formMessage.kind]}>
+        <p>{formMessage.text}</p>
+      </div>
+    )}
+
+    {bookmarks && bookmarks.length > 0 ? (
+      <ul class="bookmark-list">
+        {bookmarks.map((b) => (
+          <li class="bookmark-item">
+            <div class="bookmark-meta">
+              <a class="bookmark-link" href={b.url}>
+                {b.title || b.url}
+              </a>
+              <p class="bookmark-url">{b.url}</p>
+              <p class="bookmark-date">
+                Saved {dateFmt.format(new Date(b.created_at))}
+              </p>
+            </div>
+            <form method="POST" class="bookmark-remove-form">
+              <input type="hidden" name="action" value="remove" />
+              <input type="hidden" name="id" value={b.id} />
+              <button type="submit" class="bookmark-remove">Remove</button>
+            </form>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="empty-state">
+        Your Library is empty. Add bookmarks while you read by clicking the
+        bookmark icon at the top of any page.
+      </p>
+    )}
+
+    <p class="library-footer">
+      <a href="/profile">Edit profile</a> &nbsp;·&nbsp;
+      <a href="/auth/sign-out">Sign out</a>
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      font-style: italic;
+      color: #475569;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .bookmark-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .bookmark-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .bookmark-item:first-child {
+      padding-top: 0;
+    }
+    .bookmark-meta {
+      flex: 1;
+      min-width: 0;
+    }
+    .bookmark-link {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .bookmark-url {
+      margin: 0.25rem 0 0;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: #94a3b8;
+      word-break: break-all;
+    }
+    .bookmark-date {
+      margin: 0.2rem 0 0;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+    .bookmark-remove-form {
+      flex: none;
+      margin: 0;
+    }
+    .bookmark-remove {
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      background: #fff;
+      color: var(--deep-navy, #1e3a5f);
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .bookmark-remove:hover {
+      background: #fef2f2;
+      border-color: #fca5a5;
+      color: #991b1b;
+    }
+    .empty-state {
+      padding: 2rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      color: #475569;
+      text-align: center;
+    }
+    .library-footer {
+      margin-top: 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: #475569;
+    }
+    .flash {
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.95rem;
+    }
+    .flash.ok {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+    }
+    .flash.err {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+    .flash p {
+      margin: 0;
+    }
+  </style>
+</BaseLayout>

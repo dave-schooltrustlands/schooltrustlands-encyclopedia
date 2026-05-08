@@ -1,0 +1,406 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import RoomLayout from '../../layouts/RoomLayout.astro';
+import StateDossier from '../../components/StateDossier.astro';
+import StateDossierCard from '../../components/StateDossierCard.astro';
+
+type EssayProps = { kind: 'essay'; entry: CollectionEntry<'essays'> };
+type StateProps = { kind: 'state'; entry: CollectionEntry<'states'> };
+type Props = EssayProps | StateProps;
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays');
+  const states = await getCollection('states');
+
+  const essayPaths = essays.map((entry) => ({
+    params: { slug: entry.slug.replace(/^\d+-/, '') },
+    props: { kind: 'essay' as const, entry },
+  }));
+
+  const statePaths = states.map((entry) => ({
+    params: { slug: entry.data.iso.toLowerCase() },
+    props: { kind: 'state' as const, entry },
+  }));
+
+  return [...essayPaths, ...statePaths];
+}
+
+const props = Astro.props as Props;
+
+// Sacred Compact interludes carry a distinct visual register (cream
+// background, italic display header) marking them apart from the analytic
+// chapters they sit between. Detected by slug pattern; no schema change.
+const isInterlude =
+  props.kind === 'essay' &&
+  props.entry.slug.startsWith('sacred-compact-interlude-');
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const num = new Intl.NumberFormat('en-US');
+const usd = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+});
+
+const { Content } = await props.entry.render();
+
+// Series-aware navigation for essay pages. Both Sacred Compact essays
+// and Schools of the Republic chapters share the `essays` collection
+// but belong to two distinct reading orders (sourceWork). Build the
+// current entry's series so we can render an "all sections" jump ToC
+// near the top and prev/next at the bottom.
+type SeriesItem = { href: string; navTitle: string; isCurrent: boolean };
+type SeriesNav = {
+  seriesLabel: string;
+  series: SeriesItem[];
+  prev: SeriesItem | null;
+  next: SeriesItem | null;
+};
+let seriesNav: SeriesNav | null = null;
+
+if (props.kind === 'essay') {
+  const allEssays = await getCollection('essays');
+  const sourceWork = props.entry.data.sourceWork;
+  const seriesEntries = allEssays
+    .filter((e) => e.data.sourceWork === sourceWork)
+    .sort((a, b) => a.data.order - b.data.order);
+
+  // Trim "Sacred Compact: " prefix for nav display; SoR titles read
+  // fine as-is ("Chapter 1: …", "Prologue: …", etc.).
+  const navTitleOf = (t: string) => t.replace(/^Sacred Compact:\s*/, '').trim();
+
+  const series: SeriesItem[] = seriesEntries.map((e) => ({
+    href: `/reading/${e.slug.replace(/^\d+-/, '')}/`,
+    navTitle: navTitleOf(e.data.title),
+    isCurrent: e.slug === props.entry.slug,
+  }));
+  const idx = series.findIndex((s) => s.isCurrent);
+  const prev = idx > 0 ? series[idx - 1] : null;
+  const next = idx >= 0 && idx < series.length - 1 ? series[idx + 1] : null;
+  const seriesLabel = sourceWork.startsWith('Sacred Compact')
+    ? 'The Sacred Compact'
+    : 'Schools of the Republic';
+  seriesNav = { seriesLabel, series, prev, next };
+}
+
+// Cohort N → Reading Room chapter slug. Keys match the eraCohort
+// integers in state frontmatter; values are the essay slugs under
+// src/content/essays/ (with the leading NN- prefix stripped, per the
+// reading slug rule in getStaticPaths above).
+const COHORT_SLUGS: Record<number, string> = {
+  1: 'founding-floor',
+  2: 'statehood-without-federal-floor',
+  3: 'northwest-ordinance-template',
+  4: 'antebellum-doubling',
+  5: 'reconstruction-western-stack',
+  6: 'twentieth-century-high-water-mark',
+};
+
+const COHORT_TOOLTIPS: Record<number, string> = {
+  1: 'The Original 13 colonies, admitted before the 1785 Land Ordinance — no federal school grant, school funding built on state-derived foundations.',
+  2: 'States admitted from non-public-domain territory (Vermont, Kentucky, Tennessee, Maine, Texas, West Virginia) — no federal school grant, school funding built state-by-state.',
+  3: 'Public-land states admitted between 1803 and 1848 under the original section-16 template the Northwest Ordinance established.',
+  4: 'The doubled-grant cohort, 1846–1859 — California, Oregon, and the early Pacific admissions when Congress doubled the school-section grant from one section per township to two.',
+  5: 'The post-Civil-War cohort, 1861–1896 — Nebraska through Utah, admitted under the era’s expanded grant terms and shaped by railroad and mineral pressures.',
+  6: 'Twentieth-century admissions, 1907–1959 — Oklahoma, New Mexico, Arizona, Alaska, and Hawaii; the most carefully drafted federal trust instruments and the two sui-generis outliers.',
+};
+
+const CONFIDENCE_LABEL: Record<string, string> = {
+  verified: 'Verified',
+  awaiting: 'Awaiting disclosure',
+  unknown: 'Disclosure unknown',
+  na: 'Not applicable',
+};
+
+const layoutProps =
+  props.kind === 'essay'
+    ? {
+        title: props.entry.data.title,
+        // `era` is Part-I-only (SoR chapters). Sacred Compact essays
+        // omit it; render no subtitle there rather than the literal
+        // string "Era: undefined". The header-extras slot below still
+        // carries word count / substrate version for both series.
+        subtitle: props.entry.data.era ? `Era: ${props.entry.data.era}` : undefined,
+        sourceId: `essay-${props.entry.slug}-${props.entry.data.sourceVersion}`,
+        pagefindEra: props.entry.data.era,
+      }
+    : {
+        title: props.entry.data.name,
+        // FIPS strip is rendered in header-extras (below) so the FIPS
+        // code can be wrapped in <abbr> with an explanatory title;
+        // RoomLayout's subtitle prop only accepts a plain string.
+        state: {
+          iso: props.entry.data.iso.toLowerCase(),
+          name: props.entry.data.name,
+        },
+        sourceId: `state-${props.entry.data.iso.toLowerCase()}-v${props.entry.data.substrateVersion}`,
+      };
+---
+
+<RoomLayout room="reading" {...layoutProps} width="prose">
+  {props.kind === 'essay' && (
+    <Fragment slot="header-extras">
+      <p class="mt-4 text-xs text-slate-500">
+        {num.format(props.entry.data.wordCount)} words · Substrate {props.entry.data.sourceVersion} · Last synced {dateFmt.format(props.entry.data.lastSynced)}
+      </p>
+      <p class="mt-3">
+        <a href="/reading/" class="text-sm text-blue-700 underline hover:text-blue-900">
+          ← Back to Reading Room
+        </a>
+      </p>
+    </Fragment>
+  )}
+
+  {props.kind === 'state' && (
+    <Fragment slot="header-extras">
+      <p class="state-id-strip mt-3 text-slate-700">
+        <span>{props.entry.data.iso}</span>
+        <span class="sep"> · </span>
+        <span class="fips">
+          <abbr title="Federal Information Processing Standards code — the Census Bureau's numerical identifier for this state, used for federal data cross-references">
+            FIPS {props.entry.data.fips}
+          </abbr>
+        </span>
+        <span class="sep"> · </span>
+        <span>Admission #{props.entry.data.admissionNumber}</span>
+      </p>
+      <dl class="mt-4 grid grid-cols-1 gap-x-8 gap-y-2 text-sm sm:grid-cols-2">
+        <div data-pagefind-weight="20">
+          <dt class="inline font-semibold text-slate-700">Admitted:</dt>
+          <dd class="inline text-slate-600"> {dateFmt.format(props.entry.data.admittedDate)}</dd>
+        </div>
+        <div>
+          <dt class="inline font-semibold text-slate-700">Era:</dt>
+          <dd class="inline text-slate-600">
+            {' '}
+            {COHORT_SLUGS[props.entry.data.eraCohort] ? (
+              <a
+                href={`/reading/${COHORT_SLUGS[props.entry.data.eraCohort]}/`}
+                class="cohort-link"
+                title={COHORT_TOOLTIPS[props.entry.data.eraCohort]}
+              >
+                {props.entry.data.eraName}
+              </a>
+            ) : (
+              <span>{props.entry.data.eraName}</span>
+            )}
+            <span class="cohort-num"> (cohort {props.entry.data.eraCohort})</span>
+          </dd>
+        </div>
+        {props.entry.data.federalGrantAcres !== null && (
+          <div>
+            <dt class="inline font-semibold text-slate-700">Federal grant:</dt>
+            <dd class="inline text-slate-600">
+              {props.entry.data.federalGrantAcres === 0
+                ? ' none (state-derived)'
+                : ` ${num.format(props.entry.data.federalGrantAcres)} acres`}
+            </dd>
+          </div>
+        )}
+        {props.entry.data.federalGrantAcres !== null && props.entry.data.federalGrantAcres > 0 && (
+          <div>
+            <dt class="inline font-semibold text-slate-700">Trust acres remaining:</dt>
+            <dd class="inline text-slate-600">
+              {props.entry.data.trustAcresRemaining ? (
+                <>
+                  {' '}{num.format(props.entry.data.trustAcresRemaining)} acres
+                  <span class="acres-percentage">
+                    ({Math.round(
+                      (props.entry.data.trustAcresRemaining /
+                        props.entry.data.federalGrantAcres) *
+                        100
+                    )}% of original grant)
+                  </span>
+                  {' '}<span class={`badge badge-${props.entry.data.trustAcresRemainingConfidence ?? 'verified'}`}>
+                    {CONFIDENCE_LABEL[props.entry.data.trustAcresRemainingConfidence ?? 'verified']}
+                  </span>
+                  {props.entry.data.trustAcresRemainingAsOf && (
+                    <span class="as-of"> · As of {props.entry.data.trustAcresRemainingAsOf}</span>
+                  )}
+                </>
+              ) : props.entry.data.trustAcresRemainingConfidence === 'na' ? (
+                <>
+                  {' '}<span
+                    class="badge badge-na"
+                    title={props.entry.data.trustAcresRemainingSource}
+                  >Not applicable</span>
+                </>
+              ) : (
+                <>
+                  {' '}<span class="badge badge-unknown">Disclosure unknown</span>
+                </>
+              )}
+            </dd>
+          </div>
+        )}
+        <div>
+          <dt class="inline font-semibold text-slate-700">Governance:</dt>
+          <dd class="inline text-slate-600"> {props.entry.data.governanceForm}</dd>
+        </div>
+        {props.entry.data.permanentFundCorpus && (
+          <div>
+            <dt class="inline font-semibold text-slate-700">Permanent fund:</dt>
+            <dd class="inline text-slate-600">
+              {' '}{usd.format(props.entry.data.permanentFundCorpus.value)}
+              {props.entry.data.permanentFundCorpus.asOf && (
+                <span> (as of {dateFmt.format(props.entry.data.permanentFundCorpus.asOf)})</span>
+              )}
+            </dd>
+          </div>
+        )}
+        {props.entry.data.latestDistribution && (
+          <div>
+            <dt class="inline font-semibold text-slate-700">
+              {props.entry.data.latestDistribution.fiscalYear
+                ? `FY${props.entry.data.latestDistribution.fiscalYear} distribution:`
+                : 'Recent distribution:'}
+            </dt>
+            <dd class="inline text-slate-600"> {usd.format(props.entry.data.latestDistribution.value)}</dd>
+          </div>
+        )}
+      </dl>
+      <p class="mt-4 text-xs text-slate-500">
+        Substrate v{props.entry.data.substrateVersion} · Last reviewed {dateFmt.format(props.entry.data.lastReviewed)}
+      </p>
+    </Fragment>
+  )}
+
+  {props.kind === 'state' && (
+    <section class="mt-8">
+      <StateDossierCard
+        iso={props.entry.data.iso.toLowerCase()}
+        name={props.entry.data.name}
+        admittedDate={props.entry.data.admittedDate}
+        eraName={props.entry.data.eraName}
+        governanceForm={props.entry.data.governanceForm}
+        federalGrantAcres={props.entry.data.federalGrantAcres}
+        summary={props.entry.data.summary}
+        currentIssue={props.entry.data.currentIssue}
+      />
+    </section>
+  )}
+
+  {props.kind === 'essay' && seriesNav && (
+    <details class="essay-toc mt-8">
+      <summary>{seriesNav.seriesLabel} — all sections</summary>
+      <ol>
+        {seriesNav.series.map((s) => (
+          <li class:list={[s.isCurrent && 'is-current']}>
+            {s.isCurrent ? (
+              <a href={s.href} aria-current="page">
+                <strong>{s.navTitle}</strong> <span class="you-are-here">(you are here)</span>
+              </a>
+            ) : (
+              <a href={s.href}>{s.navTitle}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </details>
+  )}
+
+  <article
+    class:list={[
+      'prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline',
+      props.kind === 'essay' && '[&>h1:first-child]:hidden',
+      isInterlude && 'sacred-compact-interlude',
+    ]}
+  >
+    <Content />
+  </article>
+
+  {props.kind === 'essay' && seriesNav && (
+    <nav
+      class="essay-prev-next mt-12 border-t border-slate-200 pt-6 text-sm"
+      aria-label={`${seriesNav.seriesLabel} navigation`}
+    >
+      <ul class="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:items-center">
+        <li class="sm:text-left">
+          {seriesNav.prev ? (
+            <a href={seriesNav.prev.href} class="text-blue-700 underline hover:text-blue-900">
+              ← Previous: {seriesNav.prev.navTitle}
+            </a>
+          ) : (
+            <span class="text-slate-400">&nbsp;</span>
+          )}
+        </li>
+        <li class="sm:text-center">
+          <a href="/reading/" class="text-blue-700 underline hover:text-blue-900">Reading Room</a>
+        </li>
+        <li class="sm:text-right">
+          {seriesNav.next ? (
+            <a href={seriesNav.next.href} class="text-blue-700 underline hover:text-blue-900">
+              Next: {seriesNav.next.navTitle} →
+            </a>
+          ) : (
+            <span class="text-slate-400">&nbsp;</span>
+          )}
+        </li>
+      </ul>
+    </nav>
+  )}
+
+  {props.kind === 'state' && (
+    <section class="mt-12 max-w-prose">
+      <StateDossier
+        iso={props.entry.data.iso.toLowerCase()}
+        name={props.entry.data.name}
+      />
+    </section>
+  )}
+</RoomLayout>
+
+<style>
+  .essay-toc {
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    background: var(--linen-card, #fafaf7);
+  }
+  .essay-toc > summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+  }
+  .essay-toc[open] > summary {
+    margin-bottom: 0.5rem;
+  }
+  .essay-toc ol {
+    list-style: decimal;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    padding-left: 1.75rem;
+    margin: 0.4rem 0 0.2rem;
+  }
+  .essay-toc ol li {
+    margin-bottom: 0.2rem;
+  }
+  .essay-toc ol li a {
+    color: #1d4ed8; /* blue-700 to match site link aesthetic */
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .essay-toc ol li a:hover {
+    color: #1e40af; /* blue-800 */
+  }
+  .essay-toc ol li.is-current a {
+    color: #0f172a; /* slate-900 */
+  }
+  .essay-toc .you-are-here {
+    font-style: italic;
+    color: #475569; /* slate-600 */
+    font-weight: 400;
+  }
+  .essay-prev-next ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>

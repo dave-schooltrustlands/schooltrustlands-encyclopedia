@@ -1,0 +1,500 @@
+---
+import RoomLayout from '../layouts/RoomLayout.astro';
+
+import eraCohort from '../data/map-layers/era-cohort.json';
+import corpus from '../data/map-layers/corpus.json';
+import grantAcres from '../data/map-layers/grant-acres.json';
+import transparency from '../data/map-layers/transparency.json';
+
+const isDev = import.meta.env.DEV;
+
+type LensRecord = {
+  stateIso: string;
+  fips: string;
+  name: string;
+  value: number | string | null;
+  category: string;
+  displayLabel: string;
+  dataConfidence: string;
+};
+
+type Lens = {
+  id: string;
+  label: string;
+  description: string;
+  records: LensRecord[];
+  // category → fill color. Order = legend order.
+  categoryColors: { category: string; color: string; legend: string }[];
+};
+
+// Color palettes are colorblind-safe (Dark2 / sequential ColorBrewer).
+const LENSES: Lens[] = [
+  {
+    id: 'era-cohort',
+    label: 'Era cohort',
+    description:
+      'The architectural moment a state was admitted, and whether it received a federal school-land grant.',
+    records: eraCohort as LensRecord[],
+    categoryColors: [
+      { category: 'cohort-1', color: '#1b9e77', legend: 'Ch. 1 — Founding Floor' },
+      { category: 'cohort-2', color: '#d95f02', legend: 'Ch. 2 — Statehood without federal floor' },
+      { category: 'cohort-3', color: '#7570b3', legend: 'Ch. 3 — Northwest Ordinance template' },
+      { category: 'cohort-4', color: '#e7298a', legend: 'Ch. 4 — Antebellum doubling' },
+      { category: 'cohort-5', color: '#66a61e', legend: 'Ch. 5 — Reconstruction & western stack' },
+      { category: 'cohort-6', color: '#e6ab02', legend: 'Ch. 6 — Twentieth-century high-water mark' },
+    ],
+  },
+  {
+    id: 'corpus',
+    label: 'Permanent fund corpus',
+    description:
+      'Current size of the state-school permanent fund, where one exists. State-derived states with no federal trust are shown as such.',
+    records: corpus as LensRecord[],
+    categoryColors: [
+      { category: '≥ $5B', color: '#08519c', legend: '≥ $5 billion' },
+      { category: '$1–5B', color: '#3182bd', legend: '$1–5 billion' },
+      { category: '< $1B', color: '#9ecae1', legend: 'Under $1 billion' },
+      { category: 'no permanent fund', color: '#cbd5e1', legend: 'No permanent fund (state-derived)' },
+      { category: 'data unavailable', color: '#f1f5f9', legend: 'Data not in substrate' },
+    ],
+  },
+  {
+    id: 'grant-acres',
+    label: 'Federal grant acreage',
+    description:
+      'Acres of public land granted at admission for the support of common schools. State-derived states received none — see Chapters 1, 2.',
+    records: grantAcres as LensRecord[],
+    categoryColors: [
+      { category: '≥ 5M acres', color: '#005a32', legend: '≥ 5 million acres' },
+      { category: '1–5M acres', color: '#41ab5d', legend: '1–5 million acres' },
+      { category: '< 1M acres', color: '#a1d99b', legend: 'Under 1 million acres' },
+      { category: 'no federal grant', color: '#cbd5e1', legend: 'No federal grant (state-derived)' },
+      { category: 'data unavailable', color: '#f1f5f9', legend: 'Data unavailable' },
+    ],
+  },
+  {
+    id: 'transparency',
+    label: 'Trust transparency',
+    description:
+      'Whether the state publishes its school-trust corpus and most recent distribution. Derived from substrate v1.3.',
+    records: transparency as LensRecord[],
+    categoryColors: [
+      { category: 'data-published', color: '#1b9e77', legend: 'Corpus and distribution disclosed' },
+      { category: 'data-partially-published', color: '#fdae6b', legend: 'Partially disclosed' },
+      { category: 'unknown', color: '#f1f5f9', legend: 'Disclosure unknown' },
+      { category: 'never-had-trust', color: '#cbd5e1', legend: 'No federal trust to disclose' },
+    ],
+  },
+];
+
+// Per-FIPS index for hover lookup of the state name + admission date.
+const fipsToInfo: Record<string, { iso: string; name: string }> = {};
+for (const r of eraCohort as LensRecord[]) {
+  fipsToInfo[r.fips] = { iso: r.stateIso, name: r.name };
+}
+
+// Three-line "what this lens measures" panel content. Persistent on the
+// page; updates with the lens switcher. Copy is install-verbatim from
+// the Reader-Onboarding synthesis.
+type LensExplainer = {
+  asks: string;
+  structure: string;
+  notice: string;
+};
+const LENS_EXPLAINERS: Record<string, LensExplainer> = {
+  'era-cohort': {
+    asks:
+      'When did each state join the union, and which generation of school-trust architecture did it inherit?',
+    structure:
+      'Six colors group states by admission era — from the Original 13 (state-derived; no federal trust) through the Northwest Ordinance, Antebellum Doubling, Reconstruction-era Western Stack, Twentieth-Century, and the two outliers (Alaska, Hawaii).',
+    notice:
+      'The federal one-section-per-township floor became two sections in 1850 and four sections in 1894. Generation-of-statehood substantially predicts how much the federal trust handed each state.',
+  },
+  corpus: {
+    asks: 'What is the school-trust corpus worth today, in each state that has one?',
+    structure:
+      'Sequential gradient by dollar amount. Explicit categories: ≥ $5 billion / $1–5 billion / < $1 billion / no permanent fund (state-derived states + a few western states that never built one) / data unavailable.',
+    notice:
+      'The largest school-trust corpora are not the largest states or the wealthiest states. Architecture, custody, and constituency held more reliably than population or income.',
+  },
+  'grant-acres': {
+    asks:
+      'How much land did each state receive from the federal government for school-trust purposes?',
+    structure:
+      'Sequential gradient by acres. The state-derived states (Original 13 + a few others) received zero — not a data gap; an authoritative no.',
+    notice:
+      'The states that received the most acreage are not the states with the largest corpora. Land was granted at admission; what survived is a separate question — answered by the Counting House.',
+  },
+  transparency: {
+    asks: 'Does each state publicly disclose its school-trust accounting?',
+    structure:
+      'Five categories: data published (12 states) / data partially published / data withheld / never had a trust (state-derived) / unknown.',
+    notice:
+      'Transparency is the threshold question. A state that does not disclose cannot be audited; a trust that cannot be audited is structurally the same as a fund that does not exist. Twelve states are visible. Thirty-eight are not. The pattern is the finding.',
+  },
+};
+const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
+---
+
+<RoomLayout
+  room="atlas"
+  title="Four lenses on the school-trust map"
+  subtitle="Switch the lens to recolor the same fifty states by a different question. Click a state to open its state dossier."
+  width="full"
+  sourceId="atlas-map-layers"
+>
+  <Fragment slot="header-extras">
+    <div class="mt-6">
+      <fieldset
+        id="lens-switcher"
+        class="flex flex-wrap gap-2"
+        aria-label="Map lens"
+      >
+        <legend class="sr-only">Map lens</legend>
+        {LENSES.map((lens, i) => (
+          <label
+            class="cursor-pointer rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 has-[:checked]:border-slate-900 has-[:checked]:bg-slate-900 has-[:checked]:text-white"
+          >
+            <input
+              type="radio"
+              name="lens"
+              value={lens.id}
+              class="sr-only"
+              checked={i === 0}
+            />
+            {lens.label}
+          </label>
+        ))}
+      </fieldset>
+      <p id="lens-description" class="mt-3 text-sm text-slate-600">
+        {LENSES[0].description}
+      </p>
+    </div>
+  </Fragment>
+
+  <section
+    id="lens-explainer"
+    class="mt-6 rounded-lg border border-slate-200 bg-white p-4 text-sm shadow-sm sm:p-5"
+    aria-label="What this lens measures"
+    aria-live="polite"
+  >
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+      What this lens measures
+    </p>
+    <dl class="mt-3 space-y-3 text-slate-700">
+      <div>
+        <dt class="font-semibold text-slate-800">This lens asks</dt>
+        <dd id="lens-asks" class="mt-1">{initialExplainer.asks}</dd>
+      </div>
+      <div>
+        <dt class="font-semibold text-slate-800">Category structure</dt>
+        <dd id="lens-structure" class="mt-1">{initialExplainer.structure}</dd>
+      </div>
+      <div>
+        <dt class="font-semibold text-slate-800">What to notice</dt>
+        <dd id="lens-notice" class="mt-1">{initialExplainer.notice}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <div
+    id="map"
+    class="mt-6 h-[60vh] min-h-[420px] w-full overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+  >
+  </div>
+  {isDev && (
+    <pre
+      id="map-error"
+      class="mt-2 hidden whitespace-pre-wrap rounded border border-red-200 bg-red-50 p-3 text-xs text-red-800"
+    ></pre>
+  )}
+
+  <script
+    type="application/json"
+    id="atlas-data"
+    set:html={JSON.stringify({ lenses: LENSES, fipsToInfo, lensExplainers: LENS_EXPLAINERS })}
+  />
+
+  <ol id="legend" class="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2"></ol>
+
+  <p class="mt-6 text-xs text-slate-500">
+    Lens data derived at build time from <code>src/content/states/*.md</code>{' '}
+    — substrate v1.3. Categorical buckets and color assignments are documented
+    in <code>scripts/build-map-layers.mjs</code>.
+  </p>
+
+    <script>
+      import maplibregl from 'maplibre-gl';
+      import 'maplibre-gl/dist/maplibre-gl.css';
+      import { Protocol, PMTiles, FileSource } from 'pmtiles';
+
+      const errBox = document.getElementById('map-error');
+      const showErr = (label, e) => {
+        const msg = `[${label}] ${e?.message ?? e}\n${e?.stack ?? ''}`;
+        console.error(label, e);
+        if (errBox) {
+          errBox.classList.remove('hidden');
+          errBox.textContent = (errBox.textContent ? errBox.textContent + '\n\n' : '') + msg;
+        }
+      };
+      window.addEventListener('error', (ev) => showErr('window.error', ev.error || ev.message));
+      window.addEventListener('unhandledrejection', (ev) => showErr('unhandledrejection', ev.reason));
+
+      const dataNode = document.getElementById('atlas-data');
+      const { lenses, fipsToInfo, lensExplainers } = JSON.parse(dataNode.textContent || '{}');
+
+      const lensesById = Object.fromEntries(lenses.map((l) => [l.id, l]));
+      let activeLensId = lenses[0].id;
+
+      // Build FIPS → category map for the active lens (used by the match expr
+      // and by hover lookup of displayLabel).
+      function fipsCategoryMap(lens) {
+        const m = {};
+        for (const r of lens.records) m[r.fips] = r;
+        return m;
+      }
+      let activeFipsRecords = fipsCategoryMap(lensesById[activeLensId]);
+
+      function colorForCategory(lens, cat) {
+        const entry = lens.categoryColors.find((c) => c.category === cat);
+        return entry ? entry.color : '#e2e8f0';
+      }
+
+      function buildMatchExpr(lens) {
+        const expr = ['match', ['get', 'STATEFP']];
+        for (const r of lens.records) {
+          expr.push(r.fips, colorForCategory(lens, r.category));
+        }
+        expr.push('#e2e8f0'); // fallback for non-state polygons (DC, PR)
+        return expr;
+      }
+
+      function renderLegend(lens) {
+        const ol = document.getElementById('legend');
+        if (!ol) return;
+        ol.innerHTML = '';
+        for (const c of lens.categoryColors) {
+          const li = document.createElement('li');
+          li.className = 'flex items-center gap-2';
+          const swatch = document.createElement('span');
+          swatch.className = 'inline-block h-4 w-4 flex-none rounded-sm border border-slate-300';
+          swatch.style.background = c.color;
+          const label = document.createElement('span');
+          label.className = 'text-slate-700';
+          label.textContent = c.legend;
+          li.appendChild(swatch);
+          li.appendChild(label);
+          ol.appendChild(li);
+        }
+      }
+
+      function setLensDescription(lens) {
+        const p = document.getElementById('lens-description');
+        if (p) p.textContent = lens.description;
+      }
+
+      function setLensExplainer(lensId) {
+        const ex = lensExplainers && lensExplainers[lensId];
+        if (!ex) return;
+        const a = document.getElementById('lens-asks');
+        const s = document.getElementById('lens-structure');
+        const n = document.getElementById('lens-notice');
+        if (a) a.textContent = ex.asks;
+        if (s) s.textContent = ex.structure;
+        if (n) n.textContent = ex.notice;
+      }
+
+      const protocol = new Protocol();
+      maplibregl.addProtocol('pmtiles', protocol.tile);
+
+      const PMTILES_KEY = '/us-states.pmtiles';
+      const PMTILES_URL = `pmtiles://${PMTILES_KEY}`;
+      try {
+        const resp = await fetch(PMTILES_KEY);
+        if (!resp.ok) throw new Error(`fetch ${PMTILES_KEY} → HTTP ${resp.status}`);
+        const buf = await resp.arrayBuffer();
+        const file = new File([buf], PMTILES_KEY, {
+          type: 'application/octet-stream',
+        });
+        protocol.add(new PMTiles(new FileSource(file)));
+      } catch (e) {
+        showErr('pmtiles preload', e);
+      }
+
+      const map = new maplibregl.Map({
+        container: 'map',
+        style: {
+          version: 8,
+          sources: {
+            states: {
+              type: 'vector',
+              url: PMTILES_URL,
+              promoteId: 'GEOID',
+            },
+          },
+          layers: [
+            {
+              id: 'background',
+              type: 'background',
+              paint: { 'background-color': '#f8fafc' },
+            },
+            {
+              id: 'states-fill',
+              type: 'fill',
+              source: 'states',
+              'source-layer': 'states',
+              paint: {
+                'fill-color': buildMatchExpr(lensesById[activeLensId]),
+                'fill-opacity': [
+                  'case',
+                  ['boolean', ['feature-state', 'hover'], false],
+                  0.95,
+                  0.75,
+                ],
+              },
+            },
+            {
+              id: 'states-outline',
+              type: 'line',
+              source: 'states',
+              'source-layer': 'states',
+              paint: {
+                'line-color': '#475569',
+                'line-width': 0.5,
+              },
+            },
+            {
+              id: 'states-outline-hover',
+              type: 'line',
+              source: 'states',
+              'source-layer': 'states',
+              paint: {
+                'line-color': '#0f172a',
+                'line-width': [
+                  'case',
+                  ['boolean', ['feature-state', 'hover'], false],
+                  2,
+                  0,
+                ],
+              },
+            },
+          ],
+        },
+        center: [-98.5, 39.5],
+        zoom: 3,
+        minZoom: 2,
+        maxZoom: 6,
+        attributionControl: false,
+      });
+
+      map.on('error', (e) => showErr('maplibre.error', e?.error || e));
+
+      map.addControl(
+        new maplibregl.AttributionControl({
+          customAttribution: 'US Census Bureau (cb_2023_us_state_20m)',
+          compact: true,
+        }),
+      );
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+
+      map.on('load', () => {
+        map.fitBounds(
+          [
+            [-125, 24],
+            [-66, 50],
+          ],
+          { padding: 20, animate: false },
+        );
+      });
+
+      const popup = new maplibregl.Popup({
+        closeButton: false,
+        closeOnClick: false,
+        offset: 6,
+      });
+
+      let hoveredFips = null;
+
+      map.on('mousemove', 'states-fill', (e) => {
+        if (!e.features || e.features.length === 0) return;
+        const f = e.features[0];
+        const fips = f.properties.STATEFP;
+        const info = fipsToInfo[fips];
+        const lensRec = activeFipsRecords[fips];
+        const stateName = info?.name ?? f.properties.NAME ?? '';
+
+        if (hoveredFips !== null && hoveredFips !== f.id) {
+          map.setFeatureState(
+            { source: 'states', sourceLayer: 'states', id: hoveredFips },
+            { hover: false },
+          );
+        }
+        if (f.id !== undefined) {
+          hoveredFips = f.id;
+          map.setFeatureState(
+            { source: 'states', sourceLayer: 'states', id: hoveredFips },
+            { hover: true },
+          );
+        }
+
+        map.getCanvas().style.cursor = info ? 'pointer' : 'default';
+
+        const lensLine = lensRec
+          ? `<br/><span style="color:#0f172a">${lensRec.displayLabel}</span>`
+          : '';
+        const html = info
+          ? `<div style="font-size:13px;line-height:1.35"><strong>${stateName}</strong>${lensLine}<br/><span style="color:#64748b;font-size:11px">Click to open entry →</span></div>`
+          : `<div style="font-size:13px;line-height:1.3"><strong>${stateName}</strong><br/><span style="color:#64748b;font-size:11px">No state dossier</span></div>`;
+
+        popup.setLngLat(e.lngLat).setHTML(html).addTo(map);
+      });
+
+      map.on('mouseleave', 'states-fill', () => {
+        if (hoveredFips !== null && hoveredFips !== undefined) {
+          map.setFeatureState(
+            { source: 'states', sourceLayer: 'states', id: hoveredFips },
+            { hover: false },
+          );
+          hoveredFips = null;
+        }
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+      });
+
+      map.on('click', 'states-fill', (e) => {
+        if (!e.features || e.features.length === 0) return;
+        const f = e.features[0];
+        const info = fipsToInfo[f.properties.STATEFP];
+        if (info) {
+          window.location.href = `/reading/${info.iso}/`;
+        }
+      });
+
+      // Lens switcher.
+      function setLens(id) {
+        const lens = lensesById[id];
+        if (!lens) return;
+        activeLensId = id;
+        activeFipsRecords = fipsCategoryMap(lens);
+        if (map.getLayer('states-fill')) {
+          map.setPaintProperty('states-fill', 'fill-color', buildMatchExpr(lens));
+        }
+        renderLegend(lens);
+        setLensDescription(lens);
+        setLensExplainer(id);
+      }
+
+      const switcher = document.getElementById('lens-switcher');
+      if (switcher) {
+        switcher.addEventListener('change', (ev) => {
+          const t = ev.target;
+          if (t instanceof HTMLInputElement && t.name === 'lens') {
+            setLens(t.value);
+          }
+        });
+      }
+
+      // Initial legend.
+      renderLegend(lensesById[activeLensId]);
+    </script>
+</RoomLayout>

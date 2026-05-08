@@ -1,0 +1,97 @@
+---
+name: Vermont
+fips: "50"
+iso: US-VT
+admissionNumber: 14
+admittedDate: 1791-03-04
+eraCohort: 2
+eraName: Statehood Without the Federal Floor
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory body under 16 V.S.A. § 161); Secretary of Education (executive-branch officer under the Governor). No school-trust board exists at the state level because there is no unified state school trust; town school-rights are administered by selectboards / school boards in each town."
+permanentFundCorpus: null
+latestDistribution: null
+substrateVersion: "1.3"
+lastReviewed: 2026-05-01
+---
+
+*Admission #14 (Mar. 4, 1791). Era: State-derived (no federal grant). Draft: Pass 1, 2026-04-30.*
+
+Vermont is the project's cleanest demonstration that the school-lands idea did not need federal sponsorship. Eight years before Congress wrote the Land Ordinance of 1785, and twelve years before the Northwest Ordinance fixed section sixteen as the federal template, the framers of the Vermont Republic were already writing schools into their constitution and reserving land for them in their town charters. The reservation pattern Vermont inherited from the New Hampshire Grants of the 1760s was carried forward by the independent Republic from 1777 to 1791 and then admitted into the Union, on March 4, 1791, with the lands already set aside by sovereign Vermont action. The 1791 admission act made no school-land grant because there was no federal land in Vermont to grant. What Vermont demonstrates, then, is that the civic instinct to reserve land for common schools was upstream of, not downstream from, the federal template — that the American school-lands tradition is older and broader than the section-sixteen architecture, and that it was being implemented by state-derived sovereigns at the same time the Confederation Congress was working out its own version on the public domain west of the Ohio.[^vt-1]
+
+## The Wentworth charter pattern
+
+The mechanism in Vermont was the town charter. From 1749 onward, New Hampshire's colonial governor Benning Wentworth issued grants for what he called the "New Hampshire Grants" — townships in the disputed territory between the Connecticut River and Lake Champlain that New York also claimed. The standard Wentworth charter divided each township into shares of approximately 330 acres each and reserved several of those shares ("rights") for public uses. The pattern was consistent across the Wentworth grants: typically one right for the support of a school in the town, one for the first settled minister, one for the Society for the Propagation of the Gospel in Foreign Parts, one as a glebe for the Church of England, and one for the governor himself.[^vt-2] The Vermont Supreme Court would later describe this practice in *Galkin v. Town of Chester* — a 1998 mineral-rights dispute over Chester's lease lands — as the operative source of Chester's public-land estate, treating the original Wentworth charter rather than the rival New York patent as the controlling instrument.[^vt-3] When the Republic of Vermont declared independence in 1777 and began chartering its own towns, it carried forward the school-right reservation; the religious reservations were dropped, in due course, because the Vermont Constitution's establishment-clause posture made them untenable, but the school right persisted.[^vt-4]
+
+## A decentralized fiduciary architecture
+
+Aggregate Vermont school-rights acreage is on the order of tens of thousands of acres distributed across the state's roughly 250 towns. It is not centrally tracked and never has been. Each town administers its own school rights under state enabling statutes — currently Title 24, Chapter 65 of the Vermont Statutes Annotated, with parallel education provisions in Title 16 — and rents flow to the towns rather than to a state corpus.[^vt-5] This is decentralized, not centralized, fiduciary architecture: where Oregon (admitted seventy years later) would receive its school grant from Congress and consolidate it under a constitutional Board of Commissioners answering to the state's three highest elected officials, Vermont's school-rights administration was, and remains, parceled out among 250 selectboards. The doctrinal upside of the Vermont model is its resilience against single-point failure — there is no statewide trust to capture, no single statute the legislature can pass to convert a billion-dollar timber asset to a hundred-million-dollar one. The doctrinal downside is the absence of a unified accounting, a unified beneficiary class, or a unified enforcement mechanism. There is no Vermont equivalent of *Lassen v. Arizona Highway Department*, because there is no federal compact to enforce.
+
+## Chapter II § 68 and its 1777 ancestor
+
+The constitutional locus of Vermont's school clause is Chapter II, § 68 of the 1793 Constitution — the current operative text, the second-oldest functioning state constitution in the United States behind only Massachusetts 1780.[^vt-6] Section 68 directs that "a competent number of schools ought to be maintained in each town unless the general assembly permits other provisions for the convenient instruction of youth." The current language descends through the 1786 Constitution's § XXXVIII to the original 1777 Constitution's § XL, which directed that "a school or schools shall be established in each town, by the legislature, for the convenient instruction of youth."[^vt-7] This is the doctrinally important provision. The 1777 § XL is among the very earliest state constitutional school clauses in the new republic — contemporary with the 1776 Pennsylvania school clause and predating the federal Land Ordinance of 1785 by eight years. It was drafted by men who had never read a Northwest Ordinance because no Northwest Ordinance had yet been written.
+
+Read against the federal template, this matters in two directions. It matters historically, because it documents that the school-lands and school-clause idea was already in the air in 1777.
+
+<blockquote class="pull-quote">
+  <p>The framers of the federal ordinances of 1785 and 1787 were not innovating on a blank slate but codifying a pattern that the state-derived sovereigns of New England had been working out for a generation.</p>
+  <cite>Schools of the Republic v1.3, Vermont</cite>
+</blockquote>
+
+And it matters doctrinally, because Vermont's clause is structured differently from the section-sixteen federal template. Vermont's framers did not appropriate land to a fund; they directed the legislature to maintain schools, with the town as the operative unit. The duty runs to the General Assembly. The mechanism is the town. The fiduciary substrate, such as it is, lives in the town charters — not in the constitution.
+
+## Brigham v. State and the Education Fund
+
+The most important modern construction of Chapter II, § 68 is *Brigham v. State*, decided by the Vermont Supreme Court on February 5, 1997.[^vt-8] Read together with the Vermont Constitution's Common Benefits Clause (Chapter I, Article 7), Chapter II, § 68 was held to require substantially equal access to educational opportunity across Vermont towns. The court found that Vermont's then-existing system of funding public education primarily through local property taxes produced impermissible inequality and that the legislature was constitutionally obligated to remedy it. The General Assembly responded later that year with Act 60, which established a statutory right to equal educational opportunity in 16 V.S.A. § 1 and built a statewide equalization regime atop a uniform statewide property tax. Act 68, in 2003, refined the architecture and codified the post-*Brigham* purpose at 16 V.S.A. § 4000.[^vt-9] Together, Act 60 and Act 68 created the modern Education Fund — a statutory unified pool combining a statewide property tax, a portion of sales-and-use tax, lottery transfers, and other dedicated revenues, distributed to school districts on an equalized per-pupil basis. Annual Education Fund distributions are now in the two-billion-dollar range.[^vt-10]
+
+*Brigham* is doctrinally closer to Pennsylvania's 2023 *William Penn School District* decision than to the public-land trust-enforcement cases — it is an adequacy-and-equity ruling under a state education clause, not a trust-corpus enforcement action. The Education Fund is a current-revenue equalization vehicle, not a trust corpus. There is no permanent fund of federal-grant origin in Vermont; there never was. What *Brigham* established is that Chapter II, § 68 is judicially enforceable against the legislature itself when local-property-tax mechanics produce constitutionally intolerable inequality. That holding has been tested and re-affirmed: in *Anderson v. State* (1998) the court rejected an early Act 60 challenge by students in property-wealthy districts; in a 2005 Brigham entry order the court held that judicial restraint did not excuse it from hearing alleged constitutional violations in school finance; in *Athens School District v. Vermont State Board of Education* (2020) the court upheld Act 46 school-district merger orders, with the dissent emphasizing the historical force of town-based school control under Chapter II, § 68; and in *Vitale v. Bellows Falls Union High School* (2023) the court expressly held that Vermont children have a fundamental right to education under the Education Clause, while declining to require publicly funded school choice as a constitutional matter.[^vt-11]
+
+## Lease-land doctrine: Mikell, Broughton, Galkin
+
+A separate line of Vermont Supreme Court cases has construed the lease-land substrate itself. In *Mikell v. Town of Williston* (1971), the court held that ministry-lot rents in Franklin were public money because title rested in the municipality and could not be paid as direct subsidy to religious activity, distinguishing Williston SPG land where title vested in the Trustees of the Episcopal Diocese rather than the State.[^vt-12] In *Broughton v. Town of Charlotte* (1976), the court gave one of its clearest descriptions of the Vermont lease-land tradition — pre-statehood public-use reservations for schools and churches — and used that history to reject extending the historic tax exemption to a private landowner who happened to lease her land to a school. The court in *Broughton* also identified what it called the lease-land windfall problem: low perpetual rents combined with continuing tax exemption had, over time, turned some lease lands into community liabilities rather than productive support for the intended public uses.[^vt-13] In *Galkin v. Town of Chester* (1998), the court confirmed that towns hold fee title to glebe and school lots, that durable lessees do not own mineral rights absent town authorization, and that statutory authority to reserve rent included broader authority to protect the public-land estate.[^vt-14] Together, these three cases form the doctrinal spine of the Vermont lease-land system as it persists into the modern era.
+
+## Act 152 of 2018 and modern title questions
+
+The most significant modern intervention in that system was Act 152 of 2018, codified at 24 V.S.A. § 2409, which required municipal corporations to vote affirmatively before January 1, 2020 to retain their perpetual lease lands. Lease lands not affirmatively retained passed in fee simple to the lessee of record on that date.[^vt-15] The statute reaches perpetual lease lands held under 24 V.S.A. § 2401, including historic glebe and school-related lands, while excluding land over which the municipal corporation acts exclusively as trustee. The net effect on Vermont's school-lands inheritance is unclear without town-level title research: some towns voted to retain, some did not, and the trustee exclusion may have shielded some portion of the school-right corpus from automatic vesting. A 2026 Vermont Superior Court decision, *Pownal Center Community Church v. Town of Pownal*, illustrates the live title consequences — the court treated § 2409 as potentially vesting fee title to former glebe land in a lessee of record where the town had not voted to retain.[^vt-16] Whether Act 152 amounts to a structural seizure of school-origin lease lands or whether the trustee exclusion preserved most of them is, as of this writing, an open empirical question that depends on town-by-town records.
+
+What Vermont contributes to the broader school-trust story is therefore not a trust-corpus history. It is a parallel-architecture history. Vermont demonstrates that the school-lands reservation pattern arose independently of the federal section-sixteen template, that a state-derived sovereign — first a colonial governor, then an independent republic, then the fourteenth state — implemented the same civic instinct through different instruments, and that the constitutional duty to maintain schools (Chapter II, § 68 and its predecessors) has been continuously judicially enforceable from the founding generation through *Brigham* and *Vitale*. The Vermont story does not fit the trust-enforcement frame that organizes the public-land states. It does fit, perhaps more cleanly than any other state, the project's "founding-floor" framing: that the school clause was an assumed feature of legitimate civic project, not a federally-imposed innovation, and that the men who drafted the Land Ordinance of 1785 were ratifying a pattern, not inventing one.
+
+<blockquote class="pull-quote">
+  <p>Eight years earlier, in Windsor, the framers of the Vermont Constitution had already written it down.</p>
+  <cite>Schools of the Republic v1.3, Vermont</cite>
+</blockquote>
+
+---
+
+## Footnotes
+
+[^vt-1]: Act of Feb. 18, 1791, 1 Stat. 191 (admitting Vermont effective March 4, 1791), https://memory.loc.gov/cgi-bin/ampage?collId=llsl&fileName=001/llsl001.db&recNum=314. The Vermont admission act is among the shortest in the Statutes at Large and contains no land-grant provisions of any kind. Compare Land Ordinance of May 20, 1785, and Northwest Ordinance of July 13, 1787, neither of which applied to Vermont because Vermont's lands were never part of the federal public domain.
+
+[^vt-2]: The Wentworth charter pattern is described in *Galkin v. Town of Chester*, 168 Vt. 82, 716 A.2d 25 (1998), https://law.justia.com/cases/vermont/supreme-court/1998/97-026op.html, and in *Broughton v. Town of Charlotte*, 356 A.2d 520, 522 (Vt. 1976), https://law.justia.com/cases/vermont/supreme-court/1976/221-75-0.html. The standard ~330-acre share calculation derives from Wentworth's division of each township into approximately 70 shares.
+
+[^vt-3]: *Galkin*, 168 Vt. at 88–90, 716 A.2d at 29–31.
+
+[^vt-4]: *Mikell v. Town of Williston*, 285 A.2d 713, 715–16 (Vt. 1971), https://law.justia.com/cases/vermont/supreme-court/1971/87-70-0.html (distinguishing municipal-title from privately-titled SPG lands and barring direct subsidy of religious activity).
+
+[^vt-5]: 24 V.S.A. ch. 65, https://legislature.vermont.gov/statutes/fullchapter/24/065 (governing public lands, lease lands, and town public funds, including §§ 2401, 2403, 2406, 2409, and 2431–2434); 16 V.S.A. (governing education).
+
+[^vt-6]: Vermont Constitution of 1793 (current; as amended), Chapter II § 68, https://legislature.vermont.gov/statutes/constitution-of-the-state-of-vermont/.
+
+[^vt-7]: 1777 Vermont Constitution § XL, Vermont Secretary of State, https://sosv13.useast01.umbraco.io/vsara/learn/constitution/1777-constitution/. The provision was renumbered as § XXXVIII in the 1786 revision and as the predecessor to current § 68 in the 1793 Constitution.
+
+[^vt-8]: *Brigham v. State*, 166 Vt. 246, 692 A.2d 384 (1997), https://law.justia.com/cases/vermont/supreme-court/1997/96-502op.html.
+
+[^vt-9]: 16 V.S.A. § 1, https://legislature.vermont.gov/statutes/section/16/001/00001 (right to equal educational opportunity, codified by Act 60); 16 V.S.A. § 4000, https://legislature.vermont.gov/statutes/fullchapter/16/133 (post-Act 68 statement that the chapter's purpose is equal educational opportunity in accordance with *Brigham*).
+
+[^vt-10]: Vermont Agency of Education, Education Fund annual reports; Education Fund magnitude is approximately $2 billion in recent fiscal years and is a current-revenue vehicle, not a trust corpus.
+
+[^vt-11]: *Anderson v. State*, 168 Vt. 641, 723 A.2d 1147 (1998), https://law.justia.com/cases/vermont/supreme-court/1998/98-047eo.html; *Brigham v. State*, No. 2004-295 (Vt. Sept. 12, 2005), https://law.justia.com/cases/vermont/supreme-court/2005/eo2004-295.html; *Athens School District v. Vermont State Board of Education*, 2020 VT 52, https://law.justia.com/cases/vermont/supreme-court/2020/2019-185.html; *Vitale v. Bellows Falls Union High School*, 2023 VT 15, https://law.justia.com/cases/vermont/supreme-court/2023/22-ap-059.html.
+
+[^vt-12]: *Mikell*, 285 A.2d at 714–16.
+
+[^vt-13]: *Broughton*, 356 A.2d at 522–23.
+
+[^vt-14]: *Galkin*, 168 Vt. at 88–90, 716 A.2d at 29–31.
+
+[^vt-15]: 2018 Act No. 152, https://legislature.vermont.gov/Documents/2018/Docs/ACTS/ACT152/ACT152%20As%20Enacted.pdf; codified at 24 V.S.A. § 2409.
+
+[^vt-16]: *Pownal Center Community Church v. Town of Pownal*, 2026 Vt. Super. 011602, No. 25-CV-01511, Entry Regarding Motion (Jan. 16, 2026), https://www.vtcourts.gov/sites/default/files/documents/pownal%20center%20comm%20church%20v%20pownal%20barra%2025-cv-1511%201-16-26.pdf. Superior Court ruling; current signal rather than controlling statewide doctrine.

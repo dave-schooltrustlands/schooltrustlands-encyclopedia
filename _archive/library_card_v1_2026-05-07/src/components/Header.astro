@@ -1,0 +1,239 @@
+---
+import '../styles/global.css';
+---
+<header
+  data-pagefind-ignore
+  class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur"
+>
+  <div class="mx-auto flex max-w-5xl flex-wrap items-center gap-3 px-4 py-3 sm:gap-4">
+    <a href="/" class="site-wordmark mr-auto min-h-[44px]">
+      <svg
+        class="plss-mark"
+        viewBox="0 0 60 60"
+        aria-hidden="true"
+      >
+        <!--
+          6×6 township grid. Sections numbered boustrophedon-style starting
+          top-right; Section 16 is dead center (geographically correct).
+          Section 36 (lower-left) is highlighted at reduced opacity for
+          post-1848 states that received both Sections 16 and 36.
+        -->
+        <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.55">
+          <rect x="0" y="0" width="60" height="60"></rect>
+          <line x1="10" y1="0" x2="10" y2="60"></line>
+          <line x1="20" y1="0" x2="20" y2="60"></line>
+          <line x1="30" y1="0" x2="30" y2="60"></line>
+          <line x1="40" y1="0" x2="40" y2="60"></line>
+          <line x1="50" y1="0" x2="50" y2="60"></line>
+          <line x1="0" y1="10" x2="60" y2="10"></line>
+          <line x1="0" y1="20" x2="60" y2="20"></line>
+          <line x1="0" y1="30" x2="60" y2="30"></line>
+          <line x1="0" y1="40" x2="60" y2="40"></line>
+          <line x1="0" y1="50" x2="60" y2="50"></line>
+        </g>
+        <rect x="30" y="20" width="10" height="10" fill="var(--old-gold)" opacity="0.9"></rect>
+        <rect x="0" y="50" width="10" height="10" fill="var(--old-gold)" opacity="0.55"></rect>
+      </svg>
+      <span class="wordmark-text">
+        <strong>America's School Trust Library</strong>
+        <em>An evidentiary archive of America's school trust lands and funds</em>
+      </span>
+    </a>
+    <nav class="flex items-center gap-1 text-sm sm:gap-3">
+      <a
+        href="/start/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Start&nbsp;Here</a
+      >
+      <a
+        href="/why/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Why</a
+      >
+      <a
+        href="/reading/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Reading</a
+      >
+      <a
+        href="/atlas/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Atlas</a
+      >
+      <a
+        href="/maps/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Map&nbsp;Room</a
+      >
+      <a
+        href="/counting/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Counting&nbsp;House</a
+      >
+      <a
+        href="/contribute/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Contribute</a
+      >
+      <a
+        href="/about/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >About</a
+      >
+      <a
+        href="/newsroom/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Newsroom</a
+      >
+      <a
+        href="/updates/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Updates</a
+      >
+      <a
+        href="/voices/"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >Voices</a
+      >
+      <button
+        id="search-toggle"
+        type="button"
+        aria-label="Open search"
+        aria-expanded="false"
+        aria-controls="search-panel"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-slate-700 hover:bg-slate-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </nav>
+  </div>
+  <div
+    id="search-panel"
+    class="hidden border-t border-slate-200 bg-white px-4 py-3"
+  >
+    <div class="mx-auto max-w-5xl sm:flex sm:justify-end sm:px-4 sm:pb-3">
+      <div id="search" class="w-full sm:w-72"></div>
+    </div>
+  </div>
+</header>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('search');
+    if (el) {
+      if (typeof window.PagefindUI === 'function') {
+        new window.PagefindUI({
+          element: '#search',
+          showSubResults: true,
+          showImages: false,
+        });
+
+        // Decorate result links: append ?q= (always — fuels JS fallback)
+        // and #:~:text= (for browsers with native Text Fragments) so the
+        // first matched word scrolls into view and highlights on arrival.
+        const supportsFragments = 'fragmentDirective' in document;
+        el.addEventListener(
+          'click',
+          (ev) => {
+            const a = ev.target instanceof Element ? ev.target.closest('a') : null;
+            if (!a || !el.contains(a)) return;
+            const input = el.querySelector('input');
+            const q = input instanceof HTMLInputElement ? input.value.trim() : '';
+            if (!q) return;
+            try {
+              const u = new URL(a.href, window.location.origin);
+              if (u.origin !== window.location.origin) return;
+              u.searchParams.set('q', q);
+              const first = q.split(/\s+/).filter(Boolean)[0];
+              if (supportsFragments && first) {
+                u.hash = `:~:text=${encodeURIComponent(first)}`;
+              }
+              a.href = u.toString();
+            } catch (_) {
+              /* ignore malformed URLs */
+            }
+          },
+          true,
+        );
+      } else {
+        el.innerHTML =
+          '<span class="text-xs text-slate-400">Search index unavailable in dev mode — run a production build.</span>';
+      }
+    }
+
+    const toggle = document.getElementById('search-toggle');
+    const panel = document.getElementById('search-panel');
+    if (toggle && panel) {
+      toggle.addEventListener('click', () => {
+        const open = panel.classList.toggle('hidden') === false;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close search' : 'Open search');
+        if (open) {
+          const input = panel.querySelector('input');
+          if (input instanceof HTMLInputElement) input.focus();
+        }
+      });
+    }
+
+    // ?q= fallback for browsers without Text Fragment support: walk text
+    // nodes in <main> and wrap case-insensitive matches in <mark>. Modern
+    // browsers (those with document.fragmentDirective) get the native
+    // ::target-text highlight from the URL hash and don't need this.
+    const params = new URLSearchParams(window.location.search);
+    const q = (params.get('q') || '').trim();
+    if (q && !('fragmentDirective' in document)) {
+      const root = document.querySelector('main');
+      if (root) {
+        const terms = q
+          .split(/\s+/)
+          .filter((t) => t.length > 1)
+          .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        if (terms.length > 0) {
+          const re = new RegExp(`(${terms.join('|')})`, 'gi');
+          const skip = new Set(['SCRIPT', 'STYLE', 'MARK', 'CODE', 'PRE']);
+          const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+              if (!node.parentElement) return NodeFilter.FILTER_REJECT;
+              if (skip.has(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+              return re.test(node.nodeValue || '')
+                ? NodeFilter.FILTER_ACCEPT
+                : NodeFilter.FILTER_REJECT;
+            },
+          });
+          const targets = [];
+          let n;
+          while ((n = walker.nextNode())) targets.push(n);
+          let firstMark = null;
+          for (const node of targets) {
+            const span = document.createElement('span');
+            span.innerHTML = (node.nodeValue || '').replace(
+              re,
+              '<mark>$1</mark>',
+            );
+            if (!firstMark) firstMark = span.querySelector('mark');
+            node.parentNode.replaceChild(span, node);
+          }
+          if (firstMark) {
+            firstMark.scrollIntoView({ behavior: 'auto', block: 'center' });
+          }
+        }
+      }
+    }
+  });
+</script>

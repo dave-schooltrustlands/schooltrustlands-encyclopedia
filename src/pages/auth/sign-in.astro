@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+const url = new URL(Astro.request.url);
+const redirectAfter = url.searchParams.get('redirect') ?? '/my-library/';
+
+let formMessage: { kind: 'ok' | 'err'; text: string } | null = null;
+let submittedEmail = '';
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const email = String(formData.get('email') ?? '').trim();
+  submittedEmail = email;
+  if (!email || !/.+@.+\..+/.test(email)) {
+    formMessage = { kind: 'err', text: 'Please enter a valid email address.' };
+  } else {
+    const supabase = getServerSupabase(Astro);
+    // Build the magic-link redirect target. The user clicks this from email;
+    // Supabase appends ?code=<...> and we exchange the code in /auth/callback.
+    const origin = url.origin;
+    const callback = new URL('/auth/callback', origin);
+    callback.searchParams.set('next', redirectAfter);
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: callback.toString() },
+    });
+    if (error) {
+      formMessage = { kind: 'err', text: error.message };
+    } else {
+      formMessage = {
+        kind: 'ok',
+        text:
+          'Check your email. The Library sent a one-time login link to ' +
+          email +
+          '. Click it to finish signing in.',
+      };
+    }
+  }
+}
+---
+
+<BaseLayout
+  title="Sign in · America's School Trust Library"
+  description="Sign in to your Library Card. Magic-link auth — no password required."
+  sourceId="auth-sign-in"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Sign in</h1>
+    <p class="kicker">Enter your email; the Library sends you a one-time login link.</p>
+
+    {formMessage && (
+      <div class:list={['flash', formMessage.kind]}>
+        <p>{formMessage.text}</p>
+      </div>
+    )}
+
+    {!formMessage || formMessage.kind === 'err' ? (
+      <form method="POST" class="signin-form">
+        <label class="signin-label" for="email">Email address</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          autocomplete="email"
+          inputmode="email"
+          value={submittedEmail}
+          class="signin-input"
+          placeholder="reader@example.org"
+        />
+        <button type="submit" class="signin-button">Send me a link</button>
+      </form>
+    ) : null}
+
+    <p class="signin-note">
+      No account yet? Entering your email here is the sign-up — the same flow
+      enrolls a new reader and returns a returning one.
+    </p>
+
+    <p class="signin-note">
+      <a href="/library-card/">← What does a Library Card give me?</a>
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      font-style: italic;
+      color: #475569;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .signin-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: 28rem;
+      margin: 1.25rem 0;
+    }
+    .signin-label {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .signin-input {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+    }
+    .signin-button {
+      align-self: flex-start;
+      padding: 0.6rem 1.25rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .signin-button:hover {
+      background: #142940;
+    }
+    .signin-note {
+      font-size: 0.9rem;
+      color: #475569;
+      margin: 0.75rem 0;
+    }
+    .flash {
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.95rem;
+    }
+    .flash.ok {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+    }
+    .flash.err {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+    .flash p {
+      margin: 0;
+    }
+  </style>
+</BaseLayout>

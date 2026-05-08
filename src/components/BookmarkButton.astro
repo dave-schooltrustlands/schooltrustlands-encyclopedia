@@ -1,0 +1,181 @@
+---
+// One-click bookmark toggle. Renders inline on essay/source/state/voices
+// pages; hydrates client-side using the browser Supabase client and reads
+// session cookies set during sign-in. Logged-out clicks redirect to
+// /auth/sign-in?redirect=<current url>.
+//
+// Usage:
+//   <BookmarkButton title={frontmatter.title} />
+// The page URL is captured at click time from window.location, so the
+// component does not need a `url` prop.
+
+interface Props {
+  title?: string;
+}
+const { title } = Astro.props;
+---
+
+<button
+  type="button"
+  class="bookmark-button"
+  data-bookmark-button
+  data-bookmark-title={title ?? ''}
+  aria-label="Save this page to your Library"
+  aria-pressed="false"
+  title="Save this page to your Library"
+>
+  <svg
+    class="bookmark-icon"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+  </svg>
+  <span class="bookmark-label">Save</span>
+</button>
+
+<script>
+  import { getBrowserSupabase } from '../lib/supabase';
+
+  const buttons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-bookmark-button]')
+  );
+  if (buttons.length > 0) {
+    const supabase = getBrowserSupabase();
+
+    async function syncState() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) {
+        for (const b of buttons) {
+          setButton(b, { saved: false, loggedIn: false });
+        }
+        return;
+      }
+      const url = window.location.pathname;
+      const { data } = await supabase
+        .from('bookmarks')
+        .select('id')
+        .eq('user_id', user.id)
+        .eq('url', url)
+        .maybeSingle();
+      const saved = !!data;
+      for (const b of buttons) {
+        setButton(b, { saved, loggedIn: true });
+      }
+    }
+
+    function setButton(
+      b: HTMLButtonElement,
+      state: { saved: boolean; loggedIn: boolean }
+    ) {
+      b.setAttribute('aria-pressed', state.saved ? 'true' : 'false');
+      b.dataset.saved = state.saved ? 'true' : 'false';
+      b.dataset.loggedIn = state.loggedIn ? 'true' : 'false';
+      const label = b.querySelector<HTMLElement>('.bookmark-label');
+      if (label) {
+        label.textContent = !state.loggedIn
+          ? 'Save'
+          : state.saved
+            ? 'Saved'
+            : 'Save';
+      }
+      const path = b.querySelector<SVGPathElement>('.bookmark-icon path');
+      if (path) {
+        path.setAttribute('fill', state.saved ? 'currentColor' : 'none');
+      }
+    }
+
+    async function toggle(b: HTMLButtonElement) {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const url = window.location.pathname;
+      if (!user) {
+        const dest = '/auth/sign-in?redirect=' + encodeURIComponent(url);
+        window.location.href = dest;
+        return;
+      }
+      b.disabled = true;
+      try {
+        if (b.dataset.saved === 'true') {
+          await supabase
+            .from('bookmarks')
+            .delete()
+            .eq('user_id', user.id)
+            .eq('url', url);
+          setButton(b, { saved: false, loggedIn: true });
+        } else {
+          const title =
+            b.dataset.bookmarkTitle && b.dataset.bookmarkTitle.length > 0
+              ? b.dataset.bookmarkTitle
+              : document.title;
+          await supabase
+            .from('bookmarks')
+            .upsert(
+              { user_id: user.id, url, title },
+              { onConflict: 'user_id,url' }
+            );
+          setButton(b, { saved: true, loggedIn: true });
+        }
+      } finally {
+        b.disabled = false;
+      }
+    }
+
+    for (const b of buttons) {
+      b.addEventListener('click', () => toggle(b));
+    }
+
+    syncState();
+  }
+</script>
+
+<style>
+  .bookmark-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.7rem;
+    background: var(--linen-card, #fafaf7);
+    border: 1px solid var(--rule-border, #cbd5e1);
+    border-radius: 4px;
+    color: var(--deep-navy, #1e3a5f);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+  }
+  .bookmark-button:hover {
+    background: #fff;
+    border-color: var(--old-gold, #8b7355);
+    color: #142940;
+  }
+  .bookmark-button[data-saved='true'] {
+    background: var(--deep-navy, #1e3a5f);
+    border-color: var(--deep-navy, #1e3a5f);
+    color: #fff;
+  }
+  .bookmark-button[data-saved='true']:hover {
+    background: #142940;
+  }
+  .bookmark-button:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+  .bookmark-icon {
+    flex: none;
+  }
+</style>

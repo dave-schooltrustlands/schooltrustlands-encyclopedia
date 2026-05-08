@@ -1,0 +1,396 @@
+---
+import RoomLayout from '../../layouts/RoomLayout.astro';
+import StateDossier from '../../components/StateDossier.astro';
+import financeData from '../../data/finance/states.json';
+
+type FinanceRecord = {
+  stateIso: string;
+  fips: string;
+  displayName: string;
+  eraCohort: string;
+  eraCohortNumber: number;
+  governanceForm: string;
+  governanceDescription: string;
+  corpus: { value: number | null; asOf: string | null; confidence: string; source: string | null };
+  distribution: { value: number | null; fiscalYear: string | null; confidence: string; source: string | null };
+  transparency: { status: string; source: string | null };
+  federalGrantAcres: { value: number; confidence: string };
+  substrateVersion: string;
+  lastReviewed: string;
+};
+
+const records = financeData as FinanceRecord[];
+
+export async function getStaticPaths() {
+  const recs = (await import('../../data/finance/states.json')).default as FinanceRecord[];
+  return recs.map((r) => ({
+    params: { iso: r.stateIso },
+    props: { record: r },
+  }));
+}
+
+const { record } = Astro.props as { record: FinanceRecord };
+
+const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+const num = new Intl.NumberFormat('en-US');
+
+const govLabels: Record<string, string> = {
+  SLB: 'State Land Board (ex officio)',
+  DSL: 'Single elected/appointed commissioner',
+  'land-grant-trust': 'Distributed (no unified board)',
+  'no-trust': 'No federal trust (state-derived)',
+};
+
+const transparencyLabels: Record<string, string> = {
+  'data-published': 'Corpus and distribution disclosed',
+  'data-partially-published': 'Partially disclosed',
+  unknown: 'Disclosure unknown',
+  'never-had-trust': 'No federal trust to disclose',
+};
+
+// ASTL chart figures migrated to per-state Counting House cards.
+// Started with the Utah Hello World (Session 4, commit a5eb59f) and
+// extended to the other 17 ASTL-reporting states in Session 5. The
+// figure renders below the governance section using the .counting-chart
+// primitive from global.css. astlSlug is the URL fragment under
+// schooltrustlands.org/what-states-have-school-trust-lands/ — note
+// "azizona" is the actual (typo'd) Arizona slug at source.
+type StateChart = {
+  iso: string;
+  src: string;
+  alt: string;
+  captionLead: string;
+  astlSlug: string;
+  reportTitle: string;
+  attribution: string;
+};
+
+const STATE_CHARTS: StateChart[] = [
+  {
+    iso: 'us-ut',
+    src: '/img/charts/us-ut/sitfo-market-value-fy2024.webp',
+    alt: 'Utah Permanent State School Fund market value over time, FY 2024 reporting',
+    captionLead: 'Permanent State School Fund market value over time.',
+    astlSlug: 'utah',
+    reportTitle: 'Utah Trust Lands Report',
+    attribution: 'Scott Smith, FY 2024',
+  },
+  {
+    iso: 'us-ak',
+    src: '/img/charts/us-ak/public-school-trust-fund-fy2024.png',
+    alt: 'Bar chart of the Alaska Public School Trust Fund market value through FY 2024, reported at approximately $834 million.',
+    captionLead: 'Alaska Public School Trust Fund market value over time.',
+    astlSlug: 'alaska',
+    reportTitle: 'Alaska Trust Lands Report',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-az',
+    src: '/img/charts/us-az/permanent-common-school-fund-market-value-fy2024.png',
+    alt: 'Time-series chart of the Arizona Permanent Common School Fund market value, reported at $6.62 billion as of June 30, 2022.',
+    captionLead: 'Arizona Permanent Common School Fund market value over time.',
+    astlSlug: 'azizona',
+    reportTitle: 'Arizona Trust Lands Report',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-ca',
+    src: '/img/charts/us-ca/school-land-bank-fund-fy2024.png',
+    alt: 'Bar chart of California School Land Bank Fund balance through June 30, 2024, reported at approximately $65 million.',
+    captionLead:
+      'California School Land Bank Fund market value, with FY 2024 net revenue continuing to flow to CalSTRS rather than to K–12 schools.',
+    astlSlug: 'california',
+    reportTitle: 'California School Trust Lands and Fund',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-co',
+    src: '/img/charts/us-co/permanent-school-fund-market-value-fy2024.png',
+    alt: 'Time-series chart of the Colorado Public School Permanent Fund market value through FY 2024, with balance approaching $1.85 billion.',
+    captionLead: 'Colorado Public School Permanent Fund market value over time.',
+    astlSlug: 'colorado',
+    reportTitle: 'Colorado School Trust Lands and Fund',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-id',
+    src: '/img/charts/us-id/public-school-permanent-endowment-fund-fy2024.png',
+    alt: 'Time-series chart of the Idaho Public School Permanent Endowment Fund market value, with the corpus approaching $2 billion including earnings reserves.',
+    captionLead:
+      'Idaho Public School Permanent Endowment Fund market value over time, with a five-year time-weighted return reported at 8.1%.',
+    astlSlug: 'idaho',
+    reportTitle: 'Idaho School Trust Lands and Fund',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-mn',
+    src: '/img/charts/us-mn/permanent-school-fund-market-value-fy2024.png',
+    alt: 'Time-series chart of the Minnesota Permanent School Fund market value, reported at $2.1 billion as of June 30, 2024.',
+    captionLead:
+      'Minnesota Permanent School Fund market value over time, with a five-year time-weighted net-of-fees return of 7.7%.',
+    astlSlug: 'minnesota',
+    reportTitle: 'Minnesota School Trust Lands and Fund',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-ms',
+    src: '/img/charts/us-ms/ms-principal-school-fund.png',
+    alt: 'Mississippi 16th Section Principal School Fund — aggregate principal balances compiled by Secretary of State across 107 districts, FY 2024.',
+    captionLead:
+      "Mississippi 16th Section Principal School Fund (aggregated by the Secretary of State across the state's school districts).",
+    astlSlug: 'mississippi',
+    reportTitle: 'Mississippi Trust Lands Report',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-mt',
+    src: '/img/charts/us-mt/mt-public-school-trust-fund-market-value.png',
+    alt: 'Market value of the Montana Public School Trust Fund over time, $718 million as of June 30, 2024.',
+    captionLead:
+      'Market value of the Montana Public School Trust Fund over time, managed by the Montana Board of Investments.',
+    astlSlug: 'montana',
+    reportTitle: 'Montana Trust Lands Report',
+    attribution: 'Tonia Day, data as of June 30, 2024',
+  },
+  {
+    iso: 'us-ne',
+    src: '/img/charts/us-ne/ne-permanent-school-fund.png',
+    alt: 'Nebraska Permanent School Fund growth over time, FY 2024 reporting.',
+    captionLead:
+      'Nebraska Permanent School Fund market value over time, invested by the Nebraska Investment Council.',
+    astlSlug: 'nebraska',
+    reportTitle: 'Nebraska Trust Lands Report',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-nv',
+    src: '/img/charts/us-nv/nv-permanent-school-fund.png',
+    alt: 'Nevada Permanent School Fund market value over time, $539.96 million as of June 30, 2024.',
+    captionLead:
+      'Nevada Permanent School Fund market value over time, invested by the State Treasurer.',
+    astlSlug: 'nevada',
+    reportTitle: 'Nevada Trust Lands Report',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-nm',
+    src: '/img/charts/us-nm/nm-land-grant-permanent-funds.png',
+    alt: 'New Mexico Land Grant Permanent Funds market value over time, exceeding $30 billion in FY 2024.',
+    captionLead:
+      'New Mexico Land Grant Permanent Funds market value over time. The School Fund comprises approximately 87 percent of the invested LGPF assets.',
+    astlSlug: 'new-mexico',
+    reportTitle: 'New Mexico Trust Lands Report',
+    attribution: 'Scott Smith',
+  },
+  {
+    iso: 'us-nd',
+    src: '/img/charts/us-nd/nd-common-schools-trust-fund.png',
+    alt: 'North Dakota Common Schools Trust Fund growth, $240 million in 1986 to $6.997 billion in June 2025 (~2,900% growth).',
+    captionLead:
+      'North Dakota Common Schools Trust Fund market value over 39 years, growing from approximately $240 million to $6.997 billion as of June 30, 2025.',
+    astlSlug: 'north-dakota',
+    reportTitle: 'North Dakota Trust Lands Report',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-ok',
+    src: '/img/charts/us-ok/ok-common-school-permanent-fund-market-value.png',
+    alt: "Bar chart titled 'Market Value of Oklahoma Common School Permanent Fund' showing the corpus growing from approximately $1.07 billion in 2001 to $2.57 billion in FY 2024, with a visible gap in the 2014-2022 series and a step-up between 2022 and 2023.",
+    captionLead:
+      'Market value of the Oklahoma Common School Permanent Fund, 2001-2024. The fund crossed $2.5 billion by FY 2024 with a five-year total weighted return of 4.12 percent.',
+    astlSlug: 'oklahoma',
+    reportTitle: 'Oklahoma — Advocates for School Trust Lands',
+    attribution: 'Tonia Day, June 2024',
+  },
+  {
+    iso: 'us-sd',
+    src: '/img/charts/us-sd/sd-gross-revenue-school-lands.png',
+    alt: "Blue vertical bar chart titled 'SD Gross Revenue from School Lands' showing annual values in millions from 2001 to 2024, ranging from a low of about $4.3M in 2005 to peaks near $13M in 2012, 2021, and 2024.",
+    captionLead:
+      'Gross revenue from South Dakota school trust lands, 2001-2024 (millions of dollars). Recent peak years (2020-2024) reflect a stable grazing-and-agriculture base with growing oil-and-gas and emergent wind-energy contributions.',
+    astlSlug: 'south-dakota',
+    reportTitle: 'South Dakota — Advocates for School Trust Lands',
+    attribution: 'Tonia Day, June 2024',
+  },
+  {
+    iso: 'us-tx',
+    src: '/img/charts/us-tx/tx-permanent-school-fund-market-value.png',
+    alt: "Blue vertical bar chart titled 'Market Value of Permanent School Fund' showing the Texas PSF growing from approximately $19 billion in 2001 to about $57 billion in FY 2024, with a step-change after 2018.",
+    captionLead:
+      'Market value of the Texas Permanent School Fund, 2001-2024 (billions of dollars). The largest school endowment in the United States; corpus crossed $50 billion in FY 2020 and reached approximately $57 billion by FY 2024, with a 7.31 percent total weighted return that year.',
+    astlSlug: 'texas',
+    reportTitle: 'Texas — Advocates for School Trust Lands',
+    attribution: 'Tonia Day, FY 2024',
+  },
+  {
+    iso: 'us-wa',
+    src: '/img/charts/us-wa/wa-distribution-to-schools.png',
+    alt: "Green area chart titled 'Washington Distribution to Schools' showing annual distributions from 1995 to 2024, fluctuating between roughly $50M and $120M with a 2011 peak near $120M and a recent range of $55M-$75M.",
+    captionLead:
+      "Annual Washington school-trust distributions, 1995-2024. The thirty-year trace shows the inflation-adjusted decline DNR's own Trust Land Performance Assessment now flags as a structural concern.",
+    astlSlug: 'washington-state',
+    reportTitle: 'Washington — Advocates for School Trust Lands',
+    attribution: 'Tonia Day, June 30, 2024',
+  },
+  {
+    iso: 'us-wi',
+    src: '/img/charts/us-wi/wi-annual-library-distributions.png',
+    alt: "Green vertical bar chart titled 'Wisconsin Annual Distribution to Public School Libraries in Millions' showing growth from approximately $27M in 2000 to $70M in 2025, with a steep rise after 2020.",
+    captionLead:
+      "Annual Wisconsin Common School Fund distributions to public school libraries, 2000-2025 (millions of dollars). The post-2020 acceleration reflects 2015 Wis. Act 60's prudent-investor diversification authority working through to library distributions; FY 2025 reached $70 million.",
+    astlSlug: 'wisconsin',
+    reportTitle: 'Wisconsin — Advocates for School Trust Lands',
+    attribution: 'Tonia Day, June 2024',
+  },
+];
+
+const stateChart = STATE_CHARTS.find((c) => c.iso === Astro.props.record.stateIso);
+
+const transparencyDescriptions: Record<string, string> = {
+  'data-published': 'Both the permanent fund corpus and the most recent distribution figure are present in the substrate.',
+  'data-partially-published': 'One of corpus or recent distribution is present in the substrate; the other has not yet been disclosed or extracted.',
+  unknown: 'The state has a federal trust but neither corpus nor recent distribution is in the substrate yet. Awaiting state disclosure or future substrate work.',
+  'never-had-trust': 'State-derived: never received a federal admission grant, so there is no federal-trust corpus to publish. (The state may still have its own state-derived fund or other school-finance instruments.)',
+};
+
+const isStateDerived = record.federalGrantAcres.value === 0;
+
+// Confidence chip styling — kept consistent with the table page.
+const confidenceClasses: Record<string, string> = {
+  verified: 'bg-emerald-50 text-emerald-800',
+  'awaiting-disclosure': 'bg-orange-50 text-orange-800',
+  'source-conflict': 'bg-amber-50 text-amber-800',
+  'not-applicable': 'bg-slate-100 text-slate-500',
+};
+
+const confidenceLabels: Record<string, string> = {
+  verified: 'Verified',
+  'awaiting-disclosure': 'Awaiting State Disclosure',
+  'source-conflict': 'Source conflict',
+  'not-applicable': 'Not applicable',
+};
+---
+
+<RoomLayout
+  room="counting"
+  state={{ iso: record.stateIso, name: record.displayName }}
+  title={`${record.displayName} financial profile`}
+  subtitle={`${record.eraCohort} (cohort ${record.eraCohortNumber}) · ${govLabels[record.governanceForm]}`}
+  width="prose"
+  sourceId={`finance-${record.stateIso}-v${record.substrateVersion}`}
+>
+  <p class="mt-3 text-xs text-slate-500">
+    Substrate v{record.substrateVersion} · Last reviewed {record.lastReviewed} ·{' '}
+    <a href={`/reading/${record.stateIso}/`} class="text-blue-700 underline hover:text-blue-900">Read the state dossier</a>
+  </p>
+
+  {isStateDerived && (
+    <section class="mt-8 rounded-md border border-slate-200 bg-slate-50 p-4">
+      <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-600">
+        State-derived: no federal admission grant
+      </h2>
+      <p class="mt-2 text-slate-700">
+        {record.displayName} entered the Union without a federal school-land grant — either because
+        it predated the federal land-grant template (the Original 13) or because it was admitted
+        under a different model (annexation by treaty, cession from a parent state, statehood from
+        a sovereign republic). Counting House measures the federal-trust architecture; for
+        {' '}{record.displayName} that architecture was never built. The state's own school-finance
+        instruments (general appropriations, local property tax, in some cases a state-derived
+        endowment) live elsewhere in the library.
+      </p>
+    </section>
+  )}
+
+  <section class="mt-8">
+    <h2 class="text-xl font-semibold tracking-tight">Permanent fund corpus</h2>
+    <div class="mt-3 flex items-baseline gap-3">
+      <span class="text-3xl font-semibold tabular-nums">
+        {record.corpus.value !== null ? usd.format(record.corpus.value) : '—'}
+      </span>
+      <span class:list={['inline-flex items-center rounded px-2 py-0.5 text-xs font-medium', confidenceClasses[record.corpus.confidence]]}>
+        {confidenceLabels[record.corpus.confidence]}
+      </span>
+    </div>
+    {record.corpus.asOf && (
+      <p class="mt-1 text-sm text-slate-500">As of {record.corpus.asOf}</p>
+    )}
+    {record.corpus.confidence === 'awaiting-disclosure' && (
+      <p class="mt-2 text-sm text-slate-700">
+        The substrate doesn't yet have a verified corpus value for {record.displayName}. This is
+        a known gap in the editorial workstream (B-025 hand-curation pass), not an indication that
+        no fund exists.
+      </p>
+    )}
+  </section>
+
+  <section class="mt-8">
+    <h2 class="text-xl font-semibold tracking-tight">Most recent distribution</h2>
+    <div class="mt-3 flex items-baseline gap-3">
+      <span class="text-3xl font-semibold tabular-nums">
+        {record.distribution.value !== null ? usd.format(record.distribution.value) : '—'}
+      </span>
+      <span class:list={['inline-flex items-center rounded px-2 py-0.5 text-xs font-medium', confidenceClasses[record.distribution.confidence]]}>
+        {confidenceLabels[record.distribution.confidence]}
+      </span>
+    </div>
+    {record.distribution.fiscalYear && (
+      <p class="mt-1 text-sm text-slate-500">Fiscal year {record.distribution.fiscalYear}</p>
+    )}
+  </section>
+
+  <section class="mt-8">
+    <h2 class="text-xl font-semibold tracking-tight">Federal grant acreage</h2>
+    <div class="mt-3 flex items-baseline gap-3">
+      <span class="text-3xl font-semibold tabular-nums">
+        {record.federalGrantAcres.value > 0 ? `${num.format(record.federalGrantAcres.value)} acres` : '—'}
+      </span>
+      <span class:list={['inline-flex items-center rounded px-2 py-0.5 text-xs font-medium', confidenceClasses[record.federalGrantAcres.confidence]]}>
+        {confidenceLabels[record.federalGrantAcres.confidence]}
+      </span>
+    </div>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="text-xl font-semibold tracking-tight">Transparency status</h2>
+    <p class="mt-3">
+      <span class="rounded-md bg-slate-100 px-2 py-1 text-sm font-medium text-slate-800">
+        {transparencyLabels[record.transparency.status]}
+      </span>
+    </p>
+    <p class="mt-3 text-slate-700">
+      {transparencyDescriptions[record.transparency.status]}
+    </p>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="text-xl font-semibold tracking-tight">Governance form</h2>
+    <p class="mt-3 text-sm text-slate-600">
+      Classification: <span class="font-medium text-slate-800">{govLabels[record.governanceForm]}</span>
+    </p>
+    <p class="mt-3 text-slate-700">
+      {record.governanceDescription}
+    </p>
+  </section>
+
+  {stateChart && (
+    <figure class="counting-chart">
+      <img src={stateChart.src} alt={stateChart.alt} />
+      <figcaption>
+        {stateChart.captionLead} Source:{' '}
+        <a
+          href={`https://www.schooltrustlands.org/what-states-have-school-trust-lands/${stateChart.astlSlug}`}
+          target="_blank"
+          rel="noopener"
+        >
+          Advocates for School Trust Lands
+        </a>
+        ,{' '}
+        <em>{stateChart.reportTitle}</em> ({stateChart.attribution}). Reproduced for the library by permission.
+      </figcaption>
+    </figure>
+  )}
+
+  <section class="mt-12">
+    <StateDossier iso={record.stateIso} name={record.displayName} />
+  </section>
+</RoomLayout>

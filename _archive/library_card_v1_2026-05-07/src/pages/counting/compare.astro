@@ -1,0 +1,174 @@
+---
+import RoomLayout from '../../layouts/RoomLayout.astro';
+import financeData from '../../data/finance/states.json';
+
+type FinanceRecord = {
+  stateIso: string;
+  displayName: string;
+  eraCohort: string;
+  eraCohortNumber: number;
+  governanceForm: string;
+  governanceDescription: string;
+  corpus: { value: number | null; asOf: string | null; confidence: string };
+  distribution: { value: number | null; fiscalYear: string | null; confidence: string };
+  transparency: { status: string };
+  federalGrantAcres: { value: number; confidence: string };
+};
+
+const records = (financeData as FinanceRecord[]).slice().sort((a, b) =>
+  a.displayName.localeCompare(b.displayName),
+);
+
+const govLabels: Record<string, string> = {
+  SLB: 'State Land Board (ex officio)',
+  DSL: 'Single elected/appointed commissioner',
+  'land-grant-trust': 'Distributed (no unified board)',
+  'no-trust': 'No federal trust (state-derived)',
+};
+
+const transparencyLabels: Record<string, string> = {
+  'data-published': 'Corpus + distribution disclosed',
+  'data-partially-published': 'Partially disclosed',
+  unknown: 'Disclosure unknown',
+  'never-had-trust': 'No federal trust to disclose',
+};
+
+const confidenceLabels: Record<string, string> = {
+  verified: 'Verified',
+  'awaiting-disclosure': 'Awaiting disclosure',
+  'source-conflict': 'Source conflict',
+  'not-applicable': 'Not applicable',
+};
+---
+
+<RoomLayout
+  room="counting"
+  title="Compare two states side by side"
+  subtitle="Pick any two states. The table draws from the same Counting House substrate as the per-state cards; values that aren't yet in the substrate show as Awaiting Disclosure."
+  width="prose"
+  sourceId="finance-compare"
+  pageTitle="Compare states · Counting House · America's School Trust Library"
+>
+  <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <label class="text-sm">
+      <span class="font-semibold text-slate-700">State A</span>
+      <select id="select-a" class="mt-1 w-full rounded-md border border-slate-300 bg-white px-2 py-1.5">
+        {records.map((r, i) => (
+          <option value={r.stateIso} selected={i === 0}>{r.displayName}</option>
+        ))}
+      </select>
+    </label>
+    <label class="text-sm">
+      <span class="font-semibold text-slate-700">State B</span>
+      <select id="select-b" class="mt-1 w-full rounded-md border border-slate-300 bg-white px-2 py-1.5">
+        {records.map((r, i) => (
+          <option value={r.stateIso} selected={i === 1}>{r.displayName}</option>
+        ))}
+      </select>
+    </label>
+  </div>
+
+  <div class="mt-6 overflow-x-auto rounded-md border border-slate-200 bg-white shadow-sm">
+    <table class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-3 py-2">Field</th>
+          <th class="px-3 py-2"><span id="label-a">{records[0].displayName}</span></th>
+          <th class="px-3 py-2"><span id="label-b">{records[1].displayName}</span></th>
+        </tr>
+      </thead>
+      <tbody id="compare-body" class="divide-y divide-slate-100"></tbody>
+    </table>
+  </div>
+
+  <p class="mt-4 text-xs text-slate-500">
+    See the per-state Counting House card for the full breakdown including governance description and source notes:
+    <a id="link-a" href={`/counting/${records[0].stateIso}/`} class="text-blue-700 underline hover:text-blue-900">{records[0].displayName} →</a>
+    {' · '}
+    <a id="link-b" href={`/counting/${records[1].stateIso}/`} class="text-blue-700 underline hover:text-blue-900">{records[1].displayName} →</a>
+  </p>
+
+  <script
+    type="application/json"
+    id="finance-data"
+    set:html={JSON.stringify({ records, govLabels, transparencyLabels, confidenceLabels })}
+  />
+
+  <script is:inline>
+    (() => {
+      const dataNode = document.getElementById('finance-data');
+      const { records, govLabels, transparencyLabels, confidenceLabels } = JSON.parse(
+        dataNode.textContent || '{}',
+      );
+      const byIso = Object.fromEntries(records.map((r) => [r.stateIso, r]));
+
+      const usd = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0,
+      });
+      const num = new Intl.NumberFormat('en-US');
+
+      function fmtMoney(field) {
+        if (field.value !== null) {
+          let s = usd.format(field.value);
+          if (field.fiscalYear) s += ` (FY${field.fiscalYear})`;
+          else if (field.asOf) s += ` (as of ${field.asOf})`;
+          return s;
+        }
+        if (field.confidence === 'not-applicable') return '— (not applicable)';
+        return 'Awaiting Disclosure';
+      }
+
+      function fmtAcres(field) {
+        if (field.value > 0) return `${num.format(field.value)} acres`;
+        return '— (state-derived)';
+      }
+
+      const ROWS = [
+        { label: 'Era cohort', get: (r) => `${r.eraCohortNumber}. ${r.eraCohort}` },
+        { label: 'Governance form', get: (r) => govLabels[r.governanceForm] ?? r.governanceForm },
+        { label: 'Permanent fund corpus', get: (r) => fmtMoney(r.corpus) },
+        { label: 'Most recent distribution', get: (r) => fmtMoney(r.distribution) },
+        { label: 'Transparency', get: (r) => transparencyLabels[r.transparency.status] ?? r.transparency.status },
+        { label: 'Federal grant acreage', get: (r) => fmtAcres(r.federalGrantAcres) },
+      ];
+
+      function render() {
+        const aIso = document.getElementById('select-a').value;
+        const bIso = document.getElementById('select-b').value;
+        const a = byIso[aIso];
+        const b = byIso[bIso];
+        document.getElementById('label-a').textContent = a.displayName;
+        document.getElementById('label-b').textContent = b.displayName;
+        document.getElementById('link-a').textContent = `${a.displayName} →`;
+        document.getElementById('link-a').href = `/counting/${a.stateIso}/`;
+        document.getElementById('link-b').textContent = `${b.displayName} →`;
+        document.getElementById('link-b').href = `/counting/${b.stateIso}/`;
+
+        const tbody = document.getElementById('compare-body');
+        tbody.innerHTML = '';
+        for (const row of ROWS) {
+          const tr = document.createElement('tr');
+          const tdLabel = document.createElement('td');
+          tdLabel.className = 'px-3 py-2 font-medium text-slate-700';
+          tdLabel.textContent = row.label;
+          const tdA = document.createElement('td');
+          tdA.className = 'px-3 py-2 text-slate-700';
+          tdA.textContent = row.get(a);
+          const tdB = document.createElement('td');
+          tdB.className = 'px-3 py-2 text-slate-700';
+          tdB.textContent = row.get(b);
+          tr.appendChild(tdLabel);
+          tr.appendChild(tdA);
+          tr.appendChild(tdB);
+          tbody.appendChild(tr);
+        }
+      }
+
+      document.getElementById('select-a').addEventListener('change', render);
+      document.getElementById('select-b').addEventListener('change', render);
+      render();
+    })();
+  </script>
+</RoomLayout>

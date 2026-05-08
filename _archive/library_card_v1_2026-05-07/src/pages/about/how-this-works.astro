@@ -1,0 +1,121 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="How This Library Works · America's School Trust Library"
+      description="The Library's knowledge architecture and the contribution loop, in two posters and a few hundred words."
+    />
+  </head>
+  <body class="min-h-screen bg-archive-paper text-ink" data-source-id="about-how-this-works">
+    <Header />
+    <main class="mx-auto max-w-prose p-4 sm:p-8">
+      <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+        <h1>How This Library Works</h1>
+
+        <p>
+          America's School Trust Library is unusual among libraries. It is built on a five-layer knowledge architecture that turns scattered primary sources — statutes, court opinions, agency reports, period newspapers, oral histories, expert declarations — into the essays, dossiers, and reference works visitors read. Every claim cites its source. Every figure has an anchor. The architecture is the same whether the visitor is a school-board member preparing for a vote, a journalist on the education beat, an attorney looking for case law, or a student writing a term paper.
+        </p>
+
+        <p>
+          This page exists because a few visitors will want to know how the Library actually works — how a primary source becomes a Reading Room essay, how a state correspondent's note becomes a Newsroom item, how a state Department of Lands staff member's correction makes its way back into the substrate. Two posters answer the question. The first shows the architecture as it stands at any given moment. The second shows how material moves through it over time.
+        </p>
+
+        <h2>The knowledge architecture</h2>
+
+        <figure>
+          <img
+            src="/images/about/library-knowledge-architecture.png"
+            alt="The Library's knowledge architecture — five layers from primary sources at the bottom to the published essays, dossiers, and reference works at the top."
+            loading="lazy"
+          />
+          <figcaption>The Library's knowledge architecture — five layers from primary sources at the bottom to the published essays, dossiers, and reference works at the top.</figcaption>
+        </figure>
+
+        <p>
+          The architecture has five layers. At the bottom, <strong>L0 — Primary Sources</strong> holds the evidentiary floor: statutes, court opinions, agency annual reports, historical maps, expert declarations, period newspapers, oral histories. Nothing is altered here; sources are catalogued, dated, and never edited.
+        </p>
+
+        <p>
+          <strong>L1 — Canonical Claims</strong> sits above. Each claim — a settled fact, a figure, a doctrinal proposition — is atomized into its own record and cited to L0. The same claim can appear in many published deliverables, but it lives in one place. When new evidence arrives, the canonical claim updates and every deliverable that uses it inherits the update.
+        </p>
+
+        <p>
+          <strong>L2 — Audience Models</strong> is where the same substrate is rendered for different readers. A general-public reader looking at the <em>Sacred Compact</em> essays gets a different rendering than an attorney researching the same trust doctrine. The substrate is one; the audience-specific rendering is many.
+        </p>
+
+        <p>
+          <strong>L3 — Generation</strong> is the layer where the rendering happens. AI editorial passes draft from L1 against L2 audience models; named human editors review, refine, and approve. The Library's editorial discipline lives here.
+        </p>
+
+        <p>
+          <strong>L4 — Deliverables</strong> is what you see when you visit the Library: the Reading Room essays, the per-state dossiers, the Atlas Room, the Counting House, the Map Room, the Newsroom entries, the Voices section. Everything cites back through L1 to L0, so a visitor can always trace a claim to its source.
+        </p>
+
+        <p>
+          The architecture's purpose is unromantic but load-bearing: it lets a small team produce evidentiary work at scale without losing the discipline that makes the work credible. Every page on this site is built this way.
+        </p>
+
+        <h2>The contribution loop</h2>
+
+        <figure>
+          <img
+            src="/images/about/library-contribution-loop.png"
+            alt="The Library's contribution loop — inputs flow through intake and editorial review into the knowledge stack and out to published surfaces, with readers cycling back as future contributors."
+            loading="lazy"
+          />
+          <figcaption>The Library's contribution loop — inputs flow through intake and editorial review into the knowledge stack and out to published surfaces, with readers cycling back as future contributors.</figcaption>
+        </figure>
+
+        <p>
+          The first poster shows the architecture standing still. The second shows how material moves through it. The flow has four phases:
+        </p>
+
+        <p>
+          <strong>Inputs.</strong> Material enters the Library from several sources: scheduled surveillance tasks (the Newsroom's weekly scrape of state agency websites, legislative information systems, court dockets, regional press); state co-librarians (forthcoming — drawn primarily from State Departments of Lands and equivalent agencies, taking responsibility for their state's page); document contributors who hold primary sources in private hands (old land patents, historical agency reports, family archives); and ongoing direct ingestion of statutes, court opinions, and other public records.
+        </p>
+
+        <p>
+          <strong>Intake and editorial review.</strong> New material is triaged, classified by layer (L0 / L1 / privileged / off-topic), checked for duplicates, and routed. The editorial pass that follows is AI-assisted but human-supervised: every published claim has been reviewed and approved by a named editor.
+        </p>
+
+        <p>
+          <strong>Substrate update.</strong> Approved material updates the appropriate layer. New L0 sources may produce new L1 claims, which may refresh L4 deliverables that depended on the old claims.
+        </p>
+
+        <p>
+          <strong>Published surfaces.</strong> Updated content reaches readers through the Library's rooms — the Reading Room, the Atlas, the Counting House, the Map Room, the Newsroom, Voices.
+        </p>
+
+        <p>
+          The loop closes when readers become contributors. A school-board member who reads the Library's per-state dossier and corrects a date becomes part of the substrate. A retired teacher who shares a 1923 board minute moves the L0 floor by one entry. A state Department of Lands staff member who agrees to take co-librarian responsibility for their state changes the <em>standing</em> of the substrate, not just its contents. The Library does not have an audience and a staff. It has a constituency that is partly inside and partly outside the institutional wall, and the wall itself is permeable by design.
+        </p>
+
+        <h2>How to take part</h2>
+
+        <p>
+          Most visitors come to the Library to read what's been published. That's the point of a library. But the Library was built to grow, and the contribution loop above is the operational architecture of that growth.
+        </p>
+
+        <p>
+          If you have a primary source — a historical document, a state agency report, a board minute, a period newspaper clipping, a deed — that bears on the school trust lands, the Document Contribution Desk (forthcoming) is where it goes. If you would like to monitor your state's trust-land administration as a state correspondent — watching legislative bills, board meetings, fund distributions, litigation — the State Correspondent program (forthcoming) is the formal vehicle. If you work in your state's Department of Lands or an equivalent agency and would consider taking co-librarian responsibility for your state's Library page, the State Co-Librarian program (forthcoming) is the role we'd most like to recruit you for.
+        </p>
+
+        <p>
+          Until those programs launch (in the weeks ahead), readers who'd like to be notified when they do can register interest through the Library card (also forthcoming) or contact the Library's editorial office. The Library is in its first year of operation. The institutional infrastructure for the contribution loop is being built openly, so the people who will eventually use it can shape it as it forms.
+        </p>
+
+        <hr class="archival-divider">
+
+        <p class="text-sm text-slate-500">
+          <em>Last updated 2026-05-06. Posters drafted from the OASTL Knowledge Stack v2 architecture (April 2026); revised for the Library's purpose and audiences.</em>
+        </p>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

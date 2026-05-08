@@ -1,0 +1,137 @@
+---
+name: Maine
+fips: "23"
+iso: US-ME
+admissionNumber: 23
+admittedDate: 1820-03-15
+eraCohort: 2
+eraName: Statehood Without the Federal Floor
+federalGrantAcres: 0
+governanceForm: "State Board of Education (statutory, nine members appointed by the Governor with legislative confirmation under Title 20-A M.R.S.A.). No school-trust board exists because there is no federal-grant school trust. Public Reserved Lands are managed by the Bureau of Parks and Lands under DACF, with revenue flowing to a dedicated Public Reserved Lands Management Fund rather than to a school trust."
+permanentFundCorpus: null
+latestDistribution: null
+substrateVersion: "1.3"
+lastReviewed: 2026-05-01
+---
+
+*Admission #23 (March 15, 1820). Era: State-derived (separated from Massachusetts via the Missouri Compromise). Draft: Pass 1, 2026-04-30.*
+
+## Admission from a state, not from the federal domain
+
+Maine entered the Union not from federal public domain but from another state. On March 15, 1820, Congress admitted Maine as the twenty-third state under the Act of March 3, 1820, the federal half of the Missouri Compromise that paired Maine's free-state admission with Missouri's slave-state entry the following year.[^me-1] Because Maine's territory had been the District of Maine within the Commonwealth of Massachusetts, the section-16-and-section-36 federal-grant template that Congress was then using for states carved out of the federal domain — Ohio, Indiana, Illinois, Mississippi, Alabama — did not apply. There was no federal land to grant. Maine's admission act simply declared the new state admitted "into the Union, on an equal footing with the original States in all respects whatever," and stopped there.[^me-2] The architecture of Maine's school-land regime had to come from somewhere else, and it did: it came from Massachusetts.
+
+<blockquote class="pull-quote">
+  <p>The architecture of Maine's school-land regime had to come from somewhere else, and it did: it came from Massachusetts.</p>
+  <cite>Schools of the Republic v1.3, Maine</cite>
+</blockquote>
+
+## The 1819 Articles of Separation
+
+The instrument that did the work was the Articles of Separation, negotiated in 1819 between commissioners of the Commonwealth and delegates of the District of Maine, ratified by Maine voters in July 1819, and embedded in the new state's constitutional framework as Article X, section 5.[^me-3] The Articles divided the unsold "wild lands" of the District of Maine in half: one undivided moiety remained the property of Massachusetts, the other passed to Maine.[^me-4] More importantly for the school-land story, the Articles required that all future grants of unlocated public land on either side reserve, for the use of the inhabitants of any town later organized on those lands, lots equivalent to the long-standing colonial pattern — typically 320 acres in each township, set aside for the support of schools and the ministry. This was the so-called "minister and school lots" or "public lots" reservation: the same template Massachusetts had used since the seventeenth century when the General Court chartered new towns, now carried forward into Maine's land base as a state-derived (not federal-grant) school endowment.[^me-5] In 1853, after three decades of joint administration, Massachusetts sold its remaining undivided half-share of the Maine wild lands to Maine for approximately $362,500, consolidating the public-lot regime under a single sovereign.[^me-6]
+
+## State constitutional treatment of education
+
+Maine's 1820 Constitution, drafted at the Portland convention of October 1819 and effective at admission, supplied the second piece of the architecture.[^me-7] Article VIII, Part First, section 1 — drawn substantially intact from the Massachusetts Constitution of 1780, Chapter V, section II, drafted primarily by John Adams — set out the public duty in language that has become familiar: "A general diffusion of the advantages of education being essential to the preservation of the rights and liberties of the people; to promote this important object, the Legislature are authorized, and it shall be their duty to require, the several towns to make suitable provision, at their own expense, for the support and maintenance of public schools."[^me-8] The Adams-line civic-republican framing — education as the precondition of liberty, rather than as the income from a corpus — placed Maine architecturally upstream of the 1785 Land Ordinance, in the same constitutional family as Pennsylvania 1776 § 44 and New Hampshire 1784. The clause has never been substantively rewritten. The 1820 Maine Constitution remains in force as amended; the Adams formulation in Article VIII, Part First, section 1 has carried through more than a century and a half of constitutional revision unaltered in its operative text.[^me-9]
+
+## The nineteenth-century public-lot regime
+
+The early operational history of Maine's public lots is one of administrative drift. The Legislature implemented the Articles of Separation in 1824 by directing that 1,000 acres in each township suitable for settlement be reserved for public uses, for the exclusive benefit of the future town as the Legislature might direct.[^me-10] But many of these lots were never located; the unincorporated North Woods townships were thinly settled and unsurveyed; and the Land Agent, county commissioners, and special state agents passed responsibility for managing the timber resource on the reserved lots back and forth across the 1830s and 1840s. After criticism of the county commissioners' handling of timber-permit revenues, the Legislature in 1848 transferred custody of the reserved lots to special state agents and required income to be held in the state treasury.[^me-11] Two years later, the 1850 statute authorized the Land Agent to sell rights to cut and carry away timber and grass from public reserved lots until the surrounding township was incorporated or organized as a plantation — the cutting-rights regime that would set up more than a century of subsequent dispute.[^me-12] Between 1850 and 1857 alone, more than 230,000 acres of public reserved lots were reported sold for cutting rights.[^me-13]
+
+The doctrinal architecture for the State-as-trustee that emerged from this period was built case by case in the Maine Supreme Judicial Court. In *Dillingham v. Smith* (1849), the court recognized early trust principles for Maine lands reserved for public uses; later public-lot decisions cite *Dillingham* for the proposition that legal title to public reserved lots in unincorporated townships was held by the State as trustee until the reserved purpose vested in an organized municipality.[^me-14] In *State v. Mullen* (1903), the court described the State as trustee of reserved lands and connected the reservation system explicitly to settlement and the future need for public schools — a key doctrinal bridge between the Articles of Separation, the 1824 reservation statute, and twentieth-century public-lot trust litigation.[^me-15] In *Mace v. Ship Pond Land & Lumber Co.* (1914), the court required an accounting for stumpage cut from public lots before their location and treated the State's reserved-lot interest as legally cognizable against private timber operators, even where the underlying lots remained unlocated within larger ownership blocks — a cotenancy/trust enforcement problem distinct from the section-16 trusts of the western states.[^me-16]
+
+The Attorney General's office contributed a parallel administrative-law thread. A 1901 opinion by Attorney General George M. Seiders addressed title to Maine school lands and ownership of the proceeds from those lands; the Maine Law Library's index identifies the opinion as construing the early public and private laws governing reserved lands, though the full text was not retrieved in this pass.[^me-17] A 1914 opinion concluded that the Land Agent lacked general authority to lease lands reserved for public uses; his statutory authority was limited chiefly to setting out reserved lands, disposing of timber and grass under statute, and protecting the State's interest.[^me-18] Two 1936 opinions by Deputy Attorney General Waldo N. Seavy construed the cumulative public-lots statutes through Public Laws 1850 chapter 196, Public Laws 1903 chapter 232, Public Laws 1915 chapter 306, and the 1903 revised statutes — tracing whether the Land Agent could dispose of or lease lands reserved for public uses outside their public-use purposes.[^me-19] A 1961 opinion by Assistant Attorney General George A. Wathen addressed setting or locating public lots in connection with private holdings of the Brown Company, signaling that public-lot location and private-landowner conflicts remained active administrative questions on the eve of the modern era.[^me-20]
+
+## The modern public-trust recovery
+
+The modern era opened in 1973 with what the Law Court would later describe as the catalyst event: the Schepps Report. Lee M. Schepps, then in the Office of the Maine Attorney General, authored *Maine's Public Lots: The Emergence of a Public Trust*, arguing that nineteenth-century cutting-right conveyances on public reserved lots may have covered only timber then existing — not all subsequent growth — and that the State retained substantial legal rights in unlocated public lots that the timber industry had been treating as effectively private.[^me-21] The report reframed neglected public lots as a public trust and helped trigger litigation and legislative reform. Of the approximately 398,000 acres of public reserved lots in unincorporated areas as of 1963, about 156,000 acres remained unlocated.[^me-22]
+
+The Schepps Report's legal theory was tested in two consolidated decisions of the Maine Supreme Judicial Court. In *Cushing v. Cohen* (1980), the court vacated and remanded the first public-lot cutting-rights judgment because the State's party status and its sovereign-immunity posture had not been formally resolved at the trial level.[^me-23] On reconsideration in *Cushing v. State* (1981) — Maine's closest analogue to a school-trust recovery decision — the court held that nineteenth-century cutting-right conveyances did not include trees not in existence when the Land Agent made the conveyances. The decision restored future-growth value to the State's public reserved lots, vindicating the Schepps Report's core legal claim and recovering for the public-lot trust an asset class that had been functionally treated as alienated for a century.[^me-24] *Cushing v. State* is, in the school-trust frame, Maine's *Wood v. Honeyman* — though more limited in scope, it is the case that established the State's continuing trustee responsibilities over the public-lot corpus and the substantive content of those duties.
+
+A second 1973 development pulled in the opposite direction. In an advisory *Opinion of the Justices*, the Maine Supreme Judicial Court construed Article X and the Articles of Separation as allowing public reserved lots to be managed for broader public uses, rather than only for schools and ministry.[^me-25] The Justices treated "schools" and "ministry" in the original Articles as illustrative of permissible public uses, not as exclusive limits on the trust's purpose. The Legislature responded by reorienting the public-lot regime: lots would be used for the benefit of the State as a whole, with income from unincorporated public reserved lots held in a general management fund rather than in township-specific accounts. From the school-trust lens, this was a structural shift away from town-and-school-specific accounts toward statewide multiple-use land management — a dilution of the original school/ministry reservation purpose, even as *Cushing* was simultaneously expanding the trust's recoverable corpus.
+
+In 1995, in a separate *Opinion of the Justices*, the Court took up the constitutional school-funding clause itself. The advisory opinion considered the relationship between Article VIII, Part First, section 1 and the adequacy of state funding for public schools, and is generally read as applying a relatively deferential review standard rather than recognizing a robustly judicially enforceable adequacy right.[^me-26] Maine has never had a wholly successful constitutional adequacy challenge to its school-funding system in the way Pennsylvania did with *William Penn School District* (2023). The Legislature's 2003–2004 LD 1 reforms, which produced the Essential Programs and Services (EPS) funding formula and a statutory 55-percent state-share target, were a legislative rather than judicial response to funding-equity concerns. The 55-percent target has frequently not been met in practice.
+
+The Legislature recodified the public-reserved-lands law in 1997, placing it in Title 12 of the Maine Revised Statutes. Section 1858 directs the commissioner to protect the State's proportionate share of common income in unlocated townships and provides that future earnings from public lots belong to the State for management and preservation of the lots as state assets.[^me-27] In 2017, the Legislature enacted Public Law 2017, chapter 289, creating a narrow logging-and-forestry-education grant program funded out of the Public Reserved Lands Management Fund, with legislative findings tying the expenditure to Article X public-trust limits and the school-benefit language in the original reservations. The program is capped at $300,000 per biennium and is restricted to public secondary, career-and-technical, and public-postsecondary logging or forestry education programs.[^me-28] It is not a general K-12 trust distribution; it is a constitutional bridge — a small, narrowly tied disbursement that allows the Legislature to claim continuity with the school-benefit purpose of the original reservations while leaving the bulk of public-reserved-lands revenue dedicated to land management.
+
+The most recent significant Law Court treatment of the public-reserved-lands category came in *Black v. Bureau of Parks & Lands* (2022). The case challenged the Bureau's lease of approximately 2.6 percent of the combined 1,241 acres of the Johnson Mountain and West Forks Plantation public reserved lands for the New England Clean Energy Connect transmission project. The Law Court held that the Bureau acted within its constitutional and statutory authority because the lease did not "reduce or substantially alter" the designated lands within the meaning of Article IX, section 23 — Maine's modern constitutional protection of designated public lands.[^me-29] *Black* is not a school-funding case, but it is the leading modern Law Court treatment of public reserved lands as a constitutionally protected land category, and it confirms that the Articles of Separation, channeled through Article X and now also through Article IX, section 23, still govern the lots.
+
+## Public Reserved Lands today
+
+Maine today manages approximately 600,000 acres of Public Reserved Lands under the Bureau of Parks and Lands within the Department of Agriculture, Conservation and Forestry.[^me-30] A portion of that acreage traces directly to the colonial-era township public-lot reservations carried forward through the 1819 Articles of Separation, the 1824 reservation statute, and the consolidating 1853 Massachusetts-to-Maine sale. But the modern revenue regime should not be conflated with a school trust. Earnings from the Public Reserved Lands flow to the Public Reserved Lands Management Fund, dedicated to land management and preservation, rather than to a permanent school fund or to K-12 distributions.[^me-31] The 2017 forestry-education grant program is the only standing channel through which Public Reserved Lands revenue reaches a school-coded purpose, and it is small.
+
+K-12 funding in Maine flows through a different architecture entirely. Article VIII, Part First, section 1's mandate that the Legislature "require the several towns to make suitable provision, at their own expense, for the support and maintenance of public schools" is the constitutional source of Maine's heavy reliance on local property taxation. The EPS formula, layered on top of the local-funding base, provides state aid through the General Fund. There is no federal-grant permanent fund, no irreducible school corpus, and no constitutional fiduciary trustee analogous to Oregon's State Land Board sitting as Common School Fund commissioners. The State Board of Education is a statutory nine-member body appointed by the Governor with legislative confirmation under Title 20-A; it is a policy-and-oversight body for the public-school system, not a fiduciary trustee of a school-trust corpus.[^me-32]
+
+Maine is therefore the project's clearest example of a state where the constitutional duty to support public education is fully present, in Adams-derived language no less, but where the federal-grant trust architecture is wholly absent. The school-support story Maine tells is a Massachusetts story carried forward — a story of colonial-era township reservations, an 1819 separation that converted those reservations into a state-derived land base, a public-lot trust slowly recovered through twentieth-century litigation, and a modern revenue regime that has all but severed the school-benefit thread except through one narrow forestry-education channel. Whether Maine's public-reserved-lands regime ought to be reconnected more directly to school support is a live policy question, not a settled trust-law claim. The architecture remembers; the revenue stream has moved on.
+
+<blockquote class="pull-quote">
+  <p>The architecture remembers; the revenue stream has moved on.</p>
+  <cite>Schools of the Republic v1.3, Maine</cite>
+</blockquote>
+
+---
+
+## Footnotes
+
+[^me-1]: Act of March 3, 1820, ch. 19, 3 Stat. 544; see Library of Congress, Statutes at Large, 16th Congress, https://www.loc.gov/law/help/statutes-at-large/16th-congress.php.
+
+[^me-2]: *Id.* Maine's admission act contains no federal school-section grant; the no-grant conclusion follows from Maine's separation from Massachusetts rather than admission from federal public domain.
+
+[^me-3]: Articles of Separation, March 1819 (Act of Separation between the Commonwealth of Massachusetts and the District of Maine), ratified by Maine voters July 26, 1819; embedded in the Maine Constitution as Article X, section 5. *See* Maine Constitution, Article X, https://law.justia.com/constitution/maine/consar10.html.
+
+[^me-4]: *Cushing v. State*, 434 A.2d 486, 489–90 (Me. 1981), https://law.justia.com/cases/maine/supreme-court/1981/434-a-2d-486-0.html (recounting the half/half wild-lands division and quoting the Articles of Separation language requiring future grants of unlocated land to include school and ministry reservations).
+
+[^me-5]: *Id.* at 489–91; *State v. Mullen*, 97 Me. 331, 335, 338, 54 A. 841 (1903), quoted and cited in *Cushing v. State*, 434 A.2d at 490 n.9.
+
+[^me-6]: The $362,500 figure for the 1853 Massachusetts-to-Maine sale of the residual half-share of wild lands is widely attested in Maine Bureau of Parks and Lands historical references and Maine Historical Society materials; pin to a primary source (Maine State Archives; Massachusetts Acts and Resolves of 1853) is flagged for Pass 2 verification.
+
+[^me-7]: Maine constitutional convention adopted the state constitution October 29, 1819, conditioned on the Articles of Separation; effective on admission March 15, 1820. *See* Maine Legislature, Constitutional Amendments index, https://legislature.maine.gov/legis/lawlib/lldl/constitutionalamendments/index.html.
+
+[^me-8]: Maine Constitution, Article VIII, Part First, § 1, https://law.justia.com/constitution/maine/consar8.html. The clause is patterned on the Massachusetts Constitution of 1780, Chapter V, section II ("The Encouragement of Literature, etc."), drafted primarily by John Adams.
+
+[^me-9]: Subsequent amendments to Article VIII have addressed higher-education loan authority (1967, 1972, 1984) and municipal home rule (1969, codified into Article VIII, Part Second), but have not altered the operative text of Part First, § 1. *See* Maine Legislature, Constitutional Amendments index, *supra* note 7.
+
+[^me-10]: 1824 Maine Public Laws, implementing the Articles of Separation by reserving 1,000 acres in each township suitable for settlement for public uses; *see* *Cushing v. State*, 434 A.2d at 489–90.
+
+[^me-11]: *Cushing v. State*, 434 A.2d at 490; *see also* 1848 Maine Public Laws (transferring custody of public reserved lots to special state agents).
+
+[^me-12]: Public Laws 1850, ch. 196 (authorizing the Land Agent to sell rights to cut and carry away timber and grass from reserved lands until incorporation or plantation organization); *Cushing v. State*, 434 A.2d at 490–92.
+
+[^me-13]: *Cushing v. State*, 434 A.2d at 490–92 (citing the more-than-230,000-acre figure for cutting-right sales between 1850 and 1857).
+
+[^me-14]: *Dillingham v. Smith*, 30 Me. 370, 381 (1849), cited in *Cushing v. State*, 434 A.2d at 490.
+
+[^me-15]: *State v. Mullen*, 97 Me. 331, 335, 338, 54 A. 841 (1903), https://www.casemine.com/judgement/us/5914918dadd7b0493458a528.
+
+[^me-16]: *Mace v. Ship Pond Land & Lumber Co.*, 112 Me. 420, 92 A. 486 (Me. 1914).
+
+[^me-17]: Attorney General George M. Seiders, "School lands — title — the owners of the proceeds thereof" (1901), Maine Law Library AG index, https://www.maine.gov/legis/lawlib/lldl/agops/agmaster.html (full text not retrieved in this pass).
+
+[^me-18]: Attorney General report, "Public Lands — Authority of Land Agent to Lease" (1914), https://lldc.mainelegislature.org/Open/Rpts/PubDocs/PubDocs1914Bv2/PD1914Bv2_05b.pdf.
+
+[^me-19]: Deputy AG Waldo N. Seavy, "Lands reserved for public uses in unincorporated townships" (1936); Deputy AG Waldo N. Seavy, "Authority of Land Agent to dispose of lands reserved for public uses or to lease such lands" (1936); Maine Law Library AG index, https://www.maine.gov/legis/lawlib/lldl/agops/agmaster.html.
+
+[^me-20]: Assistant AG George A. Wathen, "Setting of public lots — Brown Company" (1961), https://www.maine.gov/legis/lawlib/lldl/agops/1961.html.
+
+[^me-21]: Lee M. Schepps, *Maine's Public Lots: The Emergence of a Public Trust* (Office of the Maine Attorney General, 1974), https://digitalmaine.com/ag_docs/24/.
+
+[^me-22]: Acreage figures from *Cushing v. State*, 434 A.2d at 488–92.
+
+[^me-23]: *Cushing v. Cohen*, 420 A.2d 919, 921–28 (Me. 1980), https://law.justia.com/cases/maine/supreme-court/1980/420-a-2d-919-0.html.
+
+[^me-24]: *Cushing v. State*, 434 A.2d 486, 489–99 (Me. 1981), https://law.justia.com/cases/maine/supreme-court/1981/434-a-2d-486-0.html.
+
+[^me-25]: *Opinion of the Justices*, 308 A.2d 253, 270–73 (Me. 1973), https://case-law.vlex.com/vid/opinion-of-the-justices-885933985.
+
+[^me-26]: *Opinion of the Justices*, 668 A.2d 799 (Me. 1995). Atlantic Reporter pin cite verification flagged for Pass 2.
+
+[^me-27]: 12 M.R.S. § 1858, https://legislature.maine.gov/statutes/12/title12sec1858.html.
+
+[^me-28]: 12 M.R.S. § 1859, https://legislature.maine.gov/statutes/12/title12sec1859.html; Public Law 2017, ch. 289, § 9.
+
+[^me-29]: *Black v. Bureau of Parks & Lands*, 2022 ME 58, ¶¶ 4–6, 49–50, https://law.justia.com/cases/maine/supreme-court/2022/2022-me-58.html.
+
+[^me-30]: Maine Department of Agriculture, Conservation and Forestry, Bureau of Parks and Lands, "Public Reserved Lands," https://www.maine.gov/dacf/parks/about/public_reserved_lands.shtml.
+
+[^me-31]: 12 M.R.S. § 1858, *supra* note 27 (future earnings from public lots belong to the State for management and preservation as state assets).
+
+[^me-32]: Title 20-A M.R.S.A. (governance of K-12 public education); Maine Department of Education, https://www.maine.gov/doe/.

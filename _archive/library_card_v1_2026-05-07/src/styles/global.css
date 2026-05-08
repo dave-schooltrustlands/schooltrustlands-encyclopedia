@@ -1,0 +1,898 @@
+/* Google Fonts (Source Serif 4 + Inter). @import is the only way to load
+   external stylesheets from a single global CSS without a shared <head>
+   component, since each page in this project owns its own head. */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,900&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Base palette */
+  --ink:           #17202A;
+  --trust-blue:    #1D4F7C;
+  --deep-navy:     #1F2A44;
+  --archive-paper: #FAF9F6;
+  --linen-card:    #FFFDF7;
+  --rule-border:   #D8D1C2;
+  --old-gold:      #B88A2E;
+  --sage:          #6F7F52;
+  --oxblood:       #7A2E2E;
+
+  /* Semantic colors (confidence badges, alerts) */
+  --verified:            #2F6F4E;
+  --awaiting-disclosure: #B7791F;
+  --not-applicable:      #8B8F98;
+  --source-conflict:     #B42318;
+  --pending:             #5E5A8A;
+
+  /* Per-room subtle accents (kept within the base palette) */
+  --accent-reading:    var(--deep-navy);
+  --accent-atlas:      var(--trust-blue);
+  --accent-counting:   var(--old-gold);
+  --accent-records:    var(--rule-border);
+  --accent-court:      var(--oxblood);
+  --accent-breach:     var(--sage);
+
+  /* Default room accent (homepage and other non-room surfaces) */
+  --room-accent: var(--trust-blue);
+
+  /* Typography stacks */
+  --font-serif: 'Source Serif 4', 'Iowan Old Style', 'Libre Baskerville', Georgia, serif;
+  --font-sans:  'Inter', 'Source Sans 3', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono:  ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+}
+
+/* Per-room accent overrides — wired off [data-room] on <body>. */
+[data-room='reading']  { --room-accent: var(--accent-reading); }
+[data-room='atlas']    { --room-accent: var(--accent-atlas); }
+[data-room='counting'] { --room-accent: var(--accent-counting); }
+[data-room='records']  { --room-accent: var(--accent-records); }
+[data-room='court']    { --room-accent: var(--accent-court); }
+[data-room='breach-recovery'],
+[data-room='breach']   { --room-accent: var(--accent-breach); }
+
+@layer base {
+  html {
+    font-family: var(--font-serif);
+    color: var(--ink);
+    background: var(--archive-paper);
+  }
+  body {
+    font-family: var(--font-serif);
+    line-height: 1.7;
+  }
+
+  /* Engraved headlines, not bloggy. Tight tracking, heavy weight. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: var(--deep-navy);
+  }
+  h1 {
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+    font-weight: 900;
+  }
+  h2 {
+    font-size: clamp(1.625rem, 2.5vw, 2rem);
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  /* UI / nav / tables / metadata in sans */
+  nav,
+  .ui,
+  .meta,
+  .badge,
+  .tag,
+  table,
+  th,
+  td,
+  .footnote-ref,
+  .source-pill {
+    font-family: var(--font-sans);
+  }
+
+  /* Tabular numerals on data tables */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Reading-width cap for prose. Applied to .prose containers; explicit
+     opt-out by using Tailwind's max-w-none, which lives in the utilities
+     layer and overrides this base rule. */
+  .prose {
+    max-width: 65ch;
+  }
+
+  /* Small-caps eyebrow label above headlines (newspaper / Atlantic register).
+     Color picks up --room-accent inside a room, or --old-gold on default
+     surfaces (homepage etc) where --room-accent falls back to --trust-blue
+     and the eyebrow stays gold. */
+  .eyebrow {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--old-gold);
+    margin-bottom: 0.35rem;
+  }
+  /* Inside a room, eyebrow follows the room accent. */
+  [data-room] .eyebrow {
+    color: var(--room-accent);
+  }
+
+  /* Restrained accent — one muted blue for body links. */
+  .prose a,
+  a.text-blue-700 {
+    color: theme('colors.accent.DEFAULT');
+  }
+  .prose a:hover,
+  a.text-blue-700:hover {
+    color: theme('colors.accent.dark');
+  }
+
+  /* Footnote ref / back-ref tap targets. The visible glyph stays
+     small, but the clickable rect is expanded via padding so
+     touch users can hit it reliably. */
+  .prose a[data-footnote-ref],
+  .prose a.data-footnote-backref {
+    display: inline-block;
+    min-width: 44px;
+    min-height: 24px;
+    padding: 0 0.35rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* [CITE PENDING] flags in Sacred Compact + Vision essays.
+     Visible-incompleteness rule (Plan_v2.1 editorial discipline #1):
+     show the open citation, don't suppress it. Slate background +
+     italic so the marker reads as editorial scaffolding, not as
+     authorial voice. The eventual citation pass (B-038) replaces
+     each span with the real footnote ref. */
+  .cite-pending {
+    background-color: theme('colors.slate.100');
+    color: theme('colors.slate.500');
+    font-style: italic;
+    font-size: 0.85em;
+    padding: 0.05em 0.35em;
+    border-radius: 0.2rem;
+    border: 1px dashed theme('colors.slate.300');
+    white-space: normal;
+  }
+}
+
+@layer components {
+  /* ---------------------------------------------------------------------
+     Layout primitives (Visual Rebuild Handoff v0).
+     Available globally; pages opt in by using these class names.
+     --------------------------------------------------------------------- */
+
+  /* 1. Chapter / section opener */
+  .chapter-opener {
+    margin: 2.5rem 0 2rem;
+  }
+  .chapter-opener .kicker {
+    font-style: italic;
+    color: var(--ink);
+    opacity: 0.75;
+    max-width: 50ch;
+  }
+  .chapter-opener .opener-figure {
+    margin-top: 1.5rem;
+  }
+  .chapter-opener figcaption {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-top: 0.4rem;
+  }
+
+  /* 2. Pull quote */
+  .pull-quote {
+    border-left: 3px solid var(--old-gold);
+    padding: 0.5rem 1.5rem;
+    margin: 2rem 0;
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--deep-navy);
+    max-width: 38rem;
+  }
+  .pull-quote cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+
+  /* 3. State dossier card */
+  .dossier-card {
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    padding: 1.5rem 1.75rem;
+    margin: 1rem 0 2.5rem;
+    border-radius: 4px;
+  }
+  .dossier-card .dossier-image figcaption {
+    margin-top: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+  .dossier-facts {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.4rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  .dossier-facts dt {
+    font-weight: 600;
+    color: var(--deep-navy);
+  }
+
+  /* 3a. Voices — signed editorial articles (Session 2C). */
+  .voices-article {
+    max-width: 65ch;
+    margin: 0 auto;
+  }
+  .voices-article .byline {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--ink);
+    opacity: 0.75;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .voices-article .attribution {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--ink);
+    opacity: 0.65;
+  }
+  .cta-box {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--linen-card);
+    border-left: 3px solid var(--old-gold);
+    border-radius: 4px;
+  }
+  .cta-box::before {
+    content: "Call to action";
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--old-gold);
+    margin-bottom: 0.5rem;
+  }
+  .voices-card {
+    margin: 1.5rem 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-radius: 4px;
+  }
+  .voices-card h3 { margin-top: 0.4rem; margin-bottom: 0.3rem; }
+  .voices-card h3 a { color: var(--deep-navy); text-decoration: none; }
+  .voices-card h3 a:hover { text-decoration: underline; }
+  .voices-card .byline {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.75;
+    margin: 0 0 0.6rem;
+  }
+  .voices-card .dek {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 60ch;
+  }
+
+  /* 3c. Source page — Reading Room source-page primitive (Session 2C). */
+  .source-page .provisional-note {
+    margin: 1rem 0 1.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(204, 153, 51, 0.08);
+    border-left: 3px solid var(--old-gold);
+    font-size: 0.9rem;
+    border-radius: 3px;
+  }
+
+  /* 3d. State appendix — in-page appendix block (Session 2C, NE LB1072 FAQ). */
+  .state-appendix {
+    margin-top: 3rem;
+    padding: 1.75rem 2rem;
+    background: var(--archive-paper);
+    border: 1px solid var(--rule-border);
+    border-radius: 6px;
+  }
+  .state-appendix .byline,
+  .state-appendix .cross-link {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    margin: 0 0 0.75rem;
+  }
+  .state-appendix .cross-link { opacity: 0.85; }
+  .state-appendix .attribution {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--ink);
+    opacity: 0.65;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border);
+  }
+  .faq-q {
+    margin: 0.75rem 0;
+    padding: 0.75rem 1rem;
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-radius: 4px;
+  }
+  .faq-q summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+  }
+  .faq-q[open] summary { margin-bottom: 0.6rem; }
+  .faq-q p { margin: 0.4rem 0; }
+
+  /* 3b. ASTL field block — distinct visual voice for merged ASTL annotations. */
+  .astl-field-block {
+    margin-top: 3rem;
+    padding: 1.75rem 2rem;
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-left: 4px solid var(--trust-blue);
+    border-radius: 6px;
+  }
+  .astl-field-block .eyebrow { color: var(--trust-blue); }
+  .astl-field-block h2 { margin-top: 0.4rem; }
+  .astl-field-block .byline {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: var(--ink);
+    opacity: 0.8;
+    margin-bottom: 1.25rem;
+  }
+  .astl-field-block .attribution {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--ink);
+    opacity: 0.65;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border);
+  }
+
+  /* 4. Section divider — § glyph centered on a quiet rule. */
+  .archival-divider {
+    border: 0;
+    height: 1px;
+    background: var(--rule-border);
+    margin: 3rem auto;
+    max-width: 8rem;
+    position: relative;
+  }
+  .archival-divider::after {
+    content: '§';
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--archive-paper);
+    padding: 0 0.6rem;
+    font-family: var(--font-serif);
+    color: var(--old-gold);
+    font-size: 1rem;
+  }
+  /* Inside a room, divider glyph follows the room accent. */
+  [data-room] .archival-divider::after {
+    color: var(--room-accent);
+  }
+
+  /* 5. Confidence badges */
+  .badge {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.55rem;
+    border-radius: 2px;
+    color: white;
+    text-transform: uppercase;
+  }
+  .badge-verified  { background: var(--verified); }
+  .badge-awaiting  { background: var(--awaiting-disclosure); }
+  .badge-na        { background: var(--not-applicable); }
+  .badge-conflict  { background: var(--source-conflict); }
+  .badge-pending   { background: var(--pending); }
+  .badge-unknown   { background: var(--not-applicable); }
+
+  /* Per-state header polish (Session 5): cohort link + tooltip, FIPS
+     abbr, trust-acres-remaining row. Lives in src/pages/reading/[slug].astro. */
+  .cohort-link {
+    color: var(--deep-navy);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    cursor: help;
+  }
+  .cohort-link:hover { color: var(--trust-blue); }
+  .cohort-num {
+    color: var(--ink);
+    opacity: 0.7;
+    font-size: 0.9em;
+  }
+  .state-id-strip {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+  .state-id-strip .sep { color: var(--ink); opacity: 0.45; }
+  .fips abbr {
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: help;
+  }
+  .acres-percentage {
+    color: var(--ink);
+    opacity: 0.75;
+    font-size: 0.9em;
+    margin-left: 0.3rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .as-of {
+    font-family: var(--font-sans);
+    font-size: 0.82em;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-left: 0.3rem;
+  }
+
+  /* Site wordmark in global header — PLSS-grid SVG + serif/sans text. */
+  .site-wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+    color: var(--deep-navy);
+  }
+  .plss-mark {
+    width: 64px;
+    height: 64px;
+    color: var(--deep-navy);
+    flex-shrink: 0;
+  }
+  @media (max-width: 640px) {
+    .plss-mark { width: 40px; height: 40px; }
+  }
+  .wordmark-text strong {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    display: block;
+    line-height: 1.15;
+  }
+  .wordmark-text em {
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 0.72rem;
+    color: var(--ink);
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+  }
+
+  /* Footer (Visual Rebuild Handoff v0) */
+  .site-footer {
+    background: var(--deep-navy);
+    color: var(--linen-card);
+    font-family: var(--font-sans);
+    padding: 2.5rem 1.5rem;
+    margin-top: 4rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .site-footer a {
+    color: var(--old-gold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .footer-credit {
+    max-width: 65ch;
+  }
+  .footer-credit strong {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    font-size: 1.05rem;
+  }
+  .footer-meta {
+    max-width: 65ch;
+    margin-top: 1.5rem;
+    opacity: 0.85;
+  }
+  .footer-meta p + p {
+    margin-top: 0.5rem;
+  }
+
+  /* Homepage launch announcement (Rebuild Session 1, Section C.2) */
+  .launch-announcement {
+    background: var(--linen-card);
+    border-left: 3px solid var(--old-gold);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0 2rem;
+    border-radius: 4px;
+    max-width: 65ch;
+  }
+  .launch-announcement p {
+    margin: 0.25rem 0 0;
+  }
+  .launch-announcement .eyebrow {
+    color: var(--old-gold);
+  }
+
+  /* Reading Room — drop-shadow content cards (Rebuild Session 1, Section F.1) */
+  .reading-card {
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(31, 42, 68, 0.08), 0 1px 3px rgba(31, 42, 68, 0.06);
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .reading-card .cover {
+    width: 140px;
+    aspect-ratio: 0.75;
+    background: var(--archive-paper);
+    border: 1px solid var(--rule-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .reading-card .cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .reading-card .cover .plss-pattern {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(var(--rule-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--rule-border) 1px, transparent 1px);
+    background-size: 23px 23px;
+    position: relative;
+  }
+  .reading-card .meta .eyebrow {
+    margin-bottom: 0.4rem;
+  }
+  .reading-card .meta h2 {
+    margin: 0 0 0.3rem;
+    font-size: 1.4rem;
+  }
+  .reading-card .meta .byline {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
+  }
+  .reading-card .meta .abstract {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    max-width: 50ch;
+  }
+  .reading-card .meta .toc summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+    margin-bottom: 0.5rem;
+  }
+  .reading-card .meta .toc ol {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 1rem;
+  }
+  .reading-card .meta .toc ol li {
+    margin-bottom: 0.2rem;
+  }
+  .reading-card .meta .toc ol.numbered-toc {
+    list-style: decimal;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-left: 2rem;
+    margin: 0.5rem 0 1rem;
+  }
+  .reading-card .meta .toc ol.numbered-toc li {
+    margin-bottom: 0.35rem;
+  }
+  .reading-card .meta .toc ol.numbered-toc a {
+    color: var(--deep-navy);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .reading-card .meta .toc ol.numbered-toc a:hover {
+    color: var(--trust-blue);
+  }
+  .reading-card .meta .cta {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--deep-navy);
+    color: var(--linen-card);
+    text-decoration: none;
+    border-radius: 3px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .reading-card .meta .cta:hover {
+    background: var(--trust-blue);
+  }
+
+  @media (max-width: 640px) {
+    .reading-card {
+      grid-template-columns: 1fr;
+    }
+    .reading-card .cover {
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+  }
+
+  /* Updates page — week-by-week collapsible entries. */
+  .weekly-update {
+    margin: 2rem 0;
+    padding: 1.5rem 1.75rem;
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-radius: 6px;
+  }
+  .weekly-update h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+  }
+  .weekly-update .weekly-summary {
+    margin: 0.5rem 0 0.75rem;
+    font-size: 1rem;
+    line-height: 1.55;
+    max-width: 65ch;
+  }
+  .weekly-update .weekly-detail {
+    border-top: 1px solid var(--rule-border);
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .weekly-update .weekly-detail summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+  }
+  .weekly-update .weekly-detail[open] summary { margin-bottom: 0.5rem; }
+  .weekly-update .weekly-detail ul {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  .weekly-update .weekly-detail li { margin-bottom: 0.5rem; }
+
+  /* About-page joint signature block (ASTL + OASTL). Margaret's half is
+     dimmed until margaretApproved flips true in src/pages/about.astro. */
+  .signature-block {
+    margin: 2.5rem 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    font-family: var(--font-serif);
+  }
+  .signature-block p { margin: 0; }
+  .signature-block .name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+  }
+  .signature-block .role {
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  .signature-block .pending-note {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-top: 0.4rem;
+  }
+  .signature-block.pending .signature-margaret { opacity: 0.55; }
+  .signature-block.approved .signature-margaret { opacity: 1; }
+
+  @media (max-width: 600px) {
+    .signature-block { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  /* Counting House per-state chart figure (e.g. SITFO market-value chart on /counting/us-ut/). */
+  .counting-chart {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-radius: 4px;
+  }
+  .counting-chart img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 0.6rem;
+  }
+  .counting-chart figcaption {
+    font-family: var(--font-sans);
+    font-size: 0.83rem;
+    color: var(--ink);
+    opacity: 0.85;
+    line-height: 1.5;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Sacred Compact 2.0 — boxed inserts, interludes, deferred cite-pending.
+   Site Update v5 (2026-05-07).
+   --------------------------------------------------------------------- */
+
+/* Boxed insert — anecdotal sharpening within a host essay.
+   Tan-tinted background, smaller font, clear separation from prose. */
+.boxed-insert {
+  background: #f5efdf;
+  border-left: 3px solid var(--old-gold, #8b7355);
+  padding: 1rem 1.25rem;
+  margin: 1.75rem 0;
+  font-size: 0.95em;
+  line-height: 1.55;
+  border-radius: 2px;
+}
+.boxed-insert > p:first-child strong:first-child,
+.boxed-insert .boxed-insert-title {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--deep-navy, #1e3a5f);
+}
+.boxed-insert > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Cite-pending: deferred and partial modifiers.
+   Base .cite-pending class is defined earlier in @layer base. */
+.cite-pending.deferred {
+  background-color: #f1f5f9; /* slate-100 */
+  color: #94a3b8; /* slate-400 */
+  border-style: dotted;
+  border-color: #cbd5e1; /* slate-300 */
+  font-size: 0.82em;
+}
+.cite-pending.partial {
+  color: #b45309; /* amber-700 */
+  border-color: #fcd34d; /* amber-300 */
+}
+
+/* Sacred Compact interlude — distinct visual register marking the
+   personal interludes apart from the analytic chapters they sit between.
+   Cream page background, italic display heading on the layout's <h1>. */
+body[data-source-id^="essay-sacred-compact-interlude-"] {
+  background: #fbf7ee;
+}
+body[data-source-id^="essay-sacred-compact-interlude-"] main > header h1 {
+  font-family: var(--font-serif, Georgia, serif);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+.sacred-compact-interlude {
+  font-family: var(--font-serif, Georgia, serif);
+}
+.sacred-compact-interlude p {
+  text-indent: 0;
+}
+.sacred-compact-interlude::before {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 1px;
+  margin: 0 0 2rem;
+  background: linear-gradient(
+    to right,
+    var(--old-gold, #8b7355),
+    transparent
+  );
+}
+
+/* ---------------------------------------------------------------------
+   Print stylesheet (Visual Rebuild Handoff v0, Tier 2).
+   Goal: legible markup when a litigator or trustee prints to PDF.
+   --------------------------------------------------------------------- */
+@media print {
+  :root {
+    --archive-paper: white;
+    --linen-card: white;
+  }
+  body {
+    background: white;
+    color: black;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  nav,
+  .site-footer,
+  .badge-pending,
+  .badge-conflict,
+  .lens-picker,
+  .room-nav {
+    display: none;
+  }
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+    color: #555;
+  }
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  table {
+    page-break-inside: avoid;
+  }
+  .pull-quote {
+    border-color: black;
+  }
+  .dossier-card {
+    border: 1px solid black;
+    background: white;
+  }
+}

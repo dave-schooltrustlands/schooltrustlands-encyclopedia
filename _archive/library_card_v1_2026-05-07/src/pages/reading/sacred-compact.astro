@@ -1,0 +1,85 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import RoomLayout from '../../layouts/RoomLayout.astro';
+
+type Essay = CollectionEntry<'essays'>;
+
+const sections: Essay[] = (await getCollection('essays'))
+  .filter((e) => e.data.sourceWork === 'Sacred Compact white paper v5.0')
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Pull H2s from each section's body so the landing surfaces the
+// internal subheads without requiring the substrate to maintain a
+// duplicate outline.
+function extractH2s(body: string): string[] {
+  const lines = body.split('\n');
+  const heads: string[] = [];
+  for (const ln of lines) {
+    const m = ln.match(/^##\s+(.+?)\s*$/);
+    if (m && !/^Footnotes/i.test(m[1])) heads.push(m[1]);
+  }
+  return heads;
+}
+
+const sectionsWithSubheads = await Promise.all(
+  sections.map(async (entry) => {
+    const body = entry.body;
+    return { entry, subheads: extractH2s(body) };
+  }),
+);
+
+const num = new Intl.NumberFormat('en-US');
+const total = sections.reduce((sum, s) => sum + s.data.wordCount, 0);
+---
+
+<RoomLayout
+  room="reading"
+  title="The Sacred Compact"
+  subtitle={`Sullivan and Bird's white paper v5.0. ${num.format(total)} words across eight sections — the 250-year American promise to forever schools, the drift that has come for it, and the counter-architecture for the trusts of the AI age.`}
+  width="prose"
+  sourceId="sacred-compact-toc"
+>
+  <figure class="opener-figure" style="margin: 1.5rem 0;">
+    <img
+      src="/img/sources/magna-carta-1215.jpg"
+      alt="Magna Carta exemplar, 1215"
+      style="width: 100%; height: auto; max-height: 360px; object-fit: cover; border: 1px solid var(--rule-border);"
+    />
+    <figcaption>
+      Magna Carta exemplar, 1215. The deepest root of the trust covenant whose American descendants this paper traces. Public domain.
+    </figcaption>
+  </figure>
+
+  <p class="mt-4 text-xs text-slate-500">
+    The white paper is co-authored with Margaret Bird. The eight sections below
+    can be read in order or dipped into independently; footnote namespaces are
+    section-prefixed so cross-section links resolve cleanly.
+  </p>
+
+  <ol class="mt-8 space-y-6">
+    {sectionsWithSubheads.map(({ entry, subheads }) => (
+      <li class="border-b border-slate-200 pb-4 last:border-b-0">
+        <a
+          href={`/reading/${entry.slug}/`}
+          class="text-lg font-semibold text-blue-700 underline hover:text-blue-900"
+        >
+          {entry.data.title.replace(/^Sacred Compact: /, '')}
+        </a>
+        <p class="mt-1 text-xs text-slate-500">
+          {num.format(entry.data.wordCount)} words
+        </p>
+        {subheads.length > 0 && (
+          <ul class="mt-2 list-disc pl-6 text-sm text-slate-600">
+            {subheads.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ol>
+
+  <p class="mt-8 text-sm text-slate-500">
+    <a href="/reading/" class="text-blue-700 underline hover:text-blue-900">← Reading Room</a>
+  </p>
+</RoomLayout>

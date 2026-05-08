@@ -1,0 +1,127 @@
+---
+name: Michigan
+fips: "26"
+iso: US-MI
+admissionNumber: 26
+admittedDate: 1837-01-26
+eraCohort: 3
+eraName: The Northwest Ordinance Template
+federalGrantAcres: 1067397
+governanceForm: "State Board of Education (eight members elected statewide to staggered eight-year terms) — constitutionally created. Trust-land operational management is statutory and distributed across DNR (lands), Treasury (fund corpus), and MDE (educational distribution)."
+permanentFundCorpus: null
+latestDistribution: null
+substrateVersion: "1.3"
+lastReviewed: 2026-05-01
+---
+
+*Admission #26 (Jan. 26, 1837). Era: Northwest Ordinance template. Draft: Pass 1 prototype, 2026-04-30.*
+
+Michigan's school-trust story is, in two distinct ways, structurally foundational to the rest of the national pattern. It is the state where the United States Supreme Court first declared that an admission-act school grant is not an ordinary state asset but a "sacred obligation" resting on the public faith of the state — the ruling, in *Cooper v. Roberts*, that supplied the doctrinal floor every Northwest Ordinance state has stood on ever since. And it is the state that, eighteen years before that decision, broke with the township-distribution model embedded in the Ohio template and became the first state to centralize school-land management at the state level. Wisconsin followed Michigan, not Ohio. Minnesota followed Wisconsin. The whole western pattern of state-level land boards and statewide perpetual school funds traces back, architecturally, to the choices the Michigan Constitutional Convention of 1835 made before Congress had even admitted the state.
+
+<blockquote class="pull-quote">
+  <p>Michigan is a doctrinal headwater. And yet — this is the story's corrective edge — centralization at the state level did not, by itself, preserve the corpus.</p>
+  <cite>Schools of the Republic v1.3, Michigan</cite>
+</blockquote>
+
+The Michigan trust was substantially depleted through nineteenth-century sales, and in 1875 the legislature simply took what was left of the principal into the general fund. The lesson Michigan offers to the rest of the country is double-edged: better architecture is necessary, and it is not sufficient.
+
+## The 1837 admission and the section-16 grant
+
+Michigan was admitted to the Union on January 26, 1837, by congressional acceptance of the conditions Congress had laid out in the Act of June 15, 1836.[^mi-1] A supplementary act on June 23, 1836 specified the school grant in the form Congress had been using since the Ohio Enabling Act: section sixteen in every township of public lands, conveyed to the state "for the use of schools."[^mi-2] Congress did not write the words "in trust" into the Michigan grant; the express trust formula would not enter the federal lexicon until the New Mexico-Arizona Enabling Act of 1910, three-quarters of a century later. The doctrinal trust character was supplied judicially. That is the central fact of Michigan's place in the national framework.
+
+The grant was not small. Michigan received approximately 1.07 million acres at admission for the section-sixteen school grant, drawn from the surveyed townships of the Lower and Upper Peninsulas.[^mi-3] The federal text was structurally lean by post-1910 standards — no express in-trust language, no restoration mechanism, no federal-attorney-general enforcement provision — and on the language-strength heuristic the project applies to enabling acts, Michigan scores at the same weak floor as Ohio. The state's strong fiduciary architecture, where it exists, has to be located in the Michigan Constitution and in the doctrinal framework *Cooper v. Roberts* erected on the Michigan record.
+
+## The 1835 'Michigan Plan'
+
+The first piece of that architecture was already in place before statehood. The Michigan Constitutional Convention met at Detroit in May and June 1835, more than a year before the federal grant was finalized. Article X of the resulting constitution placed school-land proceeds into a statewide perpetual fund and directed that the income be applied inviolably to schools — language that would be carried forward, in modified form, through Michigan's three subsequent constitutions of 1850, 1908, and 1963.[^mi-4] What was distinctive in 1835 was not the perpetual-fund concept itself; that was already implicit in the Ohio grant's "use of schools" phrasing. What was distinctive was the structural choice to centralize management at the state level. The Ohio grant had run "to the inhabitants of such township," distributing fiduciary authority across hundreds of local trustees with no statewide accounting and no statewide discipline. Michigan's 1835 framers consolidated that authority into a state-level Superintendent of Public Instruction (originally created as a constitutional office) with operational financial management through the State Treasurer.[^mi-5] The 1835 constitution thereby placed school-land oversight in elected officials of statewide accountability, three decades before any other state — Wisconsin's 1848 constitution would adopt the same architecture, and Minnesota's 1857 constitution would follow Wisconsin's, and the Western admissions after 1859 would adopt some variant of the Michigan-Wisconsin template rather than the Ohio one. This is what Margaret Bird, in private correspondence, has called the Michigan Plan: a recognition, a half-century before any state articulated it doctrinally, that township-level management of long-lived public assets was structurally insufficient to resist the political pressure to dispose of them at suppressed prices.
+
+## Cooper v. Roberts: the doctrinal headwater
+
+The second piece — the doctrinal piece — arrived twenty years after admission. *Cooper v. Roberts*, decided by the United States Supreme Court in 1855, originated as a Michigan title dispute between a school-section claimant and a competing claimant under the federal mineral-land statutes.[^mi-6] The factual question was whether section sixteen in a copper-bearing township in the Upper Peninsula had passed to the State of Michigan under the 1836 grant or had instead been reserved to the United States as mineral land. Justice John Catron, writing for a unanimous Court, ruled for the State and the school grant. But the holding's significance vastly exceeded the title question. In dictum that has been quoted continuously for the seventeen decades since, Catron wrote that the school grant created a trust on the public faith of the state — a "sacred obligation imposed on its public faith" enforceable against state encroachment.[^mi-7] *Cooper* is the foundational decision. It established that admission-act school grants of the Ohio template kind are not ordinary state property to be sold and spent at legislative discretion, but corpus-protected trusts owed to a defined class of beneficiaries: the schoolchildren of the granted state in perpetuity. Every Northwest Ordinance state — every state admitted between 1802 and 1910, in fact, before Congress shifted to the express-trust formula — holds its school lands against the floor *Cooper* erected. And Michigan is the originating jurisdiction. The doctrine was synthesized, in the modern era, by *Lassen v. Arizona ex rel. Arizona Highway Department*, which restated the strict-trust principle in twentieth-century fiduciary terms, but *Lassen* construed an enabling act with express in-trust language; *Cooper* did the heavier doctrinal lifting on a textually sparser grant.[^mi-8] The follow-on case, *Minnesota Co. v. National Co.*, decided by the Supreme Court in 1865, refused to reopen the title question and reinforced *Cooper* as a rule of property for Michigan section-sixteen lands.[^mi-9]
+
+The doctrinal headwater character of Michigan is therefore established. What followed, on the ground in Michigan over the same decades, is the corrective edge of the story. Michigan's section-sixteen lands were largely sold off through the nineteenth century, and the prices at which they were sold did not reflect the value of the standing timber and mineral resources Michigan was famous for. The architecture had centralized management in elected statewide officials; the political pressure to dispose of the lands quickly, and to disburse the resulting sale proceeds where they would do immediate political good, was not thereby canceled. It was merely concentrated.
+
+## The 1875 expropriation
+
+The single most consequential nineteenth-century episode is the 1875 expropriation. In Governor v. State Treasurer (later treated as part of the *Milliken v. Green* litigation that produced multiple Michigan Supreme Court opinions in the early 1970s), the court reviewed the legislative history of Michigan's primary school fund and described 1875 Public Act 22 as an act "to use educational-land sale proceeds to defray state-government expenses."[^mi-10] The opinion's historical narrative, which is more detailed than is typical for a school-finance adequacy case, recounts that Act 22 "expropriated the principal and interest of the primary school fund to the general fund," leaving "the original fund to exist only on paper while interest continued to be computed."[^mi-11] The state, in other words, took the corpus and replaced it with a bookkeeping entry. Annual interest payments to schools continued, computed against the now-fictional balance, but the actual money from the actual sales of the actual section-sixteen lands had been converted into general state operating revenue. The historical account in *Milliken v. Green I* should be handled carefully — those opinions were vacated in 1973 and replaced — but the underlying historical fact of Act 22, and the broader pattern of fiduciary-discipline failure it reflects, is documented across multiple secondary sources. Pass 2 verification against the text of 1875 Act 22 itself is recommended before publication, but the structural finding stands: Michigan's centralization of management at the state level did not prevent a directed seizure of the corpus by statute.
+
+## Constitutional drift: 1850, 1908, 1963
+
+Michigan's constitutional architecture continued to evolve, sometimes strengthening the trust on paper and sometimes loosening it. The 1850 Constitution's Article XIII, section 2, broadened the school-fund clause to cover lands granted for educational purposes generally and other property given or appropriated for like purposes, retaining perpetual-fund and inviolable-appropriation language.[^mi-12] The 1908 Constitution's Article XI, section 11, carried forward the same perpetual-fund clause.[^mi-13] The 1963 Constitution then made a substantial change. It omitted the former Article XI, section 11, perpetual school-land fund clause altogether, and substituted a modern education article (Article VIII, sections 1 through 4) along with Article IX, section 11, establishing the State School Aid Fund.[^mi-14] The constitutional framing pivoted from a land-trust framing toward a school-aid finance framing. The Michigan Supreme Court, in the *Milliken* litigation, described the 1963 Constitution as "eliminat[ing] all constitutional acknowledgment of the federal school endowment" and substituting Article VIII, section 2, and Article IX, section 11.[^mi-15] That characterization, in vacated opinions, should not be treated as binding precedent — but the documentary fact of the omission is verifiable from the constitutional text. Michigan in 1963 stopped speaking, in its constitution, of the federal school land grant as a trust corpus; it began speaking instead of the State School Aid Fund as a school-finance dedication.
+
+Article VIII, section 1, of the 1963 Constitution does, however, preserve in nearly verbatim form the moral-architecture language of the Northwest Ordinance: "Religion, morality and knowledge being necessary to good government and the happiness of mankind, schools and the means of education shall forever be encouraged."[^mi-16] That is the cleanest constitutional preservation of Northwest Ordinance Article III in any state constitution. It is rhetorical rather than fiduciary architecture — it does not, on its face, create or protect a corpus — but it is a continuous textual link from 1787 through 1835, 1850, 1908, and into the current Michigan Constitution. Article VIII, sections 2 through 4, establish the duty of the legislature to maintain and support a system of free public elementary and secondary schools, create the eight-member elected State Board of Education, and provide for the Superintendent of Public Instruction as the Board's appointee.[^mi-17] The Superintendent provision carries forward the 1835 architectural innovation. Article IX, section 11 — substantially reshaped by Proposal A in 1994 — establishes the State School Aid Fund as a constitutionally dedicated funding mechanism for K-12 schools, drawn principally from sales- and use-tax revenues.[^mi-18]
+
+## Modern doctrine: Milliken to Durant
+
+The Michigan Supreme Court has spoken to this architecture intermittently. *Milliken v. Green II* (1973), the operative successor to the vacated 1972 opinion, addressed equal-protection challenges to disparities in school funding under the pre-Proposal-A architecture; the case is not a federal section-sixteen trust enforcement case but is the dominant modern Michigan Supreme Court precedent on Article VIII.[^mi-19] The Michigan Court of Appeals' 1984 decision in *East Jackson Public Schools v. State* rejected constitutional challenges to Michigan's school-finance system, recognizing broad legislative discretion over state school aid formulas.[^mi-20] The 1988 *Advisory Opinion on Constitutionality of 1986 PA 281* upheld tax-increment financing against claims of unconstitutional diversion from school districts.[^mi-21] *Donald S. Durant v. State* (Mich. Ct. App. 2002) addressed Article IX, section 11, and the meaning of the school-operating revenue guarantee enacted under Proposal A; the concurrence noted a gap between constitutional text and what voters had been told the proposal would mean.[^mi-22] What the case law does not contain — what Pass 1 and Pass 2 research has been unable to surface — is a definitive modern Michigan Supreme Court decision construing the federal section-sixteen trust character against the State of Michigan specifically. The lived modern enforcement record on Michigan's section-sixteen grant is thin. That itself is a finding, and it is consistent with the depletion narrative: the trust corpus was substantially expropriated before the development, in the late twentieth century, of modern strict-fiduciary enforcement doctrine. There was, by 1970, very little corpus left to enforce against.
+
+## AG opinions and revenue-stream capture
+
+Michigan's Attorney General opinion record reflects the same shift. The opinions catalogued in Pass 2 — Op. No. 5128 (1977), Op. No. 6465 (1987), Op. No. 6484 (1987), Op. No. 6559 (1989), Op. No. 6888 (1996), and Op. No. 7280 (2014) — concern the State School Aid Fund, legislative allocation power, recapture of overpayments, sales-tax interest and penalties, foundation-allowance handling, and tax-increment capture.[^mi-23] No modern formal Michigan AG opinion has been located that squarely enforces the original federal school-land corpus as a trust, in the manner of Oregon's Op. Att'y Gen. No. 8223 (1992) or comparable opinions in other states. The 2014 Op. No. 7280, the most modern of the contested-revenue opinions, addressed the capture of State Education Tax revenue under 2012 PA 396 for a Detroit Downtown Development Authority catalyst project; the opinion concluded that the capture did not violate Article IX, section 11, because the captured revenues had been intercepted under the DDA statutory framework before transfer to the State School Aid Fund.[^mi-24] The contestation over that opinion — the requesting legislator framed the episode as a $314 million diversion from the school-aid fund — illustrates how thoroughly Michigan's modern fiduciary disputes have shifted from land-corpus questions to revenue-stream-capture questions.
+
+## The fund today
+
+Today, the federal-grant school-trust corpus that Michigan once held is residual. The Michigan Department of Natural Resources retains very limited acreage from the original section-sixteen grant as state-managed school trust land; the lands were largely disposed of in the nineteenth century, and a verified residual-acreage figure is among the gaps Pass 3 should pin from DNR records.[^mi-25] The Michigan Department of Treasury manages the historic primary school interest fund, which is small relative to the State School Aid Fund. The Michigan Department of Education and the State Board of Education handle educational policy and distribution. The State School Aid Fund — substantially reshaped by Proposal A in 1994, which dedicated a larger sales- and use-tax stream to the Fund and established a per-pupil operating revenue guarantee — is now Michigan's principal K-12 funding mechanism, but it is a school-finance vehicle rather than a federal-grant trust corpus.[^mi-26] The depletion of the latter, and the structural displacement of land-trust framing by general-revenue-dedication framing, is the central financial story for Michigan; quantifying it precisely against admission-era acreage and dollar figures is a Pass 3 priority.
+
+Michigan's place in the national pattern is therefore double. It is the doctrinal headwater — the state on whose record the United States Supreme Court declared admission-act school grants to be enforceable trusts on state public faith, the state that supplied the doctrine *Cooper v. Roberts* now binds every Northwest Ordinance state to. And it is the structural pioneer — the state that, before the doctrine existed, recognized that township-level distribution of fiduciary authority would not work and built a state-level architecture instead, the architecture every western state would adapt. Both findings are foundational. Both deserve to be acknowledged in any narrative of how the national school-trust pattern developed. But Michigan is also a corrective. Centralization improved discipline at the margins; it did not, in 1875, prevent the legislature from converting the principal of the primary school fund into general operating revenue. State-level architecture is necessary; it is not sufficient. The Western states that copied the Michigan template, and that wrote stronger irreducibility and inviolable-appropriation clauses into their constitutions, were responding to a lesson Michigan had already learned the hard way.
+
+<blockquote class="pull-quote">
+  <p>The architecture is the floor, not the structure. What you build on top of it — the doctrinal enforcement, the trustee accountability, the transparency, the political will to actually treat the corpus as untouchable — is what determines whether the trust survives.</p>
+  <cite>Schools of the Republic v1.3, Michigan</cite>
+</blockquote>
+
+---
+
+## Footnotes
+
+[^mi-1]: Act of June 15, 1836, ch. 99, 5 Stat. 49; Michigan was admitted to the Union upon acceptance of the congressional conditions on January 26, 1837. https://www.loc.gov/law/help/statutes-at-large/24th-congress.php.
+
+[^mi-2]: Act of June 23, 1836, ch. 121, § 1, 5 Stat. 59 (granting section sixteen of every township to the State of Michigan for the use of schools). https://tile.loc.gov/storage-services/service/ll/llsl//llsl-c24/llsl-c24.pdf.
+
+[^mi-3]: The approximate figure of 1.07 million acres at admission is widely cited in secondary scholarship on Michigan land disposition; a verified primary-source figure from Michigan State Land Office historical records is among the Pass 3 retrieval priorities.
+
+[^mi-4]: Constitution of Michigan of 1835, art. X, http://www.legislature.mi.gov/documents/historical/miconstitution1835.htm; carried forward in modified form in the Constitutions of 1850, 1908, and 1963.
+
+[^mi-5]: Constitution of Michigan of 1835, art. X, § 1 (creating the office of Superintendent of Public Instruction); operational management of school lands was subsequently administered through the State Treasurer under statutory authority.
+
+[^mi-6]: *Cooper v. Roberts*, 59 U.S. (18 How.) 173 (1855), https://supreme.justia.com/cases/federal/us/59/173/.
+
+[^mi-7]: *Id.* at 178–82.
+
+[^mi-8]: *Lassen v. Arizona ex rel. Arizona Highway Department*, 385 U.S. 458 (1967), https://supreme.justia.com/cases/federal/us/385/458/.
+
+[^mi-9]: *Minnesota Co. v. National Co.*, 70 U.S. (3 Wall.) 332, 333–34 (1865), https://supreme.justia.com/cases/federal/us/70/332/; see also the Michigan Supreme Court's 1863 decision in *Minnesota Mining Co. v. National Mining Co.*, 11 Mich. 186, 194–99 (1863), which treated the accepted federal act as binding on both the United States and Michigan.
+
+[^mi-10]: Governor v. State Treasurer, treated as part of *Milliken v. Green*, 389 Mich. 1, 46–49 (1972), opinions vacated, 390 Mich. 389 (1973), https://law.justia.com/cases/michigan/supreme-court/1973/389-mich-1-2.html.
+
+[^mi-11]: *Id.* The historical passage describes 1875 PA 22 as expropriating the principal and interest of the primary school fund to the general fund, leaving the fund to exist only on paper while interest was nominally computed against the depleted balance. Because the underlying *Milliken I* opinions were vacated, this should be treated as a documented judicial historical account rather than current precedential holding; verification against the text of 1875 Act 22 itself remains recommended.
+
+[^mi-12]: Constitution of Michigan of 1850, art. XIII, § 2, http://www.legislature.mi.gov/documents/historical/miconstitution1850.htm.
+
+[^mi-13]: Constitution of Michigan of 1908, art. XI, § 11, https://www.mackinac.org/constitution/1908/xi-11.
+
+[^mi-14]: Constitution of Michigan of 1963, art. VIII, art. IX, § 11; on the omission of the former perpetual school-land fund clause, see https://law.justia.com/cases/michigan/supreme-court/1973/389-mich-1-2.html.
+
+[^mi-15]: *Milliken v. Green*, 389 Mich. 1 (1972), opinions vacated, 390 Mich. 389 (1973). The vacated opinions' historical characterization is informative but not binding.
+
+[^mi-16]: Mich. Const. of 1963, art. VIII, § 1, https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-Article-VIII-1.
+
+[^mi-17]: Mich. Const. of 1963, art. VIII, §§ 2–4, https://www.legislature.mi.gov/mileg.aspx?objectName=mcl-Article-VIII-2&page=getObject.
+
+[^mi-18]: Mich. Const. of 1963, art. IX, § 11 (as amended by Proposal A, March 15, 1994), https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-Article-IX-11.
+
+[^mi-19]: *Milliken v. Green*, 390 Mich. 389 (1973). The case has a complicated procedural history; Pass 3 should pin the operative parallel citation and reporter pages.
+
+[^mi-20]: *East Jackson Public Schools v. State*, 133 Mich. App. 132, 137–38, 348 N.W.2d 303 (1984), https://app.midpage.ai/opinion/2177323/e-jackson-pub-sch-v-michigan.
+
+[^mi-21]: *Advisory Opinion on Constitutionality of 1986 PA 281*, 430 Mich. 93, 107–11, 422 N.W.2d 186 (1988), https://app.midpage.ai/document/advisory-opinion-on-constitutionality-of-7954368.
+
+[^mi-22]: *Donald S. Durant v. State of Michigan*, No. 230859 (Mich. Ct. App. May 10, 2002), https://law.justia.com/cases/michigan/court-of-appeals-published/2002/20020510-c230859-59-120cneff-230859c-opn-coa.html.
+
+[^mi-23]: Op. Att'y Gen. No. 5128 (1977), https://www.ag.state.mi.us/opinion/datafiles/1970s/op05128.htm; Op. Att'y Gen. No. 6465 (1987), https://www.ag.state.mi.us/opinion/datafiles/1980s/op06465.htm; Op. Att'y Gen. No. 6484 (1987), https://www.ag.state.mi.us/opinion/datafiles/1980s/op06484.htm; Op. Att'y Gen. No. 6559 (1989), https://www.ag.state.mi.us/opinion/datafiles/1980s/op06559.htm; Op. Att'y Gen. No. 6888 (1996), https://www.ag.state.mi.us/opinion/datafiles/1990s/op06888.htm; Op. Att'y Gen. No. 7280 (2014), https://www.ag.state.mi.us/opinion/datafiles/2010s/op10359.htm.
+
+[^mi-24]: Op. Att'y Gen. No. 7280 (Dec. 10, 2014), *supra* note 23. The requesting state representative framed the episode as a $314 million diversion from the State School Aid Fund; the Attorney General concluded that pre-transfer capture under the DDA statutory framework was not an unconstitutional diversion under Article IX, § 11.
+
+[^mi-25]: Michigan Department of Natural Resources public-lands inventory; verified residual-acreage figures are a Pass 3 retrieval priority. https://www.michigan.gov/dnr/.
+
+[^mi-26]: Mich. Const. of 1963, art. IX, § 11; 2023 PA, codified at https://law.justia.com/codes/michigan/chapter-388/statute-act-94-of-1979/article-i/section-388-1611z/ (school aid countercyclical budget and foundation stabilization fund).

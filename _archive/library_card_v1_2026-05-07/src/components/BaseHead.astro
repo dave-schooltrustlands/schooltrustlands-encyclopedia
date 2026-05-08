@@ -1,0 +1,35 @@
+---
+// Shared <head> meta block. Every page passes its own title + description;
+// charset/viewport/og: tags are uniform across the site (per-page OG
+// templates are Tier 3 in the Visual Rebuild Handoff).
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const SITE_URL = 'https://schooltrusts.net';
+const defaultTitle =
+  "America's School Trust Library — An evidentiary archive of America's school trust lands and funds";
+const defaultDescription =
+  "Lands and funds set aside since 1785 to support America's public K-12 schools.";
+const OG_IMAGE = `${SITE_URL}/og-default.png`;
+const canonical = `${SITE_URL}${Astro.url.pathname}`;
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<title>{title}</title>
+{description && <meta name="description" content={description} />}
+
+<link rel="canonical" href={canonical} />
+
+<meta property="og:title" content={defaultTitle} />
+<meta property="og:description" content={defaultDescription} />
+<meta property="og:image" content={OG_IMAGE} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta name="twitter:card" content="summary_large_image" />

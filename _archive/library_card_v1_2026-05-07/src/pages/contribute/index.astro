@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Library Card signup CTA. The signup form is out of scope for v3 — using a
+// mailto placeholder that lands in the Library inbox with a structured
+// subject line. The mailto avoids a "coming soon" badge that would dampen
+// reader interest and routes serious inquiries to staff.
+const LIBRARY_CARD_MAILTO =
+  'mailto:library@schooltrusts.net?subject=Library%20Card%20signup';
+
+const roles = [
+  {
+    name: 'Reader',
+    commitment: 'No signup required',
+    body:
+      'The full Reading Room is open to the public — every editorial summary, every linked primary source, every state page in the Atlas. If you find an error or have a source to suggest, you can submit a correction without becoming a member. The simplest on-ramp.',
+  },
+  {
+    name: 'Library Card holder',
+    commitment: 'Free signup',
+    body:
+      'Email, state, role, and area of interest. Library Card holders receive the Newsroom, can submit corrections and annotations, and can suggest sources for the Founders’ Library or the Scholarship section. The entry tier for everyone who wants to be in the conversation.',
+    cta: { href: LIBRARY_CARD_MAILTO, label: 'Get a Library Card' },
+  },
+  {
+    name: 'Contributor',
+    commitment: 'Issue-by-issue',
+    body:
+      'Library Card holders whose corrections, annotations, or source suggestions have been accepted into the editorial summaries. Contributors receive named or pseudonymous credit on the source pages they have contributed to.',
+  },
+  {
+    name: 'Title Steward',
+    commitment: 'A few hours a year per title',
+    body:
+      'A community curator who has institutional access to a specific in-copyright reference work in the Scholarship section. The Title Steward writes and maintains that title’s editorial summary. Especially well-suited to law-school faculty teaching trust law, trust-and-estates attorneys with Westlaw access, school-finance officers, state-lands-agency staff, and library-science curators.',
+    cta: { href: '/reading/scholarship/#tier-3', label: 'See open titles' },
+  },
+  {
+    name: 'State Correspondent',
+    commitment: 'Light, ongoing',
+    body:
+      'A Library Card holder who monitors school-trust news in their own state and submits Newsroom-eligible items. State Correspondents receive a state-specific Newsroom feed.',
+  },
+  {
+    name: 'State Co-Librarian',
+    commitment: '5–10 hours a month after onboarding',
+    body:
+      'Curates a state’s corner of the State Records section: enabling act, original constitutional education clauses, key state Supreme Court decisions, period audit reports, AG opinions, reform-era statutes. Primary recruit pool: state-lands-agency staff. Pseudonymity tier available.',
+    cta: { href: '/contribute/state-lands-agencies/', label: 'For state-lands-agency staff →' },
+  },
+  {
+    name: 'Library Board',
+    commitment: 'Governance',
+    body:
+      'Approves annual additions to the Founders’ Library and the Scholarship section, arbitrates editorial disputes, reviews retraction-and-correction protocols. The first three to five Board members are being recruited from library-science, archival, and digital-library-infrastructure backgrounds.',
+  },
+];
+---
+<BaseLayout
+  title="How to contribute · America's School Trust Library"
+  description="Reader, Library Card holder, Contributor, Title Steward, State Correspondent, State Co-Librarian, Library Board — seven roles, ordered from lightest to heaviest commitment, each with defined operational task and institutional standing."
+  sourceId="contribute-landing"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">Contribute</p>
+    <h1 class="mt-2">How to contribute</h1>
+    <p class="kicker text-slate-600">
+      The Library grows through readers, contributors, and curators.
+    </p>
+
+    <h2>What the Library is</h2>
+    <p>
+      America's School Trust Library is a public reference library for the trust lands
+      and trust funds the United States set aside for public schools — beginning with
+      Section 16 of every township in 1785, expanded over two and a half centuries,
+      and now scattered across the records of fifty state agencies. The Library is
+      the institution that makes that record findable. For the longer entry-door
+      read, see <a href="/why/">Why this matters</a>.
+    </p>
+  </article>
+
+  <section class="hero-role not-prose mt-8 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-5 shadow-sm">
+    <p class="text-xs font-semibold uppercase tracking-wide text-amber-900">
+      Most actively recruited role
+    </p>
+    <h2 class="mt-1 text-2xl font-bold tracking-tight text-amber-950">
+      Title Steward
+    </h2>
+    <p class="mt-3 text-sm text-amber-950">
+      A community curator who has institutional access to a specific in-copyright
+      reference work in the Scholarship section, and who refines the Library's stub
+      summary into something authoritative. Renewable annually. Bounded — a few
+      hours a year per title. Open titles include Bogert's <em>Law of Trusts and
+      Trustees</em>, the <em>Restatement (Third) of Trusts</em>, the NEFA
+      <em>Funding Public Schools in the United States and Indian Country</em> (2024),
+      Souder &amp; Fairfax 1996, and Culp et&nbsp;al. 2006.
+    </p>
+    <p class="mt-3 text-sm">
+      <a
+        href="/reading/scholarship/#tier-3"
+        class="inline-block rounded-md bg-amber-600 px-3 py-2 font-semibold text-white shadow hover:bg-amber-700"
+      >See open titles &rarr;</a>
+    </p>
+  </section>
+
+  <section class="library-card-cta not-prose mt-8 rounded-lg border border-slate-300 bg-white p-5 shadow-sm">
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">First step</p>
+    <h2 class="mt-1 text-xl font-bold tracking-tight text-slate-900">Get a Library Card</h2>
+    <p class="mt-2 text-sm text-slate-700">
+      The simplest first step is a free Library Card — email, state, role, and one
+      line about what brought you here. After that, the easiest contribution is a
+      correction: read a source page, find an error, submit it. Accepted corrections
+      produce named or pseudonymous credit on the source page.
+    </p>
+    <p class="mt-3 text-sm">
+      <a
+        href={LIBRARY_CARD_MAILTO}
+        class="inline-block rounded-md bg-blue-700 px-3 py-2 font-semibold text-white shadow hover:bg-blue-800"
+      >Get a Library Card</a>
+      <span class="ml-2 text-xs italic text-slate-500">
+        (placeholder during signup-form bring-up; emails go to library staff)
+      </span>
+    </p>
+  </section>
+
+  <section class="roles mt-12">
+    <h2 class="text-2xl font-bold tracking-tight">The roles we offer</h2>
+    <p class="mt-1 text-sm italic text-slate-600">
+      Seven roles, ordered from lightest to heaviest commitment. Each role has a
+      defined operational task and confers institutional standing — named or, where
+      role conflicts require it, pseudonymous.
+    </p>
+    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {roles.map((r) => (
+        <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+          <p class="text-xs uppercase tracking-wide text-slate-500">{r.commitment}</p>
+          <h3 class="mt-1 text-lg font-semibold tracking-tight text-slate-900">{r.name}</h3>
+          <p class="mt-2 text-sm text-slate-700">{r.body}</p>
+          {r.cta && (
+            <p class="mt-3 text-sm">
+              <a href={r.cta.href} class="font-semibold text-blue-700 underline">
+                {r.cta.label}
+              </a>
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <article class="prose prose-slate mt-12 max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h2>Pseudonymity</h2>
+    <p>
+      For contributors whose role might create employer or political conflict, the
+      Library offers a pseudonymity tier. Verification happens internally: real
+      name, employer, and contact information are held confidentially by the
+      Library Board's verification committee. The public-facing standing — the
+      byline on a source page, the Newsroom contributor credit, the State
+      Co-Librarian designation — accrues to the pseudonym. This is essential for
+      the recruitment of state-lands-agency staff and others whose participation
+      under their real name could be professionally costly.
+    </p>
+
+    <h2>What we don't ask</h2>
+    <p>
+      No copyright transfer (corrections and annotations are licensed CC BY 4.0 by
+      default; primary-source contributions are public-domain dedications). No
+      political alignment — the Library is a fiduciary-data project, not an
+      advocacy outlet, and accepts contributions from anyone with the accuracy and
+      good faith to do the work. No commitment beyond what you choose. No fees.
+    </p>
+
+    <h2>A note for state-lands-agency staff</h2>
+    <p>
+      If you work for a State Department of Lands, a State Land Board, the Utah
+      School and Institutional Trust Lands Administration (SITLA), Washington's
+      DNR, or any of the other thirty-plus state agencies that administer school
+      trust lands — please read the
+      <a href="/contribute/state-lands-agencies/">dedicated page for state-lands-agency staff</a>.
+      The lands you administer were set aside in 1785 for the maintenance of
+      public schools, and the Library is the institution that makes that record
+      findable to the country. Your professional familiarity with those records is
+      the highest-value contribution this Library can receive.
+    </p>
+
+    <hr class="my-10" />
+
+    <p class="text-sm text-slate-600">
+      <em>Curated by Library editorial team, 2026-05-07.</em>
+    </p>
+  </article>
+</BaseLayout>

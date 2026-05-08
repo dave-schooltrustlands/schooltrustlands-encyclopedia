@@ -16,6 +16,8 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
     "@astrojs/tailwind": "^6.0.2",
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.105.3",
     "astro": "^5.18.1",
     "maplibre-gl": "^5.24.0",
     "pmtiles": "^4.4.1",

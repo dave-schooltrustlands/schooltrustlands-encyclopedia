@@ -1,0 +1,452 @@
+[
+  {
+    "stateIso": "us-ak",
+    "fips": "02",
+    "name": "Alaska",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-al",
+    "fips": "01",
+    "name": "Alabama",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ar",
+    "fips": "05",
+    "name": "Arkansas",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-az",
+    "fips": "04",
+    "name": "Arizona",
+    "value": 8000000000,
+    "category": "≥ $5B",
+    "displayLabel": "$8,000,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-ca",
+    "fips": "06",
+    "name": "California",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-co",
+    "fips": "08",
+    "name": "Colorado",
+    "value": 1100000000,
+    "category": "$1–5B",
+    "displayLabel": "$1,100,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-ct",
+    "fips": "09",
+    "name": "Connecticut",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-de",
+    "fips": "10",
+    "name": "Delaware",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-fl",
+    "fips": "12",
+    "name": "Florida",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ga",
+    "fips": "13",
+    "name": "Georgia",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-hi",
+    "fips": "15",
+    "name": "Hawaii",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ia",
+    "fips": "19",
+    "name": "Iowa",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-id",
+    "fips": "16",
+    "name": "Idaho",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-il",
+    "fips": "17",
+    "name": "Illinois",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-in",
+    "fips": "18",
+    "name": "Indiana",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ks",
+    "fips": "20",
+    "name": "Kansas",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ky",
+    "fips": "21",
+    "name": "Kentucky",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-la",
+    "fips": "22",
+    "name": "Louisiana",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ma",
+    "fips": "25",
+    "name": "Massachusetts",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-md",
+    "fips": "24",
+    "name": "Maryland",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-me",
+    "fips": "23",
+    "name": "Maine",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-mi",
+    "fips": "26",
+    "name": "Michigan",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-mn",
+    "fips": "27",
+    "name": "Minnesota",
+    "value": 2500000000,
+    "category": "$1–5B",
+    "displayLabel": "$2,500,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-mo",
+    "fips": "29",
+    "name": "Missouri",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ms",
+    "fips": "28",
+    "name": "Mississippi",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-mt",
+    "fips": "30",
+    "name": "Montana",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-nc",
+    "fips": "37",
+    "name": "North Carolina",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nd",
+    "fips": "38",
+    "name": "North Dakota",
+    "value": 6000000000,
+    "category": "≥ $5B",
+    "displayLabel": "$6,000,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-ne",
+    "fips": "31",
+    "name": "Nebraska",
+    "value": 2000000000,
+    "category": "$1–5B",
+    "displayLabel": "$2,000,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-nh",
+    "fips": "33",
+    "name": "New Hampshire",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nj",
+    "fips": "34",
+    "name": "New Jersey",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nm",
+    "fips": "35",
+    "name": "New Mexico",
+    "value": 30000000000,
+    "category": "≥ $5B",
+    "displayLabel": "$30,000,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-nv",
+    "fips": "32",
+    "name": "Nevada",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ny",
+    "fips": "36",
+    "name": "New York",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-oh",
+    "fips": "39",
+    "name": "Ohio",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ok",
+    "fips": "40",
+    "name": "Oklahoma",
+    "value": 2500000000,
+    "category": "$1–5B",
+    "displayLabel": "$2,500,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-or",
+    "fips": "41",
+    "name": "Oregon",
+    "value": 2000000000,
+    "category": "$1–5B",
+    "displayLabel": "$2,000,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-pa",
+    "fips": "42",
+    "name": "Pennsylvania",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ri",
+    "fips": "44",
+    "name": "Rhode Island",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-sc",
+    "fips": "45",
+    "name": "South Carolina",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-sd",
+    "fips": "46",
+    "name": "South Dakota",
+    "value": 250000000,
+    "category": "< $1B",
+    "displayLabel": "$250,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-tn",
+    "fips": "47",
+    "name": "Tennessee",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-tx",
+    "fips": "48",
+    "name": "Texas",
+    "value": 56000000000,
+    "category": "≥ $5B",
+    "displayLabel": "$56,000,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-ut",
+    "fips": "49",
+    "name": "Utah",
+    "value": 3200000000,
+    "category": "$1–5B",
+    "displayLabel": "$3,200,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-va",
+    "fips": "51",
+    "name": "Virginia",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-vt",
+    "fips": "50",
+    "name": "Vermont",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-wa",
+    "fips": "53",
+    "name": "Washington",
+    "value": null,
+    "category": "data unavailable",
+    "displayLabel": "Data not in substrate",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-wi",
+    "fips": "55",
+    "name": "Wisconsin",
+    "value": 1500000000,
+    "category": "$1–5B",
+    "displayLabel": "$1,500,000,000",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-wv",
+    "fips": "54",
+    "name": "West Virginia",
+    "value": null,
+    "category": "no permanent fund",
+    "displayLabel": "No permanent fund (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-wy",
+    "fips": "56",
+    "name": "Wyoming",
+    "value": 4500000000,
+    "category": "$1–5B",
+    "displayLabel": "$4,500,000,000",
+    "dataConfidence": "derived-from-substrate"
+  }
+]

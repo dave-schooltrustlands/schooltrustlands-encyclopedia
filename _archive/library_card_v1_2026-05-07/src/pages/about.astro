@@ -1,0 +1,118 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Toggle this to true after Margaret's review and approval call.
+const margaretApproved = false;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="About · America's School Trust Library"
+      description="A joint project of Advocates for School Trust Lands (ASTL) and Oregon Advocates for School Trust Lands (OASTL)."
+    />
+  </head>
+  <body class="min-h-screen bg-archive-paper text-ink" data-source-id="about-page">
+    <Header />
+    <main class="mx-auto max-w-prose p-4 sm:p-8">
+      <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+        <h1>About America's School Trust Library</h1>
+
+        <h2>Mission</h2>
+        <p>
+          America's School Trust Library is the evidentiary archive of America's school trust lands and funds. It exists to make the legal architecture, financial scale, and political accountability of these trusts visible — to journalists, lawyers, legislators, trustees, and citizens.
+        </p>
+
+        <h2>A joint project</h2>
+        <p>The Library is a joint project of two affiliated 501(c)(3) nonprofits:</p>
+        <p>
+          <strong>Advocates for School Trust Lands (ASTL)</strong> is the national organization, founded to advance fiduciary integrity in America's school trust lands and funds across all twenty land-grant states. ASTL's organizational page lives at <a href="https://schooltrustlands.org" target="_blank" rel="noopener">schooltrustlands.org</a>.
+        </p>
+        <p>
+          <strong>Oregon Advocates for School Trust Lands (OASTL)</strong> is ASTL's Oregon affiliate and the active plaintiff in Oregon's current trust-breach litigation, including the January 2026 Court of Appeals standing victory in <em>Advocates for School Trust Lands v. State of Oregon</em>. OASTL's organizational page lives at <a href="https://oastl.org" target="_blank" rel="noopener">oastl.org</a>.
+        </p>
+        <p>
+          The Library is the public-facing evidentiary archive both organizations rely on. ASTL contributes the national scope and per-state field reporting; OASTL contributes the Oregon case docket, primary sources, and the working-test-case analysis that makes the architecture concrete. The two voices stay audible in the Reading Room — state dossiers are the long, footnoted history; ASTL's per-state notes appear as the field annotation; OASTL substrate appears at <a href="/court/oregon-current-case/">/court/oregon-current-case/</a>, <a href="/reading/us-or/history/">/reading/us-or/history/</a>, and <a href="/reading/us-or/research/">/reading/us-or/research/</a>.
+        </p>
+
+        <h2>Substrate and method</h2>
+        <p>
+          The library is built on a five-layer Knowledge Stack: primary sources (statutes, court opinions, treaties, historical maps, expert declarations); canonical claims (atomized facts and arguments, every one cited to source); audience models (different readers need different pieces); a toolchain of human and AI editors; and the deliverables you see on these pages. The substrate is documented and version-controlled; the build pipeline is reproducible.
+        </p>
+        <p>
+          Every figure on this site carries a confidence badge. Every blank cell is a signal — most often that a state has not disclosed the underlying data. Visible incompleteness is the path to credibility for a public ledger of public trusts.
+        </p>
+        <p>
+          For a fuller walk-through of the five-layer Knowledge Stack and how contributions flow through editorial review into the substrate, see <a href="/about/how-this-works/">How This Library Works</a>.
+        </p>
+
+        <h2>The Library as the Eighth Anchor</h2>
+        <p>
+          The <em>Sacred Compact</em> white paper, hosted in the Library, names seven structural anchors that an aspirational intergenerational structure needs to survive the dissipation of the moral clarity that animated its founding: fiduciary doctrine, restoration mechanisms, individual and institutional accountability, direct distribution, advocacy infrastructure, specialized legal defense, and mandatory trustee education.
+        </p>
+        <p>
+          The white paper also names an eighth. Without a <em>standing community</em> of citizens, advocates, journalists, and trustees who treat the seven structural anchors as binding and refuse to let them dissipate, the architecture is decorative. The eighth anchor is the watchful crew — the institutional infrastructure of sustained, multi-generational civic attention.
+        </p>
+        <p>
+          The Library is the eighth anchor as it exists today. Not a future deliverable. Not a tool the watchful crew will eventually deploy. The Library is the institutional embodiment of the eighth anchor for America's school trust lands and funds — the public-facing evidentiary archive, the surveillance pass that becomes the weekly Newsroom, the per-state transparency reporting that becomes the Map Room, the standing constituency the trust beneficiaries (current and future schoolchildren) cannot organize for themselves.
+        </p>
+        <p>
+          The framers of 1785 knew they needed this institutional infrastructure and could not build it. The per-citizen cost of sustained civic attention to a complex multi-generational asset was, until very recently, prohibitive. AI-augmented research has now reduced that cost by an order of magnitude. The Library is the first instance of what becomes possible.
+        </p>
+
+        <h2>Team — the Library's founders</h2>
+        <p>
+          <strong>Dave Sullivan.</strong> President, Oregon Advocates for School Trust Lands. Retired professor; lead OASTL plaintiff in Oregon's trust-breach litigation. Library editorial direction.
+        </p>
+        <p>
+          <strong>Margaret Bird.</strong> President, Advocates for School Trust Lands. National domain authority on school trust lands; co-author of the booklet <em>Schools of the Republic</em>. Library substantive review.
+        </p>
+        <p>
+          The Library's day-to-day editorial pass is supported by AI assistance under the editorial supervision of the named founders. The Library's complete editorial methodology, including AI-assistance disclosure, is described elsewhere on this site.
+        </p>
+
+        <h2>Building the librarian community</h2>
+        <p>
+          The Library is in its first year of operation. To outlast its founders — to become a forever-institution rather than a founder-dependent project — it needs a community of librarians and school-trust experts who treat the substrate as theirs and the institutional continuity as their responsibility.
+        </p>
+        <p>
+          Three layers of that community are being recruited.
+        </p>
+        <p>
+          <strong>A Library Board of Directors with library-science and editorial expertise.</strong> Separate from the operating boards of the two sponsoring organizations (ASTL and OASTL), the Library Board provides editorial guidance, archival discipline, and the institutional memory of how a library posture differs from an advocacy posture. The Library is recruiting Board members from the library-science profession and from the digital-library infrastructure community.
+        </p>
+        <p>
+          <strong>State co-librarians, often drawn from State Departments of Lands and equivalent agencies.</strong> The substantive expertise on each state's school trust lives in the agency that manages those lands day-to-day. The Library is inviting State Departments of Lands staff — and equivalent agency staff in states with state-derived trust funds — to take responsibility for the curation and accuracy of their state's Library page. This is a co-librarian role: the Library hosts the substrate; the state expert validates, supplements, and corrects what the substrate says about their state. The role is named, scarce, and carries the institutional standing of the agency the librarian represents.
+        </p>
+        <p>
+          <strong>A standing constituency of contributors.</strong> Beyond the Board and the state co-librarians, the Library is recruiting historians, journalists, school-finance officers, retired educators, attorneys, and citizens who want to contribute primary sources, identify missing materials, file public-records requests, and watch their state's trust administration over time. The infrastructure for these roles is being built through 2026 and 2027.
+        </p>
+        <p>
+          The Library's independence is what these communities are being built to secure. As the Library grows, its institutional governance is designed to accommodate a transition from sponsorship by ASTL and OASTL to operation as an independent 501(c)(3) — when the patron community, the contributor breadth, and the operational scope reach the threshold where independence is the right move. Today, sponsorship by ASTL and OASTL is the right structure; the librarian community is being built so that independence becomes a viable next step within the next several years.
+        </p>
+
+        <h2>Contact and corrections</h2>
+        <p>
+          For corrections, source additions, or story tips: <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia/issues">GitHub issues</a>. For organizational contact, see <a href="https://schooltrustlands.org">schooltrustlands.org</a> (ASTL) or <a href="https://oastl.org">oastl.org</a> (OASTL). Citation guidance: <a href="/about/cite/">/about/cite/</a>.
+        </p>
+
+        <hr class="archival-divider">
+
+        <section class={`signature-block ${margaretApproved ? 'approved' : 'pending'}`}>
+          <p class="signature-margaret">
+            <span class="name">Margaret Bird</span><br>
+            <span class="role">President, Advocates for School Trust Lands</span>
+            {!margaretApproved && <span class="pending-note"><em>Pending review and sign-off.</em></span>}
+          </p>
+          <p class="signature-dave">
+            <span class="name">Dave Sullivan</span><br>
+            <span class="role">President, Oregon Advocates for School Trust Lands</span>
+          </p>
+        </section>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

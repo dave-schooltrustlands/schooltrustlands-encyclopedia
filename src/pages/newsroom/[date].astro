@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookmarkButton from '../../components/BookmarkButton.astro';
 
 type Props = { entry: CollectionEntry<'newsroom'> };
 
@@ -22,9 +23,12 @@ const { Content } = await entry.render();
   sourceId={`newsroom-${entry.slug}`}
 >
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
-    <p class="text-xs uppercase tracking-wide text-slate-500">
-      <a href="/newsroom/" class="text-slate-500 hover:text-slate-700">Newsroom</a>
-    </p>
+    <div class="not-prose mb-2 flex items-center justify-between gap-4">
+      <p class="text-xs uppercase tracking-wide text-slate-500">
+        <a href="/newsroom/" class="text-slate-500 hover:text-slate-700">Newsroom</a>
+      </p>
+      <BookmarkButton title={entry.data.title} />
+    </div>
     <Content />
     <hr class="archival-divider" />
     <p class="text-sm text-slate-600">

@@ -1,0 +1,452 @@
+[
+  {
+    "stateIso": "us-ak",
+    "fips": "02",
+    "name": "Alaska",
+    "value": 104450000,
+    "category": "≥ 5M acres",
+    "displayLabel": "104,450,000 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-al",
+    "fips": "01",
+    "name": "Alabama",
+    "value": 902774,
+    "category": "< 1M acres",
+    "displayLabel": "902,774 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ar",
+    "fips": "05",
+    "name": "Arkansas",
+    "value": 933778,
+    "category": "< 1M acres",
+    "displayLabel": "933,778 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-az",
+    "fips": "04",
+    "name": "Arizona",
+    "value": 10900000,
+    "category": "≥ 5M acres",
+    "displayLabel": "10,900,000 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ca",
+    "fips": "06",
+    "name": "California",
+    "value": 5500000,
+    "category": "≥ 5M acres",
+    "displayLabel": "5,500,000 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-co",
+    "fips": "08",
+    "name": "Colorado",
+    "value": 3685618,
+    "category": "1–5M acres",
+    "displayLabel": "3,685,618 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ct",
+    "fips": "09",
+    "name": "Connecticut",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-de",
+    "fips": "10",
+    "name": "Delaware",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-fl",
+    "fips": "12",
+    "name": "Florida",
+    "value": 908503,
+    "category": "< 1M acres",
+    "displayLabel": "908,503 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ga",
+    "fips": "13",
+    "name": "Georgia",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-hi",
+    "fips": "15",
+    "name": "Hawaii",
+    "value": 1400000,
+    "category": "1–5M acres",
+    "displayLabel": "1,400,000 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ia",
+    "fips": "19",
+    "name": "Iowa",
+    "value": 1000000,
+    "category": "1–5M acres",
+    "displayLabel": "1,000,000 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-id",
+    "fips": "16",
+    "name": "Idaho",
+    "value": 2963698,
+    "category": "1–5M acres",
+    "displayLabel": "2,963,698 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-il",
+    "fips": "17",
+    "name": "Illinois",
+    "value": 985066,
+    "category": "< 1M acres",
+    "displayLabel": "985,066 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-in",
+    "fips": "18",
+    "name": "Indiana",
+    "value": 650317,
+    "category": "< 1M acres",
+    "displayLabel": "650,317 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ks",
+    "fips": "20",
+    "name": "Kansas",
+    "value": 2900000,
+    "category": "1–5M acres",
+    "displayLabel": "2,900,000 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ky",
+    "fips": "21",
+    "name": "Kentucky",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-la",
+    "fips": "22",
+    "name": "Louisiana",
+    "value": 807271,
+    "category": "< 1M acres",
+    "displayLabel": "807,271 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ma",
+    "fips": "25",
+    "name": "Massachusetts",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-md",
+    "fips": "24",
+    "name": "Maryland",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-me",
+    "fips": "23",
+    "name": "Maine",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-mi",
+    "fips": "26",
+    "name": "Michigan",
+    "value": 1067397,
+    "category": "1–5M acres",
+    "displayLabel": "1,067,397 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-mn",
+    "fips": "27",
+    "name": "Minnesota",
+    "value": 2874951,
+    "category": "1–5M acres",
+    "displayLabel": "2,874,951 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-mo",
+    "fips": "29",
+    "name": "Missouri",
+    "value": 1221813,
+    "category": "1–5M acres",
+    "displayLabel": "1,221,813 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ms",
+    "fips": "28",
+    "name": "Mississippi",
+    "value": 1067840,
+    "category": "1–5M acres",
+    "displayLabel": "1,067,840 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-mt",
+    "fips": "30",
+    "name": "Montana",
+    "value": 5198258,
+    "category": "≥ 5M acres",
+    "displayLabel": "5,198,258 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nc",
+    "fips": "37",
+    "name": "North Carolina",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nd",
+    "fips": "38",
+    "name": "North Dakota",
+    "value": 2495396,
+    "category": "1–5M acres",
+    "displayLabel": "2,495,396 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ne",
+    "fips": "31",
+    "name": "Nebraska",
+    "value": 2730951,
+    "category": "1–5M acres",
+    "displayLabel": "2,730,951 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nh",
+    "fips": "33",
+    "name": "New Hampshire",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nj",
+    "fips": "34",
+    "name": "New Jersey",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nm",
+    "fips": "35",
+    "name": "New Mexico",
+    "value": 8711324,
+    "category": "≥ 5M acres",
+    "displayLabel": "8,711,324 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nv",
+    "fips": "32",
+    "name": "Nevada",
+    "value": 3900000,
+    "category": "1–5M acres",
+    "displayLabel": "3,900,000 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ny",
+    "fips": "36",
+    "name": "New York",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-oh",
+    "fips": "39",
+    "name": "Ohio",
+    "value": 724266,
+    "category": "< 1M acres",
+    "displayLabel": "724,266 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ok",
+    "fips": "40",
+    "name": "Oklahoma",
+    "value": 3095760,
+    "category": "1–5M acres",
+    "displayLabel": "3,095,760 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-or",
+    "fips": "41",
+    "name": "Oregon",
+    "value": 3400000,
+    "category": "1–5M acres",
+    "displayLabel": "3,400,000 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-pa",
+    "fips": "42",
+    "name": "Pennsylvania",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ri",
+    "fips": "44",
+    "name": "Rhode Island",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-sc",
+    "fips": "45",
+    "name": "South Carolina",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-sd",
+    "fips": "46",
+    "name": "South Dakota",
+    "value": 3500000,
+    "category": "1–5M acres",
+    "displayLabel": "3,500,000 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-tn",
+    "fips": "47",
+    "name": "Tennessee",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-tx",
+    "fips": "48",
+    "name": "Texas",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ut",
+    "fips": "49",
+    "name": "Utah",
+    "value": 5844196,
+    "category": "≥ 5M acres",
+    "displayLabel": "5,844,196 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-va",
+    "fips": "51",
+    "name": "Virginia",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-vt",
+    "fips": "50",
+    "name": "Vermont",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-wa",
+    "fips": "53",
+    "name": "Washington",
+    "value": 2376391,
+    "category": "1–5M acres",
+    "displayLabel": "2,376,391 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-wi",
+    "fips": "55",
+    "name": "Wisconsin",
+    "value": 982329,
+    "category": "< 1M acres",
+    "displayLabel": "982,329 acres",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-wv",
+    "fips": "54",
+    "name": "West Virginia",
+    "value": 0,
+    "category": "no federal grant",
+    "displayLabel": "No federal grant (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-wy",
+    "fips": "56",
+    "name": "Wyoming",
+    "value": 3470000,
+    "category": "1–5M acres",
+    "displayLabel": "3,470,000 acres",
+    "dataConfidence": "authoritative"
+  }
+]

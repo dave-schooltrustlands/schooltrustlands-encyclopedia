@@ -1,0 +1,343 @@
+---
+import RoomLayout from '../../layouts/RoomLayout.astro';
+import financeData from '../../data/finance/states.json';
+
+type FinanceRecord = {
+  stateIso: string;
+  fips: string;
+  displayName: string;
+  eraCohort: string;
+  eraCohortNumber: number;
+  governanceForm: string;
+  governanceDescription: string;
+  corpus: { value: number | null; asOf: string | null; confidence: string };
+  distribution: { value: number | null; fiscalYear: string | null; confidence: string };
+  transparency: { status: string };
+  federalGrantAcres: { value: number; confidence: string };
+};
+
+const records = financeData as FinanceRecord[];
+
+const eraCohorts = Array.from(
+  new Map(records.map((r) => [r.eraCohortNumber, r.eraCohort])).entries(),
+)
+  .sort(([a], [b]) => a - b)
+  .map(([num, name]) => ({ num, name }));
+
+const governanceForms = Array.from(new Set(records.map((r) => r.governanceForm))).sort();
+const transparencyStatuses = Array.from(new Set(records.map((r) => r.transparency.status))).sort();
+
+const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+const num = new Intl.NumberFormat('en-US');
+
+const govLabels: Record<string, string> = {
+  SLB: 'State Land Board (ex officio)',
+  DSL: 'Single elected/appointed commissioner',
+  'land-grant-trust': 'Distributed (no unified board)',
+  'no-trust': 'No federal trust (state-derived)',
+};
+
+const transparencyLabels: Record<string, string> = {
+  'data-published': 'Corpus + distribution disclosed',
+  'data-partially-published': 'Partially disclosed',
+  unknown: 'Disclosure unknown',
+  'never-had-trust': 'No federal trust to disclose',
+};
+---
+
+<RoomLayout
+  room="counting"
+  title="Counting House"
+  subtitle="Permanent funds, distributions, and transparency status across all 50 states. Every figure carries a confidence indicator. Empty cells are an editorial signal: where the substrate doesn't have a verified value, the badge tells you why."
+  width="full"
+  sourceId="finance-states-json"
+>
+  <aside
+    class="mt-6 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-5 text-base text-amber-900 shadow-sm"
+    aria-label="How to read this table"
+  >
+    <p class="text-sm font-semibold uppercase tracking-wide text-amber-900">
+      Read this first.
+    </p>
+    <p class="mt-3">
+      This table covers all fifty states. Twelve states publish complete school-trust
+      accounting; thirty-eight do not. Where you see "Awaiting State Disclosure," that
+      absence is the finding — the state has a school trust but has not publicly disclosed
+      the figure. Where you see an em-dash ("not applicable"), the state has no federal
+      school trust of this type. Click any state name for the per-state card with sources.
+    </p>
+    <p class="mt-3">
+      The fastest path to credibility for a public ledger of public trusts is visible
+      incompleteness with correction pathways. We are showing you the gaps, on purpose.
+    </p>
+  </aside>
+
+  <p class="mt-4 text-xs text-slate-500">
+    {records.length} states · derived from substrate frontmatter at build time. Click any column header to sort. Click a state name for the full financial card.
+  </p>
+
+  <section class="mt-6 rounded-md border border-slate-200 bg-white p-4 shadow-sm" aria-label="Filters">
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Filters</p>
+    <div class="mt-3 grid grid-cols-1 gap-4 text-sm sm:grid-cols-3">
+      <fieldset>
+        <legend class="font-semibold text-slate-700">Era cohort</legend>
+        <ul class="mt-1 space-y-1">
+          {eraCohorts.map((c) => (
+            <li>
+              <label class="inline-flex items-center gap-2">
+                <input type="checkbox" class="filter-cohort h-4 w-4" value={c.num} checked />
+                <span>{c.num}. {c.name}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend class="font-semibold text-slate-700">Governance form</legend>
+        <ul class="mt-1 space-y-1">
+          {governanceForms.map((g) => (
+            <li>
+              <label class="inline-flex items-center gap-2">
+                <input type="checkbox" class="filter-gov h-4 w-4" value={g} checked />
+                <span>{govLabels[g] ?? g}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend class="font-semibold text-slate-700">Transparency status</legend>
+        <ul class="mt-1 space-y-1">
+          {transparencyStatuses.map((s) => (
+            <li>
+              <label class="inline-flex items-center gap-2">
+                <input type="checkbox" class="filter-transp h-4 w-4" value={s} checked />
+                <span>{transparencyLabels[s] ?? s}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      </fieldset>
+    </div>
+    <p class="mt-3 text-xs text-slate-500">
+      <span id="row-count">{records.length}</span> of {records.length} states shown.
+    </p>
+  </section>
+
+  <div class="mt-6 overflow-x-auto rounded-md border border-slate-200 bg-white shadow-sm">
+    <style>
+      /* Mobile: stack each row as a card with cell labels prefixed.
+         Day-10 noted the 50-row table was unreadable on phones via
+         horizontal scroll. */
+      @media (max-width: 639px) {
+        #counting-table thead {
+          position: absolute;
+          left: -10000px;
+        }
+        #counting-table,
+        #counting-table tbody,
+        #counting-table tr,
+        #counting-table td {
+          display: block;
+          width: 100%;
+        }
+        #counting-table tr {
+          border-bottom: 1px solid #e2e8f0;
+          padding: 0.75rem 1rem;
+        }
+        #counting-table td {
+          padding: 0.25rem 0;
+          text-align: left !important;
+        }
+        #counting-table td::before {
+          content: attr(data-label);
+          display: inline-block;
+          min-width: 9rem;
+          font-size: 0.7rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.025em;
+          color: #64748b;
+          margin-right: 0.5rem;
+        }
+        #counting-table td:first-child {
+          font-size: 1.05rem;
+          padding-bottom: 0.5rem;
+        }
+        #counting-table td:first-child::before {
+          display: none;
+        }
+      }
+    </style>
+    <table id="counting-table" class="min-w-full divide-y divide-slate-200 text-sm">
+      <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th data-sort-key="displayName" class="cursor-pointer px-3 py-2 hover:text-slate-900">State <span class="sort-arrow"></span></th>
+          <th data-sort-key="eraCohortNumber" class="cursor-pointer px-3 py-2 hover:text-slate-900">Era <span class="sort-arrow"></span></th>
+          <th data-sort-key="governanceForm" class="cursor-pointer px-3 py-2 hover:text-slate-900">Governance <span class="sort-arrow"></span></th>
+          <th data-sort-key="corpus" data-sort-numeric="true" class="cursor-pointer px-3 py-2 text-right hover:text-slate-900"><span class="sort-arrow"></span> Permanent fund corpus</th>
+          <th data-sort-key="distribution" data-sort-numeric="true" class="cursor-pointer px-3 py-2 text-right hover:text-slate-900"><span class="sort-arrow"></span> Recent distribution</th>
+          <th data-sort-key="transparency" class="cursor-pointer px-3 py-2 hover:text-slate-900">Transparency <span class="sort-arrow"></span></th>
+          <th data-sort-key="grantAcres" data-sort-numeric="true" class="cursor-pointer px-3 py-2 text-right hover:text-slate-900"><span class="sort-arrow"></span> Federal grant</th>
+        </tr>
+      </thead>
+      <tbody id="counting-tbody" class="divide-y divide-slate-100">
+        {records.map((r) => (
+          <tr
+            class="counting-row"
+            data-source-id={`finance-${r.stateIso}`}
+            data-state={r.stateIso}
+            data-display-name={r.displayName}
+            data-era-cohort-number={r.eraCohortNumber}
+            data-governance-form={r.governanceForm}
+            data-corpus={r.corpus.value ?? ''}
+            data-distribution={r.distribution.value ?? ''}
+            data-transparency={r.transparency.status}
+            data-grant-acres={r.federalGrantAcres.value}
+          >
+            <td data-label="State" class="px-3 py-2 font-medium">
+              <a href={`/counting/${r.stateIso}/`} class="text-blue-700 underline hover:text-blue-900">
+                {r.displayName}
+              </a>
+            </td>
+            <td data-label="Era" class="px-3 py-2 text-slate-600">{r.eraCohortNumber}</td>
+            <td data-label="Governance" class="px-3 py-2 text-slate-600">{govLabels[r.governanceForm] ?? r.governanceForm}</td>
+            <td data-label="Corpus" class="px-3 py-2 text-right tabular-nums">
+              {r.corpus.value !== null ? (
+                <span>{usd.format(r.corpus.value)}</span>
+              ) : r.corpus.confidence === 'not-applicable' ? (
+                <span class="text-slate-400" title="State-derived; never had a federal trust">—</span>
+              ) : (
+                <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="Substrate has no verified value; awaiting state disclosure">
+                  Awaiting Disclosure
+                </span>
+              )}
+            </td>
+            <td data-label="Distribution" class="px-3 py-2 text-right tabular-nums">
+              {r.distribution.value !== null ? (
+                <span>
+                  {usd.format(r.distribution.value)}
+                  {r.distribution.fiscalYear && (
+                    <span class="ml-1 text-xs text-slate-500">FY{r.distribution.fiscalYear}</span>
+                  )}
+                </span>
+              ) : r.distribution.confidence === 'not-applicable' ? (
+                <span class="text-slate-400" title="State-derived; never had a federal trust">—</span>
+              ) : (
+                <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="Substrate has no verified value; awaiting state disclosure">
+                  Awaiting Disclosure
+                </span>
+              )}
+            </td>
+            <td data-label="Transparency" class="px-3 py-2 text-slate-600">
+              {transparencyLabels[r.transparency.status] ?? r.transparency.status}
+            </td>
+            <td data-label="Federal grant" class="px-3 py-2 text-right tabular-nums">
+              {r.federalGrantAcres.value > 0 ? (
+                <span>{num.format(r.federalGrantAcres.value)} ac</span>
+              ) : (
+                <span class="text-slate-400" title="State-derived; no federal admission grant">—</span>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="mt-4 text-xs text-slate-500">
+    Data derived at build time from <code>src/content/states/*.md</code> frontmatter via <code>scripts/build-finance-data.mjs</code>. The em-dash means "not applicable" (state-derived states never had a federal trust); the orange "Awaiting Disclosure" badge means the substrate doesn't yet have a verified value for that field. Both are intentional editorial signals, not missing data.
+  </p>
+
+  <script is:inline>
+    (() => {
+      const tbody = document.getElementById('counting-tbody');
+      const rows = Array.from(tbody.querySelectorAll('.counting-row'));
+      const countEl = document.getElementById('row-count');
+
+      // --- filtering ---
+      function applyFilters() {
+        const cohorts = new Set(
+          Array.from(document.querySelectorAll('.filter-cohort:checked')).map((el) => el.value),
+        );
+        const govs = new Set(
+          Array.from(document.querySelectorAll('.filter-gov:checked')).map((el) => el.value),
+        );
+        const transps = new Set(
+          Array.from(document.querySelectorAll('.filter-transp:checked')).map((el) => el.value),
+        );
+
+        let visible = 0;
+        for (const row of rows) {
+          const ok =
+            cohorts.has(row.dataset.eraCohortNumber) &&
+            govs.has(row.dataset.governanceForm) &&
+            transps.has(row.dataset.transparency);
+          row.style.display = ok ? '' : 'none';
+          if (ok) visible++;
+        }
+        countEl.textContent = String(visible);
+      }
+      document.querySelectorAll('.filter-cohort, .filter-gov, .filter-transp').forEach((el) => {
+        el.addEventListener('change', applyFilters);
+      });
+
+      // --- sorting ---
+      let activeSort = { key: 'displayName', direction: 'asc' };
+
+      function rowSortValue(row, key, isNumeric) {
+        let v;
+        if (key === 'displayName') v = row.dataset.displayName;
+        else if (key === 'eraCohortNumber') v = Number(row.dataset.eraCohortNumber);
+        else if (key === 'governanceForm') v = row.dataset.governanceForm;
+        else if (key === 'corpus') v = row.dataset.corpus === '' ? null : Number(row.dataset.corpus);
+        else if (key === 'distribution') v = row.dataset.distribution === '' ? null : Number(row.dataset.distribution);
+        else if (key === 'transparency') v = row.dataset.transparency;
+        else if (key === 'grantAcres') v = Number(row.dataset.grantAcres);
+        return v;
+      }
+
+      function sortBy(key, isNumeric) {
+        if (activeSort.key === key) {
+          activeSort.direction = activeSort.direction === 'asc' ? 'desc' : 'asc';
+        } else {
+          activeSort = { key, direction: 'asc' };
+        }
+        const dir = activeSort.direction === 'asc' ? 1 : -1;
+
+        const sorted = rows.slice().sort((a, b) => {
+          const va = rowSortValue(a, key, isNumeric);
+          const vb = rowSortValue(b, key, isNumeric);
+          // Nulls always sort to the end regardless of direction.
+          if (va === null && vb === null) return 0;
+          if (va === null) return 1;
+          if (vb === null) return -1;
+          if (va < vb) return -1 * dir;
+          if (va > vb) return 1 * dir;
+          return 0;
+        });
+        for (const r of sorted) tbody.appendChild(r);
+
+        // Update arrow indicators.
+        document.querySelectorAll('th[data-sort-key]').forEach((th) => {
+          const arrow = th.querySelector('.sort-arrow');
+          if (!arrow) return;
+          if (th.dataset.sortKey === key) {
+            arrow.textContent = activeSort.direction === 'asc' ? '▲' : '▼';
+          } else {
+            arrow.textContent = '';
+          }
+        });
+      }
+
+      document.querySelectorAll('th[data-sort-key]').forEach((th) => {
+        th.addEventListener('click', () => {
+          sortBy(th.dataset.sortKey, th.dataset.sortNumeric === 'true');
+        });
+      });
+
+      // Initial state: alphabetical (default), no arrow until clicked
+      applyFilters();
+    })();
+  </script>
+</RoomLayout>

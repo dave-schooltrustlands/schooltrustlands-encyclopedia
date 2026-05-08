@@ -1,0 +1,452 @@
+[
+  {
+    "stateIso": "us-ak",
+    "fips": "02",
+    "name": "Alaska",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-al",
+    "fips": "01",
+    "name": "Alabama",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ar",
+    "fips": "05",
+    "name": "Arkansas",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-az",
+    "fips": "04",
+    "name": "Arizona",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-ca",
+    "fips": "06",
+    "name": "California",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-co",
+    "fips": "08",
+    "name": "Colorado",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-ct",
+    "fips": "09",
+    "name": "Connecticut",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-de",
+    "fips": "10",
+    "name": "Delaware",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-fl",
+    "fips": "12",
+    "name": "Florida",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ga",
+    "fips": "13",
+    "name": "Georgia",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-hi",
+    "fips": "15",
+    "name": "Hawaii",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ia",
+    "fips": "19",
+    "name": "Iowa",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-id",
+    "fips": "16",
+    "name": "Idaho",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-il",
+    "fips": "17",
+    "name": "Illinois",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-in",
+    "fips": "18",
+    "name": "Indiana",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ks",
+    "fips": "20",
+    "name": "Kansas",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ky",
+    "fips": "21",
+    "name": "Kentucky",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-la",
+    "fips": "22",
+    "name": "Louisiana",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ma",
+    "fips": "25",
+    "name": "Massachusetts",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-md",
+    "fips": "24",
+    "name": "Maryland",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-me",
+    "fips": "23",
+    "name": "Maine",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-mi",
+    "fips": "26",
+    "name": "Michigan",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-mn",
+    "fips": "27",
+    "name": "Minnesota",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-mo",
+    "fips": "29",
+    "name": "Missouri",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ms",
+    "fips": "28",
+    "name": "Mississippi",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-mt",
+    "fips": "30",
+    "name": "Montana",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-nc",
+    "fips": "37",
+    "name": "North Carolina",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nd",
+    "fips": "38",
+    "name": "North Dakota",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-ne",
+    "fips": "31",
+    "name": "Nebraska",
+    "value": "data-partially-published",
+    "category": "data-partially-published",
+    "displayLabel": "Corpus disclosed; distribution missing",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-nh",
+    "fips": "33",
+    "name": "New Hampshire",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nj",
+    "fips": "34",
+    "name": "New Jersey",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-nm",
+    "fips": "35",
+    "name": "New Mexico",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-nv",
+    "fips": "32",
+    "name": "Nevada",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ny",
+    "fips": "36",
+    "name": "New York",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-oh",
+    "fips": "39",
+    "name": "Ohio",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-ok",
+    "fips": "40",
+    "name": "Oklahoma",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-or",
+    "fips": "41",
+    "name": "Oregon",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-pa",
+    "fips": "42",
+    "name": "Pennsylvania",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ri",
+    "fips": "44",
+    "name": "Rhode Island",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-sc",
+    "fips": "45",
+    "name": "South Carolina",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-sd",
+    "fips": "46",
+    "name": "South Dakota",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-tn",
+    "fips": "47",
+    "name": "Tennessee",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-tx",
+    "fips": "48",
+    "name": "Texas",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-ut",
+    "fips": "49",
+    "name": "Utah",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-va",
+    "fips": "51",
+    "name": "Virginia",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-vt",
+    "fips": "50",
+    "name": "Vermont",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-wa",
+    "fips": "53",
+    "name": "Washington",
+    "value": "unknown",
+    "category": "unknown",
+    "displayLabel": "Disclosure status unknown",
+    "dataConfidence": "unavailable"
+  },
+  {
+    "stateIso": "us-wi",
+    "fips": "55",
+    "name": "Wisconsin",
+    "value": "data-partially-published",
+    "category": "data-partially-published",
+    "displayLabel": "Corpus disclosed; distribution missing",
+    "dataConfidence": "derived-from-substrate"
+  },
+  {
+    "stateIso": "us-wv",
+    "fips": "54",
+    "name": "West Virginia",
+    "value": "never-had-trust",
+    "category": "never-had-trust",
+    "displayLabel": "No trust to disclose (state-derived)",
+    "dataConfidence": "authoritative"
+  },
+  {
+    "stateIso": "us-wy",
+    "fips": "56",
+    "name": "Wyoming",
+    "value": "data-published",
+    "category": "data-published",
+    "displayLabel": "Corpus and distribution disclosed",
+    "dataConfidence": "derived-from-substrate"
+  }
+]

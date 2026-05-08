@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+---
+
+<BaseLayout
+  title="Library Card · America's School Trust Library"
+  description="Sign up for a Library Card. Save bookmarks across the Library and return to your saved reading from a personal My Library page."
+  sourceId="library-card-landing"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>The Library Card</h1>
+    <p class="kicker">A free account at America's School Trust Library.</p>
+
+    <p>
+      A Library Card lets a reader save bookmarks across the Library — Sacred
+      Compact essays, <em>Schools of the Republic</em> chapters, Founders'
+      Library sources, per-state dossiers, Newsroom entries — and return to
+      that saved reading from a personal page. The card costs nothing. The
+      Library does not run advertisements. The card is the foundation for the
+      constituency the Library has been arguing, across the published work,
+      that the school-trust system has always required.
+    </p>
+
+    <h2>What you get with a card</h2>
+    <ul>
+      <li>
+        <strong>Bookmarks.</strong> A small icon on every essay, chapter, and
+        per-state page. One click saves the page; one click on the same icon
+        removes it.
+      </li>
+      <li>
+        <strong>My Library.</strong> A personal page listing your saved reading,
+        most recent first. No tracking, no recommendation engine, no algorithmic
+        feed — just the pages you marked.
+      </li>
+      <li>
+        <strong>A profile.</strong> Display name and a short bio if you want to
+        leave one. Visible only to you for v1; later versions will let card
+        holders opt in to a public-reader mode.
+      </li>
+      <li>
+        <strong>The constituency loop.</strong> In coming weeks, the Library
+        will open contributor roles — State Correspondent, State Co-Librarian,
+        Title Steward, Library Board. Card holders are the population those
+        invitations go to.
+      </li>
+    </ul>
+
+    <h2>How sign-up works</h2>
+    <p>
+      Enter your email. The Library sends you a one-time login link. Click it
+      to land on your My Library page. No password to remember; the email
+      itself is the credential. If you ever need to sign in from a new device,
+      the Library sends a fresh link.
+    </p>
+
+    {user ? (
+      <p class="cta-row">
+        <a href="/my-library/" class="cta-primary">Go to your Library →</a>
+      </p>
+    ) : (
+      <p class="cta-row">
+        <a href="/auth/sign-in" class="cta-primary">Get a Library Card →</a>
+      </p>
+    )}
+
+    <h2>The Library's commitment</h2>
+    <p>
+      The card system carries no advertising and exposes no data to third
+      parties. The Library uses Supabase as its account backend; Supabase
+      stores the email address and the bookmark records, and nothing else
+      about the reader is tracked. Sign-in cookies are set on the
+      schooltrusts.net domain only. A reader who decides to leave can delete
+      her account, and the deletion is propagated.
+    </p>
+
+    <p>
+      The card is the first piece of the architecture this Library has been
+      writing about for two years. It is the institutional surface through
+      which the standing constituency the school-trust experiment requires
+      can, for the first time, be assembled at scale.
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      font-style: italic;
+      color: #475569;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-row {
+      margin: 1.5rem 0;
+    }
+    .cta-primary {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff !important;
+      text-decoration: none !important;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .cta-primary:hover {
+      background: #142940;
+    }
+  </style>
+</BaseLayout>
