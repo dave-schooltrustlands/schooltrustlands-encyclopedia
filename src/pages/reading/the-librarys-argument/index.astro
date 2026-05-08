@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="The Library's Argument · Reading Room · America's School Trust Library"
+  description="Two paired works — Sacred Compact (the analytic frame) and Schools of the Republic (the case-by-case record) — that together carry the Library's argument."
+  sourceId="reading-librarys-argument"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">Reading Room · Section I</p>
+    <h1 class="mt-2">The Library's Argument</h1>
+    <p class="kicker text-slate-600">
+      Two volumes. One argument. The analytic frame and the case-by-case record.
+    </p>
+    <p>
+      The Library's Argument runs across two paired works. <em>Sacred Compact</em> is
+      the analytic frame: what the school-trust experiment was, what happened to it
+      across two and a half centuries, and what it teaches the architects of the
+      AI-era trusts now arriving. <em>Schools of the Republic</em> is the empirical
+      floor — fifty states, two hundred and forty years, named principals and named
+      cases, the evidence that warrants the diagnosis. The two volumes are designed
+      to be read either way: the frame first if you want the argument, the record
+      first if you want the proof. They converge on a single conclusion —
+      institutions holding multi-generational fiduciary inheritances drift in
+      characteristic ways, and the country has now run the experiment long enough
+      that the lessons can be transferred to the trusts being designed today.
+    </p>
+    <p class="text-sm text-slate-600">
+      <a href="/contribute/">Suggest a contribution</a> — corrections, source
+      material, and citizen-historian work are welcome.
+    </p>
+  </article>
+
+  <section class="argument-cards mt-12">
+    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <li class="argument-card">
+        <p class="card-kicker">Volume I · The analytic frame</p>
+        <h2 class="card-title">
+          <em>Sacred Compact</em>: A Forever Gift to Forever Schools for a Forever Democracy
+        </h2>
+        <p class="card-byline">Dave Sullivan with Margaret Bird</p>
+        <p class="card-length">~70 pages — eight essays plus three personal interludes</p>
+        <p class="card-blurb">
+          The analytic argument. Eight essays trace the school-trust experiment from
+          the 1785 Land Ordinance through the AI-era forever-trusts now being
+          designed. Three personal interludes — Tektronix, Computing Today, cognitive
+          partnership — ground the argument in lived experience of institutional
+          drift.
+        </p>
+        <a href="/reading/sacred-compact-prologue/" class="card-cta">Begin reading →</a>
+      </li>
+
+      <li class="argument-card">
+        <p class="card-kicker">Volume II · The empirical record</p>
+        <h2 class="card-title">
+          <em>Schools of the Republic</em>: A Case-by-Case Record of America's School Trust Lands
+        </h2>
+        <p class="card-byline">Margaret Bird with Dave Sullivan</p>
+        <p class="card-length">
+          ~494 pages — Part I (nine chapters of synthesis) plus Part II (per-state
+          evidentiary entries integrated into the Atlas)
+        </p>
+        <p class="card-blurb">
+          The evidentiary floor. Nine chapters synthesize the founding floor, the
+          antebellum doubling, the Reconstruction western stack, the
+          twentieth-century high-water mark, and the captured-AG architecture that
+          emerged in the late twentieth century. Reform-attempt thread runs alongside
+          the drift narrative throughout.
+        </p>
+        <a href="/reading/prologue/" class="card-cta">Begin reading →</a>
+      </li>
+    </ul>
+  </section>
+
+  <p class="mt-12 text-sm text-slate-600">
+    <a href="/reading/">← Back to the Reading Room</a>
+  </p>
+</BaseLayout>
+
+<style>
+  .argument-cards ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .argument-card {
+    background: var(--linen-card, #fafaf7);
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-left: 3px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .argument-card:hover {
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
+  }
+  .card-kicker {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--old-gold, #8b7355);
+    margin: 0 0 0.6rem;
+  }
+  .card-title {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+    line-height: 1.35;
+    margin: 0 0 0.5rem;
+  }
+  .card-byline {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #475569;
+    margin: 0 0 0.25rem;
+    font-style: italic;
+  }
+  .card-length {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 0 0 0.85rem;
+  }
+  .card-blurb {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #334155;
+    margin: 0 0 1.1rem;
+    flex: 1;
+  }
+  .card-cta {
+    align-self: flex-start;
+    color: #1d4ed8;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .card-cta:hover {
+    color: #1e40af;
+  }
+</style>

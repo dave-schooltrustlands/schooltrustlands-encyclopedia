@@ -34,6 +34,12 @@ function bucketLabel(era: string): string {
       <BookmarkButton title={entry.data.title} />
     </div>
 
+    {entry.data.coverImage && (
+      <figure class="book-cover not-prose mt-6">
+        <img src={entry.data.coverImage} alt={`Cover of ${entry.data.title} by ${entry.data.author}`} />
+      </figure>
+    )}
+
     <aside class="dossier-card not-prose mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">At a glance</span>
       <dl class="dossier-facts mt-2 grid grid-cols-1 gap-y-1 text-sm sm:grid-cols-[max-content_1fr] sm:gap-x-4">
@@ -71,3 +77,28 @@ function bucketLabel(era: string): string {
     </p>
   </article>
 </BaseLayout>
+
+<style>
+  .book-cover {
+    margin: 1.5rem 0 1rem;
+    text-align: left;
+  }
+  .book-cover img {
+    display: block;
+    width: 120px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18), 0 1px 3px rgba(15, 23, 42, 0.1);
+  }
+  @media (min-width: 640px) {
+    .book-cover {
+      float: right;
+      margin: 0 0 1.25rem 1.5rem;
+    }
+    .book-cover img {
+      width: 200px;
+    }
+  }
+</style>

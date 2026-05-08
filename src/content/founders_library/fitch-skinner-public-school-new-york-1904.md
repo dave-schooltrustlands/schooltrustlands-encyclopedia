@@ -8,6 +8,7 @@ register: Period institutional history; formal but accessible
 date_curated: 2026-05-07
 curator: Library editorial team
 tier: Founders' Library — primary source (public domain)
+coverImage: /images/book_covers/fitch_skinner_1904_public_school.png
 ---
 
 # The Public School: History of Common School Education in New York from 1633 to 1904

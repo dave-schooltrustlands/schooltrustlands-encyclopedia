@@ -5,7 +5,7 @@ sectionId: "interlude-2-computing-today"
 order: 104.5
 wordCount: 535
 sourceVersion: "Sacred_Compact_v5.0"
-lastSynced: 2026-05-07
+lastSynced: 2026-05-08
 ---
 
 # Interlude — Nine Months in About a Minute
@@ -18,7 +18,7 @@ In the early 1980s I started writing what became *Computing Today*, the first co
 
 The day I finished writing the book, I asked the operating system to copy the entire manuscript — over a megabyte of work, nine months of my life — from one drive to the other. The drives clicked away for almost a full minute. They were done. The whole book, copied across, in about a minute. It felt amazing. *Nine months of my life copied in about a minute.* That sentence is the one my hand still wants to write whenever a new cognitive technology arrives and shifts the cost of some operation that used to be expensive. It is the sentence behind the cognitive-technology argument the next chapter is going to make.
 
-In the second edition I coined a phrase for the failure mode that worried me most about the new machines: *garbage-in, gospel-out.* The seductive credibility of nicely-formatted-but-wrong computer output. Spreadsheets in 1996; AI hallucinations in 2026. The same person warning about both, in the same voice, thirty years apart. The cognitive technology has improved enormously. The failure modes the technology invites have not. Some of what I learned in 1984 about what computers ask of the people who use them turns out to apply, with adjusted vocabulary, to what AI is now asking of the people who use it. I will let the book make that argument; the autobiography belongs here, in the interlude.
+In the second edition I gave a name and a chapter to the failure mode that worried me most about the new machines: *garbage-in, gospel-out* — a variant of the older mainframe-era saying GIGO, applied to the personal-computer printout. The seductive credibility of nicely-formatted-but-wrong computer output. The phrase did not originate with me; the concept goes back to the 1950s, when mainframe operators learned that an authoritative printout could be confidently and entirely wrong. What was new in 1996 was that the audience for the wrong printout had expanded from a few hundred specialists in glass-walled computer rooms to tens of millions of people sitting at desks, and the failure mode mattered correspondingly more. Spreadsheets in 1996; AI hallucinations in 2026. The same warning, written by the same person, thirty years apart. The cognitive technology has improved enormously. The failure modes the technology invites have not. Some of what I learned in 1984 about what computers ask of the people who use them turns out to apply, with adjusted vocabulary, to what AI is now asking of the people who use it. I will let the book make that argument; the autobiography belongs here, in the interlude.
 
 <!--
 Wave 1 interlude — between IV and V.

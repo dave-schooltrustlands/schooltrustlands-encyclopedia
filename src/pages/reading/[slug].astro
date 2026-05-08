@@ -308,6 +308,19 @@ const layoutProps =
     </details>
   )}
 
+  {props.kind === 'essay' && props.entry.data.heroImage && (
+    <figure class:list={['essay-hero mt-8', isInterlude && 'essay-hero-interlude']}>
+      <img
+        src={props.entry.data.heroImage}
+        alt={props.entry.data.heroImageCaption ?? props.entry.data.title}
+        loading="eager"
+      />
+      {props.entry.data.heroImageCaption && (
+        <figcaption set:html={props.entry.data.heroImageCaption.replace(/\*([^*]+)\*/g, '<em>$1</em>')} />
+      )}
+    </figure>
+  )}
+
   <article
     class:list={[
       'prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline',
@@ -407,5 +420,44 @@ const layoutProps =
     list-style: none;
     padding: 0;
     margin: 0;
+  }
+  .essay-hero {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+  }
+  .essay-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    background: #f5efe1;
+  }
+  .essay-hero-interlude img {
+    background: #f9f3e3;
+  }
+  .essay-hero figcaption {
+    margin-top: 0.6rem;
+    font-family: var(--font-serif, Georgia, 'Times New Roman', serif);
+    font-style: italic;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #6b7280;
+    text-align: center;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .essay-hero figcaption em {
+    font-style: normal;
+  }
+  @media (max-width: 640px) {
+    .essay-hero img {
+      aspect-ratio: 4 / 3;
+    }
   }
 </style>

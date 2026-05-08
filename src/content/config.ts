@@ -28,6 +28,8 @@ const essays = defineCollection({
     sourceVersion: z.string(),
     lastSynced: z.coerce.date(),
     audience: z.string().optional(),
+    heroImage: z.string().optional(),
+    heroImageCaption: z.string().optional(),
   }),
 });
 
@@ -129,6 +131,7 @@ const foundersLibrary = defineCollection({
     date_curated: z.coerce.date().optional(),
     curator: z.string().optional(),
     tier: z.string().optional(),
+    coverImage: z.string().optional(),
   }),
 });
 
@@ -150,6 +153,7 @@ const scholarship = defineCollection({
     date_curated: z.coerce.date().optional(),
     curator: z.string().optional(),
     tier: z.string(),
+    coverImage: z.string().optional(),
   }),
 });
 

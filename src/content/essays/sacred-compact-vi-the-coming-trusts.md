@@ -5,7 +5,7 @@ sectionId: "vi"
 order: 106
 wordCount: 3050
 sourceVersion: "Sacred_Compact_v5.0"
-lastSynced: 2026-05-07
+lastSynced: 2026-05-08
 ---
 # VI. The Coming Trusts: Designing for the AI Age
 
@@ -26,9 +26,11 @@ This is the rhetorical posture the rest of Section VI takes, and it is the one t
 <blockquote class="pull-quote">We did the best work the cognitive technology of 1785 supported. You have a richer technology. Here is what it lets you build that we could not.</blockquote>
 
 <aside class="boxed-insert">
-<p class="boxed-insert-title"><strong>A phrase from 1996, applied to 2026.</strong></p>
-<p>In the second edition of <em>The New Computer User</em>, published by Dryden Press in 1996, I coined a phrase for the failure mode I worried about most in the early personal-computer era: <em>garbage-in, gospel-out.</em> The seductive credibility of nicely-formatted-but-wrong computer output. A spreadsheet built on a flawed assumption renders the flawed assumption in three colors with bold totals and a pleasing typeface, and the human reader, looking at the printout, often forgets to ask whether the assumption was right. I wrote it as a warning about spreadsheets. The phrase applies, with no adjustment to the structural form and only the smallest adjustments to the vocabulary, to the AI-generated output of 2026. The same person who warned about garbage-in-gospel-out for spreadsheets is now warning about garbage-in-gospel-out for AI hallucinations. Thirty years apart. The cognitive technology has improved. The failure mode it invites has not.</p>
+<p class="boxed-insert-title"><strong>A phrase from the 1950s, applied to PCs in 1996, and again to AI in 2026.</strong></p>
+<p><em>Garbage-in, gospel-out</em> is a variant of GIGO — <em>garbage in, garbage out</em> — the 1950s mainframe-era warning that bad input produces bad output no matter how authoritative the printout looks. In the second edition of <em>The New Computer User</em> (Dryden Press, 1996), I used the phrase to name the failure mode I worried about most in the early personal-computer era: the seductive credibility of nicely-formatted-but-wrong computer output. A spreadsheet built on a flawed assumption renders the flawed assumption in three colors with bold totals and a pleasing typeface, and the human reader, looking at the printout, often forgets to ask whether the assumption was right. I wrote it as a warning about spreadsheets. The phrase applies, with no adjustment to the structural form and only the smallest adjustments to the vocabulary, to the AI-generated output of 2026. The same warning, written by the same person, thirty years apart. The cognitive technology has improved. The failure mode it invites has not.</p>
 </aside>
+
+<blockquote class="pull-quote">Garbage-in, gospel-out — a 1950s mainframe-era warning, applied to PCs in 1996 and to AI in 2026, unchanged.</blockquote>
 
 <aside class="boxed-insert">
 <p class="boxed-insert-title"><strong>How the partnership actually works.</strong></p>

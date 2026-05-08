@@ -8,6 +8,7 @@ register: Practitioner reference; mixed academic and agency authorship
 date_curated: 2026-05-07
 curator: Title Steward — OPEN (apply via /contribute/)
 tier: Scholarship · Tier 3 (in-copyright; curator-recruitment open)
+coverImage: /images/book_covers/funding_public_schools_nefa_2024.png
 ---
 
 # Funding Public Schools in the United States and Indian Country
