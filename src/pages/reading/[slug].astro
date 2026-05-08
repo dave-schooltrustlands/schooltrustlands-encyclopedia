@@ -41,6 +41,45 @@ const usd = new Intl.NumberFormat('en-US', {
 
 const { Content } = await props.entry.render();
 
+// Series-aware navigation for essay pages. Both Sacred Compact essays
+// and Schools of the Republic chapters share the `essays` collection
+// but belong to two distinct reading orders (sourceWork). Build the
+// current entry's series so we can render an "all sections" jump ToC
+// near the top and prev/next at the bottom.
+type SeriesItem = { href: string; navTitle: string; isCurrent: boolean };
+type SeriesNav = {
+  seriesLabel: string;
+  series: SeriesItem[];
+  prev: SeriesItem | null;
+  next: SeriesItem | null;
+};
+let seriesNav: SeriesNav | null = null;
+
+if (props.kind === 'essay') {
+  const allEssays = await getCollection('essays');
+  const sourceWork = props.entry.data.sourceWork;
+  const seriesEntries = allEssays
+    .filter((e) => e.data.sourceWork === sourceWork)
+    .sort((a, b) => a.data.order - b.data.order);
+
+  // Trim "Sacred Compact: " prefix for nav display; SoR titles read
+  // fine as-is ("Chapter 1: …", "Prologue: …", etc.).
+  const navTitleOf = (t: string) => t.replace(/^Sacred Compact:\s*/, '').trim();
+
+  const series: SeriesItem[] = seriesEntries.map((e) => ({
+    href: `/reading/${e.slug.replace(/^\d+-/, '')}/`,
+    navTitle: navTitleOf(e.data.title),
+    isCurrent: e.slug === props.entry.slug,
+  }));
+  const idx = series.findIndex((s) => s.isCurrent);
+  const prev = idx > 0 ? series[idx - 1] : null;
+  const next = idx >= 0 && idx < series.length - 1 ? series[idx + 1] : null;
+  const seriesLabel = sourceWork.startsWith('Sacred Compact')
+    ? 'The Sacred Compact'
+    : 'Schools of the Republic';
+  seriesNav = { seriesLabel, series, prev, next };
+}
+
 // Cohort N → Reading Room chapter slug. Keys match the eraCohort
 // integers in state frontmatter; values are the essay slugs under
 // src/content/essays/ (with the leading NN- prefix stripped, per the
@@ -74,7 +113,11 @@ const layoutProps =
   props.kind === 'essay'
     ? {
         title: props.entry.data.title,
-        subtitle: `Era: ${props.entry.data.era}`,
+        // `era` is Part-I-only (SoR chapters). Sacred Compact essays
+        // omit it; render no subtitle there rather than the literal
+        // string "Era: undefined". The header-extras slot below still
+        // carries word count / substrate version for both series.
+        subtitle: props.entry.data.era ? `Era: ${props.entry.data.era}` : undefined,
         sourceId: `essay-${props.entry.slug}-${props.entry.data.sourceVersion}`,
         pagefindEra: props.entry.data.era,
       }
@@ -234,6 +277,25 @@ const layoutProps =
     </section>
   )}
 
+  {props.kind === 'essay' && seriesNav && (
+    <details class="essay-toc mt-8">
+      <summary>{seriesNav.seriesLabel} — all sections</summary>
+      <ol>
+        {seriesNav.series.map((s) => (
+          <li class:list={[s.isCurrent && 'is-current']}>
+            {s.isCurrent ? (
+              <a href={s.href} aria-current="page">
+                <strong>{s.navTitle}</strong> <span class="you-are-here">(you are here)</span>
+              </a>
+            ) : (
+              <a href={s.href}>{s.navTitle}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </details>
+  )}
+
   <article
     class:list={[
       'prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline',
@@ -242,6 +304,37 @@ const layoutProps =
   >
     <Content />
   </article>
+
+  {props.kind === 'essay' && seriesNav && (
+    <nav
+      class="essay-prev-next mt-12 border-t border-slate-200 pt-6 text-sm"
+      aria-label={`${seriesNav.seriesLabel} navigation`}
+    >
+      <ul class="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:items-center">
+        <li class="sm:text-left">
+          {seriesNav.prev ? (
+            <a href={seriesNav.prev.href} class="text-blue-700 underline hover:text-blue-900">
+              ← Previous: {seriesNav.prev.navTitle}
+            </a>
+          ) : (
+            <span class="text-slate-400">&nbsp;</span>
+          )}
+        </li>
+        <li class="sm:text-center">
+          <a href="/reading/" class="text-blue-700 underline hover:text-blue-900">Reading Room</a>
+        </li>
+        <li class="sm:text-right">
+          {seriesNav.next ? (
+            <a href={seriesNav.next.href} class="text-blue-700 underline hover:text-blue-900">
+              Next: {seriesNav.next.navTitle} →
+            </a>
+          ) : (
+            <span class="text-slate-400">&nbsp;</span>
+          )}
+        </li>
+      </ul>
+    </nav>
+  )}
 
   {props.kind === 'state' && (
     <section class="mt-12 max-w-prose">
@@ -252,3 +345,54 @@ const layoutProps =
     </section>
   )}
 </RoomLayout>
+
+<style>
+  .essay-toc {
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    background: var(--linen-card, #fafaf7);
+  }
+  .essay-toc > summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+  }
+  .essay-toc[open] > summary {
+    margin-bottom: 0.5rem;
+  }
+  .essay-toc ol {
+    list-style: decimal;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    padding-left: 1.75rem;
+    margin: 0.4rem 0 0.2rem;
+  }
+  .essay-toc ol li {
+    margin-bottom: 0.2rem;
+  }
+  .essay-toc ol li a {
+    color: #1d4ed8; /* blue-700 to match site link aesthetic */
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .essay-toc ol li a:hover {
+    color: #1e40af; /* blue-800 */
+  }
+  .essay-toc ol li.is-current a {
+    color: #0f172a; /* slate-900 */
+  }
+  .essay-toc .you-are-here {
+    font-style: italic;
+    color: #475569; /* slate-600 */
+    font-weight: 400;
+  }
+  .essay-prev-next ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>
