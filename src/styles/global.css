@@ -3,17 +3,18 @@
    component, since each page in this project owns its own head. */
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,900&family=Inter:wght@400;500;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Site Update v7 — visual-density mode stylesheets. The slider component
    (header) toggles `body.mode-{reference,standard,library}`; each file
-   below is scoped to one of those classes and inert otherwise. */
+   below is scoped to one of those classes and inert otherwise. Imports
+   must precede @tailwind directives per CSS spec / postcss-import. */
 @import './visual-density.css';
 @import './mode-reference.css';
 @import './mode-standard.css';
 @import './mode-library.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   /* Base palette */
