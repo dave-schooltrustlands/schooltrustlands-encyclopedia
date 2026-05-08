@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../lib/supabase';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/sign-in?redirect=/profile');
+}
+
+let formMessage: { kind: 'ok' | 'err'; text: string } | null = null;
+
+if (Astro.request.method === 'POST') {
+  const fd = await Astro.request.formData();
+  const display_name = String(fd.get('display_name') ?? '').trim().slice(0, 80);
+  const bio = String(fd.get('bio') ?? '').trim().slice(0, 800);
+  const { error } = await supabase
+    .from('profiles')
+    .update({
+      display_name: display_name || null,
+      bio: bio || null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', user.id);
+  formMessage = error
+    ? { kind: 'err', text: error.message }
+    : { kind: 'ok', text: 'Profile saved.' };
+}
+
+const { data: profile } = await supabase
+  .from('profiles')
+  .select('display_name, bio')
+  .eq('id', user.id)
+  .single();
+---
+
+<BaseLayout
+  title="Profile · America's School Trust Library"
+  sourceId="profile"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Profile</h1>
+    <p class="kicker">Card #{user.id.slice(0, 8)} · {user.email}</p>
+
+    {formMessage && (
+      <div class:list={['flash', formMessage.kind]}>
+        <p>{formMessage.text}</p>
+      </div>
+    )}
+
+    <form method="POST" class="profile-form">
+      <label class="profile-label" for="display_name">Display name</label>
+      <input
+        type="text"
+        name="display_name"
+        id="display_name"
+        maxlength="80"
+        value={profile?.display_name ?? ''}
+        class="profile-input"
+        placeholder="How you want the Library to address you"
+      />
+
+      <label class="profile-label" for="bio">Short bio (optional)</label>
+      <textarea
+        name="bio"
+        id="bio"
+        maxlength="800"
+        rows="4"
+        class="profile-textarea"
+        placeholder="A sentence or two about yourself, your interest in the school-trust system, or your work."
+      >{profile?.bio ?? ''}</textarea>
+
+      <button type="submit" class="profile-button">Save</button>
+    </form>
+
+    <p class="profile-note">
+      Your email is visible only to you. Bio and display name are visible only
+      to you in v1; future versions will let card holders opt in to a
+      public-reader mode.
+    </p>
+
+    <p class="profile-note">
+      <a href="/my-library/">← Back to My Library</a>
+      &nbsp;·&nbsp;
+      <a href="/auth/sign-out">Sign out</a>
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      font-style: italic;
+      color: #475569;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .profile-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 32rem;
+      margin: 1.25rem 0;
+    }
+    .profile-label {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin-top: 0.5rem;
+    }
+    .profile-input,
+    .profile-textarea {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+    }
+    .profile-textarea {
+      resize: vertical;
+    }
+    .profile-button {
+      align-self: flex-start;
+      margin-top: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .profile-button:hover {
+      background: #142940;
+    }
+    .profile-note {
+      font-size: 0.9rem;
+      color: #475569;
+      margin: 0.75rem 0;
+    }
+    .flash {
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.95rem;
+    }
+    .flash.ok {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+    }
+    .flash.err {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+    .flash p {
+      margin: 0;
+    }
+  </style>
+</BaseLayout>

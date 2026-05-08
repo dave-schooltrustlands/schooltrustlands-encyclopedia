@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+const url = new URL(Astro.request.url);
+const code = url.searchParams.get('code');
+const next = url.searchParams.get('next') ?? '/my-library/';
+let errorMessage: string | null = null;
+
+if (!code) {
+  errorMessage =
+    'This link is missing its sign-in code. Try requesting a new login link from the sign-in page.';
+} else {
+  const supabase = getServerSupabase(Astro);
+  const { error } = await supabase.auth.exchangeCodeForSession(code);
+  if (error) {
+    errorMessage = error.message;
+  } else {
+    return Astro.redirect(next);
+  }
+}
+---
+
+<BaseLayout
+  title="Sign-in error · America's School Trust Library"
+  sourceId="auth-callback-error"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>That link didn't work</h1>
+    <p>{errorMessage}</p>
+    <p>
+      Magic links expire after one click and one hour. Request a fresh one
+      from the <a href="/auth/sign-in">sign-in page</a>.
+    </p>
+  </article>
+</BaseLayout>

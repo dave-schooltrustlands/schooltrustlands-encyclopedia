@@ -1,4 +1,4 @@
-// Supabase clients for the Library Card auth + bookmarks layer.
+// Supabase clients for the Library Card v1 auth + bookmarks layer.
 //
 // Server-side (createServerClient): used inside .astro pages with
 // `export const prerender = false` and inside API endpoints. Reads
@@ -17,19 +17,6 @@ type AstroLike = {
   request: Request;
 };
 
-function safeDecode(value: string): string {
-  // Astro's cookies.set URL-encodes values by default, so the raw
-  // Cookie header arrives URL-encoded. decodeURIComponent throws on
-  // malformed sequences ("URI malformed") — a single legacy or
-  // third-party cookie with a stray % can otherwise nuke getAll and
-  // surface as "PKCE code verifier not found in storage."
-  try {
-    return decodeURIComponent(value);
-  } catch {
-    return value;
-  }
-}
-
 /** Server-side client for use in .astro frontmatter and API endpoints. */
 export function getServerSupabase(astro: AstroLike) {
   const url = import.meta.env.PUBLIC_SUPABASE_URL;
@@ -42,6 +29,7 @@ export function getServerSupabase(astro: AstroLike) {
   return createServerClient(url, anon, {
     cookies: {
       getAll() {
+        // Astro's Cookies API doesn't expose getAll; iterate the Cookie header.
         const header = astro.request.headers.get('cookie') ?? '';
         if (!header) return [];
         return header.split(/;\s*/).map((pair) => {
@@ -49,11 +37,14 @@ export function getServerSupabase(astro: AstroLike) {
           if (eq < 0) return { name: pair, value: '' };
           return {
             name: pair.slice(0, eq),
-            value: safeDecode(pair.slice(eq + 1)),
+            value: decodeURIComponent(pair.slice(eq + 1)),
           };
         });
       },
       setAll(cookiesToSet) {
+        // @supabase/ssr controls which cookies need httpOnly/secure/sameSite
+        // — it sets them per-cookie. Pass options through unchanged so the
+        // browser SDK can read the session cookies it needs.
         for (const { name, value, options } of cookiesToSet) {
           astro.cookies.set(name, value, options);
         }
@@ -64,21 +55,8 @@ export function getServerSupabase(astro: AstroLike) {
 
 /** Browser client — for bookmark button hydration and any client JS. */
 export function getBrowserSupabase() {
+  // These are inlined at build time for client-side code.
   const url = import.meta.env.PUBLIC_SUPABASE_URL;
   const anon = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
   return createBrowserClient(url, anon);
-}
-
-/**
- * Resolve the site origin for outbound auth links (emailRedirectTo,
- * etc.). PUBLIC_SITE_URL is preferred when set — it gives a stable,
- * deployment-controlled origin that survives reverse proxies and the
- * Cloudflare Pages preview-deploy hostnames. Falls back to the
- * request's own origin so local dev (`npm run dev` on localhost) and
- * any deploy context without the env var still work.
- */
-export function getSiteOrigin(request: Request): string {
-  const fromEnv = import.meta.env.PUBLIC_SITE_URL;
-  if (fromEnv) return fromEnv.replace(/\/+$/, '');
-  return new URL(request.url).origin;
 }

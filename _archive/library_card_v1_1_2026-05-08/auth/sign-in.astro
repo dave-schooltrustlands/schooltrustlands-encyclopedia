@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getServerSupabase, getSiteOrigin } from '../../lib/supabase';
+import { getServerSupabase } from '../../lib/supabase';
 
 export const prerender = false;
 
@@ -20,7 +20,7 @@ if (Astro.request.method === 'POST') {
     const supabase = getServerSupabase(Astro);
     // Build the magic-link redirect target. The user clicks this from email;
     // Supabase appends ?code=<...> and we exchange the code in /auth/callback.
-    const origin = getSiteOrigin(Astro.request);
+    const origin = url.origin;
     const callback = new URL('/auth/callback', origin);
     callback.searchParams.set('next', redirectAfter);
     const { error } = await supabase.auth.signInWithOtp({
