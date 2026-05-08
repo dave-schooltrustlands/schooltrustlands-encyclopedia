@@ -551,6 +551,102 @@
     margin-top: 0.5rem;
   }
 
+  /* ---------------------------------------------------------------------
+     Site Update v8 — home-page declaration + three-door lobby. Base
+     styles render in Standard Mode (the default); mode-library.css and
+     mode-reference.css differentiate them per mode.
+     --------------------------------------------------------------------- */
+  .home-declaration {
+    margin: 1.5rem 0 2rem;
+  }
+  .home-declaration__title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.6vw, 2.75rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--deep-navy);
+    margin: 0;
+  }
+  .home-declaration__subtitle {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    color: #475569;
+  }
+  .home-declaration__paragraph {
+    margin: 1.25rem 0 0;
+    max-width: 65ch;
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .home-doors__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .home-doors__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .home-door {
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-radius: 6px;
+    padding: 1.25rem 1.4rem;
+    box-shadow: 0 1px 2px rgba(31, 42, 68, 0.06);
+  }
+  .home-door__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  .home-door__link:hover .home-door__heading {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .home-door__icon {
+    display: none; /* Library Mode reveals; Reference keeps hidden. */
+  }
+  .home-door__heading {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--trust-blue);
+    margin: 0;
+    line-height: 1.25;
+  }
+  .home-door__subtitle {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0.5rem 0 0;
+  }
+
+  /* Standard Mode shows door icons too, just without the per-door
+     accent colors that distinguish Library Mode. */
+  body.mode-standard .home-door__icon {
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--deep-navy);
+    margin-bottom: 0.5rem;
+  }
+  body.mode-standard .home-door__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
   /* Homepage launch announcement (Rebuild Session 1, Section C.2) */
   .launch-announcement {
     background: var(--linen-card);

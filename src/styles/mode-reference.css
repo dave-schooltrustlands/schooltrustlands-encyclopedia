@@ -20,23 +20,24 @@ body.mode-reference *::after {
 
 /* ---------------------------------------------------------------------
    2. Per-room banner stripes / hero ornament treatments.
+   The footer-position three-panel poster was removed in Site Update v8;
+   the top-position poster now renders as a smaller framed image in
+   Reference Mode (rather than being hidden outright as in v7) per the
+   v8 brief. The home-poster--footer rule is retained as a defensive
+   no-op for any page that still emits one.
    --------------------------------------------------------------------- */
-body.mode-reference .home-poster,
-body.mode-reference .home-poster--top,
 body.mode-reference .home-poster--footer {
   display: none !important;
 }
-
-/* Homepage hero: re-flatten the inline gradient + background image so the
-   hero section reads as a clean text-only intro on archive paper. The
-   first <section> in <main> on the homepage carries the inline style; we
-   override with high specificity and !important since the source is inline. */
-body.mode-reference main > section:first-of-type[style*="background-image"] {
-  background-image: none !important;
-  background: var(--archive-paper) !important;
-  padding: 1.5rem 0 !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
+body.mode-reference .home-poster--top {
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+body.mode-reference .home-poster--top img {
+  box-shadow: none;
+  border: 1px solid var(--rule-border);
+  border-radius: 0;
 }
 
 /* Launch announcement: keep visible but strip the gold-border ornament. */
@@ -72,6 +73,47 @@ body.mode-reference .reading-card {
 }
 body.mode-reference .dossier-card {
   box-shadow: none;
+}
+
+/* ---------------------------------------------------------------------
+   v8 three-door home-page lobby — Reference Mode strips card chrome,
+   icons, and per-door accent so the three doors read as a clean
+   three-item text list with underlined headings. Library Mode keeps
+   the icons + accent stripes via mode-library.css.
+   --------------------------------------------------------------------- */
+body.mode-reference .home-doors__grid {
+  display: block;
+  list-style: disc inside;
+  padding-left: 0;
+  margin-left: 0;
+}
+body.mode-reference .home-door {
+  display: list-item;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0.4rem 0 !important;
+  margin: 0 0 0.3rem 1.25rem;
+}
+body.mode-reference .home-door__icon {
+  display: none !important;
+}
+body.mode-reference .home-door__heading {
+  display: inline;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+body.mode-reference .home-door__subtitle {
+  display: inline;
+  margin-left: 0.4em;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+body.mode-reference .home-door__subtitle::before {
+  content: "— ";
+  color: var(--rule-border);
 }
 
 /* ---------------------------------------------------------------------

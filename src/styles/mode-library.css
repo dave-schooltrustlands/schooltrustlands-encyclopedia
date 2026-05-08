@@ -26,37 +26,66 @@ body.mode-library {
 }
 
 /* ---------------------------------------------------------------------
-   Home-page hero suppression.
-   In Library Mode, the IllustratedLobby replaces both the existing
-   text-block hero and the three-panel poster section.
-
-   Assumption (documented for the orchestrator):
-   index.astro currently has, as the first two children of <main>:
-     1. <section class="border-b border-slate-200 pb-10" style="background-image: ...">
-     2. <section class="home-poster home-poster--top mt-6">
-   We hide both via:
-     - body.mode-library main > section:first-of-type   (the text-block hero)
-     - body.mode-library .home-poster--top              (the poster band)
-   This is targeted by class for the poster (stable hook) and by
-   first-of-type position for the text hero (no unique class).
-   The footer poster (.home-poster--footer) remains visible in Library
-   Mode — it bookends the page and reinforces the thesis at exit, which
-   matches the lobby's wall-hanging treatment.
+   Site Update v8 supersedes v7's IllustratedLobby SVG hero. The home
+   page now renders the same declaration + poster + three-door lobby in
+   every mode; Library Mode and Reference Mode differentiate via the
+   per-mode rules on .home-declaration and .home-door below. The
+   IllustratedLobby component is no longer rendered by index.astro;
+   the .illustrated-lobby rules below remain for any non-home use that
+   may opt back in by importing the component.
    --------------------------------------------------------------------- */
-body.mode-library main > section:first-of-type {
-  display: none !important;
-}
-body.mode-library .home-poster--top {
-  display: none !important;
-}
-
-/* The illustrated lobby is hidden by default and revealed only in Library
-   Mode. Reference and Standard render the existing hero exactly as today. */
 .illustrated-lobby {
   display: none;
 }
 body.mode-library .illustrated-lobby {
   display: block;
+}
+
+/* ---------------------------------------------------------------------
+   v8 home-page declaration + three-door lobby — Library Mode treatment.
+   Door icons + per-door accent stripes are visible; the declaration
+   gets the heritage serif heading register.
+   --------------------------------------------------------------------- */
+body.mode-library .home-declaration__title {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+body.mode-library .home-door {
+  border-top: 4px solid var(--rule-border);
+}
+body.mode-library .home-door--1 {
+  border-top-color: var(--old-gold);
+}
+body.mode-library .home-door--2 {
+  border-top-color: var(--sage);
+}
+body.mode-library .home-door--3 {
+  border-top-color: var(--oxblood);
+}
+body.mode-library .home-door__icon {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--deep-navy);
+  margin-bottom: 0.6rem;
+}
+body.mode-library .home-door--1 .home-door__icon { color: var(--old-gold); }
+body.mode-library .home-door--2 .home-door__icon { color: var(--sage); }
+body.mode-library .home-door--3 .home-door__icon { color: var(--oxblood); }
+body.mode-library .home-door__icon svg {
+  width: 100%;
+  height: 100%;
+}
+body.mode-library .home-door {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+body.mode-library .home-door:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 20px rgba(31, 42, 68, 0.12),
+    0 2px 4px rgba(31, 42, 68, 0.08);
 }
 
 /* Reading-card hover lift — a small architectural cue that the surfaces
