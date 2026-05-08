@@ -1,0 +1,140 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const all = await getCollection('founders_library');
+
+// Bucket by era_cohort. Each .md file's era_cohort string is one of:
+//  - "Founding era (1785–1830)" / "Founding era (…)"
+//  - "Common-school era (1830–1860)"
+//  - "High-water mark (1860–1910)"
+//  - "Institutional (1910–1980)"
+//  - "Reform (1980–present)"
+// The display surface collapses the last three into a combined
+// "High-water and reform era (1904–present)" group per the v3 spec.
+function bucketOf(era: string): 'founding' | 'common-school' | 'high-water' {
+  const e = era.toLowerCase();
+  if (e.startsWith('founding')) return 'founding';
+  if (e.startsWith('common-school')) return 'common-school';
+  return 'high-water';
+}
+
+const bucketLabels: Record<string, string> = {
+  founding: 'Founding era (1779–1787)',
+  'common-school': 'Common-school era (1837–1879)',
+  'high-water': 'High-water and reform era (1904–present)',
+};
+
+const bucketBlurbs: Record<string, string> = {
+  founding:
+    'The texts in which the school-trust idea was written into American law before the Constitution existed.',
+  'common-school':
+    'The reports, journals, and readers that institutionalized common schools across the antebellum republic.',
+  'high-water':
+    'The mature institutional and reform-era documents that carry the tradition forward — from the New York public school at its high-water mark to the modern reform statutes.',
+};
+
+const ordered: Record<string, typeof all> = {
+  founding: [],
+  'common-school': [],
+  'high-water': [],
+};
+for (const e of all) ordered[bucketOf(e.data.era_cohort)].push(e);
+
+// One-sentence editorial summary for each entry, keyed by slug. These are
+// the card-front copy on the section landing; the full editorial frame
+// lives on the entry's own page.
+const summary: Record<string, string> = {
+  'land-ordinance-1785':
+    'The 1785 enactment that reserved Section 16 in every township for the maintenance of public schools — the architectural blueprint every later school-trust grant inherits.',
+  'northwest-ordinance-1787':
+    'The 1787 ordinance that gave the Section-16 dedication a constitutional footing and named "schools and the means of education" among the things government must forever encourage.',
+  'federalist-no-10-1787':
+    "Madison's argument that an extended republic requires educated citizenship across distance — the political-theory frame that makes the school-trust commitment intelligible.",
+  'massachusetts-constitution-1780-chapter-v':
+    "John Adams' Chapter V — the constitutional clause that names the duty of the legislature to cherish learning and that Massachusetts has carried since 1780.",
+  'jefferson-bill-diffusion-knowledge-1779':
+    "Jefferson's 1779 bill for the General Diffusion of Knowledge — the most explicit statement of the founding-era theory of public education as a fiduciary duty of the state.",
+  'mann-twelfth-annual-report-1848':
+    'Horace Mann\'s 1848 Twelfth Annual Report — the founding statement of common schooling as the "balance wheel of the social machinery" of the republic.',
+  'barnard-american-journal-of-education':
+    "Henry Barnard's twenty-year journal — the institutional memory of the common-school movement, where superintendents and reformers worked out what public education meant in practice.",
+  'pierce-michigan-first-annual-report-1837':
+    "John Pierce's 1837 first annual report — Michigan's school-trust constitutional architecture in its founding form, written by the system's first superintendent.",
+  'mcguffey-fourth-eclectic-reader-1879':
+    "The 1879 revised Fourth Reader — the mid-difficulty volume of the McGuffey series, which taught generations of Americans what a common-school education was.",
+  'mcguffey-fifth-eclectic-reader-1879':
+    'The 1879 revised Fifth Reader — the upper-grade McGuffey, with the rhetorical and historical content the common school took as its civic frame.',
+  'fitch-skinner-public-school-new-york-1904':
+    'Fitch and Skinner on the New York public school at its high-water mark in 1904 — what a fully institutionalized state common-school system looked like at the inflection.',
+  'swift-public-permanent-school-funds-1911':
+    'Swift\'s 1911 Columbia dissertation — the foundational state-by-state history of the school-trust corpora and the recurrent failure modes the Library still treats as canonical.',
+  'kiddle-schem-cyclopedia-of-education-1877':
+    "Kiddle and Schem's 1877 Cyclopedia — the practitioner reference that captured how the common-school era understood itself at its peak.",
+  'hawkes-oregon-school-land-grant-1949':
+    "Hawkes' 1949 Oregon study — the per-state extension of Swift's method into the institutional era, and a model for the Library's modern state chapters.",
+  'utah-code-title-53c-modern-reform':
+    "Utah Code Title 53C — the closest existing approximation to a model statute for school-trust-lands governance, and the demonstration case that the corpus is recoverable when statute mandates fiduciary purpose.",
+};
+
+const slugOf = (e: any) => (e.slug ?? e.id).replace(/\.md$/, '');
+---
+<BaseLayout
+  title="The Founders' Library · America's School Trust Library"
+  description="Fifteen primary-source curated entry-points into the foundational texts of the American school-trust tradition: founding era, common-school era, and the high-water and reform era."
+  sourceId="reading-founders-library"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">Reading Room · Section II</p>
+    <h1 class="mt-2">The Founders' Library</h1>
+    <p class="kicker text-slate-600">
+      Fifteen primary sources, three eras. Each entry is a curated reader's frame.
+    </p>
+    <p>
+      The Founders' Library collects the foundational primary sources of the American
+      school-trust tradition — the texts the founders of the school-land idea wrote, the
+      journals and reports that institutionalized common schools, and the institutional
+      and reform-era documents that carry the tradition forward. Each entry is a curated
+      entry-point: a one-page reader's frame, the full text or a substantial excerpt
+      where licensing permits, citation back to the canonical source, and links to
+      related claims and figures.
+    </p>
+    <p class="text-sm text-slate-600">
+      <a href="/contribute/">Suggest a contribution</a> — we are recruiting Title
+      Stewards, Reading Room Editors, and State Co-Librarians.
+    </p>
+  </article>
+
+  {(['founding', 'common-school', 'high-water'] as const).map((bucket) => (
+    <section class="founders-cohort mt-12">
+      <h2 class="text-2xl font-bold tracking-tight">{bucketLabels[bucket]}</h2>
+      <p class="mt-1 text-sm italic text-slate-600">{bucketBlurbs[bucket]}</p>
+      <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {ordered[bucket]
+          .sort((a, b) => String(a.data.year).localeCompare(String(b.data.year)))
+          .map((entry) => {
+            const slug = slugOf(entry);
+            return (
+              <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition hover:shadow">
+                <a href={`/reading/founders-library/${slug}/`} class="block">
+                  <p class="text-xs uppercase tracking-wide text-slate-500">
+                    {entry.data.author} · {entry.data.year}
+                  </p>
+                  <h3 class="mt-1 text-lg font-semibold tracking-tight text-blue-700 underline">
+                    {entry.data.title}
+                  </h3>
+                  <p class="mt-2 text-sm text-slate-700">
+                    {summary[slug] ?? ''}
+                  </p>
+                </a>
+              </li>
+            );
+          })}
+      </ul>
+    </section>
+  ))}
+
+  <p class="mt-12 text-sm text-slate-600">
+    <a href="/reading/">← Back to the Reading Room</a>
+  </p>
+</BaseLayout>

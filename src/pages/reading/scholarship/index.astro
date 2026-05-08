@@ -1,0 +1,159 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const tier3 = await getCollection('scholarship');
+const slugOf = (e: any) => (e.slug ?? e.id).replace(/\.md$/, '');
+
+// One-sentence editorial summary per Tier-3 entry; matches the curator's
+// framing in the source markdown but compressed for the section landing.
+const summary: Record<string, string> = {
+  'bogert-law-of-trusts-and-trustees':
+    'Bogert — the practitioner treatise that courts and trustees cite when the trust-law question gets technical. The Library reads its sections on charitable trusts and beneficiary remedies as the doctrinal frame for school-trust litigation.',
+  'restatement-third-of-trusts':
+    'The American Law Institute Restatement that names the prudent-investor standard, undivided loyalty, and the trustee\'s duty of inquiry — the doctrinal floor under every state\'s school-trust administration.',
+  'souder-fairfax-state-trust-lands-1996':
+    'The 1996 University Press of Kansas synthesis — the most comprehensive single-volume comparative analysis of state trust lands across the West, and the bridge between Swift\'s 1911 method and the Library\'s modern state chapters.',
+  'culp-state-trust-lands-in-the-west-2006':
+    'Culp, Laurenzi, and Tuell\'s 2006 Lincoln Institute report — comparative western-states fiduciary-duty analysis that updated Souder & Fairfax for the conservation and ecosystem-services era.',
+  'nefa-funding-public-schools-2024':
+    'The 2024 National Education Finance Academy reference — the modern practitioner volume on K-12 funding, which the Library reads alongside Swift to test how much of the trust architecture is still legible to the field.',
+};
+---
+<BaseLayout
+  title="The Scholarship · Reading Room · America's School Trust Library"
+  description="The secondary and tertiary literature that reads, organizes, and extends the school-trust tradition. Tier 1/2 hosted entries plus Tier 3 in-copyright steward-recruitment surfaces."
+  sourceId="reading-scholarship"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">Reading Room · Section III</p>
+    <h1 class="mt-2">The Scholarship</h1>
+    <p class="kicker text-slate-600">
+      The works that read, organize, and extend the school-trust tradition.
+    </p>
+    <p>
+      The Scholarship is not the primary sources — those live in the
+      <a href="/reading/founders-library/">Founders' Library</a>. The Scholarship is
+      the secondary and tertiary literature: the academic studies, the practitioner
+      treatises, the comparative analyses, the policy reports that read the founding
+      texts and trace what happened to the school-trust tradition across two centuries.
+      The Library curates the Scholarship in three tiers.
+    </p>
+    <p class="text-sm text-slate-600">
+      <a href="/contribute/">Suggest a contribution</a> — Title Stewards for the
+      Tier&nbsp;3 in-copyright works are actively recruited.
+    </p>
+  </article>
+
+  <section class="mt-10">
+    <h2 class="text-2xl font-bold tracking-tight">Tier 1 / Tier 2 — Library-hosted</h2>
+    <p class="mt-1 text-sm italic text-slate-600">
+      Public-domain or open-access works that the Library hosts, summarizes, and links
+      to in full where possible.
+    </p>
+
+    <ul class="mt-6 space-y-4">
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <p class="text-xs uppercase tracking-wide text-slate-500">Foundational · 1911 · Public domain</p>
+        <h3 class="mt-1 text-lg font-semibold tracking-tight">
+          <a href="/reading/sources/swift-1911/" class="text-blue-700 underline">
+            History of Public Permanent Common School Funds in the United States, 1795–1905
+          </a>
+        </h3>
+        <p class="mt-1 text-sm italic text-slate-600">Fletcher Harper Swift · Columbia University · 1911</p>
+        <p class="mt-2 text-sm text-slate-700">
+          The seminal academic study of America's school trust funds. Swift is the
+          empirical floor under nearly every claim in <em>Schools of the Republic</em>.
+          The Founders' Library carries Swift as a primary source as well —
+          <a href="/reading/founders-library/swift-public-permanent-school-funds-1911/">
+          curated entry-point</a>.
+        </p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <p class="text-xs uppercase tracking-wide text-slate-500">Foundational · 1949 · Public domain</p>
+        <h3 class="mt-1 text-lg font-semibold tracking-tight">
+          <a href="/reading/sources/hawk-2018/" class="text-blue-700 underline">
+            A History of the Irreducible School Fund in Oregon
+          </a>
+        </h3>
+        <p class="mt-1 text-sm italic text-slate-600">Norman B. Hawk · University of Oregon · 1949</p>
+        <p class="mt-2 text-sm text-slate-700">
+          The Oregon-specific extension of Swift's method. Foundational reference for
+          the project's Oregon case material.
+        </p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <p class="text-xs uppercase tracking-wide text-slate-500">Investigative · 1908 · Public domain</p>
+        <h3 class="mt-1 text-lg font-semibold tracking-tight">
+          <a
+            href="https://archive.org/details/lootersofpublicd00puteuoft"
+            target="_blank"
+            rel="noopener"
+            class="text-blue-700 underline"
+          >Looters of the Public Domain</a>
+        </h3>
+        <p class="mt-1 text-sm italic text-slate-600">S.A.D. Puter and Horace Stevens · 1908</p>
+        <p class="mt-2 text-sm text-slate-700">
+          Contemporaneous account of the Oregon land-fraud trials of the early 1900s.
+          Primary-source material on the broader pattern of public-land grift in the
+          West.
+        </p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <p class="text-xs uppercase tracking-wide text-slate-500">Academic · 2014</p>
+        <h3 class="mt-1 text-lg font-semibold tracking-tight">
+          <a
+            href="https://nationalaglawcenter.org/wp-content/uploads/assets/bibarticles/heidelberg_trust.pdf"
+            target="_blank"
+            rel="noopener"
+            class="text-blue-700 underline"
+          >Closing the Book on the School Trust Lands</a>
+        </h3>
+        <p class="mt-1 text-sm italic text-slate-600">Heidelberg · National Agricultural Law Center · 2014</p>
+        <p class="mt-2 text-sm text-slate-700">
+          Recent academic analysis of state-level school trust lands accounting and
+          reform pathways. Cites Swift 1911 as the seminal reference.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="tier-3" class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight">Tier 3 — in-copyright; curator-recruitment open</h2>
+    <p class="mt-1 text-sm italic text-slate-600">
+      Works the Library cannot host directly but wants to surface, recommend, and
+      where possible recruit a Title Steward to maintain. Each entry below has an
+      open Title Steward seat — see <a href="/contribute/">/contribute/</a> for the
+      role definition.
+    </p>
+
+    <ul class="mt-6 space-y-4">
+      {tier3
+        .sort((a, b) => String(a.data.year).localeCompare(String(b.data.year)))
+        .map((entry) => {
+          const slug = slugOf(entry);
+          const byline = entry.data.authors ?? entry.data.author ?? '';
+          return (
+            <li class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition hover:shadow">
+              <a href={`/reading/scholarship/${slug}/`} class="block">
+                <p class="text-xs uppercase tracking-wide text-amber-700">
+                  Tier 3 · in-copyright · Title Steward — OPEN
+                </p>
+                <h3 class="mt-1 text-lg font-semibold tracking-tight text-blue-700 underline">
+                  {entry.data.title}
+                </h3>
+                <p class="mt-1 text-sm italic text-slate-600">
+                  {byline}{entry.data.publisher ? ` · ${entry.data.publisher}` : ''} · {entry.data.year}
+                </p>
+                <p class="mt-2 text-sm text-slate-700">{summary[slug] ?? ''}</p>
+              </a>
+            </li>
+          );
+        })}
+    </ul>
+  </section>
+
+  <p class="mt-12 text-sm text-slate-600">
+    <a href="/reading/">← Back to the Reading Room</a>
+  </p>
+</BaseLayout>

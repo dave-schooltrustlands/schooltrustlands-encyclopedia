@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('founders_library');
+  return entries.map((entry) => ({
+    params: { slug: (entry.slug ?? entry.id).replace(/\.md$/, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+function bucketLabel(era: string): string {
+  const e = era.toLowerCase();
+  if (e.startsWith('founding')) return 'Founding era (1779–1787)';
+  if (e.startsWith('common-school')) return 'Common-school era (1837–1879)';
+  return 'High-water and reform era (1904–present)';
+}
+---
+<BaseLayout
+  title={`${entry.data.title} · Founders' Library · America's School Trust Library`}
+  description={`Founders' Library — ${entry.data.author}, ${entry.data.year}. Curated primary-source entry-point in the school-trust tradition.`}
+  sourceId={`founders-library-${entry.slug ?? entry.id}`}
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline source-page">
+    <p class="text-xs uppercase tracking-wide text-slate-500">
+      <a href="/reading/founders-library/">Founders' Library</a> · {bucketLabel(entry.data.era_cohort)}
+    </p>
+
+    <aside class="dossier-card not-prose mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">At a glance</span>
+      <dl class="dossier-facts mt-2 grid grid-cols-1 gap-y-1 text-sm sm:grid-cols-[max-content_1fr] sm:gap-x-4">
+        <dt class="font-semibold text-slate-700">Title</dt>
+        <dd class="text-slate-800">{entry.data.title}</dd>
+        <dt class="font-semibold text-slate-700">Author</dt>
+        <dd class="text-slate-800">{entry.data.author}</dd>
+        <dt class="font-semibold text-slate-700">Year</dt>
+        <dd class="text-slate-800">{entry.data.year}</dd>
+        {entry.data.length && <>
+          <dt class="font-semibold text-slate-700">Length</dt>
+          <dd class="text-slate-800">{entry.data.length}</dd>
+        </>}
+        {entry.data.register && <>
+          <dt class="font-semibold text-slate-700">Register</dt>
+          <dd class="text-slate-800">{entry.data.register}</dd>
+        </>}
+        {entry.data.tier && <>
+          <dt class="font-semibold text-slate-700">Tier</dt>
+          <dd class="text-slate-800">{entry.data.tier}</dd>
+        </>}
+        <dt class="font-semibold text-slate-700">Curated</dt>
+        <dd class="text-slate-800">Library editorial team</dd>
+      </dl>
+    </aside>
+
+    <Content />
+
+    <hr class="my-10" />
+
+    <p class="text-sm text-slate-600">
+      <a href="/reading/founders-library/">← Back to the Founders' Library</a>
+      &nbsp;·&nbsp;
+      <a href="/contribute/">Suggest a contribution</a>
+    </p>
+  </article>
+</BaseLayout>

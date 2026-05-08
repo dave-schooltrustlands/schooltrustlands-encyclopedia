@@ -112,4 +112,52 @@ const maps = defineCollection({
   }),
 });
 
-export const collections = { states, essays, newsroom, maps };
+// Founders' Library — fifteen primary-source curated entry-points spanning
+// the founding era (1779–1787), the common-school era (1830–1879), and the
+// high-water / institutional / reform era (1904–present). Schema is loose
+// because the source markdown files are author-edited prose with varying
+// register; only the editorial-grouping fields are validated.
+const foundersLibrary = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    era_cohort: z.string(),
+    year: z.union([z.string(), z.number()]),
+    length: z.string().optional(),
+    register: z.string().optional(),
+    date_curated: z.coerce.date().optional(),
+    curator: z.string().optional(),
+    tier: z.string().optional(),
+  }),
+});
+
+// Scholarship — secondary/tertiary literature. Tier 3 in-copyright entries
+// shipped in v3 are steward-recruitment surfaces; Tier 1/2 entries (Swift,
+// Hawk, Puter & Stevens, Heidelberg) continue to live as bespoke pages
+// under /reading/sources/ and on the Reading Room landing's bibliography
+// list. The `tier` string carries the Tier 3 visual-treatment selector.
+const scholarship = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    authors: z.string().optional(),
+    author: z.string().optional(),
+    publisher: z.string().optional(),
+    year: z.union([z.string(), z.number()]),
+    era_cohort: z.string().optional(),
+    register: z.string().optional(),
+    date_curated: z.coerce.date().optional(),
+    curator: z.string().optional(),
+    tier: z.string(),
+  }),
+});
+
+export const collections = {
+  states,
+  essays,
+  newsroom,
+  maps,
+  founders_library: foundersLibrary,
+  scholarship,
+};

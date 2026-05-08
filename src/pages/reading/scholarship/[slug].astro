@@ -1,0 +1,93 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('scholarship');
+  return entries.map((entry) => ({
+    params: { slug: (entry.slug ?? entry.id).replace(/\.md$/, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Tier-3 entries get the steward-recruitment footer. Tier 1/2 (none in
+// this collection today) would suppress the footer or render a "Title
+// Steward: Library staff" line.
+const isTier3 = (entry.data.tier ?? '').toLowerCase().includes('tier 3');
+
+const byline = entry.data.authors ?? entry.data.author ?? '';
+---
+<BaseLayout
+  title={`${entry.data.title} · Scholarship · America's School Trust Library`}
+  description={`Scholarship Tier ${isTier3 ? '3 (in-copyright; curator-recruitment open)' : ''} — ${byline}, ${entry.data.year}.`}
+  sourceId={`scholarship-${entry.slug ?? entry.id}`}
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline source-page">
+    <p class="text-xs uppercase tracking-wide text-slate-500">
+      <a href="/reading/scholarship/">Scholarship</a>
+      {isTier3 && (
+        <>
+          <span class="mx-1">·</span>
+          <span class="inline-block rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-amber-900">
+            Tier 3 · in-copyright · curator-recruitment open
+          </span>
+        </>
+      )}
+    </p>
+
+    <aside class="dossier-card not-prose mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">At a glance</span>
+      <dl class="dossier-facts mt-2 grid grid-cols-1 gap-y-1 text-sm sm:grid-cols-[max-content_1fr] sm:gap-x-4">
+        <dt class="font-semibold text-slate-700">Title</dt>
+        <dd class="text-slate-800">{entry.data.title}</dd>
+        {byline && <>
+          <dt class="font-semibold text-slate-700">Authors</dt>
+          <dd class="text-slate-800">{byline}</dd>
+        </>}
+        {entry.data.publisher && <>
+          <dt class="font-semibold text-slate-700">Publisher</dt>
+          <dd class="text-slate-800">{entry.data.publisher}</dd>
+        </>}
+        <dt class="font-semibold text-slate-700">Year</dt>
+        <dd class="text-slate-800">{entry.data.year}</dd>
+        {entry.data.register && <>
+          <dt class="font-semibold text-slate-700">Register</dt>
+          <dd class="text-slate-800">{entry.data.register}</dd>
+        </>}
+        {entry.data.tier && <>
+          <dt class="font-semibold text-slate-700">Tier</dt>
+          <dd class="text-slate-800">{entry.data.tier}</dd>
+        </>}
+      </dl>
+    </aside>
+
+    <Content />
+
+    {isTier3 && (
+      <aside class="steward-cta not-prose mt-12 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-5 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-wide text-amber-900">
+          Title Steward — OPEN
+        </p>
+        <p class="mt-2 text-sm text-amber-900">
+          This title currently has no Library Title Steward. The Title Steward
+          maintains the Library's framing of this work, surfaces new editions and
+          related scholarship, and answers reader questions. If you have read this
+          work closely and want to steward it for the Library,
+          <a href="/contribute/" class="font-semibold text-amber-900 underline">
+            apply via /contribute/</a>.
+        </p>
+      </aside>
+    )}
+
+    <hr class="my-10" />
+
+    <p class="text-sm text-slate-600">
+      <a href="/reading/scholarship/">← Back to the Scholarship</a>
+      &nbsp;·&nbsp;
+      <a href="/contribute/">Suggest a contribution</a>
+    </p>
+  </article>
+</BaseLayout>
