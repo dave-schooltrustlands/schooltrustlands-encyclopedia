@@ -46,11 +46,6 @@ import '../styles/global.css';
         >Start&nbsp;Here</a
       >
       <a
-        href="/why/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        >Why</a
-      >
-      <a
         href="/reading/"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
         >Reading</a

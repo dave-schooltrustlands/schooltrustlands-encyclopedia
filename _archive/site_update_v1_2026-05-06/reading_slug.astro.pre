@@ -1,0 +1,254 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import RoomLayout from '../../layouts/RoomLayout.astro';
+import StateDossier from '../../components/StateDossier.astro';
+import StateDossierCard from '../../components/StateDossierCard.astro';
+
+type EssayProps = { kind: 'essay'; entry: CollectionEntry<'essays'> };
+type StateProps = { kind: 'state'; entry: CollectionEntry<'states'> };
+type Props = EssayProps | StateProps;
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays');
+  const states = await getCollection('states');
+
+  const essayPaths = essays.map((entry) => ({
+    params: { slug: entry.slug.replace(/^\d+-/, '') },
+    props: { kind: 'essay' as const, entry },
+  }));
+
+  const statePaths = states.map((entry) => ({
+    params: { slug: entry.data.iso.toLowerCase() },
+    props: { kind: 'state' as const, entry },
+  }));
+
+  return [...essayPaths, ...statePaths];
+}
+
+const props = Astro.props as Props;
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const num = new Intl.NumberFormat('en-US');
+const usd = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+});
+
+const { Content } = await props.entry.render();
+
+// Cohort N → Reading Room chapter slug. Keys match the eraCohort
+// integers in state frontmatter; values are the essay slugs under
+// src/content/essays/ (with the leading NN- prefix stripped, per the
+// reading slug rule in getStaticPaths above).
+const COHORT_SLUGS: Record<number, string> = {
+  1: 'founding-floor',
+  2: 'statehood-without-federal-floor',
+  3: 'northwest-ordinance-template',
+  4: 'antebellum-doubling',
+  5: 'reconstruction-western-stack',
+  6: 'twentieth-century-high-water-mark',
+};
+
+const COHORT_TOOLTIPS: Record<number, string> = {
+  1: 'The Original 13 colonies, admitted before the 1785 Land Ordinance — no federal school grant, school funding built on state-derived foundations.',
+  2: 'States admitted from non-public-domain territory (Vermont, Kentucky, Tennessee, Maine, Texas, West Virginia) — no federal school grant, school funding built state-by-state.',
+  3: 'Public-land states admitted between 1803 and 1848 under the original section-16 template the Northwest Ordinance established.',
+  4: 'The doubled-grant cohort, 1846–1859 — California, Oregon, and the early Pacific admissions when Congress doubled the school-section grant from one section per township to two.',
+  5: 'The post-Civil-War cohort, 1861–1896 — Nebraska through Utah, admitted under the era’s expanded grant terms and shaped by railroad and mineral pressures.',
+  6: 'Twentieth-century admissions, 1907–1959 — Oklahoma, New Mexico, Arizona, Alaska, and Hawaii; the most carefully drafted federal trust instruments and the two sui-generis outliers.',
+};
+
+const CONFIDENCE_LABEL: Record<string, string> = {
+  verified: 'Verified',
+  awaiting: 'Awaiting disclosure',
+  unknown: 'Disclosure unknown',
+  na: 'Not applicable',
+};
+
+const layoutProps =
+  props.kind === 'essay'
+    ? {
+        title: props.entry.data.title,
+        subtitle: `Era: ${props.entry.data.era}`,
+        sourceId: `essay-${props.entry.slug}-${props.entry.data.sourceVersion}`,
+        pagefindEra: props.entry.data.era,
+      }
+    : {
+        title: props.entry.data.name,
+        // FIPS strip is rendered in header-extras (below) so the FIPS
+        // code can be wrapped in <abbr> with an explanatory title;
+        // RoomLayout's subtitle prop only accepts a plain string.
+        state: {
+          iso: props.entry.data.iso.toLowerCase(),
+          name: props.entry.data.name,
+        },
+        sourceId: `state-${props.entry.data.iso.toLowerCase()}-v${props.entry.data.substrateVersion}`,
+      };
+---
+
+<RoomLayout room="reading" {...layoutProps} width="prose">
+  {props.kind === 'essay' && (
+    <Fragment slot="header-extras">
+      <p class="mt-4 text-xs text-slate-500">
+        {num.format(props.entry.data.wordCount)} words · Substrate {props.entry.data.sourceVersion} · Last synced {dateFmt.format(props.entry.data.lastSynced)}
+      </p>
+      <p class="mt-3">
+        <a href="/reading/" class="text-sm text-blue-700 underline hover:text-blue-900">
+          ← Back to Reading Room
+        </a>
+      </p>
+    </Fragment>
+  )}
+
+  {props.kind === 'state' && (
+    <Fragment slot="header-extras">
+      <p class="state-id-strip mt-3 text-slate-700">
+        <span>{props.entry.data.iso}</span>
+        <span class="sep"> · </span>
+        <span class="fips">
+          <abbr title="Federal Information Processing Standards code — the Census Bureau's numerical identifier for this state, used for federal data cross-references">
+            FIPS {props.entry.data.fips}
+          </abbr>
+        </span>
+        <span class="sep"> · </span>
+        <span>Admission #{props.entry.data.admissionNumber}</span>
+      </p>
+      <dl class="mt-4 grid grid-cols-1 gap-x-8 gap-y-2 text-sm sm:grid-cols-2">
+        <div data-pagefind-weight="20">
+          <dt class="inline font-semibold text-slate-700">Admitted:</dt>
+          <dd class="inline text-slate-600"> {dateFmt.format(props.entry.data.admittedDate)}</dd>
+        </div>
+        <div>
+          <dt class="inline font-semibold text-slate-700">Era:</dt>
+          <dd class="inline text-slate-600">
+            {' '}
+            {COHORT_SLUGS[props.entry.data.eraCohort] ? (
+              <a
+                href={`/reading/${COHORT_SLUGS[props.entry.data.eraCohort]}/`}
+                class="cohort-link"
+                title={COHORT_TOOLTIPS[props.entry.data.eraCohort]}
+              >
+                {props.entry.data.eraName}
+              </a>
+            ) : (
+              <span>{props.entry.data.eraName}</span>
+            )}
+            <span class="cohort-num"> (cohort {props.entry.data.eraCohort})</span>
+          </dd>
+        </div>
+        {props.entry.data.federalGrantAcres !== null && (
+          <div>
+            <dt class="inline font-semibold text-slate-700">Federal grant:</dt>
+            <dd class="inline text-slate-600">
+              {props.entry.data.federalGrantAcres === 0
+                ? ' none (state-derived)'
+                : ` ${num.format(props.entry.data.federalGrantAcres)} acres`}
+            </dd>
+          </div>
+        )}
+        {props.entry.data.federalGrantAcres !== null && props.entry.data.federalGrantAcres > 0 && (
+          <div>
+            <dt class="inline font-semibold text-slate-700">Trust acres remaining:</dt>
+            <dd class="inline text-slate-600">
+              {props.entry.data.trustAcresRemaining ? (
+                <>
+                  {' '}{num.format(props.entry.data.trustAcresRemaining)} acres
+                  <span class="acres-percentage">
+                    ({Math.round(
+                      (props.entry.data.trustAcresRemaining /
+                        props.entry.data.federalGrantAcres) *
+                        100
+                    )}% of original grant)
+                  </span>
+                  {' '}<span class={`badge badge-${props.entry.data.trustAcresRemainingConfidence ?? 'verified'}`}>
+                    {CONFIDENCE_LABEL[props.entry.data.trustAcresRemainingConfidence ?? 'verified']}
+                  </span>
+                  {props.entry.data.trustAcresRemainingAsOf && (
+                    <span class="as-of"> · As of {props.entry.data.trustAcresRemainingAsOf}</span>
+                  )}
+                </>
+              ) : props.entry.data.trustAcresRemainingConfidence === 'na' ? (
+                <>
+                  {' '}<span
+                    class="badge badge-na"
+                    title={props.entry.data.trustAcresRemainingSource}
+                  >Not applicable</span>
+                </>
+              ) : (
+                <>
+                  {' '}<span class="badge badge-unknown">Disclosure unknown</span>
+                </>
+              )}
+            </dd>
+          </div>
+        )}
+        <div>
+          <dt class="inline font-semibold text-slate-700">Governance:</dt>
+          <dd class="inline text-slate-600"> {props.entry.data.governanceForm}</dd>
+        </div>
+        {props.entry.data.permanentFundCorpus && (
+          <div>
+            <dt class="inline font-semibold text-slate-700">Permanent fund:</dt>
+            <dd class="inline text-slate-600">
+              {' '}{usd.format(props.entry.data.permanentFundCorpus.value)}
+              {props.entry.data.permanentFundCorpus.asOf && (
+                <span> (as of {dateFmt.format(props.entry.data.permanentFundCorpus.asOf)})</span>
+              )}
+            </dd>
+          </div>
+        )}
+        {props.entry.data.latestDistribution && (
+          <div>
+            <dt class="inline font-semibold text-slate-700">
+              {props.entry.data.latestDistribution.fiscalYear
+                ? `FY${props.entry.data.latestDistribution.fiscalYear} distribution:`
+                : 'Recent distribution:'}
+            </dt>
+            <dd class="inline text-slate-600"> {usd.format(props.entry.data.latestDistribution.value)}</dd>
+          </div>
+        )}
+      </dl>
+      <p class="mt-4 text-xs text-slate-500">
+        Substrate v{props.entry.data.substrateVersion} · Last reviewed {dateFmt.format(props.entry.data.lastReviewed)}
+      </p>
+    </Fragment>
+  )}
+
+  {props.kind === 'state' && (
+    <section class="mt-8">
+      <StateDossierCard
+        iso={props.entry.data.iso.toLowerCase()}
+        name={props.entry.data.name}
+        admittedDate={props.entry.data.admittedDate}
+        eraName={props.entry.data.eraName}
+        governanceForm={props.entry.data.governanceForm}
+        federalGrantAcres={props.entry.data.federalGrantAcres}
+        summary={props.entry.data.summary}
+        currentIssue={props.entry.data.currentIssue}
+      />
+    </section>
+  )}
+
+  <article
+    class:list={[
+      'prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline',
+      props.kind === 'essay' && '[&>h1:first-child]:hidden',
+    ]}
+  >
+    <Content />
+  </article>
+
+  {props.kind === 'state' && (
+    <section class="mt-12 max-w-prose">
+      <StateDossier
+        iso={props.entry.data.iso.toLowerCase()}
+        name={props.entry.data.name}
+      />
+    </section>
+  )}
+</RoomLayout>

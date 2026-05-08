@@ -1,0 +1,373 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Updates · America's School Trust Library"
+  description="Week-by-week log of what's changed at schooltrusts.net."
+  sourceId="updates"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Updates</h1>
+    <p class="kicker">Week-by-week log of what's changed at America's School Trust Library.</p>
+
+    <p>
+      The substrate behind this library — the booklet, the Sacred Compact white
+      paper, the Vision essay, the per-state research — began in <strong>late February
+      2026</strong>. The public library site at <a href="https://schooltrusts.net">schooltrusts.net</a>
+      opened in <strong>early May 2026</strong>. This page is the running site-side log.
+      Each week shows a one-line summary; click the week to expand for the daily detail.
+    </p>
+
+    <hr class="archival-divider" />
+
+    <article class="weekly-update">
+      <h2>Week of May 4, 2026</h2>
+      <p class="weekly-summary">
+        Map Room V1 launched: a transparency directory at <a href="/maps/">/maps/</a> with
+        country-level "Original grants" / "Current holdings" toggle and per-state pages
+        for the 32 states that received federal school-trust grants (Oregon and Utah
+        bespoke; 30 others template-rendered). Newsroom V1 launched: methodology page at
+        <a href="/newsroom/">/newsroom/</a> plus first weekly entry on the May 2 Motion to
+        Compel filing in <em>Siuslaw v. State of Oregon</em> (24CV38372). State-page
+        editorial pass on the remaining 49 states (numbered headers and pull-quotes);
+        ASTL Voices articles, Hawk and Swift source pages, and Bibliography card updates
+        shipped as the /voices/ and /reading/sources/ surfaces. About page rebranded as a
+        joint ASTL + OASTL project. Site logo enlarged. Schools of the Republic booklet
+        cover deployed. Style Guide v1.0 promoted, then applied across all nine existing
+        Schools of the Republic chapters in an integrated rewrite-and-research pass that
+        also drafted a new Chapter 8 on the captured-Attorney-General enforcement
+        architecture and the eighth anchor as doctrinal remedy.
+      </p>
+      <details class="weekly-detail">
+        <summary>Daily detail</summary>
+        <ul>
+          <li>
+            <strong>Wednesday May 6, 2026 — <em>Schools of the Republic</em> historical-foundations rewrite.</strong>
+            Chapters 1, 3, 4, 5, and 6 received substantial integrations from the
+            historical-foundations and period-press research synthesis: Westward
+            Expansion push/brake factors; Jefferson's 1783–84 Aboriginal-lands
+            framework; early Section-16 township-ownership jurisprudence and the
+            consolidation upward to states; the Texas Capitol Syndicate / XIT Ranch
+            story; the Mesabi Iron Rescue and William Wallace Braden's reform;
+            the Mississippi long-lease controversies; Nebraska's Sheldon reform;
+            the Henry George connection in California; the Alabama <em>Schmidt</em>
+            adverse-possession case; and the <em>Ervien</em>–Larrazolo
+            trust-revenue diversion fight. The reform-attempt thread now runs
+            alongside the drift narrative throughout the historical chapters:
+            named reformers in 1880s Minnesota, 1900s Wisconsin, 1910s Nebraska,
+            and elsewhere invoked the trust framework explicitly long before the
+            modern litigation cohort. The Eighth Anchor — the watchful crew —
+            has operated in episodic form for a century and a half. Chapter 8
+            (the captured-AG architecture) gained cross-references to
+            <em>Schmidt</em> and the named-trustee posture of <em>Ervien</em>.
+            Image plates pending Phase 2 archival fetch; per-state dossier
+            additions queued in <code>BACKLOG.md</code>.
+          </li>
+          <li>
+            <strong>Wednesday May 6, 2026 — <code>/about/how-this-works/</code> published.</strong>
+            Two posters anchor the page: the Library's knowledge architecture
+            (five-layer stack from primary sources to published deliverables) and the
+            contribution loop (how inputs from contributors and scheduled tasks flow
+            through editorial review into the substrate and back out as content). Linked
+            from the About page after "Substrate and method."
+          </li>
+          <li>
+            <strong>Wednesday May 6, 2026 — Sacred Compact poster images restored.</strong>
+            The three posters that lived in the Sacred Compact book/PDF version (eras of
+            national land policy 1763–1910; the drift forces; the seven anchors plus the
+            eighth) were dropped when the book was converted to web essays. They are now
+            back: Figure 1 appears in the
+            <a href="/reading/sacred-compact-prologue/">Prologue</a> and in
+            <a href="/reading/sacred-compact-ii-the-sacred-compact/">Section II (The Sacred Compact)</a>;
+            Figure 2 in
+            <a href="/reading/sacred-compact-iv-the-pattern/">Section IV (The Pattern)</a>;
+            Figure 3 in
+            <a href="/reading/sacred-compact-v-the-counter-architecture/">Section V (The Counter-Architecture)</a>.
+            Captions updated to reflect the post-V5.1 doctrinal vocabulary, including the
+            dual-force drift / directed-seizure framing in Section IV.G and the
+            Library-as-Eighth-Anchor reframing in Section V.
+          </li>
+          <li>
+            <strong>Tuesday May 5, 2026 (late evening) — About-page litigation-line removal; <code>/about/future-ledger/</code> retirement remains cache-blocked.</strong>
+            The "For the litigation team, see Oregon's current case" line was removed
+            from the About page's Team section. Per the editorial principle that
+            Library-institutional surfaces (About, Reading Room landing, Atlas, Counting
+            House, Map Room, Newsroom methodology) do not name lawyers, link to case
+            pages, or otherwise telegraph the Library as the public face of any one
+            lawsuit, the line was a half-undoing of the earlier founders-only Team
+            revision and shouldn't have been there. Litigation content remains where it
+            belongs at <a href="/court/oregon-current-case/">/court/oregon-current-case/</a>.
+            Separately: the <code>/about/future-ledger/</code> URL still returns
+            HTTP 200 against the deployed site, but an exhaustive repo grep for the
+            page's H1 (<em>Toward a Public Ledger</em>) and for the slug
+            <code>future-ledger</code> across <code>src/</code>, <code>public/</code>,
+            and the Astro config returns no rendering source. The page was deleted at
+            the source level in commit <code>08d8736</code> (EA-001) and a fresh build
+            does not generate the path. The live 200 is a Cloudflare Pages edge cache
+            artifact, not a repo defect — manual cache purge from the Cloudflare
+            dashboard is the remaining step.
+          </li>
+          <li>
+            <strong>Tuesday May 5, 2026 (late evening) — Post-rewrite cleanup.</strong>
+            Four loose ends from today's stack of commits closed: the integrated-rewrite
+            commit (b39d8c0) renumbered the conclusion from 08 to 09 to make room for the
+            new Chapter 8 but the staging dropped the original 08's deletion, leaving both
+            files at HEAD with the same post-prefix-strip slug — old
+            <code>08-conclusion.md</code> now properly removed via <code>git rm</code>.
+            Reading Room landing's Schools of the Republic Table of Contents (the primary
+            reader-facing entry point at <a href="/reading/">/reading/</a>, distinct from
+            the booklet framing page at <a href="/reading/schools-of-the-republic/">/reading/schools-of-the-republic/</a>)
+            updated to include the new Chapter 8 between Comparative Atlas and Conclusion;
+            byline and abstract bumped from "nine-chapter" to "ten-chapter."
+            <code>README.md</code> at the repo root scrubbed of the residual "fifty-state
+            encyclopedia" framing the Library rebrand cleanup missed; meta-language now
+            consistent across public surfaces. The retired Vision-v2 page at
+            <code>/about/future-ledger/</code> still returns HTTP 200 against the deployed
+            site even though the source was deleted in commit <code>08d8736</code> and a
+            fresh build does not generate the path — surfaced as a Cloudflare Pages edge
+            cache concern that may need a manual purge from the dashboard.
+          </li>
+          <li>
+            <strong>Tuesday May 5, 2026 (evening) — Schools of the Republic integrated rewrite + new Chapter 8.</strong>
+            Style Guide v1.0 applied across all nine existing chapters in a single
+            rewrite pass: reading level lowered to Flesch 40&ndash;60 (12th grade through
+            freshman college); modal restraint, first-person-plural ban, plain-over-fancy
+            and positive-over-negative constructions, and the §5 banned-phrase scrub
+            applied throughout. Bogert and <em>Restatement (Third) of Trusts</em> direct
+            citations woven in alongside the existing in-state controlling cases at every
+            doctrinal anchor (loyalty, accounts, anti-commingling, impartiality, surcharge,
+            beneficiary enforcement). New cases the Prompt-A research surfaced were added
+            where topically relevant: <em>Hunt v. Washington Apple</em>;
+            <em>Havens Realty Corp.</em>; <em>County of Skamania v. State</em>;
+            <em>Idaho ex rel. Andrus v. Click</em>; <em>Skeen v. State</em>;
+            <em>Forest Guardians v. Wells</em>;
+            <em>Montanans for the Responsible Use of the School Trust</em>;
+            <em>Papasan v. Allain</em>; <em>Edelman v. Jordan</em>;
+            <em>Ex parte Young</em>. A new Chapter 8 — &ldquo;Enforcement when the Beneficiary
+            Cannot Sue: The Captured-AG Architecture and the Eighth Anchor&rdquo; — was
+            drafted from scratch (~4,600 words), centering the <em>parens patriae</em>
+            reframe, mapping the three substitute-enforcement paths
+            (federal-court Supremacy Clause / state-court taxpayer-or-organizational /
+            federal-AG enabling-act enforcement), naming the bar-economics asymmetry as
+            the load-bearing institutional finding, and framing the Library and the
+            standing constituency as the doctrinal remedy for parens patriae capture
+            rather than a moral supplement. The Conclusion was renumbered to Chapter 9 to
+            make room; the URL <a href="/reading/conclusion/">/reading/conclusion/</a> is
+            preserved. The Reading Room's Schools of the Republic landing ToC was
+            rebuilt to link the actual ten-chapter sequence (replacing the prior placeholder
+            that pointed to Sacred Compact essays). <code>[VERIFY]</code> flags were
+            inserted inline at every research limit the synthesis flagged — Bogert section
+            numbering across editions, the contested anti-commingling Restatement section,
+            the modern federal-AG enforcement record, and several state-court citations
+            needing Shepardize — for the press-pass to close. Historical chapters on
+            Westward Expansion (BOOK-004) and early Section-16 township-ownership
+            jurisprudence (BOOK-005) await the Prompt-B research fan-out and ride a
+            follow-up pass.
+          </li>
+          <li>
+            <strong>Tuesday May 5, 2026 (evening) — Eighth Anchor reframe sweep + About page revision.</strong>
+            Following Margaret Bird's May 5 reframing of the Eighth Anchor concept
+            (the Library itself is the institutional embodiment of the watchful crew,
+            not a future parcel-level ledger), the About page now carries an explicit
+            "The Library as the Eighth Anchor" section, the Team section has been
+            revised to name only the Library's two founders (Dave Sullivan and
+            Margaret Bird) with litigation team members moved to the case pages, and
+            a new "Building the librarian community" section names the institutional
+            pipeline being recruited (Library Board with library-science expertise,
+            State Department of Lands co-librarians, standing constituency of
+            contributors). The Sacred Compact substrate sections V.H and VII have
+            been updated to name the Library explicitly as the institutional locus
+            of the watchful crew. The <code>/about/future-ledger/</code> page (Vision
+            v2 public derivative) has been retired in favor of the Map Room's
+            parcel-level-atlas roadmap, which carries the same content under the
+            corrected framing.
+          </li>
+          <li>
+            <strong>Tuesday May 5, 2026 (evening) — Sacred Compact ToC links restored.</strong>
+            The Reading Room's Sacred Compact "Annotated table of contents" was
+            plain text following an earlier site revision; the eight chapter links
+            are now restored, matching the Schools of the Republic ToC pattern on
+            the same page. All eight Sacred Compact essays were already deployed
+            at predictable URLs; only the navigation from the Reading Room landing
+            was missing.
+          </li>
+          <li>
+            <strong>Tuesday May 5, 2026 (evening) — Editorial style guide promoted.</strong>
+            Style Guide v1.0 — governing the editorial register and conventions of
+            <em>Schools of the Republic</em>, the <em>Sacred Compact</em>, and the
+            per-state dossiers — promoted to the live repo for sub-agent reference.
+            Approved by Dave Sullivan with four resolutions to the v1-draft open
+            questions. Reading-level target set at Flesch 40–60 (12th grade through
+            freshman college), strict modal restraint in chapter prose, strict ban
+            on first-person plural, plain-words-over-fancy and positive-over-negative
+            constructions captured as a new rule. The guide governs the upcoming
+            reading-level rewrite pass across approximately sixty editorial files.
+          </li>
+          <li>
+            <strong>Tuesday May 5, 2026 (evening) — Library rebrand cleanup.</strong>
+            Residual "encyclopedia" framing scrubbed from the homepage banner,
+            Reading Room landing, and footer; the meta-language now consistently
+            reads as "library entries" and "state dossiers." <em>Schools of the
+            Republic</em> remains the named work it always was; what changed is the
+            institutional voice around it. Library identity now uniform across
+            surfaces.
+          </li>
+          <li>
+            <strong>Tuesday May 5, 2026 — Map Room launch.</strong> The Library's
+            third public room shipped: a transparency directory documenting how
+            each state publishes (or fails to publish) the locations of its
+            school trust lands. The landing page at
+            <a href="/maps/">/maps/</a> features a country-level toggle
+            visualization with two views — "Original grants" and "Current
+            holdings" — that makes the two-century drift visible at a glance.
+            Per-state pages are live for the 32 states that received federal
+            school-trust grants (or operate substantial state-created or §5(f)
+            trust regimes); Oregon and Utah have bespoke full-page reports as
+            worked examples, and 30 other states have template-rendered Phase-0
+            stubs that will be fleshed out over the coming weeks. The 18 states
+            that never received a federal Section 16 grant render in gray on the
+            map with no clickthrough. Bundled with the launch: the Eighth Anchor
+            v2 essay was retired from the Reading Room (the Map Room toggle is
+            the realization of the parcel-ledger thesis the essay was advocating
+            for; the Library is doing the thing rather than describing it), and
+            the Newsroom / Updates / Voices secondary-nav items were un-grayed
+            now that all three carry substantive content. Long-term roadmap:
+            parcel-level interactive atlas with original-grant and
+            current-holdings layers per state.
+          </li>
+          <li>
+            <strong>Tuesday May 5, 2026 — Newsroom launch.</strong> The library's
+            Newsroom shipped V1: a public-facing methodology essay at
+            <a href="/newsroom/">/newsroom/</a> covering what the Newsroom watches, its
+            weekly + monthly cadence, sourcing standards, and editorial discipline; and
+            the first weekly entry at <a href="/newsroom/2026-05-04/">/newsroom/2026-05-04/</a>,
+            reporting plaintiffs' May 2 filing of a Motion to Compel Production of
+            Documents in <em>Siuslaw School District 97J et al. v. State of Oregon</em>,
+            24CV38372 (Coos County Circuit Court). The Newsroom now goes weekly under
+            Dave's editorial review, with Phase 0 manual drafting through end of May.
+          </li>
+          <li>
+            <strong>Sunday May 4, 2026 — Megasprint.</strong> Per-state header polish landed on every
+            state page: the era cohort label is now a hover-explainable link to its
+            Reading Room chapter; the FIPS code is wrapped in an <code>&lt;abbr&gt;</code>
+            with the Census Bureau explanation on hover; and a new "Trust acres remaining"
+            row shows current surface acreage with the computed percentage of the original
+            federal grant alongside a confidence badge. The 17 ASTL-content states
+            (AK, AZ, CA, CO, ID, MN, MS, MT, NE, NV, NM, ND, OK, SD, TX, WA, WI) had their
+            ASTL net-new facts re-merged into the encyclopedia entries in Sullivan/Bird's
+            voice with footnote citations; the 2B1 "From the field — ASTL" appended blocks
+            were removed; the most informative ASTL chart per state was migrated to the
+            Counting House per-state card (Permanent State School Fund market-value charts
+            for most; revenue or distribution charts where those tell the structural story
+            better). The four federal-grant states without ASTL pages whose substrate
+            carries pinned residual-acreage figures (HI, OH, OR, WY) had trust-acres
+            frontmatter populated; the other ten federal-grant non-ASTL states (AL, AR,
+            FL, IA, IL, IN, KS, LA, MI, MO) were inspected and intentionally left unset
+            because the v1.3 substrate characterizes their residual acreage as "minimal"
+            without pinning a number — flagged for Pass 2 / Pass 3 verification.
+          </li>
+          <li>
+            <strong>Sunday May 4, 2026 — Utah Hello World.</strong> ASTL's Utah
+            field-reporting facts (Director McConkie, FY 2024 gross revenue, SITFO
+            five-member board, Madsen study explaining Amendment B's 4%-to-5% change,
+            Dingell Exchange) merged into the Utah per-state entry in Sullivan/Bird's
+            voice, replacing the 2B1 "From the field — ASTL" appended block. The SITFO
+            Permanent State School Fund market-value chart was migrated to the Utah
+            Counting House card. Header search input collapsed behind the toggle on
+            desktop, reducing header height after the prior logo bump. The /start/
+            four-signals description now renders the badge names as the actual badge
+            components inline. The Schools of the Republic deliverable was renamed from
+            "encyclopedia" to "booklet" (Part II's per-state content was absorbed into
+            the Atlas; what remains is the Part-I synthesis).
+          </li>
+          <li>
+            <strong>Sunday May 4, 2026.</strong> Polish pass: site logo bumped from 36 to
+            64px (mobile-narrow keeps 40px); Schools of the Republic book cover
+            (ChatGPT-generated, archival paper + PLSS-grid motif) deployed to Reading
+            Room; /start/ badge description rewritten to match the four signals actually
+            in use (Verified / Awaiting State Disclosure / Disclosure unknown / em-dash);
+            /about/ rebranded as joint ASTL + OASTL with signed signature block (Margaret
+            pending review); Schools of the Republic Reading Room card overhauled —
+            Part I/II framing dropped, numbered chapter ToC with live links wired; this
+            Updates page rebuilt as a week-by-week collapsible log.
+          </li>
+          <li>
+            <strong>Sunday May 4, 2026 — earlier.</strong> Sessions 2B1 (18 ASTL-content
+            states restructured with section headers, pull-quotes, and "From the field —
+            ASTL" attributed merge blocks), 2B2 (31 non-ASTL states restructured with
+            eastern-variant header skeleton for the Original 13 + early-antebellum), 2C
+            (/voices/ collection of 7 ASTL editorial pieces; /reading/sources/swift-1911/
+            and /reading/sources/hawk-2018/ source pages; Bibliography card updates;
+            Nebraska LB1072 FAQ folded into the Nebraska entry as appendix). A
+            Cloudflare-Pages 25-MiB-per-file build failure (the Hawk PDF at 88 MiB) was
+            diagnosed and resolved by removing the oversize PDFs from the deploy and
+            linking to Internet Archive (Swift) or noting the L0 location pending a
+            hosted mirror (Hawk).
+          </li>
+        </ul>
+      </details>
+    </article>
+
+    <article class="weekly-update">
+      <h2>Week of April 27, 2026</h2>
+      <p class="weekly-summary">
+        Library MVP launched: three rooms (Reading Room, Atlas, Counting House) live with
+        booklet v1.3, Sacred Compact white paper v5.0, and Vision v2 ("The Eighth
+        Anchor"). Visual identity rebuilt with archival palette and PLSS wordmark. Site
+        renamed from "Schools of the Republic" to "America's School Trust Library" and
+        migrated to schooltrusts.net.
+      </p>
+      <details class="weekly-detail">
+        <summary>Daily detail</summary>
+        <ul>
+          <li>
+            <strong>Friday May 1 – Saturday May 2.</strong> MVP build: Reading Room with
+            9 chapters of Sacred Compact (~70 pages, 207 footnotes), the booklet
+            v1.3 covering all 50 states (~45,000 words), and Vision v2; Atlas with
+            four-lens choropleth; Counting House with 50-row sortable financial table
+            including per-state cards and side-by-side comparison. Three Q8-extensibility
+            seams (HTML data attributes, reserved-route 404s, Cloudflare Access for
+            /private/*) put in place for the Records / Court / Breach &amp; Recovery
+            rooms opening later in 2026.
+          </li>
+          <li>
+            <strong>Saturday May 2 evening.</strong> Visual identity rebuild — archival
+            paper background, Source Serif 4 typography, PLSS-grid wordmark, OG default
+            image, per-room subtle accents. Layout primitives (chapter openers,
+            pull-quotes, dossier cards, archival dividers, confidence badges) added to
+            the design system.
+          </li>
+          <li>
+            <strong>Sunday May 3.</strong> Site renamed from "Schools of the Republic" to
+            "America's School Trust Library" with the tagline "An evidentiary archive of
+            America's school trust lands and funds." (The book stays titled <em>Schools
+            of the Republic</em>.) Canonical domain moved to schooltrusts.net (with .org
+            and .com variants); the older schooltrustlands.net domain auto-renew was
+            disabled. Reading Room restructured into drop-shadow content cards.
+            Bibliography section seeded with Swift 1911, Hawk 2018, Puter &amp; Stevens
+            1908, and Heidelberg 2014. New /updates/ and /newsroom/ surfaces created.
+          </li>
+          <li>
+            <strong>Sunday May 3 — Session 2A.</strong> OASTL substantive content
+            migrated to the library: /court/oregon-current-case/ (resolved a prior 404),
+            /reading/us-or/history/ (Elliott founding, fire history, Zybach analysis),
+            /reading/us-or/research/ (active vs passive management, ESRF political-process
+            timeline 2009–2022). The OASTL Google Site at oastl.org and the ASTL site at
+            schooltrustlands.org were left untouched, symmetric organizational surfaces.
+          </li>
+        </ul>
+      </details>
+    </article>
+
+    <hr class="archival-divider" />
+
+    <p>
+      Going forward, every site change is logged in the current week's entry as it ships.
+      For the substrate's underlying version history, see the
+      <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia"
+        >GitHub repository</a
+      >.
+    </p>
+  </article>
+</BaseLayout>

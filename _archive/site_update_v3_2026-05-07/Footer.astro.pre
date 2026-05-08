@@ -1,0 +1,30 @@
+---
+// Footer credit updated in Session 3 to the joint-project framing
+// (ASTL + OASTL, both 501(c)(3) nonprofits). The rest of the footer
+// is preserved verbatim from Visual Rebuild Handoff v0.
+---
+<footer data-pagefind-ignore class="site-footer">
+  <div class="footer-credit">
+    <p>
+      <strong>America's School Trust Library</strong> is a joint project of Advocates
+      for School Trust Lands (ASTL) and Oregon Advocates for School Trust Lands (OASTL),
+      both 501(c)(3) nonprofits.
+    </p>
+  </div>
+  <div class="footer-meta">
+    <p>
+      Library substrate · Schools of the Republic v1.3 · Sacred Compact v5.0 ·
+      Architecture per Plan_v2.1 · Site rebuilt May 2026.
+    </p>
+    <p>
+      Content licensed CC BY-SA 4.0 except where noted. Citation guidance and corrections:
+      <a href="/about/cite/">/about/cite</a>. Source repository:
+      <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia">GitHub</a>.
+    </p>
+    <p>
+      Active litigation: <em>Advocates for School Trust Lands v. State of Oregon</em>,
+      Coos County Circuit Court 24CV38372, Oregon Court of Appeals (2026).
+      <a href="/court/oregon-current-case/">Case docket</a>.
+    </p>
+  </div>
+</footer>
