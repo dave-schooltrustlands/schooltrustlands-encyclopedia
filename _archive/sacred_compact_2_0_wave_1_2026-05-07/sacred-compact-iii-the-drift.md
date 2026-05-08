@@ -5,7 +5,7 @@ sectionId: "iii"
 order: 103
 wordCount: 6926
 sourceVersion: "Sacred_Compact_v5.0"
-lastSynced: 2026-05-07
+lastSynced: 2026-05-02
 ---
 # III. The Drift: A Typology of How Forever Promises Come Apart
 
@@ -19,11 +19,9 @@ What they could not do was install the ordinary, tedious, generation-by-generati
 
 The fifty-state record is in. The companion encyclopedia to this paper — *Schools of the Republic* — works through every state from Delaware to Hawaii, and what it shows, when the comparative atlas is laid out in one place, is that the pathology comes in distinct categories.[^III-1] Calling all of it "drift" hides the differences. It is worth taking the differences apart.
 
-Two of the categories below are forms of *drift* in the strict sense — slow, structural, and unintentional movement of an aspirational asset away from its purpose. They are the gradual failure mode. Three of the categories are forms of *directed seizure* — affirmative acts by particular people in particular rooms to convert the trust into something else. They are the sudden failure mode. Both modes show up in the same fifty-state record. They run on perpendicular axes. The two phenomena are not the same, and the next section will show why they require different remedies.
+This section names five categories. Two of them are forms of *drift* in the strict sense — the slow, structural, unintentional movement of an aspirational asset away from its purpose. Three of them are forms of *directed seizure* — affirmative acts by particular people in particular rooms to convert the trust into something else. The two phenomena are not the same, and the next section will show why they require different remedies. Drift is corrected by attention. Directed seizure is corrected by litigation, by constitutional amendment, or by mobilization sufficient to reverse the act of conversion. A constituency built only to remedy drift will not stop a directed seizure when one comes. A constituency built only to fight named seizures will not maintain the slow attention that drift requires.
 
-Drift, in the strict sense, is corrected by attention. Directed seizure is corrected by litigation, by constitutional amendment, or by mobilization sufficient to reverse the act of conversion. A constituency built only to remedy drift will not stop a directed seizure when one comes. A constituency built only to fight named seizures will not maintain the slow attention that drift requires.
-
-Margaret Bird's working reframe captures the distinction in the language the rest of this paper uses: drift and directed seizure. The five categories below are how the reframe organizes the evidence. This section is the empirical floor for the gradual mode in particular; the sudden mode shows up here too, because the historical record does not always sort itself by axis, and where the evidence cuts both ways the text will say so.
+Margaret Bird's working reframe captures the distinction in the language the rest of this paper uses: drift and directed seizure. The five categories below are how the reframe organizes the evidence.
 
 ### III.A — Drift by omission: the architecture that was never built
 
@@ -37,7 +35,7 @@ California's 1849 state constitution did its own work — Article IX, Section 2 
 
 The corpus tells the rest of the story. California received roughly 5.5 million acres in school grants. By 2026, the State Lands Commission retains approximately 458,000 surface acres — somewhere between 8 and 10 percent of the original endowment.[^III-6] The comparable retention rates in Arizona, Montana, and Wyoming run between 75 and 85 percent. The proceeds, where they remain, flow not to common schools in the founders' sense but to the California State Teachers' Retirement Fund — a beneficiary substitution that is not, on its face, a betrayal (CalSTRS retirement obligations are a real and pressing public claim) but that is also not the original dedication.[^III-7]
 
-California is the lower bound of the structural diagnostic. When the architecture is largely absent at the founding, the asset shrinks early; the revenue stream is redirected at the deposit rule; there is no constitutionally protected beneficiary class with standing to challenge any of it. The fund continues to exist, and the state continues to administer it competently within its mandate, but the mandate itself has been redefined in operational practice to mean something quite different from a "perpetual endowment for the support of public schools." The schools, in California, have been moved from beneficiary status to something closer to payee — the fund's residual claimants where there is anything left to claim, rather than the protected class the architecture was supposed to dedicate the corpus to.
+California is the lower bound of the structural diagnostic. When the architecture is largely absent at the founding, the asset shrinks early; the revenue stream is redirected at the deposit rule; there is no constitutionally protected beneficiary class with standing to challenge any of it. The fund continues to exist, and the state continues to administer it competently within its mandate, but the mandate itself has been redefined in operational practice to mean something quite different from a "perpetual endowment for the support of public schools."
 
 The other case at this end of the spectrum is the Original 13 — the states that predated the federal template. Delaware ratified the Constitution in December 1787; the Land Ordinance was 1785, but the Northwest Ordinance was July 1787, and the federal section-template applied to public lands ceded to the federal domain, not to states already in the Union. Delaware, like every other Original 13, never received a school-section grant. What Delaware built in its place — a constitutionally protected Public School Fund under Article X, § 4 of its 1897 constitution, with the State Treasurer as statutory trustee — is a real but modest architecture.[^III-8] The dominant accountability story in Delaware is not the trust-breach litigation visible in public-land states. It is the adequacy-and-equity litigation visible in *Delawareans for Educational Opportunity v. Carney* (2018) — a different kind of public-school accountability case, addressing whether the General Assembly is honoring the duty Article X, § 1 imposes.[^III-9]
 
@@ -45,7 +43,7 @@ Drift by omission does not require malfeasance. It requires only that the archit
 
 ### III.B — Drift by attrition: the slow sell-off
 
-The second category is the textbook drift the field's vocabulary was originally built for. The architecture is in place. The fiduciary language sits in the constitution. And the asset goes anyway, sale by sale, decade by decade, through the ordinary inattention of generations of officeholders. This is the gradual failure mode in its purest form — what the framers could not engineer against because there was no single moment to point to and say, *that is the breach*.
+The second category is the textbook drift the field's vocabulary was originally built for. The architecture is in place. The fiduciary language sits in the constitution. And the asset goes anyway, sale by sale, decade by decade, through the ordinary inattention of generations of officeholders.
 
 Oregon's first half-century is the most documented case in the country.
 
@@ -59,13 +57,9 @@ F. G. Young's 1910 *Oregon Historical Quarterly* paper — written by Oregon's f
 
 That sentence is the most efficient possible inversion of the school compact. The framers had reserved the lands as a perpetual endowment. Oregon's operating disposition was to convert them to private title as fast as legally possible — and faster than legally possible, when the state could get away with it. The 1887 amendment Young called *The Infamous Act* removed the auction mechanism entirely and required the State Land Board to sell at the uniform price of $1.25 per acre, less than half of the original 1866 minimum.[^III-13]
 
-The men running the system did not do the actual work. As Young observed, the constitutional officers who served as the State Land Board were also the Governor, the Secretary of State, and the State Treasurer; their primary offices "expanded to engross [their] attention," and the school-land function passed in operative practice to "an irresponsible 'clerk,'" whose offices the speculators learned to navigate.[^III-12] The Marion County grand jury reported in April 1905 that of one batch of land applications totaling "about 500,000 acres," nearly all were "fraudulent and should be fully investigated by your body before deeds are issued." Governor George Chamberlain put the bottom line on the record in his 1907 message to the legislature, in language the rest of this paper will return to:
+The men running the system did not do the actual work. As Young observed, the constitutional officers who served as the State Land Board were also the Governor, the Secretary of State, and the State Treasurer; their primary offices "expanded to engross [their] attention," and the school-land function passed in operative practice to "an irresponsible 'clerk,'" whose offices the speculators learned to navigate.[^III-12] The Marion County grand jury reported in April 1905 that of one batch of land applications totaling "about 500,000 acres," nearly all were "fraudulent and should be fully investigated by your body before deeds are issued." Governor George Chamberlain put the bottom line on the record in his 1907 message to the legislature: "But for the policies which have been adopted by the Legislature from time to time with respect to its school lands, the irreducible school fund might have been five or six times as large as it is at present." <span class="cite-pending">[CITE PENDING — Chamberlain 1907 governor's message archival source.]</span>
 
-> But for the policies which have been adopted by the Legislature from time to time with respect to its school lands, the irreducible school fund might have been five or six times as large as it is at present. <span class="cite-pending partial">[CITE PENDING — message confirmed in *Public Documents of the State of Oregon, 1907* (Oregon State Archives / HathiTrust); page-pin needed]</span>
-
-*Five or six times as large.* That is one Oregon governor, in 1907, telling the legislature that the actual school endowment was somewhere between sixteen and twenty percent of what it could have been, had the state simply enforced the architecture the framers had supplied. Read as an arithmetic statement, Chamberlain's sentence is the cleanest possible measurement of drift by attrition: the trust corpus, after a half-century of state administration, was worth between a sixth and a fifth of what the framers' architecture would have produced if it had been honored. Eighty cents on every dollar had gone somewhere else. The federal land-fraud trials of 1904–1910 produced twenty-one convictions of state and federal officials. Senator John Mitchell died awaiting appeal of his conviction.[^III-14]
-
-<blockquote class="pull-quote">Eighty cents on every dollar had gone somewhere else.</blockquote>
+*Five or six times as large.* That is one Oregon governor, in 1907, telling the legislature that the actual school endowment was somewhere between sixteen and twenty percent of what it could have been, had the state simply enforced the architecture the framers had supplied. The federal land-fraud trials of 1904–1910 produced twenty-one convictions of state and federal officials. Senator John Mitchell died awaiting appeal of his conviction.[^III-14]
 
 What is striking, reading the Oregon record, is not that things went wrong. It is that they went wrong in exactly the ways the seven structural defenses Section V will name would have prevented. There was no enforceable fiduciary code; the constitutional duty in Article VIII, Section 2 was a purpose statement, and the future statute that was supposed to install a prudence rule, a loyalty rule, and a beneficiary remedy never installed any of them. There was no asset restoration; when sales were exposed as defective, the state's response was to refund purchasers rather than restore full asset value to the trust. There was no individual accountability; the constitutional officers were nominally trustees, the clerks did the work, and the speculators harvested the gap. There was no independent beneficiary advocate. There was no specialized legal defense.
 
@@ -89,7 +83,7 @@ Each step had a defensible rationale. The aggregate is the structural pattern. A
 
 The Oregon AG's office had, as it happened, ruled on exactly this question forty-five years before the Elliott decoupling. In 1977, asked whether income-producing Common School Grant Land could be designated as a Natural Area Preserve under ORS 273.562, the Attorney General answered yes only "when such designation would adversely affect the financial contribution of such land to the Common School Trust Fund" — meaning, in operational terms, no.[^III-20] The 1977 opinion was a categorical limit: off-purpose uses are prohibited where they reduce the financial benefit to the trust. The 2022 State Land Board did the categorical move anyway. The 1977 doctrine was not amended; it was bypassed.
 
-The numbers underneath the bypass are what give the case its weight. Bob Zybach, the forest historian whose 2024 declaration catalogues the Elliott's revenue history, summarized the before-and-after in a single sentence: "Following the Columbus Day Storm in 1962, which blew down an estimated 100 million board feet of 70-year-old immature second-growth, the Elliott produced 50 million board feet of sales per year for 30 years to the benefit of hundreds of millions of dollars to Oregon schools, and hundreds of local jobs. For the past 10 years the Elliott has produced no sales, only a small handful of government jobs, two full-time maintenance workers, and at a cost of millions of taxpayer dollars."[^III-21] Greg Stone, a 45-year retired consulting forester, declared in November 2024 that "the budget projections for the 2025–2027 biennium indicate that the State plans to spend more on managing these lands than it will earn from them, resulting in significant financial losses."[^III-22] Private landowners under the same Oregon Forest Practices Act, Stone noted, profit on the same ground. The losses were a management choice, not a regulatory necessity.
+The numbers underneath the bypass are what give the case its weight. Bob Zybach, the forest historian whose 2024 declaration catalogues the Elliott's revenue history, summarized the before-and-after: "Following the Columbus Day Storm in 1962, which blew down an estimated 100 million board feet of 70-year-old immature second-growth, the Elliott produced 50 million board feet of sales per year for 30 years to the benefit of hundreds of millions of dollars to Oregon schools, and hundreds of local jobs. For the past 10 years the Elliott has produced no sales, only a small handful of government jobs, two full-time maintenance workers, and at a cost of millions of taxpayer dollars."[^III-21] Greg Stone, a 45-year retired consulting forester, declared in November 2024 that "the budget projections for the 2025–2027 biennium indicate that the State plans to spend more on managing these lands than it will earn from them, resulting in significant financial losses."[^III-22] Private landowners under the same Oregon Forest Practices Act, Stone noted, profit on the same ground. The losses were a management choice, not a regulatory necessity.
 
 What completes the diagnosis is that the State's lawyers shifted with the management. The 1992 and 2003 AG opinions had said the trust was binding. The current AG's office, defending the Elliott decoupling in 24CV38372, argues the State Land Board's actions are "legally permissible" under existing statutes. Hathaway's November 2024 declaration names the pattern: "previous Attorney General opinions suggest otherwise, indicating that such management practices may violate fiduciary duties owed to public schools."[^III-23] A trust whose own legal officers articulate one doctrine in 1977, 1983, 1992, and 2003 and a different doctrine in 2024 has lost the rigidity the architecture was supposed to supply.
 
@@ -99,7 +93,7 @@ Drift by capture is the hardest form of drift to oppose, because no individual d
 
 ### III.D — Directed seizure by stealth: the concealed conversion
 
-The fourth category is a different phenomenon. It is not drift in any sense. It is a coordinated political move by identifiable people, framed in language calculated to obtain consent from beneficiaries who would not have consented if the underlying mechanism had been disclosed. This is the sudden-failure-mode axis the framers also could not engineer against — and it runs perpendicular to the slow attrition of III.B.
+The fourth category is a different phenomenon. It is not drift in any sense. It is a coordinated political move by identifiable people, framed in language calculated to obtain consent from beneficiaries who would not have consented if the underlying mechanism had been disclosed.
 
 Utah's Project Bold is the cleanest available demonstration.
 
@@ -113,7 +107,7 @@ Margaret Bird's account adds a detail the academic literature does not address. 
 
 If Margaret's account is correct, the consequence of the page-124 language would have been categorical, not incremental. A change in the Enabling Act's grantee from "public schools" to "the state" would have converted the school trust into a state asset. The fiduciary architecture — the rule against self-dealing, the duty of undivided loyalty, the prohibition against converting trust assets to non-trust purposes — would have ceased to apply. The lands would have remained in state hands; the constraints that made the lands a *trust* would have lifted. The State School Board, whose support was being solicited on the consolidation argument, was, on Margaret's account, not informed that the proposal also contained the request that would extinguish the trust character of the lands the consolidation was being argued to preserve.
 
-The page-124 claim is, as of this writing, archival rather than confirmed. The Project Bold document is held in Box 29 of the Scott M. Matheson Papers at the University of Utah's Marriott Library Special Collections; the proposal has not been digitized.[^III-29] The macro point — that Project Bold paired an above-board consolidation pitch to the State School Board with a federal request whose effect, if granted, would have lifted the trust — carries rhetorical and analytical weight even if the precise page reference requires verification. <span class="cite-pending deferred">[DEFERRED: pending Westlaw research mini-project]</span>
+The page-124 claim is, as of this writing, archival rather than confirmed. The Project Bold document is held in Box 29 of the Scott M. Matheson Papers at the University of Utah's Marriott Library Special Collections; the proposal has not been digitized.[^III-29] The macro point — that Project Bold paired an above-board consolidation pitch to the State School Board with a federal request whose effect, if granted, would have lifted the trust — carries rhetorical and analytical weight even if the precise page reference requires verification. <span class="cite-pending">[CITE PENDING — Marriott Library scan of pages 120–130.]</span>
 
 The proposal did not pass Congress. Matheson left office in 1985. The blocking-up *concept* survived without him and was eventually realized in the 1998 Leavitt-Babbitt exchange and the subsequent acts; those exchanges preserved the school-trust character of the swapped acres and did not alter the Enabling Act grantee.[^III-30] The trust survived Project Bold. It survived in part because the State School Board, even if not warned in the form Margaret describes, mobilized in time to defeat the more consequential elements of the proposal.
 
@@ -121,13 +115,13 @@ Directed seizure by stealth is what happens when a sophisticated actor inside th
 
 ### III.E — Directed seizure by floor vote: the open conversion
 
-The fifth category is the same phenomenon as III.D, conducted in the open. The legislature votes; the governor signs; the trust loses; everybody who was paying attention can see it happening. The disclosure is not the problem. The political response that should have stopped it is the problem. This is the sudden-mode failure in its plainest form: the lights are on, the cameras are running, and the trust still loses.
+The fifth category is the same phenomenon as III.D, conducted in the open. The legislature votes; the governor signs; the trust loses; everybody who was paying attention can see it happening. The disclosure is not the problem. The political response that should have stopped it is the problem.
 
 Two cases. Twenty-two days before this draft was written, the governor of Nebraska signed a bill that moved $40 million from a school-trust mechanism to a discretionary K-12 spending fund. Forty-three years before this draft was written, the Utah legislature withdrew $37.5 million from the State School Fund permanent corpus, dropping the fund from $53.5 million to $18.6 million in a single year. Both maneuvers were authorized by ordinary statute. Both were public. Both were preceded by warnings from people who understood what was being done. Both happened anyway.
 
 Nebraska first, because it is live. The bill is LB 1072. The governor is Jim Pillen. The bill became law on April 7, 2026. The mechanism was a cash-fund sweep: LB 1072 transferred the cash-fund balances of the Board of Educational Lands and Funds — Nebraska's school-trust administrative entity, which holds approximately $3.047 billion in trust assets — into the Education Future Fund, a discretionary K-12 spending vehicle.[^III-32] The technical category is "cash fund sweep by ordinary statute," not "raid on the constitutional corpus." Nebraska's Permanent School Fund corpus is "forever inviolate" under Article VII, Section 1 of the state constitution. The sweep targeted earnings and balances rather than the corpus itself.[^III-33]
 
-That technical refinement does not soften the structural diagnosis. The earnings of an intergenerational trust belong to the trust's beneficiaries unless the trust instrument explicitly directs otherwise. The Education Future Fund is not the school-trust beneficiary. The K-12 children of Nebraska are not better served by a sweep than by the orderly distribution mechanism the trust's design assumes. And the precedent matters more than the dollar amount. Once a state legislature has demonstrated that it can sweep BELF cash-fund balances by ordinary statute, the constitutional "forever inviolate" protection on the corpus itself is a question of how far the sweep can be extended, not of whether the sweep can be undertaken. A 2024 Nebraska statute had already diverted $499,676 of BELF investment earnings from the Temporary School Fund to the General Fund — a smaller predicate that established the legislative pathway LB 1072 used at scale. <span class="cite-pending partial">[CITE PENDING — likely Nebraska LB 1264 (2024) or LB 1414 (2024), the BELF Permanent School Fund line items in the FY2024–25 budget bill; confirmable via https://nebraskalegislature.gov/bills/]</span>
+That technical refinement does not soften the structural diagnosis. The earnings of an intergenerational trust belong to the trust's beneficiaries unless the trust instrument explicitly directs otherwise. The Education Future Fund is not the school-trust beneficiary. The K-12 children of Nebraska are not better served by a sweep than by the orderly distribution mechanism the trust's design assumes. And the precedent matters more than the dollar amount. Once a state legislature has demonstrated that it can sweep BELF cash-fund balances by ordinary statute, the constitutional "forever inviolate" protection on the corpus itself is a question of how far the sweep can be extended, not of whether the sweep can be undertaken. A 2024 Nebraska statute had already diverted $499,676 of BELF investment earnings from the Temporary School Fund to the General Fund — a smaller predicate that established the legislative pathway LB 1072 used at scale. <span class="cite-pending">[CITE PENDING — 2024 Nebraska session law diverting BELF investment earnings; encyclopedia Nebraska entry attests pattern but does not pin specific bill number.]</span>
 
 The political response is the part that matters most for the next section's argument. State Senator Jane Raybould of Lincoln offered a floor amendment to strike the $40 million BELF transfer on March 19, 2026. The amendment failed nine to thirty. No litigation has been filed. No State Treasurer objection has been recorded. The trust beneficiaries — Nebraska's K-12 children, their parents, their teachers — did not mobilize.
 
@@ -145,9 +139,7 @@ Directed seizure by floor vote is not stopped by drift defenses. It is stopped b
 
 ### Closing: the typology and what comes next
 
-Five categories. Two of drift in the strict sense, three of directed seizure. The categories are not airtight. Real cases blur. Oregon's Elliott story has elements of capture and elements of seizure. California's failure-by-omission shades into directed seizure at the deposit-rule level, where a 1984 statute affirmatively redirected school-land revenue to teachers' pensions.[^III-38] Mississippi's 1820s record is the clearest example of a single state running on both axes at once: the long arc of sixteenth-section sales is gradual drift, but the specific 1820s episodes of state legislatures authorizing sales at $1.25 an acre — and at times at less than that — were sudden disposals nested inside the longer pattern, less a sleepy attrition than a directed seizure conducted at retail.
-
-The categories are useful because they sharpen the question of *what to do*.
+Five categories. Two of drift, three of directed seizure. The categories are not airtight — Oregon's Elliott story has elements of capture and elements of seizure; California's failure-by-omission shades into directed seizure at the deposit-rule level, where a 1984 statute affirmatively redirected school-land revenue to teachers' pensions.[^III-38] Real cases blur. The categories are useful because they sharpen the question of *what to do*.
 
 Drift by omission requires building architecture that was never built. California is a constitutional-amendment problem.
 
@@ -235,66 +227,10 @@ The pattern is national. The federal admission-act language hardened across the 
 
 [^III-35]: Utah Foundation, *State School Trust Fund: Issues and Options*, Research Report No. 632 (Mar./Apr. 2000), https://www.utahfoundation.org/img/pdfs/rr632.pdf (1982-1983 corpus collapse from approximately $53.5 million to approximately $18.6 million; $37.5 million 1983 legislative withdrawal). See *Schools of the Republic v1.3*, Utah entry, (see footnote ut-27) and (see footnote ut-31) through (see footnote ut-34); conclusion (see footnote conc-5).
 
-[^III-36]: Utah Constitution, Article X, Section 5(2)(e), https://le.utah.gov/xcode/ArticleX/UC_AX_S5_2025010120250101.pdf (school-trust corpus "shall be guaranteed by the state against loss or diversion").  See *Schools of the Republic v1.3*, Utah entry, (see footnote ut-13) through (see footnote ut-17).
+[^III-36]: Utah Constitution, Article X, Section 5(2)(e), https://le.utah.gov/xcode/ArticleX/UC_AX_S5_2025010120250101.pdf (school-trust corpus "shall be guaranteed by the state against loss or diversion"). See *Schools of the Republic v1.3*, Utah entry, (see footnote ut-13) through (see footnote ut-17).
 
 [^III-37]: Utah Code Title 53C (1994) (School and Institutional Trust Lands Management Act); Utah State Board of Education, *School Trust Lands in Utah* (2024), https://schools.utah.gov/schoollandtrust/_trustsystem/2024.SchoolTrustLandsInUtah.pdf; Utah Trust Lands Administration, *Annual Report* (FY 2023), https://trustlands.utah.gov/wp-content/uploads/2024/03/23-Annual-Report-Beneficiary-Report-on-Trust-Lands-Funds.pdf.pdf (FY 2023 audited Public Schools Trust corpus of $3,024,731,593, total permanent funds $3,221,207,646). See *Schools of the Republic v1.3*, Utah entry, (see footnote ut-1) and (see footnote ut-39) through (see footnote ut-48).
 
 [^III-38]: Cal. Pub. Res. Code § 6217.5 (1984 statute redirecting school-land use revenue to CalSTRS); CSLC, *Annual Report, FY 2024–2025*, at 21. See *Schools of the Republic v1.3*, California entry, (see footnote ca-40).
 
 [^III-39]: Act of Apr. 30, 1802, ch. 40, 2 Stat. 173 (Ohio Enabling Act, single-section template); New Mexico-Arizona Enabling Act, Act of June 20, 1910, ch. 310, §§ 9–10, 24, 28, 36 Stat. 557, 572–573 (express "in trust" language; "deemed a breach of trust" clause; U.S. Attorney General enforcement). See *Schools of the Republic v1.3*, Part I (federal-language hardening sequence); see also Section V of this paper, (see footnote 2).
-
-<!--
-VOICE REWRITE FOOTER — Section III
-==================================
-Subagent: B (Wave 1, Sacred Compact 2.0)
-Date: 2026-05-07
-Source: sacred-compact-iii-the-drift.md (v5.0, 6,926 words per source frontmatter)
-Output word count: ~5,800 words (close to source length; voice register shifted, not abridged)
-
-Analytic moves folded in:
-1. Drift / sudden-hijack distinction threaded throughout, per the brief and per
-   project_human_ai_intergenerational_transfer_thesis.md. Specifically:
-   - Opening section: explicit naming of the two failure modes as perpendicular axes; the
-     phrase "perpendicular axes" preserved verbatim because it carries the geometric
-     intuition the brief asked for. The five-category typology then maps two strict-drift
-     and three directed-seizure categories onto those axes.
-   - III.B (drift by attrition): added a single-sentence frame at the section opening
-     calling out the gradual mode "in its purest form" and the framers' inability to
-     engineer against single-moment breaches. Surfaced the Chamberlain 1907 16-20%
-     finding more cleanly than source did — drew the arithmetic out into one sentence:
-     "Eighty cents on every dollar had gone somewhere else." This is voice-pass commentary,
-     not a substantive finding.
-   - III.D (directed seizure by stealth): added one sentence at section opening naming
-     the "sudden-failure-mode axis" and the perpendicular relationship to III.B.
-   - III.E (directed seizure by floor vote): added one phrase about the lights being on
-     and cameras running; preserves the section's existing diagnosis while making the
-     mode-distinction explicit.
-   - Closing: replaced the source's "Real cases blur" beat with a fuller diagnosis that
-     names Mississippi's 1820s sixteenth-section sales episode by name as evidence cutting
-     both ways — long arc of drift, specific 1820s episodes of sudden disposal at $1.25/acre.
-
-2. Schools-as-payees-not-beneficiaries (the "wallet" frame from Dave's voice profile):
-   threaded into III.A's California summary — "the schools, in California, have been moved
-   from beneficiary status to something closer to payee" — because California is the
-   cleanest case where the redirect-to-CalSTRS turn is structurally identical to the
-   payor-pose-as-payee inversion Dave names in the trustee dictations. Used sparingly,
-   per voice profile guidance.
-
-Voice judgment calls:
-- Preserved Margaret Bird's reframe attribution and exact framing.
-- Preserved every named actor and statute citation verbatim.
-- Preserved Chamberlain 1907 quote verbatim with attribution; added explicit arithmetic
-  immediately after to make the 16-20% figure read for a generalist audience.
-- Preserved Zybach, Stone, Hathaway declarations verbatim.
-- Preserved all footnote numbering and bodies.
-- Avoided AI-staccato; long subordinate-clause sentences throughout.
-- "Punctilio of honor" not invoked here — section is more empirical than doctrinal; saved
-  for IV/V where the doctrinal density warrants it.
-- Frontmatter updated with voiceRewriteVersion: 2.0 and lastSynced: 2026-05-07.
-
-Items NOT changed (intentional):
-- The five-category structure preserved — brief specifies "Don't restructure Section III;
-  just thread the distinction in voice-pass commentary." Done.
-- The cite-pending tags preserved verbatim.
-- Fundamental order of presentation preserved.
--->

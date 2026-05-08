@@ -27,13 +27,6 @@ export async function getStaticPaths() {
 
 const props = Astro.props as Props;
 
-// Sacred Compact interludes carry a distinct visual register (cream
-// background, italic display header) marking them apart from the analytic
-// chapters they sit between. Detected by slug pattern; no schema change.
-const isInterlude =
-  props.kind === 'essay' &&
-  props.entry.slug.startsWith('sacred-compact-interlude-');
-
 const dateFmt = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: 'long',
@@ -307,7 +300,6 @@ const layoutProps =
     class:list={[
       'prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline',
       props.kind === 'essay' && '[&>h1:first-child]:hidden',
-      isInterlude && 'sacred-compact-interlude',
     ]}
   >
     <Content />

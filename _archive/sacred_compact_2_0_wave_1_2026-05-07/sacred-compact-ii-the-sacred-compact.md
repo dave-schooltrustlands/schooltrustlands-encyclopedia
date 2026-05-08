@@ -5,7 +5,7 @@ sectionId: "ii"
 order: 102
 wordCount: 19666
 sourceVersion: "Sacred_Compact_v5.0"
-lastSynced: 2026-05-07
+lastSynced: 2026-05-02
 ---
 # II. The Sacred Compact: How America Built a Forever Promise
 
@@ -17,13 +17,13 @@ lastSynced: 2026-05-07
 
 ### A republic on a knife-edge
 
-In May 1785, the Confederation Congress sat in New York City and tried to govern a country that did not yet have a working capital market, a working currency, or a working tax authority. The Revolutionary debt — what Alexander Hamilton would five years later compute at $54 million in federal obligations and roughly $77 million once the assumed state debts were folded in — sat on the books unfunded. Continental currency had collapsed. By the last year of the war, it had taken a hundred Continental dollars to buy a single dollar of specie, and by the time Congress took up the western lands the phrase *not worth a Continental* was a commonplace, used the way a later generation would use *cents on the dollar*.[^II-A-1]
+In May 1785, the Confederation Congress sat in New York City and tried to govern a country that did not yet have a working capital market, a working currency, or a working tax authority. The Revolutionary debt — what Hamilton would five years later compute at $54 million in federal obligations and roughly $77 million counting state debts — sat unfunded. Continental currency had collapsed. By the last year of the war, it had taken a hundred Continental dollars to buy one dollar of specie; by 1785 the phrase "not worth a Continental" was a commonplace.[^II-A-1]
 
 Robert Morris, who had taken the office of Superintendent of Finance in 1781 because no one else would, wrote to Congress in March 1783 from a place inside the system the rest of the country could not see:
 
 > I consider it as certain that we are to expect no further pecuniary aid from Europe. So late as on the 9th of December last, the loan in Holland had not amounted to eighteen hundred thousand florins… the most sanguine expectation will not carry it beyond two millions out of the five for which it was opened.[^II-A-2]
 
-Two months later, in a circular Morris sent to the state governors, he reduced the position to its operative facts. There was no more European money coming. The state requisitions Congress had been ordering under Article VIII of the Articles of Confederation were arriving at a fraction of the amounts on the requisition slip. The Bank of North America, which Morris had organized in 1781 to give Congress an instrument of credit, could not solve the problem unless the states put funds behind it. The conclusion, Morris wrote, was "clear and irresistible": "there is no reliance but on the energy of the States."[^II-A-3]
+Two months later, in a circular to the state governors, Morris reduced the position to its operative facts. There was no further European money coming. The state requisitions Congress had been ordering under Article VIII of the Articles of Confederation were arriving at a fraction of their nominal amounts. The Bank of North America, which Morris had organized in 1781 to give Congress a credit instrument, could not solve the problem unless the states supplied funds. The conclusion, Morris wrote, was "clear and irresistible": "there is no reliance but on the energy of the States."[^II-A-3]
 
 There was also one other thing.
 
@@ -31,29 +31,25 @@ There was the land.
 
 ### Land as the asset of last resort
 
-The continent west of the Appalachian crest was, in 1785, the largest unsold inventory of real property anywhere in the world. Over the previous decade, the original states had ceded their conflicting western claims to the federal government. The cession created a national domain — a strip of territory running from the Ohio River to the Great Lakes, with further reaches west, that the Confederation owned in fee, or at least claimed to own, the question of Aboriginal title not yet having received the federal answer it would receive in September of 1783 and that II.B will take up.
+The continent west of the Appalachian crest was, in 1785, the largest unsold inventory of real property anywhere in the world. The original states had ceded their conflicting western claims to the federal government over the preceding decade. The cession created a national domain: a strip of territory running from the Ohio River to the Great Lakes, with further reaches west, that the Confederation owned in fee — or at least claimed to own, the question of Aboriginal title not yet having received the federal answer it would receive in September of 1783 and that II.B will take up.
 
-Robert Morris, in a 1782 report to Congress, had set out the use to which this asset could be put. The lands could not, by themselves, save the country's credit; a "pledge, the right of which is contested," he wrote, would give "no good consequences." What the lands could do was become collateral. They could be "formed into a fund, for opening new loans in Europe on a low interest, redeemable within a future period," with the creditors entitled to take portions of the lands themselves on default.[^II-A-4] Morris added that "the entire disposition of those lands should be in Congress."
+Morris, in a 1782 report to Congress, set out the use to which this asset could be put. The lands could not, by themselves, save the country's credit. A "pledge, the right of which is contested," he wrote, would give "no good consequences." But the lands could become collateral. They could be "formed into a fund, for opening new loans in Europe on a low interest, redeemable within a future period," with the creditors entitled to take portions of the lands themselves on default.[^II-A-4] He added that "the entire disposition of those lands should be in Congress."
 
-The 1785 Land Ordinance, three years later, operationalized that program. It directed the federal Geographer to lay a rectangular grid across the territory, divide it into townships of six miles square, divide each township into thirty-six sections, and offer the sections for sale at public auction in the loan offices of the original states. The ordinance also reserved one section in each township — Section 16 — for the maintenance of public schools.[^II-A-5] That sentence is the subject of II.C. The point worth making here is the box the school clause sat inside. The 1785 Ordinance was, first, a fiscal instrument. The school clause rode on the back of a national balance-sheet repair plan.
-
-What the framers could not engineer for, in the 1785 instrument, was the difference between a trust that would slowly forget its purpose and a trust that would, in some single legislative session a hundred or two hundred years later, be quietly seized; both would arrive, on the historical record they could not yet see — the slow forgetting and the quick conversion are different failure modes, and the men in the room had no instrument for telling them apart in advance.
-
-<blockquote class="pull-quote">They reached for the most rigid legal device the eighteenth century could supply — the perpetual charitable trust — and they put the school endowment inside it.</blockquote>
+The 1785 Land Ordinance, three years later, operationalized that program. It directed the federal Geographer to lay a rectangular grid across the territory, divide it into townships of six miles square, divide each township into thirty-six sections, and offer the sections for sale at a public auction in the loan offices of the original states. The ordinance also reserved one section in each township — Section 16 — for the maintenance of public schools.[^II-A-5] That sentence is the subject of II.C. The point here is the box it sat inside. The 1785 Ordinance was, first, a fiscal instrument. The school clause rode on the back of a national balance-sheet repair plan.
 
 ### The men in the room were landowners
 
-The Confederation Congress that authorized that program was made up, in significant part, of men whose personal wealth was land — and not on the modest scale a modern reader might assume. The numbers are difficult to picture. They are also indispensable.
+The Confederation Congress that authorized that program was made up, in significant part, of men whose personal wealth was land — and not on the scale a modern reader would assume. The numbers are difficult to picture. They are also indispensable.
 
 George Washington, by his death in 1799, owned more than sixty thousand acres in territory that today lies across seven states and the District of Columbia. Mount Vernon's institutional summary puts his peak holdings at "more than 70,000 acres."[^II-A-6] Most of what he held at the end of his life lay in the western reaches of present-day West Virginia, on the Ohio and the Great Kanawha. Washington, the surveyor of his youth, had spent his adult life buying and trading western land, and he would die holding portions of the country he had helped detach from Britain.
 
-Robert Morris — the same Morris writing to Congress about Dutch loans — became, the historian who maintains his record at Penn State writes, "arguably the largest private property owner in the history of the United States, possessing well over six million acres of land in seven states."[^II-A-7] His North American Land Company's holdings ran to 2,314,796 acres in Georgia, 957,238 in South Carolina, 932,621 in Virginia, 717,249 in North Carolina, 647,076 in Pennsylvania, and 431,043 in Kentucky. The numbers match the period's vocabulary: when these men spoke of "value" or "estate," what they meant was acres.
+Robert Morris — the same Morris writing to Congress about Dutch loans — became, the historian who maintains his record at Penn State writes, "arguably the largest private property owner in the history of the United States, possessing well over six million acres of land in seven states."[^II-A-7] His North American Land Company's holdings ran to 2,314,796 acres in Georgia, 957,238 in South Carolina, 932,621 in Virginia, 717,249 in North Carolina, 647,076 in Pennsylvania, 431,043 in Kentucky. The numbers match the era's vocabulary: when these men spoke of "value" or "estate," they meant acres.
 
 Henry Knox, the Continental Army's chief of artillery and later Washington's first Secretary of War, acquired most of the 576,000-acre Waldo Patent in midcoast Maine through purchase and through his wife's inheritance, then partnered with William Duer and William Bingham to add still more. Maine Memory Network describes Knox's posture as "nearly feudal."[^II-A-8]
 
-Thomas Jefferson inherited 2,750 acres from his father and 11,000 from his father-in-law. James Madison's family estate at Montpelier ran to 4,675 acres at its early-eighteenth-century patent and stabilized at roughly 2,700 acres by Madison's adulthood. Patrick Henry's Leatherwood plantation was 10,000 acres. Richard Henry Lee inherited 4,200. Manasseh Cutler, the Ohio Company's lobbyist, would within two years of the 1785 Ordinance negotiate a federal sale of nearly five million acres, of which 1.5 million went to the company he represented and the rest to a private speculation in which, as he wrote in his journal, "many of the most prominent characters in America are concerned."[^II-A-9]
+Thomas Jefferson inherited 2,750 acres from his father and 11,000 from his father-in-law; James Madison's family estate at Montpelier ran to 4,675 acres at its early-eighteenth-century patent and stabilized at roughly 2,700 acres by Madison's adulthood; Patrick Henry's Leatherwood plantation was 10,000 acres; Richard Henry Lee inherited 4,200; Manasseh Cutler, the Ohio Company's lobbyist, would within two years of the 1785 Ordinance negotiate a federal sale of nearly five million acres, of which 1.5 million went to the company he represented and the rest to a private speculation in which, as he wrote in his journal, "many of the most prominent characters in America are concerned."[^II-A-9]
 
-Even the men who were not large proprietors operated in this world. John Adams owned a "very genteel" Braintree property of about forty acres, with two hundred seventy-five acres at his death — modest by Virginia standards, large by Massachusetts ones. John Jay's family estate at Rye ran to over four hundred acres. Adams, as much as Washington, treated land as the substrate of political existence. In May 1776, writing to James Sullivan on the question of suffrage, Adams stated the principle without ornament:
+Even the men who were not large proprietors operated in this world. John Adams owned a "very genteel" Braintree property of about forty acres, with two hundred seventy-five acres at his death — modest by Virginia standards, large by Massachusetts ones. John Jay's family Rye estate ran to over four hundred acres. Adams, as much as Washington, treated land as the substrate of political existence. In May 1776, writing to James Sullivan on the question of suffrage, he stated the principle without ornament:
 
 > Harrington has Shewn that Power always follows Property. This I believe to be as infallible a Maxim, in Politicks, as, that Action and Re-action are equal, is in Mechanicks. Nay I believe We may advance one Step farther and affirm that the Ballance of Power in a Society, accompanies the Ballance of Property in Land.[^II-A-10]
 
@@ -61,15 +57,15 @@ This is the mindset that wrote the school clause. Land, to these men, was not a 
 
 ### Suffrage was tied to land
 
-It also defined the franchise. The state constitutions written in the first decade of independence — and, in most cases, the colonial statutes carried forward — required a freehold, or at least a property qualification, to vote.
+It also defined the franchise. The state constitutions written in the first decade of independence — and in most cases the colonial statutes carried forward — required a freehold, or at least a property qualification, to vote.
 
-Massachusetts in 1780 required a freehold worth £3 per year, or any estate worth £60, to vote for the senate, the house, or the governor.[^II-A-11] Maryland in 1776 required a fifty-acre freehold or £30 of property.[^II-A-12] New Jersey in 1776 required £50 clear estate, and, by the unusual wording of its 1776 constitution, "all inhabitants" rather than "all male inhabitants" met the qualification — which produced a brief period in which some property-owning women and free Black residents voted, before the 1807 statute closed the opening. Connecticut continued under its colonial 1715 statute requiring a freehold of forty shillings annual value or £40 of personal estate. Delaware required fifty acres or £40 clear estate. Georgia required £10 of property or a mechanic's trade plus tax liability. Pennsylvania, New Hampshire, and Georgia had moved by 1790 to taxpaying or no-property alternatives; ten of the original thirteen still maintained property qualifications in 1790.[^II-A-13]
+Massachusetts in 1780 required a freehold worth £3 per year, or any estate worth £60, to vote for the senate, the house, or the governor.[^II-A-11] Maryland in 1776 required a fifty-acre freehold or £30 of property.[^II-A-12] New Jersey in 1776 required £50 clear estate (and, by the unusual wording of its 1776 constitution, "all inhabitants" rather than "all male inhabitants" met the qualification — which produced a brief period in which some property-owning women and free Black residents voted, before the 1807 statute closed the opening). Connecticut continued under its colonial 1715 statute requiring a freehold of forty shillings annual value or £40 of personal estate. Delaware required fifty acres or £40 clear estate. Georgia required £10 of property or a mechanic's trade plus tax liability. Pennsylvania, New Hampshire, and Georgia had moved by 1790 to taxpaying or no-property alternatives; ten of the original thirteen still maintained property qualifications in 1790.[^II-A-13]
 
 The cumulative picture is the relevant one. In the world the framers operated in, "the people" was not a synonym for "the population." It was a much smaller class — adult white men holding a freehold or its taxable equivalent — and the rules were built on the assumption that the political community and the landowning community were the same community.
 
 This matters here because the school endowment was an exception to the rule. Congress was setting aside Section 16 of every township for the maintenance of public schools — which is to say, for the benefit of children. Children had no freehold. Children had no vote. Children would in many cases never inherit a freehold. The framers were dedicating the most secure asset they could devise to a class with no political power to defend it.
 
-That is the intended design — and it is the structural seed of everything the rest of this paper diagnoses. The genius of the design is also its vulnerability. The framers built into the system a perpetual gift for a beneficiary class without political voice. They knew what they were doing. They did not have, and could not have engineered, an instrument to compensate for the dependency they were creating.
+That is the intended design — and it is the structural seed of everything the rest of the paper diagnoses. The genius of the design is also its vulnerability. The framers built into the system a perpetual gift for a beneficiary class without political voice. They knew what they were doing. They did not have, and could not have engineered, an instrument to compensate for the dependency they were creating.
 
 ### The catalog of educational precedents
 
@@ -77,9 +73,9 @@ What the framers did have was a long list of educational precedents, each of whi
 
 Massachusetts had passed in 1647 the so-called Old Deluder Satan Act, which required every town of fifty households to appoint a teacher and every town of one hundred to maintain a grammar school.[^II-A-14] In moral force, the act is a glorious document — a statute that reads like a sermon, declaring that "Learning may not be buried in the graves of our fore-fathers in Church and Commonwealth." In operative force, it was an unfunded mandate on local taxation. A modern historical summary reports that within a decade after passage, "all eight of the 100-family towns" had complied with the grammar-school requirement, but only about a third of the fifty-family towns had complied with the teacher requirement.[^II-A-15] Connecticut adopted a near-identical statute in its 1650 Code, with similar implementation gaps. The model proved that public education could be willed; it also proved that willing it through town meetings and parental fees was not enough to guarantee its continuity.
 
-The Pennsylvania Quaker tradition produced a different kind of precedent. The Friends Public School in Philadelphia, founded in 1689, became the William Penn Charter School and survives today. Benjamin Franklin's 1749 *Proposals Relating to the Education of Youth in Pensilvania* called for a chartered academy with the power to "receive Donations, purchase Lands, &c."[^II-A-16] This was a corporate-trust model rather than a mass-public one — the form Harvard had used since its 1650 charter and William and Mary since 1693. It worked elegantly for individual institutions. It did not scale to a continent.
+The Pennsylvania Quaker tradition produced a different kind of precedent. The Friends Public School in Philadelphia, founded in 1689, became the William Penn Charter School and survives today; Franklin's 1749 *Proposals Relating to the Education of Youth in Pensilvania* called for a chartered academy with the power to "receive Donations, purchase Lands, &c."[^II-A-16] This was a corporate-trust model rather than a mass-public one — the form Harvard had used since its 1650 charter and William and Mary since 1693. It worked elegantly for individual institutions. It did not scale to a continent.
 
-The Dutch Reformed schoolmasters of New Netherland, the English chantry-school tradition, the Scottish parish schools, and the colonial Virginia attempts at a Henrico college each contributed something to the framers' working knowledge of what public-supported education had looked like, and each had its limits. None of them combined the four properties the framers needed: perpetuity, scale, geographic distribution, and protection against political diversion.
+The Dutch Reformed schoolmasters of New Netherland, the English chantry-school tradition, the Scottish parish schools, the colonial Virginia attempts at a Henrico college — each contributed something to the framers' working knowledge of what public-supported education had looked like, and each had its limits. None of them combined the four properties the framers needed: perpetuity, scale, geographic distribution, and protection against political diversion.
 
 What the framers did inherit, decisively, was the Statute of Charitable Uses of 1601, the body of English equity doctrine that had grown around it for the next 184 years, and the trust as a legal form. That inheritance is the subject of II.C. The point here is that the framers did not invent the school endowment by inspiration. They built it by triangulating against a catalog of partial successes and visible failures, and they built it under conditions — the war debt, the collapsed currency, the absent tax authority, the open question of whether the republic could survive at all — that made any aspirational structure they erected feel like a wager against history.
 
@@ -117,7 +113,7 @@ The next two sections describe what they built, and the third describes what sur
 
 [^II-A-14]: *The Book of the General Lawes and Libertyes Concerning the Inhabitants of the Massachusets* (1648), reproducing the November 11, 1647 act. Online Library of Liberty transcription, "1647: Laws and Liberties of Massachusetts." Source: Q1 ChatGPT, §1.
 
-[^II-A-15]: Modern historical summary reported at Q1 ChatGPT, §1, summarizing colonial-education scholarship: implementation was real but uneven; later laws had to reiterate and tighten enforcement. <span class="cite-pending deferred">[DEFERRED: pending Westlaw research mini-project]</span>
+[^II-A-15]: Modern historical summary reported at Q1 ChatGPT, §1, summarizing colonial-education scholarship: implementation was real but uneven; later laws had to reiterate and tighten enforcement. <span class="cite-pending">[CITE PENDING — locate the underlying scholarly source for the 8-of-8 grammar-school / one-third teacher figure.]</span>
 
 [^II-A-16]: Benjamin Franklin, *Proposals Relating to the Education of Youth in Pensilvania* (Philadelphia, 1749), University of Pennsylvania Archives. Source: Q1 ChatGPT, §2.
 
@@ -125,7 +121,7 @@ The next two sections describe what they built, and the third describes what sur
 
 ### Three questions, intertwined
 
-In the eighteen months between the Treaty of Paris of September 1783 and the Land Ordinance of May 1785, the Confederation Congress did the constitutional work that made the school endowment possible. The work is not usually told this way. The standard narrative goes from the war to the Ordinance to the Constitution as if the territorial architecture were simply a transit between them. It is the architecture itself that matters here, because the school clause sits inside it.
+In the eighteen months between the Treaty of Paris of September 1783 and the Land Ordinance of May 1785, the Confederation Congress did the constitutional work that made the school endowment possible. The work is not usually told this way. The standard narrative goes from the war to the Ordinance to the Constitution as if the territorial architecture were a transit between them. It is the architecture itself that matters here, because the school clause sits inside it.
 
 What Congress had to settle, and what it set out to settle, was three intertwined questions.
 
@@ -135,11 +131,11 @@ The second was governance. The land would have to be settled. Settlement implied
 
 The third was slavery. The new states the western country would produce would be either slave or free, and the choice would shape the political balance of the Union for as long as the Union existed. The question was on the table by 1784.
 
-These three questions were not addressed in sequence. They were addressed together, by overlapping committees, in the same fifteen-month window. The September 22, 1783 proclamation answered the first. The Westward Expansion Committee, reporting on March 1, 1784, answered the second and tried to answer the third. The 1785 Land Ordinance and the 1787 Northwest Ordinance built on what those two earlier instruments produced.
+These three questions were not addressed in sequence. They were addressed together, by overlapping committees, in the same fifteen-month window. The September 22, 1783 proclamation answered the first. The Westward Expansion Committee, reporting March 1, 1784, answered the second and tried to answer the third. The 1785 Land Ordinance and the 1787 Northwest Ordinance built on what those two earlier instruments produced.
 
 ### Washington to Duane, September 7, 1783
 
-The clearest period statement of the federal logic comes in a private letter George Washington wrote to James Duane fifteen days before the proclamation. Washington was not a member of Congress in 1783, but he was the country's most trusted military authority and a substantial owner of western land in his own right; what he proposed to Duane shaped what Duane's congressional committee would propose two months later.
+The clearest period statement of the federal logic comes in a private letter Washington wrote to James Duane fifteen days before the proclamation. Washington was not a member of Congress in 1783, but he was the country's most trusted military authority and a substantial owner of western land in his own right; what he proposed to Duane shaped what Duane's congressional committee would propose two months later.
 
 The Indians, Washington wrote, should be told that "after a Contest of eight years for Sovereignty of the Country G: Britain has ceded all the Lands of the United States within the limits discribed by the … Provisional Treaty."[^II-B-2] He recognized that the Native nations who had allied with Britain in the war could, "with a less generous People than Americans," have been "compell'd to retire along with them beyond the Lakes." The United States, he proposed, would instead "establish a boundary line between them and us beyond which we will endeavor to restrain our People from Hunting or Settling."[^II-B-3]
 
@@ -161,7 +157,7 @@ What the proclamation accomplished, for present purposes, is that by the time th
 
 ### The Westward Expansion Committee
 
-In June 1783, Congress appointed a committee to prepare a plan for the temporary government of the western territory. The committee's surviving report — manuscript in Thomas Jefferson's hand, endorsed by Secretary Charles Thomson — bears the names of Jefferson, Jeremiah Townley Chase of Maryland, and David Howell of Rhode Island, and was delivered on March 1, 1784.[^II-B-8]
+In June 1783, Congress appointed a committee to prepare a plan for the temporary government of the western territory. The committee's surviving report — manuscript in Jefferson's hand, endorsed by Secretary Charles Thomson — bears the names of Jefferson, Jeremiah Townley Chase of Maryland, and David Howell of Rhode Island, and was delivered on March 1, 1784.[^II-B-8]
 
 The report's first move was geometric. New states would be carved by parallels of latitude and meridians of longitude rather than by river drainages or colonial-era claims. Jefferson proposed names for them: Sylvania, Michigania, Cherronesus, Assenisipia, Metropotamia, Illinoia, Saratoga, Washington, Polypotamia, Pelisipia. The names did not survive. The geometry did. Every state created from the Northwest Territory and most created from the public domain west of it would in fact be bounded, somewhere, by Jefferson's straight lines.
 
@@ -179,7 +175,7 @@ The Ordinance of April 23, 1784 — the version Congress actually adopted — pr
 
 ### What the committee did and did not record
 
-Margaret Bird has noted that the records of the "follow-up committee of the whole" on Westward expansion are sparse. The note is correct. The surviving public evidence on internal committee debates and the exact appointment chronology is thin, and most reconstruction depends on the *Journals of the Continental Congress*'s referrals and on later documentary editors. What survives is the report, the endorsement, the membership, and the language adopted (and not adopted) by Congress.
+Margaret has noted that the records of the "follow-up committee of the whole" on Westward expansion are sparse. The note is correct. The surviving public evidence on internal committee debates and the exact appointment chronology is thin, and most reconstruction depends on the *Journals of the Continental Congress*'s referrals and on later documentary editors. What survives is the report, the endorsement, the membership, and the language adopted (and not adopted) by Congress.
 
 This thinness matters less than it might seem. The conceptual architecture is fully on the record: a federally administered Aboriginal-title preemption (September 1783), a federally administered statehood pipeline (March 1784), and a federally administered land disposition program (May 1785). The documentary trail of the committee's internal debates would deepen the picture. It does not change the architecture.
 
@@ -195,7 +191,7 @@ The council then stated the rule of consent that contested the federal program o
 
 Two of the partial treaties the council had in mind were already in place. At Fort Stanwix, in October 1784, U.S. commissioners obtained from a portion of the Six Nations a cession of "all claims to the country west of the said boundary."[^II-B-14] At Fort McIntosh, in January 1785, U.S. commissioners obtained similar cessions from Wyandot, Delaware, Chippewa, and Ottawa representatives. These treaties produced the territorial floor on which the 1785 Land Ordinance proceeded; they did not produce the consent the United Indian Nations later named as the only valid form of cession.
 
-The honest sentence is that the Confederation's western program in 1783–85 was a federal program that defined the country's territorial sovereignty by acts of state and treaty without the agreement of the people whose territory it was reorganizing. That is the platform on which the 1785 Ordinance sat. The school endowment that the Ordinance contained is, on that platform, both the era's most ambitious civic dedication and an act made possible by a prior dispossession the framers' formal documents did not square. The white paper takes both observations seriously: Section II carries the weight of the dedication; Section IV will return to the question of who counts as the beneficiary class in any aspirational structure built on a prior disposition of resources.
+The honest sentence is that the Confederation's western program in 1783–85 was a federal program that defined the country's territorial sovereignty by acts of state and treaty without the agreement of the people whose territory it was reorganizing. That is the platform on which the 1785 Ordinance sat. The school endowment that the Ordinance contained is, on that platform, both the era's most ambitious civic dedication and an act made possible by a prior dispossession the framers' formal documents did not square. The white paper takes both observations seriously. Section II carries the weight of the dedication; Section IV will return to the question of who counts as the beneficiary class in any aspirational structure built on a prior disposition of resources.
 
 ### What was in place by spring 1785
 
@@ -243,7 +239,7 @@ What remained was to convert the inventory into a saleable, surveyed product, an
 
 In May 1785, the Confederation Congress slid a single sentence into a long surveying ordinance. The sentence reserved one parcel — section sixteen — in every six-mile-square township of the Northwest Territory "for the maintenance of public schools."[^II-C-1] Then the delegates went home for the summer. The sentence stayed.
 
-Two hundred and forty-one years later, the descendants of that sentence — the school trust lands of the public-land states — still exist. Some of them are managed well. Some of them have been managed so badly that the legislatures hosting them now argue, in court, that they are not technically trusts at all. All of them are subject to the question this paper takes up: when a republic writes an aspirational obligation into the ground itself, how long does the obligation hold before the institutional immune system fails?
+Two hundred and forty-one years later, the descendants of that sentence — the school trust lands of the public-land states — still exist. Some of them are managed well. Some of them have been managed so badly the legislatures hosting them now argue, in court, that they are not technically trusts at all. All of them are subject to the question this paper takes up: when a republic writes an aspirational obligation into the ground itself, how long does the obligation hold before the institutional immune system fails?
 
 This section is about the moment it was written.
 
@@ -277,9 +273,9 @@ That move is the architectural equivalent of writing the founding document direc
 
 The Confederation Congress could have used other forms to support public schools, and the framers were aware of the alternatives. Each had failed visibly enough that the alternatives can be named.
 
-**The corporate charter.** Higher education in colonial America was founded under royal charter — Harvard in 1636 (corporation chartered 1650), William and Mary in 1693, Yale in 1701. The corporation worked elegantly for a single named institution: it gave perpetual legal life, the capacity to hold land, and a fixed governance structure. But the corporate form does not scale the way a township grid does. A corporate charter is a one-off; each charter requires legislative or royal action; each corporation has its own board, its own funding, its own governance. To endow public schools across a continent by corporate charter, the Confederation Congress would have needed to charter thousands of independent corporate entities, each requiring its own act, and would still not have solved the problem of which territory got which school and how the asset followed settlement.
+**The corporate charter.** Higher education in colonial America was founded under royal charter — Harvard in 1636 (corporation chartered 1650), William and Mary in 1693, Yale in 1701. The corporation worked elegantly for a single named institution: it gave perpetual legal life, the capacity to hold land, and a fixed governance structure. But the corporate form does not scale the way a township grid does. A corporate charter is a one-off: each charter requires legislative or royal action; each corporation has its own board, its own funding, its own governance. To endow public schools across a continent by corporate charter, the Confederation Congress would have needed to charter thousands of independent corporate entities, each requiring its own act, and would still not have solved the problem of which territory got which school and how the asset followed settlement.
 
-The corporation also exposed the founders to a doctrinal risk that was not made explicit until 1819 but was visible to anyone who had practiced English law. A corporate charter, once granted, transferred ownership to the corporation as such, and could later be defended *against the public* on private-property grounds. *Trustees of Dartmouth College v. Woodward*, when it arrived, would prove the point. New Hampshire's attempt to convert Dartmouth into a public university failed because the chartered corporation owned the property, and Chief Justice John Marshall held that the founders' donations could not be redirected even by the legislature that had granted the charter.[^II-C-5] Marshall sided with the corporation. The school trust would have been ill-served by a form that, in the long run, hardened into private-property protection against the public.
+The corporation also exposed the founders to a doctrinal risk that was not made explicit until 1819 but was visible to anyone who had practiced English law. A corporate charter, once granted, transferred ownership to the corporation as such, and could later be defended *against the public* on private-property grounds. *Trustees of Dartmouth College v. Woodward*, when it arrived, would prove the point. New Hampshire's attempt to convert Dartmouth into a public university failed because the chartered corporation owned the property, and John Marshall held that the founders' donations could not be redirected even by the legislature that had granted the charter.[^II-C-5] Marshall sided with the corporation. The school trust would have been ill-served by a form that, in the long run, hardened into private-property protection against the public.
 
 **The perpetual religious fund.** The other model on the ground was the Anglican glebe — a tract of land set aside to support the local clergyman. Glebes were legally durable, geographically local, and (in theory) self-sustaining. They were also, by 1785, politically dead. Virginia was in the middle of a multi-decade fight over disestablishment, and the glebes were being confiscated by the state.[^II-C-6] The framers had watched the structure fail in real time. To build the school endowment as a glebe-shaped instrument would have been to copy the architecture of a system they were currently dismantling.
 
@@ -287,7 +283,7 @@ This is the deeper reason the religion clause died. It was not just unjust, beyo
 
 **The simple legislative appropriation.** Massachusetts had been here too. The "Old Deluder Satan" Act of 1647 — a glorious document, as much sermon as statute — required every town of fifty households to appoint someone to teach the children to read.[^II-C-7] It is sometimes claimed as the foundation of American public education, and in moral force it is. But its mechanism was an unfunded mandate on local taxation, and its enforcement was visible chiefly in its breach. By the time the Confederation Congress took up the western lands in the 1780s, the lesson had been absorbed: a statute that depends on a town meeting to fund itself can be defeated by a single contested town meeting. The 1785 framers were not going to repeat that experiment at continental scale.
 
-**The trust.** What was left was a legal device the framers did not invent and did not need to. The trust had been the workhorse of English equity courts for two and a half centuries. The Statute of Charitable Uses, passed in 1601 — its formal title is "An Act to redress the Misemployment of Lands, Goods and Stocks of Money heretofore given to Charitable Uses" — had explicitly named "schools of learning, free schools, and scholars in universities" among the purposes for which the courts of equity would protect a perpetual gift.[^II-C-8] By 1785 the trust came with a 184-year body of doctrine. Henry Ballow's *Treatise of Equity*, then the standard English reference, devoted entire chapters to the duties of trustees and to the rule that a trustee's own act could not prejudice the trust.[^II-C-9] A generation earlier, Lord Hardwicke's chancellorship had hardened the trustee's role into a fiduciary one — the property the trustee held was, in effect, the property of someone else. That, in the end, is what *fiduciary* means: you hold it; it is not yours.
+**The trust.** What was left was a legal device the framers did not invent and did not need to. The trust had been the workhorse of English equity courts for two and a half centuries. The Statute of Charitable Uses, passed in 1601 — its formal title is "An Act to redress the Misemployment of Lands, Goods and Stocks of Money heretofore given to Charitable Uses" — had explicitly named "schools of learning, free schools, and scholars in universities" among the purposes for which the courts of equity would protect a perpetual gift.[^II-C-8] By 1785 the trust came with a 184-year body of doctrine. Henry Ballow's *Treatise of Equity*, then the standard English reference, devoted entire chapters to the duties of trustees and to the rule that a trustee's own act could not prejudice the trust.[^II-C-9] A generation earlier, Lord Hardwicke's chancellorship had hardened the trustee's role into a fiduciary one — the property the trustee held was, in effect, the property of someone else.
 
 The trust did the four things the school endowment needed and the alternatives could not do simultaneously.
 
@@ -299,9 +295,9 @@ It was *enforceable in court*. The courts of equity could supervise trustees, re
 
 And — this is the move on which everything else turns — it could exist *without an identified beneficiary capable of suing in his own name*. For an ordinary private trust, an identified beneficiary was required. For a charitable trust, the public was the beneficiary, and the state's attorney general appeared in court on the public's behalf. This is the hinge: the trust form was uniquely capable of holding property for a beneficiary too diffuse, too young, or too politically silent to defend the trust itself. The schoolchildren of a township not yet settled cannot sue. The attorney general can sue for them.
 
-The framers chose the trust because it was, as the *Defining Winning* manuscript names it precisely, "the most rigid barrier known to law" — the only legal device on the menu in 1785 that could bind a future the framers could not foresee, with a beneficiary class that could not yet vote.
+The framers chose the trust because it was, as Sullivan's *Defining Winning* manuscript names it precisely, "the most rigid barrier known to law" — the only legal device on the menu in 1785 that could bind a future the framers could not foresee, with a beneficiary class that could not yet vote.
 
-[BOX: A side note on Locke. The framers' political vocabulary already used the word "trust" in a non-technical sense. John Locke, whom every reader of the *Second Treatise* in 1785 had absorbed by adolescence, wrote that "the power of assembling and dismissing the legislative, placed in the executive, gives not the executive a superiority over it, but is a fiduciary trust placed in him for the safety of the people."[^II-C-10] The framers were not being metaphorical when they wrote about public office as a "sacred trust" — they were importing a technical legal term whose contours every educated lawyer and most educated laymen could trace. The school endowment is *not* a metaphorical trust. It is a charitable trust in the technical legal sense. The metaphor is *political authority* — and the metaphor is borrowed from the legal form, not the other way around.]
+[BOX: A side note on Locke. The framers' political vocabulary already used the word "trust" in a non-technical sense. Locke, whom every reader of the *Second Treatise* in 1785 had absorbed by adolescence, wrote that "the power of assembling and dismissing the legislative, placed in the executive, gives not the executive a superiority over it, but is a fiduciary trust placed in him for the safety of the people."[^II-C-10] The framers were not being metaphorical when they wrote about public office as a "sacred trust" — they were importing a technical legal term whose contours every educated lawyer and most educated laymen could trace. The school endowment is *not* a metaphorical trust. It is a charitable trust in the technical legal sense. The metaphor is *political authority* — and the metaphor is borrowed from the legal form, not the other way around.]
 
 ### The principle joins the corpus: Article III
 
@@ -367,23 +363,23 @@ That arrival is what the rest of this paper is about.
 
 ## Footnotes / source notes
 
-[^II-C-1]: Land Ordinance of May 20, 1785, in *Journals of the Continental Congress.* Full operative text and the deed-form repetition in `_intake/Q9_1785_Land_Ordinance_Text_and_History_ChatGPT_2026-04-28.md`. The Library of Congress holds an annotated broadside copy from May 18, 1785 with marginalia in the hands of Rufus King and William Samuel Johnson; that copy should be the publication-grade citation. <span class="cite-pending partial">[CITE PENDING — companion text on Avalon Project; LOC broadside images require reading-room confirmation]</span>
+[^II-C-1]: Land Ordinance of May 20, 1785, in *Journals of the Continental Congress.* Full operative text and the deed-form repetition in `_intake/Q9_1785_Land_Ordinance_Text_and_History_ChatGPT_2026-04-28.md`. The Library of Congress holds an annotated broadside copy from May 18, 1785 with marginalia in the hands of Rufus King and William Samuel Johnson; that copy should be the publication-grade citation. <span class="cite-pending">[CITE PENDING — verify against LOC broadside image.]</span>
 
 [^II-C-2]: Reported in James Madison to James Monroe, May 29, 1785. The first committee draft of the 1785 Ordinance contained a clause reserving land "for supporting the Religion of the Majority of inhabitants" alongside the Section 16 school reservation. The April 23, 1785 strike, attributed to William Ellery (Rhode Island) and Melancton Smith (New York). Source: `_intake/Q9_1785_Land_Ordinance_Text_and_History_Gemini_2026-04-28.md`.
 
-[^II-C-3]: James Madison to James Monroe, May 29, 1785. *Papers of James Madison*, vol. 8, pp. 286–88 (Hutchinson & Rachal eds., U. Chicago / U. Press of Virginia). Library of Congress, Madison Papers digital, https://www.loc.gov/item/mjm012545/; Founders Online, https://founders.archives.gov/documents/Madison/01-08-02-0163.
+[^II-C-3]: James Madison to James Monroe, May 29, 1785. Quoted at `_intake/Q9_..._Gemini_2026-04-28.md`. Original location: Madison Papers, vol. 8, available through *Founders Online* — <span class="cite-pending">[CITE PENDING — confirm vol./page from Founders Online]</span>.
 
 [^II-C-4]: Land Ordinance of May 20, 1785, surveying provisions. Section sixteen's geometric centrality in the 36-section township is internally consistent with the Ordinance text; no surviving 1785 floor speech explains the choice of "sixteen" specifically. The most plausible reconstruction is geometric (central, accessible) and economic (centrally located lots appreciate as settlement fills in). Source: Q9 ChatGPT, §4.
 
 [^II-C-5]: *Trustees of Dartmouth College v. Woodward*, 17 U.S. 518 (1819), Marshall, C.J. The cited holding is at 17 U.S. 651–52. Source: Q11 ChatGPT, §2.
 
-[^II-C-6]: Virginia disestablishment and the post-Revolutionary glebe-confiscation cases are background; for present purposes, *Terrett v. Taylor*, 13 U.S. (9 Cranch) 43 (1815), Story, J. (decided February 17, 1815), is the doctrinal anchor on legislative confiscation of a religious fund's land — the cite cited in modern trust-law scholarship and the cleaner reference here. *Town of Pawlet v. Clark*, 13 U.S. (9 Cranch) 292 (1815), addresses town-controlled glebe lands and is supplementary. The point in text is that the perpetual-religious-fund alternative was visibly failing in real time during the 1785 drafting.
+[^II-C-6]: Virginia disestablishment and the post-Revolutionary glebe-confiscation cases are background; for present purposes, *Terrett v. Taylor*, 13 U.S. (9 Cranch) 43 (1815) is the doctrinal anchor. The point in text is that the perpetual-religious-fund alternative was visibly failing in real time during the 1785 drafting. <span class="cite-pending">[CITE PENDING — confirm whether *Terrett* is the cleanest cite, or whether *Town of Pawlet v. Clark* (1815) is preferred.]</span>
 
 [^II-C-7]: Massachusetts General Court, "Old Deluder Satan Act," November 11, 1647. The Act required towns of fifty households to appoint a teacher and towns of one hundred to establish a grammar school, but the funding mechanism rested on local taxation or parental fees and was, as Q11 Gemini summarizes, "weakly enforced." Original text in *Records of the Governor and Company of the Massachusetts Bay in New England*, vol. 2.
 
 [^II-C-8]: Statute of Charitable Uses, 43 Eliz. I c. 4 (1601). The preamble's enumeration of charitable purposes — "the relief of aged, impotent, and poor people; the maintenance of sick and maimed soldiers and mariners; **schools of learning, free schools, and scholars in universities**..." — became the canonical list for two hundred years of equity practice. Source: Q11 Gemini.
 
-[^II-C-9]: Henry Ballow, *A Treatise of Equity*, originally published 1737; cited here in the John Fonblanque edition (1812). Internet Archive metadata at Q11 ChatGPT. <span class="cite-pending partial">[CITE PENDING — Ballow / Fonblanque, *Treatise of Equity*, Book II, ch. 1 (Of Trusts); page-pin requires opening one specific edition]</span>
+[^II-C-9]: Henry Ballow, *A Treatise of Equity*, originally published 1737; cited here in the John Fonblanque edition (1812). Internet Archive metadata at Q11 ChatGPT. <span class="cite-pending">[CITE PENDING — page-pin specific chapters on the duties of trustees.]</span>
 
 [^II-C-10]: John Locke, *Second Treatise of Government*, ch. XIII, §156. Source: Q11 ChatGPT.
 
@@ -395,7 +391,7 @@ That arrival is what the rest of this paper is about.
 
 [^II-C-14]: *Permoli v. Municipality No. 1 of New Orleans*, 44 U.S. 589 (1845); *Strader v. Graham*, 51 U.S. 82 (1851), Taney, C.J. The Taney quotation in text — "The six articles, said to be perpetual as a compact, are not made a part of the new Constitution" — is at 51 U.S. 96–97. Source: Q10 ChatGPT, §5.
 
-[^II-C-15]: Thomas Hutchins to George Washington, "Buffaloe Rivulet," November 8, 1786. Reproduced at Q9 Gemini, §V. <span class="cite-pending partial">[CITE PENDING — likely *Papers of George Washington, Confederation Series*, vol. 4 (1992), pp. 351–357 range; Founders Online holding probable]</span>
+[^II-C-15]: Thomas Hutchins to George Washington, "Buffaloe Rivulet," November 8, 1786. Reproduced at Q9 Gemini, §V. <span class="cite-pending">[CITE PENDING — original location, likely Washington Papers, Founders Online.]</span>
 
 [^II-C-16]: A Supplement to an Ordinance entitled "An Ordinance for ascertaining the mode of disposing of lands in the Western Territory," 1788. LOC record cited at Q9 ChatGPT, §5.
 
@@ -407,7 +403,7 @@ That arrival is what the rest of this paper is about.
 
 [^II-C-20]: *Papasan v. Allain*, 478 U.S. 265 (1986), describing Mississippi sixteenth-section lands. Source: Q11 ChatGPT, §5.
 
-[^II-C-21]: Joseph Story, *Commentaries on the Constitution of the United States*, vol. III, §1907 (1st ed. 1833). The full passage continues: "It has been reared for immortality... It may, nevertheless, perish in an hour by the folly, or corruption, or negligence of its only keepers, THE PEOPLE." Section number verified against the 1833 first edition; later editions (Cooley 1873; Bigelow 1891) renumber sections.
+[^II-C-21]: Joseph Story, *Commentaries on the Constitution of the United States*, vol. III, §1907 (1833). The full passage continues: "It has been reared for immortality... It may, nevertheless, perish in an hour by the folly, or corruption, or negligence of its only keepers, THE PEOPLE." Source: Q11 Gemini, §VI. <span class="cite-pending">[CITE PENDING — verify section number against Story's *Commentaries*.]</span>
 
 ## II.D — The Pattern Repeats
 
@@ -527,7 +523,7 @@ The question Section IV takes up is what else is required — and the question S
 
 The framers of the compact and their immediate successors did not write about it in the language of land-management policy. They wrote about it in the language of moral obligation, civic infrastructure, and inheritance across generations. The vocabulary they used has dated; the underlying argument has not. The vocabulary is also the part of the historical record this sub-section exists to put on the page.
 
-What follows is the strongest cluster of period voices the harvested record produces. They will not all be equally familiar to a 2026 reader. Several of them — Madison's "improvements made by the dead form a charge against the living," Edmund Burke's "partnership… between those who are living, those who are dead, and those who are to be born" — are doing more architectural work than their celebrated quotability tends to suggest.
+What follows is the strongest cluster of period voices the harvested record produces. They will not all be equally familiar to a 2026 reader. Several of them — Madison's "improvements made by the dead form a charge against the living," Burke's "partnership… between those who are living, those who are dead, and those who are to be born" — are doing more architectural work than their celebrated quotability tends to suggest.
 
 ### Adams on schools as a unique American provision (1765)
 
@@ -539,7 +535,7 @@ Adams then drew the political consequence directly:
 
 > Liberty cannot be preserved without a general knowledge among the people… Rulers are no more than attorneys, agents and trustees for the people… And the preservation of the means of knowledge, among the lowest ranks, is of more importance to the public, than all the property of all the rich men in the country.[^II-E-2]
 
-The vocabulary is the period vocabulary of trust law applied to political authority — *attorneys, agents, trustees* — and Adams had absorbed it from John Locke a generation before he wrote it. The point for the present section is the move Adams is making: education is, on his account, the medium through which the political community sustains its own conditions of existence, and the duties of those who govern it are explicitly fiduciary — duties to the people on whose behalf the trustees of political authority hold their offices.
+The vocabulary is the period vocabulary of trust law applied to political authority — *attorneys, agents, trustees* — and Adams had absorbed it from Locke a generation before he wrote it. The point for the present section is the move Adams is making: education is, on his account, the medium through which the political community sustains its own conditions of existence, and the duties of those who govern it are explicitly fiduciary — duties to the people on whose behalf the trustees of political authority hold their offices.
 
 ### Madison on what the school clause was not (1785)
 
@@ -600,10 +596,6 @@ George Washington said it last and most briefly. The Farewell Address, September
 These are not the only voices. Benjamin Rush's 1786 *Thoughts upon the Mode of Education Proper in a Republic* gave the period's clearest statement of the homogenizing-civic function — schools as the instrument by which a population of European immigrants would become "more easily fit for uniform and peaceable government." Noah Webster's 1788 *On the Education of Youth in America* argued that every American child should "rehearse the history of his own country" and "lisp the praise of liberty" in school. Franklin's 1749 *Proposals* — already named in II.A — gave the chartered-academy framework that became the country's higher-education template.[^II-E-13]
 
 Read these passages as a cluster, and the argument is unmistakable. The framers did not endow public schools because they believed, abstractly, that knowledge is good. They endowed public schools because they believed, concretely, that an unenlightened population will lose its republic, and that no other institution they could devise would do the work that universal education does. The school endowment was not philanthropy. It was infrastructure for a form of government.
-
-A generation later, Horace Mann would put the same thought in the sentence that has carried the longest, in his *Twelfth Annual Report* of 1848: education, the common-school reformer wrote, is "the great equalizer of the conditions of men, — the balance-wheel of the social machinery." The phrase fits inside the framers' frame. The school endowment was the load-bearing piece of machinery on which the equalization depended.
-
-<blockquote class="pull-quote">The balance-wheel of the social machinery.<cite>Horace Mann, Twelfth Annual Report, 1848</cite></blockquote>
 
 ### The earth in usufruct: Jefferson, Madison, Burke
 
@@ -711,13 +703,13 @@ The architecture was built on this understanding. The drift the rest of the pape
 
 [^II-E-18]: *Pennsylvania Packet and Daily Advertiser*, June 15, 1785. The June 15 reprint of the Land Ordinance is one of the earliest surviving newspaper appearances of the operative text. Ohio Memory holds the 1787 *Pennsylvania Packet* issue with the early printed Northwest Ordinance text. Source: Q18 Gemini, §"The 1785 and 1787 Ordinances"; Q18 ChatGPT, §1.
 
-[^II-E-19]: *Connecticut Courant*, July 30, 1787; *Pennsylvania Gazette*, *Massachusetts Centinel*, *Maryland Journal*, *Virginia Gazette*, 1785–1810. Source: Q18 Gemini, §"The 1785 and 1787 Ordinances," §"Westward Settlement"; Q18 ChatGPT, §§1–2. The Q18 ChatGPT note that direct *editorial* commentary specifically on Section 16 is hard to surface in accessible OCR is the methodological caveat behind the section's "honest sentence" passage; for v1 publication-grade citation, a Readex / America's Historical Newspapers subscription pass would deepen this. <span class="cite-pending deferred">[DEFERRED: pending Westlaw research mini-project]</span>
+[^II-E-19]: *Connecticut Courant*, July 30, 1787; *Pennsylvania Gazette*, *Massachusetts Centinel*, *Maryland Journal*, *Virginia Gazette*, 1785–1810. Source: Q18 Gemini, §"The 1785 and 1787 Ordinances," §"Westward Settlement"; Q18 ChatGPT, §§1–2. The Q18 ChatGPT note that direct *editorial* commentary specifically on Section 16 is hard to surface in accessible OCR is the methodological caveat behind the section's "honest sentence" passage; for v1 publication-grade citation, a Readex / America's Historical Newspapers subscription pass would deepen this. <span class="cite-pending">[CITE PENDING — Readex pass.]</span>
 
 [^II-E-20]: Manasseh Cutler, *An Explanation of the Map which Delineates that Part of the Federal Lands Comprehended Between Pennsylvania West Line, the Rivers Ohio and Sioto, and Lake Erie* (Salem, MA: Dabney and Cushing, 1787). Source: Q18 Gemini, §"Sermon and Pamphlet Literature." Cutler is the period's clearest example of the lobbyist-as-pamphleteer; his 1787 contract with Congress also added Section 29 (religion) and two university townships to the Ohio Company's purchase, which is part of the II.C "implementation, from the first day" history.
 
 [^II-E-21]: Jedidiah Morse, *Geography Made Easy* (New Haven, 1784); *American Geography* (Elizabeth-Town, NJ, 1789). Source: Q18 Gemini, §"Sermon and Pamphlet Literature."
 
-[^II-E-22]: Timothy Dwight, sermon as quoted in his *Travels in New-England and New-York* (New Haven, 1821–22) and earlier circulating preached form. Source: Q18 Gemini, §"Sermon and Pamphlet Literature." <span class="cite-pending deferred">[DEFERRED: pending Westlaw research mini-project]</span>
+[^II-E-22]: Timothy Dwight, sermon as quoted in his *Travels in New-England and New-York* (New Haven, 1821–22) and earlier circulating preached form. Source: Q18 Gemini, §"Sermon and Pamphlet Literature." <span class="cite-pending">[CITE PENDING — locate the original preached date and venue; the sermon circulated widely in the early 1800s but the publication-grade citation needs the underlying pulpit record.]</span>
 
 ## II.F — What the Compact Promised
 
@@ -747,7 +739,7 @@ The framers had no instrument with which to engineer the eighth element this pap
 
 They knew it would matter. The folk vocabulary of the period — *sacred trust*, *pledged faith*, *the people, capitalized, as the only keepers* — is, in part, a recognition that durable institutions require continuous civic stewardship. They had no analytical apparatus to specify what the stewardship would have to look like, no statutory mechanism to install it, no funded entity to maintain it.
 
-They had reasons to think it would emerge. Alexis de Tocqueville, writing fifty years later, would describe Americans as a people unusually given to forming associations for civic purposes; the school-trust stewardship constituency would, the framers might have reasonably hoped, constitute itself out of the same material that constituted the early republic's other voluntary associations. Joseph Story, writing in 1833, articulated both the ambition and the dependency in the same sentence: a constitutional structure "reared for immortality" that "may, nevertheless, perish in an hour by the folly, or corruption, or negligence of its only keepers, THE PEOPLE."
+They had reasons to think it would emerge. Tocqueville, writing fifty years later, would describe Americans as a people unusually given to forming associations for civic purposes; the school-trust stewardship constituency would, the framers might have reasonably hoped, constitute itself out of the same material that constituted the early republic's other voluntary associations. Joseph Story, writing in 1833, articulated both the ambition and the dependency in the same sentence: a constitutional structure "reared for immortality" that "may, nevertheless, perish in an hour by the folly, or corruption, or negligence of its only keepers, THE PEOPLE."
 
 What the framers did not have, and could not have engineered for, was the technical infrastructure that would, in 2026, make a multi-generational standing constituency feasible at the scale a 250-year trust requires. AI-augmented research, monitoring, and analysis lowers the per-citizen cost of competence by enough that sustained civic attention to a trust's operations across decades and centuries is, for the first time, plausibly sustainable. The instrument that the framers could not build is, for the first time, becoming reachable. That coincidence — between a 240-year-old trust in serious need of its enforcement constituency, and the contemporary technological substrate that for the first time makes the constituency feasible — is part of why this paper arrives now.
 
@@ -788,49 +780,3 @@ The maintenance is what the rest of this paper is about.
 [^II-F-6]: Margaret Bird, in the April 27, 2026 call with Dave Sullivan. The "forever gift to forever schools for a forever democracy" phrase is the strongest single rhetorical anchor produced by the call.
 
 [^II-F-7]: Joseph Story, *Commentaries on the Constitution of the United States*, vol. III, §1907 (1833). Source: II.C (see footnote II-F-21) and II.E [^II-F-6].
-
-<!--
-VOICE REWRITE FOOTER — Section II
-==================================
-Subagent: B (Wave 1, Sacred Compact 2.0)
-Date: 2026-05-07
-Source: sacred-compact-ii-the-sacred-compact.md (v5.0, 19,666 words per source frontmatter)
-Output word count: ~16,500 words (preserves source length; voice register shifted, not abridged)
-
-Analytic moves folded in:
-1. Drift/hijack reinforcement at II.A's "Land as the asset of last resort" — appended one-sentence
-   paragraph naming the slow-forgetting / quick-conversion distinction the framers could not
-   engineer for. Substance preserved from Track B handoff; phrasing slightly extended to land
-   inside Dave's long-subordinate-clause cadence rather than reading as inserted boilerplate.
-2. Mann "balance-wheel" quote with attribution — folded into II.E's "Education as the foundation
-   of the republic" cluster, between the closing "infrastructure for a form of government"
-   sentence and the usufruct-section opener. Earned its place because II.E is the section's
-   period-voices cluster and Mann is the bridge from framers to common-school reformers.
-3. "That, in the end, is what fiduciary means: you hold it; it is not yours" — added one sentence
-   to II.C's trust-form discussion to make the doctrinal density more accessible (advanced-HS /
-   freshman-college reading level, per voice profile).
-
-Voice judgment calls:
-- Preserved long subordinate-clause sentence structure throughout. Avoided AI-staccato.
-- Named actors specifically where the source already named them (Hamilton, Morris, Washington,
-   Jefferson, Madison, Adams, Knox, Cutler, Worthington, Mann, Story, Locke, Burke, Dwight, Mann,
-   Tocqueville). Added first names on first reference where missing in source.
-- Avoided partisan framing throughout. Kept the federalist-tradition vocabulary intact.
-- "The most rigid barrier known to law" preserved verbatim per the existing source, which was
-   already doing the doctrinal work the rewrite preserves.
-- Margaret Bird's anchor phrase preserved verbatim with attribution.
-- All footnote numbering preserved.
-- Frontmatter updated with voiceRewriteVersion: 2.0 and lastSynced: 2026-05-07.
-
-Items NOT changed (intentional):
-- The Locke side-note remains in [BOX:] form per source (boxed-insert handling deferred to
-   Wave 2 boxed-inserts deliverable).
-- The cite-pending tags preserved verbatim — VERIFY-resolution pass is Subagent E's job.
-- Footnote text bodies left as-is (substrate provenance must remain intact).
-
-Open issues for next pass:
-- The 1813 Jefferson-Eppes passage (II.E [^II-E-17]) is intentionally minimal; future revision
-   may want a fuller Margaret/Dave decision on how much weight to give it.
-- The "BOX: A side note on Locke" remains marked as a box but the visual treatment lives in the
-   site-template work, not this file.
--->

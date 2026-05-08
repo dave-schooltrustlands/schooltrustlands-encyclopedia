@@ -5,458 +5,284 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
 <RoomLayout
   room="reading"
   title="Reading Room"
-  subtitle="The Library's reference shelf — five sections, layered together."
+  subtitle="Five rooms, each with its own purpose. Pick a door."
   width="prose"
   sourceId="reading-toc"
 >
-  <section class="reading-room mt-6">
-    <p class="reading-frame">
-      The Reading Room is the Library's reference shelf. Five sections layered
-      together: the Library's own argument about America's school trust lands; the
-      period primary sources the framers and reformers actually wrote; the secondary
-      scholarship that has tried to make sense of those records; the state-by-state
-      primary-source corners curated by State Co-Librarians; and signed editorial
-      voices from the wider community. Most of it is open to the public domain;
-      the rest is mapped for you to find at a library near you.
+  <section class="reading-lobby mt-6">
+    <p class="lobby-intro">
+      The Reading Room is the public face of America's School Trust Library —
+      five rooms, each with its own purpose. The Library's Argument lays out
+      what the school-trust tradition is and what is at stake. The Founders'
+      Library collects the foundational texts. The Scholarship surfaces the
+      secondary literature that reads, organizes, and extends the tradition.
+      State Records houses what each state has done with its trust. Voices is
+      where the people who study, steward, and contest these lands speak in
+      their own words. Pick a door.
     </p>
 
     <hr class="archival-divider" />
 
     <!-- ================================================================== -->
-    <!-- I. The Library's Argument                                          -->
+    <!-- Five door cards                                                     -->
     <!-- ================================================================== -->
-    <section class="reading-section" id="library-argument">
-      <header class="reading-section-header">
-        <h2>I. The Library's Argument</h2>
-        <p class="reading-section-purpose">
-          The Library's own published synthesis: how the school-trust system was
-          designed, how it has drifted across 240 years, and what the architects of
-          the next century's intergenerational trusts should incorporate.
+    <section class="lobby-doors" aria-label="Reading Room sections">
+      <article class="door-card">
+        <h2 class="door-title">I. The Library's Argument</h2>
+        <p class="door-description">
+          The editorial voice of the Library: the <em>Sacred Compact</em>
+          white paper in eight essays plus three personal interludes, the
+          <em>Schools of the Republic</em> case-by-case record, and the
+          Eighth Anchor reframe. Read in order, the Argument is a 250-year
+          history of the school-trust experiment with an analytic frame for
+          the AI-era trusts now arriving.
         </p>
-      </header>
-
-      <article class="reading-card">
-        <div class="cover">
-          <img
-            src="/img/covers/schools-of-the-republic-cover.jpg"
-            alt="Schools of the Republic cover"
-            onerror="this.style.display='none'; this.parentElement.classList.add('plss-pattern')"
-          />
-        </div>
-        <div class="meta">
-          <span class="eyebrow">Booklet · Sullivan and Bird · 2025</span>
-          <h3>Schools of the Republic</h3>
-          <div class="byline">A Ten-Chapter Synthesis on America's School Trust Lands · Substrate v1.3</div>
-          <p class="abstract">
-            A ten-chapter synthesis of America's school trust lands — from the 1785 Land
-            Ordinance to the present, with the constitutional architecture, the doublings of
-            the antebellum and Reconstruction eras, the twentieth-century high-water mark, the
-            modern drift, and the captured-Attorney-General enforcement architecture that
-            requires a standing constituency to remedy.
-          </p>
-          <details class="toc">
-            <summary>Table of contents</summary>
-            <ol class="numbered-toc">
-              <li><a href="/reading/prologue/">Prologue</a></li>
-              <li><a href="/reading/founding-floor/">The Founding Floor — 1785, the Land Ordinance, and the school clause</a></li>
-              <li><a href="/reading/statehood-without-federal-floor/">Statehood Without a Federal Floor — the Original 13 and the eastern path</a></li>
-              <li><a href="/reading/northwest-ordinance-template/">The Northwest Ordinance Template — Section 16 enters the federal-grant statehood compact</a></li>
-              <li><a href="/reading/antebellum-doubling/">Antebellum Doubling — California, Oregon, and the doubled grant</a></li>
-              <li><a href="/reading/reconstruction-western-stack/">The Reconstruction Western Stack — the post-1867 admissions and the railroad-era pressures</a></li>
-              <li><a href="/reading/twentieth-century-high-water-mark/">The Twentieth-Century High-Water Mark — fund growth and stewardship intervals</a></li>
-              <li><a href="/reading/comparative-atlas/">Comparative Atlas — what fifty states reveal at a glance</a></li>
-              <li><a href="/reading/enforcement-beneficiary-cannot-sue/">Enforcement When the Beneficiary Cannot Sue — the captured-AG architecture and the eighth anchor</a></li>
-              <li><a href="/reading/conclusion/">Conclusion — what the trusts ask of us now</a></li>
-            </ol>
-          </details>
-          <a href="/reading/schools-of-the-republic/" class="cta">Read the booklet</a>
-        </div>
+        <a href="/reading/sacred-compact-prologue/" class="door-enter">
+          Enter →
+        </a>
       </article>
 
-      <article class="reading-card">
-        <div class="cover">
-          <img
-            src="/img/covers/sacred-compact-cover.jpg"
-            alt="Sacred Compact cover"
-            onerror="this.style.display='none'; this.parentElement.classList.add('plss-pattern')"
-          />
-        </div>
-        <div class="meta">
-          <span class="eyebrow">White paper · 70 pages</span>
-          <h3>The Sacred Compact</h3>
-          <div class="byline">
-            Dave Sullivan and Margaret Bird · v5.0 (May 2026) · 207 footnotes
-          </div>
-          <p class="abstract">
-            America wrote a 250-year intergenerational trust into the geometry of the
-            country in 1785, and the experiment has now returned its data. <em>The Sacred
-            Compact</em> is the analytic frame: how the system was designed to outlast its
-            founders, what drift and directed seizure look like in practice across all
-            fifty states, the seven structural anchors and the eighth that hold against
-            them, and what the architects of the next century's perpetual trusts —
-            climate trusts, sovereign wealth for the unborn, AI governance authorities —
-            should incorporate before they commit.
-          </p>
-          <details class="toc">
-            <summary>Table of contents</summary>
-            <ol>
-              <li><a href="/reading/sacred-compact-prologue/">Prologue — A Forever Gift</a></li>
-              <li><a href="/reading/sacred-compact-i-the-question/">I. The Question — what an aspirational structure must do to outlast its founders</a></li>
-              <li><a href="/reading/sacred-compact-ii-the-sacred-compact/">II. The Sacred Compact — the founding moment, 1785 to the early statehoods</a></li>
-              <li><a href="/reading/sacred-compact-iii-the-drift/">III. The Drift — what fiduciary breach looks like in practice, from California to Nebraska</a></li>
-              <li><a href="/reading/sacred-compact-iv-the-pattern/">IV. The Pattern — the four faces of drift and the structure of directed seizure</a></li>
-              <li><a href="/reading/sacred-compact-v-the-counter-architecture/">V. The Counter-Architecture — the seven pillars and the eighth anchor</a></li>
-              <li><a href="/reading/sacred-compact-vi-the-coming-trusts/">VI. The Coming Trusts — climate, AI, sovereign wealth, and the architectures the next century will inherit</a></li>
-              <li><a href="/reading/sacred-compact-vii-civic-practice/">VII. A Civic Practice — what each readership can do with the historical evidence</a></li>
-            </ol>
-          </details>
-          <a href="/reading/sacred-compact-prologue/" class="cta">Read the paper</a>
-        </div>
+      <article class="door-card">
+        <h2 class="door-title">II. The Founders' Library</h2>
+        <p class="door-description">
+          Fifteen primary-source documents the school-trust experiment was
+          built on, organized into three era cohorts: the 1780s founding
+          (Land Ordinance, Northwest Ordinance, Massachusetts Constitution,
+          Federalist No. 10, Jefferson's Bill); the common-school era (Mann,
+          Barnard, McGuffey, Pierce); and the high-water and reform period
+          (Fitch &amp; Skinner, Swift, Hawkes, Utah Code Title 53C).
+        </p>
+        <a href="/reading/founders-library/" class="door-enter">Enter →</a>
       </article>
 
-      <article class="reading-card">
-        <div class="cover">
-          <div class="plss-pattern"></div>
-        </div>
-        <div class="meta">
-          <span class="eyebrow">Entry-door read · 60 seconds</span>
-          <h3>Why this matters</h3>
-          <div class="byline">A 60-second on-ramp to the Library's argument</div>
-          <p class="abstract">
-            The single-page version of why the school-trust experiment is the only
-            multi-generational evidence the world has on how perpetual fiduciary
-            structures behave under generational pressure — and why it matters
-            for the architects of the next century's perpetual trusts.
-          </p>
-          <a href="/why/" class="cta">Read the entry-door page →</a>
-        </div>
+      <article class="door-card">
+        <h2 class="door-title">III. The Scholarship</h2>
+        <p class="door-description">
+          The secondary literature on school trust lands, public-school
+          governance, and intergenerational fiduciary law. Tier 1 open-access
+          works the Library hosts in full; Tier 2 partially-available works
+          the Library annotates and excerpts; and Tier 3 stub pages for
+          in-copyright reference works (Bogert; Restatement (Third) of Trusts;
+          Souder &amp; Fairfax; Culp; NEFA). Each Tier 3 stub carries a
+          Title-Steward call.
+        </p>
+        <a href="/reading/scholarship/" class="door-enter">Enter →</a>
       </article>
 
-      <p class="reading-section-footer">
-        <a href="/contribute/">Suggest a contribution →</a>
-      </p>
+      <article class="door-card">
+        <h2 class="door-title">IV. State Records</h2>
+        <p class="door-description">
+          The per-state evidentiary material the <em>Schools of the
+          Republic</em> case-by-case record draws on: filings, audits,
+          governor's messages, treasurer's reports, attorney-general
+          opinions. Currently weighted toward Oregon (the active-litigation
+          state) and the comparative cohort — Utah, New Mexico, Texas,
+          California, Arizona. Browse via the Atlas.
+        </p>
+        <a href="/atlas/" class="door-enter">Enter →</a>
+      </article>
+
+      <article class="door-card">
+        <h2 class="door-title">V. Voices</h2>
+        <p class="door-description">
+          Testimony, oral history, and written reflections from inside the
+          school-trust system. Long-form interviews with named reformers;
+          archival material from agency staff and trustees; and curated
+          original commentary as the State Co-Librarian program develops.
+          The voice in this room is human, first-person, and unfiltered by
+          the editorial register of the rest of the Library.
+        </p>
+        <a href="/voices/" class="door-enter">Enter →</a>
+      </article>
     </section>
 
     <hr class="archival-divider" />
 
     <!-- ================================================================== -->
-    <!-- II. The Founders' Library                                          -->
+    <!-- Featured books on display                                          -->
     <!-- ================================================================== -->
-    <section class="reading-section" id="founders-library">
-      <header class="reading-section-header">
-        <h2>II. The Founders' Library</h2>
-        <p class="reading-section-purpose">
-          Period primary sources, organized by era, that show what the framers and
-          reformers actually wrote about schools, lands, and trust architecture.
-          Founding era, common-school era, and high-water/reform era — public-domain
-          throughout.
-        </p>
-      </header>
+    <section class="lobby-featured" aria-label="Featured this week">
+      <h2 class="featured-section-heading">On display this week</h2>
 
-      <article class="reading-card">
-        <div class="cover">
-          <div class="plss-pattern"></div>
-        </div>
-        <div class="meta">
-          <span class="eyebrow">Section II · 15 entries · public domain</span>
-          <h3>The Founders' Library</h3>
-          <div class="byline">Founding era (1779–1787) · Common-school era (1837–1879) · High-water and reform era (1904–present)</div>
-          <p class="abstract">
-            Fifteen primary-source curated entry-points spanning the founding,
-            common-school, and high-water/reform eras. The Land Ordinance of 1785 and
-            the Northwest Ordinance of 1787; Federalist No. 10, the Massachusetts
-            Constitution of 1780, and Jefferson's 1779 Bill for the Diffusion of
-            Knowledge; Horace Mann, Henry Barnard, John Pierce, and the McGuffey
-            Readers; Fitch and Skinner, Swift, Kiddle and Schem, Hawkes, and Utah
-            Code Title 53C as the modern-reform anchor. Each entry is a one-page
-            reader's frame with citations to the canonical source.
-          </p>
-          <a href="/reading/founders-library/" class="cta">Browse the Founders' Library →</a>
-        </div>
+      <article class="featured-book">
+        <span class="featured-tag">Featured</span>
+        <h3 class="featured-title">Horace Mann's <em>Twelfth Annual Report</em></h3>
+        <p class="featured-byline">Massachusetts Board of Education · 1848</p>
+        <p class="featured-blurb">
+          The 1848 <em>Twelfth Annual Report</em> of the Massachusetts Board
+          of Education. Source of <em>the balance-wheel of the social
+          machinery</em> — the phrase that organizes much of the Library's
+          argument. Mann reading public schools as republican infrastructure.
+        </p>
+        <a
+          href="/reading/founders-library/mann-twelfth-annual-report-1848/"
+          class="featured-link"
+          >Read this →</a
+        >
       </article>
 
-      <p class="reading-section-footer">
-        <a href="/contribute/">Suggest a contribution →</a>
-        &nbsp;·&nbsp;
-        <a href="/contribute/state-lands-agencies/">State Co-Librarians: see /contribute/state-lands-agencies/ →</a>
-      </p>
+      <article class="featured-book">
+        <span class="featured-tag">Featured</span>
+        <h3 class="featured-title">The Sacred Compact</h3>
+        <p class="featured-byline">Sullivan and Bird · v5.0 · eight essays + three interludes</p>
+        <p class="featured-blurb">
+          The Library's analytic frame in eight essays. The Sacred Compact
+          reads the 1785 school-trust experiment as the longest-running
+          multi-generational fiduciary record America has produced — and as
+          the working manual for the AI-era trusts now being designed.
+        </p>
+        <a href="/reading/sacred-compact-prologue/" class="featured-link"
+          >Read this →</a
+        >
+      </article>
     </section>
 
     <hr class="archival-divider" />
 
-    <!-- ================================================================== -->
-    <!-- III. The Scholarship                                               -->
-    <!-- ================================================================== -->
-    <section class="reading-section" id="scholarship">
-      <header class="reading-section-header">
-        <h2>III. The Scholarship</h2>
-        <p class="reading-section-purpose">
-          Secondary academic work on school trust lands, school finance, and trust
-          law — what scholars say about what the framers said. Three tiers:
-          public-domain older scholarship; open-access modern; in-copyright modern
-          reference works (Title Steward — OPEN).
-        </p>
-      </header>
-
-      <article class="reading-card">
-        <div class="cover">
-          <div class="plss-pattern"></div>
-        </div>
-        <div class="meta">
-          <span class="eyebrow">Foundational · 1911</span>
-          <h3>History of Public Permanent Common School Funds in the United States, 1795–1905</h3>
-          <div class="byline">Fletcher Harper Swift · Columbia University · 1911</div>
-          <p class="abstract">
-            The seminal academic study of America's school trust funds. Comprehensive
-            state-by-state accounting of permanent common school funds from inception through
-            1905. Public domain. The standard reference; no comprehensive successor work has
-            been published since.
-          </p>
-          <details class="toc">
-            <summary>Read the source</summary>
-            <p>
-              Source page at
-              <a href="/reading/sources/swift-1911/">/reading/sources/swift-1911/</a>;
-              local PDF at
-              <a href="/sources/historyofpublicp00swif.pdf">/sources/historyofpublicp00swif.pdf</a> (30&nbsp;MB).
-              Original digitization on
-              <a href="https://archive.org/details/historyofpublicp00swif" target="_blank" rel="noopener">Internet Archive</a>.
-            </p>
-          </details>
-          <a href="/reading/sources/swift-1911/" class="cta">Read the source page</a>
-        </div>
-      </article>
-
-      <article class="reading-card">
-        <div class="cover">
-          <div class="plss-pattern"></div>
-        </div>
-        <div class="meta">
-          <span class="eyebrow">Foundational · 1949</span>
-          <h3>A History of the Irreducible School Fund in Oregon</h3>
-          <div class="byline">Norman B. Hawk · University of Oregon · June 1949 (digitized 2018)</div>
-          <p class="abstract">
-            Norman B. Hawk's 1949 University of Oregon doctoral thesis on the Oregon
-            Irreducible School Fund. Foundational reference for the project's Oregon-specific
-            case material.
-          </p>
-          <details class="toc">
-            <summary>Read the source</summary>
-            <p>
-              Source page at
-              <a href="/reading/sources/hawk-2018/">/reading/sources/hawk-2018/</a>;
-              local PDF at
-              <a href="/sources/hawk_09072018_final.pdf">/sources/hawk_09072018_final.pdf</a> (89&nbsp;MB).
-            </p>
-          </details>
-          <a href="/reading/sources/hawk-2018/" class="cta">Read the source page</a>
-        </div>
-      </article>
-
-      <article class="reading-card">
-        <div class="cover">
-          <div class="plss-pattern"></div>
-        </div>
-        <div class="meta">
-          <span class="eyebrow">Investigative · 1908</span>
-          <h3>Looters of the Public Domain</h3>
-          <div class="byline">S.A.D. Puter and Horace Stevens · 1908</div>
-          <p class="abstract">
-            Contemporaneous account of the Oregon land-fraud trials of the early 1900s.
-            Primary-source material on the Mitchell trial and the broader pattern of
-            public-land grift in the West. Public domain. Available on Internet Archive.
-          </p>
-          <details class="toc">
-            <summary>External source</summary>
-            <p>
-              Full text on
-              <a
-                href="https://archive.org/details/lootersofpublicd00puteuoft"
-                target="_blank"
-                rel="noopener"
-                >Internet Archive</a>.
-            </p>
-          </details>
-          <a
-            href="https://archive.org/details/lootersofpublicd00puteuoft"
-            target="_blank"
-            rel="noopener"
-            class="cta">Read on Internet Archive →</a>
-        </div>
-      </article>
-
-      <article class="reading-card">
-        <div class="cover">
-          <div class="plss-pattern"></div>
-        </div>
-        <div class="meta">
-          <span class="eyebrow">Academic · 2014</span>
-          <h3>Closing the Book on the School Trust Lands</h3>
-          <div class="byline">Heidelberg · National Agricultural Law Center · 2014</div>
-          <p class="abstract">
-            Recent academic analysis of state-level school trust lands accounting and reform
-            pathways. Cites Swift 1911 as the seminal reference and updates with 21st-century
-            data.
-          </p>
-          <details class="toc">
-            <summary>External source</summary>
-            <p>
-              <a
-                href="https://nationalaglawcenter.org/wp-content/uploads/assets/bibarticles/heidelberg_trust.pdf"
-                target="_blank"
-                rel="noopener"
-                >National Agricultural Law Center</a>.
-            </p>
-          </details>
-          <a
-            href="https://nationalaglawcenter.org/wp-content/uploads/assets/bibarticles/heidelberg_trust.pdf"
-            target="_blank"
-            rel="noopener"
-            class="cta">Read the paper →</a>
-        </div>
-      </article>
-
-      <article class="reading-card">
-        <div class="cover">
-          <div class="plss-pattern"></div>
-        </div>
-        <div class="meta">
-          <span class="eyebrow tier3-eyebrow">Tier 3 · in-copyright · Title Steward — OPEN · 5 entries</span>
-          <h3>Tier 3 — modern reference works (curator-recruitment open)</h3>
-          <div class="byline">NEFA <em>Funding Public Schools</em> (2024) · Bogert · <em>Restatement (Third) of Trusts</em> · Souder &amp; Fairfax 1996 · Culp 2006</div>
-          <p class="abstract">
-            Five in-copyright reference works the Library cannot host directly but
-            wants to surface, recommend, and recruit a Title Steward to maintain.
-            Each title currently has an open Title Steward seat.
-          </p>
-          <a href="/reading/scholarship/" class="cta">Browse the Scholarship section →</a>
-        </div>
-      </article>
-
-      <p class="reading-section-footer">
-        <a href="/contribute/">Suggest a contribution →</a>
-        &nbsp;·&nbsp;
-        <a href="/contribute/">Title Stewards welcome — see /contribute/ →</a>
-      </p>
-    </section>
-
-    <hr class="archival-divider" />
-
-    <!-- ================================================================== -->
-    <!-- IV. State Records                                                  -->
-    <!-- ================================================================== -->
-    <section class="reading-section" id="state-records">
-      <header class="reading-section-header">
-        <h2>IV. State Records</h2>
-        <p class="reading-section-purpose">
-          State-by-state primary-source corners curated by State Co-Librarians:
-          enabling acts, constitutional education clauses, key state-court decisions,
-          audit reports, AG opinions, reform-era statutes. Launching in scaffolded
-          form. Oregon and Utah are the first exemplar corners; additional states
-          open as State Co-Librarians take on curation.
-        </p>
-      </header>
-
-      <article class="reading-card">
-        <div class="cover">
-          <div class="plss-pattern"></div>
-        </div>
-        <div class="meta">
-          <span class="eyebrow">Section IV · scaffolded · 17 state pages live</span>
-          <h3>State Records — by state</h3>
-          <div class="byline">Oregon and Utah are the bespoke exemplars; 15 additional states have full ASTL re-merge state pages.</div>
-          <p class="abstract">
-            Browse per-state dossiers via the
-            <a href="/atlas/">Atlas</a>. Two exemplar State Records corners are
-            currently live as bespoke pages:
-          </p>
-          <ul>
-            <li><a href="/reading/us-or/">Oregon</a> — the live test case</li>
-            <li><a href="/reading/us-ut/">Utah</a> — the recovery case</li>
-          </ul>
-          <p class="abstract">
-            Open: 48 more states await State Co-Librarian curation. The Library is
-            actively recruiting.
-          </p>
-          <a href="/contribute/state-lands-agencies/" class="cta">For state-lands-agency staff →</a>
-        </div>
-      </article>
-
-      <p class="reading-section-footer">
-        <a href="/contribute/state-lands-agencies/">State Co-Librarians: apply via /contribute/state-lands-agencies/ →</a>
-      </p>
-    </section>
-
-    <hr class="archival-divider" />
-
-    <!-- ================================================================== -->
-    <!-- V. Voices                                                          -->
-    <!-- ================================================================== -->
-    <section class="reading-section" id="voices">
-      <header class="reading-section-header">
-        <h2>V. Voices</h2>
-        <p class="reading-section-purpose">
-          Signed editorial pieces, op-eds, testimony, and beneficiary statements
-          from the wider community. Different voice from the booklet — sharper,
-          more present-tense, often a direct response to what trustees,
-          legislators, or courts just did.
-        </p>
-      </header>
-
-      <article class="reading-card">
-        <div class="cover">
-          <div class="plss-pattern"></div>
-        </div>
-        <div class="meta">
-          <span class="eyebrow">Section V · ASTL contributors</span>
-          <h3>Voices</h3>
-          <div class="byline">Seven ASTL contributors at launch; expanding through Newsroom-affiliated essays and beneficiary-voice submissions.</div>
-          <p class="abstract">
-            Voices articles originate at
-            <a href="https://www.schooltrustlands.org/astl-voices" target="_blank" rel="noopener">schooltrustlands.org/astl-voices</a>
-            and are reproduced here as part of the Library's evidentiary archive.
-            Each article is signed by its author and dated.
-          </p>
-          <a href="/voices/" class="cta">Browse Voices →</a>
-        </div>
-      </article>
-
-      <p class="reading-section-footer">
-        <a href="/contribute/">Submit a piece →</a>
-      </p>
-    </section>
-
+    <p class="lobby-footer">
+      The Library accepts contributions of source material, corrections, and
+      citizen-historian work.
+      <a href="/contribute/">Suggest a contribution →</a>
+    </p>
   </section>
 
   <style>
-    .reading-frame {
+    .reading-lobby {
+      margin-top: 1.5rem;
+    }
+    .lobby-intro {
       font-family: var(--font-serif, Georgia, serif);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       line-height: 1.65;
       color: #334155;
-      margin: 1rem 0 1.5rem;
+      margin: 1rem 0 1.75rem;
     }
-    .reading-section {
-      margin-top: 2rem;
-      margin-bottom: 2rem;
+    .lobby-doors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0 2rem;
     }
-    .reading-section-header h2 {
-      margin-bottom: 0.4rem;
+    .door-card {
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      padding: 1.5rem 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
-    .reading-section-purpose {
-      font-style: italic;
-      color: #475569;
+    .door-card:hover {
+      border-color: var(--old-gold, #8b7355);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
+    }
+    .door-title {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.005em;
+    }
+    .door-description {
       font-size: 0.95rem;
       line-height: 1.55;
-      margin: 0 0 1.25rem;
-    }
-    .reading-section-footer {
-      margin-top: 1rem;
-      font-size: 0.9rem;
       color: #475569;
+      margin: 0 0 1rem;
+      flex: 1;
     }
-    .tier3-eyebrow {
-      color: #b45309 !important; /* amber-700 */
+    .door-enter {
+      align-self: flex-start;
+      color: #1d4ed8;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .door-enter:hover {
+      color: #1e40af;
+    }
+
+    .lobby-featured {
+      margin: 2rem 0;
+    }
+    .featured-section-heading {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 0 0 1rem;
+    }
+    .featured-book {
+      background: #fff;
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-left: 3px solid var(--old-gold, #8b7355);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      border-radius: 2px;
+    }
+    .featured-tag {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--old-gold, #8b7355);
+      margin-bottom: 0.4rem;
+    }
+    .featured-title {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 0.25rem;
+    }
+    .featured-byline {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: #64748b;
+      margin: 0 0 0.6rem;
+    }
+    .featured-blurb {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #475569;
+      margin: 0 0 0.85rem;
+    }
+    .featured-link {
+      color: #1d4ed8;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .featured-link:hover {
+      color: #1e40af;
+    }
+
+    .lobby-footer {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: #475569;
+      margin: 1.5rem 0 0.5rem;
+      line-height: 1.55;
+    }
+    .lobby-footer a {
+      color: #1d4ed8;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+      .lobby-doors {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </RoomLayout>
