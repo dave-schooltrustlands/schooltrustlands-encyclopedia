@@ -27,6 +27,12 @@ Two months after that sentence was passed, in a hotter room a few hundred miles 
 
 Think of the audacity. A republic with almost no settled population beyond the Appalachians. No civil service. No public schools to speak of. No theory of universal literacy that had been tested at scale. And Congress was reserving one thirty-sixth of every future township from the Ohio River to whatever lay beyond. In trust for schools that did not yet exist, in towns that had not yet been named, for children whose grandparents had not yet been born. The army got guns. The schools got land.
 
+<!-- Margaret pull quote 17 (1785 lineage) — substrate-to-live, Site Update v11, 2026-05-08. -->
+<div class="margaret-pull-quote">
+<p>"In 1785, they created an idea where the land was given to the states — initially just sections in every township — and that land was given in trust to support public schools."</p>
+<span class="attribution">— Margaret Bird, in her own voice<sup><a href="#ch3-margaret-17">*</a></sup></span>
+</div>
+
 This chapter is the story of what happened to that blueprint when it ran into ten state legislatures over forty-five years. The ten states are: Ohio (1803), Louisiana (1812), Indiana (1816), Mississippi (1817), Illinois (1818), Alabama (1819), Missouri (1821), Arkansas (1836), Michigan (1837), and Florida (1845). They are an architecturally coherent set. Every one of them was admitted under the same lean federal template. Every one of them was endowed with section 16 of every township for the support of common schools. By the end of the nineteenth century, in most of them, the corpus that should have come from those grants was substantially gone.
 
 The architecture worked. The architecture was not enough.
@@ -211,6 +217,7 @@ These ten states are the cautionary opening of the larger story. The Northwest O
 
 *Chapter 3 — v1, 2026-04-30. Supersedes GO #3 Pass 1 prototype.*
 
+<p id="ch3-margaret-17" class="text-xs"><sup>*</sup> Margaret Bird, oral remarks, August 10, 2025; transcript filed in the Library substrate at <em>PXL_20250810_181828355.mp4 — gift-from-a-parent / why-it-matters</em>.</p>
 
 
 \newpage

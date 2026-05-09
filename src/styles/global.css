@@ -519,6 +519,28 @@
     letter-spacing: 0.02em;
   }
 
+  /*
+   * v11 B.2 — header More-disclosure for narrow viewports (<lg).
+   * Strip the default <summary> disclosure triangle so the menu reads
+   * as a button. The summary keeps native keyboard activation
+   * (Enter / Space) and the inline script adds ESC-close +
+   * click-outside-close.
+   */
+  .header-more > summary {
+    list-style: none;
+  }
+  .header-more > summary::-webkit-details-marker {
+    display: none;
+  }
+  .header-more > summary::marker {
+    display: none;
+    content: '';
+  }
+  .header-more > summary:focus-visible {
+    outline: 2px solid var(--deep-navy);
+    outline-offset: 2px;
+  }
+
   /* Footer (Visual Rebuild Handoff v0) */
   .site-footer {
     background: var(--deep-navy);
@@ -913,6 +935,36 @@
 }
 .boxed-insert > p:last-child {
   margin-bottom: 0;
+}
+
+/* Margaret pull-quote — verbatim Margaret-voice testimony embedded
+   as a call-out in a host chapter. Tan-tinted left border (matches
+   boxed-insert), slightly smaller font, italic attribution.
+   Site Update v11 (2026-05-08), substrate-to-live for the eighth
+   Margaret transcript pull quotes. */
+.margaret-pull-quote {
+  border-left: 3px solid var(--old-gold, #8b7355);
+  background: #faf6ea;
+  padding: 0.85rem 1.25rem;
+  margin: 1.5rem 0;
+  font-size: 0.97em;
+  line-height: 1.55;
+  font-style: italic;
+  border-radius: 2px;
+}
+.margaret-pull-quote > p {
+  margin-bottom: 0.5rem;
+}
+.margaret-pull-quote > p:last-child {
+  margin-bottom: 0;
+}
+.margaret-pull-quote .attribution {
+  display: block;
+  margin-top: 0.4rem;
+  font-style: normal;
+  font-size: 0.85em;
+  color: var(--deep-navy, #1e3a5f);
+  font-weight: 500;
 }
 
 /* Cite-pending: deferred and partial modifiers.

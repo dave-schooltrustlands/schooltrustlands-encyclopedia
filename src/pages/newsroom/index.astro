@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import RoomBanner from '../../components/RoomBanner.astro';
 
 const entries = (await getCollection('newsroom')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -33,9 +32,8 @@ if (latest) {
   title="About the Newsroom · America's School Trust Library"
   description="How America's School Trust Library covers what's changing in the trust-lands beat, week by week."
   sourceId="newsroom-about"
+  room="newsroom"
 >
-  <RoomBanner room="newsroom" />
-
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <h1>About the Newsroom</h1>
 

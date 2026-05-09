@@ -37,6 +37,12 @@ The country tried fifty different combinations of these three layers, in differe
 
 ## The deeper question Margaret asks
 
+<!-- Margaret pull quote 1 (gift from a parent) — substrate-to-live, Site Update v11, 2026-05-08. -->
+<div class="margaret-pull-quote">
+<p>"What if you had a gift from a parent, or from a grandparent, that was designed to support your family's education into the future? That would mean a lot to you. And that is exactly what our founding fathers did."</p>
+<span class="attribution">— Margaret Bird, in her own voice<sup><a href="#prologue-margaret-1">*</a></sup></span>
+</div>
+
 Margaret Bird's career has been spent asking a question the rest of the field has tended to shy away from. The question is not whether school trust lands have been mismanaged — they obviously have, in many places, for many decades — but whether the *architecture itself* has been honored as a *trust*. The architecture is the founders' bequest of a permanent endowment for the schools that would teach the children of generations not yet born. The technical legal sense of "trust" matters here, and so does the deeper civic sense John Adams was reaching for in 1780 when he wrote into the Massachusetts Constitution that wisdom and knowledge are necessary for the preservation of the rights and liberties of the people.
 
 A trust is, by definition, a forever obligation. The trustee is bound not just to preserve the corpus through the next election cycle or the next budget downturn. The trustee must manage it on behalf of beneficiaries who do not yet exist, whose interests the trustee can never directly hear, and whose only voice in the present arrangement is the architecture itself. When that architecture is converted to general use in a moment of fiscal expedience, the breach is not against any present-day constituency. It is against the schools the trust was designed to serve, and through them the future schoolchildren whose education the schools will carry. Bogert §§ 962, 970 and the *Restatement (Third) of Trusts* § 83 set out the duty to preserve and to account that controls in this setting.[^prologue-3]
@@ -104,6 +110,8 @@ Margaret, in revising an earlier draft of the *Sacred Compact* white paper that 
 [^prologue-2]: George G. Bogert, George T. Bogert & Amy Morris Hess, *The Law of Trusts and Trustees* §§ 411–417 (Attorney General as enforcer of charitable trusts) [VERIFY: section numbers shift across editions]; *Restatement (Third) of Trusts* § 95 (American Law Institute 2012); *Hunt v. Washington State Apple Advertising Comm'n*, 432 U.S. 333 (1977) (associational standing); *Havens Realty Corp. v. Coleman*, 455 U.S. 363 (1982) (organizational standing on mission-frustration plus resource-diversion).
 
 [^prologue-3]: Bogert §§ 962, 970 (duty to keep full and accurate accounts) [VERIFY]; *Restatement (Third) of Trusts* § 83 (duty to maintain records and provide reports).
+
+<p id="prologue-margaret-1" class="text-xs"><sup>*</sup> Margaret Bird, oral remarks, August 10, 2025; transcript filed in the Library substrate at <em>PXL_20250810_181828355.mp4 — gift-from-a-parent / why-it-matters</em>.</p>
 
 
 

@@ -273,15 +273,15 @@ async function run() {
       `[${vp.label}px] no horizontal overflow (scrollWidth ${measure.scrollWidth} ≤ clientWidth ${measure.clientWidth})`,
       measure.scrollWidth <= measure.clientWidth + 1,
     );
-    // Header height regression guard. Generous upper bound (300px)
-    // because the nav wraps to 3 rows at mid-width even after the D.2
-    // 36px-min-h compression — the assertion catches catastrophic
-    // regression (4+ rows / runaway line-height) without locking in an
-    // overly tight threshold. Actual measured heights are reported in
-    // the run report so future passes can tighten this.
+    // Header height regression guard. v11 B.2 collapsed the secondary
+    // nav into a More-disclosure under lg (<1024px), so the third-row
+    // wrap that forced the v10 fix-up's 300px ceiling is gone. Tighten
+    // back to 220px — the level v10 originally hit at 1024 — so a
+    // future regression (any wrap to a third row at 900/800/768) is
+    // caught by the smoke.
     check(
-      `[${vp.label}px] header height under 300px (got ${measure.headerHeight}px)`,
-      measure.headerHeight < 300,
+      `[${vp.label}px] header height under 220px (got ${measure.headerHeight}px)`,
+      measure.headerHeight < 220,
     );
     await page.screenshot({
       path: `${SHOT_DIR}/07-home-${vp.label}.png`,

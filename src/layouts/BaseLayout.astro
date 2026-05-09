@@ -2,14 +2,22 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import RoomBanner from '../components/RoomBanner.astro';
 
 interface Props {
   title: string;
   description?: string;
   sourceId?: string;
+  // Optional banner for editorial surfaces (Voices, Newsroom) that
+  // sit on BaseLayout rather than RoomLayout. v11 B.1 — banner mount
+  // hoisted out of per-page bodies into the layout so the contract
+  // mirrors RoomLayout's slot-above-h1 placement without per-page
+  // re-mounting. Pages on BaseLayout that have no banner simply
+  // omit the prop.
+  room?: 'voices' | 'newsroom';
 }
 
-const { title, description, sourceId } = Astro.props;
+const { title, description, sourceId, room } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -22,6 +30,7 @@ const { title, description, sourceId } = Astro.props;
   >
     <Header />
     <main class="mx-auto max-w-prose p-4 sm:p-8">
+      {room && <RoomBanner room={room} />}
       <slot />
     </main>
     <Footer />

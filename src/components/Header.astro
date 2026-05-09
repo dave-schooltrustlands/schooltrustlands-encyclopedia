@@ -44,14 +44,23 @@ import WalkingTour from './library/WalkingTour.astro';
       </span>
     </a>
     <nav class="flex flex-wrap items-center gap-x-1 gap-y-2 text-sm sm:gap-x-3">
+      {/*
+        v11 B.2 — header third-row collapse at narrow widths.
+        Below lg (<1024px) the nav prunes to the four primary room
+        links + density slider + search + a "More" disclosure that
+        carries the secondary links. At lg+ the full thirteen-link
+        row returns. Library-Card hydration script finds the link
+        by id; the link is always in the DOM regardless of which
+        side of the disclosure is visible at a given width.
+      */}
       <a
         href="/start/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
         >Start&nbsp;Here</a
       >
       <a
         href="/why/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
         >Why</a
       >
       <a
@@ -76,33 +85,33 @@ import WalkingTour from './library/WalkingTour.astro';
       >
       <a
         href="/contribute/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
         ><NavIcon name="HandHeart" />Contribute</a
       >
       <a
         href="/about/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
         ><NavIcon name="Building2" />About</a
       >
       <a
         href="/newsroom/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
         ><NavIcon name="Newspaper" />Newsroom</a
       >
       <a
         href="/updates/"
-        class="inline-flex min-h-[36px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        class="hidden min-h-[36px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
         >Updates</a
       >
       <a
         href="/voices/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
         ><NavIcon name="Mic" />Voices</a
       >
       <a
         id="library-card-link"
         href="/library-card/"
-        class="library-card-link inline-flex min-h-[36px] items-center justify-center px-2 text-blue-700 hover:underline"
+        class="library-card-link hidden min-h-[36px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
         data-default-href="/library-card/"
         data-default-label="Library Card"
         >Library&nbsp;Card</a
@@ -111,7 +120,7 @@ import WalkingTour from './library/WalkingTour.astro';
         id="library-card-signout"
         href="/auth/sign-out"
         hidden
-        class="library-card-signout inline-flex min-h-[36px] items-center justify-center px-2 text-slate-500 hover:text-slate-700 hover:underline"
+        class="library-card-signout hidden min-h-[36px] items-center justify-center px-2 text-slate-500 hover:text-slate-700 hover:underline lg:inline-flex"
         >Sign&nbsp;out</a
       >
       <VisualDensitySlider />
@@ -139,6 +148,81 @@ import WalkingTour from './library/WalkingTour.astro';
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
       </button>
+      <details
+        id="header-more"
+        class="header-more relative inline-flex lg:hidden"
+      >
+        <summary
+          class="inline-flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded px-2 text-blue-700 hover:bg-slate-100 hover:underline"
+          aria-label="More navigation"
+        >
+          More
+        </summary>
+        <div
+          class="header-more-panel absolute right-0 top-full z-50 mt-1 flex min-w-[12rem] flex-col rounded border border-slate-200 bg-white py-1 shadow-lg"
+          role="menu"
+        >
+          <a
+            href="/start/"
+            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
+            role="menuitem"
+            >Start Here</a
+          >
+          <a
+            href="/why/"
+            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
+            role="menuitem"
+            >Why</a
+          >
+          <a
+            href="/contribute/"
+            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
+            role="menuitem"
+            >Contribute</a
+          >
+          <a
+            href="/about/"
+            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
+            role="menuitem"
+            >About</a
+          >
+          <a
+            href="/newsroom/"
+            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
+            role="menuitem"
+            >Newsroom</a
+          >
+          <a
+            href="/updates/"
+            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
+            role="menuitem"
+            >Updates</a
+          >
+          <a
+            href="/voices/"
+            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
+            role="menuitem"
+            >Voices</a
+          >
+          <a
+            id="library-card-link-more"
+            href="/library-card/"
+            class="library-card-link inline-flex min-h-[44px] items-center border-t border-slate-200 px-3 text-blue-700 hover:bg-slate-100 hover:underline"
+            data-default-href="/library-card/"
+            data-default-label="Library Card"
+            role="menuitem"
+            >Library Card</a
+          >
+          <a
+            id="library-card-signout-more"
+            href="/auth/sign-out"
+            hidden
+            class="library-card-signout inline-flex min-h-[44px] items-center px-3 text-slate-500 hover:bg-slate-100 hover:text-slate-700 hover:underline"
+            role="menuitem"
+            >Sign out</a
+          >
+        </div>
+      </details>
     </nav>
   </div>
   <div
@@ -162,21 +246,37 @@ import WalkingTour from './library/WalkingTour.astro';
   // the "Library Card" nav link rewrites to "My Library" and the hidden
   // "Sign out" link reveals. No layout shift on initial paint — the link
   // starts in its logged-out form.
+  //
+  // v11 B.2 — the same link is mounted twice in the DOM: once in the
+  // wide-viewport row (#library-card-link / #library-card-signout) and
+  // once inside the More disclosure for narrow viewports
+  // (#library-card-link-more / #library-card-signout-more). Hydration
+  // updates both so either copy is correct regardless of viewport.
   import { getBrowserSupabase } from '../lib/supabase';
 
   (async () => {
-    const link = document.getElementById('library-card-link');
-    const signout = document.getElementById('library-card-signout');
-    if (!link || !signout) return;
+    const links = [
+      document.getElementById('library-card-link'),
+      document.getElementById('library-card-link-more'),
+    ].filter((el): el is HTMLElement => el !== null);
+    const signouts = [
+      document.getElementById('library-card-signout'),
+      document.getElementById('library-card-signout-more'),
+    ].filter((el): el is HTMLElement => el !== null);
+    if (links.length === 0 || signouts.length === 0) return;
     try {
       const supabase = getBrowserSupabase();
       const {
         data: { user },
       } = await supabase.auth.getUser();
       if (user) {
-        link.setAttribute('href', '/my-library/');
-        link.textContent = 'My Library';
-        signout.removeAttribute('hidden');
+        for (const link of links) {
+          link.setAttribute('href', '/my-library/');
+          link.textContent = 'My Library';
+        }
+        for (const signout of signouts) {
+          signout.removeAttribute('hidden');
+        }
       }
     } catch (_) {
       // Silently leave the default logged-out state on any failure.
@@ -237,6 +337,28 @@ import WalkingTour from './library/WalkingTour.astro';
         if (open) {
           const input = panel.querySelector('input');
           if (input instanceof HTMLInputElement) input.focus();
+        }
+      });
+    }
+
+    // v11 B.2 — More-disclosure: ESC closes, outside click closes.
+    // <details> handles open/close + keyboard activation natively;
+    // these listeners only add dismissal affordances.
+    const moreDetails = document.getElementById('header-more');
+    if (moreDetails && moreDetails.tagName === 'DETAILS') {
+      const details = moreDetails;
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape' && details.open) {
+          details.open = false;
+          const summary = details.querySelector('summary');
+          if (summary instanceof HTMLElement) summary.focus();
+        }
+      });
+      document.addEventListener('click', (ev) => {
+        if (!details.open) return;
+        const target = ev.target;
+        if (target instanceof Node && !details.contains(target)) {
+          details.open = false;
         }
       });
     }

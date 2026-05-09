@@ -35,6 +35,12 @@ Utah is the cleanest demonstration in this atlas of the two-layer requirement. U
 
 Then Utah recovered. Beginning in 1989, the Utah PTA, the Utah Education Association, the Utah State Board of Education, school boards, and parents organized. The 1991-1992 task force produced 1994's Title 53C; the 1994 Land Trusts Protection and Advocacy Office became Title 53D in 2010. The corpus grew from approximately $50 million in 1994 to approximately $3.2 billion in 2025 — sixty-fold expansion in three decades, with the same constitutional architecture that had allowed the 1983 collapse.[^conc-6] The variable, in the recovery as in the collapse, was constituency. **Architecture without constituency drifts. Constituency without architecture has no purchase. Both layers are required, and the second is the active ingredient.**
 
+<!-- Margaret pull quote 25 (delightfully non-partisan) — substrate-to-live, Site Update v11, 2026-05-08. -->
+<div class="margaret-pull-quote">
+<p>"This is a delightfully non-partisan issue. It doesn't matter what party you're in, or if you're an independent, you still love your children, your grandchildren, and the other children that are all going to grow up, be workers, and be paying your social security."</p>
+<span class="attribution">— Margaret Bird, in her own voice, on what made the Utah reform coalition durable<sup><a href="#conc-margaret-25">*</a></sup></span>
+</div>
+
 The Colorado parallel (Amendment 16 in 1996) and the Minnesota parallel (the 2012/2016 statutory School Trust Lands Director) are the second and third clear data points. The Oregon contemporary effort, organized through the Oregon Association of School Trust Lands and the *Advocates for School Trust Lands v. State of Oregon* litigation, is the fourth. The book's argumentative spine, when it is finished, rests on these four cases.
 
 ## Drift and directed seizure are different problems with different remedies
@@ -67,6 +73,18 @@ The contemporary fight in Oregon, *Advocates for School Trust Lands v. State of 
 
 What the volume finally concludes is this. The work requires the discipline of holding to its temporal frame. School trust lands were established as a forever gift to forever schools for a forever democracy. The "forever" is not rhetorical; it is the operating term. A trust that fails over generations has not failed quickly. A trust that recovers will not recover quickly. The Utah recovery took thirty years, on a corpus of fifty million dollars rebuilt to three billion dollars, against the full passive resistance of the legislature and a number of years of active opposition. Oregon's recovery, if it proceeds, will take a comparable span. The case for proceeding is that the architecture is sound; the substrate exists; the constituency is forming; and the country is full of states that have walked some version of this path before, with varying outcomes, all of which are documented in the chapters above and the encyclopedia entries that follow.
 
+<!-- Margaret pull quote 11 (twenty-to-fifty-year vision) — substrate-to-live, Site Update v11, 2026-05-08. -->
+<div class="margaret-pull-quote">
+<p>"My vision is that every state with school trust lands will have a professional, independent management system that is strictly focused on its fiduciary duty to the schools."</p>
+<span class="attribution">— Margaret Bird, in her own voice<sup><a href="#conc-margaret-11">*</a></sup></span>
+</div>
+
+<!-- Margaret pull quote 13 (worth fighting for) — substrate-to-live, Site Update v11, 2026-05-08. -->
+<div class="margaret-pull-quote">
+<p>"It's an achievable goal, and it's one worth fighting for."</p>
+<span class="attribution">— Margaret Bird, in her own voice<sup><a href="#conc-margaret-13">*</a></sup></span>
+</div>
+
 The work continues.
 
 — *End of Part I. Part II — the encyclopedia entries — begins with Delaware.*
@@ -96,6 +114,12 @@ The work continues.
 [^conc-10]: Omnibus Enabling Act of February 22, 1889, 25 Stat. 676. The "null and void" clause for non-conforming dispositions appears in §§ 10-11. ND, SD, MT, and WA were admitted under this Act in November 1889.
 
 [^conc-11]: *Branson School District RE-82 v. Romer*, 161 F.3d 619 (10th Cir. 1998); *Kadish v. Arizona State Land Dep't*, 155 Ariz. 484, 747 P.2d 1183 (1987), aff'd as *ASARCO Inc. v. Kadish*, 490 U.S. 605 (1989); *Forest Guardians v. Wells*, 201 Ariz. 255, 34 P.3d 364 (2001) [VERIFY]; *Montanans for the Responsible Use of the School Trust v. State* [VERIFY: complete cite]; *Advocates for School Trust Lands v. State of Oregon*, 346 Or App 668 (2026). On the underlying *parens patriae* doctrine, Bogert §§ 411-417 [VERIFY: Bogert section numbering across editions]; Restatement (Third) of Trusts § 95.
+
+<p id="conc-margaret-25" class="text-xs"><sup>*</sup> Margaret Bird, oral remarks, August 10, 2025; transcript filed in the Library substrate at <em>PXL_20250810_183245973.mp4 — Final Margaret Transcript / Utah Q&amp;A</em>.</p>
+
+<p id="conc-margaret-11" class="text-xs"><sup>*</sup> Margaret Bird, oral remarks, August 10, 2025; transcript filed in the Library substrate at <em>PXL_20250810_190018622.mp4 — twenty-to-fifty-year vision</em>.</p>
+
+<p id="conc-margaret-13" class="text-xs"><sup>*</sup> Margaret Bird, oral remarks, August 10, 2025; transcript filed in the Library substrate at <em>PXL_20250810_190018622.mp4 — twenty-to-fifty-year vision</em>.</p>
 
 
 
