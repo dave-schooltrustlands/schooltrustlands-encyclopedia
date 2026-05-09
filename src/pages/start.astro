@@ -11,7 +11,7 @@ import Footer from '../components/Footer.astro';
       description="The 1785 Land Ordinance, the trust that followed, the drift, and how to read what's on this site. Ten minutes."
     />
   </head>
-  <body class="min-h-screen bg-archive-paper text-ink mode-standard" data-source-id="start-orientation">
+  <body class="min-h-screen bg-archive-paper text-ink mode-library" data-source-id="start-orientation">
     <Header />
     <main class="mx-auto max-w-prose p-4 sm:p-8">
       <header class="border-b border-slate-200 pb-6">
@@ -81,22 +81,27 @@ import Footer from '../components/Footer.astro';
 
         <h2>How to read this site</h2>
         <p>
-          Four rooms are live today and three more open later in 2026. Newsroom, Updates, and Voices are also live as of May 2026.
+          The Library is organized around three entry doors, each pointing at a different way in.
         </p>
+
+        <h3>Door 1 — Understand the argument</h3>
         <p>
-          The Reading Room holds the synthesizing argument: nine chapters of <em>Schools of the Republic v1.3</em> (the booklet), the <em>Sacred Compact</em> white paper (the theory), and a per-state dossier for every state in the union.
+          The <a href="/reading/">Reading Room</a> holds the synthesizing argument: nine chapters of <em>Schools of the Republic v1.3</em>, the <em>Sacred Compact</em> white paper, and a per-state dossier for every state in the union. Start here if you want to understand what school trust lands are and why they matter.
         </p>
+
+        <h3>Door 2 — Find the evidence</h3>
         <p>
-          The Atlas Room maps the same fifty states under four lenses: era cohort (when did this state join the union?), permanent fund corpus (what's the trust worth today?), federal grant acreage (how much land was granted at admission?), and transparency status (does the state publish its trust accounting publicly?). Each lens is a different question; the same fifty states answer it differently.
+          Three rooms carry the evidentiary record. The <a href="/atlas/">Atlas</a> maps fifty states under four lenses (admission cohort, permanent fund corpus, federal grant acreage, transparency status). The <a href="/counting/">Counting House</a> compares the money — every numeric cell carries a confidence indicator (verified, awaiting state disclosure, or not applicable). The <a href="/maps/">Map Room</a> renders the cartographic record: where the trust lands are today and how well each state publishes their locations.
         </p>
+
+        <h3>Door 3 — Join the watchful crew</h3>
         <p>
-          The Map Room is the transparency directory: a country-level toggle visualization that switches between "Original grants" and "Current holdings" of the federal school-trust corpus, with a per-state page for each state that received a federal grant or operates a substantive state-created or §5(f) regime. The Map Room asks the cadastral question — where, exactly, are the trust lands today, and how well does the state publish their locations?
+          The <a href="/the-watchful-crew/">Watchful Crew</a> is the standing call: school-board members, parents, journalists, and lawyers who can apply this evidence in their own state. The <a href="/contribute/">contribute</a> page describes how to add a source, flag an error, or surface a story we should be covering. The <a href="/missions/">missions</a> page lists current asks.
         </p>
+
+        <h3>Current activity</h3>
         <p>
-          The Counting House compares the money. A sortable, filterable table of all fifty states, plus per-state financial cards, plus a side-by-side comparison tool. Every numeric cell carries a confidence indicator: verified, awaiting state disclosure, or not applicable.
-        </p>
-        <p>
-          Updates is the library's running changelog. Newsroom is the early-form digest of school trust lands news, court rulings, and trustee actions across the 50 states. Records Room (primary-source bundles), Court Room (case law and litigation timelines), and Breach &amp; Recovery (drift case studies) open over the next several months.
+          The <a href="/newsroom/">Newsroom</a> carries the Library's running editorial digest of school-trust-lands news, court rulings, and trustee actions across the fifty states. <a href="/voices/">Voices</a> carries first-person testimony from the watchful crew. <a href="/updates/">Updates</a> is the institutional changelog of what the Library has shipped and when — not a room, but a record.
         </p>
         <p>
           Every numeric figure on this site carries one of four signals. <span class="inline-flex items-center rounded bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-800">Verified</span> means we have a public source for that figure. <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800">Awaiting State Disclosure</span> means the state has a school trust and the figure exists but the state has not yet published it. <span class="inline-flex items-center rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-800">Disclosure unknown</span> is the rung below: the state has a school trust, but we don't yet know whether the underlying data has been published, internally tracked, or simply isn't kept. The em-dash (—) appears in place of a value when the figure does not apply — typically because the state is one of the Original 13 or was admitted under terms that didn't include a federal school-land grant.

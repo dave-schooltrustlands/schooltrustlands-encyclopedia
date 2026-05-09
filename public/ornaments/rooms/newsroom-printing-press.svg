@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Press cylinder (large circle) -->
+  <circle cx="50" cy="38" r="22"/>
+  <!-- Inner cylinder mark -->
+  <circle cx="50" cy="38" r="14" opacity="0.5"/>
+  <!-- Center axle -->
+  <circle cx="50" cy="38" r="1.5" fill="currentColor"/>
+  <!-- Sheet of paper feeding under cylinder, curved -->
+  <path d="M10 70 Q30 64 50 68 Q70 72 90 66 L90 84 Q70 90 50 86 Q30 82 10 88 Z"/>
+  <!-- Two text-line marks on the sheet -->
+  <path d="M18 76 Q34 72 50 75 Q66 78 82 74" opacity="0.6"/>
+  <path d="M18 82 Q34 78 50 81 Q66 84 82 80" opacity="0.6"/>
+</svg>

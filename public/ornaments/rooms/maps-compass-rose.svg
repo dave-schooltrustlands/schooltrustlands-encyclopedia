@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Outer circle -->
+  <circle cx="50" cy="50" r="40"/>
+  <!-- Inner circle -->
+  <circle cx="50" cy="50" r="22"/>
+  <!-- Major points: N S E W (diamond shapes) -->
+  <path d="M50 10 L54 50 L50 50 L46 50 Z"/>
+  <path d="M50 90 L54 50 L50 50 L46 50 Z"/>
+  <path d="M10 50 L50 54 L50 50 L50 46 Z"/>
+  <path d="M90 50 L50 54 L50 50 L50 46 Z"/>
+  <!-- Minor points: NE NW SE SW -->
+  <path d="M78 22 L54 46 L50 50 L46 46 Z" opacity="0.7"/>
+  <path d="M22 22 L46 46 L50 50 L54 46 Z" opacity="0.7"/>
+  <path d="M78 78 L54 54 L50 50 L46 54 Z" opacity="0.7"/>
+  <path d="M22 78 L46 54 L50 50 L54 54 Z" opacity="0.7"/>
+  <!-- Center dot -->
+  <circle cx="50" cy="50" r="1.5" fill="currentColor"/>
+</svg>

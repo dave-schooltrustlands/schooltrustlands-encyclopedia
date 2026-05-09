@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" stroke="#000" fill="none" stroke-width="0.8" opacity="0.04" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Outer circle -->
+  <circle cx="300" cy="300" r="240"/>
+  <!-- Inner circle -->
+  <circle cx="300" cy="300" r="160"/>
+  <!-- Cardinal points (N S E W) -->
+  <path d="M300 60 L312 300 L300 300 L288 300 Z"/>
+  <path d="M300 540 L312 300 L300 300 L288 300 Z"/>
+  <path d="M60 300 L300 312 L300 300 L300 288 Z"/>
+  <path d="M540 300 L300 312 L300 300 L300 288 Z"/>
+  <!-- Intercardinal points (NE NW SE SW) -->
+  <path d="M470 130 L312 288 L300 300 L288 288 Z"/>
+  <path d="M130 130 L288 288 L300 300 L312 288 Z"/>
+  <path d="M470 470 L312 312 L300 300 L288 312 Z"/>
+  <path d="M130 470 L288 312 L300 300 L312 312 Z"/>
+</svg>

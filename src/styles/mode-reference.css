@@ -365,3 +365,51 @@ body.mode-reference .room-banner {
   max-height: 160px;
 }
 /* === end v9 banner CSS — Reference Mode (Beta) ==================== */
+
+/* === v12 BETA — Per-room visual identity strip (Reference Mode) =====
+   The matching strip rules for Library Mode's per-room atmosphere,
+   heading register, link color, and banner border. Reference Mode
+   prefers consistent typography across rooms (text-forward register)
+   over per-room variation, so all of these revert to a single
+   text-forward default.
+   --------------------------------------------------------------------- */
+body.mode-reference .room-main {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+body.mode-reference [data-room] main > header h1,
+body.mode-reference [data-room] main > article h1,
+body.mode-reference [data-room] main h1[data-pagefind-weight],
+body.mode-reference [data-room] main h2 {
+  color: var(--deep-navy);
+  font-feature-settings: normal;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+/* Heading separation rule from earlier in this file already adds a
+   1px rule-border under h2 in Reference; we restore that here so the
+   v12 per-room border-bottom strip doesn't kill the existing register. */
+body.mode-reference [data-room] main h2 {
+  border-bottom: 1px solid var(--rule-border);
+  padding-bottom: 0.3em;
+}
+body.mode-reference [data-room] main a,
+body.mode-reference [data-room] .prose a {
+  color: var(--deep-navy);
+}
+body.mode-reference [data-room] .room-banner {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  filter: grayscale(0.4);
+}
+body.mode-reference .room-ornament {
+  display: none !important;
+}
+/* Breadcrumb pill in Reference: use a subdued pill rather than the
+   saturated room-accent fill. */
+body.mode-reference nav[aria-label='Library rooms'] li [aria-current='page'] {
+  background: var(--deep-navy);
+  color: var(--linen-card);
+}
+/* === end v12 BETA — Per-room visual identity strip (Reference Mode) = */

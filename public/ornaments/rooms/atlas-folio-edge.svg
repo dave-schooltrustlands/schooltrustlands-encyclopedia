@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Folio page: clean left/top/bottom, deckle-edge on right -->
+  <path d="M14 12 L80 12 L82 20 L78 28 L83 36 L80 44 L82 52 L78 60 L83 68 L80 76 L82 84 L78 88 L14 88 Z"/>
+  <!-- Inner margin line -->
+  <line x1="22" y1="18" x2="22" y2="82" opacity="0.5"/>
+  <!-- Three horizontal text-line marks -->
+  <line x1="28" y1="34" x2="72" y2="34" opacity="0.6"/>
+  <line x1="28" y1="50" x2="72" y2="50" opacity="0.6"/>
+  <line x1="28" y1="66" x2="72" y2="66" opacity="0.6"/>
+</svg>

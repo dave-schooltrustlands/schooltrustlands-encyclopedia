@@ -61,6 +61,71 @@
 [data-room='breach-recovery'],
 [data-room='breach']   { --room-accent: var(--accent-breach); }
 
+/* ---------------------------------------------------------------------
+   v12 BETA — Per-room visual identity palette.
+
+   Each of the six live rooms gets its own institutional palette
+   (--room-accent saturated for headings/borders, --room-link slightly
+   darker for body anchors), atmosphere texture (--room-bg-grain), border
+   register (--room-border-texture), and heading typographic feature
+   (--room-heading-feature). Library Mode renders all of it (per
+   mode-library.css); Reference Mode strips back to the calibration
+   defaults (per mode-reference.css). Defaults below cover default surfaces
+   (homepage, About, Updates, Start Here) so non-room pages still get
+   sensible link/border colors.
+   --------------------------------------------------------------------- */
+:root {
+  --room-link: var(--deep-navy);
+  --room-bg-grain: none;
+  --room-border-texture: 1px solid var(--rule-border);
+  --room-heading-feature: normal;
+}
+[data-room='reading'] {
+  --room-accent: #8B5A2B;          /* warm amber */
+  --room-link:   #6B4220;
+  --room-bg-grain: url('/textures/parchment-grain.svg');
+  --room-border-texture: 1px solid rgba(139, 90, 43, 0.25);
+  --room-heading-feature: 'smcp' 1; /* small caps */
+}
+[data-room='atlas'] {
+  --room-accent: #5A4A2B;          /* warm cartographic brown */
+  --room-link:   #3D3318;
+  --room-bg-grain: url('/textures/folio-edge.svg');
+  --room-border-texture: 1px solid rgba(90, 74, 43, 0.25);
+}
+[data-room='counting'] {
+  --room-accent: #2D5A3D;          /* muted ledger green */
+  --room-link:   #1A3D27;
+  --room-bg-grain: url('/textures/ledger-lines.svg');
+  --room-border-texture: 1px solid rgba(45, 90, 61, 0.25);
+}
+[data-room='maps'] {
+  --room-accent: #2D4A6B;          /* compass blue */
+  --room-link:   #1A3554;
+  --room-bg-grain: url('/textures/compass-rose-watermark.svg');
+  --room-border-texture: 1px solid rgba(45, 74, 107, 0.25);
+}
+[data-room='newsroom'] {
+  --room-accent: #4A3A2B;          /* newsprint sepia */
+  --room-link:   #2E2418;
+  --room-bg-grain: url('/textures/newsprint-grain.svg');
+  --room-border-texture: 1px solid rgba(74, 58, 43, 0.25);
+}
+[data-room='voices'] {
+  --room-accent: #8B3A4A;          /* warm rose */
+  --room-link:   #6B2535;
+  --room-bg-grain: url('/textures/hall-warmth.svg');
+  --room-border-texture: 1px solid rgba(139, 58, 74, 0.25);
+}
+
+/* Ornament-anchor context. RoomLayout / BaseLayout add the .room-main
+   class to <main>; the ornament absolute-positions itself inside that
+   container in Library Mode. Reference Mode hides the ornament outright,
+   so this rule is inert in Reference. */
+.room-main {
+  position: relative;
+}
+
 @layer base {
   html {
     font-family: var(--font-serif);

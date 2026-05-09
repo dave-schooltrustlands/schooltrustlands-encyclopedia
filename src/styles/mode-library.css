@@ -411,3 +411,138 @@ body.mode-library .room-banner {
 }
 /* === end v9 banner CSS — Library Mode (Beta) ====================== */
 
+/* === v12 BETA — Per-room visual identity (Library Mode) =============
+   The atmosphere, heading register, link color, and banner-border rules
+   that make moving between rooms feel like moving between institutional
+   spaces. Each rule reads from a per-room CSS variable defined in
+   global.css; Reference Mode strips the same set back to defaults via
+   matching rules in mode-reference.css. Default surfaces (homepage,
+   About, Updates, Start Here — no [data-room]) inherit the :root
+   defaults so the rules are inert there.
+   --------------------------------------------------------------------- */
+
+/* Atmosphere texture inside <main>. The room-bg-grain variable resolves
+   to a tileable SVG in /public/textures/ (parchment grain, ledger lines,
+   newsprint dots, etc.), or to `none` on default surfaces. The warm
+   paper-color blend mode keeps the texture readable as paper-grain
+   rather than as a pattern. */
+body.mode-library .room-main {
+  background-image: var(--room-bg-grain);
+  background-repeat: repeat;
+  background-size: 600px;
+  background-blend-mode: multiply;
+}
+body.mode-library [data-room] .room-main {
+  background-color: rgba(255, 250, 240, 0.6);
+}
+
+/* Per-room heading register: H1 picks up the room accent, an underline
+   rule, and any room-specific font-feature (small caps for Reading). H2
+   carries the same color but a thinner underline. Scoped to [data-room]
+   so default surfaces (homepage, About) keep their global heading
+   typography. */
+body.mode-library [data-room] main > header h1,
+body.mode-library [data-room] main > article h1,
+body.mode-library [data-room] main h1[data-pagefind-weight] {
+  color: var(--room-accent);
+  font-feature-settings: var(--room-heading-feature);
+  border-bottom: 2px solid var(--room-accent);
+  padding-bottom: 0.25rem;
+}
+body.mode-library [data-room] main h2 {
+  font-feature-settings: var(--room-heading-feature);
+  border-bottom: 1px solid var(--room-accent);
+  padding-bottom: 0.2rem;
+}
+
+/* Per-room body link color. Scoped to <main> and [data-room] so site
+   header/footer/nav links are unaffected. */
+body.mode-library [data-room] main a,
+body.mode-library [data-room] .prose a {
+  color: var(--room-link);
+}
+body.mode-library [data-room] main a:hover,
+body.mode-library [data-room] .prose a:hover {
+  color: var(--room-accent);
+}
+
+/* Per-room room-banner: pick up a saturated double-rule border in the
+   room accent so the banner reads as a hung archival print framed in
+   that room's character. Replaces the v9 generic rule-border treatment
+   (still active for default surfaces). */
+body.mode-library [data-room] .room-banner {
+  border: 3px double var(--room-accent);
+  box-shadow: 0 2px 4px rgba(31, 42, 68, 0.15);
+  border-radius: 4px;
+  opacity: 1;
+}
+
+/* Per-room ornament — color picks up --room-accent. The base
+   .room-ornament rule above already controls position/visibility; here
+   we just carry the per-room color through. The component uses
+   stroke="currentColor" on its SVG so the color cascade reaches it. */
+body.mode-library [data-room] .room-ornament {
+  color: var(--room-accent);
+  opacity: 0.7;
+}
+
+/* Per-room breadcrumb pill — RoomLayout's nav lists each room with the
+   currently-active room highlighted. The v12 rule keys the active pill
+   off --room-accent so the highlight color matches the room palette. */
+body.mode-library nav[aria-label='Library rooms'] li [aria-current='page'] {
+  background: var(--room-accent);
+  color: var(--linen-card);
+}
+/* === end v12 BETA — Per-room visual identity (Library Mode) ======= */
+
+/* === v12 ALPHA — Migrated mode-standard.css rules ====================
+   v12 retires the Standard slider position. Library Mode is the new
+   default. The rules below were keyed to body.mode-standard before v12
+   (per-room thin top border, nav-icon visibility, source-id-prefix
+   fallbacks, inline source-id chrome). They migrate here so the default
+   visual register keeps its previous calibration cues — top border
+   colored per room, nav iconography visible. mode-standard.css is now
+   inert.
+   --------------------------------------------------------------------- */
+body.mode-library {
+  border-top: 4px solid var(--room-accent, var(--trust-blue));
+}
+body.mode-library[data-room='reading'] {
+  border-top-color: var(--room-accent);
+}
+body.mode-library[data-room='counting'] {
+  border-top-color: var(--room-accent);
+}
+body.mode-library[data-room='records'],
+body.mode-library[data-room='maps'],
+body.mode-library[data-room='map'] {
+  border-top-color: var(--room-accent);
+}
+body.mode-library[data-room='atlas'] {
+  border-top-color: var(--room-accent);
+}
+body.mode-library[data-room='voices'] {
+  border-top-color: var(--room-accent);
+}
+body.mode-library[data-room='newsroom'] {
+  border-top-color: var(--room-accent);
+}
+body.mode-library[data-room='court'] {
+  border-top-color: var(--accent-court);
+}
+body.mode-library[data-room='breach-recovery'],
+body.mode-library[data-room='breach'] {
+  border-top-color: var(--accent-breach);
+}
+body.mode-library header nav .nav-icon {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-right: 0.35rem;
+  opacity: 0.85;
+}
+/* Standard Mode showed door icons too; Library Mode already paints them
+   via earlier rules in this file with per-door accent colors. No
+   migration needed for .home-door__icon visibility — the v9 rules
+   above handle Library treatment. */
+/* === end v12 ALPHA — Migrated mode-standard.css rules ============= */
+

@@ -2,12 +2,12 @@
 /**
  * VisualDensitySlider
  *
- * Three-position segmented control (Reference / Standard / Library) that
- * sets a single body class — mode-reference | mode-standard | mode-library —
+ * Two-position segmented control (Reference / Library) that
+ * sets a single body class — mode-reference | mode-library —
  * and persists the choice in localStorage under "library-visual-density".
  *
- * Server-rendered default: Standard. Per-mode visual rules live in
- * mode-reference.css / mode-standard.css / mode-library.css (other agents).
+ * Server-rendered default: Library. Per-mode visual rules live in
+ * mode-reference.css / mode-library.css (other agents).
  *
  * Mounts in the site header. No props. Self-contained: own <style> + <script>.
  */
@@ -20,7 +20,7 @@
   (function () {
     try {
       var v = localStorage.getItem('library-visual-density');
-      if (!v || (v !== 'reference' && v !== 'standard' && v !== 'library')) v = 'standard';
+      if (!v || (v !== 'reference' && v !== 'library')) v = 'library';
       var apply = function (b) {
         if (!b) return;
         b.classList.remove('mode-reference', 'mode-standard', 'mode-library');
@@ -34,7 +34,7 @@
         });
       }
     } catch (e) {
-      /* default mode-standard already on body via BaseLayout */
+      /* default mode-library already on body via BaseLayout */
     }
   })();
 </script>
@@ -80,18 +80,9 @@
       type="button"
       role="radio"
       class="vds-seg is-active"
-      data-mode="standard"
+      data-mode="library"
       aria-checked="true"
       tabindex="0"
-    >Standard</button>
-    <span class="vds-hairline" aria-hidden="true"></span>
-    <button
-      type="button"
-      role="radio"
-      class="vds-seg"
-      data-mode="library"
-      aria-checked="false"
-      tabindex="-1"
     >Library</button>
   </div>
   <button
@@ -111,11 +102,10 @@
       <span class="vds-demo-pill">
         <span class="vds-demo-thumb"></span>
         <span class="vds-demo-seg" data-demo-mode="reference">Reference</span>
-        <span class="vds-demo-seg" data-demo-mode="standard">Standard</span>
         <span class="vds-demo-seg" data-demo-mode="library">Library</span>
       </span>
     </div>
-    <p class="vds-tooltip-text">Choose how visual you want the Library to feel. <strong>Reference</strong> strips ornament for fast reading; <strong>Library</strong> turns the lights on.</p>
+    <p class="vds-tooltip-text"><strong>View</strong> — Library is the default visual register. Switch to <strong>Reference</strong> for text-forward, fast, accessible reading.</p>
   </div>
   <div
     class="vds-sr"
@@ -309,7 +299,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 33.3333%;
+    width: 50%;
     left: 0;
     background: var(--deep-navy);
     border-radius: 999px;
@@ -319,29 +309,21 @@
   .vds-demo-seg[data-demo-mode='reference'] {
     animation: vds-demo-text-reference 5s ease-in-out infinite;
   }
-  .vds-demo-seg[data-demo-mode='standard'] {
-    animation: vds-demo-text-standard 5s ease-in-out infinite;
-  }
   .vds-demo-seg[data-demo-mode='library'] {
     animation: vds-demo-text-library 5s ease-in-out infinite;
   }
   @keyframes vds-demo-thumb-cycle {
-    0%, 22%   { left: 0%; }
-    33%, 55%  { left: 33.3333%; }
-    66%, 88%  { left: 66.6666%; }
+    0%, 45%   { left: 0%; }
+    50%, 95%  { left: 50%; }
     100%      { left: 0%; }
   }
   @keyframes vds-demo-text-reference {
-    0%, 22%, 100%       { color: var(--linen-card, #fafaf7); }
-    33%, 55%, 66%, 88%  { color: var(--deep-navy); }
-  }
-  @keyframes vds-demo-text-standard {
-    0%, 22%, 66%, 88%, 100% { color: var(--deep-navy); }
-    33%, 55%                { color: var(--linen-card, #fafaf7); }
+    0%, 45%, 100%  { color: var(--linen-card, #fafaf7); }
+    50%, 95%       { color: var(--deep-navy); }
   }
   @keyframes vds-demo-text-library {
-    0%, 22%, 33%, 55%, 100% { color: var(--deep-navy); }
-    66%, 88%                { color: var(--linen-card, #fafaf7); }
+    0%, 45%, 100%  { color: var(--deep-navy); }
+    50%, 95%       { color: var(--linen-card, #fafaf7); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -349,11 +331,11 @@
     .vds-demo-seg {
       animation: none !important;
     }
-    /* Static rest position: highlight the default (Standard) segment. */
+    /* Static rest position: highlight the default (Library) segment. */
     .vds-demo-thumb {
-      left: 33.3333%;
+      left: 50%;
     }
-    .vds-demo-seg[data-demo-mode='standard'] {
+    .vds-demo-seg[data-demo-mode='library'] {
       color: var(--linen-card, #fafaf7);
     }
   }
@@ -413,7 +395,7 @@
 
 <script is:inline>
   (function () {
-    var MODES = ['reference', 'standard', 'library'];
+    var MODES = ['reference', 'library'];
     var STORAGE_KEY = 'library-visual-density';
     var TOOLTIP_KEY = 'library-density-tooltip-dismissed';
     var TOOLTIP_TIMEOUT_MS = 10000;
@@ -433,9 +415,9 @@
       function readStored() {
         try {
           var v = localStorage.getItem(STORAGE_KEY);
-          if (v === 'reference' || v === 'standard' || v === 'library') return v;
+          if (v === 'reference' || v === 'library') return v;
         } catch (_) { /* ignore */ }
-        return 'standard';
+        return 'library';
       }
 
       function applyMode(mode, opts) {
@@ -511,7 +493,7 @@
         var target = ev.target;
         if (!(target instanceof HTMLElement) || !target.classList.contains('vds-seg')) return;
         var key = ev.key;
-        var current = target.getAttribute('data-mode') || 'standard';
+        var current = target.getAttribute('data-mode') || 'library';
         var idx = MODES.indexOf(current);
         if (idx < 0) idx = 1;
 

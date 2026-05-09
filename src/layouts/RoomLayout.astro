@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import RoomBanner from '../components/RoomBanner.astro';
+import RoomOrnament from '../components/library/RoomOrnament.astro';
 
 type RoomId =
   | 'reading'
@@ -149,7 +150,7 @@ const mainClass =
     <BaseHead title={resolvedTitle} />
   </head>
   <body
-    class="min-h-screen bg-archive-paper text-ink mode-standard"
+    class="min-h-screen bg-archive-paper text-ink mode-library"
     data-source-id={sourceId}
     data-room={room}
     data-state={state?.iso}
@@ -224,10 +225,14 @@ const mainClass =
       </div>
     </nav>
 
-    <main class={mainClass}>
+    <main class={`${mainClass} room-main`}>
       <slot name="above-header">
         {isBannerRoom(room) && <RoomBanner room={room} />}
       </slot>
+      {room === 'reading' && <RoomOrnament shape="book" />}
+      {room === 'atlas' && <RoomOrnament shape="map" />}
+      {room === 'maps' && <RoomOrnament shape="compass" />}
+      {room === 'counting' && <RoomOrnament shape="scales" />}
       <header class="border-b border-slate-200 pb-6">
         <h1 data-pagefind-weight="10" class="text-3xl font-bold tracking-tight sm:text-4xl">
           {title}

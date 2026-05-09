@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import RoomBanner from '../components/RoomBanner.astro';
+import RoomOrnament from '../components/library/RoomOrnament.astro';
 
 interface Props {
   title: string;
@@ -14,10 +15,17 @@ interface Props {
   // mirrors RoomLayout's slot-above-h1 placement without per-page
   // re-mounting. Pages on BaseLayout that have no banner simply
   // omit the prop.
+  // v12 BETA — `room` also drives data-room (per-room palette) and
+  // RoomOrnament mounting, mirroring RoomLayout's contract.
   room?: 'voices' | 'newsroom';
 }
 
 const { title, description, sourceId, room } = Astro.props;
+
+const ornamentShapeByRoom: Record<NonNullable<Props['room']>, 'mic' | 'newspaper'> = {
+  voices: 'mic',
+  newsroom: 'newspaper',
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -25,11 +33,13 @@ const { title, description, sourceId, room } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body
-    class="min-h-screen bg-archive-paper text-ink mode-standard"
+    class="min-h-screen bg-archive-paper text-ink mode-library"
     data-source-id={sourceId}
+    data-room={room}
   >
     <Header />
-    <main class="mx-auto max-w-prose p-4 sm:p-8">
+    <main class="mx-auto max-w-prose p-4 sm:p-8 room-main">
+      {room && <RoomOrnament shape={ornamentShapeByRoom[room]} />}
       {room && <RoomBanner room={room} />}
       <slot />
     </main>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Microphone head (rounded rectangle) -->
+  <rect x="44" y="14" width="12" height="22" rx="6" ry="6"/>
+  <!-- Mic grille suggestion -->
+  <line x1="46" y1="22" x2="54" y2="22" opacity="0.5"/>
+  <line x1="46" y1="26" x2="54" y2="26" opacity="0.5"/>
+  <!-- Mic stand -->
+  <line x1="50" y1="36" x2="50" y2="54"/>
+  <!-- Mic stand base on top of podium reading surface -->
+  <line x1="44" y1="54" x2="56" y2="54"/>
+  <!-- Podium slanted reading surface -->
+  <path d="M22 54 L78 50 L82 58 L18 58 Z"/>
+  <!-- Podium trapezoidal body -->
+  <path d="M26 58 L74 58 L80 90 L20 90 Z"/>
+  <!-- Front panel detail -->
+  <line x1="32" y1="68" x2="68" y2="68" opacity="0.5"/>
+</svg>
