@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import RoomLayout from '../../layouts/RoomLayout.astro';
+import BookBanner from '../../components/BookBanner.astro';
 
 type Essay = CollectionEntry<'essays'>;
 
@@ -39,6 +40,7 @@ const total = sections.reduce((sum, s) => sum + s.data.wordCount, 0);
   width="prose"
   sourceId="sacred-compact-toc"
 >
+  <BookBanner slot="before-title" direction="forward" />
   <figure class="opener-figure" style="margin: 1.5rem 0;">
     <img
       src="/img/sources/magna-carta-1215.jpg"

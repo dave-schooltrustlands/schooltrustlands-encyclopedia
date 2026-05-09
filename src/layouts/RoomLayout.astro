@@ -234,6 +234,7 @@ const mainClass =
       {room === 'maps' && <RoomOrnament shape="compass" />}
       {room === 'counting' && <RoomOrnament shape="scales" />}
       <header class="border-b border-slate-200 pb-6">
+        <slot name="before-title" />
         <h1 data-pagefind-weight="10" class="text-3xl font-bold tracking-tight sm:text-4xl">
           {title}
         </h1>

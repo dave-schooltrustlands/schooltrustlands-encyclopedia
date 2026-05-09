@@ -108,7 +108,7 @@ Footnotes:
 - [^I-1] through [^I-7] preserved verbatim from source.
 - [^I-3a] is new (drift/hijack distinction footnote with three illustrative hijack-mode
   examples — Idaho 1933, California Prop 13 cascade, Oregon 2014 management-fee carve-
-  out). The illustrative examples carry [VERIFY]-flag risk and are framed as
+  out). The illustrative examples carry verification-flag risk and are framed as
   "illustrative" rather than asserted; if Subagent E flags any of them, they can be
   pruned without disturbing the analytic move.
 

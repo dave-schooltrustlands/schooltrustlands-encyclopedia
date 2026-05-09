@@ -7,7 +7,7 @@ era_cohort: Modern reference (in-copyright)
 register: Policy research report; comparative western-states analysis
 date_curated: 2026-05-07
 curator: Title Steward — OPEN (apply via /contribute/)
-tier: "Scholarship · Tier 3 (in-copyright; curator-recruitment open) [VERIFY: open-access status; promote to Tier 2 if confirmed open]"
+tier: "Scholarship · Tier 3 (in-copyright; curator-recruitment open)"
 ---
 
 # State Trust Lands in the West: Fiduciary Duty in a Changing Landscape

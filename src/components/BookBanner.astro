@@ -1,0 +1,30 @@
+---
+// v16 DELTA — LOOKING BACK / LOOKING FORWARD banner-designator.
+// Structural function-naming above a book's substantive title.
+// Typography matches existing .eyebrow / .featured-tag vocabulary.
+
+interface Props {
+  direction: 'back' | 'forward';
+}
+
+const { direction } = Astro.props;
+const label = direction === 'back' ? 'Looking Back' : 'Looking Forward';
+---
+<span class="book-banner" data-direction={direction}>{label}</span>
+
+<style>
+  .book-banner {
+    display: block;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--old-gold, #B88A2E);
+    margin-bottom: 0.45rem;
+  }
+  /* Inside a room, follow the room accent (matches global .eyebrow rule). */
+  :global([data-room]) .book-banner {
+    color: var(--room-accent, var(--old-gold, #B88A2E));
+  }
+</style>

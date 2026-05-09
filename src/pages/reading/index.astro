@@ -1,6 +1,7 @@
 ---
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import ReferenceDesk from '../../components/ReferenceDesk.astro';
+import BookBanner from '../../components/BookBanner.astro';
 ---
 
 <RoomLayout
@@ -93,7 +94,7 @@ import ReferenceDesk from '../../components/ReferenceDesk.astro';
       <h2 class="featured-section-heading">On display this week</h2>
 
       <article class="featured-book">
-        <span class="featured-tag">Featured</span>
+        <BookBanner direction="forward" />
         <h3 class="featured-title">The Sacred Compact</h3>
         <p class="featured-byline">Sullivan and Bird · v5.0 · eight essays + three interludes</p>
         <p class="featured-blurb">
