@@ -261,7 +261,7 @@ if (latest) {
           <p class="text-xs uppercase tracking-wide text-slate-500">
             {latest.data.title}
           </p>
-          <p class="kicker"><em>{latest.data.kicker}</em></p>
+          <p class="kicker"><em set:html={latest.data.kicker} /></p>
           <p>{latestExcerpt}</p>
           <p>
             <a href={`/newsroom/${latest.slug}/`}>Read the full entry →</a>
