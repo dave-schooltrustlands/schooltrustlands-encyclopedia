@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: Interlude — Nine Months in About a Minute"
+title: "The Eighth Anchor: Interlude — Nine Months in About a Minute"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "interlude-2-computing-today"
 order: 104.5

@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: Interlude — Two Kinds of Mind"
+title: "The Eighth Anchor: Interlude — Two Kinds of Mind"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "interlude-3-cognitive-partnership"
 order: 105.5

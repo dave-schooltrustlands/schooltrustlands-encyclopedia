@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: I. The Question"
+title: "The Eighth Anchor: I. The Question"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "i"
 order: 101

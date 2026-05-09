@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: II. The Sacred Compact — How America Built a Forever Promise"
+title: "The Eighth Anchor: II. The Sacred Compact — How America Built a Forever Promise"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "ii"
 order: 102

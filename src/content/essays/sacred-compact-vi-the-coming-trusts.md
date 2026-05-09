@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: VI. The Coming Trusts — Designing for the AI Age"
+title: "The Eighth Anchor: VI. The Coming Trusts — Designing for the AI Age"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "vi"
 order: 106

@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: IV. The Pattern — Why Trusts Drift, and Why They Are Sometimes Seized"
+title: "The Eighth Anchor: IV. The Pattern — Why Trusts Drift, and Why They Are Sometimes Seized"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "iv"
 order: 104

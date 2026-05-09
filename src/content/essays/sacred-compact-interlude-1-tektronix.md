@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: Interlude — The Institution That Held the Future"
+title: "The Eighth Anchor: Interlude — The Institution That Held the Future"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "interlude-1-tektronix"
 order: 102.5

@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="The Library's Argument · Reading Room · America's School Trust Library"
-  description="Two paired works — Sacred Compact (the analytic frame) and Schools of the Republic (the case-by-case record) — that together carry the Library's argument."
+  description="Two paired works — Schools of the Republic (Volume I, the historical record) and The Eighth Anchor (Volume II, the diagnostic frame) — that together carry the Library's argument."
   sourceId="reading-librarys-argument"
 >
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
@@ -32,12 +32,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       record is the only worked existence proof of the principle they need.
     </p>
     <p>
-      The Library's Argument runs across two paired works. <a href="/reading/sacred-compact/"><em>Sacred Compact</em></a> is
-      the analytic frame; <a href="/reading/schools-of-the-republic/"><em>Schools of the Republic</em></a> is the empirical
-      floor — fifty states, two hundred and forty years, named principals and named
-      cases, the evidence that warrants the diagnosis. The two volumes are designed
-      to be read either way: the frame first if you want the argument, the record
-      first if you want the proof.
+      The Library's Argument runs across two paired works. <a href="/reading/schools-of-the-republic/"><em>Schools of the Republic</em></a> is
+      the historical record — fifty states, two hundred and forty years, named principals and named
+      cases, the evidence the diagnosis rests on. <a href="/reading/sacred-compact/"><em>The Eighth Anchor</em></a> is
+      the diagnostic frame the record produces — what the school-trust experiment teaches the
+      architects of the next forever-institutions. The two volumes are designed
+      to be read either way: the record first if you want the proof, the frame
+      first if you want the argument.
     </p>
     <p class="text-sm text-slate-600">
       <a href="/contribute/">Suggest a contribution</a> — corrections, source
@@ -48,40 +49,43 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   <section class="argument-cards mt-12">
     <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       <li class="argument-card">
-        <p class="card-kicker">Volume I · The analytic frame</p>
+        <p class="card-kicker">Volume I · LOOKING BACK</p>
         <h2 class="card-title">
-          <em>Sacred Compact</em>: A Forever Gift to Forever Schools for a Forever Democracy
+          <em>Schools of the Republic</em>
         </h2>
-        <p class="card-byline">Dave Sullivan with Margaret Bird</p>
-        <p class="card-length">~70 pages — eight essays plus three personal interludes</p>
-        <p class="card-blurb">
-          The analytic argument. Eight essays trace the school-trust experiment from
-          the 1785 Land Ordinance through the AI-era forever-trusts now being
-          designed. Three personal interludes — Tektronix, Computing Today, cognitive
-          partnership — ground the argument in lived experience of institutional
-          drift.
+        <p class="card-subtitle">
+          How the United States Built — and Largely Lost — a National Endowment for Public Education
         </p>
-        <a href="/reading/sacred-compact-prologue/" class="card-cta">Begin reading →</a>
+        <p class="card-byline">Margaret Bird with Dave Sullivan</p>
+        <p class="card-length">Six chapters of synthesis · ~250 pages</p>
+        <p class="card-blurb">
+          The historical record. Begins with the School Trust Timeline (1763–1910);
+          traces the architecture from the founding floor through the antebellum
+          doubling, the Reconstruction western stack, and the twentieth-century
+          high-water mark; closes by handing the diagnostic and AI-era work to the
+          next volume.
+        </p>
+        <a href="/reading/prologue/" class="card-cta">Begin reading →</a>
       </li>
 
       <li class="argument-card">
-        <p class="card-kicker">Volume II · The empirical record</p>
+        <p class="card-kicker">Volume II · LOOKING FORWARD</p>
         <h2 class="card-title">
-          <em>Schools of the Republic</em>: A Case-by-Case Record of America's School Trust Lands
+          <em>The Eighth Anchor</em>
         </h2>
-        <p class="card-byline">Margaret Bird with Dave Sullivan</p>
-        <p class="card-length">
-          ~494 pages — Part I (nine chapters of synthesis) plus Part II (per-state
-          evidentiary entries integrated into the Atlas)
+        <p class="card-subtitle">
+          How Long-Horizon Trusts Survive (and Fail), and What the Next Generation Needs to Know
         </p>
+        <p class="card-byline">Dave Sullivan with Margaret Bird</p>
+        <p class="card-length">Prologue plus eight sections · ~150 pages</p>
         <p class="card-blurb">
-          The evidentiary floor. Nine chapters synthesize the founding floor, the
-          antebellum doubling, the Reconstruction western stack, the
-          twentieth-century high-water mark, and the captured-AG architecture that
-          emerged in the late twentieth century. Reform-attempt thread runs alongside
-          the drift narrative throughout.
+          The diagnostic frame. Begins with what the school-trust record teaches;
+          works through the drift typology, the counter-architecture, and the
+          AI-era forever-trusts now being designed; closes with Section VIII's
+          direct address to the architects, asking each to answer where the
+          watchful crew is in their own institution.
         </p>
-        <a href="/reading/prologue/" class="card-cta">Begin reading →</a>
+        <a href="/reading/sacred-compact-prologue/" class="card-cta">Begin reading →</a>
       </li>
     </ul>
   </section>
@@ -121,11 +125,19 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   }
   .card-title {
     font-family: var(--font-serif, Georgia, serif);
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     font-weight: 600;
     color: var(--deep-navy, #1e3a5f);
     line-height: 1.35;
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.4rem;
+  }
+  .card-subtitle {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #475569;
+    line-height: 1.45;
+    margin: 0 0 0.6rem;
   }
   .card-byline {
     font-family: var(--font-sans);

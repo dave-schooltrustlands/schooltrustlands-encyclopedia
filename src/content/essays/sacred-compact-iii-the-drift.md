@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: III. The Drift — A Typology of How Forever Promises Come Apart"
+title: "The Eighth Anchor: III. The Drift — A Typology of How Forever Promises Come Apart"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "iii"
 order: 103

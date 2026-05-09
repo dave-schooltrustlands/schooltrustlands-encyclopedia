@@ -52,11 +52,115 @@ const total = sections.reduce((sum, s) => sum + s.data.wordCount, 0);
     </figcaption>
   </figure>
 
+  <section class="authors-note" aria-labelledby="authors-note-heading">
+    <p class="authors-note-kicker">Front Matter</p>
+    <h2 id="authors-note-heading" class="authors-note-heading"><em>A Note from the Authors</em></h2>
+    <p>
+      This volume does not propose to save the world. We want to be clear about
+      that at the start, because the language of multi-generational trust
+      architecture can drift into the messianic, and we have neither the
+      temperament nor the credentials for messianic claims. What the volume does
+      propose is more modest, and we believe it is achievable.
+    </p>
+    <p>
+      The architects of a small set of forever-institutions are, in 2026,
+      drafting charters that will operate for centuries. The institutions are
+      real and are listed in the Prologue: AI Targeting Authorities, perpetual
+      climate trusts, sovereign wealth funds for citizens not yet born,
+      longevity escrows, compute reserves, data trusts. Their charters are, at
+      this writing, still draft. The window in which the school-trust
+      experiment's 240-year record can usefully reach those architects is the
+      window in which their charters can still be amended. After the charters
+      set, the same institutional drift the school trusts have endured will
+      start running on the new institutions, and the lessons of the school-trust
+      record will arrive too late to inform the design that produced the drift.
+    </p>
+    <p>
+      We are not the architects of those institutions. We are not the people
+      writing the AI Targeting Authority charter, or the perpetual climate
+      trust language, or the sovereign-wealth-fund-for-the-unborn governance
+      document. What we are is a small team — a school-trust economist who has
+      worked inside the system for forty years; a retired systems scientist and
+      tree farmer who has watched a particular institutional-failure pattern
+      play out three times in his career; the Library at schooltrusts.net,
+      which is the institutional substrate this volume rests on; and a working
+      network of advocates and researchers and named editors who have, between
+      them, spent enough time inside the school-trust record to write down what
+      we have learned in a form the architects can read.
+    </p>
+    <p>
+      Our hope is modest. Reach the small set of people whose charter drafts
+      this volume can usefully inform. Ten readers, twenty, perhaps fifty. The
+      number is small because the work is specialized; the potential effect, if
+      those readers are reached in time, is large because the institutions they
+      are designing are designed to compound across the kind of time horizons
+      most institutions never face. Multi-generational work pays dividends on
+      the timescale of the trust, not on the timescale of the founders' lives.
+      The framers of 1785 did not see their endowment reach Utah's nine
+      thousand school deliberators in 2026; they wrote the gift, and the gift
+      kept going. We are writing what we have learned for whoever is drafting
+      the next round.
+    </p>
+    <p>
+      If we have done the work in this volume well, one architect in one
+      charter window will read a chapter, change one design choice, and the
+      institution they are launching will hold for a longer span of time,
+      against more pressure, than it would otherwise have. That is the whole
+      aim. It is not the same as saving the world. It is, we believe,
+      achievable. And it is enough.
+    </p>
+    <p class="authors-note-byline">
+      — <em>David Sullivan and Margaret Bird, Oregon, 2026.</em>
+    </p>
+  </section>
+
   <p class="mt-4 text-xs text-slate-500">
     The white paper is co-authored with Margaret Bird. The eight sections below
     can be read in order or dipped into independently; footnote namespaces are
     section-prefixed so cross-section links resolve cleanly.
   </p>
+
+  <style>
+    .authors-note {
+      margin: 2rem 0 2.25rem;
+      padding: 1.25rem 1.5rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-left: 3px solid var(--old-gold, #8b7355);
+      border-radius: 4px;
+    }
+    .authors-note-kicker {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--old-gold, #8b7355);
+      margin: 0 0 0.4rem;
+    }
+    .authors-note-heading {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 0.85rem;
+      line-height: 1.3;
+    }
+    .authors-note p {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #1f2937;
+      margin: 0 0 0.85rem;
+    }
+    .authors-note p:last-child {
+      margin-bottom: 0;
+    }
+    .authors-note-byline {
+      margin-top: 1rem;
+      color: #475569;
+    }
+  </style>
 
   <ol class="mt-8 space-y-6">
     {sectionsWithSubheads.map(({ entry, subheads }) => (

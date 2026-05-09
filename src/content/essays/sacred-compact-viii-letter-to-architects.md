@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: VIII. A Letter to the Architects"
+title: "The Eighth Anchor: VIII. A Letter to the Architects"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "viii"
 order: 108

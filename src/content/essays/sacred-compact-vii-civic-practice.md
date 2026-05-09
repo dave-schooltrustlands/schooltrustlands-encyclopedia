@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: VII. A Civic Practice for the AI Age"
+title: "The Eighth Anchor: VII. A Civic Practice for the AI Age"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "vii"
 order: 107

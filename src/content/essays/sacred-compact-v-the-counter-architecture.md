@@ -1,5 +1,5 @@
 ---
-title: "Sacred Compact: V. The Counter-Architecture — Seven Anchors Plus a Watchful Crew"
+title: "The Eighth Anchor: V. The Counter-Architecture — Seven Anchors Plus a Watchful Crew"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "v"
 order: 105
