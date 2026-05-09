@@ -1,107 +1,98 @@
 ---
-title: "Sacred Compact: Prologue — A Forever Gift"
+title: "The Eighth Anchor: Prologue — A Forever Gift, Now What?"
 sourceWork: "Sacred Compact white paper v5.0"
 sectionId: "prologue"
 order: 100
-wordCount: 1865
+wordCount: 2440
 sourceVersion: "Sacred_Compact_v5.0"
-lastSynced: 2026-05-08
+lastSynced: 2026-05-09
+voiceRewriteVersion: 3.0
 ---
-# Prologue — A Forever Gift
 
-![Figure 1. The Sacred Compact — eras of national land policy from the 1763 Proclamation Line through the 1910 New Mexico-Arizona Enabling Act. The compact was not signed at one moment; it was deposited in the geometry of the country across 125 years.](/images/sacred-compact/sacred-compact-eras.png)
+## LOOKING FORWARD · *The Eighth Anchor* · Prologue
 
-<blockquote class="pull-quote">A forever gift to forever schools for a forever democracy.<cite>Margaret Bird</cite></blockquote>
+### *A Forever Gift, Now What?*
 
-The schoolchildren of 1859 were promised an endowment. So were the children in classrooms today; so are the children for whom the corpus was pledged in perpetuity. America's 240-year school-trust record shows what the architecture of such a promise requires — codified fiduciary duties, restoration mechanisms, specialized legal defense, mandatory trustee education — and one piece without which the rest is decorative: a standing community of citizens, parents, advocates, journalists, and watchdog officials, across every party, who treat the architecture as binding across generations. That community is built one way. Margaret Bird's words: *"Increase the revenue to schools, get it directly to every single school where the parents, the teachers, and the principal are deciding how the money is implemented. And all of a sudden, you have built a huge constituency."* The Utah school trust grew thirty-fold under that discipline; the legislature is again trying to divert it; the watchful crew is again defending it. The architects of the next forever-institutions — climate trusts, sovereign wealth for the unborn, AI-targeting authorities — are designing in the present tense. The school-trust record is the only worked existence proof of the principle they need.[^P-1]
+The companion volume to this one — *LOOKING BACK · Schools of the Republic*, written principally by my co-author Margaret Bird — has just laid out 240 years of evidence about how a particular kind of multi-generational fiduciary architecture has actually performed in the United States. If you have just put that volume down and picked this one up, you already know the substance: the architecture works where it has been operated as designed, drifts in two predictable modes where it has not, and produces enforcement output only where a non-profit substitute for the captured Attorney General has been built around it. The school-trust experiment is the only multi-generational fiduciary record long enough to teach those lessons.
 
-The men who voted for the 1785 sentence did not have a continent. They did not have a stable currency. They did not have a national bank, a permanent capital, a regular army, or — under the Articles of Confederation — the constitutional authority to tax their own citizens. They had a war debt of fifty-four million dollars, a population of around three million people scattered between the Atlantic and the Appalachians, and a vast unmapped Western territory whose Native nations did not regard the new government's title to it as binding. They had, in their hands, an asset they did not yet possess and a country they had not yet finished building.
+This volume takes that record and asks what it teaches the architects of the next generation of forever-institutions.
 
-What they did with the asset, before they had finished building the country, was write an obligation to the unborn into the geometry of the country. One section of every township, surveyed before the township was settled, dedicated to a beneficiary class — children — that had no political voice and would not have one when the disposition arrived in the deeds. They had read Adams in the *Boston Gazette*. They had read Jefferson's bills. Several of them had read the Massachusetts Constitution that Adams principally drafted, and several of them had been in the rooms where it was written. They believed, with a uniformity that surprises modern readers, that public education was the thing on which the republic would actually stand or fall.[^P-2] They reached for the most rigid legal device the eighteenth century could supply — the perpetual charitable trust, in language English equity courts had spent two centuries hardening — and they put the school endowment inside it.
+I am not, by training or temperament, an essayist. I couldn't write my way out of a paper bag, as the saying goes, and I am not going to try. What I am is a retired Oregon State professor and tree farmer who has, by accident more than design, watched the same institutional failure pattern play out three times in the course of forty years. The first time was at Tektronix in the late 1970s, where I sat in a hardware-design group while the people who had built the first graphical personal computer in 1975 failed to recognize what they had and lost the future to a garage operation in California. The second time was in the personal-computing era I wrote a textbook about in 1984 — *Computing Today*, with its dual-five-megabyte hard drives that had felt extravagant in the manuscript and were obsolete by the time the book reached the shelf — where institutions adopting the new tool kept treating it as a faster typewriter while the genuinely transformative thing was happening around them. The third time is the school-trust experiment, which inherited a 1785 architecture and has been quietly losing it ever since, except in the places where some small group of citizens refused to let the loss be the last word.
 
-Two and a half centuries later, we no longer have to guess how this rigid eighteenth-century machine behaves under generational pressure. The data is in.
+Three iterations. Growing stakes. The pattern is the warrant for the warning.
 
-<blockquote class="pull-quote">They had, in their hands, an asset they did not yet possess and a country they had not yet finished building.</blockquote>
+The pattern is this: a generation builds an institutional architecture adequate to the cognitive technology of its time. The next generation inherits the architecture without inheriting the engineering judgment that produced it. The third generation rationalizes the architecture's purposes against whatever near-term pressures it is facing, drifts away from the original commitments, and discovers — usually too late to do anything about it — that the architecture's original beneficiary class is no longer being served. By the time the failure is legible, the original engineers are dead and the cognitive context that produced their architecture is no longer recoverable. What remains is the wreckage, and a small group of people in the ruins trying to figure out what was lost.
 
-Margaret Bird, who has spent forty years inside the school-trust system as advocate, technical conscience, and witness, named what the framers were doing in a single phrase: *a forever gift to forever schools for a forever democracy*.[^P-3] The phrase is exactly right. It captures the three temporal commitments the compact made — perpetuity, dedicated purpose, and a polity sustained by the educated citizens the gift was designed to underwrite — in language no other formulation has surpassed.
+That is the school trust. It is also, structurally, what is going to happen to the AI Targeting Authorities and the perpetual climate trusts and the sovereign wealth funds for the unborn and the longevity escrows that are entering charter windows in 2026 — *unless the architects writing them now have access to the lessons of the school trust*. Which, until this duology, they have not. The school-trust record has been there to be read, in pieces, in disparate state archives and trust-law treatises and the occasional legal-historical monograph. What has not existed before is a synthesis aimed at the architects of the new institutions, in language they can act on, in time for the architecture they are writing to benefit from it.
 
-What the data says is that the gift was, in most places, partially given. In some places — Utah today, Oregon between roughly 1920 and 1990, New Mexico across most of its history — the architecture worked, the constituency held, and the trust grew toward the framers' intention. In some places — California from 1853 forward; Oregon between 1859 and roughly 1920, again after 1990; Arizona across the past three decades — the architecture either was missing from the start or eroded faster than the people running it could compensate for.[^P-4] The aggregate result is a 250-year endowment that is, in 2026, somewhere between sixteen and twenty percent of what it would have been had the framers' design been operated as the framers designed it. That number is one Oregon governor's, in 1907.[^P-5] The state-by-state record this paper documents suggests it generalizes.
+That is what this volume tries to be.
 
-The pathology is now legible, and it has two faces. The first is gradual drift — a slow rotation of the trust away from its purpose, by accretion of small diversions, redefined beneficiary classes, modernized mandates, and corpus translations that each look defensible in isolation. The second is sudden directed hijack — a single political moment in which the trust's resources are seized, its mandate rewritten, or its beneficiary class redefined wholesale, often under cover of crisis or fiscal emergency. The drift mode runs continuously and is harder to see. The hijack mode runs in episodes and is harder to oppose. The school-trust record contains both, and any architecture meant to hold across generational time has to hold against both.
+---
 
-What drives both modes is a compounding mix of near-term cognitive bias, bureaucratic self-preservation, and politically silent beneficiaries. Human beings discount the future steeply, and they do so because the cognitive system was selected for an environment that rewarded the discount. Mature bureaucracies — the State Land Boards, the trustee bodies, the agency staffs — acquire their own continuity interest, distinct from the missions they were chartered to serve. Beneficiary classes that cannot vote — schoolchildren in 1885, future generations in 2055 — do not produce the political feedback that would otherwise correct the institution. The three features together make every aspirational structure a *predictable* failure case unless the structure is engineered against them. The school trust, designed before the analytic vocabulary existed to name any of the three, was not engineered against them. The structures the AI moment is now building have the analytic vocabulary available; whether they will use it is the question this paper exists to put.
+### What the architects are designing
 
-The structures are arriving fast. Peter Diamandis and Alex Wissner-Gross have proposed an AI Targeting Authority — a perpetual, autonomous body with its own resources, its own decision rules, its own legal personhood, its own capacity to act across generations. Climate trusts intended to bind tomorrow's legislatures to today's emissions commitments are entering charter windows in multiple jurisdictions. Sovereign wealth funds for citizens not yet born are being capitalized as fiscal assumptions for the next century. Longevity escrows, data trusts, compute reserves, programmatic down-shifting authorities — the vocabulary varies, the architectural impulse does not. Each is a structure designed to bind future generations to commitments made today.
+Let me, as a systems scientist by background, try to name what is at stake.
 
-The school trust is the only one of these aspirational structures that has been pressure-tested across generational time. The data from that experiment arrives now, in 2026, or it arrives too late to inform the design of the others.
+A thousand-year multi-generational trust is a particular kind of institutional object. It is a structure that pledges resources from the present generation to a beneficiary class extending centuries into the future. It is not a contract — contracts presuppose mutual consent between identifiable parties, and the future beneficiary class is by definition unable to consent. It is not a piece of legislation — legislation presupposes a current legislative body whose members can act, and the obligations a thousand-year trust accepts have to bind successor legislatures the current one cannot enforce against. It is not a policy — policies are administered by current administrators who can change them, and the trust requires continuity across administrative turnovers it cannot prevent.
 
-### A note on how this analysis was produced
+The thousand-year trust is, instead, a *delegated structure of obligation* — a piece of institutional engineering that has to hold, against the natural decay of every institution and the natural pressure of every generation, for longer than any of its founders can ensure. It is the most ambitious kind of institutional design any society can attempt, and it is being attempted, right now, in 2026, by people working under deadlines too short for the kind of design judgment the work requires.
 
-There is a fact about this paper the reader should know at the outset, because it bears on what the paper claims and on what the paper is for.
+The arriving structures are real, and they are arriving fast. Peter Diamandis and Alex Wissner-Gross have proposed an AI Targeting Authority — a perpetual, autonomous body with its own resources, its own decision rules, its own legal personhood, its own capacity to act across generations. Climate trusts intended to bind tomorrow's legislatures to today's emissions commitments are entering charter windows in multiple jurisdictions. Sovereign wealth funds for citizens not yet born are being capitalized as fiscal assumptions for the next century. Longevity escrows, data trusts, compute reserves, programmatic down-shifting authorities — the vocabulary varies, the architectural impulse does not. Each is a structure designed to bind future generations to commitments made today. None of them, as far as I can find, has a working knowledge of what 240 years of America's school-trust record predicts will happen to it.
 
-The cross-jurisdictional, cross-decade, cross-discipline synthesis the reader is about to encounter — the kind of reading that puts California's 1853 disposition next to Oregon's 1907 governor's message next to New Mexico's 1910 enabling-act language next to Utah's classroom-by-classroom transparency next to Cardozo's 1928 *Meinhard* opinion next to the carbon-accounting frames of 2026 — was not feasible, by any individual mind working alone, until very recently. The corpus is too large; the disciplines do not normally talk to each other; the lifetimes of working scholars do not overlap with the timescales the data covers. Until the past several years, the work that follows could not have been done at this scale by anyone. It can be done now because biological intelligence and artificial intelligence have begun to work in partnership in a way that holds thousands of pages in working memory at once and synthesizes across them. That is a tool, not a wonder; it is the chainsaw where there used to be a two-man crosscut saw. The point of the work is the schoolchildren the 1785 sentence was written to serve, past and present and future, and the architects whose decisions in 2026 will determine whether the next generation of perpetual structures serves theirs. The tool is the means.
+The framers of 1785 did not have that knowledge either. They had to write the architecture of the school trust without any prior multi-generational fiduciary record to work from, because there wasn't one. They were the experiment. The next generation of architects is in a different position: they have an experiment to learn from, if they want to. The school-trust record contains the data the framers did not have.
 
-It is also part of what the architects of the AI-era trusts will need to understand about their own work. Cognitive partnership, in the durable institutional form, is itself one of the things a long-horizon structure has to engineer for, because the cognitive technology of any given century is itself part of the architecture and will not stay still. And the window in which this particular analysis can be produced is itself bounded; what biological and artificial intelligence can analyze together today is not guaranteed to be available tomorrow if the AI-era structures themselves drift or are captured. That is the second half of the urgency. The lessons must reach the architects now, both because the architects are designing now and because the analytic capacity that produced the lessons has its own duration, which no one in 2026 can responsibly estimate.
+What the data says is that legal rigidity, written by architects who knew what they were doing, is necessary but not sufficient. The architecture has to be defended. The defenders are the constituency. The constituency does not form on its own. It forms because the architecture has been engineered, deliberately, to produce the conditions under which a constituency can form. Margaret's mechanism — *Increase the revenue to schools, get it directly to every single school where the parents, the teachers, and the principal are deciding how the money is implemented. And all of a sudden, you have built a huge constituency* — is the school-trust experiment's clearest single procedural finding. The mechanism is structural rather than rhetorical. It tells you what to *do* if you are designing for sustained constituency formation across generational time.
 
-That is what this paper is about.
+This volume is, in significant part, an extended argument for that mechanism's generalization. The principle is the same whether the asset is land or money or compute or data. Route the institution's consequential decisions to the local sites where deliberation already happens. Let the deliberation produce visible artifacts that bear the deliberator's name. Recognize the artifacts in a public record. Through that loop, the deliberators become a constituency that defends the architecture politically when the architecture is later attacked — as it will be. Skip any link in the loop and the constituency does not form. Skip the loop entirely, and you have written an architecture that cannot defend itself.
 
-A word about the voice you are about to read. I am not, by training or temperament, an essayist; I couldn't write my way out of a paper bag, as the saying goes, and I am not going to try.[^P-6] What I am is a retired Oregon State professor who has, by accident more than design, watched the same institutional failure pattern play out three times in forty years — once at Tektronix, when the people who had built the first graphical personal computer in 1975 failed to recognize what they had and lost the future to a garage operation in California; once in the personal-computing era I wrote a textbook about in 1984, where institutions adopting the new tool kept treating it as a faster typewriter while the genuinely transformative thing happened around them; and now in the school-trust system, which inherited a 1785 architecture and has been quietly losing it ever since. Three iterations, growing stakes. The pattern is the warrant for the warning.
+---
 
-In one register, this paper is American history of a high order: how a struggling republic staked a continent to build a sacred compact for its children, watched that compact drift, and — late, partially, surprisingly — learned to fight for its repair. It is, in another register, a working manual for the architects of the institutions whose beneficiaries will not be born for another fifty or hundred years. The two registers are not separable. The framers who wrote that one sentence in May 1785 knew they were trying something. They did not know how long the experiment would run. The architects of the AI Targeting Authority and the perpetual climate trust and the longevity escrow do know — at least, they will, after this paper.
+### Why this is possible now and not earlier
 
-What that experiment returns is what this paper is about.
+There is one piece of context that the school-trust framers did not have, and that the next generation of architects does have, that changes what is structurally possible.
 
-—
+The framers in 1785 could not engineer for the constituency that would defend the architecture across two and a half centuries because the cognitive technology of 1785 could not hold institutional context across generational time. A citizen-trustee in 1885 had no way to know what the trustee of 1885 inherited from the trustee of 1825. Memory had to live somewhere, and the available somewheres were inside individual heads — where it died with the head — or inside paper records that depreciated faster than the asset they described. The framers used legal rigidity as a substitute for institutional memory because legal rigidity was the only memory technology of their century — the longest-lasting external store the period could provide. Their architecture was as good as the cognitive technology of 1785 could make it.
 
-## Source notes
+The cognitive technology of 2026 is different. Frontier AI systems can hold context across decades. Public databases can hold figures and citations indefinitely. Networked infrastructure can let citizens in 2125 audit decisions made in 2025 with the same ease that citizens in 2025 can audit decisions made in 2024.
 
-[^P-1]: Land Ordinance of May 20, 1785, Journals of the Continental Congress, 28:375–381 (reserving "lot N° 16, of every township, for the maintenance of public schools, within the said township"). The 1785 Ordinance is the founding statutory text for the school-section reservation; full discussion in the encyclopedia, Chapter 1 (Origins of the Compact). See `L4_Deliverables/Book_Revision/Schools_of_the_Republic_v1.3_[INTERNAL].md`, Ch. 1.
+I want to be careful here, because the temptation to read this as "AI will solve the institutional drift problem" is a temptation I have come to mistrust deeply. The cognitive technology does not, by itself, defend an architecture. It does not, by itself, produce a constituency. What it does is lower the per-citizen cost of the kind of sustained civic attention that a multi-generational trust requires. The school-trust framers had to write legal rigidity into the architecture because the per-citizen cost of doing the watchful-crew work without legal rigidity was prohibitive. The cost has, in the period between 2022 and 2026, dropped by at least an order of magnitude. The cost-drop is the headline. The mechanism beneath the headline is what makes the eighth anchor — the constituency, the watchful crew — a structural feature and not a contingent one.
 
-[^P-2]: The strongest single piece of late-Confederation evidence for the framers' uniformity on public education is the Northwest Ordinance of July 13, 1787, Article 3: "Religion, morality, and knowledge being necessary to good government and the happiness of mankind, schools and the means of education shall forever be encouraged." Full text at the Avalon Project (Yale Law School), https://avalon.law.yale.edu/18th_century/nworder.asp. Article 3 of the 1787 Ordinance predates the U.S. Constitution by roughly two months and the Bill of Rights by roughly four years. See also John Adams's Massachusetts Constitution of 1780, ch. V, § 2 (referenced in the prose); the encyclopedia, `Schools_of_the_Republic_v1.3_[INTERNAL].md` (see footnote prologue-1) and Ch. 1, treats both texts as the founding-era evidentiary floor.
+I have been working in cognitive partnership with frontier AI systems for the past two years, on this project and others. The relationship has been, in my experience, qualitatively different from the AI relationships I had through 2024. Earlier AI was useful for transcription and faster lookup; current AI is useful for synthesis across substrate larger than my biological memory can hold and for preserving context across the kind of multi-month working sessions this project has required. The Library at schooltrusts.net, where this duology and its substrate live, is built on that working relationship. So is the synthesis Margaret and I have produced. The 240-year school-trust record was knowable in pieces before; it is knowable as a whole now. That is not a metaphor. It is a fact about what is now technically possible that was not technically possible a few years ago.
 
-[^P-3]: Margaret Bird, in conversation with the author, April 27, 2026. The phrase is Margaret's; attribution preserved everywhere it appears in the white paper and on the Drift & Anchors poster. Substrate note: `memory/project_margaret_anchor_phrase.md`.
+The architects of the AI-era trusts have, accordingly, two design opportunities that the 1785 framers did not have. They can engineer for the watchful crew — the constituency that defends the architecture across time — using the cognitive technology of 2026 to lower the per-citizen cost of multi-generational civic attention. And they can write the architecture's own operating manual into the institutional substrate, so that the next watchful crew, two or three generations from now, has a working pattern to inherit rather than having to reconstruct it from the wreckage.
 
-[^P-4]: For Oregon's admission and the architecture installed at statehood, see Oregon Admissions Act, Act of February 14, 1859, ch. 33, 11 Stat. 383, § 4; Oregon Constitution Article VIII §§ 2 and 5 (1857). For the comparative state record summarized in this paragraph, see `Schools_of_the_Republic_v1.3_[INTERNAL].md`, Conclusion, and the per-state entries for California (Ch. 4), Oregon (Ch. 5), Arizona (Ch. 6), Utah (Ch. 6), and New Mexico (Ch. 6).
+This volume is an attempt to make those two design opportunities actionable.
 
-[^P-5]: Governor George Chamberlain, message to the Oregon Legislature, January 1907 ("But for the policies which have been adopted by the Legislature from time to time with respect to its school lands, the irreducible school fund might have been five or six times as large as it is at present."). Quoted and analyzed in `Section_III_The_Drift_v0.1_[INTERNAL].md` III.B; primary citation in the encyclopedia at `Schools_of_the_Republic_v1.3` Ch. 5 (Oregon). The "sixteen-to-twenty percent" formulation in the text is the arithmetic inverse of Chamberlain's "five or six times."
+---
 
-[^P-6]: The three-iterations spine is developed in the dos-à-dos founders' note (`L4_Deliverables/Sacred_Compact_2_0/founders_note/`) and in the Tektronix and *Computing Today* personal interludes between Sections II–III and IV–V. The author's biographical scaffold is captured at `memory/user_dave_biography.md`. The phrase about the paper bag is the author's standing self-description; readers expecting literary elegance should set their expectations accordingly.
+### What the rest of the book does
 
-—
+Section I (*The Question*) sets up the structural problem multi-generational trusts face. Why are they so hard to design? Why do they drift, predictably, in the absence of countervailing forces?
 
-<!--
-VOICE-PASS NOTES (2026-05-07, Subagent A)
+Sections II and III (*The Sacred Compact* and *The Drift*) draw on the school-trust evidence Margaret's volume documents to show what one such architecture actually looked like, what it tried to engineer for, and what the failure modes have actually been across 240 years of operation.
 
-Analytic moves folded in:
-1. AI-era hook landed in the opening paragraph (within first ~180 words) — names the
-   AI Targeting Authority, perpetual climate trusts, sovereign wealth, longevity escrows,
-   data trusts, compute reserves directly, and frames the paper as putting the data on
-   the desks of those architects. This pulls forward what was implicit in the original
-   prologue's middle paragraphs and makes it the door-opener.
-2. Drift/hijack distinction folded into the "pathology" paragraph (replacing the older
-   "rotting the corpus / hijacking the purpose / redefining the beneficiary / modernizing
-   the mandate" enumeration, which is preserved analytically but reorganized under the
-   two-mode frame the north-star memory sharpens).
-3. Three-iterations spine threaded as one paragraph near the end where the author's
-   "I" voice surfaces — Tektronix + Computing Today + school trust. Light touch as
-   instructed; the full work happens in the dedicated interludes. New footnote P-6
-   added to point to the founders' note + biographical memory.
+Section IV (*The Pattern*) names the recurring drift mechanisms — gradual accretion, sudden seizure, the bureaucratic-self-preservation problem, the politically-silent-beneficiary problem.
 
-Footnotes:
-- [^P-1] through [^P-5] preserved verbatim from source.
-- [^P-6] is new (three-iterations spine pointer + paper-bag self-description anchor).
+Section V (*The Counter-Architecture*) lays out the seven structural anchors that a working multi-generational trust requires, and names the eighth anchor — the standing constituency without which the seven are decorative.
 
-Voice judgment calls:
-- Used "I am not, by training or temperament, an essayist" + "couldn't write my way out
-  of a paper bag" because the voice profile flags this self-deprecation as authentic
-  Dave; it earns its place in the prologue precisely because the prologue is where the
-  reader is deciding whether to trust the author.
-- Kept "rigid eighteenth-century machine" from the source — Dave's voice profile
-  permits period diction and the metaphor lands.
-- Replaced "structures" with concrete naming ("State Land Boards, the trustee bodies,
-  the agency staffs") in the eusocial-pathology sentence per the brief's vocabulary
-  rule.
-- Margaret's anchor phrase preserved verbatim and attributed.
-- 16-20% drift number with Chamberlain 1907 attribution preserved exactly.
-- Word count: ~1,520 (target was modest expansion from ~1,400).
--->
+Section VI (*The Coming Trusts*) takes the diagnosis and applies it to the AI-era institutions now being designed: AI Targeting Authorities, perpetual climate trusts, sovereign wealth for the unborn, longevity escrows, compute reserves, data trusts.
+
+Section VII (*Civic Practice*) describes what the watchful crew actually does, in operational terms, generation after generation.
+
+Section VIII (*A Letter to the Architects*) addresses the architects of the new institutions directly, in the second person. It is the rhetorical center of the book — the section that turns the analysis into a working manual you can use against your own charter draft.
+
+Conclusion (*What Comes Next*) hands the work back to the people doing the institutional design today, and names the question every architect needs to answer in their own institution: where, in your design, is the watchful crew?
+
+If you are an architect of one of the new institutions — and if you are reading this, you may be — the question this volume asks is whether you have, in your draft charter, an answer to that question. The answer matters now, in the present tense, because the charters are still drafts. After the charters set, the answer will be much harder to retrofit. The school-trust experiment ran for 240 years before the question was named clearly. The new institutions do not have to.
+
+---
+
+### A word about voice and authorship
+
+The architecture of this duology is not casual. *LOOKING BACK · Schools of the Republic* is Margaret's volume — primarily her voice, her synthesis, her forty years inside the school-trust system carrying the weight of the historical record. *LOOKING FORWARD: The Eighth Anchor* is mine — my voice, my diagnosis, my reading of what the historical record implies for the institutions of the next century. We share the byline on both, because the work is genuinely joint. We own the books separately, because the registers required of each are different and a single register that tried to do both at once would do neither well.
+
+If the prose in this volume sounds like a retired systems scientist who has watched three iterations of an institutional-failure pattern and is trying to give the next generation of architects what he wishes the previous generations had had — that is correct. That is what I am, and that is what I am trying to do.
+
+We begin, accordingly, with the question.
+
+— *David Sullivan, Western Oregon, 2026.*

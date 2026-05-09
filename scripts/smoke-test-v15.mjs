@@ -729,7 +729,13 @@ await checkV15B();
 await checkV15CD();
 await checkV15E();
 await checkVariantFOn('/', 'v15.F');
-await checkVariantFOn('/reading/sacred-compact-prologue/', 'v15.G');
+// v15.G retired by v17 DELTA: the Sacred Compact Prologue body has
+// been replaced with the Eighth Anchor Prologue v1 (Dave-voiced),
+// which is governed by v17.D smoke assertions instead. The Variant F
+// markers tested below were specific to the v15-era prologue prose;
+// they no longer apply to the v17 prologue. v15.F (home) and v15.H
+// (Library's Argument) are unaffected and still operative.
+console.log('\n· v15.G — RETIRED by v17 DELTA (Sacred Compact Prologue body replaced with Eighth Anchor Prologue; see v17.D)');
 await checkVariantFOn('/reading/the-librarys-argument/', 'v15.H');
 await checkV15I();
 

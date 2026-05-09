@@ -70,9 +70,14 @@ if (props.kind === 'essay') {
     .filter((e) => e.data.sourceWork === sourceWork)
     .sort((a, b) => a.data.order - b.data.order);
 
-  // Trim "Sacred Compact: " prefix for nav display; SoR titles read
-  // fine as-is ("Chapter 1: …", "Prologue: …", etc.).
-  const navTitleOf = (t: string) => t.replace(/^Sacred Compact:\s*/, '').trim();
+  // Trim "Sacred Compact: " or "The Eighth Anchor: " prefix for nav
+  // display; SoR titles read fine as-is. v17 ships the Prologue +
+  // Section VIII under the Eighth-Anchor title family while Sections
+  // I–VII keep the "Sacred Compact: " prefix.
+  const navTitleOf = (t: string) => t
+    .replace(/^Sacred Compact:\s*/, '')
+    .replace(/^The Eighth Anchor:\s*/, '')
+    .trim();
 
   const series: SeriesItem[] = seriesEntries.map((e) => ({
     href: `/reading/${e.slug.replace(/^\d+-/, '')}/`,

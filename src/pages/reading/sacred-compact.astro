@@ -35,8 +35,8 @@ const total = sections.reduce((sum, s) => sum + s.data.wordCount, 0);
 
 <RoomLayout
   room="reading"
-  title="The Sacred Compact"
-  subtitle={`Sullivan and Bird's white paper v5.0. ${num.format(total)} words across eight sections — the 250-year American promise to forever schools, the drift that has come for it, and the counter-architecture for the trusts of the AI age.`}
+  title="The Eighth Anchor"
+  subtitle={`How Long-Horizon Trusts Survive (and Fail), and What the Next Generation Needs to Know. Sullivan and Bird, Volume II of the duology. ${num.format(total)} words across eight sections — the school-trust record applied to the AI-era institutions now being designed.`}
   width="prose"
   sourceId="sacred-compact-toc"
 >
@@ -65,7 +65,7 @@ const total = sections.reduce((sum, s) => sum + s.data.wordCount, 0);
           href={`/reading/${entry.slug}/`}
           class="text-lg font-semibold text-blue-700 underline hover:text-blue-900"
         >
-          {entry.data.title.replace(/^Sacred Compact: /, '')}
+          {entry.data.title.replace(/^Sacred Compact: /, '').replace(/^The Eighth Anchor: /, '')}
         </a>
         <p class="mt-1 text-xs text-slate-500">
           {num.format(entry.data.wordCount)} words

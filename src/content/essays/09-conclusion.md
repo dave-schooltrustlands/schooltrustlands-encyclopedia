@@ -1,126 +1,93 @@
 ---
-title: "Conclusion: Architecture, Constituency, and the Recovery That Is Possible"
+title: "Volume I Conclusion: What the Record Shows, and What Comes Next"
 sourceWork: "Schools of the Republic v1.3"
 slug: "09-conclusion"
 era: "conclusion"
 order: 9
-wordCount: 2680
+wordCount: 2150
 sourceVersion: "Schools_of_the_Republic_v1.3"
-lastSynced: 2026-05-02
+lastSynced: 2026-05-09
+voiceRewriteVersion: 3.0
 ---
 
-# Conclusion
+## LOOKING BACK · *Schools of the Republic* · Conclusion
 
-## Architecture, Constituency, and the Recovery That Is Possible
+### *What the Record Shows, and What Comes Next*
 
-The fifty-state atlas the prior six chapters work through, and the fifty per-state entries that follow in Part II, support four findings the polished volume is built around. None of them are surprising once the comparative data are laid out in one place. All of them are difficult to see clearly when only one state's experience is on the desk.
+The architecture the framers wrote in 1785 has now been operating for 240 years. The six chapters of this volume have traced what happened to it — era by era, state by state where the state was load-bearing for the argument, against the same architectural standard.
 
-## The federal floor matters less than the literature suggests
-
-The single strongest predictor a reader of the legal literature might expect — the strength of the federal admission-act language — is, on the comparative evidence, weakly correlated with twenty-first-century outcomes. The 1910 New Mexico-Arizona Enabling Act is the maximal expression of federal trust language: every axis the schema scores comes back at one. New Mexico's Land Grant Permanent Fund, today, is approximately $30 billion. Arizona, with the *same federal text*, has built a fund of approximately $8 billion. The same words, on either side of the Four Corners, produced funds that differ by a factor of nearly four. The federal text is constant; the outcome is not.[^conc-1]
-
-Texas, with no federal admission-act school grant, holds a Permanent School Fund of approximately $56-67 billion — larger than New Mexico's, larger than Arizona's, larger than any other state's school endowment in the country.[^conc-2] Connecticut, in 1795, sold its Western Reserve claim and capitalized a school fund from the proceeds eight years before Ohio became a state; that fund still exists. Virginia's Literary Fund (1810) and New York's Common School Fund (1805) were state-derived analogues to federal grants the Original Thirteen never received.[^conc-3] The federal grant turns out to be one tool the country happened to develop. It is not the only tool, and on the comparative evidence it is not even the decisive one.
-
-This is not an argument against the federal grant. The grant *worked*: the existence of school sections in every western township at the moment of statehood is the reason the country has any kind of educational endowment infrastructure at all. But the literature tends to treat the federal text as the load-bearing element, and that overstates its predictive force. What the comparative data suggest instead is that the federal text was the *initial condition* — the substrate the country handed each new state on the day it joined. What each state did with the substrate over the subsequent century and a half is what produced the outcome.
-
-## State architecture is necessary; constituency is sufficient
-
-Every state in this atlas with a school-trust corpus larger than five billion dollars in 2026 has, in addition to its federal grant, a constitutional architecture that survives the day-to-day politics of the legislature. New Mexico has Article XIII §§ 1 and 2. Texas has Article VII §§ 2-5. Utah has Article X §§ 5 and 7. Wisconsin has Article X § 7. Minnesota has Article XI §§ 8 and 10. Wyoming has Article 7 § 6 and Article 18 § 3. The architecture is not identical across these states. The trustee may be elected (NM, TX-GLO, WA), appointed (AZ), or ex-officio (UT, WI, MN, WY). The fund may be irreducible by name (UT) or by mechanism (WI's BCPL). The beneficiary may be enumerated narrowly (common schools only) or broadly (multiple institutional trusts). But the architecture exists, and exists at the constitutional level rather than at the legislative level. Architecture in statute alone is not enough; the legislatures that wrote the statutes can amend them.
-
-Architecture in the constitution is not enough either. Oregon has had constitutional architecture since 1857 — among the most rhetorically muscular in the country, with the irreducible-fund clause of Article VIII § 2 and the executive-officer trustee board of Article VIII § 5 — and has nevertheless drifted into a situation where the State Land Board's actions have required litigation to reverse. The Court of Appeals ruling on January 28, 2026 in *Advocates for School Trust Lands v. State of Oregon* held that the *beneficiaries* of the trust have constitutional standing to bring that litigation, by the addition of Article VIII § 8 by ballot initiative in 2000.[^conc-4] That standing victory was possible because the architecture exists. The litigation is needed because the architecture, alone, did not prevent the drift.
-
-The structural anomaly behind this pattern is doctrinal, not rhetorical. In classical charitable-trust enforcement, the natural plaintiff is the state Attorney General as *parens patriae* (Bogert §§ 411-417; Restatement (Third) of Trusts § 95). School-trust law inherited that architecture from a doctrinal tradition in which the trustee and the AG were different entities. In the school-trust context, they are not — the AG works for the trustee, and *parens patriae* enforcement is institutionally captured. Every successful enforcement action in the modern record was carried by a non-profit substitute for the absent specialist bar: *Branson* by Mountain States Legal Foundation; *Kadish* / *ASARCO* by the Arizona Education Association; *Forest Guardians* by a conservation non-profit; *Montanans for the Responsible Use of the School Trust* by the organization itself; *Advocates for School Trust Lands v. State of Oregon* (24CV38372) by OASTL and ASTL.[^conc-11] The constituency is the doctrinal remedy for the captured *parens patriae* enforcer, not a moral supplement to the structural anchors.
-
-Utah is the cleanest demonstration in this atlas of the two-layer requirement. Utah had strong constitutional architecture in 1894-1896, and yet by 1982-1983 the Utah Supreme Court had permitted mineral proceeds from school lands to flow into the general K-12 operating fund, and the legislature had withdrawn $37,500,000 from the permanent fund in a single fiscal year. The corpus collapsed from approximately $53.5 million to $18.6 million — a two-thirds reduction. The architecture was, on paper, exactly what it had been before the collapse. The variable was operational discipline.[^conc-5]
-
-Then Utah recovered. Beginning in 1989, the Utah PTA, the Utah Education Association, the Utah State Board of Education, school boards, and parents organized. The 1991-1992 task force produced 1994's Title 53C; the 1994 Land Trusts Protection and Advocacy Office became Title 53D in 2010. The corpus grew from approximately $50 million in 1994 to approximately $3.2 billion in 2025 — sixty-fold expansion in three decades, with the same constitutional architecture that had allowed the 1983 collapse.[^conc-6] The variable, in the recovery as in the collapse, was constituency. **Architecture without constituency drifts. Constituency without architecture has no purchase. Both layers are required, and the second is the active ingredient.**
-
-<!-- Margaret pull quote 25 (delightfully non-partisan) — substrate-to-live, Site Update v11, 2026-05-08. -->
-<div class="margaret-pull-quote">
-<p>"This is a delightfully non-partisan issue. It doesn't matter what party you're in, or if you're an independent, you still love your children, your grandchildren, and the other children that are all going to grow up, be workers, and be paying your social security."</p>
-<span class="attribution">— Margaret Bird, in her own voice, on what made the Utah reform coalition durable<sup><a href="#conc-margaret-25">*</a></sup></span>
-</div>
-
-The Colorado parallel (Amendment 16 in 1996) and the Minnesota parallel (the 2012/2016 statutory School Trust Lands Director) are the second and third clear data points. The Oregon contemporary effort, organized through the Oregon Association of School Trust Lands and the *Advocates for School Trust Lands v. State of Oregon* litigation, is the fourth. The book's argumentative spine, when it is finished, rests on these four cases.
-
-## Drift and directed seizure are different problems with different remedies
-
-Margaret Bird's reframe of the standard "drift" vocabulary captures something the comparative data confirm. The architecture has been breached, in many states, by passive drift — the slow attrition of generations, the quiet sale of school sections at submarket prices in the nineteenth century, the commingling of trust revenues with general appropriations through inattention. Mississippi, Alabama, Arkansas, and the early-template states of the Northwest Ordinance suffered drift in this sense. The corpus shrank because no one was steering hard enough to keep it from shrinking.
-
-But the architecture has also been breached, in other moments, by directed seizure — affirmative legislative or executive action to convert what was inviolable into the general fund, often in moments of fiscal stress. Utah's 1983 $37.5 million withdrawal is a directed seizure. Nevada's 1880 in-lieu exchange (21 Stat. 287), followed by the wholesale sale of the in-lieu lands by 1900, has elements of both — a tactical retreat that became a rout.[^conc-7] Oregon's Elliott State Forest divestiture (2017-2022), and the bond-financed compensation that followed, are contested in contemporary advocacy but at minimum have features of directed seizure. The Project Bold proposal in Utah (1982-1984), which by Margaret Bird's first-person account contained a request to Congress to amend the Utah Enabling Act so that grant lands flowed "to the state" rather than "for public schools," would have been a directed seizure had it succeeded.[^conc-8]
-
-The remedies for drift and directed seizure are not the same. Drift is corrected by attention — by inserting fiduciary discipline back into ordinary administrative practice, by the kind of statutory advocate office that Utah's Title 53D and Minnesota's School Trust Lands Director provide. Directed seizure is corrected by litigation, by constitutional amendment, by political mobilization sufficient to reverse the act of conversion. The two problems require different muscles. A constituency that organizes only to remedy drift may find itself unable to mobilize against directed seizure; a constituency that mobilizes only against named seizures may not have the staff to maintain the slow attention that drift requires. Most successful recoveries — Utah's especially — required both.
-
-## The federal text is also a story about who learned from whom
-
-The fourth finding is the one this atlas can show that single-state analyses cannot. The federal admission-act texts iterated over a century and a quarter, and each iteration was a response to the operational failures of the prior template.
-
-The 1802 Ohio Enabling Act installed section sixteen of every township for "the inhabitants of such township" — distributed, township-level. By the 1830s the township-level structure was producing widespread depletion. Michigan's 1835 constitutional convention centralized administration at the state level — the first state to do so — and *Cooper v. Roberts* (1855) developed the doctrinal framework that admission-act school grants create trusts as "sacred obligations" on state public faith.[^conc-9]
-
-The 1857 Minnesota Enabling Act, which California had partially anticipated through its 1853 Survey Act, doubled the grant to sections sixteen and thirty-six — a federal response to the recognition that single-section grants in arid Western territories produced inadequate corpora.
-
-The 1894 Utah Enabling Act tightened further: not just doubled but quadrupled (sections 2, 16, 32, and 36), and added explicit federal-text permanent-fund language ("the proceeds shall constitute a permanent school fund, the interest of which only shall be expended"). The 1889 Omnibus Enabling Act (ND, SD, MT, WA), three years earlier, had introduced the "null and void" clause for non-conforming dispositions — the first federal restoration mechanism.[^conc-10]
-
-The 1910 New Mexico-Arizona Enabling Act § 10 was the high-water mark: express "in trust" language, federal Attorney General enforcement provision, "breach of trust" naming, and the "null and void" clause carrying forward. After 1912, no further section-template state was admitted. Alaska in 1959 received a 104-million-acre lump grant for general state purposes (not a school trust). Hawaii in 1959 received the Hawaiian Kingdom's ceded lands in trust for five purposes (schools is one). The section-template ended.
-
-What that 125-year iterative learning curve shows is that the federal government recognized, year over year, that its first attempt at the template was producing inadequate operational outcomes, and tried to fix the template. The fixes were real — New Mexico produced a $30 billion fund, the largest federal-grant-derived corpus in the country. But the federal fixes also did not, on their own, guarantee the outcome. Arizona, with the same 1910 federal text, produced a fund one-quarter the size. The federal floor mattered. So did everything that came after.
-
-## What this atlas hands to the contemporary fight
-
-The completed Pass 2 substrate gives the OASTL effort, and the broader school-trust-lands advocacy community, a comparative atlas it did not have. Every contemporary advocacy organization working on school-trust lands has, until now, worked from a single-state or small-cohort understanding. Margaret Bird's prior work, and the Association for State Trust Lands' Report Card framework, started the comparative project; this volume completes the architectural pass and lays in the historical and doctrinal substrate.
-
-The contemporary fight in Oregon, *Advocates for School Trust Lands v. State of Oregon*, is no longer a single-state argument with a particular set of grievances about the Elliott divestiture and the contemporary State Land Board. It is one entry in a fifty-state atlas in which the same patterns recur. The atlas suggests, modestly but with some confidence, that what is being attempted in Oregon is possible. The architecture is in the constitution. The standing has been established by Article VIII § 8 and *Advocates for School Trust Lands*. The constituency exists in OASTL and is growing. The Utah pattern is not foreign to Oregon's situation; it is a closer relative than the Oregon advocacy community has often realized.
-
-What the volume finally concludes is this. The work requires the discipline of holding to its temporal frame. School trust lands were established as a forever gift to forever schools for a forever democracy. The "forever" is not rhetorical; it is the operating term. A trust that fails over generations has not failed quickly. A trust that recovers will not recover quickly. The Utah recovery took thirty years, on a corpus of fifty million dollars rebuilt to three billion dollars, against the full passive resistance of the legislature and a number of years of active opposition. Oregon's recovery, if it proceeds, will take a comparable span. The case for proceeding is that the architecture is sound; the substrate exists; the constituency is forming; and the country is full of states that have walked some version of this path before, with varying outcomes, all of which are documented in the chapters above and the encyclopedia entries that follow.
-
-<!-- Margaret pull quote 11 (twenty-to-fifty-year vision) — substrate-to-live, Site Update v11, 2026-05-08. -->
-<div class="margaret-pull-quote">
-<p>"My vision is that every state with school trust lands will have a professional, independent management system that is strictly focused on its fiduciary duty to the schools."</p>
-<span class="attribution">— Margaret Bird, in her own voice<sup><a href="#conc-margaret-11">*</a></sup></span>
-</div>
-
-<!-- Margaret pull quote 13 (worth fighting for) — substrate-to-live, Site Update v11, 2026-05-08. -->
-<div class="margaret-pull-quote">
-<p>"It's an achievable goal, and it's one worth fighting for."</p>
-<span class="attribution">— Margaret Bird, in her own voice<sup><a href="#conc-margaret-13">*</a></sup></span>
-</div>
-
-The work continues.
-
-— *End of Part I. Part II — the encyclopedia entries — begins with Delaware.*
+I want to close this volume with three findings. They are what 240 years of operation actually tell us, after the histories and the case studies and the cross-state comparisons are all in. They are also the reason my co-author David Sullivan's companion volume needs to exist.
 
 ---
 
-## Conclusion Footnotes
+### Finding 1 — The architecture works where it has been operated as designed.
 
-[^conc-1]: New Mexico Land Grant Permanent Fund corpus and distribution figures pulled from the New Mexico State Investment Council and the New Mexico State Land Office annual reports; integrated into substrate at `47_NM_NewMexico_v0.4`. Arizona Permanent Land Endowment Trust Fund figures pulled from Arizona State Treasurer's office and the Arizona State Land Department; integrated at `48_AZ_Arizona_v0.4`. Both states operate under § 10 of the New Mexico-Arizona Enabling Act of June 20, 1910 (36 Stat. 557, 572-573), available at https://www.govinfo.gov/content/pkg/STATUTE-36/.
+This is the finding that surprises people who come to the school-trust subject expecting a uniform story of failure. The school trust is not a moral aspiration that the country has been failing to live up to. It is a legal architecture, with operative parts, that has been working in places where the operative parts have been maintained.
 
-[^conc-2]: Texas Permanent School Fund Corporation and Texas State Board of Education FY 2024-2025 reports cited in the Texas encyclopedia entry. The PSF corpus figure has ranged from approximately $56 billion (FY 2024) to approximately $67 billion (FY 2025-2026 reporting), depending on reporting period and asset valuation; both reflect the largest school endowment in the United States.
+The strongest federal text — the New Mexico–Arizona Enabling Act of 1910 — has been doing exactly what the architecture predicts it should do for over a century. The U.S. Supreme Court's 1919 decision in *Ervien v. United States* affirmed federal-Attorney-General enforcement against a state for spending three percent of trust income on advertising. The decision is more than a hundred years old. The federal authority it affirmed has not been invoked since. But the authority still exists. The text remains operative. The architecture, where the architecture was strong, has been ready to hold.
 
-[^conc-3]: Connecticut: 1795 sale of the Western Reserve claim, codified in the Connecticut School Fund (1798) and constitutionalized in Article VIII (1818). New York: Common School Fund established by an act of the New York State Legislature, April 2, 1805. Virginia: Literary Fund established by an act of the Virginia General Assembly, February 2, 1810; constitutionalized in Article VIII § 8 (1971 Constitution).
+Utah is the contemporary working example, and I have to be careful here because I have spent forty years inside that system and there are things I know about it that a book chapter cannot fully convey. The state took a school trust that was producing five million dollars a year in 1990 and, through a series of operational reforms beginning in the early 1990s and continuing through the 2010s, grew the annual program to one hundred and fifty million dollars. That is thirty times the original amount. The reform was not a single legislative moment. It was a sustained operational discipline carried by a small group of trustees, advocates, parents, school-board members, and legislators across three decades, working inside an architecture that, in Utah's case, proved adequate to the task.
 
-[^conc-4]: Article VIII § 8 of the Oregon Constitution, added by initiative in 2000. *Advocates for School Trust Lands v. State of Oregon*, 346 Or App 668 (2026), decided January 28, 2026. Live case number 24CV38372 (Coos County).
+I want the reader to register that the work is still ongoing. As I write this, the Utah legislature is again attempting to divert school-trust funds. As I write this, the watchful crew is again pushing back. The architecture is holding. The crew is the reason it is holding. *That* is the finding. Not that Utah won. Not that the trust grew thirty-fold. The finding is that the trust has held across thirty-five years of attacks because the people who care about it have shown up for each successive defense.
 
-[^conc-5]: *Jensen v. Dinehart*, 645 P.2d 32 (Utah 1982). Utah Legislative session, 1983 — $37.5 million withdrawal from the State School Fund permanent corpus. Corpus figures from Utah State Board of Education historical accounting integrated into substrate at `45_UT_Utah_v0.4`.
+The mechanism that builds the kind of constituency that does that work, drawn from the Utah experience, is one I have come back to in this book and in the Library's substrate over and over. Increase the revenue to schools, get it directly to every single school where the parents, the teachers, and the principal are deciding how the money is implemented. And all of a sudden, you have built a huge constituency.
 
-[^conc-6]: Utah Code Title 53C (Land Trusts; enacted 1994). Utah Code Title 53D (Land Trusts Protection and Advocacy; enacted 2010). SITLA (School and Institutional Trust Lands Administration) corpus and distribution figures from Utah State Treasurer and SITLA annual reports.
+The constituency, once built, is the operating company that runs the architecture across the generations the architecture is supposed to outlast. Without the constituency, the architecture is decorative.
 
-[^conc-7]: Act of June 16, 1880, 21 Stat. 287 (Nevada in-lieu exchange). The 2 million in-lieu acres were largely sold off by approximately 1900; residual school-trust holdings in Nevada today are approximately 2,914 acres.
+---
 
-[^conc-8]: Project Bold (Governor Scott Matheson, ~1982-1984). Margaret Bird's first-person account of the page-124 Congressional-amendment request is preserved in the project substrate; primary archival material is held at the J. Willard Marriott Library, University of Utah, Matheson Papers, Box 29 (not digitized as of April 2026).
+### Finding 2 — The architecture has drifted in two distinct modes, and both are predictable.
 
-[^conc-9]: *Cooper v. Roberts*, 59 U.S. 173 (1855). Available at https://supreme.justia.com/cases/federal/us/59/173/. The case originated in Michigan but interpreted the Northwest Ordinance template in a manner binding on all subsequent section-grant states.
+Where the architecture has not held, it has not held in two different ways. Both are documented across the case studies in the chapters above. Both are diagnosable. Both are, in principle, defensible against — but defending against them is not the same kind of work as defending against either alone.
 
-[^conc-10]: Omnibus Enabling Act of February 22, 1889, 25 Stat. 676. The "null and void" clause for non-conforming dispositions appears in §§ 10-11. ND, SD, MT, and WA were admitted under this Act in November 1889.
+The first mode is *gradual drift.* It is a slow accretion of small diversions, redefined beneficiary classes, modernized mandates, and corpus translations that each look defensible in isolation. Drift is hard to see while it is happening because no single act of drift looks like betrayal. The accumulated effect, across a generation or two, can be the loss of most of the corpus. Oregon between roughly 1990 and 2017 is the contemporary case study, with the Elliott State Forest decoupling of 2017–2022 the most visible single moment in a much longer drift. The Court of Appeals' January 2026 ruling on Article VIII section 8 standing is the first significant counter-move on the Oregon record. The contemporary Oregon litigation will test whether the counter-move has reach.
 
-[^conc-11]: *Branson School District RE-82 v. Romer*, 161 F.3d 619 (10th Cir. 1998); *Kadish v. Arizona State Land Dep't*, 155 Ariz. 484, 747 P.2d 1183 (1987), aff'd as *ASARCO Inc. v. Kadish*, 490 U.S. 605 (1989); *Forest Guardians v. Wells*, 201 Ariz. 255, 34 P.3d 364 (2001) [VERIFY]; *Montanans for the Responsible Use of the School Trust v. State* [VERIFY: complete cite]; *Advocates for School Trust Lands v. State of Oregon*, 346 Or App 668 (2026). On the underlying *parens patriae* doctrine, Bogert §§ 411-417 [VERIFY: Bogert section numbering across editions]; Restatement (Third) of Trusts § 95.
+The second mode is *sudden directed seizure.* It is a single political moment in which the trust's resources are taken, its mandate rewritten, or its beneficiary class redefined wholesale, often under cover of crisis or fiscal emergency. The seizure mode runs in episodes. It is harder to oppose because the seizure is fast and the constituency that would oppose it has to be already formed when the seizure happens. The 1853 California Survey Act — which dropped the in-trust language from California's school-section grant — is the first major episode in the historical record. The 1820s Mississippi sixteenth-section sales are another, with sections sold for as little as one dollar per acre. There are episodes in nearly every state with significant school-trust holdings.
 
-<p id="conc-margaret-25" class="text-xs"><sup>*</sup> Margaret Bird, oral remarks, August 10, 2025; transcript filed in the Library substrate at <em>PXL_20250810_183245973.mp4 — Final Margaret Transcript / Utah Q&amp;A</em>.</p>
+Both modes are predictable from the same compounding mix of forces. As an economist I find myself returning to those forces often. People discount the future steeply; that is well-established in the behavioral-economics literature and it bears on every decision a state legislature makes about spending versus saving. Mature bureaucracies acquire their own continuity interest distinct from the missions they were chartered to serve; that is well-established in the public-administration literature and it bears on every decision a state land board makes about its operating budget versus the trust's beneficiary obligations. Beneficiary classes that cannot vote — schoolchildren today, future generations across the next century — do not produce the political feedback that would otherwise correct the institution; that, too, is well-established.
 
-<p id="conc-margaret-11" class="text-xs"><sup>*</sup> Margaret Bird, oral remarks, August 10, 2025; transcript filed in the Library substrate at <em>PXL_20250810_190018622.mp4 — twenty-to-fifty-year vision</em>.</p>
+The school-trust experiment has run long enough to test whether legal rigidity alone can hold against those compounding forces. The answer, repeatedly, is no. Legal rigidity is necessary; it is not sufficient. The architecture needs a constituency.
 
-<p id="conc-margaret-13" class="text-xs"><sup>*</sup> Margaret Bird, oral remarks, August 10, 2025; transcript filed in the Library substrate at <em>PXL_20250810_190018622.mp4 — twenty-to-fifty-year vision</em>.</p>
+---
 
+### Finding 3 — The recovery cases share a single feature.
 
+This is the finding that, when I first noticed the pattern across the cases, surprised me most. Every successful school-trust enforcement case in the modern record shares one institutional feature: a non-profit plaintiff at the center of the plaintiff team. Not the state Attorney General — who in the school-trust context represents the trustee (the State) and is therefore institutionally captured. Not the contingent-fee tort bar — which the bar's own economics keep out of multi-decade injunctive practice. Not the structural-reform civil-rights bar — which has historically not owned public-lands trust law as part of its subject-matter portfolio.
+
+The substitute, in every modern case, is the issue-organized public-interest non-profit, staffed by lawyers whose institutional employer is committed to the subject matter for the long arc.
+
+*Branson School District v. Romer* (1998) does not exist without Mountain States Legal Foundation. *ASARCO v. Kadish* (1989) does not exist without the Arizona Education Association. *Forest Guardians v. Wells* (2001) does not exist without Forest Guardians the organization. The Montana school-trust injunctive-relief line does not exist without Montanans for the Responsible Use of the School Trust as the named plaintiff. The contemporary Oregon case at *Advocates for School Trust Lands v. State of Oregon*, 24CV38372, does not exist without OASTL — the organization David Sullivan has chaired, and which I work with at the national level — and its national affiliate ASTL.
+
+This is structural rather than rhetorical. The bar's economics keep contingent-fee work out of multi-decade injunctive practice. The doctrinal portfolio of the structural-reform bar has historically not included public-lands trust law. The state AG, by definition, works for the trustee. The work has to be funded another way and carried by an institutional employer with a long-term commitment to the subject matter. The non-profit substitute is how it gets funded and carried.
+
+The non-profit substitute is the institutional carrier of the constituency Finding 1 names. The non-profit forms because a constituency exists. The constituency is composed of citizens, educators, beneficiary-class members, and specialist scholars who treat the trust as theirs. Together they fund the non-profit, staff it, and supply the named plaintiffs the non-profit's caption requires. The constituency is the upstream condition; the non-profit is the legal instrument; the suit is the visible enforcement event.
+
+Without the upstream condition, the instrument does not get built. The architecture, however well-written, does not enforce itself.
+
+---
+
+### What this volume asks, and what comes next
+
+The three findings, taken together, establish the historical record. They do not yet diagnose what the record means for the next set of intergenerational trusts the country is preparing to build.
+
+Those trusts are arriving in 2026, in working groups and white papers and draft charters, by people who do not know that the school-trust experiment ran the same generational pressure-test for 240 years and is the only multi-generational fiduciary record long enough to teach what holds and what fails. The architects are designing — right now, in the present tense — institutions intended to bind future generations to commitments made today: AI Targeting Authorities, perpetual climate trusts, sovereign wealth funds for the unborn, longevity escrows, data trusts, compute reserves. The architectural impulse is the same impulse that produced the Land Ordinance of 1785. The architects, if the school-trust record reaches them, can avoid mistakes the framers had no way to avoid because the framers were operating with the cognitive and institutional resources of the eighteenth century.
+
+That is the work of the companion volume. *LOOKING FORWARD: The Eighth Anchor* — the second book in this duology, written by my co-author David Sullivan — takes the three findings of this volume and asks what they teach the architects of the next generation of forever-institutions. It identifies the structural failure modes the school-trust record predicts will recur. It names the eighth anchor — the watchful crew, the standing community of citizens, parents, advocates, journalists, and named officials without which the architecture is decorative — as the operational answer the new generation has to engineer for. It pitches at the architects directly, in the second person, because the architects are at the table now and the analysis must reach them while the charters are still drafts.
+
+The two volumes read in sequence make a single argument. *LOOKING BACK* establishes what the Republic built and what happened to it. *LOOKING FORWARD* takes the record and asks what the people building the next round need to know. The reader who finishes Volume I has the architecture and the case histories. The reader who finishes Volume II has the diagnosis and the design implications.
+
+---
+
+### A closing word
+
+The school-trust experiment has been carried, in every state where it has been carried, by people whose names mostly do not appear in the historical record because the work they did was the slow institutional kind that does not generate headlines. The trustee who refused to authorize a quiet diversion. The state forester who insisted on the sustained-yield discipline at the trust's expense for forty years. The legislator who held the floor to defend a budget line nobody on the other side wanted to defend. The schoolteacher who organized the parent-teacher group that produced the next generation of trustees. The retired attorney who took the pro bono brief on a state Supreme Court appeal because no one else was going to.
+
+I have known many of these people personally over forty years of this work. They are the watchful crew. They are why the architecture has held in the places where it has held. They are also, regrettably, why the architecture has been allowed to drift in the places where they were not present in sufficient numbers to defend it.
+
+The school trust is *a forever gift to forever schools for a forever democracy.* The framers wrote that gift. It has been kept, in most places, only partially. It is worth keeping. It is, in fact, worth fighting for — and it is, in my fortieth year inside the school-trust system, what keeps me going.
+
+The architects of the AI-era trusts now arriving will be writing institutions designed to bind for far longer than the school trust has yet run. The school trust is the archive they need. The constituency that holds an architecture across generational time is what they need to know how to build. *LOOKING FORWARD: The Eighth Anchor* takes that up. Read it next.
+
+— *Margaret Bird and David Sullivan, OASTL, 2026.*
 
 \newpage
