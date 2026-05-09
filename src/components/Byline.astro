@@ -1,0 +1,60 @@
+---
+// Byline — a small reusable byline component for routed Library artifacts.
+//
+// Renders the contributor's name, office (role at the Library), and the date
+// the artifact was completed, in a register that matches the existing
+// `<p class="byline">` patterns on /voices/ and /reading/scholarship/.
+//
+// Optional `aiCollaborator` field renders the Rule 5 AI-authorship line
+// inline (per the Library's editorial methodology disclosure on
+// /about/how-this-works/#methodology). When present, the byline reads:
+//   Curated by NAME, OFFICE, DATE; substantive AI assistance from MODEL;
+//   final editorial responsibility NAME.
+//
+// Usage:
+//   <Byline name="Tonia Day" office="State Correspondent · Arizona"
+//           date="2026-03-02" />
+//
+// Or with AI collaborator:
+//   <Byline name="Dave Sullivan" office="Founder"
+//           date="2026-05-09"
+//           aiCollaborator="Claude (Anthropic)" />
+//
+// The component is unstyled beyond the existing `byline` class so it picks
+// up whatever per-page typography rules already govern that class. If a
+// page needs a different visual treatment, wrap or override at the page.
+
+interface Props {
+  name: string;
+  office?: string;
+  date?: string;
+  aiCollaborator?: string;
+}
+
+const { name, office, date, aiCollaborator } = Astro.props as Props;
+
+const dateFormatted = date
+  ? new Date(date + 'T00:00:00').toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  : '';
+---
+<p class="byline">
+  {aiCollaborator ? (
+    <>
+      Co-curated by <strong>{name}</strong>
+      {office ? <>, {office}</> : null}
+      {dateFormatted ? <>, {dateFormatted}</> : null}
+      ; substantive AI assistance from {aiCollaborator}; final editorial
+      responsibility <strong>{name}</strong>.
+    </>
+  ) : (
+    <>
+      Curated by <strong>{name}</strong>
+      {office ? <>, {office}</> : null}
+      {dateFormatted ? <>, {dateFormatted}</> : null}.
+    </>
+  )}
+</p>

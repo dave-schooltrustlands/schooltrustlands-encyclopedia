@@ -69,6 +69,26 @@ async function getModeClass(page) {
   });
 }
 
+// Per v14 audit-discovery §3 (folded into v15 EPSILON.3): the
+// WalkingTour dialog auto-opens 600ms after Library Mode loads on /,
+// causing pointer-event interception flakes when this test clicks
+// segment-control buttons inside that 600ms window. Solution: register
+// a context-level init script that pre-sets the
+// 'library-walking-tour-dismissed' localStorage flag before any page
+// scripts run. This makes the dialog never auto-open during tests, so
+// the segment-control clicks are deterministic regardless of timing.
+async function newDeterministicContext(browser, opts) {
+  const context = await browser.newContext(opts);
+  await context.addInitScript(() => {
+    try {
+      localStorage.setItem('library-walking-tour-dismissed', '1');
+    } catch (e) {
+      /* localStorage unavailable in some test contexts; ignore */
+    }
+  });
+  return context;
+}
+
 async function run() {
   console.log(`v13 mode-toggle regression smoke against ${BASE}\n`);
   const browser = await chromium.launch({ headless: true });
@@ -78,7 +98,7 @@ async function run() {
   // -------------------------------------------------------------
   {
     console.log('1) v12 D.4 — Library is default mode (fresh context)');
-    const context = await browser.newContext({ viewport: { width: 1024, height: 800 } });
+    const context = await newDeterministicContext(browser, { viewport: { width: 1024, height: 800 } });
     const page = await context.newPage();
     await page.goto(`${BASE}/`, { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('button.vds-seg', { timeout: 10_000 });
@@ -101,7 +121,7 @@ async function run() {
   // -------------------------------------------------------------
   {
     console.log('\n2) v12 D.1 — Slider has exactly 2 segments (reference, library)');
-    const context = await browser.newContext({ viewport: { width: 1024, height: 800 } });
+    const context = await newDeterministicContext(browser, { viewport: { width: 1024, height: 800 } });
     const page = await context.newPage();
     await page.goto(`${BASE}/`, { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('button.vds-seg', { timeout: 10_000 });
@@ -131,7 +151,7 @@ async function run() {
   {
     console.log('\n3) v12 D.2 — Per-room ornament present in Library, hidden in Reference');
     for (const room of ROOMS) {
-      const context = await browser.newContext({ viewport: { width: 1024, height: 800 } });
+      const context = await newDeterministicContext(browser, { viewport: { width: 1024, height: 800 } });
       const page = await context.newPage();
       await page.goto(`${BASE}${room.path}`, { waitUntil: 'domcontentloaded' });
       await page.waitForSelector('button.vds-seg[data-mode="library"]', { timeout: 10_000 });
@@ -177,7 +197,7 @@ async function run() {
     let readingAccent = '';
     let countingAccent = '';
     {
-      const context = await browser.newContext({ viewport: { width: 1024, height: 800 } });
+      const context = await newDeterministicContext(browser, { viewport: { width: 1024, height: 800 } });
       const page = await context.newPage();
       await page.goto(`${BASE}/reading/`, { waitUntil: 'domcontentloaded' });
       await page.waitForSelector('button.vds-seg[data-mode="library"]', { timeout: 10_000 });
@@ -189,7 +209,7 @@ async function run() {
       await context.close();
     }
     {
-      const context = await browser.newContext({ viewport: { width: 1024, height: 800 } });
+      const context = await newDeterministicContext(browser, { viewport: { width: 1024, height: 800 } });
       const page = await context.newPage();
       await page.goto(`${BASE}/counting/`, { waitUntil: 'domcontentloaded' });
       await page.waitForSelector('button.vds-seg[data-mode="library"]', { timeout: 10_000 });
@@ -221,7 +241,7 @@ async function run() {
   // -------------------------------------------------------------
   {
     console.log('\n5) v12 D.5 — ≥5/5 visible-element computed values differ home Library→Reference');
-    const context = await browser.newContext({ viewport: { width: 1024, height: 800 } });
+    const context = await newDeterministicContext(browser, { viewport: { width: 1024, height: 800 } });
     const page = await context.newPage();
     await page.goto(`${BASE}/`, { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('button.vds-seg[data-mode="reference"]', { timeout: 10_000 });
@@ -276,7 +296,7 @@ async function run() {
   // -------------------------------------------------------------
   console.log('\n6) Viewport sweep at 1024 / 900 / 800 / 768 (header < 220px)');
   for (const vp of VIEWPORTS) {
-    const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
+    const context = await newDeterministicContext(browser, { viewport: { width: vp.width, height: vp.height } });
     const page = await context.newPage();
     await page.goto(`${BASE}/`, { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('header', { timeout: 10_000 });
