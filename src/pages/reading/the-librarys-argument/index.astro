@@ -50,6 +50,17 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       <li class="argument-card">
         <p class="card-kicker">Volume I · LOOKING BACK</p>
+        <a href="/reading/prologue/" class="card-cover-link" aria-label="Begin reading Volume I — Schools of the Republic">
+          <img
+            class="card-cover"
+            src="/img/covers/volume-i-schools-of-the-republic-cover-1024.webp"
+            width="1024"
+            height="1536"
+            loading="lazy"
+            decoding="async"
+            alt="Cover of Volume I — Schools of the Republic, by Margaret Bird with David Sullivan: an 18th-century American sailing ship, sails patched, anchor cable taut, helmsman at the wheel, weather present."
+          />
+        </a>
         <h2 class="card-title">
           <em>Schools of the Republic</em>
         </h2>
@@ -70,6 +81,17 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
       <li class="argument-card">
         <p class="card-kicker">Volume II · LOOKING FORWARD</p>
+        <a href="/reading/sacred-compact-prologue/" class="card-cover-link" aria-label="Begin reading Volume II — The Eighth Anchor">
+          <img
+            class="card-cover"
+            src="/img/covers/volume-ii-the-eighth-anchor-cover-1024.webp"
+            width="1024"
+            height="1536"
+            loading="lazy"
+            decoding="async"
+            alt="Cover of Volume II — The Eighth Anchor, by David Sullivan with Margaret Bird: the same ship evolved into a contemporary working vessel, civic crew on deck using charts and instruments, American flag flying."
+          />
+        </a>
         <h2 class="card-title">
           <em>The Eighth Anchor</em>
         </h2>
@@ -122,6 +144,32 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     text-transform: uppercase;
     color: var(--old-gold, #8b7355);
     margin: 0 0 0.6rem;
+  }
+  .card-cover-link {
+    display: block;
+    margin: 0 0 1rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: opacity 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card-cover-link:hover,
+  .card-cover-link:focus-visible {
+    opacity: 0.92;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.12);
+  }
+  .card-cover {
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-radius: 2px;
+    background: #f5f1e8;
+  }
+  @media (max-width: 640px) {
+    .card-cover {
+      max-width: 160px;
+    }
   }
   .card-title {
     font-family: var(--font-serif, Georgia, serif);
