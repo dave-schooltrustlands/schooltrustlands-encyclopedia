@@ -175,10 +175,9 @@ async function checkV19D() {
     'delightfully non-partisan issue',
   ]);
 
-  // Lack-of-understanding diagnosis → Section I AND /about/
-  await checkContains(BASE + '/reading/sacred-compact-i-the-question/', 'v19.D-lack-i', [
-    'biggest challenge is the lack of understanding',
-  ]);
+  // Lack-of-understanding diagnosis → /about/
+  // (Removed from Section I in v20a Plan v2 §IV.3 trim; historical/Margaret-voice
+  // content folds into Volume I. Gem preserved on /about/.)
   await checkContains(BASE + '/about/', 'v19.D-lack-about', [
     'biggest challenge is the lack of understanding',
   ]);
