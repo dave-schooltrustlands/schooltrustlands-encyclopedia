@@ -29,6 +29,12 @@ The Congress that wrote that sentence was operating under conditions that should
 
 It was, in its design, an impressive piece of work. It was the longest-time-horizon institution that the eighteenth century could engineer with the cognitive technology and the legal vocabulary available, and the framers built it with care. The compact they built has been running continuously for 240 years. It is older than the United States Constitution. It is older than every existing Western democracy. It is older than most of the corporate and philanthropic forms today's institution-builders take for granted. The data from that experiment is in.
 
+<aside class="boxed-insert">
+<p class="boxed-insert-title"><strong>The lack of understanding before the bad faith.</strong> <em>— Margaret Bird, in her own voice, drawn from the August 2025 video transcripts (PXL_20250810_184409324 — biggest challenges).</em></p>
+<p>The biggest challenge is the lack of understanding. Most people — including many legislators — simply do not know what school trust lands are or how they are different from other public lands. They think they can just use them for whatever is popular at the moment, like a park or a low-cost lease for a local business.</p>
+<p>The diagnosis matters because it shapes the work. The school-trust failures are first failures of structural ignorance — among citizens, school-board members, journalists, even legislators — and only after that, in some places, failures of bad faith. Teaching first; prosecuting only when teaching has been refused. That is the order the work has to be done in.</p>
+</aside>
+
 This paper is about what the data says.
 
 ### I.C — What the experiment returns

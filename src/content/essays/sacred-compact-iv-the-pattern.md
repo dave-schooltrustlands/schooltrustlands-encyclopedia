@@ -162,6 +162,13 @@ It is the wrong word for what happened in Utah in 1983, when the legislature wit
 Margaret Bird's reframe of the field's vocabulary captures the distinction in plain language. The aspirational trust is vulnerable to two pathologies, not one:[^IV-G-2]
 
 - **Drift** is the slow, structural, unintentional movement of the trust away from its purpose. The forces that compound to produce drift are cognitive (the human mind discounts the future), institutional (long-running bureaucracies optimize for their own continuity), and political (the beneficiary cannot vote). Drift is the predictable failure mode of an unattended trust. The four faces of drift named in §IV.F — corpus, purpose, beneficiary, legitimacy — are the axes along which drift fractures the structure.
+
+<aside class="boxed-insert">
+<p class="boxed-insert-title"><strong>The long-term game.</strong> <em>— Margaret Bird, in her own voice, drawn from the August 2025 video transcripts (PXL_20250810_184409324 — biggest challenges / lack of understanding).</em></p>
+<p>The biggest challenge is the lack of understanding. Most people — including many legislators — simply do not know what school trust lands are or how they are different from other public lands. They think they can just use them for whatever is popular at the moment, like a park or a low-cost lease for a local business.</p>
+<p>That is where the politics come in. There is often pressure to use the land for things that do not maximize revenue for the schools. My job is to remind everyone that these are trust lands. The state has a legal and moral obligation to get the best return for the schools.</p>
+<p>Sometimes that means making unpopular decisions, like raising a grazing fee or saying no to a project that does not benefit the trust. It is also a challenge because the results of good management often take years to see in the growth of the permanent fund. People want quick fixes and immediate results. But this is a long-term game. It is about building wealth for future generations of students. Overcoming that short-term thinking is one of our greatest hurdles.</p>
+</aside>
 - **Directed seizure** is the affirmative act of conversion. A particular actor — a legislative majority, a governor, an agency head — moves to take what the trust holds and use it for a purpose the trust does not authorize. The two faces of directed seizure named in §IV.F — seizure by stealth, seizure by floor vote — are the modes by which the conversion is attempted. The faces differ in whether the move is concealed or open. They do not differ in their character as affirmative acts.
 
 Naming the two pathologies separately has consequences for the rest of this paper. The remedies are not interchangeable.
