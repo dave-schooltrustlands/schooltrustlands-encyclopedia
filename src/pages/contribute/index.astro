@@ -23,7 +23,7 @@ const roles = [
     office:
       "An ordinary citizen using a public reference library. Margaret's line — “Most people don’t realize they are the beneficiaries of this trust” — applies most directly here. As a reader you are exercising the most basic civic standing: knowing what is yours.",
     act:
-      'Read one source page in the Reading Room or one state page in the Atlas, and follow the citation back to the primary document. If you find an error or have a source to suggest, submit a correction — you do not have to become a member to do that.',
+      'Read one source page in the <a href="/reading/">Reading Room</a> or one state page in the <a href="/atlas/">Atlas</a>, and follow the citation back to the primary document. If you find an error or have a source to suggest, submit a correction — you do not have to become a member to do that.',
     artifact:
       'A correction or source suggestion in the Library’s public record. Even unaccepted submissions are logged; accepted ones credit the next more-accurate version of the page.',
     standing:
@@ -37,7 +37,7 @@ const roles = [
     act:
       'Sign up: email, state, role, and one line about what brought you here. After that, the easiest contribution is a correction. Read a source page, find an error, submit it.',
     artifact:
-      'Your name (or pseudonym) on the Library’s patron rolls; the Newsroom in your inbox; the standing to submit corrections, annotations, and source suggestions for the Founders’ Library and the Scholarship section.',
+      'Your name (or pseudonym) on the Library’s patron rolls; the <a href="/newsroom/">Newsroom</a> in your inbox; the standing to submit corrections, annotations, and source suggestions for the Founders’ Library and the Scholarship section.',
     standing:
       'The patron tier. The entry tier for everyone who wants to be in the conversation rather than only watching it.',
     cta: { href: LIBRARY_CARD_MAILTO, label: 'Get a Library Card' },
@@ -131,7 +131,7 @@ const roles = [
 
   {/* C.2 — Watchdog opening paragraph. Inserted above the role cards.
       Margaret quotations are verbatim, marked as quotations, and attributed
-      to the L0 transcripts as substrate evidence. The Library does not yet
+      to the editorial substrate as evidence. The Library does not yet
       surface the Margaret transcripts at a public path; until that lands,
       attribution is by footnote rather than a broken link. */}
   <section class="watchdog-opening not-prose mt-10 rounded-lg border-l-4 border-slate-700 bg-slate-50 p-5 shadow-sm">
@@ -160,9 +160,10 @@ const roles = [
       lawyer — is to speak up.
     </p>
     <p class="mt-3 text-xs italic text-slate-600">
-      Margaret Bird, video transcripts on file with the Library (L0 substrate,
-      2025–2026). The transcripts are being prepared for public release as
-      one of the open Library missions.
+      Margaret Bird, video transcripts on file with the Library (held in the
+      editorial substrate — see <a href="/about/how-this-works/#substrate">How
+      this works · Substrate</a> — 2025–2026). The transcripts are being
+      prepared for public release as one of the open Library missions.
     </p>
   </section>
 
@@ -234,13 +235,13 @@ const roles = [
               <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">
                 Smallest useful act
               </dt>
-              <dd class="mt-1">{r.act}</dd>
+              <dd class="mt-1" set:html={r.act}></dd>
             </div>
             <div>
               <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">
                 Artifact you leave behind
               </dt>
-              <dd class="mt-1">{r.artifact}</dd>
+              <dd class="mt-1" set:html={r.artifact}></dd>
             </div>
             <div>
               <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">

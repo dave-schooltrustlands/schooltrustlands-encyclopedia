@@ -26,19 +26,19 @@ const founders = [
     artifacts: [
       'Co-authorship of <em>Schools of the Republic</em>',
       'The Eighth Anchor reframe of the <em>Sacred Compact</em>',
-      'The seven Margaret video transcripts filed at the Library’s L0 substrate',
+      'The seven Margaret video transcripts filed at the Library’s primary-source substrate (<a href="/about/how-this-works/#substrate">how this works</a>)',
     ],
   },
   {
     name: 'Dave Sullivan',
     office:
-      'Founder; lead advocate, Oregon Advocates for School Trust Lands (OASTL); Knowledge Stack architect',
+      'Founder; lead advocate, Oregon Advocates for School Trust Lands (OASTL); architect of the Library&rsquo;s knowledge substrate (<a href="/about/how-this-works/#substrate">how this works</a>)',
     tenure: 'Founding (April 2026 –)',
     pseudonym: false,
     artifacts: [
       'Co-authorship of <em>Schools of the Republic</em>',
       'Lead authorship of the <em>Sacred Compact</em>',
-      'The Library architecture and the five-layer Knowledge Stack',
+      'The Library architecture and the five-layer knowledge substrate (<a href="/about/how-this-works/#substrate">how this works</a>)',
     ],
   },
 ];
@@ -89,7 +89,7 @@ const futureTiers = [
       the artifacts they have left behind. The crew is the watchdog citizens,
       school-board members, journalists, and lawyers who hold the trust on
       behalf of the schoolchildren of the Republic — the standing community
-      without which the seven structural anchors of the Sacred Compact are
+      without which the seven structural anchors of the <a href="/reading/sacred-compact/">Sacred Compact</a> are
       decorative. The page exists because a public reference institution should
       be transparent about its own staffing, and because the Eighth Anchor is
       people, with names, doing specific work.
@@ -116,7 +116,7 @@ const futureTiers = [
           <h3 class="text-lg font-semibold tracking-tight text-slate-900">
             {p.name}
           </h3>
-          <p class="mt-1 text-sm font-semibold text-slate-700">{p.office}</p>
+          <p class="mt-1 text-sm font-semibold text-slate-700" set:html={p.office}></p>
           <p class="mt-1 text-xs uppercase tracking-wide text-slate-500">
             Tenure: {p.tenure}
           </p>

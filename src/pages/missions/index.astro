@@ -64,7 +64,7 @@ const missions = [
     effort: '6–10 hours per cluster',
     status: 'open',
     body:
-      "For each state cluster (one mission per cluster — typically 5–8 states), identify the enabling-act citation, the original constitutional school-trust clause, and the codified successor. Output is a per-state citation block for the Atlas.",
+      "For each state cluster (one mission per cluster — typically 5–8 states), identify the enabling-act citation, the original constitutional school-trust clause, and the codified successor. Output is a per-state citation block for the <a href=\"/atlas/\">Atlas</a>.",
   },
   {
     title: 'Transcribe the Margaret Bird interview transcripts',
@@ -72,7 +72,7 @@ const missions = [
     effort: '1–2 hours per recording',
     status: 'in progress',
     body:
-      "Transcribe the seven Margaret Bird video recordings (PXL_20250810_* and adjacent dates) currently held in the Library’s L0 substrate. Output is a clean Markdown transcript per recording, with timestamps, ready for public release as a Founders’ Library entry.",
+      "Transcribe the seven Margaret Bird video recordings (PXL_20250810_* and adjacent dates) currently held in the Library&rsquo;s primary-source substrate (<a href=\"/about/how-this-works/#substrate\">how this works</a>). Output is a clean Markdown transcript per recording, with timestamps, ready for public release as a Founders&rsquo; Library entry.",
   },
   {
     title: 'Verify Bogert & Hess publisher citation (W.W. Norton vs. Belknap/Harvard)',
@@ -121,7 +121,7 @@ const missions = [
     effort: '2–4 hours per transcript',
     status: 'open',
     body:
-      "Once a Margaret Bird transcript clears the transcription mission, cross-link its substantive moments to the eight essays of the Sacred Compact and the chapter cohorts of Schools of the Republic. Output is a per-transcript index — timestamp, the essay or chapter it speaks to, and a one-sentence editorial note — so the public-release transcript pages carry their own reference apparatus.",
+      "Once a Margaret Bird transcript clears the transcription mission, cross-link its substantive moments to the eight essays of the <a href=\"/reading/sacred-compact/\">Sacred Compact</a> and the chapter cohorts of <a href=\"/reading/schools-of-the-republic/\">Schools of the Republic</a>. Output is a per-transcript index — timestamp, the essay or chapter it speaks to, and a one-sentence editorial note — so the public-release transcript pages carry their own reference apparatus.",
   },
 ];
 
@@ -181,7 +181,7 @@ const statusStyles = {
     <h2 class="text-2xl font-bold tracking-tight">The board</h2>
     <p class="mt-1 text-sm italic text-slate-600">
       Twelve missions on the board. The catalog grows as the Library’s reading
-      turns up gaps; check back, or subscribe to the Newsroom for new postings.
+      turns up gaps; check back, or subscribe to the <a href="/newsroom/">Newsroom</a> for new postings.
     </p>
     <ul class="mt-6 grid grid-cols-1 gap-4">
       {missions.map((m) => {
@@ -200,7 +200,7 @@ const statusStyles = {
             <p class="mt-1 text-xs uppercase tracking-wide text-slate-500">
               {m.scope} · Estimated effort: {m.effort}
             </p>
-            <p class="mt-3 text-sm text-slate-700">{m.body}</p>
+            <p class="mt-3 text-sm text-slate-700" set:html={m.body}></p>
             <p class="mt-4 text-sm">
               {isClaimable ? (
                 <a
