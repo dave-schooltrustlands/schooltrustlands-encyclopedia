@@ -4,8 +4,8 @@ sourceWork: "Schools of the Republic v1.3"
 slug: "05-reconstruction-western-stack"
 era: "reconstruction-western"
 order: 5
-wordCount: 8306
-sourceVersion: "Schools_of_the_Republic_v1.3"
+wordCount: 10052
+sourceVersion: "Schools_of_the_Republic_v1.3_ch5_v2_margaret_voiced"
 lastSynced: 2026-05-10
 voiceRewriteVersion: 2.0
 ---
@@ -290,3 +290,7 @@ The next chapter goes to New Mexico and Arizona, 1910, where Congress wrote the 
 [^ch5-51]: Utah Code § 53D-2-102, enacted by Ch. 448, 2018 General Session; Utah Code § 53D-2-201 (LTPAO duties).
 
 [^ch5-52]: Utah Amendment B, *State School Fund Distribution Cap Increase Amendment* (2024), https://ballotpedia.org/Utah_Amendment_B,_State_School_Fund_Distribution_Cap_Increase_Amendment_(2024); Utah Constitution, Article X, § 5, effective 2025.
+
+---
+
+*Draft v2 ends. Voice notes for Margaret's review: the first-person register is carried throughout, with the most direct from-the-inside language reserved for the Utah passages where Margaret has institutional authority — the Sandra Skousen account, the page-124 Project BOLD passage (preserved verbatim from the v1.3 doctrinal-load-bearing language), the 9,000-council-member operative-principle paragraph in the School LAND Trust section, and the lesson-of-the-Utah-story close. The "I want to slow down" / "I want the reader to register" / "I want to spend a paragraph here" moves are deployed at the doctrinal-density passages: the 1939 amendment principle, the null-and-void clause, the Idaho 1968 separation-of-concerns lineage, and the Utah-recovery operative principle. The pull-quote epigraph (transcript pull-quote #5, "long-term game / future generations / short-term thinking") sits at the chapter's head and is then explicitly redeemed in the 1939-amendment passage and the Utah-recovery close. The boxed-insert placeholder is positioned at the threshold between the architecture-being-built passage (Utah 1894–1896 section) and the Utah-collapse-and-recovery story, where a sidebar can carry either the PTA-president-and-the-sofa anecdote (transcript pull-quote #27) or the 5M-to-150M revenue datapoint (transcript pull-quote #21) — both candidates for Margaret's choice. Body length: approximately 7,500 words.*

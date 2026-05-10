@@ -1,0 +1,142 @@
+---
+// v25 GAMMA — Series landing for Who Steals from Children, the
+// state-by-state prosecutorial-history series. Volume 1 lands first;
+// future volumes carry the same series template.
+//
+// Landings do NOT carry the per-chapter pre-publication banner (banner
+// gates on kind === 'essay' in [slug].astro). They do carry the
+// site-wide pre-publication footer via BaseLayout.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Who Steals from Children — A Series · America's School Trust Library"
+  description="A state-by-state prosecutorial-history series naming the actors, dates, dollars, and documents in each live trust-breach case. Volume 1 — Oregon and the Elliott — is the case-in-chief."
+  sourceId="reading-who-steals-from-children-series"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">Reading Room · Companion Series</p>
+    <h1 class="mt-2"><em>Who Steals from Children</em> — A Series</h1>
+    <p class="kicker text-slate-600">
+      A state-by-state prosecutorial-history series. One volume per active breach.
+    </p>
+
+    <p>
+      <em>Who Steals from Children</em> is the case-by-case prosecutorial record
+      of how America's school-land trusts are being broken in the present tense.
+      One state per volume. Each volume names the actors, the dates, the dollars,
+      and the documentary record. The series is the live applied form of the
+      diagnostic frame in
+      <a href="/reading/the-librarys-argument/">the Library's Argument</a> — the
+      ship-and-anchors record placed against a specific trustee, a specific
+      removal, and a specific year.
+    </p>
+
+    <p>
+      The series title — <em>Who Steals from Children</em> — comes to us from
+      Jim Petersen of <em>Evergreen</em>, who used the phrase in a 2025 phone
+      call with Dave Sullivan when the two were discussing what Oregon had done
+      to the Elliott. Petersen put the question in the register the school-trust
+      record requires: not <em>what went wrong</em>, but <em>who stole from
+      whom</em>, named.
+    </p>
+
+    <hr class="archival-divider" />
+
+    <section class="series-volumes mt-8" aria-label="Volumes in this series">
+      <h2 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        Volumes
+      </h2>
+
+      <article class="volume-card mt-4">
+        <p class="card-kicker">Volume 1 · Oregon</p>
+        <h3 class="card-title">
+          <em>Who Steals from Children: Volume 1 — Oregon and the Elliott</em>
+        </h3>
+        <p class="card-byline">
+          Dave Sullivan, with Daniel Zene Crowe (legal) and Margaret Bird (foreword)
+        </p>
+        <p class="card-length">Foreword · Preface · 13 chapters · Documentary Record</p>
+        <p class="card-blurb">
+          How the State of Oregon has spent thirty-five years removing a
+          billion-dollar working trust asset from the Common School Fund —
+          and how the schoolchildren of Oregon and their advocates have
+          caught it in the act. The case-in-chief that the Library's
+          two-volume diagnostic frame is built to handle.
+        </p>
+        <a href="/reading/who-steals-from-children-vol1-elliott/" class="card-cta">
+          Open Volume 1 →
+        </a>
+      </article>
+
+      <p class="forthcoming mt-6 text-sm italic text-slate-500">
+        Future volumes are forthcoming as each state's record is assembled.
+      </p>
+    </section>
+
+    <hr class="archival-divider" />
+
+    <p class="mt-8 text-sm text-slate-600">
+      <a href="/reading/">← Back to the Reading Room</a>
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .volume-card {
+    background: var(--linen-card, #fafaf7);
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-left: 3px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-kicker {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--old-gold, #8b7355);
+    margin: 0 0 0.5rem;
+  }
+  .card-title {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+    line-height: 1.35;
+    margin: 0 0 0.4rem;
+  }
+  .card-byline {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #475569;
+    margin: 0 0 0.25rem;
+    font-style: italic;
+  }
+  .card-length {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 0 0 0.85rem;
+  }
+  .card-blurb {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #334155;
+    margin: 0 0 1.1rem;
+  }
+  .card-cta {
+    align-self: flex-start;
+    color: #1d4ed8;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .card-cta:hover {
+    color: #1e40af;
+  }
+</style>

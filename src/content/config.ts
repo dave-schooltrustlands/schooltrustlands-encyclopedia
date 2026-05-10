@@ -30,6 +30,17 @@ const essays = defineCollection({
     audience: z.string().optional(),
     heroImage: z.string().optional(),
     heroImageCaption: z.string().optional(),
+    // v25 — Optional override for the volume label shown in the
+    // pre-publication banner and the series-nav strip on chapter
+    // pages. When absent, [slug].astro derives the label from
+    // sourceWork (Sacred Compact prefix → "The Eighth Anchor",
+    // otherwise "Schools of the Republic"). Set this when adding
+    // a new book series (e.g., Who Steals from Children Vol 1).
+    seriesLabel: z.string().optional(),
+    // v25 — Display label for the chapter slot in the volume's ToC.
+    // Numeric for body chapters; string ("Foreword", "Preface",
+    // "Documentary Record") for front/back matter.
+    chapterNumber: z.union([z.number(), z.string()]).optional(),
   }),
 });
 

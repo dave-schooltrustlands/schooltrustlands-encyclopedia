@@ -1,0 +1,70 @@
+---
+// PrepublicationFooter.astro
+//
+// v25 — Site-wide pre-publication footer. A thin strip carrying the
+// "draft — do not cite" line at the very bottom of every page. Sibling
+// to <PrepublicationBanner /> (v24, per-chapter): the banner gives the
+// full warning at the top of each chapter; this footer carries the
+// reminder on every surface — landings, About, Atlas, Counting House,
+// Map Room, Newsroom, state pages — so a reader landing anywhere on
+// the site sees it.
+//
+// Controlled by the same single flag (src/site.config.ts → PREPUBLICATION).
+// When the flag flips to false, both the chapter banner and this footer
+// disappear in one motion.
+
+import { PREPUBLICATION } from '../site.config';
+---
+
+{PREPUBLICATION && (
+  <div
+    class="prepublication-footer"
+    role="note"
+    aria-label="Pre-publication draft notice"
+    data-pagefind-ignore
+  >
+    <p>
+      <span class="prepublication-footer__icon" aria-hidden="true">⚠</span>
+      Pre-publication draft as of MAY 2026 — please do not cite or quote.
+    </p>
+  </div>
+)}
+
+<style>
+  /* Slim parchment-on-amber strip. Same palette family as the chapter
+     banner (v24) so the two surfaces read as one warning system. Darker
+     amber top border separates the strip from page content above. */
+  .prepublication-footer {
+    background: #FBF1D2; /* parchment-amber */
+    border-top: 1px solid #B45309; /* amber-700, slightly darker than banner */
+    color: #92400E; /* amber-800 caution text */
+    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    text-align: center;
+    padding: 0.55rem 1rem;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .prepublication-footer p {
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .prepublication-footer__icon {
+    display: inline-block;
+    margin-right: 0.4rem;
+    color: #B45309; /* amber-700 */
+  }
+
+  @media (max-width: 640px) {
+    .prepublication-footer {
+      font-size: 0.78rem;
+      min-height: 2.1rem;
+      padding: 0.45rem 0.75rem;
+    }
+  }
+</style>

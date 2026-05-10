@@ -18,8 +18,11 @@
 import { PREPUBLICATION } from '../site.config';
 
 interface Props {
-  /** Volume name displayed inside the banner copy. */
-  volume: 'Schools of the Republic' | 'The Eighth Anchor';
+  /** Volume name displayed inside the banner copy. v25 relaxed to
+   *  arbitrary string so additional book series (e.g., Who Steals
+   *  from Children: Volume 1 — Oregon and the Elliott) carry their
+   *  own label through the same single-flag-controlled banner. */
+  volume: string;
 }
 
 const { volume } = Astro.props;

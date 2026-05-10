@@ -4,8 +4,8 @@ sourceWork: "Schools of the Republic v1.3"
 slug: "01-founding-floor"
 era: "founding-floor"
 order: 1
-wordCount: 7000
-sourceVersion: "Schools_of_the_Republic_v1.3"
+wordCount: 10563
+sourceVersion: "Schools_of_the_Republic_v1.3_ch1_v2_margaret_voiced"
 lastSynced: 2026-05-10
 voiceRewriteVersion: 2.0
 ---
@@ -42,6 +42,8 @@ The Northwest Ordinance is rightly famous. It is the document the chapters that 
 
 I want to make the chronology explicit because the rhetorical weight of the federal template tends, in modern historiography, to crowd out the prior state-side work. When we talk about the school endowment we usually start the story in 1785 or 1787, with the Confederation Congress at work in New York. The actual story starts much earlier, and starts in the states. By the time the federal government was in a position to legislate for the western territory, the philosophical work of naming the schools-and-republic relationship had been done. The federal contribution was the *mechanism* — section 16 of every township, dedicated to the schools, embedded in the geometry of national settlement. The states had already supplied the *premise*.
 
+## The men who wrote the school clause — and what it cost them
+
 The Confederation Congress that wrote that sentence was working under a constraint modern readers do not fully see, and as someone whose career began in fiscal analysis I want to take a moment to make it visible. The men who drafted Article III of the Northwest Ordinance, ratified the Constitution two months later, and built the early American school architecture were not abstract framers. They were a specific group of people, and the financial trajectory of those men in the years after independence was, on balance, downward. Several of them paid for the Republic — personally, financially, in some cases catastrophically — out of their own pockets and their own land.
 
 Their own land, in particular, is worth pausing on. The fifty-six men who put their names on the Declaration of Independence were, almost without exception, landowners — and not on the modest scale a modern reader might assume. George Washington, by his death in 1799, owned more than sixty thousand acres in territory that today lies across seven states. Robert Morris — the same Robert Morris I am about to describe in debtors' prison — became, in the years between the Revolution and the financial collapse that ruined him, the largest private property owner in the history of the United States, with holdings in his North American Land Company exceeding six million acres across Georgia, the Carolinas, Virginia, Pennsylvania, and Kentucky. Henry Knox, the Continental Army's chief of artillery and Washington's first Secretary of War, acquired most of the 576,000-acre Waldo Patent in midcoast Maine. Manasseh Cutler, the Ohio Company's lobbyist, would within two years of the Land Ordinance negotiate a federal sale of nearly five million acres, of which one and a half million went to his company and the rest to a private speculation in which, as Cutler wrote in his journal, "many of the most prominent characters in America are concerned." Even the smaller proprietors operated in the same world. John Adams, who would not have called himself a land speculator and who held his "very genteel" Braintree property at about two hundred seventy-five acres, wrote to James Sullivan in May 1776 that "Power always follows Property" and that "the Ballance of Power in a Society, accompanies the Ballance of Property in Land." This was not metaphor. It was a description of the period's working theory of political authority. The men who wrote the school endowment knew that land was the medium through which political existence was constituted. When they dedicated section 16 of every township to the maintenance of public schools, they were dedicating the most secure asset they had to a beneficiary class — children — who, by the rule they themselves had stated, would never hold political power. They knew what they were doing.
@@ -61,6 +63,8 @@ What this generation did, with the asset-base they had and the personal balance 
 The architecture is not the gift of a comfortable elite. It is the gift, in significant part, of men who had spent their personal credit on the war and were trying, before they ran out of public time, to put something durable in place for the country's children.
 
 That fact does not romanticize the founding. It frames it honestly. The school endowment was written by people who knew what financial sacrifice looked like, who were operating without a margin, and who chose — with the resources they had and with the time they thought they had — to dedicate a piece of every township to the education of the unborn. The architecture they wrote has been operating for 240 years. The fact that it has held at all, in the places where it has held, runs partly on the moral force of its origins. The fact that it has drifted, in the places where it has drifted, runs partly on the country's having forgotten what its origins cost.
+
+That forgetting is what the rest of this book is about.
 
 ## The Original Thirteen and the structural fact
 
@@ -311,3 +315,7 @@ The work of holding what they built begins where they handed it forward.
 [^ch1-55]: S.C. Const. of 1973 revision, art. XI, § 3 (restoring a stronger version of the free-public-schools mandate).
 
 [^ch1-56]: 1956 Va. Acts limited convention amendment authorizing public aid for private-school students; *Harrison v. Day*, 200 Va. 439, 106 S.E.2d 636 (1959); *Griffin v. County School Board of Prince Edward County*, 377 U.S. 218 (1964).
+
+---
+
+*Draft v2 ends. Voice notes for Margaret's review: the I-want-to-slow-down moves are deployed at the doctrinal-density passages (the trustee-of-political-authority framing in Adams 1765; the Connecticut 1795 fund-template moment; the New Hampshire 209-year-latency observation). The economist-by-training authority is used sparingly. The two-takeaways close folds in the Dwight sermon as the period's lay-readable version of the bind-the-future doctrine. Three substrate-enrichment migrations from Section II audit landed cleanly: Adams 1765 *Dissertation* at opening; Jefferson 1816 Yancey at Virginia transition; Dwight sermon at close. Cumulative voice-pass: ~7,500 words body, all of source v1.3 ch 1 (lines 207–271) voice-passed plus the three enrichments.*
