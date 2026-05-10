@@ -6,8 +6,8 @@ era: "prologue"
 order: 0
 wordCount: 3000
 sourceVersion: "Schools_of_the_Republic_v1.3"
-lastSynced: 2026-05-09
-voiceRewriteVersion: 3.0
+lastSynced: 2026-05-10
+voiceRewriteVersion: 3.1
 ---
 
 ## LOOKING BACK · *Schools of the Republic* · Prologue
@@ -90,7 +90,7 @@ This volume is the synthesis of what 240 years of operation tell us about the ar
 
 A note on what this book does not do. This is the volume that looks back. It does not, by design, treat the architecture's diagnostic implications for the AI-era trusts now being drafted — the AI Targeting Authorities, perpetual climate trusts, sovereign wealth for the unborn, longevity escrows, and compute reserves entering charter windows in 2026. That work is the subject of the companion volume, *LOOKING FORWARD: The Eighth Anchor*, written by my co-author David Sullivan, which begins where this one ends. Read this volume first if you want the architecture and the record. Read his when you want what the record implies.
 
-The school trust is not a museum piece. Children are in classrooms today whose education is funded, in the states whose architecture has held, by the fiduciary discipline of trustees and the continuous attention of citizens who refuse to let the architecture rot. The phrase I have come back to over and over across forty years of this work is that the trust is *a forever gift to forever schools for a forever democracy.* The framers wrote a forever gift. Whether the country has lived up to that gift is the question this volume asks, fifty times over, against the same architectural standard.
+The school trust is not a museum piece. Children are in classrooms today whose education is funded, in the states whose architecture has held, by the fiduciary discipline of trustees and the continuous attention of citizens who refuse to let the architecture rot. The phrase I have come back to over and over across forty years of this work is that the trust is *a forever gift to forever schools for a forever democracy.* The framers wrote a forever gift. Whether the country has lived up to that gift is the question this volume asks across the public-land states, against the same architectural standard.
 
 It is a long-term game. It does not move on the calendar of legislative sessions or news cycles. It moves on the calendar of generations. That is what makes it hard, and it is also what makes the work worth doing. The architecture holds, in the places where it has held, because someone has been willing to defend it across the decades it has had to run. That, more than anything else this book documents, is what the next 240 years will need.
 

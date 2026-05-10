@@ -2,3 +2,7 @@
 /map   /atlas/  301
 /states/:iso/  /reading/:iso/  301
 /states/:iso   /reading/:iso/  301
+/reading/comparative-atlas/  /atlas/  301
+/reading/comparative-atlas   /atlas/  301
+/reading/enforcement-beneficiary-cannot-sue/  /reading/sacred-compact/  301
+/reading/enforcement-beneficiary-cannot-sue   /reading/sacred-compact/  301

@@ -60,7 +60,7 @@ function ciIncludes(haystack, needle) {
 // ---------------------------------------------------------------
 
 const VERIFY_SAMPLE_PAGES = [
-  '/reading/enforcement-beneficiary-cannot-sue/',
+  '/reading/sacred-compact/',
   '/reading/twentieth-century-high-water-mark/',
   '/reading/founding-floor/',
   '/reading/reconstruction-western-stack/',
