@@ -4,6 +4,7 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
 import StateDossier from '../../components/StateDossier.astro';
 import StateDossierCard from '../../components/StateDossierCard.astro';
 import BookmarkButton from '../../components/BookmarkButton.astro';
+import PrepublicationBanner from '../../components/PrepublicationBanner.astro';
 
 type EssayProps = { kind: 'essay'; entry: CollectionEntry<'essays'> };
 type StateProps = { kind: 'state'; entry: CollectionEntry<'states'> };
@@ -148,6 +149,12 @@ const layoutProps =
 ---
 
 <RoomLayout room="reading" {...layoutProps} width="prose">
+  {props.kind === 'essay' && seriesNav && (
+    <Fragment slot="before-title">
+      <PrepublicationBanner volume={seriesNav.seriesLabel as 'Schools of the Republic' | 'The Eighth Anchor'} />
+    </Fragment>
+  )}
+
   {props.kind === 'essay' && (
     <Fragment slot="header-extras">
       <p class="mt-4 text-xs text-slate-500">

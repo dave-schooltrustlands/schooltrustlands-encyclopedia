@@ -1,0 +1,104 @@
+---
+// PrepublicationBanner.astro
+//
+// v24 — Pre-publication draft banner. Renders at the top of every
+// Reading Room chapter page while both volumes are in pre-publication
+// review. Asks readers not to cite or quote. Visual register: muted
+// amber/parchment-warning ("academic preprint banner"), not red — red
+// reads as error; amber reads as caution and "in progress."
+//
+// Controlled by a single flag (src/site.config.ts → PREPUBLICATION).
+// When the flag is false, the component renders nothing — Phase 2
+// (publication-ready) is one config change, not a per-page edit.
+//
+// Wired into src/pages/reading/[slug].astro for kind === 'essay'.
+// Landing pages, state pages, and non-Reading-Room surfaces do not
+// carry the banner.
+
+import { PREPUBLICATION } from '../site.config';
+
+interface Props {
+  /** Volume name displayed inside the banner copy. */
+  volume: 'Schools of the Republic' | 'The Eighth Anchor';
+}
+
+const { volume } = Astro.props;
+---
+
+{PREPUBLICATION && (
+  <aside
+    class="prepublication-banner"
+    role="note"
+    aria-label="Pre-publication draft notice"
+    data-pagefind-ignore
+  >
+    <p class="prepublication-banner__headline">
+      <span class="prepublication-banner__icon" aria-hidden="true">⚠</span>
+      Pre-publication draft — for review and comment only — please do not
+      cite or quote.
+    </p>
+    <p class="prepublication-banner__body">
+      This is a working draft of <em>{volume}</em>, part of a two-volume
+      work in progress by Margaret Bird and Dave Sullivan. The text is
+      subject to revision before publication. When the volume reaches
+      publication-ready state, this notice will be removed.
+    </p>
+  </aside>
+)}
+
+<style>
+  /* Muted amber / parchment-warning palette. Soft cream background so
+     the banner sits inside the Reading Room's linen register; amber
+     borders top + bottom for "caution, in progress"; amber-700 text
+     for the headline icon and warning sentence. Body sentence in
+     slate so it reads as standard prose, not alert prose. */
+  .prepublication-banner {
+    margin: 0 0 1.5rem;
+    padding: 1rem 1.25rem;
+    background: #FBF1D2; /* parchment-amber */
+    border-top: 2px solid #D9A441;     /* amber-500ish, darker hue */
+    border-bottom: 2px solid #D9A441;
+    color: #1F2A44; /* deep-navy body text */
+    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+  }
+
+  .prepublication-banner__headline {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.45;
+    font-weight: 600;
+    color: #92400E; /* amber-800 — caution, not error */
+  }
+
+  .prepublication-banner__icon {
+    display: inline-block;
+    margin-right: 0.4rem;
+    font-size: 1.15rem;
+    line-height: 1;
+    color: #B45309; /* amber-700 */
+  }
+
+  .prepublication-banner__body {
+    margin: 0.55rem 0 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #3F3A2E; /* warm slate, sits with parchment */
+  }
+
+  .prepublication-banner__body em {
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    .prepublication-banner {
+      padding: 0.85rem 1rem;
+    }
+    .prepublication-banner__headline {
+      font-size: 0.98rem;
+    }
+    .prepublication-banner__body {
+      font-size: 0.88rem;
+    }
+  }
+</style>
