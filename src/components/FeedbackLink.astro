@@ -1,0 +1,479 @@
+---
+/* Site Update v30 — Feedback Foundation: footer link + modal.
+
+   Hydrates client-side using the browser Supabase client. Static HTML
+   contains both variants of the footer link so substrate pages (which
+   render statically) carry both strings at build time:
+
+     - data-feedback-signed-out — anchor reading "Sign in to give feedback"
+     - data-feedback-signed-in  — button reading "Submit feedback on this page"
+
+   On load, the script probes the session and reveals the correct variant.
+   Clicking the signed-in button opens the modal; modal POSTs to
+   /api/feedback and renders a success card with the ticket number on
+   success or an inline error + retry on failure.
+*/
+---
+
+<div class="feedback-footer-link" data-feedback-root>
+  <a
+    href="/auth/sign-in?next=/"
+    class="feedback-footer-anchor"
+    data-feedback-signed-out
+  >
+    Sign in to give feedback
+  </a>
+  <button
+    type="button"
+    class="feedback-footer-anchor feedback-footer-anchor--button"
+    data-feedback-signed-in
+    hidden
+  >
+    Submit feedback on this page
+  </button>
+</div>
+
+<div
+  class="feedback-modal"
+  data-feedback-modal
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="feedback-modal-title"
+  hidden
+>
+  <div class="feedback-modal-backdrop" data-feedback-close></div>
+  <div class="feedback-modal-card" role="document">
+    <button
+      type="button"
+      class="feedback-modal-x"
+      data-feedback-close
+      aria-label="Close"
+    >×</button>
+
+    <div data-feedback-form-pane>
+      <h2 id="feedback-modal-title" class="feedback-modal-title">Submit feedback</h2>
+      <p class="feedback-modal-privacy">
+        Your feedback is private between you and the Library's librarians.
+      </p>
+      <form class="feedback-modal-form" data-feedback-form>
+        <label class="feedback-modal-label" for="feedback-subject">
+          Subject
+        </label>
+        <input
+          type="text"
+          id="feedback-subject"
+          name="subject"
+          maxlength="60"
+          class="feedback-modal-input"
+          placeholder="Subject (optional)"
+        />
+        <label class="feedback-modal-label" for="feedback-body">
+          Your feedback
+        </label>
+        <textarea
+          id="feedback-body"
+          name="body"
+          required
+          maxlength="4000"
+          rows="7"
+          class="feedback-modal-textarea"
+          placeholder="Your feedback..."
+        ></textarea>
+        <p class="feedback-modal-count">
+          <span data-feedback-count>0</span> / 4000
+        </p>
+        <div class="feedback-modal-error" data-feedback-error hidden></div>
+        <div class="feedback-modal-actions">
+          <button
+            type="button"
+            class="feedback-modal-cancel"
+            data-feedback-close
+          >Cancel</button>
+          <button
+            type="submit"
+            class="feedback-modal-submit"
+            data-feedback-submit
+          >Submit feedback</button>
+        </div>
+      </form>
+    </div>
+
+    <div data-feedback-success-pane hidden>
+      <h2 class="feedback-modal-title">Thank you</h2>
+      <p class="feedback-modal-success-body" data-feedback-success-body>
+        <!-- Filled by script. Carries: "Thank you. Your feedback is recorded as {ticket_number}. A librarian will follow up by email if a response is warranted. You can find all your tickets on your My Library page." -->
+      </p>
+      <div class="feedback-modal-actions feedback-modal-actions--end">
+        <button
+          type="button"
+          class="feedback-modal-submit"
+          data-feedback-close
+        >Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { getBrowserSupabase } from '../lib/supabase';
+
+  const root = document.querySelector<HTMLElement>('[data-feedback-root]');
+  const modal = document.querySelector<HTMLElement>('[data-feedback-modal]');
+  if (root && modal) {
+    const signedOutAnchor = root.querySelector<HTMLAnchorElement>(
+      '[data-feedback-signed-out]'
+    );
+    const signedInButton = root.querySelector<HTMLButtonElement>(
+      '[data-feedback-signed-in]'
+    );
+    const formPane = modal.querySelector<HTMLElement>('[data-feedback-form-pane]');
+    const successPane = modal.querySelector<HTMLElement>(
+      '[data-feedback-success-pane]'
+    );
+    const successBody = modal.querySelector<HTMLElement>(
+      '[data-feedback-success-body]'
+    );
+    const form = modal.querySelector<HTMLFormElement>('[data-feedback-form]');
+    const bodyTextarea = modal.querySelector<HTMLTextAreaElement>(
+      '#feedback-body'
+    );
+    const subjectInput = modal.querySelector<HTMLInputElement>(
+      '#feedback-subject'
+    );
+    const countSpan = modal.querySelector<HTMLElement>('[data-feedback-count]');
+    const errorBox = modal.querySelector<HTMLElement>('[data-feedback-error]');
+    const submitButton = modal.querySelector<HTMLButtonElement>(
+      '[data-feedback-submit]'
+    );
+
+    const supabase = getBrowserSupabase();
+
+    function setSignedOutHref() {
+      if (!signedOutAnchor) return;
+      const next = encodeURIComponent(
+        window.location.pathname + window.location.search
+      );
+      signedOutAnchor.href = `/auth/sign-in?next=${next}`;
+    }
+
+    async function syncAuthState() {
+      setSignedOutHref();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        if (signedOutAnchor) signedOutAnchor.hidden = true;
+        if (signedInButton) signedInButton.hidden = false;
+      } else {
+        if (signedOutAnchor) signedOutAnchor.hidden = false;
+        if (signedInButton) signedInButton.hidden = true;
+      }
+    }
+
+    function openModal() {
+      if (!modal) return;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      if (formPane) formPane.hidden = false;
+      if (successPane) successPane.hidden = true;
+      if (errorBox) {
+        errorBox.hidden = true;
+        errorBox.textContent = '';
+      }
+      if (form) form.reset();
+      if (countSpan) countSpan.textContent = '0';
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit feedback';
+      }
+      setTimeout(() => {
+        if (bodyTextarea) bodyTextarea.focus();
+      }, 30);
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function showError(message: string) {
+      if (!errorBox) return;
+      errorBox.textContent = message;
+      errorBox.hidden = false;
+    }
+
+    function showSuccess(ticketNumber: string) {
+      if (formPane) formPane.hidden = true;
+      if (successPane) successPane.hidden = false;
+      if (successBody) {
+        successBody.textContent =
+          `Thank you. Your feedback is recorded as ${ticketNumber}. ` +
+          'A librarian will follow up by email if a response is warranted. ' +
+          'You can find all your tickets on your My Library page.';
+      }
+    }
+
+    if (signedInButton) {
+      signedInButton.addEventListener('click', () => openModal());
+    }
+
+    modal.querySelectorAll<HTMLElement>('[data-feedback-close]').forEach((el) => {
+      el.addEventListener('click', () => closeModal());
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    if (bodyTextarea && countSpan) {
+      bodyTextarea.addEventListener('input', () => {
+        countSpan.textContent = String(bodyTextarea.value.length);
+      });
+    }
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!bodyTextarea) return;
+        const body = bodyTextarea.value.trim();
+        const subject = subjectInput?.value.trim() ?? '';
+        if (!body) {
+          showError('Please write your feedback before submitting.');
+          return;
+        }
+        if (errorBox) {
+          errorBox.hidden = true;
+          errorBox.textContent = '';
+        }
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Submitting…';
+        }
+        try {
+          const res = await fetch('/api/feedback', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              page_url: window.location.pathname + window.location.search,
+              subject: subject || undefined,
+              body,
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok || !data.ticket_number) {
+            showError(
+              (data && data.error) ||
+                'Could not record your feedback. Please try again.'
+            );
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = 'Submit feedback';
+            }
+            return;
+          }
+          showSuccess(data.ticket_number);
+        } catch (err) {
+          showError('Network error. Please try again.');
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit feedback';
+          }
+        }
+      });
+    }
+
+    syncAuthState();
+  }
+</script>
+
+<style>
+  .feedback-footer-link {
+    margin: 0.65rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  .feedback-footer-anchor {
+    color: var(--old-gold, #B88A2E);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+  .feedback-footer-anchor:hover {
+    color: #7a6438;
+  }
+
+  .feedback-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .feedback-modal[hidden] {
+    display: none;
+  }
+  .feedback-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .feedback-modal-card {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    border-radius: 6px;
+    width: min(92vw, 560px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.5rem 1.5rem 1.25rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    color: #1e293b;
+  }
+  .feedback-modal-x {
+    position: absolute;
+    top: 0.55rem;
+    right: 0.7rem;
+    background: none;
+    border: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #94a3b8;
+    cursor: pointer;
+  }
+  .feedback-modal-x:hover {
+    color: #1e293b;
+  }
+  .feedback-modal-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+    color: var(--deep-navy, #1e3a5f);
+  }
+  .feedback-modal-privacy {
+    margin: 0 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #475569;
+  }
+  .feedback-modal-form {
+    margin: 0;
+  }
+  .feedback-modal-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin: 0.6rem 0 0.3rem;
+  }
+  .feedback-modal-input,
+  .feedback-modal-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: #1e293b;
+    background: #fff;
+  }
+  .feedback-modal-textarea {
+    resize: vertical;
+    min-height: 9rem;
+    line-height: 1.45;
+  }
+  .feedback-modal-input:focus,
+  .feedback-modal-textarea:focus {
+    outline: 2px solid var(--old-gold, #B88A2E);
+    outline-offset: 1px;
+    border-color: var(--old-gold, #B88A2E);
+  }
+  .feedback-modal-count {
+    margin: 0.25rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-align: right;
+  }
+  .feedback-modal-error {
+    margin: 0.85rem 0 0;
+    padding: 0.6rem 0.8rem;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    border-radius: 4px;
+  }
+  .feedback-modal-actions {
+    margin-top: 1.1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .feedback-modal-actions--end {
+    margin-top: 1.4rem;
+  }
+  .feedback-modal-cancel {
+    padding: 0.5rem 0.95rem;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: #334155;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .feedback-modal-cancel:hover {
+    background: #f1f5f9;
+  }
+  .feedback-modal-submit {
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--deep-navy, #1e3a5f);
+    background: var(--deep-navy, #1e3a5f);
+    color: #fff;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .feedback-modal-submit:hover {
+    background: #142940;
+  }
+  .feedback-modal-submit:disabled {
+    opacity: 0.65;
+    cursor: progress;
+  }
+  .feedback-modal-success-body {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: #1e293b;
+  }
+  @media (max-width: 480px) {
+    .feedback-modal-card {
+      padding: 1.1rem 1rem 1rem;
+    }
+    .feedback-modal-actions {
+      justify-content: stretch;
+    }
+    .feedback-modal-actions > button {
+      flex: 1;
+    }
+  }
+</style>

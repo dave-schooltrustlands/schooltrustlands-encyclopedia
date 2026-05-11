@@ -40,6 +40,30 @@ const { data: bookmarks } = await supabase
   .eq('user_id', user.id)
   .order('created_at', { ascending: false });
 
+// v30 — patron's own feedback tickets, reverse chronological.
+const { data: ticketsRaw } = await supabase
+  .from('feedback')
+  .select('id, ticket_number, page_url, subject, body, status, submitted_at')
+  .eq('user_id', user.id)
+  .order('submitted_at', { ascending: false });
+
+const tickets = (ticketsRaw ?? []) as Array<{
+  id: string;
+  ticket_number: string;
+  page_url: string;
+  subject: string | null;
+  body: string;
+  status: string;
+  submitted_at: string;
+}>;
+
+const STATUS_LABEL: Record<string, string> = {
+  new: 'New',
+  in_review: 'In review',
+  responded: 'Responded',
+  archived: 'Archived',
+};
+
 // Pull patron-card fields. Wide select so older deployments without the
 // v2 columns still resolve (Supabase returns just the columns that exist).
 let profile:
@@ -126,6 +150,23 @@ const greeting = isFirstVisit
 
 // Continue-where-you-left-off strip: the most recent bookmark, if any.
 const continueItem = (bookmarks && bookmarks.length > 0) ? bookmarks[0] : null;
+
+// v30 — formatting helpers for feedback tickets.
+function formatTicketDate(iso: string | null | undefined): string {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  const dd = d.getUTCDate().toString().padStart(2, '0');
+  const mon = MONTHS_SHORT[d.getUTCMonth()];
+  const yyyy = d.getUTCFullYear();
+  return `${dd} ${mon} ${yyyy}`;
+}
+function summarizeTicket(t: { subject: string | null; body: string }): string {
+  if (t.subject && t.subject.trim().length > 0) return t.subject.trim();
+  const b = (t.body ?? '').trim();
+  if (b.length <= 60) return b;
+  return b.slice(0, 60).trimEnd() + '…';
+}
 ---
 
 <BaseLayout
@@ -197,6 +238,41 @@ const continueItem = (bookmarks && bookmarks.length > 0) ? bookmarks[0] : null;
           </ul>
         </div>
       </div>
+    </section>
+
+    <section class="tickets-section" aria-label="My tickets">
+      <h2 class="tickets-header">My Tickets</h2>
+      {tickets.length > 0 ? (
+        <ul class="ticket-list">
+          {tickets.map((t) => (
+            <li class="ticket-item">
+              <details class="ticket-details">
+                <summary class="ticket-summary">
+                  <span class="ticket-number">{t.ticket_number}</span>
+                  <span class="ticket-date">{formatTicketDate(t.submitted_at)}</span>
+                  <span class:list={['ticket-status', `ticket-status--${t.status}`]}>
+                    {STATUS_LABEL[t.status] ?? t.status}
+                  </span>
+                  <span class="ticket-subject">{summarizeTicket(t)}</span>
+                </summary>
+                <div class="ticket-body-wrap">
+                  <p class="ticket-page">
+                    <span class="ticket-page-label">Page:</span>
+                    <a href={t.page_url} class="ticket-page-link">{t.page_url}</a>
+                  </p>
+                  <p class="ticket-body-text">{t.body}</p>
+                </div>
+              </details>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="empty-state tickets-empty">
+          You have not submitted any feedback or corrections yet. Press the
+          <em> Submit feedback on this page </em>
+          link in the footer of any page to start.
+        </p>
+      )}
     </section>
 
     {continueItem && (
@@ -634,6 +710,134 @@ const continueItem = (bookmarks && bookmarks.length > 0) ? bookmarks[0] : null;
     }
     .flash p {
       margin: 0;
+    }
+
+    /* v30 — My Tickets section */
+    .tickets-section {
+      margin: 1.5rem 0 1rem;
+    }
+    .tickets-header {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 0.6rem;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .tickets-empty em {
+      font-style: italic;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .ticket-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .ticket-item {
+      border-bottom: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .ticket-item:first-child {
+      border-top: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .ticket-details {
+      padding: 0.6rem 0;
+    }
+    .ticket-summary {
+      display: grid;
+      grid-template-columns: 8.5rem 6rem 6rem 1fr;
+      gap: 0.85rem;
+      align-items: center;
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+    }
+    .ticket-summary::-webkit-details-marker {
+      display: none;
+    }
+    .ticket-summary::marker {
+      content: '';
+    }
+    .ticket-number {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.82rem;
+      color: var(--deep-navy, #1e3a5f);
+      font-weight: 600;
+    }
+    .ticket-date {
+      color: #64748b;
+    }
+    .ticket-status {
+      display: inline-block;
+      padding: 0.12rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: #e2e8f0;
+      color: #334155;
+      width: max-content;
+    }
+    .ticket-status--new {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+    .ticket-status--in_review {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .ticket-status--responded {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .ticket-status--archived {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+    .ticket-subject {
+      color: #1e293b;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ticket-body-wrap {
+      margin: 0.55rem 0 0.4rem;
+      padding: 0.7rem 0.9rem;
+      background: var(--linen-card, #fafaf7);
+      border-radius: 4px;
+      border: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .ticket-page {
+      margin: 0 0 0.4rem;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+    .ticket-page-label {
+      font-weight: 600;
+      margin-right: 0.3rem;
+    }
+    .ticket-page-link {
+      color: var(--deep-navy, #1e3a5f);
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    .ticket-body-text {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: #1e293b;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    @media (max-width: 640px) {
+      .ticket-summary {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+      .ticket-subject {
+        white-space: normal;
+      }
     }
   </style>
 </BaseLayout>
