@@ -84,7 +84,22 @@ const { data: profileRow } = await supabase
   .single();
 profile = profileRow ?? null;
 
-const displayName = profile?.display_name?.trim() || 'Reader';
+// v30.1 — patron-name fallback chain. Never fall through to the tier value
+// (which defaults to "Reader" and was bleeding into the name slot for
+// pre-v29 patrons whose auth.users.raw_user_meta_data has no name field).
+// Order: explicit display_name → magic-link metadata full_name →
+// capitalized email local-part → generic placeholder.
+const emailLocalPart = user.email ? user.email.split('@')[0] : '';
+const metaFullNameRaw = user.user_metadata?.full_name;
+const metadataFullName =
+  typeof metaFullNameRaw === 'string' ? metaFullNameRaw.trim() : '';
+const displayName =
+  profile?.display_name?.trim() ||
+  metadataFullName ||
+  (emailLocalPart
+    ? emailLocalPart.charAt(0).toUpperCase() + emailLocalPart.slice(1)
+    : '') ||
+  'Library Patron';
 const tier = profile?.tier || 'Reader';
 const standing = profile?.standing || 'Active';
 const pagesRead = profile?.pages_read ?? 0;

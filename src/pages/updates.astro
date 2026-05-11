@@ -53,6 +53,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Monday May 11, 2026 — Site update v30.1: Cleanup pass — sign-out, patron-name fallback, patron-number backfill, ticket-function hardening.</strong>
+            Four small fixes that take v30 from <em>mostly works</em> to <em>trustworthy</em>. Clicking
+            <em>Sign out</em> now actually signs out (the auth cookies are explicitly cleared so the
+            next page load returns to the signed-out nav). The patron card name slot now falls back
+            to your magic-link name, then to the capitalized local-part of your email, and finally
+            to a generic <em>Library Patron</em> — never to the tier value. Pre-v29 patrons have
+            their patron numbers backfilled in signup order (Dave gets <em>Patron № 00 001</em>,
+            Margaret <em>00 002</em>). The ticket-numbering function is now <code>security definer</code>
+            with a pinned <code>search_path</code> and the helper sequences table has row-level
+            security enabled with a deny-all client policy — direct client writes can no longer
+            nudge the ticket number forward.
+          </li>
+          <li>
             <strong>Monday May 11, 2026 — Site update v30: Feedback Foundation — a Submit feedback link in every page footer.</strong>
             Signed-in patrons now see a small <em>Submit feedback on this page</em> link in
             the footer of every Library page. Clicking it opens a small modal with an

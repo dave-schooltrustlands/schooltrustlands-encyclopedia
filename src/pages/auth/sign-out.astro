@@ -6,5 +6,23 @@ export const prerender = false;
 const supabase = getServerSupabase(Astro);
 await supabase.auth.signOut();
 
-return Astro.redirect('/');
+// Belt-and-suspenders: explicitly clear every `sb-*` cookie present on the
+// incoming request. @supabase/ssr names auth cookies as
+// `sb-<project-ref>-auth-token` (sometimes chunked as `.0`, `.1`); the project
+// ref is not known at compile time, so iterate and delete any cookie whose
+// name starts with `sb-`. Astro's redirect can otherwise swallow the
+// Set-Cookie headers that signOut()'s setAll callback queues, leaving the
+// patron's session cookie intact and the nav still showing "Sign Out".
+const cookieHeader = Astro.request.headers.get('cookie') ?? '';
+if (cookieHeader) {
+  for (const pair of cookieHeader.split(/;\s*/)) {
+    const eq = pair.indexOf('=');
+    const name = eq < 0 ? pair : pair.slice(0, eq);
+    if (name.startsWith('sb-')) {
+      Astro.cookies.delete(name, { path: '/' });
+    }
+  }
+}
+
+return Astro.redirect('/?signedout=1', 303);
 ---
