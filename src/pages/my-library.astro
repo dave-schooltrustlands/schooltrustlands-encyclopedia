@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LibraryCard from '../components/LibraryCard.astro';
 import { getServerSupabase } from '../lib/supabase';
 
 export const prerender = false;
@@ -39,30 +40,100 @@ const { data: bookmarks } = await supabase
   .eq('user_id', user.id)
   .order('created_at', { ascending: false });
 
-const { data: profile } = await supabase
+// Pull patron-card fields. Wide select so older deployments without the
+// v2 columns still resolve (Supabase returns just the columns that exist).
+let profile:
+  | {
+      display_name?: string | null;
+      patron_number?: number | null;
+      tier?: string | null;
+      standing?: string | null;
+      pages_read?: number | null;
+      created_at?: string | null;
+    }
+  | null = null;
+
+const { data: profileRow } = await supabase
   .from('profiles')
-  .select('display_name')
+  .select('*')
   .eq('id', user.id)
   .single();
+profile = profileRow ?? null;
 
-const dateFmt = new Intl.DateTimeFormat('en-US', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-});
+const displayName = profile?.display_name?.trim() || 'Reader';
+const tier = profile?.tier || 'Reader';
+const standing = profile?.standing || 'Active';
+const pagesRead = profile?.pages_read ?? 0;
+const bookmarkCount = bookmarks?.length ?? 0;
 
-const greeting = profile?.display_name
-  ? `Welcome back, ${profile.display_name}.`
-  : 'Welcome back.';
+// Patron number — formatted "00 001" with a regular space (the spec calls for
+// a thin space; renders close enough at the card font size and stays copy-paste
+// friendly). Fall back to 0 if the v2 migration hasn't been applied yet.
+function formatPatronNumber(n: number | null | undefined): string {
+  const v = typeof n === 'number' && n > 0 ? n : 0;
+  const s = String(v).padStart(5, '0');
+  return s.slice(0, 2) + ' ' + s.slice(2);
+}
+const patronNumberDisplay = formatPatronNumber(profile?.patron_number ?? null);
+
+// Issued date — formatted as "11 May 2026" (DD Mon YYYY).
+const MONTHS_SHORT = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+function formatCardDate(iso: string | null | undefined): string {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  return `${d.getUTCDate().toString().padStart(2, '0')} ${MONTHS_SHORT[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
+const createdAtIso = profile?.created_at || user.created_at || new Date().toISOString();
+const issuedDisplay = formatCardDate(createdAtIso);
+
+// "Member since" — `Today` if the account was created today (UTC); otherwise
+// the same DD Mon YYYY format as the card.
+function isSameUtcDate(a: Date, b: Date): boolean {
+  return (
+    a.getUTCFullYear() === b.getUTCFullYear() &&
+    a.getUTCMonth() === b.getUTCMonth() &&
+    a.getUTCDate() === b.getUTCDate()
+  );
+}
+const createdDate = new Date(createdAtIso);
+const memberSinceDisplay = isSameUtcDate(createdDate, new Date())
+  ? 'Today'
+  : formatCardDate(createdAtIso);
+
+// Greeting — first-visit vs returning. A small cookie tracks whether the
+// patron has been here before. Set after we read it so the first render of
+// the page sees the first-visit greeting and every subsequent render sees
+// the returning-visit greeting.
+const visitedCookie = Astro.cookies.get('my_library_visited');
+const isFirstVisit = !visitedCookie || visitedCookie.value !== '1';
+if (isFirstVisit) {
+  Astro.cookies.set('my_library_visited', '1', {
+    path: '/',
+    httpOnly: false,
+    sameSite: 'lax',
+    secure: true,
+    maxAge: 60 * 60 * 24 * 365 * 5,
+  });
+}
+const greeting = isFirstVisit
+  ? `Welcome to the Library, ${displayName}.`
+  : `Welcome back, ${displayName}.`;
+
+// Continue-where-you-left-off strip: the most recent bookmark, if any.
+const continueItem = (bookmarks && bookmarks.length > 0) ? bookmarks[0] : null;
 ---
 
 <BaseLayout
   title="My Library · America's School Trust Library"
   sourceId="my-library"
 >
-  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
-    <h1>My Library</h1>
-    <p class="kicker">{greeting}</p>
+  <article class="my-library prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1 class="greeting">{greeting}</h1>
 
     {formMessage && (
       <div class:list={['flash', formMessage.kind]}>
@@ -70,33 +141,101 @@ const greeting = profile?.display_name
       </div>
     )}
 
-    {bookmarks && bookmarks.length > 0 ? (
-      <ul class="bookmark-list">
-        {bookmarks.map((b) => (
-          <li class="bookmark-item">
-            <div class="bookmark-meta">
-              <a class="bookmark-link" href={b.url}>
-                {b.title || b.url}
-              </a>
-              <p class="bookmark-url">{b.url}</p>
-              <p class="bookmark-date">
-                Saved {dateFmt.format(new Date(b.created_at))}
-              </p>
-            </div>
-            <form method="POST" class="bookmark-remove-form">
-              <input type="hidden" name="action" value="remove" />
-              <input type="hidden" name="id" value={b.id} />
-              <button type="submit" class="bookmark-remove">Remove</button>
-            </form>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p class="empty-state">
-        Your Library is empty. Add bookmarks while you read by clicking the
-        bookmark icon at the top of any page.
+    <section class="card-section" aria-label="Your Library card">
+      <LibraryCard
+        name={displayName}
+        number={patronNumberDisplay}
+        issued={issuedDisplay}
+        tier={tier}
+        standing={standing}
+        displayWidth={720}
+        svgId="patron-library-card"
+      />
+      <p class="card-actions">
+        <button type="button" class="card-action" data-action="download-card">
+          Download card (PNG)
+        </button>
+        <span class="card-actions-divider" aria-hidden="true">·</span>
+        <button type="button" class="card-action" data-action="share-card">
+          Share card image
+        </button>
       </p>
+    </section>
+
+    <section class="activity-row" aria-label="Library activity">
+      <div class="activity-panel">
+        <p class="activity-label">Member since</p>
+        <p class="activity-value">{memberSinceDisplay}</p>
+      </div>
+      <div class="activity-panel">
+        <p class="activity-label">Bookmarks</p>
+        <p class="activity-value">{bookmarkCount}</p>
+      </div>
+      <div class="activity-panel">
+        <p class="activity-label">Pages read</p>
+        <p class="activity-value">{pagesRead}</p>
+      </div>
+    </section>
+
+    <section class="unlocks" aria-label="What your card unlocks">
+      <h2 class="unlocks-header">What your card unlocks</h2>
+      <div class="unlocks-grid">
+        <div class="unlocks-column">
+          <p class="unlocks-subhead">Available now.</p>
+          <ul class="unlocks-list">
+            <li>Bookmark pages as you read.</li>
+            <li>Continue where you left off.</li>
+            <li>Track your reading.</li>
+          </ul>
+        </div>
+        <div class="unlocks-column">
+          <p class="unlocks-subhead">Coming soon.</p>
+          <ul class="unlocks-list">
+            <li>Submit a correction or annotation.</li>
+            <li>Subscribe to a state page and get an update digest.</li>
+            <li>Appear in the Library's Founders' Ledger (Patron tier and above, opt-in).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    {continueItem && (
+      <section class="continue-strip" aria-label="Continue where you left off">
+        <h2 class="continue-header">Continue where you left off.</h2>
+        <a class="continue-card" href={continueItem.url}>
+          <p class="continue-title">{continueItem.title || continueItem.url}</p>
+          <p class="continue-url">{continueItem.url}</p>
+          <p class="continue-cta">Continue →</p>
+        </a>
+      </section>
     )}
+
+    <section class="bookmarks-section" aria-label="Your bookmarks">
+      <h2 class="bookmarks-header">Bookmarks</h2>
+      {bookmarks && bookmarks.length > 0 ? (
+        <ul class="bookmark-list">
+          {bookmarks.map((b) => (
+            <li class="bookmark-item">
+              <div class="bookmark-meta">
+                <a class="bookmark-link" href={b.url}>
+                  {b.title || b.url}
+                </a>
+                <p class="bookmark-url">{b.url}</p>
+              </div>
+              <form method="POST" class="bookmark-remove-form">
+                <input type="hidden" name="action" value="remove" />
+                <input type="hidden" name="id" value={b.id} />
+                <button type="submit" class="bookmark-remove">Remove</button>
+              </form>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="empty-state">
+          Your bookmarks will appear here as you save pages you want to return to.
+        </p>
+      )}
+    </section>
 
     <p class="library-footer">
       <a href="/profile">Edit profile</a> &nbsp;·&nbsp;
@@ -104,24 +243,321 @@ const greeting = profile?.display_name
     </p>
   </article>
 
+  <script
+    is:inline
+    define:vars={{
+      TEMPLATE_HREF: '/img/cards/library_card_blank_template_v1.png',
+      TEMPLATE_W: 1586,
+      TEMPLATE_H: 992,
+      PATRON_NAME: displayName,
+      PATRON_NUMBER: patronNumberDisplay,
+    }}
+  >
+
+    async function renderCardToBlob(targetW = 1200) {
+      const svg = document.getElementById('patron-library-card');
+      if (!svg) throw new Error('card SVG not found');
+
+      // Serialize the SVG. Replace the same-origin image href with a data URL
+      // so the canvas isn't tainted (and so the rasterization is deterministic).
+      const cloned = svg.cloneNode(true);
+      const imgEl = cloned.querySelector('image');
+      if (imgEl) {
+        const resp = await fetch(TEMPLATE_HREF);
+        const blob = await resp.blob();
+        const dataUrl = await new Promise((resolve, reject) => {
+          const r = new FileReader();
+          r.onload = () => resolve(r.result);
+          r.onerror = () => reject(r.error);
+          r.readAsDataURL(blob);
+        });
+        imgEl.setAttribute('href', dataUrl);
+        imgEl.removeAttribute('xlink:href');
+      }
+      cloned.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      const xml = new XMLSerializer().serializeToString(cloned);
+      const svgBlob = new Blob([xml], { type: 'image/svg+xml;charset=utf-8' });
+      const svgUrl = URL.createObjectURL(svgBlob);
+
+      try {
+        const aspect = TEMPLATE_H / TEMPLATE_W;
+        const w = targetW;
+        const h = Math.round(targetW * aspect);
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#FBF8F1';
+        ctx.fillRect(0, 0, w, h);
+
+        await new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => {
+            ctx.drawImage(img, 0, 0, w, h);
+            resolve();
+          };
+          img.onerror = (e) => reject(new Error('SVG image load failed'));
+          img.src = svgUrl;
+        });
+
+        return await new Promise((resolve) =>
+          canvas.toBlob(resolve, 'image/png')
+        );
+      } finally {
+        URL.revokeObjectURL(svgUrl);
+      }
+    }
+
+    function filenameFor(ext) {
+      const slug = (PATRON_NAME || 'patron')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      const numberPart = (PATRON_NUMBER || '00_000').replace(/\s+/g, '_');
+      return `library-card-${numberPart}-${slug}.${ext}`;
+    }
+
+    document.querySelectorAll('[data-action="download-card"]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        try {
+          const blob = await renderCardToBlob(1200);
+          if (!blob) throw new Error('no blob');
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = filenameFor('png');
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+        } catch (e) {
+          console.error('download failed', e);
+          alert('Sorry — the card could not be rendered. Try refreshing.');
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-action="share-card"]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        try {
+          const blob = await renderCardToBlob(1200);
+          if (!blob) throw new Error('no blob');
+          const file = new File([blob], filenameFor('png'), { type: 'image/png' });
+
+          if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              files: [file],
+              title: 'My Library Card',
+              text: 'America’s School Trust Library — Patron Card',
+            });
+            return;
+          }
+
+          if (navigator.clipboard && window.ClipboardItem) {
+            await navigator.clipboard.write([
+              new ClipboardItem({ 'image/png': blob }),
+            ]);
+            alert('Card image copied to clipboard.');
+            return;
+          }
+
+          // Final fallback — open in a new tab.
+          const url = URL.createObjectURL(blob);
+          window.open(url, '_blank', 'noopener');
+        } catch (e) {
+          console.error('share failed', e);
+          alert('Sharing is not supported in this browser. Use Download card instead.');
+        }
+      });
+    });
+  </script>
+
   <style>
-    .kicker {
-      font-style: italic;
-      color: #475569;
-      margin-top: -0.5rem;
-      margin-bottom: 1.5rem;
+    .my-library .greeting {
+      font-family: var(--font-serif);
+      text-align: center;
+      margin: 1rem 0 1.5rem;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .card-section {
+      margin: 1rem auto 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .library-card-svg {
+      filter: drop-shadow(0 4px 14px rgba(26, 47, 78, 0.18));
+      border-radius: 4px;
+      background: #FBF8F1;
+    }
+    .card-actions {
+      margin: 0.9rem 0 0;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      text-align: center;
+      color: #A88A4E;
+    }
+    .card-action {
+      background: none;
+      border: 0;
+      padding: 0;
+      color: #A88A4E;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .card-action:hover {
+      color: #7a6438;
+    }
+    .card-actions-divider {
+      margin: 0 0.5rem;
+      color: #cbb37d;
+    }
+    .activity-row {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    .activity-panel {
+      flex: 1 1 0;
+      min-width: 9rem;
+      padding: 0.9rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      text-align: center;
+    }
+    .activity-label {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+    .activity-value {
+      margin: 0.35rem 0 0;
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .unlocks {
+      margin: 1.5rem 0;
+      padding: 1.25rem 1.25rem 1.5rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+    }
+    .unlocks-header {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 0.75rem;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .unlocks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .unlocks-subhead {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #A88A4E;
+      margin: 0 0 0.4rem;
+    }
+    .unlocks-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      color: #334155;
+    }
+    .unlocks-list li {
+      margin: 0.25rem 0;
+    }
+    @media (max-width: 640px) {
+      .unlocks-grid {
+        grid-template-columns: 1fr;
+      }
+      .activity-row {
+        flex-direction: column;
+      }
+    }
+    .continue-strip {
+      margin: 1.5rem 0;
+    }
+    .continue-header {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 0.6rem;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .continue-card {
+      display: block;
+      padding: 0.95rem 1.1rem;
+      background: #fff;
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      text-decoration: none !important;
+      color: inherit;
+    }
+    .continue-card:hover {
+      border-color: var(--deep-navy, #1e3a5f);
+    }
+    .continue-title {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .continue-url {
+      margin: 0.15rem 0 0;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: #94a3b8;
+      word-break: break-all;
+    }
+    .continue-cta {
+      margin: 0.4rem 0 0;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #A88A4E;
+    }
+    .bookmarks-section {
+      margin: 1.5rem 0 1rem;
+    }
+    .bookmarks-header {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 0.6rem;
+      color: var(--deep-navy, #1e3a5f);
     }
     .bookmark-list {
       list-style: none;
       padding: 0;
-      margin: 1.25rem 0 1.5rem;
+      margin: 0;
     }
     .bookmark-item {
       display: flex;
       gap: 1rem;
       align-items: flex-start;
       justify-content: space-between;
-      padding: 1rem 0;
+      padding: 0.9rem 0;
       border-bottom: 1px solid var(--rule-border, #e5e7eb);
     }
     .bookmark-item:first-child {
@@ -133,7 +569,7 @@ const greeting = profile?.display_name
     }
     .bookmark-link {
       font-family: var(--font-serif, Georgia, serif);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--deep-navy, #1e3a5f);
       text-decoration: underline;
@@ -145,12 +581,6 @@ const greeting = profile?.display_name
       font-size: 0.78rem;
       color: #94a3b8;
       word-break: break-all;
-    }
-    .bookmark-date {
-      margin: 0.2rem 0 0;
-      font-family: var(--font-sans);
-      font-size: 0.78rem;
-      color: #64748b;
     }
     .bookmark-remove-form {
       flex: none;
@@ -173,7 +603,7 @@ const greeting = profile?.display_name
       color: #991b1b;
     }
     .empty-state {
-      padding: 2rem 1rem;
+      padding: 1.6rem 1rem;
       background: var(--linen-card, #fafaf7);
       border: 1px dashed var(--rule-border, #cbd5e1);
       border-radius: 4px;

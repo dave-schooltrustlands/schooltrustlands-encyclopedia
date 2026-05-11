@@ -1,0 +1,131 @@
+---
+// Server-side render of a patron's Library Card as an inline SVG that
+// overlays five per-patron strings on top of the static blank template at
+// /img/cards/library_card_blank_template_v1.png. Coordinates are anchored
+// as ratios so the same map works if the template is ever regenerated at
+// a different resolution; the Python reference renderer at
+// _tools/render_library_card.py uses the same ratios.
+//
+// Template: 1586 × 992 px. Sample reference: Library_Card_Sample_v2.png.
+
+interface Props {
+  name: string;
+  number: string;
+  issued: string;
+  tier?: string;
+  standing?: string;
+  /** Width in px when rendered inline. Aspect is preserved from the template. */
+  displayWidth?: number;
+  /** id on the root <svg>, used by the download flow to find the node. */
+  svgId?: string;
+}
+
+const {
+  name,
+  number,
+  issued,
+  tier = 'Reader',
+  standing = 'Active',
+  displayWidth = 720,
+  svgId = 'library-card-svg',
+} = Astro.props;
+
+const TEMPLATE_W = 1586;
+const TEMPLATE_H = 992;
+const TEMPLATE_HREF = '/img/cards/library_card_blank_template_v1.png';
+const NAVY = '#1A2F4E';
+
+const coords = {
+  name:     { x: 0.500, y: 0.380, size: 88, weight: 700, style: 'italic' },
+  patron:   { x: 0.225, y: 0.610, size: 40, weight: 400, style: 'normal' },
+  issued:   { x: 0.440, y: 0.610, size: 40, weight: 400, style: 'normal' },
+  tier:     { x: 0.650, y: 0.610, size: 40, weight: 400, style: 'normal' },
+  standing: { x: 0.855, y: 0.610, size: 40, weight: 400, style: 'normal' },
+};
+
+function px(ratio: number, total: number) {
+  return Math.round(ratio * total);
+}
+
+// Source Serif 4 (the site's primary serif) is the closest transitional
+// serif we already load. The spec calls out EB Garamond / Cardo / Crimson
+// Text as ideal targets; if we ever want to drop one in, add it to the
+// BaseHead font preconnect+stylesheet chain and put it first here.
+const CARD_FONT =
+  "'Source Serif 4', 'Libre Baskerville', Baskerville, Georgia, 'Times New Roman', serif";
+---
+
+<svg
+  id={svgId}
+  class="library-card-svg"
+  viewBox={`0 0 ${TEMPLATE_W} ${TEMPLATE_H}`}
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label={`Library card for ${name}. Patron number ${number}, issued ${issued}, tier ${tier}, standing ${standing}.`}
+  style={`width: 100%; max-width: ${displayWidth}px; height: auto; display: block;`}
+>
+  <image
+    href={TEMPLATE_HREF}
+    x="0"
+    y="0"
+    width={TEMPLATE_W}
+    height={TEMPLATE_H}
+    preserveAspectRatio="xMidYMid meet"
+  />
+
+  <text
+    x={px(coords.name.x, TEMPLATE_W)}
+    y={px(coords.name.y, TEMPLATE_H)}
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family={CARD_FONT}
+    font-size={coords.name.size}
+    font-weight={coords.name.weight}
+    font-style={coords.name.style}
+    fill={NAVY}
+  >{name}</text>
+
+  <text
+    x={px(coords.patron.x, TEMPLATE_W)}
+    y={px(coords.patron.y, TEMPLATE_H)}
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family={CARD_FONT}
+    font-size={coords.patron.size}
+    font-weight={coords.patron.weight}
+    fill={NAVY}
+  >{number}</text>
+
+  <text
+    x={px(coords.issued.x, TEMPLATE_W)}
+    y={px(coords.issued.y, TEMPLATE_H)}
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family={CARD_FONT}
+    font-size={coords.issued.size}
+    font-weight={coords.issued.weight}
+    fill={NAVY}
+  >{issued}</text>
+
+  <text
+    x={px(coords.tier.x, TEMPLATE_W)}
+    y={px(coords.tier.y, TEMPLATE_H)}
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family={CARD_FONT}
+    font-size={coords.tier.size}
+    font-weight={coords.tier.weight}
+    fill={NAVY}
+  >{tier}</text>
+
+  <text
+    x={px(coords.standing.x, TEMPLATE_W)}
+    y={px(coords.standing.y, TEMPLATE_H)}
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family={CARD_FONT}
+    font-size={coords.standing.size}
+    font-weight={coords.standing.weight}
+    fill={NAVY}
+  >{standing}</text>
+</svg>
