@@ -5,12 +5,14 @@ seriesLabel: "Who Steals from Children: Volume 1 — Oregon and the Elliott"
 slug: "wsfc-vol1-preface"
 order: 201
 chapterNumber: "Preface"
-wordCount: 1347
-sourceVersion: "WSFC_Vol1_Elliott_v1"
+wordCount: 1350
+sourceVersion: "WSFC_Vol1_Elliott_GeneralReader_v1"
 lastSynced: 2026-05-10
 ---
 
 # Preface
+
+*by Dave Sullivan*
 
 ## Why I Wrote This Book
 
@@ -36,7 +38,7 @@ The book you are about to read is the indictment that filing made writable. Ever
 
 I owe you, before we begin, the source of the title.
 
-In May 2024, the journalist Jim Petersen, who has covered Pacific Northwest forestry for sixty years and who publishes *Evergreen Magazine* out of Bigfork, Montana, published an article on the Elliott decoupling. He titled it *Who Steals from Children?* He sent me a transmittal note on May 5, 2024 with the final approved versions, and on May 7 *Evergreen* posted it. Petersen's editor's note opened with a sentence that has stayed with me longer than any other writing on this case: *"In my 60 years as a working journalist, Who Steals from Children is easily one of the most frustrating and purposefully deceptive stories I've ever followed."* When the Library decided, in early 2026, to launch an anthology series documenting state-by-state attempts to diminish Common School Funds, Jim Petersen's title was the only one that fit. He has graciously allowed us to carry the phrase forward. This book is Volume 1 of the series; the title is his, with attribution.
+In May 2024, the journalist Jim Petersen, who has covered Pacific Northwest forestry for sixty years and who publishes *Evergreen Magazine* out of Dalton Gardens, Idaho, published an article on the Elliott decoupling. He titled it *Who Steals from Children?* He sent me a transmittal note on May 5, 2024 with the final approved versions, and on May 7 *Evergreen* posted it. Petersen's editor's note opened with a sentence that has stayed with me longer than any other writing on this case: *"In my 60 years as a working journalist, Who Steals from Children is easily one of the most frustrating and purposefully deceptive stories I've ever followed."* When the Library decided, in early 2026, to launch an anthology series documenting state-by-state attempts to diminish Common School Funds, Jim Petersen's title was the only one that fit. He has graciously allowed us to carry the phrase forward. This book is Volume 1 of the series; the title is his, with attribution.
 
 The title is sharp enough that I owe you a clear statement of what I have not written.
 

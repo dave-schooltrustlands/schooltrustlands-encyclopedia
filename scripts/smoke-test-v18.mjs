@@ -192,49 +192,63 @@ async function checkV18C() {
     return;
   }
   pagesChecked++;
-  // Constrain order checks to the argument-cards section so body
-  // paragraph mentions of the volume names don't pollute the order
-  // assertion. Match the section boundary by class attribute.
-  const sectionMatch = html.match(/<section\b[^>]*class=["'][^"']*argument-cards[^"']*["'][^>]*>([\s\S]*?)<\/section>/i);
-  const cardsHtml = sectionMatch ? sectionMatch[1] : html;
-  if (!sectionMatch) {
-    console.log('    ! note: could not isolate argument-cards section; falling back to whole-page order check');
+  // v26 — the trailing canonical cover-cards block was removed; the cover
+  // images now live in the substrate-driven volume-callout sections at
+  // the top of the page. Walk the per-callout sections individually so
+  // body prose mentions of volume names do not pollute the pairing
+  // assertion.
+  const calloutRe = /<section\b[^>]*class=["'][^"']*volume-callout[^"']*["'][^>]*>([\s\S]*?)<\/section>/gi;
+  const callouts = [...html.matchAll(calloutRe)].map((m) => m[1]);
+
+  if (callouts.length === 0) {
+    // Legacy fallback — old structure with a trailing argument-cards block.
+    const sectionMatch = html.match(/<section\b[^>]*class=["'][^"']*argument-cards[^"']*["'][^>]*>([\s\S]*?)<\/section>/i);
+    if (!sectionMatch) {
+      recordHard('v18.C: no volume-callout sections and no argument-cards section found');
+      return;
+    }
+    callouts.push(sectionMatch[1]);
   }
-  const norm = normalize(cardsHtml);
-  const v1 = norm.indexOf(normalize('Volume I · LOOKING BACK'));
-  const sor = norm.indexOf(normalize('Schools of the Republic'));
-  const v2 = norm.indexOf(normalize('Volume II · LOOKING FORWARD'));
-  const ea = norm.indexOf(normalize('The Eighth Anchor'));
-  if (v1 < 0) {
-    recordHard('v18.C: missing "Volume I · LOOKING BACK" kicker in cards section');
+
+  // Find Vol I and Vol II callouts by their kickers.
+  let volICallout = null;
+  let volIICallout = null;
+  let volIDocPos = -1;
+  let volIIDocPos = -1;
+  for (const c of callouts) {
+    if (ciIncludes(c, 'Volume I · LOOKING BACK')) {
+      volICallout = c;
+      volIDocPos = html.indexOf(c);
+    } else if (ciIncludes(c, 'Volume II · LOOKING FORWARD')) {
+      volIICallout = c;
+      volIIDocPos = html.indexOf(c);
+    }
+  }
+
+  if (!volICallout) {
+    recordHard('v18.C: no Volume I · LOOKING BACK callout found');
   } else {
     console.log('    ok Volume I LOOKING BACK kicker present');
   }
-  if (v2 < 0) {
-    recordHard('v18.C: missing "Volume II · LOOKING FORWARD" kicker in cards section');
+  if (!volIICallout) {
+    recordHard('v18.C: no Volume II · LOOKING FORWARD callout found');
   } else {
     console.log('    ok Volume II LOOKING FORWARD kicker present');
   }
-  if (sor < 0) {
-    recordHard('v18.C: missing "Schools of the Republic" in cards section');
+  if (volIDocPos >= 0 && volIIDocPos >= 0 && volIDocPos >= volIIDocPos) {
+    recordHard('v18.C: Volume I callout appears AFTER Volume II callout in DOM order');
+  } else if (volIDocPos >= 0 && volIIDocPos >= 0) {
+    console.log('    ok Volume I callout precedes Volume II callout in DOM order');
   }
-  if (ea < 0) {
-    recordHard('v18.C: missing "The Eighth Anchor" in cards section');
-  }
-  if (v1 >= 0 && v2 >= 0 && v1 >= v2) {
-    recordHard(`v18.C: Volume I kicker appears AFTER Volume II kicker in cards section`);
-  } else if (v1 >= 0 && v2 >= 0) {
-    console.log('    ok Volume I kicker precedes Volume II kicker in cards section');
-  }
-  if (v1 >= 0 && sor >= 0 && v2 >= 0 && (sor < v1 || sor > v2)) {
-    recordHard(`v18.C: "Schools of the Republic" not paired with Volume I LOOKING BACK card`);
-  } else if (v1 >= 0 && sor >= 0 && v2 >= 0) {
+  if (volICallout && !ciIncludes(volICallout, 'Schools of the Republic')) {
+    recordHard('v18.C: "Schools of the Republic" not paired with Volume I LOOKING BACK callout');
+  } else if (volICallout) {
     console.log('    ok "Schools of the Republic" pairs with Volume I (LOOKING BACK)');
   }
-  if (v2 >= 0 && ea >= 0 && ea > v2) {
+  if (volIICallout && !ciIncludes(volIICallout, 'The Eighth Anchor')) {
+    recordHard('v18.C: "The Eighth Anchor" not paired with Volume II LOOKING FORWARD callout');
+  } else if (volIICallout) {
     console.log('    ok "The Eighth Anchor" pairs with Volume II (LOOKING FORWARD)');
-  } else if (v2 >= 0 && ea >= 0) {
-    recordHard(`v18.C: "The Eighth Anchor" appears before Volume II kicker — pairing inverted in cards section`);
   }
 }
 

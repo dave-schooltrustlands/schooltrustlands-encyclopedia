@@ -5,12 +5,14 @@ seriesLabel: "Who Steals from Children: Volume 1 — Oregon and the Elliott"
 slug: "wsfc-vol1-foreword"
 order: 200
 chapterNumber: "Foreword"
-wordCount: 1613
-sourceVersion: "WSFC_Vol1_Elliott_v1"
+wordCount: 1620
+sourceVersion: "WSFC_Vol1_Elliott_GeneralReader_v1"
 lastSynced: 2026-05-10
 ---
 
 # Foreword
+
+*by Margaret Bird*
 
 I have spent the last twenty-three years inside the architecture of America's school trust lands. I came to this work as an economist, by way of state-government fiscal analysis, and I stayed in it because the architecture itself is one of the most extraordinary fiduciary experiments any country has ever attempted — a forever gift, from the founding generation to the unborn, of a piece of land in every township dedicated to the maintenance of the public schools. I have read the admission acts. I have read the trust accountings. I have sat in trustee meetings in nearly every public-land state in the country. I am, by training and by long habit, slow to call something a theft. I want the reader to register that before I say what I am about to say.
 

@@ -476,4 +476,38 @@ const layoutProps =
       aspect-ratio: 4 / 3;
     }
   }
+
+  /* v26 — Reader's Edition boxed inserts. Each Who Steals from Children
+     Reader's Edition chapter carries one boxed inset where doctrinal
+     background or document language is set off from the narrative so a
+     reader who already knows it can skip without losing the thread. */
+  :global(.readers-edition-aside) {
+    background: #f5efe1;
+    border-left: 3px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+    padding: 1rem 1.25rem 0.75rem;
+    margin: 1.75rem 0;
+    font-size: 0.97rem;
+  }
+  :global(.readers-edition-aside > :first-child) {
+    margin-top: 0;
+  }
+  :global(.readers-edition-aside > :last-child) {
+    margin-bottom: 0;
+  }
+  :global(.readers-edition-aside h3),
+  :global(.readers-edition-aside h4) {
+    font-family: var(--font-serif, Georgia, 'Times New Roman', serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+    margin: 0 0 0.5rem;
+  }
+  :global(.readers-edition-aside p) {
+    line-height: 1.55;
+    margin: 0.55rem 0;
+  }
+  :global(.readers-edition-aside em) {
+    color: #475569;
+  }
 </style>

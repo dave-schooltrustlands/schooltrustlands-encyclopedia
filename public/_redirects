@@ -6,3 +6,31 @@
 /reading/comparative-atlas   /atlas/  301
 /reading/enforcement-beneficiary-cannot-sue/  /reading/sacred-compact/  301
 /reading/enforcement-beneficiary-cannot-sue   /reading/sacred-compact/  301
+
+# v26 — Who Steals from Children Vol 1 chapter slug renames (Reader's Edition).
+# 11 chapter slugs were renamed from the v25 prosecutorial-register titles to
+# match the Reader's Edition chapter titles; the old URLs retire-redirect.
+/reading/wsfc-vol1-ch01-theft-in-plain-sight/                         /reading/wsfc-vol1-ch01-why-i-bought-a-tree-farm/                  301
+/reading/wsfc-vol1-ch01-theft-in-plain-sight                          /reading/wsfc-vol1-ch01-why-i-bought-a-tree-farm/                  301
+/reading/wsfc-vol1-ch02-what-oregon-promised-in-1859/                 /reading/wsfc-vol1-ch02-the-first-foia/                            301
+/reading/wsfc-vol1-ch02-what-oregon-promised-in-1859                  /reading/wsfc-vol1-ch02-the-first-foia/                            301
+/reading/wsfc-vol1-ch03-a-century-of-drift/                           /reading/wsfc-vol1-ch03-bob-and-barb-at-cougar-pass/               301
+/reading/wsfc-vol1-ch03-a-century-of-drift                            /reading/wsfc-vol1-ch03-bob-and-barb-at-cougar-pass/               301
+/reading/wsfc-vol1-ch04-the-1990s-capture/                            /reading/wsfc-vol1-ch04-the-secret-meeting-about-going-public/     301
+/reading/wsfc-vol1-ch04-the-1990s-capture                             /reading/wsfc-vol1-ch04-the-secret-meeting-about-going-public/     301
+/reading/wsfc-vol1-ch05-the-2017-sale-and-reverse/                    /reading/wsfc-vol1-ch05-the-sale-that-didnt-happen/                301
+/reading/wsfc-vol1-ch05-the-2017-sale-and-reverse                     /reading/wsfc-vol1-ch05-the-sale-that-didnt-happen/                301
+/reading/wsfc-vol1-ch06-the-2019-bond-substitution/                   /reading/wsfc-vol1-ch06-the-quiet-substitution/                    301
+/reading/wsfc-vol1-ch06-the-2019-bond-substitution                    /reading/wsfc-vol1-ch06-the-quiet-substitution/                    301
+/reading/wsfc-vol1-ch07-the-2022-osu-plan/                            /reading/wsfc-vol1-ch07-the-childrens-forest/                      301
+/reading/wsfc-vol1-ch07-the-2022-osu-plan                             /reading/wsfc-vol1-ch07-the-childrens-forest/                      301
+/reading/wsfc-vol1-ch08-the-secret-meetings/                          /reading/wsfc-vol1-ch08-david-gould/                               301
+/reading/wsfc-vol1-ch08-the-secret-meetings                           /reading/wsfc-vol1-ch08-david-gould/                               301
+/reading/wsfc-vol1-ch09-the-2023-withdrawal-that-wasnt/               /reading/wsfc-vol1-ch09-margaret-arrives/                          301
+/reading/wsfc-vol1-ch09-the-2023-withdrawal-that-wasnt                /reading/wsfc-vol1-ch09-margaret-arrives/                          301
+/reading/wsfc-vol1-ch10-oastl-forms-the-standing-victory/             /reading/wsfc-vol1-ch10-the-first-lawsuit/                         301
+/reading/wsfc-vol1-ch10-oastl-forms-the-standing-victory              /reading/wsfc-vol1-ch10-the-first-lawsuit/                         301
+/reading/wsfc-vol1-ch11-the-smoking-gun-and-the-discovery-stonewall/  /reading/wsfc-vol1-ch11-corvallis-high-school/                     301
+/reading/wsfc-vol1-ch11-the-smoking-gun-and-the-discovery-stonewall   /reading/wsfc-vol1-ch11-corvallis-high-school/                     301
+/reading/wsfc-vol1-ch12-whats-been-stolen/                            /reading/wsfc-vol1-ch12-the-smoking-gun/                           301
+/reading/wsfc-vol1-ch12-whats-been-stolen                             /reading/wsfc-vol1-ch12-the-smoking-gun/                           301
