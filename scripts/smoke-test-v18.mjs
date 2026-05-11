@@ -293,7 +293,7 @@ async function checkV18D() {
 // ---------------------------------------------------------------
 
 async function checkV18E() {
-  console.log('\n· v18.E — Reading Room landing featured card title');
+  console.log('\n· v18.E — Reading Room landing surfaces "The Eighth Anchor"');
   const url = BASE + '/reading/';
   let html;
   try {
@@ -303,20 +303,20 @@ async function checkV18E() {
     return;
   }
   pagesChecked++;
-  // Featured card title should be "The Eighth Anchor". Match a flexible
-  // h3 with class containing featured-title; allow other attributes
-  // (Astro adds data-astro-cid-* automatically).
-  const featuredTitleRe = /<h3\b[^>]*\bclass=["'][^"']*featured-title[^"']*["'][^>]*>\s*The Eighth Anchor\s*<\/h3>/i;
-  if (!featuredTitleRe.test(html)) {
-    recordHard('v18.E /reading/: featured card title is not "The Eighth Anchor"');
-  } else {
-    console.log('    ok featured card title reads "The Eighth Anchor"');
-  }
-  // Body door-card prose should name "The Eighth Anchor".
+  // v27 — the lobby-featured shelf was reduced to Horace Mann only; the
+  // Eighth Anchor card moved to the Library's Argument page. The renamed
+  // title still surfaces on the Reading Room landing through the
+  // Library's Argument door-card description, which is what this check
+  // now asserts. The featured-card title check was retired.
   if (!ciIncludes(html, 'The Eighth Anchor')) {
-    recordHard('v18.E /reading/: body prose does not mention "The Eighth Anchor"');
+    recordHard('v18.E /reading/: page does not mention "The Eighth Anchor"');
   } else {
-    console.log('    ok body prose mentions "The Eighth Anchor"');
+    console.log('    ok page mentions "The Eighth Anchor"');
+  }
+  if (ciIncludes(html, 'Sacred Compact:') || /<h3\b[^>]*featured-title[^>]*>\s*Sacred Compact\s*</i.test(html)) {
+    recordHard('v18.E /reading/: legacy "Sacred Compact" residue present');
+  } else {
+    console.log('    ok no "Sacred Compact" rename residue on the lobby');
   }
 }
 

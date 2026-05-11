@@ -168,6 +168,12 @@ async function checkV16C() {
 async function checkV16D() {
   console.log('\n· v16.D — LOOKING BACK / LOOKING FORWARD banner designators');
 
+  // v27 — the Reading Room "On display this week" shelf was reduced to
+  // Horace Mann only; the Sacred Compact / Eighth Anchor featured card
+  // (which carried the LOOKING FORWARD BookBanner) moved to the
+  // Library's Argument page. The /reading/ case is retired here; the
+  // banner designators on the two volume landings continue to be
+  // asserted.
   const cases = [
     {
       path: '/reading/schools-of-the-republic/',
@@ -178,11 +184,6 @@ async function checkV16D() {
       path: '/reading/sacred-compact/',
       needle: 'Looking Forward',
       label: 'Sacred Compact landing — LOOKING FORWARD',
-    },
-    {
-      path: '/reading/',
-      needle: 'Looking Forward',
-      label: 'Reading Room — Sacred Compact featured card LOOKING FORWARD',
     },
   ];
 
