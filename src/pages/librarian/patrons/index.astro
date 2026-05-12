@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LibrarianTabs from '../../../components/LibrarianTabs.astro';
+import { requireLibrarian, formatPatronNumber, formatCardDate } from '../../../lib/librarian';
+
+export const prerender = false;
+
+const guard = await requireLibrarian(Astro);
+if (!guard.ok) return guard.response;
+const { supabase } = guard.context;
+
+// All profiles, in patron-number order (the librarian's natural index).
+const { data: profileRows } = await supabase
+  .from('profiles')
+  .select('id, display_name, patron_number, tier, standing, created_at')
+  .order('patron_number', { ascending: true, nullsFirst: false });
+
+const profiles = (profileRows ?? []) as Array<{
+  id: string;
+  display_name: string | null;
+  patron_number: number | null;
+  tier: string | null;
+  standing: string | null;
+  created_at: string | null;
+}>;
+
+// Ticket counts per patron — one query, count feedback rows grouped by user.
+// Supabase JS does not have a first-class group_by, so we pull user_id and
+// tally in memory. v31 data volume is small enough that this is fine; if
+// the patron count climbs we move this to a view.
+const { data: ticketUserRows } = await supabase
+  .from('feedback')
+  .select('user_id');
+const ticketCounts = new Map<string, number>();
+for (const row of ticketUserRows ?? []) {
+  if (!row.user_id) continue;
+  ticketCounts.set(row.user_id, (ticketCounts.get(row.user_id) ?? 0) + 1);
+}
+
+// Librarian roles, so we can show "head_librarian"/"librarian" against the
+// matching patron. RLS gives us all rows because we're a librarian.
+const { data: roleRows } = await supabase
+  .from('librarian_roles')
+  .select('user_id, role');
+const roleMap = new Map<string, string>();
+for (const r of roleRows ?? []) {
+  roleMap.set(r.user_id, r.role);
+}
+---
+
+<BaseLayout
+  title="Patrons · Librarian dashboard"
+  sourceId="librarian-patrons"
+>
+  <article class="patrons prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Patrons</h1>
+    <LibrarianTabs current="patrons" />
+
+    {profiles.length > 0 ? (
+      <table class="patrons-table">
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Name</th>
+            <th>Signed up</th>
+            <th>Tickets</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          {profiles.map((p) => (
+            <tr>
+              <td class="num-cell">{formatPatronNumber(p.patron_number)}</td>
+              <td>{(p.display_name ?? '').trim() || <em>(no display name)</em>}</td>
+              <td>{formatCardDate(p.created_at)}</td>
+              <td>{ticketCounts.get(p.id) ?? 0}</td>
+              <td>
+                {roleMap.get(p.id) ? (
+                  <span class="role-badge">{roleMap.get(p.id)!.replace(/_/g, ' ')}</span>
+                ) : (
+                  <span class="role-none">—</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      <p class="empty-state">No patrons yet.</p>
+    )}
+  </article>
+
+  <style>
+    .patrons-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+    }
+    .patrons-table th,
+    .patrons-table td {
+      text-align: left;
+      padding: 0.55rem 0.7rem;
+      border-bottom: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .patrons-table th {
+      background: var(--linen-card, #fafaf7);
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .num-cell {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.88rem;
+    }
+    .role-badge {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      background: #1e3a5f;
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .role-none {
+      color: #94a3b8;
+    }
+    .empty-state {
+      padding: 1.4rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      color: #475569;
+      text-align: center;
+    }
+  </style>
+</BaseLayout>

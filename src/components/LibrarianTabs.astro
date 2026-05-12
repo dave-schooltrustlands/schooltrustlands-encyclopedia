@@ -1,0 +1,58 @@
+---
+// Four-tab navigation row at the top of every /librarian/* page.
+// Active tab is determined by matching the current path against each tab's
+// prefix; we anchor `/librarian/` to the Pending-tickets tab because that
+// route is the dashboard's index.
+
+interface Props {
+  current: 'tickets' | 'applications' | 'patrons' | 'discussions';
+}
+
+const { current } = Astro.props;
+
+const tabs: Array<{ key: Props['current']; label: string; href: string }> = [
+  { key: 'tickets',      label: 'Pending tickets', href: '/librarian/' },
+  { key: 'applications', label: 'Applications',    href: '/librarian/applications/' },
+  { key: 'patrons',      label: 'Patrons',         href: '/librarian/patrons/' },
+  { key: 'discussions',  label: 'Discussions',     href: '/librarian/discussions/' },
+];
+---
+
+<nav class="librarian-tabs" aria-label="Librarian dashboard sections">
+  {tabs.map((t) => (
+    <a
+      href={t.href}
+      class:list={['librarian-tab', current === t.key && 'librarian-tab--active']}
+      aria-current={current === t.key ? 'page' : undefined}
+    >
+      {t.label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .librarian-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--rule-border, #e5e7eb);
+    margin: 0.5rem 0 1.25rem;
+    overflow-x: auto;
+  }
+  .librarian-tab {
+    padding: 0.55rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #475569;
+    text-decoration: none !important;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+  .librarian-tab:hover {
+    color: var(--deep-navy, #1e3a5f);
+  }
+  .librarian-tab--active {
+    color: var(--deep-navy, #1e3a5f);
+    border-bottom-color: var(--deep-navy, #1e3a5f);
+  }
+</style>

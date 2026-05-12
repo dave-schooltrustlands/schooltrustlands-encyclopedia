@@ -1,0 +1,315 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../../lib/supabase';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/sign-in?redirect=/my-library/', 302);
+}
+
+const id = Astro.params.id;
+if (!id) return new Response('Not Found', { status: 404 });
+
+const { data: ticket } = await supabase
+  .from('feedback')
+  .select('id, ticket_number, page_url, subject, body, status, submitted_at, user_id')
+  .eq('id', id)
+  .maybeSingle();
+
+// Strict ownership: RLS already prevents reading other patrons' tickets, but
+// belt-and-suspenders so we never accidentally render someone else's ticket.
+if (!ticket || ticket.user_id !== user.id) {
+  return new Response('Not Found', { status: 404 });
+}
+
+const { data: responsesRaw } = await supabase
+  .from('ticket_responses')
+  .select('id, body, author_id, author_role, posted_at')
+  .eq('ticket_type', 'feedback')
+  .eq('ticket_id', id)
+  .order('posted_at', { ascending: true });
+
+const responses = responsesRaw ?? [];
+
+const authorIds = Array.from(new Set(responses.map((r) => r.author_id)));
+let authorMap = new Map<string, { display_name: string | null }>();
+if (authorIds.length > 0) {
+  const { data: authors } = await supabase
+    .from('profiles')
+    .select('id, display_name')
+    .in('id', authorIds);
+  for (const a of authors ?? []) {
+    authorMap.set(a.id, { display_name: a.display_name ?? null });
+  }
+}
+
+const MONTHS_SHORT = [
+  'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec',
+];
+function fmt(iso: string | null): string {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  return `${d.getUTCDate().toString().padStart(2,'0')} ${MONTHS_SHORT[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
+const STATUS_LABEL: Record<string, string> = {
+  new: 'New',
+  in_review: 'In review',
+  responded: 'Responded',
+  archived: 'Archived',
+};
+
+const canReply = ticket.status !== 'archived';
+---
+
+<BaseLayout
+  title={`${ticket.ticket_number} · My Library`}
+  sourceId="my-library-ticket-detail"
+>
+  <article class="patron-ticket prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="back-line"><a href="/my-library/">← Back to My Library</a></p>
+
+    <header class="ticket-header">
+      <h1 class="ticket-id">{ticket.ticket_number}</h1>
+      <p class="ticket-meta">
+        <span class:list={['status-pill', `status-pill--${ticket.status}`]}>
+          {STATUS_LABEL[ticket.status] ?? ticket.status}
+        </span>
+        <span class="meta-divider">·</span>
+        Submitted {fmt(ticket.submitted_at)}
+      </p>
+    </header>
+
+    {ticket.subject && (
+      <p class="ticket-subject"><strong>Subject:</strong> {ticket.subject}</p>
+    )}
+
+    <p class="ticket-page">
+      <strong>Page:</strong> <a href={ticket.page_url}>{ticket.page_url}</a>
+    </p>
+
+    <section class="ticket-body-section">
+      <h2>Your feedback</h2>
+      <div class="ticket-body">{ticket.body}</div>
+    </section>
+
+    <section class="responses-section">
+      <h2>Conversation</h2>
+      {responses.length > 0 ? (
+        <ol class="response-list">
+          {responses.map((r) => {
+            const a = authorMap.get(r.author_id);
+            const who = (a?.display_name ?? '').trim() ||
+              (r.author_role === 'librarian' ? 'A Librarian' : 'You');
+            return (
+              <li class:list={['response-item', `response-item--${r.author_role}`]}>
+                <header class="response-meta">
+                  <span class:list={['role-badge', `role-badge--${r.author_role}`]}>
+                    {r.author_role}
+                  </span>
+                  <span class="response-author">{who}</span>
+                  <span class="meta-divider">·</span>
+                  <time>{fmt(r.posted_at)}</time>
+                </header>
+                <div class="response-body">{r.body}</div>
+              </li>
+            );
+          })}
+        </ol>
+      ) : (
+        <p class="empty-line">No responses yet. A librarian will reply by email when they pick up the ticket.</p>
+      )}
+    </section>
+
+    {canReply ? (
+      <section class="reply-section">
+        <h2>Reply to this ticket</h2>
+        <form class="reply-form" id="reply-form" data-ticket-id={ticket.id}>
+          <textarea
+            id="reply-body"
+            name="body"
+            required
+            rows="5"
+            maxlength="4000"
+            placeholder="Add a follow-up — a librarian will see it on the next dashboard visit."
+          ></textarea>
+          <button type="submit" class="reply-submit">Send reply</button>
+          <p class="reply-status" aria-live="polite"></p>
+        </form>
+      </section>
+    ) : (
+      <section class="archived-note">
+        <p>This ticket has been archived. Open a new feedback ticket if you have more to add.</p>
+      </section>
+    )}
+  </article>
+
+  <script is:inline define:vars={{ ticketId: ticket.id }}>
+    const form = document.getElementById('reply-form');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const status = form.querySelector('.reply-status');
+        const submit = form.querySelector('.reply-submit');
+        const body = form.querySelector('#reply-body').value.trim();
+        if (!body) {
+          status.textContent = 'Write a reply before sending.';
+          status.className = 'reply-status err';
+          return;
+        }
+        submit.disabled = true;
+        submit.textContent = 'Sending…';
+        try {
+          const res = await fetch('/api/ticket-response/patron-followup', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              ticket_type: 'feedback',
+              ticket_id: ticketId,
+              body,
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+          status.textContent = 'Reply sent. A librarian will see it on the next dashboard visit.';
+          status.className = 'reply-status ok';
+          setTimeout(() => location.reload(), 700);
+        } catch (err) {
+          status.textContent = 'Could not send: ' + (err?.message || 'unknown error');
+          status.className = 'reply-status err';
+          submit.disabled = false;
+          submit.textContent = 'Send reply';
+        }
+      });
+    }
+  </script>
+
+  <style>
+    .back-line { font-family: var(--font-sans); font-size: 0.85rem; margin: 0 0 0.5rem; }
+    .ticket-header { margin: 0.5rem 0 1rem; }
+    .ticket-id {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 1.4rem;
+      margin: 0;
+    }
+    .ticket-meta {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #475569;
+      margin: 0.25rem 0 0;
+    }
+    .meta-divider { margin: 0 0.5rem; color: #94a3b8; }
+    .ticket-subject, .ticket-page {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      margin: 0.4rem 0;
+    }
+    .ticket-body {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      white-space: pre-wrap;
+      padding: 0.9rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      margin: 0.4rem 0;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .status-pill--new       { background: #e0e7ff; color: #3730a3; }
+    .status-pill--in_review { background: #fef3c7; color: #92400e; }
+    .status-pill--responded { background: #dcfce7; color: #166534; }
+    .status-pill--archived  { background: #f1f5f9; color: #64748b; }
+    .responses-section { margin: 1.25rem 0; }
+    .response-list { list-style: none; padding: 0; margin: 0; }
+    .response-item {
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      margin: 0.6rem 0;
+      border: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .response-item--librarian { background: #f0f9ff; border-color: #bae6fd; }
+    .response-item--patron    { background: #fff; }
+    .response-meta {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: #64748b;
+      margin: 0 0 0.4rem;
+    }
+    .role-badge {
+      display: inline-block;
+      padding: 0.05rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-right: 0.4rem;
+    }
+    .role-badge--librarian { background: #1e3a5f; color: #fff; }
+    .role-badge--patron    { background: #fef3c7; color: #92400e; }
+    .response-author { font-weight: 600; color: var(--deep-navy, #1e3a5f); }
+    .response-body {
+      font-family: var(--font-serif);
+      font-size: 0.96rem;
+      white-space: pre-wrap;
+      color: #1e293b;
+    }
+    .empty-line { color: #64748b; font-style: italic; }
+    .reply-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 40rem;
+    }
+    .reply-form textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+      resize: vertical;
+    }
+    .reply-submit {
+      align-self: flex-start;
+      padding: 0.55rem 1.1rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .reply-submit[disabled] { opacity: 0.5; cursor: wait; }
+    .reply-status { font-family: var(--font-sans); font-size: 0.88rem; margin: 0; }
+    .reply-status.ok { color: #065f46; }
+    .reply-status.err { color: #991b1b; }
+    .archived-note {
+      padding: 1rem 1.1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      color: #475569;
+    }
+    .archived-note p { margin: 0; }
+  </style>
+</BaseLayout>

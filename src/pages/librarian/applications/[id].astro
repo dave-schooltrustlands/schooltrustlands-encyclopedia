@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LibrarianTabs from '../../../components/LibrarianTabs.astro';
+import { requireLibrarian, formatPatronNumber, formatCardDate } from '../../../lib/librarian';
+
+export const prerender = false;
+
+const guard = await requireLibrarian(Astro);
+if (!guard.ok) return guard.response;
+const { supabase } = guard.context;
+
+const id = Astro.params.id;
+if (!id) return new Response('Not Found', { status: 404 });
+
+const { data: app } = await supabase
+  .from('librarian_applications')
+  .select('id, ticket_number, user_id, statement, relevant_experience, time_commitment, status, submitted_at, reviewed_by, reviewed_at, decision_note')
+  .eq('id', id)
+  .maybeSingle();
+
+if (!app) return new Response('Not Found', { status: 404 });
+
+const { data: applicantProfile } = await supabase
+  .from('profiles')
+  .select('display_name, patron_number, created_at')
+  .eq('id', app.user_id)
+  .maybeSingle();
+
+let reviewerProfile: { display_name: string | null } | null = null;
+if (app.reviewed_by) {
+  const { data } = await supabase
+    .from('profiles')
+    .select('display_name')
+    .eq('id', app.reviewed_by)
+    .maybeSingle();
+  reviewerProfile = data ?? null;
+}
+
+const STATUS_LABEL: Record<string, string> = {
+  new: 'New',
+  in_review: 'In review',
+  approved: 'Approved',
+  declined: 'Declined',
+  withdrawn: 'Withdrawn',
+};
+
+const isPending = app.status === 'new' || app.status === 'in_review';
+const applicantName = (applicantProfile?.display_name ?? '').trim() || 'Library Patron';
+const applicantNumber = formatPatronNumber(applicantProfile?.patron_number ?? null);
+---
+
+<BaseLayout
+  title={`${app.ticket_number} · Librarian dashboard`}
+  sourceId="librarian-application-detail"
+>
+  <article class="application-detail prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="back-line"><a href="/librarian/applications/">← Back to applications</a></p>
+    <LibrarianTabs current="applications" />
+
+    <header class="app-header">
+      <h1 class="ticket-id">{app.ticket_number}</h1>
+      <p class="ticket-meta">
+        <span class:list={['status-pill', `status-pill--${app.status}`]}>
+          {STATUS_LABEL[app.status] ?? app.status}
+        </span>
+        <span class="meta-divider">·</span>
+        Submitted {formatCardDate(app.submitted_at)}
+        <span class="meta-divider">·</span>
+        {applicantName} (№ {applicantNumber})
+      </p>
+    </header>
+
+    <section class="app-section">
+      <h2>Statement</h2>
+      <div class="app-body">{app.statement}</div>
+    </section>
+
+    {app.relevant_experience && (
+      <section class="app-section">
+        <h2>Relevant experience</h2>
+        <div class="app-body">{app.relevant_experience}</div>
+      </section>
+    )}
+
+    {app.time_commitment && (
+      <section class="app-section">
+        <h2>Time commitment</h2>
+        <div class="app-body">{app.time_commitment}</div>
+      </section>
+    )}
+
+    {isPending ? (
+      <section class="decide-section">
+        <h2>Decision</h2>
+        <form class="decide-form" id="decide-form" data-app-id={app.id}>
+          <label class="decide-label" for="decision-note">Note to applicant (optional)</label>
+          <textarea
+            id="decision-note"
+            name="note"
+            rows="4"
+            maxlength="4000"
+            placeholder="Optional context — this is included in the email."
+          ></textarea>
+
+          <div class="decide-buttons">
+            <button type="button" class="decide-button decide-button--approve" data-decision="approve">
+              Approve
+            </button>
+            <button type="button" class="decide-button decide-button--decline" data-decision="decline">
+              Decline
+            </button>
+          </div>
+          <p class="decide-status" aria-live="polite"></p>
+        </form>
+      </section>
+    ) : (
+      <section class="decided-section">
+        <h2>Decision</h2>
+        <p>
+          <strong>{STATUS_LABEL[app.status] ?? app.status}</strong>
+          {reviewerProfile && (
+            <> by <strong>{(reviewerProfile.display_name ?? '').trim() || 'A Librarian'}</strong></>
+          )}
+          {app.reviewed_at && (
+            <> on {formatCardDate(app.reviewed_at)}</>
+          )}.
+        </p>
+        {app.decision_note && (
+          <blockquote class="decision-note">{app.decision_note}</blockquote>
+        )}
+      </section>
+    )}
+  </article>
+
+  <script is:inline define:vars={{ appId: app.id }}>
+    const form = document.getElementById('decide-form');
+    if (form) {
+      const buttons = form.querySelectorAll('.decide-button');
+      const status = form.querySelector('.decide-status');
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const decision = btn.getAttribute('data-decision');
+          const note = form.querySelector('#decision-note').value.trim();
+          if (decision === 'decline' && !confirm('Decline this application? This is reversible only by re-applying.')) {
+            return;
+          }
+          if (decision === 'approve' && !confirm('Approve this application? The applicant will gain librarian access.')) {
+            return;
+          }
+          buttons.forEach((b) => (b.disabled = true));
+          status.textContent = 'Submitting…';
+          status.className = 'decide-status';
+          try {
+            const res = await fetch(`/api/librarian-application/${appId}/decide`, {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({ decision, note }),
+            });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+            status.textContent = `Application ${data.status}. Email ${data.email_sent ? 'sent' : 'skipped'}.`;
+            status.className = 'decide-status ok';
+            setTimeout(() => location.reload(), 700);
+          } catch (err) {
+            status.textContent = 'Could not submit: ' + (err?.message || 'unknown error');
+            status.className = 'decide-status err';
+            buttons.forEach((b) => (b.disabled = false));
+          }
+        });
+      });
+    }
+  </script>
+
+  <style>
+    .back-line {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      margin: 0 0 0.5rem;
+    }
+    .app-header {
+      margin: 0.5rem 0 1rem;
+    }
+    .ticket-id {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 1.4rem;
+      margin: 0;
+    }
+    .ticket-meta {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #475569;
+      margin: 0.25rem 0 0;
+    }
+    .meta-divider { margin: 0 0.5rem; color: #94a3b8; }
+    .app-section { margin: 1.1rem 0; }
+    .app-body {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      white-space: pre-wrap;
+      padding: 0.9rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .status-pill--new       { background: #e0e7ff; color: #3730a3; }
+    .status-pill--in_review { background: #fef3c7; color: #92400e; }
+    .status-pill--approved  { background: #dcfce7; color: #166534; }
+    .status-pill--declined  { background: #fee2e2; color: #991b1b; }
+    .decide-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 36rem;
+    }
+    .decide-form textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+      resize: vertical;
+    }
+    .decide-buttons {
+      display: flex;
+      gap: 0.7rem;
+    }
+    .decide-button {
+      padding: 0.55rem 1.1rem;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+    }
+    .decide-button--approve { background: #166534; }
+    .decide-button--approve:hover { background: #14532d; }
+    .decide-button--decline { background: #991b1b; }
+    .decide-button--decline:hover { background: #7f1d1d; }
+    .decide-button[disabled] { opacity: 0.5; cursor: wait; }
+    .decide-status { font-family: var(--font-sans); font-size: 0.88rem; margin: 0; }
+    .decide-status.ok { color: #065f46; }
+    .decide-status.err { color: #991b1b; }
+    .decision-note {
+      margin: 0.6rem 0 0;
+      padding: 0.7rem 1rem;
+      border-left: 3px solid var(--deep-navy, #1e3a5f);
+      background: var(--linen-card, #fafaf7);
+      font-style: italic;
+    }
+  </style>
+</BaseLayout>

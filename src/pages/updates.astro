@@ -53,6 +53,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Monday May 11, 2026 — Site update v31: Librarian Layer — the response side of the two-way Library.</strong>
+            v30 opened a private feedback channel; v31 makes that channel answerable. A new private dashboard at
+            <code>/librarian/</code> (404 for everyone else — we don't telegraph the route's existence) gives
+            authorized librarians four tabs: <em>Pending tickets</em>, <em>Applications</em>, <em>Patrons</em>,
+            and <em>Discussions</em> (placeholder, fills in at v33). Librarians can open a feedback ticket,
+            write a response, and submit — the patron receives the response by email and inline in their
+            <em>My Tickets</em> view on <a href="/my-library/">My Library</a>. Patrons can reply to the response
+            and the ticket bounces back to <em>In review</em> for librarian attention. A new public application
+            form at <a href="/apply/librarian/">/apply/librarian/</a> lets any signed-in patron volunteer as a
+            librarian; submissions are ticketed <code>LA-2026-NNNNN</code> and surface in the dashboard's
+            <em>Applications</em> tab where a librarian can approve or decline, with the applicant receiving the
+            decision by email. Dave is bootstrapped as <em>head_librarian</em>; Margaret receives the librarian
+            role on her first sign-in. The two-way Library is now open.
+          </li>
+          <li>
             <strong>Monday May 11, 2026 — Site update v30.1: Cleanup pass — sign-out, patron-name fallback, patron-number backfill, ticket-function hardening.</strong>
             Four small fixes that take v30 from <em>mostly works</em> to <em>trustworthy</em>. Clicking
             <em>Sign out</em> now actually signs out (the auth cookies are explicitly cleared so the

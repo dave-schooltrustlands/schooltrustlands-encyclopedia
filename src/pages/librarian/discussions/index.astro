@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LibrarianTabs from '../../../components/LibrarianTabs.astro';
+import { requireLibrarian } from '../../../lib/librarian';
+
+export const prerender = false;
+
+const guard = await requireLibrarian(Astro);
+if (!guard.ok) return guard.response;
+---
+
+<BaseLayout
+  title="Discussions · Librarian dashboard"
+  sourceId="librarian-discussions"
+>
+  <article class="discussions prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Discussions</h1>
+    <LibrarianTabs current="discussions" />
+
+    <p class="placeholder">
+      Discussion moderation arrives in v33. This tab is reserved.
+    </p>
+  </article>
+
+  <style>
+    .placeholder {
+      padding: 2rem 1.25rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      color: #475569;
+      text-align: center;
+      font-style: italic;
+    }
+  </style>
+</BaseLayout>

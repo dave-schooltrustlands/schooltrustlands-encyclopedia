@@ -1,0 +1,14 @@
+Subject: Welcome to the Library — your application is approved
+
+Dear {{patron_name}},
+
+Your application {{ticket_number}} to become a librarian has been approved.
+
+{{decision_note}}
+
+You now have access to the librarian dashboard at:
+https://schooltrusts.net/librarian/
+
+Welcome aboard. The work matters.
+
+— {{approver_name}}, {{approver_role}}

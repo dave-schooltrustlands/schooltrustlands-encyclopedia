@@ -1,0 +1,14 @@
+Subject: {{ticket_number}} — Your librarian application
+
+Dear {{patron_name}},
+
+Thank you for applying to become a librarian at the Library. After review,
+we are not able to approve your application at this time.
+
+{{decision_note}}
+
+This does not close the door — applications can be resubmitted in the
+future, and your patron card remains in good standing. Your feedback
+and corrections are welcome through the usual channels.
+
+— {{reviewer_name}}, {{reviewer_role}}

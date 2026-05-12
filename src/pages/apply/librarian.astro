@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/sign-in?redirect=/apply/librarian/', 302);
+}
+
+// Already-a-librarian?
+const { data: existingRole } = await supabase
+  .from('librarian_roles')
+  .select('role')
+  .eq('user_id', user.id)
+  .maybeSingle();
+
+// Already-pending application?
+const { data: pendingApp } = await supabase
+  .from('librarian_applications')
+  .select('id, ticket_number, status')
+  .eq('user_id', user.id)
+  .in('status', ['new', 'in_review'])
+  .order('submitted_at', { ascending: false })
+  .limit(1)
+  .maybeSingle();
+
+const state: 'eligible' | 'already_librarian' | 'already_pending' = existingRole
+  ? 'already_librarian'
+  : pendingApp
+    ? 'already_pending'
+    : 'eligible';
+---
+
+<BaseLayout
+  title="Apply to volunteer as a librarian · America's School Trust Library"
+  description="Volunteer to help answer reader feedback and corrections at the Library."
+  sourceId="apply-librarian"
+>
+  <article class="apply prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Volunteer as a librarian</h1>
+    <p class="kicker">
+      Librarians answer reader feedback, review corrections, and help keep the Library's record honest.
+    </p>
+
+    {state === 'already_librarian' && (
+      <div class="flash ok">
+        <p>You're already a librarian. Visit the dashboard at <a href="/librarian/">/librarian/</a>.</p>
+      </div>
+    )}
+
+    {state === 'already_pending' && pendingApp && (
+      <div class="flash ok">
+        <p>
+          Your application <code>{pendingApp.ticket_number}</code> is in review. We'll be in touch by email.
+        </p>
+      </div>
+    )}
+
+    {state === 'eligible' && (
+      <>
+        <p>
+          The Library is small. We want volunteers who care about the record and are willing to write
+          carefully to readers who write to us. There is no minimum commitment beyond <em>respond when you can</em>.
+        </p>
+
+        <form class="apply-form" id="apply-form">
+          <label class="apply-label" for="statement">Why do you want to volunteer?</label>
+          <textarea
+            id="statement"
+            name="statement"
+            required
+            rows="5"
+            maxlength="4000"
+            placeholder="Tell us a little about why this matters to you."
+          ></textarea>
+
+          <label class="apply-label" for="relevant_experience">Relevant experience (optional)</label>
+          <textarea
+            id="relevant_experience"
+            name="relevant_experience"
+            rows="3"
+            maxlength="4000"
+            placeholder="Anything that's relevant — teaching, archives, journalism, school finance, etc."
+          ></textarea>
+
+          <label class="apply-label" for="time_commitment">Time commitment (optional)</label>
+          <textarea
+            id="time_commitment"
+            name="time_commitment"
+            rows="2"
+            maxlength="500"
+            placeholder="A few hours a month? More? Let us know what you can offer."
+          ></textarea>
+
+          <button type="submit" class="apply-submit">Submit application</button>
+          <p class="apply-status" aria-live="polite"></p>
+        </form>
+      </>
+    )}
+  </article>
+
+  <script is:inline>
+    const form = document.getElementById('apply-form');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const status = form.querySelector('.apply-status');
+        const submit = form.querySelector('.apply-submit');
+        const statement = form.querySelector('#statement').value.trim();
+        const experience = form.querySelector('#relevant_experience').value.trim();
+        const time = form.querySelector('#time_commitment').value.trim();
+        if (!statement) {
+          status.textContent = 'Please write a few words about why you want to volunteer.';
+          status.className = 'apply-status err';
+          return;
+        }
+        submit.disabled = true;
+        submit.textContent = 'Submitting…';
+        try {
+          const res = await fetch('/api/librarian-application', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              statement,
+              relevant_experience: experience || null,
+              time_commitment: time || null,
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+          form.innerHTML =
+            '<p class="apply-confirmation">Thank you. Your application is recorded as ' +
+            '<code>' + data.ticket_number + '</code>. A librarian will respond by email.</p>';
+        } catch (err) {
+          status.textContent = 'Could not submit: ' + (err?.message || 'unknown error');
+          status.className = 'apply-status err';
+          submit.disabled = false;
+          submit.textContent = 'Submit application';
+        }
+      });
+    }
+  </script>
+
+  <style>
+    .kicker {
+      font-style: italic;
+      color: #475569;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .apply-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: 40rem;
+      margin: 1.25rem 0;
+    }
+    .apply-label {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin-top: 0.4rem;
+    }
+    .apply-form textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+      resize: vertical;
+    }
+    .apply-submit {
+      align-self: flex-start;
+      padding: 0.6rem 1.25rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .apply-submit[disabled] {
+      opacity: 0.5;
+      cursor: wait;
+    }
+    .apply-status {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      margin: 0;
+    }
+    .apply-status.err { color: #991b1b; }
+    .apply-status.ok { color: #065f46; }
+    .apply-confirmation {
+      padding: 1rem 1.1rem;
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+      border-radius: 4px;
+    }
+    .flash {
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.95rem;
+    }
+    .flash.ok {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+    }
+    .flash p { margin: 0; }
+  </style>
+</BaseLayout>

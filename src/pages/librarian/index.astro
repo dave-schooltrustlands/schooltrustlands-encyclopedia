@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LibrarianTabs from '../../components/LibrarianTabs.astro';
+import { requireLibrarian, formatPatronNumber } from '../../lib/librarian';
+
+export const prerender = false;
+
+const guard = await requireLibrarian(Astro);
+if (!guard.ok) return guard.response;
+const { supabase, role } = guard.context;
+
+// Pending tickets: feedback rows in status 'new' or 'in_review',
+// most-recent first.
+const { data: ticketsRaw } = await supabase
+  .from('feedback')
+  .select('id, ticket_number, page_url, subject, body, status, submitted_at, user_id')
+  .in('status', ['new', 'in_review'])
+  .order('submitted_at', { ascending: false });
+
+const tickets = (ticketsRaw ?? []) as Array<{
+  id: string;
+  ticket_number: string;
+  page_url: string;
+  subject: string | null;
+  body: string;
+  status: string;
+  submitted_at: string;
+  user_id: string;
+}>;
+
+// Patron join: pull display_name + patron_number for each unique user_id.
+const userIds = Array.from(new Set(tickets.map((t) => t.user_id)));
+let profileMap = new Map<string, { display_name: string | null; patron_number: number | null }>();
+if (userIds.length > 0) {
+  const { data: profileRows } = await supabase
+    .from('profiles')
+    .select('id, display_name, patron_number')
+    .in('id', userIds);
+  for (const p of profileRows ?? []) {
+    profileMap.set(p.id, {
+      display_name: p.display_name ?? null,
+      patron_number: p.patron_number ?? null,
+    });
+  }
+}
+
+const MONTHS_SHORT = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+function fmtDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  return `${d.getUTCDate().toString().padStart(2, '0')} ${MONTHS_SHORT[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+function summarize(t: { subject: string | null; body: string }): string {
+  if (t.subject && t.subject.trim().length > 0) return t.subject.trim();
+  const b = (t.body ?? '').trim();
+  if (b.length <= 60) return b;
+  return b.slice(0, 60).trimEnd() + '…';
+}
+
+const STATUS_LABEL: Record<string, string> = {
+  new: 'New',
+  in_review: 'In review',
+};
+---
+
+<BaseLayout
+  title="Librarian dashboard · America's School Trust Library"
+  sourceId="librarian-dashboard"
+>
+  <article class="librarian-dashboard prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Librarian dashboard</h1>
+    <p class="role-line">
+      Signed in as <strong>{role.replace(/_/g, ' ')}</strong>.
+    </p>
+
+    <LibrarianTabs current="tickets" />
+
+    <h2>Pending tickets</h2>
+    {tickets.length > 0 ? (
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>Ticket</th>
+            <th>Submitted</th>
+            <th>Patron</th>
+            <th>Status</th>
+            <th>Subject</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tickets.map((t) => {
+            const p = profileMap.get(t.user_id);
+            const patronLabel = p
+              ? `${(p.display_name ?? '').trim() || '—'} · № ${formatPatronNumber(p.patron_number)}`
+              : '—';
+            return (
+              <tr>
+                <td><a href={`/librarian/tickets/${t.id}/`} class="ticket-link">{t.ticket_number}</a></td>
+                <td>{fmtDate(t.submitted_at)}</td>
+                <td>{patronLabel}</td>
+                <td>
+                  <span class:list={['status-pill', `status-pill--${t.status}`]}>
+                    {STATUS_LABEL[t.status] ?? t.status}
+                  </span>
+                </td>
+                <td class="subject-cell">{summarize(t)}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    ) : (
+      <p class="empty-state">No pending tickets. The mailbox is clean.</p>
+    )}
+  </article>
+
+  <style>
+    .role-line {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #64748b;
+      margin: -0.25rem 0 0.5rem;
+      text-transform: capitalize;
+    }
+    .dashboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+    }
+    .dashboard-table th,
+    .dashboard-table td {
+      text-align: left;
+      padding: 0.55rem 0.7rem;
+      border-bottom: 1px solid var(--rule-border, #e5e7eb);
+      vertical-align: top;
+    }
+    .dashboard-table th {
+      background: var(--linen-card, #fafaf7);
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .ticket-link {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .subject-cell {
+      max-width: 24rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .status-pill--new {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+    .status-pill--in_review {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .empty-state {
+      padding: 1.4rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      color: #475569;
+      text-align: center;
+    }
+  </style>
+</BaseLayout>

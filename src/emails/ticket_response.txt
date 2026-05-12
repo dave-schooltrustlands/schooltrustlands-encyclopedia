@@ -1,0 +1,14 @@
+Subject: Re: {{ticket_number}} — A response from the Library
+
+Dear {{patron_name}},
+
+A librarian has responded to your feedback on {{page_url}}:
+
+{{response_body}}
+
+— {{librarian_name}}, {{librarian_role}}
+
+You can view this ticket and reply at:
+https://schooltrusts.net/my-library/
+
+Thank you for helping the Library improve.
