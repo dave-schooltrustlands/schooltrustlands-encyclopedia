@@ -1,0 +1,46 @@
+---
+export const prerender = true;
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const entries = await getCollection('how-the-library-works');
+
+const indexEntry = entries.find((e) => e.data.slug === 'index');
+const roleEntries = entries
+  .filter((e) => e.data.slug !== 'index')
+  .sort((a, b) => a.data.order - b.data.order);
+
+const { Content } = indexEntry
+  ? await indexEntry.render()
+  : { Content: null };
+---
+<BaseLayout
+  title="How the Library works · America's School Trust Library"
+  description="The procedures manual: what the Library is, what it has, and how to take part at any level — visitor, reader, contributor, librarian, head librarian, moderator, state expert, board member, citizen historian."
+  sourceId="how-the-library-works-index"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">Procedures manual</p>
+    <h1>How the Library works</h1>
+
+    {Content && <Content />}
+
+    {roleEntries.length > 0 && (
+      <>
+        <hr class="archival-divider" />
+        <h2>The ten role pages</h2>
+        <ol>
+          {roleEntries.map((entry) => (
+            <li>
+              <a href={`/how-the-library-works/${entry.slug}/`}>
+                {entry.data.title}
+              </a>
+              {entry.data.summary && <> — {entry.data.summary}</>}
+            </li>
+          ))}
+        </ol>
+      </>
+    )}
+  </article>
+</BaseLayout>

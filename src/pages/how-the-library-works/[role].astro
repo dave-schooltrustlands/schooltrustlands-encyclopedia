@@ -1,0 +1,42 @@
+---
+export const prerender = true;
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('how-the-library-works');
+  return entries
+    .filter((entry) => entry.slug !== 'index')
+    .map((entry) => ({
+      params: { role: entry.slug },
+      props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<BaseLayout
+  title={`${entry.data.title} · How the Library works`}
+  description={entry.data.summary}
+  sourceId={`how-the-library-works-${entry.slug}`}
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">
+      <a href="/how-the-library-works/">Procedures manual</a>
+    </p>
+    <h1>{entry.data.title}</h1>
+    {entry.data.summary && (
+      <p class="lead text-lg text-slate-700"><em>{entry.data.summary}</em></p>
+    )}
+
+    <Content />
+
+    <hr class="my-10" />
+
+    <p class="text-sm text-slate-600">
+      <a href="/how-the-library-works/">← Back to How the Library works</a>
+    </p>
+  </article>
+</BaseLayout>

@@ -68,6 +68,7 @@ const STATUS_LABEL: Record<string, string> = {
 
 // Pull patron-card fields. Wide select so older deployments without the
 // v2 columns still resolve (Supabase returns just the columns that exist).
+// v33: include is_public_profile and bio for the profile-editor section.
 let profile:
   | {
       display_name?: string | null;
@@ -76,6 +77,8 @@ let profile:
       standing?: string | null;
       pages_read?: number | null;
       created_at?: string | null;
+      bio?: string | null;
+      is_public_profile?: boolean | null;
     }
   | null = null;
 
@@ -189,6 +192,224 @@ function summarizeTicket(t: { subject: string | null; body: string }): string {
 // librarian role. RLS "Own role read" gives the patron access to their own
 // row, so this query returns truthy only when the patron is a librarian.
 const isAlreadyLibrarian = await userHasLibrarianRole(supabase, user.id);
+
+// ----------------------------------------------------------------------
+// v33 — Inbox + Activity timeline + Profile editor
+// ----------------------------------------------------------------------
+
+// Inbox: 50 most recent notifications, unread first.
+const { data: notificationsRaw } = await supabase
+  .from('notifications')
+  .select('id, kind, title, body, link_url, read_at, created_at')
+  .eq('user_id', user.id)
+  .order('read_at', { ascending: true, nullsFirst: true })
+  .order('created_at', { ascending: false })
+  .limit(50);
+
+type NotificationRow = {
+  id: string;
+  kind: string;
+  title: string;
+  body: string | null;
+  link_url: string | null;
+  read_at: string | null;
+  created_at: string;
+};
+const notifications = (notificationsRaw ?? []) as NotificationRow[];
+
+const NOTIF_KIND_LABEL: Record<string, string> = {
+  response_received: 'Response',
+  review_published: 'Review published',
+  application_approved: 'Application approved',
+  application_declined: 'Application declined',
+  discussion_reply: 'Discussion reply',
+  badge_granted: 'Badge granted',
+  ticket_status_changed: 'Ticket update',
+};
+
+function truncate(s: string | null | undefined, n: number): string {
+  if (!s) return '';
+  const t = s.trim();
+  if (t.length <= n) return t;
+  return t.slice(0, n).trimEnd() + '…';
+}
+
+// Activity timeline: union of recent events from six sources. Run in
+// parallel; if any individual query errors, fall through with an empty
+// list for that source.
+type ActivityItem = {
+  kind: string;
+  label: string;
+  summary: string;
+  ts: string;
+  href: string | null;
+};
+
+const [
+  feedbackRes,
+  correctionsRes,
+  reviewsRes,
+  discussionsRes,
+  discussionPostsRes,
+  badgesRes,
+] = await Promise.all([
+  supabase
+    .from('feedback')
+    .select('id, ticket_number, subject, body, submitted_at')
+    .eq('user_id', user.id)
+    .order('submitted_at', { ascending: false })
+    .limit(50),
+  supabase
+    .from('corrections')
+    .select('id, ticket_number, claim, submitted_at')
+    .eq('user_id', user.id)
+    .order('submitted_at', { ascending: false })
+    .limit(50),
+  supabase
+    .from('reviews')
+    .select('id, work_id, body, is_published, submitted_at, published_at, works(slug, title)')
+    .eq('user_id', user.id)
+    .order('submitted_at', { ascending: false })
+    .limit(50),
+  supabase
+    .from('discussions')
+    .select('id, ticket_number, title, created_at')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
+    .limit(50),
+  supabase
+    .from('discussion_posts')
+    .select('id, discussion_id, body, posted_at')
+    .eq('user_id', user.id)
+    .order('posted_at', { ascending: false })
+    .limit(50),
+  supabase
+    .from('member_badges')
+    .select('id, badge, attribution, granted_at')
+    .eq('user_id', user.id)
+    .order('granted_at', { ascending: false })
+    .limit(50),
+]);
+
+const activity: ActivityItem[] = [];
+
+for (const f of (feedbackRes.data ?? []) as Array<{
+  id: string; ticket_number: string; subject: string | null; body: string; submitted_at: string;
+}>) {
+  activity.push({
+    kind: 'feedback',
+    label: 'Submitted feedback',
+    summary:
+      (f.subject && f.subject.trim().length > 0)
+        ? f.subject.trim()
+        : truncate(f.body, 80),
+    ts: f.submitted_at,
+    href: `/my-library/tickets/${f.id}/`,
+  });
+}
+
+for (const c of (correctionsRes.data ?? []) as Array<{
+  id: string; ticket_number: string; claim: string; submitted_at: string;
+}>) {
+  activity.push({
+    kind: 'correction',
+    label: 'Submitted correction',
+    summary: truncate(c.claim, 80),
+    ts: c.submitted_at,
+    href: `/my-library/tickets/${c.id}/`,
+  });
+}
+
+for (const r of (reviewsRes.data ?? []) as Array<{
+  id: string; work_id: string; body: string; is_published: boolean;
+  submitted_at: string; published_at: string | null;
+  works: { slug: string; title: string } | { slug: string; title: string }[] | null;
+}>) {
+  const work = Array.isArray(r.works) ? r.works[0] : r.works;
+  const workTitle = work?.title ?? 'a work';
+  const workSlug = work?.slug ?? '';
+  activity.push({
+    kind: 'review',
+    label: r.is_published ? 'Review published' : 'Wrote review',
+    summary: `Review of "${workTitle}" — ${truncate(r.body, 60)}`,
+    ts: r.is_published && r.published_at ? r.published_at : r.submitted_at,
+    href: workSlug ? `/reading/${workSlug}/reviews/` : null,
+  });
+}
+
+for (const d of (discussionsRes.data ?? []) as Array<{
+  id: string; ticket_number: string; title: string; created_at: string;
+}>) {
+  activity.push({
+    kind: 'discussion',
+    label: 'Started discussion',
+    summary: truncate(d.title, 80),
+    ts: d.created_at,
+    href: `/discussions/${d.ticket_number}/`,
+  });
+}
+
+// For discussion_posts we need ticket_number + title of the parent threads.
+const postRows = (discussionPostsRes.data ?? []) as Array<{
+  id: string; discussion_id: string; body: string; posted_at: string;
+}>;
+if (postRows.length > 0) {
+  const threadIds = Array.from(new Set(postRows.map((p) => p.discussion_id)));
+  const { data: threadLookupRaw } = await supabase
+    .from('discussions')
+    .select('id, ticket_number, title')
+    .in('id', threadIds);
+  const threadMap = new Map<string, { ticket_number: string; title: string }>();
+  for (const t of (threadLookupRaw ?? []) as Array<{
+    id: string; ticket_number: string; title: string;
+  }>) {
+    threadMap.set(t.id, { ticket_number: t.ticket_number, title: t.title });
+  }
+  for (const p of postRows) {
+    const parent = threadMap.get(p.discussion_id);
+    activity.push({
+      kind: 'discussion_post',
+      label: 'Replied in discussion',
+      summary: parent
+        ? `In "${truncate(parent.title, 50)}" — ${truncate(p.body, 60)}`
+        : truncate(p.body, 80),
+      ts: p.posted_at,
+      href: parent ? `/discussions/${parent.ticket_number}/` : null,
+    });
+  }
+}
+
+const BADGE_LABEL: Record<string, string> = {
+  state_expert: 'State Expert',
+  oastl_board: 'OASTL Board',
+  astl_board: 'ASTL Board',
+  friend_of_library: 'Friend of the Library',
+  editorial_contributor: 'Editorial Contributor',
+  citizen_historian: 'Citizen Historian',
+};
+for (const b of (badgesRes.data ?? []) as Array<{
+  id: string; badge: string; attribution: string | null; granted_at: string;
+}>) {
+  const name = BADGE_LABEL[b.badge] ?? b.badge;
+  activity.push({
+    kind: 'badge',
+    label: 'Received badge',
+    summary: b.attribution ? `${name} — ${b.attribution}` : name,
+    ts: b.granted_at,
+    href: profile?.is_public_profile && profile?.patron_number
+      ? `/p/${profile.patron_number}/`
+      : null,
+  });
+}
+
+activity.sort((a, b) => (a.ts < b.ts ? 1 : a.ts > b.ts ? -1 : 0));
+const activityRecent = activity.slice(0, 50);
+
+// Profile editor — pull the current values into safe defaults.
+const profileDisplayName = (profile?.display_name ?? '').trim();
+const profileBio = (profile?.bio ?? '').trim();
+const profileIsPublic = profile?.is_public_profile === true;
+const patronNumberForUrl = profile?.patron_number ?? 0;
 ---
 
 <BaseLayout
@@ -294,6 +515,122 @@ const isAlreadyLibrarian = await userHasLibrarianRole(supabase, user.id);
           You have not submitted any feedback or corrections yet. Press the
           <em> Submit feedback on this page </em>
           link in the footer of any page to start.
+        </p>
+      )}
+    </section>
+
+    <section class="inbox-section" aria-label="Inbox">
+      <div class="inbox-header-row">
+        <h2 class="inbox-header">Inbox</h2>
+        {notifications.length > 0 && (
+          <button type="button" class="mark-all-read" data-action="mark-all-read">
+            Mark all read
+          </button>
+        )}
+      </div>
+      {notifications.length > 0 ? (
+        <ul class="notification-list">
+          {notifications.map((n) => {
+            const label = NOTIF_KIND_LABEL[n.kind] ?? n.kind;
+            const unread = n.read_at === null;
+            const excerpt = truncate(n.body, 120);
+            const Tag = n.link_url ? 'a' : 'div';
+            return (
+              <li class:list={['notification-item', unread ? 'is-unread' : '']}>
+                <Tag
+                  class="notification-row"
+                  href={n.link_url ?? undefined}
+                  data-notification-id={unread ? n.id : undefined}
+                >
+                  <span class="notification-dot" aria-hidden="true"></span>
+                  <span class="notification-meta">
+                    <span class="notification-kind">{label}</span>
+                    <span class="notification-date">{formatTicketDate(n.created_at)}</span>
+                  </span>
+                  <span class="notification-title">{n.title}</span>
+                  {excerpt && <span class="notification-body">{excerpt}</span>}
+                </Tag>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p class="empty-state inbox-empty">
+          No notifications yet. Activity on your tickets, reviews, and applications will appear here.
+        </p>
+      )}
+    </section>
+
+    <section class="activity-section" aria-label="Activity timeline">
+      <h2 class="activity-section-header">Activity</h2>
+      {activityRecent.length > 0 ? (
+        <ul class="activity-timeline">
+          {activityRecent.map((a) => {
+            const Tag = a.href ? 'a' : 'div';
+            return (
+              <li class="activity-timeline-item">
+                <Tag class="activity-timeline-row" href={a.href ?? undefined}>
+                  <span class="activity-timeline-label">{a.label}</span>
+                  <span class="activity-timeline-date">{formatTicketDate(a.ts)}</span>
+                  <span class="activity-timeline-summary">{a.summary}</span>
+                </Tag>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p class="empty-state activity-empty">
+          Your activity will appear here as you submit feedback, write reviews, or join discussions.
+        </p>
+      )}
+    </section>
+
+    <section class="profile-section" aria-label="Your profile">
+      <h2 class="profile-header">Your profile</h2>
+      <form id="profile-form" class="profile-form">
+        <label class="profile-label" for="profile-display-name">
+          Display name
+        </label>
+        <input
+          id="profile-display-name"
+          name="display_name"
+          type="text"
+          class="profile-input"
+          maxlength="80"
+          value={profileDisplayName}
+          required
+        />
+
+        <label class="profile-label" for="profile-bio">
+          Bio
+          <span class="profile-hint">(optional, up to 500 characters)</span>
+        </label>
+        <textarea
+          id="profile-bio"
+          name="bio"
+          class="profile-textarea"
+          maxlength="500"
+          rows="4"
+        >{profileBio}</textarea>
+
+        <label class="profile-checkbox-row">
+          <input
+            id="profile-is-public"
+            name="is_public_profile"
+            type="checkbox"
+            checked={profileIsPublic}
+          />
+          <span>Show my profile publicly</span>
+        </label>
+
+        <div class="profile-actions">
+          <button type="submit" class="profile-save">Save profile</button>
+          <span id="profile-status" class="profile-status" aria-live="polite"></span>
+        </div>
+      </form>
+      {profileIsPublic && patronNumberForUrl > 0 && (
+        <p class="profile-public-link">
+          Your public profile: <a href={`/p/${patronNumberForUrl}/`}>/p/{patronNumberForUrl}/</a>
         </p>
       )}
     </section>
@@ -469,6 +806,85 @@ const isAlreadyLibrarian = await userHasLibrarianRole(supabase, user.id);
         }
       });
     });
+  </script>
+
+  <script is:inline>
+    // v33 — Inbox: mark-all-read button and per-row mark-read on click.
+    (function () {
+      var markAllBtn = document.querySelector('[data-action="mark-all-read"]');
+      if (markAllBtn) {
+        markAllBtn.addEventListener('click', function () {
+          markAllBtn.disabled = true;
+          fetch('/api/notification/mark-all-read', { method: 'POST' })
+            .then(function () { window.location.reload(); })
+            .catch(function () { markAllBtn.disabled = false; });
+        });
+      }
+
+      // Per-row: fire-and-forget mark-read, let the link navigate naturally.
+      var rows = document.querySelectorAll('[data-notification-id]');
+      rows.forEach(function (row) {
+        row.addEventListener('click', function () {
+          var id = row.getAttribute('data-notification-id');
+          if (!id) return;
+          try {
+            fetch('/api/notification/' + encodeURIComponent(id) + '/mark-read', {
+              method: 'POST',
+              keepalive: true,
+            });
+          } catch (_) { /* swallow */ }
+        });
+      });
+    })();
+  </script>
+
+  <script is:inline>
+    // v33 — Profile editor: POST JSON to /api/profile/update, show status.
+    (function () {
+      var form = document.getElementById('profile-form');
+      if (!form) return;
+      var status = document.getElementById('profile-status');
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        if (status) { status.textContent = 'Saving…'; status.className = 'profile-status'; }
+        var displayName = document.getElementById('profile-display-name');
+        var bio = document.getElementById('profile-bio');
+        var isPublic = document.getElementById('profile-is-public');
+        var payload = {
+          display_name: displayName ? displayName.value : '',
+          bio: bio ? bio.value : '',
+          is_public_profile: isPublic ? !!isPublic.checked : false,
+        };
+        fetch('/api/profile/update', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+          .then(function (res) {
+            return res.json().then(function (j) { return { ok: res.ok, body: j }; });
+          })
+          .then(function (r) {
+            if (r.ok) {
+              if (status) {
+                status.textContent = 'Saved.';
+                status.className = 'profile-status ok';
+              }
+              setTimeout(function () { window.location.reload(); }, 700);
+            } else {
+              if (status) {
+                status.textContent = (r.body && r.body.error) || 'Could not save profile.';
+                status.className = 'profile-status err';
+              }
+            }
+          })
+          .catch(function () {
+            if (status) {
+              status.textContent = 'Could not save profile.';
+              status.className = 'profile-status err';
+            }
+          });
+      });
+    })();
   </script>
 
   <style>
@@ -901,6 +1317,305 @@ const isAlreadyLibrarian = await userHasLibrarianRole(supabase, user.id);
       .ticket-subject {
         white-space: normal;
       }
+    }
+
+    /* v33 — Inbox section */
+    .inbox-section {
+      margin: 1.5rem 0 1rem;
+    }
+    .inbox-header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0 0 0.6rem;
+      flex-wrap: wrap;
+    }
+    .inbox-header {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .mark-all-read {
+      background: none;
+      border: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #A88A4E;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+    .mark-all-read:hover {
+      color: #7a6438;
+    }
+    .mark-all-read[disabled] {
+      opacity: 0.5;
+      cursor: progress;
+    }
+    .notification-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .notification-item {
+      border-bottom: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .notification-item:first-child {
+      border-top: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .notification-row {
+      display: grid;
+      grid-template-columns: 0.6rem 11rem 1fr;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "dot meta title"
+        "dot meta body";
+      gap: 0.25rem 0.85rem;
+      padding: 0.6rem 0.4rem;
+      align-items: start;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      text-decoration: none !important;
+      color: inherit;
+    }
+    .notification-row:hover {
+      background: var(--linen-card, #fafaf7);
+    }
+    .notification-dot {
+      grid-area: dot;
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: transparent;
+      margin-top: 0.45rem;
+    }
+    .notification-item.is-unread .notification-dot {
+      background: #A88A4E;
+    }
+    .notification-meta {
+      grid-area: meta;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+    .notification-kind {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #A88A4E;
+    }
+    .notification-date {
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+    .notification-title {
+      grid-area: title;
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      line-height: 1.3;
+    }
+    .notification-item.is-unread .notification-title {
+      font-weight: 700;
+    }
+    .notification-body {
+      grid-area: body;
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.4;
+    }
+    @media (max-width: 640px) {
+      .notification-row {
+        grid-template-columns: 0.6rem 1fr;
+        grid-template-areas:
+          "dot meta"
+          "dot title"
+          "dot body";
+      }
+    }
+
+    /* v33 — Activity timeline */
+    .activity-section {
+      margin: 1.5rem 0 1rem;
+    }
+    .activity-section-header {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 0.6rem;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .activity-timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .activity-timeline-item {
+      border-bottom: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .activity-timeline-item:first-child {
+      border-top: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .activity-timeline-row {
+      display: grid;
+      grid-template-columns: 10rem 6rem 1fr;
+      gap: 0.85rem;
+      align-items: center;
+      padding: 0.55rem 0.2rem;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      text-decoration: none !important;
+      color: inherit;
+    }
+    a.activity-timeline-row:hover {
+      background: var(--linen-card, #fafaf7);
+    }
+    .activity-timeline-label {
+      font-weight: 600;
+      color: #A88A4E;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .activity-timeline-date {
+      color: #64748b;
+      font-size: 0.82rem;
+    }
+    .activity-timeline-summary {
+      color: #1e293b;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .activity-timeline-row {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+      }
+      .activity-timeline-summary {
+        white-space: normal;
+      }
+    }
+
+    /* v33 — Profile editor */
+    .profile-section {
+      margin: 1.5rem 0 1rem;
+      padding: 1.25rem 1.25rem 1.5rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+    }
+    .profile-header {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 0.85rem;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .profile-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .profile-label {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #475569;
+      margin-top: 0.4rem;
+    }
+    .profile-hint {
+      margin-left: 0.4rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #94a3b8;
+      font-size: 0.78rem;
+    }
+    .profile-input,
+    .profile-textarea {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: #1e293b;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .profile-input:focus,
+    .profile-textarea:focus {
+      outline: none;
+      border-color: var(--deep-navy, #1e3a5f);
+    }
+    .profile-textarea {
+      min-height: 5rem;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .profile-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      color: #334155;
+      cursor: pointer;
+    }
+    .profile-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .profile-save {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--deep-navy, #1e3a5f);
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .profile-save:hover {
+      background: #16314f;
+    }
+    .profile-status {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: #64748b;
+    }
+    .profile-status.ok {
+      color: #065f46;
+    }
+    .profile-status.err {
+      color: #991b1b;
+    }
+    .profile-public-link {
+      margin: 0.85rem 0 0;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #475569;
+    }
+    .profile-public-link a {
+      color: var(--deep-navy, #1e3a5f);
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
   </style>
 </BaseLayout>

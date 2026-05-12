@@ -206,17 +206,36 @@ const signInHref = `/library-card/`;
             </p>
           )}
           <form class="review-form" data-work-id={work.id}>
-            <label class="form-label">
-              Rating
-              <select name="rating" required class="rating-select">
-                <option value="" disabled selected={!ownReview}>Choose a rating…</option>
-                {[5, 4, 3, 2, 1].map((n) => (
-                  <option value={n} selected={ownReview?.rating === n}>
-                    {'★'.repeat(n) + '☆'.repeat(5 - n)} ({n})
-                  </option>
+            <fieldset class="rating-field">
+              <legend class="form-label">Rating</legend>
+              <div
+                class="star-rating"
+                role="radiogroup"
+                aria-label="Rating, 1 to 5 stars"
+                data-rating={ownReview?.rating ?? 0}
+              >
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <button
+                    type="button"
+                    class="star-rating-btn"
+                    role="radio"
+                    aria-checked={ownReview?.rating === n ? 'true' : 'false'}
+                    aria-label={`${n} ${n === 1 ? 'star' : 'stars'}`}
+                    data-value={n}
+                  >
+                    <span class="star-rating-glyph" aria-hidden="true">★</span>
+                  </button>
                 ))}
-              </select>
-            </label>
+                <span class="star-rating-readout" aria-hidden="true">
+                  {ownReview?.rating ? `${ownReview.rating} / 5` : 'Choose a rating'}
+                </span>
+              </div>
+              <input
+                type="hidden"
+                name="rating"
+                value={ownReview?.rating ?? ''}
+              />
+            </fieldset>
             <label class="form-label">
               Your review
               <textarea
@@ -303,12 +322,91 @@ const signInHref = `/library-card/`;
       const submit = form.querySelector<HTMLButtonElement>('.submit-button');
       const progress = form.querySelector<HTMLElement>('[data-review-progress]');
       const fileInput = form.querySelector<HTMLInputElement>('#review-attachments');
+
+      // Wire up the star-rating buttons. Clicking a star sets the hidden
+      // input's value and the data-rating attribute on the container (CSS
+      // uses ~ selectors to fill the stars). Hovering previews the value
+      // without committing it. Keyboard radiogroup semantics handled via
+      // ArrowLeft / ArrowRight / Home / End.
+      const ratingGroup = form.querySelector<HTMLElement>('.star-rating');
+      const ratingInput = form.querySelector<HTMLInputElement>(
+        'input[type="hidden"][name="rating"]'
+      );
+      const ratingReadout = form.querySelector<HTMLElement>('.star-rating-readout');
+      const starButtons = Array.from(
+        form.querySelectorAll<HTMLButtonElement>('.star-rating-btn')
+      );
+
+      function setRating(value: number, commit: boolean) {
+        const v = Math.max(0, Math.min(5, Math.round(value)));
+        if (ratingGroup) ratingGroup.setAttribute('data-rating', String(v));
+        if (commit) {
+          if (ratingInput) ratingInput.value = v > 0 ? String(v) : '';
+          if (ratingReadout) {
+            ratingReadout.textContent = v > 0 ? `${v} / 5` : 'Choose a rating';
+          }
+          for (const btn of starButtons) {
+            const own = Number(btn.getAttribute('data-value') ?? '0');
+            btn.setAttribute('aria-checked', own === v ? 'true' : 'false');
+            btn.setAttribute('tabindex', own === Math.max(v, 1) ? '0' : '-1');
+          }
+        }
+      }
+
+      // Initial tabindex pass — focus lands on the currently-selected star
+      // (or the first star if no selection).
+      if (ratingGroup) {
+        const initial = Number(ratingGroup.getAttribute('data-rating') ?? '0');
+        setRating(initial, true);
+      }
+
+      for (const btn of starButtons) {
+        const own = Number(btn.getAttribute('data-value') ?? '0');
+        btn.addEventListener('click', () => setRating(own, true));
+        btn.addEventListener('mouseenter', () => {
+          if (ratingGroup) ratingGroup.setAttribute('data-rating', String(own));
+        });
+        btn.addEventListener('focus', () => {
+          if (ratingGroup) ratingGroup.setAttribute('data-rating', String(own));
+        });
+        btn.addEventListener('keydown', (e) => {
+          const current = Number(ratingInput?.value || '0');
+          if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            const next = Math.min(5, (current || 0) + 1);
+            setRating(next, true);
+            starButtons[next - 1]?.focus();
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            const prev = Math.max(1, (current || 1) - 1);
+            setRating(prev, true);
+            starButtons[prev - 1]?.focus();
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            setRating(1, true);
+            starButtons[0]?.focus();
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            setRating(5, true);
+            starButtons[4]?.focus();
+          } else if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            setRating(own, true);
+          }
+        });
+      }
+      if (ratingGroup) {
+        ratingGroup.addEventListener('mouseleave', () => {
+          const committed = Number(ratingInput?.value || '0');
+          ratingGroup.setAttribute('data-rating', String(committed));
+        });
+      }
+
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const workId = form.getAttribute('data-work-id') ?? '';
-        const ratingEl = form.querySelector<HTMLSelectElement>('select[name="rating"]');
         const bodyEl = form.querySelector<HTMLTextAreaElement>('textarea[name="body"]');
-        const rating = Number(ratingEl?.value ?? '');
+        const rating = Number(ratingInput?.value ?? '');
         const body = (bodyEl?.value ?? '').trim();
         if (!status || !submit) return;
         if (!rating || rating < 1 || rating > 5) {
@@ -455,7 +553,63 @@ const signInHref = `/library-card/`;
       font-weight: 600;
       color: var(--deep-navy, #1e3a5f);
     }
-    .rating-select,
+    .rating-field {
+      border: 0;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .star-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.15rem;
+      padding: 0.25rem 0;
+    }
+    .star-rating-btn {
+      background: transparent;
+      border: 0;
+      padding: 0.2rem 0.1rem;
+      margin: 0;
+      cursor: pointer;
+      color: #cbd5e1;
+      font-size: 1.8rem;
+      line-height: 1;
+      transition: color 80ms linear, transform 80ms linear;
+    }
+    .star-rating-btn:focus-visible {
+      outline: 2px solid var(--deep-navy, #1e3a5f);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    .star-rating-btn:hover { transform: scale(1.08); }
+    .star-rating-glyph { display: inline-block; }
+    /* Fill the buttons up to and including the current data-rating. */
+    .star-rating[data-rating="1"] .star-rating-btn[data-value="1"],
+    .star-rating[data-rating="2"] .star-rating-btn[data-value="1"],
+    .star-rating[data-rating="2"] .star-rating-btn[data-value="2"],
+    .star-rating[data-rating="3"] .star-rating-btn[data-value="1"],
+    .star-rating[data-rating="3"] .star-rating-btn[data-value="2"],
+    .star-rating[data-rating="3"] .star-rating-btn[data-value="3"],
+    .star-rating[data-rating="4"] .star-rating-btn[data-value="1"],
+    .star-rating[data-rating="4"] .star-rating-btn[data-value="2"],
+    .star-rating[data-rating="4"] .star-rating-btn[data-value="3"],
+    .star-rating[data-rating="4"] .star-rating-btn[data-value="4"],
+    .star-rating[data-rating="5"] .star-rating-btn[data-value="1"],
+    .star-rating[data-rating="5"] .star-rating-btn[data-value="2"],
+    .star-rating[data-rating="5"] .star-rating-btn[data-value="3"],
+    .star-rating[data-rating="5"] .star-rating-btn[data-value="4"],
+    .star-rating[data-rating="5"] .star-rating-btn[data-value="5"] {
+      color: #b45309;
+    }
+    .star-rating-readout {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-left: 0.6rem;
+      font-weight: 500;
+    }
     .review-form textarea {
       font-family: var(--font-sans);
       font-size: 0.95rem;

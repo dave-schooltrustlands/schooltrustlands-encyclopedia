@@ -10,6 +10,7 @@ import type { APIRoute } from 'astro';
 import { getServerSupabase } from '../../lib/supabase';
 import { sendTemplateEmail } from '../../lib/email';
 import { getSiteOrigin } from '../../lib/supabase';
+import { notify } from '../../lib/notify';
 
 export const prerender = false;
 
@@ -129,27 +130,49 @@ export const POST: APIRoute = async (Astro) => {
       const threadUrl = `${origin}/discussions/${thread.ticket_number}/`;
       const muteUrl = `${origin}/discussions/${thread.ticket_number}/#mute`;
 
-      const sends = await Promise.allSettled(
-        recipientIds.map(async (uid) => {
-          const { data: emailLookup } = await supabase.rpc('get_user_email', {
-            p_user_id: uid,
-          });
-          const email = typeof emailLookup === 'string' ? emailLookup : '';
-          if (!email) return { sent: false, reason: 'no email' };
-          return sendTemplateEmail({
-            template: 'discussion_reply',
-            to: email,
-            variables: {
-              patron_name: recipientNameMap.get(uid) ?? 'Library Patron',
-              thread_title: thread.title,
-              thread_url: threadUrl,
-              author_name: authorName,
-              reply_body: body,
-              mute_url: muteUrl,
-            },
-          });
-        })
-      );
+      // v33 — fan-out includes both the transactional email send AND a
+      // notifications-row insert per recipient. Both are best-effort:
+      // the Promise.allSettled wrapper guarantees rejections don't
+      // escape and 500 a successful reply.
+      const notifyTitle = `New reply in "${thread.title}"`;
+      const notifyBody = body.slice(0, 200);
+      const notifyLink = `/discussions/${thread.ticket_number}/`;
+
+      const tasks: Array<Promise<unknown>> = [];
+      for (const uid of recipientIds) {
+        tasks.push(
+          (async () => {
+            const { data: emailLookup } = await supabase.rpc('get_user_email', {
+              p_user_id: uid,
+            });
+            const email = typeof emailLookup === 'string' ? emailLookup : '';
+            if (!email) return { sent: false, reason: 'no email' };
+            return sendTemplateEmail({
+              template: 'discussion_reply',
+              to: email,
+              variables: {
+                patron_name: recipientNameMap.get(uid) ?? 'Library Patron',
+                thread_title: thread.title,
+                thread_url: threadUrl,
+                author_name: authorName,
+                reply_body: body,
+                mute_url: muteUrl,
+              },
+            });
+          })()
+        );
+        tasks.push(
+          notify(supabase, {
+            user_id: uid,
+            kind: 'discussion_reply',
+            title: notifyTitle,
+            body: notifyBody,
+            link_url: notifyLink,
+          })
+        );
+      }
+
+      const sends = await Promise.allSettled(tasks);
 
       // We deliberately discard the per-send results — notifications are
       // strictly best-effort. The settled-array exists only so promise

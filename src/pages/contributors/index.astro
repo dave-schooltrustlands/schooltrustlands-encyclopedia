@@ -1,0 +1,361 @@
+---
+// Site Update v33 — Contributors page.
+//
+// Public route. Lists every patron with at least one granted badge,
+// grouped by badge type. Public read of `member_badges` is allowed by
+// the "Badges public read" RLS policy; profile lookups go through the
+// "Public profiles read" policy (gated on is_public_profile).
+//
+// Privacy note: profiles.is_public_profile defaults to false, so a
+// patron who has been granted a badge but has not opted their profile
+// public will not be returned by the profile query. For those rows we
+// render anonymously — "A Library Patron" with no card number and no
+// link. We never telegraph a private patron's name or number, even
+// though the badge attribution itself is publicly readable.
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+import { formatPatronNumber } from '../../lib/librarian';
+
+export const prerender = false;
+
+type BadgeSlug =
+  | 'state_expert'
+  | 'oastl_board'
+  | 'astl_board'
+  | 'friend_of_library'
+  | 'editorial_contributor'
+  | 'citizen_historian';
+
+// Group order + display labels — also drives the descriptive header text.
+const BADGE_GROUPS: ReadonlyArray<{
+  slug: BadgeSlug;
+  label: string;
+  blurb: string;
+  apply?: string;
+}> = [
+  {
+    slug: 'state_expert',
+    label: 'State experts',
+    blurb:
+      'Patrons with deep, demonstrable knowledge of one state’s school-trust history or current administration.',
+    apply: '/about/contributing/',
+  },
+  {
+    slug: 'oastl_board',
+    label: 'OASTL board members',
+    blurb:
+      'Current and former board members of the Oklahoma Association of School Trust Lands.',
+  },
+  {
+    slug: 'astl_board',
+    label: 'ASTL board members',
+    blurb:
+      'Current and former board members of the Association of School Trust Lands.',
+  },
+  {
+    slug: 'friend_of_library',
+    label: 'Friends of the Library',
+    blurb:
+      'Patrons who have materially supported the Library’s standing and growth.',
+    apply: '/about/contributing/',
+  },
+  {
+    slug: 'editorial_contributor',
+    label: 'Editorial contributors',
+    blurb:
+      'Patrons whose published reviews, corrections, and essays have shaped the record.',
+    apply: '/about/contributing/',
+  },
+  {
+    slug: 'citizen_historian',
+    label: 'Citizen historians',
+    blurb:
+      'Patrons who have contributed primary sources, archival finds, or oral history.',
+    apply: '/about/contributing/',
+  },
+];
+
+type BadgeRow = {
+  id: string;
+  badge: string;
+  user_id: string;
+  attribution: string | null;
+  granted_at: string | null;
+};
+
+type ProfileRow = {
+  id: string;
+  display_name: string | null;
+  patron_number: number | null;
+  is_public_profile: boolean | null;
+};
+
+const supabase = getServerSupabase(Astro);
+
+const { data: badgeRowsRaw } = await supabase
+  .from('member_badges')
+  .select('id, badge, user_id, attribution, granted_at')
+  .order('granted_at', { ascending: true });
+
+const badgeRows = (badgeRowsRaw ?? []) as BadgeRow[];
+
+// Distinct user_ids → batch profile lookup.
+const distinctUserIds = Array.from(
+  new Set(badgeRows.map((b) => b.user_id).filter(Boolean))
+);
+
+const profileMap = new Map<string, ProfileRow>();
+if (distinctUserIds.length > 0) {
+  const { data: profileRows } = await supabase
+    .from('profiles')
+    .select('id, display_name, patron_number, is_public_profile')
+    .in('id', distinctUserIds);
+  for (const p of (profileRows ?? []) as ProfileRow[]) {
+    profileMap.set(p.id, p);
+  }
+}
+
+// Build per-group lists. A patron may appear in more than one group
+// (one row per badge); within a group the same user_id appears at most
+// once because (user_id, badge) is the unique key (one badge per kind
+// per patron).
+type ContributorEntry = {
+  userId: string;
+  displayName: string;
+  cardNumber: string | null;
+  href: string | null;
+  attribution: string | null;
+  isAnonymous: boolean;
+};
+
+const groups: Array<{
+  slug: BadgeSlug;
+  label: string;
+  blurb: string;
+  apply?: string;
+  entries: ContributorEntry[];
+}> = BADGE_GROUPS.map((g) => ({ ...g, entries: [] }));
+
+const groupIndex = new Map<string, number>();
+groups.forEach((g, i) => groupIndex.set(g.slug, i));
+
+for (const row of badgeRows) {
+  const i = groupIndex.get(row.badge);
+  if (i === undefined) continue; // unknown badge slug — skip silently
+
+  const profile = profileMap.get(row.user_id);
+  const isPublic = profile?.is_public_profile === true;
+  const rawName = (profile?.display_name ?? '').trim();
+  const displayName = isPublic && rawName ? rawName : 'A Library Patron';
+  const isAnonymous = !isPublic;
+
+  const cardNumber =
+    isPublic && typeof profile?.patron_number === 'number'
+      ? formatPatronNumber(profile.patron_number)
+      : null;
+
+  const href =
+    isPublic && profile?.patron_number ? `/p/${profile.patron_number}/` : null;
+
+  groups[i].entries.push({
+    userId: row.user_id,
+    displayName,
+    cardNumber,
+    href,
+    attribution: row.attribution,
+    isAnonymous,
+  });
+}
+
+// Sort each group's entries alphabetically (case-insensitive) by display
+// name. Anonymous "A Library Patron" rows are stable and cluster
+// naturally with the A's; that's intentional — they're indistinguishable
+// from each other by design.
+for (const g of groups) {
+  g.entries.sort((a, b) => {
+    const an = a.displayName.toLowerCase();
+    const bn = b.displayName.toLowerCase();
+    if (an < bn) return -1;
+    if (an > bn) return 1;
+    return 0;
+  });
+}
+
+const totalEntries = groups.reduce((n, g) => n + g.entries.length, 0);
+const isEmpty = totalEntries === 0;
+---
+
+<BaseLayout
+  title="Contributors · America's School Trust Library"
+  description="The patrons whose recognized contributions support the Library."
+>
+  <article class="contributors prose prose-slate max-w-none">
+    <p class="kicker">Recognition</p>
+    <h1>Contributors</h1>
+
+    <p class="intro">
+      The Library recognizes contribution with a small set of badges granted by
+      the librarian-side. State experts hold deep knowledge of one state’s
+      record; OASTL and ASTL board members are seated on the relevant
+      association boards; Friends of the Library have materially supported the
+      institution; editorial contributors have shaped the record through
+      published reviews and corrections; citizen historians have brought
+      primary sources to the table. If you think you belong on this page,
+      see <a href="/about/contributing/">how to contribute</a>.
+    </p>
+
+    {isEmpty ? (
+      <p class="empty-state">
+        No contributors recognized yet — but the institution is just getting
+        started.
+      </p>
+    ) : (
+      <div class="groups">
+        {groups.map((g) =>
+          g.entries.length === 0 ? null : (
+            <section class="group" aria-labelledby={`group-${g.slug}`}>
+              <h2 id={`group-${g.slug}`} class="group-header">{g.label}</h2>
+              <p class="group-blurb">{g.blurb}</p>
+              <ul class="entry-list">
+                {g.entries.map((e) => (
+                  <li class="entry">
+                    {e.href ? (
+                      <a class="entry-name" href={e.href}>{e.displayName}</a>
+                    ) : (
+                      <span class:list={['entry-name', e.isAnonymous && 'is-anonymous']}>
+                        {e.displayName}
+                      </span>
+                    )}
+                    {e.attribution && (
+                      <em class="entry-attribution"> · {e.attribution}</em>
+                    )}
+                    {e.cardNumber && (
+                      <span class="entry-number">№ {e.cardNumber}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              {g.apply && (
+                <p class="group-apply">
+                  <a href={g.apply}>How to be considered →</a>
+                </p>
+              )}
+            </section>
+          )
+        )}
+      </div>
+    )}
+  </article>
+
+  <style>
+    .contributors .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A88A4E;
+      margin: 0 0 0.4rem;
+    }
+    .contributors h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 0.9rem;
+    }
+    .contributors .intro {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      line-height: 1.55;
+      color: #1e293b;
+      margin: 0 0 1.5rem;
+    }
+    .contributors .empty-state {
+      padding: 1.6rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      color: #475569;
+      text-align: center;
+      font-family: var(--font-serif);
+    }
+    .groups {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .group {
+      padding: 1.1rem 1.2rem 1.25rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+    }
+    .group-header {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 0.35rem;
+    }
+    .group-blurb {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: #334155;
+      margin: 0 0 0.8rem;
+      line-height: 1.5;
+    }
+    .entry-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .entry {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+    .entry-name {
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    a.entry-name {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .entry-name.is-anonymous {
+      color: #64748b;
+      font-style: italic;
+      font-weight: 500;
+    }
+    .entry-attribution {
+      color: #475569;
+      font-style: italic;
+    }
+    .entry-number {
+      margin-left: 0.5rem;
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.78rem;
+      color: #94a3b8;
+      letter-spacing: 0.05em;
+    }
+    .group-apply {
+      margin: 0.85rem 0 0;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+    }
+    .group-apply a {
+      color: #A88A4E;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .group-apply a:hover {
+      color: #7a6438;
+    }
+  </style>
+</BaseLayout>

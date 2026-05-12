@@ -1,0 +1,188 @@
+---
+// Site Update v33 — Public patron profile.
+//
+// URL: /p/{patron_number}/ where {patron_number} is the raw integer (no
+// zero-padding). The "Public profiles read" RLS policy returns the row
+// only when is_public_profile = true, so a private profile and a missing
+// profile are indistinguishable from the client — both 404. We do the
+// same explicit check here for defensive clarity.
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MemberBadgeList from '../../components/MemberBadgeList.astro';
+import { getServerSupabase } from '../../lib/supabase';
+import { formatPatronNumber, formatCardDate } from '../../lib/librarian';
+
+export const prerender = false;
+
+function notFound(): Response {
+  return new Response('Not Found', {
+    status: 404,
+    headers: { 'content-type': 'text/plain; charset=utf-8' },
+  });
+}
+
+const rawParam = Astro.params.patron_number ?? '';
+
+// Strict integer validation — reject anything that isn't a positive
+// integer. parseInt('1abc') returns 1 which would otherwise round-trip
+// the wrong patron; require an exact digit string.
+if (!/^[1-9][0-9]*$/.test(rawParam)) {
+  return notFound();
+}
+const patronNumber = parseInt(rawParam, 10);
+if (!Number.isFinite(patronNumber) || patronNumber <= 0) {
+  return notFound();
+}
+
+const supabase = getServerSupabase(Astro);
+
+const { data: profile } = await supabase
+  .from('profiles')
+  .select('id, display_name, patron_number, is_public_profile, bio, created_at')
+  .eq('patron_number', patronNumber)
+  .maybeSingle();
+
+// RLS already filters to is_public_profile = true rows, but keep an
+// explicit guard so the contract is obvious from the page source.
+if (!profile || profile.is_public_profile !== true) {
+  return notFound();
+}
+
+const displayName = (profile.display_name ?? '').trim() || 'Library Patron';
+const patronNumberDisplay = formatPatronNumber(profile.patron_number ?? null);
+const memberSince = formatCardDate(profile.created_at);
+const bio = (profile.bio ?? '').trim();
+---
+
+<BaseLayout
+  title={`${displayName} · America's School Trust Library`}
+  description={`Public profile of ${displayName} at America's School Trust Library.`}
+>
+  <article class="patron-profile prose prose-slate max-w-none">
+    <p class="kicker">Patron profile</p>
+    <h1>{displayName}</h1>
+
+    <section class="meta-row" aria-label="Card details">
+      <div class="meta-panel">
+        <p class="meta-label">Card</p>
+        <p class="meta-value meta-number">№ {patronNumberDisplay}</p>
+      </div>
+      <div class="meta-panel">
+        <p class="meta-label">Member since</p>
+        <p class="meta-value">{memberSince}</p>
+      </div>
+    </section>
+
+    {bio && (
+      <section class="bio-section" aria-label="Bio">
+        <p class="bio">{bio}</p>
+      </section>
+    )}
+
+    <section class="badges-section" aria-label="Granted badges">
+      <h2 class="section-header">Badges</h2>
+      <div class="badges-wrap">
+        <MemberBadgeList userId={profile.id} />
+      </div>
+    </section>
+
+    <section class="reviews-section" aria-label="Published reviews">
+      <h2 class="section-header">Reviews</h2>
+      <p class="stub">Published reviews coming soon.</p>
+    </section>
+  </article>
+
+  <style>
+    .patron-profile .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A88A4E;
+      margin: 0 0 0.4rem;
+    }
+    .patron-profile h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+      font-weight: 700;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 1.1rem;
+    }
+    .meta-row {
+      display: flex;
+      gap: 1rem;
+      margin: 0 0 1.4rem;
+      flex-wrap: wrap;
+    }
+    .meta-panel {
+      flex: 1 1 0;
+      min-width: 9rem;
+      padding: 0.85rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      text-align: center;
+    }
+    .meta-label {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+    .meta-value {
+      margin: 0.3rem 0 0;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .meta-value.meta-number {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      letter-spacing: 0.05em;
+      font-size: 1.15rem;
+    }
+    .bio-section {
+      margin: 0 0 1.4rem;
+    }
+    .bio {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1.02rem;
+      line-height: 1.6;
+      color: #1e293b;
+      white-space: pre-wrap;
+    }
+    .section-header {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 1.2rem 0 0.6rem;
+    }
+    .badges-section .badges-wrap {
+      padding: 0.85rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+    }
+    .reviews-section .stub {
+      margin: 0;
+      padding: 1.1rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      font-family: var(--font-serif);
+      color: #475569;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .meta-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</BaseLayout>

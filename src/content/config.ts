@@ -168,6 +168,22 @@ const scholarship = defineCollection({
   }),
 });
 
+// How the Library works — the procedures manual. Eleven entries
+// (index + ten role pages) that describe what the Library is and
+// how a patron at any level takes part. Written in plain prose for
+// a general reader, not for developers.
+const howTheLibraryWorks = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    // `slug` is auto-derived from the filename by Astro and exposed as
+    // `entry.slug`; it is NOT a frontmatter field. Use entry.slug, not
+    // entry.data.slug, in the route templates.
+    order: z.number().int(),
+    summary: z.string().optional(),
+  }),
+});
+
 export const collections = {
   states,
   essays,
@@ -175,4 +191,5 @@ export const collections = {
   maps,
   founders_library: foundersLibrary,
   scholarship,
+  'how-the-library-works': howTheLibraryWorks,
 };

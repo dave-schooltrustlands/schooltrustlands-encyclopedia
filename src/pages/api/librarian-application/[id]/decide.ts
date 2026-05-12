@@ -7,6 +7,7 @@
 import type { APIRoute } from 'astro';
 import { getServerSupabase } from '../../../../lib/supabase';
 import { sendTemplateEmail } from '../../../../lib/email';
+import { notify } from '../../../../lib/notify';
 
 export const prerender = false;
 
@@ -128,6 +129,26 @@ export const POST: APIRoute = async (Astro) => {
       reviewer_role: reviewerRole,
     },
   });
+
+  // v33 — best-effort inbox notification. Wrapped defensively so any
+  // failure (RLS, transport, import-resolution) does not 500 the decide.
+  try {
+    const notifyKind =
+      decision === 'approve' ? 'application_approved' : 'application_declined';
+    const notifyTitle =
+      decision === 'approve'
+        ? 'Your librarian application was approved.'
+        : 'Your librarian application was reviewed.';
+    await notify(supabase, {
+      user_id: app.user_id,
+      kind: notifyKind,
+      title: notifyTitle,
+      body: note || undefined,
+      link_url: '/my-library/',
+    });
+  } catch {
+    // Notification path failed; the decision itself is recorded.
+  }
 
   return json(200, {
     status: newStatus,

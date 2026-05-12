@@ -53,6 +53,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Monday May 11, 2026 — Site update v33: Documentation + Polish — procedures manual, public contributors, notification inbox, profile editor.</strong>
+            v32 opened the engagement breadth; v33 closes it. A new <a href="/how-the-library-works/">/how-the-library-works/</a>
+            procedures manual ships with eleven plain-prose pages (index + ten role pages — visitors, readers,
+            contributors, librarians, head librarian, discussion moderators, state experts, board members,
+            citizen historians) that explain what the Library is, what each role does, and how to take part.
+            A shorter visitor-facing one-pager at <a href="/about/contributing/">/about/contributing/</a> covers
+            the same ground for a reader who has not yet signed up. The patron's <a href="/my-library/">My Library</a>
+            page picks up three new sections: an <em>Inbox</em> that mirrors every transactional email
+            (response received, review published, application approved or declined, discussion reply, badge
+            granted), an <em>Activity</em> timeline (the patron's own submissions, reviews, threads, badges),
+            and a <em>Your profile</em> editor with display name, bio, and a <em>Show my profile publicly</em>
+            toggle. A new public <a href="/contributors/">/contributors/</a> page lists every patron with a
+            granted badge, grouped by badge type; patrons who have toggled their profile public also surface
+            a per-patron page at <code>/p/&lt;patron-number&gt;/</code>. Three security-definer database triggers
+            keep the Inbox in sync with the email path automatically — a librarian response writes an Inbox
+            row, a review publication writes one, a badge grant writes one. As an EPSILON polish item, the v32
+            review form's rating control is now a proper clickable 1–5 star UI with keyboard radiogroup
+            semantics, replacing the dropdown that wasn't reading as a star-rating selector. The Library is
+            now a working two-way institution with the documentation, the recognition surface, and the
+            patron-side activity record to back the input channels.
+          </li>
+          <li>
             <strong>Monday May 11, 2026 — Site update v32: Engagement Breadth — corrections, discussions, reviews, attachments, badges, moderation.</strong>
             v31 opened the response side; v32 opens the full breadth of the engagement layer in one pass.
             A new <em>Submit a correction</em> link sits alongside <em>Submit feedback</em> in every page
