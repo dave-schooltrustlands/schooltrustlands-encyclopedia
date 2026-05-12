@@ -9,7 +9,7 @@ This page explains what America's School Trust Library is, what it has, and how 
 
 ## What the Library is
 
-The Library is a working research institution. It supports three books on the school trust lands the United States set aside for public education: *Schools of the Republic* by Margaret Bird and Dave Sullivan, *The Eighth Anchor* by Dave Sullivan and Margaret Bird, and *Who Steals from Children, Volume I* by Dave Sullivan. The Library publishes the source material those books draw on, the state-by-state record they rest on, and the ongoing public discussion of what the record means.
+The Library is a working research institution. It supports three books on the school trust lands the United States set aside for public education: *Schools of the Republic* by Margaret Bird and Dave Sullivan, *The Eighth Anchor* by Dave Sullivan, and *Who Steals from Children, Volume I* by Dave Sullivan. The Library publishes the source material those books draw on, the state-by-state record they rest on, and the ongoing public discussion of what the record means.
 
 ## What the Library has
 

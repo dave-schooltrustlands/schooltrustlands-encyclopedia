@@ -2,33 +2,17 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // Site Update v9, Super-agent GAMMA, C.4 — /the-watchful-crew/ stewardship
-// ledger v1.
-//
-// The public, named record of who has held a Library office and what they
-// have left behind. The Library uses Margaret’s anchor phrase — “a forever
-// gift to forever schools for a forever democracy” — as the page tagline,
-// because the ledger is the institution’s answer to the question Margaret
-// keeps asking: who is going to keep watch?
+// ledger v1. v36 — narrowed scope: Dave Sullivan is the sole named founder
+// of the Library on the public record. Margaret Bird's published work is a
+// body of scholarship the Library draws on; she is described as a scholar
+// here, not as a Library officer.
 //
 // Architecture: each ledger entry is a record of a named office, a tenure,
-// and the artifacts produced under that office. Today’s seed has Margaret
-// and Dave; the same shape will hold State Correspondents, State
-// Co-Librarians, the Library Board, and per-page Contributors as the
-// roster grows.
+// and the artifacts produced under that office. The same shape will hold
+// State Correspondents, State Co-Librarians, the Library Board, and per-page
+// Contributors as the roster grows.
 
 const founders = [
-  {
-    name: 'Margaret Bird',
-    office:
-      'Co-author; Eighth Anchor reframer; national school-trust-law authority',
-    tenure: 'Founding (April 2026 –)',
-    pseudonym: false,
-    artifacts: [
-      'Co-authorship of <em>Schools of the Republic</em>',
-"Margaret's eighth-anchor reframe",
-      'The seven Margaret video transcripts filed at the Library’s primary-source substrate (<a href="/about/how-this-works/#substrate">how this works</a>)',
-    ],
-  },
   {
     name: 'Dave Sullivan',
     office:
@@ -36,8 +20,9 @@ const founders = [
     tenure: 'Founding (April 2026 –)',
     pseudonym: false,
     artifacts: [
-      'Co-authorship of <em>Schools of the Republic</em>',
+      'Founding of America&rsquo;s School Trust Library and its editorial direction',
       'Lead authorship of <em>The Eighth Anchor</em>',
+      'Co-authorship of <em>Schools of the Republic</em>',
       'The Library architecture and the five-layer knowledge substrate (<a href="/about/how-this-works/#substrate">how this works</a>)',
     ],
   },
@@ -90,10 +75,6 @@ const futureTiers = [
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <p class="text-xs uppercase tracking-wide text-slate-500">The Watchful Crew</p>
     <h1 class="mt-2">The Watchful Crew</h1>
-    <p class="kicker text-slate-600 italic">
-      <q>a forever gift to forever schools for a forever democracy.</q>
-      <span class="not-italic"> — Margaret Bird</span>
-    </p>
 
     <h2>What this ledger is</h2>
     <p>
@@ -119,9 +100,9 @@ const futureTiers = [
   </article>
 
   <section class="ledger-tier mt-10">
-    <h2 class="text-2xl font-bold tracking-tight">Founders</h2>
+    <h2 class="text-2xl font-bold tracking-tight">Founder</h2>
     <p class="mt-1 text-sm italic text-slate-600">
-      The two named founders of the Library, on the public record from day one.
+      The named founder of the Library, on the public record from day one.
     </p>
     <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
       {founders.map((p) => (
@@ -236,6 +217,32 @@ const futureTiers = [
     </ul>
   </section>
 
+  <section class="ledger-tier mt-12">
+    <h2 class="text-2xl font-bold tracking-tight">Scholarship the Library draws on</h2>
+    <p class="mt-1 text-sm italic text-slate-600">
+      Named scholars whose published work informs the Library&rsquo;s record.
+      Citation, not staffing — the Library draws on this scholarship, the
+      scholars are not Library officers.
+    </p>
+    <ul class="mt-6 list-disc pl-6 text-sm text-slate-700 space-y-2">
+      <li>
+        <strong>Margaret Bird</strong> — President of the national Advocates
+        for School Trust Lands (ASTL); national authority on school-trust law
+        and the comparative state-by-state record. Forty years inside the
+        architecture, beginning at the Utah State Office of Education. Her
+        published writing, NASTL papers, August 2025 video transcripts, and
+        the eighth-anchor reframe (<em>&ldquo;Increase the revenue to schools,
+        get it directly to every single school where the parents, the
+        teachers, and the principal are deciding how the money is implemented.
+        And all of a sudden, you have built a huge constituency.&rdquo;</em>)
+        are part of the Library&rsquo;s scholarly substrate. The December 11,
+        2022 letter to the Oregon State Land Board, in which she named the
+        <em>decoupling-is-a-euphemism-for-selling</em> diagnosis, is in the
+        Oregon documentary record.
+      </li>
+    </ul>
+  </section>
+
   <style>
     .apply-button {
       display: inline-block;
@@ -256,7 +263,7 @@ const futureTiers = [
   <article class="prose prose-slate mt-12 max-w-none prose-a:text-blue-700 prose-a:underline">
     <hr class="my-10" />
     <p class="text-sm text-slate-600">
-      <em>Curated by Library editorial team, 2026-05-09.</em>
+      <em>Curated by Library editorial team, 2026-05-12.</em>
     </p>
   </article>
 </BaseLayout>

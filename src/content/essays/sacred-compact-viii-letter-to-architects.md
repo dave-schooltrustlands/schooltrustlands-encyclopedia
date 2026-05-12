@@ -115,4 +115,4 @@ That is the lesson, and it is also the question. Where, in your institution, is 
 
 The architects of 1785 did not have the answers to those questions. They wrote what they could write. We have the answers now. Use them.
 
-— *David Sullivan and Margaret Bird, Oregon Advocates for School Trust Lands and the Library, 2026.*
+— *Dave Sullivan, Oregon Advocates for School Trust Lands and the Library, 2026.*

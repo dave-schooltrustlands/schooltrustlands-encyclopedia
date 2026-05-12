@@ -3,12 +3,11 @@
    component, since each page in this project owns its own head. */
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,900&family=Inter:wght@400;500;600;700&display=swap');
 
-/* Site Update v7 — visual-density mode stylesheets. The slider component
-   (header) toggles `body.mode-{reference,standard,library}`; each file
-   below is scoped to one of those classes and inert otherwise. Imports
-   must precede @tailwind directives per CSS spec / postcss-import. */
-@import './visual-density.css';
-@import './mode-reference.css';
+/* v36 — Library Mode is the only render mode. The Reference/Library view
+   toggle was retired, along with mode-reference.css and visual-density.css.
+   mode-standard.css survives as the holder for mode-agnostic primitives
+   (.breadcrumbs and .reference-desk) — its `body.mode-standard`-prefixed
+   rules were already migrated into mode-library.css in v12. */
 @import './mode-standard.css';
 @import './mode-library.css';
 
@@ -725,22 +724,6 @@
     margin: 0.5rem 0 0;
   }
 
-  /* Standard Mode shows door icons too, just without the per-door
-     accent colors that distinguish Library Mode. */
-  body.mode-standard .home-door__icon {
-    display: inline-flex;
-    width: 2rem;
-    height: 2rem;
-    align-items: center;
-    justify-content: center;
-    color: var(--deep-navy);
-    margin-bottom: 0.5rem;
-  }
-  body.mode-standard .home-door__icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
   /* Homepage launch announcement (Rebuild Session 1, Section C.2) */
   .launch-announcement {
     background: var(--linen-card);
@@ -1173,6 +1156,26 @@ body[data-source-id^="essay-sacred-compact-interlude-"] main > header h1 {
 .library-seal-footer-wrap {
   display: none;
   margin: 1rem 0 0;
+}
+
+/* v36 — seal lightbox trigger. The seal image is wrapped in a button so
+   it can be clicked to open an enlarged view; the button is styled away
+   so only the image reads visually. */
+.library-seal-button {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  border-radius: 4px;
+}
+.library-seal-button:focus-visible {
+  outline: 2px solid var(--trust-blue, #1d4ed8);
+  outline-offset: 3px;
+}
+.library-seal-button:hover .library-seal {
+  opacity: 1;
 }
 
 /* State ornament — D.1 missing-data marker. Inline cue placed next

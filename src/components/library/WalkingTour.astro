@@ -213,9 +213,9 @@
       open();
     });
 
-    // Auto-open on first home-page visit in Library Mode.
+    // Auto-open on first home-page visit. v36 dropped the mode check —
+    // Library Mode is the only mode now.
     function maybeAutoOpen() {
-      if (!document.body.classList.contains('mode-library')) return;
       const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
       if (!isHome) return;
       let dismissed = null;

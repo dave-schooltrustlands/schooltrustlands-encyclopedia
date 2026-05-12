@@ -2,9 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 export const prerender = true;
-
-// Toggle this to true after Margaret's review and approval call.
-const margaretApproved = false;
 ---
 
 <BaseLayout
@@ -16,13 +13,20 @@ const margaretApproved = false;
     {/* v9 D.2 — small header mark for the Library seal. Library Mode
         only; image lands later (Cowork-side). onerror handler keeps
         the placeholder invisible until the asset is dropped in. */}
-    <p class="library-seal-header-wrap" aria-hidden="true">
-      <img
-        src="/seal/library-seal-v1.png"
-        alt=""
-        class="library-seal library-seal--header"
-        onerror="this.style.display='none'"
-      />
+    <p class="library-seal-header-wrap">
+      <button
+        type="button"
+        class="library-seal-button"
+        data-seal-trigger
+        aria-label="View library seal larger"
+      >
+        <img
+          src="/seal/library-seal-v1.png"
+          alt="America's School Trust Library seal"
+          class="library-seal library-seal--header"
+          onerror="this.style.display='none'"
+        />
+      </button>
     </p>
 
     <p class="kicker">About</p>
@@ -32,20 +36,20 @@ const margaretApproved = false;
       America's School Trust Library is a working library for the school trust lands — the 77 million acres set aside, beginning in 1785, to fund public education in perpetuity. Most Americans have never heard of these lands. The Library collects the law, history, financial records, and case material that show what was promised, what was done, and what is owed. Our readers are state trust officials, legislators, journalists, scholars, teachers, and the children and grandchildren of the beneficiaries.
     </p>
 
-    <h2>A joint project</h2>
+    <h2>An OASTL initiative</h2>
 
     <p>
-      The Library is run by two affiliated nonprofits. <strong>Advocates for School Trust Lands (ASTL)</strong> is the national organization (<a href="https://schooltrustlands.org" target="_blank" rel="noopener">schooltrustlands.org</a>). <strong>Oregon Advocates for School Trust Lands (OASTL)</strong> is the Oregon affiliate (<a href="https://oastl.org" target="_blank" rel="noopener">oastl.org</a>) and the lead plaintiff in the standing case now before Oregon's appellate courts. The two organizations share staff, source material, and editorial direction.
+      America's School Trust Library is a project of <strong>Oregon Advocates for School Trust Lands (OASTL)</strong> (<a href="https://oastl.org" target="_blank" rel="noopener">oastl.org</a>), an Oregon 501(c)(3) and the lead plaintiff in the standing case now before Oregon's appellate courts. OASTL hosts the Library, sets its editorial direction, and is its fiscal home.
+    </p>
+
+    <p>
+      Advocates for School Trust Lands (ASTL) (<a href="https://schooltrustlands.org" target="_blank" rel="noopener">schooltrustlands.org</a>) is a separate affiliated 501(c)(3); the Library coordinates with ASTL on national-scope content where appropriate.
     </p>
 
     <h2>Who runs the Library</h2>
 
     <p>
-      <strong>Margaret Bird</strong> is President of ASTL and co-author of the Library's encyclopedia of state trust histories. She is the national domain authority on school trust lands and has spent her career inside and alongside the state offices that administer them.
-    </p>
-
-    <p>
-      <strong>Dave Sullivan</strong> is President of OASTL and lead plaintiff in the Oregon standing case. He is a retired professor and tree farmer who came to this work after a long career in systems and education.
+      <strong>Dave Sullivan</strong> is President of OASTL, founder of the Library, and lead plaintiff in the Oregon standing case. He is a retired professor and tree farmer who came to this work after a long career in systems and education.
     </p>
 
     <p>
@@ -59,17 +63,12 @@ const margaretApproved = false;
     </p>
 
     <p>
-      For institutional contact: ASTL at <a href="https://schooltrustlands.org" target="_blank" rel="noopener">schooltrustlands.org</a>, OASTL at <a href="https://oastl.org" target="_blank" rel="noopener">oastl.org</a>. The argument for why a library is the right institutional form for this work is laid out in <a href="/reading/sacred-compact/">The Eighth Anchor</a>. For governance, see <a href="/pro/governance/">Governance</a>; for what we collect, see <a href="/pro/collection-development/">What the Library Collects</a>; for editorial practice, see <a href="/pro/editorial-standards/">Editorial Standards</a>.
+      For institutional contact: OASTL at <a href="https://oastl.org" target="_blank" rel="noopener">oastl.org</a>. The argument for why a library is the right institutional form for this work is laid out in <a href="/reading/sacred-compact/">The Eighth Anchor</a>. For governance, see <a href="/pro/governance/">Governance</a>; for what we collect, see <a href="/pro/collection-development/">What the Library Collects</a>; for editorial practice, see <a href="/pro/editorial-standards/">Editorial Standards</a>.
     </p>
 
     <hr class="archival-divider">
 
-    <section class={`signature-block ${margaretApproved ? 'approved' : 'pending'}`}>
-      <p class="signature-margaret">
-        <span class="name">Margaret Bird</span><br>
-        <span class="role">President, Advocates for School Trust Lands</span>
-        {!margaretApproved && <span class="pending-note"><em>Pending review and sign-off.</em></span>}
-      </p>
+    <section class="signature-block">
       <p class="signature-dave">
         <span class="name">Dave Sullivan</span><br>
         <span class="role">President, Oregon Advocates for School Trust Lands</span>

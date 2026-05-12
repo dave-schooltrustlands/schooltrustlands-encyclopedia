@@ -20,7 +20,7 @@ lastSynced: 2026-05-10
 
 **Beuter, John** — natural-resource economist; in 1994, on commission from the Oregon Department of Forestry, produced the analysis concluding that the Elliott's market value was "not likely less than $600 million, and could well be in the neighborhood of a billion dollars." The Beuter figure, when later compounded forward by Phillips and others, anchors the $790M–$1.3B fair-value range that the State's $99.6M appraisal abandons.
 
-**Bird, Margaret** — President of the national Advocates for School Trust Lands (ASTL); forty years inside school-trust architecture, beginning at the Utah State Office of Education in 1990; co-author and forewriter of this book; author of the December 11, 2022 letter to the Oregon State Land Board.
+**Bird, Margaret** — President of the national Advocates for School Trust Lands (ASTL); forty years inside school-trust architecture, beginning at the Utah State Office of Education in 1990; scholar of the comparative school-trust record whose published work this book draws on; author of the December 11, 2022 letter to the Oregon State Land Board.
 
 **Boice, Court** — Oregon State Representative; issued an April 8, 2024 open letter to Governor Kotek, State Treasurer Read, and Secretary of State Griffin-Valade naming the Elliott decoupling and demanding accountability.
 
@@ -207,7 +207,7 @@ Each entry names the document, its date and matter where applicable, and its L0 
 
 ## D. Recommended Further Reading
 
-**The companion duology.** *LOOKING BACK · Schools of the Republic* and *LOOKING FORWARD · The Eighth Anchor*, by Margaret Bird and Dave Sullivan, published by America's School Trust Library (2026). The dos-à-dos volume reads in two directions: the *Looking Back* half catalogs every state's school-trust-land record since 1785; the *Looking Forward* half names the Library itself — institutional watchfulness — as the eighth anchor against drift. The Oregon Elliott case is one entry in a fifty-state record. The companion volume supplies the comparative architecture this book deliberately does not carry. Available at the Library, `https://schooltrusts.net/`.
+**The companion volumes.** *LOOKING BACK · Schools of the Republic*, by Margaret Bird and Dave Sullivan (2026), catalogs every state's school-trust-land record since 1785. *LOOKING FORWARD · The Eighth Anchor*, by Dave Sullivan (2026), names the Library itself — institutional watchfulness — as the eighth anchor against drift. Both are published by America's School Trust Library; the Oregon Elliott case is one entry in a fifty-state record, and the companion volumes supply the comparative architecture this book deliberately does not carry. Available at the Library, `https://schooltrusts.net/`.
 
 **Jerry Phillips,** Caulked Boots and Cheese Sandwiches. The canonical Elliott history by the man who ran the Coos Bay District for thirty-three years (1956–1989). Phillips's annotated 1879 Coos Bay Fire map and his sustained-yield management record anchor the empirical floor of any honest Elliott valuation. The $790 million baseline that recurs through Chapter 1's arithmetic comes from Phillips.
 

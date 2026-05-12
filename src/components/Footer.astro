@@ -47,13 +47,20 @@ import CorrectionLink from './CorrectionLink.astro';
         then onerror hides the broken-image glyph. Placed at the very
         bottom of footer-meta so Gamma's reference-desk-footer block
         above is unaffected. */}
-    <p class="library-seal-footer-wrap" aria-hidden="true">
-      <img
-        src="/seal/library-seal-v1.png"
-        alt=""
-        class="library-seal library-seal--footer"
-        onerror="this.style.display='none'"
-      />
+    <p class="library-seal-footer-wrap">
+      <button
+        type="button"
+        class="library-seal-button"
+        data-seal-trigger
+        aria-label="View library seal larger"
+      >
+        <img
+          src="/seal/library-seal-v1.png"
+          alt="America's School Trust Library seal"
+          class="library-seal library-seal--footer"
+          onerror="this.style.display='none'"
+        />
+      </button>
     </p>
   </div>
 </footer>

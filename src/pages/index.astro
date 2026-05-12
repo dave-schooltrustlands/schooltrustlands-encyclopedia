@@ -208,13 +208,20 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
           Standard Mode hide via mode-reference.css / default base.
           The seal image lands separately (Cowork-side); onerror hides
           gracefully until then. */}
-      <div class="library-seal-inlay" aria-hidden="true">
-        <img
-          src="/seal/library-seal-v1.png"
-          alt=""
-          class="library-seal library-seal--inlay"
-          onerror="this.style.display='none'"
-        />
+      <div class="library-seal-inlay">
+        <button
+          type="button"
+          class="library-seal-button"
+          data-seal-trigger
+          aria-label="View library seal larger"
+        >
+          <img
+            src="/seal/library-seal-v1.png"
+            alt="America's School Trust Library seal"
+            class="library-seal library-seal--inlay"
+            onerror="this.style.display='none'"
+          />
+        </button>
       </div>
     </main>
     <PrepublicationFooter />

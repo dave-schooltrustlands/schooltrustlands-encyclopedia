@@ -1,0 +1,147 @@
+---
+/**
+ * SealLightbox — site-wide lightbox for the Library seal.
+ *
+ * Mounted once in BaseLayout and RoomLayout. Any element with the
+ * data-seal-trigger attribute (or any <img> inside such an element)
+ * opens the lightbox on click, displaying the seal at roughly 600px
+ * square (capped at 80vmin so it fits small viewports).
+ *
+ * Closes on: visible close button, click on scrim, Escape key.
+ */
+---
+<div
+  class="seal-lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Library seal — enlarged"
+  data-open="false"
+  data-seal-lightbox
+  hidden
+>
+  <div class="seal-lightbox__scrim" data-seal-lightbox-scrim></div>
+  <div class="seal-lightbox__panel" tabindex="-1">
+    <button
+      type="button"
+      class="seal-lightbox__close"
+      data-seal-lightbox-close
+      aria-label="Close enlarged Library seal"
+    >×</button>
+    <img
+      class="seal-lightbox__img"
+      src="/seal/library-seal-v1.png"
+      alt="America's School Trust Library seal, enlarged"
+      data-seal-lightbox-img
+    />
+  </div>
+</div>
+
+<style>
+  .seal-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 95;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .seal-lightbox[data-open='true'] {
+    display: flex;
+  }
+  .seal-lightbox__scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(31, 42, 68, 0.65);
+    backdrop-filter: blur(2px);
+  }
+  .seal-lightbox__panel {
+    position: relative;
+    z-index: 2;
+    max-width: min(600px, 80vmin);
+    max-height: 80vh;
+    background: var(--linen-card, #fafaf7);
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-radius: 6px;
+    padding: 1rem 1rem 0.75rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  }
+  .seal-lightbox__close {
+    position: absolute;
+    top: -0.6rem;
+    right: -0.6rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--rule-border, #e5e7eb);
+    background: var(--linen-card, #fafaf7);
+    color: var(--deep-navy, #1e3a5f);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(31, 42, 68, 0.18);
+  }
+  .seal-lightbox__close:hover {
+    background: var(--archive-paper, #f5efe1);
+  }
+  .seal-lightbox__close:focus-visible {
+    outline: 2px solid var(--trust-blue, #1d4ed8);
+    outline-offset: 2px;
+  }
+  .seal-lightbox__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: min(600px, 80vmin);
+    max-height: calc(80vh - 2rem);
+    object-fit: contain;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const root = document.querySelector('[data-seal-lightbox]');
+    if (!root) return;
+    const scrim = root.querySelector('[data-seal-lightbox-scrim]');
+    const closeBtn = root.querySelector('[data-seal-lightbox-close]');
+    const panel = root.querySelector('.seal-lightbox__panel');
+    let lastFocus = null;
+
+    function open() {
+      lastFocus = document.activeElement;
+      root.removeAttribute('hidden');
+      root.setAttribute('data-open', 'true');
+      document.addEventListener('keydown', onKeydown);
+      requestAnimationFrame(() => {
+        if (closeBtn && typeof closeBtn.focus === 'function') closeBtn.focus();
+      });
+    }
+
+    function close() {
+      root.setAttribute('data-open', 'false');
+      root.setAttribute('hidden', '');
+      document.removeEventListener('keydown', onKeydown);
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        try { lastFocus.focus(); } catch (_) {}
+      }
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        close();
+      }
+    }
+
+    if (scrim) scrim.addEventListener('click', close);
+    if (closeBtn) closeBtn.addEventListener('click', close);
+
+    document.addEventListener('click', function (ev) {
+      const target = ev.target instanceof Element
+        ? ev.target.closest('[data-seal-trigger]')
+        : null;
+      if (!target) return;
+      ev.preventDefault();
+      open();
+    });
+  })();
+</script>

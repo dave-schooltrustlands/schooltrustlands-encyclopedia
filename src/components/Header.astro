@@ -1,9 +1,30 @@
 ---
 import '../styles/global.css';
-import VisualDensitySlider from './VisualDensitySlider.astro';
 import NavIcon from './NavIcon.astro';
-import LibraryV1Banner from './library/LibraryV1Banner.astro';
 import WalkingTour from './library/WalkingTour.astro';
+
+// v36 — header simplified:
+//   - View toggle (VisualDensitySlider) and LibraryV1Banner removed.
+//     Library mode is the only mode and is the default render.
+//   - Mobile nav replaced with a hamburger overlay. At <lg the inline
+//     nav hides; a hamburger button reveals a full-overlay menu with
+//     every link, including the Library Card link. The "More" disclosure
+//     pattern that occluded items at narrow widths is gone.
+
+const NAV_LINKS = [
+  { href: '/start/', label: 'Start Here' },
+  { href: '/why/', label: 'Why' },
+  { href: '/reading/', label: 'Reading', icon: 'BookOpen' },
+  { href: '/atlas/', label: 'Atlas', icon: 'Compass' },
+  { href: '/maps/', label: 'Map Room', icon: 'Map' },
+  { href: '/counting/', label: 'Counting House', icon: 'ScrollText' },
+  { href: '/contribute/', label: 'Contribute', icon: 'HandHeart' },
+  { href: '/about/', label: 'About', icon: 'Building2' },
+  { href: '/newsroom/', label: 'Newsroom', icon: 'Newspaper' },
+  { href: '/pro/', label: 'Pro', icon: 'Building2' },
+  { href: '/updates/', label: 'Updates' },
+  { href: '/voices/', label: 'Voices', icon: 'Mic' },
+];
 ---
 <header
   data-pagefind-ignore
@@ -43,80 +64,23 @@ import WalkingTour from './library/WalkingTour.astro';
         <em>An evidentiary archive of America's school trust lands and funds</em>
       </span>
     </a>
-    <nav class="flex flex-wrap items-center gap-x-1 gap-y-2 text-sm sm:gap-x-3">
-      {/*
-        v11 B.2 — header third-row collapse at narrow widths.
-        Below lg (<1024px) the nav prunes to the four primary room
-        links + density slider + search + a "More" disclosure that
-        carries the secondary links. At lg+ the full thirteen-link
-        row returns. Library-Card hydration script finds the link
-        by id; the link is always in the DOM regardless of which
-        side of the disclosure is visible at a given width.
-      */}
-      <a
-        href="/start/"
-        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
-        >Start&nbsp;Here</a
-      >
-      <a
-        href="/why/"
-        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
-        >Why</a
-      >
-      <a
-        href="/reading/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="BookOpen" />Reading</a
-      >
-      <a
-        href="/atlas/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="Compass" />Atlas</a
-      >
-      <a
-        href="/maps/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="Map" />Map&nbsp;Room</a
-      >
-      <a
-        href="/counting/"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        ><NavIcon name="ScrollText" />Counting&nbsp;House</a
-      >
-      <a
-        href="/contribute/"
-        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
-        ><NavIcon name="HandHeart" />Contribute</a
-      >
-      <a
-        href="/about/"
-        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
-        ><NavIcon name="Building2" />About</a
-      >
-      <a
-        href="/newsroom/"
-        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
-        ><NavIcon name="Newspaper" />Newsroom</a
-      >
-      <a
-        href="/pro/"
-        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
-        ><NavIcon name="Building2" />Pro</a
-      >
-      <a
-        href="/updates/"
-        class="hidden min-h-[36px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
-        >Updates</a
-      >
-      <a
-        href="/voices/"
-        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
-        ><NavIcon name="Mic" />Voices</a
-      >
+
+    {/* Desktop nav — visible at lg+, hidden at smaller widths so the
+        wordmark + hamburger + search fit on a single mobile row. */}
+    <nav class="hidden flex-wrap items-center gap-x-1 gap-y-2 text-sm lg:flex sm:gap-x-3">
+      {NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >
+          {link.icon && <NavIcon name={link.icon} />}
+          {link.label.replace(/ /g, ' ')}
+        </a>
+      ))}
       <a
         id="library-card-link"
         href="/library-card/"
-        class="library-card-link hidden min-h-[36px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
+        class="library-card-link inline-flex min-h-[36px] items-center justify-center px-2 text-blue-700 hover:underline"
         data-default-href="/library-card/"
         data-default-label="Library Card"
         >Library&nbsp;Card</a
@@ -125,10 +89,9 @@ import WalkingTour from './library/WalkingTour.astro';
         id="library-card-signout"
         href="/auth/sign-out"
         hidden
-        class="library-card-signout hidden min-h-[36px] items-center justify-center px-2 text-slate-500 hover:text-slate-700 hover:underline lg:inline-flex"
+        class="library-card-signout inline-flex min-h-[36px] items-center justify-center px-2 text-slate-500 hover:text-slate-700 hover:underline"
         >Sign&nbsp;out</a
       >
-      <VisualDensitySlider />
       <button
         id="search-toggle"
         type="button"
@@ -153,89 +116,63 @@ import WalkingTour from './library/WalkingTour.astro';
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
       </button>
-      <details
-        id="header-more"
-        class="header-more relative inline-flex lg:hidden"
-      >
-        <summary
-          class="inline-flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded px-2 text-blue-700 hover:bg-slate-100 hover:underline"
-          aria-label="More navigation"
-        >
-          More
-        </summary>
-        <div
-          class="header-more-panel absolute right-0 top-full z-50 mt-1 flex min-w-[12rem] flex-col rounded border border-slate-200 bg-white py-1 shadow-lg"
-          role="menu"
-        >
-          <a
-            href="/start/"
-            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
-            role="menuitem"
-            >Start Here</a
-          >
-          <a
-            href="/why/"
-            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
-            role="menuitem"
-            >Why</a
-          >
-          <a
-            href="/contribute/"
-            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
-            role="menuitem"
-            >Contribute</a
-          >
-          <a
-            href="/about/"
-            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
-            role="menuitem"
-            >About</a
-          >
-          <a
-            href="/pro/"
-            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
-            role="menuitem"
-            >Pro</a
-          >
-          <a
-            href="/newsroom/"
-            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
-            role="menuitem"
-            >Newsroom</a
-          >
-          <a
-            href="/updates/"
-            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
-            role="menuitem"
-            >Updates</a
-          >
-          <a
-            href="/voices/"
-            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
-            role="menuitem"
-            >Voices</a
-          >
-          <a
-            id="library-card-link-more"
-            href="/library-card/"
-            class="library-card-link inline-flex min-h-[44px] items-center border-t border-slate-200 px-3 text-blue-700 hover:bg-slate-100 hover:underline"
-            data-default-href="/library-card/"
-            data-default-label="Library Card"
-            role="menuitem"
-            >Library Card</a
-          >
-          <a
-            id="library-card-signout-more"
-            href="/auth/sign-out"
-            hidden
-            class="library-card-signout inline-flex min-h-[44px] items-center px-3 text-slate-500 hover:bg-slate-100 hover:text-slate-700 hover:underline"
-            role="menuitem"
-            >Sign out</a
-          >
-        </div>
-      </details>
     </nav>
+
+    {/* Mobile controls — visible below lg. Search button + hamburger.
+        Hamburger opens a full overlay with the complete nav. */}
+    <div class="flex items-center gap-1 lg:hidden">
+      <button
+        id="search-toggle-mobile"
+        type="button"
+        aria-label="Open search"
+        aria-expanded="false"
+        aria-controls="search-panel"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-slate-700 hover:bg-slate-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      <button
+        id="mobile-nav-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav-overlay"
+        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-slate-700 hover:bg-slate-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   </div>
+
   <div
     id="search-panel"
     class="hidden border-t border-slate-200 bg-white px-4 py-3"
@@ -246,7 +183,60 @@ import WalkingTour from './library/WalkingTour.astro';
   </div>
 </header>
 
-<LibraryV1Banner />
+<div
+  id="mobile-nav-overlay"
+  class="mobile-nav-overlay"
+  data-state="closed"
+  aria-hidden="true"
+>
+  <div class="mobile-nav-overlay__scrim" data-mobile-nav-scrim></div>
+  <nav
+    class="mobile-nav-overlay__panel"
+    aria-label="Site navigation"
+    data-mobile-nav-panel
+  >
+    <div class="mobile-nav-overlay__header">
+      <span class="mobile-nav-overlay__title">Menu</span>
+      <button
+        type="button"
+        class="mobile-nav-overlay__close"
+        data-mobile-nav-close
+        aria-label="Close navigation menu"
+      >×</button>
+    </div>
+    <ul class="mobile-nav-overlay__list">
+      {NAV_LINKS.map((link) => (
+        <li>
+          <a href={link.href} class="mobile-nav-overlay__link">
+            {link.icon && <NavIcon name={link.icon} />}
+            <span>{link.label}</span>
+          </a>
+        </li>
+      ))}
+      <li class="mobile-nav-overlay__divider"></li>
+      <li>
+        <a
+          id="library-card-link-mobile"
+          href="/library-card/"
+          class="library-card-link mobile-nav-overlay__link"
+          data-default-href="/library-card/"
+          data-default-label="Library Card"
+          >Library Card</a
+        >
+      </li>
+      <li>
+        <a
+          id="library-card-signout-mobile"
+          href="/auth/sign-out"
+          hidden
+          class="library-card-signout mobile-nav-overlay__link mobile-nav-overlay__link--muted"
+          >Sign out</a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
+
 <WalkingTour />
 
 <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
@@ -271,29 +261,123 @@ import WalkingTour from './library/WalkingTour.astro';
     text-transform: uppercase;
     vertical-align: middle;
   }
+
+  /* v36 — full-overlay mobile navigation. Replaces the v11 "More"
+     disclosure pattern that occluded other items at narrow widths. */
+  .mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 150ms ease;
+  }
+  .mobile-nav-overlay[data-state='open'] {
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .mobile-nav-overlay__scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+  }
+  .mobile-nav-overlay__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(20rem, 88vw);
+    background: #fff;
+    border-left: 1px solid #e5e7eb;
+    box-shadow: -8px 0 24px rgba(15, 23, 42, 0.12);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 200ms ease;
+    overflow-y: auto;
+  }
+  .mobile-nav-overlay[data-state='open'] .mobile-nav-overlay__panel {
+    transform: translateX(0);
+  }
+  .mobile-nav-overlay__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .mobile-nav-overlay__title {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #475569;
+  }
+  .mobile-nav-overlay__close {
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #1e3a5f;
+    cursor: pointer;
+  }
+  .mobile-nav-overlay__close:hover {
+    background: #f8fafc;
+  }
+  .mobile-nav-overlay__list {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem 0;
+    flex: 1 1 auto;
+  }
+  .mobile-nav-overlay__divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 0.4rem 0;
+  }
+  .mobile-nav-overlay__link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+    color: #1d4ed8;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .mobile-nav-overlay__link:hover {
+    background: #f1f5f9;
+    text-decoration: underline;
+  }
+  .mobile-nav-overlay__link--muted {
+    color: #64748b;
+  }
+  /* When the body has mobile-nav-open, lock scroll. */
+  body.mobile-nav-open {
+    overflow: hidden;
+  }
 </style>
 
 <script>
   // Header login-state hydration: when a Library Card holder is signed in,
   // the "Library Card" nav link rewrites to "My Library" and the hidden
-  // "Sign out" link reveals. No layout shift on initial paint — the link
-  // starts in its logged-out form.
-  //
-  // v11 B.2 — the same link is mounted twice in the DOM: once in the
-  // wide-viewport row (#library-card-link / #library-card-signout) and
-  // once inside the More disclosure for narrow viewports
-  // (#library-card-link-more / #library-card-signout-more). Hydration
-  // updates both so either copy is correct regardless of viewport.
+  // "Sign out" link reveals. v36: the link is mounted in the desktop nav
+  // and inside the mobile-nav overlay; hydration updates both copies so
+  // either is correct regardless of viewport.
   import { getBrowserSupabase } from '../lib/supabase';
 
   (async () => {
     const links = [
       document.getElementById('library-card-link'),
-      document.getElementById('library-card-link-more'),
+      document.getElementById('library-card-link-mobile'),
     ].filter((el): el is HTMLElement => el !== null);
     const signouts = [
       document.getElementById('library-card-signout'),
-      document.getElementById('library-card-signout-more'),
+      document.getElementById('library-card-signout-mobile'),
     ].filter((el): el is HTMLElement => el !== null);
     if (links.length === 0 || signouts.length === 0) return;
     try {
@@ -359,39 +443,75 @@ import WalkingTour from './library/WalkingTour.astro';
       }
     }
 
-    const toggle = document.getElementById('search-toggle');
+    // Search toggle wired to both the desktop and mobile-row buttons.
     const panel = document.getElementById('search-panel');
-    if (toggle && panel) {
-      toggle.addEventListener('click', () => {
-        const open = panel.classList.toggle('hidden') === false;
-        toggle.setAttribute('aria-expanded', String(open));
-        toggle.setAttribute('aria-label', open ? 'Close search' : 'Open search');
-        if (open) {
-          const input = panel.querySelector('input');
-          if (input instanceof HTMLInputElement) input.focus();
-        }
+    const searchButtons = [
+      document.getElementById('search-toggle'),
+      document.getElementById('search-toggle-mobile'),
+    ].filter(Boolean);
+    if (panel && searchButtons.length > 0) {
+      searchButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const open = panel.classList.toggle('hidden') === false;
+          searchButtons.forEach((b) => {
+            b.setAttribute('aria-expanded', String(open));
+            b.setAttribute('aria-label', open ? 'Close search' : 'Open search');
+          });
+          if (open) {
+            const input = panel.querySelector('input');
+            if (input instanceof HTMLInputElement) input.focus();
+          }
+        });
       });
     }
 
-    // v11 B.2 — More-disclosure: ESC closes, outside click closes.
-    // <details> handles open/close + keyboard activation natively;
-    // these listeners only add dismissal affordances.
-    const moreDetails = document.getElementById('header-more');
-    if (moreDetails && moreDetails.tagName === 'DETAILS') {
-      const details = moreDetails;
-      document.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Escape' && details.open) {
-          details.open = false;
-          const summary = details.querySelector('summary');
-          if (summary instanceof HTMLElement) summary.focus();
-        }
+    // v36 — mobile-nav overlay. Hamburger opens a full overlay; ESC and
+    // click-on-scrim close it. The body picks up `.mobile-nav-open` while
+    // the overlay is open to prevent background scroll.
+    const overlay = document.getElementById('mobile-nav-overlay');
+    const toggleBtn = document.getElementById('mobile-nav-toggle');
+    const closeBtn = overlay
+      ? overlay.querySelector('[data-mobile-nav-close]')
+      : null;
+    const scrim = overlay
+      ? overlay.querySelector('[data-mobile-nav-scrim]')
+      : null;
+
+    function setOverlay(open) {
+      if (!overlay || !toggleBtn) return;
+      overlay.setAttribute('data-state', open ? 'open' : 'closed');
+      overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+      toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('mobile-nav-open', open);
+      if (open) {
+        // Focus the close button so keyboard users can dismiss it.
+        const c = overlay.querySelector('[data-mobile-nav-close]');
+        if (c && typeof c.focus === 'function') c.focus();
+      }
+    }
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = overlay && overlay.getAttribute('data-state') === 'open';
+        setOverlay(!isOpen);
       });
-      document.addEventListener('click', (ev) => {
-        if (!details.open) return;
-        const target = ev.target;
-        if (target instanceof Node && !details.contains(target)) {
-          details.open = false;
-        }
+    }
+    if (closeBtn) closeBtn.addEventListener('click', () => setOverlay(false));
+    if (scrim) scrim.addEventListener('click', () => setOverlay(false));
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key !== 'Escape') return;
+      if (overlay && overlay.getAttribute('data-state') === 'open') {
+        setOverlay(false);
+        if (toggleBtn && typeof toggleBtn.focus === 'function') toggleBtn.focus();
+      }
+    });
+    // Close the overlay when a nav link is activated so the destination
+    // page lands without the overlay still occluding it.
+    if (overlay) {
+      overlay.addEventListener('click', (ev) => {
+        const target =
+          ev.target instanceof Element ? ev.target.closest('a') : null;
+        if (target) setOverlay(false);
       });
     }
 
