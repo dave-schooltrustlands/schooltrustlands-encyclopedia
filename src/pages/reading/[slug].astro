@@ -90,7 +90,7 @@ if (props.kind === 'essay') {
   const next = idx >= 0 && idx < series.length - 1 ? series[idx + 1] : null;
   // v25 — Prefer the chapter's explicit seriesLabel (used by the
   // Who Steals from Children series and any future series). Fall
-  // back to the duology-era heuristic for SoR and Sacred Compact.
+  // back to the two-volume heuristic for SoR and Sacred Compact.
   const seriesLabel = props.entry.data.seriesLabel
     ?? (sourceWork.startsWith('Sacred Compact')
       ? 'The Eighth Anchor'

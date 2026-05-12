@@ -62,7 +62,7 @@ const total = sections.reduce((sum, s) => sum + s.data.wordCount, 0);
 <RoomLayout
   room="reading"
   title="The Eighth Anchor"
-  subtitle={`How Long-Horizon Trusts Survive (and Fail), and What the Next Generation Needs to Know. Dave Sullivan, Volume II of the duology. ${num.format(total)} words across eight sections — the school-trust record applied to the AI-era institutions now being designed.`}
+  subtitle={`How Long-Horizon Trusts Survive (and Fail), and What the Next Generation Needs to Know. Dave Sullivan, Volume 2 of a two-volume work. ${num.format(total)} words across eight sections — the school-trust record applied to the AI-era institutions now being designed.`}
   width="prose"
   sourceId="sacred-compact-toc"
 >
@@ -140,6 +140,34 @@ const total = sections.reduce((sum, s) => sum + s.data.wordCount, 0);
     </p>
   </section>
 
+  <section class="asymmetric-authorship-note" aria-labelledby="asymmetric-authorship-heading">
+    <p class="asymmetric-authorship-kicker">A note on authorship</p>
+    <h2 id="asymmetric-authorship-heading" class="asymmetric-authorship-heading"><em>Two volumes, two vantage points</em></h2>
+    <p>
+      Volume 1 of this work, <em>Schools of the Republic</em>, is the historical
+      record of America's school trust lands. Margaret Bird is the co-author;
+      she has spent her career fighting for school trusts from inside the
+      system, and that work pulls her gaze backward — into what the trusts
+      were promised, what was delivered, and what is owed.
+    </p>
+    <p>
+      Volume 2, <em>The Eighth Anchor</em>, is the forward-looking case the
+      record makes possible: what the failure modes of two centuries of school
+      trusts teach the architects of the next fiduciary era — AI Targeting
+      Authorities, perpetual climate trusts, sovereign wealth for the unborn,
+      longevity escrows, compute reserves. Volume 2 is mine alone. My
+      background is in information systems; that work pulls my gaze forward,
+      into the question of what we are about to build and what could keep it
+      from drifting.
+    </p>
+    <p>
+      Both volumes stand on their own. A reader can begin with either.
+    </p>
+    <p class="asymmetric-authorship-byline">
+      — <em>Dave Sullivan</em>
+    </p>
+  </section>
+
   <p class="mt-4 text-xs text-slate-500">
     The eight sections below can be read in order or dipped into independently;
     footnote namespaces are section-prefixed so cross-section links resolve
@@ -184,6 +212,46 @@ const total = sections.reduce((sum, s) => sum + s.data.wordCount, 0);
     }
     .authors-note-byline {
       margin-top: 1rem;
+      color: #475569;
+    }
+
+    .asymmetric-authorship-note {
+      margin: 1.5rem 0 2rem;
+      padding: 1.1rem 1.4rem 0.9rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-left: 3px solid var(--old-gold, #8b7355);
+      border-radius: 4px;
+    }
+    .asymmetric-authorship-kicker {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--old-gold, #8b7355);
+      margin: 0 0 0.35rem;
+    }
+    .asymmetric-authorship-heading {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 0.75rem;
+      line-height: 1.3;
+    }
+    .asymmetric-authorship-note p {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 0.97rem;
+      line-height: 1.6;
+      color: #1f2937;
+      margin: 0 0 0.7rem;
+    }
+    .asymmetric-authorship-note p:last-child {
+      margin-bottom: 0;
+    }
+    .asymmetric-authorship-byline {
+      margin-top: 0.85rem;
       color: #475569;
     }
   </style>

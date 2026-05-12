@@ -81,6 +81,7 @@ function checkA() {
     mustContain(label, sql, 'delete from public.librarian_roles');
     mustContain(label, sql, 'margaretraybird@gmail.com');
     mustContain(label, sql, "update public.works");
+    mustContain(label, sql, "set author = 'Dave Sullivan'");
     mustContain(label, sql, "where slug = 'the-eighth-anchor'");
   } catch (e) {
     recordHard(`v36.A: migration file missing or unreadable — ${e.message}`);

@@ -115,7 +115,7 @@ What else is required is the question Section IV takes up — and what the archi
 
 ### II.E — Madison to Jefferson: the period's bind-the-future doctrine
 
-The deepest period argument the duology has access to — the one that names what the framers thought they were doing when they bound the future to a perpetual obligation — is an exchange of letters between Thomas Jefferson and James Madison in the autumn and winter of 1789–90.
+The deepest period argument the two-volume record has access to — the one that names what the framers thought they were doing when they bound the future to a perpetual obligation — is an exchange of letters between Thomas Jefferson and James Madison in the autumn and winter of 1789–90.
 
 Jefferson, writing to Madison from Paris on September 6, 1789, in the early weeks of the French Revolution, set out a doctrine he believed self-evident:
 
@@ -235,4 +235,4 @@ The maintenance is what the rest of this paper is about.
 
 [^II-16]: Joseph Story, *Commentaries on the Constitution of the United States*, vol. III, §1907 (1833). The full passage continues: "It has been reared for immortality… It may, nevertheless, perish in an hour by the folly, or corruption, or negligence of its only keepers, THE PEOPLE."
 
-[^II-17]: Margaret Bird, in the April 27, 2026 call with Dave Sullivan. The "forever gift to forever schools for a forever democracy" phrase is the strongest single rhetorical anchor produced by the call and is canonical to the duology — see `memory/project_margaret_anchor_phrase.md`.
+[^II-17]: Margaret Bird, in the April 27, 2026 call with Dave Sullivan. The "forever gift to forever schools for a forever democracy" phrase is the strongest single rhetorical anchor produced by the call and is canonical to the two-volume work — see `memory/project_margaret_anchor_phrase.md`.

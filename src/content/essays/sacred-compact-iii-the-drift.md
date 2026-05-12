@@ -107,7 +107,7 @@ Utah's 1983 case is the historical predicate. With Utah in a budget crisis, the 
 
 What stopped it from staying that way was the recovery — and the recovery is the subject of Section V. The Utah PTA, the Utah Education Association, the Utah State Board of Education, the Utah School Boards Association, and the two principals' associations educated themselves on the trust over the next two years. By 1991 they had pushed the legislature to create a task force; by 1992 the task force had produced a slate of bills; in 1994 the legislature enacted the *School and Institutional Trust Lands Management Act*. The pre-reform $50 million fund became, over the next thirty years, the $3.2 billion permanent fund Utah Trust Lands today reports.
 
-That recovery is the most important data point in the duology. The architecture that allowed the 1983 collapse is the same architecture that supported the recovery. Article X did not change. The federal Enabling Act did not change. What changed was the constituency. This is the central thesis the next section will adopt.
+That recovery is the most important data point in the two-volume record. The architecture that allowed the 1983 collapse is the same architecture that supported the recovery. Article X did not change. The federal Enabling Act did not change. What changed was the constituency. This is the central thesis the next section will adopt.
 
 Directed seizure by floor vote is not stopped by drift defenses. It is stopped by the people who would have to be willing to sue, to mobilize, to vote out, to raise the cost. In Nebraska in 2026, those people did not appear in time. In Utah after 1989, they did. The five years between collapse and reform organization are the operative span.
 

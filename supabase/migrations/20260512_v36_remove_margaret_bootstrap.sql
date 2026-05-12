@@ -23,6 +23,9 @@ delete from public.librarian_roles
  )
    and role in ('librarian','head_librarian','admin','discussion_moderator');
 
+-- The works table column is `author` (singular). The pre-v37 patch
+-- corrected this from the v36-shipped `authors` (plural) which does not
+-- exist.
 update public.works
-   set authors = 'Dave Sullivan'
+   set author = 'Dave Sullivan'
  where slug = 'the-eighth-anchor';
