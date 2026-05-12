@@ -27,6 +27,32 @@
 -- storage policies below assume the bucket has already been created.
 
 -- ----------------------------------------------------------------------
+-- 0. Forward-declare is_moderator() + the role-check extension.
+-- ----------------------------------------------------------------------
+-- These have to come BEFORE the policies that reference them. The original
+-- v32 migration declared the function in section 4, but section 3's
+-- discussion policies use it, which Postgres catches as a forward
+-- reference. Moved here so every policy below sees a defined function.
+
+alter table public.librarian_roles drop constraint if exists librarian_roles_role_check;
+alter table public.librarian_roles add constraint librarian_roles_role_check
+  check (role in ('librarian','head_librarian','admin','discussion_moderator'));
+
+create or replace function public.is_moderator()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public, pg_temp
+as $$
+  select exists (
+    select 1 from public.librarian_roles
+     where user_id = auth.uid()
+       and role in ('discussion_moderator','librarian','head_librarian','admin')
+  );
+$$;
+
+-- ----------------------------------------------------------------------
 -- 1. corrections — structured page-level corrections
 -- ----------------------------------------------------------------------
 
