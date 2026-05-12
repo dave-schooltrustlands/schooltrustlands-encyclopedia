@@ -1,0 +1,255 @@
+---
+// Site Update v35 — Pro layout.
+//
+// The Pro side carries the Library's institutional documentation: governance,
+// editorial standards, collection development, roles, application paths. It
+// shares masthead, footer, search, and visual identity with the reader side
+// — the differentiator is light-touch:
+//   * A persistent header note naming the surface ("Pro — the Library's
+//     institutional and contributor documentation").
+//   * Breadcrumb format `Library / Pro / <Page Title>`.
+//   * A subtle accent shift (one shade darker on the existing accent).
+//   * A right-rail "On this page" TOC when the page is over 600 words.
+//   * A "Back to the Reading Room" footer link.
+//
+// The page is the same building. The sign on the door says "Documents and
+// Records."
+
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PrepublicationFooter from '../components/PrepublicationFooter.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  sourceId?: string;
+  /** Breadcrumb leaf — usually the page title without the site suffix. */
+  pageLabel: string;
+  /** Set true on pages over ~600 words to surface the right-rail TOC. */
+  showToc?: boolean;
+}
+
+const { title, description, sourceId, pageLabel, showToc = false } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body
+    class="min-h-screen bg-archive-paper text-ink mode-library pro-surface"
+    data-source-id={sourceId}
+    data-pro="true"
+  >
+    <Header />
+
+    <div class="pro-banner" role="note">
+      <div class="pro-banner-inner">
+        <strong>Pro</strong>
+        <span class="pro-banner-text">
+          — the Library's institutional and contributor documentation.
+        </span>
+      </div>
+    </div>
+
+    <main class:list={['pro-main', showToc && 'pro-main--with-toc']}>
+      <nav class="pro-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Library</a>
+        <span class="pro-breadcrumb-sep" aria-hidden="true">/</span>
+        <a href="/pro/">Pro</a>
+        <span class="pro-breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="pro-breadcrumb-leaf" aria-current="page">{pageLabel}</span>
+      </nav>
+
+      <div class:list={['pro-content', showToc && 'pro-content--with-toc']}>
+        <article class="pro-article">
+          <slot />
+        </article>
+
+        {showToc && (
+          <aside class="pro-toc" aria-label="On this page">
+            <p class="pro-toc-label">On this page</p>
+            <ol class="pro-toc-list" id="pro-toc-list">
+              <li class="pro-toc-empty">(loading…)</li>
+            </ol>
+          </aside>
+        )}
+      </div>
+
+      <p class="pro-back-link">
+        <a href="/reading/">← Back to the Reading Room</a>
+      </p>
+    </main>
+
+    <PrepublicationFooter />
+    <Footer />
+
+    {showToc && (
+      <script is:inline>
+        // v35 — right-rail TOC, populated from the article's H2 headings.
+        (function () {
+          var article = document.querySelector('.pro-article');
+          var list = document.getElementById('pro-toc-list');
+          if (!article || !list) return;
+          var heads = article.querySelectorAll('h2');
+          if (heads.length === 0) {
+            list.innerHTML = '<li class="pro-toc-empty">(no sections)</li>';
+            return;
+          }
+          var frag = document.createDocumentFragment();
+          heads.forEach(function (h, i) {
+            if (!h.id) {
+              h.id =
+                'sec-' +
+                h.textContent
+                  .toLowerCase()
+                  .replace(/[^a-z0-9\s-]+/g, '')
+                  .trim()
+                  .replace(/\s+/g, '-')
+                  .slice(0, 60) || 'sec-' + (i + 1);
+            }
+            var li = document.createElement('li');
+            var a = document.createElement('a');
+            a.href = '#' + h.id;
+            a.textContent = h.textContent;
+            li.appendChild(a);
+            frag.appendChild(li);
+          });
+          list.innerHTML = '';
+          list.appendChild(frag);
+        })();
+      </script>
+    )}
+  </body>
+</html>
+
+<style>
+  /* v35 — Pro surface. Light-touch differentiation from the reader portal. */
+  .pro-banner {
+    background: #1e3a5f;
+    color: #fafaf7;
+    border-bottom: 1px solid #142b46;
+  }
+  .pro-banner-inner {
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+  }
+  .pro-banner-inner strong {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: #ffd07a;
+  }
+  .pro-banner-text { opacity: 0.92; }
+
+  .pro-main {
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: 1rem 1rem 2rem;
+  }
+  .pro-main--with-toc {
+    max-width: 80rem;
+  }
+
+  .pro-breadcrumb {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: #475569;
+    margin: 0 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+  }
+  .pro-breadcrumb a {
+    color: #1e3a5f;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .pro-breadcrumb-sep { color: #94a3b8; }
+  .pro-breadcrumb-leaf {
+    color: #334155;
+    font-weight: 600;
+  }
+
+  .pro-content {
+    display: block;
+  }
+  .pro-content--with-toc {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+  @media (min-width: 960px) {
+    .pro-content--with-toc {
+      grid-template-columns: minmax(0, 1fr) 14rem;
+    }
+  }
+
+  .pro-article {
+    /* The article itself uses the standard prose styles; pages call them in. */
+  }
+
+  .pro-toc {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #334155;
+  }
+  @media (min-width: 960px) {
+    .pro-toc {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+      max-height: calc(100vh - 6rem);
+      overflow-y: auto;
+      padding-left: 1rem;
+      border-left: 1px solid #e5e7eb;
+    }
+  }
+  .pro-toc-label {
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #64748b;
+  }
+  .pro-toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .pro-toc-list li {
+    margin: 0.3rem 0;
+  }
+  .pro-toc-list a {
+    color: #1e3a5f;
+    text-decoration: none;
+  }
+  .pro-toc-list a:hover {
+    text-decoration: underline;
+  }
+  .pro-toc-empty {
+    color: #94a3b8;
+    font-style: italic;
+  }
+
+  .pro-back-link {
+    margin-top: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: #475569;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1rem;
+  }
+  .pro-back-link a {
+    color: #1e3a5f;
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,303 @@
+---
+// Site Update v35 — State Co-Librarian application detail page.
+//
+// Mirrors /librarian/applications/[id].astro. Head librarian + admin
+// only. Wired to /api/state-co-librarian-application/[id]/decide.
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LibrarianTabs from '../../../components/LibrarianTabs.astro';
+import { requireLibrarian, isLibrarianRole, formatCardDate } from '../../../lib/librarian';
+
+export const prerender = false;
+
+const guard = await requireLibrarian(Astro);
+if (!guard.ok) return guard.response;
+const { supabase, role } = guard.context;
+
+if (!isLibrarianRole(role) || (role !== 'head_librarian' && role !== 'admin')) {
+  return new Response('Not Found', { status: 404 });
+}
+
+const id = Astro.params.id;
+if (!id) return new Response('Not Found', { status: 404 });
+
+const { data: app } = await supabase
+  .from('state_co_librarian_applications')
+  .select(
+    'id, ticket_number, user_id, name, pseudonym_requested, affiliation, states, background, sample_corrections, references_text, preferred_contact, library_card_number, status, reviewer_notes, reviewer_user_id, submitted_at, reviewed_at'
+  )
+  .eq('id', id)
+  .maybeSingle();
+
+if (!app) return new Response('Not Found', { status: 404 });
+
+let reviewerProfile: { display_name: string | null } | null = null;
+if (app.reviewer_user_id) {
+  const { data } = await supabase
+    .from('profiles')
+    .select('display_name')
+    .eq('id', app.reviewer_user_id)
+    .maybeSingle();
+  reviewerProfile = data ?? null;
+}
+
+const STATUS_LABEL: Record<string, string> = {
+  pending: 'Pending',
+  in_review: 'In review',
+  accepted: 'Accepted',
+  declined: 'Declined',
+};
+
+const isOpen = app.status === 'pending' || app.status === 'in_review';
+const statesJoined =
+  app.states && app.states.length > 0 ? app.states.join(', ') : '—';
+---
+
+<BaseLayout
+  title={`${app.ticket_number} · Librarian dashboard`}
+  sourceId="librarian-state-co-librarian-application-detail"
+>
+  <article class="application-detail prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="back-line">
+      <a href="/librarian/state-co-librarian-applications/">← Back to State Co-Librarian applications</a>
+    </p>
+    <LibrarianTabs current="state-co-librarian" role={role} />
+
+    <header class="app-header">
+      <h1 class="ticket-id">{app.ticket_number}</h1>
+      <p class="ticket-meta">
+        <span class:list={['status-pill', `status-pill--${app.status}`]}>
+          {STATUS_LABEL[app.status] ?? app.status}
+        </span>
+        <span class="meta-divider">·</span>
+        Submitted {formatCardDate(app.submitted_at)}
+        <span class="meta-divider">·</span>
+        {app.name}{app.pseudonym_requested ? ' (pseudonym requested)' : ''}
+      </p>
+    </header>
+
+    <section class="app-section">
+      <h2>States applied for</h2>
+      <p class="field-value">{statesJoined}</p>
+    </section>
+
+    {app.affiliation && (
+      <section class="app-section">
+        <h2>Affiliation</h2>
+        <p class="field-value">{app.affiliation}</p>
+      </section>
+    )}
+
+    <section class="app-section">
+      <h2>Preferred contact</h2>
+      <p class="field-value">{app.preferred_contact}</p>
+    </section>
+
+    {app.library_card_number && (
+      <section class="app-section">
+        <h2>Library card number</h2>
+        <p class="field-value">{app.library_card_number}</p>
+      </section>
+    )}
+
+    {app.background && (
+      <section class="app-section">
+        <h2>Background</h2>
+        <div class="app-body">{app.background}</div>
+      </section>
+    )}
+
+    {app.sample_corrections && (
+      <section class="app-section">
+        <h2>Sample corrections / contributions</h2>
+        <div class="app-body">{app.sample_corrections}</div>
+      </section>
+    )}
+
+    {app.references_text && (
+      <section class="app-section">
+        <h2>References</h2>
+        <div class="app-body">{app.references_text}</div>
+      </section>
+    )}
+
+    {isOpen ? (
+      <section class="decide-section">
+        <h2>Decision</h2>
+        <form class="decide-form" id="decide-form" data-app-id={app.id}>
+          <label class="decide-label" for="reviewer-notes">Reviewer notes (optional)</label>
+          <textarea
+            id="reviewer-notes"
+            name="reviewer_notes"
+            rows="4"
+            maxlength="4000"
+            placeholder="Optional context — this is included in the email."
+          ></textarea>
+
+          <div class="decide-buttons">
+            <button type="button" class="decide-button decide-button--accept" data-decision="accept">
+              Accept
+            </button>
+            <button type="button" class="decide-button decide-button--decline" data-decision="decline">
+              Decline
+            </button>
+          </div>
+          <p class="decide-status" aria-live="polite"></p>
+        </form>
+      </section>
+    ) : (
+      <section class="decided-section">
+        <h2>Decision</h2>
+        <p>
+          <strong>{STATUS_LABEL[app.status] ?? app.status}</strong>
+          {reviewerProfile && (
+            <> by <strong>{(reviewerProfile.display_name ?? '').trim() || 'A Head Librarian'}</strong></>
+          )}
+          {app.reviewed_at && (
+            <> on {formatCardDate(app.reviewed_at)}</>
+          )}.
+        </p>
+        {app.reviewer_notes && (
+          <blockquote class="decision-note">{app.reviewer_notes}</blockquote>
+        )}
+      </section>
+    )}
+  </article>
+
+  <script is:inline define:vars={{ appId: app.id }}>
+    const form = document.getElementById('decide-form');
+    if (form) {
+      const buttons = form.querySelectorAll('.decide-button');
+      const status = form.querySelector('.decide-status');
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const decision = btn.getAttribute('data-decision');
+          const notesEl = form.querySelector('#reviewer-notes');
+          const reviewer_notes = notesEl ? notesEl.value.trim() : '';
+          if (decision === 'decline' && !confirm('Decline this State Co-Librarian application?')) {
+            return;
+          }
+          if (decision === 'accept' && !confirm('Accept this State Co-Librarian application?')) {
+            return;
+          }
+          buttons.forEach((b) => (b.disabled = true));
+          status.textContent = 'Submitting…';
+          status.className = 'decide-status';
+          try {
+            const res = await fetch(`/api/state-co-librarian-application/${appId}/decide`, {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({ decision, reviewer_notes }),
+            });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+            status.textContent = `Application ${data.status}. Email ${data.email_sent ? 'sent' : 'skipped'}.`;
+            status.className = 'decide-status ok';
+            setTimeout(() => location.reload(), 700);
+          } catch (err) {
+            status.textContent = 'Could not submit: ' + (err?.message || 'unknown error');
+            status.className = 'decide-status err';
+            buttons.forEach((b) => (b.disabled = false));
+          }
+        });
+      });
+    }
+  </script>
+
+  <style>
+    .back-line {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      margin: 0 0 0.5rem;
+    }
+    .app-header {
+      margin: 0.5rem 0 1rem;
+    }
+    .ticket-id {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 1.4rem;
+      margin: 0;
+    }
+    .ticket-meta {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #475569;
+      margin: 0.25rem 0 0;
+    }
+    .meta-divider { margin: 0 0.5rem; color: #94a3b8; }
+    .app-section { margin: 1.1rem 0; }
+    .field-value {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      margin: 0.25rem 0 0;
+    }
+    .app-body {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      white-space: pre-wrap;
+      padding: 0.9rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .status-pill--pending   { background: #e0e7ff; color: #3730a3; }
+    .status-pill--in_review { background: #fef3c7; color: #92400e; }
+    .status-pill--accepted  { background: #dcfce7; color: #166534; }
+    .status-pill--declined  { background: #fee2e2; color: #991b1b; }
+    .decide-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 36rem;
+    }
+    .decide-form textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+      resize: vertical;
+    }
+    .decide-buttons {
+      display: flex;
+      gap: 0.7rem;
+    }
+    .decide-button {
+      padding: 0.55rem 1.1rem;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+    }
+    .decide-button--accept { background: #166534; }
+    .decide-button--accept:hover { background: #14532d; }
+    .decide-button--decline { background: #991b1b; }
+    .decide-button--decline:hover { background: #7f1d1d; }
+    .decide-button[disabled] { opacity: 0.5; cursor: wait; }
+    .decide-status { font-family: var(--font-sans); font-size: 0.88rem; margin: 0; }
+    .decide-status.ok { color: #065f46; }
+    .decide-status.err { color: #991b1b; }
+    .decision-note {
+      margin: 0.6rem 0 0;
+      padding: 0.7rem 1rem;
+      border-left: 3px solid var(--deep-navy, #1e3a5f);
+      background: var(--linen-card, #fafaf7);
+      font-style: italic;
+    }
+  </style>
+</BaseLayout>

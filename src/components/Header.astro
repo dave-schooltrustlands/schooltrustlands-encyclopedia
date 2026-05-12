@@ -99,6 +99,11 @@ import WalkingTour from './library/WalkingTour.astro';
         ><NavIcon name="Newspaper" />Newsroom</a
       >
       <a
+        href="/pro/"
+        class="hidden min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
+        ><NavIcon name="Building2" />Pro</a
+      >
+      <a
         href="/updates/"
         class="hidden min-h-[36px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline lg:inline-flex"
         >Updates</a
@@ -187,6 +192,12 @@ import WalkingTour from './library/WalkingTour.astro';
             >About</a
           >
           <a
+            href="/pro/"
+            class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
+            role="menuitem"
+            >Pro</a
+          >
+          <a
             href="/newsroom/"
             class="inline-flex min-h-[44px] items-center px-3 text-blue-700 hover:bg-slate-100 hover:underline"
             role="menuitem"
@@ -240,6 +251,27 @@ import WalkingTour from './library/WalkingTour.astro';
 
 <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
 <script is:inline src="/pagefind/pagefind-ui.js"></script>
+
+<style is:global>
+  /* v35 — Pro badge on search results whose URL starts with /pro/.
+     Implemented in CSS so it works independently of when Pagefind
+     hydrates its result list. */
+  #search a[href^="/pro/"] .pagefind-ui__result-title::after,
+  #search a[href^="https://schooltrusts.net/pro/"] .pagefind-ui__result-title::after {
+    content: "Pro";
+    display: inline-block;
+    margin-left: 0.45rem;
+    padding: 0.05rem 0.4rem;
+    background: #1e3a5f;
+    color: #ffd07a;
+    border-radius: 999px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+</style>
 
 <script>
   // Header login-state hydration: when a Library Card holder is signed in,

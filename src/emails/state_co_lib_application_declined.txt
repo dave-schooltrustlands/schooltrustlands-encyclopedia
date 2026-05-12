@@ -1,0 +1,15 @@
+Subject: {{ticket_number}} — Your State Co-Librarian application
+
+Dear {{applicant_name}},
+
+Thank you for applying to become a State Co-Librarian at America's School
+Trust Library. After review, we are not able to accept your application
+at this time.
+
+{{reviewer_notes}}
+
+This does not close the door — applications can be resubmitted in the
+future. Corrections, feedback, and reviews remain welcome through the
+usual channels.
+
+— {{reviewer_name}}, {{reviewer_role}}

@@ -43,15 +43,28 @@ const founders = [
   },
 ];
 
-// Future tiers: render only the headers in v1, with a short note that the
-// roster is being recruited. The tier shape is set so v1.x can drop entries
-// in without re-architecting.
-const futureTiers = [
+// v35 — the State Co-Librarian path is now open for applications; the
+// Co-Librarian path is open for expressions of interest. Both surface as
+// "Open for applications" tiles with an Apply / Express Interest button
+// so visitors reading this page can act on it. The Library Board path
+// remains in recruitment (funding-gated); Contributors are credited
+// on the pages they shape and surface elsewhere.
+const openTiers = [
   {
     title: 'State Co-Librarians',
     note:
-      "The named curators of each state’s corner of the State Records section. Recruitment is ongoing through 2026 and 2027; the pseudonymity tier is available for state-lands-agency staff.",
+      "The named senior curators of each state's pages — its State Records, its Counting House entry, its state-specific Reading Room sources. Most State Co-Librarians are current or recent staff of State Departments of Lands, State Treasurers' offices, school-finance offices, or state historical societies. Verified pseudonymity is available where serving under a real name would be professionally costly.",
+    cta: { label: 'Apply', href: '/apply/state-co-librarian/' },
   },
+  {
+    title: 'Co-Librarians',
+    note:
+      "National-scope senior curators with cross-state authority on a doctrinal or topical specialty — trust-law doctrine, financial accounting, federal-policy history, archival method. Seats are small in number. Recruitment is by invitation; the Library welcomes expressions of interest from people who think the role describes them.",
+    cta: { label: 'Express interest', href: '/express-interest/co-librarian/' },
+  },
+];
+
+const futureTiers = [
   {
     title: 'State Correspondents',
     note:
@@ -60,7 +73,7 @@ const futureTiers = [
   {
     title: 'Library Board',
     note:
-      "Trustees of the Library itself. The first three to five Board members are being recruited from the library-science, archival, and digital-library-infrastructure communities.",
+      "Trustees of the Library itself. The first three to five Board members will be recruited from library science, archives, and digital-library infrastructure once a staff-support line item is funded for the first seat.",
   },
   {
     title: 'Contributors',
@@ -176,6 +189,32 @@ const futureTiers = [
     </p>
   </article>
 
+  <section class="ledger-tier mt-12">
+    <h2 class="text-2xl font-bold tracking-tight">Open for applications</h2>
+    <p class="mt-1 text-sm italic text-slate-600">
+      The Library is recruiting now. The first State Co-Librarian seats and the
+      Co-Librarian roster open to outside interest in 2026.
+    </p>
+    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {openTiers.map((t) => (
+        <li class="rounded-lg border border-slate-300 bg-white p-5 shadow-sm">
+          <h3 class="text-lg font-semibold tracking-tight text-slate-900">
+            {t.title}
+          </h3>
+          <p class="mt-2 text-sm text-slate-700">{t.note}</p>
+          <p class="mt-4">
+            <a
+              href={t.cta.href}
+              class="apply-button"
+            >
+              {t.cta.label} →
+            </a>
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
   <section class="ledger-tiers mt-12">
     <h2 class="text-2xl font-bold tracking-tight">In recruitment</h2>
     <p class="mt-1 text-sm italic text-slate-600">
@@ -196,6 +235,23 @@ const futureTiers = [
       ))}
     </ul>
   </section>
+
+  <style>
+    .apply-button {
+      display: inline-block;
+      padding: 0.45rem 0.95rem;
+      background: #1e3a5f;
+      color: #fff !important;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none !important;
+    }
+    .apply-button:hover {
+      background: #142b46;
+    }
+  </style>
 
   <article class="prose prose-slate mt-12 max-w-none prose-a:text-blue-700 prose-a:underline">
     <hr class="my-10" />

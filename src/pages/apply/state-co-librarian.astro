@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+const isAuthenticated = !!user;
+---
+
+<BaseLayout
+  title="Apply: State Co-Librarian · America's School Trust Library"
+  description="Apply to serve as a State Co-Librarian — a senior curator of one state's records, accounting entry, and source materials at America's School Trust Library."
+  sourceId="apply-state-co-librarian"
+>
+  <article class="apply prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Become a State Co-Librarian</h1>
+    <p class="kicker">
+      Senior curators of the Library's state pages — the people whose names appear at the foot of a state's records and whose judgment shapes what the Library says about that state's trust.
+    </p>
+
+    <p>
+      A State Co-Librarian owns one state's <a href="/states/">State Records</a> page, that state's <a href="/counting-house/">Counting House</a> entry, and the state-specific source pages in the Reading Room. You validate every change before it goes live. You flag the figures the Library has wrong. You supply the primary sources we are missing. Over time, you carry the institutional memory of that state's trust into the Library's record.
+    </p>
+
+    <p>
+      The Library is recruiting State Co-Librarians now because the collection has reached the point where its credibility depends on named, qualified stewards for each state. AI-assisted drafting can do a lot. It cannot replace a person who has lived inside a state's trust system and knows which figure looks off and why. The Library needs both.
+    </p>
+
+    <p>
+      What is expected: a few hours a month, sustained over time. The work is reading what the Library publishes about your state, telling us where we are wrong, sending us sources we don't yet have, and reviewing the editorial staff's proposed changes before they go live. There is no fixed quota and no clock.
+    </p>
+
+    <p>
+      What is not expected: leaving your job. Most State Co-Librarians are current or recent staff of State Departments of Lands, State Treasurers' offices, school-finance offices, or state historical societies, contributing in their professional capacity. The role is designed to fit inside a working life, not replace one. Where serving under your real name would be professionally costly, a verified pseudonym is available; the Library Board holds the verification confidentially and your professional identity is not exposed without your consent.
+    </p>
+
+    <p>
+      The Library is a joint project of two nonprofits — Advocates for School Trust Lands (ASTL), the national organization, and Oregon Advocates for School Trust Lands (OASTL), its Oregon affiliate. Margaret Bird and Dave Sullivan are the founding officers and review every State Co-Librarian application personally.
+    </p>
+
+    <h2>Apply</h2>
+
+    <p>
+      The form below takes about twenty minutes if you have your background notes handy.
+    </p>
+
+    <form class="apply-form" id="apply-form" data-authenticated={isAuthenticated ? 'true' : 'false'}>
+      <label class="apply-label" for="name">Your name <span class="req">*</span></label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        maxlength="160"
+      />
+      <p class="apply-help">Or check the box below to apply under a verified pseudonym.</p>
+
+      <label class="apply-checkbox">
+        <input type="checkbox" id="pseudonym_requested" name="pseudonym_requested" />
+        <span>I plan to serve under a verified pseudonym (the Library Board holds the verification confidentially).</span>
+      </label>
+
+      <label class="apply-label" for="affiliation">Where you work or recently worked</label>
+      <input
+        type="text"
+        id="affiliation"
+        name="affiliation"
+        maxlength="300"
+      />
+
+      <label class="apply-label" for="states">State or states you would curate <span class="req">*</span></label>
+      <input
+        type="text"
+        id="states"
+        name="states"
+        required
+        placeholder="OR"
+      />
+      <p class="apply-help">Two-letter codes, e.g. <code>OR</code> or <code>OR, WA</code>. Most Co-Librarians take one state.</p>
+
+      <label class="apply-label" for="background">Background</label>
+      <textarea
+        id="background"
+        name="background"
+        rows="6"
+        maxlength="5000"
+      ></textarea>
+      <p class="apply-help">Your experience with this state's school trust system, up to about 500 words.</p>
+
+      <label class="apply-label" for="sample_corrections">Three sample errors or omissions in the current page for your state</label>
+      <textarea
+        id="sample_corrections"
+        name="sample_corrections"
+        rows="6"
+        maxlength="5000"
+      ></textarea>
+      <p class="apply-help">One or two careful ones is better than three thin ones.</p>
+
+      <label class="apply-label" for="references">References (one or two)</label>
+      <textarea
+        id="references"
+        name="references"
+        rows="3"
+        maxlength="2000"
+      ></textarea>
+      <p class="apply-help">Name and a working email or phone. We will not contact them without telling you first.</p>
+
+      <label class="apply-label" for="preferred_contact">Preferred contact (email) <span class="req">*</span></label>
+      <input
+        type="text"
+        id="preferred_contact"
+        name="preferred_contact"
+        required
+        maxlength="200"
+      />
+
+      <label class="apply-label" for="library_card_number">Library Card number (if you have one)</label>
+      <input
+        type="text"
+        id="library_card_number"
+        name="library_card_number"
+        maxlength="60"
+      />
+      <p class="apply-help">Optional. If you don't have one yet, you'll be invited to create one as part of onboarding.</p>
+
+      <button type="submit" class="apply-submit">Submit application</button>
+      <p class="apply-status" aria-live="polite"></p>
+    </form>
+
+    <h2>What happens next</h2>
+
+    <p>
+      Your application enters a review queue that Margaret Bird and Dave Sullivan read personally. You will hear back within two to four weeks. The editorial-board review applies: we may accept, decline, or ask for a conversation before deciding. Acceptance includes a one-hour onboarding call, an introduction to your state's pages and the editorial workflow, and the official credit on the pages you take on.
+    </p>
+
+    <p>
+      If you would like to talk before applying, write to the founding officers via the contact path at <a href="/about/">/about/</a>.
+    </p>
+  </article>
+
+  <script is:inline>
+    const form = document.getElementById('apply-form');
+    if (form) {
+      const isAuthenticated = form.getAttribute('data-authenticated') === 'true';
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const status = form.querySelector('.apply-status');
+        const submit = form.querySelector('.apply-submit');
+
+        const name = form.querySelector('#name').value.trim();
+        const pseudonymRequested = form.querySelector('#pseudonym_requested').checked;
+        const affiliation = form.querySelector('#affiliation').value.trim();
+        const statesRaw = form.querySelector('#states').value;
+        const background = form.querySelector('#background').value.trim();
+        const sampleCorrections = form.querySelector('#sample_corrections').value.trim();
+        const references = form.querySelector('#references').value.trim();
+        const preferredContact = form.querySelector('#preferred_contact').value.trim();
+        const libraryCardNumber = form.querySelector('#library_card_number').value.trim();
+
+        const states = statesRaw
+          .split(',')
+          .map((s) => s.trim())
+          .filter((s) => s.length > 0);
+
+        if (!name) {
+          status.textContent = 'Please enter your name.';
+          status.className = 'apply-status err';
+          return;
+        }
+        if (!preferredContact) {
+          status.textContent = 'Please enter a preferred contact email.';
+          status.className = 'apply-status err';
+          return;
+        }
+        if (states.length === 0) {
+          status.textContent = 'Please enter at least one state code (e.g. OR).';
+          status.className = 'apply-status err';
+          return;
+        }
+        if (background.length > 5000) {
+          status.textContent = 'Background is too long (max 5000 characters).';
+          status.className = 'apply-status err';
+          return;
+        }
+
+        submit.disabled = true;
+        submit.textContent = 'Submitting…';
+        status.textContent = '';
+        status.className = 'apply-status';
+
+        try {
+          const res = await fetch('/api/state-co-librarian-application', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              name,
+              pseudonym_requested: pseudonymRequested,
+              affiliation: affiliation || null,
+              states,
+              background: background || null,
+              sample_corrections: sampleCorrections || null,
+              references: references || null,
+              preferred_contact: preferredContact,
+              library_card_number: libraryCardNumber || null,
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+          const trackingNote = isAuthenticated
+            ? '<p>You can track this application on your <a href="/my-library/">My Library</a> page once we set up the Card link.</p>'
+            : '';
+          form.outerHTML =
+            '<div class="apply-confirmation">' +
+            '<p>Thank you. Your application is recorded as <code>' + data.ticket_number + '</code>.</p>' +
+            '<p>We will be in touch within two to four weeks.</p>' +
+            trackingNote +
+            '</div>';
+        } catch (err) {
+          status.textContent = 'Could not submit: ' + (err?.message || 'unknown error');
+          status.className = 'apply-status err';
+          submit.disabled = false;
+          submit.textContent = 'Submit application';
+        }
+      });
+    }
+  </script>
+
+  <style>
+    .kicker {
+      font-style: italic;
+      color: #475569;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .apply-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      max-width: 40rem;
+      margin: 1.25rem 0;
+    }
+    .apply-label {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin-top: 0.6rem;
+      margin-bottom: 0;
+    }
+    .apply-label .req {
+      color: #991b1b;
+      font-weight: 700;
+    }
+    .apply-help {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: #475569;
+      margin: 0.15rem 0 0;
+    }
+    .apply-help code {
+      background: #f1f5f9;
+      padding: 0 0.25rem;
+      border-radius: 3px;
+      font-size: 0.82rem;
+    }
+    .apply-checkbox {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0.35rem 0 0.35rem;
+      line-height: 1.4;
+    }
+    .apply-checkbox input {
+      margin-top: 0.2rem;
+    }
+    .apply-form input[type="text"],
+    .apply-form textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+    }
+    .apply-form textarea {
+      resize: vertical;
+    }
+    .apply-submit {
+      align-self: flex-start;
+      margin-top: 1rem;
+      padding: 0.6rem 1.25rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .apply-submit[disabled] {
+      opacity: 0.5;
+      cursor: wait;
+    }
+    .apply-status {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      margin: 0.4rem 0 0;
+    }
+    .apply-status.err { color: #991b1b; }
+    .apply-status.ok { color: #065f46; }
+    .apply-confirmation {
+      padding: 1rem 1.1rem;
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+      border-radius: 4px;
+      margin: 1.25rem 0;
+      max-width: 40rem;
+    }
+    .apply-confirmation p { margin: 0.3rem 0; }
+    .apply-confirmation a {
+      color: #065f46;
+      text-decoration: underline;
+    }
+    .flash {
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.95rem;
+    }
+    .flash.ok {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+    }
+    .flash p { margin: 0; }
+  </style>
+</BaseLayout>

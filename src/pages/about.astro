@@ -1,167 +1,91 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import PrepublicationFooter from '../components/PrepublicationFooter.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export const prerender = true;
 
 // Toggle this to true after Margaret's review and approval call.
 const margaretApproved = false;
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title="About · America's School Trust Library"
-      description="A joint project of Advocates for School Trust Lands (ASTL) and Oregon Advocates for School Trust Lands (OASTL)."
-    />
-  </head>
-  <body class="min-h-screen bg-archive-paper text-ink mode-library" data-source-id="about-page">
-    <Header />
-    <main class="mx-auto max-w-prose p-4 sm:p-8">
-      <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
-        {/* v9 D.2 — small header mark for the Library seal. Library Mode
-            only; image lands later (Cowork-side). onerror handler keeps
-            the placeholder invisible until the asset is dropped in. */}
-        <p class="library-seal-header-wrap" aria-hidden="true">
-          <img
-            src="/seal/library-seal-v1.png"
-            alt=""
-            class="library-seal library-seal--header"
-            onerror="this.style.display='none'"
-          />
-        </p>
-        <h1>About America's School Trust Library</h1>
 
-        <h2>Mission</h2>
-        <p>
-          America's School Trust Library is the evidentiary archive of America's school trust lands and funds. It exists to make the legal architecture, financial scale, and political accountability of these trusts visible — to journalists, lawyers, legislators, trustees, and citizens.
-        </p>
+<BaseLayout
+  title="About · America's School Trust Library"
+  description="A working library for the school trust lands — the 77 million acres set aside, beginning in 1785, to fund public education in perpetuity."
+  sourceId="about-page"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    {/* v9 D.2 — small header mark for the Library seal. Library Mode
+        only; image lands later (Cowork-side). onerror handler keeps
+        the placeholder invisible until the asset is dropped in. */}
+    <p class="library-seal-header-wrap" aria-hidden="true">
+      <img
+        src="/seal/library-seal-v1.png"
+        alt=""
+        class="library-seal library-seal--header"
+        onerror="this.style.display='none'"
+      />
+    </p>
 
-        <h2>A joint project</h2>
-        <p>The Library is a joint project of two affiliated 501(c)(3) nonprofits:</p>
-        <p>
-          <strong>Advocates for School Trust Lands (ASTL)</strong> is the national organization, founded to advance fiduciary integrity in America's school trust lands and funds across all twenty land-grant states. ASTL's organizational page lives at <a href="https://schooltrustlands.org" target="_blank" rel="noopener">schooltrustlands.org</a>.
-        </p>
-        <p>
-          <strong>Oregon Advocates for School Trust Lands (OASTL)</strong> is ASTL's Oregon affiliate and the active plaintiff in Oregon's current trust-breach litigation, including the January 2026 Court of Appeals standing victory in <em>Advocates for School Trust Lands v. State of Oregon</em>. OASTL's organizational page lives at <a href="https://oastl.org" target="_blank" rel="noopener">oastl.org</a>.
-        </p>
-        <p>
-          The Library is the public-facing evidentiary archive both organizations rely on. ASTL contributes the national scope and per-state field reporting; OASTL contributes the Oregon case docket, primary sources, and the working-test-case analysis that makes the architecture concrete. The two voices stay audible in the <a href="/reading/">Reading Room</a> — state dossiers are the long, footnoted history; ASTL's per-state notes appear as the field annotation; OASTL substrate appears at <a href="/court/oregon-current-case/">/court/oregon-current-case/</a>, <a href="/reading/us-or/history/">/reading/us-or/history/</a>, and <a href="/reading/us-or/research/">/reading/us-or/research/</a>.
-        </p>
+    <p class="kicker">About</p>
+    <h1>About America's School Trust Library</h1>
 
-        <h2>Substrate and method</h2>
-        <p>
-          The Library is built on a five-layer <a href="/about/how-this-works/#substrate">Knowledge Stack</a>: primary sources (statutes, court opinions, treaties, historical maps, expert declarations); canonical claims (atomized facts and arguments, every one cited to source); audience models (different readers need different pieces); a toolchain of human and AI editors; and the deliverables you see on these pages. The substrate is documented and version-controlled; the build pipeline is reproducible.
-        </p>
-        <p>
-          Every figure on this site carries a confidence badge. Every blank cell is a signal — most often that a state has not disclosed the underlying data. Visible incompleteness is the path to credibility for a public ledger of public trusts.
-        </p>
-        <p>
-          For a fuller walk-through of the five-layer Knowledge Stack and how contributions flow through editorial review into the substrate, see <a href="/about/how-this-works/">How This Library Works</a>.
-        </p>
+    <p>
+      America's School Trust Library is a working library for the school trust lands — the 77 million acres set aside, beginning in 1785, to fund public education in perpetuity. Most Americans have never heard of these lands. The Library collects the law, history, financial records, and case material that show what was promised, what was done, and what is owed. Our readers are state trust officials, legislators, journalists, scholars, teachers, and the children and grandchildren of the beneficiaries.
+    </p>
 
-        <h2>The Library as the Eighth Anchor</h2>
-        <p>
-          <a href="/reading/sacred-compact/"><em>The Eighth Anchor</em></a>, hosted in the Library, names seven structural anchors that an aspirational intergenerational structure needs to survive the dissipation of the moral clarity that animated its founding: fiduciary doctrine, restoration mechanisms, individual and institutional accountability, direct distribution, advocacy infrastructure, specialized legal defense, and mandatory trustee education.
-        </p>
-        <p>
-          The white paper also names an eighth. Without a <em>standing community</em> of citizens, advocates, journalists, and trustees who treat the seven structural anchors as binding and refuse to let them dissipate, the architecture is decorative. The eighth anchor is the <a href="/the-watchful-crew/">watchful crew</a> — the institutional infrastructure of sustained, multi-generational civic attention.
-        </p>
-        <p>
-          The Library is the institutional embodiment of the eighth anchor as it exists today — the working pattern by which the standing community of watchdog citizens, school-board members, journalists, lawyers, parents, and concerned legislators can sustain a multi-generational trust across two and a quarter centuries. The eighth anchor itself is that community. The Library is one of its organized forms — the form that makes the substrate findable, the citations honest, and the institutional voice durable across the generations the trust is supposed to outlast.
-        </p>
-        <p>
-          Concretely, that means a public-facing evidentiary archive, a surveillance pass that becomes the weekly <a href="/newsroom/">Newsroom</a>, and per-state transparency reporting that becomes the <a href="/maps/">Map Room</a> — a standing constituency for the trust beneficiaries (current and future schoolchildren) who cannot organize for themselves.
-        </p>
-        <p>
-          The framers of 1785 knew they needed this institutional infrastructure and could not build it. The per-citizen cost of sustained civic attention to a complex multi-generational asset was, until very recently, prohibitive. AI-augmented research has now reduced that cost by an order of magnitude. The Library is the first instance of what becomes possible.
-        </p>
+    <h2>A joint project</h2>
 
-        <h2>Why this Library exists now</h2>
-        <p>
-          Three things became true at once. None of them was true a decade ago. The Library exists in 2026 because the convergence opens a window that will not stay open.
-        </p>
+    <p>
+      The Library is run by two affiliated nonprofits. <strong>Advocates for School Trust Lands (ASTL)</strong> is the national organization (<a href="https://schooltrustlands.org" target="_blank" rel="noopener">schooltrustlands.org</a>). <strong>Oregon Advocates for School Trust Lands (OASTL)</strong> is the Oregon affiliate (<a href="https://oastl.org" target="_blank" rel="noopener">oastl.org</a>) and the lead plaintiff in the standing case now before Oregon's appellate courts. The two organizations share staff, source material, and editorial direction.
+    </p>
 
-        <h3>A failure-mode analysis that no one had done</h3>
-        <p>
-          The school-trust corpus is one hundred and sixty-seven years old in Oregon, two hundred and forty-one years old in the Republic. Generations of scholarship sit beside it — NEFA's <em>Funding Public Schools</em>, Bogert and Hess on the law of trusts, the Restatement (Third) of Trusts, Souder and Fairfax on state lands, Culp and colleagues on the land-grant universities. Each is excellent inside its own discipline. None has crossed the disciplines to name, comprehensively, <em>how</em> school trusts fail and what the failure teaches.
-        </p>
-        <aside class="boxed-insert">
-          <p class="boxed-insert-title"><strong>The lack of understanding before the bad faith.</strong> <em>— Margaret Bird, in her own voice, on why a public reference library exists.</em></p>
-          <p>The biggest challenge is the lack of understanding. Most people — including many legislators — simply do not know what school trust lands are or how they are different from other public lands. They think they can just use them for whatever is popular at the moment, like a park or a low-cost lease for a local business. The Library exists, in the first instance, to close that gap. Teaching first.</p>
-        </aside>
-        <p>
-          That cross-jurisdictional, cross-decade, cross-discipline synthesis is what the Library has now done. The work was carried by a partnership between human judgment and frontier AI models, doing together the kind of synthetic load that no individual scholar or scholarly team had ever taken on. The receipts are in the substrate. The <a href="/about/how-this-works/#substrate">primary sources</a> — court filings, statutes, historical records, Bates-stamped discovery production — sit at the empirical floor. The <a href="/about/how-this-works/#substrate">canonical claims layer</a> catalogs the figures and citations that recur across the work, each one cited back to its primary source. <a href="/reading/sacred-compact/"><em>The Eighth Anchor</em></a> carries the analytic frame; <a href="/reading/schools-of-the-republic/"><em>Schools of the Republic</em></a> carries the case-by-case evidentiary record. The schoolchildren whose lands these are — the children of 1859, the children in Oregon classrooms today, the children not yet born for whom the corpus was pledged in perpetuity — finally have an account of what was promised them, what drifted, and what was taken.
-        </p>
+    <h2>Who runs the Library</h2>
 
-        <h3>The architects of the next fiduciary era are designing right now</h3>
-        <p>
-          AI Targeting Authorities. Perpetual climate trusts. Sovereign wealth funds for the unborn. Longevity escrows. Compute reserves. The institutions that will carry power, capital, and obligation across the next several centuries are being designed in the present tense, in working groups and white papers and draft charters, by people who do not yet know that the school trusts already ran the experiment.
-        </p>
-        <p>
-          The school trusts are the only multi-generational fiduciary record long enough to teach the lessons that hold. Two failure modes compound across that record: gradual drift — corpus rotted, purpose hijacked, beneficiary redefined, mandate modernized — and sudden directed seizure. Both are documented in the Library's case files. Both will recur. The eighth anchor — the watchful crew, the standing community without which the seven structural anchors are decorative — is the lesson that travels furthest. The Library exists now because the architects are at the table now, and the analysis must reach them while the charters are still drafts.
-        </p>
+    <p>
+      <strong>Margaret Bird</strong> is President of ASTL and co-author of the Library's encyclopedia of state trust histories. She is the national domain authority on school trust lands and has spent her career inside and alongside the state offices that administer them.
+    </p>
 
-        <h3>The Library's architecture is itself part of the contribution</h3>
-        <p>
-          A durable intergenerational trust needs more than a charter. It needs a substrate that future stewards can read, audit, and extend; an authoring practice that survives the death of the founders; a constituency whose attention can be re-recruited generation after generation. The Library's five-layer Knowledge Stack — primary sources, canonical claims, audience models, the toolchain of human and AI collaborators, and the deliverables rendered from all of it — is an attempt at that substrate. So is the framework of named offices and public stewardship. So is the visual-density rendering preference that lets a reader see a corpus rather than scroll a feed.
-        </p>
-        <p>
-          These are not garnishes on the work. They are the work, in the sense that the medium of any trust is part of its message. The Library publishes its own architecture so that the next watchful crew — for the school lands, and for the trusts that come after — has a working pattern to start from.
-        </p>
+    <p>
+      <strong>Dave Sullivan</strong> is President of OASTL and lead plaintiff in the Oregon standing case. He is a retired professor and tree farmer who came to this work after a long career in systems and education.
+    </p>
 
-        <h2>Team — the Library's founders</h2>
-        <p>
-          <strong>Dave Sullivan.</strong> President, Oregon Advocates for School Trust Lands. Retired professor; lead OASTL plaintiff in Oregon's trust-breach litigation. Library editorial direction.
-        </p>
-        <p>
-          <strong>Margaret Bird.</strong> President, Advocates for School Trust Lands. National domain authority on school trust lands; co-author of the booklet <em>Schools of the Republic</em>. Library substantive review.
-        </p>
-        <p>
-          The Library's day-to-day editorial pass is supported by AI assistance under the editorial supervision of the named founders. The Library's complete editorial methodology, including AI-assistance disclosure, is described in <a href="/about/how-this-works/#methodology">How This Library Works</a>.
-        </p>
+    <p>
+      The Library's day-to-day building — cataloging, drafting, design, the back-end — is carried out in partnership with Claude, an AI system serving as architect and librarian. How that partnership works is described in <a href="/about/how-this-works/">How the Library Works</a>.
+    </p>
 
-        <h2>Building the librarian community</h2>
-        <p>
-          The Library is in its first year of operation. To outlast its founders — to become a forever-institution rather than a founder-dependent project — it needs a community of librarians and school-trust experts who treat the substrate as theirs and the institutional continuity as their responsibility.
-        </p>
-        <p>
-          Three layers of that community are being recruited.
-        </p>
-        <p>
-          <strong>A Library Board of Directors with library-science and editorial expertise.</strong> Separate from the operating boards of the two sponsoring organizations (ASTL and OASTL), the Library Board provides editorial guidance, archival discipline, and the institutional memory of how a library posture differs from an advocacy posture. The Library is recruiting Board members from the library-science profession and from the digital-library infrastructure community.
-        </p>
-        <p>
-          <strong>State co-librarians, often drawn from State Departments of Lands and equivalent agencies.</strong> The substantive expertise on each state's school trust lives in the agency that manages those lands day-to-day. The Library is inviting State Departments of Lands staff — and equivalent agency staff in states with state-derived trust funds — to take responsibility for the curation and accuracy of their state's Library page. This is a co-librarian role: the Library hosts the substrate; the state expert validates, supplements, and corrects what the substrate says about their state. The role is named, scarce, and carries the institutional standing of the agency the librarian represents.
-        </p>
-        <p>
-          <strong>A standing constituency of contributors.</strong> Beyond the Board and the state co-librarians, the Library is recruiting historians, journalists, school-finance officers, retired educators, attorneys, and citizens who want to contribute primary sources, identify missing materials, file public-records requests, and watch their state's trust administration over time. The infrastructure for these roles is being built through 2026 and 2027.
-        </p>
-        <p>
-          The Library's independence is what these communities are being built to secure. As the Library grows, its institutional governance is designed to accommodate a transition from sponsorship by ASTL and OASTL to operation as an independent 501(c)(3) — when the patron community, the contributor breadth, and the operational scope reach the threshold where independence is the right move. Today, sponsorship by ASTL and OASTL is the right structure; the librarian community is being built so that independence becomes a viable next step within the next several years.
-        </p>
+    <h2>Contact and corrections</h2>
 
-        <h2>Contact and corrections</h2>
-        <p>
-          For corrections, source additions, or story tips: <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia/issues">GitHub issues</a>. For organizational contact, see <a href="https://schooltrustlands.org">schooltrustlands.org</a> (ASTL) or <a href="https://oastl.org">oastl.org</a> (OASTL). Citation guidance: <a href="/about/cite/">/about/cite/</a>.
-        </p>
+    <p>
+      The Library expects to be wrong sometimes, and asks readers to help fix it. Anywhere on the site, use the <strong>Submit Feedback</strong> and <strong>Submit Correction</strong> controls to send a note tied to the page you are reading. A Library Card (free) lets you track your submissions and our responses. The longer walkthrough is at <a href="/about/contributing/">Contributing</a>.
+    </p>
 
-        <hr class="archival-divider">
+    <p>
+      For institutional contact: ASTL at <a href="https://schooltrustlands.org" target="_blank" rel="noopener">schooltrustlands.org</a>, OASTL at <a href="https://oastl.org" target="_blank" rel="noopener">oastl.org</a>. The argument for why a library is the right institutional form for this work is laid out in <a href="/reading/sacred-compact/">The Eighth Anchor</a>. For governance, see <a href="/pro/governance/">Governance</a>; for what we collect, see <a href="/pro/collection-development/">What the Library Collects</a>; for editorial practice, see <a href="/pro/editorial-standards/">Editorial Standards</a>.
+    </p>
 
-        <section class={`signature-block ${margaretApproved ? 'approved' : 'pending'}`}>
-          <p class="signature-margaret">
-            <span class="name">Margaret Bird</span><br>
-            <span class="role">President, Advocates for School Trust Lands</span>
-            {!margaretApproved && <span class="pending-note"><em>Pending review and sign-off.</em></span>}
-          </p>
-          <p class="signature-dave">
-            <span class="name">Dave Sullivan</span><br>
-            <span class="role">President, Oregon Advocates for School Trust Lands</span>
-          </p>
-        </section>
-      </article>
-    </main>
-    <PrepublicationFooter />
-    <Footer />
-  </body>
-</html>
+    <hr class="archival-divider">
+
+    <section class={`signature-block ${margaretApproved ? 'approved' : 'pending'}`}>
+      <p class="signature-margaret">
+        <span class="name">Margaret Bird</span><br>
+        <span class="role">President, Advocates for School Trust Lands</span>
+        {!margaretApproved && <span class="pending-note"><em>Pending review and sign-off.</em></span>}
+      </p>
+      <p class="signature-dave">
+        <span class="name">Dave Sullivan</span><br>
+        <span class="role">President, Oregon Advocates for School Trust Lands</span>
+      </p>
+    </section>
+  </article>
+
+  <style>
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A88A4E;
+      margin: 0 0 0.4rem;
+    }
+  </style>
+</BaseLayout>

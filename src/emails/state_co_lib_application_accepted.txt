@@ -1,0 +1,14 @@
+Subject: Welcome — your State Co-Librarian application is accepted ({{ticket_number}})
+
+Dear {{applicant_name}},
+
+Your application {{ticket_number}} to become a State Co-Librarian has been
+accepted. The role gives you authority over the state-page record for the
+states you applied to cover, and a seat at the Watchful Crew.
+
+{{reviewer_notes}}
+
+A head librarian will be in touch separately to set up your access and
+walk you through the working pattern.
+
+— {{reviewer_name}}, {{reviewer_role}}

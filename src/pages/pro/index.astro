@@ -1,0 +1,231 @@
+---
+import ProLayout from '../../layouts/ProLayout.astro';
+
+export const prerender = true;
+
+const cards = [
+  {
+    title: 'Governance',
+    href: '/pro/governance/',
+    blurb:
+      "Who runs the Library today, the bodies that will share that work, and the rules under which decisions get made.",
+  },
+  {
+    title: 'Editorial Standards',
+    href: '/pro/editorial-standards/',
+    blurb:
+      "What counts as a citable claim. How facts and interpretation are kept apart. How we mark uncertainty. How we correct ourselves.",
+  },
+  {
+    title: 'Collection Development',
+    href: '/pro/collection-development/',
+    blurb:
+      "What the Library collects, what it doesn't, and how the holdings are organized. The shape of the corpus, state by state.",
+  },
+  {
+    title: 'Roles',
+    href: '/pro/roles/',
+    blurb:
+      "The community of contributors. Reader, Library Card holder, Contributor, Citizen Historian, State Expert, State Co-Librarian, Co-Librarian, Librarian, Board.",
+  },
+];
+
+const forthcoming = [
+  { title: 'How to Contribute', note: 'Consolidated overview of the contribution paths.' },
+  { title: 'Metadata & Provenance Schema', note: "The catalog's own working specification." },
+  { title: 'Bylaws / Charter', note: 'Institutional structure once the Library spins out.' },
+  { title: 'Dispute Resolution', note: 'The escalation path for editorial disagreements.' },
+];
+---
+
+<ProLayout
+  title="Pro · America's School Trust Library"
+  description="The institutional and contributor documentation for America's School Trust Library — governance, editorial standards, collection development, roles, and application paths."
+  sourceId="pro-landing"
+  pageLabel="Pro"
+>
+  <p class="kicker">Documents and Records</p>
+  <h1>The Pro side of the Library</h1>
+
+  <p class="lede">
+    The reader side of the Library is where you read. This is where you
+    learn how the Library is governed, what its editorial standards are,
+    what it collects, how the community of contributors is structured,
+    and how to take on a stewardship role. The pages here are written
+    for working contributors, state-agency staff, foundation officers,
+    journalists, and trustees — anyone who needs to understand how this
+    Library actually works.
+  </p>
+
+  <section class="pro-cards" aria-label="Pro documentation pages">
+    {cards.map((c) => (
+      <a class="pro-card" href={c.href}>
+        <h2 class="pro-card-title">{c.title}</h2>
+        <p class="pro-card-blurb">{c.blurb}</p>
+        <p class="pro-card-cta">Read →</p>
+      </a>
+    ))}
+  </section>
+
+  <section class="forthcoming" aria-label="Forthcoming Pro pages">
+    <h2>Forthcoming</h2>
+    <p class="forthcoming-intro">
+      The Pro side is being built out in two passes. The four pages above
+      are live today. The following are in drafting and will ship next:
+    </p>
+    <ul class="forthcoming-list">
+      {forthcoming.map((f) => (
+        <li>
+          <strong>{f.title}.</strong> <span class="forthcoming-note">{f.note}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="application-pointer" aria-label="Open application paths">
+    <h2>Open application paths</h2>
+    <p>
+      Two roles are open for applications today.
+    </p>
+    <ul>
+      <li>
+        <strong>State Co-Librarian</strong> — the senior curator for one state's
+        records. <a href="/apply/state-co-librarian/">Apply →</a>
+      </li>
+      <li>
+        <strong>Co-Librarian</strong> — a national-scope senior curator on a
+        doctrinal or topical specialty. Recruitment is by invitation; an
+        Express Interest path is open.
+        <a href="/express-interest/co-librarian/">Express interest →</a>
+      </li>
+    </ul>
+    <p class="pointer-note">
+      Other roles — Librarian, Citizen Historian, Contributor — have their own
+      paths. See <a href="/pro/roles/">Roles</a> for the full ladder.
+    </p>
+  </section>
+
+  <style>
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A88A4E;
+      margin: 0 0 0.4rem;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: #1e3a5f;
+      margin: 0 0 1rem;
+    }
+    .lede {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: #1e293b;
+      margin: 0 0 2rem;
+    }
+
+    .pro-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      margin: 1.5rem 0;
+    }
+    @media (min-width: 640px) {
+      .pro-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .pro-card {
+      display: block;
+      padding: 1rem 1.1rem 1.1rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+      text-decoration: none !important;
+      color: inherit;
+      transition: border-color 100ms linear, box-shadow 100ms linear;
+    }
+    .pro-card:hover {
+      border-color: #1e3a5f;
+      box-shadow: 0 2px 8px rgba(30, 58, 95, 0.08);
+    }
+    .pro-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin: 0 0 0.35rem;
+    }
+    .pro-card-blurb {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #334155;
+      margin: 0 0 0.6rem;
+    }
+    .pro-card-cta {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #A88A4E;
+      margin: 0;
+    }
+
+    .forthcoming,
+    .application-pointer {
+      margin: 2rem 0 0;
+      padding: 1.1rem 1.2rem;
+      background: #fafaf7;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+    }
+    .forthcoming h2,
+    .application-pointer h2 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin: 0 0 0.6rem;
+    }
+    .forthcoming-intro,
+    .application-pointer p {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      line-height: 1.55;
+      color: #1e293b;
+      margin: 0 0 0.6rem;
+    }
+    .forthcoming-list,
+    .application-pointer ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.25rem;
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      line-height: 1.55;
+      color: #1e293b;
+    }
+    .forthcoming-list li,
+    .application-pointer li {
+      margin: 0.35rem 0;
+    }
+    .forthcoming-note {
+      color: #475569;
+    }
+    .application-pointer a {
+      color: #1e3a5f;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    .pointer-note {
+      margin-top: 0.8rem !important;
+      font-size: 0.92rem;
+      color: #475569;
+    }
+  </style>
+</ProLayout>

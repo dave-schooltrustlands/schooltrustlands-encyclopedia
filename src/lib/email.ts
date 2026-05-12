@@ -27,6 +27,12 @@ const TEMPLATES = {
     import('../emails/review_published.txt?raw').then((m) => m.default),
   discussion_reply: () =>
     import('../emails/discussion_reply.txt?raw').then((m) => m.default),
+  state_co_lib_application_received: () =>
+    import('../emails/state_co_lib_application_received.txt?raw').then((m) => m.default),
+  state_co_lib_application_accepted: () =>
+    import('../emails/state_co_lib_application_accepted.txt?raw').then((m) => m.default),
+  state_co_lib_application_declined: () =>
+    import('../emails/state_co_lib_application_declined.txt?raw').then((m) => m.default),
 } as const;
 
 export type TemplateName = keyof typeof TEMPLATES;

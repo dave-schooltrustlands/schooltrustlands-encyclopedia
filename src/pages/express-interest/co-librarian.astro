@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+const isAuthenticated = !!user;
+---
+
+<BaseLayout
+  title="Express interest: Co-Librarian · America's School Trust Library"
+  description="A short note of interest in serving as a Co-Librarian at America's School Trust Library — routed directly to the founding officers."
+  sourceId="express-interest-co-librarian"
+>
+  <article class="apply prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Express interest: Co-Librarian</h1>
+    <p class="kicker">
+      A short note that goes directly to the founding officers.
+    </p>
+
+    <p>
+      Co-Librarian recruitment at America's School Trust Library is by invitation. The specialty varies by candidate — trust-law doctrine, financial accounting, federal-policy history, archival method, comparative state record, or other ground that the Library's collection needs covered. A full application form would be the wrong shape for the role.
+    </p>
+
+    <p>
+      If you think the role describes you, we want to hear from you. This form is short on purpose. It does not enter a public queue. The note goes to Margaret Bird and Dave Sullivan, the founding officers, who will reply directly if a conversation makes sense. There is no fixed timeline and no checklist; the right Co-Librarians find their way into the institution through correspondence, not paperwork.
+    </p>
+
+    {!isAuthenticated && (
+      <div class="flash gate">
+        <p>
+          <strong>Sign in or create a free Library Card to submit this form</strong> — your work goes to the founding officers.
+        </p>
+        <p>
+          <a class="gate-link" href="/library-card/?redirect=/express-interest/co-librarian/">Get a Library Card or sign in</a>
+        </p>
+      </div>
+    )}
+
+    {isAuthenticated && (
+      <form class="apply-form" id="interest-form">
+        <label class="apply-label" for="name">Your name <span class="req">*</span></label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          maxlength="160"
+        />
+
+        <label class="apply-label" for="affiliation">Affiliation</label>
+        <input
+          type="text"
+          id="affiliation"
+          name="affiliation"
+          maxlength="300"
+        />
+
+        <label class="apply-label" for="scope">Intended scope</label>
+        <input
+          type="text"
+          id="scope"
+          name="scope"
+          maxlength="300"
+        />
+        <p class="apply-help">Trust-law doctrine, financial accounting, federal-policy history, archival method, comparative state record, or other — your call.</p>
+
+        <label class="apply-label" for="background">Brief background</label>
+        <textarea
+          id="background"
+          name="background"
+          rows="5"
+          maxlength="3000"
+        ></textarea>
+        <p class="apply-help">One paragraph, up to about 300 words.</p>
+
+        <label class="apply-label" for="preferred_contact">Preferred contact (email or phone) <span class="req">*</span></label>
+        <input
+          type="text"
+          id="preferred_contact"
+          name="preferred_contact"
+          required
+          maxlength="200"
+        />
+
+        <button type="submit" class="apply-submit">Express interest</button>
+        <p class="apply-status" aria-live="polite"></p>
+      </form>
+    )}
+  </article>
+
+  <script is:inline>
+    const form = document.getElementById('interest-form');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const status = form.querySelector('.apply-status');
+        const submit = form.querySelector('.apply-submit');
+
+        const name = form.querySelector('#name').value.trim();
+        const affiliation = form.querySelector('#affiliation').value.trim();
+        const scope = form.querySelector('#scope').value.trim();
+        const background = form.querySelector('#background').value.trim();
+        const preferredContact = form.querySelector('#preferred_contact').value.trim();
+
+        if (!name) {
+          status.textContent = 'Please enter your name.';
+          status.className = 'apply-status err';
+          return;
+        }
+        if (!preferredContact) {
+          status.textContent = 'Please enter a preferred contact.';
+          status.className = 'apply-status err';
+          return;
+        }
+
+        const bodyLines = [
+          'Name: ' + name,
+          '',
+          'Affiliation: ' + (affiliation || '(none provided)'),
+          '',
+          'Intended scope: ' + (scope || '(none provided)'),
+          '',
+          'Background:',
+          background || '(none provided)',
+          '',
+          'Preferred contact: ' + preferredContact,
+        ];
+        const body = bodyLines.join('\n');
+
+        submit.disabled = true;
+        submit.textContent = 'Submitting…';
+        status.textContent = '';
+        status.className = 'apply-status';
+
+        try {
+          const res = await fetch('/api/feedback', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              page_url: '/express-interest/co-librarian/',
+              subject: 'Co-Librarian express interest — ' + name,
+              body,
+              kind: 'co_librarian_interest',
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+          form.outerHTML =
+            '<div class="apply-confirmation">' +
+            '<p>Thank you. Margaret Bird and Dave Sullivan have received your note and will be in touch.</p>' +
+            '</div>';
+        } catch (err) {
+          status.textContent = 'Could not submit: ' + (err?.message || 'unknown error');
+          status.className = 'apply-status err';
+          submit.disabled = false;
+          submit.textContent = 'Express interest';
+        }
+      });
+    }
+  </script>
+
+  <style>
+    .kicker {
+      font-style: italic;
+      color: #475569;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .apply-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      max-width: 40rem;
+      margin: 1.25rem 0;
+    }
+    .apply-label {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin-top: 0.6rem;
+      margin-bottom: 0;
+    }
+    .apply-label .req {
+      color: #991b1b;
+      font-weight: 700;
+    }
+    .apply-help {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: #475569;
+      margin: 0.15rem 0 0;
+    }
+    .apply-form input[type="text"],
+    .apply-form textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+    }
+    .apply-form textarea {
+      resize: vertical;
+    }
+    .apply-submit {
+      align-self: flex-start;
+      margin-top: 1rem;
+      padding: 0.6rem 1.25rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .apply-submit[disabled] {
+      opacity: 0.5;
+      cursor: wait;
+    }
+    .apply-status {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      margin: 0.4rem 0 0;
+    }
+    .apply-status.err { color: #991b1b; }
+    .apply-status.ok { color: #065f46; }
+    .apply-confirmation {
+      padding: 1rem 1.1rem;
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+      border-radius: 4px;
+      margin: 1.25rem 0;
+      max-width: 40rem;
+    }
+    .apply-confirmation p { margin: 0.3rem 0; }
+    .flash {
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.95rem;
+      max-width: 40rem;
+    }
+    .flash.gate {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #78350f;
+    }
+    .flash p { margin: 0.35rem 0; }
+    .gate-link {
+      color: #78350f;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+  </style>
+</BaseLayout>

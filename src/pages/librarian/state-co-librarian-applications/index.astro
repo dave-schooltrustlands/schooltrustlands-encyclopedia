@@ -1,0 +1,157 @@
+---
+// Site Update v35 — State Co-Librarian applications dashboard (index).
+//
+// Mirrors /librarian/applications/index.astro. Head librarian + admin
+// only — discussion_moderator and plain librarian get a 404 (same
+// 404-not-403 pattern used elsewhere in /librarian/*).
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LibrarianTabs from '../../../components/LibrarianTabs.astro';
+import { requireLibrarian, isLibrarianRole, formatCardDate } from '../../../lib/librarian';
+
+export const prerender = false;
+
+const guard = await requireLibrarian(Astro);
+if (!guard.ok) return guard.response;
+const { supabase, role } = guard.context;
+
+// Head-librarian / admin only.
+if (!isLibrarianRole(role) || (role !== 'head_librarian' && role !== 'admin')) {
+  return new Response('Not Found', { status: 404 });
+}
+
+const { data: appsRaw } = await supabase
+  .from('state_co_librarian_applications')
+  .select('id, ticket_number, name, states, background, status, submitted_at')
+  .order('submitted_at', { ascending: false });
+
+const apps = (appsRaw ?? []) as Array<{
+  id: string;
+  ticket_number: string;
+  name: string;
+  states: string[] | null;
+  background: string | null;
+  status: string;
+  submitted_at: string;
+}>;
+
+const STATUS_LABEL: Record<string, string> = {
+  pending: 'Pending',
+  in_review: 'In review',
+  accepted: 'Accepted',
+  declined: 'Declined',
+};
+
+function summarize(text: string | null): string {
+  const s = (text ?? '').trim();
+  if (s.length <= 80) return s;
+  return s.slice(0, 80).trimEnd() + '…';
+}
+
+function joinStates(states: string[] | null): string {
+  if (!states || states.length === 0) return '—';
+  return states.join(', ');
+}
+---
+
+<BaseLayout
+  title="State Co-Librarian applications · Librarian dashboard"
+  sourceId="librarian-state-co-librarian-applications"
+>
+  <article class="applications prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>State Co-Librarian applications</h1>
+    <LibrarianTabs current="state-co-librarian" role={role} />
+
+    {apps.length > 0 ? (
+      <table class="apps-table">
+        <thead>
+          <tr>
+            <th>Ticket</th>
+            <th>Applicant</th>
+            <th>States</th>
+            <th>Submitted</th>
+            <th>Status</th>
+            <th>Background</th>
+          </tr>
+        </thead>
+        <tbody>
+          {apps.map((a) => (
+            <tr>
+              <td>
+                <a href={`/librarian/state-co-librarian-applications/${a.id}/`} class="ticket-link">
+                  {a.ticket_number}
+                </a>
+              </td>
+              <td>{a.name}</td>
+              <td>{joinStates(a.states)}</td>
+              <td>{formatCardDate(a.submitted_at)}</td>
+              <td>
+                <span class:list={['status-pill', `status-pill--${a.status}`]}>
+                  {STATUS_LABEL[a.status] ?? a.status}
+                </span>
+              </td>
+              <td class="background-cell">{summarize(a.background)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      <p class="empty-state">No State Co-Librarian applications yet.</p>
+    )}
+  </article>
+
+  <style>
+    .apps-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+    }
+    .apps-table th,
+    .apps-table td {
+      text-align: left;
+      padding: 0.55rem 0.7rem;
+      border-bottom: 1px solid var(--rule-border, #e5e7eb);
+      vertical-align: top;
+    }
+    .apps-table th {
+      background: var(--linen-card, #fafaf7);
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .ticket-link {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .background-cell {
+      max-width: 28rem;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .status-pill--pending   { background: #e0e7ff; color: #3730a3; }
+    .status-pill--in_review { background: #fef3c7; color: #92400e; }
+    .status-pill--accepted  { background: #dcfce7; color: #166534; }
+    .status-pill--declined  { background: #fee2e2; color: #991b1b; }
+    .empty-state {
+      padding: 1.4rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      color: #475569;
+      text-align: center;
+    }
+  </style>
+</BaseLayout>

@@ -17,19 +17,21 @@ interface Props {
     | 'patrons'
     | 'reviews'
     | 'moderation'
-    | 'discussions';
+    | 'discussions'
+    | 'state-co-librarian';
   role?: 'librarian' | 'head_librarian' | 'admin' | 'discussion_moderator';
 }
 
 const { current, role = 'librarian' } = Astro.props;
 
 const allTabs: Array<{ key: Props['current']; label: string; href: string }> = [
-  { key: 'tickets',      label: 'Pending tickets', href: '/librarian/' },
-  { key: 'applications', label: 'Applications',    href: '/librarian/applications/' },
-  { key: 'patrons',      label: 'Patrons',         href: '/librarian/patrons/' },
-  { key: 'reviews',      label: 'Reviews',         href: '/librarian/reviews/' },
-  { key: 'moderation',   label: 'Moderation',      href: '/librarian/moderation/' },
-  { key: 'discussions',  label: 'Discussions',     href: '/librarian/discussions/' },
+  { key: 'tickets',             label: 'Pending tickets', href: '/librarian/' },
+  { key: 'applications',        label: 'Applications',    href: '/librarian/applications/' },
+  { key: 'patrons',             label: 'Patrons',         href: '/librarian/patrons/' },
+  { key: 'reviews',             label: 'Reviews',         href: '/librarian/reviews/' },
+  { key: 'moderation',          label: 'Moderation',      href: '/librarian/moderation/' },
+  { key: 'discussions',         label: 'Discussions',     href: '/librarian/discussions/' },
+  { key: 'state-co-librarian',  label: 'State Co-Lib',    href: '/librarian/state-co-librarian-applications/' },
 ];
 
 // A pure moderator sees only Moderation + Discussions. Everyone else sees
