@@ -1,0 +1,273 @@
+---
+// Site Update v32 — Librarian dashboard: Reviews tab.
+//
+// Lists submitted-but-unpublished reviews so a librarian can publish or
+// reject. The page uses requireLibrarian — a discussion_moderator landing
+// here would be denied at the API layer anyway, but the surface is also
+// limited at the guard so the tab matches the publish/reject endpoints.
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LibrarianTabs from '../../../components/LibrarianTabs.astro';
+import { requireLibrarian, formatPatronNumber, formatCardDate } from '../../../lib/librarian';
+
+export const prerender = false;
+
+const guard = await requireLibrarian(Astro);
+if (!guard.ok) return guard.response;
+const { supabase, role } = guard.context;
+
+// Pending reviews — is_published = false, oldest-submitted first so the
+// queue empties FIFO. (Librarians manage reviews via RLS policy
+// "Librarians manage reviews", so all drafts are visible regardless of
+// author.)
+const { data: pendingRaw } = await supabase
+  .from('reviews')
+  .select('id, work_id, user_id, rating, body, submitted_at')
+  .eq('is_published', false)
+  .order('submitted_at', { ascending: false });
+
+const pending = (pendingRaw ?? []) as Array<{
+  id: string;
+  work_id: string;
+  user_id: string;
+  rating: number;
+  body: string;
+  submitted_at: string;
+}>;
+
+// Joins: works + profiles, fetched in a single round-trip each.
+const workIds = Array.from(new Set(pending.map((r) => r.work_id)));
+let workMap = new Map<string, { slug: string; title: string }>();
+if (workIds.length > 0) {
+  const { data: works } = await supabase
+    .from('works')
+    .select('id, slug, title')
+    .in('id', workIds);
+  for (const w of works ?? []) {
+    workMap.set(w.id, { slug: w.slug, title: w.title });
+  }
+}
+
+const userIds = Array.from(new Set(pending.map((r) => r.user_id)));
+let profileMap = new Map<string, { display_name: string | null; patron_number: number | null }>();
+if (userIds.length > 0) {
+  const { data: profileRows } = await supabase
+    .from('profiles')
+    .select('id, display_name, patron_number')
+    .in('id', userIds);
+  for (const p of profileRows ?? []) {
+    profileMap.set(p.id, {
+      display_name: p.display_name ?? null,
+      patron_number: p.patron_number ?? null,
+    });
+  }
+}
+
+function starsFor(rating: number): string {
+  const r = Math.max(0, Math.min(5, Math.round(rating)));
+  return '★'.repeat(r) + '☆'.repeat(5 - r);
+}
+function truncateBody(body: string, max = 240): string {
+  const b = (body ?? '').trim();
+  if (b.length <= max) return b;
+  return b.slice(0, max).trimEnd() + '…';
+}
+---
+
+<BaseLayout
+  title="Reviews · Librarian dashboard"
+  sourceId="librarian-reviews"
+>
+  <article class="reviews-dashboard prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Reviews</h1>
+    <p class="role-line">
+      Signed in as <strong>{role.replace(/_/g, ' ')}</strong>.
+    </p>
+
+    <LibrarianTabs current="reviews" role={role} />
+
+    <h2>Pending reviews</h2>
+    {pending.length > 0 ? (
+      <ol class="reviews-list">
+        {pending.map((r) => {
+          const w = workMap.get(r.work_id);
+          const p = profileMap.get(r.user_id);
+          const who = (p?.display_name ?? '').trim() || '—';
+          const num = formatPatronNumber(p?.patron_number ?? null);
+          const workTitle = w?.title ?? '(unknown work)';
+          const workLink = w ? `/reading/${w.slug}/reviews/` : null;
+          return (
+            <li class="review-row" data-review-id={r.id}>
+              <header class="review-row-head">
+                <span class="work-title">
+                  {workLink ? (
+                    <a href={workLink}>{workTitle}</a>
+                  ) : (
+                    workTitle
+                  )}
+                </span>
+                <span class="meta-divider">·</span>
+                <span class="review-author">{who}</span>
+                <span class="meta-divider">·</span>
+                <span class="patron-no">№ {num}</span>
+                <span class="meta-divider">·</span>
+                <time>{formatCardDate(r.submitted_at)}</time>
+              </header>
+              <p class="review-stars" aria-label={`${r.rating} of 5`}>
+                <span aria-hidden="true">{starsFor(r.rating)}</span>
+                <span class="rating-num">({r.rating}/5)</span>
+              </p>
+              <div class="review-body">{truncateBody(r.body)}</div>
+              <div class="review-actions">
+                <button type="button" class="action-button action-button--publish" data-action="publish">
+                  Publish
+                </button>
+                <button type="button" class="action-button action-button--reject" data-action="reject">
+                  Reject
+                </button>
+                <span class="action-status" aria-live="polite"></span>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    ) : (
+      <p class="empty-state">No pending reviews. The review queue is clean.</p>
+    )}
+  </article>
+
+  <script is:inline>
+    document.querySelectorAll('.review-row').forEach((row) => {
+      const reviewId = row.getAttribute('data-review-id');
+      const status = row.querySelector('.action-status');
+      const buttons = row.querySelectorAll('.action-button');
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const action = btn.getAttribute('data-action');
+          if (action === 'reject') {
+            if (!confirm('Reject and delete this review? The patron may write a new one.')) return;
+          }
+          buttons.forEach((b) => (b.disabled = true));
+          status.textContent = action === 'publish' ? 'Publishing…' : 'Rejecting…';
+          status.className = 'action-status';
+          try {
+            const url =
+              action === 'publish'
+                ? `/api/review/${reviewId}/publish`
+                : `/api/review/${reviewId}/reject`;
+            const res = await fetch(url, {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: '{}',
+            });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+            status.textContent = action === 'publish'
+              ? `Published. Email ${data.email_sent ? 'sent' : 'skipped'}.`
+              : 'Rejected.';
+            status.className = 'action-status ok';
+            setTimeout(() => location.reload(), 700);
+          } catch (err) {
+            status.textContent = 'Failed: ' + (err?.message || 'unknown error');
+            status.className = 'action-status err';
+            buttons.forEach((b) => (b.disabled = false));
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .role-line {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #64748b;
+      margin: -0.25rem 0 0.5rem;
+      text-transform: capitalize;
+    }
+    .reviews-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .review-row {
+      padding: 0.85rem 1rem;
+      background: #fff;
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      margin: 0 0 0.8rem;
+    }
+    .review-row-head {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #475569;
+      margin: 0 0 0.35rem;
+    }
+    .work-title { font-weight: 600; color: var(--deep-navy, #1e3a5f); }
+    .review-author { color: var(--deep-navy, #1e3a5f); }
+    .patron-no {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.78rem;
+    }
+    .meta-divider { margin: 0 0.4rem; color: #94a3b8; }
+    .review-stars {
+      color: #b45309;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      margin: 0 0 0.3rem;
+    }
+    .rating-num {
+      color: #64748b;
+      font-size: 0.78rem;
+      letter-spacing: normal;
+      margin-left: 0.4rem;
+    }
+    .review-body {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #1e293b;
+      white-space: pre-wrap;
+      padding: 0.6rem 0.8rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      margin: 0 0 0.6rem;
+    }
+    .review-actions {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .action-button {
+      padding: 0.4rem 0.95rem;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+    }
+    .action-button--publish { background: #166534; }
+    .action-button--publish:hover { background: #14532d; }
+    .action-button--reject { background: #991b1b; }
+    .action-button--reject:hover { background: #7f1d1d; }
+    .action-button[disabled] { opacity: 0.5; cursor: wait; }
+    .action-status {
+      font-family: var(--font-sans);
+      font-size: 0.84rem;
+    }
+    .action-status.ok { color: #065f46; }
+    .action-status.err { color: #991b1b; }
+    .empty-state {
+      padding: 1.4rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      color: #475569;
+      text-align: center;
+    }
+  </style>
+</BaseLayout>

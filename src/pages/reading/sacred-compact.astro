@@ -2,6 +2,32 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import BookBanner from '../../components/BookBanner.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+// v32 — published-review count for the Reviews link at the foot of the
+// landing. We resolve the eighth-anchor work row by slug and count
+// published reviews; failures degrade silently to 0.
+let reviewCount = 0;
+try {
+  const supabase = getServerSupabase(Astro);
+  const { data: work } = await supabase
+    .from('works')
+    .select('id')
+    .eq('slug', 'the-eighth-anchor')
+    .maybeSingle();
+  if (work?.id) {
+    const { count } = await supabase
+      .from('reviews')
+      .select('id', { count: 'exact', head: true })
+      .eq('work_id', work.id)
+      .eq('is_published', true);
+    if (typeof count === 'number') reviewCount = count;
+  }
+} catch {
+  // swallow
+}
 
 type Essay = CollectionEntry<'essays'>;
 
@@ -187,5 +213,9 @@ const total = sections.reduce((sum, s) => sum + s.data.wordCount, 0);
 
   <p class="mt-8 text-sm text-slate-500">
     <a href="/reading/" class="text-blue-700 underline hover:text-blue-900">← Reading Room</a>
+  </p>
+
+  <p class="mt-4 text-sm text-slate-500">
+    <a href="/reading/the-eighth-anchor/reviews/" class="text-blue-700 underline hover:text-blue-900">Reviews ({reviewCount})</a>
   </p>
 </RoomLayout>

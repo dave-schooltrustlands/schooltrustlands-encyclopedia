@@ -1,0 +1,39 @@
+---
+// Site Update v32 — Engagement Breadth: thank-you state for the no-JS
+// /correct/[...path] fallback form. The /api/correction endpoint redirects
+// here with a `t=<ticket_number>` query param after a successful insert.
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const prerender = false;
+
+const ticketNumberRaw = Astro.url.searchParams.get('t') ?? '';
+// Only show a ticket number that looks plausible — CR-YYYY-NNNNN. Defensive
+// scrub; the redirect from /api/correction already URL-encodes the value.
+const ticketNumber = /^CR-\d{4}-\d+$/.test(ticketNumberRaw) ? ticketNumberRaw : '';
+---
+
+<BaseLayout
+  title="Correction received · America's School Trust Library"
+  description="Thank you. Your correction has been recorded."
+  sourceId="correct-thanks"
+>
+  <article class="correct-thanks prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Correction received</h1>
+    {ticketNumber ? (
+      <p>
+        Thank you. Your correction is recorded as <code>{ticketNumber}</code>. A
+        librarian will review it and follow up by email if a response is
+        warranted.
+      </p>
+    ) : (
+      <p>
+        Thank you. Your correction has been recorded. A librarian will review
+        it and follow up by email if a response is warranted.
+      </p>
+    )}
+    <p>
+      You can view all your tickets on your <a href="/my-library/">My Library</a> page.
+    </p>
+  </article>
+</BaseLayout>

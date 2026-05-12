@@ -1,21 +1,43 @@
 ---
-// Four-tab navigation row at the top of every /librarian/* page.
-// Active tab is determined by matching the current path against each tab's
-// prefix; we anchor `/librarian/` to the Pending-tickets tab because that
-// route is the dashboard's index.
+// Six-tab navigation row at the top of every /librarian/* page.
+//
+// v32: the tab set expanded from four to six (Reviews and Moderation added)
+// and is now role-aware — a pure discussion_moderator sees only the two
+// moderator tabs (Moderation + Discussions); librarian-tier roles see all
+// six. The `role` prop is optional with a 'librarian' default so legacy
+// pages that haven't yet been updated to pass it still render the full bar.
+//
+// Active tab is determined by the `current` prop (not by path matching) so
+// nested routes like /librarian/applications/<id>/ keep the right tab lit.
 
 interface Props {
-  current: 'tickets' | 'applications' | 'patrons' | 'discussions';
+  current:
+    | 'tickets'
+    | 'applications'
+    | 'patrons'
+    | 'reviews'
+    | 'moderation'
+    | 'discussions';
+  role?: 'librarian' | 'head_librarian' | 'admin' | 'discussion_moderator';
 }
 
-const { current } = Astro.props;
+const { current, role = 'librarian' } = Astro.props;
 
-const tabs: Array<{ key: Props['current']; label: string; href: string }> = [
+const allTabs: Array<{ key: Props['current']; label: string; href: string }> = [
   { key: 'tickets',      label: 'Pending tickets', href: '/librarian/' },
   { key: 'applications', label: 'Applications',    href: '/librarian/applications/' },
   { key: 'patrons',      label: 'Patrons',         href: '/librarian/patrons/' },
+  { key: 'reviews',      label: 'Reviews',         href: '/librarian/reviews/' },
+  { key: 'moderation',   label: 'Moderation',      href: '/librarian/moderation/' },
   { key: 'discussions',  label: 'Discussions',     href: '/librarian/discussions/' },
 ];
+
+// A pure moderator sees only Moderation + Discussions. Everyone else sees
+// the whole bar.
+const tabs =
+  role === 'discussion_moderator'
+    ? allTabs.filter((t) => t.key === 'moderation' || t.key === 'discussions')
+    : allTabs;
 ---
 
 <nav class="librarian-tabs" aria-label="Librarian dashboard sections">

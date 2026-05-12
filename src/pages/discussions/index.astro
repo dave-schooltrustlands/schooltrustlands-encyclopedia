@@ -1,0 +1,335 @@
+---
+// Site Update v32 — Discussions thread index.
+//
+// Public-readable list of all non-hidden threads, ordered by last activity.
+// Signed-in patrons see a "Start a new discussion" button that opens an
+// inline composer; signed-out visitors see a sign-in prompt instead.
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+import { formatPatronNumber, formatCardDate } from '../../lib/librarian';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+const { data: threadsRaw } = await supabase
+  .from('discussions')
+  .select('id, ticket_number, user_id, title, topic, status, created_at, last_activity_at')
+  .neq('status', 'hidden')
+  .order('last_activity_at', { ascending: false });
+
+const threads = (threadsRaw ?? []) as Array<{
+  id: string;
+  ticket_number: string;
+  user_id: string;
+  title: string;
+  topic: string | null;
+  status: string;
+  created_at: string;
+  last_activity_at: string;
+}>;
+
+// Profiles join — author display name + patron number per thread opener.
+const authorIds = Array.from(new Set(threads.map((t) => t.user_id)));
+const profileMap = new Map<string, { display_name: string | null; patron_number: number | null }>();
+if (authorIds.length > 0) {
+  const { data: profileRows } = await supabase
+    .from('profiles')
+    .select('id, display_name, patron_number')
+    .in('id', authorIds);
+  for (const p of profileRows ?? []) {
+    profileMap.set(p.id, {
+      display_name: p.display_name ?? null,
+      patron_number: p.patron_number ?? null,
+    });
+  }
+}
+
+// Reply-count per thread. Single query, group in memory.
+const replyCounts = new Map<string, number>();
+if (threads.length > 0) {
+  const threadIds = threads.map((t) => t.id);
+  const { data: postRows } = await supabase
+    .from('discussion_posts')
+    .select('discussion_id')
+    .in('discussion_id', threadIds);
+  for (const row of postRows ?? []) {
+    const k = row.discussion_id as string;
+    if (!k) continue;
+    replyCounts.set(k, (replyCounts.get(k) ?? 0) + 1);
+  }
+}
+---
+
+<BaseLayout
+  title="Discussions · America's School Trust Library"
+  sourceId="discussions-index"
+>
+  <article class="discussions prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Discussions</h1>
+    <p class="lede">
+      Conversations among patrons of the Library — methodology, theory, state
+      cases. Threads are open to anyone holding a Library Card.
+    </p>
+
+    {user ? (
+      <section class="new-thread">
+        <button type="button" id="new-thread-toggle" class="new-thread-button">
+          Start a new discussion
+        </button>
+        <form id="new-thread-form" class="new-thread-form" hidden>
+          <label class="field">
+            <span class="field-label">Title</span>
+            <input type="text" name="title" maxlength="120" required />
+          </label>
+          <label class="field">
+            <span class="field-label">Topic (optional)</span>
+            <input type="text" name="topic" maxlength="80" placeholder="e.g. Oregon Elliott Forest" />
+          </label>
+          <label class="field">
+            <span class="field-label">Body</span>
+            <textarea name="body" rows="6" maxlength="8000" required></textarea>
+          </label>
+          <div class="new-thread-actions">
+            <button type="submit" class="submit-button">Post discussion</button>
+            <button type="button" id="new-thread-cancel" class="cancel-button">Cancel</button>
+          </div>
+          <p class="new-thread-status" aria-live="polite"></p>
+        </form>
+      </section>
+    ) : (
+      <p class="sign-in-line">
+        <a href="/auth/sign-in?next=/discussions/">Sign in to start a discussion</a>
+        — reading is open to anyone.
+      </p>
+    )}
+
+    {threads.length > 0 ? (
+      <ul class="thread-list">
+        {threads.map((t) => {
+          const p = profileMap.get(t.user_id);
+          const author = (p?.display_name ?? '').trim() || 'Library Patron';
+          const num = formatPatronNumber(p?.patron_number ?? null);
+          const replies = replyCounts.get(t.id) ?? 0;
+          return (
+            <li class="thread-row">
+              <a class="thread-title" href={`/discussions/${t.ticket_number}/`}>{t.title}</a>
+              <div class="thread-meta">
+                {t.topic && <span class="topic-tag">{t.topic}</span>}
+                <span class="thread-author">{author} · № {num}</span>
+                <span class="meta-divider">·</span>
+                <span class="thread-replies">{replies} {replies === 1 ? 'reply' : 'replies'}</span>
+                <span class="meta-divider">·</span>
+                <span class="thread-last">Last activity {formatCardDate(t.last_activity_at)}</span>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    ) : (
+      <p class="empty-state">No discussions yet. Be the first to start one.</p>
+    )}
+  </article>
+
+  <script is:inline>
+    const toggle = document.getElementById('new-thread-toggle');
+    const form = document.getElementById('new-thread-form');
+    const cancel = document.getElementById('new-thread-cancel');
+    if (toggle && form && cancel) {
+      toggle.addEventListener('click', () => {
+        form.hidden = false;
+        toggle.hidden = true;
+        const titleInput = form.querySelector('input[name="title"]');
+        if (titleInput) titleInput.focus();
+      });
+      cancel.addEventListener('click', () => {
+        form.hidden = true;
+        toggle.hidden = false;
+      });
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const status = form.querySelector('.new-thread-status');
+        const submit = form.querySelector('button[type="submit"]');
+        const title = form.querySelector('input[name="title"]').value.trim();
+        const topic = form.querySelector('input[name="topic"]').value.trim();
+        const body  = form.querySelector('textarea[name="body"]').value.trim();
+        if (!title || !body) {
+          status.textContent = 'Title and body are both required.';
+          status.className = 'new-thread-status err';
+          return;
+        }
+        submit.disabled = true;
+        submit.textContent = 'Posting…';
+        try {
+          const res = await fetch('/api/discussion', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ title, body, topic: topic || undefined }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+          window.location.href = `/discussions/${data.ticket_number}/`;
+        } catch (err) {
+          status.textContent = 'Could not post: ' + (err?.message || 'unknown error');
+          status.className = 'new-thread-status err';
+          submit.disabled = false;
+          submit.textContent = 'Post discussion';
+        }
+      });
+    }
+  </script>
+
+  <style>
+    .lede {
+      font-family: var(--font-sans);
+      color: #475569;
+      margin: 0 0 1rem;
+    }
+    .sign-in-line {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      padding: 0.7rem 0.9rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      margin: 0.5rem 0 1.2rem;
+    }
+    .new-thread {
+      margin: 0.5rem 0 1.5rem;
+    }
+    .new-thread-button {
+      padding: 0.5rem 1rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .new-thread-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: 40rem;
+      margin-top: 0.75rem;
+      padding: 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .field-label {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #334155;
+    }
+    .new-thread-form input,
+    .new-thread-form textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+      resize: vertical;
+    }
+    .new-thread-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .submit-button {
+      padding: 0.5rem 1rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cancel-button {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      color: #475569;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .new-thread-status {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+    }
+    .new-thread-status.err { color: #991b1b; }
+    .thread-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .thread-row {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--rule-border, #e5e7eb);
+    }
+    .thread-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      text-decoration: none !important;
+    }
+    .thread-title:hover {
+      text-decoration: underline !important;
+    }
+    .thread-meta {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-top: 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    .topic-tag {
+      display: inline-block;
+      padding: 0.05rem 0.5rem;
+      background: #e0e7ff;
+      color: #3730a3;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .thread-author {
+      font-weight: 600;
+      color: #334155;
+    }
+    .meta-divider {
+      color: #cbd5e1;
+    }
+    .empty-state {
+      padding: 1.4rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      color: #475569;
+      text-align: center;
+    }
+  </style>
+</BaseLayout>

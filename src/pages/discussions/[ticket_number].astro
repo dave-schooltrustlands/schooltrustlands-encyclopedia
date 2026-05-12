@@ -1,0 +1,520 @@
+---
+// Site Update v32 — Discussion thread page.
+//
+// Public-readable. URL is /discussions/<ticket_number>/ where ticket_number
+// looks like DI-2026-00001. Resolves the thread, lists posts in
+// chronological order, and renders a reply form for signed-in patrons.
+//
+// Moderators additionally see per-post Hide/Unhide controls and a
+// Lock/Unlock thread control at the top. Moderator-only API calls go
+// through /api/moderation/[action].
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MemberBadgeList from '../../components/MemberBadgeList.astro';
+import { getServerSupabase } from '../../lib/supabase';
+import { isModerator } from '../../lib/moderation';
+import { formatPatronNumber, formatCardDate } from '../../lib/librarian';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+const ticketNumber = Astro.params.ticket_number;
+
+function notFound() {
+  return new Response('Not Found', { status: 404 });
+}
+
+if (!ticketNumber) return notFound();
+
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+const viewerIsModerator = user ? await isModerator(supabase, user.id) : false;
+
+const { data: thread } = await supabase
+  .from('discussions')
+  .select('id, ticket_number, user_id, title, body, topic, status, created_at, last_activity_at')
+  .eq('ticket_number', ticketNumber)
+  .maybeSingle();
+
+if (!thread) return notFound();
+
+// A hidden thread is invisible to everyone except moderators (who need to
+// reach it to unhide).
+if (thread.status === 'hidden' && !viewerIsModerator) return notFound();
+
+// Posts — moderators see hidden ones (so they can unhide); everyone else
+// only sees visible posts. Posts policy already filters via RLS for
+// non-moderators, but we read with the same client so the server-side
+// query reflects RLS automatically. For moderators we want to see all
+// rows so we fetch with an explicit filter that includes hidden.
+const postsQuery = supabase
+  .from('discussion_posts')
+  .select('id, user_id, body, is_hidden, edited_at, edit_count, posted_at')
+  .eq('discussion_id', thread.id)
+  .order('posted_at', { ascending: true });
+
+const { data: postsRaw } = viewerIsModerator
+  ? await postsQuery
+  : await postsQuery.eq('is_hidden', false);
+
+const posts = (postsRaw ?? []) as Array<{
+  id: string;
+  user_id: string;
+  body: string;
+  is_hidden: boolean;
+  edited_at: string | null;
+  edit_count: number;
+  posted_at: string;
+}>;
+
+// Author profile lookup — opener + every replier.
+const authorIds = Array.from(new Set([thread.user_id, ...posts.map((p) => p.user_id)]));
+const profileMap = new Map<string, { display_name: string | null; patron_number: number | null }>();
+if (authorIds.length > 0) {
+  const { data: profileRows } = await supabase
+    .from('profiles')
+    .select('id, display_name, patron_number')
+    .in('id', authorIds);
+  for (const p of profileRows ?? []) {
+    profileMap.set(p.id, {
+      display_name: p.display_name ?? null,
+      patron_number: p.patron_number ?? null,
+    });
+  }
+}
+
+function authorLabel(uid: string): { name: string; num: string } {
+  const p = profileMap.get(uid);
+  return {
+    name: (p?.display_name ?? '').trim() || 'Library Patron',
+    num: formatPatronNumber(p?.patron_number ?? null),
+  };
+}
+
+const opener = authorLabel(thread.user_id);
+
+const threadLocked = thread.status === 'closed';
+const threadHidden = thread.status === 'hidden';
+
+const STATUS_LABEL: Record<string, string> = {
+  open: 'Open',
+  closed: 'Locked',
+  hidden: 'Hidden',
+};
+---
+
+<BaseLayout
+  title={`${thread.title} · Discussions`}
+  sourceId="discussions-thread"
+>
+  <article class="thread prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="back-line"><a href="/discussions/">← All discussions</a></p>
+
+    <header class="thread-header">
+      <h1 class="thread-title">{thread.title}</h1>
+      <p class="thread-meta">
+        <span class="ticket-id">{thread.ticket_number}</span>
+        {thread.topic && (
+          <>
+            <span class="meta-divider">·</span>
+            <span class="topic-tag">{thread.topic}</span>
+          </>
+        )}
+        <span class="meta-divider">·</span>
+        <span class:list={['status-pill', `status-pill--${thread.status}`]}>
+          {STATUS_LABEL[thread.status] ?? thread.status}
+        </span>
+      </p>
+    </header>
+
+    {viewerIsModerator && (
+      <section class="mod-bar">
+        <strong>Moderator controls:</strong>
+        {threadLocked ? (
+          <button type="button" class="mod-button" data-mod-action="unlock" data-target-type="discussion" data-target-id={thread.id}>
+            Unlock thread
+          </button>
+        ) : (
+          <button type="button" class="mod-button" data-mod-action="lock" data-target-type="discussion" data-target-id={thread.id}>
+            Lock thread
+          </button>
+        )}
+        {threadHidden ? (
+          <button type="button" class="mod-button" data-mod-action="unhide" data-target-type="discussion" data-target-id={thread.id}>
+            Unhide thread
+          </button>
+        ) : (
+          <button type="button" class="mod-button mod-button--danger" data-mod-action="hide" data-target-type="discussion" data-target-id={thread.id}>
+            Hide thread
+          </button>
+        )}
+      </section>
+    )}
+
+    {/* Opening post */}
+    <section class="post post--opener">
+      <header class="post-meta">
+        <span class="post-author">{opener.name}</span>
+        <span class="meta-divider">·</span>
+        <span class="post-patron">№ {opener.num}</span>
+        <span class="meta-divider">·</span>
+        <time>{formatCardDate(thread.created_at)}</time>
+        <MemberBadgeList userId={thread.user_id} inline />
+      </header>
+      <div class="post-body">{thread.body}</div>
+    </section>
+
+    {/* Replies */}
+    {posts.length > 0 && (
+      <section class="replies">
+        <h2 class="replies-heading">Replies</h2>
+        {posts.map((post) => {
+          const a = authorLabel(post.user_id);
+          return (
+            <article class:list={['post', post.is_hidden && 'post--hidden']}>
+              <header class="post-meta">
+                <span class="post-author">{a.name}</span>
+                <span class="meta-divider">·</span>
+                <span class="post-patron">№ {a.num}</span>
+                <span class="meta-divider">·</span>
+                <time>{formatCardDate(post.posted_at)}</time>
+                {post.edited_at && (
+                  <>
+                    <span class="meta-divider">·</span>
+                    <em class="edited-marker">edited</em>
+                  </>
+                )}
+                <MemberBadgeList userId={post.user_id} inline />
+                {viewerIsModerator && (
+                  <span class="mod-inline">
+                    {post.is_hidden ? (
+                      <button type="button" class="mod-button mod-button--inline" data-mod-action="unhide" data-target-type="discussion_post" data-target-id={post.id}>
+                        Unhide
+                      </button>
+                    ) : (
+                      <button type="button" class="mod-button mod-button--inline mod-button--danger" data-mod-action="hide" data-target-type="discussion_post" data-target-id={post.id}>
+                        Hide
+                      </button>
+                    )}
+                  </span>
+                )}
+              </header>
+              {post.is_hidden ? (
+                <div class="post-body post-body--hidden">
+                  <em>This post is hidden.</em>
+                  <details>
+                    <summary>Show hidden content</summary>
+                    <div class="hidden-content">{post.body}</div>
+                  </details>
+                </div>
+              ) : (
+                <div class="post-body">{post.body}</div>
+              )}
+            </article>
+          );
+        })}
+      </section>
+    )}
+
+    {/* Reply form */}
+    {user ? (
+      threadLocked ? (
+        <p class="locked-line">This thread is locked. New replies are disabled.</p>
+      ) : (
+        <section class="reply-form-section">
+          <h2 class="replies-heading">Add a reply</h2>
+          <form id="reply-form" class="reply-form" data-thread-id={thread.id}>
+            <label class="field">
+              <span class="field-label">Your reply</span>
+              <textarea name="body" rows="6" maxlength="8000" required></textarea>
+            </label>
+            <div class="reply-actions">
+              <button type="submit" class="submit-button">Post reply</button>
+            </div>
+            <p class="reply-status" aria-live="polite"></p>
+          </form>
+        </section>
+      )
+    ) : (
+      <p class="sign-in-line">
+        <a href={`/auth/sign-in?next=/discussions/${thread.ticket_number}/`}>
+          Sign in to reply
+        </a>
+      </p>
+    )}
+  </article>
+
+  <script is:inline define:vars={{ threadId: thread.id }}>
+    const replyForm = document.getElementById('reply-form');
+    if (replyForm) {
+      replyForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const status = replyForm.querySelector('.reply-status');
+        const submit = replyForm.querySelector('button[type="submit"]');
+        const body = replyForm.querySelector('textarea[name="body"]').value.trim();
+        if (!body) {
+          status.textContent = 'Write a reply before submitting.';
+          status.className = 'reply-status err';
+          return;
+        }
+        submit.disabled = true;
+        submit.textContent = 'Posting…';
+        try {
+          const res = await fetch('/api/discussion-post', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ discussion_id: threadId, body }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+          status.textContent = 'Reply posted. Reloading…';
+          status.className = 'reply-status ok';
+          setTimeout(() => location.reload(), 500);
+        } catch (err) {
+          status.textContent = 'Could not post: ' + (err?.message || 'unknown error');
+          status.className = 'reply-status err';
+          submit.disabled = false;
+          submit.textContent = 'Post reply';
+        }
+      });
+    }
+
+    // Moderator inline controls — Hide/Unhide post + Lock/Unlock thread.
+    document.querySelectorAll('[data-mod-action]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const action = btn.getAttribute('data-mod-action');
+        const targetType = btn.getAttribute('data-target-type');
+        const targetId = btn.getAttribute('data-target-id');
+        if (!action || !targetType || !targetId) return;
+        const labels = {
+          hide: 'Hide this?', unhide: 'Unhide this?',
+          lock: 'Lock this thread?', unlock: 'Unlock this thread?',
+        };
+        if (!confirm(labels[action] || 'Confirm action?')) return;
+        btn.disabled = true;
+        try {
+          const res = await fetch(`/api/moderation/${action}`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              target_type: targetType,
+              target_id: targetId,
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+          location.reload();
+        } catch (err) {
+          alert('Moderation action failed: ' + (err?.message || 'unknown error'));
+          btn.disabled = false;
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .back-line {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      margin: 0 0 0.5rem;
+    }
+    .thread-header { margin: 0.5rem 0 1rem; }
+    .thread-title {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      margin: 0;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .thread-meta {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #64748b;
+      margin: 0.3rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    .ticket-id {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #475569;
+    }
+    .topic-tag {
+      display: inline-block;
+      padding: 0.05rem 0.5rem;
+      background: #e0e7ff;
+      color: #3730a3;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .status-pill--open    { background: #dcfce7; color: #166534; }
+    .status-pill--closed  { background: #fee2e2; color: #991b1b; }
+    .status-pill--hidden  { background: #f1f5f9; color: #64748b; }
+    .meta-divider { color: #cbd5e1; }
+
+    .mod-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.6rem 0.8rem;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 4px;
+      margin: 0.5rem 0 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+    }
+    .mod-button {
+      padding: 0.3rem 0.7rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .mod-button--inline {
+      padding: 0.15rem 0.5rem;
+      font-size: 0.75rem;
+      margin-left: 0.3rem;
+    }
+    .mod-button--danger { background: #991b1b; }
+    .mod-button[disabled] { opacity: 0.5; cursor: wait; }
+
+    .post {
+      padding: 0.9rem 1rem;
+      margin: 0.7rem 0;
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      background: #fff;
+    }
+    .post--opener {
+      background: var(--linen-card, #fafaf7);
+      border-left: 3px solid var(--deep-navy, #1e3a5f);
+    }
+    .post--hidden {
+      opacity: 0.7;
+      background: #f8fafc;
+    }
+    .post-meta {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-bottom: 0.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    .post-author {
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .post-patron {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.78rem;
+    }
+    .edited-marker { color: #94a3b8; }
+    .mod-inline { margin-left: auto; }
+    .post-body {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      white-space: pre-wrap;
+      color: #1e293b;
+    }
+    .post-body--hidden { font-style: italic; color: #64748b; }
+    .post-body--hidden details { margin-top: 0.4rem; }
+    .hidden-content {
+      margin-top: 0.4rem;
+      padding: 0.5rem 0.7rem;
+      background: #fff;
+      border: 1px dashed #cbd5e1;
+      border-radius: 4px;
+      font-style: normal;
+      white-space: pre-wrap;
+      color: #1e293b;
+    }
+    .replies-heading {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #475569;
+      margin: 1.4rem 0 0.4rem;
+    }
+    .reply-form-section { margin-top: 1.4rem; }
+    .reply-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 40rem;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .field-label {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #334155;
+    }
+    .reply-form textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+      resize: vertical;
+    }
+    .reply-actions { display: flex; gap: 0.5rem; }
+    .submit-button {
+      padding: 0.5rem 1rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .reply-status { font-family: var(--font-sans); font-size: 0.85rem; margin: 0; }
+    .reply-status.ok { color: #065f46; }
+    .reply-status.err { color: #991b1b; }
+    .sign-in-line,
+    .locked-line {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      padding: 0.7rem 0.9rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      margin-top: 1rem;
+      color: #475569;
+    }
+  </style>
+</BaseLayout>

@@ -10,13 +10,30 @@ import type { AstroGlobal } from 'astro';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { getServerSupabase } from './supabase';
 
-export type LibrarianRole = 'librarian' | 'head_librarian' | 'admin';
+// v32: the role union widens to include discussion_moderator. requireLibrarian
+// still returns ok=true for any row in librarian_roles (so a pure moderator
+// reaches the dashboard and the six-tab nav can show them their Moderation +
+// Discussions tabs), but dashboard pages that show librarian-only content
+// must call isLibrarianRole(role) to gate.
+export type LibrarianRole =
+  | 'librarian'
+  | 'head_librarian'
+  | 'admin'
+  | 'discussion_moderator';
 
 export type LibrarianContext = {
   user: { id: string; email?: string | null };
   supabase: SupabaseClient;
   role: LibrarianRole;
 };
+
+// True only for the librarian-tier roles — discussion_moderator excluded.
+// Use this in pages like /librarian/, /librarian/applications/, /librarian/
+// patrons/, /librarian/reviews/ to render an early-return 404 when the
+// dashboard guard succeeds but the user is only a moderator.
+export function isLibrarianRole(role: LibrarianRole | string): boolean {
+  return role === 'librarian' || role === 'head_librarian' || role === 'admin';
+}
 
 export type RequireLibrarianResult =
   | { ok: true; context: LibrarianContext }

@@ -1,7 +1,14 @@
 ---
+// Site Update v32 — Librarian-side correction detail.
+//
+// Mirrors src/pages/librarian/tickets/[id].astro but reads from the
+// corrections table and surfaces the four structured fields (claim,
+// proposed_fix, source_offered, reasoning) prominently. The response form
+// POSTs to /api/ticket-response with ticket_type='correction'.
+
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LibrarianTabs from '../../../components/LibrarianTabs.astro';
-import { requireLibrarian, formatPatronNumber, formatCardDate } from '../../../lib/librarian';
+import { requireLibrarian, formatPatronNumber, formatCardDate, isLibrarianRole } from '../../../lib/librarian';
 
 export const prerender = false;
 
@@ -9,12 +16,20 @@ const guard = await requireLibrarian(Astro);
 if (!guard.ok) return guard.response;
 const { supabase, role } = guard.context;
 
+// Pure-moderator visitors can pass requireLibrarian (v32 lets moderators
+// reach the dashboard for the Moderation tab) but corrections are a
+// librarian-tier ticket surface. Return 404 for anyone who is only a
+// moderator — same 404-not-403 contract as the rest of /librarian/*.
+if (!isLibrarianRole(role)) {
+  return new Response('Not Found', { status: 404 });
+}
+
 const id = Astro.params.id;
 if (!id) return new Response('Not Found', { status: 404 });
 
 const { data: ticket } = await supabase
-  .from('feedback')
-  .select('id, ticket_number, page_url, subject, body, status, submitted_at, user_id')
+  .from('corrections')
+  .select('id, ticket_number, page_url, claim, proposed_fix, source_offered, reasoning, status, submitted_at, user_id')
   .eq('id', id)
   .maybeSingle();
 
@@ -26,26 +41,25 @@ const { data: profileRow } = await supabase
   .eq('id', ticket.user_id)
   .maybeSingle();
 
-// Prior responses on this ticket — chronological so the conversation reads
-// top-to-bottom. RLS already filters; the librarian-side policies give us
+// Prior responses on this correction — chronological so the conversation
+// reads top-to-bottom. RLS already filters; librarian-side policies give us
 // everything for this ticket.
 const { data: responsesRaw } = await supabase
   .from('ticket_responses')
   .select('id, body, author_id, author_role, posted_at, is_public')
-  .eq('ticket_type', 'feedback')
+  .eq('ticket_type', 'correction')
   .eq('ticket_id', id)
   .order('posted_at', { ascending: true });
 
 const responses = responsesRaw ?? [];
 
-// v32 — attachments associated with this feedback ticket. Librarian RLS
-// (Librarians read attachments) lets us read any patron's file_attachments
-// row; we mint fresh 1-hour signed URLs on each render so download links
-// never outlive their TTL.
+// v32 (EPSILON): attachments associated with this correction. Librarian RLS
+// (Librarians read attachments) lets us read any patron's row; we mint fresh
+// 1-hour signed URLs on each render so download links never outlive the TTL.
 const { data: attachmentsRaw } = await supabase
   .from('file_attachments')
   .select('id, storage_path, file_name, content_type, byte_size, uploaded_at')
-  .eq('parent_type', 'feedback')
+  .eq('parent_type', 'correction')
   .eq('parent_id', id)
   .order('uploaded_at', { ascending: true });
 
@@ -75,8 +89,6 @@ function fmtBytes(n: number): string {
   return `${(n / 1024 / 1024).toFixed(1)} MB`;
 }
 
-// Pull the author display names for any responses so we can label patron vs.
-// librarian by name. Two-step: collect distinct author_ids, fetch profiles.
 const authorIds = Array.from(new Set(responses.map((r) => r.author_id)));
 let authorMap = new Map<string, { display_name: string | null }>();
 if (authorIds.length > 0) {
@@ -93,6 +105,8 @@ const STATUS_LABEL: Record<string, string> = {
   new: 'New',
   in_review: 'In review',
   responded: 'Responded',
+  accepted: 'Accepted',
+  rejected: 'Rejected',
   archived: 'Archived',
 };
 
@@ -103,7 +117,7 @@ const submitted = formatCardDate(ticket.submitted_at);
 
 <BaseLayout
   title={`${ticket.ticket_number} · Librarian dashboard`}
-  sourceId="librarian-ticket-detail"
+  sourceId="librarian-correction-detail"
 >
   <article class="ticket-detail prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <p class="back-line"><a href="/librarian/">← Back to pending tickets</a></p>
@@ -113,6 +127,7 @@ const submitted = formatCardDate(ticket.submitted_at);
     <header class="ticket-header">
       <h1 class="ticket-id">{ticket.ticket_number}</h1>
       <p class="ticket-meta">
+        <span class="type-pill type-pill--correction">Correction</span>
         <span class:list={['status-pill', `status-pill--${ticket.status}`]}>
           {STATUS_LABEL[ticket.status] ?? ticket.status}
         </span>
@@ -123,19 +138,34 @@ const submitted = formatCardDate(ticket.submitted_at);
       </p>
     </header>
 
-    {ticket.subject && (
-      <p class="ticket-subject"><strong>Subject:</strong> {ticket.subject}</p>
-    )}
-
     <p class="ticket-page">
       <strong>Page:</strong>
       <a href={ticket.page_url}>{ticket.page_url}</a>
     </p>
 
-    <section class="ticket-body-section">
-      <h2>Feedback</h2>
-      <div class="ticket-body">{ticket.body}</div>
+    <section class="correction-section">
+      <h2>What is the error?</h2>
+      <div class="ticket-body">{ticket.claim}</div>
     </section>
+
+    <section class="correction-section">
+      <h2>What should it say instead?</h2>
+      <div class="ticket-body">{ticket.proposed_fix}</div>
+    </section>
+
+    {ticket.source_offered && (
+      <section class="correction-section">
+        <h2>Source</h2>
+        <div class="ticket-body ticket-body--inline">{ticket.source_offered}</div>
+      </section>
+    )}
+
+    {ticket.reasoning && (
+      <section class="correction-section">
+        <h2>Reasoning</h2>
+        <div class="ticket-body">{ticket.reasoning}</div>
+      </section>
+    )}
 
     {attachments.length > 0 && (
       <section class="attachments-section">
@@ -225,7 +255,7 @@ const submitted = formatCardDate(ticket.submitted_at);
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({
-              ticket_type: 'feedback',
+              ticket_type: 'correction',
               ticket_id: ticketId,
               body,
               is_public: isPublic,
@@ -267,16 +297,30 @@ const submitted = formatCardDate(ticket.submitted_at);
       font-size: 0.85rem;
       color: #475569;
       margin: 0.25rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
     }
     .meta-divider {
-      margin: 0 0.5rem;
       color: #94a3b8;
     }
-    .ticket-subject,
     .ticket-page {
       font-family: var(--font-sans);
       font-size: 0.92rem;
       margin: 0.4rem 0;
+    }
+    .correction-section {
+      margin: 0.9rem 0;
+    }
+    .correction-section > h2 {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 0.6rem 0 0.3rem;
     }
     .ticket-body {
       font-family: var(--font-serif);
@@ -286,9 +330,32 @@ const submitted = formatCardDate(ticket.submitted_at);
       background: var(--linen-card, #fafaf7);
       border: 1px solid var(--rule-border, #e5e7eb);
       border-radius: 4px;
-      margin: 0.4rem 0;
+      margin: 0.2rem 0;
     }
-    .status-pill {
+    .ticket-body--inline {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      padding: 0.55rem 0.8rem;
+    }
+    .attachments-section { margin: 1rem 0 1.25rem; }
+    .attachments-section > h2 {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 0.6rem 0 0.3rem;
+    }
+    .attachments-list { list-style: none; padding: 0; margin: 0.3rem 0 0; }
+    .attachments-item {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      padding: 0.25rem 0;
+    }
+    .attachments-size { color: #94a3b8; font-size: 0.82rem; margin-left: 0.4rem; }
+    .status-pill,
+    .type-pill {
       display: inline-block;
       padding: 0.1rem 0.5rem;
       border-radius: 999px;
@@ -299,51 +366,23 @@ const submitted = formatCardDate(ticket.submitted_at);
       background: #e2e8f0;
       color: #334155;
     }
-    .status-pill--new {
-      background: #e0e7ff;
-      color: #3730a3;
-    }
-    .status-pill--in_review {
-      background: #fef3c7;
-      color: #92400e;
-    }
-    .status-pill--responded {
-      background: #dcfce7;
-      color: #166534;
-    }
-    .status-pill--archived {
-      background: #f1f5f9;
-      color: #64748b;
-    }
-    .attachments-section { margin: 1rem 0 1.25rem; }
-    .attachments-list { list-style: none; padding: 0; margin: 0.3rem 0 0; }
-    .attachments-item {
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      padding: 0.25rem 0;
-    }
-    .attachments-size { color: #94a3b8; font-size: 0.82rem; margin-left: 0.4rem; }
-    .responses-section {
-      margin: 1.25rem 0;
-    }
-    .response-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+    .type-pill--correction { background: #fef3c7; color: #92400e; }
+    .status-pill--new       { background: #e0e7ff; color: #3730a3; }
+    .status-pill--in_review { background: #fef3c7; color: #92400e; }
+    .status-pill--responded { background: #dcfce7; color: #166534; }
+    .status-pill--accepted  { background: #dcfce7; color: #166534; }
+    .status-pill--rejected  { background: #fee2e2; color: #991b1b; }
+    .status-pill--archived  { background: #f1f5f9; color: #64748b; }
+    .responses-section { margin: 1.25rem 0; }
+    .response-list { list-style: none; padding: 0; margin: 0; }
     .response-item {
       padding: 0.85rem 1rem;
       border-radius: 4px;
       margin: 0.6rem 0;
       border: 1px solid var(--rule-border, #e5e7eb);
     }
-    .response-item--librarian {
-      background: #f0f9ff;
-      border-color: #bae6fd;
-    }
-    .response-item--patron {
-      background: #fff;
-    }
+    .response-item--librarian { background: #f0f9ff; border-color: #bae6fd; }
+    .response-item--patron    { background: #fff; }
     .response-meta {
       font-family: var(--font-sans);
       font-size: 0.8rem;
@@ -360,28 +399,16 @@ const submitted = formatCardDate(ticket.submitted_at);
       letter-spacing: 0.04em;
       margin-right: 0.4rem;
     }
-    .role-badge--librarian {
-      background: #1e3a5f;
-      color: #fff;
-    }
-    .role-badge--patron {
-      background: #fef3c7;
-      color: #92400e;
-    }
-    .response-author {
-      font-weight: 600;
-      color: var(--deep-navy, #1e3a5f);
-    }
+    .role-badge--librarian { background: #1e3a5f; color: #fff; }
+    .role-badge--patron    { background: #fef3c7; color: #92400e; }
+    .response-author { font-weight: 600; color: var(--deep-navy, #1e3a5f); }
     .response-body {
       font-family: var(--font-serif);
       font-size: 0.96rem;
       white-space: pre-wrap;
       color: #1e293b;
     }
-    .empty-line {
-      color: #64748b;
-      font-style: italic;
-    }
+    .empty-line { color: #64748b; font-style: italic; }
     .response-form {
       display: flex;
       flex-direction: column;
@@ -414,15 +441,8 @@ const submitted = formatCardDate(ticket.submitted_at);
       font-weight: 600;
       cursor: pointer;
     }
-    .response-submit[disabled] {
-      opacity: 0.5;
-      cursor: wait;
-    }
-    .response-status {
-      font-family: var(--font-sans);
-      font-size: 0.88rem;
-      margin: 0;
-    }
+    .response-submit[disabled] { opacity: 0.5; cursor: wait; }
+    .response-status { font-family: var(--font-sans); font-size: 0.88rem; margin: 0; }
     .response-status.ok { color: #065f46; }
     .response-status.err { color: #991b1b; }
   </style>

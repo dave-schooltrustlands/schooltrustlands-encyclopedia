@@ -1,0 +1,16 @@
+Subject: New reply in: {{thread_title}}
+
+Dear {{patron_name}},
+
+{{author_name}} has posted a new reply in the Library discussion
+"{{thread_title}}":
+
+{{reply_body}}
+
+Read the full thread and reply:
+{{thread_url}}
+
+To stop receiving notifications for this thread, visit:
+{{mute_url}}
+
+— America's School Trust Library

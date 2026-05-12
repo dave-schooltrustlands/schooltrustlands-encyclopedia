@@ -1,0 +1,542 @@
+---
+// Site Update v32 — Public reviews list for a work.
+//
+// Server-rendered (prerender = false) so we can read live review state and
+// the signed-in patron's draft (if any). The dynamic route segment is
+// `[workSlug]` — Astro params must be valid JS identifiers, so the URL slug
+// is taken from `Astro.params.workSlug`. The slug values are the work-row
+// slugs (e.g. `schools-of-the-republic`).
+//
+// Page layout:
+//   - Heading: "Reviews · {work.title}"
+//   - Average rating line (avg + star row + count) at the top
+//   - The signed-in patron's draft / published / write-a-review form
+//   - The published-reviews list, newest first
+//
+// Reviews are 1–5 stars + body. They are published by a librarian via the
+// /librarian/reviews dashboard; the patron's draft sits in the table with
+// is_published = false until then.
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import FileUpload from '../../../../components/FileUpload.astro';
+import MemberBadgeList from '../../../../components/MemberBadgeList.astro';
+import { getServerSupabase } from '../../../../lib/supabase';
+import { formatPatronNumber, formatCardDate } from '../../../../lib/librarian';
+
+export const prerender = false;
+
+const workSlug = Astro.params.workSlug;
+if (!workSlug || typeof workSlug !== 'string') {
+  return new Response('Not Found', { status: 404 });
+}
+
+const supabase = getServerSupabase(Astro);
+
+// Look up the work. RLS allows public reads of public.works.
+const { data: work } = await supabase
+  .from('works')
+  .select('id, slug, title, author, kind, description')
+  .eq('slug', workSlug)
+  .maybeSingle();
+
+if (!work) {
+  return new Response('Not Found', { status: 404 });
+}
+
+// Auth context — we need to decide which form / message to show.
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+// Published reviews for this work, newest first.
+const { data: publishedRaw } = await supabase
+  .from('reviews')
+  .select('id, user_id, rating, body, published_at')
+  .eq('work_id', work.id)
+  .eq('is_published', true)
+  .order('published_at', { ascending: false });
+
+const published = (publishedRaw ?? []) as Array<{
+  id: string;
+  user_id: string;
+  rating: number;
+  body: string;
+  published_at: string | null;
+}>;
+
+// Author profiles (display_name + patron_number) for all published reviews.
+const authorIds = Array.from(new Set(published.map((r) => r.user_id)));
+let authorMap = new Map<string, { display_name: string | null; patron_number: number | null }>();
+if (authorIds.length > 0) {
+  const { data: profileRows } = await supabase
+    .from('profiles')
+    .select('id, display_name, patron_number')
+    .in('id', authorIds);
+  for (const p of profileRows ?? []) {
+    authorMap.set(p.id, {
+      display_name: p.display_name ?? null,
+      patron_number: p.patron_number ?? null,
+    });
+  }
+}
+
+// Average rating across published reviews only.
+const reviewCount = published.length;
+const avgRating =
+  reviewCount > 0
+    ? published.reduce((sum, r) => sum + (r.rating ?? 0), 0) / reviewCount
+    : 0;
+
+// The signed-in patron's review (if any) — could be a draft or published.
+let ownReview: {
+  id: string;
+  rating: number;
+  body: string;
+  is_published: boolean;
+} | null = null;
+if (user) {
+  const { data: ownRow } = await supabase
+    .from('reviews')
+    .select('id, rating, body, is_published')
+    .eq('work_id', work.id)
+    .eq('user_id', user.id)
+    .maybeSingle();
+  if (ownRow) ownReview = ownRow;
+}
+
+// v32 (EPSILON): attachments per published review. We mint a fresh 1-hour
+// signed URL per file on each render so the link never outlives the TTL.
+// Patron RLS only returns the caller's own rows for file_attachments; the
+// "Librarians read attachments" policy lets the librarian see all. For the
+// public reviews list we read with the public anon key — which means
+// attachments for OTHER patrons' reviews are not visible to the page (the
+// row-level read is gated to user_id=auth.uid()). That's by design today:
+// per spec, attachments are an evidence aid for the librarian / submitter,
+// not part of the public review surface. We still attempt the join so the
+// submitter sees their own attachments inline with their published review.
+type AttachmentView = {
+  id: string;
+  file_name: string;
+  byte_size: number;
+  signed_url: string | null;
+};
+const reviewIds = published.map((r) => r.id);
+const attachmentsByReview = new Map<string, AttachmentView[]>();
+if (reviewIds.length > 0) {
+  const { data: attRows } = await supabase
+    .from('file_attachments')
+    .select('id, parent_id, storage_path, file_name, byte_size')
+    .eq('parent_type', 'review')
+    .in('parent_id', reviewIds);
+  for (const row of attRows ?? []) {
+    const { data: signed } = await supabase.storage
+      .from('attachments')
+      .createSignedUrl(row.storage_path, 60 * 60);
+    const view: AttachmentView = {
+      id: row.id,
+      file_name: row.file_name,
+      byte_size: row.byte_size,
+      signed_url: signed?.signedUrl ?? null,
+    };
+    const list = attachmentsByReview.get(row.parent_id) ?? [];
+    list.push(view);
+    attachmentsByReview.set(row.parent_id, list);
+  }
+}
+
+function fmtBytes(n: number): string {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(0)} KB`;
+  return `${(n / 1024 / 1024).toFixed(1)} MB`;
+}
+
+// Star helpers — 5 glyphs, filled per rating; supports half-rounded display
+// for the average (we round to the nearest whole star to keep the
+// presentation honest about being a small-N average).
+function starsFor(rating: number): string {
+  const r = Math.max(0, Math.min(5, Math.round(rating)));
+  return '★'.repeat(r) + '☆'.repeat(5 - r);
+}
+
+const signInHref = `/library-card/`;
+---
+
+<BaseLayout
+  title={`Reviews · ${work.title}`}
+  description={`Patron reviews of ${work.title}.`}
+  sourceId="reading-reviews"
+>
+  <article class="reviews-page prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="back-line"><a href={`/reading/${work.slug}/`}>← Back to {work.title}</a></p>
+
+    <header class="reviews-header">
+      <p class="kicker">Reading Room · Reviews</p>
+      <h1>{work.title}</h1>
+      {work.author && <p class="byline">{work.author}</p>}
+    </header>
+
+    <section class="avg-summary" aria-label="Average rating">
+      {reviewCount > 0 ? (
+        <p class="avg-line">
+          <span class="avg-stars" aria-hidden="true">{starsFor(avgRating)}</span>
+          <span class="avg-number">{avgRating.toFixed(2)}</span>
+          <span class="avg-count">
+            ({reviewCount} {reviewCount === 1 ? 'review' : 'reviews'})
+          </span>
+        </p>
+      ) : (
+        <p class="avg-line empty">No reviews yet — be the first to write one.</p>
+      )}
+    </section>
+
+    {/* Signed-in patron's own surface */}
+    {user ? (
+      ownReview && ownReview.is_published ? (
+        <section class="own-review own-review--published">
+          <h2>Your review is published</h2>
+          <p class="muted">Your review appears in the list below.</p>
+        </section>
+      ) : (
+        <section class="own-review">
+          <h2>{ownReview ? 'Edit your draft' : 'Write a review'}</h2>
+          {ownReview && (
+            <p class="muted">
+              Awaiting librarian publication. You can keep revising your draft
+              until a librarian publishes it.
+            </p>
+          )}
+          <form class="review-form" data-work-id={work.id}>
+            <label class="form-label">
+              Rating
+              <select name="rating" required class="rating-select">
+                <option value="" disabled selected={!ownReview}>Choose a rating…</option>
+                {[5, 4, 3, 2, 1].map((n) => (
+                  <option value={n} selected={ownReview?.rating === n}>
+                    {'★'.repeat(n) + '☆'.repeat(5 - n)} ({n})
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label class="form-label">
+              Your review
+              <textarea
+                name="body"
+                required
+                rows="8"
+                maxlength="8000"
+                placeholder="What did you make of this work? Where did it land for you?"
+              >{ownReview?.body ?? ''}</textarea>
+            </label>
+
+            <FileUpload parentType="review" inputId="review-attachments" />
+
+            <button type="submit" class="submit-button">
+              {ownReview ? 'Save draft' : 'Submit review'}
+            </button>
+            <p class="form-progress" data-review-progress hidden></p>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      )
+    ) : (
+      <section class="own-review own-review--signed-out">
+        <p>
+          <a href={signInHref}>Sign in</a> to write a review.
+        </p>
+      </section>
+    )}
+
+    {/* Published reviews list */}
+    <section class="reviews-list-section" aria-label="Published reviews">
+      <h2>Published reviews</h2>
+      {published.length > 0 ? (
+        <ol class="reviews-list">
+          {published.map((r) => {
+            const a = authorMap.get(r.user_id);
+            const who = (a?.display_name ?? '').trim() || 'A Library Patron';
+            const num = formatPatronNumber(a?.patron_number ?? null);
+            return (
+              <li class="review-item" id={`review-${r.id}`}>
+                <header class="review-meta">
+                  <span class="review-author">{who}</span>
+                  <MemberBadgeList userId={r.user_id} inline />
+                  <span class="meta-divider">·</span>
+                  <span class="review-patron-no">№ {num}</span>
+                  <span class="meta-divider">·</span>
+                  <time>{formatCardDate(r.published_at)}</time>
+                </header>
+                <p class="review-stars" aria-label={`${r.rating} out of 5 stars`}>
+                  <span aria-hidden="true">{starsFor(r.rating)}</span>
+                </p>
+                <div class="review-body">{r.body}</div>
+                {(attachmentsByReview.get(r.id) ?? []).length > 0 && (
+                  <ul class="review-attachments">
+                    {(attachmentsByReview.get(r.id) ?? []).map((a) => (
+                      <li class="review-attachment-item">
+                        {a.signed_url ? (
+                          <a href={a.signed_url} target="_blank" rel="noopener">{a.file_name}</a>
+                        ) : (
+                          <span>{a.file_name}</span>
+                        )}
+                        <span class="review-attachment-size">({fmtBytes(a.byte_size)})</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      ) : (
+        <p class="empty-line">No published reviews yet.</p>
+      )}
+    </section>
+  </article>
+
+  <script>
+    // v32 (EPSILON): module script so we can import the attachment helper.
+    import { uploadFilesFor } from '../../../../lib/uploadAttachments';
+
+    const form = document.querySelector<HTMLFormElement>('.review-form');
+    if (form) {
+      const status = form.querySelector<HTMLElement>('.form-status');
+      const submit = form.querySelector<HTMLButtonElement>('.submit-button');
+      const progress = form.querySelector<HTMLElement>('[data-review-progress]');
+      const fileInput = form.querySelector<HTMLInputElement>('#review-attachments');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const workId = form.getAttribute('data-work-id') ?? '';
+        const ratingEl = form.querySelector<HTMLSelectElement>('select[name="rating"]');
+        const bodyEl = form.querySelector<HTMLTextAreaElement>('textarea[name="body"]');
+        const rating = Number(ratingEl?.value ?? '');
+        const body = (bodyEl?.value ?? '').trim();
+        if (!status || !submit) return;
+        if (!rating || rating < 1 || rating > 5) {
+          status.textContent = 'Please choose a rating from 1 to 5.';
+          status.className = 'form-status err';
+          return;
+        }
+        if (!body) {
+          status.textContent = 'Please write your review before submitting.';
+          status.className = 'form-status err';
+          return;
+        }
+        submit.disabled = true;
+        const originalLabel = submit.textContent ?? 'Submit review';
+        submit.textContent = 'Submitting…';
+        status.textContent = '';
+        try {
+          const res = await fetch('/api/review', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ work_id: workId, rating, body }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+
+          // Upload attachments if any. Failures are non-fatal — the
+          // review itself is already recorded.
+          let attachmentNote = '';
+          const hasFiles = !!(fileInput && fileInput.files && fileInput.files.length > 0);
+          if (hasFiles && data.id) {
+            submit.textContent = 'Uploading…';
+            const outcome = await uploadFilesFor('review', data.id, fileInput, {
+              onProgress: (done, total) => {
+                if (!progress) return;
+                progress.hidden = false;
+                progress.textContent = `Uploaded ${done} of ${total} file${total === 1 ? '' : 's'}…`;
+              },
+            });
+            if (progress) progress.hidden = true;
+            if (outcome.failed.length > 0) {
+              attachmentNote = ` ${outcome.failed.length} file${outcome.failed.length === 1 ? '' : 's'} did not upload.`;
+            }
+          }
+
+          const baseMsg = data.is_published
+            ? 'Saved.'
+            : 'Draft saved. A librarian will review and publish it shortly.';
+          status.textContent = baseMsg + attachmentNote;
+          status.className = 'form-status ok';
+          setTimeout(() => location.reload(), 700);
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : 'unknown error';
+          status.textContent = 'Could not submit: ' + msg;
+          status.className = 'form-status err';
+          submit.disabled = false;
+          submit.textContent = originalLabel;
+        }
+      });
+    }
+  </script>
+
+  <style>
+    .back-line {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      margin: 0 0 0.75rem;
+    }
+    .reviews-header { margin: 0 0 1rem; }
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 0 0 0.4rem;
+    }
+    .byline {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: #475569;
+      font-style: italic;
+      margin: 0.2rem 0 0;
+    }
+    .avg-summary {
+      padding: 0.85rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      margin: 1rem 0 1.5rem;
+    }
+    .avg-line {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .avg-line.empty {
+      color: #64748b;
+      font-style: italic;
+    }
+    .avg-stars {
+      color: #b45309;
+      letter-spacing: 0.08em;
+      font-size: 1.1rem;
+    }
+    .avg-number { font-weight: 600; color: var(--deep-navy, #1e3a5f); }
+    .avg-count { color: #64748b; font-size: 0.9rem; }
+    .own-review {
+      padding: 1rem 1.1rem 1.2rem;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 4px;
+      margin: 0 0 1.5rem;
+    }
+    .own-review--published {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+    }
+    .own-review--signed-out {
+      background: var(--linen-card, #fafaf7);
+      border-color: var(--rule-border, #e5e7eb);
+    }
+    .own-review h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+    }
+    .muted { color: #475569; font-size: 0.9rem; margin: 0 0 0.75rem; }
+    .review-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      max-width: 40rem;
+    }
+    .form-label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .rating-select,
+    .review-form textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      background: #fff;
+    }
+    .review-form textarea {
+      resize: vertical;
+      font-family: var(--font-serif, Georgia, serif);
+    }
+    .submit-button {
+      align-self: flex-start;
+      padding: 0.55rem 1.1rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .submit-button[disabled] { opacity: 0.5; cursor: wait; }
+    .form-status { font-family: var(--font-sans); font-size: 0.88rem; margin: 0; }
+    .form-status.ok { color: #065f46; }
+    .form-status.err { color: #991b1b; }
+    .form-progress { font-family: var(--font-sans); font-size: 0.85rem; color: #475569; margin: 0; }
+    .review-attachments {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+    .review-attachment-item {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      padding: 0.15rem 0;
+    }
+    .review-attachment-size { color: #94a3b8; font-size: 0.78rem; margin-left: 0.35rem; }
+    .reviews-list-section { margin: 1rem 0; }
+    .reviews-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .review-item {
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      background: #fff;
+      margin: 0 0 0.85rem;
+    }
+    .review-meta {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: #64748b;
+      margin: 0 0 0.3rem;
+    }
+    .meta-divider { margin: 0 0.4rem; color: #94a3b8; }
+    .review-author { font-weight: 600; color: var(--deep-navy, #1e3a5f); }
+    .review-patron-no {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.78rem;
+    }
+    .review-stars {
+      color: #b45309;
+      letter-spacing: 0.08em;
+      font-size: 1rem;
+      margin: 0 0 0.4rem;
+    }
+    .review-body {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #1e293b;
+      white-space: pre-wrap;
+    }
+    .empty-line {
+      color: #64748b;
+      font-style: italic;
+    }
+  </style>
+</BaseLayout>

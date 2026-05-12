@@ -53,6 +53,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Monday May 11, 2026 — Site update v32: Engagement Breadth — corrections, discussions, reviews, attachments, badges, moderation.</strong>
+            v31 opened the response side; v32 opens the full breadth of the engagement layer in one pass.
+            A new <em>Submit a correction</em> link sits alongside <em>Submit feedback</em> in every page
+            footer; clicking it opens a four-field modal (the claim, the proposed fix, an optional source,
+            optional reasoning) and submits a ticketed correction <code>CR-2026-NNNNN</code> that surfaces
+            in the librarian dashboard's <em>Pending tickets</em> tab next to feedback rows. A new public
+            forum at <a href="/discussions/">/discussions/</a> opens with three seed threads (Methodology,
+            Oregon Elliott Forest, Trust theory) authored by the head librarian; any Library Card holder
+            can start a new thread or reply, and prior participants receive an email when a new reply
+            lands (mute is per-thread). A new <em>Reviews</em> surface at
+            <code>/reading/&lt;work&gt;/reviews/</code> lets a card-holder write a 1–5-star review with a
+            body; reviews are <em>librarian-published</em> via a new <em>Reviews</em> tab in the dashboard
+            before they appear publicly. <em>File attachments</em> are now supported on feedback, corrections,
+            and reviews — up to three files per submission, ≤ 10 MB each, type-whitelisted, served from a
+            private Supabase Storage bucket with short-lived signed URLs. A new <em>discussion_moderator</em>
+            role lets the head librarian delegate thread moderation to a community member without granting
+            ticket-response privileges; a new <em>Moderation</em> tab in the dashboard shows hidden posts and
+            a running audit log; every hide/unhide/lock/unlock is recorded in <code>moderation_audit</code>.
+            <em>Member badges</em> arrive — the head librarian can grant <em>State expert</em>,
+            <em>OASTL board</em>, <em>ASTL board</em>, <em>Friend of the Library</em>,
+            <em>Editorial contributor</em>, or <em>Citizen historian</em> to any patron; badges appear on
+            the patron's card overlay, in discussion posts, and in review headers. Six new email templates
+            (correction-received, correction-response, review-published, discussion-reply, and the v31
+            response templates we now share) keep the patron in the loop. The Library is now a working
+            two-way institution: patrons can submit any of five input types, librarians and moderators have
+            the tools to handle them, and every moderation action is recorded.
+          </li>
+          <li>
             <strong>Monday May 11, 2026 — Site update v31: Librarian Layer — the response side of the two-way Library.</strong>
             v30 opened a private feedback channel; v31 makes that channel answerable. A new private dashboard at
             <code>/librarian/</code> (404 for everyone else — we don't telegraph the route's existence) gives

@@ -1,6 +1,32 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BookBanner from '../../components/BookBanner.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+// v32 — count published reviews so the footer link can carry the live N.
+// RLS allows public reads of published reviews; we resolve the work id by
+// slug then count. Failures degrade silently to a count of 0.
+let reviewCount = 0;
+try {
+  const supabase = getServerSupabase(Astro);
+  const { data: work } = await supabase
+    .from('works')
+    .select('id')
+    .eq('slug', 'schools-of-the-republic')
+    .maybeSingle();
+  if (work?.id) {
+    const { count } = await supabase
+      .from('reviews')
+      .select('id', { count: 'exact', head: true })
+      .eq('work_id', work.id)
+      .eq('is_published', true);
+    if (typeof count === 'number') reviewCount = count;
+  }
+} catch {
+  // swallow — the reviews link still renders with count 0.
+}
 ---
 <BaseLayout
   title="Schools of the Republic · America's School Trust Library"
@@ -60,5 +86,18 @@ import BookBanner from '../../components/BookBanner.astro';
     <hr class="archival-divider">
 
     <p>This volume is the synthesis. The <a href="/atlas/">Atlas</a>, the <a href="/counting/">Counting House</a>, and the companion volume <a href="/reading/sacred-compact/">The Eighth Anchor</a> draw on the same evidentiary substrate.</p>
+
+    <p class="reviews-link">
+      <a href="/reading/schools-of-the-republic/reviews/">Reviews ({reviewCount})</a>
+    </p>
   </article>
+
+  <style>
+    .reviews-link {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      margin-top: 1.5rem;
+      color: #475569;
+    }
+  </style>
 </BaseLayout>

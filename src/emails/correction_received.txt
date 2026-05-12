@@ -1,0 +1,17 @@
+Subject: Library correction received — {{ticket_number}}
+
+Dear {{patron_name}},
+
+Thank you for submitting a correction. We have recorded it as
+{{ticket_number}} and a librarian will review it.
+
+Page: {{page_url}}
+
+If the correction is accepted, the change will be made and you will
+receive a follow-up email. If a librarian needs more context, they will
+write back through the ticket.
+
+You can view this correction at any time on your My Library page:
+https://schooltrusts.net/my-library/
+
+— The Library

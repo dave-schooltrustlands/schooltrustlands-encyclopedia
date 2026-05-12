@@ -3,6 +3,11 @@
 // POST { ticket_type, ticket_id, body, is_public? }. Verifies librarian,
 // inserts a ticket_responses row, transitions the parent ticket to
 // 'responded', and sends the response email to the submitter.
+//
+// v32 extends this to also accept ticket_type='correction' — the parent
+// row is loaded from public.corrections, the status transition is applied
+// to the corrections row, and the same ticket_response email is sent with
+// a generic "correction" framing in the page_url variable.
 
 import type { APIRoute } from 'astro';
 import { getServerSupabase } from '../../lib/supabase';
@@ -52,8 +57,8 @@ export const POST: APIRoute = async (Astro) => {
   const body = typeof payload.body === 'string' ? payload.body.trim() : '';
   const isPublic = payload.is_public === true;
 
-  if (ticketType !== 'feedback') {
-    return json(400, { error: 'Only feedback tickets are supported in v31.' });
+  if (ticketType !== 'feedback' && ticketType !== 'correction') {
+    return json(400, { error: 'Unsupported ticket_type.' });
   }
   if (!ticketId) return json(400, { error: 'Missing ticket_id.' });
   if (!body) return json(400, { error: 'Write a response before submitting.' });
@@ -62,9 +67,12 @@ export const POST: APIRoute = async (Astro) => {
   }
 
   // Load the parent ticket so we can (a) confirm it exists and (b) collect
-  // the submitter's email + page for the response email.
+  // the submitter's email + page for the response email. The shape of the
+  // row is the same for both ticket types — we read ticket_number, page_url,
+  // user_id, status off either feedback or corrections.
+  const parentTable = ticketType === 'correction' ? 'corrections' : 'feedback';
   const { data: ticket } = await supabase
-    .from('feedback')
+    .from(parentTable)
     .select('id, ticket_number, page_url, user_id, status')
     .eq('id', ticketId)
     .maybeSingle();
@@ -74,7 +82,7 @@ export const POST: APIRoute = async (Astro) => {
   const { data: insertRow, error: insertErr } = await supabase
     .from('ticket_responses')
     .insert({
-      ticket_type: 'feedback',
+      ticket_type: ticketType,
       ticket_id: ticketId,
       author_id: user.id,
       author_role: 'librarian',
@@ -89,9 +97,11 @@ export const POST: APIRoute = async (Astro) => {
     });
   }
 
-  // Transition the ticket to 'responded'. RLS lets the librarian update.
+  // Transition the parent ticket to 'responded'. RLS lets the librarian update
+  // either feedback or corrections (the v32 migration installs the matching
+  // librarian-update policy on corrections).
   const { error: updateErr } = await supabase
-    .from('feedback')
+    .from(parentTable)
     .update({ status: 'responded' })
     .eq('id', ticketId);
   if (updateErr) {

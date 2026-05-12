@@ -7,7 +7,7 @@ export const prerender = false;
 
 const guard = await requireLibrarian(Astro);
 if (!guard.ok) return guard.response;
-const { supabase } = guard.context;
+const { supabase, role } = guard.context;
 
 const { data: appsRaw } = await supabase
   .from('librarian_applications')
@@ -59,7 +59,7 @@ function summarize(statement: string): string {
 >
   <article class="applications prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <h1>Applications</h1>
-    <LibrarianTabs current="applications" />
+    <LibrarianTabs current="applications" role={role} />
 
     {apps.length > 0 ? (
       <table class="apps-table">

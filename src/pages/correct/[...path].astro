@@ -1,0 +1,223 @@
+---
+// Site Update v32 — Engagement Breadth: no-JS fallback form for corrections.
+//
+// Routes:
+//   /correct/             — generic "what page would you like to correct?" form
+//   /correct/some/page/   — pre-populates page_url with /some/page/
+//
+// This is the JS-free path to the same submission endpoint as the modal in
+// CorrectionLink.astro. The form posts form-encoded to /api/correction; on
+// success that endpoint 303s the user to /correct/thanks/?t=CR-YYYY-NNNNN.
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+const supabase = getServerSupabase(Astro);
+const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+// The captured path. Astro gives us the unwrapped segments as a string in
+// the [...path] param; reattach a leading slash so it round-trips as a
+// page_url. Empty path → the user hit /correct/ directly.
+const rawPath = Astro.params.path ?? '';
+const pagePath = rawPath ? `/${rawPath}` : '';
+
+// `?error=...` carries server-side validation failures back to this form.
+const submissionError = Astro.url.searchParams.get('error') ?? '';
+
+const signedInRedirect = `/correct/${rawPath}`;
+---
+
+<BaseLayout
+  title="Submit a correction · America's School Trust Library"
+  description="Submit a structured correction to a Library page. Goes to the librarians for review."
+  sourceId="correct-fallback"
+>
+  <article class="correct-page prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Submit a correction</h1>
+    <p class="kicker">
+      The Library welcomes corrections. A librarian will review what you submit and
+      either accept the change, ask for more context, or reply with reasoning.
+    </p>
+
+    {!user && (
+      <div class="flash">
+        <p>
+          <a href={`/auth/sign-in?redirect=${encodeURIComponent(signedInRedirect)}`}>
+            Sign in to submit a correction
+          </a>
+          . Corrections are recorded with your Library Card so a librarian can write back.
+        </p>
+      </div>
+    )}
+
+    {user && (
+      <>
+        {pagePath && (
+          <p class="correct-page-meta">
+            Correcting page: <code>{pagePath}</code>
+          </p>
+        )}
+
+        {submissionError && (
+          <div class="flash err">
+            <p>{submissionError}</p>
+          </div>
+        )}
+
+        <form class="correct-form" method="post" action="/api/correction" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="page_url" value={pagePath || '/'} />
+
+          {!pagePath && (
+            <>
+              <label class="correct-label" for="page-url">Page URL</label>
+              <input
+                type="text"
+                id="page-url"
+                name="page_url"
+                required
+                maxlength="2000"
+                placeholder="/states/oregon/elliott-state-forest/"
+              />
+              <p class="correct-help">The path on this site you are correcting.</p>
+            </>
+          )}
+
+          <label class="correct-label" for="claim">What is the error?</label>
+          <textarea
+            id="claim"
+            name="claim"
+            required
+            rows="3"
+            maxlength="600"
+            placeholder="Describe the error on this page…"
+          ></textarea>
+
+          <label class="correct-label" for="proposed-fix">What should it say instead?</label>
+          <textarea
+            id="proposed-fix"
+            name="proposed_fix"
+            required
+            rows="5"
+            maxlength="1500"
+            placeholder="Your proposed wording or fact…"
+          ></textarea>
+
+          <label class="correct-label" for="source-offered">Source (optional)</label>
+          <input
+            type="text"
+            id="source-offered"
+            name="source_offered"
+            maxlength="500"
+            placeholder="e.g. URL, book + page, statute citation"
+          />
+
+          <label class="correct-label" for="reasoning">Why is this the correct version? (optional)</label>
+          <textarea
+            id="reasoning"
+            name="reasoning"
+            rows="4"
+            maxlength="2000"
+            placeholder="Reasoning or context that helps the librarian verify…"
+          ></textarea>
+
+          <button type="submit" class="correct-submit">Submit correction</button>
+        </form>
+
+        <p class="correct-footnote">
+          You can also submit corrections from any page via the footer link.
+          This form exists for cases where JavaScript is disabled or the modal is unavailable.
+        </p>
+      </>
+    )}
+  </article>
+
+  <style>
+    .correct-page-meta {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      color: #475569;
+      margin: 0.4rem 0 1rem;
+    }
+    .correct-page-meta code {
+      background: var(--linen-card, #fafaf7);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-size: 0.88rem;
+    }
+    .flash {
+      padding: 0.85rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 4px;
+      margin: 0.6rem 0 1rem;
+    }
+    .flash.err {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #991b1b;
+    }
+    .flash p { margin: 0; }
+    .correct-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      max-width: 42rem;
+    }
+    .correct-label {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 0.7rem 0 0.2rem;
+    }
+    .correct-form input[type="text"],
+    .correct-form textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      background: #fff;
+      color: #1e293b;
+    }
+    .correct-form textarea {
+      resize: vertical;
+      line-height: 1.45;
+    }
+    .correct-help {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: #94a3b8;
+      margin: 0.1rem 0 0;
+    }
+    .correct-submit {
+      align-self: flex-start;
+      margin-top: 0.9rem;
+      padding: 0.55rem 1.1rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .correct-submit:hover { background: #142940; }
+    .correct-footnote {
+      margin-top: 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: #64748b;
+      font-style: italic;
+    }
+  </style>
+</BaseLayout>

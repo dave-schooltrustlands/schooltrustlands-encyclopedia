@@ -1,0 +1,284 @@
+---
+/* Site Update v32 — Reusable file-upload widget.
+
+   A "dumb" file picker: it renders a styled <input type=file multiple>
+   plus a small selected-files list (name + size + remove button) and
+   enforces the client-side validation rules:
+
+     - Max 3 files
+     - Each file <= 10 MB
+     - Whitelisted extensions: pdf, jpg/jpeg, png, txt, docx
+
+   It does NOT upload on its own. The parent form is responsible for the
+   upload step:
+
+     1. POST the parent insert (feedback / correction / review) and
+        receive parent_id.
+     2. Read selected files from this widget's <input>:
+          widget.querySelector('input[type=file]').files
+     3. POST each one to /api/attachment as multipart/form-data with
+          parent_type   (set by data-parent-type on the widget root)
+          parent_id     (the id you got back from step 1)
+          file
+        The helper in /src/lib/uploadAttachments.ts wraps this loop.
+
+   The parent should pass a stable `data-parent-type` on the wrapping
+   form element (or via the `parentType` prop on this component, which
+   bakes it into the root data attribute).
+*/
+
+interface Props {
+  parentType: 'feedback' | 'correction' | 'review';
+  label?: string;
+  helpText?: string;
+  /** Allow overriding the input id when the page renders multiple widgets. */
+  inputId?: string;
+}
+
+const {
+  parentType,
+  label = 'Attachments (optional)',
+  helpText = 'Up to 3 files, 10 MB each. PDF, JPG, PNG, TXT, or DOCX.',
+  inputId = 'file-upload-input',
+} = Astro.props as Props;
+---
+
+<div
+  class="file-upload"
+  data-file-upload-root
+  data-parent-type={parentType}
+>
+  <label class="file-upload-label" for={inputId}>{label}</label>
+  <p class="file-upload-help">{helpText}</p>
+
+  <input
+    type="file"
+    id={inputId}
+    name="attachments"
+    class="file-upload-input"
+    multiple
+    accept=".pdf,.jpg,.jpeg,.png,.txt,.docx,application/pdf,image/jpeg,image/png,text/plain,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    data-file-upload-input
+  />
+
+  <ul class="file-upload-list" data-file-upload-list></ul>
+
+  <p class="file-upload-error" data-file-upload-error hidden></p>
+</div>
+
+<script>
+  // Hydrate every FileUpload widget on the page. Each widget keeps its own
+  // selected-files state in a DataTransfer object on the <input>, so the
+  // parent form can simply read input.files at submit time.
+
+  const MAX_FILES = 3;
+  const MAX_BYTES = 10 * 1024 * 1024;
+  const ALLOWED_EXT = new Set(['pdf', 'jpg', 'jpeg', 'png', 'txt', 'docx']);
+  const ALLOWED_MIME = new Set([
+    'application/pdf',
+    'image/jpeg',
+    'image/png',
+    'text/plain',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  ]);
+
+  function fmtBytes(n: number): string {
+    if (n < 1024) return `${n} B`;
+    if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+    return `${(n / 1024 / 1024).toFixed(1)} MB`;
+  }
+
+  function fileExt(name: string): string {
+    const dot = name.lastIndexOf('.');
+    return dot >= 0 ? name.slice(dot + 1).toLowerCase() : '';
+  }
+
+  function isAllowed(file: File): boolean {
+    if (file.type && ALLOWED_MIME.has(file.type)) return true;
+    // Fallback: trust the extension for DOCX et al. since some browsers
+    // hand us application/octet-stream for unknown-to-them types.
+    return ALLOWED_EXT.has(fileExt(file.name));
+  }
+
+  function hydrate(root: HTMLElement) {
+    const input = root.querySelector<HTMLInputElement>(
+      '[data-file-upload-input]'
+    );
+    const list = root.querySelector<HTMLUListElement>(
+      '[data-file-upload-list]'
+    );
+    const errorBox = root.querySelector<HTMLElement>(
+      '[data-file-upload-error]'
+    );
+    if (!input || !list || !errorBox) return;
+
+    function showError(msg: string) {
+      errorBox!.textContent = msg;
+      errorBox!.hidden = false;
+    }
+    function clearError() {
+      errorBox!.textContent = '';
+      errorBox!.hidden = true;
+    }
+
+    function render() {
+      list!.innerHTML = '';
+      const files = input!.files;
+      if (!files || files.length === 0) return;
+      for (let i = 0; i < files.length; i += 1) {
+        const file = files.item(i);
+        if (!file) continue;
+        const li = document.createElement('li');
+        li.className = 'file-upload-item';
+
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'file-upload-name';
+        nameSpan.textContent = file.name;
+
+        const sizeSpan = document.createElement('span');
+        sizeSpan.className = 'file-upload-size';
+        sizeSpan.textContent = fmtBytes(file.size);
+
+        const removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.className = 'file-upload-remove';
+        removeBtn.setAttribute('aria-label', `Remove ${file.name}`);
+        removeBtn.textContent = '×';
+        removeBtn.addEventListener('click', () => {
+          const dt = new DataTransfer();
+          const current = input!.files;
+          if (current) {
+            for (let j = 0; j < current.length; j += 1) {
+              if (j === i) continue;
+              const f = current.item(j);
+              if (f) dt.items.add(f);
+            }
+          }
+          input!.files = dt.files;
+          clearError();
+          render();
+        });
+
+        li.appendChild(nameSpan);
+        li.appendChild(sizeSpan);
+        li.appendChild(removeBtn);
+        list!.appendChild(li);
+      }
+    }
+
+    input.addEventListener('change', () => {
+      const picked = input.files;
+      if (!picked) {
+        render();
+        return;
+      }
+
+      const dt = new DataTransfer();
+      let rejected: string | null = null;
+
+      for (let i = 0; i < picked.length && dt.files.length < MAX_FILES; i += 1) {
+        const f = picked.item(i);
+        if (!f) continue;
+        if (!isAllowed(f)) {
+          rejected = `"${f.name}" is not a supported file type.`;
+          continue;
+        }
+        if (f.size > MAX_BYTES) {
+          rejected = `"${f.name}" is larger than 10 MB.`;
+          continue;
+        }
+        dt.items.add(f);
+      }
+
+      if (picked.length > MAX_FILES) {
+        rejected = rejected || `Only the first ${MAX_FILES} files were kept.`;
+      }
+
+      input.files = dt.files;
+      if (rejected) showError(rejected);
+      else clearError();
+      render();
+    });
+  }
+
+  for (const root of document.querySelectorAll<HTMLElement>(
+    '[data-file-upload-root]'
+  )) {
+    hydrate(root);
+  }
+</script>
+
+<style>
+  .file-upload {
+    margin: 1rem 0 0.25rem;
+    font-family: var(--font-sans);
+  }
+  .file-upload-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin: 0 0 0.2rem;
+  }
+  .file-upload-help {
+    margin: 0 0 0.45rem;
+    font-size: 0.78rem;
+    color: #94a3b8;
+  }
+  .file-upload-input {
+    display: block;
+    font-size: 0.85rem;
+    color: #334155;
+  }
+  .file-upload-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.55rem 0 0;
+  }
+  .file-upload-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.35rem 0.55rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+    color: #1e293b;
+  }
+  .file-upload-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .file-upload-size {
+    color: #64748b;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+  .file-upload-remove {
+    background: none;
+    border: 0;
+    font-size: 1.1rem;
+    line-height: 1;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 0 0.25rem;
+  }
+  .file-upload-remove:hover {
+    color: #991b1b;
+  }
+  .file-upload-error {
+    margin: 0.4rem 0 0;
+    padding: 0.4rem 0.55rem;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    font-size: 0.82rem;
+    border-radius: 4px;
+  }
+</style>

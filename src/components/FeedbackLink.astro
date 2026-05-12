@@ -1,5 +1,6 @@
 ---
 /* Site Update v30 — Feedback Foundation: footer link + modal.
+   Site Update v32 — Adds FileUpload widget + post-ticket attachment step.
 
    Hydrates client-side using the browser Supabase client. Static HTML
    contains both variants of the footer link so substrate pages (which
@@ -12,7 +13,14 @@
    Clicking the signed-in button opens the modal; modal POSTs to
    /api/feedback and renders a success card with the ticket number on
    success or an inline error + retry on failure.
+
+   v32: After the ticket is recorded, the modal iterates any FileUpload
+   selections and POSTs each to /api/attachment with parent_type='feedback'
+   and parent_id=ticket.id. A failed file upload is non-fatal — the ticket
+   itself is preserved and the success pane explains which files did not
+   make it.
 */
+import FileUpload from './FileUpload.astro';
 ---
 
 <div class="feedback-footer-link" data-feedback-root>
@@ -82,7 +90,11 @@
         <p class="feedback-modal-count">
           <span data-feedback-count>0</span> / 4000
         </p>
+
+        <FileUpload parentType="feedback" inputId="feedback-attachments" />
+
         <div class="feedback-modal-error" data-feedback-error hidden></div>
+        <p class="feedback-modal-progress" data-feedback-progress hidden></p>
         <div class="feedback-modal-actions">
           <button
             type="button"
@@ -116,6 +128,7 @@
 
 <script>
   import { getBrowserSupabase } from '../lib/supabase';
+  import { uploadFilesFor } from '../lib/uploadAttachments';
 
   const root = document.querySelector<HTMLElement>('[data-feedback-root]');
   const modal = document.querySelector<HTMLElement>('[data-feedback-modal]');
@@ -144,6 +157,12 @@
     const errorBox = modal.querySelector<HTMLElement>('[data-feedback-error]');
     const submitButton = modal.querySelector<HTMLButtonElement>(
       '[data-feedback-submit]'
+    );
+    const progressEl = modal.querySelector<HTMLElement>(
+      '[data-feedback-progress]'
+    );
+    const fileInput = modal.querySelector<HTMLInputElement>(
+      '#feedback-attachments'
     );
 
     const supabase = getBrowserSupabase();
@@ -203,14 +222,15 @@
       errorBox.hidden = false;
     }
 
-    function showSuccess(ticketNumber: string) {
+    function showSuccess(ticketNumber: string, attachmentNote?: string) {
       if (formPane) formPane.hidden = true;
       if (successPane) successPane.hidden = false;
       if (successBody) {
-        successBody.textContent =
+        const base =
           `Thank you. Your feedback is recorded as ${ticketNumber}. ` +
           'A librarian will follow up by email if a response is warranted. ' +
           'You can find all your tickets on your My Library page.';
+        successBody.textContent = attachmentNote ? `${base} ${attachmentNote}` : base;
       }
     }
 
@@ -272,7 +292,28 @@
             }
             return;
           }
-          showSuccess(data.ticket_number);
+
+          // Upload attachments, if any. Failures are non-fatal — the
+          // ticket itself is already recorded.
+          let attachmentNote: string | undefined;
+          const hasFiles = !!(fileInput && fileInput.files && fileInput.files.length > 0);
+          if (hasFiles && data.id) {
+            if (submitButton) submitButton.textContent = 'Uploading…';
+            const outcome = await uploadFilesFor('feedback', data.id, fileInput, {
+              onProgress: (done, total) => {
+                if (!progressEl) return;
+                progressEl.hidden = false;
+                progressEl.textContent = `Uploaded ${done} of ${total} file${total === 1 ? '' : 's'}…`;
+              },
+            });
+            if (progressEl) progressEl.hidden = true;
+            if (outcome.failed.length > 0) {
+              attachmentNote =
+                `Ticket saved, but ${outcome.failed.length} file${outcome.failed.length === 1 ? '' : 's'} did not upload.`;
+            }
+          }
+
+          showSuccess(data.ticket_number, attachmentNote);
         } catch (err) {
           showError('Network error. Please try again.');
           if (submitButton) {
@@ -415,6 +456,12 @@
     font-family: var(--font-sans);
     font-size: 0.88rem;
     border-radius: 4px;
+  }
+  .feedback-modal-progress {
+    margin: 0.6rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #475569;
   }
   .feedback-modal-actions {
     margin-top: 1.1rem;

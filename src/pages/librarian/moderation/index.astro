@@ -1,0 +1,312 @@
+---
+// Site Update v32 — Moderation dashboard tab.
+//
+// Visible to pure discussion_moderators and to every librarian tier. Shows
+// recently-hidden discussion_posts and the moderation_audit ledger.
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LibrarianTabs from '../../../components/LibrarianTabs.astro';
+import { requireModerator } from '../../../lib/moderation';
+import { formatCardDate } from '../../../lib/librarian';
+
+export const prerender = false;
+
+const guard = await requireModerator(Astro);
+if (!guard.ok) return guard.response;
+const { supabase, role } = guard.context;
+
+// Recently flagged content: hidden posts, latest first, capped at 50.
+const { data: hiddenPostsRaw } = await supabase
+  .from('discussion_posts')
+  .select('id, discussion_id, user_id, body, is_hidden, posted_at')
+  .eq('is_hidden', true)
+  .order('posted_at', { ascending: false })
+  .limit(50);
+
+const hiddenPosts = (hiddenPostsRaw ?? []) as Array<{
+  id: string;
+  discussion_id: string;
+  user_id: string;
+  body: string;
+  is_hidden: boolean;
+  posted_at: string;
+}>;
+
+// Resolve thread ticket_numbers + post authors for the table.
+const threadIds = Array.from(new Set(hiddenPosts.map((p) => p.discussion_id)));
+const threadMap = new Map<string, { ticket_number: string; title: string }>();
+if (threadIds.length > 0) {
+  const { data: threadRows } = await supabase
+    .from('discussions')
+    .select('id, ticket_number, title')
+    .in('id', threadIds);
+  for (const t of threadRows ?? []) {
+    threadMap.set(t.id, {
+      ticket_number: t.ticket_number,
+      title: t.title,
+    });
+  }
+}
+
+const postAuthorIds = Array.from(new Set(hiddenPosts.map((p) => p.user_id)));
+const postAuthorMap = new Map<string, { display_name: string | null }>();
+if (postAuthorIds.length > 0) {
+  const { data: profileRows } = await supabase
+    .from('profiles')
+    .select('id, display_name')
+    .in('id', postAuthorIds);
+  for (const p of profileRows ?? []) {
+    postAuthorMap.set(p.id, { display_name: p.display_name ?? null });
+  }
+}
+
+// Audit ledger: latest 100 entries.
+const { data: auditRowsRaw } = await supabase
+  .from('moderation_audit')
+  .select('id, actor_id, action, target_type, target_id, reason, acted_at')
+  .order('acted_at', { ascending: false })
+  .limit(100);
+
+const auditRows = (auditRowsRaw ?? []) as Array<{
+  id: string;
+  actor_id: string | null;
+  action: string;
+  target_type: string;
+  target_id: string;
+  reason: string | null;
+  acted_at: string;
+}>;
+
+const actorIds = Array.from(
+  new Set(auditRows.map((a) => a.actor_id).filter((x): x is string => !!x))
+);
+const actorMap = new Map<string, { display_name: string | null }>();
+if (actorIds.length > 0) {
+  const { data: actorProfiles } = await supabase
+    .from('profiles')
+    .select('id, display_name')
+    .in('id', actorIds);
+  for (const a of actorProfiles ?? []) {
+    actorMap.set(a.id, { display_name: a.display_name ?? null });
+  }
+}
+
+function summarize(s: string, max = 90): string {
+  const t = (s ?? '').trim();
+  if (t.length <= max) return t;
+  return t.slice(0, max).trimEnd() + '…';
+}
+---
+
+<BaseLayout
+  title="Moderation · Librarian dashboard"
+  sourceId="librarian-moderation"
+>
+  <article class="moderation prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h1>Moderation</h1>
+    <p class="role-line">
+      Signed in as <strong>{role.replace(/_/g, ' ')}</strong>.
+    </p>
+    <LibrarianTabs current="moderation" role={role} />
+
+    <section class="section">
+      <h2>Recently hidden posts</h2>
+      {hiddenPosts.length > 0 ? (
+        <table class="mod-table">
+          <thead>
+            <tr>
+              <th>Thread</th>
+              <th>Author</th>
+              <th>Posted</th>
+              <th>Body excerpt</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {hiddenPosts.map((p) => {
+              const t = threadMap.get(p.discussion_id);
+              const a = postAuthorMap.get(p.user_id);
+              const author = (a?.display_name ?? '').trim() || 'Library Patron';
+              return (
+                <tr>
+                  <td>
+                    {t ? (
+                      <a href={`/discussions/${t.ticket_number}/`} class="thread-link">
+                        {t.ticket_number}
+                      </a>
+                    ) : (
+                      <span>—</span>
+                    )}
+                    {t && <div class="thread-title-cell">{summarize(t.title, 50)}</div>}
+                  </td>
+                  <td>{author}</td>
+                  <td>{formatCardDate(p.posted_at)}</td>
+                  <td class="body-cell">{summarize(p.body)}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="unhide-button"
+                      data-target-id={p.id}
+                    >
+                      Unhide
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <p class="empty-state">No hidden posts. Discussion floor is clean.</p>
+      )}
+    </section>
+
+    <section class="section">
+      <h2>Audit log</h2>
+      {auditRows.length > 0 ? (
+        <table class="mod-table">
+          <thead>
+            <tr>
+              <th>When</th>
+              <th>Actor</th>
+              <th>Action</th>
+              <th>Target type</th>
+              <th>Target ID</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            {auditRows.map((row) => {
+              const actor = row.actor_id
+                ? (actorMap.get(row.actor_id)?.display_name ?? '').trim() || '(unnamed)'
+                : '(deleted)';
+              return (
+                <tr>
+                  <td>{formatCardDate(row.acted_at)}</td>
+                  <td>{actor}</td>
+                  <td><span class="action-pill">{row.action}</span></td>
+                  <td>{row.target_type}</td>
+                  <td class="id-cell">{row.target_id}</td>
+                  <td class="reason-cell">{row.reason ?? ''}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <p class="empty-state">No moderator actions recorded yet.</p>
+      )}
+    </section>
+  </article>
+
+  <script is:inline>
+    document.querySelectorAll('.unhide-button').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const id = btn.getAttribute('data-target-id');
+        if (!id) return;
+        if (!confirm('Unhide this post?')) return;
+        btn.disabled = true;
+        try {
+          const res = await fetch('/api/moderation/unhide', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              target_type: 'discussion_post',
+              target_id: id,
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+          location.reload();
+        } catch (err) {
+          alert('Could not unhide: ' + (err?.message || 'unknown error'));
+          btn.disabled = false;
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .role-line {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #64748b;
+      margin: -0.25rem 0 0.5rem;
+      text-transform: capitalize;
+    }
+    .section { margin: 1.4rem 0; }
+    .mod-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+    }
+    .mod-table th,
+    .mod-table td {
+      text-align: left;
+      padding: 0.55rem 0.7rem;
+      border-bottom: 1px solid var(--rule-border, #e5e7eb);
+      vertical-align: top;
+    }
+    .mod-table th {
+      background: var(--linen-card, #fafaf7);
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .thread-link {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .thread-title-cell {
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-top: 0.15rem;
+    }
+    .body-cell {
+      max-width: 28rem;
+      font-family: var(--font-serif);
+      color: #1e293b;
+    }
+    .id-cell {
+      font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+      font-size: 0.74rem;
+      color: #64748b;
+    }
+    .reason-cell { color: #475569; }
+    .action-pill {
+      display: inline-block;
+      padding: 0.05rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+    .unhide-button {
+      padding: 0.3rem 0.7rem;
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .unhide-button[disabled] { opacity: 0.5; cursor: wait; }
+    .empty-state {
+      padding: 1.4rem 1rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px dashed var(--rule-border, #cbd5e1);
+      border-radius: 4px;
+      color: #475569;
+      text-align: center;
+    }
+  </style>
+</BaseLayout>

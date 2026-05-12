@@ -1,0 +1,114 @@
+---
+// Site Update v32 — MemberBadgeList.
+//
+// Renders a patron's granted badges as small inline labels. Drop it in
+// next to a patron name in any surface that shows authorship: discussion
+// posts, review headers, the patron card overlay. The component owns its
+// own data fetch (one read per user_id) so callers don't have to
+// pre-join; this keeps cross-cutting injection by ZETA surgical and
+// additive.
+//
+// Visibility: badges are publicly readable per the migration's
+// "Badges public read" policy. The component renders an empty string when
+// there are no badges for the given user, so it can be sprinkled liberally
+// without adding visual noise.
+
+import { getServerSupabase } from '../lib/supabase';
+
+interface Props {
+  userId: string;
+  /** Compact layout (smaller labels) for inline post-meta headers. */
+  inline?: boolean;
+}
+
+const { userId, inline = false } = Astro.props;
+
+const BADGE_LABELS: Record<string, string> = {
+  state_expert: 'State expert',
+  oastl_board: 'OASTL board',
+  astl_board: 'ASTL board',
+  friend_of_library: 'Friend of the Library',
+  editorial_contributor: 'Editorial contributor',
+  citizen_historian: 'Citizen historian',
+};
+
+const supabase = getServerSupabase(Astro);
+const { data: rows } = await supabase
+  .from('member_badges')
+  .select('id, badge, attribution')
+  .eq('user_id', userId)
+  .order('granted_at', { ascending: true });
+
+const badges = (rows ?? []) as Array<{
+  id: string;
+  badge: string;
+  attribution: string | null;
+}>;
+---
+
+{badges.length > 0 && (
+  <span class:list={['member-badges', inline && 'member-badges--inline']}>
+    {badges.map((b) => {
+      const label = BADGE_LABELS[b.badge] ?? b.badge.replace(/_/g, ' ');
+      const text = b.attribution ? `${label} · ${b.attribution}` : label;
+      return (
+        <span class:list={['member-badge', `member-badge--${b.badge}`]}>
+          {text}
+        </span>
+      );
+    })}
+  </span>
+)}
+
+<style>
+  .member-badges {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+  .member-badges--inline {
+    margin-left: 0.3rem;
+  }
+  .member-badge {
+    display: inline-block;
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+    white-space: nowrap;
+  }
+  .member-badge--state_expert {
+    background: #ecfeff;
+    color: #155e75;
+    border-color: #a5f3fc;
+  }
+  .member-badge--oastl_board,
+  .member-badge--astl_board {
+    background: #eef2ff;
+    color: #3730a3;
+    border-color: #c7d2fe;
+  }
+  .member-badge--friend_of_library {
+    background: #fef3c7;
+    color: #92400e;
+    border-color: #fde68a;
+  }
+  .member-badge--editorial_contributor {
+    background: #f0f9ff;
+    color: #075985;
+    border-color: #bae6fd;
+  }
+  .member-badge--citizen_historian {
+    background: #f5f3ff;
+    color: #5b21b6;
+    border-color: #ddd6fe;
+  }
+</style>

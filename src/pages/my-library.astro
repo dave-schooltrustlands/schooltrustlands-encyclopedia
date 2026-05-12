@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LibraryCard from '../components/LibraryCard.astro';
+import MemberBadgeList from '../components/MemberBadgeList.astro';
 import { getServerSupabase } from '../lib/supabase';
 import { userHasLibrarianRole } from '../lib/librarian';
 
@@ -222,6 +223,9 @@ const isAlreadyLibrarian = await userHasLibrarianRole(supabase, user.id);
           Share card image
         </button>
       </p>
+      <div class="card-badges" aria-label="Granted badges">
+        <MemberBadgeList userId={user.id} />
+      </div>
     </section>
 
     <section class="activity-row" aria-label="Library activity">
@@ -511,6 +515,13 @@ const isAlreadyLibrarian = await userHasLibrarianRole(supabase, user.id);
     .card-actions-divider {
       margin: 0 0.5rem;
       color: #cbb37d;
+    }
+    .card-badges {
+      margin: 0.7rem 0 0;
+      text-align: center;
+    }
+    .card-badges:empty {
+      display: none;
     }
     .activity-row {
       display: flex;

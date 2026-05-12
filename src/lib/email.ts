@@ -21,6 +21,12 @@ const TEMPLATES = {
     import('../emails/librarian_application_approved.txt?raw').then((m) => m.default),
   librarian_application_declined: () =>
     import('../emails/librarian_application_declined.txt?raw').then((m) => m.default),
+  correction_received: () =>
+    import('../emails/correction_received.txt?raw').then((m) => m.default),
+  review_published: () =>
+    import('../emails/review_published.txt?raw').then((m) => m.default),
+  discussion_reply: () =>
+    import('../emails/discussion_reply.txt?raw').then((m) => m.default),
 } as const;
 
 export type TemplateName = keyof typeof TEMPLATES;

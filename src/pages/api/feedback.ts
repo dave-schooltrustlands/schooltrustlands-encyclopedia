@@ -126,7 +126,7 @@ export const POST: APIRoute = async (Astro) => {
       subject: subjectRaw || null,
       body: bodyRaw,
     })
-    .select('ticket_number, status')
+    .select('id, ticket_number, status')
     .single();
 
   if (error || !data) {
@@ -137,7 +137,10 @@ export const POST: APIRoute = async (Astro) => {
 
   await sendConfirmationEmail(user.email || '', data.ticket_number);
 
+  // v32: return the row id so the client can attach files (separate POSTs
+  // to /api/attachment with parent_type='feedback' and parent_id=id).
   return json(200, {
+    id: data.id,
     ticket_number: data.ticket_number,
     status: data.status,
   });

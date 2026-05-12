@@ -7,7 +7,7 @@ export const prerender = false;
 
 const guard = await requireLibrarian(Astro);
 if (!guard.ok) return guard.response;
-const { supabase } = guard.context;
+const { supabase, role } = guard.context;
 
 // All profiles, in patron-number order (the librarian's natural index).
 const { data: profileRows } = await supabase
@@ -46,6 +46,37 @@ const roleMap = new Map<string, string>();
 for (const r of roleRows ?? []) {
   roleMap.set(r.user_id, r.role);
 }
+
+// v32 — badges per patron, gathered into a map keyed by user_id.
+const { data: badgeRows } = await supabase
+  .from('member_badges')
+  .select('user_id, badge, attribution');
+const badgeMap = new Map<string, Array<{ badge: string; attribution: string | null }>>();
+for (const b of badgeRows ?? []) {
+  const list = badgeMap.get(b.user_id) ?? [];
+  list.push({ badge: b.badge, attribution: b.attribution ?? null });
+  badgeMap.set(b.user_id, list);
+}
+
+const BADGE_LABELS: Record<string, string> = {
+  state_expert: 'State expert',
+  oastl_board: 'OASTL board',
+  astl_board: 'ASTL board',
+  friend_of_library: 'Friend of the Library',
+  editorial_contributor: 'Editorial contributor',
+  citizen_historian: 'Citizen historian',
+};
+
+const BADGES_FOR_GRANT: Array<{ value: string; label: string; expectsAttribution: boolean }> = [
+  { value: 'state_expert',          label: 'State expert',          expectsAttribution: true },
+  { value: 'oastl_board',           label: 'OASTL board',           expectsAttribution: true },
+  { value: 'astl_board',            label: 'ASTL board',            expectsAttribution: true },
+  { value: 'friend_of_library',     label: 'Friend of the Library', expectsAttribution: false },
+  { value: 'editorial_contributor', label: 'Editorial contributor', expectsAttribution: false },
+  { value: 'citizen_historian',     label: 'Citizen historian',     expectsAttribution: false },
+];
+
+const canGrantBadges = role === 'head_librarian' || role === 'admin';
 ---
 
 <BaseLayout
@@ -54,7 +85,7 @@ for (const r of roleRows ?? []) {
 >
   <article class="patrons prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <h1>Patrons</h1>
-    <LibrarianTabs current="patrons" />
+    <LibrarianTabs current="patrons" role={role} />
 
     {profiles.length > 0 ? (
       <table class="patrons-table">
@@ -65,30 +96,193 @@ for (const r of roleRows ?? []) {
             <th>Signed up</th>
             <th>Tickets</th>
             <th>Role</th>
+            <th>Badges</th>
+            {canGrantBadges && <th class="actions-col">Actions</th>}
           </tr>
         </thead>
         <tbody>
-          {profiles.map((p) => (
-            <tr>
-              <td class="num-cell">{formatPatronNumber(p.patron_number)}</td>
-              <td>{(p.display_name ?? '').trim() || <em>(no display name)</em>}</td>
-              <td>{formatCardDate(p.created_at)}</td>
-              <td>{ticketCounts.get(p.id) ?? 0}</td>
-              <td>
-                {roleMap.get(p.id) ? (
-                  <span class="role-badge">{roleMap.get(p.id)!.replace(/_/g, ' ')}</span>
-                ) : (
-                  <span class="role-none">—</span>
+          {profiles.map((p) => {
+            const badges = badgeMap.get(p.id) ?? [];
+            return (
+              <tr>
+                <td class="num-cell">{formatPatronNumber(p.patron_number)}</td>
+                <td>{(p.display_name ?? '').trim() || <em>(no display name)</em>}</td>
+                <td>{formatCardDate(p.created_at)}</td>
+                <td>{ticketCounts.get(p.id) ?? 0}</td>
+                <td>
+                  {roleMap.get(p.id) ? (
+                    <span class="role-badge">{roleMap.get(p.id)!.replace(/_/g, ' ')}</span>
+                  ) : (
+                    <span class="role-none">—</span>
+                  )}
+                </td>
+                <td class="badges-cell">
+                  {badges.length === 0 ? (
+                    <span class="role-none">—</span>
+                  ) : (
+                    badges.map((b) => {
+                      const label = BADGE_LABELS[b.badge] ?? b.badge.replace(/_/g, ' ');
+                      const text = b.attribution ? `${label} · ${b.attribution}` : label;
+                      return <span class="badge-pill">{text}</span>;
+                    })
+                  )}
+                </td>
+                {canGrantBadges && (
+                  <td class="actions-cell">
+                    <button
+                      type="button"
+                      class="grant-btn"
+                      data-grant-user-id={p.id}
+                      data-grant-user-name={(p.display_name ?? '').trim() || `Patron № ${formatPatronNumber(p.patron_number)}`}
+                    >Grant badge…</button>
+                  </td>
                 )}
-              </td>
-            </tr>
-          ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     ) : (
       <p class="empty-state">No patrons yet.</p>
     )}
   </article>
+
+  {canGrantBadges && (
+    <div
+      class="grant-modal"
+      data-grant-modal
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="grant-modal-title"
+      hidden
+    >
+      <div class="grant-modal-backdrop" data-grant-close></div>
+      <div class="grant-modal-card" role="document">
+        <button type="button" class="grant-modal-x" data-grant-close aria-label="Close">×</button>
+        <h2 id="grant-modal-title" class="grant-modal-title">Grant badge</h2>
+        <p class="grant-modal-subtitle" data-grant-subtitle></p>
+        <form class="grant-modal-form" data-grant-form>
+          <label class="grant-modal-label" for="grant-badge-select">Badge</label>
+          <select id="grant-badge-select" name="badge" class="grant-modal-input" required>
+            {BADGES_FOR_GRANT.map((b) => (
+              <option value={b.value} data-expects-attribution={b.expectsAttribution ? '1' : '0'}>
+                {b.label}
+              </option>
+            ))}
+          </select>
+          <label class="grant-modal-label" for="grant-attribution">
+            Attribution <span class="grant-modal-hint" data-grant-hint>(e.g. state name or organization)</span>
+          </label>
+          <input
+            type="text"
+            id="grant-attribution"
+            name="attribution"
+            class="grant-modal-input"
+            maxlength="120"
+            placeholder="State or organization (when applicable)"
+          />
+          <div class="grant-modal-error" data-grant-error hidden></div>
+          <div class="grant-modal-actions">
+            <button type="button" class="grant-modal-cancel" data-grant-close>Cancel</button>
+            <button type="submit" class="grant-modal-submit">Grant badge</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )}
+
+  {canGrantBadges && (
+    <script is:inline>
+      (function () {
+        const modal = document.querySelector('[data-grant-modal]');
+        const subtitle = modal && modal.querySelector('[data-grant-subtitle]');
+        const form = modal && modal.querySelector('[data-grant-form]');
+        const badgeSelect = modal && modal.querySelector('#grant-badge-select');
+        const attributionInput = modal && modal.querySelector('#grant-attribution');
+        const errorBox = modal && modal.querySelector('[data-grant-error]');
+        const hint = modal && modal.querySelector('[data-grant-hint]');
+        let currentUserId = '';
+
+        function openModal(userId, userName) {
+          if (!modal) return;
+          currentUserId = userId;
+          if (subtitle) subtitle.textContent = 'Patron: ' + userName;
+          if (errorBox) {
+            errorBox.hidden = true;
+            errorBox.textContent = '';
+          }
+          if (attributionInput) attributionInput.value = '';
+          if (badgeSelect) badgeSelect.selectedIndex = 0;
+          updateHint();
+          modal.hidden = false;
+          document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+          if (!modal) return;
+          modal.hidden = true;
+          document.body.style.overflow = '';
+        }
+        function updateHint() {
+          if (!badgeSelect || !hint || !attributionInput) return;
+          const opt = badgeSelect.options[badgeSelect.selectedIndex];
+          const expects = opt && opt.getAttribute('data-expects-attribution') === '1';
+          hint.textContent = expects
+            ? '(e.g. state name or organization — required for this badge)'
+            : '(optional)';
+          attributionInput.required = !!expects;
+        }
+        if (badgeSelect) badgeSelect.addEventListener('change', updateHint);
+
+        document.querySelectorAll('[data-grant-user-id]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            openModal(
+              btn.getAttribute('data-grant-user-id') || '',
+              btn.getAttribute('data-grant-user-name') || ''
+            );
+          });
+        });
+        if (modal) {
+          modal.querySelectorAll('[data-grant-close]').forEach((el) =>
+            el.addEventListener('click', closeModal)
+          );
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.hidden) closeModal();
+          });
+        }
+        if (form) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!badgeSelect || !attributionInput) return;
+            const badge = badgeSelect.value;
+            const attribution = attributionInput.value.trim();
+            if (!currentUserId) return;
+            try {
+              const res = await fetch('/api/badge', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({
+                  user_id: currentUserId,
+                  badge,
+                  attribution: attribution || undefined,
+                }),
+              });
+              if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                throw new Error(data.error || ('HTTP ' + res.status));
+              }
+              closeModal();
+              location.reload();
+            } catch (err) {
+              if (errorBox) {
+                errorBox.textContent = (err && err.message) || 'Could not grant badge.';
+                errorBox.hidden = false;
+              }
+            }
+          });
+        }
+      })();
+    </script>
+  )}
 
   <style>
     .patrons-table {
@@ -102,6 +296,7 @@ for (const r of roleRows ?? []) {
       text-align: left;
       padding: 0.55rem 0.7rem;
       border-bottom: 1px solid var(--rule-border, #e5e7eb);
+      vertical-align: top;
     }
     .patrons-table th {
       background: var(--linen-card, #fafaf7);
@@ -129,6 +324,42 @@ for (const r of roleRows ?? []) {
     .role-none {
       color: #94a3b8;
     }
+    .badges-cell {
+      max-width: 22rem;
+    }
+    .badge-pill {
+      display: inline-block;
+      padding: 0.05rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      margin: 0.1rem 0.2rem 0.1rem 0;
+    }
+    .actions-col {
+      width: 9rem;
+    }
+    .actions-cell {
+      text-align: right;
+    }
+    .grant-btn {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--deep-navy, #1e3a5f);
+      background: #fff;
+      color: var(--deep-navy, #1e3a5f);
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .grant-btn:hover {
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+    }
     .empty-state {
       padding: 1.4rem 1rem;
       background: var(--linen-card, #fafaf7);
@@ -136,6 +367,126 @@ for (const r of roleRows ?? []) {
       border-radius: 4px;
       color: #475569;
       text-align: center;
+    }
+    .grant-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .grant-modal[hidden] {
+      display: none;
+    }
+    .grant-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+    }
+    .grant-modal-card {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      border-radius: 6px;
+      width: min(92vw, 480px);
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.5rem 1.5rem 1.25rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      color: #1e293b;
+    }
+    .grant-modal-x {
+      position: absolute;
+      top: 0.55rem;
+      right: 0.7rem;
+      background: none;
+      border: 0;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+    .grant-modal-title {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 0.2rem;
+      color: var(--deep-navy, #1e3a5f);
+    }
+    .grant-modal-subtitle {
+      margin: 0 0 0.9rem;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #475569;
+    }
+    .grant-modal-form {
+      margin: 0;
+    }
+    .grant-modal-label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 0.6rem 0 0.25rem;
+    }
+    .grant-modal-hint {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #94a3b8;
+    }
+    .grant-modal-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: #1e293b;
+      background: #fff;
+    }
+    .grant-modal-error {
+      margin-top: 0.7rem;
+      padding: 0.5rem 0.7rem;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      font-family: var(--font-sans);
+      font-size: 0.86rem;
+      border-radius: 4px;
+    }
+    .grant-modal-actions {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.6rem;
+    }
+    .grant-modal-cancel {
+      padding: 0.5rem 0.95rem;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      color: #334155;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .grant-modal-submit {
+      padding: 0.55rem 1.1rem;
+      border: 1px solid var(--deep-navy, #1e3a5f);
+      background: var(--deep-navy, #1e3a5f);
+      color: #fff;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
     }
   </style>
 </BaseLayout>

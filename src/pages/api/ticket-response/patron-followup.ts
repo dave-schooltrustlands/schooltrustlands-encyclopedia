@@ -36,8 +36,8 @@ export const POST: APIRoute = async (Astro) => {
   const ticketId = typeof payload.ticket_id === 'string' ? payload.ticket_id : '';
   const body = typeof payload.body === 'string' ? payload.body.trim() : '';
 
-  if (ticketType !== 'feedback') {
-    return json(400, { error: 'Only feedback tickets are supported in v31.' });
+  if (ticketType !== 'feedback' && ticketType !== 'correction') {
+    return json(400, { error: 'Unsupported ticket_type.' });
   }
   if (!ticketId) return json(400, { error: 'Missing ticket_id.' });
   if (!body) return json(400, { error: 'Write a reply before sending.' });
@@ -46,9 +46,12 @@ export const POST: APIRoute = async (Astro) => {
   }
 
   // Ownership check — RLS would refuse on insert anyway, but we want a
-  // clean 403 + clear error instead of a generic 500.
+  // clean 403 + clear error instead of a generic 500. The parent row lives
+  // in feedback or corrections depending on ticket_type; both expose
+  // user_id + status with the same shape.
+  const parentTable = ticketType === 'correction' ? 'corrections' : 'feedback';
   const { data: ticket } = await supabase
-    .from('feedback')
+    .from(parentTable)
     .select('id, user_id, status')
     .eq('id', ticketId)
     .maybeSingle();
@@ -57,13 +60,13 @@ export const POST: APIRoute = async (Astro) => {
     return json(403, { error: 'You can only reply to your own tickets.' });
   }
   if (ticket.status === 'archived') {
-    return json(409, { error: 'This ticket is archived; open a new feedback ticket instead.' });
+    return json(409, { error: 'This ticket is archived; open a new ticket instead.' });
   }
 
   const { data: insertRow, error: insertErr } = await supabase
     .from('ticket_responses')
     .insert({
-      ticket_type: 'feedback',
+      ticket_type: ticketType,
       ticket_id: ticketId,
       author_id: user.id,
       author_role: 'patron',

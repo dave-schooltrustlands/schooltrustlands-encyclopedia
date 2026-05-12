@@ -1,0 +1,582 @@
+---
+/* Site Update v32 — Engagement Breadth: footer link + modal for corrections.
+
+   Mirrors FeedbackLink.astro but for structured corrections. Four fields:
+     - claim (textarea, required, 600 max) — "What is the error?"
+     - proposed_fix (textarea, required, 1500 max) — "What should it say instead?"
+     - source_offered (input, optional, 500 max) — "Source (optional)"
+     - reasoning (textarea, optional, 2000 max) — "Why is this the correct version? (optional)"
+
+   Hydrates client-side via the browser Supabase client. Two variants of the
+   footer link are rendered statically so substrate (prerendered) pages carry
+   both strings; on load the script reveals the correct variant.
+
+   All `data-*` attributes and CSS classes use the `correction-` prefix so
+   they do not collide with FeedbackLink's hydration.
+
+   v32 (EPSILON): adds FileUpload widget + post-ticket attachment step,
+   mirroring FeedbackLink. After /api/correction returns the row id, the
+   modal iterates any FileUpload selections and POSTs each to
+   /api/attachment with parent_type='correction' and parent_id=id. A
+   failed file upload is non-fatal — the correction itself is preserved.
+*/
+import FileUpload from './FileUpload.astro';
+---
+
+<div class="correction-footer-link" data-correction-root>
+  <a
+    href="/auth/sign-in?redirect=/"
+    class="correction-footer-anchor"
+    data-correction-signed-out
+  >
+    Sign in to submit a correction
+  </a>
+  <button
+    type="button"
+    class="correction-footer-anchor correction-footer-anchor--button"
+    data-correction-signed-in
+    hidden
+  >
+    Submit a correction to this page
+  </button>
+</div>
+
+<div
+  class="correction-modal"
+  data-correction-modal
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="correction-modal-title"
+  hidden
+>
+  <div class="correction-modal-backdrop" data-correction-close></div>
+  <div class="correction-modal-card" role="document">
+    <button
+      type="button"
+      class="correction-modal-x"
+      data-correction-close
+      aria-label="Close"
+    >×</button>
+
+    <div data-correction-form-pane>
+      <h2 id="correction-modal-title" class="correction-modal-title">Submit a correction</h2>
+      <p class="correction-modal-privacy">
+        Corrections go to the Library's librarians for review. They are not
+        published automatically; a librarian decides what to do.
+      </p>
+      <form class="correction-modal-form" data-correction-form>
+        <label class="correction-modal-label" for="correction-claim">
+          What is the error?
+        </label>
+        <textarea
+          id="correction-claim"
+          name="claim"
+          required
+          maxlength="600"
+          rows="3"
+          class="correction-modal-textarea correction-modal-textarea--short"
+          placeholder="Describe the error on this page…"
+        ></textarea>
+        <p class="correction-modal-count">
+          <span data-correction-claim-count>0</span> / 600
+        </p>
+
+        <label class="correction-modal-label" for="correction-proposed-fix">
+          What should it say instead?
+        </label>
+        <textarea
+          id="correction-proposed-fix"
+          name="proposed_fix"
+          required
+          maxlength="1500"
+          rows="5"
+          class="correction-modal-textarea"
+          placeholder="Your proposed wording or fact…"
+        ></textarea>
+        <p class="correction-modal-count">
+          <span data-correction-fix-count>0</span> / 1500
+        </p>
+
+        <label class="correction-modal-label" for="correction-source">
+          Source (optional)
+        </label>
+        <input
+          type="text"
+          id="correction-source"
+          name="source_offered"
+          maxlength="500"
+          class="correction-modal-input"
+          placeholder="e.g. URL, book + page, statute citation"
+        />
+
+        <label class="correction-modal-label" for="correction-reasoning">
+          Why is this the correct version? (optional)
+        </label>
+        <textarea
+          id="correction-reasoning"
+          name="reasoning"
+          maxlength="2000"
+          rows="4"
+          class="correction-modal-textarea"
+          placeholder="Reasoning or context that helps the librarian verify…"
+        ></textarea>
+        <p class="correction-modal-count">
+          <span data-correction-reasoning-count>0</span> / 2000
+        </p>
+
+        <FileUpload parentType="correction" inputId="correction-attachments" />
+
+        <div class="correction-modal-error" data-correction-error hidden></div>
+        <p class="correction-modal-progress" data-correction-progress hidden></p>
+        <div class="correction-modal-actions">
+          <button
+            type="button"
+            class="correction-modal-cancel"
+            data-correction-close
+          >Cancel</button>
+          <button
+            type="submit"
+            class="correction-modal-submit"
+            data-correction-submit
+          >Submit correction</button>
+        </div>
+      </form>
+    </div>
+
+    <div data-correction-success-pane hidden>
+      <h2 class="correction-modal-title">Thank you</h2>
+      <p class="correction-modal-success-body" data-correction-success-body>
+        <!-- Filled by script. -->
+      </p>
+      <div class="correction-modal-actions correction-modal-actions--end">
+        <button
+          type="button"
+          class="correction-modal-submit"
+          data-correction-close
+        >Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { getBrowserSupabase } from '../lib/supabase';
+  import { uploadFilesFor } from '../lib/uploadAttachments';
+
+  const root = document.querySelector<HTMLElement>('[data-correction-root]');
+  const modal = document.querySelector<HTMLElement>('[data-correction-modal]');
+  if (root && modal) {
+    const signedOutAnchor = root.querySelector<HTMLAnchorElement>(
+      '[data-correction-signed-out]'
+    );
+    const signedInButton = root.querySelector<HTMLButtonElement>(
+      '[data-correction-signed-in]'
+    );
+    const formPane = modal.querySelector<HTMLElement>('[data-correction-form-pane]');
+    const successPane = modal.querySelector<HTMLElement>(
+      '[data-correction-success-pane]'
+    );
+    const successBody = modal.querySelector<HTMLElement>(
+      '[data-correction-success-body]'
+    );
+    const form = modal.querySelector<HTMLFormElement>('[data-correction-form]');
+    const claimEl = modal.querySelector<HTMLTextAreaElement>('#correction-claim');
+    const fixEl = modal.querySelector<HTMLTextAreaElement>('#correction-proposed-fix');
+    const sourceEl = modal.querySelector<HTMLInputElement>('#correction-source');
+    const reasoningEl = modal.querySelector<HTMLTextAreaElement>('#correction-reasoning');
+    const claimCount = modal.querySelector<HTMLElement>('[data-correction-claim-count]');
+    const fixCount = modal.querySelector<HTMLElement>('[data-correction-fix-count]');
+    const reasoningCount = modal.querySelector<HTMLElement>('[data-correction-reasoning-count]');
+    const errorBox = modal.querySelector<HTMLElement>('[data-correction-error]');
+    const submitButton = modal.querySelector<HTMLButtonElement>(
+      '[data-correction-submit]'
+    );
+    const progressEl = modal.querySelector<HTMLElement>(
+      '[data-correction-progress]'
+    );
+    const fileInput = modal.querySelector<HTMLInputElement>(
+      '#correction-attachments'
+    );
+
+    const supabase = getBrowserSupabase();
+
+    function setSignedOutHref() {
+      if (!signedOutAnchor) return;
+      const next = encodeURIComponent(
+        window.location.pathname + window.location.search
+      );
+      signedOutAnchor.href = `/auth/sign-in?redirect=${next}`;
+    }
+
+    async function syncAuthState() {
+      setSignedOutHref();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        if (signedOutAnchor) signedOutAnchor.hidden = true;
+        if (signedInButton) signedInButton.hidden = false;
+      } else {
+        if (signedOutAnchor) signedOutAnchor.hidden = false;
+        if (signedInButton) signedInButton.hidden = true;
+      }
+    }
+
+    function openModal() {
+      if (!modal) return;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      if (formPane) formPane.hidden = false;
+      if (successPane) successPane.hidden = true;
+      if (errorBox) {
+        errorBox.hidden = true;
+        errorBox.textContent = '';
+      }
+      if (form) form.reset();
+      if (claimCount) claimCount.textContent = '0';
+      if (fixCount) fixCount.textContent = '0';
+      if (reasoningCount) reasoningCount.textContent = '0';
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit correction';
+      }
+      setTimeout(() => {
+        if (claimEl) claimEl.focus();
+      }, 30);
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function showError(message: string) {
+      if (!errorBox) return;
+      errorBox.textContent = message;
+      errorBox.hidden = false;
+    }
+
+    function showSuccess(ticketNumber: string, attachmentNote?: string) {
+      if (formPane) formPane.hidden = true;
+      if (successPane) successPane.hidden = false;
+      if (successBody) {
+        const base =
+          `Thank you. Your correction is recorded as ${ticketNumber}. ` +
+          'A librarian will review it and follow up by email. ' +
+          'You can find all your tickets on your My Library page.';
+        successBody.textContent = attachmentNote ? `${base} ${attachmentNote}` : base;
+      }
+    }
+
+    if (signedInButton) {
+      signedInButton.addEventListener('click', () => openModal());
+    }
+
+    modal.querySelectorAll<HTMLElement>('[data-correction-close]').forEach((el) => {
+      el.addEventListener('click', () => closeModal());
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    if (claimEl && claimCount) {
+      claimEl.addEventListener('input', () => {
+        claimCount.textContent = String(claimEl.value.length);
+      });
+    }
+    if (fixEl && fixCount) {
+      fixEl.addEventListener('input', () => {
+        fixCount.textContent = String(fixEl.value.length);
+      });
+    }
+    if (reasoningEl && reasoningCount) {
+      reasoningEl.addEventListener('input', () => {
+        reasoningCount.textContent = String(reasoningEl.value.length);
+      });
+    }
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!claimEl || !fixEl) return;
+        const claim = claimEl.value.trim();
+        const proposedFix = fixEl.value.trim();
+        const sourceOffered = sourceEl?.value.trim() ?? '';
+        const reasoning = reasoningEl?.value.trim() ?? '';
+        if (!claim) {
+          showError('Please describe the error before submitting.');
+          return;
+        }
+        if (!proposedFix) {
+          showError('Please write your proposed fix before submitting.');
+          return;
+        }
+        if (errorBox) {
+          errorBox.hidden = true;
+          errorBox.textContent = '';
+        }
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Submitting…';
+        }
+        try {
+          const res = await fetch('/api/correction', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              page_url: window.location.pathname + window.location.search,
+              claim,
+              proposed_fix: proposedFix,
+              source_offered: sourceOffered || undefined,
+              reasoning: reasoning || undefined,
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok || !data.ticket_number) {
+            showError(
+              (data && data.error) ||
+                'Could not record your correction. Please try again.'
+            );
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = 'Submit correction';
+            }
+            return;
+          }
+
+          // v32: upload attachments. Failures are non-fatal — the
+          // correction itself is already recorded.
+          let attachmentNote: string | undefined;
+          const hasFiles = !!(fileInput && fileInput.files && fileInput.files.length > 0);
+          if (hasFiles && data.id) {
+            if (submitButton) submitButton.textContent = 'Uploading…';
+            const outcome = await uploadFilesFor('correction', data.id, fileInput, {
+              onProgress: (done, total) => {
+                if (!progressEl) return;
+                progressEl.hidden = false;
+                progressEl.textContent = `Uploaded ${done} of ${total} file${total === 1 ? '' : 's'}…`;
+              },
+            });
+            if (progressEl) progressEl.hidden = true;
+            if (outcome.failed.length > 0) {
+              attachmentNote =
+                `Correction saved, but ${outcome.failed.length} file${outcome.failed.length === 1 ? '' : 's'} did not upload.`;
+            }
+          }
+
+          showSuccess(data.ticket_number, attachmentNote);
+        } catch (err) {
+          showError('Network error. Please try again.');
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit correction';
+          }
+        }
+      });
+    }
+
+    syncAuthState();
+  }
+</script>
+
+<style>
+  .correction-footer-link {
+    margin: 0.35rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  .correction-footer-anchor {
+    color: var(--old-gold, #B88A2E);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+  .correction-footer-anchor:hover {
+    color: #7a6438;
+  }
+
+  .correction-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .correction-modal[hidden] {
+    display: none;
+  }
+  .correction-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+  }
+  .correction-modal-card {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    border-radius: 6px;
+    width: min(92vw, 560px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.5rem 1.5rem 1.25rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    color: #1e293b;
+  }
+  .correction-modal-x {
+    position: absolute;
+    top: 0.55rem;
+    right: 0.7rem;
+    background: none;
+    border: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #94a3b8;
+    cursor: pointer;
+  }
+  .correction-modal-x:hover {
+    color: #1e293b;
+  }
+  .correction-modal-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+    color: var(--deep-navy, #1e3a5f);
+  }
+  .correction-modal-privacy {
+    margin: 0 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #475569;
+  }
+  .correction-modal-form {
+    margin: 0;
+  }
+  .correction-modal-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin: 0.6rem 0 0.3rem;
+  }
+  .correction-modal-input,
+  .correction-modal-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: #1e293b;
+    background: #fff;
+  }
+  .correction-modal-textarea {
+    resize: vertical;
+    min-height: 6rem;
+    line-height: 1.45;
+  }
+  .correction-modal-textarea--short {
+    min-height: 4rem;
+  }
+  .correction-modal-input:focus,
+  .correction-modal-textarea:focus {
+    outline: 2px solid var(--old-gold, #B88A2E);
+    outline-offset: 1px;
+    border-color: var(--old-gold, #B88A2E);
+  }
+  .correction-modal-count {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: #94a3b8;
+    text-align: right;
+  }
+  .correction-modal-error {
+    margin: 0.85rem 0 0;
+    padding: 0.6rem 0.8rem;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    border-radius: 4px;
+  }
+  .correction-modal-progress {
+    margin: 0.6rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #475569;
+  }
+  .correction-modal-actions {
+    margin-top: 1.1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .correction-modal-actions--end {
+    margin-top: 1.4rem;
+  }
+  .correction-modal-cancel {
+    padding: 0.5rem 0.95rem;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: #334155;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .correction-modal-cancel:hover {
+    background: #f1f5f9;
+  }
+  .correction-modal-submit {
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--deep-navy, #1e3a5f);
+    background: var(--deep-navy, #1e3a5f);
+    color: #fff;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .correction-modal-submit:hover {
+    background: #142940;
+  }
+  .correction-modal-submit:disabled {
+    opacity: 0.65;
+    cursor: progress;
+  }
+  .correction-modal-success-body {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: #1e293b;
+  }
+  @media (max-width: 480px) {
+    .correction-modal-card {
+      padding: 1.1rem 1rem 1rem;
+    }
+    .correction-modal-actions {
+      justify-content: stretch;
+    }
+    .correction-modal-actions > button {
+      flex: 1;
+    }
+  }
+</style>

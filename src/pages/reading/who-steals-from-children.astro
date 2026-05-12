@@ -7,6 +7,31 @@
 // gates on kind === 'essay' in [slug].astro). They do carry the
 // site-wide pre-publication footer via BaseLayout.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServerSupabase } from '../../lib/supabase';
+
+export const prerender = false;
+
+// v32 — published-review count for the footer Reviews link. Same pattern
+// as on the other in-house book landings.
+let reviewCount = 0;
+try {
+  const supabase = getServerSupabase(Astro);
+  const { data: work } = await supabase
+    .from('works')
+    .select('id')
+    .eq('slug', 'who-steals-from-children-vol-1')
+    .maybeSingle();
+  if (work?.id) {
+    const { count } = await supabase
+      .from('reviews')
+      .select('id', { count: 'exact', head: true })
+      .eq('work_id', work.id)
+      .eq('is_published', true);
+    if (typeof count === 'number') reviewCount = count;
+  }
+} catch {
+  // swallow
+}
 ---
 <BaseLayout
   title="Who Steals from Children — A Series · America's School Trust Library"
@@ -114,6 +139,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
     <p class="mt-8 text-sm text-slate-600">
       <a href="/reading/">← Back to the Reading Room</a>
+    </p>
+
+    <p class="reviews-link mt-4 text-sm text-slate-500">
+      <a href="/reading/who-steals-from-children-vol-1/reviews/">Reviews ({reviewCount})</a>
     </p>
   </article>
 </BaseLayout>

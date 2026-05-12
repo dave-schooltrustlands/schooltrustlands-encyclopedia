@@ -16,11 +16,58 @@ if (!user) {
 const id = Astro.params.id;
 if (!id) return new Response('Not Found', { status: 404 });
 
-const { data: ticket } = await supabase
+// v32: the ticket detail page is shared between feedback and correction
+// tickets. Try the feedback table first; if no row, try corrections. Both
+// expose id, ticket_number, page_url, status, submitted_at, user_id with the
+// same shape; the body shape differs and is rendered via a `kind`-aware
+// section below.
+type FeedbackTicket = {
+  kind: 'feedback';
+  id: string;
+  ticket_number: string;
+  page_url: string;
+  subject: string | null;
+  body: string;
+  status: string;
+  submitted_at: string;
+  user_id: string;
+};
+
+type CorrectionTicket = {
+  kind: 'correction';
+  id: string;
+  ticket_number: string;
+  page_url: string;
+  claim: string;
+  proposed_fix: string;
+  source_offered: string | null;
+  reasoning: string | null;
+  status: string;
+  submitted_at: string;
+  user_id: string;
+};
+
+type Ticket = FeedbackTicket | CorrectionTicket;
+
+let ticket: Ticket | null = null;
+
+const { data: feedbackRow } = await supabase
   .from('feedback')
   .select('id, ticket_number, page_url, subject, body, status, submitted_at, user_id')
   .eq('id', id)
   .maybeSingle();
+if (feedbackRow) {
+  ticket = { kind: 'feedback', ...feedbackRow } as FeedbackTicket;
+} else {
+  const { data: correctionRow } = await supabase
+    .from('corrections')
+    .select('id, ticket_number, page_url, claim, proposed_fix, source_offered, reasoning, status, submitted_at, user_id')
+    .eq('id', id)
+    .maybeSingle();
+  if (correctionRow) {
+    ticket = { kind: 'correction', ...correctionRow } as CorrectionTicket;
+  }
+}
 
 // Strict ownership: RLS already prevents reading other patrons' tickets, but
 // belt-and-suspenders so we never accidentally render someone else's ticket.
@@ -31,11 +78,50 @@ if (!ticket || ticket.user_id !== user.id) {
 const { data: responsesRaw } = await supabase
   .from('ticket_responses')
   .select('id, body, author_id, author_role, posted_at')
-  .eq('ticket_type', 'feedback')
+  .eq('ticket_type', ticket.kind)
   .eq('ticket_id', id)
   .order('posted_at', { ascending: true });
 
 const responses = responsesRaw ?? [];
+
+// v32 — attachments associated with this ticket. Patron RLS (Own attachments
+// read) returns only this user's rows. parent_type tracks the ticket kind so
+// feedback attachments and correction attachments don't leak across the
+// surfaces.
+const { data: attachmentsRaw } = await supabase
+  .from('file_attachments')
+  .select('id, storage_path, file_name, content_type, byte_size, uploaded_at')
+  .eq('parent_type', ticket.kind)
+  .eq('parent_id', id)
+  .order('uploaded_at', { ascending: true });
+
+type AttachmentView = {
+  id: string;
+  file_name: string;
+  byte_size: number;
+  signed_url: string | null;
+};
+
+const attachments: AttachmentView[] = [];
+for (const row of attachmentsRaw ?? []) {
+  // Signed URL TTL: 1 hour. The page is prerender:false so each render
+  // mints fresh URLs — never embedded for longer than the TTL.
+  const { data: signed } = await supabase.storage
+    .from('attachments')
+    .createSignedUrl(row.storage_path, 60 * 60);
+  attachments.push({
+    id: row.id,
+    file_name: row.file_name,
+    byte_size: row.byte_size,
+    signed_url: signed?.signedUrl ?? null,
+  });
+}
+
+function fmtBytes(n: number): string {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(0)} KB`;
+  return `${(n / 1024 / 1024).toFixed(1)} MB`;
+}
 
 const authorIds = Array.from(new Set(responses.map((r) => r.author_id)));
 let authorMap = new Map<string, { display_name: string | null }>();
@@ -63,10 +149,13 @@ const STATUS_LABEL: Record<string, string> = {
   new: 'New',
   in_review: 'In review',
   responded: 'Responded',
+  accepted: 'Accepted',
+  rejected: 'Rejected',
   archived: 'Archived',
 };
 
 const canReply = ticket.status !== 'archived';
+const ticketKind = ticket.kind;
 ---
 
 <BaseLayout
@@ -87,7 +176,7 @@ const canReply = ticket.status !== 'archived';
       </p>
     </header>
 
-    {ticket.subject && (
+    {ticket.kind === 'feedback' && ticket.subject && (
       <p class="ticket-subject"><strong>Subject:</strong> {ticket.subject}</p>
     )}
 
@@ -95,10 +184,53 @@ const canReply = ticket.status !== 'archived';
       <strong>Page:</strong> <a href={ticket.page_url}>{ticket.page_url}</a>
     </p>
 
-    <section class="ticket-body-section">
-      <h2>Your feedback</h2>
-      <div class="ticket-body">{ticket.body}</div>
-    </section>
+    {ticket.kind === 'feedback' ? (
+      <section class="ticket-body-section">
+        <h2>Your feedback</h2>
+        <div class="ticket-body">{ticket.body}</div>
+      </section>
+    ) : (
+      <>
+        <section class="ticket-body-section">
+          <h2>What is the error?</h2>
+          <div class="ticket-body">{ticket.claim}</div>
+        </section>
+        <section class="ticket-body-section">
+          <h2>What should it say instead?</h2>
+          <div class="ticket-body">{ticket.proposed_fix}</div>
+        </section>
+        {ticket.source_offered && (
+          <section class="ticket-body-section">
+            <h2>Source</h2>
+            <div class="ticket-body ticket-body--inline">{ticket.source_offered}</div>
+          </section>
+        )}
+        {ticket.reasoning && (
+          <section class="ticket-body-section">
+            <h2>Reasoning</h2>
+            <div class="ticket-body">{ticket.reasoning}</div>
+          </section>
+        )}
+      </>
+    )}
+
+    {attachments.length > 0 && (
+      <section class="attachments-section">
+        <h2>Attachments</h2>
+        <ul class="attachments-list">
+          {attachments.map((a) => (
+            <li class="attachments-item">
+              {a.signed_url ? (
+                <a href={a.signed_url} target="_blank" rel="noopener">{a.file_name}</a>
+              ) : (
+                <span>{a.file_name}</span>
+              )}
+              <span class="attachments-size">({fmtBytes(a.byte_size)})</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <section class="responses-section">
       <h2>Conversation</h2>
@@ -146,12 +278,12 @@ const canReply = ticket.status !== 'archived';
       </section>
     ) : (
       <section class="archived-note">
-        <p>This ticket has been archived. Open a new feedback ticket if you have more to add.</p>
+        <p>This ticket has been archived. Open a new ticket if you have more to add.</p>
       </section>
     )}
   </article>
 
-  <script is:inline define:vars={{ ticketId: ticket.id }}>
+  <script is:inline define:vars={{ ticketId: ticket.id, ticketType: ticketKind }}>
     const form = document.getElementById('reply-form');
     if (form) {
       form.addEventListener('submit', async (e) => {
@@ -171,7 +303,7 @@ const canReply = ticket.status !== 'archived';
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({
-              ticket_type: 'feedback',
+              ticket_type: ticketType,
               ticket_id: ticketId,
               body,
             }),
@@ -221,6 +353,18 @@ const canReply = ticket.status !== 'archived';
       border-radius: 4px;
       margin: 0.4rem 0;
     }
+    .ticket-body--inline {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      padding: 0.55rem 0.8rem;
+    }
+    .ticket-body-section > h2 {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0.8rem 0 0.2rem;
+    }
     .status-pill {
       display: inline-block;
       padding: 0.1rem 0.5rem;
@@ -236,6 +380,14 @@ const canReply = ticket.status !== 'archived';
     .status-pill--in_review { background: #fef3c7; color: #92400e; }
     .status-pill--responded { background: #dcfce7; color: #166534; }
     .status-pill--archived  { background: #f1f5f9; color: #64748b; }
+    .attachments-section { margin: 1rem 0 1.25rem; }
+    .attachments-list { list-style: none; padding: 0; margin: 0.3rem 0 0; }
+    .attachments-item {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      padding: 0.25rem 0;
+    }
+    .attachments-size { color: #94a3b8; font-size: 0.82rem; margin-left: 0.4rem; }
     .responses-section { margin: 1.25rem 0; }
     .response-list { list-style: none; padding: 0; margin: 0; }
     .response-item {

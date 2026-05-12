@@ -1,0 +1,19 @@
+Subject: Your review of {{work_title}} is published
+
+Dear {{patron_name}},
+
+A librarian has published your review of {{work_title}}.
+
+Your review:
+
+{{review_body}}
+
+You can read your published review here:
+{{review_url}}
+
+The work's page is at:
+{{work_url}}
+
+Thank you for adding to the Library's record.
+
+— America's School Trust Library
