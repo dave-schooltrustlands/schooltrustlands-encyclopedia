@@ -51,6 +51,33 @@
   --font-mono:  ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
 }
 
+/* v40 — sticky-header anchor offset. Anchor-target headings (h2/h3/h4
+   with an id) need scroll-margin-top so they land below the sticky
+   header on hash navigation instead of being tucked behind it. The
+   sticky header is a single row on mobile / hamburger viewports
+   (~88 px after py-3 around a 64-px wordmark) but wraps to two or
+   three rows on desktop where the full nav is visible (~150–200 px).
+   --sticky-header-offset is sized for the worst-case desktop wrap;
+   the +8 px in the calc() adds visual breathing room so the heading
+   isn't kissing the header. The breakpoint matches Tailwind's `lg:`
+   (1024 px), which is where Header.astro flips from the hamburger
+   layout to the full inline nav. */
+:root {
+  --sticky-header-offset: 200px;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --sticky-header-offset: 100px;
+  }
+}
+
+h2[id],
+h3[id],
+h4[id] {
+  scroll-margin-top: calc(var(--sticky-header-offset) + 8px);
+}
+
 /* Per-room accent overrides — wired off [data-room] on <body>. */
 [data-room='reading']  { --room-accent: var(--accent-reading); }
 [data-room='atlas']    { --room-accent: var(--accent-atlas); }
