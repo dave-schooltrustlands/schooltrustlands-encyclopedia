@@ -1,0 +1,269 @@
+---
+// Site Update v42 — Newsroom monthly-digest subscribe form.
+//
+// Inline, anonymous. POSTs to /api/newsroom-subscribe which inserts a
+// row into public.newsroom_subscribers under the anon RLS policy.
+// On success the form is replaced with an acknowledgment; on failure
+// an inline error message renders and the field values stay in place.
+---
+
+<form
+  class="newsroom-subscribe"
+  data-newsroom-subscribe
+  novalidate
+  aria-labelledby="newsroom-subscribe-heading"
+>
+  <p id="newsroom-subscribe-heading" class="newsroom-subscribe__heading">
+    Sign up for the monthly digest
+  </p>
+
+  <div class="newsroom-subscribe__row">
+    <label class="newsroom-subscribe__field">
+      <span class="newsroom-subscribe__label">Name</span>
+      <input
+        type="text"
+        name="name"
+        autocomplete="name"
+        required
+        maxlength="200"
+        data-newsroom-subscribe-name
+      />
+    </label>
+    <label class="newsroom-subscribe__field">
+      <span class="newsroom-subscribe__label">Email</span>
+      <input
+        type="email"
+        name="email"
+        autocomplete="email"
+        required
+        maxlength="320"
+        data-newsroom-subscribe-email
+      />
+    </label>
+  </div>
+
+  <label class="newsroom-subscribe__opt-in">
+    <input
+      type="checkbox"
+      name="opt_in"
+      required
+      data-newsroom-subscribe-optin
+    />
+    <span>
+      Yes, send me the monthly digest email when it launches. I understand I
+      can unsubscribe at any time.
+    </span>
+  </label>
+
+  <div class="newsroom-subscribe__actions">
+    <button type="submit" class="newsroom-subscribe__submit">
+      Subscribe
+    </button>
+    <p
+      class="newsroom-subscribe__status"
+      data-newsroom-subscribe-status
+      role="status"
+      aria-live="polite"
+    ></p>
+  </div>
+</form>
+
+<style>
+  .newsroom-subscribe {
+    margin: 1.25rem 0 1.75rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 3px solid var(--old-gold, #b88a2e);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+  }
+  .newsroom-subscribe__heading {
+    margin: 0 0 0.85rem;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--deep-navy, #1f2a44);
+  }
+  .newsroom-subscribe__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  @media (min-width: 640px) {
+    .newsroom-subscribe__row {
+      grid-template-columns: 1fr 1.5fr;
+    }
+  }
+  .newsroom-subscribe__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .newsroom-subscribe__label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1f2a44);
+    letter-spacing: 0.02em;
+  }
+  .newsroom-subscribe input[type='text'],
+  .newsroom-subscribe input[type='email'] {
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 3px;
+    background: #fff;
+    color: var(--ink, #17202a);
+    min-height: 40px;
+  }
+  .newsroom-subscribe input:focus {
+    outline: 2px solid var(--trust-blue, #1d4f7c);
+    outline-offset: 1px;
+    border-color: var(--trust-blue, #1d4f7c);
+  }
+  .newsroom-subscribe__opt-in {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin: 0.9rem 0 0.6rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--ink, #17202a);
+  }
+  .newsroom-subscribe__opt-in input[type='checkbox'] {
+    margin-top: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+  .newsroom-subscribe__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .newsroom-subscribe__submit {
+    background: var(--deep-navy, #1f2a44);
+    color: var(--linen-card, #fffdf7);
+    border: 0;
+    padding: 0.55rem 1.2rem;
+    border-radius: 3px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 40px;
+  }
+  .newsroom-subscribe__submit:hover {
+    background: var(--trust-blue, #1d4f7c);
+  }
+  .newsroom-subscribe__submit:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+  .newsroom-subscribe__status {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .newsroom-subscribe__status[data-state='error'] {
+    color: var(--source-conflict, #b42318);
+  }
+  .newsroom-subscribe__status[data-state='success'] {
+    color: var(--verified, #2f6f4e);
+  }
+
+  /* Replace the form with a plain ack panel on success. */
+  .newsroom-subscribe[data-state='done'] .newsroom-subscribe__row,
+  .newsroom-subscribe[data-state='done'] .newsroom-subscribe__opt-in,
+  .newsroom-subscribe[data-state='done'] .newsroom-subscribe__submit {
+    display: none;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const form = document.querySelector('[data-newsroom-subscribe]');
+    if (!form) return;
+    const statusEl = form.querySelector('[data-newsroom-subscribe-status]');
+    const submitBtn = form.querySelector('.newsroom-subscribe__submit');
+    const nameInput = form.querySelector('[data-newsroom-subscribe-name]');
+    const emailInput = form.querySelector('[data-newsroom-subscribe-email]');
+    const optInInput = form.querySelector('[data-newsroom-subscribe-optin]');
+
+    function setStatus(state, message) {
+      if (!statusEl) return;
+      if (state) {
+        statusEl.setAttribute('data-state', state);
+      } else {
+        statusEl.removeAttribute('data-state');
+      }
+      statusEl.textContent = message || '';
+    }
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const name = (nameInput && nameInput.value ? nameInput.value : '').trim();
+      const email = (emailInput && emailInput.value ? emailInput.value : '').trim();
+      const optIn = optInInput ? optInInput.checked : false;
+
+      if (!name) {
+        setStatus('error', 'Please enter your name.');
+        return;
+      }
+      if (!email) {
+        setStatus('error', 'Please enter your email address.');
+        return;
+      }
+      if (!optIn) {
+        setStatus('error', 'Please confirm the opt-in checkbox to subscribe.');
+        return;
+      }
+
+      setStatus(null, 'Subscribing…');
+      if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
+
+      try {
+        const resp = await fetch('/api/newsroom-subscribe', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ name, email, opt_in: optIn }),
+        });
+        const data = await resp.json().catch(() => ({}));
+
+        if (!resp.ok) {
+          setStatus(
+            'error',
+            (data && data.error) ||
+              'Subscription failed. Please try again in a moment.'
+          );
+          if (submitBtn) submitBtn.removeAttribute('disabled');
+          return;
+        }
+
+        if (data && data.duplicate) {
+          form.setAttribute('data-state', 'done');
+          setStatus(
+            'success',
+            "You're already on the list. You'll receive the first monthly digest in early July 2026."
+          );
+          return;
+        }
+
+        form.setAttribute('data-state', 'done');
+        setStatus(
+          'success',
+          "Thanks. You'll receive the first monthly digest in early July 2026."
+        );
+      } catch (_err) {
+        setStatus(
+          'error',
+          'Network error. Please check your connection and try again.'
+        );
+        if (submitBtn) submitBtn.removeAttribute('disabled');
+      }
+    });
+  })();
+</script>

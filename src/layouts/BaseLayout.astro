@@ -20,9 +20,14 @@ interface Props {
   // v12 BETA — `room` also drives data-room (per-room palette) and
   // RoomOrnament mounting, mirroring RoomLayout's contract.
   room?: 'voices' | 'newsroom';
+  // v39 — page-level override for the footer Submit-Feedback kind.
+  // /about/becoming/ sets 'institutional_formation' so submissions
+  // route to the founding-officers queue. Other pages leave it unset
+  // and the modal writes the default 'general' kind.
+  feedbackKind?: 'general' | 'institutional_formation';
 }
 
-const { title, description, sourceId, room } = Astro.props;
+const { title, description, sourceId, room, feedbackKind } = Astro.props;
 
 const ornamentShapeByRoom: Record<NonNullable<Props['room']>, 'mic' | 'newspaper'> = {
   voices: 'mic',
@@ -32,12 +37,15 @@ const ornamentShapeByRoom: Record<NonNullable<Props['room']>, 'mic' | 'newspaper
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description}>
+      <slot name="head" />
+    </BaseHead>
   </head>
   <body
     class="min-h-screen bg-archive-paper text-ink mode-library"
     data-source-id={sourceId}
     data-room={room}
+    data-feedback-kind={feedbackKind}
   >
     <Header />
     <main class="mx-auto max-w-prose p-4 sm:p-8 room-main">

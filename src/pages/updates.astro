@@ -53,6 +53,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Tuesday May 12, 2026 — Site update v42: Newsroom landing restructure.</strong>
+            The <a href="/newsroom/">Newsroom</a> now leads with subscribe options (RSS for weekly entries; email signup for the
+            forthcoming monthly digest) and a recent-entries block; the full editorial methodology moved to
+            <a href="/newsroom/about/">/newsroom/about/</a>. RSS feed live at <a href="/newsroom/rss.xml">/newsroom/rss.xml</a>.
+            The monthly digest signup builds the list now in advance of the first issue scheduled for early July 2026. The new
+            <code>newsroom_subscribers</code> table holds the list internally with anonymous-insert RLS; migration applied via
+            the Supabase SQL editor.
+          </li>
+          <li>
+            <strong>Tuesday May 12, 2026 — Site update v40: Sticky-header anchor offset fix.</strong>
+            Clicking a right-rail TOC link on the <a href="/pro/">Pro</a> pages and the inline anchor links on
+            <a href="/about/how-this-works/">/about/how-this-works/</a> used to scroll target headings up under the sticky
+            header. A one-rule global CSS fix adds <code>scroll-margin-top</code> to every <code>h2</code>/<code>h3</code>/<code>h4</code>
+            with an <code>id</code>, sized to the sticky-header height (200&nbsp;px desktop, 100&nbsp;px below the 1024&nbsp;px breakpoint) with
+            8&nbsp;px of breathing room. Target headings now land just below the header instead of behind it.
+          </li>
+          <li>
             <strong>Tuesday May 12, 2026 — Site update v37: Duology term retirement.</strong>
             The word &ldquo;duology&rdquo; and the binding-decision jargon (&ldquo;dos-&agrave;-dos,&rdquo; &ldquo;t&ecirc;te-b&ecirc;che&rdquo;)
             are retired from every public surface. The two-volume conceptual structure stays: <em>Schools of the Republic</em> is

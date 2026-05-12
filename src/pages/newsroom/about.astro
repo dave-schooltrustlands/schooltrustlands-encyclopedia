@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About the Newsroom · America's School Trust Library"
+  description="How America's School Trust Library covers what's changing in the trust-lands beat, week by week."
+  sourceId="newsroom-about"
+  room="newsroom"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="kicker">Newsroom</p>
+    <h1>About the Newsroom</h1>
+
+    <p>
+      Each Monday morning, this Newsroom publishes a short, sourced account of what
+      changed in school trust lands across the United States during the prior week.
+      Once a month, those weekly entries are distilled into an email digest for readers
+      who would rather follow the beat in monthly rhythm than weekly.
+    </p>
+
+    <p>
+      The Newsroom is one of three editorial surfaces in this library, and it has the
+      narrowest job. The <a href="/reading/">Reading Room</a> holds the long-form synthesis — the encyclopedia,
+      the white papers, the per-state entries. The <a href="/voices/">Voices</a> section carries signed
+      first-person editorial pieces by named contributors who argue for what trustees,
+      courts, and legislators ought to do. The Newsroom does neither. It reports —
+      third-person, neutral, sourced — on what those trustees, courts, and legislators
+      have <em>already</em> done.
+    </p>
+
+    <p>
+      That separation is deliberate. The trust-lands beat suffers from a thin
+      information environment: state-agency press releases land in obscure corners of
+      state-government websites, board-meeting decisions are recorded in minutes that
+      never make a news cycle, and litigation milestones move through dockets that no
+      general-interest reporter is following. The Newsroom exists to bring those
+      fragments into one place each week, identify which of them mattered, and present
+      them in a form that a journalist, a legislator, a school-board member, or a
+      curious citizen can read in five minutes and act on if they choose.
+    </p>
+
+    <h2>What the Newsroom covers</h2>
+
+    <p>The Newsroom watches seven categories of source each week:</p>
+
+    <p>
+      <strong>State land-management agencies</strong> — the Departments of State Lands
+      (or their equivalents) in the thirty-two federal-grant states, and the parallel
+      offices that administer state-derived school funds in some of the Original
+      Thirteen. New annual reports, board minutes, public-comment dockets, and policy
+      announcements all surface here.
+    </p>
+
+    <p>
+      <strong>State legislatures</strong> — bill trackers in all fifty states, filtered
+      for school-trust, permanent-school-fund, common-school-fund, and trust-lands
+      keywords. Most weeks return nothing in any given state; when a bill is introduced
+      or moves, the signal is high.
+    </p>
+
+    <p>
+      <strong>Court dockets and opinions</strong> — state supreme-court opinions in the
+      active-litigation states, federal-court filings, courts of appeals dockets where
+      school-trust cases are in flight. The litigation in Oregon (lead case
+      <em>Coos County 24CV38372</em>; Court of Appeals standing victory January 28,
+      2026) is the most actively covered, but every state's docket is monitored.
+    </p>
+
+    <p>
+      <strong>Regional press</strong> — the Oregonian, the Salt Lake Tribune, the
+      Albuquerque Journal, the Casper Star-Tribune, the Lincoln Journal Star, the
+      Billings Gazette, and a rotating set of others. Newspapers covering trust-lands
+      stories that the agencies have not announced themselves — the press is often
+      where a story breaks before the official record catches up.
+    </p>
+
+    <p>
+      <strong>Academic and policy watchers</strong> — university law schools that track
+      trust-lands jurisprudence, regional think tanks (Sightline Institute, Headwaters
+      Economics, the Property and Environment Research Center), and the National
+      Association of State Trust Lands when its members publish.
+    </p>
+
+    <p>
+      <strong>Movement signal</strong> — the Voices contributors at Advocates for School
+      Trust Lands (ASTL), the Oregon affiliate's case docket, and the National
+      Conference of State Legislatures' school-finance pulse.
+    </p>
+
+    <p>
+      <strong>The editor's curated inbox</strong> — direct correspondence from
+      school-trust adjacent thinkers, board materials forwarded by allies, paid and
+      free newsletters the editor subscribes to, and items that arrive by name when
+      the editor's network surfaces something the public source list missed. A
+      high-signal, low-volume tier; counts as a source only when the item rests on a
+      verifiable underlying primary source.
+    </p>
+
+    <p>
+      The full source list is published at <code>_tools/newsroom/sources.yaml</code> in
+      the library's open repository. Sources are added when they surface items the prior
+      list missed; sources are retired when they return three months of silence or
+      three months of noise. The list is versioned, so the audit trail of what the
+      Newsroom watched on any given week is recoverable.
+    </p>
+
+    <h2>Cadence</h2>
+
+    <p>
+      <strong>Weekly entries</strong> are published every Monday morning. Each entry
+      leads with a one-sentence summary of what mattered that week, followed by three
+      to seven sourced items in priority order. Each item carries a brief account of
+      what happened, links to its primary source (an agency release, a court order, a
+      bill filing), links to any secondary press coverage, and a confidence badge.
+    </p>
+
+    <p>
+      <strong>Quiet weeks are reported as such.</strong> When a week genuinely passes
+      with no significant developments — and quiet weeks happen in this beat — the
+      Monday entry says so plainly: <em>"This week, no notable developments. Sources
+      surveilled: [list]. Last newsworthy item: [date], [topic]."</em> Padding
+      low-grade items into a weekly entry would erode the credibility this Newsroom
+      exists to build. A Newsroom that is honest about its quiet weeks is one a reader
+      can trust to ring the bell loudly when a major week arrives.
+    </p>
+
+    <p>
+      <strong>A monthly digest</strong> distills each month's four weekly entries into
+      a single email of roughly 600 to 900 words, sent on the first Monday of the
+      following month. The monthly is not a concatenation of the weeklies; it is a
+      fresh editorial pass that decides which of the month's items will still matter a
+      year from now. Subscription information appears on the
+      <a href="/newsroom/">Newsroom landing page</a> and at the bottom of every entry.
+    </p>
+
+    <h2>Editorial discipline</h2>
+
+    <p>
+      Every item in this Newsroom carries a <strong>confidence badge</strong>.
+      <em>Verified</em> means the item rests on a primary source that the editorial
+      pass directly read — an agency release, a board's published minutes, a court
+      order, a bill text. <em>Awaiting Confirmation</em> means the item rests on a
+      secondary source (a regional newspaper, a third-party report) and the primary
+      source has not yet been located or confirmed. <em>Disclosure Unknown</em> means
+      the item involves a closed-session decision or a non-public document where the
+      editorial pass cannot independently verify the underlying facts. Items that do
+      not meet any of those bars do not appear; rumors wait until they are sourced.
+    </p>
+
+    <p>
+      Items rated <em>major</em> — those likely to shape the legal or policy landscape
+      of school trust lands beyond a single week — are subject to a
+      <strong>two-source rule</strong>. They appear only when both a credible
+      secondary source and the underlying primary source are available and linked.
+    </p>
+
+    <p>
+      <strong>Corrections</strong> are made in place, with a dated note appended to the
+      bottom of the affected entry: <em>"Correction, [date]: the original version of
+      this entry stated [X]; the correct fact is [Y]. Source: [link]."</em> The
+      repository's version history preserves the original. No silent edits.
+    </p>
+
+    <p>
+      <strong>The Newsroom does not editorialize.</strong> When an item invites a
+      sharper take — when a trustee decision deserves criticism, when a legislative
+      move deserves applause — the editor flags it as a candidate for the Voices
+      section, where signed editorial voice is appropriate. The Newsroom itself
+      maintains a neutral encyclopedic-news register. That separation is what allows
+      state land departments, legislative staff, and courts to read this Newsroom as
+      an evidentiary source rather than an adversarial one.
+    </p>
+
+    <h2>How this Newsroom is made</h2>
+
+    <p>
+      Each weekly entry begins as an automated surveillance pass over the source list.
+      The pass fetches each source, compares it against the prior week's snapshot,
+      identifies what has changed, and drafts a candidate summary in the
+      encyclopedic-news register. That draft is then reviewed, edited, and signed off
+      by a named human editor before publication. No item appears on this site without
+      that editorial review.
+    </p>
+
+    <p>
+      This Newsroom carries a standing disclosure: weekly drafts are generated by an AI
+      surveillance pass, and every published entry has been reviewed and edited by a
+      named human editor. That disclosure is part of why this Newsroom is trustworthy,
+      not a complication of its trustworthiness. The editorial process is rigorous,
+      the production model is honest, and a reader can audit either at any time.
+    </p>
+
+    <h2>Quiet weeks, loud weeks, and the long horizon</h2>
+
+    <p>
+      The school trusts have been changing for two centuries; their assets, their
+      beneficiaries, and the legal frameworks that govern them have all drifted in
+      ways the framers of the 1785 Land Ordinance and the various state Admissions
+      Acts could not have foreseen. A weekly Newsroom is an inadequate instrument for
+      measuring two centuries of drift. A weekly Newsroom is, however, the right
+      instrument for <em>catching the present in the act</em> — for noticing, in real
+      time, when a state legislature is about to redirect a permanent school fund,
+      when a state supreme court is about to rule on a trustee's fiduciary duty, when
+      a Department of State Lands is about to enter a transaction that will deplete
+      the corpus.
+    </p>
+
+    <p>
+      The library is built on the conviction that the schools — present and future —
+      are entitled to that level of attention. The Newsroom is one of the surfaces
+      through which that attention becomes practical. Read it weekly if you are
+      working the beat; read the monthly if you are following from a distance; read
+      the Reading Room if you want to understand what the trusts are, why they exist,
+      and what they were meant to do.
+    </p>
+
+    <hr class="archival-divider" />
+
+    <p class="text-sm text-slate-600">
+      <em>Editor: Dave Sullivan, President, Oregon Advocates for School Trust Lands.</em><br />
+      <em>
+        Newsroom drafts are generated by an AI surveillance pass over the source list.
+        Every published entry has been reviewed and edited by a named human editor
+        before publication.
+      </em>
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a88a4e;
+      margin: 0 0 0.4rem;
+    }
+  </style>
+</BaseLayout>
