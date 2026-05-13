@@ -1,5 +1,95 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+type Hotspot = {
+  href: string;
+  ariaLabel: string;
+  top: string;
+  left: string;
+  width: string;
+  height: string;
+  name: string;
+  description: string;
+  sections: string;
+  anchorRight?: boolean;
+};
+
+const hotspots: Hotspot[] = [
+  {
+    href: '/',
+    ariaLabel: 'Great Hall — the entrance and overview',
+    top: '44%', left: '41%', width: '14%', height: '20%',
+    name: 'Great Hall',
+    description: 'The entrance and overview. Start anywhere.',
+    sections: '',
+  },
+  {
+    href: '/reading/',
+    ariaLabel: 'Reading Room — three book-length works on America’s school trust lands',
+    top: '45%', left: '21%', width: '17%', height: '25%',
+    name: 'Reading Room',
+    description: 'Three book-length works on America’s school trust lands.',
+    sections: 'Schools of the Republic · The Eighth Anchor · Who Steals from Children',
+  },
+  {
+    href: '/atlas/',
+    ariaLabel: 'Atlas — what every federal-grant state did with its school-trust lands',
+    top: '18%', left: '38%', width: '13%', height: '19%',
+    name: 'Atlas',
+    description: 'What every federal-grant state did with its school-trust lands.',
+    sections: 'Fifty state entries — federal-grant states in alphabetical order',
+  },
+  {
+    href: '/maps/',
+    ariaLabel: 'Map Room — state-by-state cartography of the trust geography',
+    top: '18%', left: '54%', width: '14%', height: '19%',
+    name: 'Map Room',
+    description: 'State-by-state cartography of the trust geography.',
+    sections: '',
+    anchorRight: true,
+  },
+  {
+    href: '/counting/',
+    ariaLabel: 'Counting House — the financial record',
+    top: '45%', left: '70%', width: '16%', height: '25%',
+    name: 'Counting House',
+    description: 'The financial record. How much, where, and what was lost.',
+    sections: '',
+    anchorRight: true,
+  },
+  {
+    href: '/newsroom/',
+    ariaLabel: 'Newsroom — a weekly survey of what’s changing across the fifty states',
+    top: '68%', left: '41%', width: '12%', height: '19%',
+    name: 'Newsroom',
+    description: 'A weekly survey of what’s changing across the fifty states.',
+    sections: 'About the Newsroom · Recent issues · Subscribe by email · RSS feed',
+  },
+  {
+    href: '/voices/',
+    ariaLabel: 'Voices — signed editorial pieces from named contributors',
+    top: '68%', left: '54%', width: '12%', height: '19%',
+    name: 'Voices',
+    description: 'Signed editorial pieces from named contributors.',
+    sections: '',
+  },
+  {
+    href: '/updates/',
+    ariaLabel: 'Updates — the running log of what’s shipped on the site',
+    top: '68%', left: '28%', width: '12%', height: '19%',
+    name: 'Updates',
+    description: 'The running log of what’s shipped on the site.',
+    sections: 'Weekly summaries by date',
+  },
+  {
+    href: '/pro/',
+    ariaLabel: 'Pro Wing — governance, editorial standards, collection development, roles, charter, dispute resolution',
+    top: '70%', left: '8%', width: '17%', height: '24%',
+    name: 'Pro Wing',
+    description: 'Governance, editorial standards, collection-development policy, roles, charter, dispute resolution.',
+    sections: 'Governance · Editorial Standards · Collection Development · Roles · Bylaws · Dispute Resolution',
+  },
+];
 ---
 <BaseLayout
   title="Explore the Library · America's School Trust Library"
@@ -20,33 +110,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         alt="Floor plan of America's School Trust Library showing rooms arranged around a Great Hall lobby — Reading Room, Atlas, Map Room, Counting House, Newsroom, Voices, Updates, Pro Wing — with hidden alcoves and corridors. Smaller decorative elements include a Primary Sources Alcove, a Scholarship Stack, and a Windowed Alcove."
         class="floor-plan-image"
       />
-      <a href="/" class="hotspot" style="top:30%;left:42%;width:13%;height:22%" aria-label="Great Hall — start anywhere">
-        <span class="visually-hidden">Great Hall (start page)</span>
-      </a>
-      <a href="/reading/" class="hotspot" style="top:28%;left:13%;width:17%;height:24%" aria-label="Reading Room — long-form work">
-        <span class="visually-hidden">Reading Room</span>
-      </a>
-      <a href="/atlas/" class="hotspot" style="top:7%;left:32%;width:14%;height:17%" aria-label="Atlas — fifty states">
-        <span class="visually-hidden">Atlas</span>
-      </a>
-      <a href="/maps/" class="hotspot" style="top:7%;left:50%;width:14%;height:17%" aria-label="Map Room — state-by-state cartography">
-        <span class="visually-hidden">Map Room</span>
-      </a>
-      <a href="/counting/" class="hotspot" style="top:28%;left:66%;width:16%;height:24%" aria-label="Counting House — public ledger">
-        <span class="visually-hidden">Counting House</span>
-      </a>
-      <a href="/newsroom/" class="hotspot" style="top:55%;left:42%;width:13%;height:17%" aria-label="Newsroom — weekly news">
-        <span class="visually-hidden">Newsroom</span>
-      </a>
-      <a href="/voices/" class="hotspot" style="top:55%;left:55%;width:13%;height:17%" aria-label="Voices — signed editorial">
-        <span class="visually-hidden">Voices</span>
-      </a>
-      <a href="/updates/" class="hotspot" style="top:53%;left:26%;width:13%;height:17%" aria-label="Updates — site changes">
-        <span class="visually-hidden">Updates</span>
-      </a>
-      <a href="/pro/" class="hotspot" style="top:60%;left:8%;width:16%;height:20%" aria-label="Pro Wing — governance and contribution">
-        <span class="visually-hidden">Pro Wing</span>
-      </a>
+      {hotspots.map((h) => (
+        <a
+          href={h.href}
+          class={`hotspot${h.anchorRight ? ' tooltip-anchor-right' : ''}`}
+          style={`top:${h.top};left:${h.left};width:${h.width};height:${h.height}`}
+          aria-label={h.ariaLabel}
+        >
+          <span class="visually-hidden">{h.name}</span>
+          <span class="hotspot-tooltip" role="presentation">
+            <strong>{h.name}</strong>
+            <span class="tooltip-description">{h.description}</span>
+            {h.sections && <span class="tooltip-sections">{h.sections}</span>}
+          </span>
+        </a>
+      ))}
     </div>
 
     <p class="text-sm text-slate-600 mt-6">
@@ -74,8 +152,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style>
   .floor-plan-container {
     position: relative;
-    max-width: 1600px;
+    width: min(95vw, 1600px);
     margin: 1.5em auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
   .floor-plan-image {
     width: 100%;
@@ -103,6 +183,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
+  }
+  .hotspot-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    background: #fbf6e9;
+    border: 1px solid #c8b78a;
+    padding: 10px 14px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(31, 42, 68, 0.18);
+    font-size: 0.92rem;
+    line-height: 1.4;
+    min-width: 220px;
+    max-width: 320px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s, visibility 0.15s;
+    z-index: 20;
+    pointer-events: none;
+    color: #1f2a44;
+    text-align: left;
+  }
+  .hotspot.tooltip-anchor-right .hotspot-tooltip {
+    left: auto;
+    right: 0;
+  }
+  .hotspot-tooltip strong {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+    color: #1f2a44;
+  }
+  .tooltip-description {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .tooltip-sections {
+    display: block;
+    font-size: 0.85rem;
+    color: #4a5a72;
+  }
+  .hotspot:hover .hotspot-tooltip,
+  .hotspot:focus .hotspot-tooltip,
+  .hotspot:focus-within .hotspot-tooltip {
+    opacity: 1;
+    visibility: visible;
   }
   .room-list {
     list-style: disc;
