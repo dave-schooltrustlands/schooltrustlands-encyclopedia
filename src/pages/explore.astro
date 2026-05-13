@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Explore the Library · America's School Trust Library"
+  description="A floor plan of America's School Trust Library. Click any room to enter — Reading Room, Atlas, Map Room, Counting House, Newsroom, Voices, Updates, the Pro side. The Library's main spaces and how they connect."
+  sourceId="explore"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">Explore</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Explore the Library</h1>
+
+    <p class="kicker text-slate-600">
+      Click any room to enter. The Library is built around the spaces shown below — Reading Room, Atlas, Counting House, Map Room, Newsroom, Voices, Updates, and the Pro side. Smaller alcoves and side rooms in the drawing are sketched for future expansion and aren't clickable yet.
+    </p>
+
+    <div class="floor-plan-container not-prose">
+      <img
+        src="/img/posters/library-spatial-blueprint-v1.png"
+        alt="Floor plan of America's School Trust Library showing rooms arranged around a Great Hall lobby — Reading Room, Atlas, Map Room, Counting House, Newsroom, Voices, Updates, Pro Wing — with hidden alcoves and corridors. Smaller decorative elements include a Primary Sources Alcove, a Scholarship Stack, and a Windowed Alcove."
+        class="floor-plan-image"
+      />
+      <a href="/" class="hotspot" style="top:30%;left:42%;width:13%;height:22%" aria-label="Great Hall — start anywhere">
+        <span class="visually-hidden">Great Hall (start page)</span>
+      </a>
+      <a href="/reading/" class="hotspot" style="top:28%;left:13%;width:17%;height:24%" aria-label="Reading Room — long-form work">
+        <span class="visually-hidden">Reading Room</span>
+      </a>
+      <a href="/atlas/" class="hotspot" style="top:7%;left:32%;width:14%;height:17%" aria-label="Atlas — fifty states">
+        <span class="visually-hidden">Atlas</span>
+      </a>
+      <a href="/maps/" class="hotspot" style="top:7%;left:50%;width:14%;height:17%" aria-label="Map Room — state-by-state cartography">
+        <span class="visually-hidden">Map Room</span>
+      </a>
+      <a href="/counting/" class="hotspot" style="top:28%;left:66%;width:16%;height:24%" aria-label="Counting House — public ledger">
+        <span class="visually-hidden">Counting House</span>
+      </a>
+      <a href="/newsroom/" class="hotspot" style="top:55%;left:42%;width:13%;height:17%" aria-label="Newsroom — weekly news">
+        <span class="visually-hidden">Newsroom</span>
+      </a>
+      <a href="/voices/" class="hotspot" style="top:55%;left:55%;width:13%;height:17%" aria-label="Voices — signed editorial">
+        <span class="visually-hidden">Voices</span>
+      </a>
+      <a href="/updates/" class="hotspot" style="top:53%;left:26%;width:13%;height:17%" aria-label="Updates — site changes">
+        <span class="visually-hidden">Updates</span>
+      </a>
+      <a href="/pro/" class="hotspot" style="top:60%;left:8%;width:16%;height:20%" aria-label="Pro Wing — governance and contribution">
+        <span class="visually-hidden">Pro Wing</span>
+      </a>
+    </div>
+
+    <p class="text-sm text-slate-600 mt-6">
+      On phones and narrow screens, the floor plan above hides — the list below is the same content in text form. On wider screens it stays available as a quick directory.
+    </p>
+
+    <ul class="room-list">
+      <li><a href="/"><strong>Great Hall</strong></a> — the entrance and overview. Start anywhere.</li>
+      <li><a href="/reading/"><strong>Reading Room</strong></a> — three book-length works on America's school trust lands.</li>
+      <li><a href="/atlas/"><strong>Atlas</strong></a> — what every federal-grant state did with its school-trust lands.</li>
+      <li><a href="/maps/"><strong>Map Room</strong></a> — state-by-state cartography of the trust geography.</li>
+      <li><a href="/counting/"><strong>Counting House</strong></a> — the financial record. How much, where, and what was lost.</li>
+      <li><a href="/newsroom/"><strong>Newsroom</strong></a> — a weekly survey of what's changing across the fifty states.</li>
+      <li><a href="/voices/"><strong>Voices</strong></a> — signed editorial pieces from named contributors.</li>
+      <li><a href="/updates/"><strong>Updates</strong></a> — the running log of what's shipped on the site.</li>
+      <li><a href="/pro/"><strong>Pro Wing</strong></a> — governance, editorial standards, collection-development policy, roles.</li>
+    </ul>
+
+    <p class="mt-10 text-slate-700">
+      The Library is being built openly. If you find something missing or wrong, <a href="/about/founder/">tell the editor</a> — we welcome corrections and additions. For more on how the Library was conceived and built, see <a href="/about/">About the Library</a> and <a href="/about/how-this-works/">How this works</a>.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .floor-plan-container {
+    position: relative;
+    max-width: 1600px;
+    margin: 1.5em auto;
+  }
+  .floor-plan-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .hotspot {
+    position: absolute;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    transition: background 0.15s, border 0.15s;
+    text-decoration: none;
+  }
+  .hotspot:hover,
+  .hotspot:focus {
+    background: rgba(212, 175, 55, 0.18);
+    border-color: rgba(212, 175, 55, 0.7);
+    outline: none;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .room-list {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 1rem 0;
+  }
+  .room-list li {
+    margin: 0.4rem 0;
+    line-height: 1.5;
+  }
+  @media (max-width: 768px) {
+    .floor-plan-container {
+      display: none;
+    }
+  }
+</style>
