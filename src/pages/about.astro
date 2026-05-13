@@ -36,6 +36,19 @@ export const prerender = true;
       America's School Trust Library is a working library for the school trust lands — the 77 million acres set aside, beginning in 1785, to fund public education in perpetuity. Most Americans have never heard of these lands. The Library collects the law, history, financial records, and case material that show what was promised, what was done, and what is owed. Our readers are state trust officials, legislators, journalists, scholars, teachers, and the children and grandchildren of the beneficiaries.
     </p>
 
+    <aside class="featured-founder-card">
+      <h2>A Note from the Founder</h2>
+      <p>
+        How this Library came to be — the forty-year throughline from a
+        graphical desktop computer in 1977 to the failure of information
+        at the heart of the school-trust scandal, and the working
+        partnership that finally made the Library possible.
+      </p>
+      <p class="featured-founder-card__cta">
+        <a href="/about/founder/">Read the Founder's Statement →</a>
+      </p>
+    </aside>
+
     <h2>An OASTL initiative</h2>
 
     <p>
@@ -56,10 +69,18 @@ export const prerender = true;
       The Library's day-to-day building — cataloging, drafting, design, the back-end — is carried out in partnership with Claude, an AI system serving as architect and librarian. How that partnership works is described in <a href="/about/how-this-works/">How the Library Works</a>.
     </p>
 
+    <p class="becoming-pointer">
+      <strong>A note on what comes next.</strong> The Library is at the point
+      where its institutional form is being figured out — independent
+      501(c)(3), continued OASTL hosting, or something else. If you have
+      thoughts on how this library should be built to last, the conversation
+      is open at <a href="/about/becoming/">Building This Library</a>.
+    </p>
+
     <h2>Contact and corrections</h2>
 
     <p>
-      The Library expects to be wrong sometimes, and asks readers to help fix it. Anywhere on the site, use the <strong>Submit Feedback</strong> and <strong>Submit Correction</strong> controls to send a note tied to the page you are reading. A Library Card (free) lets you track your submissions and our responses. The longer walkthrough is at <a href="/about/contributing/">Contributing</a>.
+      The Library expects to be wrong sometimes, and asks readers to help fix it. Anywhere on the site, use the <strong>Submit Feedback</strong> and <strong>Submit Correction</strong> controls to send a note tied to the page you are reading. A Library Card (free) lets you track your submissions and our responses. The longer walkthrough is at <a href="/about/contributing/">Contributing</a>; the citation conventions are at <a href="/about/cite/">How to Cite</a>; the correction protocol is at <a href="/about/corrections/">Corrections</a>; the rights notice and takedown procedure are at <a href="/about/rights/">Rights, Use, and Takedown</a>.
     </p>
 
     <p>
@@ -85,6 +106,39 @@ export const prerender = true;
       text-transform: uppercase;
       color: #A88A4E;
       margin: 0 0 0.4rem;
+    }
+    .becoming-pointer {
+      margin: 1.4rem 0;
+      padding: 0.85rem 1rem;
+      background: #fafaf7;
+      border-left: 3px solid #A88A4E;
+      font-family: var(--font-serif);
+      line-height: 1.55;
+    }
+    .featured-founder-card {
+      margin: 1.5rem 0 2rem;
+      padding: 1.15rem 1.35rem;
+      background: var(--linen-card, #fffdf7);
+      border: 1px solid var(--rule-border, #d8d1c2);
+      border-left: 3px solid var(--old-gold, #b88a2e);
+      border-radius: 4px;
+    }
+    .featured-founder-card h2 {
+      margin: 0 0 0.45rem;
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      line-height: 1.3;
+      color: var(--deep-navy, #1f2a44);
+    }
+    .featured-founder-card p {
+      margin: 0 0 0.5rem;
+      font-family: var(--font-serif);
+      line-height: 1.6;
+    }
+    .featured-founder-card__cta {
+      margin: 0.4rem 0 0;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
     }
   </style>
 </BaseLayout>
