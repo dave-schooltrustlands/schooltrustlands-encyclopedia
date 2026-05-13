@@ -53,6 +53,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Tuesday May 12, 2026 — Site update v43: Newsroom landing + About rewrite; Buttondown subscribe-form swap.</strong>
+            The <a href="/newsroom/">Newsroom</a> landing now leads with email signup (powered by Buttondown) and the recent-issues block; RSS is demoted to a one-line aside in the footer. The
+            <a href="/newsroom/about/">About page</a> moved to a short eight-question FAQ format (~460 words, down from the v2 essay's ~1,400). The signup form now hands subscriptions directly to Buttondown rather than to the internal Supabase
+            <code>newsroom_subscribers</code> table; the old Supabase route and table remain dormant.
+          </li>
+          <li>
             <strong>Tuesday May 12, 2026 — Site update v42: Newsroom landing restructure.</strong>
             The <a href="/newsroom/">Newsroom</a> now leads with subscribe options (RSS for weekly entries; email signup for the
             forthcoming monthly digest) and a recent-entries block; the full editorial methodology moved to

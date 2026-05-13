@@ -1,71 +1,36 @@
 ---
-// Site Update v42 — Newsroom monthly-digest subscribe form.
+// Site Update v43 — Newsroom Buttondown embed subscribe form.
 //
-// Inline, anonymous. POSTs to /api/newsroom-subscribe which inserts a
-// row into public.newsroom_subscribers under the anon RLS policy.
-// On success the form is replaced with an acknowledgment; on failure
-// an inline error message renders and the field values stay in place.
+// Subscriptions go directly to Buttondown (list: treebook).
+// Single email field; inline form; tagged web_signup so Buttondown
+// can distinguish from the seed_list_2026-05-12 import set.
+// Replaces the v42 Supabase-backed signup; the old /api/newsroom-subscribe
+// route and newsroom_subscribers table remain in place but dormant.
 ---
 
 <form
   class="newsroom-subscribe"
-  data-newsroom-subscribe
-  novalidate
-  aria-labelledby="newsroom-subscribe-heading"
+  action="https://buttondown.com/api/emails/embed-subscribe/treebook"
+  method="post"
+  target="popupwindow"
+  onsubmit="window.open('https://buttondown.com/treebook', 'popupwindow')"
 >
-  <p id="newsroom-subscribe-heading" class="newsroom-subscribe__heading">
-    Sign up for the monthly digest
-  </p>
-
-  <div class="newsroom-subscribe__row">
-    <label class="newsroom-subscribe__field">
-      <span class="newsroom-subscribe__label">Name</span>
-      <input
-        type="text"
-        name="name"
-        autocomplete="name"
-        required
-        maxlength="200"
-        data-newsroom-subscribe-name
-      />
-    </label>
-    <label class="newsroom-subscribe__field">
-      <span class="newsroom-subscribe__label">Email</span>
-      <input
-        type="email"
-        name="email"
-        autocomplete="email"
-        required
-        maxlength="320"
-        data-newsroom-subscribe-email
-      />
-    </label>
-  </div>
-
-  <label class="newsroom-subscribe__opt-in">
+  <label class="newsroom-subscribe__field" for="bd-email">
+    <span class="newsroom-subscribe__label">Your email</span>
     <input
-      type="checkbox"
-      name="opt_in"
+      type="email"
+      id="bd-email"
+      name="email"
+      placeholder="you@example.com"
+      autocomplete="email"
       required
-      data-newsroom-subscribe-optin
     />
-    <span>
-      Yes, send me the monthly digest email when it launches. I understand I
-      can unsubscribe at any time.
-    </span>
   </label>
-
-  <div class="newsroom-subscribe__actions">
-    <button type="submit" class="newsroom-subscribe__submit">
-      Subscribe
-    </button>
-    <p
-      class="newsroom-subscribe__status"
-      data-newsroom-subscribe-status
-      role="status"
-      aria-live="polite"
-    ></p>
-  </div>
+  <input type="hidden" name="tag" value="web_signup" />
+  <input type="hidden" name="embed" value="1" />
+  <button type="submit" class="newsroom-subscribe__submit">
+    Subscribe
+  </button>
 </form>
 
 <style>
@@ -77,28 +42,17 @@
     border-left: 3px solid var(--old-gold, #b88a2e);
     border-radius: 4px;
     font-family: var(--font-sans);
-  }
-  .newsroom-subscribe__heading {
-    margin: 0 0 0.85rem;
-    font-family: var(--font-serif);
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--deep-navy, #1f2a44);
-  }
-  .newsroom-subscribe__row {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
     gap: 0.85rem;
-  }
-  @media (min-width: 640px) {
-    .newsroom-subscribe__row {
-      grid-template-columns: 1fr 1.5fr;
-    }
   }
   .newsroom-subscribe__field {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.3rem;
+    flex: 1 1 16rem;
+    min-width: 0;
   }
   .newsroom-subscribe__label {
     font-size: 0.78rem;
@@ -106,7 +60,6 @@
     color: var(--deep-navy, #1f2a44);
     letter-spacing: 0.02em;
   }
-  .newsroom-subscribe input[type='text'],
   .newsroom-subscribe input[type='email'] {
     font-family: inherit;
     font-size: 0.95rem;
@@ -116,33 +69,13 @@
     background: #fff;
     color: var(--ink, #17202a);
     min-height: 40px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .newsroom-subscribe input:focus {
     outline: 2px solid var(--trust-blue, #1d4f7c);
     outline-offset: 1px;
     border-color: var(--trust-blue, #1d4f7c);
-  }
-  .newsroom-subscribe__opt-in {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    margin: 0.9rem 0 0.6rem;
-    font-size: 0.88rem;
-    line-height: 1.5;
-    color: var(--ink, #17202a);
-  }
-  .newsroom-subscribe__opt-in input[type='checkbox'] {
-    margin-top: 0.25rem;
-    width: 1rem;
-    height: 1rem;
-    flex-shrink: 0;
-  }
-  .newsroom-subscribe__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.85rem;
-    margin-top: 0.5rem;
   }
   .newsroom-subscribe__submit {
     background: var(--deep-navy, #1f2a44);
@@ -155,115 +88,9 @@
     font-weight: 600;
     cursor: pointer;
     min-height: 40px;
+    flex: 0 0 auto;
   }
   .newsroom-subscribe__submit:hover {
     background: var(--trust-blue, #1d4f7c);
   }
-  .newsroom-subscribe__submit:disabled {
-    opacity: 0.6;
-    cursor: progress;
-  }
-  .newsroom-subscribe__status {
-    margin: 0;
-    font-size: 0.88rem;
-    line-height: 1.5;
-  }
-  .newsroom-subscribe__status[data-state='error'] {
-    color: var(--source-conflict, #b42318);
-  }
-  .newsroom-subscribe__status[data-state='success'] {
-    color: var(--verified, #2f6f4e);
-  }
-
-  /* Replace the form with a plain ack panel on success. */
-  .newsroom-subscribe[data-state='done'] .newsroom-subscribe__row,
-  .newsroom-subscribe[data-state='done'] .newsroom-subscribe__opt-in,
-  .newsroom-subscribe[data-state='done'] .newsroom-subscribe__submit {
-    display: none;
-  }
 </style>
-
-<script is:inline>
-  (function () {
-    const form = document.querySelector('[data-newsroom-subscribe]');
-    if (!form) return;
-    const statusEl = form.querySelector('[data-newsroom-subscribe-status]');
-    const submitBtn = form.querySelector('.newsroom-subscribe__submit');
-    const nameInput = form.querySelector('[data-newsroom-subscribe-name]');
-    const emailInput = form.querySelector('[data-newsroom-subscribe-email]');
-    const optInInput = form.querySelector('[data-newsroom-subscribe-optin]');
-
-    function setStatus(state, message) {
-      if (!statusEl) return;
-      if (state) {
-        statusEl.setAttribute('data-state', state);
-      } else {
-        statusEl.removeAttribute('data-state');
-      }
-      statusEl.textContent = message || '';
-    }
-
-    form.addEventListener('submit', async (ev) => {
-      ev.preventDefault();
-      const name = (nameInput && nameInput.value ? nameInput.value : '').trim();
-      const email = (emailInput && emailInput.value ? emailInput.value : '').trim();
-      const optIn = optInInput ? optInInput.checked : false;
-
-      if (!name) {
-        setStatus('error', 'Please enter your name.');
-        return;
-      }
-      if (!email) {
-        setStatus('error', 'Please enter your email address.');
-        return;
-      }
-      if (!optIn) {
-        setStatus('error', 'Please confirm the opt-in checkbox to subscribe.');
-        return;
-      }
-
-      setStatus(null, 'Subscribing…');
-      if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
-
-      try {
-        const resp = await fetch('/api/newsroom-subscribe', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ name, email, opt_in: optIn }),
-        });
-        const data = await resp.json().catch(() => ({}));
-
-        if (!resp.ok) {
-          setStatus(
-            'error',
-            (data && data.error) ||
-              'Subscription failed. Please try again in a moment.'
-          );
-          if (submitBtn) submitBtn.removeAttribute('disabled');
-          return;
-        }
-
-        if (data && data.duplicate) {
-          form.setAttribute('data-state', 'done');
-          setStatus(
-            'success',
-            "You're already on the list. You'll receive the first monthly digest in early July 2026."
-          );
-          return;
-        }
-
-        form.setAttribute('data-state', 'done');
-        setStatus(
-          'success',
-          "Thanks. You'll receive the first monthly digest in early July 2026."
-        );
-      } catch (_err) {
-        setStatus(
-          'error',
-          'Network error. Please check your connection and try again.'
-        );
-        if (submitBtn) submitBtn.removeAttribute('disabled');
-      }
-    });
-  })();
-</script>

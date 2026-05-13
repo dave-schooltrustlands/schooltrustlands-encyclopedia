@@ -7,7 +7,6 @@ const entries = (await getCollection('newsroom')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 const recent = entries.slice(0, 5);
-const onlyOne = recent.length === 1;
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -18,7 +17,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
 
 <BaseLayout
   title="Newsroom · America's School Trust Library"
-  description="Weekly survey of what changed in school trust lands across the United States. RSS feed weekly; monthly email digest from July 2026."
+  description="A weekly survey of what changed in America's school trust lands."
   sourceId="newsroom-index"
   room="newsroom"
 >
@@ -34,41 +33,19 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <h1>Newsroom</h1>
     <p class="kicker">
-      What changed in school trust lands across the United States this week.
-      Weekly entries every Monday. Monthly email digest on the first Monday
-      of each month.
+      A weekly survey of what changed in America's school trust lands.
     </p>
 
-    <h2>Subscribe</h2>
-
-    <p>
-      <strong>Weekly entries — by RSS.</strong> The Newsroom emits an RSS
-      feed at <a href="/newsroom/rss.xml">/newsroom/rss.xml</a>. Add it to
-      any RSS reader (Feedly, NetNewsWire, Inoreader, your browser of
-      choice) and the weekly entries arrive there each Monday.
-    </p>
-
-    <p>
-      <strong>Monthly digest — by email.</strong> A 600-to-900-word email
-      distillation of each month's weekly entries, sent on the first Monday
-      of the following month. Free. The list is curated and modest in size,
-      intended for readers who want one short account each month of what
-      shifted in this beat across the fifty states.
-    </p>
+    <h2>Subscribe by email</h2>
 
     <NewsroomSubscribeForm />
 
     <p class="newsroom-subscribe-note">
-      <em>
-        The signup form above collects names and email addresses for the
-        monthly digest list. The first issue is targeted for early July
-        2026; subscribers receive that issue and every monthly thereafter.
-        The list will move to Buttondown when subscriber count crosses
-        fifty; current subscribers transfer with consent.
-      </em>
+      Issues arrive every Monday. Free. Unsubscribe with one click. Replies
+      go directly to the editor.
     </p>
 
-    <h2>Recent entries</h2>
+    <h2>Recent issues</h2>
 
     {recent.length === 0 ? (
       <p>
@@ -95,61 +72,19 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
       </ul>
     )}
 
-    {onlyOne && (
-      <p class="newsroom-recent-note">
-        <em>More entries coming each Monday.</em>
-      </p>
-    )}
-
-    {/* TODO: link to /newsroom/archive/ once that page exists (entry count
-        crosses ~10). For now the recent-entries block carries everything. */}
-
-    <h2>About this Newsroom</h2>
-
-    <p>
-      The Newsroom is one of three editorial surfaces in this library. The
-      <a href="/reading/">Reading Room</a> holds the long-form synthesis —
-      the encyclopedia entries, the white papers, the three book-length
-      works. The <a href="/voices/">Voices</a> section carries signed
-      first-person editorial pieces by named contributors. The Newsroom
-      does neither of those jobs. It reports — third person, neutral,
-      sourced — on what trustees, courts, and legislators have already
-      done.
-    </p>
-
-    <p>
-      Each Monday, an AI surveillance pass walks a defined source list
-      (state land-management agencies, state legislatures, court dockets,
-      regional press, academic and policy watchers, ASTL movement signal,
-      the editor's curated inbox), drafts a candidate weekly summary, and
-      hands it to a named human editor for review. Nothing publishes
-      without that review. Confidence badges appear on every item. Items
-      rated <em>major</em> require a two-source rule. Corrections are made
-      in place with a dated correction note; the repository's history
-      preserves the original.
-    </p>
-
-    <p>
-      Quiet weeks are reported as quiet weeks. Padding low-grade items into
-      a weekly is how a Newsroom slides into low-credibility content. The
-      Newsroom that admits its quiet weeks earns the credibility to ring
-      the bell loudly on a major week.
-    </p>
-
-    <p>
-      <strong>Full methodology, source list, and editorial standards:</strong>
-      <a href="/newsroom/about/">About the Newsroom →</a>
+    {/* TODO: /newsroom/archive/ page does not yet exist; link harmlessly
+        404s until entry count crosses ~10 and the archive page lands. */}
+    <p class="newsroom-archive-link">
+      <a href="/newsroom/archive/">Browse the full archive →</a>
     </p>
 
     <hr class="archival-divider" />
 
-    <p class="text-sm text-slate-600">
-      <em>Editor: Dave Sullivan, President, Oregon Advocates for School Trust Lands.</em><br />
-      <em>
-        Newsroom drafts are generated by an AI surveillance pass over a
-        defined source set. Every published entry has been reviewed and
-        edited by a named human editor before publication.
-      </em>
+    <p class="newsroom-foot">
+      Also available via <strong>RSS</strong> at
+      <a href="/newsroom/rss.xml">/newsroom/rss.xml</a>. For details on what
+      we cover, how we source it, and how the Newsroom is made:
+      <a href="/newsroom/about/">About the Newsroom →</a>
     </p>
   </article>
 
@@ -218,11 +153,16 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
       font-family: var(--font-sans);
       font-size: 0.88rem;
     }
-    .newsroom-recent-note {
-      margin: 0 0 2rem;
-      font-size: 0.9rem;
-      color: var(--ink, #17202a);
-      opacity: 0.75;
+    .newsroom-archive-link {
+      margin: 0 0 1.75rem;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+    }
+    .newsroom-foot {
+      font-size: 0.92rem;
+      color: var(--ink);
+      opacity: 0.85;
+      max-width: 65ch;
     }
   </style>
 </BaseLayout>
