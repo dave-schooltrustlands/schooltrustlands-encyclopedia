@@ -11,22 +11,29 @@ type Hotspot = {
   name: string;
   description: string;
   sections: string;
-  anchorRight?: boolean;
+  enterLabel?: string;
 };
 
+// v50 — hotspot percentages recalibrated by pixel-picking each labeled
+// room from the 1672×941 blueprint image. popup-up (tooltip flips
+// above) and tooltip-anchor-right (tooltip pins to right edge) are
+// derived from the percentages in the markup below — no manual class
+// list. The Great Hall keeps a softer 'Open →' affordance instead of
+// 'Enter →' because the room is the homepage.
 const hotspots: Hotspot[] = [
   {
     href: '/',
     ariaLabel: 'Great Hall — the entrance and overview',
-    top: '44%', left: '41%', width: '14%', height: '20%',
+    top: '34.0%', left: '37.1%', width: '12.6%', height: '18.6%',
     name: 'Great Hall',
     description: 'The entrance and overview. Start anywhere.',
     sections: '',
+    enterLabel: 'Open →',
   },
   {
     href: '/reading/',
     ariaLabel: 'Reading Room — three book-length works on America’s school trust lands',
-    top: '45%', left: '21%', width: '17%', height: '25%',
+    top: '32.4%', left: '10.2%', width: '14.4%', height: '18.1%',
     name: 'Reading Room',
     description: 'Three book-length works on America’s school trust lands.',
     sections: 'Schools of the Republic · The Eighth Anchor · Who Steals from Children',
@@ -34,7 +41,7 @@ const hotspots: Hotspot[] = [
   {
     href: '/atlas/',
     ariaLabel: 'Atlas — what every federal-grant state did with its school-trust lands',
-    top: '18%', left: '38%', width: '13%', height: '19%',
+    top: '11.7%', left: '31.1%', width: '12.0%', height: '18.1%',
     name: 'Atlas',
     description: 'What every federal-grant state did with its school-trust lands.',
     sections: 'Fifty state entries — federal-grant states in alphabetical order',
@@ -42,25 +49,23 @@ const hotspots: Hotspot[] = [
   {
     href: '/maps/',
     ariaLabel: 'Map Room — state-by-state cartography of the trust geography',
-    top: '18%', left: '54%', width: '14%', height: '19%',
+    top: '11.7%', left: '51.7%', width: '12.9%', height: '18.1%',
     name: 'Map Room',
     description: 'State-by-state cartography of the trust geography.',
     sections: '',
-    anchorRight: true,
   },
   {
     href: '/counting/',
     ariaLabel: 'Counting House — the financial record',
-    top: '45%', left: '70%', width: '16%', height: '25%',
+    top: '42.0%', left: '65.8%', width: '11.7%', height: '12.2%',
     name: 'Counting House',
     description: 'The financial record. How much, where, and what was lost.',
     sections: '',
-    anchorRight: true,
   },
   {
     href: '/newsroom/',
     ariaLabel: 'Newsroom — a weekly survey of what’s changing across the fifty states',
-    top: '68%', left: '41%', width: '12%', height: '19%',
+    top: '59.0%', left: '52.0%', width: '8.7%', height: '15.4%',
     name: 'Newsroom',
     description: 'A weekly survey of what’s changing across the fifty states.',
     sections: 'About the Newsroom · Recent issues · Subscribe by email · RSS feed',
@@ -68,7 +73,7 @@ const hotspots: Hotspot[] = [
   {
     href: '/voices/',
     ariaLabel: 'Voices — signed editorial pieces from named contributors',
-    top: '68%', left: '54%', width: '12%', height: '19%',
+    top: '59.0%', left: '62.5%', width: '9.3%', height: '15.4%',
     name: 'Voices',
     description: 'Signed editorial pieces from named contributors.',
     sections: '',
@@ -76,7 +81,7 @@ const hotspots: Hotspot[] = [
   {
     href: '/updates/',
     ariaLabel: 'Updates — the running log of what’s shipped on the site',
-    top: '68%', left: '28%', width: '12%', height: '19%',
+    top: '59.0%', left: '35.3%', width: '10.8%', height: '15.4%',
     name: 'Updates',
     description: 'The running log of what’s shipped on the site.',
     sections: 'Weekly summaries by date',
@@ -84,12 +89,19 @@ const hotspots: Hotspot[] = [
   {
     href: '/pro/',
     ariaLabel: 'Pro Wing — governance, editorial standards, collection development, roles, charter, dispute resolution',
-    top: '70%', left: '8%', width: '17%', height: '24%',
+    top: '61.6%', left: '8.1%', width: '9.9%', height: '17.0%',
     name: 'Pro Wing',
     description: 'Governance, editorial standards, collection-development policy, roles, charter, dispute resolution.',
     sections: 'Governance · Editorial Standards · Collection Development · Roles · Bylaws · Dispute Resolution',
   },
 ];
+
+function hotspotClasses(h: Hotspot): string {
+  const cls = ['hotspot'];
+  if (parseFloat(h.top) > 50) cls.push('popup-up');
+  if (parseFloat(h.left) > 55) cls.push('tooltip-anchor-right');
+  return cls.join(' ');
+}
 ---
 <BaseLayout
   title="Explore the Library · America's School Trust Library"
@@ -104,7 +116,7 @@ const hotspots: Hotspot[] = [
       Click any room to enter. The Library is built around the spaces shown below — Reading Room, Atlas, Counting House, Map Room, Newsroom, Voices, Updates, and the Pro side. Smaller alcoves and side rooms in the drawing are sketched for future expansion and aren't clickable yet.
     </p>
 
-    <div class="floor-plan-container not-prose">
+    <div class="floor-plan-container not-prose" data-floor-plan>
       <img
         src="/img/posters/library-spatial-blueprint-v1.png"
         alt="Floor plan of America's School Trust Library showing rooms arranged around a Great Hall lobby — Reading Room, Atlas, Map Room, Counting House, Newsroom, Voices, Updates, Pro Wing — with hidden alcoves and corridors. Smaller decorative elements include a Primary Sources Alcove, a Scholarship Stack, and a Windowed Alcove."
@@ -113,7 +125,7 @@ const hotspots: Hotspot[] = [
       {hotspots.map((h) => (
         <a
           href={h.href}
-          class={`hotspot${h.anchorRight ? ' tooltip-anchor-right' : ''}`}
+          class={hotspotClasses(h)}
           style={`top:${h.top};left:${h.left};width:${h.width};height:${h.height}`}
           aria-label={h.ariaLabel}
         >
@@ -122,6 +134,7 @@ const hotspots: Hotspot[] = [
             <strong>{h.name}</strong>
             <span class="tooltip-description">{h.description}</span>
             {h.sections && <span class="tooltip-sections">{h.sections}</span>}
+            <span class="tooltip-enter">{h.enterLabel || 'Enter →'}</span>
           </span>
         </a>
       ))}
@@ -176,6 +189,13 @@ const hotspots: Hotspot[] = [
     border-color: rgba(212, 175, 55, 0.7);
     outline: none;
   }
+  /* v50 — ?debug=1 overlays a thin red outline on every hotspot so
+     visual recalibration is auditable on the deployed site without
+     hovering. Toggled by a data attribute set in the inline script. */
+  [data-floor-plan][data-debug='1'] .hotspot {
+    outline: 1px solid rgba(220, 38, 38, 0.85);
+    outline-offset: -1px;
+  }
   .visually-hidden {
     position: absolute;
     width: 1px;
@@ -202,13 +222,25 @@ const hotspots: Hotspot[] = [
     visibility: hidden;
     transition: opacity 0.15s, visibility 0.15s;
     z-index: 20;
-    pointer-events: none;
+    /* v50 — was pointer-events: none in v49. Setting auto restores
+       hover persistence when the cursor moves from hotspot onto
+       tooltip, and lets the tooltip body act as a click target
+       (clicks bubble to the parent <a> for navigation). */
+    pointer-events: auto;
     color: #1f2a44;
     text-align: left;
   }
   .hotspot.tooltip-anchor-right .hotspot-tooltip {
     left: auto;
     right: 0;
+  }
+  /* v50 — bottom-row hotspots flip the tooltip ABOVE the rectangle
+     so it stays on-screen instead of extending past the image. */
+  .hotspot.popup-up .hotspot-tooltip {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 8px;
   }
   .hotspot-tooltip strong {
     display: block;
@@ -224,6 +256,14 @@ const hotspots: Hotspot[] = [
     display: block;
     font-size: 0.85rem;
     color: #4a5a72;
+  }
+  .tooltip-enter {
+    display: block;
+    margin-top: 6px;
+    text-align: right;
+    font-size: 0.85rem;
+    color: #1e3a5f;
+    text-decoration: underline;
   }
   .hotspot:hover .hotspot-tooltip,
   .hotspot:focus .hotspot-tooltip,
@@ -246,3 +286,15 @@ const hotspots: Hotspot[] = [
     }
   }
 </style>
+
+<script is:inline>
+  // v50 — ?debug=1 toggles a red outline on every hotspot so a visual
+  // sweep at /explore/?debug=1 makes calibration eyeball-able.
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('debug') === '1') {
+      var fp = document.querySelector('[data-floor-plan]');
+      if (fp) fp.setAttribute('data-debug', '1');
+    }
+  })();
+</script>
