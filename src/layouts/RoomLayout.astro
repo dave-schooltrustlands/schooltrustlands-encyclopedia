@@ -14,6 +14,7 @@ type RoomId =
   | 'counting'
   | 'newsroom'
   | 'reference-desk'
+  | 'writing'
   | 'records'
   | 'court'
   | 'breach-recovery';
@@ -27,7 +28,7 @@ type RoomId =
 // uses its own publishing layout so the lower-nav tab strip won't
 // appear ON /newsroom/, but Newsroom appears in the tab strip on every
 // other library page.
-type BannerRoomId = 'reading' | 'atlas' | 'maps' | 'counting' | 'newsroom' | 'reference-desk';
+type BannerRoomId = 'reading' | 'atlas' | 'maps' | 'counting' | 'newsroom' | 'reference-desk' | 'writing';
 const BANNER_ROOMS: ReadonlyArray<BannerRoomId> = [
   'reading',
   'atlas',
@@ -35,6 +36,7 @@ const BANNER_ROOMS: ReadonlyArray<BannerRoomId> = [
   'counting',
   'newsroom',
   'reference-desk',
+  'writing',
 ];
 const isBannerRoom = (id: RoomId): id is BannerRoomId =>
   (BANNER_ROOMS as ReadonlyArray<RoomId>).includes(id);
@@ -119,6 +121,13 @@ const ROOMS: RoomDef[] = [
     icon: '<path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.8-2.8L15 12"/><path d="m2 15 6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.7 2.7 0 0 0 18.5 3c-.9 0-1.5.5-2 1-.5-.5-1.1-1-2-1A2.7 2.7 0 0 0 12 5.8c0 1.1.8 2 1.5 2.7L16 11Z"/>',
   },
   {
+    id: 'writing',
+    name: 'Writing Room',
+    href: '/writing/',
+    // PenTool (Lucide)
+    icon: '<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>',
+  },
+  {
     id: 'records',
     name: 'Records Room',
     href: null,
@@ -156,6 +165,7 @@ const roomNameMap: Record<RoomId, string> = {
   counting: 'Counting House',
   newsroom: 'Newsroom',
   'reference-desk': 'Reference Desk',
+  writing: 'Writing Room',
   records: 'Records Room',
   court: 'Court Room',
   'breach-recovery': 'Breach & Recovery',

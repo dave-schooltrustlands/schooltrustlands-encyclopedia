@@ -1,0 +1,83 @@
+---
+// v58 — Writing Room landing. Uses RoomLayout with room="writing"; the
+// banner, lower-nav tab strip, and Writing Room tab highlight all render
+// from the layout. First occupant is the AI-governance essay at
+// /writing/the-only-forever-trust/; further drafts move in as they reach
+// working-draft form.
+import RoomLayout from '../../layouts/RoomLayout.astro';
+---
+<RoomLayout
+  room="writing"
+  title="Writing Room"
+  subtitle="First drafts, comments, coauthors."
+  width="prose"
+  sourceId="writing-index"
+>
+  <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p>
+      The Writing Room is where the Library's authors compose drafts in
+      the open. Essays, working manuals, and primary-source analyses
+      live here in working form before they graduate — to <a href="/voices/">Voices</a>
+      when they ship as signed editorial pieces, to the Reading Room
+      when they reach editorial maturity as published scholarship, or
+      to one of the other rooms when their final home becomes clear.
+    </p>
+
+    <p>
+      This is unusual. Most publishing institutions show only finished
+      work; the process by which finished work gets made stays hidden.
+      The Library publishes the process too, because the
+      cognitive-partnership thesis the project partly advances depends
+      on the partnership being visible. Two and a half centuries of
+      school-trust history make plain that institutions which conceal
+      their working are institutions that drift; institutions whose
+      working is in the open are institutions a watchful crew can
+      defend.
+    </p>
+
+    <p>
+      Drafts here are real drafts — not procedural placeholders. They
+      argue, they cite, they make their case. They are also incomplete,
+      sometimes wrong in detail, and openly seeking comment. If you
+      read something here and see a mistake, an omission, or a sharper
+      version of the argument, write to the <a href="/reference-desk/">Reference Desk</a>.
+      If you have substrate the draft would benefit from — a court
+      opinion, a state report, a primary-source document — send it.
+      The Writing Room exists because the work the Library is doing is
+      bigger than any one author can produce alone.
+    </p>
+
+    <h2>In development</h2>
+
+    <ul>
+      <li>
+        <strong><a href="/writing/the-only-forever-trust/">"The Only Forever-Trust We Have Data On"</a></strong>
+        (Sullivan, May 2026) — a focused essay taking the eight-anchor
+        school-trust-failure-modes argument directly to AI-governance
+        designers building the next century's perpetual institutions.
+        Working draft, ~2,350 words at skeleton stage. Comments welcome.
+      </li>
+    </ul>
+
+    <p>
+      The Library's three book-length manuscripts —
+      <a href="/reading/schools-of-the-republic/"><em>Schools of the Republic</em></a>
+      (Bird &amp; Sullivan),
+      <a href="/reading/sacred-compact/"><em>The Eighth Anchor</em></a>
+      (Sullivan), and
+      <a href="/reading/wsfc-vol1/"><em>Who Steals from Children, Volume&nbsp;1</em></a>
+      (Sullivan) — currently live in the Reading Room. They are
+      genuinely works-in-progress and will likely move into the Writing
+      Room in a future Library architecture pass; for now their URLs
+      remain in <code>/reading/</code>.
+    </p>
+
+    <p>
+      If you're interested in being a named correspondent for a Writing
+      Room draft — an early reader whose comments shape the final
+      version — write to the <a href="/reference-desk/">Reference Desk</a>.
+      The Library has more substrate than any single author can absorb,
+      and the work compounds with co-readers.
+    </p>
+  </div>
+</RoomLayout>

@@ -51,7 +51,8 @@ interface Props {
     | 'garden'
     | 'workshop'
     | 'reference-desk'
-    | 'computer-room';
+    | 'computer-room'
+    | 'writing';
   /**
    * Accessible alt text. If absent, falls back to a generic per-room
    * description. Pages with their own banner phrasing should override.
@@ -113,6 +114,8 @@ const DEFAULT_ALT: Record<Props['room'], string> = {
     "Architectural plan view of the Reference Desk — a curved librarian's station with smaller tables clustered around, and a reference shelf.",
   'computer-room':
     "Architectural plan view of the Computer Room — workstation tables with computers, a central table with computers, and a reference shelf.",
+  writing:
+    "Architectural plan view of the Writing Room — desks with manuscripts in progress, a central conference table for coauthor meetings, flanking bookcases, and side reading nooks. Hand-drafted in oxidized navy ink on parchment, in the visual register of the Library's Spatial Discovery Blueprint.",
 };
 
 const resolvedAlt = alt ?? DEFAULT_ALT[room];
