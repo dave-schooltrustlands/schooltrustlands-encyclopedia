@@ -28,13 +28,28 @@ const cards = [
     blurb:
       "The community of contributors. Reader, Library Card holder, Contributor, Citizen Historian, State Expert, State Co-Librarian, Co-Librarian, Librarian, Board.",
   },
+  {
+    title: 'Metadata & Provenance Schema',
+    href: '/pro/metadata-schema/',
+    blurb:
+      "The Library's working metadata and provenance spec — core record, per-kind extensions, provenance, confidence vocabulary, versioning.",
+  },
+  {
+    title: 'Charter',
+    href: '/pro/bylaws/',
+    blurb:
+      "The public charter of the Library as an institution — purpose, beneficiaries, officers, the planned Board, the independence transition, dissolution.",
+  },
+  {
+    title: 'Dispute Resolution',
+    href: '/pro/dispute-resolution/',
+    blurb:
+      "The escalation path for editorial disagreements — standard channels, Head Librarian review, review panel, Library Board, external recourse.",
+  },
 ];
 
 const forthcoming = [
   { title: 'How to Contribute', note: 'Consolidated overview of the contribution paths.' },
-  { title: 'Metadata & Provenance Schema', note: "The catalog's own working specification." },
-  { title: 'Bylaws / Charter', note: 'Institutional structure once the Library spins out.' },
-  { title: 'Dispute Resolution', note: 'The escalation path for editorial disagreements.' },
 ];
 ---
 
@@ -70,8 +85,8 @@ const forthcoming = [
   <section class="forthcoming" aria-label="Forthcoming Pro pages">
     <h2>Forthcoming</h2>
     <p class="forthcoming-intro">
-      The Pro side is being built out in two passes. The four pages above
-      are live today. The following are in drafting and will ship next:
+      The Pro side continues to fill out. The pages above are live today;
+      the following are in drafting and will ship next:
     </p>
     <ul class="forthcoming-list">
       {forthcoming.map((f) => (

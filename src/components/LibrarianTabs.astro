@@ -18,28 +18,39 @@ interface Props {
     | 'reviews'
     | 'moderation'
     | 'discussions'
-    | 'state-co-librarian';
+    | 'state-co-librarian'
+    | 'institutional-formation';
   role?: 'librarian' | 'head_librarian' | 'admin' | 'discussion_moderator';
 }
 
 const { current, role = 'librarian' } = Astro.props;
 
-const allTabs: Array<{ key: Props['current']; label: string; href: string }> = [
-  { key: 'tickets',             label: 'Pending tickets', href: '/librarian/' },
-  { key: 'applications',        label: 'Applications',    href: '/librarian/applications/' },
-  { key: 'patrons',             label: 'Patrons',         href: '/librarian/patrons/' },
-  { key: 'reviews',             label: 'Reviews',         href: '/librarian/reviews/' },
-  { key: 'moderation',          label: 'Moderation',      href: '/librarian/moderation/' },
-  { key: 'discussions',         label: 'Discussions',     href: '/librarian/discussions/' },
-  { key: 'state-co-librarian',  label: 'State Co-Lib',    href: '/librarian/state-co-librarian-applications/' },
+const allTabs: Array<{
+  key: Props['current'];
+  label: string;
+  href: string;
+  /** When set, the tab is hidden unless the viewer's role is in the list. */
+  roles?: Array<'librarian' | 'head_librarian' | 'admin' | 'discussion_moderator'>;
+}> = [
+  { key: 'tickets',                  label: 'Pending tickets',   href: '/librarian/' },
+  { key: 'applications',             label: 'Applications',      href: '/librarian/applications/' },
+  { key: 'patrons',                  label: 'Patrons',           href: '/librarian/patrons/' },
+  { key: 'reviews',                  label: 'Reviews',           href: '/librarian/reviews/' },
+  { key: 'moderation',               label: 'Moderation',        href: '/librarian/moderation/' },
+  { key: 'discussions',              label: 'Discussions',       href: '/librarian/discussions/' },
+  { key: 'state-co-librarian',       label: 'State Co-Lib',      href: '/librarian/state-co-librarian-applications/' },
+  // v39 — Institutional-Formation feedback is for founding-officers only;
+  // head_librarian and admin see it, ordinary librarians do not.
+  { key: 'institutional-formation',  label: 'Institutional Formation', href: '/librarian/institutional-formation/', roles: ['head_librarian', 'admin'] },
 ];
 
 // A pure moderator sees only Moderation + Discussions. Everyone else sees
-// the whole bar.
+// the bar filtered by per-tab roles (an absent `roles` list means all
+// librarian-tier viewers see the tab).
 const tabs =
   role === 'discussion_moderator'
     ? allTabs.filter((t) => t.key === 'moderation' || t.key === 'discussions')
-    : allTabs;
+    : allTabs.filter((t) => !t.roles || t.roles.includes(role));
 ---
 
 <nav class="librarian-tabs" aria-label="Librarian dashboard sections">

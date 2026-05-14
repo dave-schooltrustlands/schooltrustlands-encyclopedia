@@ -87,7 +87,7 @@ export const POST: APIRoute = async (Astro) => {
     return json(401, { error: 'Sign in to submit feedback.' });
   }
 
-  let payload: { page_url?: unknown; subject?: unknown; body?: unknown };
+  let payload: { page_url?: unknown; subject?: unknown; body?: unknown; kind?: unknown };
   try {
     payload = await Astro.request.json();
   } catch {
@@ -97,6 +97,15 @@ export const POST: APIRoute = async (Astro) => {
   const pageUrlRaw = typeof payload.page_url === 'string' ? payload.page_url.trim() : '';
   const subjectRaw = typeof payload.subject === 'string' ? payload.subject.trim() : '';
   const bodyRaw = typeof payload.body === 'string' ? payload.body.trim() : '';
+  // v39 — accept an optional kind tag. Vocabulary closed at the DB level by
+  // the feedback_kind_check constraint; the API only validates that the
+  // value is in the v39-allowed set so we fail fast with a 400 rather than
+  // a 500 from the database. Default 'general' is also the column default.
+  const kindRaw = typeof payload.kind === 'string' ? payload.kind.trim() : '';
+  const kind = kindRaw || 'general';
+  if (kind !== 'general' && kind !== 'institutional_formation') {
+    return json(400, { error: 'Invalid feedback kind.' });
+  }
 
   if (!bodyRaw) {
     return json(400, { error: 'Please write your feedback before submitting.' });
@@ -125,6 +134,7 @@ export const POST: APIRoute = async (Astro) => {
       page_url: pageUrlRaw,
       subject: subjectRaw || null,
       body: bodyRaw,
+      kind,
     })
     .select('id, ticket_number, status')
     .single();

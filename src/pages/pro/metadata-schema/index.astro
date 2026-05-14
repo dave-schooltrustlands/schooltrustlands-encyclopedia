@@ -1,0 +1,245 @@
+---
+import ProLayout from '../../../layouts/ProLayout.astro';
+
+export const prerender = true;
+---
+
+<ProLayout
+  title="Metadata and Provenance Schema · Pro · America's School Trust Library"
+  description="The Library's working metadata and provenance schema — core record, per-kind extensions, provenance structure, confidence vocabulary, and versioning."
+  sourceId="pro-metadata-schema"
+  pageLabel="Metadata Schema"
+  showToc={true}
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="kicker">Institutional Documentation</p>
+    <h1>Metadata and Provenance Schema</h1>
+
+    <p class="schema-stamp">
+      <em>Schema version 1.0. Adopted 2026-05-12.</em>
+    </p>
+
+    <p>
+      Every item in America's School Trust Library — every statute, every
+      court filing, every Bates-stamped discovery page, every scholarly
+      reference, every photograph, every Reading Room essay — carries a
+      structured metadata record. The record names what the item is, where
+      it came from, how to cite it, and what rights apply. It records who
+      verified the metadata and how confident the Library is in the
+      underlying claim. The schema is versioned, applied consistently across
+      catalog records and primary sources, and intended to be
+      machine-readable as well as human-readable. This page is the spec.
+      Contributors and institutional partners write to it; researchers can
+      read against it; reviewers can audit by it.
+    </p>
+
+    <h2>The core record</h2>
+
+    <p>
+      Every record in the Library, regardless of item kind, carries the
+      following fields. All are required.
+    </p>
+
+    <ul>
+      <li><strong><code>title</code></strong> — the canonical title of the item. For statutes and cases, the standard short form (e.g., "Oregon Admissions Act of 1859"; "Wood v. Honeyman"). For discovery, the document's actual title as produced. For contributions, the title the contributor gives the work.</li>
+      <li><strong><code>slug</code></strong> — the URL fragment used as the page's locator. Lowercase, hyphenated, ASCII. Stable for the life of the record; slug changes require a redirect.</li>
+      <li><strong><code>kind</code></strong> — one of: <code>statute</code>, <code>case</code>, <code>discovery</code>, <code>scholarship</code>, <code>contribution</code>, <code>multimedia</code>. The vocabulary is closed at v1.0.</li>
+      <li><strong><code>primary_source_citation</code></strong> — the citation by which the item is referenced in legal or scholarly writing. A statutory pin (Stat./U.S.C./ORS), a reporter citation (volume, reporter, page), a Bates pin range, an archival call number, a journal citation, or equivalent. If no formal citation exists (a contributor's photograph, for instance), the value is <code>none</code> and the provenance note carries the locator.</li>
+      <li><strong><code>provenance_note</code></strong> — one paragraph explaining how the item was acquired and verified. See the provenance schema section below.</li>
+      <li><strong><code>rights_status</code></strong> — one of: <code>public_domain</code>, <code>licensed</code>, <code>library_authored</code>, <code>cited_not_redistributed</code>, <code>unclear_rights_held_back</code>. Where licensed, the license is named (e.g., <code>CC BY-SA 4.0</code>).</li>
+      <li><strong><code>confidence</code></strong> — one of: <code>verified</code>, <code>partial</code>, <code>pending</code>, <code>contested</code>. See the confidence vocabulary section.</li>
+      <li><strong><code>last_reviewed</code></strong> — ISO date (YYYY-MM-DD) of the most recent review by a librarian. Updated on every substantive review, not on cosmetic edits.</li>
+      <li><strong><code>librarian_of_record</code></strong> — the name (or named role, for institutional records) of the librarian who owns this record and is responsible for its accuracy.</li>
+    </ul>
+
+    <p>
+      A record missing any required field does not validate. The Library does
+      not publish records that do not validate.
+    </p>
+
+    <h2>Per-kind extensions</h2>
+
+    <p>
+      Each item kind adds required and optional fields beyond the core
+      record. The per-kind vocabulary is closed at v1.0 and listed here for
+      reference.
+    </p>
+
+    <h3>Statute</h3>
+    <ul>
+      <li><strong><code>jurisdiction</code></strong> (required) — the issuing government (e.g., <code>US</code>, <code>Oregon</code>, <code>Coos County</code>).</li>
+      <li><strong><code>code_citation</code></strong> (required) — the citation within the jurisdiction's code (e.g., <code>ORS 327.405</code>; <code>11 Stat. 383, sec. 4</code>).</li>
+      <li><strong><code>effective_date</code></strong> (required) — ISO date the statute took effect.</li>
+      <li><strong><code>repealed_date</code></strong> (optional) — ISO date the statute was repealed, if applicable. Absent means in force.</li>
+    </ul>
+
+    <h3>Case</h3>
+    <ul>
+      <li><strong><code>court</code></strong> (required) — the deciding court (e.g., <code>Oregon Court of Appeals</code>; <code>Coos County Circuit Court</code>).</li>
+      <li><strong><code>docket</code></strong> (required) — the docket number (e.g., <code>S072734</code>; <code>24CV38372</code>).</li>
+      <li><strong><code>decided_date</code></strong> (required) — ISO date of the decision or order.</li>
+      <li><strong><code>reporter</code></strong> (optional) — reporter citation if published (e.g., <code>380 Or. 1</code>).</li>
+      <li><strong><code>precedential</code></strong> (required) — boolean. Whether the decision binds future cases in that court.</li>
+    </ul>
+
+    <h3>Discovery</h3>
+    <ul>
+      <li><strong><code>bates_pin_range</code></strong> (required) — the Bates range produced (e.g., <code>OREGON_DSL_004112 – OREGON_DSL_004158</code>).</li>
+      <li><strong><code>producing_party</code></strong> (required) — the party who produced the document.</li>
+      <li><strong><code>protective_order</code></strong> (required) — reference to the protective order governing the document, or <code>none</code>. Documents marked confidential under a protective order are not published; the record exists for catalog completeness.</li>
+    </ul>
+
+    <h3>Scholarship</h3>
+    <ul>
+      <li><strong><code>author</code></strong> (required) — one or more authors, surname first. Multi-author works list all authors.</li>
+      <li><strong><code>publication_year</code></strong> (required) — year of publication.</li>
+      <li><strong><code>publisher</code></strong> (required) — the publishing house, journal, or institution.</li>
+      <li><strong><code>peer_reviewed</code></strong> (required) — boolean. Peer-reviewed journal articles are marked true; reports, monographs, and white papers are marked false.</li>
+    </ul>
+
+    <h3>Contribution</h3>
+    <ul>
+      <li><strong><code>contributor</code></strong> (required) — the contributing person or institution.</li>
+      <li><strong><code>contribution_date</code></strong> (required) — ISO date of contribution.</li>
+      <li><strong><code>editorial_status</code></strong> (required) — one of: <code>accepted</code>, <code>under_review</code>, <code>revisions_requested</code>.</li>
+    </ul>
+
+    <h3>Multimedia</h3>
+    <ul>
+      <li><strong><code>format</code></strong> (required) — file format and codec where relevant (e.g., <code>image/jpeg</code>; <code>video/mp4</code>).</li>
+      <li><strong><code>dimensions</code></strong> (required for image and video) — pixel dimensions (e.g., <code>1920x1080</code>).</li>
+      <li><strong><code>rights_clearance</code></strong> (required) — <code>cleared</code>, <code>claimed_fair_use</code>, <code>commissioned</code>, or <code>held_back</code>.</li>
+      <li><strong><code>commissioned_by_library</code></strong> (required) — boolean. True for work the Library commissioned and now owns.</li>
+    </ul>
+
+    <p>
+      Records may carry kind-specific optional fields beyond these, but the
+      listed fields are the floor.
+    </p>
+
+    <h2>Provenance schema</h2>
+
+    <p>
+      The <code>provenance_note</code> field carries a paragraph of
+      narrative; behind it the record carries four structured provenance
+      subfields. All are required where they apply.
+    </p>
+
+    <ul>
+      <li><strong><code>acquisition_path</code></strong> — how the item entered the Library. One of: <code>purchased</code>, <code>donated</code>, <code>public_records_request</code>, <code>discovery_production</code>, <code>contributed</code>, <code>scraped</code>, <code>library_authored</code>. Where applicable, the source is named (e.g., <code>scraped</code> from <code>https://oregonlegislature.gov/...</code>).</li>
+      <li><strong><code>verification_path</code></strong> — who verified the metadata and what they checked. Names the verifying librarian, the date, and the specific fields verified (e.g., "Citation and effective date verified against Oregon Legislative Assembly online statute database, 2026-04-15, by [librarian name].").</li>
+      <li><strong><code>chain_of_custody</code></strong> — narrative chain where one is needed. Required for discovery productions, donated materials with provenance significance, and any item whose authenticity could be questioned. May be empty for items whose chain is self-evident (e.g., a statute scraped from a state legislature's website).</li>
+      <li><strong><code>relationships</code></strong> — links to other items in the Library. The relationship vocabulary is closed at v1.0 and small by design: <code>cites</code>, <code>is_cited_by</code>, <code>supersedes</code>, <code>superseded_by</code>, <code>discusses</code>, <code>is_discussed_in</code>. Each relationship names the slug of the related record.</li>
+    </ul>
+
+    <p>
+      The closed relationship vocabulary is deliberate. A larger vocabulary
+      would invite inconsistency; six terms cover the citation, supersession,
+      and discussion patterns the Library's items actually exhibit.
+    </p>
+
+    <h2>Confidence vocabulary</h2>
+
+    <p>
+      The <code>confidence</code> field takes one of four values. Confidence
+      is visible to readers on the page as a badge.
+    </p>
+
+    <ul>
+      <li><strong><code>verified</code></strong> — primary source in hand; two independent verifications on file; no known dispute. The default standard for statutes, reported cases, and items the Library has worked from for more than one deliverable.</li>
+      <li><strong><code>partial</code></strong> — primary source in hand for part of the claim; remainder pending. Used when a record's core facts are verified but secondary fields (e.g., a date, an attribution) remain unconfirmed.</li>
+      <li><strong><code>pending</code></strong> — primary source in process of acquisition. The record exists because the item is cataloged and named, but verification has not yet completed. Pending records are visible but flagged.</li>
+      <li><strong><code>contested</code></strong> — two reputable sources disagree, or a rights holder has raised a dispute the Library has not resolved. Contested records are not retracted; the disagreement is named on the page.</li>
+    </ul>
+
+    <p>
+      Confidence is the field most likely to change over an item's life.
+      Movement from <code>pending</code> to <code>verified</code> is routine;
+      movement from <code>verified</code> to <code>contested</code> is rare
+      but consequential, and updates <code>last_reviewed</code>.
+    </p>
+
+    <h2>Versioning</h2>
+
+    <p>
+      The schema is versioned. Current version:
+      <strong>1.0, dated 2026-05-12.</strong>
+    </p>
+
+    <p>
+      Schema changes that add new optional fields, or add new values to an
+      open vocabulary, are backwards-compatible and bump the minor version
+      (1.0 → 1.1). Records written under the prior minor version continue to
+      validate without modification.
+    </p>
+
+    <p>
+      Schema changes that remove a field, rename a field, or remove a value
+      from a closed vocabulary require a migration plan and bump the major
+      version (1.x → 2.0). Old records continue to validate against the
+      version they were created under until the migration is run.
+      Major-version migrations are announced on the pro site at least
+      thirty days before the new version takes effect.
+    </p>
+
+    <p>
+      Every page in the Library declares the schema version its record
+      conforms to. Federation partners can rely on the declared version
+      when reading.
+    </p>
+
+    <h2>Where the schema lives, machine-readable</h2>
+
+    <p>
+      The canonical machine-readable spec lives at
+      <a href="/pro/metadata-schema/v1.json"><code>/pro/metadata-schema/v1.json</code></a>
+      in JSON Schema format (draft 2020-12).
+    </p>
+
+    <p>
+      Pages declare their schema version in a <code>schema_version</code>
+      field at the head of the record (e.g.,
+      <code>schema_version: "1.0"</code>). Federation partners and external
+      tools can pull <code>/pro/metadata-schema/v1.json</code> directly.
+    </p>
+
+    <h2>How to validate a record</h2>
+
+    <p>
+      For contributors and institutional partners writing records, the
+      validation steps are short.
+    </p>
+
+    <ol>
+      <li>Confirm every required core field is present and non-empty.</li>
+      <li>Confirm every required per-kind field for the record's <code>kind</code> is present and non-empty.</li>
+      <li>Confirm field formats match the spec — ISO dates for date fields; closed-vocabulary values drawn only from the listed terms; slugs lowercase and hyphenated.</li>
+      <li>Confirm the <code>confidence</code> value is one of the four allowed terms.</li>
+      <li>Confirm the provenance record is present: <code>acquisition_path</code> filled; <code>verification_path</code> names the verifier and the date; <code>chain_of_custody</code> present where applicable; relationships listed where applicable.</li>
+    </ol>
+
+    <p>
+      Records that fail validation are returned to the contributor with the
+      failing field named. The Library's librarian of record for the
+      relevant section is named on the response.
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A88A4E;
+      margin: 0 0 0.4rem;
+    }
+    .schema-stamp {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #64748b;
+      margin: -0.5rem 0 1.5rem;
+    }
+  </style>
+</ProLayout>

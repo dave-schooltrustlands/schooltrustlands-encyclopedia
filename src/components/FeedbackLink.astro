@@ -1,29 +1,28 @@
 ---
 /* Site Update v30 — Feedback Foundation: footer link + modal.
    Site Update v32 — Adds FileUpload widget + post-ticket attachment step.
-
-   Hydrates client-side using the browser Supabase client. Static HTML
-   contains both variants of the footer link so substrate pages (which
-   render statically) carry both strings at build time:
-
-     - data-feedback-signed-out — anchor reading "Sign in to give feedback"
-     - data-feedback-signed-in  — button reading "Submit feedback on this page"
-
-   On load, the script probes the session and reveals the correct variant.
-   Clicking the signed-in button opens the modal; modal POSTs to
-   /api/feedback and renders a success card with the ticket number on
-   success or an inline error + retry on failure.
-
-   v32: After the ticket is recorded, the modal iterates any FileUpload
-   selections and POSTs each to /api/attachment with parent_type='feedback'
-   and parent_id=ticket.id. A failed file upload is non-fatal — the ticket
-   itself is preserved and the success pane explains which files did not
-   make it.
+   Site Update v39 — Optional `kind` prop. When set, the modal posts
+   /api/feedback with the named kind so the submission routes to the
+   matching librarian dashboard tab. Used by /about/becoming/ to mark
+   institutional-formation submissions for the founding officers.
 */
 import FileUpload from './FileUpload.astro';
+
+interface Props {
+  /**
+   * Feedback kind written to the DB. Defaults to 'general'. The Becoming
+   * page passes 'institutional_formation' so submissions land in the
+   * founding-officers' dashboard tab.
+   */
+  kind?: 'general' | 'institutional_formation';
+  /** Optional CTA label override; defaults to "Submit feedback on this page". */
+  ctaLabel?: string;
+}
+
+const { kind = 'general', ctaLabel = 'Submit feedback on this page' } = Astro.props;
 ---
 
-<div class="feedback-footer-link" data-feedback-root>
+<div class="feedback-footer-link" data-feedback-root data-feedback-kind={kind}>
   <a
     href="/auth/sign-in?next=/"
     class="feedback-footer-anchor"
@@ -37,7 +36,7 @@ import FileUpload from './FileUpload.astro';
     data-feedback-signed-in
     hidden
   >
-    Submit feedback on this page
+    {ctaLabel}
   </button>
 </div>
 
@@ -271,6 +270,13 @@ import FileUpload from './FileUpload.astro';
           submitButton.textContent = 'Submitting…';
         }
         try {
+          // v39 — kind resolution order: body[data-feedback-kind] (set by
+          // BaseLayout via the page's feedbackKind prop) wins over the
+          // component-instance default, which itself defaults to 'general'.
+          const submissionKind =
+            document.body.getAttribute('data-feedback-kind') ||
+            root.getAttribute('data-feedback-kind') ||
+            'general';
           const res = await fetch('/api/feedback', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
@@ -278,6 +284,7 @@ import FileUpload from './FileUpload.astro';
               page_url: window.location.pathname + window.location.search,
               subject: subject || undefined,
               body,
+              kind: submissionKind,
             }),
           });
           const data = await res.json().catch(() => ({}));

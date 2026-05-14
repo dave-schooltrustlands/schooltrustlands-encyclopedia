@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schooltrusts.net/pro/metadata-schema/v1.json",
+  "title": "America's School Trust Library — Catalog Record Schema",
+  "description": "Machine-readable JSON Schema for the Library's metadata and provenance records. Schema version 1.0, adopted 2026-05-12. The human-readable spec is at https://schooltrusts.net/pro/metadata-schema/ and is the source of truth; this file is derived from it.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "title",
+    "slug",
+    "kind",
+    "primary_source_citation",
+    "provenance_note",
+    "rights_status",
+    "confidence",
+    "last_reviewed",
+    "librarian_of_record",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "description": "The schema version this record conforms to. Federation partners and external tools read this to pick the right validator.",
+      "type": "string",
+      "const": "1.0"
+    },
+    "title": {
+      "description": "Canonical title of the item.",
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "description": "Lowercase, hyphenated, ASCII URL fragment. Stable for the life of the record; slug changes require a redirect.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "kind": {
+      "description": "Closed vocabulary at v1.0.",
+      "type": "string",
+      "enum": [
+        "statute",
+        "case",
+        "discovery",
+        "scholarship",
+        "contribution",
+        "multimedia"
+      ]
+    },
+    "primary_source_citation": {
+      "description": "Citation by which the item is referenced in legal or scholarly writing. Use the literal string \"none\" where no formal citation exists.",
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance_note": {
+      "description": "Single paragraph explaining how the item was acquired and verified.",
+      "type": "string",
+      "minLength": 1
+    },
+    "rights_status": {
+      "description": "Closed vocabulary at v1.0. When 'licensed', the license SHOULD be named in the provenance_note (e.g., 'CC BY-SA 4.0').",
+      "type": "string",
+      "enum": [
+        "public_domain",
+        "licensed",
+        "library_authored",
+        "cited_not_redistributed",
+        "unclear_rights_held_back"
+      ]
+    },
+    "confidence": {
+      "description": "Closed four-value vocabulary. Surfaced to readers as a badge on the page.",
+      "type": "string",
+      "enum": [
+        "verified",
+        "partial",
+        "pending",
+        "contested"
+      ]
+    },
+    "last_reviewed": {
+      "description": "ISO date (YYYY-MM-DD) of the most recent substantive review. Cosmetic edits do not bump this.",
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "librarian_of_record": {
+      "description": "Name (or named role, for institutional records) of the librarian responsible for this record's accuracy.",
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "acquisition_path",
+        "verification_path"
+      ],
+      "properties": {
+        "acquisition_path": {
+          "description": "How the item entered the Library. Closed vocabulary; where applicable the source URL or institution is named in 'acquisition_source'.",
+          "type": "string",
+          "enum": [
+            "purchased",
+            "donated",
+            "public_records_request",
+            "discovery_production",
+            "contributed",
+            "scraped",
+            "library_authored"
+          ]
+        },
+        "acquisition_source": {
+          "description": "Free-text source pointer (URL, agency, donor). Required when acquisition_path is 'scraped', 'donated', 'public_records_request', 'discovery_production', or 'contributed'.",
+          "type": "string"
+        },
+        "verification_path": {
+          "description": "Who verified the metadata, when, and what was checked. Names the verifier, the date, and the fields checked.",
+          "type": "string",
+          "minLength": 1
+        },
+        "chain_of_custody": {
+          "description": "Narrative chain. Required for discovery productions, donated materials with provenance significance, and any item whose authenticity could be questioned. May be empty where the chain is self-evident.",
+          "type": "string"
+        },
+        "relationships": {
+          "description": "Links to other Library records. Relationship vocabulary is closed at v1.0.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "slug"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "cites",
+                  "is_cited_by",
+                  "supersedes",
+                  "superseded_by",
+                  "discusses",
+                  "is_discussed_in"
+                ]
+              },
+              "slug": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "title": "Statute",
+      "type": "object",
+      "properties": {
+        "kind": { "const": "statute" },
+        "jurisdiction": { "type": "string", "minLength": 1 },
+        "code_citation": { "type": "string", "minLength": 1 },
+        "effective_date": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "repealed_date": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+      },
+      "required": ["kind", "jurisdiction", "code_citation", "effective_date"]
+    },
+    {
+      "title": "Case",
+      "type": "object",
+      "properties": {
+        "kind": { "const": "case" },
+        "court": { "type": "string", "minLength": 1 },
+        "docket": { "type": "string", "minLength": 1 },
+        "decided_date": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "reporter": { "type": "string" },
+        "precedential": { "type": "boolean" }
+      },
+      "required": ["kind", "court", "docket", "decided_date", "precedential"]
+    },
+    {
+      "title": "Discovery",
+      "type": "object",
+      "properties": {
+        "kind": { "const": "discovery" },
+        "bates_pin_range": { "type": "string", "minLength": 1 },
+        "producing_party": { "type": "string", "minLength": 1 },
+        "protective_order": { "type": "string", "minLength": 1 }
+      },
+      "required": ["kind", "bates_pin_range", "producing_party", "protective_order"]
+    },
+    {
+      "title": "Scholarship",
+      "type": "object",
+      "properties": {
+        "kind": { "const": "scholarship" },
+        "author": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "publication_year": { "type": "integer", "minimum": 1500, "maximum": 2200 },
+        "publisher": { "type": "string", "minLength": 1 },
+        "peer_reviewed": { "type": "boolean" }
+      },
+      "required": ["kind", "author", "publication_year", "publisher", "peer_reviewed"]
+    },
+    {
+      "title": "Contribution",
+      "type": "object",
+      "properties": {
+        "kind": { "const": "contribution" },
+        "contributor": { "type": "string", "minLength": 1 },
+        "contribution_date": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "editorial_status": {
+          "type": "string",
+          "enum": ["accepted", "under_review", "revisions_requested"]
+        }
+      },
+      "required": ["kind", "contributor", "contribution_date", "editorial_status"]
+    },
+    {
+      "title": "Multimedia",
+      "type": "object",
+      "properties": {
+        "kind": { "const": "multimedia" },
+        "format": { "type": "string", "minLength": 1 },
+        "dimensions": {
+          "description": "Required for image and video items; pixel dimensions in WIDTHxHEIGHT form.",
+          "type": "string",
+          "pattern": "^\\d+x\\d+$"
+        },
+        "rights_clearance": {
+          "type": "string",
+          "enum": ["cleared", "claimed_fair_use", "commissioned", "held_back"]
+        },
+        "commissioned_by_library": { "type": "boolean" }
+      },
+      "required": ["kind", "format", "rights_clearance", "commissioned_by_library"]
+    }
+  ]
+}

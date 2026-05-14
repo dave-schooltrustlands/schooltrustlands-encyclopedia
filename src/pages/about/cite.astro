@@ -1,51 +1,215 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import PrepublicationFooter from '../../components/PrepublicationFooter.astro';
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title="How to cite · America's School Trust Library"
-      description="Citation guidance for America's School Trust Library and its component works."
-    />
-  </head>
-  <body class="min-h-screen bg-archive-paper text-ink mode-library" data-source-id="about-cite">
-    <Header />
-    <main class="mx-auto max-w-prose p-4 sm:p-8">
-      <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
-        <h1>How to cite</h1>
-        <p class="kicker">Placeholder citation guidance. A fuller style guide will follow.</p>
+<BaseLayout
+  title="How to cite · America's School Trust Library"
+  description="How to cite America's School Trust Library and the works it carries — general form, four common styles, primary sources and Counting House figures, permission, and what to do when a citation looks wrong."
+  sourceId="about-cite"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="kicker">About</p>
+    <h1>How to Cite the Library</h1>
 
-        <h2>The library</h2>
-        <p>
-          Cite this library as: <em>America's School Trust Library</em>, [year accessed]. <a href="https://schooltrusts.net">https://schooltrusts.net</a>.
-        </p>
+    <p>
+      America's School Trust Library is cited in court filings, in legislative
+      testimony, in scholarship, and in journalism. We want to be cited. We ask
+      only that the citation be accurate, so a reader who follows it lands on
+      the same page we did and can verify the underlying source for themselves.
+      This page explains how.
+    </p>
 
-        <h2>State dossiers</h2>
-        <p>
-          For specific state dossiers, cite the entry path. Example: <em>America's School Trust Library, "Oregon," accessed 2026-05-04.</em> <a href="https://schooltrusts.net/reading/us-or/">https://schooltrusts.net/reading/us-or/</a>.
-        </p>
+    <h2>General form</h2>
 
-        <h2>The Eighth Anchor white paper</h2>
-        <p>
-          Cite as: Sullivan &amp; Bird, <em>The Eighth Anchor</em> (May 2026, version 5.0).
-        </p>
+    <p>
+      The Library is the publisher. The page you are citing — a Reading Room
+      essay, a state catalog page, a Counting House figure page — is the work.
+      Where the page lists a named author, that author goes first. The URL is
+      the locator. A reader needs the date you visited the page, because the
+      Library is a living catalog and pages do get revised.
+    </p>
 
-        <h2>The booklet</h2>
-        <p>
-          Cite the underlying booklet as: Sullivan &amp; Bird, <em>Schools of the Republic</em> v1.3 (2025).
-        </p>
+    <p>The general form, modeled on standard digital-library practice:</p>
 
-        <h2>Corrections</h2>
-        <p>
-          Found a citation that needs work, or a source that should be in the bibliography? File an issue at <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia/issues">the project repository</a>.
-        </p>
-      </article>
-    </main>
-    <PrepublicationFooter />
-    <Footer />
-  </body>
-</html>
+    <blockquote>
+      <p>
+        Author Last, First. "Page Title." <em>America's School Trust Library</em>,
+        accessed YYYY-MM-DD, https://schooltrusts.net/path/.
+      </p>
+    </blockquote>
+
+    <p>Two worked examples:</p>
+
+    <blockquote>
+      <p>
+        Sullivan, Dave. "The Eighth Anchor." <em>America's School Trust Library</em>,
+        accessed 2026-05-12, https://schooltrusts.net/reading/the-eighth-anchor/.
+      </p>
+    </blockquote>
+
+    <blockquote>
+      <p>
+        "Oregon." <em>America's School Trust Library</em>, accessed 2026-05-12,
+        https://schooltrusts.net/states/oregon/.
+      </p>
+    </blockquote>
+
+    <p>
+      The second example has no author line because state catalog pages are
+      institutional work — there is no individual byline on the page, so the
+      citation begins with the page title.
+    </p>
+
+    <h2>In specific styles</h2>
+
+    <p>
+      The form above is close to several common styles already. Here is the
+      same Reading Room essay rendered four ways.
+    </p>
+
+    <h3>MLA</h3>
+
+    <p>
+      Sullivan, Dave. "The Eighth Anchor." <em>America's School Trust Library</em>,
+      2026, schooltrusts.net/reading/the-eighth-anchor/. Accessed 12 May 2026.
+    </p>
+
+    <h3>Chicago — notes and bibliography</h3>
+
+    <p>
+      <em>Note:</em> Dave Sullivan, "The Eighth Anchor," America's School Trust
+      Library, accessed May 12, 2026,
+      https://schooltrusts.net/reading/the-eighth-anchor/.
+    </p>
+
+    <p>
+      <em>Bibliography:</em> Sullivan, Dave. "The Eighth Anchor." America's
+      School Trust Library. Accessed May 12, 2026.
+      https://schooltrusts.net/reading/the-eighth-anchor/.
+    </p>
+
+    <h3>Chicago — author-date</h3>
+
+    <p>
+      Sullivan, Dave. 2026. "The Eighth Anchor." America's School Trust Library.
+      Accessed May 12, 2026. https://schooltrusts.net/reading/the-eighth-anchor/.
+    </p>
+
+    <h3>Bluebook (for legal writing)</h3>
+
+    <p>
+      Dave Sullivan, <em>The Eighth Anchor</em>, AMERICA'S SCHOOL TRUST LIBRARY
+      (May 12, 2026), https://schooltrusts.net/reading/the-eighth-anchor/.
+    </p>
+
+    <p>
+      For a state catalog page in a brief: <em>Oregon</em>, AMERICA'S SCHOOL
+      TRUST LIBRARY (May 12, 2026), https://schooltrusts.net/states/oregon/.
+    </p>
+
+    <h2>Citing primary sources reached through the Library</h2>
+
+    <p>
+      When the Library hosts or links a statute, a court filing, or a historical
+      document, cite the primary source directly — the statute citation, the
+      reporter citation, the archival call number — and name the Library as the
+      access point.
+    </p>
+
+    <p>
+      So a statute reached through the Library is cited to its code, then noted
+      as available via the Library:
+    </p>
+
+    <blockquote>
+      <p>
+        Or. Admis. Act of 1859, 11 Stat. 383, § 4 (available via <em>America's
+        School Trust Library</em> at https://schooltrusts.net/sources/oregon-admissions-act/).
+      </p>
+    </blockquote>
+
+    <p>A discovery production hosted on the Library:</p>
+
+    <blockquote>
+      <p>
+        Pls.' Mot. to Compel, <em>Or. Advocates for Sch. Trust Lands v. State</em>,
+        No. 24CV38372 (Or. Cir. Ct. Coos Cnty. May 2, 2026) (available via
+        <em>America's School Trust Library</em> at
+        https://schooltrusts.net/court/24cv38372/motion-to-compel/).
+      </p>
+    </blockquote>
+
+    <p>
+      The reader who needs to verify the statute looks it up in the published
+      code; the reader who needs the discovery filing finds it where we hosted
+      it. Both readers know exactly where to look.
+    </p>
+
+    <h2>Citing figures from the Counting House</h2>
+
+    <p>
+      Every figure in the Counting House carries a confidence badge and an
+      underlying source — a statute, an audit, an agency report, a peer-reviewed
+      study. Cite the underlying source first. The Counting House page is the
+      access point and goes in parentheses or in a "via" note.
+    </p>
+
+    <blockquote>
+      <p>
+        Or. Dep't of State Lands, <em>Common School Fund Annual Report</em> 12
+        (2024) (figure available via <em>America's School Trust Library</em>,
+        Counting House, at
+        https://schooltrusts.net/counting-house/oregon-csf-balance/).
+      </p>
+    </blockquote>
+
+    <p>
+      The principle: a number's authority comes from the source the number is
+      drawn from, not from the page that displays it.
+    </p>
+
+    <h2>Permission and reuse</h2>
+
+    <p>
+      Catalog text and Reading Room essays written by the Library are available
+      for quotation under standard fair-use principles for scholarship,
+      journalism, court filings, and legislative work. Quote what you need;
+      cite what you quote. Quoting a Reading Room essay at length, or
+      republishing a page in whole or substantial part, requires written
+      permission. Contact details are on the <a href="/about/">About page</a>.
+    </p>
+
+    <p>
+      Material the Library hosts but did not write — statutes, court filings,
+      archival documents, third-party photographs — is governed by the rights
+      that attach to the original source. For takedown procedure and the full
+      rights notice, see <a href="/about/rights/">Rights, Use, and Takedown</a>.
+    </p>
+
+    <h2>If a citation looks wrong</h2>
+
+    <p>
+      Accuracy is the only thing we ask of the citing reader, and accuracy is
+      also what we ask of ourselves. If you follow a citation and the page no
+      longer says what we said it said, or if a figure has changed since you
+      cited it, use the Submit-Correction control at the foot of the page in
+      question. We will look at it, fix it if it needs fixing, and note the
+      change. Citations that point to a moving target serve no one; we work
+      hard to keep the targets steady. For the full correction protocol, see
+      <a href="/about/corrections/">Corrections</a>.
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A88A4E;
+      margin: 0 0 0.4rem;
+    }
+  </style>
+</BaseLayout>
