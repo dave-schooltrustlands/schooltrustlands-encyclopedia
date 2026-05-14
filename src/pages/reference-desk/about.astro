@@ -1,0 +1,64 @@
+---
+// v57b — About the Librarian. Methodology explanation for visitors who
+// want detail on how the Reference Desk works. The main page at
+// /reference-desk/ keeps its on-page intro to ~80 words and links here
+// for the longer treatment.
+import RoomLayout from '../../layouts/RoomLayout.astro';
+---
+<RoomLayout
+  room="reference-desk"
+  title="About the Librarian"
+  subtitle="How she works and what she can do."
+  sourceId="reference-desk-about"
+>
+  <p>
+    The Reference Desk hosts an artificial-intelligence Librarian — an
+    agent built on Anthropic's Claude language model that has been given
+    access to the Library's content through a process called
+    retrieval-augmented generation. When you ask her a question, three
+    things happen in roughly five seconds. Your question is converted
+    into a numerical representation and compared against more than a
+    thousand chunks of indexed Library content. The eight most relevant
+    chunks are pulled out and given to the language model as context.
+    The model reads those chunks and composes an answer in plain
+    language, citing the source URLs the chunks came from.
+  </p>
+  <p>
+    She has read, in her training context, every state dossier in the
+    Atlas, every chapter of <em>Schools of the Republic</em>,
+    <em>The Eighth Anchor</em>, and <em>Who Steals from Children</em>,
+    every essay in the Sacred Compact, and a growing body of supporting
+    material across the Library's other rooms. She does not have access
+    to the open internet, to current news, to legal databases, or to any
+    document outside the Library's own corpus.
+  </p>
+  <p>
+    The Librarian is a prototype. She will sometimes miss material that
+    is in the Library — particularly when a question names two or more
+    entities (states, eras, books) and her retrieval favors one over the
+    others. She will sometimes phrase things in ways that read more
+    chatty than the Library's institutional voice would prefer. She is
+    being refined as we learn how she behaves in practice. Treat her
+    answers as starting points for further reading, not as authoritative
+    citations in their own right. Verify before you quote.
+  </p>
+  <p>
+    She declines to give legal advice, to predict the outcomes of
+    pending court cases, to take political positions, or to engage with
+    questions outside the school-trust scholarship the Library exists to
+    publish. When she doesn't have the content to answer a question, she
+    says so plainly and suggests where the visitor might look instead.
+    That honesty is the most important behavior she has.
+  </p>
+  <p>
+    Access to the Librarian requires a free
+    <a href="/library-card/">Library Card</a>. Patrons can ask up to ten
+    questions per day. The Card is the way the Library knows you are a
+    real person and lets us track the cost of running her at a
+    sustainable level. The Library does not store the content of your
+    questions in any way that identifies you personally.
+  </p>
+  <p>
+    <a href="/reference-desk/">← Back to the Reference Desk</a>
+  </p>
+</RoomLayout>

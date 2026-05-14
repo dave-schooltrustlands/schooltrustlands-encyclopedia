@@ -1,125 +1,272 @@
 ---
-import ComingSoonRoomLayout from '../layouts/ComingSoonRoomLayout.astro';
+// v57b — Reference Desk graduates from Coming Soon to a published
+// Library room. Page uses RoomLayout (not ComingSoonRoomLayout), the
+// chat panel is the page's centerpiece, the on-page intro trims to
+// ~80 words, and a child page at /reference-desk/about/ carries the
+// longer methodology explanation.
+import RoomLayout from '../layouts/RoomLayout.astro';
 ---
-<ComingSoonRoomLayout
+<RoomLayout
   room="reference-desk"
   title="Reference Desk"
-  subtitle="Ask the Librarian. She has read every room."
-  sourceId="coming-soon-reference-desk"
+  subtitle="Ask the Librarian. She has read every room of the Library."
+  width="full"
+  sourceId="reference-desk"
 >
-  <p>
-    The Reference Desk will host the Library's first
-    artificial-intelligence Librarian — an always-available agent that has
-    read every state dossier, every book in the Reading Room, every court
-    opinion the Library holds, every primary source in its archives, and
-    every chapter of <em>The Eighth Anchor</em> and
-    <em>Schools of the Republic</em>. Ask her a question about America's
-    school trust lands and she will answer with citations to the Library's
-    own sources, in plain language, around the clock.
-  </p>
-  <p>
-    <strong>Why this room matters.</strong> The Library was built in
-    cognitive partnership with frontier AI — two retired scholars reaching
-    across all fifty states in three weeks because the cognitive technology
-    of 2025 and 2026 finally let us do work that biological memory couldn't
-    hold. The Reference Desk extends that partnership to the reader. A
-    citizen who wants to know what her state's school trust earned last
-    year, what the 1894 Enabling Act required, how
-    <em>Meinhard v. Salmon</em> applies to a modern fund manager, or what
-    the Land Ordinance of 1785 actually says — she should be able to ask,
-    and get a real answer, without waiting for office hours.
-  </p>
-  <p>
-    <strong>What the Librarian will and won't do.</strong> She will answer
-    factual questions from the Library's content, cite her sources, and
-    tell you when she doesn't know. She won't give legal advice, won't
-    speculate beyond what the Library holds, won't take positions on active
-    litigation, and won't pretend to be a person. The disclaimer at the top
-    of every conversation will say so.
-  </p>
-  <p>
-    <strong>Manual fallback.</strong> Until the Librarian opens, a short
-    form will let any visitor send a question that a human will read and
-    answer. Public-interest questions and their answers will be posted
-    here, with the asker's permission, so the next reader who is stuck
-    doesn't have to start over.
-  </p>
-  <p>
-    <strong>Being planned.</strong> Target opening: early June 2026. The
-    work runs on five tracks — indexing the Library's contents for
-    retrieval, building the question-and-answer endpoint, designing the
-    conversation interface to match the Library's visual identity,
-    drafting the Librarian's character and guardrails, and stress-testing
-    her against real questions before she opens to the public. The manual
-    form will go up first.
+  <p class="reference-lede">
+    The Reference Desk is the Library's interactive front. Ask the
+    Librarian a question about America's school trust lands and she will
+    answer using the Library's own content, with citations to her
+    sources. She has read every state dossier, every book in the Reading
+    Room, and every primary source the Library holds. She is a prototype
+    — still learning her institutional voice. For longer detail on how
+    she works and what she can and can't do, see
+    <a href="/reference-desk/about/">About the Librarian</a>.
   </p>
 
   {/*
-    v57 Hello World — Library Card-gated chat panel.
-
-    The markup is always emitted but the wrapper stays `hidden` until
-    the inline script confirms the visitor has a Supabase session.
-    Signed-out visitors see only the Coming Soon prose above; they
-    never see the chat panel. The page therefore continues to honor
-    the v56 stub's public surface unchanged.
+    v57b — Library Card-gated chat panel with conversation history.
+    Wrapper stays `hidden` until the inline script confirms the visitor
+    has a Supabase session; signed-out visitors see only the lede above
+    and a small sign-in prompt.
   */}
+  <div class="librarian-signed-out" data-librarian-signed-out>
+    <p>
+      The Librarian answers questions for Library Card holders. The Card
+      is free. <a href="/library-card/">Apply for a Library Card</a> to
+      ask her a question.
+    </p>
+  </div>
+
   <div class="librarian-chat" data-librarian-chat hidden>
     <div class="librarian-disclaimer">
-      <strong>Hello World test.</strong> This is the v57 Hello World version of the AI Librarian.
-      She has only minimal instructions, no guardrails, and is unreliable on purpose.
-      Do not cite her answers. This is here for testing the architecture before the
-      production version ships.
+      <strong>Beta.</strong> The Librarian has read every room of the
+      Library, but she is still learning her institutional voice. Treat
+      her answers as starting points for further reading, not as
+      authoritative citations.
+      <a href="/reference-desk/about/">How she works</a>.
     </div>
-    <form data-librarian-form>
+
+    <div class="conversation-history" data-conversation aria-live="polite" aria-label="Conversation with the Librarian"></div>
+
+    <form data-librarian-form class="librarian-input-area">
+      <div class="model-selector" role="radiogroup" aria-label="Choose how the Librarian answers">
+        <button type="button" class="model-option is-active" data-mode="standard" aria-pressed="true">
+          <span class="model-name">Standard</span>
+          <span class="model-detail">Claude Sonnet — faster, lighter</span>
+        </button>
+        <button type="button" class="model-option" data-mode="deep" aria-pressed="false">
+          <span class="model-name">Deep Research</span>
+          <span class="model-detail">Claude Opus — slower, more thorough</span>
+        </button>
+      </div>
+
       <label for="librarian-input" class="sr-only">Your question for the Librarian</label>
       <textarea
         id="librarian-input"
+        data-librarian-textarea
         rows="3"
         placeholder="Ask the Librarian a question about America's school trust lands…"
         required
       ></textarea>
-      <button type="submit" data-librarian-submit>Ask the Librarian</button>
+      <div class="librarian-input-row">
+        <button type="submit" data-librarian-submit>Ask the Librarian</button>
+        <span class="librarian-counter" data-librarian-counter></span>
+      </div>
+
+      <div class="prompt-starters" aria-label="Suggested questions">
+        <span class="prompt-starters-label">Try asking:</span>
+        <button type="button" class="prompt-starter" data-starter>What is Oregon's school trust corpus?</button>
+        <button type="button" class="prompt-starter" data-starter>How did the 1785 Land Ordinance work?</button>
+        <button type="button" class="prompt-starter" data-starter>Which states have the strongest school trust governance?</button>
+      </div>
     </form>
-    <div data-librarian-response class="librarian-response" aria-live="polite"></div>
   </div>
-</ComingSoonRoomLayout>
+</RoomLayout>
 
 <script>
   import { getBrowserSupabase } from '../lib/supabase';
 
+  type Mode = 'standard' | 'deep';
+
+  // Library room prefixes that should be auto-linked when they appear
+  // in the Librarian's response. Mirrors the union the citation post-
+  // processor in the v57b handoff specifies.
+  const LIBRARY_PREFIXES = [
+    'reading', 'atlas', 'maps', 'counting', 'newsroom', 'voices', 'pro',
+    'updates', 'reference-desk', 'records', 'court', 'breach-recovery',
+    'chronicle', 'stacks', 'founders', 'school', 'lectures', 'computer-room',
+  ];
+  const PATH_PATTERN = new RegExp(
+    `(\\/(?:${LIBRARY_PREFIXES.join('|')})(?:\\/[a-z0-9-]+)*\\/?)`,
+    'g',
+  );
+
+  function escapeHtml(s: string): string {
+    return s
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function linkifyCitations(text: string): string {
+    return escapeHtml(text).replace(
+      PATH_PATTERN,
+      '<a href="$1" class="librarian-citation">$1</a>',
+    );
+  }
+
   (async () => {
+    const signedOut = document.querySelector('[data-librarian-signed-out]') as HTMLElement | null;
     const panel = document.querySelector('[data-librarian-chat]') as HTMLElement | null;
     if (!panel) return;
 
     const supabase = getBrowserSupabase();
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return; // Signed-out visitors: leave the chat panel hidden.
-
+    if (!user) {
+      // Signed-out visitors see only the lede + the sign-in prompt.
+      return;
+    }
+    if (signedOut) signedOut.hidden = true;
     panel.removeAttribute('hidden');
 
     const form = panel.querySelector('[data-librarian-form]') as HTMLFormElement | null;
-    const input = panel.querySelector('#librarian-input') as HTMLTextAreaElement | null;
+    const textarea = panel.querySelector('[data-librarian-textarea]') as HTMLTextAreaElement | null;
     const submit = panel.querySelector('[data-librarian-submit]') as HTMLButtonElement | null;
-    const responseEl = panel.querySelector('[data-librarian-response]') as HTMLElement | null;
-    if (!form || !input || !submit || !responseEl) return;
+    const history = panel.querySelector('[data-conversation]') as HTMLElement | null;
+    const counter = panel.querySelector('[data-librarian-counter]') as HTMLElement | null;
+    const modeButtons = Array.from(panel.querySelectorAll('[data-mode]')) as HTMLButtonElement[];
+    const starterButtons = Array.from(panel.querySelectorAll('[data-starter]')) as HTMLButtonElement[];
+    if (!form || !textarea || !submit || !history) return;
+
+    let mode: Mode = 'standard';
+    for (const btn of modeButtons) {
+      btn.addEventListener('click', () => {
+        mode = (btn.dataset.mode as Mode) || 'standard';
+        for (const b of modeButtons) {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        }
+      });
+    }
+
+    for (const btn of starterButtons) {
+      btn.addEventListener('click', () => {
+        textarea.value = btn.textContent ?? '';
+        textarea.focus();
+      });
+    }
+
+    function appendUserMessage(text: string) {
+      if (!history) return;
+      const div = document.createElement('div');
+      div.className = 'msg msg-user';
+      div.textContent = text;
+      history.appendChild(div);
+      history.scrollTop = history.scrollHeight;
+    }
+
+    function appendThinking(): HTMLElement {
+      const div = document.createElement('div');
+      div.className = 'msg msg-thinking';
+      div.textContent = 'The Librarian is thinking…';
+      history!.appendChild(div);
+      history!.scrollTop = history!.scrollHeight;
+      return div;
+    }
+
+    function appendLibrarianMessage(
+      responseText: string,
+      chunks: Array<{ url: string; title: string }>,
+      modelUsed: string,
+    ) {
+      const div = document.createElement('div');
+      div.className = 'msg msg-librarian';
+
+      const body = document.createElement('div');
+      body.className = 'msg-librarian-body';
+      body.innerHTML = linkifyCitations(responseText);
+      div.appendChild(body);
+
+      // Citations footer — unique source URLs across all retrieved chunks.
+      const uniqueUrls = Array.from(new Set(chunks.map((c) => c.url))).filter(Boolean);
+      if (uniqueUrls.length > 0) {
+        const footer = document.createElement('div');
+        footer.className = 'citations-footer';
+        const label = document.createElement('span');
+        label.textContent = 'from ';
+        footer.appendChild(label);
+        uniqueUrls.forEach((u, i) => {
+          if (i > 0) footer.appendChild(document.createTextNode(', '));
+          const a = document.createElement('a');
+          a.href = u;
+          a.textContent = u;
+          footer.appendChild(a);
+        });
+        const tag = document.createElement('span');
+        tag.className = 'model-tag';
+        tag.textContent = modelUsed === 'opus' ? 'Deep Research' : 'Standard';
+        footer.appendChild(document.createTextNode(' · '));
+        footer.appendChild(tag);
+        div.appendChild(footer);
+      }
+
+      history!.appendChild(div);
+      history!.scrollTop = history!.scrollHeight;
+    }
+
+    function appendSystemMessage(text: string) {
+      const div = document.createElement('div');
+      div.className = 'msg msg-system';
+      div.textContent = text;
+      history!.appendChild(div);
+      history!.scrollTop = history!.scrollHeight;
+    }
+
+    function appendErrorMessage(text: string) {
+      const div = document.createElement('div');
+      div.className = 'msg msg-error';
+      div.textContent = text;
+      history!.appendChild(div);
+      history!.scrollTop = history!.scrollHeight;
+    }
+
+    function updateCounter(remaining: number | null) {
+      if (!counter) return;
+      if (remaining === null || remaining === undefined || Number.isNaN(remaining)) {
+        counter.textContent = '';
+        return;
+      }
+      counter.textContent = `${remaining} of 10 questions remaining today`;
+    }
 
     const supabaseUrl = (import.meta.env.PUBLIC_SUPABASE_URL ?? '').replace(/\/+$/, '');
     const endpoint = `${supabaseUrl}/functions/v1/librarian_answer_v0`;
 
     form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
-      const query = input.value.trim();
+      const query = textarea.value.trim();
       if (!query) return;
 
       submit.disabled = true;
-      submit.textContent = 'Asking the Librarian…';
-      responseEl.textContent = '';
+      textarea.disabled = true;
+      const originalLabel = submit.textContent;
+      submit.textContent = 'Asking…';
+
+      appendUserMessage(query);
+      textarea.value = '';
+      const thinkingNode = appendThinking();
 
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        responseEl.textContent = 'Sign in to ask the Librarian.';
+        thinkingNode.remove();
+        appendErrorMessage('Sign in to ask the Librarian.');
         submit.disabled = false;
-        submit.textContent = 'Ask the Librarian';
+        textarea.disabled = false;
+        submit.textContent = originalLabel;
         return;
       }
 
@@ -130,45 +277,222 @@ import ComingSoonRoomLayout from '../layouts/ComingSoonRoomLayout.astro';
             'Authorization': `Bearer ${session.access_token}`,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ query }),
+          body: JSON.stringify({ query, mode }),
         });
+        thinkingNode.remove();
+
         if (resp.status === 429) {
-          responseEl.textContent = 'Daily query cap reached (10 / day). Try again tomorrow.';
+          const data = await resp.json().catch(() => ({}));
+          appendSystemMessage(
+            data?.error ||
+            "The Librarian is busy with other readers. You've asked your ten questions for the day — the daily allowance refreshes overnight. The Library's other rooms stay open in the meantime.",
+          );
+          updateCounter(0);
         } else if (!resp.ok) {
           const text = await resp.text();
-          responseEl.textContent = `Error: ${resp.status} ${resp.statusText}${text ? ' — ' + text : ''}`;
+          appendErrorMessage(`Error: ${resp.status} ${resp.statusText}${text ? ' — ' + text : ''}`);
         } else {
           const data = await resp.json();
-          responseEl.textContent = data.response ?? '(empty response)';
+          appendLibrarianMessage(
+            data.response ?? '(empty response)',
+            Array.isArray(data.chunks_used) ? data.chunks_used : [],
+            typeof data.model_used === 'string' ? data.model_used : 'sonnet',
+          );
+          if (typeof data.daily_remaining === 'number') {
+            updateCounter(data.daily_remaining);
+          }
         }
       } catch (err) {
-        responseEl.textContent = `Error: ${(err as Error).message}`;
+        thinkingNode.remove();
+        appendErrorMessage(`Error: ${(err as Error).message}`);
       } finally {
         submit.disabled = false;
-        submit.textContent = 'Ask the Librarian';
+        textarea.disabled = false;
+        submit.textContent = originalLabel;
+        textarea.focus();
       }
     });
   })();
 </script>
 
 <style>
+  .reference-lede {
+    margin: 1.5rem 0 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink, #1f2a44);
+  }
+  .reference-lede a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  .librarian-signed-out {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px dashed var(--rule-border, #D8D1C2);
+    border-radius: 6px;
+    background: var(--linen-card, #FFFDF7);
+    font-family: var(--font-serif);
+    color: #1f2a44;
+  }
+  .librarian-signed-out a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
   .librarian-chat {
-    margin-top: 3rem;
-    padding: 1.5rem;
+    margin-top: 2rem;
+    padding: 1.25rem;
     border: 1px solid var(--rule-border, #D8D1C2);
     border-radius: 6px;
     background: var(--linen-card, #FFFDF7);
   }
+
   .librarian-disclaimer {
     background: #fff4d4;
     border: 1px solid #d4a64a;
     border-radius: 4px;
-    padding: 0.75rem 1rem;
+    padding: 0.7rem 1rem;
     font-size: 0.9rem;
     color: #1f2a44;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     line-height: 1.5;
   }
+  .librarian-disclaimer a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  .conversation-history {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 0.5rem 0;
+    max-height: 60vh;
+    min-height: 6rem;
+    overflow-y: auto;
+  }
+  .conversation-history:empty {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .msg {
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    max-width: 88%;
+    line-height: 1.5;
+  }
+  .msg-user {
+    align-self: flex-end;
+    background: #1e3a5f;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    white-space: pre-wrap;
+  }
+  .msg-librarian {
+    align-self: flex-start;
+    background: #fbf6e9;
+    border: 1px solid #c8b78a;
+    color: #1f2a44;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+  }
+  .msg-librarian-body {
+    white-space: pre-wrap;
+  }
+  .msg-librarian .citations-footer {
+    margin-top: 0.6rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid #d8d1c2;
+    font-size: 0.78rem;
+    color: #5a6677;
+    font-family: var(--font-sans);
+    white-space: normal;
+  }
+  .msg-librarian .citations-footer a {
+    color: #1e3a5f;
+    text-decoration: underline;
+  }
+  .msg-librarian .citations-footer .model-tag {
+    font-style: italic;
+    color: #5a6677;
+  }
+  .msg-librarian .librarian-citation {
+    color: #1e3a5f;
+    text-decoration: underline;
+  }
+  .msg-system {
+    align-self: center;
+    background: var(--linen-card, #FFFDF7);
+    border: 1px solid var(--rule-border, #D8D1C2);
+    color: #1f2a44;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 92%;
+  }
+  .msg-error {
+    align-self: center;
+    background: #fff4d4;
+    border: 1px solid #d4a64a;
+    color: #5a3f0a;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+  .msg-thinking {
+    align-self: flex-start;
+    font-style: italic;
+    color: #5a6677;
+    font-size: 0.88rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .librarian-input-area {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #D8D1C2);
+  }
+
+  .model-selector {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .model-option {
+    flex: 1;
+    padding: 0.55rem 0.85rem;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-sans);
+    transition: all 0.15s ease;
+  }
+  .model-option:hover { border-color: #1e3a5f; }
+  .model-option.is-active {
+    background: var(--linen-card, #FFFDF7);
+    border-color: #1e3a5f;
+    box-shadow: 0 0 0 1px #1e3a5f;
+  }
+  .model-option .model-name {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1f2a44;
+  }
+  .model-option .model-detail {
+    display: block;
+    font-size: 0.78rem;
+    color: #5a6677;
+    margin-top: 0.15rem;
+  }
+
   .librarian-chat textarea {
     width: 100%;
     padding: 0.6rem 0.8rem;
@@ -179,9 +503,20 @@ import ComingSoonRoomLayout from '../layouts/ComingSoonRoomLayout.astro';
     line-height: 1.4;
     box-sizing: border-box;
   }
-  .librarian-chat button {
-    margin-top: 0.75rem;
-    padding: 0.6rem 1.25rem;
+  .librarian-chat textarea:disabled {
+    background: #f8fafc;
+    color: #475569;
+  }
+
+  .librarian-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .librarian-chat button[data-librarian-submit] {
+    padding: 0.55rem 1.2rem;
     background: #1e3a5f;
     color: #ffd07a;
     border: 1px solid #1e3a5f;
@@ -190,21 +525,46 @@ import ComingSoonRoomLayout from '../layouts/ComingSoonRoomLayout.astro';
     font-family: var(--font-sans);
     font-weight: 600;
   }
-  .librarian-chat button:hover { background: #16304f; }
-  .librarian-chat button:disabled { opacity: 0.6; cursor: not-allowed; }
-  .librarian-response {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 4px;
-    font-family: var(--font-serif);
-    font-size: 0.95rem;
-    line-height: 1.55;
-    white-space: pre-wrap;
-    min-height: 1em;
+  .librarian-chat button[data-librarian-submit]:hover { background: #16304f; }
+  .librarian-chat button[data-librarian-submit]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
-  .librarian-response:empty { display: none; }
+  .librarian-counter {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #5a6677;
+  }
+
+  .prompt-starters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.5rem;
+    align-items: center;
+    margin-top: 0.85rem;
+  }
+  .prompt-starters-label {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #5a6677;
+    margin-right: 0.25rem;
+  }
+  .prompt-starter {
+    padding: 0.3rem 0.7rem;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    color: #1d4ed8;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.12s ease;
+  }
+  .prompt-starter:hover {
+    border-color: #1e3a5f;
+    background: #f1f5f9;
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -216,4 +576,3 @@ import ComingSoonRoomLayout from '../layouts/ComingSoonRoomLayout.astro';
     border: 0;
   }
 </style>
-

@@ -12,6 +12,7 @@ type RoomId =
   | 'atlas'
   | 'maps'
   | 'counting'
+  | 'reference-desk'
   | 'records'
   | 'court'
   | 'breach-recovery';
@@ -19,12 +20,15 @@ type RoomId =
 // Rooms that have a signature banner image in /public/banners/.
 // v10 sub-release v1.B — banner-above-h1 slot lives in RoomLayout so
 // every sub-page inherits the banner without re-mounting it per page.
-type BannerRoomId = 'reading' | 'atlas' | 'maps' | 'counting';
+// v57b — Reference Desk graduates to a banner room; banner image
+// already installed in v56 at /banners/reference-desk.jpg.
+type BannerRoomId = 'reading' | 'atlas' | 'maps' | 'counting' | 'reference-desk';
 const BANNER_ROOMS: ReadonlyArray<BannerRoomId> = [
   'reading',
   'atlas',
   'maps',
   'counting',
+  'reference-desk',
 ];
 const isBannerRoom = (id: RoomId): id is BannerRoomId =>
   (BANNER_ROOMS as ReadonlyArray<RoomId>).includes(id);
@@ -95,6 +99,13 @@ const ROOMS: RoomDef[] = [
     icon: '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="16" y1="18" x2="16" y2="18"/>',
   },
   {
+    id: 'reference-desk',
+    name: 'Reference Desk',
+    href: '/reference-desk/',
+    // HandHeart
+    icon: '<path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.8-2.8L15 12"/><path d="m2 15 6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.7 2.7 0 0 0 18.5 3c-.9 0-1.5.5-2 1-.5-.5-1.1-1-2-1A2.7 2.7 0 0 0 12 5.8c0 1.1.8 2 1.5 2.7L16 11Z"/>',
+  },
+  {
     id: 'records',
     name: 'Records Room',
     href: null,
@@ -130,6 +141,7 @@ const roomNameMap: Record<RoomId, string> = {
   atlas: 'Atlas',
   maps: 'Map Room',
   counting: 'Counting House',
+  'reference-desk': 'Reference Desk',
   records: 'Records Room',
   court: 'Court Room',
   'breach-recovery': 'Breach & Recovery',
