@@ -47,6 +47,23 @@ const MORE_LINKS = [
   { href: '/updates/', label: 'Updates' },
 ];
 
+// v56 — Coming Soon ▾ disclosure. Each entry has a live stub page at
+// its eventual URL; the stub gets replaced in place when the room ships
+// in full. Entries render as italic slate links (not muted aria-disabled
+// spans) because the destination exists — it's a stub, not a dead link.
+const COMING_SOON_LINKS = [
+  { href: '/records/', label: 'Records Room', icon: 'Archive' },
+  { href: '/court/', label: 'Court Room', icon: 'Scale' },
+  { href: '/breach-recovery/', label: 'Breach & Recovery', icon: 'ShieldAlert' },
+  { href: '/chronicle/', label: 'Chronicle Room', icon: 'Compass' },
+  { href: '/stacks/', label: 'The Stacks', icon: 'BookOpen' },
+  { href: '/founders/', label: "Founders' Cabinet", icon: 'Building2' },
+  { href: '/school/', label: 'Schoolroom', icon: 'BookOpen' },
+  { href: '/lectures/', label: 'Lecture Hall', icon: 'Mic' },
+  { href: '/reference-desk/', label: 'Reference Desk', icon: 'HandHeart' },
+  { href: '/computer-room/', label: 'Computer Room', icon: 'ScrollText' },
+];
+
 const LIVE_LIBRARY_ROOMS = LIBRARY_ROOMS.filter((r) => r.live);
 const COMING_LIBRARY_ROOMS = LIBRARY_ROOMS.filter((r) => !r.live);
 
@@ -139,6 +156,28 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
               <span>{room.label}</span>
               <small>coming soon</small>
             </span>
+          ))}
+        </div>
+      </details>
+
+      {/* v56 — Coming Soon ▾ disclosure. Lists the ten rooms-being-planned
+          that have stub pages. Italicized slate text on each link
+          communicates "future thing, click to see what's planned." */}
+      <details class="header-more header-coming relative" data-header-coming>
+        <summary
+          class="inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center px-2 text-blue-700 hover:underline"
+          aria-label="Rooms being planned"
+        >Coming&nbsp;Soon&nbsp;▾</summary>
+        <div class="header-more__panel" role="menu">
+          {COMING_SOON_LINKS.map((room) => (
+            <a
+              href={room.href}
+              role="menuitem"
+              class="header-more__link"
+            >
+              <NavIcon name={room.icon} />
+              <span>{room.label}</span>
+            </a>
           ))}
         </div>
       </details>
@@ -375,6 +414,18 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
           </a>
         </li>
       ))}
+      {/* v56 — Coming Soon group in the mobile overlay. Lists all ten
+          stub-page rooms inline so mobile readers see the planned scope
+          directly, without a nested dropdown. */}
+      <li class="mobile-nav-overlay__group-label" aria-hidden="true">Coming Soon</li>
+      {COMING_SOON_LINKS.map((room) => (
+        <li>
+          <a href={room.href} class="mobile-nav-overlay__link mobile-nav-overlay__link--coming">
+            <NavIcon name={room.icon} />
+            <span>{room.label}</span>
+          </a>
+        </li>
+      ))}
       <li class="mobile-nav-overlay__divider"></li>
       {NAV_LINKS.slice(3).map((link) => (
         <li>
@@ -498,7 +549,8 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
     border-radius: 1px;
   }
 
-  /* v55 — mobile-overlay group label for the "Library rooms" cluster. */
+  /* v55 — mobile-overlay group label for the "Library rooms" cluster.
+     v56 — also used for the "Coming Soon" cluster below it. */
   .mobile-nav-overlay__group-label {
     padding: 0.6rem 1rem 0.2rem;
     font-family: var(--font-sans);
@@ -507,6 +559,31 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #94a3b8;
+  }
+
+  /* v56 — Coming Soon ▾ disclosure. Each room link in the dropdown
+     renders italic + slate, signaling "future thing, click to see
+     what's planned" without screaming "disabled." */
+  [data-header-coming] .header-more__link {
+    color: #475569;
+  }
+  [data-header-coming] .header-more__link span {
+    font-style: italic;
+  }
+  [data-header-coming] .header-more__link:hover {
+    color: #1d4ed8;
+    background: #f1f5f9;
+  }
+
+  /* Mobile overlay equivalent — italic slate Coming Soon entries. */
+  .mobile-nav-overlay__link--coming {
+    color: #475569;
+  }
+  .mobile-nav-overlay__link--coming span {
+    font-style: italic;
+  }
+  .mobile-nav-overlay__link--coming:hover {
+    color: #1d4ed8;
   }
 
   /* v50 — collapsing search. The form sits at width 0 by default and
@@ -791,7 +868,7 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
     // same UX contract: clicking outside closes; activating a link closes
     // so the destination renders without the panel still hanging open.
     const headerDisclosures = Array.from(
-      document.querySelectorAll('[data-header-rooms], [data-header-more]'),
+      document.querySelectorAll('[data-header-rooms], [data-header-coming], [data-header-more]'),
     );
     if (headerDisclosures.length > 0) {
       document.addEventListener('click', (ev) => {
@@ -810,9 +887,10 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
         });
       }
     }
-    // Preserve the moreDetails reference for the Escape handler below.
+    // Preserve the disclosure references for the Escape handler below.
     const moreDetails = document.querySelector('[data-header-more]');
     const roomsDetails = document.querySelector('[data-header-rooms]');
+    const comingDetails = document.querySelector('[data-header-coming]');
 
     // ---- v50 — Collapsing desktop search ----
     const searchWrap = document.querySelector('[data-search-wrap]');
@@ -879,6 +957,10 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
         }
         if (roomsDetails && roomsDetails.hasAttribute('open')) {
           roomsDetails.removeAttribute('open');
+          return;
+        }
+        if (comingDetails && comingDetails.hasAttribute('open')) {
+          comingDetails.removeAttribute('open');
           return;
         }
         if (moreDetails && moreDetails.hasAttribute('open')) {

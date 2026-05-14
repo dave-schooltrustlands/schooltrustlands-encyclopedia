@@ -70,9 +70,17 @@ async function fetchCssBundles(pagePath) {
 }
 
 async function checkA() {
-  console.log('\n· v54.A — /reading/ HTML carries /banners/reading.jpg?v=2');
+  console.log('\n· v54.A — /reading/ HTML carries /banners/reading.jpg with cache-buster');
   const html = await fetchText('/reading/');
-  mustContain('v54.A', html, '/banners/reading.jpg?v=2');
+  checksRun++;
+  // v54 introduced the cache-buster query; later updates (v56 → ?v=3)
+  // bump the version. Test the mechanism, not the literal version.
+  const match = html.match(/\/banners\/reading\.jpg\?v=(\d+)/);
+  if (!match) {
+    recordHard('v54.A: missing /banners/reading.jpg?v=<N> cache-buster in /reading/ HTML');
+    return;
+  }
+  console.log(`    ok contains "/banners/reading.jpg?v=${match[1]}"`);
 }
 
 async function checkBC() {

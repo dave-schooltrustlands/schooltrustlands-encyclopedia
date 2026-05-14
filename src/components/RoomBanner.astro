@@ -7,14 +7,51 @@
 // modes (with mode-specific CSS treatment in mode-library.css and
 // mode-reference.css).
 //
-// Sources are LOC public-domain photographs. See public/banners/CREDITS.md.
+// v52 — Reading Room banner regenerated as a hand-drafted plan-view in the
+// register of the Spatial Discovery Blueprint.
+// v54 — banner becomes full-bleed (escapes the prose container); URL gains
+// `?v=2` cache-buster so future swaps invalidate browser caches.
+// v56 — Full banner-set regeneration. All five remaining LOC photos
+// (atlas, counting, maps, newsroom, voices) replaced with plan-view
+// illustrations matching the Reading Room register; eighteen new
+// plan-view banners added for the Library's adjunct and coming-soon
+// rooms. Cache-buster bumped to `?v=3`. Source PNGs and master prompt
+// preserved in substrate at
+// `L4_Deliverables/Visual_Identity/Room_Banners/`.
 
 interface Props {
   /**
    * Room id — must match a file in /public/banners/{room}.jpg.
-   * One of: reading, atlas, counting, maps, newsroom, voices.
+   * Twenty-four banner slugs (v56): four live library rooms + Newsroom +
+   * Voices + Updates + Pro + the Library's entrance/lobby + ten coming-
+   * soon rooms + five reserved future-room banners not yet linked
+   * (donors, press, periodicals, garden, workshop).
    */
-  room: 'reading' | 'atlas' | 'counting' | 'maps' | 'newsroom' | 'voices';
+  room:
+    | 'reading'
+    | 'atlas'
+    | 'maps'
+    | 'counting'
+    | 'newsroom'
+    | 'voices'
+    | 'great-hall'
+    | 'updates'
+    | 'pro'
+    | 'records'
+    | 'court'
+    | 'breach-recovery'
+    | 'lectures'
+    | 'stacks'
+    | 'school'
+    | 'founders'
+    | 'chronicle'
+    | 'donors'
+    | 'press'
+    | 'periodicals'
+    | 'garden'
+    | 'workshop'
+    | 'reference-desk'
+    | 'computer-room';
   /**
    * Accessible alt text. If absent, falls back to a generic per-room
    * description. Pages with their own banner phrasing should override.
@@ -31,22 +68,58 @@ const DEFAULT_ALT: Record<Props['room'], string> = {
   reading:
     "Architectural plan view of the Library's Reading Room — a long hall with bookshelves running both long walls, a central reading table set with open volumes, a bay window at the far end, and a small arched entrance. Hand-drafted in oxidized navy ink on parchment, in the visual register of the Library's Spatial Discovery Blueprint.",
   atlas:
-    "Bird's-eye view of San Francisco from the bay, looking south-west — historical panoramic map, Library of Congress, public domain.",
-  counting:
-    'Photograph: bank interior with counters and vault (Theodor Horydczak), Library of Congress, public domain.',
+    "Architectural plan view of the Atlas — a cartographic-archive room with broad map tables in the center, rolled-map racks along the walls, and a globe stand. Hand-drafted in oxidized navy ink on parchment.",
   maps:
-    'Photograph: U.S. Geological Survey lithographic draftsmen correcting a printing (Harris & Ewing), Library of Congress, public domain.',
+    "Architectural plan view of the Map Room — wide flat-file drawers along the walls, drafting tables in the center with maps in progress, and a wall of state outlines. Hand-drafted in oxidized navy ink on parchment.",
+  counting:
+    "Architectural plan view of the Counting House — a banking-hall interior with a teller counter, ledger desks behind it, and a small vault recess at the rear. Hand-drafted in oxidized navy ink on parchment.",
   newsroom:
-    'Photograph: newsroom of the New York Times newspaper, "ten o\'clock is news room deadline," FSA/OWI Collection, Library of Congress, public domain.',
+    "Architectural plan view of the Newsroom — two parallel rows of writers' desks with typewriters, a layout table at one end, a telegraph instrument on a side desk, and a wall clock. Hand-drafted in oxidized navy ink on parchment, in the visual register of the Library's Spatial Discovery Blueprint.",
   voices:
-    'Photograph: testimony before the U.S. Senate Civil Liberties Committee, July 1, 1937 (Harris & Ewing), Library of Congress, public domain.',
+    "Architectural plan view of the Voices room — a small lecture-style space with a podium at one end and a curved arrangement of audience chairs in two rows facing it. Hand-drafted in oxidized navy ink on parchment.",
+  'great-hall':
+    "Architectural plan view of the Great Hall — the Library's entrance lobby, with a central rotunda showing a compass-rose floor inlay, flanking benches, and framed pieces on the walls.",
+  updates:
+    "Architectural plan view of the Updates Room — a clerk's bulletin-board room with posted notices on the wall, a desk with an open ledger and date stamps, and a wall calendar.",
+  pro:
+    "Architectural plan view of the Pro Wing — a working-administrative room with a long conference table, filing cabinets, and framed governance documents on the walls.",
+  records:
+    "Architectural plan view of the Records Room — primary-source archive with tall archival shelves around the perimeter, central reading tables with documents, and flat document files.",
+  court:
+    "Architectural plan view of the Court Room — a courtroom interior with a raised bench at the front, advocates' tables facing it, a jury box to one side, gallery seating, and bookcases of statute volumes.",
+  'breach-recovery':
+    "Architectural plan view of the Breach & Recovery room — case-study display tables in the center with labeled exhibits, before-and-after diagrams on the walls.",
+  lectures:
+    "Architectural plan view of the Lecture Hall — tiered semicircular audience seating facing a podium and a demonstration table.",
+  stacks:
+    "Architectural plan view of the Stacks — rows of tall floor-to-ceiling bookshelves with narrow aisles between, and small reading carrels at the ends of the rows.",
+  school:
+    "Architectural plan view of the Schoolroom — small student desks arranged in rows facing a teacher's desk, with a chalkboard and a globe.",
+  founders:
+    "Architectural plan view of the Founders' Cabinet — busts on plinths around the perimeter, a central display table with documents under glass, framed portraits on the walls.",
+  chronicle:
+    "Architectural plan view of the Chronicle Room — a wall-length horizontal timeline labeled 'America's Story · 1785–2026' with chronological display cases beneath it.",
+  donors:
+    "Architectural plan view of the Donor's Hall — a portrait wall with busts above, engraved plaque rows along the walls, a central recognition tablet, and benches for reflection.",
+  press:
+    "Architectural plan view of the Press Room — tables with press kits, a briefing podium at one end, a pin-board with notices, and a recording station.",
+  periodicals:
+    "Architectural plan view of the Periodicals room — low racks of bound issues, comfortable reading chairs with side tables, and reading lamps.",
+  garden:
+    "Architectural plan view of the Garden / Courtyard — outdoor benches around a stone fountain, planting beds along the perimeter, a pergola with climbing vines.",
+  workshop:
+    "Architectural plan view of the Workshop — drafting tables with paper and tools scattered, pin-boards with sketches, flat files.",
+  'reference-desk':
+    "Architectural plan view of the Reference Desk — a curved librarian's station with smaller tables clustered around, and a reference shelf.",
+  'computer-room':
+    "Architectural plan view of the Computer Room — workstation tables with computers, a central table with computers, and a reference shelf.",
 };
 
 const resolvedAlt = alt ?? DEFAULT_ALT[room];
 ---
 
 <img
-  src={`/banners/${room}.jpg?v=2`}
+  src={`/banners/${room}.jpg?v=3`}
   alt={resolvedAlt}
   class="room-banner"
   data-pagefind-ignore

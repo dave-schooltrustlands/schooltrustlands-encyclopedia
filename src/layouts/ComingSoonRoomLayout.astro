@@ -1,0 +1,120 @@
+---
+// ComingSoonRoomLayout.astro — v56
+//
+// Shared layout for the ten stub pages that introduce the Library's
+// rooms-being-planned (Records Room, Court Room, Breach & Recovery,
+// Chronicle Room, The Stacks, Founders' Cabinet, Schoolroom, Lecture
+// Hall, Reference Desk, Computer Room).
+//
+// Mirrors RoomLayout's structural slot order — banner above title —
+// but does NOT render the library-rooms lower-nav tab strip, since the
+// stub pages aren't library-proper rooms yet. The banner gets the
+// full-bleed treatment automatically via the v54 .room-banner CSS,
+// and the layout wraps the banner in .coming-soon-banner-wrapper so a
+// "COMING SOON" pill overlays the upper-right corner.
+
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PrepublicationFooter from '../components/PrepublicationFooter.astro';
+import RoomBanner from '../components/RoomBanner.astro';
+import SealLightbox from '../components/library/SealLightbox.astro';
+
+type RoomSlug =
+  | 'records'
+  | 'court'
+  | 'breach-recovery'
+  | 'chronicle'
+  | 'stacks'
+  | 'founders'
+  | 'school'
+  | 'lectures'
+  | 'reference-desk'
+  | 'computer-room';
+
+interface Props {
+  room: RoomSlug;
+  title: string;
+  subtitle: string;
+  pageTitle?: string;
+  sourceId: string;
+  description?: string;
+}
+
+const { room, title, subtitle, pageTitle, sourceId, description } = Astro.props;
+
+const resolvedTitle =
+  pageTitle ?? `${title} · Coming Soon · America's School Trust Library`;
+const resolvedDescription = description ?? subtitle;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={resolvedTitle} description={resolvedDescription} />
+  </head>
+  <body
+    class="min-h-screen bg-archive-paper text-ink mode-library"
+    data-source-id={sourceId}
+    data-room={room}
+    data-coming-soon="true"
+  >
+    <Header />
+    <main class="mx-auto max-w-prose p-4 sm:p-8 room-main">
+      <div class="coming-soon-banner-wrapper">
+        <RoomBanner room={room} />
+      </div>
+      <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+        <p class="coming-soon-eyebrow">COMING SOON</p>
+        <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl" data-pagefind-weight="10">
+          {title}
+        </h1>
+        <p class="kicker italic text-slate-600">{subtitle}</p>
+        <slot />
+        <hr class="mt-12" />
+        <p class="text-sm text-slate-600">
+          Want to help build this room?
+          <a href="/reference-desk/">Get in touch via the Reference Desk.</a>
+        </p>
+      </article>
+    </main>
+    <PrepublicationFooter />
+    <Footer />
+    <SealLightbox />
+  </body>
+</html>
+
+<style>
+  .coming-soon-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--old-gold, #B88A2E);
+    margin-bottom: 0.5rem;
+  }
+
+  /* COMING SOON pill on the banner. The wrapper has zero offset
+     against the breakout-positioned .room-banner (left:50%/translateX),
+     so the absolute-positioned pseudo-element anchors to the wrapper's
+     bounding box, which spans the same viewport-width banner. */
+  .coming-soon-banner-wrapper {
+    position: relative;
+  }
+  .coming-soon-banner-wrapper::after {
+    content: "COMING SOON";
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(184, 138, 46, 0.95);
+    color: #fff;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-family: var(--font-sans);
+    z-index: 2;
+    pointer-events: none;
+  }
+</style>
