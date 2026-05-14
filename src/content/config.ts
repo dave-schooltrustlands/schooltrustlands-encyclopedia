@@ -184,6 +184,37 @@ const howTheLibraryWorks = defineCollection({
   }),
 });
 
+// Library — v59 curated reference collection. 39 entries across six
+// categories (A–F): foundational primary sources, historical scholarship
+// pre-1950, doctrinal court opinions, contemporary scholarship & reference
+// works, state-commissioned studies & reports, and educational & cultural
+// context. Each entry lives at /reading/library/<slug>/. The existing
+// founders_library and scholarship collections continue in parallel for
+// the legacy routes; this collection is the new canonical home.
+const library = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    year: z.union([z.string(), z.number()]),
+    category: z.enum(['A', 'B', 'C', 'D', 'E', 'F']),
+    categoryName: z.string(),
+    treatment: z.enum([
+      'link-only',
+      'link-plus-excerpt',
+      'link-plus-full-text',
+      'link-plus-full-text-hosted',
+    ]),
+    sourceUrlPrimary: z.string().url(),
+    sourceUrlFallback: z.string().url().optional(),
+    sourceLabel: z.string().optional(),
+    rationale: z.string(),
+    featured: z.boolean().default(false),
+    featuredRationale: z.string().optional(),
+    hostedPdfPath: z.string().optional(),
+  }),
+});
+
 export const collections = {
   states,
   essays,
@@ -192,4 +223,5 @@ export const collections = {
   founders_library: foundersLibrary,
   scholarship,
   'how-the-library-works': howTheLibraryWorks,
+  library,
 };

@@ -1,136 +1,221 @@
 ---
+// v59 — Reading Room landing rebuild. The room reframes from a multi-door
+// lobby into a curated reference room with two collections: the Atlas of
+// 50 state dossiers (each at /reading/us-XX/), and a curated catalog of
+// 39 works by other authors at /reading/library/<slug>/. Four featured
+// entries sit above the six category sections. The Library's own books
+// remain at their existing /reading/* URLs pending a future migration to
+// the Writing Room.
+import { getCollection } from 'astro:content';
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import ReferenceDesk from '../../components/ReferenceDesk.astro';
+
+const libraryEntries = await getCollection('library');
+const stateEntries = await getCollection('states');
+
+type Cat = 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+
+const categoryOrder: Cat[] = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+const categoryNames: Record<Cat, string> = {
+  A: 'Foundational primary sources',
+  B: 'Historical scholarship, pre-1950',
+  C: 'Doctrinal court opinions',
+  D: 'Contemporary scholarship & reference works',
+  E: 'State-commissioned studies & reports',
+  F: 'Educational & cultural context',
+};
+
+const categoryBlurbs: Record<Cat, string> = {
+  A: 'The federal acts of Congress, the territorial ordinances, the early state constitutions, and the admission acts on which the entire school-trust system rests. All public-domain by virtue of being federal or state government works.',
+  B: 'The early- and mid-twentieth-century scholars who first reconstructed, state by state, what had happened to the school-trust corpora in their founding centuries. Close enough to the records to capture details modern researchers cannot easily recover.',
+  C: 'The cases American courts have decided on the questions the Library’s substrate turns on: whether admission-act grants are real trusts, what the trustee state owes the beneficiary, what the fiduciary standard is, what the remedies are when it is breached.',
+  D: 'The standing academic and practitioner literature on school trust lands, trust doctrine generally, and school finance. Most are in copyright; the Library carries Tier 3 editorial summaries with Title-Steward recruitment open. Culp et al. is open-access.',
+  E: 'State-level reports and studies that document school-trust-lands administration from inside the system. Reform statutes, agency annual reports, and the advocacy-office reporting that holds trustee states accountable to beneficiaries.',
+  F: 'Works that are not directly about school trust lands but document what the trust was intended to fund — the public-school education the framers had in mind, and the cultural fabric the Section 16 grants were meant to support.',
+};
+
+const treatmentLabel: Record<string, string> = {
+  'link-only': 'Link',
+  'link-plus-excerpt': 'Excerpt',
+  'link-plus-full-text': 'Full text',
+  'link-plus-full-text-hosted': 'Full text',
+};
+
+type Entry = (typeof libraryEntries)[number];
+
+const slugOf = (e: Entry) => (e.slug ?? e.id).replace(/\.md$/, '');
+
+const sortByCategoryThenYear = (a: Entry, b: Entry) => {
+  const yA = Number(a.data.year) || 0;
+  const yB = Number(b.data.year) || 0;
+  return yA - yB;
+};
+
+const featuredSlugs = [
+  'land-ordinance-1785',
+  'swift-public-permanent-school-funds-1911',
+  'meinhard-v-salmon-1928',
+  'margaret-bird-selected-essays',
+];
+const featured = featuredSlugs
+  .map((s) => libraryEntries.find((e) => slugOf(e) === s))
+  .filter((e): e is Entry => Boolean(e));
+
+const byCategory: Record<Cat, Entry[]> = { A: [], B: [], C: [], D: [], E: [], F: [] };
+for (const e of libraryEntries) byCategory[e.data.category as Cat].push(e);
+for (const c of categoryOrder) byCategory[c].sort(sortByCategoryThenYear);
+
+const states = stateEntries
+  .slice()
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
 <RoomLayout
   room="reading"
   title="Reading Room"
-  subtitle="Five rooms, each with its own purpose. Pick a door."
+  subtitle="The Library’s reference shelf. Two collections, side by side."
   width="prose"
-  sourceId="reading-toc"
+  sourceId="reading-toc-v59"
 >
   <section class="reading-lobby mt-6">
-    <p class="lobby-intro">
-      The Reading Room is the public face of America's School Trust Library —
-      five rooms, each with its own purpose. The Library's Argument lays out
-      what the school-trust tradition is and what is at stake. The Founders'
-      Library collects the foundational texts. The Scholarship surfaces the
-      secondary literature that reads, organizes, and extends the tradition.
-      State Records houses what each state has done with its trust. Voices is
-      where the people who study, steward, and contest these lands speak in
-      their own words. Pick a door.
-    </p>
+    <div class="lobby-intro">
+      <p>
+        The Reading Room is the Library’s reference shelf. Two
+        collections live here, side by side. The first is the Atlas
+        — one page for each of the fifty states, documenting what
+        that state was granted at admission, what its constitution and
+        statutes say about the trust, what its courts have held, what
+        its records show about the corpus and the distributions, and
+        what the Library knows about the state’s current condition.
+      </p>
+
+      <p>
+        The second is the curated collection — foundational
+        primary sources, historical scholarship, doctrinal court
+        opinions, state-commissioned reports, and contemporary policy
+        and reference work by authors other than the Library. These
+        works were written by other people. The Library carries them
+        because anyone who wants to understand the school-trust system
+        has to read them eventually, and we would rather keep them
+        findable than let them drift into the corners of the internet
+        where good scholarship goes to disappear.
+      </p>
+
+      <p>
+        Below: four featured entries the Library most needs visitors to
+        encounter first; the full thirty-nine-entry browse organized
+        into six categories; and the alphabetical roster of fifty state
+        dossiers. The Library’s own books and essays
+        (<em>Schools of the Republic</em>, <em>The Eighth Anchor</em>,
+        <em>Who Steals from Children</em>) currently remain at their
+        existing URLs and are slated to move to the
+        <a href="/writing/">Writing Room</a> in a future architecture
+        pass.
+      </p>
+    </div>
 
     <hr class="archival-divider" />
 
-    <!-- ================================================================== -->
-    <!-- Door cards — four substrate rooms (Voices lives in nav, not here)  -->
-    <!-- ================================================================== -->
-    <section class="lobby-doors" aria-label="Reading Room sections">
-      <article class="door-card">
-        <h2 class="door-title">I. The Library's Argument</h2>
-        <p class="door-description">
-          Three book-length works carry the Library's central argument.
-          <em>Schools of the Republic</em>, the historical record across all
-          fifty states. <em>The Eighth Anchor</em>, the diagnostic frame that
-          explains what holds a multi-generational trust together — and what
-          breaks it. And <em>Who Steals from Children: Volume 1 — Oregon and
-          the Elliott</em>, a live case in court right now that puts the
-          diagnosis to work.
-        </p>
-        <a href="/reading/the-librarys-argument/" class="door-enter">
-          Enter →
-        </a>
-      </article>
-
-      <article class="door-card">
-        <h2 class="door-title">II. The Founders' Library</h2>
-        <p class="door-description">
-          Fifteen primary-source documents the school-trust experiment was
-          built on, organized into three era cohorts: the 1780s founding
-          (Land Ordinance, Northwest Ordinance, Massachusetts Constitution,
-          Federalist No. 10, Jefferson's Bill); the common-school era (Mann,
-          Barnard, McGuffey, Pierce); and the high-water and reform period
-          (Fitch &amp; Skinner, Swift, Hawkes, Utah Code Title 53C).
-        </p>
-        <a href="/reading/founders-library/" class="door-enter">Enter →</a>
-      </article>
-
-      <article class="door-card">
-        <h2 class="door-title">III. The Scholarship</h2>
-        <p class="door-description">
-          The secondary literature on school trust lands, public-school
-          governance, and intergenerational fiduciary law. Tier 1 open-access
-          works the Library hosts in full; Tier 2 partially-available works
-          the Library annotates and excerpts; and Tier 3 stub pages for
-          in-copyright reference works (Bogert; Restatement (Third) of Trusts;
-          Souder &amp; Fairfax; Culp; NEFA). Each Tier 3 stub carries a
-          Title-Steward call.
-        </p>
-        <a href="/reading/scholarship/" class="door-enter">Enter →</a>
-      </article>
-
-      <article class="door-card">
-        <h2 class="door-title">IV. State Records</h2>
-        <p class="door-description">
-          The per-state evidentiary material the <em>Schools of the
-          Republic</em> case-by-case record draws on: filings, audits,
-          governor's messages, treasurer's reports, attorney-general
-          opinions. Currently weighted toward Oregon (the active-litigation
-          state) and the comparative cohort — Utah, New Mexico, Texas,
-          California, Arizona. Browse via the <a href="/atlas/">Atlas</a>.
-        </p>
-        <a href="/atlas/" class="door-enter">Enter →</a>
-      </article>
-
-      <article class="door-card">
-        <h2 class="door-title">V. <em>Who Steals from Children</em> — A Series</h2>
-        <p class="door-description">
-          The Library's series-in-progress documenting how America's
-          school-land trusts are being broken in the present tense.
-          Volume 1, <em>Oregon and the Elliott</em>, is in
-          pre-publication review as a Reader's Edition — a first-person
-          account written for the parents and school-district
-          administrators whose children are the trusts' named
-          beneficiaries.
-        </p>
-        <a href="/reading/who-steals-from-children/" class="door-enter">Enter →</a>
-      </article>
-
+    {/* ============================================================== */}
+    {/* Featured entries — 2x2 grid                                    */}
+    {/* ============================================================== */}
+    <section class="lobby-featured" aria-label="Featured entries">
+      <h2 class="section-heading">Featured</h2>
+      <ul class="featured-grid">
+        {featured.map((e) => {
+          const slug = slugOf(e);
+          return (
+            <li>
+              <a href={`/reading/library/${slug}/`} class="library-featured-card">
+                <span class="featured-eyebrow">Featured</span>
+                <h3 class="featured-title">{e.data.title}</h3>
+                <p class="featured-byline">{e.data.author}, {e.data.year}</p>
+                {e.data.featuredRationale && (
+                  <p class="featured-rationale">{e.data.featuredRationale}</p>
+                )}
+                <span class="entry-treatment">
+                  Read this → <span class="treatment-tag">{treatmentLabel[e.data.treatment]}</span>
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
     </section>
 
     <hr class="archival-divider" />
 
-    <!-- ================================================================== -->
-    <!-- Featured books on display                                          -->
-    <!-- ================================================================== -->
-    <section class="lobby-featured" aria-label="Featured this week">
-      <h2 class="featured-section-heading">On display this week</h2>
+    {/* ============================================================== */}
+    {/* Browse by category                                             */}
+    {/* ============================================================== */}
+    <section class="lobby-browse" aria-label="Browse the curated collection by category">
+      <h2 class="section-heading">Browse by category</h2>
+      <p class="section-subhead">
+        Thirty-nine entries the Library carries because they belong on
+        the reference shelf of anyone serious about school trust lands.
+      </p>
 
-      <article class="featured-book">
-        <span class="featured-tag">Featured</span>
-        <h3 class="featured-title">Horace Mann's <em>Twelfth Annual Report</em></h3>
-        <p class="featured-byline">Massachusetts Board of Education · 1848</p>
-        <p class="featured-blurb">
-          The 1848 <em>Twelfth Annual Report</em> of the Massachusetts Board
-          of Education. Source of <em>the balance-wheel of the social
-          machinery</em> — the phrase that organizes much of the Library's
-          argument. Mann reading public schools as republican infrastructure.
-        </p>
-        <a
-          href="/reading/founders-library/mann-twelfth-annual-report-1848/"
-          class="featured-link"
-          >Read this →</a
-        >
-      </article>
+      {categoryOrder.map((cat) => (
+        <section class="category-section" id={`category-${cat.toLowerCase()}`}>
+          <h3 class="category-title">
+            <span class="category-badge">{cat}</span>
+            {categoryNames[cat]}
+          </h3>
+          <p class="category-blurb">{categoryBlurbs[cat]}</p>
+          <ul class="entry-list">
+            {byCategory[cat].map((e) => {
+              const slug = slugOf(e);
+              return (
+                <li>
+                  <a href={`/reading/library/${slug}/`} class="library-entry-card">
+                    <h4 class="entry-title">
+                      {e.data.title}
+                      <span class="entry-meta"> ({e.data.author}, {e.data.year})</span>
+                    </h4>
+                    <p class="entry-rationale">{e.data.rationale}</p>
+                    <span class="entry-treatment">
+                      → <span class="treatment-tag">{treatmentLabel[e.data.treatment]}</span>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+    </section>
+
+    <hr class="archival-divider" />
+
+    {/* ============================================================== */}
+    {/* State dossier roster                                           */}
+    {/* ============================================================== */}
+    <section class="lobby-atlas" aria-label="State dossiers">
+      <h2 class="section-heading">State dossiers</h2>
+      <p class="section-subhead">
+        One page for each of the fifty states. The Atlas of state
+        dossiers documents the federal grant, the constitutional and
+        statutory architecture, the doctrinal record, the present
+        condition of the corpus and the distributions, and the gaps
+        the Library has flagged for follow-up research. Oregon and
+        Utah are the deepest pages today; the rest build out as the
+        Library’s curation continues.
+      </p>
+      <ul class="state-roster">
+        {states.map((s) => (
+          <li>
+            <a href={`/reading/${s.data.iso.toLowerCase()}/`}>{s.data.name}</a>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <hr class="archival-divider" />
 
     <p class="lobby-footer">
-      The Library accepts contributions of source material, corrections, and
-      citizen-historian work.
+      The Library accepts contributions of source material, corrections,
+      and citizen-historian work.
       <a href="/contribute/">Suggest a contribution →</a>
     </p>
 
@@ -138,123 +223,206 @@ import ReferenceDesk from '../../components/ReferenceDesk.astro';
   </section>
 
   <style>
-    .reading-lobby {
-      margin-top: 1.5rem;
-    }
-    .lobby-intro {
+    .reading-lobby { margin-top: 1.5rem; }
+
+    .lobby-intro p {
       font-family: var(--font-serif, Georgia, serif);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.65;
       color: #334155;
-      margin: 1rem 0 1.75rem;
-    }
-    .lobby-doors {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 1.5rem 0 2rem;
-    }
-    .door-card {
-      background: var(--linen-card, #fafaf7);
-      border: 1px solid var(--rule-border, #e5e7eb);
-      border-radius: 4px;
-      padding: 1.5rem 1.5rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
-    }
-    .door-card:hover {
-      border-color: var(--old-gold, #8b7355);
-      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
-    }
-    .door-title {
-      font-family: var(--font-serif, Georgia, serif);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--deep-navy, #1e3a5f);
-      margin: 0 0 0.5rem;
-      letter-spacing: 0.005em;
-    }
-    .door-description {
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: #475569;
       margin: 0 0 1rem;
-      flex: 1;
     }
-    .door-enter {
-      align-self: flex-start;
-      color: #1d4ed8;
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    .door-enter:hover {
-      color: #1e40af;
-    }
+    .lobby-intro p:last-child { margin-bottom: 0; }
 
-    .lobby-featured {
-      margin: 2rem 0;
-    }
-    .featured-section-heading {
+    .section-heading {
       font-family: var(--font-sans);
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #64748b;
-      margin: 0 0 1rem;
+      margin: 0 0 0.75rem;
     }
-    .featured-book {
+    .section-subhead {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #475569;
+      margin: 0 0 1.25rem;
+    }
+
+    /* Featured 2x2 grid */
+    .featured-grid {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .library-featured-card {
+      display: block;
       background: #fff;
       border: 1px solid var(--rule-border, #e5e7eb);
       border-left: 3px solid var(--old-gold, #8b7355);
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.25rem;
-      border-radius: 2px;
+      border-radius: 3px;
+      padding: 1.25rem 1.4rem 1.1rem;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      height: 100%;
     }
-    .featured-tag {
+    .library-featured-card:hover {
+      border-color: var(--old-gold, #8b7355);
+      box-shadow: 0 1px 6px rgba(15, 23, 42, 0.08);
+    }
+    .featured-eyebrow {
       display: inline-block;
       font-family: var(--font-sans);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--old-gold, #8b7355);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.45rem;
     }
     .featured-title {
       font-family: var(--font-serif, Georgia, serif);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--deep-navy, #1e3a5f);
-      margin: 0 0 0.25rem;
+      margin: 0 0 0.3rem;
+      line-height: 1.3;
     }
     .featured-byline {
       font-family: var(--font-sans);
       font-size: 0.82rem;
       color: #64748b;
-      margin: 0 0 0.6rem;
+      margin: 0 0 0.7rem;
     }
-    .featured-blurb {
-      font-size: 0.95rem;
+    .featured-rationale {
+      font-size: 0.93rem;
       line-height: 1.55;
       color: #475569;
       margin: 0 0 0.85rem;
     }
-    .featured-link {
+    .entry-treatment {
+      display: inline-block;
       color: #1d4ed8;
       font-family: var(--font-sans);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
+    }
+    .treatment-tag {
+      display: inline-block;
+      margin-left: 0.35rem;
+      padding: 0 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #64748b;
+      background: #f1f5f9;
+      border-radius: 2px;
+    }
+
+    /* Browse by category */
+    .lobby-browse { margin-top: 0.5rem; }
+    .category-section {
+      margin: 1.75rem 0 1.5rem;
+    }
+    .category-title {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .category-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      border: 1px solid var(--old-gold, #8b7355);
+      border-radius: 50%;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--old-gold, #8b7355);
+      background: #fafaf7;
+    }
+    .category-blurb {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: #475569;
+      margin: 0 0 0.9rem;
+    }
+    .entry-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+    }
+    .library-entry-card {
+      display: block;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 3px;
+      padding: 0.85rem 1rem 0.9rem;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+      height: 100%;
+    }
+    .library-entry-card:hover {
+      border-color: var(--old-gold, #8b7355);
+      background: #fff;
+    }
+    .entry-title {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 0.3rem;
+      line-height: 1.3;
+    }
+    .entry-meta {
+      font-weight: 400;
+      color: #64748b;
+      font-size: 0.88rem;
+    }
+    .entry-rationale {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: #475569;
+      margin: 0 0 0.55rem;
+    }
+
+    /* State roster */
+    .state-roster {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      columns: 3;
+      column-gap: 1.25rem;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+    }
+    .state-roster li {
+      break-inside: avoid;
+      padding: 0.15rem 0;
+    }
+    .state-roster a {
+      color: #1d4ed8;
       text-decoration: underline;
       text-underline-offset: 2px;
     }
-    .featured-link:hover {
-      color: #1e40af;
-    }
+    .state-roster a:hover { color: #1e40af; }
 
     .lobby-footer {
       font-family: var(--font-sans);
@@ -270,10 +438,13 @@ import ReferenceDesk from '../../components/ReferenceDesk.astro';
       font-weight: 600;
     }
 
-    @media (max-width: 700px) {
-      .lobby-doors {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 720px) {
+      .featured-grid { grid-template-columns: 1fr; }
+      .entry-list { grid-template-columns: 1fr; }
+      .state-roster { columns: 2; }
+    }
+    @media (max-width: 460px) {
+      .state-roster { columns: 1; }
     }
   </style>
 </RoomLayout>

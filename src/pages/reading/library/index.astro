@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+
+const entries = await getCollection('library');
+
+type Cat = 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+const CATEGORY_ORDER: Cat[] = ['A', 'B', 'C', 'D', 'E', 'F'];
+const CATEGORY_NAMES: Record<Cat, string> = {
+  A: 'Foundational primary sources',
+  B: 'Historical scholarship, pre-1950',
+  C: 'Doctrinal court opinions',
+  D: 'Contemporary scholarship & reference works',
+  E: 'State-commissioned studies & reports',
+  F: 'Educational & cultural context',
+};
+
+// Group entries by category, preserving title-alphabetical order within
+// each group. The category-grouped browse on /reading/ is the primary
+// surface; this page is the flat "browse all" fallback.
+const grouped: Record<Cat, typeof entries> = {
+  A: [], B: [], C: [], D: [], E: [], F: [],
+};
+for (const e of entries) {
+  grouped[e.data.category as Cat].push(e);
+}
+for (const cat of CATEGORY_ORDER) {
+  grouped[cat].sort((a, b) =>
+    a.data.title.localeCompare(b.data.title, undefined, { sensitivity: 'base' }),
+  );
+}
+---
+<RoomLayout
+  room="reading"
+  title="The Curated Collection"
+  subtitle="Foundational primary sources, historical scholarship, doctrinal court opinions, contemporary scholarship, state-commissioned reports, and the educational and cultural context that puts the school-trust system in its proper frame."
+  width="prose"
+  sourceId="library-index"
+  pageTitle="The Curated Collection · Reading Room · America's School Trust Library"
+>
+  <p slot="before-title" class="text-xs uppercase tracking-wide text-slate-500">
+    Reading Room · Browse all
+  </p>
+
+  <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
+    <p>
+      The curated collection is the Library's reference shelf of work by other
+      authors. Thirty-nine entries are organized into six categories below. Each
+      entry has its own page at <code>/reading/library/&lt;slug&gt;/</code>. The
+      main category-grouped browse is on the Reading Room landing; this page is
+      the flat "browse all" surface for readers arriving directly.
+    </p>
+  </article>
+
+  {CATEGORY_ORDER.map((cat) => (
+    <section class="not-prose mt-10">
+      <h2 class="text-xl font-semibold tracking-tight text-slate-900">
+        Category {cat} — {CATEGORY_NAMES[cat]}
+      </h2>
+      <ul class="mt-3 space-y-2">
+        {grouped[cat].map((e) => {
+          const slug = (e.slug ?? e.id).replace(/\.md$/, '');
+          return (
+            <li class="text-sm">
+              <a
+                href={`/reading/library/${slug}/`}
+                class="text-blue-700 underline"
+              >
+                {e.data.title}
+              </a>
+              <span class="text-slate-600">
+                {' '}— {e.data.author}, {e.data.year}.
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  ))}
+
+  <hr class="my-10 border-slate-200" />
+
+  <p class="text-sm text-slate-600">
+    <a href="/reading/" class="text-blue-700 underline">← Back to the Reading Room</a>
+    &nbsp;·&nbsp;
+    <a href="/contribute/" class="text-blue-700 underline">Suggest a contribution</a>
+  </p>
+</RoomLayout>
