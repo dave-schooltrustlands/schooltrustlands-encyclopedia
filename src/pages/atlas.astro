@@ -141,7 +141,7 @@ const LENSES: Lens[] = [
     id: 'transparency',
     label: 'Trust transparency',
     description:
-      'Whether the state publishes its school-trust corpus and most recent distribution. Derived from substrate v1.3.',
+      'Whether the state publishes its school-trust corpus and most recent distribution.',
     records: transparency as LensRecord[],
     categoryColors: [
       { category: 'data-published', color: '#1b9e77', legend: 'Corpus and distribution disclosed' },
@@ -438,12 +438,6 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
       1850, and quadrupled in 1894.
     </p>
   </section>
-
-  <p class="mt-6 text-xs text-slate-500">
-    Lens data derived at build time from <code>src/content/states/*.md</code>{' '}
-    — substrate v1.3. Categorical buckets and color assignments are documented
-    in <code>scripts/build-map-layers.mjs</code>.
-  </p>
 
   {/* v9 D.1 — missing-data ornament legend. Library Mode reveals the
       ornament strip; Reference Mode hides it (the table-page text

@@ -1247,7 +1247,15 @@ body[data-source-id^="essay-sacred-compact-interlude-"] main > header h1 {
    --------------------------------------------------------------------- */
 .room-banner {
   display: block;
-  width: 100%;
+  /* v54 ALPHA — full-bleed: span the viewport width regardless of any
+     prose / max-w-* container the banner sits in. 100vw + left: 50% +
+     transform: translateX(-50%) keeps the banner centered in the
+     viewport while extending past the parent's width. max-width: 1920px
+     caps the banner on ultra-wide displays; at the cap the banner sits
+     centered with parchment-toned letterboxing that reads as
+     intentional. */
+  width: 100vw;
+  max-width: 1920px;
   /* v52 GAMMA — raised from 240 to 480 so the new 3:1 plan-view banners
      (1600 × 533, starting with reading.jpg) can render in full at typical
      content widths without object-fit: cover clipping the badge, caption,
@@ -1257,6 +1265,9 @@ body[data-source-id^="essay-sacred-compact-interlude-"] main > header h1 {
   max-height: 480px;
   object-fit: cover;
   object-position: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0 0 1.5rem;
 }
 /* === end v9 banner CSS (Beta) ====================================== */

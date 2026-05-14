@@ -35,6 +35,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Thursday May 14, 2026 — Site update v54: Surface polish — banner widens to viewport, build-internals jargon removed from Atlas / Map Room / Counting House.</strong>
+            The Reading Room's new plan-view banner now spans the full
+            browser width rather than being constrained to the page's
+            reading column, capped at 1920 px on ultra-wide monitors so
+            it doesn't grow oversized. Banner image URLs now carry a
+            small <code>?v=2</code> version marker so future banner swaps
+            invalidate browser caches automatically. Three pages had
+            build-pipeline mentions in their visible prose — "data
+            derived at build time from src/content/states/*.md" and
+            similar — which were appropriate for code comments but did
+            not belong in public-facing copy. Those lines have been
+            stripped; the pages now describe what the reader is looking
+            at instead of how the file was assembled. A small audit
+            script at <code>_tools/check_public_jargon.py</code> will
+            catch future drift of this kind.
+          </li>
+          <li>
             <strong>Thursday May 14, 2026 — Site update v53: Atlas now interactive.</strong>
             Click any chapter in the era-cohort legend to highlight only those
             states (others fade back). Drag the new timeline marker below the
