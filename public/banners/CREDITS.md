@@ -26,14 +26,30 @@ Two images were replaced from v9:
   auditorium — speaker upstage, audience filling the hall — which reads
   as civic-podium / editorial-voice rather than courtroom.
 
+## v52 update — 2026-05-14
+
+The Reading Room banner was replaced with a hand-drafted plan-view image
+in the visual register of the Library's Spatial Discovery Blueprint
+(1600 × 533, 3:1). First installment of the room-banner regeneration set
+planned in `L4_Deliverables/Visual_Identity/Room_Banners/`. The original
+LOC Horydczak photograph is preserved at `_archive/reading_loc_horydczak.jpg`
+— archived, not removed, so the LOC reference remains discoverable for
+future scholarship. The other five room banners (atlas, counting, maps,
+newsroom, voices) still serve the v10 LOC photographs.
+
 ## Per-room
 
-- **Reading Room** — `reading.jpg`. *Library of Congress (Jefferson
-  Building). Main Reading Room, Library of Congress.* Photographer:
-  Theodor Horydczak (ca. 1890–1971). Source:
-  https://www.loc.gov/pictures/item/2019685011/ — TIFF master:
-  https://cdn.loc.gov/master/pnp/thc/5a50000/5a50700/5a50787u.tif
-  License: Public domain (no known restrictions, LOC).
+- **Reading Room** — `reading.jpg`. Plan-view architectural rendering of
+  the Library's Reading Room (1600 × 533, hand-drafted, oxidized-navy ink
+  on parchment). Generated 2026-05-13 against the v2 master room-banner
+  prompt; installed 2026-05-14 (Site Update v52). The original LOC
+  Horydczak photograph below is preserved at `_archive/reading_loc_horydczak.jpg`.
+  - *Archived (was v10 reading.jpg):* Library of Congress (Jefferson
+    Building). Main Reading Room. Photographer: Theodor Horydczak
+    (ca. 1890–1971). Source:
+    https://www.loc.gov/pictures/item/2019685011/ — TIFF master:
+    https://cdn.loc.gov/master/pnp/thc/5a50000/5a50700/5a50787u.tif
+    License: Public domain (no known restrictions, LOC).
 
 - **Atlas** — `atlas.jpg`. *Library of Congress, Map Division quarters,
   north curtain, second floor.* Photographer: Levin C. Handy (1855–1932),

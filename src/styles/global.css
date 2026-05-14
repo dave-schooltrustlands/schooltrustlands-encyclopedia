@@ -1248,8 +1248,15 @@ body[data-source-id^="essay-sacred-compact-interlude-"] main > header h1 {
 .room-banner {
   display: block;
   width: 100%;
-  max-height: 240px;
+  /* v52 GAMMA — raised from 240 to 480 so the new 3:1 plan-view banners
+     (1600 × 533, starting with reading.jpg) can render in full at typical
+     content widths without object-fit: cover clipping the badge, caption,
+     compass rose, or frame ornament. The existing 5:1 LOC photo banners
+     (1200 × 240) still render unchanged — their natural display height at
+     ~1280 wide is ~256 px, well below the new cap. */
+  max-height: 480px;
   object-fit: cover;
+  object-position: center;
   margin: 0 0 1.5rem;
 }
 /* === end v9 banner CSS (Beta) ====================================== */

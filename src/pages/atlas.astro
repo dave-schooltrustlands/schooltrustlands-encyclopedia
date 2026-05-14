@@ -2,6 +2,7 @@
 import RoomLayout from '../layouts/RoomLayout.astro';
 
 import eraCohort from '../data/map-layers/era-cohort.json';
+import eraCohortDates from '../data/map-layers/era-cohort-dates.json';
 import corpus from '../data/map-layers/corpus.json';
 import grantAcres from '../data/map-layers/grant-acres.json';
 import transparency from '../data/map-layers/transparency.json';
@@ -27,7 +28,77 @@ type Lens = {
   categoryColors: { category: string; color: string; legend: string }[];
 };
 
-// Color palettes are colorblind-safe (Dark2 / sequential ColorBrewer).
+// v52 BETA — era cohort uses a six-step sequential palette walking from
+// deep oxidized navy (Ch. 1, the founding) to warm ochre (Ch. 6, the
+// twentieth-century high-water mark), so the eye reads temporal sequence
+// from hue+brightness on the static map. Other lenses keep their
+// colorblind-safe categorical or sequential palettes.
+const ERA_COHORT_PALETTE: Record<string, string> = {
+  'cohort-1': '#1f3851',
+  'cohort-2': '#3a4f6c',
+  'cohort-3': '#5a6677',
+  'cohort-4': '#8a7560',
+  'cohort-5': '#b58a45',
+  'cohort-6': '#d4a64a',
+};
+
+// v52 ALPHA — base legend labels per cohort. Date ranges interpolated
+// at build time from era-cohort-dates.json so labels stay correct if a
+// state's eraCohort or admittedDate ever changes in substrate.
+const ERA_COHORT_BASE_LABELS: Record<string, string> = {
+  'cohort-1': 'Ch. 1 — Founding Floor',
+  'cohort-2': 'Ch. 2 — Statehood without federal floor',
+  'cohort-3': 'Ch. 3 — Northwest Ordinance template',
+  'cohort-4': 'Ch. 4 — Antebellum doubling',
+  'cohort-5': 'Ch. 5 — Reconstruction & western stack',
+  'cohort-6': 'Ch. 6 — Twentieth-century high-water mark',
+};
+
+type CohortDates = { firstYear: number; lastYear: number };
+const cohortDates = eraCohortDates as Record<string, CohortDates>;
+
+// v52 BETA — timeline-strip geometry. Hoisted into the frontmatter so the
+// type annotations don't collide with Astro's JSX-aware template parser
+// (Array<...> generics inside a template-side IIFE get misread as markup).
+const TIMELINE_X_LEFT = 20;
+const TIMELINE_X_RIGHT = 980;
+const TIMELINE_START_YEAR = 1785;
+const TIMELINE_END_YEAR = 1959;
+function yearToTimelineX(y: number): number {
+  return (
+    TIMELINE_X_LEFT +
+    ((y - TIMELINE_START_YEAR) / (TIMELINE_END_YEAR - TIMELINE_START_YEAR)) *
+      (TIMELINE_X_RIGHT - TIMELINE_X_LEFT)
+  );
+}
+const FEDERAL_COHORT_SEGMENTS: { key: string; label: string }[] = [
+  { key: 'cohort-1', label: 'Ch. 1' },
+  { key: 'cohort-3', label: 'Ch. 3' },
+  { key: 'cohort-4', label: 'Ch. 4' },
+  { key: 'cohort-5', label: 'Ch. 5' },
+  { key: 'cohort-6', label: 'Ch. 6' },
+];
+const TIMELINE_TICKS: { year: number; note: string }[] = [
+  { year: 1785, note: 'Land Ordinance' },
+  { year: 1787, note: 'NW Ordinance' },
+  { year: 1850, note: '2 sections' },
+  { year: 1894, note: '4 sections' },
+  { year: 1959, note: 'AK + HI' },
+];
+const cohort2Dates = cohortDates['cohort-2'];
+
+const eraCohortCategoryColors = ['cohort-1', 'cohort-2', 'cohort-3', 'cohort-4', 'cohort-5', 'cohort-6'].map(
+  (key) => {
+    const range = cohortDates[key];
+    const suffix = range ? ` (${range.firstYear}–${range.lastYear})` : '';
+    return {
+      category: key,
+      color: ERA_COHORT_PALETTE[key],
+      legend: `${ERA_COHORT_BASE_LABELS[key]}${suffix}`,
+    };
+  },
+);
+
 const LENSES: Lens[] = [
   {
     id: 'era-cohort',
@@ -35,14 +106,7 @@ const LENSES: Lens[] = [
     description:
       'The architectural moment a state was admitted, and whether it received a federal school-land grant.',
     records: eraCohort as LensRecord[],
-    categoryColors: [
-      { category: 'cohort-1', color: '#1b9e77', legend: 'Ch. 1 — Founding Floor' },
-      { category: 'cohort-2', color: '#d95f02', legend: 'Ch. 2 — Statehood without federal floor' },
-      { category: 'cohort-3', color: '#7570b3', legend: 'Ch. 3 — Northwest Ordinance template' },
-      { category: 'cohort-4', color: '#e7298a', legend: 'Ch. 4 — Antebellum doubling' },
-      { category: 'cohort-5', color: '#66a61e', legend: 'Ch. 5 — Reconstruction & western stack' },
-      { category: 'cohort-6', color: '#e6ab02', legend: 'Ch. 6 — Twentieth-century high-water mark' },
-    ],
+    categoryColors: eraCohortCategoryColors,
   },
   {
     id: 'corpus',
@@ -106,9 +170,9 @@ const LENS_EXPLAINERS: Record<string, LensExplainer> = {
     asks:
       'When did each state join the union, and which generation of school-trust architecture did it inherit?',
     structure:
-      'Six colors group states by admission era — from the Original 13 (state-derived; no federal trust) through the Northwest Ordinance, Antebellum Doubling, Reconstruction-era Western Stack, Twentieth-Century, and the two outliers (Alaska, Hawaii).',
+      'A sequential palette walks from the founding (deep oxidized navy, Ch. 1) through the nineteenth-century federal eras to the twentieth-century high-water mark (warm ochre, Ch. 6). The state-derived states (Ch. 2 — Original 13 holdouts plus a few others that opted out or were never on the federal trust) take a sequence position rather than a separate color, since they overlap the federal eras in time. The timeline strip below the legend renders the same chapters as a horizontal arrow of time, with tick marks at the federal-policy moments.',
     notice:
-      'The federal one-section-per-township floor became two sections in 1850 and four sections in 1894. Generation-of-statehood substantially predicts how much the federal trust handed each state.',
+      'The federal one-section-per-township floor became two sections in 1850 and four sections in 1894. Generation-of-statehood substantially predicts how much the federal trust handed each state — the gradient encodes that progression.',
   },
   corpus: {
     asks: 'What is the school-trust corpus worth today, in each state that has one?',
@@ -216,6 +280,119 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
   />
 
   <ol id="legend" class="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2"></ol>
+
+  {/* v52 BETA — Era-cohort timeline strip. Visible only when the era-cohort
+      lens is active (the lens-switcher script toggles `hidden`). The strip
+      renders the same five sequential federal-trust chapters as the legend,
+      colored to match, plus tick marks at the federal-policy moments. The
+      state-derived cohort (Ch. 2 — 1791–1863) appears as a secondary band
+      below the main bar because it overlaps the federal eras in time and
+      isn't a temporal step on the federal-trust evolution. Year→x is
+      computed from the substrate-derived eraCohortDates so the strip stays
+      correct if a state file ever changes its admittedDate or eraCohort. */}
+  <section
+    id="era-timeline"
+    class="era-timeline mt-6 rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
+    aria-label="Era-cohort timeline"
+    data-lens="era-cohort"
+  >
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+      Federal-trust evolution, 1785–1959
+    </p>
+    <svg
+      class="era-timeline-svg mt-3 block w-full"
+      viewBox="0 0 1000 110"
+      role="img"
+      aria-label="Horizontal timeline from 1785 to 1959 showing the six era cohorts as colored segments, with tick marks at the Land Ordinance (1785), Northwest Ordinance (1787), the doubled-section grants (1850), the quadrupled-section grants (1894), and the final admissions (1959)."
+    >
+      {TIMELINE_TICKS.map((t) => (
+        <g>
+          <text
+            x={yearToTimelineX(t.year)}
+            y={9}
+            text-anchor="middle"
+            class="era-timeline-tick-year"
+          >
+            {t.year}
+          </text>
+          <text
+            x={yearToTimelineX(t.year)}
+            y={20}
+            text-anchor="middle"
+            class="era-timeline-tick-note"
+          >
+            {t.note}
+          </text>
+          <line
+            x1={yearToTimelineX(t.year)}
+            x2={yearToTimelineX(t.year)}
+            y1={24}
+            y2={32}
+            class="era-timeline-tick-line"
+          />
+        </g>
+      ))}
+      <rect
+        x={TIMELINE_X_LEFT}
+        y={32}
+        width={TIMELINE_X_RIGHT - TIMELINE_X_LEFT}
+        height={14}
+        class="era-timeline-bar-bg"
+      />
+      {FEDERAL_COHORT_SEGMENTS.map((c) => {
+        const range = cohortDates[c.key];
+        if (!range) return null;
+        const x = yearToTimelineX(range.firstYear);
+        const w = Math.max(2, yearToTimelineX(range.lastYear) - x);
+        return (
+          <g>
+            <rect
+              x={x}
+              y={32}
+              width={w}
+              height={14}
+              fill={ERA_COHORT_PALETTE[c.key]}
+            />
+            <text
+              x={x + w / 2}
+              y={56}
+              text-anchor="middle"
+              class="era-timeline-chapter-label"
+            >
+              {c.label}
+            </text>
+          </g>
+        );
+      })}
+      {cohort2Dates && (
+        <g>
+          <rect
+            x={yearToTimelineX(cohort2Dates.firstYear)}
+            y={70}
+            width={yearToTimelineX(cohort2Dates.lastYear) - yearToTimelineX(cohort2Dates.firstYear)}
+            height={8}
+            fill={ERA_COHORT_PALETTE['cohort-2']}
+            opacity={0.85}
+          />
+          <text
+            x={yearToTimelineX((cohort2Dates.firstYear + cohort2Dates.lastYear) / 2)}
+            y={92}
+            text-anchor="middle"
+            class="era-timeline-secondary-label"
+          >
+            Ch. 2 — State-derived ({cohort2Dates.firstYear}–{cohort2Dates.lastYear})
+          </text>
+        </g>
+      )}
+    </svg>
+    <p class="era-timeline-caption mt-3 text-xs text-slate-500">
+      Federal-trust chapters appear on the main bar in sequence; the
+      state-derived chapter (Ch. 2) appears as a secondary band because its
+      admissions overlap several federal eras in time. The federal
+      school-land floor was one section per township in 1785, doubled in
+      1850, and quadrupled in 1894.
+    </p>
+  </section>
 
   <p class="mt-6 text-xs text-slate-500">
     Lens data derived at build time from <code>src/content/states/*.md</code>{' '}
@@ -328,6 +505,16 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
         if (a) a.textContent = ex.asks;
         if (s) s.textContent = ex.structure;
         if (n) n.textContent = ex.notice;
+      }
+
+      // v52 BETA — show the era-cohort timeline strip only when the
+      // era-cohort lens is active. The strip is hidden via the `hidden`
+      // attribute (display: none) on every other lens.
+      function setEraTimelineVisible(lensId) {
+        const strip = document.getElementById('era-timeline');
+        if (!strip) return;
+        if (lensId === 'era-cohort') strip.removeAttribute('hidden');
+        else strip.setAttribute('hidden', '');
       }
 
       const protocol = new Protocol();
@@ -508,6 +695,7 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
         renderLegend(lens);
         setLensDescription(lens);
         setLensExplainer(id);
+        setEraTimelineVisible(id);
       }
 
       const switcher = document.getElementById('lens-switcher');
@@ -523,4 +711,42 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
       // Initial legend.
       renderLegend(lensesById[activeLensId]);
     </script>
+
+    <style>
+      /* v52 BETA — Era-cohort timeline strip. Compact, subordinate to the
+         map; tick labels in slate-500, chapter labels in slate-700. */
+      .era-timeline-svg {
+        max-width: 100%;
+        height: auto;
+      }
+      .era-timeline-tick-year {
+        font-family: var(--font-sans);
+        font-size: 9px;
+        font-weight: 600;
+        fill: #334155;
+      }
+      .era-timeline-tick-note {
+        font-family: var(--font-sans);
+        font-size: 8px;
+        fill: #64748b;
+      }
+      .era-timeline-tick-line {
+        stroke: #cbd5e1;
+        stroke-width: 1;
+      }
+      .era-timeline-bar-bg {
+        fill: #f1f5f9;
+      }
+      .era-timeline-chapter-label {
+        font-family: var(--font-sans);
+        font-size: 9px;
+        font-weight: 600;
+        fill: #334155;
+      }
+      .era-timeline-secondary-label {
+        font-family: var(--font-sans);
+        font-size: 9px;
+        fill: #64748b;
+      }
+    </style>
 </RoomLayout>

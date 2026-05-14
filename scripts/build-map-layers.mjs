@@ -165,6 +165,30 @@ const LENSES = [
   { name: 'transparency', record: transparencyRecord },
 ];
 
+// v52 ALPHA — derive {firstYear, lastYear} per era cohort from the
+// admittedDate values in substrate. Emitted to its own JSON so atlas.astro
+// can interpolate the date range into each legend label without re-parsing
+// 50 state files at render time.
+function buildEraCohortDates(frontmatters) {
+  const buckets = {};
+  for (const fm of frontmatters) {
+    const key = `cohort-${fm.eraCohort}`;
+    const year = parseInt(String(fm.admittedDate).slice(0, 4), 10);
+    if (Number.isNaN(year)) {
+      throw new Error(`bad admittedDate on ${fm.iso}: ${fm.admittedDate}`);
+    }
+    if (!buckets[key]) {
+      buckets[key] = { firstYear: year, lastYear: year };
+    } else {
+      if (year < buckets[key].firstYear) buckets[key].firstYear = year;
+      if (year > buckets[key].lastYear) buckets[key].lastYear = year;
+    }
+  }
+  const ordered = {};
+  for (const key of Object.keys(buckets).sort()) ordered[key] = buckets[key];
+  return ordered;
+}
+
 function main() {
   const files = readdirSync(statesDir)
     .filter((f) => f.endsWith('.md'))
@@ -192,6 +216,14 @@ function main() {
     for (const [cat, n] of Object.entries(counts).sort()) {
       console.log(`              ${n.toString().padStart(2)} ${cat}`);
     }
+  }
+
+  const eraCohortDates = buildEraCohortDates(frontmatters);
+  const datesPath = join(outDir, 'era-cohort-dates.json');
+  writeFileSync(datesPath, JSON.stringify(eraCohortDates, null, 2) + '\n');
+  console.log(`[map-layers] era-cohort-dates → ${datesPath}`);
+  for (const [k, v] of Object.entries(eraCohortDates)) {
+    console.log(`              ${k}: ${v.firstYear}-${v.lastYear}`);
   }
 }
 

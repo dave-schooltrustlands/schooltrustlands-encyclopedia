@@ -24,12 +24,12 @@ interface Props {
 
 const { room, alt } = Astro.props;
 
-// Per-room default alt text — describes the photograph, not the page,
-// so screen readers get evidentiary context (the photo IS substrate, in
-// the editorial register of the rest of the Library).
+// Per-room default alt text — describes the image, not the page, so
+// screen readers get evidentiary context (the image IS substrate, in the
+// editorial register of the rest of the Library).
 const DEFAULT_ALT: Record<Props['room'], string> = {
   reading:
-    "Photograph: the Main Reading Room of the Library of Congress (Theodor Horydczak, ca. 1890–1971), public domain.",
+    "Architectural plan view of the Library's Reading Room — a long hall with bookshelves running both long walls, a central reading table set with open volumes, a bay window at the far end, and a small arched entrance. Hand-drafted in oxidized navy ink on parchment, in the visual register of the Library's Spatial Discovery Blueprint.",
   atlas:
     "Bird's-eye view of San Francisco from the bay, looking south-west — historical panoramic map, Library of Congress, public domain.",
   counting:
