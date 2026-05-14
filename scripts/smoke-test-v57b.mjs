@@ -151,7 +151,10 @@ function sliceDetailsByAttr(html, attr) {
   });
 
   await check('v57b.D — Beta disclaimer (not Hello World)', () => {
-    if (!/<strong>Beta\.?<\/strong>/i.test(refDeskHtml)) {
+    // Astro injects scoped-style attributes on the <strong> tag, so we
+    // match the open tag with any attribute set rather than a bare
+    // <strong>.
+    if (!/<strong[^>]*>Beta\.?<\/strong>/i.test(refDeskHtml)) {
       throw new Error('<strong>Beta</strong> disclaimer missing from /reference-desk/');
     }
     ok('Beta disclaimer present');
