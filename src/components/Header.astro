@@ -3,6 +3,15 @@ import '../styles/global.css';
 import NavIcon from './NavIcon.astro';
 import WalkingTour from './library/WalkingTour.astro';
 
+// v55 — Navigation Direction B:
+//   - Library rooms (Reading, Atlas, Map Room, Counting House) pulled
+//     into a new "Rooms ▾" disclosure (parallel to v50's "More ▾").
+//   - Three future-room placeholders (Records Room, Court Room, Breach
+//     & Recovery) shown below a divider as "coming soon."
+//   - When the reader is on a library page, the Rooms ▾ trigger picks
+//     up an active-state gold underline.
+//   - Mobile overlay continues to list every live destination inline.
+//
 // v50 — header compaction:
 //   - Italic tagline dropped from the wordmark.
 //   - Inner container moved from max-w-5xl to max-w-7xl.
@@ -17,13 +26,19 @@ const NAV_LINKS = [
   { href: '/start/', label: 'Start Here' },
   { href: '/explore/', label: 'Explore' },
   { href: '/why/', label: 'Why' },
-  { href: '/reading/', label: 'Reading', icon: 'BookOpen' },
-  { href: '/atlas/', label: 'Atlas', icon: 'Compass' },
-  { href: '/maps/', label: 'Map Room', icon: 'Map' },
-  { href: '/counting/', label: 'Counting House', icon: 'ScrollText' },
   { href: '/contribute/', label: 'Contribute', icon: 'HandHeart' },
   { href: '/about/', label: 'About', icon: 'Building2' },
   { href: '/newsroom/', label: 'Newsroom', icon: 'Newspaper' },
+];
+
+const LIBRARY_ROOMS = [
+  { href: '/reading/', label: 'Reading Room', icon: 'BookOpen', live: true },
+  { href: '/atlas/', label: 'Atlas', icon: 'Compass', live: true },
+  { href: '/maps/', label: 'Map Room', icon: 'Map', live: true },
+  { href: '/counting/', label: 'Counting House', icon: 'ScrollText', live: true },
+  { href: null, label: 'Records Room', icon: 'Archive', live: false },
+  { href: null, label: 'Court Room', icon: 'Scale', live: false },
+  { href: null, label: 'Breach & Recovery', icon: 'ShieldAlert', live: false },
 ];
 
 const MORE_LINKS = [
@@ -32,7 +47,17 @@ const MORE_LINKS = [
   { href: '/updates/', label: 'Updates' },
 ];
 
-const ALL_NAV_LINKS = [...NAV_LINKS, ...MORE_LINKS];
+const LIVE_LIBRARY_ROOMS = LIBRARY_ROOMS.filter((r) => r.live);
+const COMING_LIBRARY_ROOMS = LIBRARY_ROOMS.filter((r) => !r.live);
+
+// Active-state detection: which top-nav surface the current page belongs to.
+// Trailing-slash normalized so /reading and /reading/ both match.
+const rawPath = Astro.url.pathname;
+const path = rawPath.replace(/\/$/, '') || '/';
+const LIBRARY_PREFIXES = ['/reading', '/atlas', '/maps', '/counting'];
+const isInLibraryRoom = LIBRARY_PREFIXES.some(
+  (prefix) => path === prefix || path.startsWith(`${prefix}/`),
+);
 ---
 <header
   data-pagefind-ignore
@@ -67,9 +92,58 @@ const ALL_NAV_LINKS = [...NAV_LINKS, ...MORE_LINKS];
     </a>
 
     {/* Desktop nav — visible at lg+, hidden at smaller widths so the
-        wordmark + hamburger + search fit on a single mobile row. */}
+        wordmark + hamburger + search fit on a single mobile row.
+
+        Order (v55): Start Here · Explore · Why · Rooms ▾ · Contribute
+        · About · Newsroom · More ▾ · Library Card · search-icon.
+        Rooms ▾ sits between Why and the front-of-house categories — adjacent
+        to Explore, the floor plan that introduces the rooms. */}
     <nav class="hidden flex-wrap items-center gap-x-1 gap-y-2 text-sm lg:flex sm:gap-x-3">
-      {NAV_LINKS.map((link) => (
+      {NAV_LINKS.slice(0, 3).map((link) => (
+        <a
+          href={link.href}
+          class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >
+          {link.icon && <NavIcon name={link.icon} />}
+          {link.label.replace(/ /g, ' ')}
+        </a>
+      ))}
+
+      <details class="header-more header-rooms relative" data-header-rooms>
+        <summary
+          class:list={[
+            'inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center px-2 text-blue-700 hover:underline',
+            isInLibraryRoom && 'header-rooms--active',
+          ]}
+          aria-label="Library rooms"
+        >Rooms&nbsp;▾</summary>
+        <div class="header-more__panel" role="menu">
+          {LIVE_LIBRARY_ROOMS.map((room) => (
+            <a
+              href={room.href!}
+              role="menuitem"
+              class="header-more__link"
+            >
+              <NavIcon name={room.icon} />
+              <span>{room.label}</span>
+            </a>
+          ))}
+          <div class="header-more__divider" role="separator"></div>
+          {COMING_LIBRARY_ROOMS.map((room) => (
+            <span
+              class="header-more__link header-more__link--coming-soon"
+              aria-disabled="true"
+              role="menuitem"
+            >
+              <NavIcon name={room.icon} />
+              <span>{room.label}</span>
+              <small>coming soon</small>
+            </span>
+          ))}
+        </div>
+      </details>
+
+      {NAV_LINKS.slice(3).map((link) => (
         <a
           href={link.href}
           class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
@@ -276,8 +350,41 @@ const ALL_NAV_LINKS = [...NAV_LINKS, ...MORE_LINKS];
         aria-label="Close navigation menu"
       >×</button>
     </div>
+    {/* v55 — mobile overlay continues to list every live destination
+        inline. Order matches the desktop nav reading: front-of-house
+        first (Start Here · Explore · Why), then the four live library
+        rooms in a labeled group, then Contribute · About · Newsroom,
+        then the More disclosure entries (Pro · Voices · Updates).
+        Coming-soon rooms are intentionally omitted from mobile to keep
+        the menu uncluttered. */}
     <ul class="mobile-nav-overlay__list">
-      {ALL_NAV_LINKS.map((link) => (
+      {NAV_LINKS.slice(0, 3).map((link) => (
+        <li>
+          <a href={link.href} class="mobile-nav-overlay__link">
+            {link.icon && <NavIcon name={link.icon} />}
+            <span>{link.label}</span>
+          </a>
+        </li>
+      ))}
+      <li class="mobile-nav-overlay__group-label" aria-hidden="true">Library rooms</li>
+      {LIVE_LIBRARY_ROOMS.map((room) => (
+        <li>
+          <a href={room.href!} class="mobile-nav-overlay__link">
+            <NavIcon name={room.icon} />
+            <span>{room.label}</span>
+          </a>
+        </li>
+      ))}
+      <li class="mobile-nav-overlay__divider"></li>
+      {NAV_LINKS.slice(3).map((link) => (
+        <li>
+          <a href={link.href} class="mobile-nav-overlay__link">
+            {link.icon && <NavIcon name={link.icon} />}
+            <span>{link.label}</span>
+          </a>
+        </li>
+      ))}
+      {MORE_LINKS.map((link) => (
         <li>
           <a href={link.href} class="mobile-nav-overlay__link">
             {link.icon && <NavIcon name={link.icon} />}
@@ -346,6 +453,60 @@ const ALL_NAV_LINKS = [...NAV_LINKS, ...MORE_LINKS];
   .header-more__link:hover {
     background: #f1f5f9;
     text-decoration: underline;
+  }
+
+  /* v55 — Rooms disclosure: divider between live rooms and coming-soon
+     placeholders inside the dropdown panel. */
+  .header-more__divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 0.35rem 0.5rem;
+  }
+  .header-more__link--coming-soon {
+    color: #94a3b8;
+    cursor: default;
+    font-style: italic;
+    text-decoration: none;
+  }
+  .header-more__link--coming-soon:hover {
+    background: transparent;
+    text-decoration: none;
+  }
+  .header-more__link--coming-soon small {
+    margin-left: auto;
+    padding-left: 0.5rem;
+    font-size: 0.72rem;
+    font-style: normal;
+    color: #cbd5e1;
+  }
+
+  /* v55 — active-state marker on the Rooms ▾ trigger when the reader
+     is on any library page. A subtle gold underline beneath the
+     summary; matches the Library's accent palette. */
+  .header-rooms--active {
+    position: relative;
+    font-weight: 600;
+  }
+  .header-rooms--active::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 0.5rem;
+    right: 0.5rem;
+    height: 2px;
+    background: var(--old-gold, #B88A2E);
+    border-radius: 1px;
+  }
+
+  /* v55 — mobile-overlay group label for the "Library rooms" cluster. */
+  .mobile-nav-overlay__group-label {
+    padding: 0.6rem 1rem 0.2rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #94a3b8;
   }
 
   /* v50 — collapsing search. The form sits at width 0 by default and
@@ -625,22 +786,33 @@ const ALL_NAV_LINKS = [...NAV_LINKS, ...MORE_LINKS];
       });
     }
 
-    // ---- v50 — More-disclosure: close on outside click ----
-    const moreDetails = document.querySelector('[data-header-more]');
-    if (moreDetails) {
+    // ---- v50/v55 — header disclosures: close on outside click + link nav ----
+    // Both the "Rooms ▾" (v55) and "More ▾" (v50) disclosures share the
+    // same UX contract: clicking outside closes; activating a link closes
+    // so the destination renders without the panel still hanging open.
+    const headerDisclosures = Array.from(
+      document.querySelectorAll('[data-header-rooms], [data-header-more]'),
+    );
+    if (headerDisclosures.length > 0) {
       document.addEventListener('click', (ev) => {
-        if (!moreDetails.hasAttribute('open')) return;
         const t = ev.target;
-        if (t instanceof Node && !moreDetails.contains(t)) {
-          moreDetails.removeAttribute('open');
+        for (const d of headerDisclosures) {
+          if (!d.hasAttribute('open')) continue;
+          if (t instanceof Node && !d.contains(t)) {
+            d.removeAttribute('open');
+          }
         }
       });
-      // Close on link activation so the destination renders without the panel.
-      moreDetails.addEventListener('click', (ev) => {
-        const a = ev.target instanceof Element ? ev.target.closest('a') : null;
-        if (a) moreDetails.removeAttribute('open');
-      });
+      for (const d of headerDisclosures) {
+        d.addEventListener('click', (ev) => {
+          const a = ev.target instanceof Element ? ev.target.closest('a') : null;
+          if (a) d.removeAttribute('open');
+        });
+      }
     }
+    // Preserve the moreDetails reference for the Escape handler below.
+    const moreDetails = document.querySelector('[data-header-more]');
+    const roomsDetails = document.querySelector('[data-header-rooms]');
 
     // ---- v50 — Collapsing desktop search ----
     const searchWrap = document.querySelector('[data-search-wrap]');
@@ -703,6 +875,10 @@ const ALL_NAV_LINKS = [...NAV_LINKS, ...MORE_LINKS];
         if (overlay && overlay.getAttribute('data-state') === 'open') {
           setOverlay(false);
           if (toggleBtn && typeof toggleBtn.focus === 'function') toggleBtn.focus();
+          return;
+        }
+        if (roomsDetails && roomsDetails.hasAttribute('open')) {
+          roomsDetails.removeAttribute('open');
           return;
         }
         if (moreDetails && moreDetails.hasAttribute('open')) {

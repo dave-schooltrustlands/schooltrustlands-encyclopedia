@@ -632,6 +632,28 @@ h4[id] {
     outline-offset: 2px;
   }
 
+  /* v55 — Lobby button on the RoomLayout lower-nav room-tab strip.
+   * Visually distinguished from the room tabs (linen background,
+   * border-right separator) so it reads as the entrance ramp back to
+   * /explore/, not as another room. */
+  .room-tab--lobby {
+    color: var(--ink, #17202A);
+    font-weight: 500;
+    background: var(--linen-card, #FFFDF7);
+    border: 1px solid var(--rule-border, #D8D1C2);
+    margin-right: 0.5rem;
+    padding-right: 0.75rem !important;
+  }
+  .room-tab--lobby:hover {
+    background: #F5EFE0;
+    text-decoration: none;
+    color: var(--ink, #17202A);
+  }
+  .room-tab--lobby:focus-visible {
+    outline: 2px solid var(--deep-navy);
+    outline-offset: 2px;
+  }
+
   /* Footer (Visual Rebuild Handoff v0) */
   .site-footer {
     background: var(--deep-navy);

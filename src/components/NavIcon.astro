@@ -19,7 +19,10 @@ interface Props {
     | 'Newspaper'
     | 'Mic'
     | 'HandHeart'
-    | 'Building2';
+    | 'Building2'
+    | 'Archive'
+    | 'Scale'
+    | 'ShieldAlert';
   size?: number;
   class?: string;
 }
@@ -181,5 +184,64 @@ const cls = ['nav-icon', className].filter(Boolean).join(' ');
     <path d="M10 10h4"></path>
     <path d="M10 14h4"></path>
     <path d="M10 18h4"></path>
+  </svg>
+)}
+{name === 'Archive' && (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    class={cls}
+  >
+    <rect x="2" y="3" width="20" height="5" rx="1"></rect>
+    <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"></path>
+    <line x1="10" y1="12" x2="14" y2="12"></line>
+  </svg>
+)}
+{name === 'Scale' && (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    class={cls}
+  >
+    <line x1="12" y1="3" x2="12" y2="21"></line>
+    <path d="M5 9 3 16h4z"></path>
+    <path d="M19 9l-2 7h4z"></path>
+    <line x1="3" y1="9" x2="21" y2="9"></line>
+    <line x1="6" y1="21" x2="18" y2="21"></line>
+  </svg>
+)}
+{name === 'ShieldAlert' && (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    class={cls}
+  >
+    <path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5z"></path>
+    <line x1="12" y1="8" x2="12" y2="12"></line>
+    <line x1="12" y1="16" x2="12" y2="16"></line>
   </svg>
 )}
