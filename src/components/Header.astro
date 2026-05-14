@@ -28,7 +28,9 @@ const NAV_LINKS = [
   { href: '/why/', label: 'Why' },
   { href: '/contribute/', label: 'Contribute', icon: 'HandHeart' },
   { href: '/about/', label: 'About', icon: 'Building2' },
-  { href: '/newsroom/', label: 'Newsroom', icon: 'Newspaper' },
+  // v57b cleanup — Newsroom moves out of the inline top-nav and into
+  // LIBRARY_ROOMS / Rooms ▾ dropdown. The word "room" is in the name;
+  // treating it as a non-library category was a v55 inconsistency.
 ];
 
 const LIBRARY_ROOMS = [
@@ -36,6 +38,7 @@ const LIBRARY_ROOMS = [
   { href: '/atlas/', label: 'Atlas', icon: 'Compass', live: true },
   { href: '/maps/', label: 'Map Room', icon: 'Map', live: true },
   { href: '/counting/', label: 'Counting House', icon: 'ScrollText', live: true },
+  { href: '/newsroom/', label: 'Newsroom', icon: 'Newspaper', live: true },
   { href: '/reference-desk/', label: 'Reference Desk', icon: 'HandHeart', live: true },
   { href: null, label: 'Records Room', icon: 'Archive', live: false },
   { href: null, label: 'Court Room', icon: 'Scale', live: false },
@@ -71,7 +74,7 @@ const COMING_LIBRARY_ROOMS = LIBRARY_ROOMS.filter((r) => !r.live);
 // Trailing-slash normalized so /reading and /reading/ both match.
 const rawPath = Astro.url.pathname;
 const path = rawPath.replace(/\/$/, '') || '/';
-const LIBRARY_PREFIXES = ['/reading', '/atlas', '/maps', '/counting', '/reference-desk'];
+const LIBRARY_PREFIXES = ['/reading', '/atlas', '/maps', '/counting', '/reference-desk', '/newsroom'];
 const isInLibraryRoom = LIBRARY_PREFIXES.some(
   (prefix) => path === prefix || path.startsWith(`${prefix}/`),
 );
