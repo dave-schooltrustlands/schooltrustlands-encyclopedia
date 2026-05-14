@@ -1260,3 +1260,137 @@ body[data-source-id^="essay-sacred-compact-interlude-"] main > header h1 {
   margin: 0 0 1.5rem;
 }
 /* === end v9 banner CSS (Beta) ====================================== */
+
+/* === v53 Atlas interactive layer ====================================
+   Site Update v53 — legend filter + timeline scrub. Styles are global
+   (not Astro-scoped) because the legend chips are created at runtime by
+   the page's inline script and would not pick up scoped selectors.
+   --------------------------------------------------------------------- */
+
+/* Dim treatment applied to elements that proxy for "a state in this
+   category" — currently the era-timeline SVG cohort rects. The map's
+   per-state polygons are MapLibre WebGL, not DOM, so they're dimmed by
+   a paint expression rather than this class (see atlas.astro). */
+.atlas-state {
+  transition: opacity 150ms ease-out;
+}
+.atlas-state.is-dimmed {
+  opacity: 0.25;
+}
+
+/* Legend chips. */
+.legend-chip-item {
+  list-style: none;
+}
+.legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: white;
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out;
+}
+.legend-chip:hover {
+  background: #f8fafc;
+}
+.legend-chip:focus-visible {
+  outline: 2px solid #1f3851;
+  outline-offset: 2px;
+}
+.legend-chip[aria-pressed='true'] {
+  border-color: currentColor;
+  background: color-mix(in srgb, currentColor 12%, white);
+}
+@supports not (background: color-mix(in srgb, white 50%, black)) {
+  .legend-chip[aria-pressed='true'] {
+    background: white;
+    box-shadow: inset 0 0 0 2px currentColor;
+  }
+}
+.legend-swatch {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+}
+.legend-chip-label {
+  color: #334155;
+  flex: 1 1 auto;
+}
+
+/* "Show all" link. */
+.atlas-show-all-link {
+  font-size: 0.875rem;
+  color: #1d4ed8;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.atlas-show-all-link:focus-visible {
+  outline: 2px solid #1f3851;
+  outline-offset: 2px;
+}
+
+/* Timeline marker — sits below the era-timeline SVG strip. */
+.timeline-marker-container {
+  margin-top: 0.75rem;
+}
+.timeline-marker-container[hidden] {
+  display: none;
+}
+.timeline-marker {
+  width: 100%;
+  touch-action: pan-y;
+  accent-color: #1f3851;
+}
+.timeline-marker:focus-visible {
+  outline: 2px solid #1f3851;
+  outline-offset: 4px;
+}
+.timeline-year-display {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0.4rem;
+  color: #1f3851;
+}
+.timeline-marker-hint {
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+/* Long-press tooltip (touch only). */
+.atlas-longpress-tooltip {
+  position: absolute;
+  z-index: 60;
+  background: #0f172a;
+  color: white;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease-out;
+  max-width: 360px;
+}
+.atlas-longpress-tooltip.is-visible {
+  opacity: 1;
+}
+
+.atlas-filter-hint {
+  font-style: italic;
+}
+/* === end v53 Atlas interactive layer ============================== */

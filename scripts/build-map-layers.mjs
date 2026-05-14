@@ -38,6 +38,12 @@ const COHORT_NAMES = {
 
 function eraCohortRecord(fm) {
   const c = fm.eraCohort;
+  // v53 — admittedYear powers the timeline-scrub cumulative filter. Parsed
+  // from substrate's admittedDate (the same source buildEraCohortDates uses).
+  const admittedYear = parseInt(String(fm.admittedDate).slice(0, 4), 10);
+  if (Number.isNaN(admittedYear)) {
+    throw new Error(`bad admittedDate on ${fm.iso}: ${fm.admittedDate}`);
+  }
   return {
     stateIso: fm.iso.toLowerCase(),
     fips: fm.fips,
@@ -45,6 +51,7 @@ function eraCohortRecord(fm) {
     value: c,
     category: `cohort-${c}`,
     displayLabel: COHORT_NAMES[c] ?? `Cohort ${c}`,
+    admittedYear,
     dataConfidence: 'authoritative',
   };
 }

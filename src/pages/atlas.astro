@@ -16,6 +16,7 @@ type LensRecord = {
   value: number | string | null;
   category: string;
   displayLabel: string;
+  admittedYear?: number;
   dataConfidence: string;
 };
 
@@ -233,6 +234,25 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
       <p id="lens-description" class="mt-3 text-sm text-slate-600">
         {LENSES[0].description}
       </p>
+      <div class="mt-2 flex items-center gap-3">
+        <button
+          type="button"
+          id="atlas-show-all"
+          class="atlas-show-all-link"
+          hidden
+        >
+          Show all states
+        </button>
+        <span class="atlas-filter-hint text-xs text-slate-500">
+          Click a legend chip to filter — Esc clears.
+        </span>
+      </div>
+      <div
+        id="atlas-filter-announce"
+        class="sr-only"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
     </div>
   </Fragment>
 
@@ -295,6 +315,7 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
     class="era-timeline mt-6 rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
     aria-label="Era-cohort timeline"
     data-lens="era-cohort"
+    data-autoplay-active=""
   >
     <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
       Federal-trust evolution, 1785–1959
@@ -352,6 +373,8 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
               width={w}
               height={14}
               fill={ERA_COHORT_PALETTE[c.key]}
+              class="atlas-state"
+              data-category={c.key}
             />
             <text
               x={x + w / 2}
@@ -373,6 +396,8 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
             height={8}
             fill={ERA_COHORT_PALETTE['cohort-2']}
             opacity={0.85}
+            class="atlas-state"
+            data-category="cohort-2"
           />
           <text
             x={yearToTimelineX((cohort2Dates.firstYear + cohort2Dates.lastYear) / 2)}
@@ -385,6 +410,26 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
         </g>
       )}
     </svg>
+    <div class="timeline-marker-container" data-lens="era-cohort">
+      <label class="sr-only" for="timeline-marker">Scrub through history</label>
+      <input
+        id="timeline-marker"
+        type="range"
+        min="1787"
+        max="1959"
+        step="1"
+        value="1959"
+        aria-valuemin="1787"
+        aria-valuemax="1959"
+        aria-valuenow="1959"
+        aria-valuetext="1959 — all states visible"
+        class="timeline-marker"
+      />
+      <div class="timeline-year-display" id="timeline-year-display">1959</div>
+      <p class="timeline-marker-hint text-xs text-slate-500">
+        Drag the marker to dim states admitted after that year. Double-click to reset.
+      </p>
+    </div>
     <p class="era-timeline-caption mt-3 text-xs text-slate-500">
       Federal-trust chapters appear on the main bar in sequence; the
       state-derived chapter (Ch. 2) appears as a secondary band because its
@@ -430,6 +475,7 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
       import maplibregl from 'maplibre-gl';
       import 'maplibre-gl/dist/maplibre-gl.css';
       import { Protocol, PMTiles, FileSource } from 'pmtiles';
+      import * as atlasInteractive from '../scripts/atlas-interactive.mjs';
 
       const errBox = document.getElementById('map-error');
       const showErr = (label, e) => {
@@ -478,15 +524,27 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
         ol.innerHTML = '';
         for (const c of lens.categoryColors) {
           const li = document.createElement('li');
-          li.className = 'flex items-center gap-2';
+          li.className = 'legend-chip-item';
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'legend-chip';
+          btn.dataset.lens = lens.id;
+          btn.dataset.category = c.category;
+          btn.setAttribute('aria-pressed', 'false');
+          btn.setAttribute(
+            'aria-label',
+            `Filter: ${c.legend}. Click to highlight only these states.`,
+          );
+          btn.style.color = c.color;
           const swatch = document.createElement('span');
-          swatch.className = 'inline-block h-4 w-4 flex-none rounded-sm border border-slate-300';
+          swatch.className = 'legend-swatch';
           swatch.style.background = c.color;
           const label = document.createElement('span');
-          label.className = 'text-slate-700';
+          label.className = 'legend-chip-label';
           label.textContent = c.legend;
-          li.appendChild(swatch);
-          li.appendChild(label);
+          btn.appendChild(swatch);
+          btn.appendChild(label);
+          li.appendChild(btn);
           ol.appendChild(li);
         }
       }
@@ -683,6 +741,38 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
         }
       });
 
+      // v53 — fill-opacity expression. Adds a dim-by-FIPS branch on top of
+      // v52's hover-aware default. dimmedFipsList comes from the interactive
+      // module via the `atlas:filter-change` custom event.
+      let currentDimmedFips = [];
+      function buildFillOpacityExpr(dimmedFipsList) {
+        const hoverCase = [
+          'case',
+          ['boolean', ['feature-state', 'hover'], false],
+          0.95,
+          0.75,
+        ];
+        if (!dimmedFipsList || dimmedFipsList.length === 0) return hoverCase;
+        return [
+          'case',
+          ['in', ['get', 'STATEFP'], ['literal', dimmedFipsList]],
+          0.25,
+          ['boolean', ['feature-state', 'hover'], false],
+          0.95,
+          0.75,
+        ];
+      }
+
+      function updateMapOpacity() {
+        if (map.getLayer && map.getLayer('states-fill')) {
+          map.setPaintProperty(
+            'states-fill',
+            'fill-opacity',
+            buildFillOpacityExpr(currentDimmedFips),
+          );
+        }
+      }
+
       // Lens switcher.
       function setLens(id) {
         const lens = lensesById[id];
@@ -696,6 +786,7 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
         setLensDescription(lens);
         setLensExplainer(id);
         setEraTimelineVisible(id);
+        atlasInteractive.notifyLensChange(id);
       }
 
       const switcher = document.getElementById('lens-switcher');
@@ -710,6 +801,18 @@ const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];
 
       // Initial legend.
       renderLegend(lensesById[activeLensId]);
+
+      // v53 — initialize interactive layer with per-lens records (so the
+      // engine can compute "states in category X" and "states admitted by
+      // year Y"). Listen for filter changes and re-drive maplibre opacity.
+      const recordsByLens = {};
+      for (const l of lenses) recordsByLens[l.id] = l.records;
+      atlasInteractive.init({ records: recordsByLens });
+
+      document.addEventListener('atlas:filter-change', (ev) => {
+        currentDimmedFips = (ev.detail && ev.detail.dimmedFips) || [];
+        updateMapOpacity();
+      });
     </script>
 
     <style>
