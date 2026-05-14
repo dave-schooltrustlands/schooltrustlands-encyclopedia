@@ -177,10 +177,16 @@ function sliceDetailsByAttr(html, attr) {
       throw new Error('Reference Desk link missing from essay page');
     }
     ok('Reference Desk link present');
-    if (!/mailto:drdavesullivan@gmail\.com/.test(essayHtml)) {
-      throw new Error('drdavesullivan@gmail.com mailto missing from essay page');
+    // Cloudflare Email Address Obfuscation rewrites the literal
+    // mailto:address into a /cdn-cgi/l/email-protection link with a
+    // data-cfemail attribute. Accept either the raw mailto (e.g., when
+    // hitting a build without the CDN in front) or the obfuscated form.
+    const hasRawMailto = /mailto:drdavesullivan@gmail\.com/.test(essayHtml);
+    const hasObfuscatedMailto = /data-cfemail=|\/cdn-cgi\/l\/email-protection/.test(essayHtml);
+    if (!hasRawMailto && !hasObfuscatedMailto) {
+      throw new Error('contact-Dave email missing from essay page (neither raw mailto nor Cloudflare email-protection placeholder found)');
     }
-    ok('drdavesullivan@gmail.com mailto present');
+    ok(hasRawMailto ? 'drdavesullivan@gmail.com mailto present' : 'mailto present via Cloudflare email-protection placeholder');
   });
 
   console.log('\n----------------------------------------------------------');
