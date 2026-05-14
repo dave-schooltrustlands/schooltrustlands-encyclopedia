@@ -53,4 +53,167 @@ import ComingSoonRoomLayout from '../layouts/ComingSoonRoomLayout.astro';
     her against real questions before she opens to the public. The manual
     form will go up first.
   </p>
+
+  {/*
+    v57 Hello World — Library Card-gated chat panel.
+
+    The markup is always emitted but the wrapper stays `hidden` until
+    the inline script confirms the visitor has a Supabase session.
+    Signed-out visitors see only the Coming Soon prose above; they
+    never see the chat panel. The page therefore continues to honor
+    the v56 stub's public surface unchanged.
+  */}
+  <div class="librarian-chat" data-librarian-chat hidden>
+    <div class="librarian-disclaimer">
+      <strong>Hello World test.</strong> This is the v57 Hello World version of the AI Librarian.
+      She has only minimal instructions, no guardrails, and is unreliable on purpose.
+      Do not cite her answers. This is here for testing the architecture before the
+      production version ships.
+    </div>
+    <form data-librarian-form>
+      <label for="librarian-input" class="sr-only">Your question for the Librarian</label>
+      <textarea
+        id="librarian-input"
+        rows="3"
+        placeholder="Ask the Librarian a question about America's school trust lands…"
+        required
+      ></textarea>
+      <button type="submit" data-librarian-submit>Ask the Librarian</button>
+    </form>
+    <div data-librarian-response class="librarian-response" aria-live="polite"></div>
+  </div>
 </ComingSoonRoomLayout>
+
+<script>
+  import { getBrowserSupabase } from '../lib/supabase';
+
+  (async () => {
+    const panel = document.querySelector('[data-librarian-chat]') as HTMLElement | null;
+    if (!panel) return;
+
+    const supabase = getBrowserSupabase();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return; // Signed-out visitors: leave the chat panel hidden.
+
+    panel.removeAttribute('hidden');
+
+    const form = panel.querySelector('[data-librarian-form]') as HTMLFormElement | null;
+    const input = panel.querySelector('#librarian-input') as HTMLTextAreaElement | null;
+    const submit = panel.querySelector('[data-librarian-submit]') as HTMLButtonElement | null;
+    const responseEl = panel.querySelector('[data-librarian-response]') as HTMLElement | null;
+    if (!form || !input || !submit || !responseEl) return;
+
+    const supabaseUrl = (import.meta.env.PUBLIC_SUPABASE_URL ?? '').replace(/\/+$/, '');
+    const endpoint = `${supabaseUrl}/functions/v1/librarian_answer_v0`;
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const query = input.value.trim();
+      if (!query) return;
+
+      submit.disabled = true;
+      submit.textContent = 'Asking the Librarian…';
+      responseEl.textContent = '';
+
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        responseEl.textContent = 'Sign in to ask the Librarian.';
+        submit.disabled = false;
+        submit.textContent = 'Ask the Librarian';
+        return;
+      }
+
+      try {
+        const resp = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${session.access_token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query }),
+        });
+        if (resp.status === 429) {
+          responseEl.textContent = 'Daily query cap reached (10 / day). Try again tomorrow.';
+        } else if (!resp.ok) {
+          const text = await resp.text();
+          responseEl.textContent = `Error: ${resp.status} ${resp.statusText}${text ? ' — ' + text : ''}`;
+        } else {
+          const data = await resp.json();
+          responseEl.textContent = data.response ?? '(empty response)';
+        }
+      } catch (err) {
+        responseEl.textContent = `Error: ${(err as Error).message}`;
+      } finally {
+        submit.disabled = false;
+        submit.textContent = 'Ask the Librarian';
+      }
+    });
+  })();
+</script>
+
+<style>
+  .librarian-chat {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    border: 1px solid var(--rule-border, #D8D1C2);
+    border-radius: 6px;
+    background: var(--linen-card, #FFFDF7);
+  }
+  .librarian-disclaimer {
+    background: #fff4d4;
+    border: 1px solid #d4a64a;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: #1f2a44;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+  .librarian-chat textarea {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    box-sizing: border-box;
+  }
+  .librarian-chat button {
+    margin-top: 0.75rem;
+    padding: 0.6rem 1.25rem;
+    background: #1e3a5f;
+    color: #ffd07a;
+    border: 1px solid #1e3a5f;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 600;
+  }
+  .librarian-chat button:hover { background: #16304f; }
+  .librarian-chat button:disabled { opacity: 0.6; cursor: not-allowed; }
+  .librarian-response {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    min-height: 1em;
+  }
+  .librarian-response:empty { display: none; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>
+
