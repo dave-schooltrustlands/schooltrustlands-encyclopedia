@@ -41,7 +41,9 @@ const LIBRARY_ROOMS = [
   { href: '/newsroom/', label: 'Newsroom', icon: 'Newspaper', live: true },
   { href: '/reference-desk/', label: 'Reference Desk', icon: 'HandHeart', live: true },
   { href: '/writing/', label: 'Writing Room', icon: 'BookOpen', live: true },
-  { href: null, label: 'Records Room', icon: 'Archive', live: false },
+  // v62 — Records Room dropped from the Rooms ▾ coming-soon footer
+  // alongside the broader Coming Soon ▾ trim (its function overlaps
+  // the v59 curated catalog in the Reading Room).
   { href: null, label: 'Court Room', icon: 'Scale', live: false },
   { href: null, label: 'Breach & Recovery', icon: 'ShieldAlert', live: false },
 ];
@@ -56,16 +58,21 @@ const MORE_LINKS = [
 // its eventual URL; the stub gets replaced in place when the room ships
 // in full. Entries render as italic slate links (not muted aria-disabled
 // spans) because the destination exists — it's a stub, not a dead link.
+//
+// v62 — Trimmed from nine entries to five. Records Room, Chronicle
+// Room, The Stacks, and Computer Room were withdrawn because their
+// functions overlap with existing surfaces: the v59 curated catalog
+// (Records / Stacks), the Counting House ledger as a host for the
+// counterfactual timeline (Chronicle), and /contribute/ +
+// /about/how-this-works/ (Computer Room). What remains is the five
+// argument-mode rooms — Court, Breach & Recovery, Founders' Cabinet,
+// Schoolroom, Lecture Hall.
 const COMING_SOON_LINKS = [
-  { href: '/records/', label: 'Records Room', icon: 'Archive' },
   { href: '/court/', label: 'Court Room', icon: 'Scale' },
   { href: '/breach-recovery/', label: 'Breach & Recovery', icon: 'ShieldAlert' },
-  { href: '/chronicle/', label: 'Chronicle Room', icon: 'Compass' },
-  { href: '/stacks/', label: 'The Stacks', icon: 'BookOpen' },
   { href: '/founders/', label: "Founders' Cabinet", icon: 'Building2' },
   { href: '/school/', label: 'Schoolroom', icon: 'BookOpen' },
   { href: '/lectures/', label: 'Lecture Hall', icon: 'Mic' },
-  { href: '/computer-room/', label: 'Computer Room', icon: 'ScrollText' },
 ];
 
 const LIVE_LIBRARY_ROOMS = LIBRARY_ROOMS.filter((r) => r.live);
