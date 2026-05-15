@@ -56,6 +56,7 @@ const seriesLabel = entry.data.seriesLabel ?? 'Schools of the Republic';
 <RoomLayout
   room="writing"
   title={entry.data.title}
+  parents={[{ label: 'Schools of the Republic', href: '/writing/schools-of-the-republic/' }]}
   subtitle={entry.data.era ? `Era: ${entry.data.era}` : undefined}
   sourceId={`essay-${entry.slug}-${entry.data.sourceVersion}`}
   pagefindEra={entry.data.era}

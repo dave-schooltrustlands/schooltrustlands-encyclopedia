@@ -21,6 +21,7 @@ const subtitle = `${entry.data.author}, ${entry.data.year}.`;
 <RoomLayout
   room="reading"
   title={entry.data.title}
+  parents={[{ label: 'The Curated Collection', href: '/reading/library/' }]}
   subtitle={subtitle}
   width="prose"
   sourceId={`library-${slug}`}

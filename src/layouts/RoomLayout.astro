@@ -6,6 +6,7 @@ import PrepublicationFooter from '../components/PrepublicationFooter.astro';
 import RoomBanner from '../components/RoomBanner.astro';
 import RoomOrnament from '../components/library/RoomOrnament.astro';
 import SealLightbox from '../components/library/SealLightbox.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 
 type RoomId =
   | 'reading'
@@ -48,6 +49,14 @@ interface Props {
   subtitle?: string;
   width?: 'prose' | 'full';
   pageTitle?: string; // <title>; defaults to `${title} · America's School Trust Library`
+  // v61 — Optional intermediate breadcrumb segments between the room
+  // and the current page. Used by nested book pages where the
+  // hierarchy is Lobby ▸ Writing Room ▸ Eighth Anchor ▸ III. The
+  // current page is always derived from `title`; this prop carries
+  // only the in-between segments. Empty / omitted produces a
+  // 2- or 3-segment breadcrumb depending on whether title matches
+  // the room label.
+  parents?: ReadonlyArray<{ label: string; href: string }>;
   // Plan_v2.1 Q8 seam: future feedback form constructs context from
   // these. Render now even though no consumer exists yet — retrofitting
   // metadata across six rooms in twelve months is more work than
@@ -65,99 +74,17 @@ const {
   subtitle,
   width = 'prose',
   pageTitle,
+  parents,
   sourceId,
   pagefindEra,
 } = Astro.props;
 
-interface RoomDef {
-  id: RoomId;
-  name: string;
-  href: string | null; // null = "Coming later" placeholder, no link
-  icon: string; // SVG path/contents
-}
-
-// Inline SVG paths kept small. Don't over-polish — Week 5+ task per handoff.
-const ROOMS: RoomDef[] = [
-  {
-    id: 'reading',
-    name: 'Reading Room',
-    href: '/reading/',
-    // BookOpen
-    icon: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
-  },
-  {
-    id: 'atlas',
-    name: 'Atlas',
-    href: '/atlas/',
-    // Map
-    icon: '<polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>',
-  },
-  {
-    id: 'maps',
-    name: 'Map Room',
-    href: '/maps/',
-    // MapPin
-    icon: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
-  },
-  {
-    id: 'counting',
-    name: 'Counting House',
-    href: '/counting/',
-    // Calculator
-    icon: '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="16" y1="18" x2="16" y2="18"/>',
-  },
-  {
-    id: 'newsroom',
-    name: 'Newsroom',
-    href: '/newsroom/',
-    // Newspaper
-    icon: '<path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8z"/>',
-  },
-  {
-    id: 'reference-desk',
-    name: 'Reference Desk',
-    href: '/reference-desk/',
-    // HandHeart
-    icon: '<path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.8-2.8L15 12"/><path d="m2 15 6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.7 2.7 0 0 0 18.5 3c-.9 0-1.5.5-2 1-.5-.5-1.1-1-2-1A2.7 2.7 0 0 0 12 5.8c0 1.1.8 2 1.5 2.7L16 11Z"/>',
-  },
-  {
-    id: 'writing',
-    name: 'Writing Room',
-    href: '/writing/',
-    // PenTool (Lucide)
-    icon: '<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>',
-  },
-  {
-    id: 'records',
-    name: 'Records Room',
-    href: null,
-    // Archive
-    icon: '<rect x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><line x1="10" y1="12" x2="14" y2="12"/>',
-  },
-  {
-    id: 'court',
-    name: 'Court Room',
-    href: null,
-    // Scale
-    icon: '<line x1="12" y1="3" x2="12" y2="21"/><path d="M5 9 3 16h4z"/><path d="M19 9l-2 7h4z"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="6" y1="21" x2="18" y2="21"/>',
-  },
-  {
-    id: 'breach-recovery',
-    name: 'Breach & Recovery',
-    href: null,
-    // ShieldAlert
-    icon: '<path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/>',
-  },
-];
-
-const currentRoom = ROOMS.find((r) => r.id === room);
-const breadcrumb = state
-  ? `${currentRoom?.name ?? room} › ${state.name}`
-  : currentRoom?.name ?? room;
-
-// Title chain uses middle dot (·) so multi-segment titles like
-// "Oregon · Counting House · America's School Trust Library" stay readable.
-// Em-dashes were dropped after Day_10 #5.
+// v61 — Lower-nav room-tab strip retired. Sideways navigation moves to
+// the header's Rooms ▾ disclosure; vertical wayfinding lives in the
+// new Breadcrumb component rendered below the banner. The ROOMS array
+// (icons + tab labels) is gone with it; what remains here are the
+// label/href lookups the breadcrumb needs to assemble its segments,
+// and the title-chain map used to generate <title>.
 const roomNameMap: Record<RoomId, string> = {
   reading: 'Reading Room',
   atlas: 'Atlas',
@@ -170,6 +97,48 @@ const roomNameMap: Record<RoomId, string> = {
   court: 'Court Room',
   'breach-recovery': 'Breach & Recovery',
 };
+const roomHrefMap: Record<RoomId, string> = {
+  reading: '/reading/',
+  atlas: '/atlas/',
+  maps: '/maps/',
+  counting: '/counting/',
+  newsroom: '/newsroom/',
+  'reference-desk': '/reference-desk/',
+  writing: '/writing/',
+  records: '/records/',
+  court: '/court/',
+  'breach-recovery': '/breach-recovery/',
+};
+
+// Build the breadcrumb segments. Lobby is always the first segment.
+// If `title` matches the room label and `parents` is empty, we're on
+// the room index — collapse to 2 segments (Lobby ▸ <Room>). Otherwise
+// the room sits between Lobby and `parents` + the current `title`.
+// The `state` prop is retained for <title>-chain and Pagefind facets
+// but is no longer the breadcrumb's current-page label; pages always
+// use `title` as the current segment so nav reads naturally on both
+// the state-dossier page itself (where title === state.name) and on
+// state-dossier sub-pages (where the page passes its own title and an
+// explicit `parents` entry for the dossier).
+const roomLabel = roomNameMap[room];
+const isRoomIndex =
+  (!parents || parents.length === 0) &&
+  title === roomLabel;
+const breadcrumbSegments = isRoomIndex
+  ? [
+      { label: 'Lobby', href: '/explore/' },
+      { label: roomLabel },
+    ]
+  : [
+      { label: 'Lobby', href: '/explore/' },
+      { label: roomLabel, href: roomHrefMap[room] },
+      ...(parents ?? []),
+      { label: title },
+    ];
+
+// Title chain uses middle dot (·) so multi-segment titles like
+// "Oregon · Counting House · America's School Trust Library" stay readable.
+// Em-dashes were dropped after Day_10 #5.
 const resolvedTitle =
   pageTitle ??
   (state
@@ -201,94 +170,7 @@ const mainClass =
     {pagefindEra && <span data-pagefind-filter={`era:${pagefindEra}`} hidden></span>}
     <Header />
 
-    <nav
-      data-pagefind-ignore
-      aria-label="Library rooms"
-      class="border-b border-slate-200 bg-white"
-    >
-      <div class="mx-auto max-w-5xl px-4 py-3 sm:py-4">
-        <p class="text-xs uppercase tracking-wide text-slate-500">
-          {breadcrumb}
-        </p>
-        <ol class="mt-2 flex flex-wrap items-center gap-1 sm:gap-2">
-          {/* v55 — Lobby affordance. Returns the reader to /explore/
-              (the floor plan) from any library page. Separated from the
-              room tabs by a border-right so it reads as a parent
-              destination, not another room. */}
-          <li>
-            <a
-              href="/explore/"
-              class="room-tab room-tab--lobby inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm transition"
-              aria-label="Return to the library lobby (the floor plan)"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-              <span>Lobby</span>
-            </a>
-          </li>
-          {ROOMS.map((r) => {
-            const isCurrent = r.id === room;
-            const isComing = r.href === null;
-            const base =
-              'inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm transition';
-            const variant = isCurrent
-              ? 'bg-[var(--room-accent)] text-white'
-              : isComing
-                ? 'cursor-not-allowed text-slate-400'
-                : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900';
-            const ariaCurrent = isCurrent ? 'page' : undefined;
-            const title = isComing ? `${r.name} — Coming later` : r.name;
-            const inner = (
-              <>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                  set:html={r.icon}
-                />
-                <span>{r.name}</span>
-              </>
-            );
-            return (
-              <li>
-                {isComing ? (
-                  <span class:list={[base, variant]} title={title} aria-disabled="true">
-                    {inner}
-                  </span>
-                ) : (
-                  <a
-                    href={r.href!}
-                    class:list={[base, variant]}
-                    aria-current={ariaCurrent}
-                    title={title}
-                  >
-                    {inner}
-                  </a>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </div>
-    </nav>
+    <Breadcrumb segments={breadcrumbSegments} />
 
     <main class={`${mainClass} room-main`}>
       <slot name="above-header">

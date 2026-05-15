@@ -1,0 +1,94 @@
+---
+// v61 — Wayfinding breadcrumb. Replaces the v55 lower-nav room-tab
+// strip on every library page. Each segment except the last is a
+// clickable link; the last is the current page and carries
+// aria-current="page".
+//
+// Sideways navigation (room → room) is handled by the top header's
+// Rooms ▾ disclosure; this component handles vertical wayfinding only
+// (Lobby ▸ Room ▸ Book ▸ Chapter).
+//
+// Render position: between the room banner and the page <header>,
+// inside RoomLayout. Mobile-friendly: wraps without breaking the
+// chevron separators.
+
+interface Segment {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  segments: Segment[];
+}
+
+const { segments } = Astro.props as Props;
+---
+<nav aria-label="Breadcrumb" class="breadcrumb" data-pagefind-ignore>
+  <div class="mx-auto max-w-5xl px-4 py-2 sm:py-3">
+    <ol class="breadcrumb-list">
+      {segments.map((seg, i) => {
+        const isLast = i === segments.length - 1;
+        return (
+          <li class="breadcrumb-item">
+            {isLast || !seg.href ? (
+              <span class="breadcrumb-current" aria-current="page">{seg.label}</span>
+            ) : (
+              <a class="breadcrumb-link" href={seg.href}>{seg.label}</a>
+            )}
+            {!isLast && (
+              <span class="breadcrumb-sep" aria-hidden="true">▸</span>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .breadcrumb {
+    border-bottom: 1px solid #e5e7eb;
+    background: #fff;
+  }
+  .breadcrumb-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.15rem 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .breadcrumb-link {
+    color: #475569;
+    text-decoration: none;
+    padding: 0.1rem 0.1rem;
+    border-radius: 2px;
+  }
+  .breadcrumb-link:hover,
+  .breadcrumb-link:focus-visible {
+    color: var(--deep-navy, #1e3a5f);
+    text-decoration: underline;
+    text-decoration-color: var(--old-gold, #8b7355);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    outline: none;
+  }
+  .breadcrumb-current {
+    color: var(--deep-navy, #1e3a5f);
+    font-weight: 600;
+  }
+  .breadcrumb-sep {
+    color: #cbd5e1;
+    font-size: 0.75rem;
+    user-select: none;
+  }
+</style>
