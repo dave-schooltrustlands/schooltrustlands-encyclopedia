@@ -35,6 +35,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Thursday May 14, 2026 — Site update v60: Substrate-surface cleanup.</strong>
+            Five small surface fixes ship as one bundle. The homepage
+            walking tour grows from five steps to six: step 1 (Welcome)
+            picks up a one-line copy refresh to match the current room
+            count; step 2 (Reading Room) is rewritten to describe the
+            curated catalog that landed in v59 — four featured anchors,
+            six topic shelves, fifty state dossiers — rather than the
+            long-form-arguments room it used to be; and a new step 3
+            (Writing Room) lands between the Reading Room and the Atlas,
+            so the tour now reflects the room that opened in v58.
+            The Reference Desk daily question cap rises from ten to
+            twenty-five questions per patron in the rolling 24-hour
+            window, reflecting the ~70% Claude for Nonprofits discount
+            that Anthropic approved at 02:26 UTC the morning of May 14;
+            the cap was budget-driven and the budget just relaxed by an
+            order of magnitude. The Utah LTPAO entry retries its primary
+            URL against production DNS; the
+            <a href="https://schoolchildrenstrust.utah.gov/">schoolchildrenstrust.utah.gov</a>
+            domain still doesn't resolve from the build environment, so
+            the entry stays on the Title 53D statute fallback the v59
+            ship settled it on. The ASTL v. Oregon PDF placement is
+            closed conditional on Dave dropping the file under
+            <code>public/library/</code>. The v58 book-migration from
+            <code>/reading/*</code> to <code>/writing/*</code> stays
+            deferred to v60b; the breadcrumb refresh stays deferred to
+            v61.
+          </li>
+          <li>
             <strong>Thursday May 14, 2026 — Site update v59: Reading Room ships its curated collection.</strong>
             The Library’s Reading Room — reframed in v58 from the home
             of three book-length works to the home of curated published

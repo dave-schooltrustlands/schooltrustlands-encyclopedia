@@ -240,7 +240,7 @@ import RoomLayout from '../layouts/RoomLayout.astro';
         counter.textContent = '';
         return;
       }
-      counter.textContent = `${remaining} of 10 questions remaining today`;
+      counter.textContent = `${remaining} of 25 questions remaining today`;
     }
 
     const supabaseUrl = (import.meta.env.PUBLIC_SUPABASE_URL ?? '').replace(/\/+$/, '');
@@ -285,7 +285,7 @@ import RoomLayout from '../layouts/RoomLayout.astro';
           const data = await resp.json().catch(() => ({}));
           appendSystemMessage(
             data?.error ||
-            "The Librarian is busy with other readers. You've asked your ten questions for the day — the daily allowance refreshes overnight. The Library's other rooms stay open in the meantime.",
+            "The Librarian is busy with other readers. You've asked your twenty-five questions for the day — the daily allowance refreshes overnight. The Library's other rooms stay open in the meantime.",
           );
           updateCounter(0);
         } else if (!resp.ok) {

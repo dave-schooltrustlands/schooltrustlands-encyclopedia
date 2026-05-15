@@ -1,6 +1,6 @@
 ---
 /**
- * WalkingTour — five-panel onboarding overlay for Library Mode.
+ * WalkingTour — six-panel onboarding overlay for Library Mode.
  *
  * Fires automatically on first home-page visit when body.mode-library is
  * set and localStorage `library-walking-tour-dismissed` is not set. Also
@@ -42,26 +42,38 @@
       <h2>Welcome</h2>
       <p>
         Welcome to America's School Trust Library. This is a building made of
-        records. Six rooms; one substrate. The Library has 240 years of receipts
-        on America's school trust lands and funds — what was promised in 1785
-        and what's still on the books today. Come walk through.
+        records. Eight rooms open today, more being built; one substrate beneath
+        them all. The Library has 240 years of receipts on America's school trust
+        lands and funds — what was promised in 1785 and what's still on the books
+        today. Come walk through.
       </p>
     </div>
 
     <div class="lwt-step" data-step="2">
       <h2>The Reading Room</h2>
       <p>
-        The Reading Room is where the long-form arguments live.
-        <a href="/reading/sacred-compact/">The Eighth Anchor</a>,
-        the eight-section framework.
-        <a href="/reading/schools-of-the-republic/">Schools of the Republic</a>,
-        the per-state record. The Founders' Library and Scholarship surfaces.
-        If you read one thing on this site, start here.
+        The Reading Room is the curated catalog. Four featured anchors — the
+        1785 Land Ordinance, Swift's 1911 doctrine, Cardozo's <em>Meinhard</em>,
+        Margaret Bird's selected essays. Six topic shelves. A dossier for every
+        public-land state. If you want to know where to start in the Library,
+        start here.
       </p>
       <a href="/reading/" class="lwt-room-link" data-lwt-enter>Click to enter the Reading Room →</a>
     </div>
 
     <div class="lwt-step" data-step="3">
+      <h2>The Writing Room</h2>
+      <p>
+        The Writing Room is where the long-form arguments live. <em>Schools of
+        the Republic</em>, the per-state record. <em>The Eighth Anchor</em>, the
+        eight-section framework. <em>Who Steals from Children</em>, the
+        general-reader edition. And open essays addressed to the architects of
+        the next forever-trusts.
+      </p>
+      <a href="/writing/" class="lwt-room-link" data-lwt-enter>Click to enter the Writing Room →</a>
+    </div>
+
+    <div class="lwt-step" data-step="4">
       <h2>The Atlas and the Map Room</h2>
       <p>
         The Atlas is one map, four lenses — see the trust architecture as a
@@ -72,7 +84,7 @@
       <a href="/atlas/" class="lwt-room-link" data-lwt-enter>Click to enter the Atlas →</a>
     </div>
 
-    <div class="lwt-step" data-step="4">
+    <div class="lwt-step" data-step="5">
       <h2>The Counting House</h2>
       <p>
         The Counting House is the ledger. Every state, every fund, every figure
@@ -82,7 +94,7 @@
       <a href="/counting/" class="lwt-room-link" data-lwt-enter>Click to enter the Counting House →</a>
     </div>
 
-    <div class="lwt-step" data-step="5">
+    <div class="lwt-step" data-step="6">
       <h2>The Newsroom and Voices</h2>
       <p>
         The Newsroom logs the live record — court motions, hearings,
@@ -95,7 +107,7 @@
 
     <nav class="lwt-nav" aria-label="Walking tour navigation">
       <button type="button" class="lwt-prev" data-lwt-prev disabled>← Back</button>
-      <div class="lwt-progress" data-lwt-progress aria-live="polite">1 of 5</div>
+      <div class="lwt-progress" data-lwt-progress aria-live="polite">1 of 6</div>
       <button type="button" class="lwt-next" data-lwt-next>Next →</button>
     </nav>
   </div>

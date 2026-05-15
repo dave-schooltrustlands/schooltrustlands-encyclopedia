@@ -44,14 +44,14 @@ const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
-const DAILY_CAP = 10;
+const DAILY_CAP = 25;
 const TOP_K = 8;
 const STANDARD_MODEL = "claude-sonnet-4-6";
 const DEEP_MODEL = "claude-opus-4-6";
 const EMBED_MODEL = "text-embedding-3-small";
 
 const CAP_MESSAGE =
-  "The Librarian is busy with other readers. You've asked your ten questions for the day — the daily allowance refreshes overnight. The Library's other rooms stay open in the meantime.";
+  "The Librarian is busy with other readers. You've asked your twenty-five questions for the day — the daily allowance refreshes overnight. The Library's other rooms stay open in the meantime.";
 
 const SYSTEM_PROMPT = `You are the Librarian of America's School Trust Library. Your role is to help visitors find and understand information about America's school trust lands — the federal grants of section 16 and (after 1850) section 36 made to support public schools, the state-derived equivalents in non-grant states, the trust corpora, their management, their failures, the fiduciary doctrine that disciplines them, and the historical record across two and a half centuries.
 
