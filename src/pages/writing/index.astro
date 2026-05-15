@@ -1,9 +1,9 @@
 ---
-// v58 — Writing Room landing. Uses RoomLayout with room="writing"; the
-// banner, lower-nav tab strip, and Writing Room tab highlight all render
-// from the layout. First occupant is the AI-governance essay at
-// /writing/the-only-forever-trust/; further drafts move in as they reach
-// working-draft form.
+// v60b — Writing Room landing rewritten to surface the three migrated
+// books (Schools of the Republic, The Eighth Anchor, Who Steals from
+// Children) alongside the AI-governance essay v58 shipped. Books are
+// the headline; open essays sit beneath as their own section, with
+// room to grow as more drafts arrive.
 import RoomLayout from '../../layouts/RoomLayout.astro';
 ---
 <RoomLayout
@@ -16,11 +16,12 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
   <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <p>
       The Writing Room is where the Library's authors compose drafts in
-      the open. Essays, working manuals, and primary-source analyses
-      live here in working form before they graduate — to <a href="/voices/">Voices</a>
-      when they ship as signed editorial pieces, to the Reading Room
-      when they reach editorial maturity as published scholarship, or
-      to one of the other rooms when their final home becomes clear.
+      the open. The three book-length manuscripts the Library is
+      assembling live here, alongside open essays addressed to specific
+      audiences. Finished editorial pieces graduate to
+      <a href="/voices/">Voices</a> when they ship; published scholarship
+      and curated primary sources live in the <a href="/reading/">Reading
+      Room</a>'s catalog next door.
     </p>
 
     <p>
@@ -40,44 +41,155 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
       argue, they cite, they make their case. They are also incomplete,
       sometimes wrong in detail, and openly seeking comment. If you
       read something here and see a mistake, an omission, or a sharper
-      version of the argument, write to the <a href="/reference-desk/">Reference Desk</a>.
-      If you have substrate the draft would benefit from — a court
-      opinion, a state report, a primary-source document — send it.
-      The Writing Room exists because the work the Library is doing is
-      bigger than any one author can produce alone.
-    </p>
-
-    <h2>In development</h2>
-
-    <ul>
-      <li>
-        <strong><a href="/writing/the-only-forever-trust/">"The Only Forever-Trust We Have Data On"</a></strong>
-        (Sullivan, May 2026) — a focused essay taking the eight-anchor
-        school-trust-failure-modes argument directly to AI-governance
-        designers building the next century's perpetual institutions.
-        Working draft, ~2,350 words at skeleton stage. Comments welcome.
-      </li>
-    </ul>
-
-    <p>
-      The Library's three book-length manuscripts —
-      <a href="/reading/schools-of-the-republic/"><em>Schools of the Republic</em></a>
-      (Bird &amp; Sullivan),
-      <a href="/reading/sacred-compact/"><em>The Eighth Anchor</em></a>
-      (Sullivan), and
-      <a href="/reading/wsfc-vol1/"><em>Who Steals from Children, Volume&nbsp;1</em></a>
-      (Sullivan) — currently live in the Reading Room. They are
-      genuinely works-in-progress and will likely move into the Writing
-      Room in a future Library architecture pass; for now their URLs
-      remain in <code>/reading/</code>.
-    </p>
-
-    <p>
-      If you're interested in being a named correspondent for a Writing
-      Room draft — an early reader whose comments shape the final
-      version — write to the <a href="/reference-desk/">Reference Desk</a>.
-      The Library has more substrate than any single author can absorb,
-      and the work compounds with co-readers.
+      version of the argument, write to the
+      <a href="/reference-desk/">Reference Desk</a>. If you have
+      substrate the draft would benefit from — a court opinion, a state
+      report, a primary-source document — send it. The Writing Room
+      exists because the work the Library is doing is bigger than any
+      one author can produce alone.
     </p>
   </div>
+
+  <section class="books mt-10" aria-labelledby="books-heading">
+    <h2 id="books-heading" class="section-heading">The books</h2>
+
+    <article class="book-card">
+      <p class="card-kicker">Volume I · Looking Back</p>
+      <h3 class="card-title">
+        <a href="/writing/schools-of-the-republic/"><em>Schools of the Republic</em></a>
+      </h3>
+      <p class="card-byline">Margaret Bird and Dave Sullivan · 2025 · Substrate v1.3</p>
+      <p class="card-blurb">
+        How the United States built — and largely lost — a national
+        endowment for public education. Prologue, six era chapters,
+        conclusion, drawing on the Library's per-state evidentiary
+        record without duplicating it.
+      </p>
+      <a href="/writing/schools-of-the-republic/" class="card-cta">Enter <em>Schools of the Republic</em> →</a>
+    </article>
+
+    <article class="book-card">
+      <p class="card-kicker">Volume II · Looking Forward</p>
+      <h3 class="card-title">
+        <a href="/writing/eighth-anchor/"><em>The Eighth Anchor</em></a>
+      </h3>
+      <p class="card-byline">Dave Sullivan · 2026</p>
+      <p class="card-blurb">
+        How long-horizon trusts survive and fail, and what the next
+        generation needs to know. The eight-section framework — sometimes
+        called the Sacred Compact white paper — written for the
+        architects of the AI-era perpetual institutions now arriving at
+        the drafting table.
+      </p>
+      <a href="/writing/eighth-anchor/" class="card-cta">Enter <em>The Eighth Anchor</em> →</a>
+    </article>
+
+    <article class="book-card">
+      <p class="card-kicker">Volume III · In Court Now</p>
+      <h3 class="card-title">
+        <a href="/writing/who-steals-from-children/"><em>Who Steals from Children: Volume 1 — Oregon and the Elliott</em></a>
+      </h3>
+      <p class="card-byline">Dave Sullivan · Reader's Edition</p>
+      <p class="card-blurb">
+        The General Reader's Edition. A first-person, scene-grounded
+        account of how the State of Oregon has spent thirty-five years
+        removing a billion-dollar working trust asset from the Common
+        School Fund. The case is in court today; this volume is the
+        evidence.
+      </p>
+      <a href="/writing/who-steals-from-children/" class="card-cta">Enter <em>Who Steals from Children</em> →</a>
+    </article>
+  </section>
+
+  <section class="essays mt-10" aria-labelledby="essays-heading">
+    <h2 id="essays-heading" class="section-heading">Open essays</h2>
+
+    <article class="essay-card">
+      <h3 class="card-title">
+        <a href="/writing/the-only-forever-trust/">"The Only Forever-Trust We Have Data On"</a>
+      </h3>
+      <p class="card-byline">Dave Sullivan · May 2026 · ~2,350 words · Working draft</p>
+      <p class="card-blurb">
+        A focused essay taking the eight-anchor school-trust-failure-modes
+        argument directly to AI-governance designers building the next
+        century's perpetual institutions. Comments welcome.
+      </p>
+    </article>
+
+    <p class="mt-6 text-sm italic text-slate-500">
+      More essays as they reach working-draft form. If you're interested
+      in being a named correspondent for a Writing Room draft — an
+      early reader whose comments shape the final version — write to
+      the <a href="/reference-desk/">Reference Desk</a>.
+    </p>
+  </section>
 </RoomLayout>
+
+<style>
+  .section-heading {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+    margin: 0 0 1rem;
+  }
+  .book-card,
+  .essay-card {
+    background: var(--linen-card, #fafaf7);
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-left: 3px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    margin: 0 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-kicker {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--old-gold, #8b7355);
+    margin: 0 0 0.5rem;
+  }
+  .card-title {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+    line-height: 1.35;
+    margin: 0 0 0.4rem;
+  }
+  .card-title a {
+    color: var(--deep-navy, #1e3a5f);
+    text-decoration: none;
+  }
+  .card-title a:hover {
+    text-decoration: underline;
+  }
+  .card-byline {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #475569;
+    margin: 0 0 0.35rem;
+  }
+  .card-blurb {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #334155;
+    margin: 0 0 1rem;
+  }
+  .card-cta {
+    align-self: flex-start;
+    color: #1d4ed8;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .card-cta:hover {
+    color: #1e40af;
+  }
+</style>

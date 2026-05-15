@@ -35,6 +35,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Thursday May 14, 2026 — Site update v60b: Book migration finishes v58.</strong>
+            The three book-length manuscripts that opened in the Reading
+            Room move into the Writing Room, finishing the half-shipped
+            v58. <em>Schools of the Republic</em> migrates from
+            <code>/reading/schools-of-the-republic/</code> to
+            <a href="/writing/schools-of-the-republic/">/writing/schools-of-the-republic/</a>,
+            with its prologue, six era chapters, and conclusion moving in
+            lockstep; the per-state evidentiary record stays in the
+            Reading Room at <code>/reading/us-XX/</code> as the v59
+            state dossiers. <em>The Eighth Anchor</em> migrates as the
+            eight-essay arc, with the Sacred Compact URL family retiring
+            entirely — <code>/reading/sacred-compact/</code> and its
+            thirteen section pages now redirect to
+            <a href="/writing/eighth-anchor/">/writing/eighth-anchor/</a>
+            and section URLs at <code>/writing/eighth-anchor/i/</code>
+            through <code>/writing/eighth-anchor/viii/</code>, with the
+            three interludes and the v-5 supplement preserved at their
+            own paths. <em>Who Steals from Children</em> moves to its
+            Writing Room home at
+            <a href="/writing/who-steals-from-children/">/writing/who-steals-from-children/</a>;
+            the series-landing-plus-Vol-1-landing pair collapses into a
+            single page since only one volume is live, and the fourteen
+            Vol 1 chapter slugs strip the <code>wsfc-vol1-</code>
+            prefix on the way over. Every retired
+            <code>/reading/*</code> URL ships with a 301 redirect to its
+            new <code>/writing/*</code> home. The Reading Room's own
+            navigation, the homepage, the Library's Argument page, the
+            state Map Room dossiers that linked into Chapter 2 of SoR,
+            and the supporting essays under /about/, /missions/, /the-watchful-crew/,
+            /contribute/, /start/, and /why/ all pick up the new URLs in
+            this commit. Cross-Room links from the Reading Room catalog
+            to the new Writing Room book pages are picked up by the
+            v59 catalog entries automatically.
+          </li>
+          <li>
             <strong>Thursday May 14, 2026 — Site update v60: Substrate-surface cleanup.</strong>
             Five small surface fixes ship as one bundle. The homepage
             walking tour grows from five steps to six: step 1 (Welcome)

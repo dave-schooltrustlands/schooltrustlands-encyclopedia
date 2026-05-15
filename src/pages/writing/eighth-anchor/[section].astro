@@ -1,0 +1,254 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import BookmarkButton from '../../../components/BookmarkButton.astro';
+import PrepublicationBanner from '../../../components/PrepublicationBanner.astro';
+
+type Props = { entry: CollectionEntry<'essays'> };
+
+// Sacred Compact / Eighth Anchor essays carry two sourceWork values
+// in substrate — the older "Sacred Compact white paper v5.0" and the
+// renamed "The Eighth Anchor v5.1 (formerly Sacred Compact white paper
+// v5.0)". Both belong to the same series; the filter accepts either.
+const isEighthAnchorSourceWork = (sw: string): boolean =>
+  sw === 'Sacred Compact white paper v5.0' ||
+  sw.startsWith('The Eighth Anchor');
+
+export async function getStaticPaths() {
+  const matches = (sw: string): boolean =>
+    sw === 'Sacred Compact white paper v5.0' || sw.startsWith('The Eighth Anchor');
+  const slugify = (e: CollectionEntry<'essays'>): string => {
+    const sid = e.data.sectionId ?? e.slug.replace(/^sacred-compact-/, '');
+    return sid.replace(/\./g, '-');
+  };
+  const essays = await getCollection('essays');
+  const seriesEntries = essays
+    .filter((e) => matches(e.data.sourceWork))
+    .sort((a, b) => a.data.order - b.data.order);
+  return seriesEntries.map((entry) => ({
+    params: { section: slugify(entry) },
+    props: { entry },
+  }));
+}
+
+function sectionSlug(entry: CollectionEntry<'essays'>): string {
+  const sid = entry.data.sectionId ?? entry.slug.replace(/^sacred-compact-/, '');
+  return sid.replace(/\./g, '-');
+}
+
+const { entry } = Astro.props as Props;
+
+const isInterlude = entry.slug.startsWith('sacred-compact-interlude-');
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const num = new Intl.NumberFormat('en-US');
+
+const { Content } = await entry.render();
+
+const allEssays = await getCollection('essays');
+const seriesEntries = allEssays
+  .filter((e) => isEighthAnchorSourceWork(e.data.sourceWork))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const navTitleOf = (t: string) => t
+  .replace(/^Sacred Compact:\s*/, '')
+  .replace(/^The Eighth Anchor:\s*/, '')
+  .trim();
+
+type SeriesItem = { href: string; navTitle: string; isCurrent: boolean };
+const series: SeriesItem[] = seriesEntries.map((e) => ({
+  href: `/writing/eighth-anchor/${sectionSlug(e)}/`,
+  navTitle: navTitleOf(e.data.title),
+  isCurrent: e.slug === entry.slug,
+}));
+const idx = series.findIndex((s) => s.isCurrent);
+const prev = idx > 0 ? series[idx - 1] : null;
+const next = idx >= 0 && idx < series.length - 1 ? series[idx + 1] : null;
+
+const seriesLabel = entry.data.seriesLabel ?? 'The Eighth Anchor';
+---
+<RoomLayout
+  room="writing"
+  title={entry.data.title}
+  sourceId={`essay-${entry.slug}-${entry.data.sourceVersion}`}
+  width="prose"
+>
+  <Fragment slot="before-title">
+    <PrepublicationBanner volume={seriesLabel} />
+  </Fragment>
+
+  <Fragment slot="header-extras">
+    <p class="mt-4 text-xs text-slate-500">
+      {num.format(entry.data.wordCount)} words · Substrate {entry.data.sourceVersion} · Last synced {dateFmt.format(entry.data.lastSynced)}
+    </p>
+    <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+      <a href="/writing/eighth-anchor/" class="text-sm text-blue-700 underline hover:text-blue-900">
+        ← Back to The Eighth Anchor
+      </a>
+      <BookmarkButton title={entry.data.title} />
+    </div>
+  </Fragment>
+
+  <details class="essay-toc mt-8">
+    <summary>{seriesLabel} — all sections</summary>
+    <ol>
+      {series.map((s) => (
+        <li class:list={[s.isCurrent && 'is-current']}>
+          {s.isCurrent ? (
+            <a href={s.href} aria-current="page">
+              <strong>{s.navTitle}</strong> <span class="you-are-here">(you are here)</span>
+            </a>
+          ) : (
+            <a href={s.href}>{s.navTitle}</a>
+          )}
+        </li>
+      ))}
+    </ol>
+  </details>
+
+  {entry.data.heroImage && (
+    <figure class:list={['essay-hero mt-8', isInterlude && 'essay-hero-interlude']}>
+      <img
+        src={entry.data.heroImage}
+        alt={entry.data.heroImageCaption ?? entry.data.title}
+        loading="eager"
+      />
+      {entry.data.heroImageCaption && (
+        <figcaption set:html={entry.data.heroImageCaption.replace(/\*([^*]+)\*/g, '<em>$1</em>')} />
+      )}
+    </figure>
+  )}
+
+  <article
+    class:list={[
+      'prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline',
+      '[&>h1:first-child]:hidden',
+      isInterlude && 'sacred-compact-interlude',
+    ]}
+  >
+    <Content />
+  </article>
+
+  <nav
+    class="essay-prev-next mt-12 border-t border-slate-200 pt-6 text-sm"
+    aria-label={`${seriesLabel} navigation`}
+  >
+    <ul class="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:items-center">
+      <li class="sm:text-left">
+        {prev ? (
+          <a href={prev.href} class="text-blue-700 underline hover:text-blue-900">
+            ← Previous: {prev.navTitle}
+          </a>
+        ) : (
+          <span class="text-slate-400">&nbsp;</span>
+        )}
+      </li>
+      <li class="sm:text-center">
+        <a href="/writing/eighth-anchor/" class="text-blue-700 underline hover:text-blue-900">The Eighth Anchor</a>
+      </li>
+      <li class="sm:text-right">
+        {next ? (
+          <a href={next.href} class="text-blue-700 underline hover:text-blue-900">
+            Next: {next.navTitle} →
+          </a>
+        ) : (
+          <span class="text-slate-400">&nbsp;</span>
+        )}
+      </li>
+    </ul>
+  </nav>
+</RoomLayout>
+
+<style>
+  .essay-toc {
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    background: var(--linen-card, #fafaf7);
+  }
+  .essay-toc > summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+  }
+  .essay-toc[open] > summary {
+    margin-bottom: 0.5rem;
+  }
+  .essay-toc ol {
+    list-style: decimal;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    padding-left: 1.75rem;
+    margin: 0.4rem 0 0.2rem;
+  }
+  .essay-toc ol li {
+    margin-bottom: 0.2rem;
+  }
+  .essay-toc ol li a {
+    color: #1d4ed8;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .essay-toc ol li a:hover {
+    color: #1e40af;
+  }
+  .essay-toc ol li.is-current a {
+    color: #0f172a;
+  }
+  .essay-toc .you-are-here {
+    font-style: italic;
+    color: #475569;
+    font-weight: 400;
+  }
+  .essay-prev-next ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .essay-hero {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+  }
+  .essay-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    background: #f5efe1;
+  }
+  .essay-hero-interlude img {
+    background: #f9f3e3;
+  }
+  .essay-hero figcaption {
+    margin-top: 0.6rem;
+    font-family: var(--font-serif, Georgia, 'Times New Roman', serif);
+    font-style: italic;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #6b7280;
+    text-align: center;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .essay-hero figcaption em {
+    font-style: normal;
+  }
+  @media (max-width: 640px) {
+    .essay-hero img {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>

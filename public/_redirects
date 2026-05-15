@@ -34,3 +34,108 @@
 /reading/wsfc-vol1-ch11-the-smoking-gun-and-the-discovery-stonewall   /reading/wsfc-vol1-ch11-corvallis-high-school/                     301
 /reading/wsfc-vol1-ch12-whats-been-stolen/                            /reading/wsfc-vol1-ch12-the-smoking-gun/                           301
 /reading/wsfc-vol1-ch12-whats-been-stolen                             /reading/wsfc-vol1-ch12-the-smoking-gun/                           301
+
+# v60b — Book migration: /reading/* book pages → /writing/* book pages.
+# Three long-form works leave the Reading Room (now the curated catalog
+# after v59) for the Writing Room (opened by v58). The state dossiers at
+# /reading/us-XX/ stay where they are — they are v59 catalog entries,
+# not chapters of these books.
+
+# Schools of the Republic — landing + 8 chapter pages (prologue, 6 era
+# chapters, conclusion). Per-state dossiers /reading/us-XX/ are NOT
+# migrated and have no rule here.
+/reading/schools-of-the-republic/                                     /writing/schools-of-the-republic/                                  301
+/reading/schools-of-the-republic                                      /writing/schools-of-the-republic/                                  301
+/reading/prologue/                                                    /writing/schools-of-the-republic/prologue/                         301
+/reading/prologue                                                     /writing/schools-of-the-republic/prologue/                         301
+/reading/founding-floor/                                              /writing/schools-of-the-republic/founding-floor/                   301
+/reading/founding-floor                                               /writing/schools-of-the-republic/founding-floor/                   301
+/reading/statehood-without-federal-floor/                             /writing/schools-of-the-republic/statehood-without-federal-floor/  301
+/reading/statehood-without-federal-floor                              /writing/schools-of-the-republic/statehood-without-federal-floor/  301
+/reading/northwest-ordinance-template/                                /writing/schools-of-the-republic/northwest-ordinance-template/     301
+/reading/northwest-ordinance-template                                 /writing/schools-of-the-republic/northwest-ordinance-template/     301
+/reading/antebellum-doubling/                                         /writing/schools-of-the-republic/antebellum-doubling/              301
+/reading/antebellum-doubling                                          /writing/schools-of-the-republic/antebellum-doubling/              301
+/reading/reconstruction-western-stack/                                /writing/schools-of-the-republic/reconstruction-western-stack/     301
+/reading/reconstruction-western-stack                                 /writing/schools-of-the-republic/reconstruction-western-stack/     301
+/reading/twentieth-century-high-water-mark/                           /writing/schools-of-the-republic/twentieth-century-high-water-mark/ 301
+/reading/twentieth-century-high-water-mark                            /writing/schools-of-the-republic/twentieth-century-high-water-mark/ 301
+/reading/conclusion/                                                  /writing/schools-of-the-republic/conclusion/                       301
+/reading/conclusion                                                   /writing/schools-of-the-republic/conclusion/                       301
+
+# The Eighth Anchor — landing + 13 sections (prologue, 8 numbered,
+# v-5 supplement, 3 interludes). The Sacred Compact title retires; the
+# Reading Room enforcement-beneficiary-cannot-sue redirect (above) still
+# points at the old /reading/sacred-compact/ URL, which itself now
+# redirects to /writing/eighth-anchor/ — Cloudflare Pages follows the
+# chain transparently.
+/reading/sacred-compact/                                              /writing/eighth-anchor/                                            301
+/reading/sacred-compact                                               /writing/eighth-anchor/                                            301
+/reading/sacred-compact-prologue/                                     /writing/eighth-anchor/prologue/                                   301
+/reading/sacred-compact-prologue                                      /writing/eighth-anchor/prologue/                                   301
+/reading/sacred-compact-i-the-question/                               /writing/eighth-anchor/i/                                          301
+/reading/sacred-compact-i-the-question                                /writing/eighth-anchor/i/                                          301
+/reading/sacred-compact-ii-the-sacred-compact/                        /writing/eighth-anchor/ii/                                         301
+/reading/sacred-compact-ii-the-sacred-compact                         /writing/eighth-anchor/ii/                                         301
+/reading/sacred-compact-iii-the-drift/                                /writing/eighth-anchor/iii/                                        301
+/reading/sacred-compact-iii-the-drift                                 /writing/eighth-anchor/iii/                                        301
+/reading/sacred-compact-iv-the-pattern/                               /writing/eighth-anchor/iv/                                         301
+/reading/sacred-compact-iv-the-pattern                                /writing/eighth-anchor/iv/                                         301
+/reading/sacred-compact-v-the-counter-architecture/                   /writing/eighth-anchor/v/                                          301
+/reading/sacred-compact-v-the-counter-architecture                    /writing/eighth-anchor/v/                                          301
+/reading/sacred-compact-v-5-knowledge-stack-as-demonstration/         /writing/eighth-anchor/v-5/                                        301
+/reading/sacred-compact-v-5-knowledge-stack-as-demonstration          /writing/eighth-anchor/v-5/                                        301
+/reading/sacred-compact-vi-the-coming-trusts/                         /writing/eighth-anchor/vi/                                         301
+/reading/sacred-compact-vi-the-coming-trusts                          /writing/eighth-anchor/vi/                                         301
+/reading/sacred-compact-vii-civic-practice/                           /writing/eighth-anchor/vii/                                        301
+/reading/sacred-compact-vii-civic-practice                            /writing/eighth-anchor/vii/                                        301
+/reading/sacred-compact-viii-letter-to-architects/                    /writing/eighth-anchor/viii/                                       301
+/reading/sacred-compact-viii-letter-to-architects                     /writing/eighth-anchor/viii/                                       301
+/reading/sacred-compact-interlude-1-tektronix/                        /writing/eighth-anchor/interlude-1-tektronix/                      301
+/reading/sacred-compact-interlude-1-tektronix                         /writing/eighth-anchor/interlude-1-tektronix/                      301
+/reading/sacred-compact-interlude-2-computing-today/                  /writing/eighth-anchor/interlude-2-computing-today/                301
+/reading/sacred-compact-interlude-2-computing-today                   /writing/eighth-anchor/interlude-2-computing-today/                301
+/reading/sacred-compact-interlude-3-cognitive-partnership/            /writing/eighth-anchor/interlude-3-cognitive-partnership/          301
+/reading/sacred-compact-interlude-3-cognitive-partnership             /writing/eighth-anchor/interlude-3-cognitive-partnership/          301
+
+# Who Steals from Children — series landing + Vol 1 landing collapsed
+# into a single page under /writing/who-steals-from-children/. The 14
+# Vol 1 chapter slugs strip the "wsfc-vol1-" prefix and move to
+# /writing/who-steals-from-children/<chapter>/. The v26 chapter slug
+# renames (above) still 301 from their pre-rename forms to the current
+# Reading Room slugs, which now in turn 301 onward to /writing/ —
+# Cloudflare Pages follows the chain.
+/reading/who-steals-from-children/                                    /writing/who-steals-from-children/                                 301
+/reading/who-steals-from-children                                     /writing/who-steals-from-children/                                 301
+/reading/who-steals-from-children-vol1-elliott/                       /writing/who-steals-from-children/                                 301
+/reading/who-steals-from-children-vol1-elliott                        /writing/who-steals-from-children/                                 301
+/reading/wsfc-vol1-preface/                                           /writing/who-steals-from-children/preface/                         301
+/reading/wsfc-vol1-preface                                            /writing/who-steals-from-children/preface/                         301
+/reading/wsfc-vol1-ch01-why-i-bought-a-tree-farm/                     /writing/who-steals-from-children/ch01-why-i-bought-a-tree-farm/   301
+/reading/wsfc-vol1-ch01-why-i-bought-a-tree-farm                      /writing/who-steals-from-children/ch01-why-i-bought-a-tree-farm/   301
+/reading/wsfc-vol1-ch02-the-first-foia/                               /writing/who-steals-from-children/ch02-the-first-foia/             301
+/reading/wsfc-vol1-ch02-the-first-foia                                /writing/who-steals-from-children/ch02-the-first-foia/             301
+/reading/wsfc-vol1-ch03-bob-and-barb-at-cougar-pass/                  /writing/who-steals-from-children/ch03-bob-and-barb-at-cougar-pass/ 301
+/reading/wsfc-vol1-ch03-bob-and-barb-at-cougar-pass                   /writing/who-steals-from-children/ch03-bob-and-barb-at-cougar-pass/ 301
+/reading/wsfc-vol1-ch04-the-secret-meeting-about-going-public/        /writing/who-steals-from-children/ch04-the-secret-meeting-about-going-public/ 301
+/reading/wsfc-vol1-ch04-the-secret-meeting-about-going-public         /writing/who-steals-from-children/ch04-the-secret-meeting-about-going-public/ 301
+/reading/wsfc-vol1-ch05-the-sale-that-didnt-happen/                   /writing/who-steals-from-children/ch05-the-sale-that-didnt-happen/ 301
+/reading/wsfc-vol1-ch05-the-sale-that-didnt-happen                    /writing/who-steals-from-children/ch05-the-sale-that-didnt-happen/ 301
+/reading/wsfc-vol1-ch06-the-quiet-substitution/                       /writing/who-steals-from-children/ch06-the-quiet-substitution/     301
+/reading/wsfc-vol1-ch06-the-quiet-substitution                        /writing/who-steals-from-children/ch06-the-quiet-substitution/     301
+/reading/wsfc-vol1-ch07-the-childrens-forest/                         /writing/who-steals-from-children/ch07-the-childrens-forest/       301
+/reading/wsfc-vol1-ch07-the-childrens-forest                          /writing/who-steals-from-children/ch07-the-childrens-forest/       301
+/reading/wsfc-vol1-ch08-david-gould/                                  /writing/who-steals-from-children/ch08-david-gould/                301
+/reading/wsfc-vol1-ch08-david-gould                                   /writing/who-steals-from-children/ch08-david-gould/                301
+/reading/wsfc-vol1-ch09-margaret-arrives/                             /writing/who-steals-from-children/ch09-margaret-arrives/           301
+/reading/wsfc-vol1-ch09-margaret-arrives                              /writing/who-steals-from-children/ch09-margaret-arrives/           301
+/reading/wsfc-vol1-ch10-the-first-lawsuit/                            /writing/who-steals-from-children/ch10-the-first-lawsuit/          301
+/reading/wsfc-vol1-ch10-the-first-lawsuit                             /writing/who-steals-from-children/ch10-the-first-lawsuit/          301
+/reading/wsfc-vol1-ch11-corvallis-high-school/                        /writing/who-steals-from-children/ch11-corvallis-high-school/      301
+/reading/wsfc-vol1-ch11-corvallis-high-school                         /writing/who-steals-from-children/ch11-corvallis-high-school/      301
+/reading/wsfc-vol1-ch12-the-smoking-gun/                              /writing/who-steals-from-children/ch12-the-smoking-gun/            301
+/reading/wsfc-vol1-ch12-the-smoking-gun                               /writing/who-steals-from-children/ch12-the-smoking-gun/            301
+/reading/wsfc-vol1-ch13-who-stops-this/                               /writing/who-steals-from-children/ch13-who-stops-this/             301
+/reading/wsfc-vol1-ch13-who-stops-this                                /writing/who-steals-from-children/ch13-who-stops-this/             301
+/reading/wsfc-vol1-documentary-record/                                /writing/who-steals-from-children/documentary-record/              301
+/reading/wsfc-vol1-documentary-record                                 /writing/who-steals-from-children/documentary-record/              301

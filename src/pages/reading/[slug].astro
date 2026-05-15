@@ -11,13 +11,26 @@ type StateProps = { kind: 'state'; entry: CollectionEntry<'states'> };
 type Props = EssayProps | StateProps;
 
 export async function getStaticPaths() {
+  // v60b — Three book series migrated out of the Reading Room into
+  // the Writing Room. The Reading Room's dynamic [slug].astro route
+  // still serves any other essay-collection content (none today) plus
+  // state dossiers, but no longer generates pages for the migrated
+  // books. Old URLs are 301-redirected via public/_redirects.
+  const isMigrated = (sw: string): boolean =>
+    sw === 'Schools of the Republic v1.3' ||
+    sw === 'Sacred Compact white paper v5.0' ||
+    sw.startsWith('The Eighth Anchor') ||
+    sw.startsWith('Who Steals from Children');
+
   const essays = await getCollection('essays');
   const states = await getCollection('states');
 
-  const essayPaths = essays.map((entry) => ({
-    params: { slug: entry.slug.replace(/^\d+-/, '') },
-    props: { kind: 'essay' as const, entry },
-  }));
+  const essayPaths = essays
+    .filter((entry) => !isMigrated(entry.data.sourceWork))
+    .map((entry) => ({
+      params: { slug: entry.slug.replace(/^\d+-/, '') },
+      props: { kind: 'essay' as const, entry },
+    }));
 
   const statePaths = states.map((entry) => ({
     params: { slug: entry.data.iso.toLowerCase() },

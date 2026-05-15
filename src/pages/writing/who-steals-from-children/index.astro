@@ -1,0 +1,205 @@
+---
+import { getCollection } from 'astro:content';
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import { getServerSupabase } from '../../../lib/supabase';
+
+export const prerender = false;
+
+const WSFC_VOL1 = 'Who Steals from Children: Volume 1 — Oregon and the Elliott';
+
+let reviewCount = 0;
+try {
+  const supabase = getServerSupabase(Astro);
+  const { data: work } = await supabase
+    .from('works')
+    .select('id')
+    .eq('slug', 'who-steals-from-children-vol-1')
+    .maybeSingle();
+  if (work?.id) {
+    const { count } = await supabase
+      .from('reviews')
+      .select('id', { count: 'exact', head: true })
+      .eq('work_id', work.id)
+      .eq('is_published', true);
+    if (typeof count === 'number') reviewCount = count;
+  }
+} catch {
+  /* swallow */
+}
+
+const chapters = (await getCollection('essays'))
+  .filter((e) => e.data.sourceWork === WSFC_VOL1)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const chapterSlug = (slug: string): string =>
+  slug.replace(/^wsfc-vol1-/, '');
+
+const formatChapterNumber = (n: string | number | undefined): string => {
+  if (n === undefined) return '';
+  if (typeof n === 'number') return `Chapter ${n}`;
+  return n;
+};
+
+const trimChapterTitle = (title: string): string =>
+  title.replace(/^Chapter\s+\d+\s+—\s+/, '').trim();
+---
+<RoomLayout
+  room="writing"
+  title="Who Steals from Children: Volume 1 — Oregon and the Elliott"
+  subtitle="The prosecutorial-history record of how the State of Oregon has spent thirty-five years removing the Elliott State Forest from the Common School Fund. Volume 1 of the Who Steals from Children series."
+  width="prose"
+  sourceId="writing-wsfc-vol1-elliott"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">
+      Writing Room · <em>Who Steals from Children</em> series · Volume 1
+    </p>
+
+    <p class="byline text-slate-700">
+      <strong>Dave Sullivan</strong>
+    </p>
+
+    <p class="spine mt-6 text-lg leading-relaxed text-slate-800">
+      Oregon is trying to take a $1-billion-plus asset that belongs in trust
+      for schoolchildren and convert it into a research forest at OSU paid for
+      by general-fund bonds, and we have caught them in the act. That is the
+      whole indictment. The rest of this book is the evidence.
+    </p>
+
+    <hr class="archival-divider" />
+
+    <section class="readers-edition mt-8" aria-labelledby="readers-edition-heading">
+      <h2 id="readers-edition-heading" class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        About the Reader's Edition
+      </h2>
+
+      <p class="mt-4">
+        <em>Who Steals from Children</em> is written here as a Reader's
+        Edition — a first-person, scene-grounded account written for the
+        people whose children are the named beneficiaries of the
+        school-land trusts the volume documents. Parents. School-district
+        administrators. Civic-engaged general readers. The constituency
+        whose absence from the room is the reason these trusts have been
+        allowed to drift in the first place.
+      </p>
+
+      <p class="mt-4">
+        The Reader's Edition is built around the journey the author actually
+        took to arrive at the case the volume documents. The documentary
+        record — appraisals, court filings, attorney general opinions,
+        legislative votes, internal agency correspondence — is woven into
+        the body of each chapter as the author encountered it, and is set off
+        in boxed insets where a reader who wants to know the underlying
+        doctrine or the precise language of a document can find it without
+        slowing the narrative for the reader who does not.
+      </p>
+
+      <p class="mt-4">
+        The series title — <em>Who Steals from Children</em> — comes to us
+        from Jim Petersen of <em>Evergreen</em>, who used the phrase in a
+        2025 phone call with Dave Sullivan when the two were discussing what
+        Oregon had done to the Elliott. Petersen put the question in the
+        register the school-trust record requires: not <em>what went
+        wrong</em>, but <em>who stole from whom</em>, named. Future volumes
+        in the series will follow the same form, one state per volume, as
+        each state's record is assembled.
+      </p>
+    </section>
+  </article>
+
+  <section class="toc mt-10" aria-labelledby="toc-heading">
+    <h2 id="toc-heading" class="toc-heading">Table of Contents</h2>
+    <ol class="toc-list">
+      {chapters.map((c) => {
+        const isBodyChapter = typeof c.data.chapterNumber === 'number';
+        const navTitle = isBodyChapter ? trimChapterTitle(c.data.title) : c.data.title;
+        const numberLabel = formatChapterNumber(c.data.chapterNumber);
+        return (
+          <li class="toc-item">
+            <a href={`/writing/who-steals-from-children/${chapterSlug(c.slug)}/`} class="toc-link">
+              <span class="toc-number">{numberLabel}</span>
+              <span class="toc-title">{navTitle}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+
+  <p class="mt-12 text-sm text-slate-600">
+    <a href="/writing/">← Writing Room</a>
+  </p>
+
+  <p class="reviews-link mt-4 text-sm text-slate-500">
+    <a href="/reading/who-steals-from-children-vol-1/reviews/">Reviews ({reviewCount})</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .byline {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+  .spine {
+    font-family: var(--font-serif, Georgia, serif);
+    border-left: 3px solid var(--old-gold, #8b7355);
+    padding: 0.25rem 0 0.25rem 1rem;
+    margin-top: 1.5rem;
+  }
+  .toc {
+    border-top: 1px solid var(--rule-border, #e5e7eb);
+    padding-top: 1.5rem;
+  }
+  .toc-heading {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+    margin: 0 0 1rem;
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .toc-item {
+    border-bottom: 1px dotted var(--rule-border, #e5e7eb);
+  }
+  .toc-link {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 0.75rem;
+    padding: 0.65rem 0.25rem;
+    color: inherit;
+    text-decoration: none;
+    align-items: baseline;
+  }
+  .toc-link:hover {
+    background: var(--linen-card, #fafaf7);
+  }
+  .toc-number {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--old-gold, #8b7355);
+    font-weight: 600;
+  }
+  .toc-title {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.02rem;
+    color: var(--deep-navy, #1e3a5f);
+    text-decoration: underline;
+    text-decoration-color: #cbd5e1;
+    text-underline-offset: 3px;
+  }
+  .toc-link:hover .toc-title {
+    text-decoration-color: var(--deep-navy, #1e3a5f);
+  }
+  @media (max-width: 640px) {
+    .toc-link {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+  }
+</style>
