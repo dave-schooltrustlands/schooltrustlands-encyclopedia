@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import EAIUtilityBar from '../components/EAIUtilityBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PrepublicationFooter from '../components/PrepublicationFooter.astro';
@@ -168,6 +169,7 @@ const mainClass =
     <span data-pagefind-filter={`room:${room}`} hidden></span>
     {pagefindEra && <span data-pagefind-meta={`era:${pagefindEra}`} hidden></span>}
     {pagefindEra && <span data-pagefind-filter={`era:${pagefindEra}`} hidden></span>}
+    <EAIUtilityBar />
     <Header />
 
     <Breadcrumb segments={breadcrumbSegments} />

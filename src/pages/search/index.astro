@@ -11,6 +11,7 @@
 // collections: matching documents are the primary visual element; facets
 // live in a left sidebar (desktop) or a collapsed top section (mobile).
 import BaseHead from '../../components/BaseHead.astro';
+import EAIUtilityBar from '../../components/EAIUtilityBar.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import PrepublicationFooter from '../../components/PrepublicationFooter.astro';
@@ -28,6 +29,7 @@ import PrepublicationFooter from '../../components/PrepublicationFooter.astro';
     data-source-id="search-results"
     data-pagefind-ignore
   >
+    <EAIUtilityBar />
     <Header />
 
     <main class="search-page mx-auto max-w-5xl px-4 py-6 sm:py-8">

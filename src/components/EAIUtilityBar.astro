@@ -1,0 +1,185 @@
+---
+// v63 — Persistent campus utility bar, Library variant. Same spec as
+// ASTL v70 / EAI v1.3: thin near-black strip at the top of every page,
+// cream text, small type. Left: institute mark + Institute name link.
+// Right: "Campus buildings" dropdown listing the four buildings, with
+// this site marked "you are here."
+const CAMPUS = [
+  { label: "America's School Trust Library — you are here", href: null, current: true },
+  { label: 'ASTL National', href: 'https://schooltrustlands.net' },
+  { label: 'Oregon Chapter (coming soon)', href: null },
+  { label: 'ORWW Field Station', href: 'http://orww.org' },
+];
+---
+<div class="eai-utility-bar" data-eai-utility-bar data-pagefind-ignore>
+  <div class="eai-bar-inner">
+    <a class="eai-bar-left" href="https://eighthanchor.org" rel="noopener">
+      <svg
+        class="eai-bar-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 2v20" />
+        <path d="M5 8c0 4 3 7 7 7s7-3 7-7" />
+        <path d="M8 22h8" />
+      </svg>
+      <span class="eai-bar-label">The Eighth Anchor Institute</span>
+    </a>
+    <details class="eai-bar-right">
+      <summary>
+        <span>Campus buildings</span>
+        <span class="eai-bar-caret" aria-hidden="true">▾</span>
+      </summary>
+      <ul class="eai-bar-menu" role="menu">
+        {CAMPUS.map((item) => (
+          <li role="none">
+            {item.href ? (
+              <a role="menuitem" href={item.href} rel="noopener">{item.label}</a>
+            ) : (
+              <span role="menuitem" aria-disabled="true" class:list={[item.current && 'is-current']}>
+                {item.label}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </details>
+  </div>
+</div>
+
+<style>
+  .eai-utility-bar {
+    background: #14181f;
+    color: #f3ead2;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.78rem;
+    line-height: 1;
+    border-bottom: 1px solid rgba(243, 234, 210, 0.08);
+  }
+  .eai-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 30px;
+  }
+  .eai-bar-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #f3ead2;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .eai-bar-left:hover {
+    color: #fff;
+  }
+  .eai-bar-icon {
+    width: 14px;
+    height: 14px;
+    color: #cdb87a;
+    flex-shrink: 0;
+  }
+  .eai-bar-label {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .eai-bar-right {
+    position: relative;
+  }
+  .eai-bar-right > summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #f3ead2;
+    padding: 0.25rem 0.4rem;
+    border-radius: 3px;
+    user-select: none;
+  }
+  .eai-bar-right > summary::-webkit-details-marker {
+    display: none;
+  }
+  .eai-bar-right > summary:hover {
+    background: rgba(243, 234, 210, 0.08);
+  }
+  .eai-bar-caret {
+    font-size: 0.7rem;
+    transition: transform 0.15s ease;
+  }
+  .eai-bar-right[open] .eai-bar-caret {
+    transform: rotate(180deg);
+  }
+  .eai-bar-menu {
+    position: absolute;
+    top: calc(100% + 2px);
+    right: 0;
+    min-width: 16rem;
+    margin: 0;
+    padding: 0.4rem 0;
+    background: #14181f;
+    border: 1px solid rgba(243, 234, 210, 0.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    list-style: none;
+    z-index: 100;
+  }
+  .eai-bar-menu li {
+    margin: 0;
+  }
+  .eai-bar-menu a,
+  .eai-bar-menu span[role="menuitem"] {
+    display: block;
+    padding: 0.45rem 0.85rem;
+    color: #f3ead2;
+    text-decoration: none;
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+  .eai-bar-menu a:hover {
+    background: rgba(243, 234, 210, 0.08);
+    color: #fff;
+  }
+  .eai-bar-menu span[role="menuitem"] {
+    color: rgba(243, 234, 210, 0.55);
+    cursor: default;
+  }
+  .eai-bar-menu span[role="menuitem"].is-current {
+    color: #cdb87a;
+    font-weight: 600;
+  }
+  @media (max-width: 480px) {
+    .eai-bar-label {
+      font-size: 0.72rem;
+    }
+    .eai-bar-inner {
+      padding: 0 0.65rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  // Close the Campus-buildings menu on outside click. Native <details>
+  // does not auto-close; this matches the affordance users expect from
+  // header menus.
+  (() => {
+    const bar = document.querySelector('[data-eai-utility-bar]');
+    if (!bar) return;
+    const dropdown = bar.querySelector('.eai-bar-right');
+    if (!dropdown) return;
+    document.addEventListener('click', (ev) => {
+      if (!dropdown.contains(ev.target)) {
+        dropdown.removeAttribute('open');
+      }
+    });
+  })();
+</script>

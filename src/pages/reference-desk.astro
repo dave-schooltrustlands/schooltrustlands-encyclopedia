@@ -5,6 +5,7 @@
 // ~80 words, and a child page at /reference-desk/about/ carries the
 // longer methodology explanation.
 import RoomLayout from '../layouts/RoomLayout.astro';
+import CrossSiteBridge from '../components/CrossSiteBridge.astro';
 ---
 <RoomLayout
   room="reference-desk"
@@ -23,6 +24,13 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     she works and what she can and can't do, see
     <a href="/reference-desk/about/">About the Librarian</a>.
   </p>
+
+  <CrossSiteBridge
+    href="https://schooltrustlands.net/the-desk/"
+    label="Action-oriented research"
+    sublabel="The Coalition runs a parallel desk tuned for journalists on deadline, legislative staff, and agency directors who need quick research starts."
+    cta="Visit The Desk at the Coalition →"
+  />
 
   {/*
     v57b — Library Card-gated chat panel with conversation history.

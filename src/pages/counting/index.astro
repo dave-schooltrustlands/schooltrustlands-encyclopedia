@@ -1,5 +1,6 @@
 ---
 import RoomLayout from '../../layouts/RoomLayout.astro';
+import CrossSiteBridge from '../../components/CrossSiteBridge.astro';
 import financeData from '../../data/finance/states.json';
 
 type FinanceRecord = {
@@ -52,6 +53,13 @@ const transparencyLabels: Record<string, string> = {
   width="full"
   sourceId="finance-states-json"
 >
+  <CrossSiteBridge
+    href="https://schooltrustlands.net/the-ledger/"
+    label="Current disclosure status"
+    sublabel="ASTL's Ledger publishes which states currently disclose complete school-trust accounting and which do not, drawn from this substrate."
+    cta="See the Ledger →"
+  />
+
   <aside
     class="mt-6 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-5 text-base text-amber-900 shadow-sm"
     aria-label="How to read this table"

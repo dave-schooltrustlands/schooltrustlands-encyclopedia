@@ -16,6 +16,7 @@
 // Records."
 
 import BaseHead from '../components/BaseHead.astro';
+import EAIUtilityBar from '../components/EAIUtilityBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PrepublicationFooter from '../components/PrepublicationFooter.astro';
@@ -42,6 +43,7 @@ const { title, description, sourceId, pageLabel, showToc = false } = Astro.props
     data-source-id={sourceId}
     data-pro="true"
   >
+    <EAIUtilityBar />
     <Header />
 
     <div class="pro-banner" role="note">

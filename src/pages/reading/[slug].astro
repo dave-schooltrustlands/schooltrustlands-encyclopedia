@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import StateDossier from '../../components/StateDossier.astro';
 import StateDossierCard from '../../components/StateDossierCard.astro';
+import CrossSiteBridge from '../../components/CrossSiteBridge.astro';
 import BookmarkButton from '../../components/BookmarkButton.astro';
 import PrepublicationBanner from '../../components/PrepublicationBanner.astro';
 
@@ -314,6 +315,14 @@ const layoutProps =
         federalGrantAcres={props.entry.data.federalGrantAcres}
         summary={props.entry.data.summary}
         currentIssue={props.entry.data.currentIssue}
+      />
+      <CrossSiteBridge
+        href={`https://schooltrustlands.net/briefing-room/${props.entry.data.name
+          .toLowerCase()
+          .replace(/\s+/g, '-')}/`}
+        label={`Coalition advocacy in ${props.entry.data.name}`}
+        sublabel="ASTL's Briefing Room tracks current coalition work, advocacy posture, and disclosure status for this state."
+        cta="See current advocacy →"
       />
     </section>
   )}

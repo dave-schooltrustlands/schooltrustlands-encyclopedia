@@ -14,6 +14,7 @@
 // "COMING SOON" pill overlays the upper-right corner.
 
 import BaseHead from '../components/BaseHead.astro';
+import EAIUtilityBar from '../components/EAIUtilityBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PrepublicationFooter from '../components/PrepublicationFooter.astro';
@@ -59,6 +60,7 @@ const resolvedDescription = description ?? subtitle;
     data-room={room}
     data-coming-soon="true"
   >
+    <EAIUtilityBar />
     <Header />
     <main class="mx-auto max-w-prose p-4 sm:p-8 room-main">
       <div class="coming-soon-banner-wrapper">
