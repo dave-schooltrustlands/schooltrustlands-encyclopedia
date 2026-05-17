@@ -677,6 +677,14 @@ h4[id] {
     font-weight: 900;
     font-size: 1.05rem;
   }
+  .footer-prototype-disclosure {
+    margin-top: 0.9rem;
+    padding-top: 0.7rem;
+    border-top: 1px dashed rgba(0, 0, 0, 0.18);
+    font-size: 0.85rem;
+    color: #475569;
+    max-width: 65ch;
+  }
   .footer-meta {
     max-width: 65ch;
     margin-top: 1.5rem;

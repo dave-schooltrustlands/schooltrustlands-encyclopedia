@@ -1,10 +1,10 @@
 ---
-// v65 — Founders' Cabinet graduates from Coming Soon to a live room.
-// Fourteen named figures: the modern scholars, attorneys, foresters,
-// and advocates who shaped the school-trust field across the past five
-// decades. The 1785 framers (Jefferson, Grayson, Williamson) belong in
-// this cabinet too and will join in a future expansion. Portraits
-// render as styled initial placeholders until image acquisition.
+// v2.1 — Real portraits wired for 8 of 14 Cabinet cards (Margaret Bird,
+// Dave Sullivan, Bob Zybach, Laura Cooper, Daniel Crowe, Natalie Scott,
+// David Gould, Marguerite Herman). The remaining 6 (Bill Lansing, Roy
+// Andes, Jerry Phillips, Francis Elliott, Jerry Franklin, John A.
+// Charles Jr.) retain initial-style placeholders and carry an
+// "ai-pending" status pill until the AI-portrait round arrives.
 import RoomLayout from '../layouts/RoomLayout.astro';
 ---
 <RoomLayout
@@ -40,7 +40,14 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     <h2 id="cabinet-heading" class="section-heading">The cabinet</h2>
 
     <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">MB</div>
+      <img
+        class="portrait"
+        src="/images/founders/margaret-bird.png"
+        alt="Portrait of Margaret Bird"
+        width="72"
+        height="72"
+        loading="lazy"
+      />
       <div class="card-body">
         <h3>Margaret Bird</h3>
         <p class="role-line">Economist · School trust lands scholar · Utah reform leader</p>
@@ -66,7 +73,14 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     </article>
 
     <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">DS</div>
+      <img
+        class="portrait portrait--couple-left"
+        src="/images/founders/dave-sullivan.jpg"
+        alt="Portrait of Dave Sullivan"
+        width="72"
+        height="72"
+        loading="lazy"
+      />
       <div class="card-body">
         <h3>Dave Sullivan, Ph.D.</h3>
         <p class="role-line">Retired Professor of Business, Oregon State University · Author · Small woodland owner</p>
@@ -91,7 +105,14 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     </article>
 
     <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">BZ</div>
+      <img
+        class="portrait"
+        src="/images/founders/bob-zybach.jpg"
+        alt="Portrait of Bob Zybach"
+        width="72"
+        height="72"
+        loading="lazy"
+      />
       <div class="card-body">
         <h3>Bob Zybach, PhD</h3>
         <p class="role-line">Environmental scientist · Forest and wildfire historian · Cofounder, ORWW</p>
@@ -115,7 +136,14 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     </article>
 
     <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">LC</div>
+      <img
+        class="portrait"
+        src="/images/founders/laura-cooper.jpg"
+        alt="Portrait of Laura D. Cooper"
+        width="72"
+        height="72"
+        loading="lazy"
+      />
       <div class="card-body">
         <h3>Laura D. Cooper, OSB# 863589</h3>
         <p class="role-line">Attorney · Civil rights and complex litigation</p>
@@ -139,7 +167,14 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     </article>
 
     <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">DC</div>
+      <img
+        class="portrait"
+        src="/images/founders/daniel-crowe.png"
+        alt="Portrait of Daniel Zene Crowe"
+        width="72"
+        height="72"
+        loading="lazy"
+      />
       <div class="card-body">
         <h3>Daniel Zene Crowe</h3>
         <p class="role-line">Attorney · West Point graduate · Army Ranger · Retired Lieutenant Colonel and JAG officer</p>
@@ -163,7 +198,14 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     </article>
 
     <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">NS</div>
+      <img
+        class="portrait"
+        src="/images/founders/natalie-scott.png"
+        alt="Portrait of Natalie Scott"
+        width="72"
+        height="72"
+        loading="lazy"
+      />
       <div class="card-body">
         <h3>Natalie Scott</h3>
         <p class="role-line">Attorney · The Scott Law Group</p>
@@ -186,7 +228,14 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     </article>
 
     <article class="cabinet-card in-memoriam">
-      <div class="portrait-placeholder memorial" aria-hidden="true">DG</div>
+      <img
+        class="portrait portrait--memorial"
+        src="/images/founders/david-gould.jpg"
+        alt="Portrait of David Gould (1942–2024)"
+        width="72"
+        height="72"
+        loading="lazy"
+      />
       <div class="card-body">
         <h3>David Gould (1942–2024)</h3>
         <p class="role-line">In Memoriam · President of OASTL throughout 2023</p>
@@ -206,8 +255,11 @@ import RoomLayout from '../layouts/RoomLayout.astro';
       </div>
     </article>
 
-    <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">JP</div>
+    <article class="cabinet-card" data-portrait-status="ai-pending">
+      <div class="portrait-stack">
+        <div class="portrait-placeholder" aria-hidden="true">JP</div>
+        <span class="portrait-pill">Portrait pending — AI illustration en route.</span>
+      </div>
       <div class="card-body">
         <h3>Jerry Phillips</h3>
         <p class="role-line">Long-term manager of the Elliott State Forest (1956–1989) · Author</p>
@@ -231,8 +283,11 @@ import RoomLayout from '../layouts/RoomLayout.astro';
       </div>
     </article>
 
-    <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">JF</div>
+    <article class="cabinet-card" data-portrait-status="ai-pending">
+      <div class="portrait-stack">
+        <div class="portrait-placeholder" aria-hidden="true">JF</div>
+        <span class="portrait-pill">Portrait pending — AI illustration en route.</span>
+      </div>
       <div class="card-body">
         <h3>Jerry Franklin</h3>
         <p class="role-line">Forest scientist · "The guru of old growth"</p>
@@ -256,8 +311,11 @@ import RoomLayout from '../layouts/RoomLayout.astro';
       </div>
     </article>
 
-    <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">FE</div>
+    <article class="cabinet-card" data-portrait-status="ai-pending">
+      <div class="portrait-stack">
+        <div class="portrait-placeholder" aria-hidden="true">FE</div>
+        <span class="portrait-pill">Portrait pending — AI illustration en route.</span>
+      </div>
       <div class="card-body">
         <h3>Francis Elliott</h3>
         <p class="role-line">Early-20th-century Oregon State Forester (~1920)</p>
@@ -279,8 +337,11 @@ import RoomLayout from '../layouts/RoomLayout.astro';
       </div>
     </article>
 
-    <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">BL</div>
+    <article class="cabinet-card" data-portrait-status="ai-pending">
+      <div class="portrait-stack">
+        <div class="portrait-placeholder" aria-hidden="true">BL</div>
+        <span class="portrait-pill">Portrait pending — AI illustration en route.</span>
+      </div>
       <div class="card-body">
         <h3>Bill Lansing</h3>
         <p class="role-line">President and CEO (retired), Menasha Forest Products Corporation</p>
@@ -302,8 +363,11 @@ import RoomLayout from '../layouts/RoomLayout.astro';
       </div>
     </article>
 
-    <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">JC</div>
+    <article class="cabinet-card" data-portrait-status="ai-pending">
+      <div class="portrait-stack">
+        <div class="portrait-placeholder" aria-hidden="true">JC</div>
+        <span class="portrait-pill">Portrait pending — AI illustration en route.</span>
+      </div>
       <div class="card-body">
         <h3>John A. Charles, Jr.</h3>
         <p class="role-line">President and CEO, Cascade Policy Institute</p>
@@ -327,7 +391,14 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     </article>
 
     <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">MH</div>
+      <img
+        class="portrait"
+        src="/images/founders/marguerite-herman.png"
+        alt="Portrait of Marguerite Herman"
+        width="72"
+        height="72"
+        loading="lazy"
+      />
       <div class="card-body">
         <h3>Marguerite Herman</h3>
         <p class="role-line">Journalist · Board Secretary, Advocates for School Trust Lands</p>
@@ -349,8 +420,11 @@ import RoomLayout from '../layouts/RoomLayout.astro';
       </div>
     </article>
 
-    <article class="cabinet-card">
-      <div class="portrait-placeholder" aria-hidden="true">RA</div>
+    <article class="cabinet-card" data-portrait-status="ai-pending">
+      <div class="portrait-stack">
+        <div class="portrait-placeholder" aria-hidden="true">RA</div>
+        <span class="portrait-pill">Portrait pending — AI illustration en route.</span>
+      </div>
       <div class="card-body">
         <h3>Roy Andes</h3>
         <p class="role-line">Montana legal advocate · Recipient, Punctilio of Honor</p>
@@ -375,9 +449,10 @@ import RoomLayout from '../layouts/RoomLayout.astro';
   </section>
 
   <p class="closing-note">
-    <em>Portraits placeholder pending image acquisition. The 1785
-    Confederation Congress committee — Jefferson, Grayson, Williamson —
-    will join this cabinet in a future expansion.</em>
+    <em>Eight portraits sourced from substrate; six remain placeholder
+    while AI-illustrated likenesses are prepared. The 1785 Confederation
+    Congress committee — Jefferson, Grayson, Williamson — will join this
+    cabinet in a future expansion.</em>
   </p>
 </RoomLayout>
 
@@ -428,6 +503,49 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     background: #64748b;
   }
 
+  .portrait {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    background: #f1f5f9;
+    border: 1px solid var(--rule-border, #e5e7eb);
+  }
+
+  /* Dave's source is a couple-shot — focus on the left half (his face). */
+  .portrait--couple-left {
+    object-position: 25% 30%;
+  }
+
+  /* In Memoriam treatment matches OASTL — slight desaturation. */
+  .portrait--memorial {
+    filter: grayscale(0.45) brightness(0.97);
+  }
+
+  .portrait-stack {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    max-width: 110px;
+  }
+
+  .portrait-pill {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    line-height: 1.25;
+    color: #475569;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+
   .card-body {
     flex: 1 1 auto;
     min-width: 0;
@@ -470,10 +588,20 @@ import RoomLayout from '../layouts/RoomLayout.astro';
       flex-direction: column;
       gap: 0.85rem;
     }
-    .portrait-placeholder {
+    .portrait-placeholder,
+    .portrait {
       width: 64px;
       height: 64px;
       font-size: 1.05rem;
+    }
+    .portrait-stack {
+      max-width: none;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .portrait-pill {
+      text-align: left;
     }
   }
 </style>
