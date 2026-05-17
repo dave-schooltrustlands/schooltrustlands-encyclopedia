@@ -101,6 +101,74 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
     </article>
   </section>
 
+  <section class="published mt-10" aria-labelledby="published-heading">
+    <h2 id="published-heading" class="section-heading">Published &amp; companion works</h2>
+
+    <p class="section-intro">
+      Published reference works that sit alongside the Library's drafts —
+      the legal-and-factual companion textbook, the foundational
+      fire-history scholarship behind the Reading Room's forestry shelf,
+      and the definitive Elliott State Forest history hosted as a free
+      archive PDF.
+    </p>
+
+    <article class="book-card">
+      <p class="card-kicker">Published 2025 · Companion textbook</p>
+      <h3 class="card-title">
+        <em>Oregon's Constitutional Duties to Schools</em>
+      </h3>
+      <p class="card-byline">Margaret Bird and Dave Sullivan · 2025 · 150 pages</p>
+      <p class="card-blurb">
+        A 150-page volume documenting the billion-dollar inheritance for
+        Oregon schoolchildren and the case for constitutional
+        accountability. The legal architecture and factual record cited
+        in <em>Advocates for School Trust Lands v. State of Oregon</em>.
+      </p>
+      <div class="card-cta-row">
+        <a href="https://drive.google.com/file/d/1E1IhBgk8fdtKnQd2FqkFqE9V1xduYd0u/view?usp=sharing" class="card-cta" rel="noopener" target="_blank">Free PDF (Google Drive) →</a>
+        <a href="https://a.co/d/8PpB6f8" class="card-cta" rel="noopener" target="_blank">Amazon (Kindle / paperback / hardback) →</a>
+      </div>
+      <p class="card-bridge">
+        Also distributed by OASTL Oregon at
+        <a href="https://oastl-oregon.drdavesullivan.workers.dev" rel="noopener" target="_blank">oastl-oregon.drdavesullivan.workers.dev</a>.
+      </p>
+    </article>
+
+    <article class="book-card">
+      <p class="card-kicker">Published · Companion forestry work</p>
+      <h3 class="card-title">
+        <em>Great Fires: Catastrophic Burning Patterns 1491-1951</em>
+      </h3>
+      <p class="card-byline">Bob Zybach et al. · authorship attribution owed at next pass</p>
+      <p class="card-blurb">
+        Describes how Indian burning practices shaped coastal forests for
+        thousands of years; foundational reference for understanding the
+        fire-history context of the Elliott State Forest and the broader
+        Pacific Northwest.
+      </p>
+      <a href="https://www.amazon.com/Great-Fires-Catastrophic-Patterns-1491-1951/dp/1732127603" class="card-cta" rel="noopener" target="_blank">Amazon →</a>
+      <p class="card-bridge">
+        Cited in the <a href="/reading/">Reading Room</a> →
+        Oregon fire-history section.
+      </p>
+    </article>
+
+    <article class="book-card">
+      <p class="card-kicker">Published 1999 · Definitive Elliott history</p>
+      <h3 class="card-title">
+        <em>Caulked Boots and Cheese Sandwiches</em>
+      </h3>
+      <p class="card-byline">Jerry Phillips · Oregon Department of Forestry, 1999</p>
+      <p class="card-blurb">
+        The definitive history of the Elliott State Forest, written by
+        its long-term manager (1956-1989). Hosted as a free PDF on the
+        ORWW Field Station archive.
+      </p>
+      <a href="http://www.orww.org/Elliott_Forest/History/Phillips/Phillips_1998-201.pdf" class="card-cta" rel="noopener" target="_blank">Free PDF (ORWW) →</a>
+      <p class="card-bridge">Hosted by ORWW Field Station.</p>
+    </article>
+  </section>
+
   <section class="essays mt-10" aria-labelledby="essays-heading">
     <h2 id="essays-heading" class="section-heading">Open essays</h2>
 
@@ -191,5 +259,33 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
   }
   .card-cta:hover {
     color: #1e40af;
+  }
+  .card-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    margin: 0 0 0.75rem;
+  }
+  .card-cta-row .card-cta {
+    align-self: auto;
+    margin: 0;
+  }
+  .card-bridge {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #64748b;
+    font-style: italic;
+    margin: 0.25rem 0 0;
+  }
+  .card-bridge a {
+    color: #475569;
+    text-decoration: underline;
+  }
+  .section-intro {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #334155;
+    margin: 0 0 1.25rem;
+    max-width: 60ch;
   }
 </style>

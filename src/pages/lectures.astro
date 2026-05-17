@@ -1,37 +1,138 @@
 ---
-import ComingSoonRoomLayout from '../layouts/ComingSoonRoomLayout.astro';
+// v65 — Lecture Hall opens with three historical videos. Replaces the
+// ComingSoonRoomLayout stub with a live RoomLayout. Future passes will
+// add the standard one-hour deck, legislative briefing, school-board
+// version, donor pitch, and the Talk Recipe localization guide.
+import RoomLayout from '../layouts/RoomLayout.astro';
 ---
-<ComingSoonRoomLayout
+<RoomLayout
   room="lectures"
+  width="prose"
   title="Lecture Hall"
-  subtitle="Talks, presentations, demonstrations."
-  sourceId="coming-soon-lectures"
+  subtitle="Historical talks, films, and recorded proceedings."
+  sourceId="lectures"
 >
   <p>
-    The Lecture Hall will collect the talks the project's contributors have
-    given, are giving, and will give — and, more importantly, will hand the
-    materials over so anyone else can give the talk too. Recorded
-    presentations and transcripts; slide decks for the standard one-hour
-    overview, the legislative briefing, the school-board version, and the
-    donor pitch; an outline of the long-form <em>Eighth Anchor</em>
-    argument for an audience that wants the full case.
+    The Lecture Hall is the room for recorded talks and historical films
+    on America's school-trust lands — primary-source video alongside the
+    written archive elsewhere in the Library. This opening slate is
+    three historical and archival pieces. Future expansions will add
+    the standard one-hour overview deck, the legislative briefing, the
+    school-board version, the donor pitch, and the Talk Recipe
+    localization guide that walks a speaker through tuning the standard
+    deck to a specific state.
   </p>
   <p>
-    <strong>Why this room matters.</strong> The school-trust idea is among
-    the most under-told stories in American public life. It will only be
-    told at scale if many people learn to tell it. The Lecture Hall is the
-    room that makes it possible for someone in Wyoming, or Nebraska, or
-    Mississippi, to walk into their state's school-board meeting with a
-    working version of the argument already in hand.
+    The three opening videos below are presented as historical record:
+    primary-source multimedia preserved for study, not advocacy
+    programming produced by this Library. Captions identify each piece's
+    origin and the moment it documents.
   </p>
-  <p>
-    <strong>Give the talk in your state.</strong> A short "Talk Recipe"
-    guide will walk a speaker through how to take the standard slide deck
-    and tune it to a specific state — which figures to swap in, which
-    cases to cite, which legislators to flag. Localization is the point.
-  </p>
-  <p>
-    <strong>Being planned.</strong> The first slide deck — the one-hour
-    overview — goes up next.
-  </p>
-</ComingSoonRoomLayout>
+
+  <article class="lecture-card">
+    <h2><em>A Birthright Forever</em></h2>
+    <p class="lecture-byline">Advocates for School Trust Lands &middot; 12-minute film</p>
+    <iframe
+      width="100%"
+      style="aspect-ratio: 16/9;"
+      src="https://www.youtube.com/embed/MuHxwN4W2Qk"
+      title="A Birthright Forever"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <p class="lecture-caption">
+      A national overview of state school-trust lands. Features Dick
+      Molpus (Mississippi), Claire Orr (Colorado), Cathy Post
+      (Oklahoma), and Margaret Bird (Utah). Produced by Advocates for
+      School Trust Lands.
+    </p>
+    <p class="lecture-source">
+      Source:
+      <a href="https://youtu.be/MuHxwN4W2Qk" rel="noopener">https://youtu.be/MuHxwN4W2Qk</a>
+    </p>
+  </article>
+
+  <article class="lecture-card">
+    <h2><em>A Matter of Trust &mdash; Utah School Trust Lands, 1990</em></h2>
+    <p class="lecture-byline">Historical archive &middot; circa 1990</p>
+    <iframe
+      width="100%"
+      style="aspect-ratio: 16/9;"
+      src="https://www.youtube.com/embed/6EUBwF7gKgk"
+      title="A Matter of Trust — Utah School Trust Lands, 1990"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <p class="lecture-caption">
+      A historical archive video showing pre-reform Utah trust-lands
+      management. Companion to Utah's post-reform multi-billion-dollar
+      Permanent School Fund &mdash; the canonical recovery case study.
+    </p>
+    <p class="lecture-source">
+      Source:
+      <a href="https://youtu.be/6EUBwF7gKgk" rel="noopener">https://youtu.be/6EUBwF7gKgk</a>
+    </p>
+  </article>
+
+  <article class="lecture-card">
+    <h2>Oregon State Land Board Meeting &mdash; May 7, 2017</h2>
+    <p class="lecture-byline">Oregon State Land Board &middot; public-record video</p>
+    <iframe
+      width="100%"
+      style="aspect-ratio: 16/9;"
+      src="https://www.youtube.com/embed/WTDwo0TDMRY"
+      title="Oregon State Land Board Meeting — May 7, 2017"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <p class="lecture-caption">
+      The May 2017 State Land Board meeting at which the Board voted to
+      keep the Elliott State Forest in public ownership and direct DSL
+      to pursue decoupling.
+    </p>
+    <p class="lecture-source">
+      Source:
+      <a href="https://youtu.be/WTDwo0TDMRY" rel="noopener">https://youtu.be/WTDwo0TDMRY</a>
+    </p>
+  </article>
+
+  <p><em>Further lectures, slide decks, and the Talk Recipe localization guide will land here in subsequent passes.</em></p>
+</RoomLayout>
+
+<style>
+  .lecture-card {
+    background: var(--linen-card, #fafaf7);
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-left: 3px solid var(--old-gold, #8b7355);
+    padding: 1.5rem;
+    margin: 0 0 1.5rem;
+    border-radius: 4px;
+  }
+  .lecture-card h2 {
+    margin-top: 0;
+  }
+  .lecture-card iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 0;
+    margin: 1rem 0;
+  }
+  .lecture-byline {
+    font-size: 0.9rem;
+    color: var(--ink-secondary, #6b7280);
+    margin: 0.25rem 0 0;
+  }
+  .lecture-caption {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0.5rem 0;
+  }
+  .lecture-source {
+    font-size: 0.85rem;
+    color: var(--ink-secondary, #6b7280);
+    margin: 0.25rem 0 0;
+  }
+</style>

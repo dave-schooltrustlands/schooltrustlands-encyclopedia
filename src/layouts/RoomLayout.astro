@@ -19,7 +19,9 @@ type RoomId =
   | 'writing'
   | 'records'
   | 'court'
-  | 'breach-recovery';
+  | 'breach-recovery'
+  | 'founders'
+  | 'lectures';
 
 // Rooms that have a signature banner image in /public/banners/.
 // v10 sub-release v1.B — banner-above-h1 slot lives in RoomLayout so
@@ -97,6 +99,8 @@ const roomNameMap: Record<RoomId, string> = {
   records: 'Records Room',
   court: 'Court Room',
   'breach-recovery': 'Breach & Recovery',
+  founders: "Founders' Cabinet",
+  lectures: 'Lecture Hall',
 };
 const roomHrefMap: Record<RoomId, string> = {
   reading: '/reading/',
@@ -109,6 +113,8 @@ const roomHrefMap: Record<RoomId, string> = {
   records: '/records/',
   court: '/court/',
   'breach-recovery': '/breach-recovery/',
+  founders: '/founders/',
+  lectures: '/lectures/',
 };
 
 // Build the breadcrumb segments. Lobby is always the first segment.

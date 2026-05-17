@@ -1,38 +1,607 @@
 ---
-import ComingSoonRoomLayout from '../layouts/ComingSoonRoomLayout.astro';
+import RoomLayout from '../layouts/RoomLayout.astro';
 ---
-<ComingSoonRoomLayout
+
+<RoomLayout
   room="court"
   title="Court Room"
-  subtitle="Case files, court decisions, legal opinions."
-  sourceId="coming-soon-court"
+  subtitle="Case File / Annotated Bibliography — statutes, AG opinions, official correspondence, litigation history, expert declarations, and precedent court cases on the school trust lands."
+  width="prose"
+  sourceId="court-index"
 >
-  <p>
-    The Court Room will hold the doctrinal record: the decisions that built
-    fiduciary law and the cases that have applied it to school-trust
-    questions across the fifty states. Cardozo's 1928 opinion in
-    <em>Meinhard v. Salmon</em>, with its "punctilio of an honor the most
-    sensitive," sits at the front of the docket — it's the standard every
-    school-trust trustee is measured against. Behind it, the trust-corpus
-    cases of the 1880s; <em>Lassen v. Arizona</em>; the beneficiary-standing
-    decisions; the modern accounting-fraud rulings.
-  </p>
-  <p>
-    <strong>Why this room matters.</strong> Doctrine is the second pillar of
-    the school-trust experiment, after the lands themselves. Without it the
-    trustees are unbound; with it they answer to a standard that has held
-    for a century and counting. A reader who wants to understand what
-    fiduciary duty <em>means</em> in school-trust context — and why states
-    that ignore it can be called to account — should read here.
-  </p>
-  <p>
-    <strong>Doctrine on Trial.</strong> A recurring section will track the
-    questions currently being argued about across the country — the
-    standing tests, the corpus-irreducibility tests, the trustee-officer
-    immunity tests — so a reader can see which way the law is moving and
-    where the frontier sits.
-  </p>
-  <p>
-    <strong>Being planned.</strong> <em>Meinhard</em> goes up first.
-  </p>
-</ComingSoonRoomLayout>
+  <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
+    <span class="eyebrow">Court Room · Case File · Annotated Bibliography</span>
+
+    <p>
+      The Court Room is the Library's doctrinal record: the case files, statutes,
+      Attorney General opinions, official correspondence, expert declarations,
+      and precedent court decisions that together describe how American trust law
+      has been applied — and, in Oregon's case, contested — in the school trust
+      lands context.
+    </p>
+    <p>
+      What follows is an annotated bibliography of the trust-lands legal record.
+      It is arranged as a historical-legal archive: neutral, chronological,
+      citation-first. The annotations describe what each item is and what it
+      holds; they do not advocate. For deep doctrinal treatment of the six
+      classic trustee duties, see the Reference Desk's
+      <a href="/reference-desk/fiduciary-doctrine/">Fiduciary Doctrine</a> page.
+    </p>
+    <p>
+      For OASTL's litigation framing — the Smoking Gun, the Pincer Movement, and
+      the current campaign — visit
+      <a href="https://oastl.org/legal" rel="noopener" target="_blank">OASTL Legal Desk</a>.
+    </p>
+
+    <nav class="prose-toc" aria-label="On this page">
+      <h2 style="margin-top: 1.4rem;">On this page</h2>
+      <ul>
+        <li><a href="#section-a">A. Foundational Constitutional Provisions</a></li>
+        <li><a href="#section-b">B. Oregon Statutes</a></li>
+        <li><a href="#section-c">C. Attorney General Opinions</a></li>
+        <li><a href="#section-d">D. Official Correspondence &amp; Memoranda</a></li>
+        <li><a href="#section-e">E. Litigation History</a></li>
+        <li><a href="#section-f">F. Expert Declarations</a></li>
+        <li><a href="#section-g">G. Precedent Court Cases</a></li>
+        <li><a href="#section-h">H. Other Reports and Books</a></li>
+        <li><a href="#section-i">I. Fiduciary Doctrine (cross-reference)</a></li>
+        <li><a href="#section-j">J. Oregon's Current Case</a></li>
+      </ul>
+    </nav>
+
+    <hr class="archival-divider" />
+
+    <h2 id="section-a">Section A — Foundational Constitutional Provisions</h2>
+
+    <h3>The Land Ordinance of 1785</h3>
+    <p>
+      The Land Ordinance of 1785 established the township survey system and
+      reserved the sixteenth section of every township for the support of public
+      schools, creating the national precedent that school funding would be
+      permanently tied to dedicated land grants.
+    </p>
+    <p>
+      <a href="https://en.wikipedia.org/wiki/Land_Ordinance_of_1785" rel="noopener" target="_blank">Reference →</a>
+    </p>
+
+    <h3>The Oregon Admissions Act (1859)</h3>
+    <p>
+      The Act of Congress admitting Oregon into the Union granted two sections
+      of every township for the use of the common schools. This compact between
+      the federal government and the new state created the binding trust
+      obligations that govern Oregon's school lands to this day.
+    </p>
+    <p>
+      <a href="https://www.govinfo.gov/content/pkg/STATUTE-11/pdf/STATUTE-11-Pg383.pdf" rel="noopener" target="_blank">Statute (PDF) →</a>
+    </p>
+
+    <h3>Oregon Constitution, Art. VIII, Sec. 2</h3>
+    <p>
+      Accepts the federal school land grants and establishes the Common School
+      Fund as "separate and irreducible." The fund's principal cannot be spent;
+      only its earnings may be applied, and only for the support of schools.
+    </p>
+    <p>
+      <a href="https://sos.oregon.gov/blue-book/Pages/state-constitution.aspx" rel="noopener" target="_blank">Oregon Blue Book →</a>
+    </p>
+
+    <h3>Oregon Constitution, Art. VIII, Sec. 5(2) — 1968 Amendment</h3>
+    <p>
+      The 1968 amendment added the phrase "for the greatest benefit of the
+      people of this state" to the description of State Land Board duties. The
+      interpretive question of whether this phrase modifies or supplants the
+      underlying trust obligation has been central to the AG opinions and
+      litigation in the sections below.
+    </p>
+    <p>
+      <a href="https://ballotpedia.org/Article_VIII,_Oregon_Constitution" rel="noopener" target="_blank">Article VIII →</a>
+    </p>
+
+    <h3>Oregon Constitution, Art. VIII, Sec. 8</h3>
+    <p>
+      Establishes the Legislature's separate but related duty to provide a
+      public school system that meets the quality goals set by the Quality
+      Education Model. This section operates alongside the trust obligation
+      rather than within it.
+    </p>
+    <p>
+      <a href="https://ballotpedia.org/Article_VIII,_Oregon_Constitution" rel="noopener" target="_blank">Article VIII →</a>
+    </p>
+
+    <h2 id="section-b">Section B — Oregon Statutes</h2>
+
+    <h3>ORS 530.490 — Greatest Permanent Value</h3>
+    <p>
+      Directs the State Forester to manage state forest lands "so as to secure
+      the greatest permanent value" of those lands to the state. The
+      interpretation of "value" — whether primarily revenue, primarily
+      ecological, or both — is central to the trust-lands litigation record.
+    </p>
+    <p>
+      <a href="https://www.oregonlegislature.gov/bills_laws/ors/ors530.html" rel="noopener" target="_blank">ORS 530 →</a>
+    </p>
+
+    <h3>ORS 530.450 (1957) [repealed 2025]</h3>
+    <p>
+      The 1957 statute that explicitly and permanently prohibited the sale of
+      the Elliott State Forest. Repealed by SB 147 in June 2025; the repeal
+      itself is now part of the litigation record.
+    </p>
+
+    <h3>ORS 526.806 — Log Export Ban (public timber)</h3>
+    <p>
+      Prohibits the export of unprocessed logs harvested from state or public
+      timber lands. Cited in trust-mismanagement arguments because the export
+      restriction is one of the price constraints on the trust corpus.
+    </p>
+    <p>
+      <a href="https://www.oregonlegislature.gov/bills_laws/ors/ors526.html" rel="noopener" target="_blank">ORS 526 →</a>
+    </p>
+
+    <h3>ORS 30.275 — Oregon Tort Claims Act Notice</h3>
+    <p>
+      Requires that notice be given before suing the State of Oregon. In trust
+      cases this procedural requirement is regularly raised by the State as a
+      defense and figures in the dismissal record below.
+    </p>
+    <p>
+      <a href="https://www.oregonlegislature.gov/bills_laws/ors/ors030.html" rel="noopener" target="_blank">ORS 30 →</a>
+    </p>
+
+    <h3>ORS 72.1060 — Definition of "Sale" (UCC)</h3>
+    <p>
+      Defines "sale" within the Uniform Commercial Code as adopted in Oregon.
+      Invoked in litigation over whether particular trust-asset transfers
+      constitute sales that trigger the trustee's full-value obligation.
+    </p>
+    <p>
+      <a href="https://oregon.public.law/statutes/ors_72.1060" rel="noopener" target="_blank">ORS 72.1060 →</a>
+    </p>
+
+    <h3>ORS 130.650–130.710 — Uniform Trust Code (loyalty, impartiality, prudence)</h3>
+    <p>
+      The Oregon Uniform Trust Code provisions codifying general trustee duties
+      — undivided loyalty, impartiality among beneficiaries, prudent
+      administration, and related obligations. These statutes supply the
+      framework against which state performance as trustee can be measured.
+    </p>
+    <p>
+      <a href="https://www.oregonlegislature.gov/bills_laws/ors/ors130.html" rel="noopener" target="_blank">ORS 130 →</a>
+    </p>
+
+    <h2 id="section-c">Section C — Attorney General Opinions</h2>
+
+    <h3>37 Op. Att'y Gen. 569 (1975)</h3>
+    <p>
+      Concluded that the state's fiduciary duty required it to obtain full
+      market value for trust resources and that this obligation could not be
+      subordinated to other policy goals.
+    </p>
+    <p>
+      <a href="https://drive.google.com/file/d/1h1OYHr0jlXDJ0Az2bGqx8MHZCe7thbfW/view?usp=drive_link" rel="noopener" target="_blank">Drive PDF →</a>
+    </p>
+
+    <h3>38 Op. Att'y Gen. 850 (1977)</h3>
+    <p>
+      Reaffirmed the trustee obligation to maximize revenue from school trust
+      lands, holding that environmental and political considerations cannot
+      override the underlying fiduciary duty.
+    </p>
+    <p>
+      <a href="https://drive.google.com/file/d/130p12HJPBcpoUtKSZg1YfQeOvOWWz793/view?usp=drive_link" rel="noopener" target="_blank">Drive PDF →</a>
+    </p>
+
+    <h3>46 Op. Att'y Gen. 468 (1992) — the binding-trust opinion</h3>
+    <p>
+      The 1992 opinion addressing the State Land Board's obligations under
+      Article VIII, Section 5(2). It is regularly cited for the proposition
+      that the trust obligations are binding — that the 1968 amendment did not
+      release the Board from its underlying fiduciary duty. A landmark
+      reference for both the doctrinal record and the litigation history.
+    </p>
+    <p>
+      <a href="https://drive.google.com/file/d/1M27fkCVFBF4LPz55eD-BLFAEYFHhWiO4/view?usp=drive_link" rel="noopener" target="_blank">Drive PDF →</a>
+    </p>
+
+    <h3>Implied DOJ Litigation Positions (2021–present)</h3>
+    <ul>
+      <li>
+        The State of Oregon's arguments in the four trust-lands lawsuits filed
+        since 2021 represent an "implied" Attorney General position on standing,
+        sovereign immunity, OTCA notice, and the scope of trustee discretion.
+        These positions are documented through the briefing in Section E.
+      </li>
+    </ul>
+
+    <h2 id="section-d">Section D — Official Correspondence &amp; Memoranda</h2>
+
+    <h3>Aug 4, 2021 — DSL Director Vicki Walker &amp; OSU Dean Thomas DeLuca to ESRF Advisory Committee</h3>
+    <p>
+      Joint letter from the Department of State Lands and Oregon State
+      University defending the Elliott State Research Forest plan as consistent
+      with the public interest.
+    </p>
+    <p>
+      <a href="https://drive.google.com/file/d/1f3Ouu8JU6c2-3NabAJlmHwUwFJckhvZt/view?usp=drive_link" rel="noopener" target="_blank">PDF →</a>
+    </p>
+
+    <h3>Dec 11–12, 2022 — Margaret Bird letter and John A. Charles testimony to the State Land Board</h3>
+    <p>
+      Written submission and in-person testimony to the State Land Board on the
+      eve of the December 2022 votes on the Elliott. Margaret Bird, a school
+      trust lands scholar, addressed the fiduciary framework; John A. Charles
+      of the Cascade Policy Institute addressed financial and policy
+      considerations.
+    </p>
+    <p>
+      <a href="https://drive.google.com/file/d/1WKIbVtFp7vzqJkZzyt8Kn4kvI94DgeQL/view?usp=drive_link" rel="noopener" target="_blank">Charles testimony (PDF) →</a>
+    </p>
+
+    <h3>Oct 13, 2023 — Geoff Huntington (Governor's Office) policy memo</h3>
+    <p>
+      Internal policy memorandum from the Governor's natural-resources staff on
+      the Elliott State Research Forest plan and its political objectives.
+    </p>
+
+    <h3>Nov 13, 2023 — OSU President Jayathi Y. Murthy withdrawal letter</h3>
+    <p>
+      OSU President Jayathi Y. Murthy's letter formally withdrawing Oregon State
+      University from its proposed role overseeing the Elliott State Research
+      Forest — a turning point in the ESRF record.
+    </p>
+    <p>
+      <a href="https://drive.google.com/file/d/1-YBi1ICLiFxTKneEB6tud26B-_m3suKe/view?usp=drive_link" rel="noopener" target="_blank">PDF →</a> ·
+      <a href="https://drive.google.com/file/d/1dPRiFJu3sa738CjMQyl9-J-XzKX-i4qV/view?usp=sharing" rel="noopener" target="_blank">Additional PDF →</a>
+    </p>
+
+    <h3>Feb 14, 2024 — DSL Director Vicki Walker report to the Legislature</h3>
+    <p>
+      Departmental report acknowledging the ongoing controversy and financial
+      losses to the Common School Fund while defending the Elliott program.
+    </p>
+    <p>
+      <a href="https://drive.google.com/file/d/1-ACsY_fZeVPOG0l6mIBxAh8Zq-6QrQrr/view?usp=drive_link" rel="noopener" target="_blank">PDF →</a>
+    </p>
+
+    <h3>Mar 20, 2025 — Ellie Forness (DSL) letter re: SB 147</h3>
+    <p>
+      DSL correspondence explaining the Department's support for SB 147, the
+      2025 legislation that altered the statutory protections previously
+      governing the Elliott.
+    </p>
+    <p>
+      <a href="https://drive.google.com/file/d/183DGvRCzKMVYhzgIrU57OLiPTRMttwgY/view?usp=sharing" rel="noopener" target="_blank">PDF →</a>
+    </p>
+
+    <h3>State Land Board meeting packets and minutes (2017–2025)</h3>
+    <p>
+      Eight years of State Land Board meeting packets and minutes documenting
+      the decisions that shaped the Elliott record.
+    </p>
+    <p>
+      <a href="https://www.oregon.gov/dsl/Pages/state-land-board.aspx" rel="noopener" target="_blank">State Land Board →</a>
+    </p>
+
+    <h2 id="section-e">Section E — Litigation History</h2>
+    <p>
+      Chronological record of the trust-lands cases filed in Oregon courts
+      since 2021. Filings linked below are taken from the OASTL document
+      repository.
+    </p>
+
+    <div class="table-wrap">
+      <table class="litigation-table">
+        <thead>
+          <tr>
+            <th scope="col">Case</th>
+            <th scope="col">Court</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description &amp; filings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Sullivan v. State</th>
+            <td>Polk County Circuit — 21CV15024</td>
+            <td>2021</td>
+            <td>
+              Initial pro se trust-mismanagement complaint focused on the State
+              Land Board's handling of the Elliott and the underpriced sale.
+              <a href="https://docs.google.com/document/d/1rsdD8_RbzBkEQTA8o483h0TuTKGtPKL1/edit?usp=drive_link" rel="noopener" target="_blank">Complaint →</a> ·
+              <a href="https://drive.google.com/file/d/172vlAxDM2J8qq9sF8myBNS0PP7BIwdPN/view?usp=drive_link" rel="noopener" target="_blank">Defs' MTD →</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Sullivan v. State (appeal)</th>
+            <td>Oregon Court of Appeals — A177308</td>
+            <td>Feb 2022</td>
+            <td>
+              Appeal of the Polk County dismissal, arguing the trial court
+              erred in deferring to the State on the trust-duty questions.
+              <a href="https://drive.google.com/file/d/1q86xX2JxuCK5vY6CC_L168igb2PFzMRQ/view?usp=drive_link" rel="noopener" target="_blank">Appellant's Opening Brief →</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Sullivan v. State Land Board</th>
+            <td>Marion County Circuit — 23CV06471</td>
+            <td>Feb 2023</td>
+            <td>
+              Petition for Review challenging the State Land Board's
+              December 2022 Elliott votes on appraisal grounds; respondent's
+              motion to dismiss followed in April.
+              <a href="https://drive.google.com/file/d/153gTp6xMHUNId1NNNvb6MwNFkNPxFPFT/view?usp=drive_link" rel="noopener" target="_blank">Petition →</a> ·
+              <a href="https://drive.google.com/file/d/11n5OMKkCGyR7kb1IXXqUrcpuoIBE8Ucr/view?usp=drive_link" rel="noopener" target="_blank">Respondent's MTD →</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ASTL et al. v. State</th>
+            <td>Coos County Circuit — 23CV39056</td>
+            <td>Sep 2023</td>
+            <td>
+              Expanded-plaintiff complaint challenging the State Land Board's
+              December 2022 Elliott votes. Defendants moved to dismiss for
+              standing and OTCA notice; Judge Combs dismissed the claims in
+              February 2024.
+              <a href="https://drive.google.com/file/d/1ers3kIdAh29dF4HQlU9gSSur5E3zYNAU/view?usp=drive_link" rel="noopener" target="_blank">Complaint →</a> ·
+              <a href="https://drive.google.com/file/d/1iLDcnCJX9uUy3jVlr8nPCjH_TJx1BJi7/view?usp=drive_link" rel="noopener" target="_blank">Defs' MTD →</a> ·
+              <a href="https://drive.google.com/file/d/1I6trpOvfqMFLcKFQokZ-_BR5ZoQ6m-f9/view?usp=drive_link" rel="noopener" target="_blank">Feb 2024 dismissal →</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Siuslaw School District 97J et al. v. State</th>
+            <td>Coos County Circuit — 24CV38372</td>
+            <td>Aug 2024</td>
+            <td>
+              Filed by Siuslaw and other school-district plaintiffs, focused on
+              new 2024 breaches including the "1000 Road" parcel transfer.
+              First Amended Complaint streamlined the case to 2024-only
+              breaches. Judge Combs issued a Letter Opinion in March 2025.
+              <a href="https://drive.google.com/file/d/1Qk4ysU3MFHLmGk7v8Uv2c7iKYr2Vc0AI/view?usp=drive_link" rel="noopener" target="_blank">Initial Complaint →</a> ·
+              <a href="https://drive.google.com/file/d/1L_WH-buZ3O_C8E3HGj3pfLPtQj94a9Q4/view?usp=drive_link" rel="noopener" target="_blank">First Amended Complaint →</a> ·
+              <a href="https://drive.google.com/file/d/1GKlbgBDo7blkTWOoFqbQcmwyse9_JpXf/view?usp=drive_link" rel="noopener" target="_blank">Mar 2025 Letter Opinion →</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ASTL et al. v. State (appeal)</th>
+            <td>Oregon Court of Appeals — A184055</td>
+            <td>Aug 2024</td>
+            <td>
+              Appeal of the Coos County dismissal (23CV39056), arguing the
+              trial court erred in applying legislative immunity to fiduciary
+              claims. This appeal produced the January 28, 2026 standing
+              victory described in Section J.
+              <a href="https://drive.google.com/file/d/1bTnDeBGlyAps8cuesRwMEZDrzHulJgdQ/view?usp=drive_link" rel="noopener" target="_blank">Appellants' Opening Brief →</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Siuslaw v. State (MTD round 2)</th>
+            <td>Coos County Circuit — 24CV38372</td>
+            <td>2025</td>
+            <td>
+              Defendants' renewed Motion to Dismiss the First Amended
+              Complaint, Plaintiffs' Response, and Defendants' Reply on
+              immunity, OTCA notice, and standing grounds.
+              <a href="https://drive.google.com/file/d/1tR9eAogr39ywp7-TvQ90YU5K--zZs5tC/view?usp=drive_link" rel="noopener" target="_blank">Defs' Reply ISO MTD →</a> ·
+              <a href="https://drive.google.com/file/d/12_SQp2EGP8Rhb-8HvTm5XRVSwpPeuQe9/view?usp=drive_link" rel="noopener" target="_blank">Additional briefing →</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="section-f">Section F — Expert Declarations</h2>
+
+    <h3>Bob Zybach, PhD — Peer Review of the ESRF Forest Management Plan (Aug 4, 2024)</h3>
+    <p>
+      Forestry expert peer review of the Elliott State Research Forest
+      management plan, concluding that the plan would substantially reduce
+      sustained-yield productivity relative to historical management.
+    </p>
+
+    <h3>Jerry Franklin — Peer Review (Appendix 13, ESRF Proposal)</h3>
+    <p>
+      Jerry Franklin, the University of Washington forest-ecology professor
+      known as "the guru of old growth," submitted a peer review printed as
+      Appendix 13 of the ESRF Proposal. His four-point critique of OSU's
+      research design questioned the proposal's experimental rigor, its
+      treatment comparisons, its rotation assumptions, and its inferences
+      about productivity. Franklin's review is one of the substantive
+      scientific objections of record.
+    </p>
+
+    <h3>Other Expert Declarations</h3>
+    <p>
+      Folder of additional declarations from legal, financial, and
+      trust-management experts gathered for the trust-lands litigation.
+    </p>
+    <p>
+      <a href="https://drive.google.com/drive/folders/1yzzoLAqPyfs2cIOtu97lA5fugwmopH_x?usp=drive_link" rel="noopener" target="_blank">Drive folder →</a>
+    </p>
+
+    <h2 id="section-g">Section G — Precedent Court Cases</h2>
+
+    <h3><em>Trustees of Vincennes University v. Indiana</em>, 55 U.S. (14 How.) 268 (1852)</h3>
+    <p>
+      The U.S. Supreme Court affirmed that congressional school land grants
+      create a trust, and that the trust must be administered for the benefit
+      of its named beneficiaries.
+    </p>
+    <p>
+      <a href="https://supreme.justia.com/cases/federal/us/55/268/" rel="noopener" target="_blank">Justia →</a>
+    </p>
+
+    <h3><em>Lassen v. Arizona ex rel. Arizona Highway Department</em>, 385 U.S. 458 (1967)</h3>
+    <p>
+      The Supreme Court held that state school trust lands must be managed
+      with undivided loyalty to their beneficiaries and that compensation at
+      full value is required when trust lands are used for other public
+      purposes.
+    </p>
+    <p>
+      <a href="https://supreme.justia.com/cases/federal/us/385/458/" rel="noopener" target="_blank">Justia →</a>
+    </p>
+
+    <h3><em>County of Skamania v. State</em>, 102 Wn.2d 127 (1984)</h3>
+    <p>
+      The Washington Supreme Court held that the State violated its fiduciary
+      duties by releasing private timber companies from contracts on school
+      trust lands without adequate consideration.
+    </p>
+    <p>
+      <a href="https://casetext.com/case/county-of-skamania-v-state" rel="noopener" target="_blank">Casetext →</a>
+    </p>
+
+    <h3><em>State ex rel. Ebke v. Board of Educational Lands &amp; Funds</em>, 154 Neb. 244 (1951)</h3>
+    <p>
+      The Nebraska Supreme Court required strict adherence to fiduciary duties
+      in the administration of school trust lands, rejecting policy-based
+      departures from the trust standard.
+    </p>
+    <p>
+      <a href="https://law.justia.com/cases/nebraska/supreme-court/1951/32971-0.html" rel="noopener" target="_blank">Justia →</a>
+    </p>
+
+    <h3><em>Oklahoma Education Association v. Nigh</em>, 642 P.2d 230 (Okla. 1982)</h3>
+    <p>
+      The Oklahoma Supreme Court held that the Legislature could not divert
+      school trust revenues to non-school purposes consistent with the trust
+      obligation.
+    </p>
+    <p>
+      <a href="http://law.justia.com/cases/oklahoma/supreme-court/1982/5326.html" rel="noopener" target="_blank">Justia →</a>
+    </p>
+
+    <h3><em>Idaho Watersheds Project v. State Board of Land Commissioners</em>, 133 Idaho 64 (1999)</h3>
+    <p>
+      The Idaho Supreme Court struck down below-market grazing leases on
+      school trust lands, holding that the trust requires market-rate
+      consideration.
+    </p>
+    <p>
+      <a href="https://casetext.com/case/idaho-watersheds-project-v-state-board-of-land-comm" rel="noopener" target="_blank">Casetext →</a>
+    </p>
+
+    <h3><em>Branson School District RE-82 v. Romer</em>, 958 F. Supp. 1501 (D. Colo. 1997)</h3>
+    <p>
+      Federal district court considered state-constitutional changes affecting
+      school trust lands and the fiduciary protections owed beneficiaries
+      under the federal enabling-act compact.
+    </p>
+    <p>
+      <a href="https://law.justia.com/cases/federal/district-courts/FSupp/958/1501/1419177/" rel="noopener" target="_blank">Justia →</a>
+    </p>
+
+    <h3><em>Holdner v. State</em> (Or. Ct. App. 2006)</h3>
+    <p>
+      Oregon decision recognizing the State Land Board's fiduciary duties
+      while declining, on the facts presented, to apply the strictest
+      common-law standards.
+    </p>
+    <p>
+      <a href="https://casetext.com/case/holdner-v-state" rel="noopener" target="_blank">Casetext →</a>
+    </p>
+
+    <h3><em>Pendleton School District v. State</em>, 345 Or. 596 (2009)</h3>
+    <p>
+      The Oregon Supreme Court addressed the Legislature's constitutional duty
+      to fund schools adequately under Article VIII, Section 8 — the
+      legislative duty that runs parallel to (but separate from) the trust
+      duty under Article VIII, Section 2.
+    </p>
+    <p>
+      <a href="https://casetext.com/case/pendleton-sch-dist-v-state" rel="noopener" target="_blank">Casetext →</a>
+    </p>
+
+    <h2 id="section-h">Section H — Other Reports and Books</h2>
+
+    <h3>Jerry Phillips, <em>Caulked Boots and Cheese Sandwiches</em> (ODF, 1999)</h3>
+    <p>
+      Memoir and operational history of the Elliott State Forest by the
+      Oregon Department of Forestry's long-time district forester. Primary
+      source on Elliott management practice across the late twentieth century.
+    </p>
+    <p>
+      <a href="http://www.orww.org/Elliott_Forest/History/Phillips/Phillips_1998-201.pdf" rel="noopener" target="_blank">Phillips (PDF) →</a>
+    </p>
+
+    <h3>Quality Education Commission — QEM Report (2024)</h3>
+    <p>
+      Biennial report of the Quality Education Commission documenting the
+      cost of providing a constitutionally adequate education in Oregon under
+      Article VIII, Section 8.
+    </p>
+    <p>
+      <a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/M000266%20DOE%20Quality%20Education%20Model%20Report%202024.pdf" rel="noopener" target="_blank">QEM Report 2024 (PDF) →</a>
+    </p>
+
+    <h3>SITLA / SITFO Annual Reports (Utah comparator)</h3>
+    <p>
+      Annual reports of the Utah School and Institutional Trust Lands
+      Administration and Trust Fund Office — the standard comparator for
+      revenue-maximizing fiduciary management of state school trust lands.
+    </p>
+    <p>
+      <a href="https://trustlands.utah.gov/information/financial-reports/" rel="noopener" target="_blank">Utah financial reports →</a>
+    </p>
+
+    <h2 id="section-i">Section I — Fiduciary Doctrine (cross-reference)</h2>
+    <p>
+      The six classic trustee duties under American trust law — undivided
+      loyalty, preserve trust property, reasonable care and skill, make
+      productive, exclusive control, pay income — are detailed at the
+      Reference Desk's
+      <a href="/reference-desk/fiduciary-doctrine/">Fiduciary Doctrine</a>
+      page, with the Richardson Trust case study companion.
+    </p>
+
+    <h2 id="section-j">Section J — Oregon's Current Case</h2>
+    <p>
+      For deep treatment of <em>Advocates for School Trust Lands v. State of
+      Oregon</em> and the January 28, 2026 standing victory, see
+      <a href="/court/oregon-current-case/">Oregon's Current Case</a>.
+    </p>
+
+    <hr class="archival-divider" />
+
+    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
+      Source: Library curation drawn from the OASTL Case File at
+      <a href="https://oastl.org/legal" rel="noopener" target="_blank">oastl.org/legal</a>.
+      Updates to the live docket are maintained on the OASTL site; this page
+      is the Library's neutral, doctrinal index.
+    </p>
+  </article>
+</RoomLayout>
+
+<style>
+  .prose-toc ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .prose-toc li {
+    margin: 0.25rem 0;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.25rem 0;
+  }
+  .litigation-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .litigation-table th,
+  .litigation-table td {
+    border: 1px solid #cbd5e1;
+    padding: 0.6rem 0.75rem;
+    vertical-align: top;
+    text-align: left;
+  }
+  .litigation-table thead th {
+    background: #f1f5f9;
+    font-weight: 600;
+  }
+  .litigation-table tbody th[scope="row"] {
+    background: #f8fafc;
+    font-weight: 600;
+  }
+</style>

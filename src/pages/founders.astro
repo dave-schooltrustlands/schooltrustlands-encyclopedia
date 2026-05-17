@@ -1,41 +1,481 @@
 ---
-import ComingSoonRoomLayout from '../layouts/ComingSoonRoomLayout.astro';
+// v65 — Founders' Cabinet graduates from Coming Soon to a live room.
+// Fourteen named figures: the modern scholars, attorneys, foresters,
+// and advocates who shaped the school-trust field across the past five
+// decades. The 1785 framers (Jefferson, Grayson, Williamson) belong in
+// this cabinet too and will join in a future expansion. Portraits
+// render as styled initial placeholders until image acquisition.
+import RoomLayout from '../layouts/RoomLayout.astro';
 ---
-<ComingSoonRoomLayout
+<RoomLayout
   room="founders"
   title="Founders' Cabinet"
-  subtitle="The 1785 framers and the line of advocates who followed."
-  sourceId="coming-soon-founders"
+  subtitle="Named scholars, attorneys, foresters, and advocates who shaped the school-trust field."
+  width="prose"
+  sourceId="founders"
 >
-  <p>
-    The Founders' Cabinet honors the men and women who built the school
-    trust and the long line of advocates who carried it forward through the
-    centuries. The room begins with the Confederation Congress committee of
-    1785 — Thomas Jefferson, William Grayson, Hugh Williamson, and the
-    lesser-known members who voted the Land Ordinance into being. Their
-    portraits and biographies sit in cases along one wall. Across from
-    them, the line of advocates who came after — the territorial delegates
-    who fought for fair Enabling Act terms, the state superintendents who
-    insisted on accounting, the federal judges who built the doctrine, the
-    modern beneficiary-rights litigators, and Margaret Bird, who has done
-    more than anyone alive to keep the school-trust conversation honest.
+  <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p>
+      The Founders' Cabinet honors named scholars and contributors whose
+      work made the school-trust field what it is. The figures gathered
+      here include economists and historians, attorneys and judges,
+      foresters and managers, journalists and policy advocates. Some
+      wrote the books. Some led the reforms. Some spent careers managing
+      the land. The Library names them so the next generation knows the
+      chain it is being asked to join.
+    </p>
+
+    <p>
+      The 1785 Confederation Congress committee — Thomas Jefferson,
+      William Grayson, and Hugh Williamson, who drafted the Land
+      Ordinance that created the school-trust idea — belongs in this
+      cabinet too, and will appear in a future expansion. The present
+      shelf is the modern shelf: scholars and contributors from the past
+      five decades whose careers carried the school-trust conversation
+      across the long quiet stretch between 1785 and today.
+    </p>
+  </div>
+
+  <section class="cabinet mt-10" aria-labelledby="cabinet-heading">
+    <h2 id="cabinet-heading" class="section-heading">The cabinet</h2>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">MB</div>
+      <div class="card-body">
+        <h3>Margaret Bird</h3>
+        <p class="role-line">Economist · School trust lands scholar · Utah reform leader</p>
+        <p class="bio">
+          Margaret Bird is an economist and one of the nation's most
+          widely recognized school-trust-lands scholars. She co-founded
+          the national non-profit Advocates for School Trust Lands in
+          Utah in 2000 and served as the Utah Office of Education's
+          School Trust Lands Specialist for many years. In that role she
+          led the historic reform of Utah's school-trust-lands regime,
+          championing constitutional and statutory changes that
+          re-centered the trust on its beneficiary schoolchildren and
+          made Utah a national model for transparent trust accounting.
+          She is co-author, with Dave Sullivan, of <em>Schools of the
+          Republic</em>, and co-author of <em>Oregon's Constitutional
+          Duties to Schools</em> (2025), a 150-page volume documenting
+          the school-trust inheritance and the obligations it carries.
+          Her work bridges economics, public-finance accounting, and
+          constitutional trust law in a field that for decades had no
+          shared vocabulary.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">DS</div>
+      <div class="card-body">
+        <h3>Dave Sullivan, Ph.D.</h3>
+        <p class="role-line">Retired Professor of Business, Oregon State University · Author · Small woodland owner</p>
+        <p class="bio">
+          Dave Sullivan is a retired Professor of Business at Oregon
+          State University and the co-author of three books on Oregon
+          school trust lands, including <em>Oregon's Constitutional
+          Duties to Schools</em> (2025, with Margaret Bird) and
+          <em>Schools of the Republic</em>. He lives with his wife Barb
+          on their 200-acre tree farm in Kings Valley, Oregon, where the
+          working-forest economics he writes about meet the working
+          landscape they steward. He is President of Oregon Advocates
+          for School Trust Lands and a small-woodland owner whose
+          perspective on Oregon's school-trust portfolio is informed by
+          decades inside both the academic literature and the practical
+          realities of timber, taxation, and rural land management. His
+          academic background in systems analysis and public service
+          shapes the framework he brings to the school-trust
+          conversation.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">BZ</div>
+      <div class="card-body">
+        <h3>Bob Zybach, PhD</h3>
+        <p class="role-line">Environmental scientist · Forest and wildfire historian · Cofounder, ORWW</p>
+        <p class="bio">
+          Bob Zybach holds a PhD in Environmental Sciences from Oregon
+          State University and has built a multi-decade research career
+          on Pacific Northwest forest history, wildfire history, and
+          Indigenous burning practices. He cofounded the Oregon Websites
+          and Watersheds Project (ORWW), a non-profit that assists
+          Oregon students, teachers, residents, and resource managers in
+          documenting and understanding the region's forest landscape.
+          His research has reconstructed the historical fire regimes
+          and human-management practices that shaped the forests of
+          western Oregon long before twentieth-century industrial
+          forestry, and he has authored expert declarations on the
+          Elliott State Research Forest Forest Management Plan. His
+          scholarship is widely cited in Pacific Northwest forest
+          history and wildfire ecology.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">LC</div>
+      <div class="card-body">
+        <h3>Laura D. Cooper, OSB# 863589</h3>
+        <p class="role-line">Attorney · Civil rights and complex litigation</p>
+        <p class="bio">
+          Laura D. Cooper is an Oregon attorney with a multi-decade
+          career in civil rights and complex constitutional litigation.
+          She previously served as General Counsel for the Pain Relief
+          Network, a national advocacy organization that engaged in
+          high-stakes federal litigation on patient-care and
+          controlled-substances policy. Her practice has spanned
+          constitutional questions, regulatory challenges, and the kind
+          of cross-jurisdictional civil-rights work that requires deep
+          familiarity with both federal and state procedural posture.
+          She brings to the school-trust field the perspective of a
+          litigator who has spent years arguing the boundary between
+          government discretion and enforceable individual and
+          institutional rights — the boundary on which most modern
+          trust-law disputes ultimately turn.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">DC</div>
+      <div class="card-body">
+        <h3>Daniel Zene Crowe</h3>
+        <p class="role-line">Attorney · West Point graduate · Army Ranger · Retired Lieutenant Colonel and JAG officer</p>
+        <p class="bio">
+          Daniel Zene Crowe is an Oregon attorney with a constitutional-
+          litigation practice and an unusually distinguished service
+          record. A West Point graduate and Army Ranger, he served as a
+          JAG officer and retired at the rank of Lieutenant Colonel.
+          After military service he became Oregon's inaugural Veterans'
+          Advocate, building from scratch the office that now serves
+          Oregon's veteran population on benefits, legal services, and
+          policy advocacy. As a constitutional litigator he is best
+          known for <em>Crowe v. Oregon State Bar</em>, a case that
+          tested the constitutional limits of mandatory-bar political
+          speech and produced a published opinion of national interest.
+          He has also served on the Mt. Angel School Board, bringing
+          his constitutional and governance background directly to bear
+          on the day-to-day work of public-school stewardship.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">NS</div>
+      <div class="card-body">
+        <h3>Natalie Scott</h3>
+        <p class="role-line">Attorney · The Scott Law Group</p>
+        <p class="bio">
+          Natalie Scott is an Oregon attorney and the founder of The
+          Scott Law Group. She graduated <em>summa cum laude</em> from
+          the University of Oregon School of Law and previously clerked
+          for Judge David Brewer on the Oregon Court of Appeals — a
+          clerkship that places her among the small group of Oregon
+          practitioners with intimate working knowledge of the
+          appellate court whose precedents drive Oregon trust and
+          public-lands jurisprudence. Her practice spans appellate
+          advocacy, complex civil litigation, and the kind of
+          long-horizon constitutional work that requires both record-
+          building at the trial level and precise written argument at
+          the appellate level. Her appellate craft is widely recognized
+          within the Oregon bar.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card in-memoriam">
+      <div class="portrait-placeholder memorial" aria-hidden="true">DG</div>
+      <div class="card-body">
+        <h3>David Gould (1942–2024)</h3>
+        <p class="role-line">In Memoriam · President of OASTL throughout 2023</p>
+        <p class="bio">
+          David Gould was, as those who worked with him invariably put
+          it, the heart and soul of Oregon Advocates for School Trust
+          Lands. He served as president throughout 2023, carrying the
+          organization through a period of expansion and recommitment
+          to its founding mission. His leadership style — patient,
+          listening, unhurried — set the tone the organization still
+          carries. His passing in 2024 was a loss the Oregon
+          school-trust community continues to feel. The Founders'
+          Cabinet preserves his name in the record so the next
+          generation knows who held the line during years that could
+          easily have seen the work falter.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">JP</div>
+      <div class="card-body">
+        <h3>Jerry Phillips</h3>
+        <p class="role-line">Long-term manager of the Elliott State Forest (1956–1989) · Author</p>
+        <p class="bio">
+          Jerry Phillips managed the Elliott State Forest from 1956
+          until his retirement in 1989 — more than three decades inside
+          Oregon's first state forest and the largest single asset of
+          its school-trust portfolio. His <em>Caulked Boots and Cheese
+          Sandwiches</em>, published by the Oregon Department of
+          Forestry in 1999, remains the definitive history of the
+          Elliott: a working-forester's account of how the land was
+          consolidated, surveyed, logged, replanted, and managed across
+          the twentieth century, with the institutional and personal
+          memory of the people who did the work. The Jerry Phillips
+          Reserve, a legislatively designated portion of the Elliott
+          set aside in his honor, recognizes a career whose
+          contribution to Oregon's school-trust legacy is measured in
+          generations of stand records and the institutional memory
+          that came with them.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">JF</div>
+      <div class="card-body">
+        <h3>Jerry Franklin</h3>
+        <p class="role-line">Forest scientist · "The guru of old growth"</p>
+        <p class="bio">
+          Jerry Franklin is one of the most influential forest
+          scientists of his generation, widely known across the Pacific
+          Northwest as "the guru of old growth." His decades-long
+          career in forest ecology helped redefine how scientists,
+          policymakers, and the public understand the structure,
+          function, and value of old-growth forest ecosystems, and his
+          work is featured in the Oregon Encyclopedia. In the
+          school-trust context he authored a four-point peer-review
+          critique of the research design behind the Elliott State
+          Research Forest proposal — a critique that placed a senior
+          forest scientist on the record about the methodological
+          weaknesses of treating school-trust land as a research
+          platform. His contribution to the Founders' Cabinet is the
+          model of a scientist willing to speak plainly when the
+          evidence demands it.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">FE</div>
+      <div class="card-body">
+        <h3>Francis Elliott</h3>
+        <p class="role-line">Early-20th-century Oregon State Forester (~1920)</p>
+        <p class="bio">
+          Francis Elliott served as Oregon State Forester in the early
+          twentieth century and is the architect of the consolidation
+          that created Oregon's first state forest. Faced with a
+          fragmented school-trust land base — thousands of scattered
+          sections in the checkerboard pattern produced by the original
+          federal survey — he negotiated the exchange with the federal
+          government that swapped those scattered school-trust parcels
+          for the contiguous block of coastal forest that became the
+          Elliott State Forest, named in his honor. The consolidation
+          made the modern Elliott possible: a working trust forest of a
+          scale that could actually be managed as a single unit for
+          school benefit. Every conversation Oregon has had about the
+          Elliott since 1930 traces back to the exchange he engineered.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">BL</div>
+      <div class="card-body">
+        <h3>Bill Lansing</h3>
+        <p class="role-line">President and CEO (retired), Menasha Forest Products Corporation</p>
+        <p class="bio">
+          Bill Lansing is the retired President and CEO of Menasha
+          Forest Products Corporation, one of the long-standing
+          family-aligned timber operators in the Pacific Northwest.
+          Across his career he became one of the industry's clearest
+          public voices on Oregon timber policy and on the long
+          controversy over the management of the Elliott State Forest.
+          He brings to the school-trust conversation the perspective
+          of an executive who managed working forests at scale, ran a
+          payroll, navigated the regulatory and market cycles of the
+          past four decades, and watched from inside the industry as
+          Oregon's school-trust portfolio was transferred, encumbered,
+          and reframed. The cabinet preserves the industry voice
+          because the school-trust story cannot be told without it.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">JC</div>
+      <div class="card-body">
+        <h3>John A. Charles, Jr.</h3>
+        <p class="role-line">President and CEO, Cascade Policy Institute</p>
+        <p class="bio">
+          John A. Charles, Jr. is President and CEO of the Cascade
+          Policy Institute, an Oregon-based public-policy research
+          organization. Across decades of writing and advocacy he has
+          examined Oregon's governance of public assets, including the
+          state's trust-lands portfolio, and has produced commentary,
+          studies, and testimony on how Oregon manages — and
+          mismanages — the lands held in trust for its schools. He is
+          one of the few public-policy voices in Oregon to have
+          treated school-trust-lands governance as a serious and
+          recurring subject rather than a footnote. The Founders'
+          Cabinet recognizes that the policy-writing side of the
+          conversation is part of the chain too, and that the case for
+          school-trust accountability has needed editors and essayists
+          as much as it has needed litigators.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">MH</div>
+      <div class="card-body">
+        <h3>Marguerite Herman</h3>
+        <p class="role-line">Journalist · Board Secretary, Advocates for School Trust Lands</p>
+        <p class="bio">
+          Marguerite Herman is a Wyoming-based journalist and the
+          Board Secretary of the national Advocates for School Trust
+          Lands. Her reporting and essay work bring a working
+          journalist's discipline to a field that historically has
+          been written about in either academic or advocacy registers
+          — rarely in the plain, reportable prose she brings to it.
+          She is the author of the ASTL Voices essays, a sustained
+          series that translates the technical apparatus of trust-land
+          governance into language a general reader can follow. Her
+          presence on the ASTL board and in its publications keeps
+          the national conversation cross-pollinated across the
+          school-trust states whose individual records would
+          otherwise stay siloed inside their own state agencies.
+        </p>
+      </div>
+    </article>
+
+    <article class="cabinet-card">
+      <div class="portrait-placeholder" aria-hidden="true">RA</div>
+      <div class="card-body">
+        <h3>Roy Andes</h3>
+        <p class="role-line">Montana legal advocate · Recipient, Punctilio of Honor</p>
+        <p class="bio">
+          Roy Andes is a Montana-based legal advocate whose career on
+          school-trust-lands questions has earned him the Punctilio of
+          Honor award, a recognition reserved for sustained and
+          principled legal work on behalf of trust beneficiaries.
+          Montana's school-trust regime — like Oregon's — was forged
+          in the Enabling Act tradition and carries the same
+          fiduciary architecture, and Andes has spent decades inside
+          the Montana version of that architecture, building the legal
+          record and the argumentation that other school-trust states
+          have since drawn on. The "punctilio of honor" phrase comes
+          from Justice Cardozo's foundational opinion in
+          <em>Meinhard v. Salmon</em>: the standard of conduct demanded
+          of a fiduciary. Andes earned the award because the work he
+          has done is measured by that standard.
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <p class="closing-note">
+    <em>Portraits placeholder pending image acquisition. The 1785
+    Confederation Congress committee — Jefferson, Grayson, Williamson —
+    will join this cabinet in a future expansion.</em>
   </p>
-  <p>
-    <strong>Why this room matters.</strong> Institutions that last across
-    centuries do so because individual people, generation after generation,
-    tend them. The school trust is now in the hands of a generation that
-    has mostly forgotten it exists. The Founders' Cabinet is the room that
-    names the people who carried it this far, so the next generation knows
-    the chain they're being asked to join.
-  </p>
-  <p>
-    <strong>What they didn't foresee.</strong> A small alcove at the back of
-    the cabinet will document the failure modes the 1785 framers didn't
-    anticipate — railroad land grants, mineral severance, the federal
-    mineral leasing acts, sovereign-immunity defenses. A library is honest
-    about its founders' limits.
-  </p>
-  <p>
-    <strong>Being planned.</strong> Jefferson and Margaret first.
-  </p>
-</ComingSoonRoomLayout>
+</RoomLayout>
+
+<style>
+  .section-heading {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+    margin: 0 0 1.25rem;
+  }
+
+  .cabinet-card {
+    background: var(--linen-card, #fafaf7);
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-left: 3px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 1.25rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .cabinet-card.in-memoriam {
+    border-left-color: #64748b;
+    background: #f8fafc;
+  }
+
+  .portrait-placeholder {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--deep-navy, #1e3a5f);
+    color: #ffffff;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+
+  .portrait-placeholder.memorial {
+    background: #64748b;
+  }
+
+  .card-body {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .card-body h3 {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--deep-navy, #1e3a5f);
+    line-height: 1.3;
+    margin: 0 0 0.35rem;
+  }
+
+  .role-line {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #475569;
+    margin: 0 0 0.6rem;
+  }
+
+  .bio {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #334155;
+    margin: 0;
+  }
+
+  .closing-note {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule-border, #e5e7eb);
+    font-size: 0.9rem;
+    color: #64748b;
+    text-align: center;
+  }
+
+  @media (max-width: 540px) {
+    .cabinet-card {
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .portrait-placeholder {
+      width: 64px;
+      height: 64px;
+      font-size: 1.05rem;
+    }
+  }
+</style>
+</content>
+</invoke>
