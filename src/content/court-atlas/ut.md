@@ -21,7 +21,7 @@ The Utah Enabling Act of July 16, 1894 (28 Stat. 107) admitted Utah on the condi
 
 ## Notable Attorney General opinions
 
-AG opinion ingestion is in progress; see the Opinions Library for the current corpus.
+AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
 
 ## Trust Integrity grade and rationale
 

@@ -20,7 +20,7 @@ The Alaska Statehood Act of July 7, 1958 (Pub. L. 85-508, 72 Stat. 339) admitted
 
 ## Notable Attorney General opinions
 
-AG opinion ingestion is in progress; see the Opinions Library for the current corpus.
+AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
 
 ## Trust Integrity grade and rationale
 

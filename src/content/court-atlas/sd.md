@@ -20,7 +20,7 @@ The Omnibus Enabling Act of February 22, 1889 (25 Stat. 676) admitted South Dako
 
 ## Notable Attorney General opinions
 
-AG opinion ingestion is in progress; see the Opinions Library for the current corpus.
+AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
 
 ## Trust Integrity grade and rationale
 

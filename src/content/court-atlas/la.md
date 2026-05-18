@@ -20,7 +20,7 @@ The Louisiana Enabling Act of February 20, 1811 (2 Stat. 641), which authorized 
 
 ## Notable Attorney General opinions
 
-AG opinion ingestion is in progress; see the Opinions Library for the current corpus.
+AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
 
 ## Trust Integrity grade and rationale
 

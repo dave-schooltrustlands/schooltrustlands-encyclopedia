@@ -20,7 +20,7 @@ The Idaho Admission Act of July 3, 1890 (26 Stat. 215) admitted Idaho on the con
 
 ## Notable Attorney General opinions
 
-AG opinion ingestion is in progress; see the Opinions Library for the current corpus.
+AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
 
 ## Trust Integrity grade and rationale
 
