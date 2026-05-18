@@ -215,6 +215,50 @@ const library = defineCollection({
   }),
 });
 
+// Court Room — Phase 2 long-form content. Four collections seed the
+// four populated subsections (Lineage, Case File annotations, Reading
+// Wing essays, Atlas state dossiers). Each entry is a markdown body
+// rendered via entry.render() inside the dynamic per-slug route.
+const courtLineage = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    year: z.union([z.string(), z.number()]),
+    order: z.number().int(),
+    summary: z.string().optional(),
+  }),
+});
+
+const courtCases = defineCollection({
+  type: 'content',
+  schema: z.object({
+    caseName: z.string(),
+    citation: z.string(),
+    year: z.number().int(),
+    court: z.enum(['SCOTUS', 'state-supreme']),
+    order: z.number().int(),
+    opinionUrl: z.string().url().optional(),
+    courtsLabel: z.string().optional(),
+  }),
+});
+
+const courtReadingWing = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    order: z.number().int(),
+    preview: z.string(),
+  }),
+});
+
+const courtAtlas = defineCollection({
+  type: 'content',
+  schema: z.object({
+    stateCode: z.string().length(2),
+    name: z.string(),
+  }),
+});
+
 export const collections = {
   states,
   essays,
@@ -224,4 +268,8 @@ export const collections = {
   scholarship,
   'how-the-library-works': howTheLibraryWorks,
   library,
+  'court-lineage': courtLineage,
+  'court-cases': courtCases,
+  'court-reading-wing': courtReadingWing,
+  'court-atlas': courtAtlas,
 };

@@ -1,0 +1,18 @@
+---
+title: "The First State Enabling Acts (Ohio 1803 onward)"
+year: "1803→"
+order: 9
+summary: "Federal-state compacts that convert the 1785/1787 promises into actual conveyances. The state, by accepting statehood on the terms offered, accepts the trust — and cannot lawfully release itself from it."
+---
+
+The promises of 1785 and 1787 had to be turned into actual conveyances of actual sections of actual land to actual state governments. The instrument of conversion was the *enabling act* — the federal statute by which Congress authorized the people of a territory to form a state constitution and enter the Union. Each enabling act, beginning with Ohio's in 1802 (admission proclaimed 1803), specified the terms on which the new state would receive the school sections and the conditions attached to that grant.
+
+The pattern was remarkably durable. Congress would grant section 16 of every township — and, in states admitted from 1850 onward, sections 16 and 36; in Arizona, New Mexico, and Utah, sections 2, 16, 32, and 36 — to the new state government. The grant was express, the purpose was specified, and the conditions were stated as binding terms of statehood. The new state, in its initial constitution or by accepting ordinance, would acknowledge the grant and bind itself to the trust.
+
+What the enabling acts created, in legal effect, was a federal-state compact. The federal government was the settlor; the state was the trustee; the schools of the state, and through them the children, were the beneficiaries; the lands themselves were the trust corpus. The enabling-act terms were the trust instrument. The state could not lawfully alter the terms unilaterally any more than a trustee can lawfully amend a trust instrument the settlor wrote.
+
+Three doctrinal features of the enabling-act system matter for modern litigation. First, the enabling acts were *binding compacts*, not mere grants. The state, by accepting statehood on the terms offered, undertook obligations that survived admission. Second, the enabling acts created *trust property in the strict sense*, not merely public lands subject to legislative discretion. The state held the land as trustee, not as owner. Third, the enabling acts established *federal supremacy over the trust terms*: a state legislature could not lawfully redefine the beneficiaries, expand the permissible uses, or release itself from the duties the enabling act had imposed. The doctrine was implicit from the beginning and was made explicit by the Supreme Court in *Vincennes* in 1852 and reaffirmed across the century and a half that followed.
+
+The Oregon Admissions Act of 1859 sits squarely inside this tradition. Congress granted sections 16 and 36 of every township to the new state for the support of common schools. Oregon, by accepting statehood on those terms, accepted the trust. The terms of the 1859 act — the grant, the beneficiary, the purpose — became the trust instrument that binds the State of Oregon today, and that the present litigation seeks to enforce. The state's options for managing the lands are wide, but the state's authority to redirect them, exhaust them, or release itself from the trust is not. That limitation is not a matter of policy preference. It is a matter of the federal-state compact that created the state in the first place.
+
+**References.** Ohio Enabling Act, 2 Stat. 173 (1802); Oregon Admissions Act, 11 Stat. 383 (1859); Paul W. Gates, *History of Public Land Law Development* (1968), chs. 11–13; *Cooper v. Roberts*, 59 U.S. (18 How.) 173 (1855) (treating Michigan's section-16 grant as held on "the unalterable condition" of trust for schools).
