@@ -1,0 +1,216 @@
+---
+// v3.0 — The Atlas subsection. Phase 1 stub renders a state-card grid
+// sorted by trust-integrity grade and reads from src/data/court-states.json.
+// Phase 2 will add an SVG map and richer per-state dossiers.
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import statesData from '../../../data/court-states.json';
+
+type StateRecord = {
+  name: string;
+  enablingAct: string;
+  enablingActYear: number;
+  trustFundCurrentValue: number | null;
+  trustFundAsOf: string | null;
+  agOpinionCount: number;
+  keyCases: string[];
+  trustIntegrityGrade:
+    | 'pending'
+    | 'intact-and-funded'
+    | 'breached-and-recovered'
+    | 'breached-and-uncorrected'
+    | 'under-review';
+  summary: string;
+  advocacyContact: string;
+};
+
+const states = statesData as Record<string, StateRecord>;
+
+// Sort order: intact-and-funded first, then breached-and-recovered,
+// then breached-and-uncorrected, then under-review, then pending. Inside
+// each group, alphabetize by name.
+const GRADE_ORDER: Record<StateRecord['trustIntegrityGrade'], number> = {
+  'intact-and-funded': 0,
+  'breached-and-recovered': 1,
+  'breached-and-uncorrected': 2,
+  'under-review': 3,
+  pending: 4,
+};
+
+const entries = Object.entries(states)
+  .map(([code, s]) => ({ code, ...s }))
+  .sort((a, b) => {
+    const ga = GRADE_ORDER[a.trustIntegrityGrade];
+    const gb = GRADE_ORDER[b.trustIntegrityGrade];
+    if (ga !== gb) return ga - gb;
+    return a.name.localeCompare(b.name);
+  });
+
+const GRADE_LABEL: Record<StateRecord['trustIntegrityGrade'], string> = {
+  'intact-and-funded': 'Intact and funded',
+  'breached-and-recovered': 'Breached and recovered',
+  'breached-and-uncorrected': 'Breached and uncorrected',
+  'under-review': 'Under review',
+  pending: 'Pending — Phase 2',
+};
+
+function fmtFund(n: number | null, asOf: string | null): string {
+  if (n === null) return 'Pending';
+  const billions = n / 1_000_000_000;
+  const text = billions >= 1 ? `$${billions.toFixed(1).replace(/\.0$/, '')}B` : `$${(n / 1_000_000).toFixed(0)}M`;
+  return asOf ? `${text} (${asOf})` : text;
+}
+---
+<RoomLayout
+  room="court"
+  width="full"
+  title="The Atlas"
+  subtitle="The trust-lands states — Enabling Act, fund value, key cases, trust-integrity grade."
+  sourceId="court-atlas"
+>
+  <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
+    <span class="eyebrow">Court Room · The Atlas</span>
+
+    <aside class="preview-banner" role="note">
+      <strong>First-draft preview.</strong> The Atlas presently renders as
+      a card grid sorted by trust-integrity grade. A true SVG map and
+      richer per-state dossiers are under development for Phase 2. ←
+      <a href="/court/">Back to the Court Room lobby</a>.
+    </aside>
+
+    <p>
+      Twenty states received federal school-land grants on admission to
+      the Union, plus Texas (state-derived) and a handful of edge cases.
+      Each card below opens a per-state dossier with the Enabling Act
+      citation, the current fund value where known, the count of state
+      Attorney General opinions in substrate, the key precedent cases,
+      and a trust-integrity grade reflecting whether the state's school
+      trust is presently intact, breached and recovered, breached and
+      uncorrected, or under review.
+    </p>
+
+    <section class="state-grid" aria-label="State dossiers">
+      {entries.map((s) => (
+        <a class={`state-card grade-${s.trustIntegrityGrade}`} href={`/court/atlas/${s.code.toLowerCase()}/`}>
+          <header class="state-card__header">
+            <h2 class="state-card__name">{s.name}</h2>
+            <span class="state-card__grade">{GRADE_LABEL[s.trustIntegrityGrade]}</span>
+          </header>
+          <dl class="state-card__facts">
+            <div>
+              <dt>Enabling Act</dt>
+              <dd>{s.enablingActYear}</dd>
+            </div>
+            <div>
+              <dt>Fund</dt>
+              <dd>{fmtFund(s.trustFundCurrentValue, s.trustFundAsOf)}</dd>
+            </div>
+            <div>
+              <dt>AG opinions</dt>
+              <dd>{s.agOpinionCount > 0 ? s.agOpinionCount : '—'}</dd>
+            </div>
+            <div>
+              <dt>Key cases</dt>
+              <dd>{s.keyCases.length}</dd>
+            </div>
+          </dl>
+          <span class="state-card__open">Open dossier →</span>
+        </a>
+      ))}
+    </section>
+
+    <hr class="archival-divider" />
+
+    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
+      First-draft preview. SVG map and richer per-state dossiers under
+      development.
+    </p>
+  </article>
+</RoomLayout>
+
+<style>
+  .preview-banner {
+    border-left: 4px solid var(--old-gold, #B88A2E);
+    background: rgba(184, 138, 46, 0.08);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+  }
+  .state-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.85rem;
+    margin: 1.75rem 0 1.5rem;
+  }
+  .state-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.9rem 1rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-left-width: 4px;
+    border-radius: 6px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 120ms ease, transform 120ms ease, border-color 120ms ease;
+  }
+  .state-card:hover {
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  .state-card.grade-intact-and-funded         { border-left-color: #166534; }
+  .state-card.grade-breached-and-recovered    { border-left-color: #B88A2E; }
+  .state-card.grade-breached-and-uncorrected  { border-left-color: #9b2c2c; }
+  .state-card.grade-under-review              { border-left-color: #1e3a5f; }
+  .state-card.grade-pending                   { border-left-color: #94a3b8; }
+  .state-card__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .state-card__name {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: #0f172a;
+  }
+  .state-card__grade {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #475569;
+  }
+  .state-card__facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem 0.65rem;
+    margin: 0.3rem 0 0;
+    font-size: 0.85rem;
+  }
+  .state-card__facts > div {
+    display: flex;
+    flex-direction: column;
+  }
+  .state-card__facts dt {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #64748b;
+  }
+  .state-card__facts dd {
+    margin: 0;
+    color: #1f2937;
+    font-weight: 500;
+  }
+  .state-card__open {
+    margin-top: 0.25rem;
+    font-size: 0.88rem;
+    color: #1d4ed8;
+    font-weight: 600;
+  }
+</style>

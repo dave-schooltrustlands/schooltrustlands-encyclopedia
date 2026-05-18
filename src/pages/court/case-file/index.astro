@@ -1,16 +1,22 @@
 ---
-import RoomLayout from '../layouts/RoomLayout.astro';
+import RoomLayout from '../../../layouts/RoomLayout.astro';
 ---
 
 <RoomLayout
   room="court"
-  title="Court Room"
-  subtitle="Case File / Annotated Bibliography — statutes, AG opinions, official correspondence, litigation history, expert declarations, and precedent court cases on the school trust lands."
+  title="The Case File"
+  subtitle="Annotated SCOTUS cases, binding state-court precedents, and the active Oregon filings — statutes, AG opinions, official correspondence, litigation history, and expert declarations."
   width="prose"
-  sourceId="court-index"
+  sourceId="court-case-file"
 >
   <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
     <span class="eyebrow">Court Room · Case File · Annotated Bibliography</span>
+
+    <aside class="preview-banner" role="note">
+      <strong>First-draft preview.</strong> The Case File is one of five Court
+      Room subsections. Deeper annotations and additional cases are under
+      development. ← <a href="/court/">Back to the Court Room lobby</a>.
+    </aside>
 
     <p>
       The Court Room is the Library's doctrinal record: the case files, statutes,
@@ -603,5 +609,12 @@ import RoomLayout from '../layouts/RoomLayout.astro';
   .litigation-table tbody th[scope="row"] {
     background: #f8fafc;
     font-weight: 600;
+  }
+  .preview-banner {
+    border-left: 4px solid var(--old-gold, #B88A2E);
+    background: rgba(184, 138, 46, 0.08);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
   }
 </style>

@@ -1,0 +1,165 @@
+---
+// v3.0 — Court Room lobby. Promotes /court/ from Coming Soon to live and
+// routes to five subsection cards (Lineage, Atlas, Case File, Opinions,
+// Reading Wing). Phase 1 of the Court Room Expansion Build; Phase 2 will
+// fan out first-draft long-form content into each subsection.
+import RoomLayout from '../../layouts/RoomLayout.astro';
+
+const subsections = [
+  {
+    href: '/court/lineage/',
+    title: 'The Lineage',
+    description:
+      'Doctrinal evolution of trust law from English equity to American school trust — Magna Carta, Statute of Uses, Lord Hardwicke, the 1785 Land Ordinance, state Enabling Acts, and the modern Uniform Trust Code.',
+    eyebrow: 'Doctrine · timeline',
+  },
+  {
+    href: '/court/atlas/',
+    title: 'The Atlas',
+    description:
+      'Map of the trust-lands states, with per-state dossiers — Enabling Act citation, current fund value, AG opinion count, key cases, and a trust-integrity grade.',
+    eyebrow: 'Per-state · 20 dossiers',
+  },
+  {
+    href: '/court/case-file/',
+    title: 'The Case File',
+    description:
+      'Annotated Supreme Court cases, binding state-supreme-court precedents, and the active Oregon filings — statutes, AG opinions, official correspondence, litigation history, and expert declarations.',
+    eyebrow: 'Cases · annotated',
+  },
+  {
+    href: '/court/opinions/',
+    title: 'The Opinions Library',
+    description:
+      'State Attorney General opinions on school-trust governance, indexed by issue. Oregon’s three foundational opinions are in substrate; nineteen additional trust-lands states are being sourced.',
+    eyebrow: 'AG opinions · by issue',
+  },
+  {
+    href: '/court/reading-wing/',
+    title: 'The Reading Wing',
+    description:
+      'Long-form nationwide perspective essays on school trust law — how America created the school trust, how the trust was broken, what Utah did differently, and the forever-fiduciary question.',
+    eyebrow: 'Essays · nationwide',
+  },
+];
+---
+<RoomLayout
+  room="court"
+  width="full"
+  title="Court Room"
+  subtitle="Where school trust law is studied, cited, and put to work."
+  sourceId="court-lobby"
+>
+  <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
+    <span class="eyebrow">Court Room · Lobby</span>
+
+    <p>
+      The Court Room holds the legal record of America's school trust lands.
+      It is the room where the doctrinal lineage of trust law — Magna Carta
+      to the Statute of Uses to the modern Uniform Trust Code — meets the
+      twenty trust-lands states, the binding precedents that govern them,
+      and the Attorney General opinions that interpret their enabling acts.
+      It is also the room where Oregon's active litigation is followed in
+      detail, because Oregon is presently the country's live test case for
+      school-trust accountability.
+    </p>
+    <p>
+      Five subsections sit behind the doors below. Each is a Phase-1
+      first-draft preview: the architecture, the data, and substantive
+      seeded content are in place, and the long-form first drafts are
+      being written this week.
+    </p>
+
+    <section class="court-grid" aria-label="Court Room subsections">
+      {subsections.map((s) => (
+        <a class="court-card" href={s.href}>
+          <span class="court-card__eyebrow">{s.eyebrow}</span>
+          <h2 class="court-card__title">{s.title}</h2>
+          <p class="court-card__desc">{s.description}</p>
+          <span class="court-card__open">Open →</span>
+        </a>
+      ))}
+    </section>
+
+    <aside class="cross-bridge" role="note">
+      <strong>Quick reference at the Reference Desk; deep research in the
+      Court Room.</strong> The six classic trustee duties under American
+      trust law — undivided loyalty, preservation, prudence, productivity,
+      exclusive control, and payment of income — are explained in plain
+      language at the Reference Desk's
+      <a href="/reference-desk/fiduciary-doctrine/">Fiduciary Doctrine</a>
+      page. The case law applying those duties — Lassen, Skamania, Ebke,
+      Nigh, Idaho Watersheds, Branson, Pettibone, and the live Oregon
+      filings — lives in
+      <a href="/court/case-file/">The Case File</a> below.
+    </aside>
+
+    <hr class="archival-divider" />
+
+    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
+      Phase 1 of the Court Room Expansion Build (2026-05-18). First-draft
+      preview content in each subsection; long-form Phase 2 essays drop in
+      the next week.
+    </p>
+  </article>
+</RoomLayout>
+
+<style>
+  .court-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1.75rem 0 1.5rem;
+  }
+  .court-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 1.25rem 1.1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+  }
+  .court-card:hover {
+    border-color: var(--old-gold, #B88A2E);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  .court-card__eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #475569;
+  }
+  .court-card__title {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: #0f172a;
+  }
+  .court-card__desc {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #1f2937;
+    flex: 1 1 auto;
+  }
+  .court-card__open {
+    margin-top: 0.35rem;
+    font-size: 0.92rem;
+    color: #1d4ed8;
+    font-weight: 600;
+  }
+  .cross-bridge {
+    border-left: 4px solid var(--old-gold, #B88A2E);
+    background: rgba(184, 138, 46, 0.08);
+    padding: 0.85rem 1.1rem;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+  }
+</style>

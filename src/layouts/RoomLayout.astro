@@ -32,7 +32,10 @@ type RoomId =
 // uses its own publishing layout so the lower-nav tab strip won't
 // appear ON /newsroom/, but Newsroom appears in the tab strip on every
 // other library page.
-type BannerRoomId = 'reading' | 'atlas' | 'maps' | 'counting' | 'newsroom' | 'reference-desk' | 'writing';
+// v3.0 — Court Room promoted from Coming Soon to live and joins the
+// banner-room set; banner image already installed in v56 at
+// /banners/court.jpg.
+type BannerRoomId = 'reading' | 'atlas' | 'maps' | 'counting' | 'newsroom' | 'reference-desk' | 'writing' | 'court';
 const BANNER_ROOMS: ReadonlyArray<BannerRoomId> = [
   'reading',
   'atlas',
@@ -41,6 +44,7 @@ const BANNER_ROOMS: ReadonlyArray<BannerRoomId> = [
   'newsroom',
   'reference-desk',
   'writing',
+  'court',
 ];
 const isBannerRoom = (id: RoomId): id is BannerRoomId =>
   (BANNER_ROOMS as ReadonlyArray<RoomId>).includes(id);

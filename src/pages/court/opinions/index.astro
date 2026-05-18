@@ -1,0 +1,215 @@
+---
+// v3.0 — The Opinions Library. Phase 1 stub renders the three Oregon AG
+// opinions in substrate plus placeholder cards for the other trust-lands
+// states. Phase 2 will ingest AG opinions from additional states.
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import opinionsData from '../../../data/court-opinions.json';
+import statesData from '../../../data/court-states.json';
+
+type OpinionRecord = {
+  state: string;
+  citation: string;
+  year: number;
+  issueTags: string[];
+  summary: string;
+  pdfUrl: string | null;
+};
+
+type StateRecord = {
+  name: string;
+};
+
+const opinions = opinionsData as Record<string, OpinionRecord>;
+const states = statesData as Record<string, StateRecord>;
+
+const opinionEntries = Object.values(opinions).sort((a, b) => a.year - b.year);
+
+// States that have at least one opinion in substrate vs. those pending.
+const statesWithOpinions = new Set(opinionEntries.map((o) => o.state));
+const pendingStates = Object.entries(states)
+  .filter(([code]) => !statesWithOpinions.has(code))
+  .map(([code, s]) => ({ code, name: s.name }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+<RoomLayout
+  room="court"
+  width="full"
+  title="The Opinions Library"
+  subtitle="State Attorney General opinions on school-trust governance — indexed by issue."
+  sourceId="court-opinions"
+>
+  <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
+    <span class="eyebrow">Court Room · The Opinions Library</span>
+
+    <aside class="preview-banner" role="note">
+      <strong>First-draft preview.</strong> Oregon's three foundational AG
+      opinions are below. Phase 2 will populate AG opinions from nineteen
+      additional trust-lands states, sourcing from state Attorney General
+      websites and CourtListener. ← <a href="/court/">Back to the Court
+      Room lobby</a>.
+    </aside>
+
+    <p>
+      State Attorney General opinions are a distinct class of legal
+      authority. They are not binding precedent in the way a state-supreme-court
+      decision is, but they are written by the lawyer the state itself
+      relies on for advice — and once they exist, they constrain the
+      practical room the state has to act. In the school-trust context,
+      AG opinions are routinely cited by state trustees, by beneficiary
+      plaintiffs, and by the courts.
+    </p>
+
+    <h2>Oregon</h2>
+    <p class="state-intro">
+      Oregon's AG opinion record is the most complete in trust-lands
+      substrate, with three foundational opinions and follow-up
+      treatments spanning 1975 to 2003.
+    </p>
+
+    <div class="opinion-list">
+      {opinionEntries
+        .filter((o) => o.state === 'OR')
+        .map((o) => (
+          <article class="opinion-card">
+            <header class="opinion-card__header">
+              <span class="opinion-card__year">{o.year}</span>
+              <h3 class="opinion-card__citation">{o.citation}</h3>
+            </header>
+            <ul class="opinion-card__tags">
+              {o.issueTags.map((t) => (
+                <li>{t.replace(/-/g, ' ')}</li>
+              ))}
+            </ul>
+            <p class="opinion-card__summary">{o.summary}</p>
+            {o.pdfUrl && (
+              <p>
+                <a href={o.pdfUrl} rel="noopener" target="_blank">PDF →</a>
+              </p>
+            )}
+          </article>
+        ))}
+    </div>
+
+    <h2>Other trust-lands states</h2>
+    <p class="state-intro">
+      The cards below are placeholders. Each will be populated in Phase 2
+      with the AG opinions Margaret Bird's compilation and ASTL's research
+      have already identified, plus targeted retrieval from state AG
+      offices.
+    </p>
+
+    <div class="pending-grid">
+      {pendingStates.map((s) => (
+        <div class="pending-card">
+          <span class="pending-card__code">{s.code}</span>
+          <span class="pending-card__name">{s.name}</span>
+          <span class="pending-card__status">Pending — sourcing from {s.name} Attorney General's office.</span>
+        </div>
+      ))}
+    </div>
+
+    <hr class="archival-divider" />
+
+    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
+      First-draft preview. Bulk AG opinion ingestion across the
+      trust-lands states is in progress.
+    </p>
+  </article>
+</RoomLayout>
+
+<style>
+  .preview-banner {
+    border-left: 4px solid var(--old-gold, #B88A2E);
+    background: rgba(184, 138, 46, 0.08);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+  }
+  .state-intro {
+    font-size: 0.95rem;
+    color: #334155;
+  }
+  .opinion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0 1.75rem;
+  }
+  .opinion-card {
+    padding: 1rem 1.15rem 1.1rem;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #1e3a5f;
+    border-radius: 6px;
+    background: #fff;
+  }
+  .opinion-card__header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+  .opinion-card__year {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e3a5f;
+  }
+  .opinion-card__citation {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #0f172a;
+  }
+  .opinion-card__tags {
+    list-style: none;
+    padding: 0;
+    margin: 0.3rem 0 0.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .opinion-card__tags li {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.5rem;
+    background: rgba(30, 58, 95, 0.08);
+    border-radius: 999px;
+    color: #1e3a5f;
+  }
+  .opinion-card__summary {
+    margin: 0.35rem 0 0.4rem;
+    color: #1f2937;
+  }
+  .pending-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.65rem;
+    margin: 0.75rem 0 1rem;
+  }
+  .pending-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.65rem 0.8rem;
+    border: 1px dashed #cbd5e1;
+    border-radius: 4px;
+    background: rgba(148, 163, 184, 0.06);
+  }
+  .pending-card__code {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #475569;
+  }
+  .pending-card__name {
+    font-weight: 600;
+    color: #0f172a;
+  }
+  .pending-card__status {
+    font-size: 0.82rem;
+    color: #64748b;
+    font-style: italic;
+  }
+</style>

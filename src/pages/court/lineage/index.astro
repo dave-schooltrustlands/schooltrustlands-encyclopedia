@@ -1,0 +1,196 @@
+---
+// v3.0 — The Lineage subsection. Phase 1 stub seeded with a 12-milestone
+// doctrinal timeline running from Magna Carta to the modern Uniform
+// Trust Code. Phase 2 will populate each milestone with a long-form
+// essay.
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+
+const milestones = [
+  {
+    year: 1215,
+    title: 'Magna Carta',
+    summary:
+      "King John's charter at Runnymede establishes the constitutional principle that the sovereign holds power subject to law and to the obligations owed to others — the seed from which English trust doctrine eventually grows.",
+  },
+  {
+    year: 1535,
+    title: 'Statute of Uses',
+    summary:
+      "Henry VIII's statute converts beneficial 'uses' into legal estates, attempting to abolish the medieval use but instead driving the technical refinements that produce the modern trust as a distinct legal device.",
+  },
+  {
+    year: 1740,
+    title: 'Lord Hardwicke and the Chancery synthesis',
+    summary:
+      "As Lord Chancellor, Philip Yorke (Lord Hardwicke) decides the cases that establish the modern English law of trusts: the trustee's undivided loyalty, the prohibition on self-dealing, the duty to account.",
+  },
+  {
+    year: 1785,
+    title: 'Land Ordinance of 1785',
+    summary:
+      "Congress under the Articles of Confederation establishes the township survey system and reserves the sixteenth section of every township for the support of public schools. The national school-trust pattern begins here.",
+  },
+  {
+    year: 1787,
+    title: 'Northwest Ordinance',
+    summary:
+      "The famous third article — 'Religion, morality, and knowledge being necessary to good government and the happiness of mankind, schools and the means of education shall forever be encouraged' — supplies the constitutional rationale for the section-16 reservation.",
+  },
+  {
+    year: 1802,
+    title: "Ohio's admission compact",
+    summary:
+      "Ohio's enabling act becomes the template that Congress applies to every new state admitted from the Northwest Territory and the Louisiana Purchase. The section-16-and-36 doubled grant emerges by 1848.",
+  },
+  {
+    year: 1852,
+    title: 'Trustees of Vincennes University v. Indiana',
+    summary:
+      "The first SCOTUS authority on school-land trust formation: enabling acts create enforceable trusts; states cannot abridge them; they preempt contrary state law. The doctrinal floor of every modern trust-lands case.",
+  },
+  {
+    year: 1859,
+    title: "Oregon's Admission Act",
+    summary:
+      "Oregon enters the Union with the doubled grant. Article VIII of the 1857 Oregon Constitution walls the resulting fund off from ordinary legislative reach — the architecture against which the modern Oregon litigation runs.",
+  },
+  {
+    year: 1910,
+    title: 'Arizona-New Mexico Enabling Act',
+    summary:
+      "The 1910 enabling act for AZ and NM writes the words 'in trust' directly into the federal statute. The express-trust language settles, for those two states, what Cooper v. Roberts and Vincennes had only implied.",
+  },
+  {
+    year: 1928,
+    title: 'Meinhard v. Salmon',
+    summary:
+      "Cardozo, writing for the New York Court of Appeals: a fiduciary is held 'to something stricter than the morals of the marketplace … the punctilio of an honor the most sensitive.' The high-water mark of modern American fiduciary law.",
+  },
+  {
+    year: 1967,
+    title: 'Lassen v. Arizona',
+    summary:
+      "SCOTUS restates the school-trust doctrine in modern fiduciary terms: undivided loyalty, full compensation when trust lands are used for other public purposes. The decision now cited in nearly every state-supreme-court trust-lands opinion.",
+  },
+  {
+    year: 2000,
+    title: 'Uniform Trust Code and Restatement (Third) of Trusts',
+    summary:
+      "The UTC (2000) and the Restatement (Third) of Trusts (2003) codify the modern American trustee duties — loyalty, impartiality, prudence, the duty to enforce claims — supplying the doctrinal vocabulary against which state-trustee performance is now measured.",
+  },
+];
+---
+<RoomLayout
+  room="court"
+  width="full"
+  title="The Lineage"
+  subtitle="Doctrinal evolution of trust law — from English equity to American school trust."
+  sourceId="court-lineage"
+>
+  <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
+    <span class="eyebrow">Court Room · The Lineage</span>
+
+    <aside class="preview-banner" role="note">
+      <strong>First-draft preview.</strong> Twelve milestones below sketch
+      the doctrinal arc from Magna Carta to the modern Uniform Trust Code.
+      The long-form essay for each milestone is being drafted in Phase 2 of
+      the Court Room Expansion (next week). ← <a href="/court/">Back to the
+      Court Room lobby</a>.
+    </aside>
+
+    <p>
+      American school-trust law was not invented. It was inherited. The
+      lineage runs from Magna Carta through five centuries of English
+      Chancery practice, through the 1785 Land Ordinance and the 1787
+      Northwest Ordinance, through the admission compact that every new
+      state from Ohio onward signed with Congress, and into the modern
+      Uniform Trust Code and Restatement (Third) of Trusts. Each milestone
+      below is a hinge: the place where the doctrine took a new shape that
+      every subsequent state inherited.
+    </p>
+
+    <ol class="lineage-list">
+      {milestones.map((m) => (
+        <li class="lineage-item">
+          <div class="lineage-year">{m.year}</div>
+          <div class="lineage-body">
+            <h2 class="lineage-title">{m.title}</h2>
+            <p class="lineage-summary">{m.summary}</p>
+            <p class="lineage-coming">Read the full essay → coming Phase&nbsp;2</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <hr class="archival-divider" />
+
+    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
+      First-draft preview. Full essays under development for each milestone.
+    </p>
+  </article>
+</RoomLayout>
+
+<style>
+  .preview-banner {
+    border-left: 4px solid var(--old-gold, #B88A2E);
+    background: rgba(184, 138, 46, 0.08);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+  }
+  .lineage-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.75rem 0;
+    border-left: 2px solid #cbd5e1;
+  }
+  .lineage-item {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 1rem;
+    padding: 0.75rem 1rem 1rem 1rem;
+    position: relative;
+  }
+  .lineage-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 1.2rem;
+    width: 12px;
+    height: 12px;
+    background: var(--old-gold, #B88A2E);
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+  .lineage-year {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e3a5f;
+  }
+  .lineage-body {
+    min-width: 0;
+  }
+  .lineage-title {
+    margin: 0 0 0.35rem;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    color: #0f172a;
+  }
+  .lineage-summary {
+    margin: 0 0 0.5rem;
+    color: #1f2937;
+  }
+  .lineage-coming {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #475569;
+    font-style: italic;
+  }
+  @media (max-width: 480px) {
+    .lineage-item {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+  }
+</style>

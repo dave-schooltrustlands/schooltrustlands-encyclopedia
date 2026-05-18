@@ -1,0 +1,130 @@
+---
+// v3.0 — The Reading Wing. Phase 1 stub renders four planned essays plus
+// "in development" placeholders. Phase 2 will drop the first three
+// finished essays.
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+
+const essays = [
+  {
+    title: 'How America Created the School Trust',
+    summary:
+      'The doctrinal arc from the 1785 Land Ordinance through the 1787 Northwest Ordinance into the admission compacts that every new state from Ohio onward signed with Congress. What the section-16-and-36 reservation meant in practice — and what it was promised to do.',
+    status: 'Drops Phase 2 (next week)',
+  },
+  {
+    title: 'How the Trust Was Broken',
+    summary:
+      'State-by-state breach patterns from the late nineteenth century forward: the 1887 Oregon Infamous Act, the Oregon Land Fraud Trials, parallel scandals in Washington, Idaho, and Montana, and the slow drift of corpus into general-fund commingling, below-market leasing, and non-revenue uses.',
+    status: 'Drops Phase 2 (next week)',
+  },
+  {
+    title: 'What Utah Did Differently',
+    summary:
+      "The SITLA reform model. Utah's School and Institutional Trust Lands Administration, fully separated from general state government in 1994, is the standard comparator for revenue-maximizing fiduciary management of school trust lands. The essay reads SITLA as the proof-of-concept that the older breach pattern is not inevitable.",
+    status: 'Drops Phase 2 (next week)',
+  },
+  {
+    title: 'The Forever-Fiduciary Question',
+    summary:
+      "The Eighth Anchor thesis applied to school trust lands. American constitutional democracy depends on civic structures the founders did not name explicitly in the Constitution — public schools, the public lands, the trust idea itself. Is the fiduciary obligation owed to schoolchildren a forever obligation? And if so, what enforces it when the trustees themselves are politically captured?",
+    status: 'Under development',
+  },
+  {
+    title: "Margaret Bird's Topical Framework",
+    summary:
+      "Margaret Bird's 2021 Trust Land Case Quotes by Topic compilation organizes a decade of state-court precedents into doctrinal topics — Acceptance of Payment Less Than Due, Undivided Loyalty, Income Maximization, Duties of Trustee, Standing. The essay treats Margaret's framework as the topical skeleton for the Court Room's reading list.",
+    status: 'Under development',
+  },
+  {
+    title: 'The Oregon Test Case',
+    summary:
+      "A nationwide essay on what Oregon's 2021–2026 litigation chain — Sullivan v. State, Sullivan v. SLB, ASTL v. State, Siuslaw v. State, and the January 28, 2026 standing victory — means for every other trust-lands state. The essay reads Oregon as the live test of whether modern school-trust enforcement is even possible.",
+    status: 'Under development',
+  },
+];
+---
+<RoomLayout
+  room="court"
+  width="full"
+  title="The Reading Wing"
+  subtitle="Long-form nationwide perspective essays on school trust law."
+  sourceId="court-reading-wing"
+>
+  <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
+    <span class="eyebrow">Court Room · The Reading Wing</span>
+
+    <aside class="preview-banner" role="note">
+      <strong>First-draft preview.</strong> Essays in active drafting; the
+      first three drop in Phase 2 (within the next week). ← <a href="/court/">Back
+      to the Court Room lobby</a>.
+    </aside>
+
+    <p>
+      The Reading Wing is the long-form room at the back of the Court
+      Room. The Case File is annotated; the Atlas is per-state; the
+      Opinions Library is by issue. The Reading Wing is the place where
+      the doctrinal arguments are put together at full length — for the
+      reader who has already toured the rest of the room and wants the
+      perspective behind it.
+    </p>
+
+    <section class="essay-grid" aria-label="Planned essays">
+      {essays.map((e) => (
+        <article class="essay-card">
+          <h2 class="essay-card__title">{e.title}</h2>
+          <p class="essay-card__summary">{e.summary}</p>
+          <p class="essay-card__status">{e.status}</p>
+        </article>
+      ))}
+    </section>
+
+    <hr class="archival-divider" />
+
+    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
+      First-draft preview. Essays in active drafting; first three drop in
+      Phase 2 (within the next week).
+    </p>
+  </article>
+</RoomLayout>
+
+<style>
+  .preview-banner {
+    border-left: 4px solid var(--old-gold, #B88A2E);
+    background: rgba(184, 138, 46, 0.08);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+  }
+  .essay-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin: 1.75rem 0 1.5rem;
+  }
+  .essay-card {
+    padding: 1.1rem 1.2rem 1.05rem;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid var(--old-gold, #B88A2E);
+    border-radius: 6px;
+    background: #fff;
+  }
+  .essay-card__title {
+    margin: 0 0 0.45rem;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    color: #0f172a;
+  }
+  .essay-card__summary {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+    color: #1f2937;
+  }
+  .essay-card__status {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #475569;
+  }
+</style>
