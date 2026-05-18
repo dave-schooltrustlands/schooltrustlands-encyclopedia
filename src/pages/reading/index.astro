@@ -69,6 +69,20 @@ for (const c of categoryOrder) byCategory[c].sort(sortByCategoryThenYear);
 const states = stateEntries
   .slice()
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+// v73 — Margaret Bird's 2026-05-15 ask: "I cannot figure out how to go
+// directly to just one state from the reading room." Pill row of the
+// 50 state postal codes lives just under the lobby intro so a visitor
+// can jump straight to a dossier without scrolling to the bottom roster.
+// All 50 dossiers carry substantive content today; if a stub class is
+// needed later, mark the entry in frontmatter and branch on it here.
+const statePills = stateEntries
+  .map((s) => ({
+    abbr: s.data.iso.replace(/^US-/, ''),
+    href: `/reading/${s.data.iso.toLowerCase()}/`,
+    name: s.data.name,
+  }))
+  .sort((a, b) => a.abbr.localeCompare(b.abbr));
 ---
 
 <RoomLayout
@@ -114,6 +128,20 @@ const states = stateEntries
         pass.
       </p>
     </div>
+
+    {/* ============================================================== */}
+    {/* State-jump pill row (v73 — per Margaret 2026-05-15 request)    */}
+    {/* ============================================================== */}
+    <nav class="state-jump" aria-label="Jump to a state's reading">
+      <p class="state-jump__label">Reading by state:</p>
+      <ul class="state-jump__list">
+        {statePills.map((s, i) => (
+          <li>
+            <a href={s.href} title={s.name}>{s.abbr}</a>{i < statePills.length - 1 && <span class="state-jump__sep" aria-hidden="true"> · </span>}
+          </li>
+        ))}
+      </ul>
+    </nav>
 
     <hr class="archival-divider" />
 
@@ -248,6 +276,53 @@ const states = stateEntries
       line-height: 1.55;
       color: #475569;
       margin: 0 0 1.25rem;
+    }
+
+    /* v73 — state-jump pill row */
+    .state-jump {
+      margin: 1.25rem 0 0;
+      padding: 0.7rem 0.9rem;
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-radius: 3px;
+    }
+    .state-jump__label {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 0 0 0.45rem;
+    }
+    .state-jump__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 0;
+      row-gap: 0.25rem;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .state-jump__list li {
+      display: inline-flex;
+      align-items: baseline;
+    }
+    .state-jump__list a {
+      color: #1d4ed8;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      padding: 0 0.1rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .state-jump__list a:hover { color: #1e40af; }
+    .state-jump__sep {
+      color: #94a3b8;
+      padding: 0 0.35rem;
     }
 
     /* Featured 2x2 grid */
