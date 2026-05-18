@@ -1,0 +1,525 @@
+---
+// CourtStateMap — US tile-grid map for the Court Room Atlas.
+//
+// v3.2: Library-side parallel to ASTL National's StateMap. Reads
+// src/data/court-states.json (twenty trust-lands states + Texas) and
+// src/data/us-tile-grid.json (8x12 tile-grid layout). Trust-lands
+// tiles are color-coded by the Library's 4-grade Trust Integrity
+// scheme. Non-trust states render as inert muted tiles for geographic
+// context.
+//
+// Visual register intentionally echoes the ASTL State Tracker
+// (tile-grid + colored legend + hover/focus tooltip) so the two
+// surfaces read as the same campus. Palette uses the Library's
+// existing per-state-card colors rather than ASTL's gold-accented set.
+
+import statesData from "../data/court-states.json";
+import tileGridRaw from "../data/us-tile-grid.json";
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+type StateRecord = {
+  name: string;
+  enablingAct: string;
+  enablingActYear: number;
+  trustFundCurrentValue: number | null;
+  trustFundAsOf: string | null;
+  agOpinionCount: number;
+  keyCases: string[];
+  trustIntegrityGrade:
+    | "pending"
+    | "intact-and-funded"
+    | "breached-and-recovered"
+    | "breached-and-uncorrected"
+    | "under-review";
+  summary: string;
+  advocacyContact: string;
+};
+
+type TileRecord = { abbr: string; row: number; col: number };
+
+const states = statesData as Record<string, StateRecord>;
+const tileGrid = tileGridRaw as {
+  meta: { rows: number; cols: number };
+  tiles: TileRecord[];
+};
+
+// Library palette for the four trust-integrity grades + pending.
+// Mirrors the per-state-card border-left colors used elsewhere in the
+// Court Room so the map and cards read consistently.
+const gradeColor: Record<StateRecord["trustIntegrityGrade"], string> = {
+  "intact-and-funded": "#166534",
+  "breached-and-recovered": "#B88A2E",
+  "breached-and-uncorrected": "#9b2c2c",
+  "under-review": "#1e3a5f",
+  pending: "#94a3b8",
+};
+const NON_TRUST_COLOR = "#a8a59a";
+
+const gradeLabel: Record<StateRecord["trustIntegrityGrade"], string> = {
+  "intact-and-funded": "Intact and funded",
+  "breached-and-recovered": "Breached and recovered",
+  "breached-and-uncorrected": "Breached and uncorrected",
+  "under-review": "Under review",
+  pending: "Pending dossier",
+};
+
+const trustByAbbr = new Map<string, StateRecord & { code: string }>();
+for (const [code, rec] of Object.entries(states)) {
+  trustByAbbr.set(code, { ...rec, code });
+}
+
+// Build the per-tile rendering payload — every state in the tile grid
+// receives a tile; trust-lands tiles get an integrity color and a
+// link slug, non-trust tiles get the muted color.
+const tiles = tileGrid.tiles.map((t) => {
+  const rec = trustByAbbr.get(t.abbr);
+  if (rec) {
+    return {
+      abbr: t.abbr,
+      row: t.row,
+      col: t.col,
+      name: rec.name,
+      slug: t.abbr.toLowerCase(),
+      is_trust_state: true,
+      grade: rec.trustIntegrityGrade,
+      grade_label: gradeLabel[rec.trustIntegrityGrade],
+      tile_color: gradeColor[rec.trustIntegrityGrade],
+      summary: rec.summary,
+      enabling_year: rec.enablingActYear,
+    };
+  }
+  return {
+    abbr: t.abbr,
+    row: t.row,
+    col: t.col,
+    name: t.abbr,
+    slug: null,
+    is_trust_state: false,
+    grade: null,
+    grade_label: null,
+    tile_color: NON_TRUST_COLOR,
+    summary: null,
+    enabling_year: null,
+  };
+});
+
+const gridRows = tileGrid.meta.rows;
+const gridCols = tileGrid.meta.cols;
+
+const TILE = 60;
+const GAP = 6;
+const PAD = 12;
+const W = PAD * 2 + gridCols * TILE + (gridCols - 1) * GAP;
+const H = PAD * 2 + gridRows * TILE + (gridRows - 1) * GAP;
+
+// Compact client payload used by the inline tooltip script.
+const clientStates = tiles
+  .filter((t) => t.is_trust_state)
+  .map((t) => ({
+    abbr: t.abbr,
+    name: t.name,
+    slug: t.slug,
+    grade: t.grade,
+    grade_label: t.grade_label,
+    summary: t.summary,
+    enabling_year: t.enabling_year,
+  }));
+
+const uid = Math.random().toString(36).slice(2, 9);
+const rootId = `court-statemap-${uid}`;
+const tooltipId = `court-statemap-tooltip-${uid}`;
+---
+
+<section
+  id={rootId}
+  class:list={["court-statemap", className]}
+  aria-labelledby={`${rootId}-heading`}
+>
+  <h2 id={`${rootId}-heading`} class="sr-only">
+    US School Trust Lands — Court Room Atlas Map
+  </h2>
+
+  <div class="court-statemap__frame">
+    <svg
+      role="img"
+      aria-label="Interactive US tile map of trust-lands states, color-coded by trust-integrity grade"
+      viewBox={`0 0 ${W} ${H}`}
+      preserveAspectRatio="xMidYMid meet"
+      class="court-statemap__svg"
+    >
+      {tiles.map((t) => {
+        const x = PAD + t.col * (TILE + GAP);
+        const y = PAD + t.row * (TILE + GAP);
+        const interactive = t.is_trust_state;
+        const ariaParts: string[] = [t.name];
+        if (t.is_trust_state && t.grade_label) {
+          ariaParts.push(`trust integrity ${t.grade_label}`);
+        } else {
+          ariaParts.push("not a trust-lands state");
+        }
+        return (
+          <g
+            class:list={[
+              "court-tile",
+              interactive ? "court-tile--interactive" : "court-tile--inert",
+              t.is_trust_state ? "court-tile--trust" : "court-tile--non-trust",
+            ]}
+            data-abbr={t.abbr}
+            data-slug={t.slug ?? ""}
+            data-trust={t.is_trust_state ? "1" : "0"}
+            tabindex={interactive ? 0 : -1}
+            role={interactive ? "button" : "img"}
+            aria-label={ariaParts.join(" — ")}
+            transform={`translate(${x},${y})`}
+          >
+            <rect
+              class="court-tile__bg"
+              width={TILE}
+              height={TILE}
+              rx="6"
+              ry="6"
+              fill={t.tile_color}
+            />
+            <text
+              class="court-tile__abbr"
+              x={TILE / 2}
+              y={TILE / 2}
+              text-anchor="middle"
+              dominant-baseline="central"
+            >
+              {t.abbr}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+
+    <div
+      id={tooltipId}
+      class="court-statemap__tooltip"
+      role="tooltip"
+      aria-hidden="true"
+    ></div>
+  </div>
+
+  <p class="court-statemap__hint">
+    Hover or focus a trust-lands state to see its trust-integrity grade and
+    a one-line summary. Click or press Enter to open its dossier. States
+    rendered in muted gray did not receive school-section grants under the
+    Land Ordinance regime.
+  </p>
+</section>
+
+<style>
+  .court-statemap {
+    width: 100%;
+    color: #1f2937;
+    font-family: var(--font-sans, system-ui, sans-serif);
+  }
+  .court-statemap__frame {
+    position: relative;
+    width: 100%;
+  }
+  .court-statemap__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .court-tile {
+    cursor: default;
+    transition: filter 120ms ease-out;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .court-tile__bg {
+    transition: stroke 120ms ease-out, filter 120ms ease-out;
+    stroke: rgba(15, 23, 42, 0.18);
+    stroke-width: 1;
+  }
+  .court-tile__abbr {
+    font-family: "Cormorant Garamond", "Georgia", serif;
+    font-weight: 600;
+    font-size: 22px;
+    fill: #fcfaf4;
+    paint-order: stroke;
+    stroke: rgba(15, 23, 42, 0.3);
+    stroke-width: 0.5;
+    pointer-events: none;
+  }
+  .court-tile--non-trust .court-tile__abbr {
+    fill: #6b7280;
+    stroke: none;
+    font-weight: 500;
+  }
+  .court-tile--interactive {
+    cursor: pointer;
+  }
+  .court-tile--interactive:hover .court-tile__bg,
+  .court-tile--interactive:focus-visible .court-tile__bg,
+  .court-tile.court-tile--active .court-tile__bg {
+    stroke: #B88A2E;
+    filter: brightness(1.1) drop-shadow(0 0 4px rgba(184, 138, 46, 0.55));
+  }
+  .court-tile--interactive:focus-visible {
+    outline: none;
+  }
+
+  .court-statemap__tooltip {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 120ms ease-out, transform 120ms ease-out;
+    background: #fff;
+    color: #1f2937;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #B88A2E;
+    border-radius: 4px;
+    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.14);
+    padding: 0.7rem 0.85rem;
+    min-width: 230px;
+    max-width: 320px;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    z-index: 20;
+  }
+  .court-statemap__tooltip[data-open="true"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .court-statemap__tooltip-name {
+    font-family: "Cormorant Garamond", "Georgia", serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 0.25rem 0;
+  }
+  .court-statemap__tooltip-grade {
+    display: inline-block;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.65rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+    margin-bottom: 0.4rem;
+  }
+  .court-statemap__tooltip-meta {
+    font-size: 0.78rem;
+    color: #475569;
+    margin: 0 0 0.35rem;
+  }
+  .court-statemap__tooltip-summary {
+    color: #1f2937;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin: 0 0 0.4rem;
+  }
+  .court-statemap__cta {
+    margin: 0;
+    font-size: 0.72rem;
+    color: #B88A2E;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+
+  .court-statemap__hint {
+    margin: 0.65rem 0 0 0;
+    font-size: 0.78rem;
+    color: #64748b;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .court-tile__abbr {
+      font-size: 18px;
+    }
+    .court-statemap__tooltip {
+      min-width: 200px;
+      font-size: 0.8rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .court-tile,
+    .court-tile__bg,
+    .court-statemap__tooltip {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script is:inline define:vars={{ rootId, tooltipId, clientStates }}>
+  (function () {
+    var root = document.getElementById(rootId);
+    var tooltip = document.getElementById(tooltipId);
+    if (!root || !tooltip) return;
+
+    var byAbbr = {};
+    for (var i = 0; i < clientStates.length; i++) {
+      byAbbr[clientStates[i].abbr] = clientStates[i];
+    }
+
+    var gradeBg = {
+      "intact-and-funded":        { bg: "#166534", fg: "#fcfaf4" },
+      "breached-and-recovered":   { bg: "#B88A2E", fg: "#1a2418" },
+      "breached-and-uncorrected": { bg: "#9b2c2c", fg: "#fcfaf4" },
+      "under-review":             { bg: "#1e3a5f", fg: "#fcfaf4" },
+      "pending":                  { bg: "#94a3b8", fg: "#1a2418" }
+    };
+
+    function renderTooltip(rec) {
+      var lines = [];
+      lines.push('<p class="court-statemap__tooltip-name">' + rec.name + '</p>');
+      if (rec.grade && rec.grade_label) {
+        var p = gradeBg[rec.grade] || { bg: "#a8a59a", fg: "#1a2418" };
+        lines.push(
+          '<span class="court-statemap__tooltip-grade" style="background:' +
+            p.bg + ';color:' + p.fg + ';">' +
+            rec.grade_label + '</span>'
+        );
+      }
+      if (rec.enabling_year) {
+        lines.push('<p class="court-statemap__tooltip-meta">Enabling Act ' + rec.enabling_year + '</p>');
+      }
+      if (rec.summary) {
+        var s = rec.summary.length > 220 ? rec.summary.slice(0, 217) + '…' : rec.summary;
+        lines.push('<p class="court-statemap__tooltip-summary">' + s + '</p>');
+      }
+      lines.push('<p class="court-statemap__cta">Open ' + rec.name + ' dossier &rsaquo;</p>');
+      tooltip.innerHTML = lines.join("");
+    }
+
+    var frame = root.querySelector(".court-statemap__frame");
+
+    function positionTooltip(targetRect) {
+      if (!frame) return;
+      var frameRect = frame.getBoundingClientRect();
+      var ttRect = tooltip.getBoundingClientRect();
+      var relX = targetRect.left - frameRect.left + targetRect.width / 2;
+      var relY = targetRect.top - frameRect.top;
+      var ttW = ttRect.width || 260;
+      var ttH = ttRect.height || 140;
+      var left = relX - ttW / 2;
+      var top = relY - ttH - 10;
+      if (top < 4) top = relY + targetRect.height + 10;
+      if (left < 4) left = 4;
+      if (left + ttW > frameRect.width - 4) left = frameRect.width - ttW - 4;
+      tooltip.style.left = left + "px";
+      tooltip.style.top = top + "px";
+    }
+
+    function showTooltipFor(tileEl) {
+      var abbr = tileEl.getAttribute("data-abbr");
+      var rec = byAbbr[abbr];
+      if (!rec) return;
+      renderTooltip(rec);
+      tooltip.setAttribute("data-open", "true");
+      tooltip.setAttribute("aria-hidden", "false");
+      requestAnimationFrame(function () {
+        positionTooltip(tileEl.getBoundingClientRect());
+      });
+    }
+
+    function hideTooltip() {
+      tooltip.setAttribute("data-open", "false");
+      tooltip.setAttribute("aria-hidden", "true");
+    }
+
+    function navigate(tileEl) {
+      var slug = tileEl.getAttribute("data-slug");
+      var trust = tileEl.getAttribute("data-trust") === "1";
+      if (!trust || !slug) return;
+      window.location.href = "/court/atlas/" + slug + "/";
+    }
+
+    var tiles = root.querySelectorAll(".court-tile");
+    var activeTile = null;
+    var lastTappedAbbr = null;
+
+    tiles.forEach(function (tile) {
+      var isTrust = tile.getAttribute("data-trust") === "1";
+
+      tile.addEventListener("mouseenter", function () {
+        if (!isTrust) return;
+        if (activeTile && activeTile !== tile)
+          activeTile.classList.remove("court-tile--active");
+        activeTile = tile;
+        tile.classList.add("court-tile--active");
+        showTooltipFor(tile);
+      });
+      tile.addEventListener("mouseleave", function () {
+        if (!isTrust) return;
+        tile.classList.remove("court-tile--active");
+        if (activeTile === tile) activeTile = null;
+        if (document.activeElement !== tile) hideTooltip();
+      });
+      tile.addEventListener("focus", function () {
+        if (!isTrust) return;
+        if (activeTile && activeTile !== tile)
+          activeTile.classList.remove("court-tile--active");
+        activeTile = tile;
+        tile.classList.add("court-tile--active");
+        showTooltipFor(tile);
+      });
+      tile.addEventListener("blur", function () {
+        if (!isTrust) return;
+        tile.classList.remove("court-tile--active");
+        if (activeTile === tile) activeTile = null;
+        hideTooltip();
+      });
+      tile.addEventListener("click", function (e) {
+        if (!isTrust) return;
+        e.preventDefault();
+        navigate(tile);
+      });
+      tile.addEventListener("keydown", function (e) {
+        if (!isTrust) return;
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+          e.preventDefault();
+          navigate(tile);
+        } else if (e.key === "Escape") {
+          tile.blur();
+          hideTooltip();
+        }
+      });
+      tile.addEventListener("touchstart", function (e) {
+        if (!isTrust) return;
+        var abbr = tile.getAttribute("data-abbr");
+        if (lastTappedAbbr === abbr) return;
+        e.preventDefault();
+        lastTappedAbbr = abbr;
+        if (activeTile && activeTile !== tile)
+          activeTile.classList.remove("court-tile--active");
+        activeTile = tile;
+        tile.classList.add("court-tile--active");
+        showTooltipFor(tile);
+      }, { passive: false });
+    });
+
+    document.addEventListener("touchstart", function (e) {
+      if (!root.contains(e.target)) {
+        lastTappedAbbr = null;
+        if (activeTile) {
+          activeTile.classList.remove("court-tile--active");
+          activeTile = null;
+        }
+        hideTooltip();
+      }
+    }, { passive: true });
+
+    function reflow() {
+      if (tooltip.getAttribute("data-open") !== "true" || !activeTile) return;
+      positionTooltip(activeTile.getBoundingClientRect());
+    }
+    window.addEventListener("scroll", reflow, { passive: true });
+    window.addEventListener("resize", reflow);
+  })();
+</script>

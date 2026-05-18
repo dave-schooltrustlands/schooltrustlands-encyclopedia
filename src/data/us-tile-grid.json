@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "version": "v3.2",
+    "generated": "2026-05-18",
+    "format": "tile-grid",
+    "source": "Adapted from ASTL National src/assets/us-states.json v64 (2026-05-16) for Court Room Atlas.",
+    "rows": 8,
+    "cols": 12
+  },
+  "tiles": [
+    { "abbr": "AK", "row": 0, "col": 0  },
+    { "abbr": "ME", "row": 0, "col": 10 },
+
+    { "abbr": "WI", "row": 1, "col": 6  },
+    { "abbr": "VT", "row": 1, "col": 9  },
+    { "abbr": "NH", "row": 1, "col": 10 },
+
+    { "abbr": "WA", "row": 2, "col": 1  },
+    { "abbr": "ID", "row": 2, "col": 2  },
+    { "abbr": "MT", "row": 2, "col": 3  },
+    { "abbr": "ND", "row": 2, "col": 4  },
+    { "abbr": "MN", "row": 2, "col": 5  },
+    { "abbr": "IL", "row": 2, "col": 6  },
+    { "abbr": "MI", "row": 2, "col": 7  },
+    { "abbr": "NY", "row": 2, "col": 9  },
+    { "abbr": "MA", "row": 2, "col": 10 },
+
+    { "abbr": "OR", "row": 3, "col": 1  },
+    { "abbr": "NV", "row": 3, "col": 2  },
+    { "abbr": "WY", "row": 3, "col": 3  },
+    { "abbr": "SD", "row": 3, "col": 4  },
+    { "abbr": "IA", "row": 3, "col": 5  },
+    { "abbr": "IN", "row": 3, "col": 6  },
+    { "abbr": "OH", "row": 3, "col": 7  },
+    { "abbr": "PA", "row": 3, "col": 8  },
+    { "abbr": "NJ", "row": 3, "col": 9  },
+    { "abbr": "CT", "row": 3, "col": 10 },
+    { "abbr": "RI", "row": 3, "col": 11 },
+
+    { "abbr": "CA", "row": 4, "col": 1  },
+    { "abbr": "UT", "row": 4, "col": 2  },
+    { "abbr": "CO", "row": 4, "col": 3  },
+    { "abbr": "NE", "row": 4, "col": 4  },
+    { "abbr": "MO", "row": 4, "col": 5  },
+    { "abbr": "KY", "row": 4, "col": 6  },
+    { "abbr": "WV", "row": 4, "col": 7  },
+    { "abbr": "VA", "row": 4, "col": 8  },
+    { "abbr": "MD", "row": 4, "col": 9  },
+    { "abbr": "DE", "row": 4, "col": 10 },
+
+    { "abbr": "AZ", "row": 5, "col": 2  },
+    { "abbr": "NM", "row": 5, "col": 3  },
+    { "abbr": "KS", "row": 5, "col": 4  },
+    { "abbr": "AR", "row": 5, "col": 5  },
+    { "abbr": "TN", "row": 5, "col": 6  },
+    { "abbr": "NC", "row": 5, "col": 7  },
+    { "abbr": "SC", "row": 5, "col": 8  },
+
+    { "abbr": "HI", "row": 6, "col": 0  },
+    { "abbr": "OK", "row": 6, "col": 4  },
+    { "abbr": "LA", "row": 6, "col": 5  },
+    { "abbr": "MS", "row": 6, "col": 6  },
+    { "abbr": "AL", "row": 6, "col": 7  },
+    { "abbr": "GA", "row": 6, "col": 8  },
+
+    { "abbr": "TX", "row": 7, "col": 4  },
+    { "abbr": "FL", "row": 7, "col": 8  }
+  ]
+}

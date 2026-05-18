@@ -1,8 +1,18 @@
 ---
-// v3.0 — The Atlas subsection. Phase 1 stub renders a state-card grid
-// sorted by trust-integrity grade and reads from src/data/court-states.json.
-// Phase 2 will add an SVG map and richer per-state dossiers.
+// v3.2 — The Atlas reformat to match the ASTL National State Tracker
+// pattern. Replaces the prior grade-sorted card grid with:
+//   1. Intro paragraph
+//   2. Color-coded legend keyed to the Library's 4-grade Trust
+//      Integrity scheme (intact-and-funded, breached-and-recovered,
+//      breached-and-uncorrected, under-review) + pending dossiers
+//   3. CourtStateMap (US tile-grid visualization)
+//   4. Alphabetical state list with colored dot + one-line summary
+//   5. Cross-bridge to ASTL National State Tracker with a Level-2
+//      threshold notice ("you are leaving the Library for the
+//      contemporary national coalition").
 import RoomLayout from '../../../layouts/RoomLayout.astro';
+import CourtStateMap from '../../../components/CourtStateMap.astro';
+import CrossSiteBridge from '../../../components/CrossSiteBridge.astro';
 import statesData from '../../../data/court-states.json';
 
 type StateRecord = {
@@ -25,104 +35,161 @@ type StateRecord = {
 
 const states = statesData as Record<string, StateRecord>;
 
-// Sort order: intact-and-funded first, then breached-and-recovered,
-// then breached-and-uncorrected, then under-review, then pending. Inside
-// each group, alphabetize by name.
-const GRADE_ORDER: Record<StateRecord['trustIntegrityGrade'], number> = {
-  'intact-and-funded': 0,
-  'breached-and-recovered': 1,
-  'breached-and-uncorrected': 2,
-  'under-review': 3,
-  pending: 4,
-};
-
+// Alphabetical state list — Alaska first, Wyoming last among the
+// trust-lands states. Texas sorts to T regardless of its state-derived
+// (non-school-section) origin.
 const entries = Object.entries(states)
   .map(([code, s]) => ({ code, ...s }))
-  .sort((a, b) => {
-    const ga = GRADE_ORDER[a.trustIntegrityGrade];
-    const gb = GRADE_ORDER[b.trustIntegrityGrade];
-    if (ga !== gb) return ga - gb;
-    return a.name.localeCompare(b.name);
-  });
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 const GRADE_LABEL: Record<StateRecord['trustIntegrityGrade'], string> = {
   'intact-and-funded': 'Intact and funded',
   'breached-and-recovered': 'Breached and recovered',
   'breached-and-uncorrected': 'Breached and uncorrected',
   'under-review': 'Under review',
-  pending: 'Pending — Phase 2',
+  pending: 'Pending dossier',
 };
 
-function fmtFund(n: number | null, asOf: string | null): string {
-  if (n === null) return 'Pending';
-  const billions = n / 1_000_000_000;
-  const text = billions >= 1 ? `$${billions.toFixed(1).replace(/\.0$/, '')}B` : `$${(n / 1_000_000).toFixed(0)}M`;
-  return asOf ? `${text} (${asOf})` : text;
-}
+const GRADE_DOT: Record<StateRecord['trustIntegrityGrade'], string> = {
+  'intact-and-funded': '#166534',
+  'breached-and-recovered': '#B88A2E',
+  'breached-and-uncorrected': '#9b2c2c',
+  'under-review': '#1e3a5f',
+  pending: '#94a3b8',
+};
+
+// Legend — five categories that map the Library's 4-grade scheme plus
+// the "pending dossier" placeholder for states still in Phase 1
+// substrate. The ASTL "Failed / grant lost" and "Unscored" categories
+// don't apply to the twenty trust-lands states covered here.
+const legend = [
+  {
+    grade: 'intact-and-funded',
+    label: 'Intact and funded',
+    note: 'Trust is performing its function; assets preserved and beneficiaries paid.',
+  },
+  {
+    grade: 'breached-and-recovered',
+    label: 'Breached and recovered',
+    note: 'Historical breach addressed by reform or precedent; current posture is healthy.',
+  },
+  {
+    grade: 'breached-and-uncorrected',
+    label: 'Breached and uncorrected',
+    note: 'Historical breach unaddressed; current posture is breach.',
+  },
+  {
+    grade: 'under-review',
+    label: 'Under review',
+    note: 'Performance signals mixed or under active dispute; grade pending substrate work.',
+  },
+  {
+    grade: 'pending',
+    label: 'Pending dossier',
+    note: 'Phase 2 substrate not yet ingested for this state.',
+  },
+] as const;
 ---
 <RoomLayout
   room="court"
   width="full"
   title="The Atlas"
-  subtitle="The trust-lands states — Enabling Act, fund value, key cases, trust-integrity grade."
+  subtitle="The trust-lands states — color-coded by Trust Integrity grade, alphabetical."
   sourceId="court-atlas"
 >
   <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
     <span class="eyebrow">Court Room · The Atlas</span>
 
     <aside class="preview-banner" role="note">
-      <strong>First-draft preview.</strong> The Atlas presently renders as
-      a card grid sorted by trust-integrity grade. A true SVG map and
-      richer per-state dossiers are under development for Phase 2. ←
+      <strong>First-draft preview.</strong> The Atlas covers the twenty
+      trust-lands states that received federal school-section grants on
+      admission to the Union, plus Texas (state-derived). Other states
+      are not included because they did not receive school-section
+      grants under the Land Ordinance regime. ←
       <a href="/court/">Back to the Court Room lobby</a>.
     </aside>
 
     <p>
-      Twenty states received federal school-land grants on admission to
-      the Union, plus Texas (state-derived) and a handful of edge cases.
-      Each card below opens a per-state dossier with the Enabling Act
+      Each state below opens a per-state dossier with the Enabling Act
       citation, the current fund value where known, the count of state
       Attorney General opinions in substrate, the key precedent cases,
-      and a trust-integrity grade reflecting whether the state's school
+      and a Trust Integrity grade reflecting whether the state's school
       trust is presently intact, breached and recovered, breached and
-      uncorrected, or under review.
+      uncorrected, or under review. Hover or focus a state on the map
+      below for a one-line summary; click any state — on the map or in
+      the alphabetical list — to open its dossier.
     </p>
 
-    <section class="state-grid" aria-label="State dossiers">
-      {entries.map((s) => (
-        <a class={`state-card grade-${s.trustIntegrityGrade}`} href={`/court/atlas/${s.code.toLowerCase()}/`}>
-          <header class="state-card__header">
-            <h2 class="state-card__name">{s.name}</h2>
-            <span class="state-card__grade">{GRADE_LABEL[s.trustIntegrityGrade]}</span>
-          </header>
-          <dl class="state-card__facts">
-            <div>
-              <dt>Enabling Act</dt>
-              <dd>{s.enablingActYear}</dd>
-            </div>
-            <div>
-              <dt>Fund</dt>
-              <dd>{fmtFund(s.trustFundCurrentValue, s.trustFundAsOf)}</dd>
-            </div>
-            <div>
-              <dt>AG opinions</dt>
-              <dd>{s.agOpinionCount > 0 ? s.agOpinionCount : '—'}</dd>
-            </div>
-            <div>
-              <dt>Key cases</dt>
-              <dd>{s.keyCases.length}</dd>
-            </div>
-          </dl>
-          <span class="state-card__open">Open dossier →</span>
-        </a>
-      ))}
+    <section class="atlas-legend" aria-label="Trust Integrity legend">
+      <h2 class="atlas-legend__heading">Trust Integrity taxonomy</h2>
+      <ul class="atlas-legend__list">
+        {legend.map((entry) => (
+          <li class="atlas-legend__item">
+            <span
+              class="atlas-legend__dot"
+              style={`background-color:${GRADE_DOT[entry.grade]}`}
+              aria-hidden="true"
+            ></span>
+            <span class="atlas-legend__text">
+              <strong>{entry.label}.</strong> {entry.note}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="atlas-map" aria-label="US trust-lands states map">
+      <CourtStateMap />
+    </section>
+
+    <section class="atlas-list" aria-label="Alphabetical state index">
+      <h2 class="atlas-list__heading">All states, alphabetical</h2>
+      <ul class="atlas-list__items">
+        {entries.map((s) => (
+          <li class="atlas-list__item">
+            <a class="atlas-list__link" href={`/court/atlas/${s.code.toLowerCase()}/`}>
+              <span
+                class="atlas-list__dot"
+                style={`background-color:${GRADE_DOT[s.trustIntegrityGrade]}`}
+                aria-hidden="true"
+              ></span>
+              <span class="atlas-list__body">
+                <span class="atlas-list__name">{s.name}</span>
+                <span class="atlas-list__grade">{GRADE_LABEL[s.trustIntegrityGrade]}</span>
+                <span class="atlas-list__summary">{s.summary}</span>
+              </span>
+              <span class="atlas-list__chevron" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <hr class="archival-divider" />
 
-    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
-      First-draft preview. SVG map and richer per-state dossiers under
-      development.
+    <aside class="threshold-notice" role="note">
+      <p class="threshold-eyebrow">Crossing the campus threshold</p>
+      <p>
+        The link below leaves the Library for <strong>ASTL National</strong>,
+        the contemporary national coalition building on the Eighth Anchor
+        campus. ASTL's State Tracker is the parallel real-time view: same
+        twenty trust-lands states, but scored against current
+        disclosure-and-fund-performance signals rather than the Library's
+        historical-and-doctrinal Trust Integrity grade.
+      </p>
+    </aside>
+
+    <CrossSiteBridge
+      href="https://schooltrustlands.net/state-tracker/"
+      label="State Tracker on ASTL National"
+      sublabel="50-state map of school-trust-lands posture: fund value, fiscal-year distribution, disclosure status, and current trust posture. Click any state to open its Briefing Room dossier."
+      cta="Open the ASTL State Tracker →"
+    />
+
+    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7; margin-top: 1.25rem;">
+      First-draft preview. SVG tile-grid map and color-coded legend
+      adopted from the ASTL State Tracker pattern; Library's 4-grade
+      Trust Integrity scheme retained.
     </p>
   </article>
 </RoomLayout>
@@ -135,82 +202,168 @@ function fmtFund(n: number | null, asOf: string | null): string {
     margin: 1rem 0 1.5rem;
     font-size: 0.95rem;
   }
-  .state-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 0.85rem;
-    margin: 1.75rem 0 1.5rem;
-  }
-  .state-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    padding: 0.9rem 1rem 1rem;
-    border: 1px solid #cbd5e1;
-    border-left-width: 4px;
+
+  .atlas-legend {
+    margin: 1.75rem 0 1.25rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid #e2e8f0;
     border-radius: 6px;
+    background: #fafaf7;
+  }
+  .atlas-legend__heading {
+    margin: 0 0 0.7rem;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #475569;
+  }
+  .atlas-legend__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.45rem 1.1rem;
+  }
+  .atlas-legend__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: #1f2937;
+  }
+  .atlas-legend__dot {
+    flex-shrink: 0;
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 999px;
+    margin-top: 0.35rem;
+    border: 1px solid rgba(15, 23, 42, 0.15);
+  }
+
+  .atlas-map {
+    margin: 1.5rem 0 1.75rem;
+  }
+
+  .atlas-list {
+    margin: 1.5rem 0 1.25rem;
+  }
+  .atlas-list__heading {
+    margin: 0 0 0.85rem;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #475569;
+  }
+  .atlas-list__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  @media (min-width: 720px) {
+    .atlas-list__items {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1rem;
+    }
+  }
+  .atlas-list__link {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 0.7rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid #e2e8f0;
+    border-left-width: 4px;
+    border-left-color: #cbd5e1;
+    border-radius: 5px;
     background: #fff;
     text-decoration: none;
     color: inherit;
-    transition: box-shadow 120ms ease, transform 120ms ease, border-color 120ms ease;
+    transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
   }
-  .state-card:hover {
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  .atlas-list__link:hover {
+    border-color: #B88A2E;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
     transform: translateY(-1px);
     text-decoration: none;
   }
-  .state-card.grade-intact-and-funded         { border-left-color: #166534; }
-  .state-card.grade-breached-and-recovered    { border-left-color: #B88A2E; }
-  .state-card.grade-breached-and-uncorrected  { border-left-color: #9b2c2c; }
-  .state-card.grade-under-review              { border-left-color: #1e3a5f; }
-  .state-card.grade-pending                   { border-left-color: #94a3b8; }
-  .state-card__header {
+  .atlas-list__dot {
+    flex-shrink: 0;
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 999px;
+    margin-top: 0.4rem;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+  }
+  .atlas-list__body {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.15rem;
+    min-width: 0;
   }
-  .state-card__name {
-    margin: 0;
-    font-size: 1.1rem;
-    line-height: 1.2;
+  .atlas-list__name {
+    font-size: 1rem;
+    font-weight: 600;
     color: #0f172a;
+    line-height: 1.25;
   }
-  .state-card__grade {
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
+  .atlas-list__grade {
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #475569;
   }
-  .state-card__facts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.35rem 0.65rem;
-    margin: 0.3rem 0 0;
-    font-size: 0.85rem;
+  .atlas-list__summary {
+    font-size: 0.83rem;
+    color: #334155;
+    line-height: 1.45;
+    margin-top: 0.2rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
-  .state-card__facts > div {
-    display: flex;
-    flex-direction: column;
+  .atlas-list__chevron {
+    align-self: center;
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1;
   }
-  .state-card__facts dt {
-    font-family: var(--font-sans);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #64748b;
+  .atlas-list__link:hover .atlas-list__chevron {
+    color: #B88A2E;
   }
-  .state-card__facts dd {
-    margin: 0;
+
+  .threshold-notice {
+    border-left: 4px solid #2f5d3a;
+    background: #f4f9f3;
+    padding: 0.75rem 1rem;
+    margin: 1.5rem 0 0.5rem;
+    font-size: 0.92rem;
     color: #1f2937;
-    font-weight: 500;
   }
-  .state-card__open {
-    margin-top: 0.25rem;
-    font-size: 0.88rem;
-    color: #1d4ed8;
-    font-weight: 600;
+  .threshold-eyebrow {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #2f5d3a;
+  }
+  .threshold-notice p:not(.threshold-eyebrow) {
+    margin: 0;
+    line-height: 1.55;
   }
 </style>

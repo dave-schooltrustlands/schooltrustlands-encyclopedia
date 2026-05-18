@@ -35,6 +35,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Monday May 18, 2026 — Site update v3.2: Court Room
+            Atlas reformat to State Tracker pattern.</strong> The
+            <a href="/court/atlas/">Atlas</a> index page is rebuilt to
+            mirror the visual register of ASTL National's
+            <a href="https://schooltrustlands.net/state-tracker/">State
+            Tracker</a> — alphabetical state list (Alaska first, Wyoming
+            last among the trust-lands states) replaces the prior
+            grade-sorted card grid, a new SVG tile-grid US map sits
+            above the list with all twenty trust-lands states (plus
+            Texas) color-coded by Trust Integrity grade, and a five-row
+            color-coded legend keys the Library's 4-grade scheme
+            (intact-and-funded green / breached-and-recovered gold /
+            breached-and-uncorrected red / under-review blue / pending
+            slate). A new <code>CourtStateMap</code> Astro component
+            lives at <code>src/components/CourtStateMap.astro</code>;
+            the 8×12 tile-grid layout is mirrored from ASTL's
+            <code>us-states.json</code> into a Library-side
+            <code>src/data/us-tile-grid.json</code>. A cross-bridge to
+            ASTL's State Tracker sits at the bottom of the Atlas with a
+            Level-2 threshold notice — the first deployment of that
+            pattern in the Library, signalling "you are leaving the
+            historical record for the contemporary national coalition."
+            Per-state dossier breadcrumbs remain intact; per-state
+            dossier pages themselves are unchanged.
+          </li>
+          <li>
             <strong>Monday May 18, 2026 — Site update v3.1: Court Room
             Phase 2 content merge.</strong> First-draft long-form
             substrate from the Phase 2 parallel sub-agent fan-out
