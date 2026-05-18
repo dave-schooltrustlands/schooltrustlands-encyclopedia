@@ -35,6 +35,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Monday May 18, 2026 (late evening) — Site update v3.3.1:
+            Newsroom Issue 3 &amp; 4 title patch.</strong> Small follow-up
+            to v3.3. Both Issue 3 and Issue 4 had landed on the site with
+            the same frontmatter title — <em>"Week of May 11, 2026"</em>
+            — making the
+            <a href="/newsroom/">newsroom index</a> unable to distinguish
+            them at a glance. Per Margaret directive #2 (specific dates in
+            issue titles), Issue 4 is now <em>"Week of May 11 – May 17,
+            2026"</em> (matching the Buttondown email subject line) and
+            Issue 3 is now <em>"Week of May 11 – May 13, 2026"</em>
+            (Issue 3's actual coverage window). No body content changed.
+            Also filed a TODO at
+            <code>_tools/newsroom/FRONTMATTER_SCHEMA_TODO.md</code>
+            documenting the underlying schema divergence between substrate
+            (Buttondown-shape) and repo (Astro content-collection)
+            frontmatter, which is the root cause of these recurring title
+            drifts — flagged for v3.4 or later.
+          </li>
+          <li>
             <strong>Monday May 18, 2026 (evening) — Site update v3.3:
             Newsroom Issue 4 publish.</strong> Second weekly entry from the
             Buttondown pipeline lands on the live site at
