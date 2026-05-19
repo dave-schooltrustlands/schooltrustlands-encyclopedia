@@ -26,7 +26,7 @@
 - `curl` against `http://localhost:8765/` returned 200 for `/court/atlas/or/`, `/court/atlas/ut/`, `/court/case-file/lassen-v-arizona-1967/`, `/court/oregon-current-case/`, `/court/case-file/`, and three additional case-file pages spot-checked.
 - Grep checks: "Procedural posture" found once in `/court/oregon-current-case/`; "Limits of this annotation" found in all four case-file spot-checks (Lassen, Vincennes, Skamania, Cooper); zero "billion-dollar betrayal", zero remaining `wikipedia.org` / `ballotpedia.org` URLs in the rendered Court Room HTML.
 
-**Commit SHA:** pending push
+**Commit SHA:** `255c918`
 
 ## v75 — Court Room Phase 4 Wave 1 (2026-05-18 evening, continued)
 
