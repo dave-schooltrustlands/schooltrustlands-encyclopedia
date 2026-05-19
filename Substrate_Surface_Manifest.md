@@ -156,3 +156,15 @@ and manual signed-in spot-checks are noted in each Site Update's run report.
     - "January 28, 2026"
     - "Coos County Circuit Court"
   notes: "Court Room Phase 4 Wave 2 (v76) added the structured procedural-posture box; voice-discipline rewrites applied across nine paragraphs; Wikipedia/Ballotpedia legal-authority citations replaced with Yale Avalon / oregonlegislature.gov primary sources."
+
+- id: court-atlas-methodology
+  substrate: NONE
+  repo: src/pages/court/atlas/methodology.astro
+  live_url: https://schooltrusts.net/court/atlas/methodology/
+  signatures:
+    - "Trust Integrity Grade Methodology"
+    - "five grades"
+    - "Intact and funded"
+    - "Pending dossier"
+    - "Methodology v1.0"
+  notes: "Court Room Phase 4 Wave 3 (v77). Published rubric for the Atlas's five Trust Integrity grades. Linked from /court/atlas/ (legend), every per-state dossier's grade pill via [state].astro, and the Court Room lobby cross-bridge."

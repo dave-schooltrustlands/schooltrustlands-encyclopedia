@@ -1,5 +1,44 @@
 # STATUS
 
+## Court Room — Phase 4 complete (2026-05-18 night)
+
+**Phase 4 closes.** Three waves (v75 / v76 / v77) landed on 2026-05-18. The Court Room is now ready for **Phase 5 (Margaret review)** post the June ASTL conference. Margaret will be reading a materially stronger surface than the v3.2.1 she would have seen earlier: every Lineage waypoint carries a pull-quote and a primary-source link; the 1785/1787 framing is sharpened per her standing directive; 5 new Case File annotations seeded; voice-discipline pass applied across the Oregon Current Case; every Case File entry carries a Limits-of-annotation note; a structured procedural-posture box anchors the Oregon Current Case; Wikipedia/Ballotpedia legal-authority citations replaced with primary sources; the Atlas's Trust Integrity grades now have a published methodology; the Court Room lobby carries a restrained portico visual mark; and the prepublication notice has been reworded from "please do not cite" to "Beta draft / cite the linked primary sources."
+
+## v77 — Court Room Phase 4 Wave 3 (2026-05-18 night, continued)
+
+**TL;DR.** Closing wave for the Court Room expansion. New `/court/atlas/methodology/` page publishes the five-grade Trust Integrity rubric (intact-and-funded / breached-and-recovered / breached-and-uncorrected / under-review / pending dossier) with the revision policy, reviewer process, and limitations; linked from the Atlas legend, every per-state dossier's grade pill, and the Court Room lobby's cross-bridge. A restrained portico SVG visual anchor — three pillars on a rule, in `--old-gold` at 40% opacity, 60×60px — sits next to the Court Room lobby's eyebrow. Three cleanups landed: the case-file "one of five Court Room subsections" line reconciled to "one of four"; the prepublication banner + footer reworded from "Pre-publication draft — please do not cite" to "Beta draft" with the handoff's full new copy; aria-labels updated to match. No "Coming Soon" residue was found in the Court Room source — already clean.
+
+**No Supabase SQL pastes in this update** — content-only.
+
+**Counts:**
+- New pages: 1 (`/court/atlas/methodology/`).
+- Atlas dossier link points to methodology page: 21 (one per state, via the [state].astro template's grade pill).
+- Court Room lobby cross-bridge mention of the methodology: 1.
+- Visual anchor instances: 1 (Court Room lobby only).
+- Subsection-count fixes: 1 (`case-file/index.astro`).
+- Prepublication-notice rephrases: 2 components (Banner + Footer), updating every page sitewide; aria-labels also updated.
+- "Coming Soon" residue in `/court/`: 0 (already clean).
+- Stale "Pre-publication draft" or "please do not cite" wording remaining in rendered HTML: 0 (grep-confirmed across `/`, `/court/`, `/court/atlas/methodology/`, and `/court/case-file/lassen-v-arizona-1967/`).
+
+**Files touched:**
+- `src/pages/court/atlas/methodology.astro` — new file; sibling static route that takes precedence over `[state].astro` for the "methodology" slug.
+- `src/pages/court/atlas/index.astro` — Atlas legend gained a "See the Trust Integrity Grade Methodology" link below the five-row taxonomy.
+- `src/pages/court/atlas/[state].astro` — per-state dossier grade pill gained a "(methodology)" link.
+- `src/pages/court/index.astro` — portico SVG visual mark inlined at the top of the article; cross-bridge gained a methodology link.
+- `src/pages/court/case-file/index.astro` — preview-banner reconciled subsection count to four.
+- `src/components/PrepublicationBanner.astro` — headline + body reworded to the "Beta draft" template; aria-label updated.
+- `src/components/PrepublicationFooter.astro` — single-line strip reworded to "Beta draft (May 2026) — cite the linked primary sources; interpretive framing is provisional"; aria-label updated.
+- `STATUS.md` — this run report; Phase-4-complete flag added above.
+- `Substrate_Surface_Manifest.md` — new manifest entry for `/court/atlas/methodology/`.
+- `src/pages/updates.astro` — v77 daily-detail entry added under "Week of May 11, 2026."
+
+**Verification:**
+- `rm -rf .astro/ && npm run build` succeeded twice; 380 HTML pages emitted; Pagefind indexed all.
+- `curl` against `http://localhost:8765/` returned 200 for `/court/`, `/court/atlas/`, `/court/atlas/methodology/`, `/court/atlas/or/`, `/court/atlas/ut/`, `/court/case-file/`, `/court/oregon-current-case/`, `/court/lineage/`.
+- Grep checks: methodology page renders "Trust Integrity Grade Methodology" and the five-grade rubric; Court Room lobby contains "court-mark" and the "Court Room visual mark" title; case-file index now says "four subsections"; "Beta draft" rendered on the landing page, lobby, methodology, and a sampled case page; zero "Pre-publication draft" / "please do not cite" wording remaining anywhere.
+
+**Commit SHA:** pending push
+
 ## v76 — Court Room Phase 4 Wave 2 (2026-05-18 night)
 
 **TL;DR.** Editorial-discipline wave responding to ChatGPT's Phase 3 critique. Voice-discipline rewrites applied across the Oregon Current Case page (9 paragraphs reframed from categorical advocacy to attributed-procedural language: "billion-dollar betrayal" → "plaintiffs estimate damages in the billions"; "the state has consistently failed" → "Plaintiffs argue / the State contends"; AG opinion summaries reframed in party-attributed voice). Source-hierarchy upgrade replaced the 6 remaining Wikipedia/Ballotpedia citations used as legal authority in `/court/case-file/` and `/court/oregon-current-case/` with primary sources (Yale Avalon for the Land Ordinance; oregonlegislature.gov for Oregon Constitution Art. VIII). A structured procedural-posture box was added to `/court/oregon-current-case/` (Claim / Defendants / Court / Current status / Last docket event / Next expected procedural step / Source). Limits-of-annotation notes appended to the 11 pre-existing Case File entries (Vincennes, U.S. v. New Mexico, Lassen, Andrus, Asarco, Pettibone, Skamania, Ebke, Nigh, Idaho Watersheds, NPCA); the 5 Wave 1 entries already had them.

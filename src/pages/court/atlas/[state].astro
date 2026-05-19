@@ -152,7 +152,10 @@ const stateOpinions = Object.values(opinions)
     <section class={`dossier-card grade-${state.trustIntegrityGrade}`}>
       <header class="dossier-card__header">
         <h2 class="dossier-card__title">At a glance</h2>
-        <span class="dossier-card__grade">Trust integrity: {GRADE_LABEL[state.trustIntegrityGrade]}</span>
+        <span class="dossier-card__grade">
+          Trust integrity: {GRADE_LABEL[state.trustIntegrityGrade]}
+          {' '}<a class="dossier-card__methodology-link" href="/court/atlas/methodology/" aria-label="How this grade is determined">(methodology)</a>
+        </span>
       </header>
       <dl class="dossier-facts">
         <dt>Enabling Act</dt>
@@ -314,6 +317,13 @@ const stateOpinions = Object.values(opinions)
     font-weight: 700;
     letter-spacing: 0.06em;
     color: #475569;
+  }
+  .dossier-card__methodology-link {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: #1d4ed8;
+    font-size: 0.78rem;
   }
   .dossier-facts {
     display: grid;

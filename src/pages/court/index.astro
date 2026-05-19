@@ -45,7 +45,25 @@ const subsections = [
   sourceId="court-lobby"
 >
   <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
-    <span class="eyebrow">Court Room · Lobby</span>
+    <div class="court-mark-row">
+      <svg
+        class="court-mark"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 60 60"
+        width="60"
+        height="60"
+        role="img"
+        aria-label="Court Room visual mark: three pillars on a rule"
+      >
+        <title>Court Room visual mark</title>
+        <line x1="6" y1="50" x2="54" y2="50" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        <rect x="12" y="14" width="5" height="32" fill="currentColor" />
+        <rect x="27.5" y="14" width="5" height="32" fill="currentColor" />
+        <rect x="43" y="14" width="5" height="32" fill="currentColor" />
+        <line x1="9" y1="14" x2="51" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <span class="eyebrow">Court Room · Lobby</span>
+    </div>
 
     <p>
       The Court Room holds the legal record of America's school trust lands.
@@ -160,7 +178,10 @@ const subsections = [
       page. The case law applying those duties — Lassen, Skamania, Ebke,
       Nigh, Idaho Watersheds, Branson, Pettibone, and the live Oregon
       filings — lives in
-      <a href="/court/case-file/">The Case File</a> below.
+      <a href="/court/case-file/">The Case File</a> below. The Atlas's
+      five Trust Integrity grades are explained at the
+      <a href="/court/atlas/methodology/">Trust Integrity Grade Methodology</a>
+      page.
     </aside>
 
     <hr class="archival-divider" />
@@ -230,6 +251,23 @@ const subsections = [
     padding: 0.85rem 1.1rem;
     margin: 1.5rem 0;
     font-size: 0.95rem;
+  }
+  .court-mark-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin: 0 0 0.5rem;
+  }
+  .court-mark {
+    flex-shrink: 0;
+    color: var(--old-gold, #B88A2E);
+    opacity: 0.4;
+  }
+  @media (max-width: 480px) {
+    .court-mark {
+      width: 48px;
+      height: 48px;
+    }
   }
   .how-to-use {
     border: 1px solid #cbd5e1;

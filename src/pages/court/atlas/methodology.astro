@@ -1,0 +1,192 @@
+---
+// v77 — Trust Integrity Grade Methodology. Sibling static route to
+// /court/atlas/[state].astro; takes precedence over the dynamic route
+// because "methodology" is not a member of statesData and is therefore
+// not emitted by [state].astro's getStaticPaths.
+//
+// Phase 3 reviewers (ChatGPT + Grok) both flagged the Atlas's Trust
+// Integrity grading as strong taxonomy but said it needs a published
+// methodology to read as more than advocacy. This page is the rubric.
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+
+const GRADE_DOT = {
+  'intact-and-funded': '#166534',
+  'breached-and-recovered': '#B88A2E',
+  'breached-and-uncorrected': '#9b2c2c',
+  'under-review': '#1e3a5f',
+  pending: '#94a3b8',
+} as const;
+---
+<RoomLayout
+  room="court"
+  width="prose"
+  title="Trust Integrity Grade Methodology"
+  subtitle="How the Atlas grades each state's school-trust integrity — a one-page rubric."
+  sourceId="court-atlas-methodology"
+  parents={[{ label: 'The Atlas', href: '/court/atlas/' }]}
+>
+  <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
+    <span class="eyebrow">Court Room · The Atlas · Methodology</span>
+
+    <p class="back-link">← <a href="/court/atlas/">Back to The Atlas</a></p>
+
+    <p>
+      The <a href="/court/atlas/">Atlas</a> categorizes each of the twenty
+      trust-lands states (plus Texas, state-derived) under one of five
+      Trust Integrity grades. This page explains how a state earns each
+      grade. The methodology is provisional — refinements are documented
+      in the page's revision history, and out-of-cycle revisions are
+      noted on each per-state dossier.
+    </p>
+
+    <h2>The five grades</h2>
+
+    <section class="grade-section">
+      <h3>
+        <span class="grade-dot" style={`background-color:${GRADE_DOT['intact-and-funded']}`} aria-hidden="true"></span>
+        Intact and funded
+      </h3>
+      <p>A state earns <em>Intact and funded</em> when all of the following hold:</p>
+      <ul>
+        <li>The state's federal school-trust grant remains in trust, with the corpus preserved at or above the value at admission (in inflation-adjusted terms).</li>
+        <li>The Permanent School Fund (or equivalent) reports an annual distribution to schools traceable to trust revenue.</li>
+        <li>No reported episode of legislative diversion in the past 25 years, or any prior diversion has been judicially or legislatively corrected.</li>
+        <li>The state's enabling-act fiduciary duties are recognized by the state's high court or its attorney general as enforceable trust obligations.</li>
+      </ul>
+      <p class="grade-examples"><strong>Current Atlas entries.</strong> Arizona, Texas. (See each state's dossier for the supporting record.)</p>
+    </section>
+
+    <section class="grade-section">
+      <h3>
+        <span class="grade-dot" style={`background-color:${GRADE_DOT['breached-and-recovered']}`} aria-hidden="true"></span>
+        Breached and recovered
+      </h3>
+      <p>A state earns <em>Breached and recovered</em> when:</p>
+      <ul>
+        <li>A historical diversion or impairment of the trust is documented in primary sources.</li>
+        <li>A corrective action — judicial ruling, legislative reform, constitutional amendment, or sustained administrative remediation — has restored the trust's substantive operation.</li>
+        <li>The corpus is currently being managed under the recovered terms.</li>
+      </ul>
+      <p class="grade-examples"><strong>Current Atlas entries.</strong> Idaho, Montana, Utah, Washington. Utah is the project's reference case: deep nineteenth- and twentieth-century breaches counterbalanced by the modern SITLA / SITFO / LTPAO / School LAND Trust architecture.</p>
+    </section>
+
+    <section class="grade-section">
+      <h3>
+        <span class="grade-dot" style={`background-color:${GRADE_DOT['breached-and-uncorrected']}`} aria-hidden="true"></span>
+        Breached and uncorrected
+      </h3>
+      <p>A state earns <em>Breached and uncorrected</em> when:</p>
+      <ul>
+        <li>A diversion or impairment is documented in primary sources.</li>
+        <li>No corrective action of sufficient scope has yet occurred.</li>
+        <li>Beneficiary advocacy or litigation is active, or has been recently attempted.</li>
+      </ul>
+      <p class="grade-examples"><strong>Current Atlas entries.</strong> Minnesota (1880s–1900s Pine Lands Scandal phantom-homesteader fraud; reforms after 1904 stopped the active loss but did not restore the corpus); Oregon (active <a href="/court/oregon-current-case/">OASTL litigation</a>; January 28, 2026 Court of Appeals standing victory).</p>
+    </section>
+
+    <section class="grade-section">
+      <h3>
+        <span class="grade-dot" style={`background-color:${GRADE_DOT['under-review']}`} aria-hidden="true"></span>
+        Under review
+      </h3>
+      <p>A state earns <em>Under review</em> when:</p>
+      <ul>
+        <li>Substantive concerns about trust management have been raised by a credible party — state auditor, beneficiary advocacy group, attorney general, scholarly source.</li>
+        <li>The factual record is incomplete or contested.</li>
+        <li>No final judicial or administrative determination has been reached.</li>
+      </ul>
+      <p class="grade-examples"><strong>Current Atlas entries.</strong> Alaska, Colorado, Louisiana, Mississippi, Nebraska, New Mexico, Oklahoma, South Dakota.</p>
+    </section>
+
+    <section class="grade-section">
+      <h3>
+        <span class="grade-dot" style={`background-color:${GRADE_DOT.pending}`} aria-hidden="true"></span>
+        Pending dossier
+      </h3>
+      <p>
+        A state is <em>Pending dossier</em> when the Library has not yet
+        completed a primary-source review of the state's trust record. This
+        is an editorial label — a description of the Library's current
+        state of work, not a substantive judgment about the state's trust.
+      </p>
+      <p class="grade-examples"><strong>Current Atlas entries.</strong> Kansas, Nevada, North Dakota, Wyoming.</p>
+    </section>
+
+    <h2>How grades are revised</h2>
+
+    <p>The Atlas grade for a state changes when one of the following occurs:</p>
+    <ul>
+      <li>A judicial ruling materially alters the trust's enforcement posture.</li>
+      <li>A legislative or constitutional change materially alters the trust's protections.</li>
+      <li>The Library's primary-source review surfaces material new evidence about the state's historical or current record.</li>
+      <li>A reviewer — named, credible, and pointing to a primary source — identifies a misclassification.</li>
+    </ul>
+    <p>
+      Grade revisions are documented in the state dossier's revision history. The Library does not change grades on the basis of advocacy framing or contested editorial characterization absent primary-source support.
+    </p>
+
+    <h2>Reviewer process</h2>
+
+    <p>
+      The Trust Integrity grade for each state is reviewed annually. Material developments between annual reviews — a new state-supreme-court decision, a new enabling-act case in federal court, a state constitutional amendment, a credible new state-auditor report — can trigger out-of-cycle revisions. Out-of-cycle revisions are documented in the affected state's dossier and in the Library's site-update log at <a href="/updates/">/updates/</a>.
+    </p>
+
+    <h2>Limitations</h2>
+
+    <p>
+      These grades are scholarly characterizations, not legal determinations. They reflect the Library's editorial judgment based on primary sources — enabling acts, state constitutions, state-supreme-court opinions, attorney-general opinions, agency reports, and credible historical scholarship. They are not substitutes for legal advice or jurisdictional research; readers researching a particular state's posture should consult the primary sources cited in that state's dossier and verify current law before relying on any grade.
+    </p>
+
+    <p>
+      The five-grade scheme is also one of several possible frames. The companion site <strong>ASTL National</strong> grades the same twenty states against current disclosure-and-fund-performance signals rather than the Library's historical-and-doctrinal lens. The two views are complementary; neither is a substitute for the other.
+    </p>
+
+    <hr class="archival-divider" />
+
+    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
+      Methodology v1.0. Last updated: 2026-05-18. Published as part of Court Room Phase 4 Wave 3 (v77).
+    </p>
+  </article>
+</RoomLayout>
+
+<style>
+  .back-link { margin: 0 0 1rem; font-size: 0.95rem; }
+  .grade-section {
+    margin: 1.25rem 0 1.5rem;
+    padding: 0.85rem 1.1rem 0.6rem;
+    border: 1px solid #e2e8f0;
+    border-left-width: 4px;
+    border-radius: 5px;
+    background: #fafaf7;
+  }
+  .grade-section h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .grade-section ul {
+    margin: 0.35rem 0 0.6rem;
+    padding-left: 1.25rem;
+  }
+  .grade-section ul li {
+    margin: 0.2rem 0;
+    line-height: 1.5;
+  }
+  .grade-section .grade-examples {
+    margin: 0.5rem 0 0;
+    font-size: 0.92rem;
+    color: #334155;
+    line-height: 1.5;
+  }
+  .grade-dot {
+    flex-shrink: 0;
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+  }
+</style>
