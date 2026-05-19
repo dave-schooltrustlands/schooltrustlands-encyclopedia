@@ -37,7 +37,7 @@
 - `curl` against `http://localhost:8765/` returned 200 for `/court/`, `/court/atlas/`, `/court/atlas/methodology/`, `/court/atlas/or/`, `/court/atlas/ut/`, `/court/case-file/`, `/court/oregon-current-case/`, `/court/lineage/`.
 - Grep checks: methodology page renders "Trust Integrity Grade Methodology" and the five-grade rubric; Court Room lobby contains "court-mark" and the "Court Room visual mark" title; case-file index now says "four subsections"; "Beta draft" rendered on the landing page, lobby, methodology, and a sampled case page; zero "Pre-publication draft" / "please do not cite" wording remaining anywhere.
 
-**Commit SHA:** pending push
+**Commit SHA:** `9c851e0`
 
 ## v76 — Court Room Phase 4 Wave 2 (2026-05-18 night)
 
