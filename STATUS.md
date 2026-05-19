@@ -12,8 +12,8 @@
 - `src/pages/updates.astro` — v74 entry added to Week of May 11, 2026 daily detail.
 - `Substrate_Surface_Manifest.md` — four new entries for the UT/SD/MN/NE Atlas dossier surfaces.
 - Build: `rm -rf .astro/ && npm run build` succeeded; 374 pages indexed by Pagefind; all four dossier pages contain their state-specific Margaret-substrate anchors (UT: "coal-list", SD: "Beadle"/"helicopter", MN: "Pine Lands"/"phantom-homesteader", NE: "Penry"/"Alt").
-- Commit SHA: TBD post-push.
-- Verification deferred to post-deploy curl pass on `https://schooltrusts.net/court/atlas/{ut,sd,mn,ne}/`.
+- Commit SHA: `b8e0ff6`
+- Verification deferred to post-deploy curl pass on `https://schooltrusts.net/court/atlas/{ut,sd,mn,ne}/` (Cloudflare Pages still propagating at time of writing; background watcher armed to fire when MN dossier's "Pine Lands Scandal" anchor appears on the live URL).
 
 ## v73 — Reading Room state-jump pills (2026-05-18 late evening)
 
