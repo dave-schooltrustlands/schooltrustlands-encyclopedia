@@ -15,4 +15,8 @@ Third, the period produced the early shape of what would later be called the *du
 
 The seventeenth-century English Chancery was thus building, case by case and chancellor by chancellor, the conceptual furniture of modern fiduciary law: the split of legal and equitable title, the personal liability of the trustee, the distinction from contract, and the prohibition on self-dealing. By 1700, an English barrister could speak of trust law as a coherent body of doctrine, even if not yet systematized. The systematization would come in the next century, in the chancery of Lord Hardwicke.
 
+> *"The trustee must subordinate his own interest to that of his cestui que trust; equity will not permit him to make a profit out of his trust."* — distilled from the seventeenth-century Chancery, as restated in modern treatises.
+
+**Primary source.** *Keech v. Sandford*, Sel. Cas. Ch. 61 (1726), reported text at the Bailii historical archive — [bailii.org/ew/cases/EWHC/Ch/1726/J76.html](https://www.bailii.org/ew/cases/EWHC/Ch/1726/J76.html).
+
 **References.** D.E.C. Yale (ed.), *Lord Nottingham's Chancery Cases* (Selden Society, 1957, 1961); J.H. Baker, *An Introduction to English Legal History* (4th ed. 2002), ch. 6.

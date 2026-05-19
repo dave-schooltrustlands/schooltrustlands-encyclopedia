@@ -73,3 +73,75 @@ and manual signed-in spot-checks are noted in each Site Update's run report.
     - "Alt Surveys"
     - "Ebke"
   notes: "v74 added Penry/Alt-survey diptych from Margaret Bird substrate. Grade unchanged (under-review)."
+
+- id: court-case-cooper-v-roberts-1855
+  substrate: src/content/court-cases/12-cooper-v-roberts-1855.md
+  repo: src/pages/court/case-file/[slug].astro
+  live_url: https://schooltrusts.net/court/case-file/cooper-v-roberts-1855/
+  signatures:
+    - "Cooper v. Roberts"
+    - "unalterable condition"
+    - "59 U.S. (18 How.) 173"
+  notes: "Court Room Phase 4 Wave 1 (v75). SCOTUS foundational school-trust precedent at admission."
+
+- id: court-case-beecher-v-wetherby-1877
+  substrate: src/content/court-cases/13-beecher-v-wetherby-1877.md
+  repo: src/pages/court/case-file/[slug].astro
+  live_url: https://schooltrusts.net/court/case-file/beecher-v-wetherby-1877/
+  signatures:
+    - "Beecher v. Wetherby"
+    - "95 U.S. 517"
+    - "absolute, subject only to the dedication to schools"
+  notes: "Court Room Phase 4 Wave 1 (v75). SCOTUS confirmation of post-admission school-trust status."
+
+- id: court-case-county-of-yakima-1992
+  substrate: src/content/court-cases/14-county-of-yakima-1992.md
+  repo: src/pages/court/case-file/[slug].astro
+  live_url: https://schooltrusts.net/court/case-file/county-of-yakima-1992/
+  signatures:
+    - "County of Yakima"
+    - "502 U.S. 251"
+    - "unmistakably clear"
+  notes: "Court Room Phase 4 Wave 1 (v75). Federal-state trust intersection bearing on school-trust durability."
+
+- id: court-case-idaho-v-coeur-dalene-tribe-1997
+  substrate: src/content/court-cases/15-idaho-v-coeur-dalene-tribe-1997.md
+  repo: src/pages/court/case-file/[slug].astro
+  live_url: https://schooltrusts.net/court/case-file/idaho-v-coeur-dalene-tribe-1997/
+  signatures:
+    - "Idaho v. Coeur d'Alene Tribe"
+    - "521 U.S. 261"
+    - "Eleventh Amendment"
+  notes: "Court Room Phase 4 Wave 1 (v75). Sovereign-immunity / sovereign-trust intersection."
+
+- id: court-case-branson-v-romer-1998
+  substrate: src/content/court-cases/16-branson-v-romer-1998.md
+  repo: src/pages/court/case-file/[slug].astro
+  live_url: https://schooltrusts.net/court/case-file/branson-v-romer-1998/
+  signatures:
+    - "Branson School District"
+    - "161 F.3d 619"
+    - "Tenth Circuit"
+  notes: "Court Room Phase 4 Wave 1 (v75). 10th Circuit federal-court statement of strict trust theory; first federal-circuit entry in Case File."
+
+- id: court-lobby-v75
+  substrate: NONE
+  repo: src/pages/court/index.astro
+  live_url: https://schooltrusts.net/court/
+  signatures:
+    - "How to use this room"
+    - "Key precedents at a glance"
+    - "Live Oregon docket"
+    - "January 28, 2026"
+  notes: "Court Room Phase 4 Wave 1 (v75) lobby upgrade — three callouts added under and around the four-door menu."
+
+- id: court-lineage-v75
+  substrate: src/content/court-lineage/
+  repo: src/pages/court/lineage/index.astro
+  live_url: https://schooltrusts.net/court/lineage/
+  signatures:
+    - "Note on this lineage"
+    - "conceptual lineage"
+    - "1785"
+    - "Northwest Ordinance"
+  notes: "Court Room Phase 4 Wave 1 (v75) — methodological note added above the timeline; each of the 12 waypoints now carries a pull-quote and a primary-source link."

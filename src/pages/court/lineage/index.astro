@@ -24,9 +24,27 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
     <aside class="preview-banner" role="note">
       <strong>First-draft preview.</strong> Twelve milestone essays
       sketch the doctrinal arc from Magna Carta to the modern Uniform
-      Trust Code. The long-form essays are Phase 2 substrate;
-      Phase 3 cross-AI review and Phase 4 revision are still pending.
-      ← <a href="/court/">Back to the Court Room lobby</a>.
+      Trust Code. Phase 4 Wave 1 (v75) added pull-quotes and
+      primary-source links to each waypoint and the methodological note
+      below. ← <a href="/court/">Back to the Court Room lobby</a>.
+    </aside>
+
+    <aside class="methodological-note" role="note">
+      <h2 style="margin: 0 0 0.45rem; font-size: 1.05rem;">Note on this lineage</h2>
+      <p style="margin: 0;">
+        This is a <em>conceptual lineage</em>, not a claim that each earlier
+        source directly controls school-trust lands. The American
+        school-trust regime drew on English equity tradition, took
+        distinctively American shape in the <strong>Land Ordinance of
+        May&nbsp;20,&nbsp;1785</strong> (the grant), was given its
+        philosophical floor by the <strong>Northwest Ordinance of
+        July&nbsp;13,&nbsp;1787</strong> (the declaration, <em>not</em> the
+        grant), and continues to evolve under the Uniform Trust Code. A
+        skeptical legal historian should read this timeline as orientation,
+        not as a chain of binding precedent. Where one source binds
+        another, the case-law citations make that explicit; where the
+        influence is conceptual, the timeline names it as such.
+      </p>
     </aside>
 
     <p>
@@ -74,6 +92,14 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
     background: rgba(184, 138, 46, 0.08);
     padding: 0.75rem 1rem;
     margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+  }
+  .methodological-note {
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #1e3a5f;
+    background: #f8fafc;
+    padding: 0.85rem 1.1rem;
+    margin: 0 0 1.5rem;
     font-size: 0.95rem;
   }
   .lineage-list {

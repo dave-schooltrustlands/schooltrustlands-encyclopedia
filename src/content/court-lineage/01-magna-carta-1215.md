@@ -15,4 +15,6 @@ The link forward to the school trust is therefore indirect but real. When the U.
 
 > *"To no one will we sell, to no one will we deny or delay right or justice."* — Magna Carta, clause 40 (1215).
 
+**Primary source.** Magna Carta (1215), text and translation at the Yale Avalon Project — [avalon.law.yale.edu/medieval/magframe.asp](https://avalon.law.yale.edu/medieval/magframe.asp).
+
 **References.** Magna Carta (1215), British Library MS Cotton Augustus II.106; A.E. Dick Howard, *The Road from Runnymede: Magna Carta and Constitutionalism in America* (1968) [CITE PENDING].

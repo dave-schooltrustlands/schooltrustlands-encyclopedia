@@ -19,4 +19,8 @@ The triad of principles announced in *Vincennes* — enabling acts create bindin
 
 *Vincennes* is the doctrinal hinge of the entire American school trust lands jurisprudence. Everything before it is preparation; everything after it is application.
 
+> *"The grant in this case was made for the purpose of founding an institution of learning. … We think this is a clear case of a contract by which the state has been brought under solemn obligations."* — *Trustees of Vincennes University v. Indiana*, 55 U.S. (14 How.) 268, 274 (1852).
+
+**Primary source.** *Trustees of Vincennes University v. Indiana*, 55 U.S. (14 How.) 268 (1852), at [supreme.justia.com/cases/federal/us/55/268/](https://supreme.justia.com/cases/federal/us/55/268/).
+
 **References.** *Trustees of Vincennes University v. Indiana*, 55 U.S. (14 How.) 268 (1852); *Cooper v. Roberts*, 59 U.S. (18 How.) 173 (1855); see also Margaret Bird, *Trust Land Case Quotes by Topic* (2021), entries for "UNALTERABLE CONDITION" and "BENEFICIARIES."

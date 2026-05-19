@@ -13,6 +13,10 @@ Several features of the 1785 reservation matter for what followed. First, it was
 
 When the United States began admitting western states to the Union, beginning with Ohio in 1803, the section-16 reservation traveled with the territory. Each state's enabling act conveyed those sections — and, in later states, sections 16 and 36, or sections 2, 16, 32, and 36 — to the new state government on the express condition that they be held for the support of common schools. The 1785 ordinance was thus the operational ancestor of the school land grants in every public-land state in the Union.
 
-The Oregon Admissions Act of 1859, which granted sections 16 and 36 of every township to the new state for the use of schools, descends in a straight line from the 1785 reservation. The doctrinal floor on which the modern Common School Fund stands was laid by the Continental Congress in the spring of 1785, before the Constitution itself had been drafted.
+The Oregon Admissions Act of 1859, which granted sections 16 and 36 of every township to the new state for the use of schools, descends in a straight line from the 1785 reservation. **The doctrinal floor on which the entire American school-trust regime stands was laid by the Continental Congress on May 20, 1785, before the Constitution itself had been drafted.** Everything that follows in the school-trust lineage — the Northwest Ordinance's *forever*, the 1802 Ohio Enabling Act, the 1850 California doubled grant, the 1894 Utah quadrupled grant, *Vincennes*, *Lassen*, *Skamania* — is application of the rule first set down in this clause.
+
+> *"There shall be reserved the lot No. 16, of every township, for the maintenance of public schools, within the said township."* — Land Ordinance of May 20, 1785.
+
+**Primary source.** Land Ordinance of May 20, 1785, text at the Yale Avalon Project — [avalon.law.yale.edu/18th_century/lando.asp](https://avalon.law.yale.edu/18th_century/lando.asp).
 
 **References.** An Ordinance for ascertaining the mode of disposing of Lands in the Western Territory, May 20, 1785, *Journals of the Continental Congress*, 28:375–381; Paul W. Gates, *History of Public Land Law Development* (1968), chs. 2–3.

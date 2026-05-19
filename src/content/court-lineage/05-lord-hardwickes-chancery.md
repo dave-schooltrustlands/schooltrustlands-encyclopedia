@@ -15,4 +15,8 @@ Hardwicke also developed the duty of prudence. A trustee was required to manage 
 
 The doctrinal vocabulary that runs through every modern school trust lands case — loyalty, prudence, accounting, the prohibition on self-dealing, the rule against undisclosed conflicts — was substantially in place by 1756. It crossed the Atlantic in the legal training of every colonial lawyer who studied Blackstone, who in turn relied heavily on the chancery reports of Hardwicke's era. When the United States Supreme Court in *Lassen v. Arizona* (1967) spoke of the state's "undivided loyalty" to its school trust beneficiaries, it was using language whose direct ancestor is Hardwicke's chancery. The doctrine had simply traveled.
 
-**References.** Philip C. Yorke, *The Life and Correspondence of Philip Yorke, Earl of Hardwicke* (1913) [CITE PENDING]; *Keech v. Sandford*, Sel. Cas. Ch. 61 (1726); George Gilbert Cheshire & E.H. Burn, *Modern Law of Real Property* (treatise editions).
+> *"This may seem hard, that the trustee is the only person of all mankind who might not have the lease; but it is very proper that rule should be strictly pursued, and not in the least relaxed."* — *Keech v. Sandford*, Sel. Cas. Ch. 61 (King L.C., 1726).
+
+**Primary source.** *Keech v. Sandford*, Sel. Cas. Ch. 61 (1726), reported text at the Bailii historical archive — [bailii.org/ew/cases/EWHC/Ch/1726/J76.html](https://www.bailii.org/ew/cases/EWHC/Ch/1726/J76.html).
+
+**References.** *Keech v. Sandford*, Sel. Cas. Ch. 61 (1726); D.E.C. Yale (ed.), *Lord Nottingham's Chancery Cases* (Selden Society, 1957, 1961); George Gilbert Cheshire & E.H. Burn, *Modern Law of Real Property* (treatise editions).

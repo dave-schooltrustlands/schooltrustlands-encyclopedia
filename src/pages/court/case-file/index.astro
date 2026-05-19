@@ -12,6 +12,9 @@ const cases = (await getCollection('court-cases')).sort(
 );
 const scotusCases = cases.filter((c) => c.data.court === 'SCOTUS');
 const stateCases = cases.filter((c) => c.data.court === 'state-supreme');
+const federalCircuitCases = cases.filter(
+  (c) => c.data.court === 'federal-circuit',
+);
 const slugify = (s: string) => s.replace(/^\d+-/, '');
 ---
 
@@ -74,21 +77,45 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
     <section id="annotated-precedents" class="annotated-precedents">
       <h2 style="margin-top: 1.2rem;">Annotated Precedent Cases</h2>
       <p>
-        Eleven canonical cases that govern American school trust lands
-        doctrine, drawn from Phase 2 long-form substrate. Each annotation
-        follows the same structure — facts, holding, why it matters, and
-        the jurisdictions in which the case is cited as authority — and
-        links to its own page for the full text.
+        Sixteen canonical cases that govern American school trust lands
+        doctrine. Eleven are Phase 2 substrate; five — <em>Cooper v.
+        Roberts</em> (1855), <em>Beecher v. Wetherby</em> (1877),
+        <em>County of Yakima</em> (1992), <em>Idaho v. Coeur d'Alene
+        Tribe</em> (1997), and <em>Branson v. Romer</em> (10th Cir. 1998)
+        — were added in Phase 4 Wave 1 (v75). Each annotation follows the
+        same structure — facts, holding, why it matters, the
+        jurisdictions in which the case is cited, and limits of the
+        annotation — and links to its own page and to the underlying
+        opinion at courtlistener.com or supreme.justia.com.
       </p>
       <aside class="preview-banner" role="note">
-        <strong>First-draft preview.</strong> The eleven annotations below
-        are Phase 2 substrate; Phase 3 cross-AI review and Phase 4
-        revision are still pending.
+        <strong>v75 — Phase 4 Wave 1 seed.</strong> Phase 4 added five new
+        annotations: <em>Cooper v. Roberts</em> (1855), <em>Beecher v.
+        Wetherby</em> (1877), <em>County of Yakima</em> (1992), <em>Idaho
+        v. Coeur d'Alene Tribe</em> (1997), and <em>Branson v. Romer</em>
+        (10th Cir. 1998). Each annotation is a Library-side summary, not a
+        full Shepard's treatment; readers should consult the linked
+        opinion and verify current law before relying on any annotation
+        in litigation.
       </aside>
 
       <h3>Supreme Court of the United States</h3>
       <ul class="case-list">
         {scotusCases.map((c) => (
+          <li>
+            <h4>
+              <a href={`/court/case-file/${slugify(c.slug)}/`}>
+                <em>{c.data.caseName}</em>
+              </a>
+              <span class="case-citation"> — {c.data.citation}</span>
+            </h4>
+          </li>
+        ))}
+      </ul>
+
+      <h3>U.S. Courts of Appeals</h3>
+      <ul class="case-list">
+        {federalCircuitCases.map((c) => (
           <li>
             <h4>
               <a href={`/court/case-file/${slugify(c.slug)}/`}>

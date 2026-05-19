@@ -235,7 +235,11 @@ const courtCases = defineCollection({
     caseName: z.string(),
     citation: z.string(),
     year: z.number().int(),
-    court: z.enum(['SCOTUS', 'state-supreme']),
+    // v75: 'federal-circuit' added to host the new 10th Circuit
+    // Branson annotation. The case-file/index.astro template now
+    // renders a third section ("U.S. Courts of Appeals") below the
+    // SCOTUS and state-supreme groupings.
+    court: z.enum(['SCOTUS', 'state-supreme', 'federal-circuit']),
     order: z.number().int(),
     opinionUrl: z.string().url().optional(),
     courtsLabel: z.string().optional(),

@@ -15,4 +15,8 @@ Within a century, the use upon a use, the active use, and the use of leaseholds 
 
 This matters for the school trust lands tradition because the modern American school trust is an *active* trust in precisely this post-1535 sense. The State of Oregon is not a passive feoffee holding title for the schools. It is an active trustee charged with managing forests, leasing minerals, investing the Common School Fund, and distributing the income — exactly the kind of duties the Tudor lawyers identified as outside the statute's reach. The trustee role that today's school land board occupies is the lineal descendant of the active use that the Chancery preserved against Henry VIII.
 
+> *"Where any person … shall hereafter be seised … of and in any honours, castles, manors, lands, tenements, rents … to the use, confidence or trust of any other person … such person … shall stand and be seised … of and in the same … to all intents, constructions, and purposes in the law, of and in such like estates as they had or shall have in use, trust, or confidence."* — Statute of Uses, 27 Hen. 8, c. 10 (1535).
+
+**Primary source.** Statute of Uses, 27 Hen. 8, c. 10 (1535), text in *The Statutes at Large* (Pickering ed., 1763), vol. 4 — [British History Online (Statutes of the Realm, vol. 3)](https://www.british-history.ac.uk/statutes-realm/vol3/pp539-542).
+
 **References.** Statute of Uses, 27 Hen. 8, c. 10 (1535); J.H. Baker, *An Introduction to English Legal History* (4th ed. 2002), chs. 17–18.

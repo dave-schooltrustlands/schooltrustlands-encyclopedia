@@ -13,4 +13,8 @@ Three lines of development matter for what came next. First, the early state cou
 
 By 1787, when the framers of the Northwest Ordinance turned to the question of how to secure land for schools in the territory north and west of the Ohio River, they were drawing on a fully formed Anglo-American tradition of public-purpose trusteeship. The trust, as a legal device for binding present and future officeholders to honor a long-term commitment of public property to a public purpose, was a tool the founding generation knew how to use and understood the limits of. When they wrote that "schools and the means of education shall forever be encouraged," they were not making a hope. They were creating a trust.
 
-**References.** Stanley N. Katz, "The Politics of Law in Colonial America," *Perspectives in American History* (1971) [CITE PENDING]; Joseph Story, *Commentaries on Equity Jurisprudence* (1836).
+> *"Schools and the means of education shall forever be encouraged."* — Northwest Ordinance, Article III (1787) — the public-purpose trust principle the founding generation drew from the Anglo-American chancery tradition.
+
+**Primary source.** Joseph Story, *Commentaries on Equity Jurisprudence* (1836), vol. II, chs. 23–25 (charitable uses and trusts) — [HathiTrust digital edition](https://catalog.hathitrust.org/Record/001359186).
+
+**References.** Stanley N. Katz, "The Politics of Law in Colonial America," *Perspectives in American History* (1971); Joseph Story, *Commentaries on Equity Jurisprudence* (1836).

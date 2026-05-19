@@ -19,4 +19,6 @@ Third, Cardozo grounded the rule in necessity rather than mere convention. The r
 
 For school trust lands, *Meinhard* is the language with which the modern fiduciary standard speaks. When courts and commentators talk about the "undivided loyalty" of a state to its school trust beneficiaries, they are quoting (or paraphrasing) the *Meinhard* line. When the U.S. Supreme Court in *Lassen v. Arizona* (1967) held that Congress intended that "the most substantial support possible" go to the beneficiaries and "only those beneficiaries profit from the trust," it was channeling the *Meinhard* standard into the school-trust-lands context. When the Washington Supreme Court in *County of Skamania* (1984) held that the state's "fiduciary duty of undivided loyalty" prevented the use of trust lands for unrelated public purposes, it was applying the *Meinhard* principle directly. Cardozo's punctilio is the doctrinal lens through which every modern state trustee is judged.
 
+**Primary source.** *Meinhard v. Salmon*, 249 N.Y. 458 (1928), at [courtlistener.com · opinion 5575820](https://www.courtlistener.com/opinion/5575820/meinhard-v-salmon/).
+
 **References.** *Meinhard v. Salmon*, 249 N.Y. 458 (1928); *Lassen v. Arizona*, 385 U.S. 458 (1967); *County of Skamania v. State*, 102 Wash. 2d 127 (1984).

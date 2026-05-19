@@ -57,6 +57,25 @@ const subsections = [
       detail, because Oregon is presently the country's live test case for
       school-trust accountability.
     </p>
+
+    <aside class="how-to-use" role="note">
+      <h2 style="margin: 0 0 0.4rem; font-size: 1.05rem;">How to use this room</h2>
+      <p style="margin: 0;">
+        Four doors. <strong><a href="/court/lineage/">The Lineage</a></strong>
+        traces the doctrine from English equity to the Uniform Trust Code —
+        twelve waypoints with primary-source links. <strong><a href="/court/atlas/">The Atlas</a></strong>
+        is the per-state dossier — enabling act, fund value, AG opinions,
+        key cases, trust-integrity grade. <strong><a href="/court/case-file/">The Case File</a></strong>
+        annotates sixteen canonical precedents (SCOTUS, U.S. Courts of
+        Appeals, binding state-supreme courts) plus Oregon's complete
+        statutory and litigation record. <strong><a href="/court/reading-wing/">The Reading Wing</a></strong>
+        is long-form national essays — how the trust was created, how it
+        was broken, what Utah did differently. Start at the Lineage for
+        history, the Atlas for a particular state, the Case File for a
+        particular case, the Reading Wing for the argument.
+      </p>
+    </aside>
+
     <p>
       Four subsections sit behind the doors below. Each is a first-draft
       preview: the architecture, the data, and substantive seeded
@@ -75,6 +94,61 @@ const subsections = [
         </a>
       ))}
     </section>
+
+    <aside class="key-precedents" role="note">
+      <h2 style="margin: 0 0 0.5rem; font-size: 1.05rem;">Key precedents at a glance</h2>
+      <p style="margin: 0 0 0.6rem; font-size: 0.95rem;">
+        Five anchors for the strict trust theory of school-trust lands.
+        Each links into the full annotation in <a href="/court/case-file/">The Case File</a>.
+      </p>
+      <ul class="key-precedents-list">
+        <li>
+          <a href="/court/case-file/vincennes-univ-v-indiana-1852/"><em>Trustees of Vincennes University v. Indiana</em></a>,
+          55 U.S. 268 (1852) — enabling-act grants create binding trusts
+          that the state cannot legislate away.
+        </li>
+        <li>
+          <a href="/court/case-file/cooper-v-roberts-1855/"><em>Cooper v. Roberts</em></a>,
+          59 U.S. 173 (1855) — section-16 grants vest at admission "upon
+          the unalterable condition" of trust for schools.
+        </li>
+        <li>
+          <a href="/court/case-file/lassen-v-arizona-1967/"><em>Lassen v. Arizona</em></a>,
+          385 U.S. 458 (1967) — the trust is "real, not illusory"; full
+          compensation required for any taking.
+        </li>
+        <li>
+          <a href="/court/case-file/skamania-v-state-1984/"><em>County of Skamania v. State</em></a>,
+          102 Wn.2d 127 (1984) — undivided loyalty prevents the use of
+          trust lands for unrelated public purposes.
+        </li>
+        <li>
+          <a href="/court/case-file/branson-v-romer-1998/"><em>Branson School District v. Romer</em></a>,
+          161 F.3d 619 (10th Cir. 1998) — federal courts enforce
+          enabling-act compacts against state-constitutional changes.
+        </li>
+      </ul>
+    </aside>
+
+    <aside class="oregon-docket" role="note">
+      <h2 style="margin: 0 0 0.5rem; font-size: 1.05rem;">Live Oregon docket</h2>
+      <dl class="oregon-docket-facts">
+        <dt>Case</dt>
+        <dd><em>Advocates for School Trust Lands v. State of Oregon</em></dd>
+        <dt>Trial court (2024 case)</dt>
+        <dd>Coos County Circuit Court — 24CV38372</dd>
+        <dt>Appellate (2023 case)</dt>
+        <dd>Oregon Court of Appeals — A184055</dd>
+        <dt>Last docket event</dt>
+        <dd>January 28, 2026 — Court of Appeals standing victory; the appeal of the Coos County dismissal in <em>ASTL et al. v. State</em> (23CV39056) was decided in OASTL's favor on standing.</dd>
+        <dt>Next expected step</dt>
+        <dd>Remand to trial court for substantive merits proceedings; renewed Motion-to-Dismiss briefing in <em>Siuslaw v. State</em> (24CV38372) continues in parallel.</dd>
+      </dl>
+      <p style="margin: 0.5rem 0 0; font-size: 0.92rem;">
+        Full docket and document repository at
+        <a href="/court/oregon-current-case/">Oregon's Current Case →</a>
+      </p>
+    </aside>
 
     <aside class="cross-bridge" role="note">
       <strong>Quick reference at the Reference Desk; deep research in the
@@ -156,5 +230,66 @@ const subsections = [
     padding: 0.85rem 1.1rem;
     margin: 1.5rem 0;
     font-size: 0.95rem;
+  }
+  .how-to-use {
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #1e3a5f;
+    background: #f8fafc;
+    padding: 0.85rem 1.1rem;
+    margin: 1.25rem 0 1.5rem;
+    font-size: 0.96rem;
+  }
+  .key-precedents {
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid var(--old-gold, #B88A2E);
+    background: #fffbf2;
+    padding: 0.9rem 1.1rem;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+  }
+  .key-precedents-list {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+  .key-precedents-list li {
+    margin: 0.3rem 0;
+    line-height: 1.4;
+  }
+  .oregon-docket {
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #7c2d12;
+    background: #fff7ed;
+    padding: 0.9rem 1.1rem;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+  }
+  .oregon-docket-facts {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.25rem 0.9rem;
+    margin: 0;
+    font-size: 0.93rem;
+  }
+  .oregon-docket-facts dt {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    padding-top: 0.18rem;
+  }
+  .oregon-docket-facts dd {
+    margin: 0;
+    color: #1f2937;
+  }
+  @media (max-width: 520px) {
+    .oregon-docket-facts {
+      grid-template-columns: 1fr;
+      gap: 0.05rem 0;
+    }
+    .oregon-docket-facts dd {
+      margin-bottom: 0.45rem;
+    }
   }
 </style>

@@ -25,4 +25,8 @@ The *duty of accounting* requires the trustee to keep adequate records and to re
 
 These six duties, codified in the Restatement and the Uniform Trust Code, are the doctrinal endpoint of the lineage. They are what an Oregon court applies when it asks whether the State Land Board has lawfully managed the Common School Fund Lands. They are the lens through which the 1859 Admissions Act is read. They are the modern statement of the same obligations that the Chancery applied to the medieval feoffee and that Cardozo restated for the joint venturer in 1928. The lineage closes here, with codified duties whose ancestry runs back through eight centuries of legal development.
 
+> *"A trustee shall administer the trust solely in the interests of the beneficiaries."* — Uniform Trust Code § 802(a) (2000).
+
+**Primary source.** Uniform Trust Code (Uniform Law Commission, 2000, as amended) — [uniformlaws.org · Trust Code Final Act](https://www.uniformlaws.org/committees/community-home?CommunityKey=193ff839-7955-4846-8f3c-ce74ac23938d); Oregon adoption at ORS Chapter 130 — [oregonlegislature.gov · ors130](https://www.oregonlegislature.gov/bills_laws/ors/ors130.html).
+
 **References.** Restatement (Third) of Trusts (Am. Law Inst. 2003–2012); Uniform Trust Code (Nat'l Conf. of Comm'rs on Unif. State Laws 2000, as amended); Oregon's adoption at ORS 130.001 et seq., including ORS 130.650–130.710 (codifying trustee duties of loyalty, impartiality, prudence, and disclosure).

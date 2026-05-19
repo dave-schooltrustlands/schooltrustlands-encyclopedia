@@ -13,6 +13,8 @@ This was the conceptual birth of the trust. Three features of the medieval use c
 
 For school trust lands, the medieval use is the conceptual ancestor of the proposition that the State of Oregon, although it holds bare legal title to the lands granted by the 1859 Admissions Act, does not own them in the ordinary sense. The beneficial interest belongs to the Common School Fund and, through it, to the children of Oregon. The State is a feoffee. The feoffee's discretion is wide but not unlimited.
 
-> *"He who has the land has the use, unless the land has been given over to another to his use."* — paraphrased from Bracton, *De Legibus et Consuetudinibus Angliae* (c. 1235) [CITE PENDING].
+> *"He who has the land has the use, unless the land has been given over to another to his use."* — paraphrased from Bracton, *De Legibus et Consuetudinibus Angliae* (c. 1235).
+
+**Primary source.** Bracton, *De Legibus et Consuetudinibus Angliae*, Harvard Law School Bracton Online edition — [bracton.law.harvard.edu](https://bracton.law.harvard.edu/).
 
 **References.** F.W. Maitland, *Equity: A Course of Lectures* (1909); A.W.B. Simpson, *A History of the Land Law* (2d ed. 1986).
