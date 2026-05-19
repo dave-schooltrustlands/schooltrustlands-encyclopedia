@@ -145,3 +145,14 @@ and manual signed-in spot-checks are noted in each Site Update's run report.
     - "1785"
     - "Northwest Ordinance"
   notes: "Court Room Phase 4 Wave 1 (v75) — methodological note added above the timeline; each of the 12 waypoints now carries a pull-quote and a primary-source link."
+
+- id: court-oregon-current-case
+  substrate: NONE
+  repo: src/pages/court/oregon-current-case.astro
+  live_url: https://schooltrusts.net/court/oregon-current-case/
+  signatures:
+    - "Advocates for School Trust Lands v. State of Oregon"
+    - "Procedural posture as of 2026-05-18"
+    - "January 28, 2026"
+    - "Coos County Circuit Court"
+  notes: "Court Room Phase 4 Wave 2 (v76) added the structured procedural-posture box; voice-discipline rewrites applied across nine paragraphs; Wikipedia/Ballotpedia legal-authority citations replaced with Yale Avalon / oregonlegislature.gov primary sources."

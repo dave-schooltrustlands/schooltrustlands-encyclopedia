@@ -1,5 +1,33 @@
 # STATUS
 
+## v76 — Court Room Phase 4 Wave 2 (2026-05-18 night)
+
+**TL;DR.** Editorial-discipline wave responding to ChatGPT's Phase 3 critique. Voice-discipline rewrites applied across the Oregon Current Case page (9 paragraphs reframed from categorical advocacy to attributed-procedural language: "billion-dollar betrayal" → "plaintiffs estimate damages in the billions"; "the state has consistently failed" → "Plaintiffs argue / the State contends"; AG opinion summaries reframed in party-attributed voice). Source-hierarchy upgrade replaced the 6 remaining Wikipedia/Ballotpedia citations used as legal authority in `/court/case-file/` and `/court/oregon-current-case/` with primary sources (Yale Avalon for the Land Ordinance; oregonlegislature.gov for Oregon Constitution Art. VIII). A structured procedural-posture box was added to `/court/oregon-current-case/` (Claim / Defendants / Court / Current status / Last docket event / Next expected procedural step / Source). Limits-of-annotation notes appended to the 11 pre-existing Case File entries (Vincennes, U.S. v. New Mexico, Lassen, Andrus, Asarco, Pettibone, Skamania, Ebke, Nigh, Idaho Watersheds, NPCA); the 5 Wave 1 entries already had them.
+
+**No Supabase SQL pastes in this update** — content-only.
+
+**Counts:**
+- Voice-discipline rewrites: 9 paragraphs reframed on `oregon-current-case.astro`. Atlas state dossiers were audited and required no rewrites (Margaret-attributed language on NE / MN / SD / UT is per-handoff acceptable).
+- Source-hierarchy upgrades: 6 secondary-source URLs replaced (2 Wikipedia Land Ordinance, 4 Ballotpedia Oregon Art. VIII). Final grep confirms zero remaining `wikipedia.org` / `ballotpedia.org` / `investopedia.com` URLs anywhere under `src/pages/court/`, `src/content/court-*/`.
+- Procedural-posture box: 1 added at `/court/oregon-current-case/`, right under the existing "Case at a glance" dossier card.
+- Limits-of-annotation notes: 11 appended to the pre-existing Case File entries; 5 Wave-1 entries already carried equivalent notes from v75.
+- `[primary-source unresolved]` flags: none. The two link patterns flagged in Wave 2 each had clean primary substitutes.
+
+**Files touched:**
+- `src/pages/court/oregon-current-case.astro` — voice rewrites (~9 paragraphs); 2 Wikipedia→Avalon + 4 Ballotpedia→oregonlegislature.gov replacements; procedural-posture box added.
+- `src/pages/court/case-file/index.astro` — 1 Wikipedia→Avalon + 2 Ballotpedia→oregonlegislature.gov replacements.
+- `src/content/court-cases/01..11-*.md` — 11 limits-of-annotation appendices.
+- `STATUS.md` — this run report.
+- `src/pages/updates.astro` — v76 daily-detail entry added under "Week of May 11, 2026."
+- `Substrate_Surface_Manifest.md` — no new pages; one signature added to the Oregon Current Case manifest entry to lock the procedural-posture box.
+
+**Verification:**
+- `rm -rf .astro/ && npm run build` succeeded; 380 HTML pages emitted; Pagefind indexed 379 pages.
+- `curl` against `http://localhost:8765/` returned 200 for `/court/atlas/or/`, `/court/atlas/ut/`, `/court/case-file/lassen-v-arizona-1967/`, `/court/oregon-current-case/`, `/court/case-file/`, and three additional case-file pages spot-checked.
+- Grep checks: "Procedural posture" found once in `/court/oregon-current-case/`; "Limits of this annotation" found in all four case-file spot-checks (Lassen, Vincennes, Skamania, Cooper); zero "billion-dollar betrayal", zero remaining `wikipedia.org` / `ballotpedia.org` URLs in the rendered Court Room HTML.
+
+**Commit SHA:** pending push
+
 ## v75 — Court Room Phase 4 Wave 1 (2026-05-18 evening, continued)
 
 **TL;DR.** Court Room Phase 4 Wave 1 substantive content landed: pull-quotes + primary-source URLs added to all 12 Lineage waypoints; the 1785/1787 framing was sharpened per Margaret's directive (1785 is the grant, 1787 is the declaration); a methodological note was added at the top of `/court/lineage/`; five new Case File annotations were written (*Cooper v. Roberts* 1855, *Beecher v. Wetherby* 1877, *County of Yakima* 1992, *Idaho v. Coeur d'Alene Tribe* 1997, *Branson v. Romer* 10th Cir. 1998 — all primary-source-linked to courtlistener.com / supreme.justia.com); `/court/` lobby now carries How-to-use-this-room, Key-precedents-at-a-glance, and Live-Oregon-docket callouts. Schema expanded: `court-cases.court` now accepts `'federal-circuit'` alongside `'SCOTUS'` and `'state-supreme'`.
