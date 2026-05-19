@@ -5,7 +5,7 @@ iso: US-MO
 admissionNumber: 24
 admittedDate: 1821-08-10
 eraCohort: 3
-eraName: The Northwest Ordinance Template
+eraName: "1-Section Cohort"
 federalGrantAcres: 1221813
 governanceForm: "No consolidated state trust-lands board. The State Treasurer is the constitutional custodian; DESE administers distributions to school districts; county school funds are administered at the county level."
 permanentFundCorpus: null

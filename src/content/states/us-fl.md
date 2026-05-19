@@ -5,7 +5,7 @@ iso: US-FL
 admissionNumber: 27
 admittedDate: 1845-03-03
 eraCohort: 3
-eraName: The Northwest Ordinance Template
+eraName: "1-Section Cohort"
 federalGrantAcres: 908503
 governanceForm: "Board of Trustees of the Internal Improvement Trust Fund (state lands) — composed of the Governor and Cabinet (Attorney General, Chief Financial Officer, Commissioner of Agriculture) sitting ex officio. The State Board of Education (constitutional, Article IX § 2) governs public-school administration and the State School Fund."
 permanentFundCorpus: null

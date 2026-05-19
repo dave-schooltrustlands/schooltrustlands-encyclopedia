@@ -5,7 +5,7 @@ iso: US-AL
 admissionNumber: 22
 admittedDate: 1819-12-14
 eraCohort: 3
-eraName: The Northwest Ordinance Template
+eraName: "1-Section Cohort"
 federalGrantAcres: 902774
 governanceForm: "No consolidated state trust-lands board comparable to Oregon's State Land Board or New Mexico's Commissioner of Public Lands. State Lands Division operates within DCNR; school-trust-specific administration is distributed among the Department of Education, State Treasurer, and county / local school boards under the residual township-trustee structure inherited from the 1819 federal grant."
 permanentFundCorpus: null

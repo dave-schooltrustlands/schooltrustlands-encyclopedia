@@ -5,7 +5,7 @@ iso: US-AR
 admissionNumber: 25
 admittedDate: 1836-06-15
 eraCohort: 3
-eraName: The Northwest Ordinance Template
+eraName: "1-Section Cohort"
 federalGrantAcres: 933778
 governanceForm: "No consolidated state trust-lands board. Functions distributed across the Commissioner of State Lands (statewide elected), the Department of Education, and the State Treasurer under statutory authority."
 permanentFundCorpus: null

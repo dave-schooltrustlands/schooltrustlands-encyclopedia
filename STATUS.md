@@ -1,5 +1,37 @@
 # STATUS
 
+## v78 — Cross-property consistency bundle (2026-05-18 night, continued)
+
+**TL;DR.** Bundle pass closing the five concrete patches the Cross-Property Consistency Audit (2026-05-18) surfaced after Margaret Bird's corrections on the *Schools of the Republic* v1.3 manuscript. Seven waves landed in a single commit. Reading Room cohort labels retired the chronological/era names ("Northwest Ordinance Template," "Antebellum Doubling," "Reconstruction and the Western Stack," "Twentieth-Century High-Water Mark") in favor of Margaret's grant-size labels ("1-Section Cohort," "2-Section Cohort," "4-Section Cohort," "Outlier Cohort"). Five states reclassified per the audit: WI from 2-section to 1-Section Cohort (LAST); UT from cohort 5 to 4-Section Cohort (FIRST); NM/AZ to 4-Section; OK to 2-Section. CA reads as 2-Section Cohort (FIRST). The Mississippi page's five "Northwest Ordinance Template" conflations replaced with 1785-Land-Ordinance-section-16 attribution. The Minnesota "first to receive doubled grant" passage corrected to attribute the doubling to California's 1853 Act, with Minnesota recast as the first east-of-the-Mississippi anchor of the 2-section pattern. Two new Atlas dossiers — California (was 404; Trust Integrity: Breached/uncorrected; cohort: 2-section FIRST) and Wisconsin (was 404; Trust Integrity: Intact and funded; cohort: 1-section LAST) — are now live, including supporting entries in `src/data/court-states.json` so the `[state].astro` route generates the pages. English-equity / Lord-Hardwicke provenance for AG enforcement added to both the Utah Atlas dossier and the Utah Reading Room page, per Margaret's correction that AG enforcement of charitable trusts is not novel to Utah 1894 — it traces to Lord Hardwicke's Charitable Uses framework of the 1730s–1740s.
+
+**No Supabase SQL pastes in this update** — content-only.
+
+**Counts:**
+- Reading Room cohort label renames: 39 state pages (all eraName values updated to grant-size cohorts; Founding Floor and Statehood Without the Federal Floor preserved as state-derived cohorts).
+- Reclassifications applied: 5 (WI, UT, NM, AZ, OK); WI eraCohort moved 4→3; UT eraCohort moved 5→6; OK eraCohort moved 6→4.
+- Cohort tooltip rewrites in `src/pages/reading/[slug].astro`: 4 (cohorts 3/4/5/6).
+- Mississippi body conflations fixed: 5 (cohort widget via eraName rename + dateline "Era:" line + body paragraph + body footnote + dossier-card fallback summary).
+- Minnesota doubling attribution corrections: 4 (lede paragraph + pull-quote + section-II paragraph + section-VII summary; all now attribute the doubling to California's 1853 Act).
+- New Atlas dossiers: 2 (`/court/atlas/ca/`, `/court/atlas/wi/`).
+- `court-states.json` entries added: 2 (CA, WI) — keyCases anchored on cooper-v-roberts-1855.
+- Utah English-equity / Lord-Hardwicke provenance additions: 2 surfaces (Atlas UT + Reading UT).
+
+**Files touched:**
+- 32 state pages under `src/content/states/` (eraName renames; reclassifications on WI/UT/OK; MS body sweep; MN doubling-attribution rewrite).
+- `src/content/court-atlas/ca.md` — new.
+- `src/content/court-atlas/wi.md` — new.
+- `src/content/court-atlas/ut.md` — English-equity paragraph added under "Notable Attorney General opinions."
+- `src/data/court-states.json` — CA and WI entries added so the `[state].astro` static route generates the pages.
+- `src/pages/reading/[slug].astro` — `COHORT_TOOLTIPS` rewritten to match grant-size labels and the 1785/1787 doctrinal floor.
+- `STATUS.md` — this run report.
+- `Substrate_Surface_Manifest.md` — new entries for the CA and WI Atlas dossiers and notes on the Reading Room cohort sweep.
+
+**Verification:**
+- `rm -rf .astro/ && npm run build` succeeded; 382 HTML pages emitted (up from 380, matching the +2 new Atlas dossiers); Pagefind indexed all.
+- Built-HTML grep checks: Reading MS has 0 occurrences of "Northwest Ordinance Template" and 4 of "1785 Land Ordinance section-16 reservation"; Reading MN renders the California-1853 attribution in 3 places; Reading WI's cohort widget reads "1-Section Cohort (LAST)"; Reading CA's reads "2-Section Cohort (FIRST)"; Atlas CA renders "FIRST" and "Breached" in the header/grade; Atlas WI renders "LAST" and "Intact and funded"; Atlas UT and Reading UT both render the "English equity" / "Lord Hardwicke" paragraph.
+
+**Commit SHA:** [filled in post-push]
+
 ## Court Room — Phase 4 complete (2026-05-18 night)
 
 **Phase 4 closes.** Three waves (v75 / v76 / v77) landed on 2026-05-18. The Court Room is now ready for **Phase 5 (Margaret review)** post the June ASTL conference. Margaret will be reading a materially stronger surface than the v3.2.1 she would have seen earlier: every Lineage waypoint carries a pull-quote and a primary-source link; the 1785/1787 framing is sharpened per her standing directive; 5 new Case File annotations seeded; voice-discipline pass applied across the Oregon Current Case; every Case File entry carries a Limits-of-annotation note; a structured procedural-posture box anchors the Oregon Current Case; Wikipedia/Ballotpedia legal-authority citations replaced with primary sources; the Atlas's Trust Integrity grades now have a published methodology; the Court Room lobby carries a restrained portico visual mark; and the prepublication notice has been reworded from "please do not cite" to "Beta draft / cite the linked primary sources."

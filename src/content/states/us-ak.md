@@ -5,7 +5,7 @@ iso: US-AK
 admissionNumber: 49
 admittedDate: 1959-01-03
 eraCohort: 6
-eraName: "The Twentieth-Century High-Water Mark and Two Outliers"
+eraName: "Outlier Cohort"
 federalGrantAcres: 104450000
 governanceForm: "DNR: Commissioner appointed by the Governor (AS 38.04). APFC: six-member Board
 of Trustees — Commissioner of Revenue, one other Cabinet member designated by

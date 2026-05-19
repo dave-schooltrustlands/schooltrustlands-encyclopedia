@@ -5,7 +5,7 @@ iso: US-NE
 admissionNumber: 37
 admittedDate: 1867-03-01
 eraCohort: 5
-eraName: Reconstruction and the Western Stack
+eraName: "2-Section Cohort"
 federalGrantAcres: 2730951
 governanceForm: "Board of Educational Lands and Funds (BELF): Governor, Secretary of State, State Treasurer, Attorney General, Commissioner of Education — five-member constitutional ex-officio board. The Nebraska Investment Council (statutory) manages the Permanent School Fund corpus's investment program."
 permanentFundCorpus:

@@ -5,7 +5,7 @@ iso: US-ND
 admissionNumber: 39
 admittedDate: 1889-11-02
 eraCohort: 5
-eraName: Reconstruction and the Western Stack
+eraName: "2-Section Cohort"
 federalGrantAcres: 2495396
 governanceForm: "Board of University and School Lands (constitutional, Article IX): Governor (chair), Secretary of State, Attorney General, Superintendent of Public Instruction, State Treasurer — five-member ex-officio executive board."
 permanentFundCorpus:

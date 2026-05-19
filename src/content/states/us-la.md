@@ -5,7 +5,7 @@ iso: US-LA
 admissionNumber: 18
 admittedDate: 1812-04-30
 eraCohort: 3
-eraName: The Northwest Ordinance Template
+eraName: "1-Section Cohort"
 federalGrantAcres: 807271
 governanceForm: "State Mineral and Energy Board (statutory composition); the Office of State Lands operates as an administrative office, not a governing board. Permanent School Fund distributions to schools flow through the Board of Elementary and Secondary Education (BESE) under the Minimum Foundation Program."
 permanentFundCorpus: null

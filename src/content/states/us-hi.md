@@ -5,7 +5,7 @@ iso: US-HI
 admissionNumber: 50
 admittedDate: 1959-08-21
 eraCohort: 6
-eraName: "The Twentieth-Century High-Water Mark and Two Outliers"
+eraName: "Outlier Cohort"
 federalGrantAcres: 1400000
 governanceForm: "No unified ceded-lands trust board. DLNR is led by the Board of Land and
 Natural Resources (gubernatorial appointees). DHHL is led by the Hawaiian

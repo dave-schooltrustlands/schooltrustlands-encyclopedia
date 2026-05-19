@@ -5,7 +5,7 @@ iso: US-IL
 admissionNumber: 21
 admittedDate: 1818-12-03
 eraCohort: 3
-eraName: The Northwest Ordinance Template
+eraName: "1-Section Cohort"
 federalGrantAcres: 985066
 governanceForm: "Illinois State Board of Education (constitutionally created by Article X §2; composition set by statute). No consolidated school-trust-lands board; residual fund administration is statutory and distributed among ISBE and the State Treasurer."
 permanentFundCorpus: null

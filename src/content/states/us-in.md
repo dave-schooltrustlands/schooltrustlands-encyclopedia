@@ -5,7 +5,7 @@ iso: US-IN
 admissionNumber: 19
 admittedDate: 1816-12-11
 eraCohort: 3
-eraName: The Northwest Ordinance Template
+eraName: "1-Section Cohort"
 federalGrantAcres: 650317
 governanceForm: "No consolidated constitutional trust-lands board. Statutory administration includes the State Board of Finance (Governor, Auditor of State, Treasurer of State, ex officio) and the Treasurer of State."
 permanentFundCorpus: null

@@ -5,7 +5,7 @@ iso: US-ID
 admissionNumber: 43
 admittedDate: 1890-07-03
 eraCohort: 5
-eraName: Reconstruction and the Western Stack
+eraName: "2-Section Cohort"
 federalGrantAcres: 2963698
 governanceForm: "State Board of Land Commissioners (constitutional, Article IX § 7): Governor, Secretary of State, Attorney General, State Controller, and Superintendent of Public Instruction. Investment of the permanent endowment fund corpus is handled by the Endowment Fund Investment Board (constitutional)."
 permanentFundCorpus: null

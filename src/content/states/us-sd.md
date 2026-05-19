@@ -5,7 +5,7 @@ iso: US-SD
 admissionNumber: 40
 admittedDate: 1889-11-02
 eraCohort: 5
-eraName: Reconstruction and the Western Stack
+eraName: "2-Section Cohort"
 federalGrantAcres: 3500000
 governanceForm: "Commissioner of School and Public Lands (statewide elected, four-year term); current Commissioner is Brock Greenfield (elected 2022). The Commissioner is supported by the South Dakota Investment Council (constitutional, manages permanent fund corpus) and the South Dakota State Investment Officer."
 permanentFundCorpus:

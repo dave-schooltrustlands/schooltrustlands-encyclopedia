@@ -238,5 +238,29 @@
     "trustIntegrityGrade": "intact-and-funded",
     "summary": "Texas is a state-derived state: it retained its public lands at annexation and created the Permanent School Fund (1854) from its own land base. The PSF is the largest education endowment in the United States.",
     "advocacyContact": "pending"
+  },
+  "CA": {
+    "name": "California",
+    "enablingAct": "Act of March 3, 1853, ch. 145, 10 Stat. 244 (operative school-section grant); Admission Act of Sept. 9, 1850, ch. 50, 9 Stat. 452",
+    "enablingActYear": 1853,
+    "trustFundCurrentValue": 65700000,
+    "trustFundAsOf": "FY 2024–25 (School Land Bank Fund balance)",
+    "agOpinionCount": 0,
+    "keyCases": ["cooper-v-roberts-1855"],
+    "trustIntegrityGrade": "breached-and-uncorrected",
+    "summary": "First 2-section state (1853 Act). The architecture didn't fail; it was never installed. Of ~5.5M acres granted in 1853, ~458,843 fee-owned acres remain; modern revenue (~$6.4M FY 2024–25) is routed to CalSTRS, not to K–12 schools. No permanent fund corpus comparable to peer states; the 1849 Constitution's perpetual-fund language gave way by 1879 to attendance-apportionment. The School Land Bank Act (1984, Pub. Res. Code §§ 8701–8702) belatedly installed statutory trustee duties at the State Lands Commission.",
+    "advocacyContact": "pending"
+  },
+  "WI": {
+    "name": "Wisconsin",
+    "enablingAct": "Wisconsin Enabling Act (1846), 9 Stat. 56; Admission Act of May 29, 1848, 9 Stat. 233",
+    "enablingActYear": 1846,
+    "trustFundCurrentValue": 1600000000,
+    "trustFundAsOf": "August 2025",
+    "agOpinionCount": 6,
+    "keyCases": ["cooper-v-roberts-1855"],
+    "trustIntegrityGrade": "intact-and-funded",
+    "summary": "Last 1-section state (1848). Same lean federal text as Ohio — Section 16 only, no express trust, no enforcement provision — but Article X of the 1848 Wisconsin Constitution walled the proceeds off behind one of the cleanest fiduciary architectures in the country, with the Attorney General inside the trustee body (BCPL). Common School Fund principal above $1.6 billion; record $73.5 million FY 2026 distribution to school libraries; unbroken State Trust Fund Loan Program record since 1871.",
+    "advocacyContact": "pending"
   }
 }

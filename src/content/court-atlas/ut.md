@@ -37,7 +37,9 @@ Substrate cited: Margaret Bird compilation, *MB stories of losses by state*, Oct
 
 ## Notable Attorney General opinions
 
-AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
+The Utah Attorney General's authority to enforce school-trust fiduciary duties is not a novel 1894-Enabling-Act invention. It is rooted in the English equity tradition — specifically Lord Hardwicke's Charitable Uses framework of the 1730s and 1740s, which crystallized the modern enforceable-trust doctrine for charitable purposes and lodged the parens-patriae enforcement power in the Crown's chief legal officer. American states inherited that tradition at the founding; every state Attorney General's standing to enforce charitable trusts on behalf of the trusts' beneficiaries traces to it. The 1894 Utah Enabling Act translated that older equity inheritance into the federal-state-trust context; the 1896 Utah Constitution gave it Utah-specific architectural form (Article X, with the State's guaranty against loss or diversion); and Title 53C (1994) codified the fiduciary duties as a matter of state statute. The AG's standing to enforce the trust against the state itself follows from the equity inheritance, not from the federal Act creating a new authority — a distinction that matters when reading earlier Utah AG opinions (such as the May 7, 1963 opinion underlying *Colman v. Utah State Land Board*, 17 Utah 2d 14, 403 P.2d 781 (1965)) as expressions of a centuries-deep tradition rather than as recent inventions.
+
+Beyond that doctrinal point, AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
 
 ## Trust Integrity grade and rationale
 

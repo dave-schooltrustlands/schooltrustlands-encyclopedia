@@ -168,3 +168,78 @@ and manual signed-in spot-checks are noted in each Site Update's run report.
     - "Pending dossier"
     - "Methodology v1.0"
   notes: "Court Room Phase 4 Wave 3 (v77). Published rubric for the Atlas's five Trust Integrity grades. Linked from /court/atlas/ (legend), every per-state dossier's grade pill via [state].astro, and the Court Room lobby cross-bridge."
+
+- id: court-atlas-ca
+  substrate: L4_Deliverables/Library_Updates/Atlas_State_Dossiers_2026-05-18/atlas_dossier_new_ca_2026-05-18.md
+  repo: src/content/court-atlas/ca.md
+  live_url: https://schooltrusts.net/court/atlas/ca/
+  signatures:
+    - "2-section cohort (FIRST)"
+    - "1853"
+    - "School Land Bank Act"
+    - "Breached / uncorrected"
+    - "The architecture didn't fail. It was never installed."
+  notes: "v78 cross-property consistency bundle. New Atlas dossier (was 404). California is the first 2-section state — Act of March 3, 1853, 10 Stat. 244, § 6. Trust Integrity grade: Breached / uncorrected. Requires matching entry in src/data/court-states.json so the [state].astro static route generates the page."
+
+- id: court-atlas-wi
+  substrate: L4_Deliverables/Library_Updates/Atlas_State_Dossiers_2026-05-18/atlas_dossier_new_wi_2026-05-18.md
+  repo: src/content/court-atlas/wi.md
+  live_url: https://schooltrusts.net/court/atlas/wi/
+  signatures:
+    - "1-section cohort (LAST)"
+    - "Article X"
+    - "Board of Commissioners of Public Lands"
+    - "Intact and funded"
+    - "1.6 billion"
+  notes: "v78 cross-property consistency bundle. New Atlas dossier (was 404). Wisconsin is the last 1-section state — Enabling Act 1846. Trust Integrity grade: Intact and funded. Requires matching entry in src/data/court-states.json so the [state].astro static route generates the page."
+
+- id: reading-room-cohort-sweep
+  substrate: L4_Deliverables/Strategy/Cross_Property_Consistency_Audit_2026-05-18.md
+  repo: src/content/states/us-*.md + src/pages/reading/[slug].astro
+  live_url: https://schooltrusts.net/reading/us-*/
+  signatures:
+    - "1-Section Cohort"
+    - "2-Section Cohort"
+    - "4-Section Cohort"
+    - "Outlier Cohort"
+  notes: "v78 cross-property consistency bundle. Retired Margaret Bird's rejected chronological/era cohort names (Northwest Ordinance Template, Antebellum Doubling, Reconstruction and the Western Stack, Twentieth-Century High-Water Mark) and installed grant-size cohort labels site-wide on Reading Room state pages. Reclassified WI (1-Section LAST), UT (4-Section FIRST), NM, AZ, OK; confirmed CA reads as 2-Section FIRST. COHORT_TOOLTIPS in src/pages/reading/[slug].astro rewritten to match the grant-size labels and the 1785/1787 doctrinal floor."
+
+- id: reading-us-ms-doctrinal-fix
+  substrate: L4_Deliverables/Strategy/Cross_Property_Consistency_Audit_2026-05-18.md
+  repo: src/content/states/us-ms.md
+  live_url: https://schooltrusts.net/reading/us-ms/
+  signatures:
+    - "1-Section Cohort"
+    - "1785 Land Ordinance section-16 reservation"
+    - "1802 Ohio Enabling Act"
+  notes: "v78 cross-property consistency bundle. Fixed five Northwest-Ordinance-Template conflations: cohort widget via eraName rename, dateline 'Era:' line, body paragraph at the Section-16-template-was-first-applied passage, footnote ms-2, and the dossier-card fallback summary. All five now credit the 1785 Land Ordinance as the source of the section-16 grant; the 1787 Northwest Ordinance is carried as the philosophical declaration only."
+
+- id: reading-us-mn-doubling-fix
+  substrate: L4_Deliverables/Strategy/Cross_Property_Consistency_Audit_2026-05-18.md
+  repo: src/content/states/us-mn.md
+  live_url: https://schooltrusts.net/reading/us-mn/
+  signatures:
+    - "California's 1853 Act"
+    - "first state east of the Mississippi"
+    - "1853 California Act"
+  notes: "v78 cross-property consistency bundle. Corrected the installed Minnesota-first-to-receive-doubled-grant error introduced by a prior fix-it pass. Doubling correctly attributed to California's Act of March 3, 1853 (10 Stat. 244, § 6); Minnesota's marquee place recast as 'first east-of-the-Mississippi anchor of the doubled-grant pattern.'"
+
+- id: reading-us-ut-english-equity
+  substrate: L4_Deliverables/Strategy/Cross_Property_Consistency_Audit_2026-05-18.md
+  repo: src/content/states/us-ut.md
+  live_url: https://schooltrusts.net/reading/us-ut/
+  signatures:
+    - "English equity"
+    - "Lord Hardwicke"
+    - "Charitable Uses"
+  notes: "v78 cross-property consistency bundle. Margaret Bird correction: AG enforcement of charitable trusts is not novel to Utah 1894 — it traces to Lord Hardwicke's Charitable Uses framework of the 1730s–1740s. Paragraph added at the end of section V (1989–1994 Reform Movement)."
+
+- id: court-atlas-ut-english-equity
+  substrate: L4_Deliverables/Strategy/Cross_Property_Consistency_Audit_2026-05-18.md
+  repo: src/content/court-atlas/ut.md
+  live_url: https://schooltrusts.net/court/atlas/ut/
+  signatures:
+    - "English equity"
+    - "Lord Hardwicke"
+    - "Charitable Uses"
+  notes: "v78 cross-property consistency bundle. Same Margaret Bird correction added to Atlas UT under the Notable AG opinions section."

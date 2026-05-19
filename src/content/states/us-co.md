@@ -5,7 +5,7 @@ iso: US-CO
 admissionNumber: 38
 admittedDate: 1876-08-01
 eraCohort: 5
-eraName: Reconstruction and the Western Stack
+eraName: "2-Section Cohort"
 federalGrantAcres: 3685618
 governanceForm: "Five-member State Board of Land Commissioners (constitutional, Article IX § 9 as amended by Amendment 16, 1996); members appointed by the Governor with Senate consent for staggered terms; constitutionally required composition includes representation for agriculture, local government, public education, and natural resources / wildlife."
 permanentFundCorpus:
