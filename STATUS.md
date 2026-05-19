@@ -30,7 +30,7 @@
 - `rm -rf .astro/ && npm run build` succeeded; 382 HTML pages emitted (up from 380, matching the +2 new Atlas dossiers); Pagefind indexed all.
 - Built-HTML grep checks: Reading MS has 0 occurrences of "Northwest Ordinance Template" and 4 of "1785 Land Ordinance section-16 reservation"; Reading MN renders the California-1853 attribution in 3 places; Reading WI's cohort widget reads "1-Section Cohort (LAST)"; Reading CA's reads "2-Section Cohort (FIRST)"; Atlas CA renders "FIRST" and "Breached" in the header/grade; Atlas WI renders "LAST" and "Intact and funded"; Atlas UT and Reading UT both render the "English equity" / "Lord Hardwicke" paragraph.
 
-**Commit SHA:** [filled in post-push]
+**Commit SHA:** `96424b4`
 
 ## Court Room — Phase 4 complete (2026-05-18 night)
 
