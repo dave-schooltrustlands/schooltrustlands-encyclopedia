@@ -27,7 +27,7 @@
 - `curl` against `http://localhost:8765/` returned 200 for `/court/`, `/court/lineage/`, `/court/case-file/`, and all five new case-annotation routes plus `/court/lineage/land-ordinance-1785/` and `/court/lineage/northwest-ordinance-1787/`.
 - Grep checks: "doctrinal floor on which the entire American school-trust regime stands" found in `/court/lineage/land-ordinance-1785/`; "did not grant land," "declaration," "philosophical floor" all found in `/court/lineage/northwest-ordinance-1787/`; "Note on this lineage," "How to use this room," "Key precedents at a glance," "Live Oregon docket," "January 28, 2026" all rendered.
 
-**Commit SHA:** pending push
+**Commit SHA:** `2ccde5f`
 
 ## v74 — Atlas state-dossier wave: Margaret Bird UT/SD/MN/NE (2026-05-18 night)
 
