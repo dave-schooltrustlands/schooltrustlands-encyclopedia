@@ -35,6 +35,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <summary>Daily detail</summary>
         <ul>
           <li>
+            <strong>Wednesday May 20, 2026 — Site update v84.1: Signup-form
+            sweep onto the v84 three-checkbox UX (ASTL + OASTL).</strong>
+            Follow-up to v84, which built a new <code>NewsroomSubscribeForm</code>
+            component for <code>/newsroom/</code> on both advocacy sites
+            (three cadence checkboxes — weekly news edition, monthly summary,
+            or both — POSTing to the <code>/api/newsroom-subscribe</code>
+            Cloudflare Pages Function with a per-surface <code>source</code>
+            tag for Buttondown segmentation). The v84 handoff was scoped
+            specifically to <code>/newsroom/</code>; v84.1 sweeps the older
+            single-subscribe forms living elsewhere onto the same component.
+            On ASTL the heavy lift had already landed in commit <code>5b774b9</code>
+            (<em>NewsletterSignup</em> deleted, <code>BaseLayout</code> swapped to
+            <code>NewsroomSubscribeForm</code> with <code>source="astl-footer"</code>,
+            props widened so a single component serves every surface). Two
+            follow-ups remained and landed in this sweep: the
+            "Already subscribed? Manage your preferences →" link was pointing
+            at <code>buttondown.email/schooltrustlands/account</code>, which
+            returns Buttondown's "Not found" page — both because the slug is
+            wrong and because Buttondown does not expose a shared subscriber
+            self-service URL at all (each subscriber's manage link is unique
+            and lives in the per-email footer). The broken link was replaced
+            with honest informational text, no hyperlink: <em>"Already
+            subscribed? Manage your subscription via the link at the bottom of
+            any Newsroom email."</em> And the <code>/newsroom/</code> page's
+            <code>source="astl"</code> was normalized to
+            <code>source="astl-newsroom"</code> for consistency with the v84.1
+            source-tag inventory. On OASTL the only newsletter signup surface
+            is <code>/newsroom/</code> (footer is a contact/citation block;
+            donate and briefing-room pages carry no signup form); prop parity
+            had already landed in <code>b2e3f22</code>, and the same broken
+            Manage link was dropped in this sweep. ASTL commit
+            <code>fcda1c4</code> deployed live via Cloudflare Pages and
+            verified — home page footer, <code>/press-room/</code>,
+            and <code>/newsroom/</code> all render the three-checkbox form
+            with the corrected manage-link copy. OASTL commit
+            <code>bd06b0a</code> pushed but the Worker still needs
+            <code>npx wrangler deploy</code> with
+            <code>CLOUDFLARE_API_TOKEN</code> set — flagged as a manual
+            follow-up in the run report.
+          </li>
+          <li>
             <strong>Tuesday May 19, 2026 — Site update v85.3: Oregon
             standing-ruling framing sweep (OASTL + ASTL).</strong>
             Dave caught the OASTL Legal Desk's Section 1 paragraph still
