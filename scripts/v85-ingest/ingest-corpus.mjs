@@ -242,17 +242,20 @@ async function main() {
     }
     const chunks = chunkText(text);
     const rows = [];
+    let chunkIndex = 0;
     for (const chunk of chunks) {
       try {
         const embedding = await embed(chunk);
         rows.push({
           chunk_text: chunk,
+          chunk_index: chunkIndex,
           embedding,
           source_url: src.url,
           source_title: src.title,
           source_room: property,
           corpus: property,
         });
+        chunkIndex++;
       } catch (err) {
         console.error(`[embed-fail] ${src.file}: ${err.message}`);
       }
