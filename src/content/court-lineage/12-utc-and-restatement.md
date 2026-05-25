@@ -1,7 +1,7 @@
 ---
 title: "The Uniform Trust Code and the Restatement (Third) of Trusts"
 year: "2000→"
-order: 12
+order: 14
 summary: "Codified duties — loyalty, prudence, impartiality, productivity, permanence, accounting — supply the doctrinal vocabulary against which modern state-trustee performance is now measured."
 ---
 

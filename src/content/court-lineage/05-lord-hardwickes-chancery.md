@@ -1,7 +1,7 @@
 ---
 title: "Lord Hardwicke's Chancery"
 year: "1737–1756"
-order: 5
+order: 6
 summary: "Across nearly twenty years on the bench, Philip Yorke turns the Chancery into a working body of fiduciary doctrine — duty of loyalty, duty of prudence, prohibition on self-dealing, accountability."
 ---
 

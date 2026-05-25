@@ -10,7 +10,7 @@ import PrepublicationFooter from '../../components/PrepublicationFooter.astro';
   <head>
     <BaseHead
       title="How This Library Works · America's School Trust Library"
-      description="The Library's knowledge architecture and the contribution loop, in two posters and a few hundred words."
+      description="How America's School Trust Library verifies its citations, propagates changes across documents, preserves prior versions, accepts submissions, and assigns roles to participants."
     />
   </head>
   <body class="min-h-screen bg-archive-paper text-ink mode-library" data-source-id="about-how-this-works">
@@ -20,120 +20,216 @@ import PrepublicationFooter from '../../components/PrepublicationFooter.astro';
       <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
         <h1>How This Library Works</h1>
 
+        <h2>Changes</h2>
+
+        <table class="text-sm">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Date</th>
+              <th>Change</th>
+              <th>Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>v1</td>
+              <td>2026-05-06</td>
+              <td>Initial draft — two-poster methodology page covering knowledge architecture and contribution loop. <a href="/about/how-this-works/v1/">Archived</a>.</td>
+              <td>Editorial team</td>
+            </tr>
+            <tr>
+              <td>v2</td>
+              <td>2026-05-24</td>
+              <td>Expanded into canonical doctrine — added explicit verification protocol, propagation system, version permanence commitment, submission pathway, and participant roles; preserved v1 architecture and contribution sections.</td>
+              <td>Editorial team</td>
+            </tr>
+          </tbody>
+        </table>
+
         <p>
-          America's School Trust Library is unusual among libraries. It is built on a five-layer knowledge architecture that turns scattered primary sources — statutes, court opinions, agency reports, period newspapers, oral histories, expert declarations — into the essays, dossiers, and reference works visitors read. Every claim cites its source. Every figure has an anchor. The architecture is the same whether the visitor is a school-board member preparing for a vote, a journalist on the education beat, an attorney looking for case law, or a student writing a term paper.
+          America's School Trust Library is unusual among libraries. It is built on an architecture that turns scattered primary sources — statutes, court opinions, agency reports, historical maps, period newspapers, oral histories, expert declarations — into the essays, dossiers, and reference works visitors read. Every claim cites its source. Every figure has an anchor. The architecture is the same whether the visitor is a school-board member preparing for a vote, a journalist on the education beat, an attorney looking for case law, or a student writing a term paper.
         </p>
 
         <p>
-          This page exists because a few visitors will want to know how the Library actually works — how a primary source becomes a Reading Room essay, how a state correspondent's note becomes a Newsroom item, how a state Department of Lands staff member's correction makes its way back into the substrate. Two posters answer the question. The first shows the architecture as it stands at any given moment. The second shows how material moves through it over time.
+          This page exists because some visitors will reasonably want to know how the Library actually works — how a court opinion becomes a cited line in a Reading Room essay, how a state correspondent's note becomes a Newsroom item, how a state Department of Lands staff member's correction makes its way into the published record. The page is long because the answers matter. Subheads make it scannable.
         </p>
 
         <h2>Why now</h2>
 
         <p>
-          Three things became true at once. None of them was true a decade ago.
+          Three things are true at once. First, school-trust litigation is moving in several states after decades of dormancy, and the people who need this evidence — counsel, board members, journalists, legislators, parents — have nowhere consolidated to find it. Second, the artificial-intelligence tools that finally make it possible to build a national reference library at small-team scale are mature enough this year to do the work, and not so mature that there is yet a standard of practice for how to use them responsibly in evidentiary writing. Third, a handful of people with the domain knowledge, the institutional memory, and the will to do it are alive and willing. The Library exists in the brief window where all three are true together.
         </p>
 
         <p>
-          A comprehensive, cross-jurisdictional, cross-decade analysis of how school trusts fail — gradual drift and sudden seizure both — became possible for the first time, carried by a partnership between human judgment and frontier AI models doing the synthetic load that no scholarly team had ever taken on.
+          That timing is also why this page is written the way it is. A visitor who has watched recent AI-generated content devalue what they read will reasonably want to know whether anything published here can be trusted. The honest defense is not assertion but protocol. What follows is the protocol, with the means to verify it independently.
+        </p>
+
+        <h2 id="four-layers">The four layers in plain language</h2>
+
+        <p>
+          The Library has four working layers. None of them is exotic; the discipline is in keeping them separate and tracing claims through them.
         </p>
 
         <p>
-          The architects of the next fiduciary era — AI Targeting Authorities, perpetual climate trusts, sovereign wealth for the unborn, longevity escrows, compute reserves — are at their drafting tables now. The school-trust corpus is the only multi-generational record long enough to teach the lessons that hold, and the lessons must reach the architects while the charters are still drafts.
+          <strong>Primary sources.</strong> The evidentiary floor: statutes, court opinions, agency annual reports, historical maps, expert declarations, period newspapers, oral histories. Nothing is altered here. Sources are catalogued, dated, and never edited. When the source is a scanned signed opinion, the text is OCR'd from the signed image and the image itself is preserved alongside the searchable text, so any visitor can check the conversion.
         </p>
 
         <p>
-          The Library's architecture — the Knowledge Stack, the named offices, the public stewardship pattern — is itself part of the contribution. The pages that follow show how it is built.
+          <strong>Canonical claims.</strong> Each settled fact, figure, or doctrinal proposition is atomized into its own record and cited back to one or more primary sources. The same claim can appear in many published works, but it lives in one place. When new evidence arrives, the claim updates and every downstream document that uses it inherits the update.
         </p>
 
-        <h2 id="substrate">The knowledge architecture</h2>
+        <p>
+          <strong>Finished documents.</strong> What you see when you visit the Library: the Reading Room essays, the per-state dossiers, the Atlas Room, the Counting House, the Map Room, the Newsroom entries, the Voices section, the books. Everything cites back through the canonical claims to the primary sources, so a visitor can always trace a claim to its origin.
+        </p>
+
+        <p>
+          <strong>Public surfaces.</strong> The websites and printed books through which finished documents reach readers. The same finished document may render as a web page on the Library, a printed chapter in <em>Schools of the Republic</em>, a Newsroom email, and a one-page handout for a board meeting. The text is the same; the presentation is fitted to the reader.
+        </p>
+
+        <p>
+          A claim moves through the four layers like this. A primary source enters at the bottom — say, a 2026 court opinion. An editor reads it, identifies the propositions it establishes or modifies, and either creates a new canonical claim or updates an existing one with a paragraph-level citation back to the opinion. Finished documents that depend on the affected claim are reviewed and revised. The revised documents are republished to the public surfaces. The path is short by design; long enough to enforce discipline, short enough to be auditable.
+        </p>
 
         <figure>
           <img
             src="/images/about/library-knowledge-architecture.png"
-            alt="The Library's knowledge architecture — five layers from primary sources at the bottom to the published essays, dossiers, and reference works at the top."
+            alt="The Library's knowledge architecture — four working layers from primary sources at the bottom to the published essays, dossiers, and reference works at the top."
             loading="lazy"
           />
-          <figcaption>The Library's knowledge architecture — five layers from primary sources at the bottom to the published essays, dossiers, and reference works at the top.</figcaption>
+          <figcaption>The Library's knowledge architecture — four working layers from primary sources at the bottom to the published essays, dossiers, and reference works at the top.</figcaption>
         </figure>
 
+        <h2 id="architecture-at-work">The architecture at work</h2>
+
         <p>
-          The architecture has five layers. At the bottom, <strong>L0 — Primary Sources</strong> holds the evidentiary floor: statutes, court opinions, agency annual reports, historical maps, expert declarations, period newspapers, oral histories. Nothing is altered here; sources are catalogued, dated, and never edited.
+          A library has two sides. One is the standing collection — what is held, organized, and ready to be read at any moment. The other is the work of building, correcting, and extending the collection over time. The poster above shows the architecture at rest. The work side has its own structure.
         </p>
 
         <p>
-          <strong>L1 — Canonical Claims</strong> sits above. Each claim — a settled fact, a figure, a doctrinal proposition — is atomized into its own record and cited to L0. The same claim can appear in many published deliverables, but it lives in one place. When new evidence arrives, the canonical claim updates and every deliverable that uses it inherits the update.
+          The crew that does the work is small. A library does no work; a crew does. Six stations stand on the deck — primary-source ingestion, canonical-claim curation, editorial drafting, citation verification, propagation tracking, and public publication. The same person may stand at several stations, but each station has a named editor of record. No published claim has been generated without a human at the verification station passing it.
         </p>
 
         <p>
-          <strong>L2 — Audience Models</strong> is where the same substrate is rendered for different readers. A general-public reader looking at the <em>Eighth Anchor</em> essays gets a different rendering than an attorney researching the same trust doctrine. The substrate is one; the audience-specific rendering is many.
+          The persistent-memory note matters here. AI editorial tools have no working memory between sessions. The crew supplies it: a project memory file, a session-status file, a written record of editorial decisions, and the change log on every finished document. The AI tools are good at fast reading, drafting, and cross-referencing; the human editors are good at judgment, voice, and the question of whether the work is honest. The institutional memory lives in writing and in the crew.
+        </p>
+
+        <h2 id="verification">How verification works</h2>
+
+        <p>
+          The most reasonable objection a first-time visitor will raise is whether the citations on this site are real. AI systems are known to invent plausible-sounding court opinions, statutes, and quotations that do not exist. The Library's protocol against that failure is explicit, and the defense is not "trust us" — it is "here is what we do, and here is how you can check."
         </p>
 
         <p>
-          <strong>L3 — Generation</strong> is the layer where the rendering happens. AI editorial passes draft from L1 against L2 audience models; named human editors review, refine, and approve. The Library's editorial discipline lives here.
+          <strong>Every legal citation is pulled from CourtListener.</strong> CourtListener is the Free Law Project's open database of primary judicial opinions. Before any court case enters a finished document on the Library, the case has been located on CourtListener and the opinion text downloaded from there. The citation in the finished document — court, parties, year, reporter, paragraph — is taken from the opinion as filed, not paraphrased from a secondary description.
         </p>
 
         <p>
-          <strong>L4 — Deliverables</strong> is what you see when you visit the Library: the Reading Room essays, the per-state dossiers, the Atlas Room, the Counting House, the Map Room, the Newsroom entries, the Voices section. Everything cites back through L1 to L0, so a visitor can always trace a claim to its source.
+          <strong>Primary sources only.</strong> Quotations are taken from the source document itself, not from a treatise, news story, or AI summary describing the source. If a textbook says a court held X, we go to the court's opinion and confirm that the court actually held X before citing it. Secondary descriptions are useful for orientation; they are never the citation.
         </p>
 
         <p>
-          The architecture's purpose is unromantic but load-bearing: it lets a small team produce evidentiary work at scale without losing the discipline that makes the work credible. Every page on this site is built this way.
-        </p>
-
-        <h3 id="architecture-at-work">The architecture at work</h3>
-
-        <p>
-          The first poster shows the architecture <em>at rest</em> — what the Library has, layer by layer. A balance sheet. The second poster, below, shows the architecture <em>at work</em> — what the crew is doing, day by day, to keep the work moving through it. An income statement. The same five layers carry both views.
-        </p>
-
-        <figure>
-          <img
-            src="/img/posters/knowledge-stack-at-work-poster-v2.png"
-            alt="The Knowledge Stack at work — six stations on the deck (Direction and Voice, Co-Author, Drafting and Substrate, Live-Site Operations, Parallel Research, Imagery and Visual Identity); the five-layer stack in the hold; a persistent-memory current beneath the hull; three outbound channels at the stern; and a feedback loop from the live site back to substrate."
-            loading="lazy"
-            width="1054"
-            height="1492"
-          />
-          <figcaption>
-            The Knowledge Stack as an operating watch: six stations on the deck, the five-layer stack in the hold, a persistent-memory current beneath the hull, three outbound channels at the stern, and a feedback loop from the live site back to substrate. <em>"An architecture does no work; a crew does."</em>
-          </figcaption>
-        </figure>
-
-        <figure>
-          <img
-            src="/img/posters/cowork-md-harness-v2.png"
-            alt="Cowork Architecture diagram showing six horizontal layers of the .md harness — Anthropic's system prompt, the project's CLAUDE.md, persistent memory files, current-state files, the Knowledge Stack, and the live publication surface — with an arc on the right showing how one weekly Newsroom issue threads all six layers."
-            loading="lazy"
-            width="1672"
-            height="941"
-          />
-          <figcaption>
-            <strong>Figure D — The Cowork Architecture.</strong>
-            The six-layer .md harness that holds the project across sessions and lets a frontier AI work as a long-horizon partner. Six layers, one act: each weekly Newsroom issue threads from the system foundation at the top, through the project-level working agreement, the persistent memory of working rules learned over time, the current-state files refreshed every session, the accumulated Knowledge Stack of substrate, and out to the live publication surface at <em>schooltrusts.net</em>.
-          </figcaption>
-        </figure>
-
-        <figure>
-          <img
-            src="/img/posters/library-spatial-blueprint-v1.png"
-            alt="A blueprint-style floor plan of the Library showing rooms arranged around a Great Hall lobby — Reading Room, Atlas, Map Room, Counting House, Newsroom, Voices, Updates, Pro Wing — with smaller hidden corners labeled Primary Sources Alcove, Scholarship Stack, and a Windowed Alcove. A right-side legend explains four interaction types: hidden gem, adjacent room, clickable hotspot, and wandering path. Dotted lines indicate example wandering routes between rooms."
-            loading="lazy"
-            width="1672"
-            height="941"
-          />
-          <figcaption>
-            <strong>Figure E — How visitors might explore the library by wandering.</strong>
-            A design blueprint for a future spatial-discovery layer of the Library. The floor plan above sketches the experience — rooms with doorways and corners, adjacent spaces that invite further exploration, hidden gems for the curious reader. The interface itself is on the design slate for Q3 2026; the current navigation is the standard menu at the top of every page. This poster is the architect's sketch of where we mean to take the Library next.
-          </figcaption>
-        </figure>
-
-        <p>
-          Six stations stand on the deck. <strong>Direction and Voice</strong> is the founder's seat — the editorial and strategic decisions that set what the Library is for. <strong>Co-Author</strong> is the named human collaborator whose review every Margaret-voiced or jointly-authored deliverable passes through. <strong>Drafting and Substrate</strong> is the AI-assisted synthetic load that holds the working context across the Library's many open files. <strong>Live-Site Operations</strong> publishes the substrate to the public surface readers visit. <strong>Parallel Research</strong> stress-tests arguments and verifies citations against independent sources. <strong>Imagery and Visual Identity</strong> produces the visual register the Library speaks in.
+          <strong>Paragraph-level anchoring.</strong> Every quoted passage or specific factual claim points to a specific paragraph in the underlying source. A reader who follows a footnote should be able to land on the same sentence the writer was looking at. Document-level citations ("see <em>Lassen v. Arizona ex rel. Arizona Highway Department</em>, 385 U.S. 458") are not enough on their own when the claim is specific.
         </p>
 
         <p>
-          Beneath the hull runs the feature that makes the rest of the architecture possible: <strong>persistent memory</strong>. Each station's work survives into the next session. The framers of 1785 could not draw that current at all; a small team in 2026 can. That is the cognitive-technology shift the Library is built on, and it is the same shift the next-generation architects of forever-trusts will need to engineer for.
+          <strong>OCR from signed opinions.</strong> When the underlying source is a scanned PDF of a signed court opinion or a historical document, the text used in the Library is OCR'd from the signed image, and the image is preserved alongside the searchable text. A visitor who suspects a transcription error can compare the two.
+        </p>
+
+        <p>
+          <strong>Nothing speculative.</strong> AI editorial assistance is used for drafting, structuring, and cross-referencing. It is not used to assert facts the editorial team has not confirmed against a primary source. If a passage would require a citation to support it and no source has been located, the passage is removed or marked unsupported. The Library does not file a claim into the record on the strength of an AI tool's general knowledge.
+        </p>
+
+        <p>
+          <strong>You can verify any citation yourself.</strong> Every finished document on the Library includes the citations needed to retrieve the underlying source. CourtListener is open to the public. Statutes are at the relevant state legislature's website or the federal code. Agency reports are at the agency. The Library's editorial discipline is checkable from outside.
+        </p>
+
+        <p>
+          The protocol is not exotic. It is what careful legal scholarship has always required. What is new is the willingness to write it down, publish it, and invite visitors to test it. The submission pathway described below is how a visitor who finds a citation that does not check out tells us, and how we correct it on the record.
+        </p>
+
+        <h2 id="propagation">How information enters and moves through the Library</h2>
+
+        <p>
+          When a new primary source enters the collection, the work is not finished — it is just beginning. A single new court opinion may bear on a dozen existing finished documents: a state dossier, three Reading Room essays, a Newsroom item from two months ago, a chapter in a book, a legislative primer. If the new source corrects or extends what those documents say, every one of them needs to be reviewed.
+        </p>
+
+        <p>
+          To make sure that review happens, an automatic check runs whenever a new primary source is added. The check looks across the existing collection for documents that cite, reference, or might be affected by the new material, and produces a list — a propagation log — of every document that should be evaluated. The log is kept in the open. Each entry records the new source, the documents flagged for review, and what was done (updated, reviewed and confirmed still accurate, or set aside with a note explaining why).
+        </p>
+
+        <p>
+          The same check runs in the other direction. When a finished document is corrected or extended, the propagation log records what changed and which other documents may inherit the change. This is how a correction made in one place does not silently leave a contradiction in another. The log is the record we keep to show the work.
+        </p>
+
+        <p>
+          The cadence is weekly. Outstanding items in the log are reviewed, worked through, and the public "Building the Library" page is updated with what was done. Nothing is automated to the point of being unsupervised — the check produces the list; the named editor does the review.
+        </p>
+
+        <h2 id="versions">Versions and change history</h2>
+
+        <p>
+          Every finished document on the Library carries a version number and a change log. The change log is at the top of the document, immediately after the title. It records each version, the date of publication, what changed in that version, and who made the change. New versions append rows; old rows are never edited or removed.
+        </p>
+
+        <p>
+          The version history matters because the Library is built to be cited. A law-review article published in 2027 that cites a 2026 Reading Room essay needs the 2026 essay to remain findable, at its original URL, in the form it had when cited. Scholarly and legal citation depend on the cited document staying put. The Library's commitment is that prior versions of any finished document remain accessible at stable URLs indefinitely. A reader who wants the May 2026 version of <em>Schools of the Republic</em> will find it at its May 2026 address even after later versions ship.
+        </p>
+
+        <p>
+          Corrections are dated. The Library does not silently overwrite its record of what it once said. If a finished document made a factual error in version 1 and version 2 corrects it, the change log on version 2 records that the error was made, when, and how it was corrected. Version 1 remains accessible. A visitor curious about the institution's history of mistakes can read it.
+        </p>
+
+        <p>
+          This is not standard practice for websites, which tend to overwrite quietly and lose their history. It is standard practice for institutions that expect to be cited across time. The Library is built for that case.
+        </p>
+
+        <h2 id="submit">How to submit something or propose a correction</h2>
+
+        <p>
+          The Library is built to grow, and the work of growing it is partly the responsibility of readers who know something the editors do not. There are two things the Library accepts: primary-source documents related to school trust lands, and factual corrections to existing finished documents.
+        </p>
+
+        <p>
+          <strong>What we accept.</strong> Primary sources — old land patents, historical agency reports, board minutes, period newspapers, deeds, court filings, oral histories, photographs of trust land, agency correspondence — that bear on the school trust lands of any of the roughly twenty states that received federal land grants for school support. Factual corrections to anything published on the Library, with the underlying source identified so we can verify and correct on the record.
+        </p>
+
+        <p>
+          <strong>What we do not accept through this channel.</strong> Op-eds, unsolicited analytical essays, opinion pieces, or proposals for new framings. The Library is an evidentiary collection. Original analysis enters through the editorial process, not through reader submissions. Writers who want to contribute analytical work should reach out to the editorial office directly to discuss.
+        </p>
+
+        <p>
+          <strong>The pathway.</strong> Submissions arrive through the submission form on this site. Each submission is routed into editorial intake, reviewed by a named editor, and either incorporated, declined with reasons, or set aside with a note. If incorporated, the propagation check described above runs across the collection, and any finished documents affected are updated. The submission, the editorial decision, and the resulting changes are recorded in the log.
+        </p>
+
+        <p>
+          <strong>Our commitment.</strong> We acknowledge every submission within seven days. We incorporate, decline with reasons, or place under continuing review within thirty days. If a submission requires longer evaluation — for example, a primary source whose provenance needs to be checked through an archive — we say so explicitly and give an expected timeline. We do not let submissions disappear silently into a queue.
+        </p>
+
+        <p>
+          <strong>What happens after.</strong> If the submission is incorporated, the contributor is named in the contributor record at the end of the affected document and in the public stewardship ledger. If the contributor prefers anonymity, that is honored. If the submission is declined, the contributor receives an explanation. The pathway is public and the decisions are recorded.
+        </p>
+
+        <h2 id="roles">Roles for participants</h2>
+
+        <p>
+          People can take part in the Library in three named ways. Each has a different level of commitment and a different point of contact.
+        </p>
+
+        <p>
+          <strong>Submitter.</strong> Anyone may send a primary-source document or propose a correction to existing material. The submitter role requires no credentials, no ongoing commitment, and no prior relationship with the Library. A school-board member who notices a date error in their state's dossier, a retired teacher who has a 1923 board minute in a desk drawer, a graduate student who has tracked down an obscure historical map — all are submitters. Use the submission form. The Library handles the rest.
+        </p>
+
+        <p>
+          <strong>Cited author.</strong> If your published work — book, article, report, declaration — is cited on the Library, we want to verify the citation is accurate and used as you intended. If you would like to review how your work is cited, the editorial office will send you the relevant excerpts and the surrounding context, and any clarification you offer will be incorporated on the record. This is not a request for permission; it is an offer to be checked. Cited authors who notice a citation we missed are also welcome to send it in through the submission form.
+        </p>
+
+        <p>
+          <strong>Validator.</strong> Credentialed reviewers — legal scholars in school-trust or fiduciary law, historians of public-lands policy, state-chapter advocates with deep state-specific knowledge — who agree to review specific finished documents before they enter the canonical version. The validator role is by invitation and ongoing relationship. If you would consider taking on validator responsibility in your area of expertise, contact the editorial office directly. This program is being built deliberately as the Library finds its first validators.
+        </p>
+
+        <p>
+          Three forthcoming structural roles — Document Contribution Desk, State Correspondent, State Co-Librarian — sit alongside the three participant roles above and will open for applications as the institutional infrastructure is ready.
         </p>
 
         <h2>The contribution loop</h2>
@@ -141,103 +237,72 @@ import PrepublicationFooter from '../../components/PrepublicationFooter.astro';
         <figure>
           <img
             src="/images/about/library-contribution-loop.png"
-            alt="The Library's contribution loop — inputs flow through intake and editorial review into the knowledge stack and out to published surfaces, with readers cycling back as future contributors."
+            alt="The Library's contribution loop — inputs flow through intake and editorial review into the architecture and out to published surfaces, with readers cycling back as future contributors."
             loading="lazy"
           />
-          <figcaption>The Library's contribution loop — inputs flow through intake and editorial review into the knowledge stack and out to published surfaces, with readers cycling back as future contributors.</figcaption>
+          <figcaption>The Library's contribution loop — inputs flow through intake and editorial review into the architecture and out to published surfaces, with readers cycling back as future contributors.</figcaption>
         </figure>
 
         <p>
-          The first poster shows the architecture standing still. The second shows how material moves through it. The flow has four phases:
+          The architecture above shows what is held. The poster above shows how material moves through it. The flow has four phases.
         </p>
 
         <p>
-          <strong>Inputs.</strong> Material enters the Library from several sources: scheduled surveillance tasks (the Newsroom's weekly scrape of state agency websites, legislative information systems, court dockets, regional press); state co-librarians (forthcoming — drawn primarily from State Departments of Lands and equivalent agencies, taking responsibility for their state's page); document contributors who hold primary sources in private hands (old land patents, historical agency reports, family archives); and ongoing direct ingestion of statutes, court opinions, and other public records.
+          <strong>Inputs.</strong> Material enters the Library from several sources: scheduled surveillance tasks (the Newsroom's weekly scan of state agency websites, legislative information systems, court dockets, regional press); state co-librarians (forthcoming — drawn primarily from State Departments of Lands and equivalent agencies, taking responsibility for their state's page); document contributors who hold primary sources in private hands; and ongoing direct ingestion of statutes, court opinions, and other public records.
         </p>
 
         <p>
-          <strong>Intake and editorial review.</strong> New material is triaged, classified by layer (primary source / canonical claim / privileged / off-topic), checked for duplicates, and routed. The editorial pass that follows is AI-assisted but human-supervised: every published claim has been reviewed and approved by a named editor.
+          <strong>Intake and editorial review.</strong> New material is triaged, classified by layer, checked for duplicates, and routed. The editorial pass that follows is AI-assisted but human-supervised: every published claim has been reviewed and approved by a named editor against the underlying primary source.
         </p>
 
         <p>
-          <strong>Substrate update.</strong> Approved material updates the appropriate layer. New primary sources may produce new canonical claims, which may refresh deliverables that depended on the old claims.
+          <strong>Update.</strong> Approved material updates the appropriate layer. New primary sources may produce new canonical claims, which may refresh finished documents that depended on the old claims — the propagation check described above is how that happens reliably.
         </p>
 
         <p>
-          <strong>Published surfaces.</strong> Updated content reaches readers through the Library's rooms — the Reading Room, the Atlas, the Counting House, the Map Room, the Newsroom, Voices.
+          <strong>Published surfaces.</strong> Updated content reaches readers through the Library's rooms — the Reading Room, the Atlas, the Counting House, the Map Room, the Newsroom, Voices — and through the printed books.
         </p>
 
         <p>
-          The loop closes when readers become contributors. A school-board member who reads the Library's per-state dossier and corrects a date becomes part of the substrate. A retired teacher who shares a 1923 board minute moves the primary-source floor by one entry. A state Department of Lands staff member who agrees to take co-librarian responsibility for their state changes the <em>standing</em> of the substrate, not just its contents. The Library does not have an audience and a staff. It has a constituency that is partly inside and partly outside the institutional wall, and the wall itself is permeable by design.
+          The loop closes when readers become contributors. A school-board member who corrects a date in a state dossier becomes part of the record. A retired teacher who shares a 1923 board minute moves the evidentiary floor by one entry. A state Department of Lands staff member who takes co-librarian responsibility for their state's page changes the standing of the collection, not just its contents. The Library does not have an audience and a staff. It has a constituency that is partly inside and partly outside the institutional wall, and the wall itself is permeable by design.
         </p>
 
-        <h2>How to take part</h2>
+        <h2 id="constituency">How the constituency gets built</h2>
 
         <p>
-          Most visitors come to the Library to read what's been published. That's the point of a library. But the Library was built to grow, and the contribution loop above is the operational architecture of that growth.
-        </p>
-
-        <p>
-          If you have a primary source — a historical document, a state agency report, a board minute, a period newspaper clipping, a deed — that bears on the school trust lands, the Document Contribution Desk (forthcoming) is where it goes. If you would like to monitor your state's trust-land administration as a state correspondent — watching legislative bills, board meetings, fund distributions, litigation — the State Correspondent program (forthcoming) is the formal vehicle. If you work in your state's Department of Lands or an equivalent agency and would consider taking co-librarian responsibility for your state's Library page, the State Co-Librarian program (forthcoming) is the role we'd most like to recruit you for.
+          Margaret Bird, who has spent four decades in school-trust administration, tells a story about Utah. When the state's school trust began publishing what each school received from its trust-lands distribution — naming the school, the principal, the amount, the year — the engaged constituency for the trust grew thirtyfold. The trust had not changed. The land had not changed. What changed was that people could see their own school named, their own principal named, the dollars that arrived because the trust existed. Recognition produced constituency. Constituency produced defense.
         </p>
 
         <p>
-          Until those programs launch (in the weeks ahead), readers who'd like to be notified when they do can register interest through the Library card (also forthcoming) or contact the Library's editorial office. The Library is in its first year of operation. The institutional infrastructure for the contribution loop is being built openly, so the people who will eventually use it can shape it as it forms.
-        </p>
-
-        <h2 id="watchful-crew-mechanism">How the constituency gets built</h2>
-
-        <p>
-          A trust that needs to last for centuries cannot rely on the people who started it. The founders die. The first generation of trustees retires. The second generation's children hear about the trust from history class instead of from kitchen-table conversation. Without a community that treats the trust as theirs across generations, the architecture drifts — slowly, then suddenly — until the corpus is gone.
+          The Library is built on the same mechanism. Every finished document names its contributors. Every cited author appears in the document where they are cited. Every state correspondent and co-librarian is named on the state page they keep. Every submitter who supplies a primary source is named in the contributor record. The public stewardship ledger collects these names so a visitor can see who built what.
         </p>
 
         <p>
-          Margaret Bird, who led Utah's school-trust reform from a $5 million annual program to a $150 million annual program — thirty times the original amount — names the mechanism that builds such a community. Her words, from a 2025 interview:
-        </p>
-
-        <blockquote>
-          <p>
-            Increase the revenue to schools, get it directly to every single school where the parents, the teachers, and the principal are deciding how the money is implemented. And all of a sudden, you have built a huge constituency.
-          </p>
-          <p class="not-italic text-sm text-slate-600">
-            — Margaret Bird, in her own voice
-          </p>
-        </blockquote>
-
-        <p>
-          The mechanism is one causal chain: route consequential decisions to the local sites where deliberation already happens; let the deliberation produce an artifact (an allocation, a verified fact, a published account) that bears the deliberator's name; recognize the artifact in a public record; and through that loop, the deliberators become a constituency that defends the trust politically. Skip any link and the chain breaks. Centralize allocation rather than routing it to local deliberation, and the constituency disperses; the corpus rots quietly because no one downstream of the central allocation has personal investment in defending it.
-        </p>
-
-        <p>
-          Utah's school community councils — roughly 9,000 parents, teachers, and principals deliberating, school by school, over how their share of the trust income gets used — are what the mechanism looks like in operation. The councils are not a marketing tool or a participation theater. They are the deliberation sites the trust revenue is routed <em>to</em>. The councils' decisions accumulate into local stewardship; the local stewardship accumulates into a state constituency; the state constituency defends the trust when the architecture is later attacked. The thirty-times revenue growth is the visible outcome. The constituency that protected the architecture <em>while</em> the revenue grew is the cause.
-        </p>
-
-        <p>
-          The Library applies the same mechanism in its own institutional form. Consequential editorial work — verifying a state's enabling-act citation, transcribing a historical revenue table, curating a state's documentary record, writing the weekly Newsroom note — gets routed to named contributors who decide what to do at their site. Each artifact carries a byline. Each byline writes the contributor into the public stewardship ledger at <a href="/the-watchful-crew/">/the-watchful-crew/</a>. The watchful crew is the cumulative record of those routings.
-        </p>
-
-        <p>
-          This is not a metaphor. It is the same mechanism, scaled to the institution that exists to remember the school-trust experiment for the next generation of trust architects. <em>Route → deliberate → produce → recognize → constituency → defense.</em> If the chain holds, the Library will outlast its founders.
+          The reason is not flattery; it is institutional design. A library that names its people produces people who defend it. A library that does not produces people who pass through.
         </p>
 
         <h2 id="methodology">Editorial methodology and AI-assistance disclosure</h2>
 
         <p>
-          The Library's day-to-day editorial work is supported by AI assistance under the supervision of named human editors. The named founders — Dave Sullivan and Margaret Bird — and, where the work touches active matters, the litigation team carry editor-of-record responsibility. AI collaborators (Claude, ChatGPT, Gemini, Grok, used in combination as the work requires) carry the synthetic load that no small scholarly team could carry alone: reading across hundreds of statutes and thousands of pages of case law, drafting from the canonical-claims layer against the audience-model files, and producing the renderings a single reader sees as a finished essay.
+          The editorial team of record is Dave Sullivan and the OASTL litigation team, with substantive scholarly review by Margaret Bird on materials related to <em>Schools of the Republic</em> and the broader trust-lands record. The AI editorial collaborators are named: Claude (Anthropic), ChatGPT (OpenAI), Gemini (Google), and Grok (xAI). Each is used for drafting, cross-referencing, comparison across jurisdictions, and structural editing. None of them files a claim into the record without a human editor's verification against a primary source.
         </p>
 
         <p>
-          Every AI-primary deliverable carries an explicit AI-authorship line that names the human editor of record and the AI collaborator(s) used in the synthesis. Citations are author-verified: the AI does not file claims into the substrate that a human editor has not checked against the primary source. When an error is found — by a reader, a state correspondent, a co-librarian, or the editorial office's own re-reads — the canonical claim is corrected at the canonical-claims layer and every deliverable that depends on it inherits the correction on the next publication pass. Corrections are dated; the Library does not silently overwrite its record of what it once said.
+          Materials authored primarily by an AI editorial pass carry an authorship line indicating so. Materials where the AI assistance was structural or referential do not. The distinction is recorded honestly; it is not used to launder AI-drafted material as human-written.
         </p>
 
         <p>
-          The deliverables this methodology produces are the ones a visitor reads on these pages: <a href="/writing/eighth-anchor/"><em>The Eighth Anchor</em></a>, <a href="/writing/schools-of-the-republic/"><em>Schools of the Republic</em></a>, <a href="/reading/the-librarys-argument/">the Library's Argument</a>, the <a href="/newsroom/">Newsroom</a> entries, and the per-state work in the <a href="/atlas/">Atlas</a>, <a href="/counting/">Counting House</a>, and <a href="/maps/">Map Room</a>. The discipline is the same whether the reader is a school-board member, an appellate judge, an SLB trustee, a legislator, a journalist, or a student. Different audiences see different renderings; the substrate beneath the rendering is one.
+          Citations are verified by a human editor against the cited source before publication. Corrections are dated; the Library does not silently overwrite its record of what it once said. The change log on each finished document records the evolution. The propagation log records the cross-document work.
+        </p>
+
+        <p>
+          The Library is in its first year of operation. The infrastructure described above is being built openly. Some pieces — the propagation log, the submission form, the validator program, the public "Building the Library" page — are at different stages of maturity. The "Building the Library" page tracks status weekly and is the place to check the current state of each piece.
         </p>
 
         <hr class="archival-divider">
 
         <p class="text-sm text-slate-500">
-          <em>Last updated 2026-05-06. Posters drafted from the OASTL Knowledge Stack v2 architecture (April 2026); revised for the Library's purpose and audiences.</em>
+          <em>Last updated 2026-05-24. The architecture posters are drawn from the OASTL knowledge architecture (April 2026), revised for the Library's purpose and audiences. The archived v1 of this page is preserved at <a href="/about/how-this-works/v1/">/about/how-this-works/v1/</a>.</em>
         </p>
       </article>
     </main>

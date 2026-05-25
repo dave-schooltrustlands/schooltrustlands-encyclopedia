@@ -1,65 +1,47 @@
 ---
-title: An Ordinance for the Government of the Territory of the United States North-West of the River Ohio (Northwest Ordinance of 1787)
+title: An Ordinance for the Government of the Territory of the United States North-West of the River Ohio (Northwest Ordinance of 1787) — Article III
 author: The Confederation Congress
 era_cohort: Founding era (1785–1830)
 year: 1787
 length: ~10 pages
 register: Eighteenth-century legislative and constitutional prose
-date_curated: 2026-05-07
+date_curated: 2026-05-24
 curator: Library editorial team
 tier: Founders' Library — primary source (public domain)
 ---
 
-# An Ordinance for the Government of the Territory of the United States North-West of the River Ohio
+# An Ordinance for the Government of the Territory of the United States North-West of the River Ohio — Article III
 
-## Why this matters
+## What this is
 
-The Northwest Ordinance of 1787 is the second half of the school-trust foundation. Where the Land Ordinance of 1785 reserved the land, the Northwest Ordinance named the *purpose* — and named it in language that has been quoted in nearly every American constitution written since. Article III's sentence on schools and education is one of the most consequential single sentences in American public law. Together with the Section 16 reservation of 1785, the Ordinance forms the federal-grant pattern that flowed through every subsequent state admission. Reading it today is reading the original mandate against which the present condition of the school-trust lands has to be measured.
+The Northwest Ordinance of 1787 was adopted by the Confederation Congress on July 13, 1787 — two months before the Constitutional Convention completed its work in Philadelphia — to set the terms on which the territory north and west of the Ohio River would be governed and admitted to statehood. It is one of the foundational federal enactments of the American republic, predating the Constitution itself, and was re-enacted by the First Congress under the new constitutional structure by the Act of August 7, 1789 (1 Stat. 50). Article III contains the most-quoted sentence on the federal commitment to education in American public law — the textual root of the proposition that the federal government, in setting up the rule of admission for new states, made the support of schools a perpetual condition of statehood. The Library carries the operative Article III text as block quotation rather than paraphrase, because the wording is itself the doctrinal hinge.
 
-## What's in it
+## The operative text
 
-- Preamble — establishment of the Territory north and west of the Ohio.
-- Provisions for inheritance and conveyance of property — civil-law foundations.
-- Articles of Compact — the six articles, declared unalterable except by common consent.
-- Article I — religious liberty.
-- Article II — habeas corpus, jury trial, judicial proportionality, sanctity of contracts.
-- **Article III — religion, morality, knowledge; schools and the means of education; good faith toward the Indian tribes.**
-- Article IV — the Territory and its states to remain part of the Confederation; navigable waters common highways.
-- Article V — admission of new states (the path from territory to statehood).
-- Article VI — prohibition of slavery and involuntary servitude in the Territory.
+Article III of the Northwest Ordinance, in full:
 
-## Most-quoted passages
+> Religion, morality, and knowledge, being necessary to good government and the happiness of mankind, schools and the means of education shall forever be encouraged. The utmost good faith shall always be observed towards the Indians; their lands and property shall never be taken from them without their consent; and, in their property, rights, and liberty, they shall never be invaded or disturbed, unless in just and lawful wars authorized by Congress; but laws founded in justice and humanity, shall, from time to time, be made for preventing wrongs being done to them, and for preserving peace and friendship with them.
 
-> "Religion, morality, and knowledge, being necessary to good government and the happiness of mankind, schools and the means of education shall forever be encouraged."
+The framing of the six articles as compact, from the same enactment:
 
-This is the sentence. It pairs with the 1785 Section 16 reservation as the founding statement of why the land was set aside. The word "forever" is a temporal claim — the trust architecture is built to honor it. The clause does not say schools shall be funded if convenient, or so long as the purpose remains popular; it says they shall *forever* be encouraged. The Library's drift-of-purpose argument turns on the distance between that "forever" and present practice.
+> It is hereby ordained and declared by the authority aforesaid, That the following articles shall be considered as articles of compact between the original States and the people and States in the said territory, and forever remain unalterable, unless by common consent, to wit . . . .
 
-> "The said territory, and the States which may be formed therein, shall forever remain a part of this Confederacy of the United States of America, subject to the Articles of Confederation... The legislatures of those districts or new States, shall never interfere with the primary disposal of the soil by the United States in Congress assembled..."
+## Historical context
 
-The federal interest in the soil — including the school sections — is asserted in the Compact itself. The states-to-be are admitted *into* the federal land system, not in spite of it. This is the legal hinge by which the 1785 reservation reaches the new states.
-
-> "The utmost good faith shall always be observed towards the Indians; their lands and property shall never be taken from them without their consent; and, in their property, rights, and liberty, they never shall be invaded or disturbed..."
-
-The Library carries this clause without comment as well. The Ordinance's authors wrote a fiduciary obligation to the Indian nations into the same article that committed schools to be forever encouraged. Both promises are part of the founding compact; both have a history of compliance and breach.
-
-> "There shall be neither slavery nor involuntary servitude in the said territory, otherwise than in the punishment of crimes whereof the party shall have been duly convicted."
-
-Article VI, often called the first emancipation provision in American federal law. Included here because the Ordinance is best read whole; its school clause does not float free of its other provisions.
+The Confederation Congress sat in New York in the spring and summer of 1787 while the Constitutional Convention was meeting in Philadelphia. The Ordinance was the work of Nathan Dane (the operative drafter) and Manasseh Cutler (the lobbyist for the Ohio Company who pushed the bill to a vote), and it passed on July 13, 1787. The Articles of Compact that comprise the second half of the Ordinance — six in number, of which Article III is the educational and Indian-relations article — were declared by the text itself to be "forever unalterable, unless by common consent." When new states were later admitted from the Northwest Territory and beyond, the compact framework traveled with the territory: each state's enabling act treated the school commitment as a binding term of admission, not as a unilateral grant the state could later legislate around. The First Congress, sitting under the new Constitution, re-enacted the Ordinance on August 7, 1789 (1 Stat. 50) — direct evidence that the Founders themselves treated the compact as continuing federal law rather than as a Confederation-era artifact left behind.
 
 ## How it connects to the Library's argument
 
-The Library's frame — that the school-trust system is a fiduciary architecture set in motion in 1785 and 1787 and now drifting from its purpose — depends on the 1787 Ordinance for the *purpose* half of the architecture. The 1785 Ordinance reserved the corpus. The 1787 Ordinance named what the corpus was for. Read together, they form a complete instruction: this land, for these beneficiaries, in support of this end, forever.
+Article III supplies the educational-purpose half of the federal school-trust architecture; the Land Ordinance of 1785 supplies the corpus half (Section 16 of every surveyed township). Read together, they form a complete instruction: this land (1785), for these purposes (1787), forever. The word that does the constitutional work is "forever" — schools and the means of education are to be encouraged not subject to legislative reconsideration, not until convenient, not for so long as the new states should think it wise, but forever. The temporal commitment is what later courts read as the durational mandate of the trust. The Supreme Court in Trustees of Vincennes University v. Indiana (1852), in Cooper v. Roberts (1855), and in Andrus v. Utah (1980) all treat the federal school-grant framework as a bilateral compact whose terms a state cannot unilaterally alter. The textual source of that compact framing is the Ordinance's own self-classification of the articles as "forever unalterable, unless by common consent."
 
-Article III's "forever" is the trust's durational mandate. When states sell trust lands and consume the corpus, when income is diverted, when the "schools" of Article III are redefined into something Madison and Dane would not recognize, the institution drifts from its founding instruction. The drift is gradual; at no point does any official announce that the 1787 mandate has been abandoned. But the gap between Article III as written and the school-trust system as currently administered is the gap the Library exists to make visible.
+## Where to find it
 
-## How to engage
-
-- Full text (Avalon Project, Yale Law School): https://avalon.law.yale.edu/18th_century/nworder.asp
-- Library of Congress: https://www.loc.gov/resource/bdsdcc.22501/
-- National Archives, *Founders Online*: https://founders.archives.gov/
-- L0 substrate: `L0_Primary_Sources/Statutes/Northwest_Ordinance_1787.pdf`
+- Avalon Project, Yale Law School (canonical online text): https://avalon.law.yale.edu/18th_century/nworder.asp
+- National Archives, milestone document: https://www.archives.gov/milestone-documents/northwest-ordinance
+- Library of Congress (broadside scans): https://www.loc.gov/resource/bdsdcc.22501/
+- Source compilations: *Journals of the Continental Congress*, vol. 32, pp. 334–343 (1936); Charles C. Tansill, *Documents Illustrative of the Formation of the Union of the American States* (1927).
 - Submit a correction or annotation: /contribute/
 
 ## Curated by
 
-Library editorial team, 2026-05-07. This editorial summary is the Library's contribution and is open to community revision.
+Library editorial team, 2026-05-24. This editorial summary is the Library's contribution and is open to community revision.

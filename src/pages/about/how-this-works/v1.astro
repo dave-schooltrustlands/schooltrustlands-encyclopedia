@@ -1,0 +1,251 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import EAIUtilityBar from '../../../components/EAIUtilityBar.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import PrepublicationFooter from '../../../components/PrepublicationFooter.astro';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="How This Library Works (v1, archived) · America's School Trust Library"
+      description="Version 1 of the How This Library Works page (May 6 2026). The current canonical version is at /about/how-this-works/."
+    />
+  </head>
+  <body class="min-h-screen bg-archive-paper text-ink mode-library" data-source-id="about-how-this-works">
+    <EAIUtilityBar />
+    <Header />
+    <main class="mx-auto max-w-prose p-4 sm:p-8">
+      <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+        <h1>How This Library Works <span class="text-base font-normal text-slate-500">(v1, archived)</span></h1>
+
+        <aside class="rounded-md border border-slate-300 bg-slate-50 px-4 py-3 text-sm not-prose">
+          <p class="m-0"><strong>This is the archived v1 of the page</strong> (published 2026-05-06). The current canonical version — expanded to add an explicit verification protocol, propagation system, version-permanence commitment, submission pathway, and participant roles — is at <a href="/about/how-this-works/">/about/how-this-works/</a>. v1 is preserved at this URL so prior in-the-wild citations continue to resolve.</p>
+        </aside>
+
+        <p>
+          America's School Trust Library is unusual among libraries. It is built on a five-layer knowledge architecture that turns scattered primary sources — statutes, court opinions, agency reports, period newspapers, oral histories, expert declarations — into the essays, dossiers, and reference works visitors read. Every claim cites its source. Every figure has an anchor. The architecture is the same whether the visitor is a school-board member preparing for a vote, a journalist on the education beat, an attorney looking for case law, or a student writing a term paper.
+        </p>
+
+        <p>
+          This page exists because a few visitors will want to know how the Library actually works — how a primary source becomes a Reading Room essay, how a state correspondent's note becomes a Newsroom item, how a state Department of Lands staff member's correction makes its way back into the substrate. Two posters answer the question. The first shows the architecture as it stands at any given moment. The second shows how material moves through it over time.
+        </p>
+
+        <h2>Why now</h2>
+
+        <p>
+          Three things became true at once. None of them was true a decade ago.
+        </p>
+
+        <p>
+          A comprehensive, cross-jurisdictional, cross-decade analysis of how school trusts fail — gradual drift and sudden seizure both — became possible for the first time, carried by a partnership between human judgment and frontier AI models doing the synthetic load that no scholarly team had ever taken on.
+        </p>
+
+        <p>
+          The architects of the next fiduciary era — AI Targeting Authorities, perpetual climate trusts, sovereign wealth for the unborn, longevity escrows, compute reserves — are at their drafting tables now. The school-trust corpus is the only multi-generational record long enough to teach the lessons that hold, and the lessons must reach the architects while the charters are still drafts.
+        </p>
+
+        <p>
+          The Library's architecture — the Knowledge Stack, the named offices, the public stewardship pattern — is itself part of the contribution. The pages that follow show how it is built.
+        </p>
+
+        <h2 id="substrate">The knowledge architecture</h2>
+
+        <figure>
+          <img
+            src="/images/about/library-knowledge-architecture.png"
+            alt="The Library's knowledge architecture — five layers from primary sources at the bottom to the published essays, dossiers, and reference works at the top."
+            loading="lazy"
+          />
+          <figcaption>The Library's knowledge architecture — five layers from primary sources at the bottom to the published essays, dossiers, and reference works at the top.</figcaption>
+        </figure>
+
+        <p>
+          The architecture has five layers. At the bottom, <strong>L0 — Primary Sources</strong> holds the evidentiary floor: statutes, court opinions, agency annual reports, historical maps, expert declarations, period newspapers, oral histories. Nothing is altered here; sources are catalogued, dated, and never edited.
+        </p>
+
+        <p>
+          <strong>L1 — Canonical Claims</strong> sits above. Each claim — a settled fact, a figure, a doctrinal proposition — is atomized into its own record and cited to L0. The same claim can appear in many published deliverables, but it lives in one place. When new evidence arrives, the canonical claim updates and every deliverable that uses it inherits the update.
+        </p>
+
+        <p>
+          <strong>L2 — Audience Models</strong> is where the same substrate is rendered for different readers. A general-public reader looking at the <em>Eighth Anchor</em> essays gets a different rendering than an attorney researching the same trust doctrine. The substrate is one; the audience-specific rendering is many.
+        </p>
+
+        <p>
+          <strong>L3 — Generation</strong> is the layer where the rendering happens. AI editorial passes draft from L1 against L2 audience models; named human editors review, refine, and approve. The Library's editorial discipline lives here.
+        </p>
+
+        <p>
+          <strong>L4 — Deliverables</strong> is what you see when you visit the Library: the Reading Room essays, the per-state dossiers, the Atlas Room, the Counting House, the Map Room, the Newsroom entries, the Voices section. Everything cites back through L1 to L0, so a visitor can always trace a claim to its source.
+        </p>
+
+        <p>
+          The architecture's purpose is unromantic but load-bearing: it lets a small team produce evidentiary work at scale without losing the discipline that makes the work credible. Every page on this site is built this way.
+        </p>
+
+        <h3 id="architecture-at-work">The architecture at work</h3>
+
+        <p>
+          The first poster shows the architecture <em>at rest</em> — what the Library has, layer by layer. A balance sheet. The second poster, below, shows the architecture <em>at work</em> — what the crew is doing, day by day, to keep the work moving through it. An income statement. The same five layers carry both views.
+        </p>
+
+        <figure>
+          <img
+            src="/img/posters/knowledge-stack-at-work-poster-v2.png"
+            alt="The Knowledge Stack at work — six stations on the deck (Direction and Voice, Co-Author, Drafting and Substrate, Live-Site Operations, Parallel Research, Imagery and Visual Identity); the five-layer stack in the hold; a persistent-memory current beneath the hull; three outbound channels at the stern; and a feedback loop from the live site back to substrate."
+            loading="lazy"
+            width="1054"
+            height="1492"
+          />
+          <figcaption>
+            The Knowledge Stack as an operating watch: six stations on the deck, the five-layer stack in the hold, a persistent-memory current beneath the hull, three outbound channels at the stern, and a feedback loop from the live site back to substrate. <em>"An architecture does no work; a crew does."</em>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="/img/posters/cowork-md-harness-v2.png"
+            alt="Cowork Architecture diagram showing six horizontal layers of the .md harness — Anthropic's system prompt, the project's CLAUDE.md, persistent memory files, current-state files, the Knowledge Stack, and the live publication surface — with an arc on the right showing how one weekly Newsroom issue threads all six layers."
+            loading="lazy"
+            width="1672"
+            height="941"
+          />
+          <figcaption>
+            <strong>Figure D — The Cowork Architecture.</strong>
+            The six-layer .md harness that holds the project across sessions and lets a frontier AI work as a long-horizon partner. Six layers, one act: each weekly Newsroom issue threads from the system foundation at the top, through the project-level working agreement, the persistent memory of working rules learned over time, the current-state files refreshed every session, the accumulated Knowledge Stack of substrate, and out to the live publication surface at <em>schooltrusts.net</em>.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="/img/posters/library-spatial-blueprint-v1.png"
+            alt="A blueprint-style floor plan of the Library showing rooms arranged around a Great Hall lobby — Reading Room, Atlas, Map Room, Counting House, Newsroom, Voices, Updates, Pro Wing — with smaller hidden corners labeled Primary Sources Alcove, Scholarship Stack, and a Windowed Alcove. A right-side legend explains four interaction types: hidden gem, adjacent room, clickable hotspot, and wandering path. Dotted lines indicate example wandering routes between rooms."
+            loading="lazy"
+            width="1672"
+            height="941"
+          />
+          <figcaption>
+            <strong>Figure E — How visitors might explore the library by wandering.</strong>
+            A design blueprint for a future spatial-discovery layer of the Library. The floor plan above sketches the experience — rooms with doorways and corners, adjacent spaces that invite further exploration, hidden gems for the curious reader. The interface itself is on the design slate for Q3 2026; the current navigation is the standard menu at the top of every page. This poster is the architect's sketch of where we mean to take the Library next.
+          </figcaption>
+        </figure>
+
+        <p>
+          Six stations stand on the deck. <strong>Direction and Voice</strong> is the founder's seat — the editorial and strategic decisions that set what the Library is for. <strong>Co-Author</strong> is the named human collaborator whose review every Margaret-voiced or jointly-authored deliverable passes through. <strong>Drafting and Substrate</strong> is the AI-assisted synthetic load that holds the working context across the Library's many open files. <strong>Live-Site Operations</strong> publishes the substrate to the public surface readers visit. <strong>Parallel Research</strong> stress-tests arguments and verifies citations against independent sources. <strong>Imagery and Visual Identity</strong> produces the visual register the Library speaks in.
+        </p>
+
+        <p>
+          Beneath the hull runs the feature that makes the rest of the architecture possible: <strong>persistent memory</strong>. Each station's work survives into the next session. The framers of 1785 could not draw that current at all; a small team in 2026 can. That is the cognitive-technology shift the Library is built on, and it is the same shift the next-generation architects of forever-trusts will need to engineer for.
+        </p>
+
+        <h2>The contribution loop</h2>
+
+        <figure>
+          <img
+            src="/images/about/library-contribution-loop.png"
+            alt="The Library's contribution loop — inputs flow through intake and editorial review into the knowledge stack and out to published surfaces, with readers cycling back as future contributors."
+            loading="lazy"
+          />
+          <figcaption>The Library's contribution loop — inputs flow through intake and editorial review into the knowledge stack and out to published surfaces, with readers cycling back as future contributors.</figcaption>
+        </figure>
+
+        <p>
+          The first poster shows the architecture standing still. The second shows how material moves through it. The flow has four phases:
+        </p>
+
+        <p>
+          <strong>Inputs.</strong> Material enters the Library from several sources: scheduled surveillance tasks (the Newsroom's weekly scrape of state agency websites, legislative information systems, court dockets, regional press); state co-librarians (forthcoming — drawn primarily from State Departments of Lands and equivalent agencies, taking responsibility for their state's page); document contributors who hold primary sources in private hands (old land patents, historical agency reports, family archives); and ongoing direct ingestion of statutes, court opinions, and other public records.
+        </p>
+
+        <p>
+          <strong>Intake and editorial review.</strong> New material is triaged, classified by layer (primary source / canonical claim / privileged / off-topic), checked for duplicates, and routed. The editorial pass that follows is AI-assisted but human-supervised: every published claim has been reviewed and approved by a named editor.
+        </p>
+
+        <p>
+          <strong>Substrate update.</strong> Approved material updates the appropriate layer. New primary sources may produce new canonical claims, which may refresh deliverables that depended on the old claims.
+        </p>
+
+        <p>
+          <strong>Published surfaces.</strong> Updated content reaches readers through the Library's rooms — the Reading Room, the Atlas, the Counting House, the Map Room, the Newsroom, Voices.
+        </p>
+
+        <p>
+          The loop closes when readers become contributors. A school-board member who reads the Library's per-state dossier and corrects a date becomes part of the substrate. A retired teacher who shares a 1923 board minute moves the primary-source floor by one entry. A state Department of Lands staff member who agrees to take co-librarian responsibility for their state changes the <em>standing</em> of the substrate, not just its contents. The Library does not have an audience and a staff. It has a constituency that is partly inside and partly outside the institutional wall, and the wall itself is permeable by design.
+        </p>
+
+        <h2>How to take part</h2>
+
+        <p>
+          Most visitors come to the Library to read what's been published. That's the point of a library. But the Library was built to grow, and the contribution loop above is the operational architecture of that growth.
+        </p>
+
+        <p>
+          If you have a primary source — a historical document, a state agency report, a board minute, a period newspaper clipping, a deed — that bears on the school trust lands, the Document Contribution Desk (forthcoming) is where it goes. If you would like to monitor your state's trust-land administration as a state correspondent — watching legislative bills, board meetings, fund distributions, litigation — the State Correspondent program (forthcoming) is the formal vehicle. If you work in your state's Department of Lands or an equivalent agency and would consider taking co-librarian responsibility for your state's Library page, the State Co-Librarian program (forthcoming) is the role we'd most like to recruit you for.
+        </p>
+
+        <p>
+          Until those programs launch (in the weeks ahead), readers who'd like to be notified when they do can register interest through the Library card (also forthcoming) or contact the Library's editorial office. The Library is in its first year of operation. The institutional infrastructure for the contribution loop is being built openly, so the people who will eventually use it can shape it as it forms.
+        </p>
+
+        <h2 id="watchful-crew-mechanism">How the constituency gets built</h2>
+
+        <p>
+          A trust that needs to last for centuries cannot rely on the people who started it. The founders die. The first generation of trustees retires. The second generation's children hear about the trust from history class instead of from kitchen-table conversation. Without a community that treats the trust as theirs across generations, the architecture drifts — slowly, then suddenly — until the corpus is gone.
+        </p>
+
+        <p>
+          Margaret Bird, who led Utah's school-trust reform from a $5 million annual program to a $150 million annual program — thirty times the original amount — names the mechanism that builds such a community. Her words, from a 2025 interview:
+        </p>
+
+        <blockquote>
+          <p>
+            Increase the revenue to schools, get it directly to every single school where the parents, the teachers, and the principal are deciding how the money is implemented. And all of a sudden, you have built a huge constituency.
+          </p>
+          <p class="not-italic text-sm text-slate-600">
+            — Margaret Bird, in her own voice
+          </p>
+        </blockquote>
+
+        <p>
+          The mechanism is one causal chain: route consequential decisions to the local sites where deliberation already happens; let the deliberation produce an artifact (an allocation, a verified fact, a published account) that bears the deliberator's name; recognize the artifact in a public record; and through that loop, the deliberators become a constituency that defends the trust politically. Skip any link and the chain breaks. Centralize allocation rather than routing it to local deliberation, and the constituency disperses; the corpus rots quietly because no one downstream of the central allocation has personal investment in defending it.
+        </p>
+
+        <p>
+          Utah's school community councils — roughly 9,000 parents, teachers, and principals deliberating, school by school, over how their share of the trust income gets used — are what the mechanism looks like in operation. The councils are not a marketing tool or a participation theater. They are the deliberation sites the trust revenue is routed <em>to</em>. The councils' decisions accumulate into local stewardship; the local stewardship accumulates into a state constituency; the state constituency defends the trust when the architecture is later attacked. The thirty-times revenue growth is the visible outcome. The constituency that protected the architecture <em>while</em> the revenue grew is the cause.
+        </p>
+
+        <p>
+          The Library applies the same mechanism in its own institutional form. Consequential editorial work — verifying a state's enabling-act citation, transcribing a historical revenue table, curating a state's documentary record, writing the weekly Newsroom note — gets routed to named contributors who decide what to do at their site. Each artifact carries a byline. Each byline writes the contributor into the public stewardship ledger at <a href="/the-watchful-crew/">/the-watchful-crew/</a>. The watchful crew is the cumulative record of those routings.
+        </p>
+
+        <p>
+          This is not a metaphor. It is the same mechanism, scaled to the institution that exists to remember the school-trust experiment for the next generation of trust architects. <em>Route → deliberate → produce → recognize → constituency → defense.</em> If the chain holds, the Library will outlast its founders.
+        </p>
+
+        <h2 id="methodology">Editorial methodology and AI-assistance disclosure</h2>
+
+        <p>
+          The Library's day-to-day editorial work is supported by AI assistance under the supervision of named human editors. The named founders — Dave Sullivan and Margaret Bird — and, where the work touches active matters, the litigation team carry editor-of-record responsibility. AI collaborators (Claude, ChatGPT, Gemini, Grok, used in combination as the work requires) carry the synthetic load that no small scholarly team could carry alone: reading across hundreds of statutes and thousands of pages of case law, drafting from the canonical-claims layer against the audience-model files, and producing the renderings a single reader sees as a finished essay.
+        </p>
+
+        <p>
+          Every AI-primary deliverable carries an explicit AI-authorship line that names the human editor of record and the AI collaborator(s) used in the synthesis. Citations are author-verified: the AI does not file claims into the substrate that a human editor has not checked against the primary source. When an error is found — by a reader, a state correspondent, a co-librarian, or the editorial office's own re-reads — the canonical claim is corrected at the canonical-claims layer and every deliverable that depends on it inherits the correction on the next publication pass. Corrections are dated; the Library does not silently overwrite its record of what it once said.
+        </p>
+
+        <p>
+          The deliverables this methodology produces are the ones a visitor reads on these pages: <a href="/writing/eighth-anchor/"><em>The Eighth Anchor</em></a>, <a href="/writing/schools-of-the-republic/"><em>Schools of the Republic</em></a>, <a href="/reading/the-librarys-argument/">the Library's Argument</a>, the <a href="/newsroom/">Newsroom</a> entries, and the per-state work in the <a href="/atlas/">Atlas</a>, <a href="/counting/">Counting House</a>, and <a href="/maps/">Map Room</a>. The discipline is the same whether the reader is a school-board member, an appellate judge, an SLB trustee, a legislator, a journalist, or a student. Different audiences see different renderings; the substrate beneath the rendering is one.
+        </p>
+
+        <hr class="archival-divider">
+
+        <p class="text-sm text-slate-500">
+          <em>Last updated 2026-05-06. Posters drafted from the OASTL Knowledge Stack v2 architecture (April 2026); revised for the Library's purpose and audiences.</em>
+        </p>
+      </article>
+    </main>
+    <PrepublicationFooter />
+    <Footer />
+  </body>
+</html>

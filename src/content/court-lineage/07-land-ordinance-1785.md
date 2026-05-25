@@ -1,7 +1,7 @@
 ---
 title: The Land Ordinance of 1785
 year: 1785
-order: 7
+order: 8
 summary: "The Continental Congress reserves section 16 of every township for the support of public schools, the first federal commitment to a perpetual school trust running forward to beneficiaries not yet born."
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: The Development of English Equity
 year: "16th–17th c."
-order: 4
+order: 5
 summary: "The Chancery, chancellor by chancellor, builds the conceptual furniture of modern fiduciary law: split of title, personal liability of the trustee, the distinction from contract, and the prohibition on self-dealing."
 ---
 

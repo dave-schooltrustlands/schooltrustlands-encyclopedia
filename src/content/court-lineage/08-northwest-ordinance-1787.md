@@ -1,7 +1,7 @@
 ---
 title: "The Northwest Ordinance, Article III"
 year: 1787
-order: 8
+order: 9
 summary: "Schools and the means of education shall *forever* be encouraged. The word forever is the temporal heart of the school-trust commitment — intergenerational, structural, and not subject to legislative reconsideration."
 ---
 

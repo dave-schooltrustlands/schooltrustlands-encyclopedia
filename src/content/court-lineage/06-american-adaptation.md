@@ -1,7 +1,7 @@
 ---
 title: American Adaptation
 year: "Late 18th c."
-order: 6
+order: 7
 summary: "Colonial and early-state courts apply English equitable doctrine to public-purpose property — towns, parishes, colleges, schools — establishing that legislatures, like private trustees, can be bound."
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "The First State Enabling Acts (Ohio 1803 onward)"
 year: "1803→"
-order: 9
+order: 10
 summary: "Federal-state compacts that convert the 1785/1787 promises into actual conveyances. The state, by accepting statehood on the terms offered, accepts the trust — and cannot lawfully release itself from it."
 ---
 

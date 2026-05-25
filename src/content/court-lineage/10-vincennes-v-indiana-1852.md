@@ -1,7 +1,7 @@
 ---
 title: "Trustees of Vincennes University v. Indiana"
 year: 1852
-order: 10
+order: 11
 summary: "The foundational American school-trust-lands case. Enabling acts create binding trusts; trusts are strictly construed by fiduciary principles; federal trust terms preempt contrary state action."
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Meinhard v. Salmon"
 year: 1928
-order: 11
+order: 12
 summary: "Cardozo, writing for the New York Court of Appeals, fixes the modern American statement of fiduciary duty — *not honesty alone, but the punctilio of an honor the most sensitive*. The language the school-trust courts now use."
 ---
 
