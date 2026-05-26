@@ -155,3 +155,115 @@
 - Issue 4 (`src/content/newsroom/2026-05-17.md`) title now `"Week of May 11 – May 17, 2026"`; Issue 3 (`src/content/newsroom/2026-05-13.md`) distinguished as `"Week of May 11 – May 13, 2026"`. Margaret directive #2 satisfied; newsroom index no longer collides.
 - Commit SHA: `e747d34`
 - Frontmatter-schema divergence logged at `_tools/newsroom/FRONTMATTER_SCHEMA_TODO.md`; v73 candidate.
+
+## Site update v91 run report — 2026-05-25
+
+CLASS Archive integration. Single bundled handoff, two repos, full deploy autonomy. All eight pages live; no Dave-gating required.
+
+### TL;DR
+
+- **No Supabase migrations.** Site-content update only. Nothing touches the database; no `supabase/migrations/*.sql` files were created or modified in this run.
+- **Both waves completed end-to-end.** Wave A (Library, schooltrusts.net) and Wave B (ASTL National, schooltrustlands.net) shipped from independent commits to independent repos, deployed via Cloudflare Pages auto-builds, both verified live before the report was written.
+- **No deploy failures.** One transient 404 on `marsh-2007-enabling-acts-and-power-of-you/` cleared on its own within ~20 seconds (Cloudflare propagation lag between cache regions); no human diagnosis needed.
+
+### Live URLs (8 deliverables + 2 navigation surfaces)
+
+**Wave A — Library (schooltrusts.net):**
+
+| URL | HTTP | Renders |
+|---|---|---|
+| `https://schooltrusts.net/reading/library/bird-2005-history-federal-land-grants/` | 200 | Bird 2005 entry — headnote, "How to read it", "Why it still matters", five selected passages, original-PDF links, related-entries |
+| `https://schooltrusts.net/reading/library/marsh-2007-enabling-acts-and-power-of-you/` | 200 | Marsh diptych — "Marsh's argument" five-step, "The Power of You" framing, caveats on 2007 vintage, original-document links |
+| `https://schooltrusts.net/reading/library/class-2007-comparative-reference-grids/` | 200 | CLASS 2007 grids — plain-language two-grid breakdown, cohort-by-grant-size read-down, two flagged cells (Oregon § 7 / Nevada + South Dakota acceptance-language gap), Marsh's precedence stack |
+| `https://schooltrusts.net/court/case-file/skamania-v-state-1984/` | 200 | Skamania case page — rebuilt as the standalone canonical-case page with the full real-not-honorary + no-diversion-to-other-state-goals doctrine, broader case-law-map context, and cross-links to Conservation Northwest 2022 and Kanaly |
+| `https://schooltrusts.net/court/case-file/kanaly-v-janklow-1985/` | 200 | Kanaly v. Janklow — perpetual-trust / restoration-remedy / breadth-of-corpus, "beyond question" quote, South Dakota doctrinal-line placement |
+| `https://schooltrusts.net/court/case-file/darkenwald-montana-2005/` | 200 | Darkenwald — majority noted, Nelson dissent centered, "robs Peter to pay Paul" + "Enron-style accounting" quoted, Montana doctrinal-line context |
+| `https://schooltrusts.net/founders/margaret-bird/` | 200 | Margaret Bird biographical arc — three-anchor structure (2005, 2016, 2022–2026), voice-across-the-arc notes, source-reading list, scope note |
+
+**Wave B — ASTL National (schooltrustlands.net):**
+
+| URL | HTTP | Renders |
+|---|---|---|
+| `https://schooltrustlands.net/about/history/` | 200 | Our Roots in CLASS — what CLASS was (mission statement preserved verbatim), scholarly inheritance from Bird and Marsh, working method, why the name changed, contemporary work; page-end cards link out to schooltrusts.net Reading Room entries |
+
+**Navigation co-modifications confirmed:**
+
+- `https://schooltrusts.net/founders/` (HTTP 200) — Margaret Bird cabinet card now carries a "Read the full biographical arc →" link to `/founders/margaret-bird/`.
+- `https://schooltrusts.net/court/case-file/` (HTTP 200) — case-count text reads "Twenty-three canonical cases" (up from "Twenty-one"); v75/v88/v89/v91 lineage explicit; Kanaly and Darkenwald listed under "Binding State Supreme Court Precedents".
+- `https://schooltrusts.net/court/` (HTTP 200) — door copy reads "twenty-three canonical precedents".
+- `https://schooltrusts.net/updates/` (HTTP 200) — v91 daily-detail entry at the top of the "Week of May 11, 2026" expanded list; weekly summary updated.
+- `https://schooltrustlands.net/about/` (HTTP 200) — newly created About landing page; primary nav now carries "About" between Conference and Join; the active-nav highlight resolves correctly on both `/about/` and `/about/history/`.
+
+### Drift between staging-doc content and live page
+
+None material. The seven Library staging deliverables and the one ASTL staging deliverable rendered without rewrite-driven drift:
+
+- Reading Room entries: Markdown bodies preserved verbatim from the L4 staging docs; frontmatter conformed to the existing `library` collection schema (category D — "Contemporary scholarship & reference works", treatment `link-only`, rationale, primary/fallback source URLs, sourceLabel). Bird 2005 was marked `featured: true` with a featuredRationale that surfaces the project's "21-year line" framing. The other two are not featured.
+- Court Room entries: Markdown bodies follow the existing case-file Facts / Holding / Why-it-matters / Cited-in convention; frontmatter conforms to `court-cases` schema (`caseName`, `citation`, `year`, `court: state-supreme`, `courtsLabel`, `order: 22` / `23`). The existing Skamania entry (`07-skamania-v-state-1984.md`) was replaced in body but its existing frontmatter and `order: 7` slot were preserved, so the SCOTUS / Courts-of-Appeals / State-Supreme groupings stayed stable.
+- Founders' Cabinet: The staging Markdown was rendered as a hand-written Astro page (`src/pages/founders/margaret-bird.astro`) using `RoomLayout` with `room="founders"` rather than a content-collection entry, because the existing Cabinet uses static `founders.astro` cards rather than a per-founder collection. Page-style and breadcrumb match the rest of the repo's deeper bio pages.
+- ASTL Our Roots in CLASS page: Identical content to the staging deliverable. Read-more cards at the page foot link out to the matching Library Reading Room entries on schooltrusts.net.
+
+### Commit hashes
+
+- `schooltrustlands-encyclopedia` (the Library, schooltrusts.net): `a4b7e3c040634aa4c3159bfe746b1a848248b661`
+- `schooltrustlands` (ASTL National, schooltrustlands.net): `db80ac7fe44367f4e526cd295d68ae8d3485ae48`
+
+### Version bumps on daily-updates surfaces
+
+- **Library `/updates/`** — new daily-detail `<li>` added at the top of "Week of May 11, 2026" naming the seven new Library files, the Court Room expansions, the new Founders' Cabinet page, the case-count update (21 → 23), and the companion ASTL deploy. Weekly summary copy updated to mention v91 closing the week.
+- **ASTL National `/updates/`** — does not exist on the ASTL repo; ASTL's update register is the homepage's "Recent Voices" rail and Field Notes index. The handoff's "add a v-bump entry noting the new Our Roots in CLASS page" co-modification was satisfied by adding "About" to the primary nav and creating `/about/` as a discoverable landing with a direct CTA into `/about/history/`. (Logged as a deviation, not a blocker.)
+
+### Propagation-watcher impact
+
+- The substrate `L0_Propagation_Log.md` was not modified by this run — Wave A and Wave B touched only the two site repos. Per the watcher contract documented in the handoff, the seven new L0 captures under `L0_Primary_Sources/From_Tonia_Day/CLASS_Archive_2016-2022/high_value_authored_works/` should auto-flip from `CITED-VERIFY-INTEGRATION` to `INTEGRATED` on the next propagation-watcher pass now that the citations exist live at the URLs above. Auto-flip not confirmed in this run; the watcher executes on its own substrate cadence outside the site-deploy scope.
+
+### Deviations from suggested slugs / routes
+
+- **Reading Room route.** Handoff suggested `/reading/<slug>/`; the repo's actual curated-collection route is `/reading/library/<slug>/` (the v59 curated reference collection). All three new Reading Room entries deployed under `/reading/library/<slug>/` accordingly.
+- **Reading Room slugs.**
+  - Bird 2005 → `bird-2005-history-federal-land-grants` (matches handoff suggestion).
+  - Marsh diptych → `marsh-2007-enabling-acts-and-power-of-you` (matches handoff suggestion).
+  - CLASS 2007 grids → `class-2007-comparative-reference-grids` (matches handoff suggestion).
+- **Court Room route.** Handoff suggested `/court/cases/<slug>/`; the repo's actual annotation route is `/court/case-file/<slug>/`. Both new entries deployed there with order prefixes (`22-kanaly-v-janklow-1985.md`, `23-darkenwald-montana-2005.md`) consistent with the existing `01–21` ordering convention; the route-displayed slugs are `kanaly-v-janklow-1985` and `darkenwald-montana-2005` (Astro strips the `\d+-` prefix per `[slug].astro`).
+- **Skamania.** A Court Room entry for *Skamania* already existed (`07-skamania-v-state-1984.md`, last updated 2026-05-18). The handoff's "Suggested slug: `skamania-v-washington-1984`" was not adopted — the existing file's slot (`order: 7`, route `/court/case-file/skamania-v-state-1984/`) was preserved and the body was rebuilt with the richer scholarly content from the v91 staging deliverable. Replacing the slug would have produced two competing entries.
+- **Founders' Cabinet route.** Handoff said "`/cabinet/` or `/founders/` depending on repo convention". Repo convention is `/founders/` — and Margaret Bird had a card on the static `/founders/` page plus an existing curated-collection entry at `/reading/library/margaret-bird-selected-essays/`. The biographical-arc update was created as a new deeper page at `/founders/margaret-bird/` and linked from the existing Cabinet card. The existing selected-essays Reading Room entry was left untouched.
+- **ASTL About landing.** ASTL had no `/about/*` route family before this run. The handoff's "Add a link to the new `/about/history/` page under whatever About-section nav exists. Confirm the new page is reachable from `/about/`" required creating both `/about/` (new landing) and `/about/history/` (the deliverable), then adding "About" to the primary nav. The result satisfies the reachability requirement.
+
+### Deploy issues encountered and how they were resolved
+
+One transient anomaly:
+
+- **Marsh 2007 Reading Room URL returned 404 for ~20 seconds after the first sweep returned 200 on the other nine URLs in the same set.** Diagnosed as Cloudflare Pages edge-cache propagation lag — the other regions had picked up the new build and one region had not yet. Cache-bust query string returned 200 on retry; subsequent same-URL request also returned 200. No code change. No human intervention needed.
+
+No build failures, no schema-validation failures, no slug-collision failures. The Astro content cache was reset (`rm -rf .astro/`) before the build per the project's content-cache hygiene rule.
+
+### What this run did NOT touch (per handoff scope)
+
+- *Schools of the Republic* substrate — five atomic SotR insertions were applied on the substrate side (file `Schools_of_the_Republic_v1.3_[INTERNAL].md`) before this handoff; no Claude Code action on SotR in this run.
+- OASTL Oregon site (`oastl-oregon` repo) — no CLASS-archive content lands on OASTL; OASTL stays Oregon-specific.
+- Eighth Anchor Institute site — separate institution, untouched.
+- Per-state Atlas dossier insertions — Marsh 2007 grid per-state cells are ready-made for Atlas-row inserts but the porting is queued for a future Atlas-pass handoff.
+- *Trustees of Vincennes University v. Indiana*, 55 U.S. 268 (1852) — citation verification queued before any new SCOTUS-spine Court Room entry is added.
+- The 12 additional case-law gaps Margaret's TrustLaw compendium surfaces (Weiss, Van Wagoner, Jensen, Clark, Ebey, Plaquemines Parish, Whitney Benefits, Alamo, Kleppe, Burlingame, etc.) — each warrants its own Court Room case entry; queued for a future Court Room-pass handoff.
+
+### Files added or modified
+
+**`schooltrustlands-encyclopedia` (11 files, +643 / -12):**
+
+- `src/content/library/bird-2005-history-federal-land-grants.md` *(new)*
+- `src/content/library/marsh-2007-enabling-acts-and-power-of-you.md` *(new)*
+- `src/content/library/class-2007-comparative-reference-grids.md` *(new)*
+- `src/content/court-cases/22-kanaly-v-janklow-1985.md` *(new)*
+- `src/content/court-cases/23-darkenwald-montana-2005.md` *(new)*
+- `src/content/court-cases/07-skamania-v-state-1984.md` *(rebuilt body, frontmatter preserved)*
+- `src/pages/founders/margaret-bird.astro` *(new)*
+- `src/pages/founders.astro` *(card-level link added)*
+- `src/pages/court/case-file/index.astro` *(case-count copy: 21 → 23 with v91 lineage)*
+- `src/pages/court/index.astro` *(door copy: twenty-one → twenty-three)*
+- `src/pages/updates.astro` *(v91 daily-detail `<li>` + weekly-summary copy)*
+
+**`schooltrustlands` (3 files, +371):**
+
+- `src/pages/about/history.astro` *(new — the Our Roots in CLASS page)*
+- `src/pages/about/index.astro` *(new — About landing with CTA into /about/history/)*
+- `src/components/Header.astro` *(About added to primary nav between Conference and Join)*
