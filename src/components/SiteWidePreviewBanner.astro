@@ -1,0 +1,72 @@
+---
+// SiteWidePreviewBanner.astro — Stage 1 "A Forever Gift" mandated
+// prominent, site-wide pre-publication strip. Distinct from the
+// per-chapter PrepublicationBanner: this one is visible on every page,
+// site-wide, and uses the frozen Forever palette so the preview posture
+// reads at a glance.
+//
+// On the Library this is gated behind the existing PREPUBLICATION flag
+// (see src/site.config.ts) — one-line flip at the board gate removes it
+// from every page in one motion.
+//
+// `correctHref` points readers at the existing flag-and-fix affordance
+// (the Library's /correct/ correction form).
+interface Props {
+  correctHref?: string;
+}
+const { correctHref = '/correct/' } = Astro.props;
+---
+<div class="preview-banner" role="status" data-pagefind-ignore>
+  <div class="preview-banner__inner">
+    <span class="preview-banner__dot" aria-hidden="true"></span>
+    <span class="preview-banner__text">
+      <strong>Preview</strong> — Pre-publication draft, not yet board-endorsed.
+    </span>
+    <a class="preview-banner__action" href={correctHref}>See something to fix? Tell us →</a>
+  </div>
+</div>
+
+<style>
+  .preview-banner {
+    background: #C9A24A;
+    color: #16335C;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.82rem;
+    line-height: 1.2;
+    border-bottom: 1px solid rgba(22, 51, 92, 0.25);
+  }
+  .preview-banner__inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+  }
+  .preview-banner__dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 9999px;
+    background: #16335C;
+    flex: none;
+  }
+  .preview-banner__text {
+    color: #16335C;
+  }
+  .preview-banner__text strong {
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .preview-banner__action {
+    margin-left: auto;
+    color: #16335C;
+    font-weight: 600;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+  .preview-banner__action:hover {
+    color: #0f2444;
+  }
+</style>

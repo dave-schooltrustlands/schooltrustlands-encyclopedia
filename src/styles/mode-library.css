@@ -546,3 +546,23 @@ body.mode-library header nav .nav-icon {
    above handle Library treatment. */
 /* === end v12 ALPHA — Migrated mode-standard.css rules ============= */
 
+
+/* Stage 1 — "A Forever Gift" manifesto line on the homepage declaration.
+   Margaret Bird's phrase, quoted (not an endorsement of this preview). */
+.home-declaration__manifesto {
+  margin: 0.75rem 0 0;
+  text-align: center;
+}
+.home-declaration__manifesto-line {
+  display: block;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #16335C;
+}
+.home-declaration__manifesto-attr {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  color: #6b7280;
+}

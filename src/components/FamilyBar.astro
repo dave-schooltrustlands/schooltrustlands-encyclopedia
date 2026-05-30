@@ -1,0 +1,108 @@
+---
+// FamilyBar.astro — Stage 1 "A Forever Gift" connective bar.
+// A slim, site-wide strip naming the three-pillar family and marking
+// the current pillar. Frozen "Forever" palette: navy #16335C,
+// gold #C9A24A, parchment #F3E9D2.
+//
+// `current` selects which of the three pillars is the present site:
+//   'record'    — the Record   (the Library / schooltrusts.net)
+//   'advocates' — the Advocates (ASTL National / schooltrustlands.net)
+//   'renewal'   — the Renewal   (the forthcoming pillar)
+interface Props {
+  current?: 'record' | 'advocates' | 'renewal';
+}
+const { current = 'record' } = Astro.props;
+
+const PILLARS = [
+  { key: 'record', label: 'the Record', href: 'https://schooltrusts.net' },
+  { key: 'advocates', label: 'the Advocates', href: 'https://schooltrustlands.net' },
+  { key: 'renewal', label: 'the Renewal', href: null },
+] as const;
+---
+<div class="family-bar" data-pagefind-ignore role="navigation" aria-label="A Forever Gift family of sites">
+  <div class="family-bar__inner">
+    <span class="family-bar__brand">Part of <strong>A Forever Gift</strong></span>
+    <span class="family-bar__sep" aria-hidden="true">—</span>
+    <ul class="family-bar__pillars">
+      {PILLARS.map((p, i) => (
+        <li class="family-bar__pillar">
+          {p.key === current ? (
+            <span class="family-bar__link family-bar__link--current" aria-current="page">{p.label}</span>
+          ) : p.href ? (
+            <a class="family-bar__link" href={p.href} rel="noopener">{p.label}</a>
+          ) : (
+            <span class="family-bar__link family-bar__link--soon">{p.label}</span>
+          )}
+          {i < PILLARS.length - 1 && <span class="family-bar__dot" aria-hidden="true">·</span>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .family-bar {
+    background: #16335C;
+    color: #F3E9D2;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.78rem;
+    line-height: 1;
+    border-bottom: 1px solid rgba(201, 162, 74, 0.35);
+  }
+  .family-bar__inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0.45rem 1rem;
+  }
+  .family-bar__brand {
+    color: #F3E9D2;
+    white-space: nowrap;
+  }
+  .family-bar__brand strong {
+    color: #C9A24A;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .family-bar__sep {
+    color: rgba(243, 233, 210, 0.55);
+  }
+  .family-bar__pillars {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .family-bar__pillar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .family-bar__link {
+    color: #F3E9D2;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  a.family-bar__link:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+  .family-bar__link--current {
+    color: #C9A24A;
+    font-weight: 700;
+  }
+  .family-bar__link--soon {
+    color: rgba(243, 233, 210, 0.6);
+    font-style: italic;
+  }
+  .family-bar__dot {
+    color: rgba(243, 233, 210, 0.45);
+    padding-left: 0.25rem;
+  }
+</style>

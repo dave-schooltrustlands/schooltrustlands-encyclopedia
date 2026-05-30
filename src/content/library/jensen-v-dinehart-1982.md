@@ -1,13 +1,13 @@
 ---
 title: "Jensen v. Dinehart (Utah, 1982)"
-author: "Utah Supreme Court [reporter pin-cite verification pending]"
+author: "Utah Supreme Court"
 year: 1982
 category: "C"
 categoryName: "Doctrinal court opinions"
 treatment: "link-only"
-sourceUrlPrimary: "https://www.utcourts.gov/cases/"
-sourceUrlFallback: "https://www.westlaw.com/"
-sourceLabel: "Utah State Courts"
+sourceUrlPrimary: "https://www.courtlistener.com/opinion/1231193/jensen-v-dinehart/"
+sourceUrlFallback: "https://www.utcourts.gov/cases/"
+sourceLabel: "CourtListener — 645 P.2d 32 (Utah 1982)"
 rationale: "The Utah decision that triggered the 1983 fiscal crisis in the State School Fund — the canonical example of what happens when a corpus is opened to ordinary legislative reach."
 featured: false
 ---
@@ -26,4 +26,4 @@ The decision is short and characteristic of the early-1980s Utah Supreme Court's
 
 ## Where to find it
 
-The pin-cite to Utah Reports is pending verification; the case is not currently available on the free legal databases (Justia, CourtListener) the Library otherwise relies on. The Utah State Courts case lookup at https://www.utcourts.gov/cases/ is the canonical state-level path; Westlaw and Lexis carry the opinion behind subscription walls. The Library carries the editorial gloss and the narrative context; verifying the pin-cite and locating a free-access copy is flagged as v60 follow-up work.
+The decision is **Jensen v. Dinehart, 645 P.2d 32 (Utah 1982)**, decided March 10, 1982 (parallel citations: 4 Educ. L. Rep. 640; 1982 Utah LEXIS 913). The opinion is freely available on CourtListener at https://www.courtlistener.com/opinion/1231193/jensen-v-dinehart/. The Utah State Courts case lookup at https://www.utcourts.gov/cases/ is the canonical state-level path; Westlaw and Lexis also carry the opinion. The Library carries the editorial gloss and the narrative context alongside the verified citation.

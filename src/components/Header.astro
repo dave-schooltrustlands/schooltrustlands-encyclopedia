@@ -2,6 +2,9 @@
 import '../styles/global.css';
 import NavIcon from './NavIcon.astro';
 import WalkingTour from './library/WalkingTour.astro';
+import FamilyBar from './FamilyBar.astro';
+import SiteWidePreviewBanner from './SiteWidePreviewBanner.astro';
+import { PREPUBLICATION } from '../site.config';
 
 // v55 — Navigation Direction B:
 //   - Library rooms (Reading, Atlas, Map Room, Counting House) pulled
@@ -90,6 +93,8 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
   (prefix) => path === prefix || path.startsWith(`${prefix}/`),
 );
 ---
+<FamilyBar current="record" />
+{PREPUBLICATION && <SiteWidePreviewBanner correctHref="/correct/" />}
 <header
   data-pagefind-ignore
   class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur"
