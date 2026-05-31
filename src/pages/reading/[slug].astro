@@ -64,6 +64,19 @@ const usd = new Intl.NumberFormat('en-US', {
 
 const { Content } = await props.entry.render();
 
+// Version bar — per-state page version history (git-derived). Loaded only
+// for the current state so per-page build weight stays small.
+const stateVersionModules = import.meta.glob('../../data/state_versions/*.json');
+let stateVersions:
+  | { current: number; count: number; versions: { v: number; date: string; isCurrent: boolean; html: string | null }[] }
+  | null = null;
+if (props.kind === 'state') {
+  const iso = props.entry.data.iso.toLowerCase();
+  const k = Object.keys(stateVersionModules).find((path) => path.endsWith(`/${iso}.json`));
+  if (k) stateVersions = ((await stateVersionModules[k]()) as any).default;
+}
+const hasVersionBar = !!stateVersions && stateVersions.versions.length > 1;
+
 // Series-aware navigation for essay pages. Both Sacred Compact essays
 // and Schools of the Republic chapters share the `essays` collection
 // but belong to two distinct reading orders (sourceWork). Build the
@@ -359,15 +372,44 @@ const layoutProps =
     </figure>
   )}
 
+  {props.kind === 'state' && hasVersionBar && (
+    <nav class="version-bar" aria-label="Page version history">
+      <span class="version-bar__label">Version</span>
+      <span class="version-bar__btns">
+        {stateVersions!.versions.map((vv) => (
+          <button
+            type="button"
+            class:list={['version-btn', vv.isCurrent && 'is-active']}
+            data-version={vv.v}
+            data-date={vv.date}
+            aria-pressed={vv.isCurrent ? 'true' : 'false'}
+          >v{vv.v}{vv.isCurrent ? ' · latest' : ''}</button>
+        ))}
+      </span>
+      <span class="version-bar__hint" data-version-hint></span>
+    </nav>
+  )}
+
   <article
     class:list={[
       'prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline',
       props.kind === 'essay' && '[&>h1:first-child]:hidden',
       isInterlude && 'sacred-compact-interlude',
+      props.kind === 'state' && hasVersionBar && 'version-panel',
     ]}
+    data-version={props.kind === 'state' && hasVersionBar ? stateVersions!.current : undefined}
   >
     <Content />
   </article>
+
+  {props.kind === 'state' && hasVersionBar && stateVersions!.versions.filter((vv) => !vv.isCurrent).map((vv) => (
+    <article
+      class="prose prose-slate mt-8 max-w-none prose-a:text-blue-700 prose-a:underline version-panel"
+      data-version={vv.v}
+      hidden
+      set:html={vv.html ?? ''}
+    />
+  ))}
 
   {props.kind === 'essay' && seriesNav && (
     <nav
@@ -408,9 +450,77 @@ const layoutProps =
       />
     </section>
   )}
+  <script>
+    const bar = document.querySelector('.version-bar');
+    if (bar) {
+      const panels = Array.from(document.querySelectorAll('.version-panel'));
+      const btns = Array.from(bar.querySelectorAll('.version-btn'));
+      const hint = bar.querySelector('[data-version-hint]');
+      const show = (v) => {
+        panels.forEach((p) => { p.hidden = p.getAttribute('data-version') !== String(v); });
+        btns.forEach((b) => {
+          const on = b.getAttribute('data-version') === String(v);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          b.classList.toggle('is-active', on);
+          if (on && hint) {
+            const d = b.getAttribute('data-date');
+            const latest = b.textContent && b.textContent.includes('latest');
+            hint.textContent = latest ? ('latest · ' + (d || '')) : ('earlier version · ' + (d || ''));
+          }
+        });
+      };
+      btns.forEach((b) => b.addEventListener('click', () => show(b.getAttribute('data-version'))));
+      const last = btns[btns.length - 1];
+      if (last) show(last.getAttribute('data-version'));
+    }
+  </script>
 </RoomLayout>
 
 <style>
+  .version-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    margin-top: 1.5rem;
+    padding: 0.6rem 0.85rem;
+    background: var(--linen-card, #fafaf7);
+    border: 1px solid var(--rule-border, #e5e7eb);
+    border-left: 3px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+  }
+  .version-bar__label {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--old-gold, #8b7355);
+  }
+  .version-bar__btns { display: inline-flex; flex-wrap: wrap; gap: 0.35rem; }
+  .version-btn {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid var(--rule-border, #d6d3c8);
+    border-radius: 999px;
+    background: #fff;
+    color: #334155;
+    cursor: pointer;
+  }
+  .version-btn:hover { border-color: var(--old-gold, #8b7355); }
+  .version-btn.is-active {
+    background: var(--deep-navy, #1e3a5f);
+    border-color: var(--deep-navy, #1e3a5f);
+    color: #fff;
+  }
+  .version-bar__hint {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-left: auto;
+  }
   .essay-toc {
     border: 1px solid var(--rule-border, #e5e7eb);
     border-radius: 4px;
