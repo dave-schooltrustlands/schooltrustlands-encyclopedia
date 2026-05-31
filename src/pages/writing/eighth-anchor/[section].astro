@@ -69,12 +69,12 @@ const idx = series.findIndex((s) => s.isCurrent);
 const prev = idx > 0 ? series[idx - 1] : null;
 const next = idx >= 0 && idx < series.length - 1 ? series[idx + 1] : null;
 
-const seriesLabel = entry.data.seriesLabel ?? 'The Eighth Anchor';
+const seriesLabel = entry.data.seriesLabel ?? 'Stewards of the Republic';
 ---
 <RoomLayout
   room="writing"
   title={entry.data.title}
-  parents={[{ label: 'The Eighth Anchor', href: '/writing/eighth-anchor/' }]}
+  parents={[{ label: 'Stewards of the Republic', href: '/writing/eighth-anchor/' }]}
   sourceId={`essay-${entry.slug}-${entry.data.sourceVersion}`}
   width="prose"
 >
@@ -88,7 +88,7 @@ const seriesLabel = entry.data.seriesLabel ?? 'The Eighth Anchor';
     </p>
     <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
       <a href="/writing/eighth-anchor/" class="text-sm text-blue-700 underline hover:text-blue-900">
-        ← Back to The Eighth Anchor
+        ← Back to Stewards of the Republic
       </a>
       <BookmarkButton title={entry.data.title} />
     </div>
@@ -149,7 +149,7 @@ const seriesLabel = entry.data.seriesLabel ?? 'The Eighth Anchor';
         )}
       </li>
       <li class="sm:text-center">
-        <a href="/writing/eighth-anchor/" class="text-blue-700 underline hover:text-blue-900">The Eighth Anchor</a>
+        <a href="/writing/eighth-anchor/" class="text-blue-700 underline hover:text-blue-900">Stewards of the Republic</a>
       </li>
       <li class="sm:text-right">
         {next ? (
