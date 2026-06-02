@@ -27,8 +27,8 @@ try {
 ---
 <RoomLayout
   room="writing"
-  title="Schools of the Republic"
-  subtitle="How the United States Built — and Largely Lost — a National Endowment for Public Education. Volume I of A Forever Gift (Looking Back), by Margaret Bird and Dave Sullivan. Revised draft, May 2026."
+  title="The Forgotten Forever Gift to Public Schools"
+  subtitle="How the United States Built — and Largely Lost — a National Endowment for Public Education. Volume I of A Forever Gift (Looking Back), by Margaret Bird and Dave Sullivan. Revised draft, June 2026."
   width="prose"
   sourceId="writing-schools-of-the-republic"
 >
@@ -37,8 +37,30 @@ try {
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <span class="eyebrow">Volume I · Bird and Sullivan · A Forever Gift, Book One</span>
 
+    <section class="version-bar" aria-label="Draft versions">
+      <p class="vb-intro">A living draft, published in the open. Pick a version to see what changed in it and download that draft. Newest first.</p>
+      <div class="vb-row" id="vbRow"></div>
+      <p class="vb-note" id="vbNote"></p>
+      <script type="application/json" id="vbData">[
+        {"v":"v23","date":"Jun 2, 2026","note":"Part I and Part II openers, a working table of contents, and per-state QR codes moved to a small top-corner float.","file":"/drafts/ffg-v23.docx"},
+        {"v":"v21","date":"Jun 2, 2026","note":"Publication build \u2014 print layout, with version notes and production scaffolding moved out of the book.","file":"/drafts/ffg-v21.docx"},
+        {"v":"v20","date":"Jun 2, 2026","note":"Rebuilt the scale-of-the-gift figure (the original ~78M-acre grant vs ~45M surviving) and numbered every figure.","file":"/drafts/ffg-v20.docx"},
+        {"v":"v18","date":"Jun 1, 2026","note":"Citation finish \u2014 remaining case citations pinned from the case-law archive and CourtListener.","file":"/drafts/ffg-v18.docx"},
+        {"v":"v17","date":"Jun 1, 2026","note":"Citation verification pass via CourtListener.","file":"/drafts/ffg-v17.docx"},
+        {"v":"v16","date":"Jun 1, 2026","note":"Documentation finish \u2014 Morrison resolved and state source labels normalized.","file":"/drafts/ffg-v16.docx"}
+      ]</script>
+    </section>
+    <script is:inline>
+      (function(){var el=document.getElementById('vbData');if(!el)return;var data=JSON.parse(el.textContent);
+      var row=document.getElementById('vbRow'),note=document.getElementById('vbNote');
+      function sel(i){for(var j=0;j<row.children.length;j++)row.children[j].setAttribute('aria-current',j===i?'true':'false');
+      var d=data[i];note.innerHTML='<span class="vb-date">'+d.v+' \u00b7 '+d.date+'</span> \u2014 '+d.note+' <a class="vb-dl" href="'+d.file+'">Download this version (Word) \u2192</a>';}
+      data.forEach(function(d,i){var b=document.createElement('button');b.type='button';b.className='vb-btn';b.textContent=d.v;b.onclick=function(){sel(i);};row.appendChild(b);});sel(0);})();
+    </script>
+
+
     <p>
-      <em>Schools of the Republic</em> is Volume 1 of the Looking Back /
+      <em>The Forgotten Forever Gift to Public Schools</em> is Volume 1 of the Looking Back /
       Looking Forward two-volume work — the synthesizing analytic treatment of
       America's longest-running fiduciary experiment — the school-land trusts
       created beginning with the 1785 Land Ordinance and extended through every
@@ -107,6 +129,14 @@ try {
   </article>
 
   <style>
+    .version-bar{margin:1.25rem 0 1.75rem;padding:1rem 1.1rem;border:1px solid var(--rule-border,#e5e7eb);border-left:3px solid var(--old-gold,#8b7355);border-radius:4px;background:var(--linen-card,#fafaf7);}
+    .vb-intro{font-family:var(--font-sans);font-size:.85rem;color:#475569;margin:0 0 .7rem;}
+    .vb-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.7rem;}
+    .vb-btn{font-family:var(--font-sans);font-size:.85rem;font-weight:600;padding:.3rem .7rem;border:1px solid var(--rule-border,#d8d8d8);border-radius:4px;background:#fff;color:var(--deep-navy,#1e3a5f);cursor:pointer;}
+    .vb-btn[aria-current="true"]{background:var(--deep-navy,#1e3a5f);color:#fff;border-color:var(--deep-navy,#1e3a5f);}
+    .vb-note{font-family:var(--font-sans);font-size:.88rem;color:#334155;margin:0;line-height:1.5;}
+    .vb-note .vb-date{font-weight:700;color:var(--deep-navy,#1e3a5f);}
+    .vb-dl{color:#1d4ed8;text-decoration:underline;font-weight:600;}
     .reviews-link {
       font-family: var(--font-sans);
       font-size: 0.88rem;
