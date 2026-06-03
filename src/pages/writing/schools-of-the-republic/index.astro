@@ -131,6 +131,58 @@ const VERSIONS = [
 
     <p>This volume is the synthesis. The <a href="/atlas/">Atlas</a>, the <a href="/counting/">Counting House</a>, and the companion volume <a href="/writing/eighth-anchor/">Stewards of the Republic</a> draw on the same evidentiary substrate.</p>
 
+    <section class="comment-box" aria-label="Leave a comment" id="commentBox">
+      <h2 class="cb-h">Found something? Tell us.</h2>
+      <p class="cb-intro">Anyone can comment — no account needed. Type a note, record your voice, add a photo or video, or attach a file. It goes straight to the authors.</p>
+      <textarea id="cbText" class="cb-text" rows="4" placeholder="Your comment…"></textarea>
+      <div class="cb-row">
+        <input id="cbName" class="cb-in" type="text" placeholder="Name (optional)" />
+        <input id="cbEmail" class="cb-in" type="email" placeholder="Email (optional — for a reply)" />
+      </div>
+      <div class="cb-tools">
+        <button type="button" id="cbRec" class="cb-tool">🎤 Record audio</button>
+        <label class="cb-tool">📷 Photo / video<input id="cbCam" type="file" accept="image/*,video/*" capture multiple hidden /></label>
+        <label class="cb-tool">📎 Attach file<input id="cbFile" type="file" multiple hidden /></label>
+      </div>
+      <ul id="cbList" class="cb-list"></ul>
+      <button type="button" id="cbSend" class="cb-send">Send comment</button>
+      <p id="cbMsg" class="cb-msg" role="status"></p>
+    </section>
+    <script is:inline>
+      (function(){
+        var items=[];var listEl=document.getElementById('cbList');var msg=document.getElementById('cbMsg');
+        function render(){listEl.innerHTML=items.map(function(it,i){return '<li>'+it.label+' <button type="button" data-i="'+i+'" class="cb-rm">remove</button></li>';}).join('');}
+        listEl&&listEl.addEventListener('click',function(e){var t=e.target;if(t&&t.classList&&t.classList.contains('cb-rm')){items.splice(+t.getAttribute('data-i'),1);render();}});
+        function addFiles(fl){for(var i=0;i<fl.length;i++){items.push({file:fl[i],label:(fl[i].name||'file')+' ('+Math.round(fl[i].size/1024)+' KB)'});}render();}
+        var cam=document.getElementById('cbCam'),file=document.getElementById('cbFile');
+        cam&&cam.addEventListener('change',function(){addFiles(cam.files);cam.value='';});
+        file&&file.addEventListener('change',function(){addFiles(file.files);file.value='';});
+        var rec=document.getElementById('cbRec'),mr=null,chunks=[];
+        rec&&rec.addEventListener('click',function(){
+          if(mr&&mr.state==='recording'){mr.stop();return;}
+          if(!navigator.mediaDevices||!window.MediaRecorder){msg.style.color='#b91c1c';msg.textContent='Audio recording is not supported here — you can still attach a file.';return;}
+          navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+            chunks=[];mr=new MediaRecorder(stream);
+            mr.ondataavailable=function(e){if(e.data&&e.data.size)chunks.push(e.data);};
+            mr.onstop=function(){var blob=new Blob(chunks,{type:(chunks[0]&&chunks[0].type)||'audio/webm'});var ext=(blob.type.indexOf('ogg')>-1?'ogg':'webm');var f=new File([blob],'voice-'+Date.now()+'.'+ext,{type:blob.type});items.push({file:f,label:'🎤 Voice note ('+Math.round(f.size/1024)+' KB)'});render();stream.getTracks().forEach(function(t){t.stop();});rec.textContent='🎤 Record audio';rec.classList.remove('cb-recording');};
+            mr.start();rec.textContent='⏹ Stop recording';rec.classList.add('cb-recording');
+          }).catch(function(){msg.style.color='#b91c1c';msg.textContent='Could not access the microphone.';});
+        });
+        var send=document.getElementById('cbSend');
+        send&&send.addEventListener('click',function(){
+          var text=(document.getElementById('cbText').value||'').trim();
+          if(!text&&items.length===0){msg.style.color='#b91c1c';msg.textContent='Please write a comment or add a recording or file.';return;}
+          send.disabled=true;msg.style.color='#475569';msg.textContent='Sending…';
+          var fd=new FormData();fd.append('text',text);fd.append('name',document.getElementById('cbName').value||'');fd.append('email',document.getElementById('cbEmail').value||'');fd.append('page_url',location.href);
+          items.forEach(function(it){fd.append('files',it.file,it.file.name);});
+          fetch('/api/comment',{method:'POST',body:fd}).then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});}).then(function(res){
+            if(res.ok&&res.j&&res.j.ok){msg.style.color='#166534';msg.textContent='Thank you — your comment was sent to the authors.';document.getElementById('cbText').value='';items=[];render();send.disabled=false;}
+            else{msg.style.color='#b91c1c';msg.textContent=(res.j&&res.j.error)||'Sorry, something went wrong. Please try again.';send.disabled=false;}
+          }).catch(function(){msg.style.color='#b91c1c';msg.textContent='Sorry, something went wrong. Please try again.';send.disabled=false;});
+        });
+      })();
+    </script>
+
     <p class="reviews-link">
       <a href="/reading/schools-of-the-republic/reviews/">Reviews ({reviewCount})</a>
     </p>
@@ -146,6 +198,22 @@ const VERSIONS = [
     .vb-note{font-family:var(--font-sans);font-size:.9rem;color:#334155;margin:0;line-height:1.55;}
     .vb-note .vb-date{font-weight:700;color:var(--deep-navy,#1e3a5f);}
     .vb-dl{color:#1d4ed8;text-decoration:underline;font-weight:600;white-space:nowrap;}
+    .comment-box{margin:2rem 0 1rem;padding:1.25rem 1.25rem 1.4rem;border:1px solid var(--rule-border,#e5e7eb);border-left:3px solid var(--old-gold,#8b7355);border-radius:6px;background:var(--linen-card,#fafaf7);}
+    .cb-h{font-family:var(--font-serif,Georgia,serif);font-size:1.25rem;color:var(--deep-navy,#1e3a5f);margin:0 0 .4rem;}
+    .cb-intro{font-family:var(--font-sans);font-size:.9rem;color:#475569;margin:0 0 .9rem;line-height:1.5;}
+    .cb-text{width:100%;box-sizing:border-box;font-family:var(--font-sans);font-size:.95rem;padding:.6rem .7rem;border:1px solid #cbd5e1;border-radius:6px;resize:vertical;}
+    .cb-row{display:flex;flex-wrap:wrap;gap:.6rem;margin:.6rem 0;}
+    .cb-in{flex:1 1 200px;font-family:var(--font-sans);font-size:.9rem;padding:.5rem .6rem;border:1px solid #cbd5e1;border-radius:6px;}
+    .cb-tools{display:flex;flex-wrap:wrap;gap:.5rem;margin:.4rem 0 .2rem;}
+    .cb-tool{font-family:var(--font-sans);font-size:.88rem;font-weight:600;padding:.45rem .8rem;border:1.5px solid var(--deep-navy,#1e3a5f);border-radius:6px;background:#fff;color:var(--deep-navy,#1e3a5f);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem;}
+    .cb-tool:hover{background:#eef2f7;}
+    .cb-recording{background:#b91c1c !important;color:#fff !important;border-color:#b91c1c !important;}
+    .cb-list{list-style:none;padding:0;margin:.6rem 0;font-family:var(--font-sans);font-size:.85rem;color:#334155;}
+    .cb-list li{padding:.25rem 0;}
+    .cb-rm{margin-left:.4rem;font-size:.78rem;color:#b91c1c;background:none;border:none;cursor:pointer;text-decoration:underline;}
+    .cb-send{margin-top:.6rem;font-family:var(--font-sans);font-size:.95rem;font-weight:700;padding:.55rem 1.2rem;border:none;border-radius:6px;background:var(--deep-navy,#1e3a5f);color:#fff;cursor:pointer;}
+    .cb-send:disabled{opacity:.6;cursor:default;}
+    .cb-msg{font-family:var(--font-sans);font-size:.88rem;margin:.6rem 0 0;min-height:1.1em;}
     .reviews-link {
       font-family: var(--font-sans);
       font-size: 0.88rem;
