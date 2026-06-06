@@ -1,9 +1,10 @@
 ---
-// v60b — Writing Room landing rewritten to surface the three migrated
-// books (Schools of the Republic, The Eighth Anchor, Who Steals from
-// Children) alongside the AI-governance essay v58 shipped. Books are
-// the headline; open essays sit beneath as their own section, with
-// room to grow as more drafts arrive.
+// v60c — Hornbook card enriched (first-draft scope + citation-verification
+// process); "Published & companion works" moved to the Reading Room's
+// published shelf (/reading/#published-shelf) — the Writing Room is for
+// works being written. Earlier: v60b surfaced the three migrated books
+// alongside the AI-governance essay; books are the headline, open essays
+// sit beneath as their own section.
 import RoomLayout from '../../layouts/RoomLayout.astro';
 ---
 <RoomLayout
@@ -54,16 +55,22 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
     <h2 id="hornbook-heading" class="section-heading">The legal hornbook</h2>
 
     <article class="book-card">
-      <p class="card-kicker">Law desk · Founding draft</p>
+      <p class="card-kicker">Law desk · First draft, under citation verification</p>
       <h3 class="card-title">
         <a href="/writing/hornbook/"><em>School Trust Lands: The Law of America's Educational Land Trusts</em></a>
       </h3>
-      <p class="card-byline">America's School Trust Library · Founding hornbook draft</p>
+      <p class="card-byline">America's School Trust Library · A hornbook of school-trust law</p>
       <p class="card-blurb">
-        A practitioner reference for school-trust law: granting instruments,
-        fiduciary duties, state cases, standing, accounting, remedies, and
-        modern reform. Draft pages preserve <code>[VERIFY]</code> flags while
-        citations are checked by the hornbook process.
+        A one-volume hornbook of school-trust law: granting instruments,
+        the trust-character question, fiduciary duties, dispositions and
+        full value, accounting, standing, remedies, and modern reform.
+        The complete first draft is here — nineteen chapters plus state
+        appendices, about 83,000 words — written against primary sources.
+        Citations not yet verified are carried as visible
+        <code>[VERIFY]</code> flags, and those flags are being resolved
+        continuously: a background harvest pulls the cited opinions from
+        CourtListener, and each claim is checked against the actual
+        opinion text.
       </p>
       <div class="card-cta-row">
         <a href="/writing/hornbook/" class="card-cta">Open the hornbook →</a>
@@ -148,73 +155,12 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
     </article>
   </section>
 
-  <section class="published mt-10" aria-labelledby="published-heading">
-    <h2 id="published-heading" class="section-heading">Published &amp; companion works</h2>
-
-    <p class="section-intro">
-      Published reference works that sit alongside the Library's drafts —
-      the legal-and-factual companion textbook, the foundational
-      fire-history scholarship behind the Reading Room's forestry shelf,
-      and the definitive Elliott State Forest history hosted as a free
-      archive PDF.
-    </p>
-
-    <article class="book-card">
-      <p class="card-kicker">Published 2025 · Companion textbook</p>
-      <h3 class="card-title">
-        <em>Oregon's Constitutional Duties to Schools</em>
-      </h3>
-      <p class="card-byline">Margaret Bird and Dave Sullivan · 2025 · 150 pages</p>
-      <p class="card-blurb">
-        A 150-page volume documenting the billion-dollar inheritance for
-        Oregon schoolchildren and the case for constitutional
-        accountability. The legal architecture and factual record cited
-        in <em>Advocates for School Trust Lands v. State of Oregon</em>.
-      </p>
-      <div class="card-cta-row">
-        <a href="https://drive.google.com/file/d/1E1IhBgk8fdtKnQd2FqkFqE9V1xduYd0u/view?usp=sharing" class="card-cta" rel="noopener" target="_blank">Free PDF (Google Drive) →</a>
-        <a href="https://a.co/d/8PpB6f8" class="card-cta" rel="noopener" target="_blank">Amazon (Kindle / paperback / hardback) →</a>
-      </div>
-      <p class="card-bridge">
-        Also distributed by OASTL Oregon at
-        <a href="https://oastl-oregon.drdavesullivan.workers.dev" rel="noopener" target="_blank">oastl-oregon.drdavesullivan.workers.dev</a>.
-      </p>
-    </article>
-
-    <article class="book-card">
-      <p class="card-kicker">Published · Companion forestry work</p>
-      <h3 class="card-title">
-        <em>Great Fires: Catastrophic Burning Patterns 1491-1951</em>
-      </h3>
-      <p class="card-byline">Bob Zybach et al. · authorship attribution owed at next pass</p>
-      <p class="card-blurb">
-        Describes how Indian burning practices shaped coastal forests for
-        thousands of years; foundational reference for understanding the
-        fire-history context of the Elliott State Forest and the broader
-        Pacific Northwest.
-      </p>
-      <a href="https://www.amazon.com/Great-Fires-Catastrophic-Patterns-1491-1951/dp/1732127603" class="card-cta" rel="noopener" target="_blank">Amazon →</a>
-      <p class="card-bridge">
-        Cited in the <a href="/reading/">Reading Room</a> →
-        Oregon fire-history section.
-      </p>
-    </article>
-
-    <article class="book-card">
-      <p class="card-kicker">Published 1999 · Definitive Elliott history</p>
-      <h3 class="card-title">
-        <em>Caulked Boots and Cheese Sandwiches</em>
-      </h3>
-      <p class="card-byline">Jerry Phillips · Oregon Department of Forestry, 1999</p>
-      <p class="card-blurb">
-        The definitive history of the Elliott State Forest, written by
-        its long-term manager (1956-1989). Hosted as a free PDF on the
-        ORWW Field Station archive.
-      </p>
-      <a href="http://www.orww.org/Elliott_Forest/History/Phillips/Phillips_1998-201.pdf" class="card-cta" rel="noopener" target="_blank">Free PDF (ORWW) →</a>
-      <p class="card-bridge">Hosted by ORWW Field Station.</p>
-    </article>
-  </section>
+  <p class="mt-10 text-sm italic text-slate-500">
+    Finished works have moved to the
+    <a href="/reading/#published-shelf">Reading Room shelf →</a>
+    (<em>Oregon's Constitutional Duties to Schools</em>,
+    <em>Great Fires</em>, <em>Caulked Boots and Cheese Sandwiches</em>).
+  </p>
 
   <section class="essays mt-10" aria-labelledby="essays-heading">
     <h2 id="essays-heading" class="section-heading">Open essays</h2>

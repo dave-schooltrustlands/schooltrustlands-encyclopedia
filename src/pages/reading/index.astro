@@ -118,14 +118,11 @@ const statePills = stateEntries
 
       <p>
         Below: four featured entries the Library most needs visitors to
-        encounter first; the full thirty-nine-entry browse organized
-        into six categories; and the alphabetical roster of fifty state
-        dossiers. The Library’s own books and essays
-        (<em>Schools of the Republic</em>, <em>The Eighth Anchor</em>,
-        <em>Who Steals from Children</em>) currently remain at their
-        existing URLs and are slated to move to the
-        <a href="/writing/">Writing Room</a> in a future architecture
-        pass.
+        encounter first; the published shelf of finished works; the
+        full thirty-nine-entry browse organized into six categories;
+        and the alphabetical roster of fifty state dossiers. The
+        Library’s own books in progress live in the
+        <a href="/writing/">Writing Room</a>.
       </p>
     </div>
 
@@ -170,6 +167,73 @@ const statePills = stateEntries
           );
         })}
       </ul>
+    </section>
+
+    <hr class="archival-divider" />
+
+    {/* ============================================================== */}
+    {/* The published shelf — finished works (moved from Writing Room) */}
+    {/* ============================================================== */}
+    <section class="published-shelf" id="published-shelf" aria-label="The published shelf">
+      <h2 class="section-heading">The published shelf</h2>
+      <p class="section-subhead">
+        Finished, published works that sit beside the Library’s
+        collections — the companion textbook behind the Oregon case,
+        the foundational fire-history scholarship, and the definitive
+        Elliott State Forest history. Works still being written live
+        in the <a href="/writing/">Writing Room</a>.
+      </p>
+
+      <article class="shelf-card">
+        <p class="shelf-kicker">Published 2025 · Companion textbook</p>
+        <h3 class="shelf-title"><em>Oregon's Constitutional Duties to Schools</em></h3>
+        <p class="shelf-byline">Margaret Bird and Dave Sullivan · 2025 · 150 pages</p>
+        <p class="shelf-blurb">
+          A 150-page volume documenting the billion-dollar inheritance
+          for Oregon schoolchildren and the case for constitutional
+          accountability. The legal architecture and factual record
+          cited in <em>Advocates for School Trust Lands v. State of
+          Oregon</em>.
+        </p>
+        <p class="shelf-links">
+          <a href="https://drive.google.com/file/d/1E1IhBgk8fdtKnQd2FqkFqE9V1xduYd0u/view?usp=sharing" rel="noopener" target="_blank">Free PDF (Google Drive) →</a>
+          <a href="https://a.co/d/8PpB6f8" rel="noopener" target="_blank">Amazon (Kindle / paperback / hardback) →</a>
+        </p>
+        <p class="shelf-note">
+          Also distributed by OASTL Oregon at
+          <a href="https://oastl-oregon.drdavesullivan.workers.dev" rel="noopener" target="_blank">oastl-oregon.drdavesullivan.workers.dev</a>.
+        </p>
+      </article>
+
+      <article class="shelf-card">
+        <p class="shelf-kicker">Published · Companion forestry work</p>
+        <h3 class="shelf-title"><em>Great Fires: Catastrophic Burning Patterns 1491-1951</em></h3>
+        <p class="shelf-byline">Bob Zybach et al.</p>
+        <p class="shelf-blurb">
+          Describes how Indian burning practices shaped coastal forests
+          for thousands of years; foundational reference for
+          understanding the fire-history context of the Elliott State
+          Forest and the broader Pacific Northwest.
+        </p>
+        <p class="shelf-links">
+          <a href="https://www.amazon.com/Great-Fires-Catastrophic-Patterns-1491-1951/dp/1732127603" rel="noopener" target="_blank">Amazon →</a>
+        </p>
+      </article>
+
+      <article class="shelf-card">
+        <p class="shelf-kicker">Published 1999 · Definitive Elliott history</p>
+        <h3 class="shelf-title"><em>Caulked Boots and Cheese Sandwiches</em></h3>
+        <p class="shelf-byline">Jerry Phillips · Oregon Department of Forestry, 1999</p>
+        <p class="shelf-blurb">
+          The definitive history of the Elliott State Forest, written
+          by its long-term manager (1956-1989). Hosted as a free PDF on
+          the ORWW Field Station archive.
+        </p>
+        <p class="shelf-links">
+          <a href="http://www.orww.org/Elliott_Forest/History/Phillips/Phillips_1998-201.pdf" rel="noopener" target="_blank">Free PDF (ORWW) →</a>
+        </p>
+        <p class="shelf-note">Hosted by ORWW Field Station.</p>
+      </article>
     </section>
 
     <hr class="archival-divider" />
@@ -276,6 +340,70 @@ const statePills = stateEntries
       line-height: 1.55;
       color: #475569;
       margin: 0 0 1.25rem;
+    }
+
+    /* Published shelf — finished works moved from the Writing Room */
+    .shelf-card {
+      background: var(--linen-card, #fafaf7);
+      border: 1px solid var(--rule-border, #e5e7eb);
+      border-left: 3px solid var(--old-gold, #8b7355);
+      border-radius: 4px;
+      padding: 1.25rem 1.25rem 1rem;
+      margin: 0 0 1rem;
+    }
+    .shelf-kicker {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--old-gold, #8b7355);
+      margin: 0 0 0.45rem;
+    }
+    .shelf-title {
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--deep-navy, #1e3a5f);
+      margin: 0 0 0.35rem;
+    }
+    .shelf-byline {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: #475569;
+      margin: 0 0 0.35rem;
+    }
+    .shelf-blurb {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #334155;
+      margin: 0 0 0.75rem;
+    }
+    .shelf-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.5rem;
+      margin: 0 0 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .shelf-links a {
+      color: #1d4ed8;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .shelf-links a:hover { color: #1e40af; }
+    .shelf-note {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: #64748b;
+      font-style: italic;
+      margin: 0;
+    }
+    .shelf-note a {
+      color: #475569;
+      text-decoration: underline;
     }
 
     /* v73 — state-jump pill row */
