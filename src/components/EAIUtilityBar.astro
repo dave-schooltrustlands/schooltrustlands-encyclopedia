@@ -1,19 +1,20 @@
 ---
-// v63 — Persistent campus utility bar, Library variant. Same spec as
-// ASTL v70 / EAI v1.3: thin near-black strip at the top of every page,
-// cream text, small type. Left: institute mark + Institute name link.
-// Right: "Campus buildings" dropdown listing the four buildings, with
-// this site marked "you are here."
+// v64 — Persistent campus utility bar, Library variant. Thin near-black
+// strip at the top of every page, cream text, small type. Left: campus
+// mark + "A Forever Gift" campus-home link (schooltrusts.org). Right:
+// "Campus" dropdown listing the three pillars of the schooltrusts.org
+// campus structure, with this site marked "you are here." The former
+// Eighth Anchor Institute framing is retired from this bar.
 const CAMPUS = [
-  { label: "America's School Trust Library — you are here", href: null, current: true },
-  { label: 'ASTL National', href: 'https://schooltrustlands.net' },
-  { label: 'OASTL Oregon', href: 'https://oastl-oregon.drdavesullivan.workers.dev' },
-  { label: 'ORWW Field Station', href: 'http://orww.org' },
+  { label: "the Record — America's School Trust Library — you are here", href: null, current: true },
+  { label: 'the Advocates', href: 'https://schooltrusts.org/advocates' },
+  { label: 'the Renewal', href: 'https://schooltrusts.org/renewal' },
+  { label: 'Campus home — A Forever Gift', href: 'https://schooltrusts.org' },
 ];
 ---
 <div class="eai-utility-bar" data-eai-utility-bar data-pagefind-ignore>
   <div class="eai-bar-inner">
-    <a class="eai-bar-left" href="https://eighthanchor.org" rel="noopener">
+    <a class="eai-bar-left" href="https://schooltrusts.org" rel="noopener">
       <svg
         class="eai-bar-icon"
         viewBox="0 0 24 24"
@@ -28,11 +29,11 @@ const CAMPUS = [
         <path d="M5 8c0 4 3 7 7 7s7-3 7-7" />
         <path d="M8 22h8" />
       </svg>
-      <span class="eai-bar-label">The Eighth Anchor Institute</span>
+      <span class="eai-bar-label">A Forever Gift</span>
     </a>
     <details class="eai-bar-right">
       <summary>
-        <span>Campus buildings</span>
+        <span>Campus</span>
         <span class="eai-bar-caret" aria-hidden="true">▾</span>
       </summary>
       <ul class="eai-bar-menu" role="menu">
