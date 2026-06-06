@@ -1,0 +1,132 @@
+# School Trust Lands: The Law of America's Educational Land Trusts
+## Chapter 1 — The Granting Instruments (v0)
+
+**June 6, 2026**
+**FROM: Claude (Cowork-side) — working draft for the legal librarian's review; not legal advice.**
+
+*Status: v0, corpus-bounded draft. Every authority herein is carried in the project's verified research files; [VERIFY] flags mark items awaiting primary-source confirmation under quality gate G3.*
+
+---
+
+### § 1.1 The subject and the sources
+
+American school-trust law governs the lands and funds that the United States granted to the states, at or before statehood, for the support of public schools, and the duties of the states that accepted them. The field's primary instruments fall into four groups: the land-policy ordinances of the Confederation era; the enabling and admission acts by which Congress fixed the terms of each state's admission; the state constitutional provisions by which each state accepted the grant into its organic law (treated in Chapter 2); and the general federal land statutes, now codified at 43 U.S.C. § 851 et seq., that govern lieu selections and indemnity.[^1]
+
+Across seven decades of statehood legislation the grants follow a single design. Congress conveyed designated sections of every township to the new state for the support of its schools; the state, by accepting admission on those terms, bound itself to the dedication. Justice Powell stated the exchange concisely: "As consideration for each new State's pledge not to tax federal lands, Congress granted the State a fixed proportion of the lands within its borders for the support of public education."[^2][^3] What changed over the decades was not the design but the drafting: each generation of instruments wrote the protective terms more explicitly than the last, until the 1910 New Mexico–Arizona act stated the trust, the remedy, and the enforcer in so many words. That progression — and the litigation significance of where each state's instrument falls on it — is this chapter's organizing thread.
+
+[^1]: See *State of Oregon ex rel. Division of State Lands v. Bureau of Land Management*, 876 F.2d 1419 (9th Cir. 1989) (describing the line of statutes Congress enacted that in their present form are codified at 43 U.S.C. § 851 et seq.).
+[^2]: *Andrus v. Utah*, 446 U.S. 500 (1980) (Powell, J., dissenting), quoted approvingly by the Oregon Supreme Court in *Cascadia Wildlands v. Department of State Lands*, 365 Or 750, 752 n.1 (2019). The *Andrus* majority (Stevens, J.) characterizes the grant as a "solemn agreement" producing a "benefit of the bargain" obligation on the state. See § 1.7.
+[^3]: The exchange framing, collected by state: **Nebraska** — *State v. Platte Valley Public Power & Irrigation District*, 147 Neb. 289, 23 N.W.2d 300 (1946) (school lands "held in trust by the state under a contractual and constitutional obligation"); **Oklahoma** — *Oklahoma Education Ass'n, Inc. v. Nigh*, 642 P.2d 230 (Okla. 1982) (the arrangement an irrevocable compact binding successive legislatures); **South Dakota** — *Kanaly v. State ex rel. Janklow*, 368 N.W.2d 819, 823 (S.D. 1985) (the grant variously an "irrevocable compact," a "solemn agreement," and a "contract"); **Utah (federal)** — *State of Utah v. Kleppe*, 586 F.2d 756 (10th Cir. 1978) (the congressional land-grant program "was bilateral in effect").
+
+### § 1.2 The ordinance origins, 1785–1787
+
+The school grant predates the Constitution. The Land Ordinance of 1785, which established the rectangular survey of townships divided into thirty-six numbered sections, reserved the sixteenth section of each township for the maintenance of public schools within the township [VERIFY: exact reservation language of the 1785 Ordinance against the original text]. The Northwest Ordinance of 1787 supplied the accompanying policy declaration in favor of schools and the means of education [VERIFY: exact language of Article III of the 1787 Ordinance]. The modern case law cites both instruments as the origin of the compact framework that the enabling acts later carried into each admission.[^4][^5]
+
+Two features of the ordinance design persisted into everything that followed. First, the unit of dedication was the township section — a fixed, surveyed, identifiable parcel, which is why school-trust litigation to this day is litigation about specific land. Second, the dedication ran to school support as such, a purpose restriction that the courts of the receiving states would later read as the defining term of a trust. See Chapter 3.
+
+[^4]: Land Ordinance of 1785; Northwest Ordinance of 1787, cited as the historical compact framework in *Cascadia Wildlands v. Department of State Lands*, 365 Or 750, 752 n.1 (2019) (citing *Andrus v. Utah*, 446 U.S. 500 (1980)).
+[^5]: The earliest Supreme Court treatment of a federal educational land grant as a trust antedates the two-section era entirely: *Trustees of Vincennes University v. Indiana*, 55 U.S. (14 How.) 268, 280 (1852) (state holds title "as the trustee to administer the trust"); see also *Cooper v. Roberts*, 59 U.S. (18 How.) 173 (1855) (the foundational decision on the section-sixteen school grant as a compact). Accord cases for the ordinance-era origin not yet collected by state; see Architecture § C, verification wave 2.
+
+### § 1.3 The township-trust generation: the single-section states
+
+The earliest statehood grants conveyed one section — Section 16 — per township, dedicated to the schools of that township rather than to a consolidated state fund.
+
+**Louisiana (1812).** The Louisiana Enabling Act of February 20, 1811, 2 Stat. 641, which authorized formation of a state constitution, and the Act of April 8, 1812, 2 Stat. 701, which admitted the state, together reserved Section 16 of each township for the support of schools within the township.[^6] Administration settled at the parish level: parish school boards function as statutory trustees for the Section 16 lands within their parish, with supervisory authority in the State Land Office and the legislature. The 1811–12 instruments predate the protective conventions Congress developed for the western states after 1850 and accordingly lack the explicit "inviolability," "permanent fund," and "appraised value" language of the later compacts. Louisiana's courts have held the trust character of the grant binding on the state nonetheless.[^7]
+
+**Mississippi (1817).** The Mississippi Enabling Act of March 1, 1817, 3 Stat. 348, together with the Act of December 10, 1817 admitting the state, reserved Section 16 of every township for the support of schools within the township.[^8] As in Louisiana, the trust is administered locally — each school district acts as trustee for the Sixteenth Section lands within its boundaries under state-level supervision — and, as in Louisiana, the early instrument lacks the later express trust vocabulary while the courts have firmly established the trust character of the grant.[^9]
+
+The township-trust states matter to the practitioner for two reasons. They prove that trust character does not depend on the express word "trust" in the instrument — the point pressed in Chapter 3 — and they supply the field's longest administrative record, including its most candid judicial vocabulary of failure: the Mississippi case law speaks of historical "spoliation" of the Sixteenth Section estate [VERIFY: identify the leading Mississippi opinions using the spoliation characterization; the source files reference *Hill v. Thompson* and *Lambert v. State* without full citations].
+
+[^6]: Act of Feb. 20, 1811, 2 Stat. 641; Act of Apr. 8, 1812, 2 Stat. 701.
+[^7]: **Louisiana** — *State ex rel. Plaquemines Parish School Board*, 652 So. 2d 1 (La. Ct. App.) [VERIFY full caption, court, and year] ("The existence of a school trust has long been established in both Louisiana and Federal jurisprudence and it has been consistently held that the school trust lands can be alienated only where it is of benefit to school in some manner such as payment of the sale or lease price to the school fund or school board."); *Ebey v. Avoyelles Parish School Board*, 861 So. 2d 910, 2003-765 (La. App. 3 Cir. 12/17/03) ("We conclude Section 16 lands are held in trust by the State and managed by school boards 'in the manner of a statutory trustee' for the benefit of public education.").
+[^8]: Mississippi Enabling Act of Mar. 1, 1817, 3 Stat. 348; Act of Dec. 10, 1817 (admission).
+[^9]: **Mississippi** — *Clark v. Stephen D. Lee Foundation*, 887 So. 2d 798 (Miss. 2004) (consideration for a Sixteenth Section lease "must be deemed sufficient based on the reasonable market value of the leased land").
+
+### § 1.4 The two-section generation, 1859–1906
+
+By the mid-nineteenth century the standard grant had doubled: Sections 16 **and** 36 of every township, with proceeds increasingly directed to a consolidated permanent state fund rather than to the township.
+
+**Oregon (1859).** The Oregon Admission Act, Act of February 14, 1859, ch. 33, § 4, 11 Stat. 383, granted sections 16 and 36 "for the use of schools." Two drafting features have dominated Oregon's subsequent litigation. The act does not use the word "trust" — the textual opening for the honorary-grant argument examined in Chapter 3 — and it contains an express compact clause: the propositions offered to the new state, "if accepted, shall be obligatory on the United States and upon the said State of Oregon."[^10][^11]
+
+**Nebraska (1864).** The Nebraska Enabling Act of April 19, 1864, 13 Stat. 47, reserved sections 16 and 36 of every township for the support of common schools, with proceeds held in a permanent fund. Nebraska's constitution then incorporated the trust covenants directly into the state's organic law — the structural move that made any violation of trust duty simultaneously a violation of the state constitution, and on which the Nebraska trilogy of Chapter 3 rests.[^12]
+
+**Colorado (1875).** The Colorado Enabling Act of March 3, 1875, 18 Stat. 474, granted sections 16 and 36 for the support of common schools, with proceeds of any disposition to be held in a permanent fund and subject to inviolability.[^13]
+
+**The Omnibus Enabling Act (1889).** The Act of February 22, 1889, 25 Stat. 676, admitted Montana, North Dakota, South Dakota, and Washington on common terms: sections 16 and 36 of every township in trust for the support of common schools, proceeds held in a permanent fund, lands to be appraised before sale or lease, and no disposition at less than appraised value.[^14] The Omnibus Act is the field's single most-litigated instrument, supplying the operative text in the Washington, Montana, and South Dakota lines collected throughout this volume.
+
+**Idaho (1890).** The Idaho Admission Act of July 3, 1890, 26 Stat. 215, granted sections 16 and 36 in trust for common schools, with additional grants to named institutions, each held as a distinct trust for its named beneficiary.[^15]
+
+**Oklahoma (1906).** The Oklahoma Enabling Act of June 16, 1906, 34 Stat. 267, granted sections 16 and 36 in the former Oklahoma Territory and provided cash payments in lieu of sections in the former Indian Territory, where allotment under prior federal action had foreclosed in-place grants; proceeds were to be held in a permanent fund, with disposition prohibited at less than appraised value.[^16] Oklahoma's in-lieu cash component is the era's reminder that the trust corpus was never only land: money received in substitution for land enters the trust on the land's terms. See § 1.8.
+
+The generational lesson: each successive act states more of the protective apparatus expressly — permanent fund (1864, 1875), inviolability (1875), appraisal and minimum price (1889, 1906). Where an early instrument omits a protection the later acts spell out, the receiving state's courts have generally declined to treat the omission as a license, deriving the same obligations from the dedication itself.[^17][^18]
+
+[^10]: Oregon Admission Act, Act of Feb. 14, 1859, ch. 33, § 4, 11 Stat. 383.
+[^11]: The compact clause is quoted and given operative significance in *Cascadia Wildlands v. Department of State Lands*, 365 Or 750, 758 (2019) ("That Act provided that the terms under which the land was granted, 'if accepted, shall be obligatory on the United States and upon the said State of Oregon.'").
+[^12]: Nebraska Enabling Act of Apr. 19, 1864, 13 Stat. 47; see *State ex rel. Ebke v. Board of Educational Lands & Funds*, 154 Neb. 244, 47 N.W.2d 520 (1951) (constitutional incorporation); Chapter 3, § 3.3.
+[^13]: Colorado Enabling Act of Mar. 3, 1875, 18 Stat. 474; accepted by Colorado's first Constitution (1876), which established the State Board of Land Commissioners as a constitutional body. See *Branson School District RE-82 v. Romer*, 958 F. Supp. 1501 (D. Colo. 1997), aff'd, 161 F.3d 619 (10th Cir. 1998).
+[^14]: Omnibus Enabling Act of Feb. 22, 1889, 25 Stat. 676.
+[^15]: Idaho Admission Act of July 3, 1890, 26 Stat. 215; see Idaho Const. art. IX, §§ 3, 4, 8 (acceptance; inviolate endowment fund; "maximum long term financial return" management standard).
+[^16]: Oklahoma Enabling Act of June 16, 1906, 34 Stat. 267.
+[^17]: Lead case: *Grand Prize Hydraulic Mines v. Boswell*, 83 Or 1, 6-7 (1917) ("[T]he school lands granted to the state of Oregon are a trust for the benefit of public education." — decided under the 1859 act, which nowhere uses the word "trust").
+[^18]: Accord, collected by state: **Louisiana** — *Ebey v. Avoyelles Parish School Board*, 861 So. 2d 910 (La. App. 3 Cir. 2003) (trust character under the 1811–12 instruments); **Mississippi** — *Clark v. Stephen D. Lee Foundation*, 887 So. 2d 798 (Miss. 2004) (fair-market-value floor under the 1817 instrument); **Nebraska** — *Propst v. Board of Educational Lands & Funds*, 156 Neb. 226, 55 N.W.2d 653 (1952) (title vested "upon an express trust for the 'support of common schools'" under the 1864 act); **Oregon** — *State Land Board v. Lee*, 84 Or 431, 441-42 (1917) ("[T]he state is not a mere dry trustee, but it holds the funds in trust for the common schools of the state, and hence in trust for a public purpose.").
+
+### § 1.5 The four-section generation and the 1910 high-water mark
+
+For the arid states, Congress doubled the grant again — sections 2, 16, 32, and 36 of every township — in recognition of the diminished revenue potential of the land base.
+
+**Utah (1894).** The Utah Enabling Act of July 16, 1894, 28 Stat. 107, granted the four sections in trust for common schools, with additional institutional grants, prohibited disposition at less than appraised value, and required proceeds to be held in a perpetual fund.[^19]
+
+**New Mexico and Arizona (1910).** The New Mexico–Arizona Enabling Act of June 20, 1910, 36 Stat. 557, granted the four sections to each state on the strictest trust terms Congress ever wrote. Section 10 of the act is the federal high-water mark of school-trust drafting. It expressly characterizes the lands as held "in trust"; it voids any disposition not made in substantial conformity with the act; it declares non-conforming disposition a "breach of trust"; and it authorizes the Attorney General of the United States to sue the state to enforce the trust. The operative language:
+
+> "All lands hereby granted ... shall be by the said State held in trust, to be disposed of in whole or in part only in manner as herein provided and for the several objects specified in the respective granting and confirmatory provisions, and the natural products and money proceeds of any of said lands shall be subject to the same trusts as the lands producing the same. Disposition of any of said lands ... not made in substantial conformity with the provisions of this Act shall be null and void."[^20][^21]
+
+The 1910 act packages four protections together — "in trust," "null and void," "breach of trust," and federal enforcement — that earlier instruments left implicit. Its practical significance for the whole field is interpretive: the strict 1910 text is the explicit statement of the design the Supreme Court has read in the earlier instruments as well, and the 1910-act cases (*Ervien*, *Lassen*, *Alamo*, *ASARCO*, *Deer Valley*, *Lyons*) supply the most developed body of disposition doctrine in the field.
+
+[^19]: Utah Enabling Act of July 16, 1894, 28 Stat. 107.
+[^20]: New Mexico–Arizona Enabling Act of June 20, 1910, § 10, 36 Stat. 557.
+[^21]: The 1910 act's terms enforced: **Federal (New Mexico)** — *Ervien v. United States*, 251 U.S. 41 (1919) (diversion of trust proceeds to promotional purposes a breach of trust enforceable by the United States); **Federal (Arizona)** — *Lassen v. Arizona ex rel. Arizona Highway Department*, 385 U.S. 458 (1967) (full appraised value owed on intra-governmental taking); *ASARCO Inc. v. Kadish*, 490 U.S. 605, 626 (1989) (state mineral-leasing statute void for nonconformity with § 28 of the act); **Arizona** — *Deer Valley Unified School District No. 97 v. Superior Court*, 157 Ariz. 537, 760 P.2d 537 (1988) (trust land "is not state land"; condemnation by state actors barred); **New Mexico** — *State ex rel. King v. Lyons*, 2011-NMSC-004, 248 P.3d 878 (land exchanges void where structured to bypass public-auction and highest-best-bidder requirements).
+
+### § 1.6 The Alaska departure (1958)
+
+The Alaska Statehood Act of July 7, 1958, Pub. L. 85-508, 72 Stat. 339, broke the township pattern. Rather than designated sections, Alaska received a lump-sum grant of approximately 103 million acres to be selected over twenty-five years for general state purposes, plus discrete grants for the University of Alaska and for mental health programs. The act required the state, by constitutional ordinance, to disclaim all right and title to unappropriated public lands and to accept the grants as a compact with the United States.[^22] Common-school support in Alaska flows principally through a different fiscal architecture (the Alaska Permanent Fund, capitalized from petroleum royalties under Article IX, Section 15 of the Alaska Constitution) rather than through a dedicated school-land trust on the western model. But where the 1958 act did create discrete trusts, the Alaska Supreme Court has enforced them as emphatically as any court in the field — refusing both silent diversion and outright termination.[^23]
+
+[^22]: Alaska Statehood Act of July 7, 1958, Pub. L. 85-508, 72 Stat. 339.
+[^23]: **Alaska** — *State v. University of Alaska*, 624 P.2d 807, 813 (Alaska 1981) (inclusion of university trust land in a state park without compensation "a breach of a federal trust"; the grants ensure "that *only* those beneficiaries profit from the trust"); *State v. Weiss*, 706 P.2d 681, 683 (Alaska 1985) (state may not extinguish the mental health trust by absorbing its function into general government: "The fact that the state has provided mental health care in the past and will most likely do so in the future is no justification for termination of the trust.").
+
+### § 1.7 The legal character of the instruments: accepted compacts
+
+The instruments of every generation share one legal character: they are offers that became binding bilateral compacts upon acceptance. The proposition has three corollaries the practitioner will use constantly.
+
+**First, the terms bind both sovereigns.** The Oregon act says so expressly — the terms, "if accepted, shall be obligatory on the United States and upon the said State of Oregon" — and the Supreme Court has treated the school-grant compacts as "unalterable except by consent" of both parties, so that a state legislature cannot unilaterally modify the framework its state accepted at admission.[^24][^25]
+
+**Second, the bargain is enforceable as a bargain.** The Tenth Circuit described the congressional program as "bilateral in effect," creating "a binding permanent trust to generate financial aid for public schools"; the Supreme Court in *Andrus v. Utah* described the grant as a "'solemn agreement' which in some ways may be analogized to a contract between private parties," whose indemnity provisions exist "to give the State the benefit of the bargain." Justice Powell's dissent supplied the formulation later courts quote most often: the grants were "solemn bilateral compacts between each State and the Federal Government," imposing "upon the State a binding and perpetual obligation to use the granted lands for the support of public education."[^26][^27]
+
+**Third, the obligations are useless without the means of performance, and the courts have implied the means.** Where trust lands were encircled by federal land, the District of Utah held the state entitled to access, because "without access the state could not develop the trust lands in any fashion and they would become economically worthless. This Congress did not intend."[^28]
+
+[^24]: *Cooper v. Roberts*, 59 U.S. (18 How.) 173 (1855).
+[^25]: Accord, collected by state: **Nebraska** — *State v. Platte Valley Public Power & Irrigation District*, 147 Neb. 289, 23 N.W.2d 300 (1946) (a "contractual and constitutional obligation"); **Oklahoma** — *Oklahoma Education Ass'n, Inc. v. Nigh*, 642 P.2d 230 (Okla. 1982) (a perpetual covenant binding successive legislatures); **South Dakota** — *Kanaly v. State ex rel. Janklow*, 368 N.W.2d 819, 823 (S.D. 1985); **New Mexico** — see the congressional-consent requirement attending New Mexico's 2022 constitutional amendment adding a distribution destination (consent required precisely because the compact is bilateral); **Oregon** — *Cascadia Wildlands v. Department of State Lands*, 365 Or 750, 758 (2019) (quoting the obligatory clause).
+[^26]: *State of Utah v. Kleppe*, 586 F.2d 756 (10th Cir. 1978); *Andrus v. Utah*, 446 U.S. 500 (1980) (majority and Powell, J., dissenting).
+[^27]: Accord, collected by state: **Utah (federal)** — *State of Utah v. Andrus*, 486 F. Supp. 995 (D. Utah 1979) ("a bilateral compact" between the United States and Utah, not a unilateral gift); *United States v. Cotter Corp.*, Nos. C 79-0037, C 79-0307 (D. Utah Oct. 1, 1979) (same; special school-land legislation prevails over later general legislation); **Colorado (federal)** — *Branson School District RE-82 v. Romer*, 161 F.3d 619 (10th Cir. 1998) (the compact an enforceable trust, not aspirational policy).
+[^28]: *State of Utah v. Andrus*, 486 F. Supp. 995 (D. Utah 1979). Accord cases not yet collected by state; see Architecture § C, verification wave 2.
+
+### § 1.8 The continuing federal framework
+
+The granting instruments did not exhaust the federal law of the field at admission. Four continuing strands matter in practice.
+
+**Codification and lieu selections.** The school-grant statutes survive in their present form at 43 U.S.C. § 851 et seq., governing among other things the selection of lieu (indemnity) lands where designated sections were lost to prior disposition or reservation.[^29] Indemnity selection has generated its own litigation: in *Andrus v. Utah* the Supreme Court upheld the Secretary of the Interior's "grossly disparate value" policy as a lawful exercise of discretion under section 7 of the Taylor Grazing Act, reversing the Tenth Circuit — a holding for the Secretary reached, importantly, within a framing that treated the underlying grant as a solemn agreement whose indemnity right exists to give the state the benefit of the bargain.[^30]
+
+**Proceeds carry the trust.** The trust does not end at the land. The Supreme Court confirmed in *Alamo Land & Cattle Co. v. Arizona* that proceeds of trust lands remain subject to the same trust as the lands themselves, and that the United States retains "a continuing interest in the administration of both the lands and the funds which derive from them."[^31][^32]
+
+**Special prevails over general.** Where later general federal legislation arguably touches trust lands, the school-grant legislation has been held to prevail: nothing in the Jones Act removed or modified the trust restriction Congress imposed on granted sections, and the district-court school-lands cases state the rule that special school-land legislation prevails over later general legislation.[^33]
+
+**Federal enforcement.** Under the 1910 act the United States is an express enforcer; under the earlier instruments the United States has sued and been sued over the grants' administration without express authorization. The subject is treated in Chapter 14.
+
+[^29]: 43 U.S.C. § 851 et seq.; see *State of Oregon ex rel. Division of State Lands v. Bureau of Land Management*, 876 F.2d 1419 (9th Cir. 1989) (history of the lieu-lands selection process).
+[^30]: *Andrus v. Utah*, 446 U.S. 500 (1980).
+[^31]: *Alamo Land & Cattle Co. v. Arizona*, 424 U.S. 295 (1976).
+[^32]: Accord, by instrument and state: **New Mexico / Arizona** — New Mexico–Arizona Enabling Act § 10, 36 Stat. 557 (1910) ("the natural products and money proceeds of any of said lands shall be subject to the same trusts as the lands producing the same"); **Utah** — *National Parks & Conservation Association v. Board of State Lands*, 869 P.2d 909 (Utah 1993) (trust imposed "not only on the disposition of proceeds from school trust lands, but also on the use of the land itself").
+[^33]: *Jensen v. Dinehart*, 645 P.2d 32 (Utah) [VERIFY year of decision] (Jones Act did not remove or modify the trust restriction); *United States v. Cotter Corp.*, Nos. C 79-0037, C 79-0307 (D. Utah Oct. 1, 1979) (special school-land legislation prevails over later general legislation).
+
+---
+
+*End of Chapter 1 v0. Forward: Chapter 2 (Reception into State Organic Law); Chapter 3 (the trust character question). Verification queue for this chapter: 1785/1787 ordinance language; Plaquemines Parish full caption and year; Mississippi spoliation line (Hill v. Thompson, Lambert v. State); Jensen v. Dinehart year.*

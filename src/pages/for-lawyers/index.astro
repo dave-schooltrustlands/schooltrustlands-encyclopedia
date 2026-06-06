@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const stages = [
+  ['Curious visitor', 'Read the invitation and orient to the field.'],
+  ['Hornbook reader', 'Use the founding draft to find the doctrine, cases, and verification gaps.'],
+  ['Work-sample applicant', 'Take one bounded research, citation, or state-appendix assignment.'],
+  ['Panel member', 'Join the forming pro bono panel after review of the work sample.'],
+  ['Matter counsel', 'Work on a specific state matter only after ordinary counsel-of-record clearance.'],
+];
+---
+
+<BaseLayout
+  title="For Lawyers - America's School Trust Library"
+  description="A legal on-ramp for attorneys interested in school-trust law, hornbook verification, and the forming Renewal lawyer corps."
+  sourceId="for-lawyers"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="text-xs uppercase tracking-wide text-slate-500">For lawyers</p>
+    <h1>Help make school-trust law usable</h1>
+    <p class="kicker">
+      The field is old, important, and badly scattered. The Library is gathering
+      it into one place so lawyers can enter quickly and work carefully.
+    </p>
+
+    <p>
+      America's school trust lands sit at the intersection of federal
+      statehood compacts, state constitutional law, trust doctrine, public-land
+      administration, education finance, and remedies. Most lawyers have never
+      been taught the field. That is the problem the hornbook is meant to solve.
+    </p>
+
+    <p>
+      The lawyer path begins with public scholarship, not live-case strategy.
+      Start with the <a href="/writing/hornbook/">School Trust Lands Hornbook</a>.
+      Pick one citation, one state appendix, one case annotation, or one
+      verification note. Produce a small work sample. If the work is careful, it
+      can become the beginning of a panel relationship.
+    </p>
+  </article>
+
+  <section class="lawyer-panel" aria-labelledby="panel-heading">
+    <div>
+      <h2 id="panel-heading">The forming lawyer corps</h2>
+      <p>
+        The lawyer corps is being built as an organ of the Renewal program and
+        the forming Center for Public Trust Law. Bar associations, clinics, and
+        firms can become distribution channels, but they do not own the panel.
+        Admission is by work sample because the field rewards precision.
+      </p>
+      <p>
+        The public work is scholarship, verification, and state-by-state
+        capacity. Any live-case work is separate and proceeds only through
+        ordinary attorney-client channels and counsel-of-record review.
+      </p>
+    </div>
+    <aside>
+      <strong>Contact</strong>
+      <a href="mailto:drdavesullivan@gmail.com">drdavesullivan@gmail.com</a>
+    </aside>
+  </section>
+
+  <section class="stage-list" aria-label="Lawyer path">
+    {stages.map(([title, text]) => (
+      <article>
+        <span>{title}</span>
+        <p>{text}</p>
+      </article>
+    ))}
+  </section>
+
+  <article class="prose prose-slate mt-10 max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h2>Good first assignments</h2>
+    <p>
+      Verify a hornbook footnote. Build a short state appendix for a state you
+      know. Check whether a case belongs in the Court Room's lineage, atlas, or
+      case file. Compare a state constitutional clause against the federal
+      granting act. These are deliberately bounded tasks: small enough to finish,
+      serious enough to show judgment.
+    </p>
+
+    <h2>Where this fits</h2>
+    <p>
+      The Renewal program is the broader campaign to turn the Library's record
+      into durable scholarship, lawyer capacity, test-case readiness, and model
+      reform architecture. Read the campus anteroom at
+      <a href="https://schooltrusts.org/renewal" rel="noopener">schooltrusts.org/renewal</a>.
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      color: #475569;
+      font-style: italic;
+    }
+    .lawyer-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      padding: 1.25rem;
+      border: 1px solid #d7dce4;
+      border-left: 4px solid #1e3a5f;
+      border-radius: 4px;
+      background: #f8fafc;
+    }
+    .lawyer-panel h2 {
+      margin: 0 0 0.5rem;
+      color: #0f172a;
+      font-size: 1.25rem;
+    }
+    .lawyer-panel p {
+      color: #334155;
+      line-height: 1.55;
+    }
+    .lawyer-panel aside {
+      align-self: start;
+      padding: 0.9rem;
+      border-radius: 4px;
+      background: #fff;
+      border: 1px solid #d7dce4;
+      font-size: 0.95rem;
+    }
+    .lawyer-panel aside strong,
+    .lawyer-panel aside a {
+      display: block;
+    }
+    .lawyer-panel aside a {
+      margin-top: 0.25rem;
+      color: #1d4ed8;
+      text-decoration: underline;
+      overflow-wrap: anywhere;
+    }
+    .stage-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .stage-list article {
+      border: 1px solid #d7dce4;
+      border-radius: 4px;
+      background: #fff;
+      padding: 0.95rem;
+    }
+    .stage-list span {
+      display: block;
+      font-family: var(--font-sans, system-ui, sans-serif);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+    .stage-list p {
+      margin: 0.35rem 0 0;
+      color: #334155;
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {
+      .lawyer-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

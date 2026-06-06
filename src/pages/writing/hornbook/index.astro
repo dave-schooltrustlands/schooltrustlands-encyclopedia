@@ -1,0 +1,190 @@
+---
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+
+const parts = [
+  ['Part I', 'Origins and Granting Instruments', 'Chapter 1: The granting instruments; Chapter 2: State constitutional acceptance.'],
+  ['Part II', 'The Trust-Character Question', 'Chapter 3: Are school lands trusts?; Chapter 4: Public, charitable, or sui generis?'],
+  ['Part III', 'Fiduciary Duties', 'Chapters 5-7: loyalty, prudence, preservation, productivity, accounting, and impartiality.'],
+  ['Part IV', 'Dispositions, Appraisals, and Full Value', 'Chapters 8-10: sale, exchange, condemnation, full value, and fiduciary appraisal.'],
+  ['Part V', 'Accounting', 'Chapter 11: corpus accounting, income accounting, commingling, and public reporting.'],
+  ['Part VI', 'Standing and Enforcement', 'Chapters 12-14: beneficiaries, school districts, attorneys general, associations, and citizen plaintiffs.'],
+  ['Part VII', 'Justiciability, Immunity, and Remedies', 'Chapters 15-17: political-question arguments, sovereign immunity, surcharge, injunctions, and declaratory relief.'],
+  ['Part VIII', 'Modern Reform', 'Chapters 18-19: governance redesign, model legislation, and the AI-era institutional lesson.'],
+];
+
+const drafts = [
+  {
+    href: '/writing/hornbook/chapter-1/',
+    label: 'Draft chapter',
+    title: 'Chapter 1 - The Granting Instruments',
+    description:
+      'The federal and state instruments that created the school-land grants and framed the long-running trust question.',
+  },
+  {
+    href: '/writing/hornbook/trust-character/',
+    label: 'Draft chapter',
+    title: 'Chapter 3 - The Trust Character',
+    description:
+      'The doctrinal question at the center of the field: whether school lands are enforceable trusts and what follows if they are.',
+  },
+  {
+    href: '/writing/hornbook/nebraska-appendix/',
+    label: 'Sample appendix',
+    title: 'Appendix A - Nebraska',
+    description:
+      'A proving sample for the state appendix format, working backward from Nebraska cases into the national chapter structure.',
+  },
+];
+---
+
+<RoomLayout
+  room="writing"
+  title="School Trust Lands Hornbook"
+  subtitle="The first one-volume treatise of American school-trust law, now in founding draft."
+  width="full"
+  sourceId="hornbook-landing"
+>
+  <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
+    <p class="hornbook-status">
+      <strong>Founding draft.</strong> Citations are under verification; <code>[VERIFY]</code>
+      flags are shown honestly on the draft pages.
+    </p>
+
+    <p>
+      <em>School Trust Lands: The Law of America's Educational Land Trusts</em>
+      is the Library's practitioner hornbook: a one-volume legal reference for
+      lawyers, judges, trustees, agency staff, scholars, and public advocates who
+      need the school-trust doctrine gathered in one place. It sits beside the
+      narrative books in the Writing Room but has a different job. The books
+      explain why the compact matters; the hornbook makes the law usable.
+    </p>
+
+    <p>
+      The working architecture uses decimal section numbering, a two-footnote
+      discipline for law and substrate notes, and an explicit verification
+      protocol. Draft pages below preserve open flags rather than smoothing them
+      away. That is deliberate: a founding legal reference should show readers
+      which citations have passed verification and which still need a Legal
+      Librarian's check.
+    </p>
+  </article>
+
+  <section class="hornbook-drafts" aria-labelledby="drafts-heading">
+    <h2 id="drafts-heading">Founding draft pages</h2>
+    <div class="hornbook-card-grid">
+      {drafts.map((draft) => (
+        <a href={draft.href} class="hornbook-card">
+          <span>{draft.label}</span>
+          <h3>{draft.title}</h3>
+          <p>{draft.description}</p>
+          <strong>Read draft -&gt;</strong>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="hornbook-architecture" aria-labelledby="architecture-heading">
+    <h2 id="architecture-heading">Architecture</h2>
+    <div class="hornbook-parts">
+      {parts.map(([part, title, description]) => (
+        <article>
+          <p>{part}</p>
+          <h3>{title}</h3>
+          <span>{description}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="hornbook-onramp" aria-labelledby="onramp-heading">
+    <h2 id="onramp-heading">For lawyers and legal librarians</h2>
+    <p>
+      The hornbook is also the on-ramp for the lawyer corps now forming around
+      the Renewal program. Lawyers can start with the draft chapters, identify a
+      citation or state appendix they can verify, and then move toward panel work
+      through a bounded work sample.
+    </p>
+    <p>
+      <a href="/for-lawyers/">Lawyer on-ramp</a> ·
+      <a href="/librarians/">Librarian corps</a> ·
+      <a href="https://schooltrusts.org/renewal" rel="noopener">Renewal campus anteroom</a>
+    </p>
+  </section>
+</RoomLayout>
+
+<style>
+  .hornbook-status {
+    padding: 0.9rem 1rem;
+    border: 1px solid #d6a84f;
+    border-left: 4px solid #b7791f;
+    border-radius: 4px;
+    background: #fff8df;
+    color: #422006;
+  }
+  .hornbook-drafts,
+  .hornbook-architecture,
+  .hornbook-onramp {
+    margin-top: 2.5rem;
+  }
+  .hornbook-drafts h2,
+  .hornbook-architecture h2,
+  .hornbook-onramp h2 {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.45rem;
+    color: var(--deep-navy, #1e3a5f);
+    margin: 0 0 1rem;
+  }
+  .hornbook-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .hornbook-card,
+  .hornbook-parts article {
+    display: block;
+    border: 1px solid #d7dce4;
+    border-radius: 4px;
+    background: #fff;
+    padding: 1.1rem;
+  }
+  .hornbook-card {
+    text-decoration: none;
+    color: inherit;
+  }
+  .hornbook-card:hover {
+    border-color: #b88a2e;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  }
+  .hornbook-card span,
+  .hornbook-parts p {
+    display: block;
+    margin: 0 0 0.45rem;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #64748b;
+  }
+  .hornbook-card h3,
+  .hornbook-parts h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1.05rem;
+    color: #0f172a;
+  }
+  .hornbook-card p,
+  .hornbook-parts span,
+  .hornbook-onramp p {
+    color: #334155;
+    line-height: 1.55;
+  }
+  .hornbook-card strong {
+    color: #1d4ed8;
+    font-size: 0.92rem;
+  }
+  .hornbook-parts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.85rem;
+  }
+</style>

@@ -30,9 +30,9 @@ export function parseScalar(raw) {
 
 export function readFrontmatter(path) {
   const text = readFileSync(path, 'utf8');
-  const m = text.match(/^---\n([\s\S]*?)\n---/);
+  const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!m) throw new Error(`No frontmatter in ${path}`);
-  const lines = m[1].split('\n');
+  const lines = m[1].replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
 
   const out = {};
   let i = 0;

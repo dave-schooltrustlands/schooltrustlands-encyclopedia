@@ -1,0 +1,91 @@
+---
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import HornbookDocument from '../../../components/HornbookDocument.astro';
+import chapterOne from '../../../content/hornbook/chapter-1.md?raw';
+import trustCharacter from '../../../content/hornbook/trust-character.md?raw';
+import nebraskaAppendix from '../../../content/hornbook/nebraska-appendix.md?raw';
+
+// NOTE: documents must live inside getStaticPaths — Astro executes
+// getStaticPaths in isolation and cannot see other frontmatter variables.
+export function getStaticPaths() {
+  const documents = {
+    'chapter-1': {
+      title: 'Chapter 1 - The Granting Instruments',
+      subtitle: 'Founding hornbook draft. Citations under verification.',
+      content: chapterOne,
+    },
+    'trust-character': {
+      title: 'Chapter 3 - The Trust Character',
+      subtitle: 'Founding hornbook draft. Citations under verification.',
+      content: trustCharacter,
+    },
+    'nebraska-appendix': {
+      title: 'Appendix A - Nebraska',
+      subtitle: 'Sample state appendix. Citations under verification.',
+      content: nebraskaAppendix,
+    },
+  } as const;
+  return Object.entries(documents).map(([slug, doc]) => ({
+    params: { slug },
+    props: { slug, doc },
+  }));
+}
+
+interface Props {
+  slug: string;
+  doc: { title: string; subtitle: string; content: string };
+}
+
+const { slug, doc } = Astro.props;
+---
+
+<RoomLayout
+  room="writing"
+  title={doc.title}
+  subtitle={doc.subtitle}
+  width="full"
+  parents={[{ label: 'Hornbook', href: '/writing/hornbook/' }]}
+  sourceId={`hornbook-${slug}`}
+>
+  <aside class="hornbook-draft-status" role="note">
+    <strong>Founding draft.</strong> This page preserves the source draft's
+    citation flags and footnotes. <code>[VERIFY]</code> means the claim or
+    authority is still awaiting verification by the hornbook process.
+  </aside>
+
+  <nav class="hornbook-doc-nav" aria-label="Hornbook draft navigation">
+    <a href="/writing/hornbook/">Hornbook landing</a>
+    <a href="/writing/hornbook/chapter-1/">Chapter 1</a>
+    <a href="/writing/hornbook/trust-character/">Chapter 3</a>
+    <a href="/writing/hornbook/nebraska-appendix/">Nebraska appendix</a>
+    <a href="/for-lawyers/">For lawyers</a>
+  </nav>
+
+  <HornbookDocument content={doc.content} />
+</RoomLayout>
+
+<style>
+  .hornbook-draft-status {
+    margin: 1.5rem 0 0;
+    padding: 0.9rem 1rem;
+    border: 1px solid #d6a84f;
+    border-left: 4px solid #b7791f;
+    border-radius: 4px;
+    background: #fff8df;
+    color: #422006;
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+  .hornbook-doc-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1rem;
+    margin: 1rem 0 0;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.88rem;
+  }
+  .hornbook-doc-nav a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+</style>

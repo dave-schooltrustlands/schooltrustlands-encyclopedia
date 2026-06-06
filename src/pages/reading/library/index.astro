@@ -50,6 +50,13 @@ for (const cat of CATEGORY_ORDER) {
       main category-grouped browse is on the Reading Room landing; this page is
       the flat "browse all" surface for readers arriving directly.
     </p>
+
+    <aside class="law-shelf-note">
+      <strong>Law shelf on-ramp.</strong> Readers working from the doctrinal
+      cases and treatises below can now move directly into the
+      <a href="/writing/hornbook/">School Trust Lands Hornbook</a> and the
+      <a href="/for-lawyers/">lawyer on-ramp</a>.
+    </aside>
   </article>
 
   {CATEGORY_ORDER.map((cat) => (
@@ -86,3 +93,14 @@ for (const cat of CATEGORY_ORDER) {
     <a href="/contribute/" class="text-blue-700 underline">Suggest a contribution</a>
   </p>
 </RoomLayout>
+
+<style>
+  .law-shelf-note {
+    margin: 1.25rem 0 0;
+    padding: 0.85rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #1e3a5f;
+    border-radius: 4px;
+    background: #f8fafc;
+  }
+</style>

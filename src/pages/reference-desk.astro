@@ -32,6 +32,28 @@ import CrossSiteBridge from '../components/CrossSiteBridge.astro';
     cta="Visit The Desk at the Coalition →"
   />
 
+  <section class="legal-librarian-office" aria-labelledby="legal-librarian-office-heading">
+    <div>
+      <p class="legal-librarian-office__eyebrow">Legal reference discipline</p>
+      <h2 id="legal-librarian-office-heading">The Legal Librarian office</h2>
+      <p>
+        The Library's legal-reference work is now tied to a named office: the
+        law collection, hornbook verification process, legal Reference Desk
+        standards, and the public boundary between library scholarship and
+        live-case work.
+      </p>
+      <p>
+        The office is public and educational. The Library does not litigate,
+        lobby, or become a party to cases; live-case strategy remains outside
+        the legal-reference office.
+      </p>
+    </div>
+    <p>
+      <a href="/writing/hornbook/">Hornbook draft</a>
+      <a href="/librarians/">Librarian Corps</a>
+    </p>
+  </section>
+
   {/*
     v57b — Library Card-gated chat panel with conversation history.
     Wrapper stays `hidden` until the inline script confirms the visitor
@@ -348,6 +370,58 @@ import CrossSiteBridge from '../components/CrossSiteBridge.astro';
   .librarian-signed-out a {
     color: #1d4ed8;
     text-decoration: underline;
+  }
+
+  .legal-librarian-office {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 1rem;
+    align-items: start;
+    margin: 1.5rem 0 0;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid #d7dce4;
+    border-left: 4px solid #1e3a5f;
+    border-radius: 4px;
+    background: #f8fafc;
+  }
+  .legal-librarian-office__eyebrow {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #64748b;
+  }
+  .legal-librarian-office h2 {
+    margin: 0 0 0.45rem;
+    font-size: 1.35rem;
+    color: #0f172a;
+  }
+  .legal-librarian-office p {
+    margin: 0.45rem 0 0;
+    color: #334155;
+    line-height: 1.55;
+  }
+  .legal-librarian-office > p:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin: 0;
+  }
+  .legal-librarian-office a {
+    color: #1d4ed8;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  @media (max-width: 720px) {
+    .legal-librarian-office {
+      grid-template-columns: 1fr;
+    }
+    .legal-librarian-office > p:last-child {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   .librarian-chat {

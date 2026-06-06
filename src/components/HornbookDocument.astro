@@ -1,0 +1,63 @@
+---
+import MarkdownIt from 'markdown-it';
+import markdownItFootnote from 'markdown-it-footnote';
+
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+const renderer = new MarkdownIt({
+  html: false,
+  linkify: true,
+  typographer: false,
+}).use(markdownItFootnote);
+
+const rendered = renderer.render(content);
+const highlighted = rendered.replace(
+  /\[VERIFY[^\]]*\]/g,
+  (flag) => `<span class="hornbook-verify">${flag}</span>`,
+);
+---
+
+<article
+  class="hornbook-document prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline"
+  set:html={highlighted}
+/>
+
+<style is:global>
+  .hornbook-document {
+    margin-top: 2rem;
+  }
+  .hornbook-document h1 {
+    font-size: 1.7rem;
+  }
+  .hornbook-document h2 {
+    margin-top: 2.25rem;
+    color: #0f172a;
+  }
+  .hornbook-document h3 {
+    margin-top: 1.8rem;
+    color: #1e293b;
+  }
+  .hornbook-document .hornbook-verify {
+    display: inline;
+    padding: 0.08rem 0.28rem;
+    border-radius: 3px;
+    background: #fff4d4;
+    color: #7c2d12;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.86em;
+    font-weight: 650;
+  }
+  .hornbook-document .footnotes {
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #cbd5e1;
+    font-size: 0.9rem;
+    color: #334155;
+  }
+  .hornbook-document .footnote-backref {
+    text-decoration: none;
+  }
+</style>

@@ -21,6 +21,8 @@
     "@supabase/supabase-js": "^2.105.3",
     "astro": "^5.18.1",
     "maplibre-gl": "^5.24.0",
+    "markdown-it": "^14.2.0",
+    "markdown-it-footnote": "^4.0.0",
     "pmtiles": "^4.4.1",
     "tailwindcss": "^3.4.19",
     "typescript": "^6.0.3"
