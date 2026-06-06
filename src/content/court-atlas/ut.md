@@ -55,4 +55,4 @@ Second, the Permanent-Fund-to-improved-farmers loan program from the 1910s throu
 
 Third, the 1980s coal-lease disparity produced one documented recovery (~$20 million on appeal) but no systematic audit of how many other lease parcels were similarly underpriced over the same decades.
 
-Children's Land Alliance Supporting Schools (CLASS) and aligned reform networks operated in Utah during the reform era; current organized advocacy posture [CITE PENDING]. If you advocate for school trust lands in Utah, the campus welcomes contact via the pending Library contact form.
+Children's Land Alliance Supporting Schools (CLASS) and aligned reform networks operated in Utah during the reform era; current organized advocacy posture [CITE PENDING]. If you advocate for school trust lands in Utah, the Library welcomes contact through the pending Library contact form.

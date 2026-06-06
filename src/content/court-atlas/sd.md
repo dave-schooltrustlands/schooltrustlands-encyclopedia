@@ -44,4 +44,4 @@ AG opinions for this state are being sourced in Phase 4 from state Attorney Gene
 
 The contemporary advocacy posture is one of preservation rather than recovery. The substrate question is whether the Beadle constitutional minimum and the Land Commissioner's institutional independence survive the next round of legislative pressure — both have come under pressure periodically over the last four decades, and the press strategy documented above is not available to every successor.
 
-Currently no specific contemporary advocacy organization is named in substrate. If you advocate for school trust lands in South Dakota, the campus welcomes contact via the pending Library contact form.
+Currently no specific contemporary advocacy organization is named in substrate. If you advocate for school trust lands in South Dakota, the Library welcomes contact through the pending Library contact form.

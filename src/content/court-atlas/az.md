@@ -28,4 +28,4 @@ AG opinions for this state are being sourced in Phase 4 from state Attorney Gene
 
 ## Current advocacy
 
-Currently none named in substrate. If you advocate for school trust lands in Arizona, the campus welcomes contact via the pending Library contact form.
+Currently none named in substrate. If you advocate for school trust lands in Arizona, the Library welcomes contact through the pending Library contact form.

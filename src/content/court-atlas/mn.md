@@ -41,4 +41,4 @@ AG opinions for this state are being sourced in Phase 4 from state Attorney Gene
 
 Minnesota's HF 3900 / SF 3593 constitutional amendment — passed by conference committee 7-1 in May 2026 and headed for the November 2026 ballot — is the live advocacy thread. The amendment, covered in the Newsroom Issues 3 and 4, would restructure the Permanent School Fund's distribution architecture. Phase 4 will track the campaign and the post-vote disposition.
 
-If you advocate for school trust lands in Minnesota, the campus welcomes contact via the pending Library contact form.
+If you advocate for school trust lands in Minnesota, the Library welcomes contact through the pending Library contact form.

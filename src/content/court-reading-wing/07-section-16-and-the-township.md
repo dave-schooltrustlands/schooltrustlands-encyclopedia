@@ -66,7 +66,7 @@ This is the sense in which the school trust is, as the introduction to this essa
 
 ## A note on visual identity
 
-The township-and-section grid has a clarity of form that has been recognized far beyond the land-records context. Cartographers, county officials, ranchers, and the institutions that work on school-trust questions have long used the township plat — the six-by-six grid of thirty-six sections, with Section 16 shaded in the center — as a visual signature for the school-lands commitment. The Eighth Anchor Institute, the conceptual venture that frames the Library's larger argument about multi-generational fiduciary trusts, has adopted the township-plat aesthetic as its visual identity. The choice is appropriate. The plat is not decoration; it is the founding diagram of the country's longest-running fiduciary experiment, and using it as a visual anchor for the broader Eighth Anchor argument signals continuity with the underlying institutional substrate.
+The township-and-section grid has a clarity of form that has been recognized far beyond the land-records context. Cartographers, county officials, ranchers, and the institutions that work on school-trust questions have long used the township plat — the six-by-six grid of thirty-six sections, with Section 16 shaded in the center — as a visual signature for the school-lands commitment. The Library and the broader A Forever Gift family use the township-plat aesthetic for the same reason. The plat is not decoration; it is the founding diagram of the country's longest-running fiduciary experiment, and using it as a visual anchor signals continuity with the underlying institutional substrate.
 
 ## What the geometry meant
 
@@ -113,7 +113,7 @@ The American school trust was, in its origins, an act of geometry. It is the lon
 
 - Total acreage of school-lands grants across all public-land states — figures vary in the literature; the range conventionally cited is approximately 77 million acres remaining in trust today, against a cumulative grant of approximately 145 million acres, but the precise figures depend on what is counted (sold versus still-held lands, in-lieu selections, post-statehood adjustments).
 - Exact text of the school-section reservation clause as it appears in the May 20, 1785 enrolled Ordinance — the canonical wording is well-attested, but variant compilations differ slightly in punctuation and capitalization.
-- Specific township-plat-aesthetic adoption details by the Eighth Anchor Institute — characterize the visual choice from a verifiable source rather than from general background knowledge.
+- Specific township-plat-aesthetic adoption details for the Library / A Forever Gift visual system — characterize the visual choice from a verifiable source rather than from general background knowledge.
 
 ---
 

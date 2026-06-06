@@ -28,4 +28,4 @@ AG opinions for this state are being sourced in Phase 4 from state Attorney Gene
 
 ## Current advocacy
 
-Currently none named in substrate. The Mississippi Sixteenth Section system has historically attracted university-based research attention (Mississippi State University's Sixteenth Section research program, among others); current organized beneficiary-side advocacy [CITE PENDING]. If you advocate for school trust lands in Mississippi, the campus welcomes contact via the pending Library contact form.
+Currently none named in substrate. The Mississippi Sixteenth Section system has historically attracted university-based research attention (Mississippi State University's Sixteenth Section research program, among others); current organized beneficiary-side advocacy [CITE PENDING]. If you advocate for school trust lands in Mississippi, the Library welcomes contact through the pending Library contact form.

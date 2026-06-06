@@ -28,4 +28,4 @@ AG opinions for this state are being sourced in Phase 4 from state Attorney Gene
 
 ## Current advocacy
 
-Currently none named in substrate. If you advocate for school trust lands or for the Alaska Permanent Fund as an educational endowment in Alaska, the campus welcomes contact via the pending Library contact form.
+Currently none named in substrate. If you advocate for school trust lands or for the Alaska Permanent Fund as an educational endowment in Alaska, the Library welcomes contact through the pending Library contact form.

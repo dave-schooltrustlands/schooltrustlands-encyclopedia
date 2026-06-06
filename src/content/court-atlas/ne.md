@@ -45,4 +45,4 @@ Additional AG opinions for Nebraska are being sourced in Phase 4 from the state 
 
 ## Current advocacy
 
-Currently no specific contemporary advocacy organization is named in substrate. If you advocate for school trust lands in Nebraska, the campus welcomes contact via the pending Library contact form.
+Currently no specific contemporary advocacy organization is named in substrate. If you advocate for school trust lands in Nebraska, the Library welcomes contact through the pending Library contact form.

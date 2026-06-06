@@ -28,4 +28,4 @@ AG opinions for this state are being sourced in Phase 4 from state Attorney Gene
 
 ## Current advocacy
 
-Currently none named in substrate. Idaho's endowment record has historically attracted attention from academic and policy commentators; current beneficiary-side organized advocacy in Idaho [CITE PENDING]. If you advocate for school trust lands in Idaho, the campus welcomes contact via the pending Library contact form.
+Currently none named in substrate. Idaho's endowment record has historically attracted attention from academic and policy commentators; current beneficiary-side organized advocacy in Idaho [CITE PENDING]. If you advocate for school trust lands in Idaho, the Library welcomes contact through the pending Library contact form.

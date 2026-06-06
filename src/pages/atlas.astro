@@ -193,9 +193,9 @@ const LENS_EXPLAINERS: Record<string, LensExplainer> = {
   transparency: {
     asks: 'Does each state publicly disclose its school-trust accounting?',
     structure:
-      'Five categories: data published (12 states) / data partially published / data withheld / never had a trust (state-derived) / unknown.',
+      'Four public-facing categories: corpus and distribution disclosed / partially disclosed / disclosure unknown / no federal trust to disclose.',
     notice:
-      'Transparency is the threshold question. A state that does not disclose cannot be audited; a trust that cannot be audited is structurally the same as a fund that does not exist. Twelve states are visible. Thirty-eight are not. The pattern is the finding.',
+      'Transparency is the threshold question. A state that does not disclose cannot be audited; a trust that cannot be audited is structurally the same as a fund that does not exist. The exact count is being reconciled as the state dossiers mature; the pattern is already the finding.',
   },
 };
 const initialExplainer = LENS_EXPLAINERS[LENSES[0].id];

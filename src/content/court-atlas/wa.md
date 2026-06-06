@@ -25,4 +25,4 @@ AG opinions for this state are being sourced in Phase 4 from state Attorney Gene
 
 ## Current advocacy
 
-Counties whose junior-taxing-district revenues depend on trust timber harvest have been the most consistent organized voice for Washington school trust performance over recent decades; specific organizations currently active [CITE PENDING]. If you advocate for school trust lands in Washington, the campus welcomes contact via the pending Library contact form.
+Counties whose junior-taxing-district revenues depend on trust timber harvest have been the most consistent organized voice for Washington school trust performance over recent decades; specific organizations currently active [CITE PENDING]. If you advocate for school trust lands in Washington, the Library welcomes contact through the pending Library contact form.
