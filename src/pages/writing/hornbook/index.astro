@@ -2,28 +2,25 @@
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 
 const parts = [
-  ['Part I', 'Origins and Granting Instruments', 'Chapter 1: The granting instruments; Chapter 2: State constitutional acceptance.'],
-  ['Part II', 'The Trust-Character Question', 'Chapter 3: Are school lands trusts?; Chapter 4: Public, charitable, or sui generis?'],
-  ['Part III', 'Fiduciary Duties', 'Chapters 5-7: loyalty, prudence, preservation, productivity, accounting, and impartiality.'],
-  ['Part IV', 'Dispositions, Appraisals, and Full Value', 'Chapters 8-10: sale, exchange, condemnation, full value, and fiduciary appraisal.'],
-  ['Part V', 'Accounting', 'Chapter 11: corpus accounting, income accounting, commingling, and public reporting.'],
-  ['Part VI', 'Standing and Enforcement', 'Chapters 12-14: beneficiaries, school districts, attorneys general, associations, and citizen plaintiffs.'],
-  ['Part VII', 'Justiciability, Immunity, and Remedies', 'Chapters 15-17: political-question arguments, sovereign immunity, surcharge, injunctions, and declaratory relief.'],
-  ['Part VIII', 'Modern Reform', 'Chapters 18-19: governance redesign, model legislation, and the AI-era institutional lesson.'],
+  ['Origins', 'Chapters 1-5', 'Deep roots of the trust idea; the granting instruments; reception into state organic law; the trust-character question; the state\'s two capacities.'],
+  ['Duties', 'Chapters 6-12', 'Loyalty; prudence and productivity; intergenerational impartiality; full value; self-dealing and exchanges; leasing; the duty to account.'],
+  ['Enforcement', 'Chapters 13-18', 'Who may sue; the attorney-general problem; federal enforcement; justiciability; sovereign immunity; remedies.'],
+  ['Reform', 'Chapters 19-20', 'Structural reform in the states; the model enforcement act, analyzed as a proposal.'],
+  ['State appendices', '21 entries', 'One per covered state, each carrying its own authorities and verification queue.'],
 ];
 
 const drafts = [
   {
     href: '/writing/hornbook/chapter-1/',
     label: 'Draft chapter',
-    title: 'Chapter 1 - The Granting Instruments',
+    title: 'Chapter 2 - The Granting Instruments (formerly Chapter 1)',
     description:
       'The federal and state instruments that created the school-land grants and framed the long-running trust question.',
   },
   {
     href: '/writing/hornbook/trust-character/',
     label: 'Draft chapter',
-    title: 'Chapter 3 - The Trust Character',
+    title: 'Chapter 4 - The Trust Character (formerly Chapter 3)',
     description:
       'The doctrinal question at the center of the field: whether school lands are enforceable trusts and what follows if they are.',
   },
@@ -40,14 +37,17 @@ const drafts = [
 <RoomLayout
   room="writing"
   title="School Trust Lands Hornbook"
-  subtitle="The first one-volume treatise of American school-trust law, now in founding draft."
+  subtitle="The first one-volume treatise of American school-trust law, now a working edition."
   width="full"
   sourceId="hornbook-landing"
 >
   <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
     <p class="hornbook-status">
-      <strong>Founding draft.</strong> Citations are under verification; <code>[VERIFY]</code>
-      flags are shown honestly on the draft pages.
+      <strong>Working edition &mdash; June 2026.</strong> The treatise is complete in
+      architecture &mdash; twenty chapters and twenty-one state appendices &mdash; and under
+      active citation verification. <code>[VERIFY]</code> flags are shown
+      honestly, and corrections are published as verification passes complete.
+      <a href="/drafts/hornbook-working-edition-v1.docx" style="font-weight:600;">Download the working edition (Word, June 7, 2026) &rarr;</a>
     </p>
 
     <p>
@@ -66,6 +66,21 @@ const drafts = [
       away. That is deliberate: a founding legal reference should show readers
       which citations have passed verification and which still need a Legal
       Librarian's check.
+    </p>
+
+    <p class="hornbook-status">
+      <strong>Corrections, June 7, 2026.</strong> This week's verification
+      passes checked draft chapters against the primary case files now held in
+      the Library's collection and corrected the text wherever a source did not
+      support what the draft said. Corrections shipping with this update:
+      Chapter 1 (the Mississippi case-law characterization &mdash; the word
+      &ldquo;spoliation&rdquo; appears in neither leading opinion, and one of the two
+      cases is in fact a counter-precedent; the 1785 and 1787 ordinance
+      quotations now follow the original texts exactly), the Trust Character
+      chapter (several quotation attributions and pin cites corrected against
+      the opinions), and the Nebraska appendix (a corrected case citation and an
+      unverified quotation converted to a flagged paraphrase). The working
+      edition download carries all corrections to date.
     </p>
   </article>
 
