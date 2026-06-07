@@ -1,174 +1,59 @@
 ---
-// v60b — Writing Room landing rewritten to surface the three migrated
-// books (Schools of the Republic, The Eighth Anchor, Who Steals from
-// Children) alongside the AI-governance essay v58 shipped. Books are
-// the headline; open essays sit beneath as their own section, with
-// room to grow as more drafts arrive.
+// v61 — Writing Room simplified per Dave (2026-06-07): only works actively
+// being written live here; one uniform card per book; published companion
+// works moved to the Reading Room catalog (already listed there); new
+// citations/verification explainer anchors the bottom of the page.
 import RoomLayout from '../../layouts/RoomLayout.astro';
 ---
 <RoomLayout
   room="writing"
   title="Writing Room"
-  subtitle="First drafts, comments, coauthors."
+  subtitle="The books being written, in the open."
   width="prose"
   sourceId="writing-index"
 >
   <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <p>
-      The Writing Room is where the Library's authors compose drafts in
-      the open. The book-length manuscripts the Library is assembling live
-      here, alongside the legal hornbook and open essays addressed to
-      specific audiences. Finished editorial pieces graduate to
-      <a href="/voices/">Voices</a> when they ship; published scholarship
-      and curated primary sources live in the <a href="/reading/">Reading
-      Room</a>'s catalog next door.
+      This room holds the works the Library is actively writing. The drafts
+      are real — they argue, they cite, they make their case — and they are
+      openly unfinished: flagged where a source is still being verified,
+      corrected in public when an error is found. Read them, and if you see
+      a mistake or a sharper version of an argument, write to the
+      <a href="/reference-desk/">Reference Desk</a>.
     </p>
-
     <p>
-      This is unusual. Most publishing institutions show only finished
-      work; the process by which finished work gets made stays hidden.
-      The Library publishes the process too, because the
-      cognitive-partnership thesis the project partly advances depends
-      on the partnership being visible. Two and a half centuries of
-      school-trust history make plain that institutions which conceal
-      their working are institutions that drift; institutions whose
-      working is in the open are institutions a watchful crew can
-      defend.
-    </p>
-
-    <p>
-      Drafts here are real drafts — not procedural placeholders. They
-      argue, they cite, they make their case. They are also incomplete,
-      sometimes wrong in detail, and openly seeking comment. If you
-      read something here and see a mistake, an omission, or a sharper
-      version of the argument, write to the
-      <a href="/reference-desk/">Reference Desk</a>. If you have
-      substrate the draft would benefit from — a court opinion, a state
-      report, a primary-source document — send it. The Writing Room
-      exists because the work the Library is doing is bigger than any
-      one author can produce alone.
+      Finished work lives elsewhere: published books and curated sources in
+      the <a href="/reading/">Reading Room</a> catalog, shipped editorial
+      pieces in <a href="/voices/">Voices</a>.
     </p>
   </div>
 
-  <section class="desk-notes mt-10" aria-labelledby="desk-notes-heading">
-    <h2 id="desk-notes-heading" class="section-heading">From the writing desks &mdash; June 7, 2026</h2>
-    <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
-      <p>
-        A short note on what is actively being written and edited, and how the
-        pieces fit together. Three works are on the desks right now, with the
-        hornbook's citation-verification program running underneath all of them.
-      </p>
-      <p>
-        <strong>The hornbook</strong> is now a complete <em>working edition</em>
-        &mdash; twenty chapters and twenty-one state appendices, roughly 83,000 words. A
-        standing verification program is checking every quotation, citation, and
-        pin cite against the primary sources held in the Library's case-law
-        collection. Where a pass finds that a source does not support what a
-        draft said, the text is corrected and the change is noted; where a
-        citation has not yet been checked, the page says so with a visible flag.
-        Corrections from this week's passes ship with this update &mdash; details on
-        the <a href="/writing/hornbook/">hornbook page</a>.
-      </p>
-      <p>
-        <strong><em>The Forgotten Forever Gift</em></strong> reached v26: a
-        reconciliation draft that responds to coauthor review of the previous
-        version, expands the early-American-history chapter, corrects several
-        state-chapter case characterizations, and rebuilds the book's notes into
-        a fully cross-checked sourced system. Two source citations remain
-        flagged as open, and the revised passages await coauthor sign-off before
-        the draft is treated as stable.
-      </p>
-      <p>
-        <strong><em>Stewards of the Republic</em></strong> reached v4, a
-        development draft posted with known issues &mdash; listed plainly on
-        <a href="/writing/eighth-anchor/">its page</a> &mdash; while a correction pass
-        is under way. The prior stable draft, v3.1, keeps its verification flags
-        visible and is posted beside it.
-      </p>
-      <p>
-        How the pieces tie together: the three books tell one story in three
-        tenses &mdash; how the school-trust endowment was built and lost (past), how
-        the fight is being waged now (present), and how durable institutions
-        should be built (future) &mdash; while the hornbook makes the law they
-        describe usable for practitioners, and the model-legislation work in the
-        <a href="https://schooltrusts.org/renewal/">Renewal wing</a> turns what
-        the books document into machinery. Drafts here are corrected in the
-        open: when an error is found, the page says what was wrong, what the
-        correction is, and where it stands.
-      </p>
-    </div>
-  </section>
-
-  <section class="methods mt-10" aria-labelledby="methods-heading">
-    <h2 id="methods-heading" class="section-heading">How we check our work</h2>
-    <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
-      <p>
-        Every book on these desks runs on the same verification program: one
-        register of authorities, primary documents pulled and compared,
-        corrections made in the open. This week's pass removed a famous
-        quotation that turned out not to exist, corrected a billion-dollar
-        fund figure, and retired a statistic no survey supports.
-        <a href="/writing/how-we-check-our-work/">Read how the checking works
-        and what it caught &rarr;</a>
-      </p>
-    </div>
-  </section>
-
-  <section class="hornbook mt-10" aria-labelledby="hornbook-heading">
-    <h2 id="hornbook-heading" class="section-heading">The legal hornbook</h2>
-
-    <article class="book-card">
-      <p class="card-kicker">Law desk · Founding draft</p>
-      <h3 class="card-title">
-        <a href="/writing/hornbook/"><em>School Trust Lands: The Law of America's Educational Land Trusts</em></a>
-      </h3>
-      <p class="card-byline">America's School Trust Library · Founding hornbook draft</p>
-      <p class="card-blurb">
-        A practitioner reference for school-trust law: granting instruments,
-        fiduciary duties, state cases, standing, accounting, remedies, and
-        modern reform. Draft pages preserve <code>[VERIFY]</code> flags while
-        citations are checked by the hornbook process.
-      </p>
-      <div class="card-cta-row">
-        <a href="/writing/hornbook/" class="card-cta">Open the hornbook →</a>
-        <a href="/for-lawyers/" class="card-cta">Lawyer on-ramp →</a>
-      </div>
-    </article>
-  </section>
-
   <section class="books mt-10" aria-labelledby="books-heading">
-    <h2 id="books-heading" class="section-heading">The three books</h2>
+    <h2 id="books-heading" class="section-heading">On the desks now</h2>
 
     <p class="section-intro">
-      The Library is assembling three book-length works that tell the
-      school-trust story in three tenses. <em>The Forgotten Forever Gift to Public Schools</em>
-      is the <strong>past</strong>: how the United States built, kept, and
-      broke a national endowment for public education across 235 years.
-      <em>Who Steals from Children</em> is the <strong>present</strong>:
-      the fight as it is being waged right now, state by state, beginning
-      with Oregon and the Elliott — a case in court today. <em>Stewards of
-      the Republic</em> is the <strong>future</strong>: how the people who
-      already own this fight, and the architects of the AI-era forever-trusts
-      now arriving, should build institutions that last. The first and third
-      are the two volumes of <em>A Forever Gift</em> — Looking Back and
-      Looking Forward; the second is the movement's living field record.
+      Four works in progress: three books that tell the school-trust story in
+      three tenses — past, present, future — and the legal treatise that
+      makes the law they describe usable.
     </p>
 
     <article class="book-card">
-      <p class="card-kicker">The past · Looking back</p>
+      <p class="card-kicker">The past · Looking back · Draft v26</p>
       <h3 class="card-title">
         <a href="/writing/schools-of-the-republic/"><em>The Forgotten Forever Gift to Public Schools</em></a>
       </h3>
       <p class="card-byline">Margaret Bird and Dave Sullivan · A Forever Gift, Book One</p>
       <p class="card-blurb">
-        How the United States built — and largely lost — a national
-        endowment for public education. A behavior-driven history (the
-        inheritance, the trust kept, the trust broken, the trust rebuilt)
-        followed by a state-by-state encyclopedia of all fifty.
+        How the United States built — and largely lost — a national endowment
+        for public education across 235 years, followed by a portrait of the
+        trust in every state.
       </p>
+      <p class="card-status">Status: coauthor review under way; the notes were
+        rebuilt this week onto the Library's verified-citation system, with
+        three sources still flagged as open.</p>
       <div class="card-cta-row">
         <a href="/writing/schools-of-the-republic/" class="card-cta">Read on the web →</a>
-        <a href="/drafts/schools-of-the-republic-latest.docx" class="card-cta">Latest full draft (Word) →</a>
+        <a href="/drafts/schools-of-the-republic-latest.docx" class="card-cta">Latest draft (Word) →</a>
       </div>
     </article>
 
@@ -179,104 +64,58 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
       </h3>
       <p class="card-byline">Dave Sullivan · Reader's Edition</p>
       <p class="card-blurb">
-        A first-person, scene-grounded account of how the State of Oregon
-        has spent thirty-five years removing a billion-dollar working trust
-        asset from the Common School Fund. The case is in court today; this
-        volume is the evidence.
+        A first-person account of how the State of Oregon spent thirty-five
+        years removing a billion-dollar working trust asset from the Common
+        School Fund. The case is in court today; this volume is the evidence.
       </p>
+      <p class="card-status">Status: living draft; updated as the litigation
+        record grows.</p>
       <div class="card-cta-row">
         <a href="/writing/who-steals-from-children/" class="card-cta">Read on the web →</a>
-        <a href="/drafts/who-steals-from-children-vol1-latest.docx" class="card-cta">Latest full draft (Word) →</a>
+        <a href="/drafts/who-steals-from-children-vol1-latest.docx" class="card-cta">Latest draft (Word) →</a>
       </div>
     </article>
 
     <article class="book-card">
-      <p class="card-kicker">The future · Looking forward</p>
+      <p class="card-kicker">The future · Looking forward · Draft v4</p>
       <h3 class="card-title">
         <a href="/writing/eighth-anchor/"><em>Stewards of the Republic</em></a>
       </h3>
-      <p class="card-byline">Dave Sullivan · A Forever Gift, Book Two · First draft, 2026</p>
+      <p class="card-byline">Dave Sullivan · A Forever Gift, Book Two</p>
       <p class="card-blurb">
-        Defending the forever gift in the age of artificial intelligence.
-        How the people who already hold this inheritance — trustees,
-        advocates, teachers, parents — build the coalition, the shared
-        Library, and the electronic tools that let a watchful public defend
-        a trust in real time; and what that record offers the architects of
-        the new perpetual institutions now being chartered. Formerly titled
-        <em>The Eighth Anchor</em>.
+        Defending the forever gift in the age of artificial intelligence: what
+        two centuries of school-trust failures teach the architects of the
+        perpetual institutions now being chartered, and the machinery — legal,
+        civic, electronic — that lets a watchful public defend a trust in
+        real time.
       </p>
+      <p class="card-status">Status: development draft posted with its known
+        issues listed plainly on <a href="/writing/eighth-anchor/">its
+        page</a>; a correction pass is under way.</p>
       <div class="card-cta-row">
         <a href="/writing/eighth-anchor/" class="card-cta">Read on the web →</a>
-        <a href="/drafts/stewards-of-the-republic-latest.docx" class="card-cta">Latest full draft (Word) →</a>
+        <a href="/drafts/stewards-of-the-republic-latest.docx" class="card-cta">Latest draft (Word) →</a>
       </div>
     </article>
-  </section>
-
-  <section class="published mt-10" aria-labelledby="published-heading">
-    <h2 id="published-heading" class="section-heading">Published &amp; companion works</h2>
-
-    <p class="section-intro">
-      Published reference works that sit alongside the Library's drafts —
-      the legal-and-factual companion textbook, the foundational
-      fire-history scholarship behind the Reading Room's forestry shelf,
-      and the definitive Elliott State Forest history hosted as a free
-      archive PDF.
-    </p>
 
     <article class="book-card">
-      <p class="card-kicker">Published 2025 · Companion textbook</p>
+      <p class="card-kicker">Law desk · Working edition</p>
       <h3 class="card-title">
-        <em>Oregon's Constitutional Duties to Schools</em>
+        <a href="/writing/hornbook/"><em>School Trust Lands: The Law of America's Educational Land Trusts</em></a>
       </h3>
-      <p class="card-byline">Margaret Bird and Dave Sullivan · 2025 · 150 pages</p>
+      <p class="card-byline">America's School Trust Library · The field's first one-volume treatise</p>
       <p class="card-blurb">
-        A 150-page volume documenting the billion-dollar inheritance for
-        Oregon schoolchildren and the case for constitutional
-        accountability. The legal architecture and factual record cited
-        in <em>Advocates for School Trust Lands v. State of Oregon</em>.
+        A practitioner reference for school-trust law: the granting
+        instruments, the fiduciary duties, enforcement, remedies, and reform —
+        twenty chapters and twenty-one state appendices.
       </p>
+      <p class="card-status">Status: complete in architecture; a standing
+        verification program is checking every quotation and citation against
+        primary sources, with unverified items flagged on the page.</p>
       <div class="card-cta-row">
-        <a href="https://drive.google.com/file/d/1E1IhBgk8fdtKnQd2FqkFqE9V1xduYd0u/view?usp=sharing" class="card-cta" rel="noopener" target="_blank">Free PDF (Google Drive) →</a>
-        <a href="https://a.co/d/8PpB6f8" class="card-cta" rel="noopener" target="_blank">Amazon (Kindle / paperback / hardback) →</a>
+        <a href="/writing/hornbook/" class="card-cta">Open the hornbook →</a>
+        <a href="/drafts/hornbook-working-edition-v1.docx" class="card-cta">Working edition (Word) →</a>
       </div>
-      <p class="card-bridge">
-        Also distributed by OASTL Oregon at
-        <a href="https://oastl-oregon.drdavesullivan.workers.dev" rel="noopener" target="_blank">oastl-oregon.drdavesullivan.workers.dev</a>.
-      </p>
-    </article>
-
-    <article class="book-card">
-      <p class="card-kicker">Published · Companion forestry work</p>
-      <h3 class="card-title">
-        <em>Great Fires: Catastrophic Burning Patterns 1491-1951</em>
-      </h3>
-      <p class="card-byline">Bob Zybach et al. · authorship attribution owed at next pass</p>
-      <p class="card-blurb">
-        Describes how Indian burning practices shaped coastal forests for
-        thousands of years; foundational reference for understanding the
-        fire-history context of the Elliott State Forest and the broader
-        Pacific Northwest.
-      </p>
-      <a href="https://www.amazon.com/Great-Fires-Catastrophic-Patterns-1491-1951/dp/1732127603" class="card-cta" rel="noopener" target="_blank">Amazon →</a>
-      <p class="card-bridge">
-        Cited in the <a href="/reading/">Reading Room</a> →
-        Oregon fire-history section.
-      </p>
-    </article>
-
-    <article class="book-card">
-      <p class="card-kicker">Published 1999 · Definitive Elliott history</p>
-      <h3 class="card-title">
-        <em>Caulked Boots and Cheese Sandwiches</em>
-      </h3>
-      <p class="card-byline">Jerry Phillips · Oregon Department of Forestry, 1999</p>
-      <p class="card-blurb">
-        The definitive history of the Elliott State Forest, written by
-        its long-term manager (1956-1989). Hosted as a free PDF on the
-        ORWW Field Station archive.
-      </p>
-      <a href="http://www.orww.org/Elliott_Forest/History/Phillips/Phillips_1998-201.pdf" class="card-cta" rel="noopener" target="_blank">Free PDF (ORWW) →</a>
-      <p class="card-bridge">Hosted by ORWW Field Station.</p>
     </article>
   </section>
 
@@ -289,19 +128,46 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
       </h3>
       <p class="card-byline">Dave Sullivan · May 2026 · ~2,350 words · Working draft</p>
       <p class="card-blurb">
-        A focused essay taking the eight-anchor school-trust-failure-modes
-        argument directly to AI-governance designers building the next
-        century's perpetual institutions. Comments welcome.
+        Taking the school-trust failure-modes argument directly to the
+        AI-governance designers building the next century's perpetual
+        institutions. Comments welcome.
       </p>
     </article>
 
     <p class="mt-6 text-sm italic text-slate-500">
-      More essays as they reach working-draft form. If you're interested
-      in being a named correspondent for a Writing Room draft — an
-      early reader whose comments shape the final version — write to
-      the <a href="/reference-desk/">Reference Desk</a>.
+      If you'd like to be a named correspondent for a Writing Room draft — an
+      early reader whose comments shape the final version — write to the
+      <a href="/reference-desk/">Reference Desk</a>.
     </p>
   </section>
+
+  <section class="methods mt-10" aria-labelledby="methods-heading">
+    <h2 id="methods-heading" class="section-heading">Citations, footnotes, and verification</h2>
+    <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+      <p>
+        Everything written in this room runs on one verification system. Every
+        authority — every case, statute, report, and archive — lives in a
+        single register that records whether we hold the original document and
+        have checked our quotation and page citation against it. Where a
+        citation is still being verified, the draft says so with a visible
+        flag rather than passing the claim off as settled. Our own books and
+        model legislation are never cited as evidence for anything.
+      </p>
+      <p>
+        When checking finds an error, the text is corrected and the correction
+        is published, not buried. This week's verification pass removed a
+        famous quotation that turned out not to exist in the opinion it is
+        always attributed to, corrected a billion-dollar state fund figure
+        that was really a forecast, and retired a widely-repeated statistic no
+        survey supports.
+      </p>
+      <p>
+        <a href="/writing/how-we-check-our-work/">Read the full method — and
+        what it caught — here &rarr;</a>
+      </p>
+    </div>
+  </section>
+
 </RoomLayout>
 
 <style>
@@ -380,6 +246,12 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
   .card-cta-row .card-cta {
     align-self: auto;
     margin: 0;
+  }
+  .card-status {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--ink-soft, #475569);
+    margin: 0 0 0.75rem;
   }
   .card-bridge {
     font-family: var(--font-sans);
