@@ -1,131 +1,79 @@
 ---
-// v61 — Writing Room simplified per Dave (2026-06-07): only works actively
-// being written live here; one uniform card per book; published companion
-// works moved to the Reading Room catalog (already listed there); new
-// citations/verification explainer anchors the bottom of the page.
+// Writing Room book shelf. Each book card and durable book link is driven by
+// src/data/writingBookRegistry.ts so draft files can move without breaking
+// public links.
 import RoomLayout from '../../layouts/RoomLayout.astro';
+import { writingBooks } from '../../data/writingBookRegistry';
 ---
+
 <RoomLayout
   room="writing"
   title="Writing Room"
   subtitle="The books being written, in the open."
-  width="prose"
+  width="full"
   sourceId="writing-index"
 >
-  <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+  <div class="writing-intro prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <p>
-      This room holds the works the Library is actively writing. The drafts
-      are real — they argue, they cite, they make their case — and they are
-      openly unfinished: flagged where a source is still being verified,
-      corrected in public when an error is found. Read them, and if you see
-      a mistake or a sharper version of an argument, write to the
-      <a href="/reference-desk/">Reference Desk</a>.
+      This room holds the public-facing work the Library is actively writing.
+      The drafts are real: they argue, they cite, they make their case. They
+      are also openly unfinished. Some are ready for friends and close readers;
+      some are scaffolds for a book that is still being assembled; none should
+      be mistaken for board approval, legal advice, or gospel.
     </p>
     <p>
-      Finished work lives elsewhere: published books and curated sources in
-      the <a href="/reading/">Reading Room</a> catalog, shipped editorial
-      pieces in <a href="/voices/">Voices</a>.
+      The point of putting them here is stability. A draft may begin as a Word
+      file, become a web book, move to a Reading Room shelf, or later be
+      republished by a partner. The Writing Room book page stays the public
+      address. Link to the book page, not to the temporary file behind it.
     </p>
     <p>
-      The shelf has a shape. The books cover the school-trust story in three
-      tenses — how the promise was built and broken (past), the fights and
-      the record as they happen (present), and the repair and what it
-      teaches (future) — plus the legal treatise that makes the law usable
-      and, soon, editions written for particular readers: trustees,
-      students, correspondents in particular states. One verified record
-      underneath; many doors in.
+      The shelf has a shape. Some books explain why school trusts matter;
+      some make Oregon's failure visible; some recruit lawyers, librarians,
+      parents, students, trustees, and public officials into useful roles; and
+      some translate the repair into language voters or lawmakers can actually
+      use. One verified record underneath; many doors in.
     </p>
   </div>
 
-  <section class="books mt-10" aria-labelledby="books-heading">
-    <h2 id="books-heading" class="section-heading">On the desks now</h2>
-
-    <p class="section-intro">
-      Four works in progress: three books that tell the school-trust story in
-      three tenses — past, present, future — and the legal treatise that
-      makes the law they describe usable.
-    </p>
-
-    <article class="book-card">
-      <p class="card-kicker">The past · Looking back · Draft v26</p>
-      <h3 class="card-title">
-        <a href="/writing/schools-of-the-republic/"><em>The Forgotten Forever Gift to Public Schools</em></a>
-      </h3>
-      <p class="card-byline">Margaret Bird and Dave Sullivan · A Forever Gift, Book One</p>
-      <p class="card-blurb">
-        How the United States built — and largely lost — a national endowment
-        for public education across 235 years, followed by a portrait of the
-        trust in every state.
+  <section id="book-family" class="books mt-10" aria-labelledby="books-heading">
+    <div class="section-head">
+      <h2 id="books-heading" class="section-heading">The book family</h2>
+      <p class="section-intro">
+        These are the books and booklets now forming around the school-trust
+        rebirth effort. Each card gives the short version, how the piece fits,
+        and a stable Writing Room link that can survive later moves.
       </p>
-      <p class="card-status">Status: coauthor review under way; the notes were
-        rebuilt this week onto the Library's verified-citation system, with
-        three sources still flagged as open.</p>
-      <div class="card-cta-row">
-        <a href="/writing/schools-of-the-republic/" class="card-cta">Read on the web →</a>
-        <a href="/drafts/schools-of-the-republic-latest.docx" class="card-cta">Latest draft (Word) →</a>
-      </div>
-    </article>
-
-    <article class="book-card">
-      <p class="card-kicker">The present · In court now</p>
-      <h3 class="card-title">
-        <a href="/writing/who-steals-from-children/"><em>Who Steals from Children: Volume 1 — Oregon and the Elliott</em></a>
-      </h3>
-      <p class="card-byline">Dave Sullivan · Reader's Edition</p>
-      <p class="card-blurb">
-        A first-person account of how the State of Oregon spent thirty-five
-        years removing a billion-dollar working trust asset from the Common
-        School Fund. The case is in court today; this volume is the evidence.
+      <p class="stable-link-note">
+        Use the "Stable book link" for citations, emails, and review packets.
+        The linked gateway page will keep pointing readers to the right draft
+        or long-term home as the publication matures.
       </p>
-      <p class="card-status">Status: living draft; updated as the litigation
-        record grows.</p>
-      <div class="card-cta-row">
-        <a href="/writing/who-steals-from-children/" class="card-cta">Read on the web →</a>
-        <a href="/drafts/who-steals-from-children-vol1-latest.docx" class="card-cta">Latest draft (Word) →</a>
-      </div>
-    </article>
+    </div>
 
-    <article class="book-card">
-      <p class="card-kicker">The future · Looking forward · Draft v4</p>
-      <h3 class="card-title">
-        <a href="/writing/stewards-of-the-republic/"><em>Stewards of the Republic</em></a>
-      </h3>
-      <p class="card-byline">Dave Sullivan · A Forever Gift, Book Two</p>
-      <p class="card-blurb">
-        Defending the forever gift in the age of artificial intelligence: what
-        two centuries of school-trust failures teach the architects of the
-        perpetual institutions now being chartered, and the machinery — legal,
-        civic, electronic — that lets a watchful public defend a trust in
-        real time.
-      </p>
-      <p class="card-status">Status: development draft posted with its known
-        issues listed plainly on <a href="/writing/stewards-of-the-republic/">its
-        page</a>; a correction pass is under way.</p>
-      <div class="card-cta-row">
-        <a href="/writing/stewards-of-the-republic/" class="card-cta">Read on the web →</a>
-        <a href="/drafts/stewards-of-the-republic-latest.docx" class="card-cta">Latest draft (Word) →</a>
-      </div>
-    </article>
-
-    <article class="book-card">
-      <p class="card-kicker">Law desk · Working edition</p>
-      <h3 class="card-title">
-        <a href="/writing/hornbook/"><em>School Trust Lands: The Law of America's Educational Land Trusts</em></a>
-      </h3>
-      <p class="card-byline">America's School Trust Library · The field's first one-volume treatise</p>
-      <p class="card-blurb">
-        A practitioner reference for school-trust law: the granting
-        instruments, the fiduciary duties, enforcement, remedies, and reform —
-        twenty chapters and twenty-one state appendices.
-      </p>
-      <p class="card-status">Status: complete in architecture; a standing
-        verification program is checking every quotation and citation against
-        primary sources, with unverified items flagged on the page.</p>
-      <div class="card-cta-row">
-        <a href="/writing/hornbook/" class="card-cta">Open the hornbook →</a>
-        <a href="/drafts/hornbook-working-edition-v1.docx" class="card-cta">Working edition (Word) →</a>
-      </div>
-    </article>
+    <div class="book-grid">
+      {writingBooks.map((book) => (
+        <article class="book-card">
+          <p class="card-kicker">{book.kicker}</p>
+          <h3 class="card-title">
+            <a href={`/writing/books/${book.slug}/`}><em>{book.title}</em></a>
+          </h3>
+          <p class="card-byline">{book.byline}</p>
+          <p class="card-blurb">{book.blurb}</p>
+          <p class="card-status">Status: {book.status}</p>
+          <p class="card-bridge">{book.fit}</p>
+          <div class="card-cta-row">
+            <a href={`/writing/books/${book.slug}/`} class="card-cta">Stable book link -&gt;</a>
+            {book.currentHref && (
+              <a href={book.currentHref} class="card-cta">{book.ctaLabel ?? 'Current home'} -&gt;</a>
+            )}
+            {!book.currentHref && book.draftHref && (
+              <a href={book.draftHref} class="card-cta">{book.draftLabel ?? 'Current draft'} -&gt;</a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
   </section>
 
   <section class="essays mt-10" aria-labelledby="essays-heading">
@@ -135,7 +83,7 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
       <h3 class="card-title">
         <a href="/writing/the-only-forever-trust/">"The Only Forever-Trust We Have Data On"</a>
       </h3>
-      <p class="card-byline">Dave Sullivan · May 2026 · ~2,350 words · Working draft</p>
+      <p class="card-byline">Dave Sullivan - May 2026 - ~2,350 words - Working draft</p>
       <p class="card-blurb">
         Taking the school-trust failure-modes argument directly to the
         AI-governance designers building the next century's perpetual
@@ -144,19 +92,19 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
     </article>
 
     <p class="mt-6 text-sm italic text-slate-500">
-      If you'd like to be a named correspondent for a Writing Room draft — an
-      early reader whose comments shape the final version — write to the
+      If you'd like to be a named correspondent for a Writing Room draft, an
+      early reader whose comments shape the final version, write to the
       <a href="/reference-desk/">Reference Desk</a>.
     </p>
   </section>
 
   <section class="dispatches mt-10" aria-labelledby="dispatches-heading">
-    <h2 id="dispatches-heading" class="section-heading">Dispatches — write for the Library</h2>
+    <h2 id="dispatches-heading" class="section-heading">Dispatches: write for the Library</h2>
     <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
       <p>
-        Seen a school-trust harm — or a win — firsthand? Send us the story
-        and the documents. The Library fact-checks every dispatch against
-        primary sources and publishes it at house standard: your byline, our
+        Seen a school-trust harm, or a win, firsthand? Send us the story and
+        the documents. The Library fact-checks every dispatch against primary
+        sources and publishes it at house standard: your byline, our
         verification. Recurring contributors are invited into State
         Correspondent roles.
         <a href="/writing/dispatches/">How to contribute &rarr;</a>
@@ -169,24 +117,24 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
     <div class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
       <p>
         Everything written in this room runs on one verification system. Every
-        authority — every case, statute, report, and archive — lives in a
-        single register that records whether we hold the original document and
-        have checked our quotation and page citation against it. Where a
-        citation is still being verified, the draft says so with a visible
-        flag rather than passing the claim off as settled. Our own books and
-        model legislation are never cited as evidence for anything.
+        authority, every case, statute, report, and archive, lives in a single
+        register that records whether we hold the original document and have
+        checked our quotation and page citation against it. Where a citation is
+        still being verified, the draft says so with a visible flag rather
+        than passing the claim off as settled. Our own books and model
+        legislation are never cited as evidence for anything.
       </p>
       <p>
         When checking finds an error, the text is corrected and the correction
         is published, not buried. This week's verification pass removed a
         famous quotation that turned out not to exist in the opinion it is
         always attributed to, corrected a billion-dollar state fund figure
-        that was really a forecast, and retired a widely-repeated statistic no
+        that was really a forecast, and retired a widely repeated statistic no
         survey supports.
       </p>
       <p>
-        <a href="/writing/how-we-check-our-work/">Read the full method — and
-        what it caught — here &rarr;</a>
+        <a href="/writing/how-we-check-our-work/">Read the full method, and
+        what it caught, here &rarr;</a>
       </p>
     </div>
   </section>
@@ -194,6 +142,11 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
 </RoomLayout>
 
 <style>
+  .writing-intro,
+  .section-head {
+    max-width: 72ch;
+  }
+
   .section-heading {
     font-family: var(--font-serif, Georgia, serif);
     font-size: 1.5rem;
@@ -201,6 +154,14 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
     color: var(--deep-navy, #1e3a5f);
     margin: 0 0 1rem;
   }
+
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: 1rem;
+    align-items: stretch;
+  }
+
   .book-card,
   .essay-card {
     background: var(--linen-card, #fafaf7);
@@ -212,6 +173,11 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
     display: flex;
     flex-direction: column;
   }
+
+  .book-card {
+    min-height: 100%;
+  }
+
   .card-kicker {
     font-family: var(--font-sans);
     font-size: 0.7rem;
@@ -221,33 +187,55 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
     color: var(--old-gold, #8b7355);
     margin: 0 0 0.5rem;
   }
+
   .card-title {
     font-family: var(--font-serif, Georgia, serif);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--deep-navy, #1e3a5f);
     line-height: 1.35;
     margin: 0 0 0.4rem;
   }
+
   .card-title a {
     color: var(--deep-navy, #1e3a5f);
     text-decoration: none;
   }
+
   .card-title a:hover {
     text-decoration: underline;
   }
+
   .card-byline {
     font-family: var(--font-sans);
     font-size: 0.85rem;
     color: #475569;
     margin: 0 0 0.35rem;
   }
+
   .card-blurb {
     font-size: 0.95rem;
     line-height: 1.55;
     color: #334155;
     margin: 0 0 1rem;
   }
+
+  .card-status {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--ink-soft, #475569);
+    margin: 0 0 0.75rem;
+  }
+
+  .card-bridge {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: #64748b;
+    font-style: italic;
+    margin: auto 0 1rem;
+  }
+
   .card-cta {
     align-self: flex-start;
     color: #1d4ed8;
@@ -257,41 +245,34 @@ import RoomLayout from '../../layouts/RoomLayout.astro';
     text-decoration: underline;
     text-underline-offset: 2px;
   }
+
   .card-cta:hover {
     color: #1e40af;
   }
+
   .card-cta-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem 1.5rem;
-    margin: 0 0 0.75rem;
-  }
-  .card-cta-row .card-cta {
-    align-self: auto;
+    gap: 0.35rem 1.25rem;
     margin: 0;
   }
-  .card-status {
-    font-size: 0.85rem;
-    font-style: italic;
-    color: var(--ink-soft, #475569);
-    margin: 0 0 0.75rem;
-  }
-  .card-bridge {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    color: #64748b;
-    font-style: italic;
-    margin: 0.25rem 0 0;
-  }
-  .card-bridge a {
-    color: #475569;
-    text-decoration: underline;
-  }
+
   .section-intro {
     font-size: 0.95rem;
     line-height: 1.55;
     color: #334155;
-    margin: 0 0 1.25rem;
-    max-width: 60ch;
+    margin: 0 0 0.75rem;
+  }
+
+  .stable-link-note {
+    margin: 0 0 1.5rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid #d8c18b;
+    border-left: 4px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+    background: #fff8df;
+    color: #422006;
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 </style>

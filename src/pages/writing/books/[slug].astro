@@ -1,0 +1,125 @@
+---
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import { writingBooks, type WritingBook } from '../../../data/writingBookRegistry';
+
+export function getStaticPaths() {
+  return writingBooks.map((book) => ({
+    params: { slug: book.slug },
+    props: { book },
+  }));
+}
+
+interface Props {
+  book: WritingBook;
+}
+
+const { book } = Astro.props;
+const primaryHref = book.currentHref ?? book.draftHref;
+const primaryLabel = book.ctaLabel ?? (book.currentHref ? 'Open current home' : 'Open current draft');
+---
+
+<RoomLayout
+  room="writing"
+  title={book.title}
+  subtitle="Stable Writing Room book link."
+  width="prose"
+  parents={[{ label: 'Books', href: '/writing/#book-family' }]}
+  sourceId={`writing-book-${book.slug}`}
+>
+  <article class="book-gateway prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="gateway-kicker">{book.kicker}</p>
+    <h2>{book.title}</h2>
+    <p class="gateway-byline">{book.byline}</p>
+
+    <p>{book.blurb}</p>
+
+    <aside class="gateway-note" aria-label="Status">
+      <strong>Status:</strong> {book.status}
+    </aside>
+
+    <h3>How it fits</h3>
+    <p>{book.fit}</p>
+
+    <div class="gateway-actions">
+      {primaryHref && (
+        <a class="gateway-button" href={primaryHref}>{primaryLabel} -&gt;</a>
+      )}
+      {book.currentHref && book.draftHref && (
+        <a class="gateway-link" href={book.draftHref}>{book.draftLabel ?? 'Latest Word draft'} -&gt;</a>
+      )}
+      <a class="gateway-link" href="/writing/">Back to the Writing Room -&gt;</a>
+    </div>
+
+    <p class="gateway-stability">
+      This address is the durable Writing Room link for this publication. If the
+      current draft later moves to a long-term home, this page will keep pointing
+      readers to the right place.
+    </p>
+  </article>
+</RoomLayout>
+
+<style>
+  .gateway-kicker {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--old-gold, #8b7355);
+  }
+  .book-gateway h2 {
+    margin-top: 0;
+    font-family: var(--font-serif, Georgia, serif);
+    color: var(--deep-navy, #1e3a5f);
+  }
+  .gateway-byline {
+    margin-top: -0.35rem;
+    color: #475569;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+  }
+  .gateway-note {
+    margin: 1.25rem 0;
+    padding: 0.9rem 1rem;
+    border: 1px solid #d8c18b;
+    border-left: 4px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+    background: #fff8df;
+    color: #422006;
+  }
+  .gateway-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1rem;
+    align-items: center;
+    margin: 1.5rem 0 1rem;
+  }
+  .gateway-button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    border-radius: 4px;
+    background: var(--deep-navy, #1e3a5f);
+    color: #fff !important;
+    padding: 0.65rem 0.9rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-decoration: none !important;
+  }
+  .gateway-button:hover {
+    background: #102a43;
+  }
+  .gateway-link {
+    font-family: var(--font-sans);
+    font-weight: 650;
+  }
+  .gateway-stability {
+    margin-top: 1.25rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid #e5e7eb;
+    color: #64748b;
+    font-size: 0.88rem;
+    font-style: italic;
+  }
+</style>
