@@ -82,6 +82,13 @@ const seriesLabel = entry.data.seriesLabel ?? 'Who Steals from Children: Volume 
       </a>
       <BookmarkButton title={entry.data.title} />
     </div>
+    <aside class="wsfc-archive-note mt-5">
+      <strong>Archived Oregon reader edition.</strong> These chapter pages are
+      retained for link stability while the Oregon account moves into
+      <a href="/writing/books/accidental-plaintiff/">The Accidental Plaintiff</a>.
+      The current <em>Who Steals from Children</em> book is the
+      <a href="/writing/who-steals-from-children/">2026 annual record</a>.
+    </aside>
   </Fragment>
 
   <details class="essay-toc mt-8">
@@ -159,6 +166,21 @@ const seriesLabel = entry.data.seriesLabel ?? 'Who Steals from Children: Volume 
     border-radius: 4px;
     padding: 0.6rem 0.9rem;
     background: var(--linen-card, #fafaf7);
+  }
+  .wsfc-archive-note {
+    padding: 0.85rem 1rem;
+    border: 1px solid #d8c18b;
+    border-left: 4px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+    background: #fff8df;
+    color: #422006;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .wsfc-archive-note a {
+    color: #1d4ed8;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
   .essay-toc > summary {
     cursor: pointer;

@@ -1,161 +1,122 @@
 ---
-import { getCollection } from 'astro:content';
 import RoomLayout from '../../../layouts/RoomLayout.astro';
-import { getServerSupabase } from '../../../lib/supabase';
 
-export const prerender = false;
+const currentDraftHref = '/drafts/who-steals-from-children-latest.docx';
 
-const WSFC_VOL1 = 'Who Steals from Children: Volume 1 — Oregon and the Elliott';
-
-let reviewCount = 0;
-try {
-  const supabase = getServerSupabase(Astro);
-  const { data: work } = await supabase
-    .from('works')
-    .select('id')
-    .eq('slug', 'who-steals-from-children-vol-1')
-    .maybeSingle();
-  if (work?.id) {
-    const { count } = await supabase
-      .from('reviews')
-      .select('id', { count: 'exact', head: true })
-      .eq('work_id', work.id)
-      .eq('is_published', true);
-    if (typeof count === 'number') reviewCount = count;
-  }
-} catch {
-  /* swallow */
-}
-
-const chapters = (await getCollection('essays'))
-  .filter((e) => e.data.sourceWork === WSFC_VOL1)
-  .sort((a, b) => a.data.order - b.data.order);
-
-const chapterSlug = (slug: string): string =>
-  slug.replace(/^wsfc-vol1-/, '');
-
-const formatChapterNumber = (n: string | number | undefined): string => {
-  if (n === undefined) return '';
-  if (typeof n === 'number') return `Chapter ${n}`;
-  return n;
-};
-
-const trimChapterTitle = (title: string): string =>
-  title.replace(/^Chapter\s+\d+\s+—\s+/, '').trim();
+const sections = [
+  {
+    label: 'Opening record',
+    title: 'Editor\'s Preface and State of the Fight',
+    description:
+      'The reason for keeping an annual public record, the current shape of the field, and the difference between a trust promise on paper and a trust someone is watching.',
+  },
+  {
+    label: 'State portraits',
+    title: 'Oregon, Nevada, South Dakota, and Mississippi',
+    description:
+      'Four current working portraits showing different faces of the same fiduciary problem: seizure, drift, recovery, and enforceable trustee duties.',
+  },
+  {
+    label: 'Dispatches',
+    title: 'Where the fight is moving now',
+    description:
+      'Short present-tense reports from litigation, legislation, public records, agency practice, and local advocates as the school-trust field comes back into view.',
+  },
+  {
+    label: 'Credits',
+    title: 'Who stepped up',
+    description:
+      'A place to name the people who held records, made claims visible, corrected the Library, or carried a state fight far enough for others to see.',
+  },
+];
 ---
+
 <RoomLayout
   room="writing"
-  title="Who Steals from Children: Volume 1 — Oregon and the Elliott"
-  subtitle="The prosecutorial-history record of how the State of Oregon has spent thirty-five years removing the Elliott State Forest from the Common School Fund. Volume 1 of the Who Steals from Children series."
+  title="Who Steals from Children"
+  subtitle="The 2026 working edition of the annual record of the fight for America's school trust lands."
   width="prose"
-  sourceId="writing-wsfc-vol1-elliott"
+  sourceId="writing-wsfc-2026-edition"
 >
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
     <p class="text-xs uppercase tracking-wide text-slate-500">
-      Writing Room · <em>Who Steals from Children</em> series · Volume 1
+      Writing Room . 2026 working edition
     </p>
 
     <p class="byline text-slate-700">
-      <strong>Dave Sullivan</strong>
+      <strong>Edited by David Sullivan</strong>
     </p>
 
     <p class="spine mt-6 text-lg leading-relaxed text-slate-800">
-      Oregon is trying to take a $1-billion-plus asset that belongs in trust
-      for schoolchildren and convert it into a research forest at OSU paid for
-      by general-fund bonds, and we have caught them in the act. That is the
-      whole indictment. The rest of this book is the evidence.
+      This book keeps the present-tense record: where school trusts are being
+      diverted, where they are being defended, where old law is being recovered,
+      and where people have stepped forward to make the beneficiary claim
+      visible again.
     </p>
 
-    <hr class="archival-divider" />
-
-    <section class="readers-edition mt-8" aria-labelledby="readers-edition-heading">
-      <h2 id="readers-edition-heading" class="text-xs font-semibold uppercase tracking-wide text-slate-500">
-        About the Reader's Edition
-      </h2>
-
-      <p class="mt-4">
-        <em>Who Steals from Children</em> is written here as a Reader's
-        Edition — a first-person, scene-grounded account written for the
-        people whose children are the named beneficiaries of the
-        school-land trusts the volume documents. Parents. School-district
-        administrators. Civic-engaged general readers. The constituency
-        whose absence from the room is the reason these trusts have been
-        allowed to drift in the first place.
+    <section class="current-draft mt-8" aria-labelledby="current-draft-heading">
+      <p class="current-draft-kicker">Current draft</p>
+      <h2 id="current-draft-heading">2026 working edition</h2>
+      <p>
+        The current public draft is the June 8, 2026 review build. It is the
+        national annual survey edition of <em>Who Steals from Children</em>,
+        not the older Oregon-only Volume 1 page that previously occupied this
+        address. The Oregon origin story is now carried separately by
+        <a href="/writing/books/accidental-plaintiff/"><em>The Accidental Plaintiff</em></a>.
       </p>
-
-      <p class="mt-4">
-        The Reader's Edition is built around the journey the author actually
-        took to arrive at the case the volume documents. The documentary
-        record — appraisals, court filings, attorney general opinions,
-        legislative votes, internal agency correspondence — is woven into
-        the body of each chapter as the author encountered it, and is set off
-        in boxed insets where a reader who wants to know the underlying
-        doctrine or the precise language of a document can find it without
-        slowing the narrative for the reader who does not.
+      <p>
+        <a href={currentDraftHref} class="download-link">Download the current Word draft -&gt;</a>
       </p>
+    </section>
 
-      <p class="mt-4">
-        The series title — <em>Who Steals from Children</em> — comes to us
-        from Jim Petersen of <em>Evergreen</em>, who used the phrase in a
-        2025 phone call with Dave Sullivan when the two were discussing what
-        Oregon had done to the Elliott. Petersen put the question in the
-        register the school-trust record requires: not <em>what went
-        wrong</em>, but <em>who stole from whom</em>, named. Future volumes
-        in the series will follow the same form, one state per volume, as
-        each state's record is assembled.
+    <section class="mt-10" aria-labelledby="what-this-is-heading">
+      <h2 id="what-this-is-heading">What this book does</h2>
+      <p>
+        School-trust failures are easy to miss when each state is treated as a
+        local anomaly. The point of this annual record is to make the pattern
+        legible. Each edition gathers state portraits, live disputes, recovery
+        examples, and contributor records in one place so trustees, lawyers,
+        parents, librarians, and advocates can see the national field rather
+        than a set of scattered local fights.
+      </p>
+      <p>
+        The working edition remains open to correction. Claims are meant to be
+        checked against primary records; unresolved items stay visible until
+        they are verified or withdrawn.
       </p>
     </section>
   </article>
 
-  <section class="toc mt-10" aria-labelledby="toc-heading">
-    <h2 id="toc-heading" class="toc-heading">Table of Contents</h2>
-    <ol class="toc-list">
-      {chapters.map((c) => {
-        const isBodyChapter = typeof c.data.chapterNumber === 'number';
-        const navTitle = isBodyChapter ? trimChapterTitle(c.data.title) : c.data.title;
-        const numberLabel = formatChapterNumber(c.data.chapterNumber);
-        return (
-          <li class="toc-item">
-            <a href={`/writing/who-steals-from-children/${chapterSlug(c.slug)}/`} class="toc-link">
-              <span class="toc-number">{numberLabel}</span>
-              <span class="toc-title">{navTitle}</span>
-            </a>
-          </li>
-        );
-      })}
-    </ol>
+  <section class="contents mt-10" aria-labelledby="contents-heading">
+    <h2 id="contents-heading">What's inside</h2>
+    <div class="contents-grid">
+      {sections.map((section) => (
+        <article>
+          <p>{section.label}</p>
+          <h3>{section.title}</h3>
+          <span>{section.description}</span>
+        </article>
+      ))}
+    </div>
   </section>
 
-  <!-- Added 2026-06-08: series-invitation section per WSFC Series Charter v1 (Publishing Doctrine 2026-06-08). -->
   <section class="series-invite mt-10" aria-labelledby="series-invite-heading">
-    <h2 id="series-invite-heading" class="toc-heading">A series, not just one story</h2>
-    <p class="mt-4 leading-relaxed text-slate-800">
-      Volume 1 — the Oregon story on this page — is the model for the whole
-      series, not the whole series. Each volume of <em>Who Steals from
-      Children</em> is meant to be a first-person, documented account by
-      someone who lived a school-trust fight: their state, their fight,
-      their voice, with the Library checking every checkable claim against
-      the documents before it is published. The personal telling is the
-      point. A trust survives only when somebody is watching, and a witness
-      who writes down what they watched — and shows the paper — builds the
-      record one state at a time.
+    <h2 id="series-invite-heading">A record people can add to</h2>
+    <p>
+      The Library is looking for documented school-trust fights from every
+      state: agency records, court papers, board minutes, local histories,
+      trustee reports, and first-person accounts from people who lived the
+      fight. A trust survives only when somebody is watching, and the record
+      gets stronger when the witnesses bring the paper.
     </p>
-    <p class="mt-4 leading-relaxed text-slate-800">
-      So here is the standing invitation: here is ours; where is yours? If
-      you have lived a school-trust fight — as a parent, a trustee, an
-      agency staffer, a lessee, a journalist, an organizer — and you hold
-      the documents, the Library will verify and publish your testimony
-      under your own name, to the same standard this volume carries. Write
-      to the <a href="/reference-desk/">Reference Desk</a>.
+    <p>
+      Write to the <a href="/reference-desk/">Reference Desk</a> with a state,
+      a document, or a correction.
     </p>
   </section>
 
   <p class="mt-12 text-sm text-slate-600">
-    <a href="/writing/">← Writing Room</a>
-  </p>
-
-  <p class="reviews-link mt-4 text-sm text-slate-500">
-    <a href="/reading/who-steals-from-children-vol-1/reviews/">Reviews ({reviewCount})</a>
+    <a href="/writing/">Back to the Writing Room</a>
   </p>
 </RoomLayout>
 
@@ -170,60 +131,63 @@ const trimChapterTitle = (title: string): string =>
     padding: 0.25rem 0 0.25rem 1rem;
     margin-top: 1.5rem;
   }
-  .toc {
-    border-top: 1px solid var(--rule-border, #e5e7eb);
-    padding-top: 1.5rem;
+  .current-draft {
+    padding: 1rem 1.15rem;
+    border: 1px solid #d8c18b;
+    border-left: 4px solid var(--old-gold, #8b7355);
+    border-radius: 4px;
+    background: #fff8df;
+    color: #422006;
   }
-  .toc-heading {
+  .current-draft-kicker,
+  .contents-grid article p {
+    display: block;
+    margin: 0 0 0.45rem;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #64748b;
+  }
+  .current-draft h2,
+  .contents h2,
+  .series-invite h2 {
     font-family: var(--font-serif, Georgia, serif);
-    font-size: 1.25rem;
-    font-weight: 600;
     color: var(--deep-navy, #1e3a5f);
+  }
+  .current-draft h2 {
+    margin: 0 0 0.6rem;
+    font-size: 1.25rem;
+  }
+  .download-link {
+    font-family: var(--font-sans);
+    font-weight: 700;
+  }
+  .contents h2,
+  .series-invite h2 {
+    font-size: 1.35rem;
     margin: 0 0 1rem;
   }
-  .toc-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .toc-item {
-    border-bottom: 1px dotted var(--rule-border, #e5e7eb);
-  }
-  .toc-link {
+  .contents-grid {
     display: grid;
-    grid-template-columns: 9rem 1fr;
-    gap: 0.75rem;
-    padding: 0.65rem 0.25rem;
-    color: inherit;
-    text-decoration: none;
-    align-items: baseline;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.85rem;
   }
-  .toc-link:hover {
-    background: var(--linen-card, #fafaf7);
+  .contents-grid article {
+    border: 1px solid #d7dce4;
+    border-radius: 4px;
+    background: #fff;
+    padding: 1rem;
   }
-  .toc-number {
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--old-gold, #8b7355);
-    font-weight: 600;
-  }
-  .toc-title {
-    font-family: var(--font-serif, Georgia, serif);
+  .contents-grid h3 {
+    margin: 0 0 0.45rem;
     font-size: 1.02rem;
-    color: var(--deep-navy, #1e3a5f);
-    text-decoration: underline;
-    text-decoration-color: #cbd5e1;
-    text-underline-offset: 3px;
+    color: #0f172a;
   }
-  .toc-link:hover .toc-title {
-    text-decoration-color: var(--deep-navy, #1e3a5f);
-  }
-  @media (max-width: 640px) {
-    .toc-link {
-      grid-template-columns: 1fr;
-      gap: 0.1rem;
-    }
+  .contents-grid span,
+  .series-invite p {
+    color: #334155;
+    line-height: 1.6;
   }
 </style>

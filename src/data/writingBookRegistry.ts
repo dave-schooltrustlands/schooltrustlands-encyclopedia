@@ -22,7 +22,7 @@ export const writingBooks: WritingBook[] = [
     blurb:
       'The roles-and-roadmap brief for making school trusts visible, enforceable, and worth fighting for. It explains why the Library, OASTL, ASTL, the public websites, and the publication family are different parts of one larger rebirth effort.',
     status:
-      'Working public draft. Not approved by any organization; ready for friends and close reviewers to inspect.',
+      'Current public draft is v4.5.9, dated June 9, 2026. Not approved by any organization; ready for friends and close reviewers to inspect.',
     fit:
       'The framing document. It tells a reader what the convoy is, why Oregon matters first, and how the books and websites fit together.',
     draftHref: '/drafts/school-trust-rebirth-latest.docx',
@@ -118,11 +118,12 @@ export const writingBooks: WritingBook[] = [
     blurb:
       'What the long school-trust record teaches people designing and governing future long-term institutions, including AI-era trusts.',
     status:
-      'Development draft posted with known issues disclosed; correction and verification work continue.',
+      'Current working edition is the June 8, 2026 review build, with visible verification flags and source notes restored; correction and verification work continue.',
     fit:
       'The forward anchor. It carries the school-trust lessons to the people designing the next forever institutions.',
     currentHref: '/writing/stewards-of-the-republic/',
     draftHref: '/drafts/stewards-of-the-republic-latest.docx',
+    draftLabel: 'Download current Word draft',
   },
   {
     slug: 'school-trust-lands-hornbook',
@@ -161,15 +162,16 @@ export const writingBooks: WritingBook[] = [
     slug: 'who-steals-from-children',
     title: 'Who Steals from Children',
     kicker: 'Book 10 - present record',
-    byline: 'Edited by Dave Sullivan',
+    byline: 'Edited by David Sullivan',
     blurb:
-      'The living state-by-state record of the fight for America\'s school trust lands, beginning from Oregon and broadening nationally.',
+      'The 2026 annual record of the fight for America\'s school trust lands: state portraits, dispatches, and named examples of diversion, neglect, defense, and repair.',
     status:
-      'Living draft; updated as the litigation and state records grow.',
+      'Current 2026 working edition is the June 8, 2026 review build; updated as litigation and state records grow.',
     fit:
-      'The field record. It gathers the present-tense stories that show why the repair is needed.',
+      'The field record. It gathers the present-tense evidence that shows why the repair is needed and where the fight is already visible.',
     currentHref: '/writing/who-steals-from-children/',
-    draftHref: '/drafts/who-steals-from-children-vol1-latest.docx',
+    draftHref: '/drafts/who-steals-from-children-latest.docx',
+    draftLabel: 'Download current Word draft',
   },
   {
     slug: 'useful-life',
