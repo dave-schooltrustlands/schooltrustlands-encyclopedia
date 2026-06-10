@@ -45,16 +45,18 @@ export const writingBooks: WritingBook[] = [
   {
     slug: 'forgotten-forever-gift',
     title: 'The Forgotten Forever Gift to Public Schools',
-    kicker: 'Book 02 - past',
-    byline: 'Margaret Bird and Dave Sullivan',
+    kicker: 'Volume I - looking back',
+    byline: 'Margaret Bird and David Sullivan',
     blurb:
       'How the United States built, kept, and largely lost a national endowment for public education, followed by a state-by-state portrait of the trust.',
     status:
-      'Coauthor review and verification work continue; the latest draft uses the Library citation system.',
+      'Current reading draft is v30, dated June 8, 2026; coauthor review and verification work continue.',
     fit:
       'The historical anchor. It gives the rebirth effort its national memory and factual spine.',
     currentHref: '/writing/schools-of-the-republic/',
     draftHref: '/drafts/schools-of-the-republic-latest.docx',
+    ctaLabel: 'Open current reading page',
+    draftLabel: 'Download v30 Word draft',
   },
   {
     slug: 'law-that-says-nothing-new',

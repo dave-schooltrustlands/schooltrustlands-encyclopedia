@@ -2,6 +2,7 @@
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import BookBanner from '../../../components/BookBanner.astro';
 import { getServerSupabase } from '../../../lib/supabase';
+import { ffgVersions } from '../../../data/ffgVersions';
 
 export const prerender = false;
 
@@ -25,20 +26,12 @@ try {
   /* swallow */
 }
 
-const VERSIONS = [
-  { v: 'v26', date: 'Jun 7, 2026', note: 'Reconciliation draft \u2014 responds to coauthor review: expanded early-history chapter, corrected state-chapter case characterizations, and a rebuilt notes system (41 sourced notes, machine-checked). In review: two source flags remain open and revised passages await coauthor sign-off.', file: '/drafts/ffg-v26.docx' },
-  { v: 'v23', date: 'Jun 2, 2026', note: 'Part I and Part II openers, a working table of contents, and per-state QR codes moved to a small top-corner float.', file: '/drafts/ffg-v23.docx' },
-  { v: 'v21', date: 'Jun 2, 2026', note: 'Publication build — print layout, with version notes and production scaffolding moved out of the book.', file: '/drafts/ffg-v21.docx' },
-  { v: 'v20', date: 'Jun 2, 2026', note: 'Rebuilt the scale-of-the-gift figure (the original ~78M-acre grant vs ~45M surviving) and numbered every figure.', file: '/drafts/ffg-v20.docx' },
-  { v: 'v18', date: 'Jun 1, 2026', note: 'Citation finish — remaining case citations pinned from the case-law archive and CourtListener.', file: '/drafts/ffg-v18.docx' },
-  { v: 'v17', date: 'Jun 1, 2026', note: 'Citation verification pass via CourtListener.', file: '/drafts/ffg-v17.docx' },
-  { v: 'v16', date: 'Jun 1, 2026', note: 'Documentation finish — Morrison resolved and state source labels normalized.', file: '/drafts/ffg-v16.docx' },
-];
+const VERSIONS = ffgVersions;
 ---
 <RoomLayout
   room="writing"
   title="The Forgotten Forever Gift to Public Schools"
-  subtitle="How the United States Built — and Largely Lost — a National Endowment for Public Education. Volume I of A Forever Gift (Looking Back), by Margaret Bird and Dave Sullivan. Revised draft, June 2026."
+  subtitle="The Story of the Land America Set Aside for Its Schools - and What Became of It. Volume I of A Forever Gift (Looking Back), by Margaret Bird and David Sullivan. Current reading draft, June 2026."
   width="prose"
   sourceId="writing-schools-of-the-republic"
 >
@@ -87,32 +80,37 @@ const VERSIONS = [
       duplicating it.
     </p>
 
-    <h2>The shape of the book (revised May 2026)</h2>
+    <h2>The shape of the book (current June 2026)</h2>
     <p>
-      The book was re-spined in May 2026 into a behavior-driven arc — how the
-      inheritance was made, kept, broken, and rebuilt — followed by a
-      state-by-state encyclopedia. The latest full text is in the draft:
+      The current reading draft opens with the inheritance itself, then turns
+      through the duties that make a school-land grant a real trust: loyalty,
+      prudence, competence, accounting, supervision, enforcement, and public
+      visibility. The latest full text is the v30 Word draft:
       <a href="/drafts/schools-of-the-republic-latest.docx">download the current draft (Word)</a>.
     </p>
-    <p><strong>Part I — The Story</strong></p>
+    <p><strong>Part One - The Gift and the Duty</strong></p>
     <ul>
-      <li>Chapter 1 — The Inheritance and the Duty</li>
-      <li>Chapter 2 — The Trust Without the Land</li>
-      <li>Chapter 3 — How the Trust Was Broken</li>
-      <li>Chapter 4 — How the Trust Was Kept, and Rebuilt</li>
-      <li>Chapter 5 — What the Record Teaches the Architects of Forever-Trusts</li>
-      <li>Lenses — the timeline, the cases, a field guide to the kinds of theft, and the enforceability matrix</li>
+      <li>Chapter 1 - The Inheritance Still Standing</li>
+      <li>Chapter 2 - The World That Made the Gift</li>
+      <li>Chapter 3 - The Punctilio of Honor</li>
+      <li>Chapter 4 - Loyalty: The Gift Treated as Pocket Money</li>
+      <li>Chapter 5 - Prudence: Do Not Eat the Seed Corn</li>
+      <li>Chapter 6 - Competence and Accounting: The Books Must Tell the Truth</li>
+      <li>Chapter 7 - Supervision and Enforcement: Someone Has to Watch the Watcher</li>
+      <li>Chapter 8 - The Money Must Be Seen</li>
+      <li>Chapter 9 - What Citizens Can Do Now</li>
     </ul>
-    <p><strong>Part II — The State Dossiers (A–Z)</strong></p>
+    <p><strong>Part Two - The Granted States, A to Z</strong></p>
     <p>
-      All fifty states, each in the Library's <a href="/atlas/">Atlas</a> and at
-      <code>/reading/us-XX/</code>. Each dossier now carries a version bar, so you
-      can flip through how its entry has changed over time.
+      Thirty-three state portraits, from Alabama through Wyoming, show how the
+      same public-school inheritance was kept, spent, defended, neglected, or
+      rebuilt in different states. The appendix then accounts for the
+      non-grant states.
     </p>
     <p class="migration-note">
-      <em>The per-chapter web pages are being rebuilt to this revised structure;
-      until then, the current full text is the Word draft linked above, and the
-      earlier chapter pages remain in the Reading Room.</em>
+      <em>This URL is retained for link stability from the book's earlier
+      working title, Schools of the Republic. The current title and
+      downloadable draft are the ones shown here.</em>
     </p>
 
     <h2>The per-state record lives in the Library</h2>
