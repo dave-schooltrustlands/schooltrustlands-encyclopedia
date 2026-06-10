@@ -33,6 +33,14 @@ const primaryLabel = book.ctaLabel ?? (book.currentHref ? 'Open current home' : 
 
     <p>{book.blurb}</p>
 
+    {book.gatewayNote && (
+      <section class="gateway-extra" aria-label="Publication note">
+        {book.gatewayNote.map((note) => (
+          <p>{note}</p>
+        ))}
+      </section>
+    )}
+
     <aside class="gateway-note" aria-label="Status">
       <strong>Status:</strong> {book.status}
     </aside>
@@ -87,6 +95,20 @@ const primaryLabel = book.ctaLabel ?? (book.currentHref ? 'Open current home' : 
     border-radius: 4px;
     background: #fff8df;
     color: #422006;
+  }
+  .gateway-extra {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    border: 1px solid #d7dce4;
+    border-left: 4px solid #64748b;
+    border-radius: 4px;
+    background: #f8fafc;
+  }
+  .gateway-extra p {
+    margin: 0 0 0.75rem;
+  }
+  .gateway-extra p:last-child {
+    margin-bottom: 0;
   }
   .gateway-actions {
     display: flex;

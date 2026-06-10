@@ -10,6 +10,7 @@ export type WritingBook = {
   draftHref?: string;
   ctaLabel?: string;
   draftLabel?: string;
+  gatewayNote?: string[];
 };
 
 export const writingBooks: WritingBook[] = [
@@ -124,18 +125,23 @@ export const writingBooks: WritingBook[] = [
   {
     slug: 'school-trust-lands-hornbook',
     title: 'School Trust Lands: The Law of America\'s Educational Land Trusts',
-    kicker: 'Book 08 - legal reference',
+    kicker: 'Legal reference manual',
     byline: 'America\'s School Trust Library',
     blurb:
-      'The field\'s one-volume legal reference: grants, fiduciary duties, standing, accounting, remedies, and reform.',
+      'The field\'s first one-volume legal reference manual: grants, fiduciary duties, standing, accounting, remedies, and reform.',
     status:
-      'Working edition. A standing verification program checks quotations and citations against primary sources.',
+      'Working edition. Visible verification flags remain by design while quotations and citations are checked against primary sources.',
     fit:
-      'The legal spine. It lets every public-facing book point back to the law without overloading ordinary readers.',
+      'The legal spine. It lets public-facing books point back to law that has been read against the underlying opinions instead of inherited from field folklore.',
     currentHref: '/writing/hornbook/',
     draftHref: '/drafts/hornbook-working-edition-v1.docx',
-    ctaLabel: 'Open the hornbook',
+    ctaLabel: 'Open the legal reference',
     draftLabel: 'Open working edition',
+    gatewayNote: [
+      'This is a one-volume legal reference for American school-trust law, the first attempt to gather the field in one place for practitioners, researchers, trustees, and careful public advocates.',
+      'Its sourcing discipline is part of the book itself. The Library keeps an archive of primary documents and a register of authorities; quotations are checked against the held opinion wherever the archive has it, and unresolved items remain visible as flags rather than being hidden in smooth prose.',
+      'The current working-edition Word file is linked below. It is usable for review now, but it is not legal advice and has not yet received complete expert legal review.',
+    ],
   },
   {
     slug: 'trustees-handbook',

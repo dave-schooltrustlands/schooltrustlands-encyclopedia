@@ -11,12 +11,12 @@ export function getStaticPaths() {
   const documents = {
     'chapter-1': {
       title: 'Chapter 1 - The Granting Instruments',
-      subtitle: 'Founding hornbook draft. Citations under verification.',
+      subtitle: 'Founding legal-reference draft. Citations under verification.',
       content: chapterOne,
     },
     'trust-character': {
       title: 'Chapter 3 - The Trust Character',
-      subtitle: 'Founding hornbook draft. Citations under verification.',
+      subtitle: 'Founding legal-reference draft. Citations under verification.',
       content: trustCharacter,
     },
     'nebraska-appendix': {
@@ -44,17 +44,17 @@ const { slug, doc } = Astro.props;
   title={doc.title}
   subtitle={doc.subtitle}
   width="full"
-  parents={[{ label: 'Hornbook', href: '/writing/hornbook/' }]}
+  parents={[{ label: 'Legal reference manual', href: '/writing/hornbook/' }]}
   sourceId={`hornbook-${slug}`}
 >
   <aside class="hornbook-draft-status" role="note">
     <strong>Founding draft.</strong> This page preserves the source draft's
     citation flags and footnotes. <code>[VERIFY]</code> means the claim or
-    authority is still awaiting verification by the hornbook process.
+    authority is still awaiting verification by the legal-reference process.
   </aside>
 
-  <nav class="hornbook-doc-nav" aria-label="Hornbook draft navigation">
-    <a href="/writing/hornbook/">Hornbook landing</a>
+  <nav class="hornbook-doc-nav" aria-label="Legal-reference draft navigation">
+    <a href="/writing/hornbook/">Reference manual landing</a>
     <a href="/writing/hornbook/chapter-1/">Chapter 1</a>
     <a href="/writing/hornbook/trust-character/">Chapter 3</a>
     <a href="/writing/hornbook/nebraska-appendix/">Nebraska appendix</a>

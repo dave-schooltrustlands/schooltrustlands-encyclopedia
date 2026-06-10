@@ -3,7 +3,76 @@
 // src/data/writingBookRegistry.ts so draft files can move without breaking
 // public links.
 import RoomLayout from '../../layouts/RoomLayout.astro';
-import { writingBooks } from '../../data/writingBookRegistry';
+import { writingBooks, type WritingBook } from '../../data/writingBookRegistry';
+
+const frontShelfSlugs = [
+  'how-the-library-works',
+  'forgotten-forever-gift',
+  'school-trust-lands-hornbook',
+  'who-steals-from-children',
+  'make-school-trusts-for-schools',
+];
+
+const frontShelf = frontShelfSlugs
+  .map((slug) => writingBooks.find((book) => book.slug === slug))
+  .filter(Boolean) as WritingBook[];
+
+const workshopBooks = writingBooks.filter((book) => !frontShelfSlugs.includes(book.slug));
+
+const frontShelfTitles: Record<string, string> = {
+  'school-trust-lands-hornbook': 'The legal reference manual',
+};
+
+const workshopMeta: Record<string, { type: string; state: string }> = {
+  'school-trust-rebirth': {
+    type: 'roadmap brief',
+    state: 'working public draft for close reviewers',
+  },
+  'law-that-says-nothing-new': {
+    type: 'public repair booklet',
+    state: 'working public draft',
+  },
+  'uptea-for-lawyers': {
+    type: 'model-law guide',
+    state: 'convergence draft for legal testing',
+  },
+  'case-waiting-for-you': {
+    type: 'lawyer recruitment booklet',
+    state: 'planned booklet',
+  },
+  'help-us-keep-the-books': {
+    type: 'librarian recruitment booklet',
+    state: 'planned booklet',
+  },
+  'stewards-of-the-republic': {
+    type: 'forward-looking design book',
+    state: 'development draft with known issues disclosed',
+  },
+  'trustees-handbook': {
+    type: 'trustee practice handbook',
+    state: 'planned handbook',
+  },
+  'useful-life': {
+    type: 'formation-story booklet',
+    state: 'working public-facing draft',
+  },
+  'accidental-plaintiff': {
+    type: 'Oregon origin booklet',
+    state: 'working public-facing draft',
+  },
+};
+
+function shelfTitle(book: WritingBook) {
+  return frontShelfTitles[book.slug] ?? book.title;
+}
+
+function workshopType(book: WritingBook) {
+  return workshopMeta[book.slug]?.type ?? book.kicker.toLowerCase();
+}
+
+function workshopState(book: WritingBook) {
+  return workshopMeta[book.slug]?.state ?? book.status;
+}
 ---
 
 <RoomLayout
@@ -28,21 +97,19 @@ import { writingBooks } from '../../data/writingBookRegistry';
       address. Link to the book page, not to the temporary file behind it.
     </p>
     <p>
-      The shelf has a shape. Some books explain why school trusts matter;
-      some make Oregon's failure visible; some recruit lawyers, librarians,
-      parents, students, trustees, and public officials into useful roles; and
-      some translate the repair into language voters or lawmakers can actually
-      use. One verified record underneath; many doors in.
+      The front shelf is intentionally narrow: five pieces that orient a new
+      reader, carry the national history, make the law usable, show the present
+      record, and translate repair into citizen action. Other booklets are still
+      open below, but as workshop entries rather than full cards.
     </p>
   </div>
 
   <section id="book-family" class="books mt-10" aria-labelledby="books-heading">
     <div class="section-head">
-      <h2 id="books-heading" class="section-heading">The book family</h2>
+      <h2 id="books-heading" class="section-heading">Front shelf</h2>
       <p class="section-intro">
-        These are the books and booklets now forming around the school-trust
-        rebirth effort. Each card gives the short version, how the piece fits,
-        and a stable Writing Room link that can survive later moves.
+        Start here. Each card names what the work is, how finished it is, and
+        where its durable Writing Room gateway lives.
       </p>
       <p class="stable-link-note">
         Use the "Stable book link" for citations, emails, and review packets.
@@ -52,11 +119,20 @@ import { writingBooks } from '../../data/writingBookRegistry';
     </div>
 
     <div class="book-grid">
-      {writingBooks.map((book) => (
+      {frontShelf.map((book) => (
         <article class="book-card">
           <p class="card-kicker">{book.kicker}</p>
           <h3 class="card-title">
-            <a href={`/writing/books/${book.slug}/`}><em>{book.title}</em></a>
+            <a href={`/writing/books/${book.slug}/`}>
+              {book.slug === 'school-trust-lands-hornbook' ? (
+                <>
+                  <span>{shelfTitle(book)}</span>
+                  <small><em>{book.title}</em></small>
+                </>
+              ) : (
+                <em>{book.title}</em>
+              )}
+            </a>
           </h3>
           <p class="card-byline">{book.byline}</p>
           <p class="card-blurb">{book.blurb}</p>
@@ -74,6 +150,25 @@ import { writingBooks } from '../../data/writingBookRegistry';
         </article>
       ))}
     </div>
+  </section>
+
+  <section class="workshop mt-10" aria-labelledby="workshop-heading">
+    <div class="section-head">
+      <h2 id="workshop-heading" class="section-heading">In the workshop</h2>
+      <p class="section-intro">
+        These pieces keep their stable Writing Room gateways, but they are not
+        the first shelf for a new reader.
+      </p>
+    </div>
+    <ul class="workshop-list">
+      {workshopBooks.map((book) => (
+        <li>
+          <a href={`/writing/books/${book.slug}/`}><em>{book.title}</em></a>
+          <span class="workshop-type">{workshopType(book)}</span>
+          <span class="workshop-state">{workshopState(book)}</span>
+        </li>
+      ))}
+    </ul>
   </section>
 
   <section class="dispatches mt-10" aria-labelledby="dispatches-heading">
@@ -176,8 +271,17 @@ import { writingBooks } from '../../data/writingBookRegistry';
   }
 
   .card-title a {
+    display: grid;
+    gap: 0.15rem;
     color: var(--deep-navy, #1e3a5f);
     text-decoration: none;
+  }
+
+  .card-title small {
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #475569;
   }
 
   .card-title a:hover {
@@ -252,5 +356,55 @@ import { writingBooks } from '../../data/writingBookRegistry';
     color: #422006;
     font-size: 0.9rem;
     line-height: 1.5;
+  }
+
+  .workshop-list {
+    max-width: 70rem;
+    display: grid;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .workshop-list li {
+    display: grid;
+    grid-template-columns: minmax(14rem, 1.2fr) minmax(9rem, 0.7fr) minmax(14rem, 1fr);
+    gap: 0.75rem 1rem;
+    align-items: baseline;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .workshop-list a {
+    color: var(--deep-navy, #1e3a5f);
+    font-family: var(--font-serif, Georgia, serif);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .workshop-list a:hover {
+    text-decoration: underline;
+  }
+
+  .workshop-type,
+  .workshop-state {
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.88rem;
+    line-height: 1.4;
+    color: #475569;
+  }
+
+  .workshop-type {
+    font-weight: 700;
+    color: #334155;
+  }
+
+  @media (max-width: 760px) {
+    .workshop-list li {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
   }
 </style>
