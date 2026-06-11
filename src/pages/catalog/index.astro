@@ -66,31 +66,31 @@ const caseLawFolders = Object.entries(
       </header>
 
       <section class="metric-grid" aria-label="Catalog counts">
-        <article class="metric-card">
+        <a class="metric-card" href="#authority-heading" aria-label={`Jump to ${catalog.counts.authorities} authority records`}>
           <span class="metric-card__label">Authority records</span>
           <strong>{catalog.counts.authorities}</strong>
           <span>from the hornbook register</span>
-        </article>
-        <article class="metric-card">
+        </a>
+        <a class="metric-card" href="#case-law-heading" aria-label={`Jump to ${catalog.counts.l0CaseLawFiles} L0 case-law files`}>
           <span class="metric-card__label">L0 case-law files</span>
           <strong>{catalog.counts.l0CaseLawFiles}</strong>
           <span>{catalog.counts.l0CaseLawWithPublicGateway} with public gateways today</span>
-        </article>
-        <article class="metric-card">
+        </a>
+        <a class="metric-card" href="#figures-heading" aria-label={`Jump to ${catalog.counts.figures} reusable figures`}>
           <span class="metric-card__label">Reusable figures</span>
           <strong>{catalog.counts.figures}</strong>
           <span>from L1_Figures</span>
-        </article>
-        <article class="metric-card">
+        </a>
+        <a class="metric-card" href="#books-heading" aria-label={`Jump to ${catalog.counts.books} book manifests`}>
           <span class="metric-card__label">Book manifests</span>
           <strong>{catalog.counts.books}</strong>
           <span>current generated-book records</span>
-        </article>
-        <article class="metric-card">
+        </a>
+        <a class="metric-card" href="#collections-heading" aria-label={`Jump to ${catalog.counts.specialCollections} named collections`}>
           <span class="metric-card__label">Named collections</span>
           <strong>{catalog.counts.specialCollections}</strong>
           <span>finding aids and special shelves</span>
-        </article>
+        </a>
       </section>
 
       <section class="catalog-section" aria-labelledby="authority-heading">
@@ -333,7 +333,24 @@ const caseLawFolders = Object.entries(
     box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
   }
   .metric-card {
+    display: block;
     padding: 0.9rem 1rem;
+    color: inherit;
+    text-decoration: none;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease,
+      transform 160ms ease;
+  }
+  .metric-card:hover,
+  .metric-card:focus-visible {
+    border-color: #c9a24a;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.09);
+    transform: translateY(-1px);
+  }
+  .metric-card:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.32);
+    outline-offset: 3px;
   }
   .metric-card__label,
   .book-card__eyebrow {
@@ -358,6 +375,7 @@ const caseLawFolders = Object.entries(
   }
   .catalog-section {
     margin: 2rem 0;
+    scroll-margin-top: 7rem;
   }
   .section-heading-row {
     display: flex;
