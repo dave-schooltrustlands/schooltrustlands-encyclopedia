@@ -1,31 +1,27 @@
 ---
 // PrepublicationFooter.astro
 //
-// v25 — Site-wide pre-publication footer. A thin strip carrying the
-// "draft — do not cite" line at the very bottom of every page. Sibling
-// to <PrepublicationBanner /> (v24, per-chapter): the banner gives the
-// full warning at the top of each chapter; this footer carries the
-// reminder on every surface — landings, About, Atlas, Counting House,
-// Map Room, Newsroom, state pages — so a reader landing anywhere on
-// the site sees it.
+// Site-wide preview footer. A thin strip carrying the public-preview reminder
+// at the very bottom of every page. The per-chapter PrepublicationBanner is
+// separate and remains governed by the book-draft PREPUBLICATION flag.
 //
-// Controlled by the same single flag (src/site.config.ts → PREPUBLICATION).
-// When the flag flips to false, both the chapter banner and this footer
-// disappear in one motion.
+// Controlled by SITE_PREVIEW. When the Library board adopts the site as the
+// Library publication, that one flag removes the footer and the top preview
+// strip together.
 
-import { PREPUBLICATION } from '../site.config';
+import { SITE_PREVIEW } from '../site.config';
 ---
 
-{PREPUBLICATION && (
+{SITE_PREVIEW && (
   <div
     class="prepublication-footer"
     role="note"
-    aria-label="Beta draft notice"
+    aria-label="Preview publication notice"
     data-pagefind-ignore
   >
     <p>
       <span class="prepublication-footer__icon" aria-hidden="true">⚠</span>
-      Beta draft (May 2026) — cite the linked primary sources;
+      Preview publication — cite the linked primary sources;
       interpretive framing is provisional.
     </p>
   </div>

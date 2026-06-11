@@ -1,0 +1,3846 @@
+{
+  "generatedAt": "2026-06-11T21:13:02.440Z",
+  "sourceRoot": "Cowork substrate",
+  "counts": {
+    "authorities": 136,
+    "authoritiesByStatus": {
+      "l0-held": 85,
+      "verify": 11,
+      "cited-in-briefing": 10,
+      "other": 29,
+      "verified": 1
+    },
+    "l0CaseLawFiles": 220,
+    "l0CaseLawWithPublicGateway": 19,
+    "figures": 45,
+    "figuresByStatus": {
+      "other": 17,
+      "verified": 28
+    },
+    "books": 5,
+    "specialCollections": 1
+  },
+  "authorities": [
+    {
+      "number": 1,
+      "format": "table",
+      "authority": "Trustees of Vincennes University v. Indiana, 55 U.S. (14 How.) 268 (1852) [filed Response cites pin 273-74 and year 1853 — decided Dec. 1852 Term, conventionally cited 1852; see CIS § 2C]",
+      "name": "Trustees of Vincennes University v. Indiana",
+      "use": "Earliest characterization, corrected: McLean majority at *274 — title to the school lands \"has never been considered as vested in the State,\" which has \"no inherent power to sell them, or appropriate them to any other purpose than for the benefit of schools.\" (\"As the trustee to administer the trust,\" at *279-80, is Taney, C.J., dissenting; the majority ...",
+      "feeds": "Ch. 1 (§ 1.2), Ch. 3 (§ 3.2)",
+      "sources": "CRF; SB; FILED; HB1 n.5; HB3",
+      "status": "✅ L0 (FULL OPINION harvested 2026-06-10 Run 57, 31,241 chars — prior L0 was a 4.8 KB pre-harvest digest. ⚠ ATTRIBUTION FLAG for Codex: \"as the trustee to administer the trust\" and the 280-pin abeyance material are in TANEY, C.J.'s DISSENT (*279-281); the MAJORITY (McLean) held title in the trustee corporation, NOT the State, and its school-lands passage is at *274)",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/vincennes-univ-v-indiana-1852/"
+    },
+    {
+      "number": 2,
+      "format": "table",
+      "authority": "Cooper v. Roberts, 59 U.S. (18 How.) 173 (1855)",
+      "name": "Cooper v. Roberts",
+      "use": "Section-16 grant is a compact \"unalterable except by consent\"; \"sacred obligation\" on the receiving state's public faith; per the filed Response, the Michigan grant (5 Stat. 59) it construes is \"in all material respects indistinguishable\" from Oregon's.",
+      "feeds": "Ch. 1 (§ 1.7), Ch. 3 (§ 3.2)",
+      "sources": "CRF; SB; FILED; HB1 n.24; HB3",
+      "status": "✅ L0 (FULL OPINION harvested 2026-06-10 Run 57, 20,787 chars — prior L0 was a 7.5 KB pre-harvest digest; \"sacred obligation imposed on its public faith\" verbatim at *182; consecrate/compact passage at *178; jus-ad-rem→jus-in-re at *179-180; heavy 1855 OCR flagged in file header)",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/cooper-v-roberts-1855/"
+    },
+    {
+      "number": 3,
+      "format": "table",
+      "authority": "Ervien v. United States, 251 U.S. 41 (1919)",
+      "name": "Ervien v. United States",
+      "use": "Diversion of NM trust proceeds to promotional purposes held an enforceable breach of trust; enumeration of purposes \"necessarily exclusive of any other purpose\" (at 47); the dedication \"special and exact\" (at 47-48). (\"Odious dereliction ... breach of trust in the State,\" at *48, is the Court recounting the District Court's view while affirming its result — ...",
+      "feeds": "Ch. 3 (§ 3.2), Ch. 5, Ch. 14",
+      "sources": "CRF; SB; DOS-NM; HB1 n.21; HB3",
+      "status": "✅ L0 (FULL OPINION harvested 2026-06-10 Run 57, 7,645 chars — prior L0 was a pre-harvest digest; \"necessarily exclusive\" verbatim at *47. ⚠ ATTRIBUTION FLAG for Codex: \"odious dereliction of a breach of trust\" at *48 is the opinion RECOUNTING the District Court's rejected reasoning, not the Court's own characterization of the diversion — re-cite or rephrase the holding cell)",
+      "statusKind": "l0-held",
+      "href": "/reading/library/ervien-v-united-states-1919/"
+    },
+    {
+      "number": 4,
+      "format": "table",
+      "authority": "Lassen v. Arizona ex rel. Arizona Highway Dept., 385 U.S. 458, 466-67 (1967)",
+      "name": "Lassen v. Arizona ex rel. Arizona Highway Dept.",
+      "use": "Full appraised value owed on intra-governmental taking; trusts \"definite and specific ... separate and independent\"; absence of the word \"trust\" not determinative (filed Response, citing 460).",
+      "feeds": "Ch. 3, Ch. 4, Ch. 8, Ch. 9",
+      "sources": "CRF; SB; FILED; DOS-AZ; HB3",
+      "status": "✅ L0 (FULL OPINION harvested 2026-06-10 Run 57, 37,826 chars — prior L0 was a 7.7 KB pre-harvest digest; money-compensation holding at *469; \"only those beneficiaries profit from the trust\" at *467; \"continuing interest\" at *460-61; § 28 reproduced in the opinion's Appendix; the L419/L441 verification notes now resolvable against the primary; Cowork verification pass 13, 2026-06-10: \"most substantial support possible … only those beneficiaries profit\" verbatim at *467, money-compensation holding at *469, \"eye single\" confirmed absent, and the \"[w]ords more clearly designed\" attribution to United States v. Ervien, 246 F. 277, 279, as quoted in Lassen, confirmed)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 5,
+      "format": "table",
+      "authority": "Andrus v. Utah, 446 U.S. 500 (1980)",
+      "name": "Andrus v. Utah",
+      "use": "Majority (Stevens): grant a \"solemn agreement,\" indemnity right gives state \"the benefit of the bargain\"; Powell dissent (522-23): \"solemn bilateral compacts ... binding and perpetual obligation\" — the formulation Oregon adopted in *Cascadia* n.1.",
+      "feeds": "Ch. 1 (§§ 1.7-1.8), Ch. 3",
+      "sources": "CRF; SB; DOS-UT; HB1; HB3",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/andrus-v-utah-1980/"
+    },
+    {
+      "number": 6,
+      "format": "table",
+      "authority": "ASARCO Inc. v. Kadish, 490 U.S. 605, 626 (1989)",
+      "name": "ASARCO Inc. v. Kadish",
+      "use": "Modern capstone: AZ mineral-leasing statute void for nonconformity with Enabling Act § 28; beneficiary (teacher/association) enforcement in state court.",
+      "feeds": "Ch. 3 (§§ 3.2, 3.6), Ch. 8, Ch. 12, Ch. 17",
+      "sources": "CRF; SB; DOS-AZ; HB3",
+      "status": "✅ L0 (FULL OPINION harvested 2026-06-10 Run 57, 82,715 chars — prior L0 was a 5.8 KB pre-harvest digest; star pagination present, so the 626 pin flagged at L377/Ch. 15 is now settable from the primary — SET, Cowork verification pass 13, 2026-06-10: pin 626 VERIFIED (the § 28 trust-conditions passage straddles *625-26, opening the Part III-A merits analysis); the Ch13/Ch16 [VERIFY pin] flags are cleared)",
+      "statusKind": "verify",
+      "href": "/court/case-file/asarco-v-kadish-1989/"
+    },
+    {
+      "number": 7,
+      "format": "table",
+      "authority": "United States v. Morrison, 240 U.S. 192, 205 (1916)",
+      "name": "United States v. Morrison",
+      "use": "\"A definitive rule of construction\" for school grants, reviewing the *Oregon* grant: Congress \"used the same phrase substantially in nearly every one of the school grants ... manifest intention to place the states on the same footing\"; carries *Cooper* to Oregon. Anchor of the filed Response's Section C.",
+      "feeds": "Ch. 1, Ch. 3 (§ 3.5)",
+      "sources": "FILED",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/United_States_v_Morrison_240_US_192_1916.md (harvested 2026-06-06)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 8,
+      "format": "table",
+      "authority": "Papasan v. Allain, 478 U.S. 265 (1986)",
+      "name": "Papasan v. Allain",
+      "use": "Cited in filed Response within the post-*Morrison* body of law recognizing enforceable federal-state school trusts (Mississippi Sixteenth Section context).",
+      "feeds": "Ch. 3, Ch. 12, Ch. 14",
+      "sources": "FILED",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Papasan_v_Allain_478_US_265_1986.md (harvested 2026-06-06)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 9,
+      "format": "table",
+      "authority": "Alamo Land & Cattle Co. v. Arizona, 424 U.S. 295 (1976)",
+      "name": "Alamo Land & Cattle Co. v. Arizona",
+      "use": "Proceeds remain subject to the same trust as the lands; United States retains \"a continuing interest in the administration of both the lands and the funds.\"",
+      "feeds": "Ch. 1 (§ 1.8), Ch. 3 (§ 3.6(f)), Ch. 14",
+      "sources": "DOS-AZ; HB1 n.31; HB3 n.9",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Alamo_Land_Cattle_Co_v_Arizona_424_US_295_1976.md (harvested 2026-06-06; table status corrected this run)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 10,
+      "format": "table",
+      "authority": "Borax Ltd. v. Los Angeles, 296 U.S. 10, 22 (1935)",
+      "name": "Borax Ltd. v. Los Angeles",
+      "use": "\"[A] question which concerns the ... effect of an act done by the United States\" is \"necessarily a federal question\" — choice-of-law anchor of the filed Response.",
+      "feeds": "Ch. 1, Ch. 14, Ch. 16",
+      "sources": "FILED",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Borax_Consolidated_v_Los_Angeles_296_US_10_1935.md (harvested 2026-06-06)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 11,
+      "format": "table",
+      "authority": "Wilcox v. Jackson, 38 U.S. 498, 513 (1839)",
+      "name": "Wilcox v. Jackson",
+      "use": "Land once \"legally appropriated to any purpose ... becomes severed from the mass of public lands\" — used in filed Response to distinguish the sovereign-title Public Trust Doctrine.",
+      "feeds": "Ch. 4",
+      "sources": "FILED",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Wilcox_v_Jackson_38_US_498_1839.md (harvested 2026-06-06; minor whitespace fidelity note in header)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 12,
+      "format": "table",
+      "authority": "Oregon ex rel. State Land Board v. Corvallis Sand & Gravel Co., 429 U.S. 363, 374 (1977)",
+      "name": "Oregon ex rel. State Land Board v. Corvallis Sand & Gravel Co.",
+      "use": "Sovereign-lands title \"is conferred not by Congress, but by the Constitution itself\" — the contrast case for the federal direct grant (filed Response Section D).",
+      "feeds": "Ch. 4",
+      "sources": "FILED",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Oregon_ex_rel_State_Land_Board_v_Corvallis_Sand_Gravel_429_US_363_1977.md (harvested 2026-06-06)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 13,
+      "format": "table",
+      "authority": "Fletcher v. Peck, 10 U.S. 87 (1810)",
+      "name": "Fletcher v. Peck",
+      "use": "A sovereign cannot revoke its own grants (Contracts Clause).",
+      "feeds": "Ch. 3, Ch. 17",
+      "sources": "SB § III; Common_Law_Trust_Foundation.md",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Fletcher_v_Peck_10_US_87_1810.md (harvested 2026-06-06)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 14,
+      "format": "table",
+      "authority": "Trustees of Dartmouth College v. Woodward, 17 U.S. 518 (1819)",
+      "name": "Trustees of Dartmouth College v. Woodward",
+      "use": "A sovereign cannot impair a charter it has granted.",
+      "feeds": "Ch. 3",
+      "sources": "SB § III",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Dartmouth_College_v_Woodward_17_US_518_1819.md (harvested 2026-06-06; Marshall lead + Duvall record — Washington/Story concurrences not in CourtListener, [VERIFY via Westlaw/CAP if Story needed])",
+      "statusKind": "verify",
+      "href": null
+    },
+    {
+      "number": 15,
+      "format": "table",
+      "authority": "Vidal v. Girard's Executors, 43 U.S. 127 (1844)",
+      "name": "Vidal v. Girard's Executors",
+      "use": "American courts apply the inherited English charitable-trust framework.",
+      "feeds": "Ch. 3, Ch. 12",
+      "sources": "SB § III",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Vidal_v_Girards_Executors_43_US_127_1844.md (harvested 2026-06-06)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 16,
+      "format": "table",
+      "authority": "Illinois Central Railroad Co. v. Illinois, 146 U.S. 387 (1892)",
+      "name": "Illinois Central Railroad Co. v. Illinois",
+      "use": "No \"irrepealable contract in a conveyance of property by a grantor in disregard of a public trust\"; government cannot legislate away its trust obligations.",
+      "feeds": "Ch. 3, Ch. 15",
+      "sources": "SB § III",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Illinois_Central_RR_v_Illinois_146_US_387_1892.md (harvested 2026-06-06; Field majority + Shiras dissent)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 17,
+      "format": "table",
+      "authority": "Marbury v. Madison (as quoted in *Pendleton*)",
+      "name": "Marbury v. Madison (as quoted in *Pendleton*)",
+      "use": "\"Province and duty of the judicial department to say what the law is\" — justiciability floor.",
+      "feeds": "Ch. 15",
+      "sources": "CRF; SB § IX",
+      "status": "✅ L0 Case_Law/US_Supreme_Court/Marbury_v_Madison_5_US_137_1803.md (harvested 2026-06-06; previously CIB via Pendleton)",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 18,
+      "format": "table",
+      "authority": "State of Utah v. Kleppe, 586 F.2d 756 (10th Cir. 1978)",
+      "name": "State of Utah v. Kleppe",
+      "use": "Land-grant program was \"bilateral\" in effect; its \"specific purpose was to create a binding permanent trust which would generate financial aid to support the public school systems\" of the public-land states.",
+      "feeds": "Ch. 1 (§ 1.7), Ch. 3",
+      "sources": "SB; DOS-UT; HB1 n.3; HB3 n.9",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 19,
+      "format": "table",
+      "authority": "State of Utah v. Andrus, 486 F. Supp. 995 (D. Utah 1979)",
+      "name": "State of Utah v. Andrus",
+      "use": "\"A bilateral compact,\" not a unilateral gift; implied right of access — \"without access the state could not develop the trust lands ... This Congress did not intend.\"",
+      "feeds": "Ch. 1 (§ 1.7), Ch. 3",
+      "sources": "SB; DOS-UT; HB1 nn.27-28",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 20,
+      "format": "table",
+      "authority": "United States v. Cotter Corp., Nos. C 79-0037, C 79-0307 (D. Utah Oct. 1, 1979)",
+      "name": "United States v. Cotter Corp.",
+      "use": "Companion to *Andrus* (D. Utah); special school-land legislation prevails over later general legislation.",
+      "feeds": "Ch. 1 (§ 1.8)",
+      "sources": "DOS-UT; HB1 nn.27, 33",
+      "status": "CIB — NOT-ON-CL confirmed 2026-06-06 (no opinion in CourtListener; RECAP D. Utah coverage does not reach 1979 — Westlaw/Codex public-source lane)",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 21,
+      "format": "table",
+      "authority": "Branson School District RE-82 v. Romer, 958 F. Supp. 1501 (D. Colo. 1997), aff'd, 161 F.3d 619 (10th Cir. 1998) (filed Response pin: 633)",
+      "name": "Branson School District RE-82 v. Romer",
+      "use": "Compact an enforceable trust, not aspirational policy; Restatement applies to state trustees; school-district beneficiary standing; CO Amendment 16 reforms sustained within the trust.",
+      "feeds": "Ch. 1, Ch. 3, Ch. 12, Ch. 18",
+      "sources": "CRF; SB; FILED; DOS-CO; HB1 n.13; HB3",
+      "status": "✅ L0 (10th Cir.) (Cowork verification pass 13, 2026-06-10: full opinion verified — enforceable-trust holding at *634-35, beneficiary standing at *628-31, exclusive-beneficiary rule via Ervien at *637, state-as-trustee/state-remains-liable at *643, Amendment 16 sustained under a \"fairly possible\" reconciling construction; all v1-chapter characterizations confirmed, no corrections)",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/branson-v-romer-1998/"
+    },
+    {
+      "number": 22,
+      "format": "table",
+      "authority": "State of Oregon ex rel. Division of State Lands v. Bureau of Land Management, 876 F.2d 1419 (9th Cir. 1989)",
+      "name": "State of Oregon ex rel. Division of State Lands v. Bureau of Land Management",
+      "use": "History of 43 U.S.C. § 851 et seq. and the lieu-lands selection process; Elliott exchange background.",
+      "feeds": "Ch. 1 (§§ 1.1, 1.8)",
+      "sources": "MCA B.12; HB1 nn.1, 29",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 23,
+      "format": "table",
+      "authority": "Savage v. Glendale Union High School Dist. No. 205, 343 F.3d 1036 (9th Cir. 2003)",
+      "name": "Savage v. Glendale Union High School Dist. No. 205",
+      "use": "Cited in filed Response within the post-*Morrison* enforceable-trust body of law.",
+      "feeds": "Ch. 3, Ch. 12",
+      "sources": "FILED",
+      "status": "✅ L0 Case_Law/Ninth_Circuit/Savage_v_Glendale_Union_HSD_343_F3d_1036_9thCir_2003.md (harvested 2026-06-06)",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 24,
+      "format": "table",
+      "authority": "Sabine River Authority v. U.S. Dept. of the Interior, 951 F.2d 669 (5th Cir. 1992)",
+      "name": "Sabine River Authority v. U.S. Dept. of the Interior",
+      "use": "Held in L0 Federal folder; hornbook use not yet assigned [VERIFY relevance and holding before use].",
+      "feeds": "TBD",
+      "sources": "L0 listing",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 25,
+      "format": "bullet",
+      "authority": "State v. University of Alaska, 624 P.2d 807, 813 (Alaska 1981)",
+      "name": "State v. University of Alaska",
+      "use": "624 P.2d 807, 813 (Alaska 1981) — park inclusion of university trust land without compensation \"a breach of a federal trust\" (the introductory holding); at *813 the court applies *Lassen*'s \"only those beneficiaries profit from the trust\" (quoting 385 U.S. at 467) and adopts Scott on Trusts § 170 (\"solely in the interest of the beneficiaries\"); \"maximize ...",
+      "feeds": "Ch",
+      "sources": "CRF; SB; DOS-AK; HB1 n.23; HB3",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/state-v-university-of-alaska-1981/"
+    },
+    {
+      "number": 26,
+      "format": "bullet",
+      "authority": "State v. Weiss, 706 P.2d 681, 683 (Alaska 1985)",
+      "name": "State v. Weiss",
+      "use": "706 P.2d 681, 683 (Alaska 1985) — state may not extinguish a trust by absorbing its function into general government; \"without trust property there can be no trust.\"",
+      "feeds": "Ch",
+      "sources": "DOS-AK; HB1 n.23; HB3",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 27,
+      "format": "bullet",
+      "authority": "Deer Valley Unified School District No. 97 v. Superior Court, 157 Ariz. 537, 760 P.2d 537 (1988)",
+      "name": "Deer Valley Unified School District No. 97 v. Superior Court",
+      "use": "157 Ariz. 537, 760 P.2d 537 (1988) — trust land \"is not state land\"; condemnation by state actors (even a beneficiary school district) barred.",
+      "feeds": "Ch",
+      "sources": "SB; DOS-AZ; HB1 n.21; HB3 n.15",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/deer-valley-v-superior-court-1988/"
+    },
+    {
+      "number": 28,
+      "format": "bullet",
+      "authority": "Forest Guardians v. Wells (Ariz. 2001)",
+      "name": "Forest Guardians v. Wells",
+      "use": "(Ariz. 2001) — cited in filed Response (post-*Morrison* body of law). Full citation verified: Guardians v. Wells, 201 Ariz. 255, 34 P.3d 364 (2001) (majority + Martone, J., dissent).",
+      "feeds": "Ch",
+      "sources": "FILED",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 29,
+      "format": "bullet",
+      "authority": "Mayer Unified School District v. Winkleman, 219 Ariz. 562, 201 P.3d 523 (2009)",
+      "name": "Mayer Unified School District v. Winkleman",
+      "use": "219 Ariz. 562, 201 P.3d 523 (2009) — school districts sued the Land Commissioner over ~900 uncompensated \"09 easements\" (1929-1967); claims held time-barred, accrual at *Lassen II* (1967); continuing-violation theory rejected (the duty to secure compensation \"arises only once\"). Beneficiary-suit limitations counter-precedent.",
+      "feeds": "Ch",
+      "sources": "harvest (adjacent authority surfaced in Run 1 Arizona search)",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 30,
+      "format": "bullet",
+      "authority": "Idaho Watersheds Project v. State Board of Land Commissioners, 133 Idaho 55, 982 P.2d 358 (1999)",
+      "name": "Idaho Watersheds Project v. State Board of Land Commissioners",
+      "use": "133 Idaho 55, 982 P.2d 358 (1999) — per curiam original proceeding; writ of prohibition granted barring implementation of H.J.R. 6 (the 1998 voter-approved package amending art. 9, §§ 4 and 8) for combining \"incongruous and essentially unrelated\" amendments in violation of art. 20, § 2 (separate-vote provision); post-election procedural challenges ...",
+      "feeds": "the ID appendix retrenchment history",
+      "sources": "DOS-ID; HB3 nn.13, 15",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/idaho-watersheds-1999/"
+    },
+    {
+      "number": 31,
+      "format": "bullet",
+      "authority": "Idaho Watersheds Project v. State Bd. of Land Comm'rs (IWP II), 133 Idaho 64 (1999)",
+      "name": "Idaho Watersheds Project v. State Bd. of Land Comm'rs (IWP II)",
+      "use": "133 Idaho 64 (1999) — Idaho Code § 58-310B invalid: the legislature itself may not direct the trustee toward non-beneficiary interests (\"the schools, the state, and Idaho livestock industry\").",
+      "feeds": "Ch",
+      "sources": "CRF; SB; HB3",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 32,
+      "format": "bullet",
+      "authority": "Selkirk-Priest Basin Ass'n, Inc. v. State ex rel. Andrus (SPBA I), 127 Idaho 239, 899 P.2d 949 (1995)",
+      "name": "Selkirk-Priest Basin Ass'n, Inc. v. State ex rel. Andrus (SPBA I)",
+      "use": "127 Idaho 239, 899 P.2d 949 (1995) — environmental groups lack standing to represent the school endowment trust's direct beneficiaries, identified (per *Moon*) as the schools/school districts; public-trust-doctrine claim survives on recreational navigability. Johnson, J., separate opinion: the STUDENTS are the true beneficiaries — direct 24CV38372 ...",
+      "feeds": "Ch",
+      "sources": "CRF; SB § XIII",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 33,
+      "format": "bullet",
+      "authority": "Selkirk-Priest Basin Ass'n v. State ex rel. Batt (SPBA II), 128 Idaho 831, 919 P.2d 1032 (1996)",
+      "name": "Selkirk-Priest Basin Ass'n v. State ex rel. Batt (SPBA II)",
+      "use": "128 Idaho 831, 919 P.2d 1032 (1996) — members' recreational/aesthetic use is no distinct-and-palpable injury; APA review of Land Board timber sales statutorily barred; no Declaratory Judgment Act bootstrap.",
+      "feeds": "Ch",
+      "sources": "harvest (adjacent authority, Run 4)",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 34,
+      "format": "bullet",
+      "authority": "State ex rel. Plaquemines Parish School Board v. Plaquemines Parish Government, 652 So. 2d 1, 93 La.App. 4 Cir. 2339 (La. App. 4 Cir. Dec. 15, 1994; rehearing supplement Apr. 7, 1995), writ denied, 656 So. 2d 1015 (La. 1995)",
+      "name": "State ex rel. Plaquemines Parish School Board v. Plaquemines Parish Government",
+      "use": "652 So. 2d 1, 93 La.App. 4 Cir. 2339 (La. App. 4 Cir. Dec. 15, 1994; rehearing supplement Apr. 7, 1995), writ denied, 656 So. 2d 1015 (La. 1995) — \"school trust lands can be alienated only where it is of benefit to school in some manner.\" Caption/court/year verified on harvest.",
+      "feeds": "Ch",
+      "sources": "DOS-LA; HB1 n.7",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 35,
+      "format": "bullet",
+      "authority": "Ebey v. Avoyelles Parish School Board, 861 So. 2d 910, 2003-765 (La. App. 3 Cir. 12/17/03)",
+      "name": "Ebey v. Avoyelles Parish School Board",
+      "use": "861 So. 2d 910, 2003-765 (La. App. 3 Cir. 12/17/03) — Section 16 lands held in trust, school boards \"in the manner of a statutory trustee\"; parent standing affirmed.",
+      "feeds": "Ch",
+      "sources": "DOS-LA; HB1 nn.7, 18",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 36,
+      "format": "bullet",
+      "authority": "Clark v. Stephen D. Lee Foundation, 887 So. 2d 798 (Miss. 2004)",
+      "name": "Clark v. Stephen D. Lee Foundation",
+      "use": "887 So. 2d 798 (Miss. 2004) — Sixteenth Section lease consideration must be benchmarked to \"the reasonable market value of the leased land.\"",
+      "feeds": "Ch",
+      "sources": "DOS-MS; HB1 n.9",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 37,
+      "format": "bullet",
+      "authority": "Jones County School Dist. v. Covington County School Dist., 352 So. 3d 1123 (Miss. 2022)",
+      "name": "Jones County School Dist. v. Covington County School Dist.",
+      "use": "352 So. 3d 1123 (Miss. 2022) — cited in filed Response (post-*Morrison* body of law).",
+      "feeds": "Ch",
+      "sources": "FILED",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 38,
+      "format": "bullet",
+      "authority": "Wayne County School Dist. v. Quitman School Dist., 346 So. 3d 853 (Miss. 2022)",
+      "name": "Wayne County School Dist. v. Quitman School Dist.",
+      "use": "346 So. 3d 853 (Miss. 2022) — the holding *Jones County* reaffirms (Sixteenth Section funds belong to the township's beneficiaries; proportionate-share distribution), with the dissent.",
+      "feeds": "Ch",
+      "sources": "harvest (companion queued from Run 1)",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 39,
+      "format": "bullet",
+      "authority": "Hill v. Thompson; Lambert v. State",
+      "name": "Hill v. Thompson",
+      "use": "Lambert v. State — the Mississippi \"spoliation\" line, referenced without full citations.",
+      "feeds": "Ch",
+      "sources": "HB1 § 1.3",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 40,
+      "format": "bullet",
+      "authority": "Montanans for the Responsible Use of the School Trust v. State (Montrust I), 1999 MT 263",
+      "name": "Montanans for the Responsible Use of the School Trust v. State (Montrust I)",
+      "use": "1999 MT 263 — four statutes (§§ 77-1-130, 77-5-211, 77-6-304, 77-6-305) and the Department's below-market cabin-site rental policy struck (§ 77-1-208 itself sustained on its face); presumption of constitutionality does not save breaching enactments; private-attorney-general doctrine adopted. (Cowork verification pass 13, 2026-06-10: the \"five statutes\" ...",
+      "feeds": "Ch",
+      "sources": "CRF; SB; FILED (cited as \"Mont. 1999\"); HB3 n.13",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 41,
+      "format": "bullet",
+      "authority": "Montanans for the Responsible Use of the School Trust v. Darkenwald, 2005 MT 190, 328 Mont. 105",
+      "name": "Montanans for the Responsible Use of the School Trust v. Darkenwald",
+      "use": "2005 MT 190, 328 Mont. 105 — commingling-with-reconciliation statute sustained; Nelson dissent: \"robs Peter (future generations of school children) to pay Paul.\" The field's leading counter-precedent.",
+      "feeds": "Ch",
+      "sources": "DOS-MT; HB3 n.40",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/darkenwald-montana-2005/"
+    },
+    {
+      "number": 42,
+      "format": "bullet",
+      "authority": "Friends of the Wild Swan v. DNRC, 2005 MT 351, 330 Mont. 186",
+      "name": "Friends of the Wild Swan v. DNRC",
+      "use": "2005 MT 351, 330 Mont. 186 — lands accepted on the Enabling Act's terms, held in trust with the State as trustee.",
+      "feeds": "Ch",
+      "sources": "DOS-MT; HB3 n.15",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 43,
+      "format": "bullet",
+      "authority": "Department of State Lands v. Pettibone, 702 P.2d 948 (Mont. 1985)",
+      "name": "Department of State Lands v. Pettibone",
+      "use": "702 P.2d 948 (Mont. 1985) — school trust lands \"subject to a different set of rules than other public lands\"; appurtenant water rights are trust interests requiring compensation.",
+      "feeds": "Ch",
+      "sources": "DOS-MT; HB3 nn.15, 32",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/pettibone-v-mt-1985/"
+    },
+    {
+      "number": 44,
+      "format": "bullet",
+      "authority": "Jerke v. State Dept. of Lands, 597 P.2d 49 (Mont. 1979)",
+      "name": "Jerke v. State Dept. of Lands",
+      "use": "597 P.2d 49 (Mont. 1979) — lessee-preference right unconstitutional as applied; only competitive bidding secures full market value.",
+      "feeds": "Ch",
+      "sources": "DOS-MT",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 45,
+      "format": "bullet",
+      "authority": "State ex rel. Dept. of Highways v. Burlingame, 597 P.2d 51 (Mont. 1979)",
+      "name": "State ex rel. Dept. of Highways v. Burlingame",
+      "use": "597 P.2d 51 (Mont. 1979) — ⚠ NOT a school-trust case: eminent-domain attorney-fees decision (condemnee recovering less than the State's final offer did not \"prevail\"; no fees; Sheehy, J., dissenting). No school-trust feed; the sustained-yield doctrine belongs to *Jerke*, 597 P.2d 49. (Holding cell corrected pass 14, 2026-06-10; every ...",
+      "feeds": "",
+      "sources": "DOS-MT",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 46,
+      "format": "bullet",
+      "authority": "State v. Platte Valley Public Power & Irrigation District, 147 Neb. 289, 23 N.W.2d 300 (1946)",
+      "name": "State v. Platte Valley Public Power & Irrigation District",
+      "use": "147 Neb. 289, 23 N.W.2d 300 (1946) — lands \"held in trust ... under a contractual and constitutional obligation\"; full value required; leasing authority \"limited by the obligation to preserve the trust property inviolate.\"",
+      "feeds": "Ch",
+      "sources": "DOS-NE (CourtListener ID 8038835); HB1 n.3; HB3 n.10",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 47,
+      "format": "bullet",
+      "authority": "State ex rel. Ebke v. Board of Educational Lands & Funds, 154 Neb. 244, 47 N.W.2d 520 (1951)",
+      "name": "State ex rel. Ebke v. Board of Educational Lands & Funds",
+      "use": "154 Neb. 244, 47 N.W.2d 520 (1951) — constitutional incorporation rule: trustee status fixed by constitution makes breach of trust \"a violation of the Constitution itself,\" \"invalidating the legislation authorizing the breach.\"",
+      "feeds": "Ch",
+      "sources": "CRF; SB; CIS (pin cites pending); HB3 n.11",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/ebke-v-neb-1951/"
+    },
+    {
+      "number": 48,
+      "format": "bullet",
+      "authority": "Propst v. Board of Educational Lands & Funds, 156 Neb. 226, 55 N.W.2d 653 (1952)",
+      "name": "Propst v. Board of Educational Lands & Funds",
+      "use": "156 Neb. 226, 55 N.W.2d 653 (1952) — nullity rule (unconstitutional statute \"void from its enactment\"); third-party-notice rule (\"[a]nyone dealing with the school lands must do so with knowledge of and subject to the trust obligation\").",
+      "feeds": "Ch",
+      "sources": "CRF; SB; CIS; DOS-NE (CourtListener ID 1253657); HB3 n.12",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/propst-v-board-1952/"
+    },
+    {
+      "number": 49,
+      "format": "bullet",
+      "authority": "Ebke II (1954)",
+      "name": "Ebke II",
+      "use": "(1954) — referenced in SB § XIII Nebraska list without citation.",
+      "feeds": "Ch",
+      "sources": "",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 50,
+      "format": "bullet",
+      "authority": "Asplund v. Hannett, 31 N.M. 641, 249 P. 1074 (1926)",
+      "name": "Asplund v. Hannett",
+      "use": "31 N.M. 641, 249 P. 1074 (1926) — historical standing baseline for trust enforcement (Ferguson Act context); the case *Forest Guardians* revisits.",
+      "feeds": "Ch",
+      "sources": "DOS-NM; HB3 n.39",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/asplund-v-hannett-1926/"
+    },
+    {
+      "number": 51,
+      "format": "bullet",
+      "authority": "State ex rel. State Highway Commission v. Walker, 61 N.M. 374, 301 P.2d 317 (1956)",
+      "name": "State ex rel. State Highway Commission v. Walker",
+      "use": "61 N.M. 374, 301 P.2d 317 (1956) — trust compensation rules apply to internal state takings; contrary AG opinions disapproved.",
+      "feeds": "Ch",
+      "sources": "DOS-NM; HB3 nn.15, 32",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 52,
+      "format": "bullet",
+      "authority": "Forest Guardians v. Powell, 130 N.M. 368, 24 P.3d 803, 2001-NMCA-028",
+      "name": "Forest Guardians v. Powell",
+      "use": "130 N.M. 368, 24 P.3d 803, 2001-NMCA-028 — charitable-trust framing channels enforcement to the AG; standing denied to conservation groups and parent-plaintiffs; Bustamante separate opinion: the majority \"essentially voids that provision of [the Enabling Act].\"",
+      "feeds": "Ch",
+      "sources": "FILED; DOS-NM; HB3 n.39",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 53,
+      "format": "bullet",
+      "authority": "State ex rel. King v. Lyons, 2011-NMSC-004, 248 P.3d 878",
+      "name": "State ex rel. King v. Lyons",
+      "use": "2011-NMSC-004, 248 P.3d 878 — land exchanges void where structured to bypass public-auction/highest-bidder requirements; transactions unwound by mandamus.",
+      "feeds": "Ch",
+      "sources": "DOS-NM; HB1 n.21; HB3 n.26",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 54,
+      "format": "bullet",
+      "authority": "Oklahoma Education Ass'n, Inc. v. Nigh, 642 P.2d 230 (Okla. 1982)",
+      "name": "Oklahoma Education Ass'n, Inc. v. Nigh",
+      "use": "642 P.2d 230 (Okla. 1982) — \"No Act of the Legislature can validly alter, modify or diminish the State's duty as Trustee\"; \"sacred trust\" designation irrevocably incorporates all rules of trust law; maximum-benefit standard. (Trial judge Cannon: \"Boys, the party is over.\")",
+      "feeds": "Ch",
+      "sources": "CRF; SB; CIS; DOS-OK; HB1 nn.3, 25; HB3",
+      "status": "✅ L0-VERIFIED 2026-06-09 against the FULL opinion (CourtListener id 1187033 — the earlier \"not in CourtListener\" note was stale): killer quotes verbatim at 642 P.2d at 236; G-6/HB-051 Nigh-pin RESOLVED.",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 55,
+      "format": "bullet",
+      "authority": "Kanaly v. State ex rel. Janklow, 368 N.W.2d 819, 823 (S.D. 1985)",
+      "name": "Kanaly v. State ex rel. Janklow",
+      "use": "368 N.W.2d 819, 823 (S.D. 1985) — \"special, permanent and perpetual trust ... the state is the trustee is beyond question\"; uncompensated inter-agency transfer unconstitutional and in violation of the Enabling Act.",
+      "feeds": "Ch",
+      "sources": "CRF; SB; CIS (pin pending); DOS-SD; HB3",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 56,
+      "format": "bullet",
+      "authority": "Plateau Mining Co. v. Utah Division of State Lands & Forestry, 802 P.2d 720 (Utah 1990)",
+      "name": "Plateau Mining Co. v. Utah Division of State Lands & Forestry",
+      "use": "802 P.2d 720 (Utah 1990) — state-as-trustee owes \"the same fiduciary duties as any private trustee\"; no waiver of beneficiaries' rights by prior acceptance of underpayment; no estoppel against the state on trust lands; limitations inapplicable.",
+      "feeds": "Ch",
+      "sources": "CRF; SB; DOS-UT; HB3 nn.15, 29",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 57,
+      "format": "bullet",
+      "authority": "National Parks & Conservation Ass'n v. Board of State Lands, 869 P.2d 909 (Utah 1993)",
+      "name": "National Parks & Conservation Ass'n v. Board of State Lands",
+      "use": "869 P.2d 909 (Utah 1993) — income maximization the controlling duty; deviation requires compensation to the trust; buyer-procured appraisal \"suspect on its face\"; trust binds use of the land itself.",
+      "feeds": "Ch",
+      "sources": "CRF; SB; DOS-UT; HB1 n.32; HB3 n.28",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 58,
+      "format": "bullet",
+      "authority": "Jensen v. Dinehart, 645 P.2d 32 (Utah)",
+      "name": "Jensen v. Dinehart",
+      "use": "645 P.2d 32 (Utah) — MAJORITY (Hall, C.J.): school-section mineral proceeds are properly placed in the currently expendable Uniform School Fund (*35), the trial court's contrary declaratory judgment REVERSED — adverse to the trust position. OAKS, J., concurring in part and dissenting (*36-37): the Jones Act exhibits no intent to remove or modify the ...",
+      "feeds": "Ch",
+      "sources": "DOS-UT; HB1 n.33",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/reading/library/jensen-v-dinehart-1982/"
+    },
+    {
+      "number": 59,
+      "format": "bullet",
+      "authority": "County of Skamania v. State, 102 Wn.2d 127, 132, 685 P.2d 576 (1984)",
+      "name": "County of Skamania v. State",
+      "use": "102 Wn.2d 127, 132, 685 P.2d 576 (1984) — \"real, enforceable trusts ... same fiduciary duties applicable to private trustees\"; divided loyalty (benefit to timber industry/economy at beneficiaries' expense) is breach; full value on transfer of trust assets including contract rights.",
+      "feeds": "Ch",
+      "sources": "CRF; SB; DOS-WA; HB3 nn.1, 14",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/skamania-v-state-1984/"
+    },
+    {
+      "number": 60,
+      "format": "bullet",
+      "authority": "Conservation Northwest v. Commissioner of Public Lands (*v. Franz*), 200 Wn.2d 8 (Wash. 2022)",
+      "name": "Conservation Northwest v. Commissioner of Public Lands",
+      "use": "(*v. Franz*), 200 Wn.2d 8 (Wash. 2022) — unanimous reaffirmation of *Skamania*; the doctrine is live 21st-century law.",
+      "feeds": "Ch",
+      "sources": "CRF; SB; HB3 n.2",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": "/court/case-file/conservation-northwest-v-commissioner-2022/"
+    },
+    {
+      "number": 61,
+      "format": "bullet",
+      "authority": "Okanogan County v. State (Wash. 2015)",
+      "name": "Okanogan County v. State",
+      "use": "(Wash. 2015) — cited in filed Response (post-*Morrison* body of law). Caption verified: Public Utility District No. 1 of Okanogan County v. State, 182 Wash. 2d 519, 342 P.3d 308 (2015).",
+      "feeds": "Ch",
+      "sources": "FILED",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 62,
+      "format": "bullet",
+      "authority": "Goldmark v. McKenna, 172 Wn.2d 568, 259 P.3d 1095 (2011) (decided Sept. 1, 2011; amended Nov. 18, 2011)",
+      "name": "Goldmark v. McKenna",
+      "use": "172 Wn.2d 568, 259 P.3d 1095 (2011) (decided Sept. 1, 2011; amended Nov. 18, 2011) — Commissioner of Public Lands sought mandamus after the Attorney General refused to represent him on appeal; the AG's duty to represent state officers. Directly parallel to the A177308 AG-defense question.",
+      "feeds": "Ch",
+      "sources": "harvest (queued from Run 1 as G-1-related lead)",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 63,
+      "format": "bullet",
+      "authority": "Director of the Office of State Lands & Investments v. Merbanco, Inc. (Wyo. 2003)",
+      "name": "Director of the Office of State Lands & Investments v. Merbanco, Inc.",
+      "use": "(Wyo. 2003) — cited in filed Response (post-*Morrison* body of law). Full citation verified: 2003 WY 73, 70 P.3d 241.",
+      "feeds": "Ch",
+      "sources": "FILED",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 64,
+      "format": "bullet",
+      "authority": "Sherman v. Buick, 50 Cal. 421 (1875)",
+      "name": "Sherman v. Buick",
+      "use": "50 Cal. 421 (1875) — appeared in the v11 draft Table of Authorities with a blank page reference (CIS § 2B); use not carried into the filed 9-page Response.",
+      "feeds": "Ch",
+      "sources": "CIS",
+      "status": "Partial ✅ L0 / NOT-ON-CL",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 65,
+      "format": "bullet",
+      "authority": "North Carolina School Boards Ass'n v. Moore, 359 N.C. 474, 614 S.E.2d 504 (2005)",
+      "name": "North Carolina School Boards Ass'n v. Moore",
+      "use": "359 N.C. 474, 614 S.E.2d 504 (2005) — duty existed in text but was held non-self-executing; \"a duty without an enforcement engine is a duty deferred.\" From the Book_Revision enforceability research staging file.",
+      "feeds": "Ch",
+      "sources": "Book_Revision/_research/Enforceability_Caselaw_2026-05-29.md",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 66,
+      "format": "bullet",
+      "authority": "Schneider v. Hutchinson, 35 Or 253, 258 (1899)",
+      "name": "Schneider v. Hutchinson",
+      "use": "35 Or 253, 258 (1899) — Admission Act grant \"an absolute grant, vesting title in the state for a special purpose\"; the special purpose is the source of the obligation.",
+      "feeds": "Ch",
+      "sources": "MCA B.4; SB; HB3 n.16",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 67,
+      "format": "bullet",
+      "authority": "Robertson v. Geer, 42 Or 183 (1902)",
+      "name": "Robertson v. Geer",
+      "use": "42 Or 183 (1902) — SLB held and managed lands (historical/descriptive use in State's MSJ).",
+      "feeds": "Ch",
+      "sources": "MCA C.20",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 68,
+      "format": "bullet",
+      "authority": "State v. Warner Valley Stock Co., 56 Or 283 (1910)",
+      "name": "State v. Warner Valley Stock Co.",
+      "use": "56 Or 283 (1910) — deeds issued in violation of statutory procedure void; SLB bound by statutory framework (swamp lands).",
+      "feeds": "Ch",
+      "sources": "MCA B.5 (via *Cascadia*'s recitation)",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 69,
+      "format": "bullet",
+      "authority": "Grand Prize Hydraulic Mines v. Boswell, 83 Or 1, 6-7 (1917)",
+      "name": "Grand Prize Hydraulic Mines v. Boswell",
+      "use": "83 Or 1, 6-7 (1917) — \"[T]he school lands granted to the state of Oregon are a trust for the benefit of public education\" — under an act that nowhere uses the word \"trust.\"",
+      "feeds": "Ch",
+      "sources": "MCA B.3; SB; HB1; HB3 n.17",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 70,
+      "format": "bullet",
+      "authority": "State Land Board v. Lee, 84 Or 431, 441-42 (1917)",
+      "name": "State Land Board v. Lee",
+      "use": "84 Or 431, 441-42 (1917) — \"not a mere dry trustee\" (at 441-42, verified against the L0 primary 2026-06-08; the State's May 13, 2026 MSJ pin is correct — an earlier triangulation that placed it at 439 was mistaken, 439 being the §§ 3913-3926 L.O.L. statutory-loan framework); active-trustee classification; limitations exemption applies to SLB administration ...",
+      "feeds": "Ch",
+      "sources": "MCA B.1; SB; HB1 n.18; HB3",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 71,
+      "format": "bullet",
+      "authority": "Holmes v. Olcott, 96 Or 33 (1920)",
+      "name": "Holmes v. Olcott",
+      "use": "96 Or 33 (1920) — appropriations doctrine (State's IV.E support).",
+      "feeds": "Ch",
+      "sources": "MCA C.29",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 72,
+      "format": "bullet",
+      "authority": "Putnam v. Norblad, 134 Or 433 (1930)",
+      "name": "Putnam v. Norblad",
+      "use": "134 Or 433 (1930) — 1930 mandamus/political-question case (State's lead IV.D authority); distinguished as pre-modern doctrine; recognized ministerial-duty exception. Parallel cite discrepancy: MSJ \"295 P 949\" vs. CAP \"293 P. 940\" [VERIFY].",
+      "feeds": "Ch",
+      "sources": "MCA B.7; SPSD § 4",
+      "status": "[VERIFY]",
+      "statusKind": "verify",
+      "href": null
+    },
+    {
+      "number": 73,
+      "format": "bullet",
+      "authority": "Eagle Point Irrigation District v. Cowden, 137 Or 121, 124 (1931)",
+      "name": "Eagle Point Irrigation District v. Cowden",
+      "use": "137 Or 121, 124 (1931) — \"execution of a trust of the highest nature, which has been created by the fundamental law of this state\"; transactional fiduciary review of SLB loans. The strongest sentence in Oregon school-trust jurisprudence.",
+      "feeds": "Ch",
+      "sources": "MCA B.2; SB; HB3 n.18",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 74,
+      "format": "bullet",
+      "authority": "Wood v. Honeyman, 178 Or 484, 555-57 (1946)",
+      "name": "Wood v. Honeyman",
+      "use": "178 Or 484, 555-57 (1946) — Oregon's general law of trust. ⚠ 2026-06-07 verification: the quotation previously carried here (\"A trustee is under a duty ... all doubts will be resolved against him\") is the filed Response's rendering and is NOT in the opinion; the opinion's actual language is the court's statement at 555-56 (\"must maintain records of his ...",
+      "feeds": "Ch",
+      "sources": "FILED",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 75,
+      "format": "bullet",
+      "authority": "Johnson v. Department of Revenue, 292 Or 373, 382 (1982)",
+      "name": "Johnson v. Department of Revenue",
+      "use": "292 Or 373, 382 (1982) — constitutional/statutory CSF distinction; \"determination of the proper use of common school funds is a legislative one\" AND the same passage imposes the duty \"to derive the greatest net profit for the people of this state\" (the sentence the State's MSJ omits).",
+      "feeds": "Ch",
+      "sources": "MCA B.6 + Major Finding C; SB § VI; HB3 n.21",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 76,
+      "format": "bullet",
+      "authority": "Lindland v. United Business Investments, Inc., 298 Or 318, 327 (1984)",
+      "name": "Lindland v. United Business Investments, Inc.",
+      "use": "298 Or 318, 327 (1984) — private commercial fiduciary burden-allocation (Restatement (2d) Agency); the State's category-error citation, distinguished. Parallel cite discrepancy \"692 P2d 91\" vs. CAP \"693 P.2d 20\" [VERIFY].",
+      "feeds": "Ch",
+      "sources": "MCA B.10; SPSD § 3",
+      "status": "[VERIFY]",
+      "statusKind": "verify",
+      "href": null
+    },
+    {
+      "number": 77,
+      "format": "bullet",
+      "authority": "Pendleton School District 16R v. State, 345 Or 596 (2009)",
+      "name": "Pendleton School District 16R v. State",
+      "use": "345 Or 596 (2009) — courts may (and must, following *Marbury*) declare legislative non-compliance with Article VIII school-funding obligations. Siuslaw 97J — lead plaintiff in 24CV38372 — was a plaintiff.",
+      "feeds": "Ch",
+      "sources": "CRF (lead finding); SB § IX",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 78,
+      "format": "bullet",
+      "authority": "Comcast of Oregon II, Inc. v. City of Eugene, 346 Or 238, 250 (2009)",
+      "name": "Comcast of Oregon II, Inc. v. City of Eugene",
+      "use": "346 Or 238, 250 (2009) — \"a public body's act of adopting a law or rule in violation of an applicable procedural or substantive requirement is not a tort under ORS 30.260(8).\" Controlling on OTCA recharacterization.",
+      "feeds": "Ch",
+      "sources": "MCA Major Finding B; SPSD",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 79,
+      "format": "bullet",
+      "authority": "Kennedy v. Wheeler, 356 Or 518 (2014)",
+      "name": "Kennedy v. Wheeler",
+      "use": "356 Or 518 (2014) — law-of-the-case doctrine (filed Response's vehicle for binding the Sept. 5, 2025 ruling forward).",
+      "feeds": "Ch",
+      "sources": "FILED",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 80,
+      "format": "bullet",
+      "authority": "Couey v. Atkins, 357 Or 460 (2015)",
+      "name": "Couey v. Atkins",
+      "use": "357 Or 460 (2015) — initiative-petition mootness case: ORS 14.175 held validly enacted; Oregon's \"judicial power\" clause (Art VII (Amended), § 1) imposes no Article III-style case-or-controversy or mootness limits, overruling *Yancy v. Shatzer* (2004). NOT a political-question case. (Cowork verification pass 13, 2026-06-10: prior ...",
+      "feeds": "Ch",
+      "sources": "CRF; SPSD § 4",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 81,
+      "format": "bullet",
+      "authority": "Moro v. State, 357 Or 167 (2015); Strunk v. PERB, 338 Or 145 (2005); James v. State, 366 Or 732 (2020)",
+      "name": "Moro v. State",
+      "use": "357 Or 167 (2015); Strunk v. PERB, 338 Or 145 (2005); James v. State, 366 Or 732 (2020) — anti-entrenchment doctrine (State's IV.E); the recognized-exceptions opening (statutory contracts; federal-law obligations).",
+      "feeds": "Ch",
+      "sources": "MCA B.11",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 82,
+      "format": "bullet",
+      "authority": "Cascadia Wildlands v. Department of State Lands, 365 Or 750 (2019)",
+      "name": "Cascadia Wildlands v. Department of State Lands",
+      "use": "365 Or 750 (2019) — \"Under the Admission Act, the state is the trustee of the lands granted to it\" (758); no \"core function\" of revenue maximization invalidating a withdrawal statute, BUT \"the 'greatest benefit' mandate may require the State Land Board to maximize net profit, for example, by obtaining the best price for the authorized sale of timber\" (766). ...",
+      "feeds": "Ch",
+      "sources": "MCA § A + 2026-05-20_Cascadia_Wildlands_Annotation_v1.md; HB3 nn.19, 22",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 83,
+      "format": "bullet",
+      "authority": "Chernaik v. Brown, 367 Or 143, 156 (2020)",
+      "name": "Chernaik v. Brown",
+      "use": "367 Or 143, 156 (2020) — Oregon Public Trust Doctrine (sovereign-title) case; the filed Response's contrast case distinguishing the federal direct-grant trust.",
+      "feeds": "Ch",
+      "sources": "FILED",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 84,
+      "format": "bullet",
+      "authority": "Eklof v. Persson, 369 Or 531 (2022); Larsen v. Selmet, Inc., 371 Or 457 (2023)",
+      "name": "Eklof v. Persson",
+      "use": "369 Or 531 (2022); Larsen v. Selmet, Inc., 371 Or 457 (2023) — leave-to-amend standards (procedural reserve). *Source:* CRF. ✅ L0 *(2026-06-10 Run 59 status: both digests → FULL CL opinions — Eklof 66,012 chars exact, Larsen 54,293 chars exact; OJD slip-PDF renderings, bound-page layout inline)*",
+      "feeds": "",
+      "sources": "CRF",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 85,
+      "format": "bullet",
+      "authority": "Advocates for School Trust Lands v. State, 346 Or App 668 (2026) (Jan. 28, 2026)",
+      "name": "Advocates for School Trust Lands v. State",
+      "use": "346 Or App 668 (2026) (Jan. 28, 2026) — OASTL's own win: schoolchildren-beneficiary standing under Art. VIII; challenges to the validity of laws are not torts subject to the OTCA (684 n.9 *remanded* the lawmaking question; it did not hold against plaintiffs). State's petition for Supreme Court review pending [VERIFY current status].",
+      "feeds": "Ch",
+      "sources": "MCA B.13; CRF; SPSD; HB3 n.24",
+      "status": "[VERIFY current status]",
+      "statusKind": "verify",
+      "href": "/reading/library/astl-v-oregon-2026/"
+    },
+    {
+      "number": 86,
+      "format": "bullet",
+      "authority": "Hanggi v. Hartford Fire Ins. Co., 132 Or App 601 (1995), rev. dismissed as improvidently granted, 322 Or 573 (1996)",
+      "name": "Hanggi v. Hartford Fire Ins. Co.",
+      "use": "132 Or App 601 (1995), rev. dismissed as improvidently granted, 322 Or 573 (1996) — statutory-trust (PERF) fiduciary breach treated as OTCA tort; the State's anchor, distinguished by *Advocates* / *Comcast*.",
+      "feeds": "Ch",
+      "sources": "SPSD § 1",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 87,
+      "format": "bullet",
+      "authority": "Evergreen West Business Center v. Emmert, 254 Or App 361 (2012), rev'd on other grounds, 354 Or 790 (2014)",
+      "name": "Evergreen West Business Center v. Emmert",
+      "use": "254 Or App 361 (2012), rev'd on other grounds, 354 Or 790 (2014) — private-party fiduciary-duty elements recital; distinguished. Parallel cite [VERIFY] (\"327 P3d 568\" may be the 2014 reversal).",
+      "feeds": "Ch",
+      "sources": "MCA B.9; SPSD § 2",
+      "status": "[VERIFY]",
+      "statusKind": "verify",
+      "href": null
+    },
+    {
+      "number": 88,
+      "format": "bullet",
+      "authority": "Bieker v. Ludwick, 343 Or App 1 (2025)",
+      "name": "Bieker v. Ludwick",
+      "use": "343 Or App 1 (2025) — UTC accounting limits in a private revocable trust; distinguished (ORS 130.005(2)(e) excludes public bodies).",
+      "feeds": "Ch",
+      "sources": "MCA C.22",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 89,
+      "format": "bullet",
+      "authority": "Letter Opinion, Feb. 26, 2024 (23CV39056)",
+      "name": "Letter Opinion, Feb. 26, 2024",
+      "use": "(23CV39056) — dismissed on OTCA-tort + notice grounds; reversed in relevant part by *Advocates v. State*.",
+      "feeds": "Ch",
+      "sources": "",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 90,
+      "format": "bullet",
+      "authority": "Letter Opinion, Mar. 6, 2025 (24CV38372)",
+      "name": "Letter Opinion, Mar. 6, 2025",
+      "use": "(24CV38372) — standing found for districts and students under the trust theory; failure-to-state-a-claim denied on 2024 claims; trust-characterization and beneficiary-identity questions expressly reserved.",
+      "feeds": "Ch",
+      "sources": "",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 91,
+      "format": "bullet",
+      "authority": "Letter Opinion, Sept. 5, 2025 (24CV38372, FAC)",
+      "name": "Letter Opinion, Sept. 5, 2025",
+      "use": "(24CV38372, FAC) — per the filed Response: held that management of Oregon's School Trust Lands is governed by the Law of Trust (law of the case).",
+      "feeds": "Ch",
+      "sources": "",
+      "status": "✅ L0",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 92,
+      "format": "bullet",
+      "authority": "Plaintiffs' Response + Cross-Motion for PSJ, filed May 29, 2026",
+      "name": "Plaintiffs' Response + Cross-Motion for PSJ, filed May 29, 2026",
+      "use": "the four cross-motion declarations (federal compact; *Wood v. Honeyman* trust law applies; no constitutional/statutory trifurcation; SLB members personally liable as fiduciaries). ✅ Filed-version in /Filed/ with Crowe declaration and EX 1 (Admission Act + Acceptance).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 93,
+      "format": "bullet",
+      "authority": "⚑ A177308 / 21CV15024",
+      "name": "⚑ A177308 / 21CV15024",
+      "use": "see the Special Entry above.",
+      "feeds": "Ch",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 94,
+      "format": "bullet",
+      "authority": "N.M. Att'y Gen. Op. No. 3454 (1922) and Op. No. 64 (1931)",
+      "name": "N.M. Att'y Gen. Op. No. 3454 (1922)",
+      "use": "and Op. No. 64 (1931) — took the position the state need not pay for highway rights-of-way over trust lands; disapproved by *Walker* (1956). The field's clearest documented example of AG opinions siding with the sovereign against the trust — direct Ch. 13 material. *Source:* DOS-NM. CIB",
+      "feeds": "",
+      "sources": "DOS-NM",
+      "status": "CIB",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 95,
+      "format": "bullet",
+      "authority": "Land Ordinance of 1785 (May 20, 1785)",
+      "name": "Land Ordinance of 1785",
+      "use": "(May 20, 1785) — Section 16 reserved \"for the maintenance of public schools, within the said township\" [VERIFY exact language]. Ch. 1 (§ 1.2).",
+      "feeds": "",
+      "sources": "",
+      "status": "VERIFY exact language]",
+      "statusKind": "verify",
+      "href": "/reading/library/land-ordinance-1785/"
+    },
+    {
+      "number": 96,
+      "format": "bullet",
+      "authority": "Northwest Ordinance of 1787 (July 13, 1787)",
+      "name": "Northwest Ordinance of 1787",
+      "use": "(July 13, 1787) — Art. 3 (\"schools and the means of education shall forever be encouraged\"); compact preamble (\"forever remain unalterable, unless by common consent\") [VERIFY exact language]. Ch. 1 (§ 1.2), Ch. 14.",
+      "feeds": "",
+      "sources": "",
+      "status": "VERIFY exact language]",
+      "statusKind": "verify",
+      "href": "/reading/library/northwest-ordinance-1787/"
+    },
+    {
+      "number": 97,
+      "format": "bullet",
+      "authority": "Ohio Enabling Act of 1802",
+      "name": "Ohio Enabling Act of 1802",
+      "use": "first Section-16 follower; \"in trust\" and \"for no other use, intent or purpose whatever.\" Ch. 1. *Source:* SB § IV. CIB [VERIFY citation]",
+      "feeds": "",
+      "sources": "SB § IV",
+      "status": "CIB [VERIFY citation]",
+      "statusKind": "verify",
+      "href": null
+    },
+    {
+      "number": 98,
+      "format": "bullet",
+      "authority": "Louisiana: Act of Feb. 20, 1811, 2 Stat. 641; Act of Apr. 8, 1812, 2 Stat. 701. Ch. 1 (§ 1.3).",
+      "name": "Louisiana",
+      "use": "Act of Feb. 20, 1811, 2 Stat. 641; Act of Apr. 8, 1812, 2 Stat. 701. Ch. 1 (§ 1.3).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 99,
+      "format": "bullet",
+      "authority": "Mississippi: Enabling Act of Mar. 1, 1817, 3 Stat. 348; admission Act of Dec. 10, 1817. Ch. 1 (§ 1.3).",
+      "name": "Mississippi",
+      "use": "Enabling Act of Mar. 1, 1817, 3 Stat. 348; admission Act of Dec. 10, 1817. Ch. 1 (§ 1.3).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 100,
+      "format": "bullet",
+      "authority": "Michigan: 5 Stat. 59 (the grant construed in *Cooper*). *Source:* FILED. Ch. 1.",
+      "name": "Michigan",
+      "use": "5 Stat. 59 (the grant construed in *Cooper*). *Source:* FILED. Ch. 1.",
+      "feeds": "",
+      "sources": "FILED. Ch. 1.",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": "/reading/library/knight-1885-northwest-territory-land-grants/"
+    },
+    {
+      "number": 101,
+      "format": "bullet",
+      "authority": "Oregon Admission Act, Act of Feb. 14, 1859, ch. 33, § 4, 11 Stat. 383",
+      "name": "Oregon Admission Act",
+      "use": "Act of Feb. 14, 1859, ch. 33, § 4, 11 Stat. 383 — \"for the use of schools\"; compact clause (\"if accepted, shall be obligatory on the United States and upon the said State of Oregon\"). ✅ Filed EX 1 (Filed/2026-05-29_MSJ_Response_FILED/EX 1 - Oregon Admission Acts and Acceptance by Oregon...pdf). Ch. 1 (§ 1.4), Ch. 3.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": "/reading/library/oregon-admission-act-1859/"
+    },
+    {
+      "number": 102,
+      "format": "bullet",
+      "authority": "Nebraska Enabling Act of Apr. 19, 1864, 13 Stat. 47. Ch. 1.",
+      "name": "Nebraska Enabling Act",
+      "use": "of Apr. 19, 1864, 13 Stat. 47. Ch. 1.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 103,
+      "format": "bullet",
+      "authority": "Colorado Enabling Act of Mar. 3, 1875, 18 Stat. 474. Ch. 1.",
+      "name": "Colorado Enabling Act",
+      "use": "of Mar. 3, 1875, 18 Stat. 474. Ch. 1.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 104,
+      "format": "bullet",
+      "authority": "Omnibus Enabling Act of Feb. 22, 1889, 25 Stat. 676 (MT, ND, SD, WA)",
+      "name": "Omnibus Enabling Act",
+      "use": "of Feb. 22, 1889, 25 Stat. 676 (MT, ND, SD, WA) — in-trust grant, permanent fund, appraisal, minimum-price. Ch. 1 (§ 1.4); the field's most-litigated instrument.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 105,
+      "format": "bullet",
+      "authority": "Idaho Admission Act of July 3, 1890, 26 Stat. 215. Ch. 1.",
+      "name": "Idaho Admission Act",
+      "use": "of July 3, 1890, 26 Stat. 215. Ch. 1.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 106,
+      "format": "bullet",
+      "authority": "Utah Enabling Act of July 16, 1894, 28 Stat. 107. Ch. 1 (§ 1.5).",
+      "name": "Utah Enabling Act",
+      "use": "of July 16, 1894, 28 Stat. 107. Ch. 1 (§ 1.5).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": "/reading/library/utah-enabling-act-1894/"
+    },
+    {
+      "number": 107,
+      "format": "bullet",
+      "authority": "Ferguson Act of 1898, 30 Stat. 484 (NM territorial grants; *Asplund* context). Ch. 1. *Source:* DOS-NM.",
+      "name": "Ferguson Act of 1898",
+      "use": "30 Stat. 484 (NM territorial grants; *Asplund* context). Ch. 1. *Source:* DOS-NM.",
+      "feeds": "",
+      "sources": "DOS-NM.",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 108,
+      "format": "bullet",
+      "authority": "Oklahoma Enabling Act of June 16, 1906, 34 Stat. 267",
+      "name": "Oklahoma Enabling Act",
+      "use": "of June 16, 1906, 34 Stat. 267 — in-lieu cash component. Ch. 1 (§ 1.4).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 109,
+      "format": "bullet",
+      "authority": "New Mexico–Arizona Enabling Act of June 20, 1910, § 10 (AZ: § 28), 36 Stat. 557",
+      "name": "New Mexico–Arizona Enabling Act",
+      "use": "of June 20, 1910, § 10 (AZ: § 28), 36 Stat. 557 — the high-water mark: \"in trust,\" \"null and void,\" \"breach of trust,\" U.S. Attorney General enforcement. Ch. 1 (§ 1.5), Ch. 14 (lead instrument).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": "/reading/library/nm-az-enabling-act-1910/"
+    },
+    {
+      "number": 110,
+      "format": "bullet",
+      "authority": "Alaska Statehood Act of July 7, 1958, Pub. L. 85-508, 72 Stat. 339. Ch. 1 (§ 1.6).",
+      "name": "Alaska Statehood Act",
+      "use": "of July 7, 1958, Pub. L. 85-508, 72 Stat. 339. Ch. 1 (§ 1.6).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 111,
+      "format": "bullet",
+      "authority": "43 U.S.C. § 851 et seq.",
+      "name": "43 U.S.C. § 851 et seq.",
+      "use": "codified school-grant/lieu-selection framework. Ch. 1 (§ 1.8).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 112,
+      "format": "bullet",
+      "authority": "Taylor Grazing Act § 7 (via *Andrus v. Utah*). Ch. 1 (§ 1.8).",
+      "name": "Taylor Grazing Act § 7",
+      "use": "(via *Andrus v. Utah*). Ch. 1 (§ 1.8).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": "/court/case-file/andrus-v-utah-1980/"
+    },
+    {
+      "number": 113,
+      "format": "bullet",
+      "authority": "Or. Const. Art. VIII §§ 2, 5 (1857 original; 1968 as amended)",
+      "name": "Or. Const. Art. VIII §§ 2, 5 (1857 original; 1968 as amended)",
+      "use": "CSF \"separate and irreducible\"; § 5(2) greatest-benefit standard; § 8 (school-adequacy clause, *Pendleton*). Art. III § 1 (separation of powers). Ch. 2, Ch. 3, Ch. 15.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 114,
+      "format": "bullet",
+      "authority": "Idaho Const. Art. IX §§ 3, 4, 8",
+      "name": "Idaho Const. Art. IX §§ 3, 4, 8",
+      "use": "acceptance; inviolate endowment; \"maximum long term financial return.\" Ch. 2, Ch. 6.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 115,
+      "format": "bullet",
+      "authority": "Mont. Const. Art. X § 3",
+      "name": "Mont. Const. Art. X § 3",
+      "use": "fund \"forever remain inviolate, guaranteed by the state against loss or diversion.\" Ch. 2, Ch. 7.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 116,
+      "format": "bullet",
+      "authority": "Neb. Const. Art. VII § 9 (renumbering noted)",
+      "name": "Neb. Const. Art. VII § 9",
+      "use": "(renumbering noted) — perpetual school fund; the constitutional-incorporation hook of *Ebke*. Ch. 2, Ch. 3 (§ 3.3).",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 117,
+      "format": "bullet",
+      "authority": "N.M. Const. Art. XII (permanent fund); Art. XIII § 1 (elected Commissioner); 2022 early-childhood amendment (congressional consent required). Ch. 2, Ch. 18.",
+      "name": "N.M. Const. Art. XII (permanent fund); Art. XIII § 1 (elected Commissioner)",
+      "use": "2022 early-childhood amendment (congressional consent required). Ch. 2, Ch. 18.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 118,
+      "format": "bullet",
+      "authority": "Alaska Const. Art. IX § 15 (Permanent Fund). Ch. 2.",
+      "name": "Alaska Const. Art. IX § 15",
+      "use": "(Permanent Fund). Ch. 2.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 119,
+      "format": "bullet",
+      "authority": "Utah Const. Art. IV § 10 (oath clause",
+      "name": "Utah Const. Art. IV § 10",
+      "use": "(oath clause — invoked in ASTL Book Cliffs analysis). Ch. 18.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 120,
+      "format": "bullet",
+      "authority": "Colorado Amendment 16 (1996)",
+      "name": "Colorado Amendment 16 (1996)",
+      "use": "constitutional reform tested in *Branson*. Ch. 2, Ch. 18.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 121,
+      "format": "bullet",
+      "authority": "Utah Code § 53C-4-104 (H.B. 262) + Utah Admin. R. R850-80-630",
+      "name": "Utah Code § 53C-4-104 (H.B. 262)",
+      "use": "+ Utah Admin. R. R850-80-630 — direct-sale-to-DNR mechanism (Book Cliffs); the contemporary direct-sale statute named in Ch. 9/Ch. 18. *Source:* DOS-UT.",
+      "feeds": "",
+      "sources": "DOS-UT.",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 122,
+      "format": "bullet",
+      "authority": "Idaho Code § 58-310B",
+      "name": "Idaho Code § 58-310B",
+      "use": "struck in *IWP II*. Ch. 3, Ch. 10.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 123,
+      "format": "bullet",
+      "authority": "A.R.S. § 27-234",
+      "name": "A.R.S. § 27-234",
+      "use": "invalidated, affirmed in *ASARCO v. Kadish*. Ch. 8.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    },
+    {
+      "number": 124,
+      "format": "bullet",
+      "authority": "Restatement (Second) of Trusts § 181",
+      "name": "Restatement (Second) of Trusts § 181",
+      "use": "duty to make trust property productive. Ch. 6. *Source:* SB § VI. CIB.",
+      "feeds": "",
+      "sources": "SB § VI. CIB.",
+      "status": "CIB",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 125,
+      "format": "bullet",
+      "authority": "Restatement (Third) of Trusts",
+      "name": "Restatement (Third) of Trusts",
+      "use": "prudent-investor framework; § 82 cmt. d (cited by the State on reporting, context [VERIFY]); §§ 170-184 (fiduciary accounting, per CRF). Ch. 6, Ch. 11. CIB.",
+      "feeds": "",
+      "sources": "",
+      "status": "VERIFY]",
+      "statusKind": "verify",
+      "href": "/reading/library/restatement-third-of-trusts/"
+    },
+    {
+      "number": 126,
+      "format": "bullet",
+      "authority": "Restatement (Second) of Agency §§ 381, 389, 390",
+      "name": "Restatement (Second) of Agency §§ 381, 389, 390",
+      "use": "the *Lindland* burden sources (distinguishing material). Ch. 16. CIB.",
+      "feeds": "",
+      "sources": "",
+      "status": "CIB",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 127,
+      "format": "bullet",
+      "authority": "Bogert, Trusts and Trustees §§ 961-973 (accounting independent of damages); § 962 (cited in the A177308 Opening Brief TOA). Ch. 11. CIB.",
+      "name": "Bogert, Trusts and Trustees §§ 961-973",
+      "use": "(accounting independent of damages); § 962 (cited in the A177308 Opening Brief TOA). Ch. 11. CIB.",
+      "feeds": "",
+      "sources": "",
+      "status": "CIB",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 128,
+      "format": "bullet",
+      "authority": "Scott on Trusts § 172 (cited in A177308 Opening Brief TOA). Ch. 11. CIB.",
+      "name": "Scott on Trusts § 172",
+      "use": "(cited in A177308 Opening Brief TOA). Ch. 11. CIB.",
+      "feeds": "",
+      "sources": "",
+      "status": "CIB",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 129,
+      "format": "bullet",
+      "authority": "Administering Trusts in Oregon (2024 ed.) § 1.2",
+      "name": "Administering Trusts in Oregon (2024 ed.) § 1.2",
+      "use": "trust definition deployed in the filed Response. Ch. 3. CIB.",
+      "feeds": "",
+      "sources": "",
+      "status": "CIB",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 130,
+      "format": "bullet",
+      "authority": "Sullivan & Bird, *Oregon's Constitutional Duties to Schools*",
+      "name": "Sullivan & Bird, *Oregon's Constitutional Duties to Schools",
+      "use": "* — offered to the court as a Learned Treatise in the filed Response (May 29, 2026). ✅ held (project's own book; L0_Primary_Sources/Published_Books/). Ch. 2-3 Oregon material.",
+      "feeds": "",
+      "sources": "",
+      "status": "L0_Primary_Sources/Published_Books/`",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 131,
+      "format": "bullet",
+      "authority": "Norman Ray Hawk, *A History of the Irreducible School Fund in Oregon* (doctoral dissertation, 1949)",
+      "name": "Norman Ray Hawk, *A History of the Irreducible School Fund in Oregon* (doctoral dissertation, 1949)",
+      "use": "offered alongside it as a Learned Treatise. Ch. 2 (Oregon reception history). [VERIFY: confirm a copy is held in L0; not found in Case_Law tree]",
+      "feeds": "",
+      "sources": "",
+      "status": "[VERIFY: confirm a copy is held in L0; not found in Case_Law tree]",
+      "statusKind": "verify",
+      "href": null
+    },
+    {
+      "number": 132,
+      "format": "bullet",
+      "authority": "Uniform Civil Jury Instructions 50.02 (Oregon fiduciary elements",
+      "name": "Uniform Civil Jury Instructions 50.02",
+      "use": "(Oregon fiduciary elements — State's IV.B support). Ch. 16. CIB.",
+      "feeds": "",
+      "sources": "",
+      "status": "CIB",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 133,
+      "format": "bullet",
+      "authority": "Arizona Bar Journal (Dec./Jan. 1988)",
+      "name": "Arizona Bar Journal (Dec./Jan. 1988)",
+      "use": "Judge Cannon: \"Beware of the Enabling Act; it's guarding the hen house\"; \"state trust land is not owned by the State of Arizona.\" Ch. 4 epigraph candidate. *Source:* DOS-AZ. CIB.",
+      "feeds": "",
+      "sources": "DOS-AZ. CIB.",
+      "status": "CIB",
+      "statusKind": "cited-in-briefing",
+      "href": null
+    },
+    {
+      "number": 134,
+      "format": "bullet",
+      "authority": "Tonia Day, *The Self-Dealing Shell Game: Utah's Book Cliffs Deal* (ASTL, May 2026)",
+      "name": "Tonia Day, *The Self-Dealing Shell Game: Utah's Book Cliffs Deal* (ASTL, May 2026)",
+      "use": "✅ L0 (From_Tonia_Day/2026-05/). Ch. 9, Ch. 18 (contemporary direct-sale case study).",
+      "feeds": "",
+      "sources": "",
+      "status": "L0 (From_Tonia_Day/2026-05/",
+      "statusKind": "l0-held",
+      "href": null
+    },
+    {
+      "number": 135,
+      "format": "bullet",
+      "authority": "Margaret Bird compilation (2021)",
+      "name": "Margaret Bird compilation (2021)",
+      "use": "the three-decade curated parallel-state corpus; roster source for the CourtListener-verified case file. Provenance layer for §§ 2-3 above.",
+      "feeds": "",
+      "sources": "",
+      "status": "verified case file",
+      "statusKind": "verified",
+      "href": null
+    },
+    {
+      "number": 136,
+      "format": "bullet",
+      "authority": "Uniform Public Trust Enforcement Act (Model Act v1, 2026)",
+      "name": "Uniform Public Trust Enforcement Act (Model Act v1, 2026)",
+      "use": "the project's own model act (L4_Deliverables/Renewal_Program/). Ch. 19 subject matter.",
+      "feeds": "",
+      "sources": "",
+      "status": "status not parsed",
+      "statusKind": "other",
+      "href": null
+    }
+  ],
+  "caseLaw": [
+    {
+      "title": "C.A.M. Concepts, Inc. v. Gwyn, 206 Or. App. 122, 136 P.3d 60 (2006)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2006-05-17_CAM_Concepts_Inc_v_Gwyn_206_Or_App_122.md",
+      "bytes": 18722,
+      "modified": "2026-06-11T20:39:31.862Z",
+      "href": null
+    },
+    {
+      "title": "Borough v. Caldwell (A172579), 314 Or. App. 62, 497 P.3d 766 (2021)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2021-08-18_Borough_v_Caldwell_A172579_314_Or_App_62.md",
+      "bytes": 30716,
+      "modified": "2026-06-11T20:36:17.712Z",
+      "href": null
+    },
+    {
+      "title": "Federal National Mortgage Ass'n v. United States, 279 Or. App. 411, 380 P.3d 1186 (2016)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2016-07-07_Federal_National_Mortgage_Assn_v_United_States_279_Or_App_411.md",
+      "bytes": 21812,
+      "modified": "2026-06-11T20:31:40.515Z",
+      "href": null
+    },
+    {
+      "title": "Doyle v. City of Medford, 356 Or. 336, 337 P.3d 797 (2014)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2014-10-02_Doyle_v_City_of_Medford_356_Or_336.md",
+      "bytes": 205675,
+      "modified": "2026-06-11T20:27:24.474Z",
+      "href": null
+    },
+    {
+      "title": "Coats v. State, 334 Or. 587, 54 P.3d 610 (2002)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2002-09-26_Coats_v_State_334_Or_587.md",
+      "bytes": 34387,
+      "modified": "2026-06-11T20:24:46.498Z",
+      "href": null
+    },
+    {
+      "title": "Clark v. City of Albany, 142 Or. App. 207, 921 P.2d 406 (1996)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/1996-07-17_Clark_v_City_of_Albany_142_Or_App_207.md",
+      "bytes": 14813,
+      "modified": "2026-06-11T20:19:55.577Z",
+      "href": null
+    },
+    {
+      "title": "Beck v. City of Portland, 202 Or. App. 360, 122 P.3d 131 (2005)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2005-10-26_Beck_v_City_of_Portland_202_Or_App_360.md",
+      "bytes": 40189,
+      "modified": "2026-06-11T20:13:53.217Z",
+      "href": null
+    },
+    {
+      "title": "Cascadia Wildlands v. Kitzhaber, 911 F. Supp. 2d 1075 (D. Or. 2012)",
+      "folder": "Federal",
+      "substratePath": "L0_Primary_Sources/Case_Law/Federal/2012-11-19_Cascadia_Wildlands_v_Kitzhaber_911_F_Supp_2d_1075.md",
+      "bytes": 51656,
+      "modified": "2026-06-11T20:11:32.014Z",
+      "href": null
+    },
+    {
+      "title": "Coffin v. Coffin, 4 Mass. 1 (1808)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Massachusetts/1808-03-15_Coffin_v_Coffin_4_Mass_1.md",
+      "bytes": 58536,
+      "modified": "2026-06-11T18:23:37.857Z",
+      "href": null
+    },
+    {
+      "title": "MT & M Gaming, Inc. v. City of Portland, 274 Or. App. 100, 360 P.3d 611 (2015)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2015-09-30_MT_and_M_Gaming_Inc_v_City_of_Portland_274_Or_App_100.md",
+      "bytes": 20707,
+      "modified": "2026-06-11T18:20:03.870Z",
+      "href": null
+    },
+    {
+      "title": "Anderson v. Oregon Railroad Co., 45 Or. 211, 77 P. 119 (1904)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1904-06-27_Anderson_v_Oregon_Railroad_45_Or_211.md",
+      "bytes": 27628,
+      "modified": "2026-06-11T18:17:39.822Z",
+      "href": null
+    },
+    {
+      "title": "WaterWatch of Oregon, Inc. v. Water Resources Commission, 199 Or. App. 598, 112 P.3d 443 (2005)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2005-05-18_WaterWatch_of_Oregon_v_Water_Resources_Commission_199_Or_App_598.md",
+      "bytes": 55373,
+      "modified": "2026-06-11T18:15:14.013Z",
+      "href": null
+    },
+    {
+      "title": "Morgan v. Sisters School District No. 6, 353 Or. 189, 301 P.3d 419 (2013)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2013-01-17_Morgan_v_Sisters_School_District_No_6_353_Or_189.md",
+      "bytes": 44656,
+      "modified": "2026-06-11T18:12:21.950Z",
+      "href": null
+    },
+    {
+      "title": "Conservation Congress v. Finley, 774 F.3d 611 (9th Cir. 2014)",
+      "folder": "Ninth_Circuit",
+      "substratePath": "L0_Primary_Sources/Case_Law/Ninth_Circuit/2014-12-16_Conservation_Congress_v_Finley_774_F3d_611.md",
+      "bytes": 41031,
+      "modified": "2026-06-11T17:48:44.788Z",
+      "href": null
+    },
+    {
+      "title": "Marbled Murrelet v. Babbitt, 83 F.3d 1060 (9th Cir. 1996)",
+      "folder": "Ninth_Circuit",
+      "substratePath": "L0_Primary_Sources/Case_Law/Ninth_Circuit/1996-05-07_Marbled_Murrelet_v_Babbitt_83_F3d_1060.md",
+      "bytes": 46425,
+      "modified": "2026-06-11T17:46:25.931Z",
+      "href": null
+    },
+    {
+      "title": "Pennsylvania Coal Co. v. Mahon, 260 U.S. 393, 43 S. Ct. 158, 67 L. Ed. 322 (1922)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1922-12-11_Pennsylvania_Coal_Co_v_Mahon_260_US_393.md",
+      "bytes": 33516,
+      "modified": "2026-06-11T17:43:58.838Z",
+      "href": null
+    },
+    {
+      "title": "Kilbourn v. Thompson, 103 U.S. 168, 26 L. Ed. 377 (1880)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1880_Kilbourn_v_Thompson_103_US_168.md",
+      "bytes": 62500,
+      "modified": "2026-06-11T17:41:29.516Z",
+      "href": null
+    },
+    {
+      "title": "Doe v. McMillan, 412 U.S. 306, 93 S. Ct. 2018, 36 L. Ed. 2d 912 (1973)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1973-05-29_Doe_v_McMillan_412_US_306.md",
+      "bytes": 100481,
+      "modified": "2026-06-11T17:38:15.725Z",
+      "href": null
+    },
+    {
+      "title": "Gravel v. United States, 408 U.S. 606, 92 S. Ct. 2614, 33 L. Ed. 2d 583 (1972)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1972-06-29_Gravel_v_United_States_408_US_606.md",
+      "bytes": 144316,
+      "modified": "2026-06-11T17:36:10.872Z",
+      "href": null
+    },
+    {
+      "title": "Tenney v. Brandhove, 341 U.S. 367, 71 S. Ct. 783, 95 L. Ed. 1019 (1951)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1951-05-21_Tenney_v_Brandhove_341_US_367.md",
+      "bytes": 38109,
+      "modified": "2026-06-11T17:34:07.202Z",
+      "href": null
+    },
+    {
+      "title": "Simonsen v. Ford Motor Co., 196 Or. App. 460, 102 P.3d 710 (2004)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2004-12-08_Simonsen_v_Ford_Motor_Co_196_Or_App_460.md",
+      "bytes": 71138,
+      "modified": "2026-06-11T17:30:28.598Z",
+      "href": null
+    },
+    {
+      "title": "State v. Ferguson, 201 Or. App. 261, 119 P.3d 794 (2005) (on reconsideration)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2005-08-17_State_v_Ferguson_201_Or_App_261.md",
+      "bytes": 49767,
+      "modified": "2026-06-11T17:28:29.063Z",
+      "href": null
+    },
+    {
+      "title": "John Hyland Const., Inc. v. Williamsen & Bleid, Inc., 287 Or. App. 466, 402 P.3d 719 (2017)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2017-08-30_John_Hyland_Const_Inc_v_Williamsen_and_Bleid_Inc_287_Or_App_466.md",
+      "bytes": 44421,
+      "modified": "2026-06-11T17:26:21.763Z",
+      "href": null
+    },
+    {
+      "title": "Concienne v. Asante, 299 Or. App. 490, 450 P.3d 533 (2019)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2019-09-18_Concienne_v_Asante_299_Or_App_490.md",
+      "bytes": 60380,
+      "modified": "2026-06-11T17:20:13.386Z",
+      "href": null
+    },
+    {
+      "title": "Childers Meat Co. v. City of Eugene, 296 Or. App. 668, 439 P.3d 1000 (2019)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2019-03-20_Childers_Meat_Co_v_City_of_Eugene_296_Or_App_668.md",
+      "bytes": 72926,
+      "modified": "2026-06-11T17:18:00.784Z",
+      "href": null
+    },
+    {
+      "title": "Alexander v. State, 283 Or. App. 582, 390 P.3d 1109 (2017)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2017-02-01_Alexander_v_State_283_Or_App_582.md",
+      "bytes": 27778,
+      "modified": "2026-06-11T08:28:44.792Z",
+      "href": null
+    },
+    {
+      "title": "Alto v. City of Cannon Beach, 247 Or. App. 641, 270 P.3d 392 (2012)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2012-01-25_Alto_v_City_of_Cannon_Beach_247_Or_App_641.md",
+      "bytes": 25024,
+      "modified": "2026-06-11T08:25:07.246Z",
+      "href": null
+    },
+    {
+      "title": "Boise Cascade Corp. v. State Board of Forestry, 164 Or. App. 114, 991 P.2d 563 (1999)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/1999-11-10_Boise_Cascade_Corp_v_State_Board_of_Forestry_164_Or_App_114.md",
+      "bytes": 79121,
+      "modified": "2026-06-11T08:21:32.928Z",
+      "href": null
+    },
+    {
+      "title": "Safeport, Inc. v. Equipment Roundup & Manufacturing, Inc., 184 Or. App. 690, 60 P.3d 1076 (2002)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2002-11-06_Safeport_Inc_v_Equipment_Roundup_and_Manufacturing_184_Or_App_690.md",
+      "bytes": 75247,
+      "modified": "2026-06-11T08:19:27.746Z",
+      "href": null
+    },
+    {
+      "title": "Cowan v. Nordyke, 232 Or. App. 384, 222 P.3d 1093 (2009)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2009-12-09_Cowan_v_Nordyke_232_Or_App_384.md",
+      "bytes": 20132,
+      "modified": "2026-06-11T07:40:05.440Z",
+      "href": null
+    },
+    {
+      "title": "Caldeen Construction, LLC v. Kemp, 248 Or. App. 82, 273 P.3d 174 (2012)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2012-02-08_Caldeen_Construction_v_Kemp_248_Or_App_82.md",
+      "bytes": 24604,
+      "modified": "2026-06-11T07:36:52.366Z",
+      "href": null
+    },
+    {
+      "title": "Gast v. State, by and through Stevenson, 36 Or. App. 441, 585 P.2d 12 (1978)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/1978-10-02_Gast_v_State_36_Or_App_441.md",
+      "bytes": 62604,
+      "modified": "2026-06-11T07:33:19.931Z",
+      "href": null
+    },
+    {
+      "title": "Oregonians for Sound Economic Policy, Inc. v. State Accident Insurance Fund Corp. (SAIF), 218 Or. App. 31, 178 P.3d 286 (2008)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2008-02-13_Oregonians_for_Sound_Economic_Policy_v_SAIF_218_Or_App_31.md",
+      "bytes": 73174,
+      "modified": "2026-06-11T07:31:11.093Z",
+      "href": null
+    },
+    {
+      "title": "Menten and Deatherage, 302 Or. App. 425, 461 P.3d 1075 (2020)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2020-02-26_Menten_and_Deatherage_302_Or_App_425.md",
+      "bytes": 29096,
+      "modified": "2026-06-11T07:29:00.563Z",
+      "href": null
+    },
+    {
+      "title": "Harmon v. State of Oregon, 320 Or. App. 406, 514 P.3d 1131 (2022)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2022-06-23_Harmon_v_State_320_Or_App_406.md",
+      "bytes": 78819,
+      "modified": "2026-06-11T07:25:13.028Z",
+      "href": null
+    },
+    {
+      "title": "Oregon Taxpayers United PAC v. Keisling, 143 Or. App. 537, 924 P.2d 853 (1996)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/1996-09-18_Oregon_Taxpayers_United_PAC_v_Keisling_143_Or_App_537.md",
+      "bytes": 25262,
+      "modified": "2026-06-11T07:21:00.223Z",
+      "href": null
+    },
+    {
+      "title": "Hale v. State of Oregon, 259 Or. App. 379 (2013)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2013-11-14_Hale_v_State_259_Or_App_379.md",
+      "bytes": 32264,
+      "modified": "2026-06-11T07:17:58.379Z",
+      "href": null
+    },
+    {
+      "title": "Newport Church of the Nazarene v. Hensley, 335 Or. 1, 56 P.3d 386 (2002)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2002-10-24_Newport_Church_of_the_Nazarene_v_Hensley_335_Or_1.md",
+      "bytes": 57480,
+      "modified": "2026-06-11T06:22:55.699Z",
+      "href": null
+    },
+    {
+      "title": "Cutsforth v. Kinzua Corp., 267 Or. 423, 517 P.2d 640 (1973) — Tongue, J., dissenting",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1973_Cutsforth_v_Kinzua_Corp_267_Or_423_Tongue_dissent.md",
+      "bytes": 28231,
+      "modified": "2026-06-11T06:21:21.114Z",
+      "href": null
+    },
+    {
+      "title": "Cutsforth v. Kinzua Corp., 267 Or. 423, 517 P.2d 640 (1973)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1973_Cutsforth_v_Kinzua_Corp_267_Or_423.md",
+      "bytes": 37151,
+      "modified": "2026-06-11T06:16:08.658Z",
+      "href": null
+    },
+    {
+      "title": "Falk v. Amsberry, 290 Or. 839 (1981) — Lent, J., concurrence",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1981-04-07_Falk_v_Amsberry_290_Or_839_Lent_concurrence.md",
+      "bytes": 1349,
+      "modified": "2026-06-11T05:17:13.320Z",
+      "href": null
+    },
+    {
+      "title": "Falk v. Amsberry, 290 Or. 839, 626 P.2d 362 (1981)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1981-04-07_Falk_v_Amsberry_290_Or_839.md",
+      "bytes": 25410,
+      "modified": "2026-06-11T05:15:07.479Z",
+      "href": null
+    },
+    {
+      "title": "Gruber v. Lincoln Hospital District, 285 Or 3, 588 P2d 1281 (1979)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1979-01-16_Gruber_v_Lincoln_Hospital_District_285_Or_3.md",
+      "bytes": 15461,
+      "modified": "2026-06-11T00:41:17.350Z",
+      "href": null
+    },
+    {
+      "title": "Welch v. Bancorp Management Advisors, Inc., 296 Or 208, 675 P2d 172 (1983)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1983-12-28_Welch_v_Bancorp_Management_Advisors_296_Or_208.md",
+      "bytes": 45519,
+      "modified": "2026-06-11T00:37:47.699Z",
+      "href": null
+    },
+    {
+      "title": "State v. Hitz, 307 Or 183, 766 P2d 373 (1988) — Jones, J., concurrence",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1988-12-20_State_v_Hitz_307_Or_183_Jones_concurrence.md",
+      "bytes": 2247,
+      "modified": "2026-06-11T00:31:11.856Z",
+      "href": null
+    },
+    {
+      "title": "State v. Hitz, 307 Or 183, 766 P2d 373 (1988) — lead opinion",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1988-12-20_State_v_Hitz_307_Or_183.md",
+      "bytes": 17547,
+      "modified": "2026-06-11T00:30:00.306Z",
+      "href": null
+    },
+    {
+      "title": "Peeples v. Lampert, 345 Or 209, 191 P3d 637 (2008) — Durham, J., concurrence",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2008-08-14_Peeples_v_Lampert_345_Or_209_Durham_concurrence.md",
+      "bytes": 33849,
+      "modified": "2026-06-11T00:26:40.420Z",
+      "href": null
+    },
+    {
+      "title": "Peeples v. Lampert, 345 Or 209, 191 P3d 637 (2008) — lead opinion",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2008-08-14_Peeples_v_Lampert_345_Or_209.md",
+      "bytes": 52912,
+      "modified": "2026-06-11T00:20:36.371Z",
+      "href": null
+    },
+    {
+      "title": "Stevens v. Bispham, 316 Or 221, 851 P2d 556 (1993) — Unis, J., special concurrence",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1993-05-13_Stevens_v_Bispham_316_Or_221_Unis_concurrence.md",
+      "bytes": 72887,
+      "modified": "2026-06-11T00:18:24.057Z",
+      "href": null
+    },
+    {
+      "title": "Stevens v. Bispham, 316 Or 221, 851 P2d 556 (1993) — lead opinion",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1993-05-13_Stevens_v_Bispham_316_Or_221.md",
+      "bytes": 53165,
+      "modified": "2026-06-11T00:17:12.957Z",
+      "href": null
+    },
+    {
+      "title": "Swett v. Bradbury (attorney fees), 335 Or 378, 67 P3d 391 (2003)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2003-04-24_Swett_v_Bradbury_attorney_fees_335_Or_378.md",
+      "bytes": 38895,
+      "modified": "2026-06-11T00:14:47.637Z",
+      "href": null
+    },
+    {
+      "title": "Deras v. Myers, 272 Or 47, 535 P2d 541 (1975)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1975-05-14_Deras_v_Myers_272_Or_47.md",
+      "bytes": 54209,
+      "modified": "2026-06-10T22:17:12.098Z",
+      "href": null
+    },
+    {
+      "title": "Carden v. Johnson, 282 Or 169, 577 P2d 513 (1978)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1978-04-18_Carden_v_Johnson_282_Or_169.md",
+      "bytes": 26116,
+      "modified": "2026-06-10T22:12:57.752Z",
+      "href": null
+    },
+    {
+      "title": "State ex rel Dewberry v. Kulongoski, 346 Or 260, 210 P3d 884 (2009)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2009-06-18_State_ex_rel_Dewberry_v_Kulongoski_346_Or_260.md",
+      "bytes": 42132,
+      "modified": "2026-06-10T22:07:10.957Z",
+      "href": null
+    },
+    {
+      "title": "State v. Babson, 355 Or. 383, 326 P.3d 559 (2014)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2014-05-15_State_v_Babson_355_Or_383.md",
+      "bytes": 173156,
+      "modified": "2026-06-10T21:24:38.853Z",
+      "href": null
+    },
+    {
+      "title": "Foote v. State, 364 Or. 558, 437 P.3d 221 (2019)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2019-03-28_Foote_v_State_364_Or_558.md",
+      "bytes": 47199,
+      "modified": "2026-06-10T21:22:23.966Z",
+      "href": null
+    },
+    {
+      "title": "Kellas v. Department of Corrections, 341 Or. 471, 145 P.3d 139 (2006)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2006-10-12_Kellas_v_Department_of_Corrections_341_Or_471.md",
+      "bytes": 52755,
+      "modified": "2026-06-10T21:13:35.199Z",
+      "href": null
+    },
+    {
+      "title": "Fulton National Bank v. Tate, 363 F.2d 562 (5th Cir. 1966)",
+      "folder": "Federal",
+      "substratePath": "L0_Primary_Sources/Case_Law/Federal/1966-07-14_Fulton_National_Bank_v_Tate_363_F2d_562_5thCir.md",
+      "bytes": 79170,
+      "modified": "2026-06-10T21:11:34.602Z",
+      "href": null
+    },
+    {
+      "title": "Jimenez v. Lee, 274 Or. 457, 547 P.2d 126 (1976)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1976-03-18_Jimenez_v_Lee_274_Or_457.md",
+      "bytes": 25413,
+      "modified": "2026-06-10T21:08:15.407Z",
+      "href": null
+    },
+    {
+      "title": "Eacret et ux. v. Holmes, 215 Or. 121, 333 P.2d 741 (1958)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1958-12-24_Eacret_v_Holmes_215_Or_121.md",
+      "bytes": 19014,
+      "modified": "2026-06-10T20:34:09.988Z",
+      "href": null
+    },
+    {
+      "title": "League of Oregon Cities v. State, 334 Or. 645, 56 P.3d 892 (2002)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2002-10-04_League_of_Oregon_Cities_v_State_334_Or_645.md",
+      "bytes": 160477,
+      "modified": "2026-06-10T20:30:36.367Z",
+      "href": null
+    },
+    {
+      "title": "MacPherson v. Department of Administrative Services, 340 Or. 117, 130 P.3d 308 (2006)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2006-02-21_MacPherson_v_Dept_of_Administrative_Services_340_Or_117.md",
+      "bytes": 80125,
+      "modified": "2026-06-10T20:28:51.418Z",
+      "href": null
+    },
+    {
+      "title": "Barns v. City of Eugene, 183 Or. App. 471, 52 P.3d 1094 (2002)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2002-08-28_Barns_v_City_of_Eugene_183_Or_App_471.md",
+      "bytes": 17061,
+      "modified": "2026-06-10T20:27:04.628Z",
+      "href": null
+    },
+    {
+      "title": "Kutz v. Lee, 291 Or. App. 470, 422 P.3d 362 (2018)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2018-04-25_Kutz_v_Lee_291_Or_App_470.md",
+      "bytes": 58862,
+      "modified": "2026-06-10T20:21:50.056Z",
+      "href": null
+    },
+    {
+      "title": "MT & M Gaming, Inc. v. City of Portland, 360 Or. 544, 383 P.3d 800 (2016)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2016-11-03_MT_and_M_Gaming_Inc_v_City_of_Portland_360_Or_544.md",
+      "bytes": 77544,
+      "modified": "2026-06-10T20:20:04.052Z",
+      "href": null
+    },
+    {
+      "title": "Chernaik v. Kitzhaber, 263 Or. App. 463, 328 P.3d 799 (2014)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2014-06-11_Chernaik_v_Kitzhaber_263_Or_App_463.md",
+      "bytes": 46823,
+      "modified": "2026-06-10T20:18:28.743Z",
+      "href": null
+    },
+    {
+      "title": "Cascadia Wildlands v. Oregon Department of State Lands, 293 Or. App. 127, 427 P.3d 1091 (2018), aff'd, 365 Or. 750 (2019)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2018-08-01_Cascadia_Wildlands_v_DSL_293_Or_App_127.md",
+      "bytes": 88717,
+      "modified": "2026-06-10T20:15:17.049Z",
+      "href": null
+    },
+    {
+      "title": "Kramer v. City of Lake Oswego, 365 Or. 422, 446 P.3d 1 (2019)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2019-08-01_Kramer_v_City_of_Lake_Oswego_365_Or_422.md",
+      "bytes": 211415,
+      "modified": "2026-06-10T20:13:20.866Z",
+      "href": null
+    },
+    {
+      "title": "United States v. Mitchell (Mitchell II), 463 U.S. 206 (1983)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1983-06-27_United_States_v_Mitchell_II_463_US_206.md",
+      "bytes": 109858,
+      "modified": "2026-06-10T20:10:47.501Z",
+      "href": null
+    },
+    {
+      "title": "School Dist. No. 23 of Okfuskee County v. Commissioners of the Land Office",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Oklahoma/1933_School_Dist_No_23_Okfuskee_County_v_Commissioners_of_Land_Office_27_P2d_149.md",
+      "bytes": 28592,
+      "modified": "2026-06-10T18:11:25.817Z",
+      "href": null
+    },
+    {
+      "title": "Department of State Lands v. Pettibone, 702 P.2d 948, 216 Mont. 361 (1985)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Montana/1985_Dept_of_State_Lands_v_Pettibone_702_P2d_948.md",
+      "bytes": 56471,
+      "modified": "2026-06-10T17:23:28.210Z",
+      "href": "/court/case-file/pettibone-v-mt-1985/"
+    },
+    {
+      "title": "State ex rel. Department of Highways v. Burlingame, 597 P.2d 51, 182 Mont. 298 (1979)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Montana/1979_State_v_Burlingame_597_P2d_51.md",
+      "bytes": 39289,
+      "modified": "2026-06-10T17:16:26.096Z",
+      "href": null
+    },
+    {
+      "title": "Jerke v. State Department of Lands, 597 P.2d 49, 182 Mont. 294 (1979)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Montana/1979_Jerke_v_State_Dept_of_Lands_597_P2d_49.md",
+      "bytes": 10943,
+      "modified": "2026-06-10T17:09:47.280Z",
+      "href": null
+    },
+    {
+      "title": "State ex rel. School District of Fulton v. Davis, 361 Mo. 730, 236 S.W.2d 301 (Mo. 1951) (en banc)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Missouri/1951_State_ex_rel_School_District_of_Fulton_v_Davis_361_Mo_730.md",
+      "bytes": 19794,
+      "modified": "2026-06-10T16:13:02.394Z",
+      "href": null
+    },
+    {
+      "title": "Holmes v. Jones, 318 So. 2d 865 (Miss. 1975)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Mississippi/Holmes_v_Jones_318_So2d_865_Miss_1975.md",
+      "bytes": 17522,
+      "modified": "2026-06-10T16:09:46.117Z",
+      "href": null
+    },
+    {
+      "title": "Propst v. Board of Educational Lands & Funds, 156 Neb. 226, 55 N.W.2d 653 (1952)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Nebraska/1952_Propst_v_Board_156_Neb_226.md",
+      "bytes": 30586,
+      "modified": "2026-06-10T14:40:03.009Z",
+      "href": "/court/case-file/propst-v-board-1952/"
+    },
+    {
+      "title": "State ex rel. Ebke v. Board of Educational Lands & Funds (Ebke I), 154 Neb. 244, 47 N.W.2d 520 (1951)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Nebraska/1951_State_ex_rel_Ebke_v_Board_154_Neb_244.md",
+      "bytes": 37229,
+      "modified": "2026-06-10T14:35:48.119Z",
+      "href": "/court/case-file/ebke-v-neb-1951/"
+    },
+    {
+      "title": "Idaho Watersheds Project v. State Board of Land Commissioners (IWP II), 133 Idaho 64, 982 P.2d 367 (1999)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Idaho/1999-07-22_Idaho_Watersheds_Project_v_State_Bd_Land_Commrs_IWP_II_133_Idaho_64.md",
+      "bytes": 27775,
+      "modified": "2026-06-10T14:31:46.925Z",
+      "href": "/court/case-file/idaho-watersheds-1999/"
+    },
+    {
+      "title": "Conservation Northwest v. Franz, 200 Wn.2d 8, 513 P.3d 769 (2022)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Washington/2022_Conservation_Northwest_v_Franz_200_Wn2d_8.md",
+      "bytes": 78324,
+      "modified": "2026-06-10T14:27:47.414Z",
+      "href": null
+    },
+    {
+      "title": "County of Skamania v. State, 102 Wn.2d 127, 685 P.2d 576 (1984)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Washington/1984-06-28_County_of_Skamania_v_State_102_Wn2d_127.md",
+      "bytes": 47202,
+      "modified": "2026-06-10T14:24:45.560Z",
+      "href": null
+    },
+    {
+      "title": "Oregon ex rel. Division of State Lands v. Bureau of Land Management, 876 F.2d 1419 (9th Cir. 1989)",
+      "folder": "Ninth_Circuit",
+      "substratePath": "L0_Primary_Sources/Case_Law/Ninth_Circuit/1989-06-07_Oregon_ex_rel_Division_of_State_Lands_v_BLM_876_F2d_1419.md",
+      "bytes": 93415,
+      "modified": "2026-06-10T14:18:53.695Z",
+      "href": null
+    },
+    {
+      "title": "Evergreen West Business Center, LLC v. Emmert, 254 Or App 361, 296 P.3d 545 (2012)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2012-12-27_Evergreen_West_v_Emmert_254_Or_App_361.md",
+      "bytes": 91042,
+      "modified": "2026-06-10T14:17:02.585Z",
+      "href": null
+    },
+    {
+      "title": "Hanggi ex rel. Oregon Public Employees' Retirement Fund v. Hartford Fire Insurance Co., 132 Or App 601, 889 P.2d 365 (1995)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/1995-02-01_Hanggi_v_Hartford_Fire_Ins_Co_132_Or_App_601.md",
+      "bytes": 46244,
+      "modified": "2026-06-10T14:13:44.003Z",
+      "href": null
+    },
+    {
+      "title": "Larsen v. Selmet, Inc., 371 Or. 457, 537 P.3d 920 (2023)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2023-10-12_Larsen_v_Selmet_Inc_371_Or_457.md",
+      "bytes": 63012,
+      "modified": "2026-06-10T14:08:43.091Z",
+      "href": null
+    },
+    {
+      "title": "Eklof v. Persson, 369 Or. 531, 508 P.3d 468 (2022)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2022-04-21_Eklof_v_Persson_369_Or_531.md",
+      "bytes": 74206,
+      "modified": "2026-06-10T14:06:44.642Z",
+      "href": null
+    },
+    {
+      "title": "Comcast of Oregon II, Inc. v. City of Eugene, 346 Or. 238, 209 P.3d 800 (2009)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2009-06-11_Comcast_of_Oregon_II_v_City_of_Eugene_346_Or_238.md",
+      "bytes": 65045,
+      "modified": "2026-06-10T14:04:32.595Z",
+      "href": null
+    },
+    {
+      "title": "Johnson v. Department of Revenue, 292 Or. 373, 639 P.2d 128 (1982)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1982-01-19_Johnson_v_Department_of_Revenue_292_Or_373.md",
+      "bytes": 40046,
+      "modified": "2026-06-10T14:01:48.517Z",
+      "href": null
+    },
+    {
+      "title": "Lindland v. United Business Investments, Inc., 298 Or. 318, 693 P.2d 20 (1984)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1984-12-11_Lindland_v_United_Business_Investments_298_Or_318.md",
+      "bytes": 41972,
+      "modified": "2026-06-10T13:56:48.419Z",
+      "href": null
+    },
+    {
+      "title": "Eagle Point Irrigation District v. Cowden, 137 Or. 121, 1 P.2d 605 (1931)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1931-07-14_Eagle_Point_Irrigation_District_v_Cowden_137_Or_121.md",
+      "bytes": 25044,
+      "modified": "2026-06-10T08:27:19.758Z",
+      "href": null
+    },
+    {
+      "title": "Cascadia Wildlands v. Dept. of State Lands, 365 Or. 750, 452 P.3d 938 (2019)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2019-11-27_Cascadia_Wildlands_v_Dept_of_State_Lands_365_Or_750.md",
+      "bytes": 71057,
+      "modified": "2026-06-10T08:23:25.746Z",
+      "href": null
+    },
+    {
+      "title": "Branson School District RE-82 v. Romer, 161 F.3d 619 (10th Cir. 1998)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Colorado_10thCir/1998-11-20_Branson_School_Dist_RE-82_v_Romer_161_F3d_619.md",
+      "bytes": 134770,
+      "modified": "2026-06-10T08:21:08.279Z",
+      "href": "/court/case-file/branson-v-romer-1998/"
+    },
+    {
+      "title": "Montanans for the Responsible Use of the School Trust v. State ex rel. Board of Land Commissioners (Montrust I), 1999 MT 263, 296 Mont. 402, 989 P.2d 800",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Montana/1999-11-02_Montanans_for_Responsible_Use_of_School_Trust_v_State_1999_MT_263.md",
+      "bytes": 84747,
+      "modified": "2026-06-10T08:18:45.358Z",
+      "href": null
+    },
+    {
+      "title": "Couey v. Atkins, 357 Or. 460, 355 P.3d 866 (2015)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2015-07-16_Couey_v_Atkins_357_Or_460.md",
+      "bytes": 258804,
+      "modified": "2026-06-10T08:15:10.713Z",
+      "href": null
+    },
+    {
+      "title": "Putnam v. Norblad, 134 Or 433, 293 P 940 (1930)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/1930-12-12_Putnam_v_Norblad_134_Or_433.md",
+      "bytes": 41514,
+      "modified": "2026-06-10T07:38:52.099Z",
+      "href": null
+    },
+    {
+      "title": "Pendleton School District 16R v. State of Oregon, 345 Or 596, 200 P3d 133 (2009)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/2009-01-23_Pendleton_School_District_16R_v_State_345_Or_596.md",
+      "bytes": 73370,
+      "modified": "2026-06-10T07:34:49.408Z",
+      "href": null
+    },
+    {
+      "title": "Cooper v. Roberts, 59 U.S. (18 How.) 173 (1855)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1855-12-Term_Cooper_v_Roberts_59_US_173.md",
+      "bytes": 30705,
+      "modified": "2026-06-10T07:31:45.032Z",
+      "href": "/court/case-file/cooper-v-roberts-1855/"
+    },
+    {
+      "title": "Ervien v. United States, 251 U.S. 41 (1919)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1919-12-08_Ervien_v_United_States_251_US_41.md",
+      "bytes": 17578,
+      "modified": "2026-06-10T07:24:27.615Z",
+      "href": "/reading/library/ervien-v-united-states-1919/"
+    },
+    {
+      "title": "Lassen v. Arizona ex rel. Arizona Highway Department, 385 U.S. 458 (1967)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1967-01-10_Lassen_v_Arizona_385_US_458.md",
+      "bytes": 48307,
+      "modified": "2026-06-10T07:22:44.164Z",
+      "href": "/court/case-file/lassen-v-arizona-1967/"
+    },
+    {
+      "title": "ASARCO Inc. v. Kadish, 490 U.S. 605 (1989)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1989_Asarco_Inc_v_Kadish_490_US_605.md",
+      "bytes": 90470,
+      "modified": "2026-06-10T07:15:53.982Z",
+      "href": "/court/case-file/asarco-v-kadish-1989/"
+    },
+    {
+      "title": "Board of Trustees for the Vincennes University v. Indiana, 55 U.S. (14 How.) 268 (1852)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/1852_Trustees_of_Vincennes_University_v_Indiana_55_US_268.md",
+      "bytes": 38294,
+      "modified": "2026-06-10T07:14:23.597Z",
+      "href": null
+    },
+    {
+      "title": "State ex rel. Williamson v. Commissioners of the Land Office, 301 P.2d 655 (Okla. 1956)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Oklahoma/1956_State_ex_rel_Williamson_v_Commissioners_of_Land_Office_301_P2d_655.md",
+      "bytes": 18255,
+      "modified": "2026-06-10T06:19:20.683Z",
+      "href": null
+    },
+    {
+      "title": "Kanaly v. State by and Through Janklow (Kanaly I), 368 N.W.2d 819 (S.D. 1985)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/South_Dakota/1985_Kanaly_v_Janklow_368_NW2d_819.md",
+      "bytes": 51909,
+      "modified": "2026-06-10T06:13:41.180Z",
+      "href": "/court/case-file/kanaly-v-janklow-1985/"
+    },
+    {
+      "title": "Jensen v. Dinehart, 645 P.2d 32 (Utah 1982)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Utah/1982_Jensen_v_Dinehart_645_P2d_32.md",
+      "bytes": 31090,
+      "modified": "2026-06-10T05:27:10.213Z",
+      "href": null
+    },
+    {
+      "title": "Clark v. Stephen D. Lee Foundation, 887 So. 2d 798 (Miss. 2004)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Mississippi/2004_Clark_v_Stephen_D_Lee_Foundation_887_So2d_798.md",
+      "bytes": 28541,
+      "modified": "2026-06-10T05:23:08.838Z",
+      "href": null
+    },
+    {
+      "title": "State v. Weiss, 706 P.2d 681 (Alaska 1985)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Alaska/1985_State_v_Weiss_706_P2d_681.md",
+      "bytes": 19492,
+      "modified": "2026-06-10T05:14:23.240Z",
+      "href": null
+    },
+    {
+      "title": "State v. University of Alaska, 624 P.2d 807 (Alaska 1981)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Alaska/1981_State_v_University_of_Alaska_624_P2d_807.md",
+      "bytes": 61196,
+      "modified": "2026-06-10T05:13:21.932Z",
+      "href": "/court/case-file/state-v-university-of-alaska-1981/"
+    },
+    {
+      "title": "Wilson v. Gutierrez",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Wilson_v_Gutierrez_261_OrApp_410_2014.md",
+      "bytes": 20700,
+      "modified": "2026-06-10T00:33:30.444Z",
+      "href": null
+    },
+    {
+      "title": "Masters v. Secretary of State",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Masters_v_Secretary_of_State_88_OrApp_221_1987.md",
+      "bytes": 10699,
+      "modified": "2026-06-10T00:30:39.582Z",
+      "href": null
+    },
+    {
+      "title": "Sager v. City of Portland",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Sager_v_City_of_Portland_68_OrApp_808_1984.md",
+      "bytes": 24575,
+      "modified": "2026-06-10T00:28:13.797Z",
+      "href": null
+    },
+    {
+      "title": "Vokoun v. City of Lake Oswego",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Vokoun_v_City_of_Lake_Oswego_335_Or_19_2002.md",
+      "bytes": 49654,
+      "modified": "2026-06-10T00:25:02.267Z",
+      "href": null
+    },
+    {
+      "title": "Pritchard v. City of Portland",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Pritchard_v_City_of_Portland_310_Or_235_1990.md",
+      "bytes": 24597,
+      "modified": "2026-06-10T00:21:17.121Z",
+      "href": null
+    },
+    {
+      "title": "Mann v. McCullough",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Mann_v_McCullough_174_OrApp_599_2001.md",
+      "bytes": 28428,
+      "modified": "2026-06-10T00:18:02.685Z",
+      "href": null
+    },
+    {
+      "title": "Ramirez v. Hawaii T & S Enterprises, Inc.",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Ramirez_v_Hawaii_TS_Enterprises_179_OrApp_416_2002.md",
+      "bytes": 37120,
+      "modified": "2026-06-10T00:14:43.782Z",
+      "href": null
+    },
+    {
+      "title": "State of Utah v. Andrus (the \"Cotter Corp.\" school-trust access case)",
+      "folder": "Federal",
+      "substratePath": "L0_Primary_Sources/Case_Law/Federal/Utah_v_Andrus_486_FSupp_995_DUtah_1979.md",
+      "bytes": 77587,
+      "modified": "2026-06-09T23:09:41.648Z",
+      "href": null
+    },
+    {
+      "title": "Rooney v. Kulongoski (Elections Division #13)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Rooney_v_Kulongoski_322_Or_15_1995.md",
+      "bytes": 140352,
+      "modified": "2026-06-09T20:10:41.360Z",
+      "href": null
+    },
+    {
+      "title": "George-Buckley v. Medford School District 549C",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/George-Buckley_v_Medford_School_Dist_549C_318_OrApp_821_2022.md",
+      "bytes": 45319,
+      "modified": "2026-06-09T16:05:56.976Z",
+      "href": null
+    },
+    {
+      "title": "Karjalainen v. Curtis Johnston & Pennywise, Inc.",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Karjalainen_v_Curtis_Johnston_Pennywise_Inc_208_OrApp_674_2006.md",
+      "bytes": 38263,
+      "modified": "2026-06-09T15:59:50.309Z",
+      "href": null
+    },
+    {
+      "title": "Day v. City of Canby",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Day_v_City_of_Canby_143_OrApp_341_1996.md",
+      "bytes": 37648,
+      "modified": "2026-06-09T15:57:21.052Z",
+      "href": null
+    },
+    {
+      "title": "Hickey v. Settlemier",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Hickey_v_Settlemier_318_Or_196_1993.md",
+      "bytes": 33912,
+      "modified": "2026-06-09T15:54:54.215Z",
+      "href": null
+    },
+    {
+      "title": "Lowrimore v. Dimmitt",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Lowrimore_v_Dimmitt_310_Or_291_1990.md",
+      "bytes": 19559,
+      "modified": "2026-06-09T15:50:28.449Z",
+      "href": null
+    },
+    {
+      "title": "James & Yost, Inc. v. State Board of Higher Education",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/James_Yost_Inc_v_State_Board_of_Higher_Education_216_Or_598_1959.md",
+      "bytes": 12605,
+      "modified": "2026-06-09T15:49:07.200Z",
+      "href": null
+    },
+    {
+      "title": "Georgeson v. State of Oregon",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Georgeson_v_State_of_Oregon_75_OrApp_213_1985.md",
+      "bytes": 7682,
+      "modified": "2026-06-09T15:48:11.191Z",
+      "href": null
+    },
+    {
+      "title": "Freeman v. Stuart",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Freeman_v_Stuart_203_OrApp_191_2005.md",
+      "bytes": 7335,
+      "modified": "2026-06-09T15:47:29.312Z",
+      "href": null
+    },
+    {
+      "title": "Espinosa v. Southern Pacific Transportation Co.",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Espinosa_v_Southern_Pacific_Transportation_Co_50_OrApp_561_1981.md",
+      "bytes": 79360,
+      "modified": "2026-06-09T15:39:19.372Z",
+      "href": null
+    },
+    {
+      "title": "Demaray v. Department of Environmental Quality",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Demaray_v_Dept_of_Environmental_Quality_127_OrApp_494_1994.md",
+      "bytes": 53562,
+      "modified": "2026-06-09T15:37:26.227Z",
+      "href": null
+    },
+    {
+      "title": "Curzi v. Oregon State Lottery",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Curzi_v_Oregon_State_Lottery_286_OrApp_254_2017.md",
+      "bytes": 56302,
+      "modified": "2026-06-09T15:33:55.214Z",
+      "href": null
+    },
+    {
+      "title": "County of Linn v. State of Oregon",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/County_of_Linn_v_State_of_Oregon_319_OrApp_288_2022.md",
+      "bytes": 95509,
+      "modified": "2026-06-09T15:31:13.274Z",
+      "href": null
+    },
+    {
+      "title": "Garrison v. Deschutes County",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Garrison_v_Deschutes_County_334_Or_264_2002.md",
+      "bytes": 71915,
+      "modified": "2026-06-09T15:21:36.304Z",
+      "href": null
+    },
+    {
+      "title": "Dewsnup v. Farmers Insurance Company of Oregon",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Dewsnup_v_Farmers_Insurance_349_Or_33_2010.md",
+      "bytes": 60785,
+      "modified": "2026-06-09T15:19:47.466Z",
+      "href": null
+    },
+    {
+      "title": "Bergerson v. Salem-Keizer School District",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Bergerson_v_Salem-Keizer_School_District_341_Or_401_2006.md",
+      "bytes": 49252,
+      "modified": "2026-06-09T15:17:39.484Z",
+      "href": null
+    },
+    {
+      "title": "Anderson v. Department of Revenue",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Anderson_v_Dept_of_Revenue_313_Or_1_1992.md",
+      "bytes": 27179,
+      "modified": "2026-06-09T15:14:17.531Z",
+      "href": null
+    },
+    {
+      "title": "Miller v. C.C. Meisel Co., Inc.",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Miller_v_CC_Meisel_Co_183_OrApp_148_2002.md",
+      "bytes": 107394,
+      "modified": "2026-06-09T15:08:44.063Z",
+      "href": null
+    },
+    {
+      "title": "OEA v Nigh 642 P2d 230 Okla 1982 FULL OPINION",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Oklahoma/OEA_v_Nigh_642_P2d_230_Okla_1982_FULL_OPINION.md",
+      "bytes": 62647,
+      "modified": "2026-06-09T10:11:37.202Z",
+      "href": null
+    },
+    {
+      "title": "Bishop v. KC Development Group, LLC",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Bishop_v_KC_Development_Group_300_OrApp_584_2019.md",
+      "bytes": 30125,
+      "modified": "2026-06-09T02:31:42.744Z",
+      "href": null
+    },
+    {
+      "title": "Central Oregon Irrigation District v. Deschutes County",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Central_Oregon_Irrigation_Dist_v_Deschutes_County_168_Or_493_1942.md",
+      "bytes": 28780,
+      "modified": "2026-06-09T02:24:58.350Z",
+      "href": null
+    },
+    {
+      "title": "State ex rel Metropolitan Public Defender Services, Inc. v. Courtney",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/State_ex_rel_Metropolitan_Public_Defender_v_Courtney_335_Or_236_2003.md",
+      "bytes": 16633,
+      "modified": "2026-06-09T02:15:09.738Z",
+      "href": null
+    },
+    {
+      "title": "Heydenfeldt v. Daney Gold and Silver Mining Co.",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Heydenfeldt_v_Daney_Gold_Silver_Mining_Co_93_US_634_1877.md",
+      "bytes": 12740,
+      "modified": "2026-06-09T02:11:26.657Z",
+      "href": null
+    },
+    {
+      "title": "Trustees of the Philadelphia Baptist Ass'n v. Hart's Executors, 17 U.S. (4 Wheat.) 1 (1819)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Philadelphia_Baptist_Assn_v_Harts_Executors_17_US_1_1819.md",
+      "bytes": 46468,
+      "modified": "2026-06-08T21:19:00.542Z",
+      "href": null
+    },
+    {
+      "title": "Keys v. Carter, 318 So. 2d 862 (Miss. 1975)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Mississippi/Keys_v_Carter_318_So2d_862_Miss_1975.md",
+      "bytes": 10250,
+      "modified": "2026-06-08T21:14:28.771Z",
+      "href": null
+    },
+    {
+      "title": "Meinhard v. Salmon, 249 N.Y. 458, 164 N.E. 545 (1928)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/New_York/Meinhard_v_Salmon_249_NY_458_1928.md",
+      "bytes": 47515,
+      "modified": "2026-06-08T21:12:45.864Z",
+      "href": "/reading/library/meinhard-v-salmon-1928/"
+    },
+    {
+      "title": "Andrus v. Utah, 446 U.S. 500 (1980)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Andrus_v_Utah_446_US_500_1980.md",
+      "bytes": 104068,
+      "modified": "2026-06-08T04:22:56.169Z",
+      "href": "/court/case-file/andrus-v-utah-1980/"
+    },
+    {
+      "title": "Thompson v. Coughlin, 329 Or. 630, 997 P.2d 191 (2000)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Thompson_v_Coughlin_329_Or_630_2000.md",
+      "bytes": 32952,
+      "modified": "2026-06-08T03:54:19.133Z",
+      "href": null
+    },
+    {
+      "title": "Smith v. Williams, 98 Or. App. 258, 779 P.2d 1057 (1989)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Smith_v_Williams_98_OrApp_258_1989.md",
+      "bytes": 22186,
+      "modified": "2026-06-08T03:49:00.307Z",
+      "href": null
+    },
+    {
+      "title": "Sasser v. DeLorme, 56 Or. App. 630, 642 P.2d 1192 (1982)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Sasser_v_DeLorme_56_OrApp_630_1982.md",
+      "bytes": 20686,
+      "modified": "2026-06-08T03:46:13.501Z",
+      "href": null
+    },
+    {
+      "title": "Asplund v. Hannett",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/New_Mexico/Asplund_v_Hannett_31_NM_641_1926.md",
+      "bytes": 77610,
+      "modified": "2026-06-08T03:41:45.001Z",
+      "href": "/court/case-file/asplund-v-hannett-1926/"
+    },
+    {
+      "title": "Friends of the Wild Swan v. Department of Natural Resources and Conservation",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Montana/Friends_of_the_Wild_Swan_v_DNRC_2005_MT_351.md",
+      "bytes": 69583,
+      "modified": "2026-06-08T03:39:38.382Z",
+      "href": null
+    },
+    {
+      "title": "Plateau Mining Co. v. Utah Division of State Lands &amp; Forestry",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Utah/Plateau_Mining_Co_v_Utah_Division_State_Lands_802_P2d_720_1990.md",
+      "bytes": 58853,
+      "modified": "2026-06-08T03:39:07.137Z",
+      "href": null
+    },
+    {
+      "title": "Deer Valley Unified School District No. 97 v. Superior Court",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Arizona/Deer_Valley_USD_v_Superior_Court_157_Ariz_537_1988.md",
+      "bytes": 28176,
+      "modified": "2026-06-08T03:36:30.041Z",
+      "href": "/court/case-file/deer-valley-v-superior-court-1988/"
+    },
+    {
+      "title": "State v. Platte Valley Public Power & Irrigation District, 147 Neb. 289, 23 N.W.2d 300 (1946)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Nebraska/1946_State_v_Platte_Valley_Public_Power_147_Neb_289.md",
+      "bytes": 47006,
+      "modified": "2026-06-08T03:34:52.176Z",
+      "href": null
+    },
+    {
+      "title": "State of Utah v. Kleppe",
+      "folder": "Federal",
+      "substratePath": "L0_Primary_Sources/Case_Law/Federal/Utah_v_Kleppe_586_F2d_756_10thCir_1978.md",
+      "bytes": 94505,
+      "modified": "2026-06-08T03:29:25.175Z",
+      "href": null
+    },
+    {
+      "title": "National Parks & Conservation Ass'n v. Board of State Lands",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Utah/1993_NPCA_v_Board_of_State_Lands_869_P2d_909.md",
+      "bytes": 102225,
+      "modified": "2026-06-08T03:22:27.346Z",
+      "href": null
+    },
+    {
+      "title": "State v. Gaines",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/State_v_Gaines_346_Or_160_2009.md",
+      "bytes": 83090,
+      "modified": "2026-06-08T03:21:25.406Z",
+      "href": null
+    },
+    {
+      "title": "Public Market Co. v. City of Portland (1942 round)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Public_Market_Co_v_City_of_Portland_171_Or_522_1942.md",
+      "bytes": 228954,
+      "modified": "2026-06-08T03:19:03.013Z",
+      "href": null
+    },
+    {
+      "title": "Montrust v. Darkenwald, 2005 MT 190, 328 Mont. 105, 119 P.3d 27 (2005)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Montana/2005_Montrust_v_Darkenwald_2005_MT_190.md",
+      "bytes": 91781,
+      "modified": "2026-06-08T03:17:12.472Z",
+      "href": null
+    },
+    {
+      "title": "State Land Board v. Lee",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/State_Land_Board_v_Lee_84_Or_431_1917.md",
+      "bytes": 34416,
+      "modified": "2026-06-08T03:12:27.953Z",
+      "href": null
+    },
+    {
+      "title": "Miller v. Grants Pass Irrigation District, 297 Or. 312, 686 P.2d 324 (1984)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Miller_v_Grants_Pass_Irrigation_Dist_297_Or_312_1984.md",
+      "bytes": 38804,
+      "modified": "2026-06-07T21:42:17.205Z",
+      "href": null
+    },
+    {
+      "title": "Urban Renewal Agency v. Lackey, 275 Or. 35, 549 P.2d 657 (1976)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Urban_Renewal_Agency_v_Lackey_275_Or_35_1976.md",
+      "bytes": 23573,
+      "modified": "2026-06-07T21:34:51.490Z",
+      "href": null
+    },
+    {
+      "title": "Public Market Co. of Portland v. City of Portland, 179 Or. 367, 170 P.2d 586 (1946)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Public_Market_Co_v_City_of_Portland_179_Or_367_1946.md",
+      "bytes": 65630,
+      "modified": "2026-06-07T21:31:53.138Z",
+      "href": null
+    },
+    {
+      "title": "Westfall v. State of Oregon, 355 Or. 144, 324 P.3d 440 (2014)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Westfall_v_State_355_Or_144_2014.md",
+      "bytes": 76050,
+      "modified": "2026-06-07T21:29:39.955Z",
+      "href": null
+    },
+    {
+      "title": "Portland General Electric Co. v. Bureau of Labor & Industries, 317 Or. 606, 859 P.2d 1143 (1993)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/PGE_v_BOLI_317_Or_606_1993.md",
+      "bytes": 27447,
+      "modified": "2026-06-07T21:27:40.511Z",
+      "href": null
+    },
+    {
+      "title": "Corpe v. Brooks, 8 Or. 222 (1880)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Corpe_v_Brooks_8_Or_222_1880.md",
+      "bytes": 6044,
+      "modified": "2026-06-07T21:22:33.762Z",
+      "href": null
+    },
+    {
+      "title": "National Parks Conservation Ass'n v. Board of Trustees of SITLA, 2010 UT 13, 231 P.3d 1193 (NPCA II)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Utah/NPCA_v_Board_of_Trustees_SITLA_2010_UT_13.md",
+      "bytes": 47314,
+      "modified": "2026-06-07T21:20:35.538Z",
+      "href": null
+    },
+    {
+      "title": "Friends of the Wild Swan v. Department of Natural Resources & Conservation, 2000 MT 209, 301 Mont. 1, 6 P.3d 972",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Montana/Friends_of_the_Wild_Swan_v_DNRC_2000_MT_209.md",
+      "bytes": 38135,
+      "modified": "2026-06-07T21:13:48.207Z",
+      "href": null
+    },
+    {
+      "title": "Kanaly v. State by and through Janklow, 403 N.W.2d 33 (S.D. 1987) — per curiam (Kanaly III)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/South_Dakota/Kanaly_v_State_403_NW2d_33_SD_1987_per_curiam.md",
+      "bytes": 6546,
+      "modified": "2026-06-07T21:09:20.232Z",
+      "href": "/court/case-file/kanaly-v-janklow-1985/"
+    },
+    {
+      "title": "Kanaly v. State ex rel. Janklow, 401 N.W.2d 551 (S.D. 1987) — lead opinion",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/South_Dakota/Kanaly_v_State_401_NW2d_551_SD_1987_lead.md",
+      "bytes": 33202,
+      "modified": "2026-06-07T21:07:56.148Z",
+      "href": null
+    },
+    {
+      "title": "Selkirk-Priest Basin Ass'n, Inc. v. State ex rel. Andrus, 127 Idaho 239, 899 P.2d 949 (1995)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Idaho/1995_Selkirk-Priest_Basin_Assn_v_State_127_Idaho_239.md",
+      "bytes": 42991,
+      "modified": "2026-06-07T16:21:55.017Z",
+      "href": null
+    },
+    {
+      "title": "Selkirk-Priest Basin Ass'n v. State ex rel. Batt, 128 Idaho 831 (1996)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Idaho/1996_Selkirk-Priest_Basin_Assn_v_State_ex_rel_Batt_128_Idaho_831.md",
+      "bytes": 19563,
+      "modified": "2026-06-07T02:26:16.340Z",
+      "href": null
+    },
+    {
+      "title": "State v. Warner Valley Stock Co., 68 Or. 466 (1914)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/State_v_Warner_Valley_Stock_Co_68_Or_466_1914.md",
+      "bytes": 18152,
+      "modified": "2026-06-07T02:14:42.118Z",
+      "href": null
+    },
+    {
+      "title": "Sherman v. Buick, 93 U.S. 209 (1876)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Sherman_v_Buick_93_US_209_1876.md",
+      "bytes": 14584,
+      "modified": "2026-06-07T02:10:41.375Z",
+      "href": null
+    },
+    {
+      "title": "Idaho Watersheds Project v. State Board of Land Commissioners, 133 Idaho 55 (1999) (IWP I)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Idaho/Idaho_Watersheds_Project_v_Land_Commissioners_133_Idaho_55_1999.md",
+      "bytes": 51788,
+      "modified": "2026-06-07T01:03:06.843Z",
+      "href": "/court/case-file/idaho-watersheds-1999/"
+    },
+    {
+      "title": "North Carolina School Boards Ass'n v. Moore, 359 N.C. 474 (2005)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/North_Carolina/NC_School_Boards_Assn_v_Moore_359_NC_474_2005.md",
+      "bytes": 144879,
+      "modified": "2026-06-07T01:01:06.368Z",
+      "href": null
+    },
+    {
+      "title": "Sherman v. Buick, 45 Cal. 656 (1873)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/California/Sherman_v_Buick_45_Cal_656_1873.md",
+      "bytes": 11901,
+      "modified": "2026-06-07T00:59:34.082Z",
+      "href": null
+    },
+    {
+      "title": "State ex rel. Ebke v. Board of Educational Lands & Funds, 159 Neb. 79 (1954) (Ebke II)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Nebraska/State_ex_rel_Ebke_v_Board_Educational_Lands_159_Neb_79_1954.md",
+      "bytes": 50146,
+      "modified": "2026-06-07T00:55:56.265Z",
+      "href": "/court/case-file/ebke-v-neb-1951/"
+    },
+    {
+      "title": "Lambert v. State, 211 Miss. 129, 51 So. 2d 201 (1951)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Mississippi/Lambert_v_State_211_Miss_129_1951.md",
+      "bytes": 40131,
+      "modified": "2026-06-07T00:54:21.950Z",
+      "href": null
+    },
+    {
+      "title": "Hill v. Thompson, 564 So. 2d 1 (Miss. 1989)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Mississippi/Hill_v_Thompson_564_So2d_1_Miss_1989.md",
+      "bytes": 168695,
+      "modified": "2026-06-07T00:50:08.492Z",
+      "href": null
+    },
+    {
+      "title": "Bieker v. Ludwick, 343 Or. App. 1 (2025)",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/Bieker_v_Ludwick_343_OrApp_1_2025.md",
+      "bytes": 56111,
+      "modified": "2026-06-07T00:48:11.960Z",
+      "href": null
+    },
+    {
+      "title": "Chernaik v. Brown, 367 Or. 143 (2020)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Chernaik_v_Brown_367_Or_143_2020.md",
+      "bytes": 146805,
+      "modified": "2026-06-07T00:46:16.166Z",
+      "href": null
+    },
+    {
+      "title": "James v. State of Oregon, 366 Or. 732 (2020)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/James_v_State_366_Or_732_2020.md",
+      "bytes": 79372,
+      "modified": "2026-06-07T00:44:19.631Z",
+      "href": null
+    },
+    {
+      "title": "Strunk v. Public Employees Retirement Board, 338 Or. 145 (2005)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Strunk_v_PERB_338_Or_145_2005.md",
+      "bytes": 333067,
+      "modified": "2026-06-07T00:42:19.959Z",
+      "href": null
+    },
+    {
+      "title": "Moro v. State of Oregon, 357 Or. 167 (2015)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Moro_v_State_357_Or_167_2015.md",
+      "bytes": 280600,
+      "modified": "2026-06-07T00:40:16.070Z",
+      "href": null
+    },
+    {
+      "title": "Kennedy v. Wheeler, 356 Or. 518 (2014)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Kennedy_v_Wheeler_356_Or_518_2014.md",
+      "bytes": 88219,
+      "modified": "2026-06-07T00:36:56.352Z",
+      "href": null
+    },
+    {
+      "title": "Holmes v. Olcott, 96 Or. 33 (1920)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Holmes_v_Olcott_96_Or_33_1920.md",
+      "bytes": 30466,
+      "modified": "2026-06-07T00:35:15.714Z",
+      "href": null
+    },
+    {
+      "title": "Grand Prize Hydraulic Mines v. Boswell, 83 Or. 1 (1915/1917)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Grand_Prize_Hydraulic_Mines_v_Boswell_83_Or_1_1917.md",
+      "bytes": 38588,
+      "modified": "2026-06-07T00:31:59.987Z",
+      "href": null
+    },
+    {
+      "title": "State v. Warner Valley Stock Co., 56 Or. 283 (1910)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/State_v_Warner_Valley_Stock_Co_56_Or_283_1910.md",
+      "bytes": 64190,
+      "modified": "2026-06-07T00:27:14.174Z",
+      "href": null
+    },
+    {
+      "title": "Robertson v. State Land Board, 42 Or. 183 (1902)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Robertson_v_State_Land_Board_42_Or_183_1902.md",
+      "bytes": 14003,
+      "modified": "2026-06-07T00:24:05.086Z",
+      "href": null
+    },
+    {
+      "title": "Schneider v. Hutchinson, 35 Or. 253 (1899)",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Schneider_v_Hutchinson_35_Or_253_1899.md",
+      "bytes": 15809,
+      "modified": "2026-06-07T00:18:37.383Z",
+      "href": null
+    },
+    {
+      "title": "State ex rel. King v. Lyons, 2011-NMSC-004, 248 P.3d 878",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/New_Mexico/State_ex_rel_King_v_Lyons_2011_NMSC_004.md",
+      "bytes": 180903,
+      "modified": "2026-06-07T00:15:03.356Z",
+      "href": null
+    },
+    {
+      "title": "State ex rel. State Highway Commission v. Walker, 61 N.M. 374, 301 P.2d 317 (1956)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/New_Mexico/State_ex_rel_Highway_Commission_v_Walker_61_NM_374_1956.md",
+      "bytes": 26845,
+      "modified": "2026-06-07T00:13:05.413Z",
+      "href": null
+    },
+    {
+      "title": "Marbury v. Madison, 5 U.S. (1 Cranch) 137 (1803)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Marbury_v_Madison_5_US_137_1803.md",
+      "bytes": 62025,
+      "modified": "2026-06-07T00:09:42.878Z",
+      "href": null
+    },
+    {
+      "title": "Ebey v. Avoyelles Parish School Board, 861 So. 2d 910 (La. App. 3 Cir. 2003)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Louisiana/Ebey_v_Avoyelles_Parish_SB_861_So2d_910_LaApp_2003.md",
+      "bytes": 46868,
+      "modified": "2026-06-06T23:25:51.219Z",
+      "href": null
+    },
+    {
+      "title": "State ex rel. Plaquemines Parish School Board v. Plaquemines Parish Government, 652 So. 2d 1 (La. App. 4 Cir. 1994)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Louisiana/State_ex_rel_Plaquemines_Parish_SB_v_Plaquemines_Parish_Govt_652_So2d_1_LaApp_1994.md",
+      "bytes": 41403,
+      "modified": "2026-06-06T23:21:38.174Z",
+      "href": null
+    },
+    {
+      "title": "Illinois Central Railroad Co. v. Illinois, 146 U.S. 387 (1892)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Illinois_Central_RR_v_Illinois_146_US_387_1892.md",
+      "bytes": 105276,
+      "modified": "2026-06-06T23:16:08.062Z",
+      "href": null
+    },
+    {
+      "title": "Vidal v. Girard's Executors, 43 U.S. (2 How.) 127 (1844)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Vidal_v_Girards_Executors_43_US_127_1844.md",
+      "bytes": 53037,
+      "modified": "2026-06-06T23:13:33.854Z",
+      "href": null
+    },
+    {
+      "title": "Trustees of Dartmouth College v. Woodward, 17 U.S. (4 Wheat.) 518 (1819)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Dartmouth_College_v_Woodward_17_US_518_1819.md",
+      "bytes": 166783,
+      "modified": "2026-06-06T23:11:17.971Z",
+      "href": null
+    },
+    {
+      "title": "Fletcher v. Peck, 10 U.S. (6 Cranch) 87 (1810)",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Fletcher_v_Peck_10_US_87_1810.md",
+      "bytes": 50382,
+      "modified": "2026-06-06T23:06:18.549Z",
+      "href": null
+    },
+    {
+      "title": "Mayer Unified School District v. Winkleman, 219 Ariz. 562, 201 P.3d 523 (Ariz. 2009)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Arizona/Mayer_Unified_SD_v_Winkleman_219_Ariz_562_2009.md",
+      "bytes": 39294,
+      "modified": "2026-06-06T23:03:51.354Z",
+      "href": null
+    },
+    {
+      "title": "Wayne County School District v. Quitman School District, 346 So. 3d 853 (Miss. 2022)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Mississippi/Wayne_County_SD_v_Quitman_SD_346_So3d_853_Miss_2022.md",
+      "bytes": 72126,
+      "modified": "2026-06-06T22:56:43.088Z",
+      "href": null
+    },
+    {
+      "title": "Goldmark v. McKenna, 172 Wn.2d 568, 259 P.3d 1095 (Wash. 2011)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Washington/Goldmark_v_McKenna_172_Wn2d_568_2011.md",
+      "bytes": 81694,
+      "modified": "2026-06-06T22:54:16.039Z",
+      "href": null
+    },
+    {
+      "title": "Forest Guardians v. Powell, 130 N.M. 368, 24 P.3d 803, 2001-NMCA-028 (N.M. Ct. App.)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/New_Mexico/2001_Forest_Guardians_v_Powell_130_NM_368.md",
+      "bytes": 70967,
+      "modified": "2026-06-06T22:51:35.439Z",
+      "href": null
+    },
+    {
+      "title": "Jones County School District v. Covington County School District",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Mississippi/Jones_County_SD_v_Covington_County_SD_352_So3d_1123_Miss_2022.md",
+      "bytes": 42160,
+      "modified": "2026-06-06T21:55:49.892Z",
+      "href": null
+    },
+    {
+      "title": "Public Utility District No. 1 of Okanogan County v. State",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Washington/PUD_No1_Okanogan_County_v_State_182_Wn2d_519_2015.md",
+      "bytes": 90580,
+      "modified": "2026-06-06T21:50:02.102Z",
+      "href": null
+    },
+    {
+      "title": "Director of the Office of State Lands & Investments v. Merbanco, Inc.",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Wyoming/Director_State_Lands_v_Merbanco_2003_WY_73.md",
+      "bytes": 108551,
+      "modified": "2026-06-06T21:45:30.616Z",
+      "href": null
+    },
+    {
+      "title": "Forest Guardians v. Wells (Guardians v. Wells)",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/Arizona/Forest_Guardians_v_Wells_201_Ariz_255_2001.md",
+      "bytes": 54661,
+      "modified": "2026-06-06T21:43:13.002Z",
+      "href": null
+    },
+    {
+      "title": "Alamo Land & Cattle Co. v. Arizona",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Alamo_Land_Cattle_Co_v_Arizona_424_US_295_1976.md",
+      "bytes": 54482,
+      "modified": "2026-06-06T21:32:45.320Z",
+      "href": null
+    },
+    {
+      "title": "Oregon ex rel. State Land Board v. Corvallis Sand & Gravel Co.",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Oregon_ex_rel_State_Land_Board_v_Corvallis_Sand_Gravel_429_US_363_1977.md",
+      "bytes": 96152,
+      "modified": "2026-06-06T21:30:28.431Z",
+      "href": null
+    },
+    {
+      "title": "Savage v. Glendale Union High School District No. 205",
+      "folder": "Ninth_Circuit",
+      "substratePath": "L0_Primary_Sources/Case_Law/Ninth_Circuit/Savage_v_Glendale_Union_HSD_343_F3d_1036_9thCir_2003.md",
+      "bytes": 81829,
+      "modified": "2026-06-06T21:28:15.724Z",
+      "href": null
+    },
+    {
+      "title": "Wilcox v. Jackson",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Wilcox_v_Jackson_38_US_498_1839.md",
+      "bytes": 32331,
+      "modified": "2026-06-06T21:26:27.882Z",
+      "href": null
+    },
+    {
+      "title": "Borax Consolidated, Ltd. v. Los Angeles",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Borax_Consolidated_v_Los_Angeles_296_US_10_1935.md",
+      "bytes": 51629,
+      "modified": "2026-06-06T21:21:47.898Z",
+      "href": null
+    },
+    {
+      "title": "Papasan v. Allain",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/Papasan_v_Allain_478_US_265_1986.md",
+      "bytes": 137431,
+      "modified": "2026-06-06T21:19:44.436Z",
+      "href": null
+    },
+    {
+      "title": "United States v. Morrison",
+      "folder": "US_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/US_Supreme_Court/United_States_v_Morrison_240_US_192_1916.md",
+      "bytes": 46067,
+      "modified": "2026-06-06T21:17:27.493Z",
+      "href": null
+    },
+    {
+      "title": "Wood v. Honeyman",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/Wood_v_Honeyman_178_Or_484_1946.md",
+      "bytes": 177992,
+      "modified": "2026-06-06T21:11:48.087Z",
+      "href": null
+    },
+    {
+      "title": "Order Extending Time for Counsel — Coos County No. 24CV38372",
+      "folder": "Coos_County_Circuit_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Coos_County_Circuit_Court/2025-10-01_Order_Extending_Time_for_Counsel_24CV38372.md",
+      "bytes": 1702,
+      "modified": "2026-06-04T18:59:14.182Z",
+      "href": null
+    },
+    {
+      "title": "Order Allowing Withdrawal of Counsel — Coos County No. 24CV38372",
+      "folder": "Coos_County_Circuit_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Coos_County_Circuit_Court/2025-10-01_Order_Allowing_Withdrawal_of_Counsel_24CV38372.md",
+      "bytes": 2171,
+      "modified": "2026-06-04T18:59:14.170Z",
+      "href": null
+    },
+    {
+      "title": "Combs Letter Opinion — September 5, 2025 — *Siuslaw School District 97J et al. v. State of Oregon*, Coos County No. 24CV38372",
+      "folder": "Coos_County_Circuit_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Coos_County_Circuit_Court/2025-09-05_Combs_Letter_Opinion_FAC_24CV38372.md",
+      "bytes": 6511,
+      "modified": "2026-06-04T18:37:39.825Z",
+      "href": null
+    },
+    {
+      "title": "Judge Combs' Letter Opinion of March 6, 2025 (24CV38372)",
+      "folder": "Coos_County_Circuit_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Coos_County_Circuit_Court/2025-03-06_Combs_Letter_Opinion_Siuslaw_v_State_24CV38372.md",
+      "bytes": 17951,
+      "modified": "2026-05-24T16:23:36.090Z",
+      "href": null
+    },
+    {
+      "title": "Judge Combs' Letter Opinion of February 26, 2024 (23CV39056)",
+      "folder": "Coos_County_Circuit_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Coos_County_Circuit_Court/2024-02-26_Combs_Letter_Opinion_Advocates_v_State_23CV39056.md",
+      "bytes": 10695,
+      "modified": "2026-05-24T16:23:36.028Z",
+      "href": null
+    },
+    {
+      "title": "Advocates for School Trust Lands v. State of Oregon",
+      "folder": "Oregon_Court_of_Appeals",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2026-01-28_Advocates_for_School_Trust_Lands_v_State_346_Or_App_668.md",
+      "bytes": 14019,
+      "modified": "2026-05-24T16:23:35.968Z",
+      "href": "/reading/library/astl-v-oregon-2026/"
+    },
+    {
+      "title": "Parallel-State School-Trust Case Corpus — Master Index",
+      "folder": "Parallel_States",
+      "substratePath": "L0_Primary_Sources/Case_Law/Parallel_States/_INDEX.md",
+      "bytes": 11908,
+      "modified": "2026-05-22T18:15:32.485Z",
+      "href": null
+    },
+    {
+      "title": "Sabine River Authority v. U.S. Department of Interior, 951 F.2d 669 (5th Cir. 1992)",
+      "folder": "Federal",
+      "substratePath": "L0_Primary_Sources/Case_Law/Federal/1992_Sabine_River_Authority_v_US_DOI_951_F2d_669_5th_Cir.md",
+      "bytes": 2097,
+      "modified": "2026-05-22T18:11:40.509Z",
+      "href": null
+    },
+    {
+      "title": "Cascadia Wildlands v. Department of State Lands",
+      "folder": "Oregon_Supreme_Court",
+      "substratePath": "L0_Primary_Sources/Case_Law/Oregon_Supreme_Court/_parallel_pulls/2026-05-21_web_Claude_pull_Cascadia.md",
+      "bytes": 39767,
+      "modified": "2026-05-21T15:07:53.542Z",
+      "href": null
+    }
+  ],
+  "figures": [
+    {
+      "label": "FY2026 PERS transfer (the SDULF intercept)",
+      "value": "$148,923,414",
+      "status": "⚠️",
+      "source": "[TO VERIFY: Siuslaw_DSL_000004]",
+      "usedIn": "PERS Diversion memo v3; Draft Response v4",
+      "statusKind": "other"
+    },
+    {
+      "label": "(Earlier figure, superseded)",
+      "value": "$143,000,000",
+      "status": "—",
+      "source": "RFA assignment April 2026",
+      "usedIn": "DO NOT USE — drift error; replaced by $148.9M",
+      "statusKind": "other"
+    },
+    {
+      "label": "(Reference figure from PERS memo v3)",
+      "value": "$91,900,000",
+      "status": "⚠️",
+      "source": "[TO VERIFY]",
+      "usedIn": "PERS Diversion memo v3",
+      "statusKind": "other"
+    },
+    {
+      "label": "(Annual figure from PERS memo v3)",
+      "value": "$5,400,000 / year",
+      "status": "⚠️",
+      "source": "[TO VERIFY]",
+      "usedIn": "PERS Diversion memo v3",
+      "statusKind": "other"
+    },
+    {
+      "label": "PERS employer rate (relevant period)",
+      "value": "21.91%",
+      "status": "⚠️",
+      "source": "[TO VERIFY]",
+      "usedIn": "PERS Diversion memo v3",
+      "statusKind": "other"
+    },
+    {
+      "label": "Trustee duty of loyalty",
+      "value": "ORS 130.660",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Statutes/ — to be populated]",
+      "usedIn": "Trustees must put beneficiaries (the schools) first",
+      "statusKind": "other"
+    },
+    {
+      "label": "Trustee duty of prudence",
+      "value": "ORS 130.710",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Statutes/ — to be populated]",
+      "usedIn": "Trustees must manage the trust as a prudent person would",
+      "statusKind": "other"
+    },
+    {
+      "label": "Trustee duty of accountability",
+      "value": "ORS 130.755",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Statutes/ — to be populated]",
+      "usedIn": "Trustees must keep beneficiaries informed",
+      "statusKind": "other"
+    },
+    {
+      "label": "Statehood compact",
+      "value": "1859 Oregon Admissions Act",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Statutes/ — to be populated]",
+      "usedIn": "Federal grant of school trust lands to the new state, in trust for common schools",
+      "statusKind": "other"
+    },
+    {
+      "label": "Common School Fund",
+      "value": "Or. Const. art. VIII, § 2",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Statutes/ — to be populated]",
+      "usedIn": "The \"separate and irreducible\" fund",
+      "statusKind": "other"
+    },
+    {
+      "label": "Sufficient school funding",
+      "value": "Or. Const. art. VIII, § 8",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Statutes/ — to be populated]",
+      "usedIn": "The clause behind the Jan 28 2026 standing victory",
+      "statusKind": "other"
+    },
+    {
+      "label": "Elliott decoupling",
+      "value": "SB 147 (June 2025)",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Statutes/ — to be populated]",
+      "usedIn": "Statutory severance of the Elliott from the CSF",
+      "statusKind": "other"
+    },
+    {
+      "label": "Trust-fund integrity",
+      "value": "*Wood v. Honeyman*",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Case_Law/ — to be populated]",
+      "usedIn": "Foundational Oregon trust-law authority",
+      "statusKind": "other"
+    },
+    {
+      "label": "Government as trust litigant",
+      "value": "*Comcast of Oregon II v. City of Eugene*",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Case_Law/ — to be populated]",
+      "usedIn": "Procedural posture for trust claims against public actors",
+      "statusKind": "other"
+    },
+    {
+      "label": "Article VIII §8 standing",
+      "value": "*Advocates for School Trust Lands v. State of Oregon*, 346 Or App 668 (2026)",
+      "status": "✅",
+      "source": "L0_Primary_Sources/Case_Law/Oregon_Court_of_Appeals/2026-01-28_Advocates_for_School_Trust_Lands_v_State_346_Or_App_668.md; L0_Primary_Sources/Litigation/23CV39056_A184055_S072734_Appellate_Record/2026-01-28_Court_Issued_Opinion_A184055.pdf",
+      "usedIn": "Standing for schoolchild plaintiffs seeking declaratory relief; S072734 pending as of official OJD check on 2026-06-09",
+      "statusKind": "other"
+    },
+    {
+      "label": "Elliott State Forest",
+      "value": "82,000 acres",
+      "status": "⚠️",
+      "source": "[L0_Primary_Sources/Statutes/SB1546... or successor]",
+      "usedIn": "Decoupled from CSF via SB 147 (June 2025)",
+      "statusKind": "other"
+    },
+    {
+      "label": "National surviving trust-land estate",
+      "value": "More than 45 million acres held by 20 states (ASTL standing figure)",
+      "status": "web-verified 2026-06-01: acreage + 20-state count match ASTL; \"FY2024\" framing dropped. The aggregate \"$115B funds / $5B FY2024 distributed\" figures were UNSOURCED and removed — ASTL public totals are >$100B assets and >$1B distributed in FY2022",
+      "source": "imported ASTL state-page corpus; schooltrustlands.org",
+      "usedIn": "FFG_v11_codex_2026-06-01.md",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Texas Permanent School Fund",
+      "value": "About $60.6B net as of Aug. 31, 2025",
+      "status": "verified in Book Revision finishing pass",
+      "source": "L4_Deliverables/Book_Revision/_research/SotR_Finishing_Report_2026-05-29.md (TX PSF Corp FY2025 ACFR / TEA disclosure)",
+      "usedIn": "FFG v11; Part Two TX",
+      "statusKind": "verified"
+    },
+    {
+      "label": "New Mexico Land Grant Permanent Fund",
+      "value": "About $32.6B as of Oct. 31, 2024",
+      "status": "verified in Book Revision finishing pass",
+      "source": "L4_Deliverables/Book_Revision/_research/SotR_Finishing_Report_2026-05-29.md (NM State Investment Council)",
+      "usedIn": "FFG v11; Part Two NM",
+      "statusKind": "verified"
+    },
+    {
+      "label": "North Dakota Common Schools Trust Fund",
+      "value": "About $8.4B ($8,436,270,651) as of Nov. 30, 2025",
+      "status": "web-verified 2026-06-01 — prior $8,664,324,418/Jan 31 2026 was unconfirmable; corrected to ND Treasurer's published Nov 30 2025 balance",
+      "source": "ND State Treasurer \"Government Funds\" report / Dept. of Trust Lands monthly report, Nov. 30, 2025",
+      "usedIn": "FFG v11; Part Two ND",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Colorado Public School Permanent Fund",
+      "value": "$1,845,545,326 as of June 30, 2025",
+      "status": "verified in Book Revision finishing pass",
+      "source": "L4_Deliverables/Book_Revision/_research/SotR_Finishing_Report_2026-05-29.md (CO Treasury / State Land Board)",
+      "usedIn": "FFG v11; Part Two CO",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Minnesota Permanent School Fund",
+      "value": "About $2.3B as of 2025",
+      "status": "verified in Book Revision finishing pass",
+      "source": "L4_Deliverables/Book_Revision/_research/SotR_Finishing_Report_2026-05-29.md (Minnesota House Session Daily)",
+      "usedIn": "FFG v11; Part Two MN",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Arizona Permanent Land Endowment Trust Fund",
+      "value": "About $8.8B as of June 2024; later report cited about $9.86B as of Nov. 30, 2025",
+      "status": "June 2024 figure verified in live propagation report; later figure to promote after final source check",
+      "source": "L4_Deliverables/Book_Revision/_research/Live_50State_Propagation_Report_2026-05-29.md; AZ Treasury monthly report pending promotion",
+      "usedIn": "FFG v11; Part Two AZ",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Alaska Public School Trust Fund",
+      "value": "$945.6M as of Nov. 30, 2025",
+      "status": "verified in live propagation report",
+      "source": "L4_Deliverables/Book_Revision/_research/Live_50State_Propagation_Report_2026-05-29.md",
+      "usedIn": "FFG v11; Part Two AK",
+      "statusKind": "verified"
+    },
+    {
+      "label": "California School Land Bank Fund",
+      "value": "About $65.7M as of FY2024-25",
+      "status": "verified in live propagation report",
+      "source": "L4_Deliverables/Book_Revision/_research/Live_50State_Propagation_Report_2026-05-29.md",
+      "usedIn": "FFG v11; Part Two CA",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Oregon Common School Fund audited fund balance",
+      "value": "$2,585,199,612 as of June 30, 2025",
+      "status": "verified in litigation evidence mining pass",
+      "source": "L4_Deliverables/Book_Revision/_research/Litigation_Evidence_Mined_2026-05-29.md (Audited CSF Annual Financial Report FY2025)",
+      "usedIn": "FFG v11; Part Two OR",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Oregon remaining trust acreage",
+      "value": "About 681,000 acres as of March 2025 DSL fact sheet",
+      "status": "verified in litigation evidence mining pass",
+      "source": "L4_Deliverables/Book_Revision/_research/Litigation_Evidence_Mined_2026-05-29.md (DSL Fact Sheet updated 3/25)",
+      "usedIn": "FFG v11; Part Two OR",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Oregon Common School Fund FY2025 distribution",
+      "value": "$76.8M to 197 K-12 districts in 2025, about $147/student",
+      "status": "verified in litigation evidence mining pass",
+      "source": "L4_Deliverables/Book_Revision/_research/Litigation_Evidence_Mined_2026-05-29.md (DSL Fact Sheet updated 3/25)",
+      "usedIn": "FFG v11; Oregon/Elliott work",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Elliott State Forest MB&G investment value",
+      "value": "$99.6M",
+      "status": "verified in litigation evidence mining pass",
+      "source": "L4_Deliverables/Book_Revision/_research/Litigation_Evidence_Mined_2026-05-29.md (Bird testimony / MB&G value)",
+      "usedIn": "FFG v11; Elliott chart",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Elliott State Forest 2016 sale ceiling",
+      "value": "About $220.8M",
+      "status": "verified in litigation evidence mining pass; original brief still needs final pinpoint",
+      "source": "L4_Deliverables/Book_Revision/_research/Litigation_Evidence_Mined_2026-05-29.md",
+      "usedIn": "FFG v11; Elliott chart",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Elliott decoupling package",
+      "value": "$221M total: $121M General Fund + $100M bond funding",
+      "status": "verified in litigation evidence mining pass",
+      "source": "L4_Deliverables/Book_Revision/_research/Litigation_Evidence_Mined_2026-05-29.md",
+      "usedIn": "FFG v11; Elliott chart",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Idaho Endowment Fund net position",
+      "value": "$3,588,670,608 as of June 30, 2025",
+      "status": "web-verified 2026-06-01 — prior $3,592,674,268 corrected to audited fund balances",
+      "source": "Idaho Endowment Fund Investment Board FY2025 audited financial statements",
+      "usedIn": "FFG v11; Part Two ID",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Idaho Public School endowment distribution",
+      "value": "$63,039,600 in FY2025",
+      "status": "web-verified 2026-06-01 — prior $63,039,900 corrected",
+      "source": "Idaho Endowment Fund Investment Board FY2025 audited financial statements",
+      "usedIn": "FFG v11; Part Two ID",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Nebraska School Trust portfolio",
+      "value": "$3,047,262,853.42 as of June 30, 2025",
+      "status": "verified against BELF FY2025 annual report",
+      "source": "Nebraska Board of Educational Lands and Funds 2024-25 Annual Report",
+      "usedIn": "FFG v11; Part Two NE",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Nebraska Permanent Educational Trust Funds",
+      "value": "$1,156,492,240.95 as of June 30, 2025",
+      "status": "verified against BELF FY2025 annual report",
+      "source": "Nebraska Board of Educational Lands and Funds 2024-25 Annual Report",
+      "usedIn": "FFG v11; Part Two NE",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Nebraska FY2025 disbursements",
+      "value": "$129,176,784.79",
+      "status": "verified against BELF FY2025 annual report",
+      "source": "Nebraska Board of Educational Lands and Funds 2024-25 Annual Report",
+      "usedIn": "FFG v11; Part Two NE",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Nevada broad statutory Permanent School Fund balance",
+      "value": "$531,127,843 as of June 30, 2025 (unaudited)",
+      "status": "web-verified 2026-06-01 — prior $540,535,648.62 unmatched in the report; corrected to reported fund balance. NOT the land-trust corpus (~3,000 acres, <$5,000/yr)",
+      "source": "Nevada State Controller FY2025 Permanent School Fund report",
+      "usedIn": "FFG v11; Part Two NV",
+      "statusKind": "verified"
+    },
+    {
+      "label": "South Dakota School and Public Lands Fund ending fair value",
+      "value": "$430,690,564 as of June 30, 2025",
+      "status": "web-verified 2026-06-01 — prior $430,662,632 corrected to reported FMV",
+      "source": "SD Commissioner of School and Public Lands FY2025 Annual Report",
+      "usedIn": "FFG v11; Part Two SD",
+      "statusKind": "verified"
+    },
+    {
+      "label": "South Dakota FY2025 returned to public schools",
+      "value": "$15,590,737.54",
+      "status": "web-verified 2026-06-01 — prior $15,612,461 corrected to reported total",
+      "source": "SD Commissioner of School and Public Lands FY2025 Annual Report",
+      "usedIn": "FFG v11; Part Two SD",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Utah Permanent State School Fund",
+      "value": "About $3.7B (2025)",
+      "status": "web-verified 2026-06-01 — prior \"$3.3B all permanent funds\" unconfirmable; Treasurer reports the Permanent State School Fund alone at ~$3.7B",
+      "source": "Utah State Treasurer (Sept. 2025); Utah Trust Lands performance reporting",
+      "usedIn": "FFG v11; Part Two UT",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Utah FY2025 trust distributions",
+      "value": "Over $118M total; over $111M to K-12 public education",
+      "status": "verified against Utah Trust Lands performance reporting",
+      "source": "Utah Trust Lands FY2025 performance page / official reporting",
+      "usedIn": "FFG v11; Part Two UT",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Wisconsin Common School Fund principal",
+      "value": "Over $1.6B as of Aug. 2025",
+      "status": "verified in Wisconsin state-source packet",
+      "source": "L4_Deliverables/Book_Revision/_research/Encyclopedia_Verification/_trash/Wisconsin.md (BCPL Common School Fund source)",
+      "usedIn": "FFG v11; Part Two WI",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Wisconsin 2026 school-library distribution",
+      "value": "$73.5M",
+      "status": "verified in Wisconsin state-source packet",
+      "source": "L4_Deliverables/Book_Revision/_research/Encyclopedia_Verification/_trash/Wisconsin.md (BCPL Library Aid reporting)",
+      "usedIn": "FFG v11; Part Two WI",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Wyoming Common School Permanent Land Fund",
+      "value": "About $5.0B as of FY2024 (~$5.4B by 2025)",
+      "status": "web-verified 2026-06-01 — prior $4.9B/2023-outlook understated; Treasurer FY2024 ~$5.06B, 2025 materials ~$5.4B",
+      "source": "Wyoming State Treasurer FY2024 report; 2025 legislative materials",
+      "usedIn": "FFG v11; Part Two WY",
+      "statusKind": "verified"
+    },
+    {
+      "label": "Oklahoma trust land managed by CLO",
+      "value": "About 740,000 surface acres and 1.1M mineral acres",
+      "status": "official agency profile; corpus not yet promoted",
+      "source": "Oklahoma Commissioners of the Land Office official profile / annual reporting, corpus pending",
+      "usedIn": "FFG v11; Part Two OK",
+      "statusKind": "other"
+    }
+  ],
+  "books": [
+    {
+      "id": "uptea_public",
+      "title": "A Law That Says Nothing New",
+      "subtitle": "Why enforcing America's oldest trust requires no new promises — only keeping the old ones",
+      "authorLine": "David Sullivan",
+      "bodyFile": "L4_Deliverables/Renewal_Program/_render_UPTEA_v2/UPTEA_Public_BODY_v1.md",
+      "notesMode": "none",
+      "variant": "review",
+      "href": "/writing/books/law-that-says-nothing-new/",
+      "updated": "2026-06-08T22:01:32.309Z"
+    },
+    {
+      "id": "hornbook",
+      "title": "School Trust Lands",
+      "subtitle": "The Law of America's Educational Land Trusts — A Working Treatise of the School Trust Field",
+      "authorLine": "America's School Trust Library",
+      "bodyFile": "L4_Deliverables/Hornbook/_hornbook_working_edition_v1_master.md",
+      "notesMode": "footnotes",
+      "variant": "review",
+      "href": "/writing/hornbook/",
+      "updated": "2026-06-07T23:33:06.188Z"
+    },
+    {
+      "id": "stewards",
+      "title": "Stewards of the Republic",
+      "subtitle": "How America's oldest forever trust teaches us to protect the public promises now arriving",
+      "authorLine": "David Sullivan",
+      "bodyFile": "L4_Deliverables/Book_Revision/Stewards_v2/Stewards_v5_SOURCE_BODY_2026-06-08.md",
+      "notesMode": "none",
+      "variant": "review",
+      "href": "/writing/stewards-of-the-republic/",
+      "updated": "2026-06-09T01:41:23.475Z"
+    },
+    {
+      "id": "ffg",
+      "title": "The Forgotten Forever Gift to Public Schools",
+      "subtitle": "The Story of the Land America Set Aside for Its Schools — and What Became of It",
+      "authorLine": "Margaret Bird and David Sullivan",
+      "bodyFile": "L4_Deliverables/Book_Revision/FFG/FFG_v30_2026-06-08.md",
+      "notesMode": "endnotes",
+      "variant": "review",
+      "href": "/writing/schools-of-the-republic/",
+      "updated": "2026-06-10T18:08:54.200Z"
+    },
+    {
+      "id": "wsfc",
+      "title": "Who Steals from Children",
+      "subtitle": "2026 Edition · The Annual Record of the Fight for America's School Trust Lands",
+      "authorLine": "Edited by David Sullivan",
+      "bodyFile": "L4_Deliverables/Who_Steals_From_Children/Edition_2026/WSFC_2026_BODY_v1.md",
+      "notesMode": "none",
+      "variant": "review",
+      "href": "/writing/who-steals-from-children/",
+      "updated": "2026-06-08T21:59:09.789Z"
+    }
+  ],
+  "specialCollections": [
+    {
+      "title": "Zybach Collection",
+      "status": "UNAPPROVED DEMONSTRATION",
+      "href": "https://schooltrusts.org/collections/zybach",
+      "summary": "A proposed named collection pointing to Dr. Bob Zybach public work, prepared for his consideration. The donor keeps copyright; the Library keeps the finding aid and source links."
+    }
+  ]
+}

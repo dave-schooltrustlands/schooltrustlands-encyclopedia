@@ -1,0 +1,40 @@
+---
+// LivingEditionLabel.astro
+//
+// Rendered only after SITE_PREVIEW flips false. It replaces the sitewide
+// preview strip with a quieter honesty label on each page.
+---
+
+<div class="living-edition-label" role="note" data-pagefind-ignore>
+  <div class="living-edition-label__inner">
+    <strong>Living Edition</strong>
+    <span>
+      This page is part of the Library's adopted public record. Corrections
+      remain open and dated.
+    </span>
+  </div>
+</div>
+
+<style>
+  .living-edition-label {
+    background: #f8fafc;
+    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+  .living-edition-label__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.65rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0.45rem 1rem;
+  }
+  .living-edition-label strong {
+    color: #1e3a5f;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+</style>

@@ -1,0 +1,518 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import EAIUtilityBar from '../../components/EAIUtilityBar.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PrepublicationFooter from '../../components/PrepublicationFooter.astro';
+import catalog from '../../data/catalog/generated.json';
+
+type StatusKind = 'l0-held' | 'verified' | 'verify' | 'cited-in-briefing' | 'other';
+
+const statusLabels: Record<StatusKind, string> = {
+  'l0-held': 'L0 held',
+  verified: 'Verified',
+  verify: 'Needs verification',
+  'cited-in-briefing': 'Cited in briefing',
+  other: 'Other',
+};
+
+const statusClass = (kind: string) => `status status--${kind}`;
+const formatDate = (iso: string) =>
+  new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }).format(new Date(iso));
+
+const authorityRows = catalog.authorities;
+const caseLawRows = catalog.caseLaw;
+const figureRows = catalog.figures;
+const bookRows = catalog.books;
+const collectionRows = catalog.specialCollections;
+
+const caseLawFolders = Object.entries(
+  caseLawRows.reduce<Record<string, number>>((acc, item) => {
+    acc[item.folder] = (acc[item.folder] || 0) + 1;
+    return acc;
+  }, {}),
+).sort((a, b) => b[1] - a[1]);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Catalog - America's School Trust Library"
+      description="A public render of the Library's authority register, L0 case-law holdings, promoted figures, book manifests, and named collections."
+    />
+  </head>
+  <body class="min-h-screen bg-archive-paper text-ink mode-library" data-source-id="catalog">
+    <EAIUtilityBar />
+    <Header />
+
+    <main class="catalog-page mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+      <header class="catalog-hero">
+        <p class="catalog-kicker">Catalog</p>
+        <h1>America's School Trust Library Catalog</h1>
+        <p class="catalog-lede">
+          A public render of what the Library holds: the legal-authority
+          register, L0 case-law texts, promoted figures, current book
+          manifests, and named special collections. The source files remain
+          in the substrate; this page is the browsable card catalog.
+        </p>
+        <p class="catalog-updated">
+          Last rendered from substrate: <time datetime={catalog.generatedAt}>{formatDate(catalog.generatedAt)}</time>.
+        </p>
+      </header>
+
+      <section class="metric-grid" aria-label="Catalog counts">
+        <article class="metric-card">
+          <span class="metric-card__label">Authority records</span>
+          <strong>{catalog.counts.authorities}</strong>
+          <span>from the hornbook register</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__label">L0 case-law files</span>
+          <strong>{catalog.counts.l0CaseLawFiles}</strong>
+          <span>{catalog.counts.l0CaseLawWithPublicGateway} with public gateways today</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__label">Reusable figures</span>
+          <strong>{catalog.counts.figures}</strong>
+          <span>from L1_Figures</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__label">Book manifests</span>
+          <strong>{catalog.counts.books}</strong>
+          <span>current generated-book records</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__label">Named collections</span>
+          <strong>{catalog.counts.specialCollections}</strong>
+          <span>finding aids and special shelves</span>
+        </article>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="authority-heading">
+        <div class="section-heading-row">
+          <div>
+            <p class="catalog-kicker">Register</p>
+            <h2 id="authority-heading">Authority Register</h2>
+          </div>
+          <dl class="status-summary">
+            {Object.entries(catalog.counts.authoritiesByStatus).map(([kind, count]) => (
+              <div>
+                <dt><span class={statusClass(kind)}>{statusLabels[kind as StatusKind] || kind}</span></dt>
+                <dd>{count}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div class="table-wrap">
+          <table class="catalog-table catalog-table--authorities">
+            <thead>
+              <tr>
+                <th>Authority</th>
+                <th>Status</th>
+                <th>Use</th>
+                <th>Feeds</th>
+              </tr>
+            </thead>
+            <tbody>
+              {authorityRows.map((item) => (
+                <tr>
+                  <td>
+                    {item.href ? (
+                      <a href={item.href}>{item.authority}</a>
+                    ) : (
+                      <span>{item.authority}</span>
+                    )}
+                  </td>
+                  <td>
+                    <span class={statusClass(item.statusKind)}>{statusLabels[item.statusKind as StatusKind] || item.statusKind}</span>
+                  </td>
+                  <td>{item.use}</td>
+                  <td>{item.feeds || 'Unassigned'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="case-law-heading">
+        <div class="section-heading-row">
+          <div>
+            <p class="catalog-kicker">L0</p>
+            <h2 id="case-law-heading">Case-Law Holdings</h2>
+          </div>
+          <ul class="folder-counts" aria-label="Case-law folders">
+            {caseLawFolders.map(([folder, count]) => (
+              <li><span>{folder}</span><strong>{count}</strong></li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="table-wrap">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>Held text</th>
+                <th>Folder</th>
+                <th>Public doorway</th>
+                <th>Updated</th>
+              </tr>
+            </thead>
+            <tbody>
+              {caseLawRows.map((item) => (
+                <tr>
+                  <td>
+                    <span>{item.title}</span>
+                    <small>{item.substratePath}</small>
+                  </td>
+                  <td>{item.folder}</td>
+                  <td>
+                    {item.href ? (
+                      <a href={item.href}>Open public entry</a>
+                    ) : (
+                      <span class="muted">Held in L0; gateway pending</span>
+                    )}
+                  </td>
+                  <td><time datetime={item.modified}>{formatDate(item.modified)}</time></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="figures-heading">
+        <div class="section-heading-row">
+          <div>
+            <p class="catalog-kicker">L1</p>
+            <h2 id="figures-heading">Promoted Figures and Anchors</h2>
+          </div>
+          <dl class="status-summary">
+            {Object.entries(catalog.counts.figuresByStatus).map(([kind, count]) => (
+              <div>
+                <dt><span class={statusClass(kind)}>{statusLabels[kind as StatusKind] || kind}</span></dt>
+                <dd>{count}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div class="table-wrap">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>Figure or anchor</th>
+                <th>Value</th>
+                <th>Status</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              {figureRows.map((item) => (
+                <tr>
+                  <td>{item.label}</td>
+                  <td>{item.value}</td>
+                  <td><span class={statusClass(item.statusKind)}>{statusLabels[item.statusKind as StatusKind] || item.statusKind}</span></td>
+                  <td>{item.source}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="books-heading">
+        <p class="catalog-kicker">Books</p>
+        <h2 id="books-heading">Book Manifests</h2>
+        <div class="book-grid">
+          {bookRows.map((book) => (
+            <article class="book-card">
+              <p class="book-card__eyebrow">{book.id}</p>
+              <h3>{book.title}</h3>
+              {book.subtitle && <p class="book-card__subtitle">{book.subtitle}</p>}
+              <p>{book.authorLine}</p>
+              <p class="book-card__meta">Body file: <code>{book.bodyFile}</code></p>
+              <a href={book.href}>Open public shelf</a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="collections-heading">
+        <p class="catalog-kicker">Special Collections</p>
+        <h2 id="collections-heading">Named Collections</h2>
+        <div class="book-grid">
+          {collectionRows.map((collection) => (
+            <article class="book-card">
+              <p class="book-card__eyebrow">{collection.status}</p>
+              <h3>{collection.title}</h3>
+              <p>{collection.summary}</p>
+              <a href={collection.href} rel="noopener">Open finding aid</a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <PrepublicationFooter />
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .catalog-page {
+    color: #1e293b;
+  }
+  .catalog-hero {
+    border-bottom: 1px solid #d8d1c2;
+    padding-bottom: 1.25rem;
+  }
+  .catalog-kicker {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a6f2f;
+  }
+  h1,
+  h2,
+  h3 {
+    color: #1e3a5f;
+    letter-spacing: 0;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    line-height: 1.05;
+  }
+  h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    line-height: 1.15;
+  }
+  h3 {
+    margin: 0 0 0.45rem;
+    font-family: var(--font-serif);
+    font-size: 1.12rem;
+    line-height: 1.25;
+  }
+  .catalog-lede {
+    max-width: 62rem;
+    margin: 1rem 0 0;
+    font-family: var(--font-serif);
+    font-size: 1.08rem;
+    line-height: 1.65;
+  }
+  .catalog-updated {
+    margin: 0.8rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: #64748b;
+  }
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 0.75rem;
+    margin: 1.25rem 0 2rem;
+  }
+  .metric-card,
+  .book-card {
+    border: 1px solid #d8d1c2;
+    border-radius: 6px;
+    background: #fffdf7;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+  }
+  .metric-card {
+    padding: 0.9rem 1rem;
+  }
+  .metric-card__label,
+  .book-card__eyebrow {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a6f2f;
+  }
+  .metric-card strong {
+    display: block;
+    margin: 0.3rem 0;
+    font-size: 2rem;
+    line-height: 1;
+    color: #1e3a5f;
+  }
+  .metric-card span:last-child {
+    font-size: 0.86rem;
+    color: #475569;
+  }
+  .catalog-section {
+    margin: 2rem 0;
+  }
+  .section-heading-row {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  @media (max-width: 780px) {
+    .section-heading-row {
+      display: block;
+    }
+  }
+  .status-summary,
+  .folder-counts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: flex-end;
+    margin: 0;
+  }
+  .status-summary div {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .status-summary dd {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.55rem;
+    padding: 0.12rem 0.45rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .status--l0-held,
+  .status--verified {
+    background: #ecfdf5;
+    border-color: #bbf7d0;
+    color: #166534;
+  }
+  .status--verify {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+  }
+  .status--cited-in-briefing {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+    color: #3730a3;
+  }
+  .status--other {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    color: #475569;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid #d8d1c2;
+    border-radius: 6px;
+    background: #fff;
+  }
+  .catalog-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+  }
+  .catalog-table th,
+  .catalog-table td {
+    vertical-align: top;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0.6rem 0.7rem;
+    text-align: left;
+  }
+  .catalog-table th {
+    position: sticky;
+    top: 0;
+    background: #f8fafc;
+    color: #334155;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  .catalog-table tr:last-child td {
+    border-bottom: 0;
+  }
+  .catalog-table td:first-child {
+    max-width: 24rem;
+  }
+  .catalog-table a,
+  .book-card a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+  .catalog-table small {
+    display: block;
+    margin-top: 0.2rem;
+    color: #64748b;
+    font-size: 0.74rem;
+    line-height: 1.35;
+  }
+  .muted {
+    color: #64748b;
+  }
+  .folder-counts {
+    list-style: none;
+    max-width: 42rem;
+    padding: 0;
+  }
+  .folder-counts li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    background: #fff;
+    padding: 0.2rem 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    color: #475569;
+  }
+  .folder-counts strong {
+    color: #1e3a5f;
+  }
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+  }
+  .book-card {
+    padding: 1rem 1.05rem;
+  }
+  .book-card p {
+    margin: 0.35rem 0;
+    line-height: 1.55;
+  }
+  .book-card__subtitle,
+  .book-card__meta {
+    color: #475569;
+    font-size: 0.9rem;
+  }
+  code {
+    font-size: 0.82em;
+  }
+</style>
