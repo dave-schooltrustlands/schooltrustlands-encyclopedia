@@ -50,7 +50,7 @@ export const writingBooks: WritingBook[] = [
     blurb:
       'How the United States built, kept, and largely lost a national endowment for public education, followed by a state-by-state portrait of the trust.',
     status:
-      'Current reading draft is v30, dated June 8, 2026; coauthor review and verification work continue.',
+      'Current reading draft is v30, dated June 8, 2026; it carries Margaret\'s edits and the rebuilt notes, with her introduction and co-author sign-off still ahead before print.',
     fit:
       'The historical anchor. It gives the rebirth effort its national memory and factual spine.',
     currentHref: '/writing/schools-of-the-republic/',

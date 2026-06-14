@@ -3,7 +3,7 @@ export const ffgVersions = [
     v: 'v30',
     date: 'Jun 8, 2026',
     note:
-      'Current reading draft - the v29 text in the restored cover and front-matter reading package. Incorporates the broad Margaret review pass, the revised duty-chapter stories, the living-record frame, and the state portraits.',
+      'Current working draft. Incorporates Margaret Bird\'s edits, an expanded early-American-history chapter, and a rebuilt, cross-checked notes system; now in final co-author review before print.',
     file: '/drafts/ffg-v30.docx',
   },
   {
