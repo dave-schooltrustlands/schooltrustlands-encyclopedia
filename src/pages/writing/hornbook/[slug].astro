@@ -4,6 +4,7 @@ import HornbookDocument from '../../../components/HornbookDocument.astro';
 import chapterOne from '../../../content/hornbook/chapter-1.md?raw';
 import trustCharacter from '../../../content/hornbook/trust-character.md?raw';
 import nebraskaAppendix from '../../../content/hornbook/nebraska-appendix.md?raw';
+import northDakotaAppendix from '../../../content/hornbook/north-dakota-appendix.md?raw';
 
 // NOTE: documents must live inside getStaticPaths — Astro executes
 // getStaticPaths in isolation and cannot see other frontmatter variables.
@@ -23,6 +24,11 @@ export function getStaticPaths() {
       title: 'Appendix A - Nebraska',
       subtitle: 'Sample state appendix. Citations under verification.',
       content: nebraskaAppendix,
+    },
+    'north-dakota-appendix': {
+      title: 'Appendix A - North Dakota',
+      subtitle: 'State appendix. Case line verified against the primary opinions; remaining items flagged.',
+      content: northDakotaAppendix,
     },
   } as const;
   return Object.entries(documents).map(([slug, doc]) => ({
@@ -58,6 +64,7 @@ const { slug, doc } = Astro.props;
     <a href="/writing/hornbook/chapter-1/">Chapter 1</a>
     <a href="/writing/hornbook/trust-character/">Chapter 3</a>
     <a href="/writing/hornbook/nebraska-appendix/">Nebraska appendix</a>
+    <a href="/writing/hornbook/north-dakota-appendix/">North Dakota appendix</a>
     <a href="/for-lawyers/">For lawyers</a>
   </nav>
 
