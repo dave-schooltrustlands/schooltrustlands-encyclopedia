@@ -58,7 +58,7 @@ const draftMappings = [
   },
   {
     label: 'Stewards of the Republic',
-    source: 'L4_Deliverables/_family_builds/stewards_FAMILY_REVIEW_2026-06-08.docx',
+    source: 'L4_Deliverables/_family_builds/stewards_FAMILY_REVIEW_2026-06-14.docx',
     targets: ['public/drafts/stewards-of-the-republic-latest.docx'],
   },
   {
