@@ -18,11 +18,11 @@ Stephen A. Douglas Puter wrote *Looters of the Public Domain* in 1908 while serv
 
 ## Why the Library cites it
 
-Puter is the book the Library reaches for at the points where Oregon's drift narrative turns from structural failure into identifiable criminal practice. The Library's substrate on Oregon — and Hawkes's 1949 archival reconstruction, on which the substrate leans — draws on Puter throughout. *Who Steals from Children*, the Library's Oregon-parents volume, treats the 1900–1905 land-fraud period as the inflection point at which the state's school-trust drift becomes legally cognizable as a breach of fiduciary duty rather than as ordinary bureaucratic neglect. Puter's named participants and dated transactions are the empirical floor under that argument. Every subsequent Oregon land-fraud history runs through this book.
+Puter is the book the Library reaches for at the points where Oregon's drift narrative turns from structural failure into identifiable criminal practice. The Library's substrate on Oregon — and Hawk's 1949 archival reconstruction, on which the substrate leans — draws on Puter throughout. *Who Steals from Children*, the Library's Oregon-parents volume, treats the 1900–1905 land-fraud period as the inflection point at which the state's school-trust drift becomes legally cognizable as a breach of fiduciary duty rather than as ordinary bureaucratic neglect. Puter's named participants and dated transactions are the empirical floor under that argument. Every subsequent Oregon land-fraud history runs through this book.
 
 ## A representative passage
 
-In the chapter on the so-called "11-7" township scheme, Puter walks the reader through the use of dummy entrymen — individuals paid five or ten dollars to file claims on lands they had no intention of settling — and the subsequent assignment of those claims, through forged documents, into the hands of timber speculators. The same land-locator networks that worked the federal entries also worked the state school-trust entries, a point Hawkes traces forward into the state record forty years later.
+In the chapter on the so-called "11-7" township scheme, Puter walks the reader through the use of dummy entrymen — individuals paid five or ten dollars to file claims on lands they had no intention of settling — and the subsequent assignment of those claims, through forged documents, into the hands of timber speculators. The same land-locator networks that worked the federal entries also worked the state school-trust entries, a point Hawk traces forward into the state record forty years later.
 
 ## Where to find it
 

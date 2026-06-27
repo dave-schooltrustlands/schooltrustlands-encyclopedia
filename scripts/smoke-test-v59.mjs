@@ -37,7 +37,7 @@ const LIBRARY_SLUGS = [
   // Category B — Historical scholarship, pre-1950
   'swift-public-permanent-school-funds-1911',
   'knight-1885-northwest-territory-land-grants',
-  'hawkes-oregon-school-land-grant-1949',
+  'hawk-irreducible-school-fund-oregon-1949',
   'mann-twelfth-annual-report-1848',
   'barnard-american-journal-of-education',
   'pierce-michigan-first-annual-report-1837',

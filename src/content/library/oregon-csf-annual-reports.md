@@ -22,7 +22,7 @@ The Common School Fund Annual Reports are the first source any researcher consul
 
 ## A representative figure
 
-The most recent year's report carries the running corpus balance, the annual distribution to the Oregon Department of Education for K-12 distribution, the management-fee structure, and the asset-allocation composition of the invested portfolio. The Library's editorial gloss names the operationally important numbers and notes, where appropriate, the methodological questions the substrate has flagged about how nominal corpus figures relate to recoverable principal — the same kind of gap Hawkes documented for the 1859-1900 period and that the Library believes continues to warrant attention.
+The most recent year's report carries the running corpus balance, the annual distribution to the Oregon Department of Education for K-12 distribution, the management-fee structure, and the asset-allocation composition of the invested portfolio. The Library's editorial gloss names the operationally important numbers and notes, where appropriate, the methodological questions the substrate has flagged about how nominal corpus figures relate to recoverable principal — the same kind of gap Hawk documented for Oregon's disposition era and that the Library believes continues to warrant attention.
 
 ## Where to find it
 
