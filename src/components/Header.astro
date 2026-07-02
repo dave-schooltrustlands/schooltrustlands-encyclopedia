@@ -101,6 +101,7 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
 {SITE_PREVIEW ? <SiteWidePreviewBanner correctHref="/correct/" /> : <LivingEditionLabel />}
 <header
   data-pagefind-ignore
+  data-site-header
   class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur"
 >
   <div class="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 sm:gap-4">
@@ -1060,4 +1061,19 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
       }
     }
   });
+</script>
+
+<script>
+  // 2026-07-02 re-skin: sticky-header elevation on scroll (parity with the
+  // schooltrustlands.net redesign). Progressive enhancement only — without
+  // JS the header keeps its static border.
+  {
+    const siteHeader = document.querySelector('[data-site-header]');
+    if (siteHeader) {
+      const onScroll = () =>
+        siteHeader.classList.toggle('header-scrolled', window.scrollY > 8);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  }
 </script>

@@ -140,7 +140,7 @@ body.mode-library .library-mode-banner[data-state='visible'] {
   border-radius: 4px;
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  color: #475569; /* slate-600 */
+  color: #4c5a70; /* slate-600 */
   line-height: 1.5;
 }
 body.mode-library .library-mode-banner p {
@@ -169,7 +169,7 @@ body.mode-library .library-mode-banner button {
   border-radius: 3px;
   border: 1px solid var(--rule-border);
   background: transparent;
-  color: #475569;
+  color: #4c5a70;
   cursor: pointer;
 }
 body.mode-library .library-mode-banner button:hover {
@@ -217,7 +217,7 @@ body.mode-library .library-mode-banner button:hover {
   border: 0;
   font-family: var(--font-sans);
   font-size: 0.78rem;
-  color: #64748b; /* slate-500 */
+  color: #5f6c80; /* slate-500 */
   cursor: pointer;
   padding: 0.4rem 0.5rem;
 }
@@ -283,7 +283,7 @@ body.mode-library .library-mode-banner button:hover {
 .library-walking-tour .lwt-progress {
   font-family: var(--font-sans);
   font-size: 0.78rem;
-  color: #64748b;
+  color: #5f6c80;
   letter-spacing: 0.04em;
 }
 
@@ -558,11 +558,11 @@ body.mode-library header nav .nav-icon {
   font-family: var(--font-serif, Georgia, serif);
   font-size: 1.15rem;
   font-style: italic;
-  color: #16335C;
+  color: #1b3252;
 }
 .home-declaration__manifesto-attr {
   display: block;
   margin-top: 0.25rem;
   font-size: 0.78rem;
-  color: #6b7280;
+  color: #6d7482;
 }

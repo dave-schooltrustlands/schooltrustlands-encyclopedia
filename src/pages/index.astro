@@ -52,7 +52,7 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
         </p>
       </section>
 
-      <section class="home-poster home-poster--top mt-6" aria-label="The Library's argument in one image">
+      <section class="home-poster home-poster--top mt-6" data-reveal aria-label="The Library's argument in one image">
         <a href="/why/" class="block home-poster__link">
           <img
             src="/img/hero/hero_v1_2026-05-06.png"
@@ -75,7 +75,7 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
         </p>
       </section>
 
-      <section class="home-doors mt-10" aria-label="Three doors into the Library">
+      <section class="home-doors mt-10" data-reveal aria-label="Three doors into the Library">
         <ul class="home-doors__grid">
           <li class="home-door home-door--1">
             <a href="/reading/" class="home-door__link">
@@ -128,7 +128,7 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
         </ul>
       </section>
 
-      <aside class="launch-announcement mt-10">
+      <aside class="launch-announcement mt-10" data-reveal>
         <span class="eyebrow">Catalog</span>
         <p>
           <strong>The Library now has a public catalog.</strong> Browse the
@@ -138,7 +138,7 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
         </p>
       </aside>
 
-      <section class="mt-12" aria-label="Featured entry points">
+      <section class="mt-12" aria-label="Featured entry points" data-reveal>
         <h2 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
           Featured entries
         </h2>
@@ -183,7 +183,7 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
         </ul>
       </section>
 
-      <section class="mt-10 rounded-md border border-slate-200 bg-white p-5 text-sm text-slate-700 shadow-sm">
+      <section class="mt-10 rounded-md border border-slate-200 bg-white p-5 text-sm text-slate-700 shadow-sm" data-reveal>
         <p>
           Nine rooms are live today: <a href="/catalog/">Catalog</a>,
           <a href="/reading/">Reading Room</a>
@@ -210,6 +210,7 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
       <section
         class="mt-10 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-5 shadow-sm"
         aria-label="Why some numbers are blank"
+        data-reveal
       >
         <h2 class="text-base font-semibold tracking-tight text-amber-900">
           Why some numbers are blank
@@ -248,5 +249,29 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
     </main>
     <PrepublicationFooter />
     <Footer />
+    <script>
+      // 2026-07-02 re-skin: restrained scroll-reveal (parity with the
+      // schooltrustlands.net redesign). Gates: prefers-reduced-motion is
+      // honored, and without JS the html never gets .reveal-ready, so all
+      // content stays fully visible.
+      if (
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        'IntersectionObserver' in window
+      ) {
+        document.documentElement.classList.add('reveal-ready');
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px' },
+        );
+        document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+      }
+    </script>
   </body>
 </html>
