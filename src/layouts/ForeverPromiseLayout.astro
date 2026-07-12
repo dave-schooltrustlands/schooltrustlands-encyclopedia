@@ -65,7 +65,6 @@ const BASE = '/writing/forever-promise';
       function setReview(on) {
         document.body.classList.toggle('fp-review-mode', on);
         toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
-        toggle.textContent = on ? 'Reading mode' : 'Review notes';
       }
       setReview(sessionStorage.getItem('fp_review_mode') === 'on');
       toggle.addEventListener('click', function () {
@@ -135,11 +134,11 @@ const BASE = '/writing/forever-promise';
         var art = document.querySelector('article.fp-body');
         if (art) {
           var ps = art.querySelectorAll('p[data-pid]');
-          ps.forEach(function (p) {
+          ps.forEach(function (p, index) {
             var b = el('button', 'fp-sug-btn', '✎');
             b.type = 'button';
             b.title = 'Suggest a change to this paragraph';
-            b.setAttribute('aria-label', 'Suggest a change to this paragraph');
+            b.setAttribute('aria-label', 'Suggest a change to paragraph ' + (index + 1) + ': ' + snippetOf(p).slice(0, 64));
             p.appendChild(b);
             b.addEventListener('click', function () { buildForm(p, p.getAttribute('data-pid'), snippetOf(p), 'paragraph'); });
           });
@@ -155,7 +154,7 @@ const BASE = '/writing/forever-promise';
 <style is:global>
   :root {
     --fp-ink: #1a1a2e; --fp-navy: #1b3252; --fp-deep: #14243c;
-    --fp-gold: #a87f2c; --fp-cream: #f5f1e8; --fp-linen: #fffdf7;
+    --fp-gold: #a87f2c; --fp-gold-dark: #765719; --fp-cream: #f5f1e8; --fp-linen: #fffdf7;
     --fp-rule: #d8d1c2; --fp-serif: 'EB Garamond', Georgia, serif;
     --fp-sans: 'Public Sans', system-ui, sans-serif;
   }
@@ -220,8 +219,8 @@ const BASE = '/writing/forever-promise';
   .fp-fig { display: block; box-sizing: border-box; width: min(61rem, calc(100vw - 3rem)); margin: 3.3rem 50%;
     transform: translateX(-50%); background: #f2eee4; border: 1px solid #d5cbb8; padding: 1rem 1rem 1.1rem;
     box-shadow: 0 1.25rem 3rem rgba(20,36,60,.065); }
-  .fp-fig-eyebrow { display: block; font-family: var(--fp-sans); font-size: 0.67rem; font-weight: 700; letter-spacing: 0.18em;
-    color: var(--fp-gold); margin: .15rem .25rem .75rem; }
+  .fp-fig-eyebrow { display: block; font-family: var(--fp-sans); font-size: 0.69rem; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--fp-gold-dark); margin: .15rem .25rem .75rem; }
   .fp-fig-art { display: block; background: var(--fp-linen); border: 1px solid #ddd5c7; margin-bottom: 1rem; overflow: hidden; }
   .fp-fig-image { display: block; position: relative; }
   .fp-fig-image::after { content: 'Open full size'; position: absolute; right: .7rem; bottom: .65rem; padding: .35rem .5rem;
@@ -235,7 +234,7 @@ const BASE = '/writing/forever-promise';
   .fp-fig-cap.fp-fig-desc { font-style: italic; color: #55554f; }
   .fp-fig-status { display: inline-block; margin: .8rem .25rem 0; padding: .26rem .45rem; border: 1px solid #dacba7;
     background: rgba(255,253,247,.68); font-family: var(--fp-sans); font-size: 0.63rem; line-height: 1.25; letter-spacing: 0.035em; color: #75674a; }
-  .fp-fig-status::before { content: 'PROOF · '; color: var(--fp-gold); font-weight: 700; }
+  .fp-fig-status::before { content: 'PROOF · '; color: var(--fp-gold-dark); font-weight: 700; }
   .fp-fig-link { display: inline-block; margin: .8rem .25rem 0 .65rem; font-family: var(--fp-sans); font-size: 0.7rem; font-weight: 600; color: var(--fp-navy); text-decoration: none; border-bottom: 1px solid var(--fp-gold); }
   .fp-fig-link:hover { color: var(--fp-gold); }
   .fp-fig[data-figure-state='awaiting'] { width: min(46rem, calc(100vw - 3rem)); box-shadow: none; }
@@ -270,8 +269,16 @@ const BASE = '/writing/forever-promise';
   body[data-kind='part'] h1.fp-title { position: relative; z-index: 1; max-width: 34rem; color: #fffaf0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: .98; }
   body[data-kind='part'] .fp-titlemeta { position: relative; z-index: 1; color: #d2c9b7; margin-top: 1.1rem; }
   body[data-kind='part'] .fp-titlemeta a { color: #fff; }
+  body[data-kind='part'] .fp-opener-art-led { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; box-shadow: none; }
+  body[data-kind='part'] .fp-opener-art-led + article.fp-body { margin-top: 0; }
   body[data-kind='part'] article.fp-body > h2:first-child { display: none; }
   body[data-kind='part'] article.fp-body > .fp-fig:first-of-type { margin-top: 0; }
+  body[data-kind='part'] article.fp-body > .fp-fig:first-of-type .fp-fig-eyebrow,
+  body[data-kind='part'] article.fp-body > .fp-fig:first-of-type .fp-fig-cap,
+  body[data-kind='part'] article.fp-body > .fp-fig:first-of-type .fp-fig-status,
+  body[data-kind='part'] article.fp-body > .fp-fig:first-of-type .fp-fig-link { display: none; }
+  body[data-kind='part'] article.fp-body > .fp-fig:first-of-type .fp-fig-art { margin-bottom: 0; }
 
   /* Suggest apparatus */
   .fp-sug-btn { position: static; display: inline-block; margin-left: 0.45rem; padding: 0 0.3rem; border: none; background: none;
@@ -306,6 +313,7 @@ const BASE = '/writing/forever-promise';
     .fp-bar { align-items: stretch; flex-direction: column; gap: 0; padding: .5rem 1rem .55rem; }
     .fp-bar-brand { justify-content: space-between; gap: .75rem; }
     .fp-bar-links { width: 100%; margin: .3rem 0 0; justify-content: flex-start; gap: 1rem; overflow-x: auto; }
+    .fp-bar-links a, .fp-review-toggle { display: inline-flex; align-items: center; min-height: 40px; padding-top: 0; padding-bottom: 0; white-space: nowrap; }
     .fp-main, body[data-kind='home'] .fp-main { padding: 2.2rem 1.25rem 4rem; }
     h1.fp-title { font-size: 2rem; }
     article.fp-body { font-size: 1.14rem; line-height: 1.68; }

@@ -98,7 +98,7 @@ export function fpEnhanceFigures(html: string, figures: any[], pageSlug: string)
       const state = f.image
         ? (/placeholder/i.test(String(f.status || '')) ? 'placeholder' : 'art')
         : 'awaiting';
-      return `<figure class="fp-fig" data-fig="${attr(marker)}" data-figure-state="${state}">${next}</figure>`;
+      return `<figure class="fp-fig" id="figure-${attr(f.id)}" data-fig="${attr(marker)}" data-figure-id="${attr(f.id)}" data-figure-state="${state}">${next}</figure>`;
     },
   );
 }
