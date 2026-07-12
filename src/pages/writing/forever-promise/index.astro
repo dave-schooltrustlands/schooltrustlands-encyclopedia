@@ -20,31 +20,70 @@ for (const item of manifest.toc) {
   else g.items.push(item);
 }
 const first = manifest.toc[0];
+const figures: any[] = (await fpContent(env, 'figures.json')) || [];
+const partOneFigure = figures.find((f) => f.id === 'part-openers');
+const partOne = manifest.toc.find((item: any) => item.slug === 'part-one');
 ---
 <Layout title="Contents" kind="home">
-  <header class="fp-home-head">
-    <p class="fp-eyebrow">America's School Trust Library · {manifest.edition}</p>
-    <h1 class="fp-home-title">The Forever Promise</h1>
-    <p class="fp-home-sub">{manifest.front.subtitle}</p>
-    <p class="fp-home-authors">{manifest.front.authors}</p>
-  </header>
+  <section class="fp-home-hero" aria-labelledby="book-title">
+    <div class="fp-book-object" aria-label="The Forever Promise advance review cover">
+      <div class="fp-book-spine" aria-hidden="true"></div>
+      <div class="fp-book-cover">
+        <p class="fp-cover-kicker">America's School Trust Library</p>
+        <h1 id="book-title">The Forever<br />Promise</h1>
+        <div class="fp-cover-rule" aria-hidden="true"></div>
+        <p class="fp-cover-sub">{manifest.front.subtitle}</p>
+        <div class="fp-cover-grid" aria-hidden="true"><span></span></div>
+        <p class="fp-cover-authors">{manifest.front.authors}</p>
+        <p class="fp-cover-edition">Advance review copy · July 2026</p>
+      </div>
+    </div>
 
-  <div class="fp-home-frontmatter">
-    <div class="fp-front-block" set:html={manifest.front.editionHtml} />
+    <div class="fp-hero-copy">
+      <p class="fp-eyebrow">{manifest.edition}</p>
+      <p class="fp-hero-overline">A national inheritance, opened</p>
+      <p class="fp-home-sub">{manifest.front.subtitle}</p>
+      <p class="fp-home-authors">{manifest.front.authors}</p>
+      <div class="fp-front-block" set:html={manifest.front.editionHtml} />
+      <div class="fp-home-actions">
+        <a class="fp-begin" href={`${BASE}/${first.slug}/`}>Open the book <span aria-hidden="true">→</span></a>
+        <a class="fp-howto" href={`${BASE}/how-this-works/`}>How this private review edition works</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fp-frontispiece" aria-label="Dedication and epigraph">
     <div class="fp-front-block fp-front-dedication" set:html={manifest.front.dedicationHtml} />
     <div class="fp-front-block fp-front-epigraph" set:html={manifest.front.epigraphHtml} />
-  </div>
+  </section>
 
-  <div class="fp-home-actions">
-    <a class="fp-begin" href={`${BASE}/${first.slug}/`}>Begin reading →</a>
-    <a class="fp-howto" href={`${BASE}/how-this-works/`}>New here? How this review copy works</a>
-  </div>
+  {partOneFigure?.image && partOne && (
+    <a class="fp-opening-plate" href={`${BASE}/${partOne.slug}/`}>
+      <img src={`${BASE}/asset/${partOneFigure.image}`} alt={partOneFigure.title} />
+      <span class="fp-opening-plate-copy">
+        <span class="lab">Inside the book</span>
+        <strong>Part One — The Promise</strong>
+        <span>The gift, before the duties and the reckoning.</span>
+      </span>
+      <span class="go" aria-hidden="true">Begin Part One →</span>
+    </a>
+  )}
 
   <nav class="fp-toc" aria-label="Contents">
-    <h2>Contents</h2>
-    {groups.map((g) => (
-      <section class="fp-toc-group">
-        <h3>{g.name}</h3>
+    <div class="fp-toc-head">
+      <div>
+        <p class="fp-eyebrow">Reading map</p>
+        <h2>Contents</h2>
+      </div>
+      <p>Open a part to see its chapters. Reading times are generous estimates, not assignments.</p>
+    </div>
+    {groups.map((g, index) => (
+      <details class="fp-toc-group" open={index < 2}>
+        <summary>
+          <span class="part-no">{String(index + 1).padStart(2, '0')}</span>
+          <span class="part-name">{g.name}</span>
+          <span class="part-meta">{g.items.length} entries · {Math.max(1, Math.round(g.items.reduce((sum, it) => sum + it.words, 0) / 250))} min</span>
+        </summary>
         <ol>
           {g.items.map((it: any) => (
             <li class={`kind-${it.kind}`}>
@@ -55,41 +94,121 @@ const first = manifest.toc[0];
             </li>
           ))}
         </ol>
-      </section>
+      </details>
     ))}
-    <section class="fp-toc-group">
-      <h3>The figures</h3>
+    <details class="fp-toc-group">
+      <summary>
+        <span class="part-no">◈</span>
+        <span class="part-name">The figure program</span>
+        <span class="part-meta">{figures.length} records</span>
+      </summary>
       <ol>
         <li><a href={`${BASE}/figures/`}><span class="t">The figure program — every image the finished book will carry</span></a></li>
       </ol>
-    </section>
+    </details>
   </nav>
 </Layout>
 
 <style>
-  .fp-home-head { text-align: center; border-bottom: 1px solid var(--fp-rule); padding-bottom: 1.8rem; }
-  .fp-home-head .fp-eyebrow::before { margin-left: auto; margin-right: auto; }
-  .fp-home-title { font-family: var(--fp-serif); color: var(--fp-navy); font-size: 3rem; font-weight: 600; letter-spacing: 0.03em; margin: 0.6rem 0 0.7rem; line-height: 1.1; }
-  .fp-home-sub { font-family: var(--fp-serif); font-style: italic; font-size: 1.18rem; color: #33334a; max-width: 34rem; margin: 0 auto 1rem; line-height: 1.5; }
-  .fp-home-authors { font-family: var(--fp-sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fp-gold); }
-  .fp-home-frontmatter { max-width: 34rem; margin: 2rem auto 0; text-align: center; font-size: 1.02rem; line-height: 1.65; color: #3a3a4e; }
-  .fp-front-block { margin-bottom: 1.4rem; }
-  .fp-front-dedication { font-style: italic; }
-  .fp-front-epigraph :global(blockquote) { border: none; margin: 1.1rem 0; padding: 0; font-style: italic; }
-  .fp-home-actions { text-align: center; margin: 2.4rem 0 1rem; }
-  .fp-begin { display: inline-block; background: var(--fp-navy); color: var(--fp-linen); font-family: var(--fp-sans); font-weight: 700; font-size: 0.95rem;
-    padding: 0.75rem 1.6rem; border-radius: 3px; text-decoration: none; }
-  .fp-begin:hover { background: var(--fp-deep); }
-  .fp-howto { display: block; margin-top: 0.9rem; font-family: var(--fp-sans); font-size: 0.82rem; color: var(--fp-navy); }
-  .fp-toc { margin-top: 3rem; }
-  .fp-toc h2 { font-family: var(--fp-serif); font-style: italic; color: var(--fp-navy); font-size: 1.6rem; border-bottom: 2px solid var(--fp-gold); padding-bottom: 0.4rem; }
-  .fp-toc-group h3 { font-family: var(--fp-sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fp-gold); margin: 1.8rem 0 0.5rem; }
-  .fp-toc-group ol { list-style: none; margin: 0; padding: 0; }
-  .fp-toc-group li a { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: 0.42rem 0.5rem; text-decoration: none; color: var(--fp-ink); border-bottom: 1px dotted var(--fp-rule); }
-  .fp-toc-group li a:hover { background: var(--fp-cream); }
-  .fp-toc-group li a .t { font-size: 1.05rem; }
-  .fp-toc-group li a .w { font-family: var(--fp-sans); font-size: 0.68rem; color: #9a927e; white-space: nowrap; }
-  .fp-toc-group li.kind-part a .t { font-family: var(--fp-sans); font-weight: 700; letter-spacing: 0.06em; color: var(--fp-navy); text-transform: uppercase; font-size: 0.85rem; }
+  .fp-home-hero { display: grid; grid-template-columns: minmax(20rem, .88fr) minmax(24rem, 1.12fr); align-items: center;
+    gap: clamp(3rem, 7vw, 7rem); min-height: calc(100vh - 9rem); padding: 1rem 2.2rem 4.5rem; }
+  .fp-book-object { position: relative; justify-self: end; width: min(100%, 25rem); aspect-ratio: 8 / 10; filter: drop-shadow(1.8rem 2rem 2rem rgba(20,36,60,.18)); transform: rotate(-1.4deg); }
+  .fp-book-spine { position: absolute; z-index: 2; left: -1.2rem; top: .7rem; bottom: -.25rem; width: 1.35rem;
+    background: linear-gradient(90deg, #08182c, #1b3252 55%, #0e2038); border-radius: 4px 0 0 4px; transform: skewY(-2deg); }
+  .fp-book-cover { position: absolute; inset: 0; overflow: hidden; box-sizing: border-box; padding: 2.3rem 2.15rem 2rem;
+    display: flex; flex-direction: column; background:
+      radial-gradient(circle at 84% 5%, rgba(255,255,255,.09), transparent 28%),
+      linear-gradient(145deg, #203d63, #14243c 65%);
+    border: 1px solid rgba(255,255,255,.18); box-shadow: inset 0 0 0 1px rgba(0,0,0,.25); color: #fffaf0; }
+  .fp-cover-kicker, .fp-cover-authors, .fp-cover-edition { margin: 0; font-family: var(--fp-sans); text-transform: uppercase; letter-spacing: .16em; }
+  .fp-cover-kicker { color: #d8b862; font-size: .63rem; font-weight: 700; }
+  .fp-book-cover h1 { margin: 2.7rem 0 1.3rem; color: #fffaf0; font-family: var(--fp-serif); font-size: clamp(3.4rem, 6vw, 5rem); line-height: .85; letter-spacing: -.035em; font-weight: 500; }
+  .fp-cover-rule { width: 4.4rem; border-top: 2px solid #caa54b; }
+  .fp-cover-sub { max-width: 18rem; margin: 1.25rem 0 0; color: #e4ddce; font-size: 1rem; line-height: 1.42; font-style: italic; }
+  .fp-cover-grid { position: relative; width: 11.2rem; height: 11.2rem; margin: auto 0 1.4rem auto;
+    background:
+      linear-gradient(rgba(245,241,232,.34) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,241,232,.34) 1px, transparent 1px);
+    background-size: calc(100% / 6) calc(100% / 6); border-right: 1px solid rgba(245,241,232,.34); border-bottom: 1px solid rgba(245,241,232,.34); }
+  .fp-cover-grid span { position: absolute; width: calc(100% / 6); height: calc(100% / 6); left: 50%; top: calc(100% / 3);
+    background: #b98e2e; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
+  .fp-cover-authors { color: #fffaf0; font-size: .66rem; font-weight: 700; line-height: 1.5; }
+  .fp-cover-edition { margin-top: .5rem; color: #cbbfa9; font-size: .55rem; }
+
+  .fp-hero-copy { max-width: 33rem; }
+  .fp-hero-overline { margin: 0 0 .8rem; color: var(--fp-navy); font-size: clamp(2.5rem, 5vw, 4.4rem); line-height: .95; font-weight: 500; letter-spacing: -.03em; }
+  .fp-home-sub { margin: 1.35rem 0 1rem; color: #373744; font-size: 1.35rem; line-height: 1.45; font-style: italic; }
+  .fp-home-authors { margin: 0 0 1.8rem; font-family: var(--fp-sans); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fp-gold); }
+  .fp-front-block { color: #4a4850; font-size: 1.02rem; line-height: 1.62; }
+  .fp-home-actions { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
+  .fp-begin { display: inline-flex; gap: 1.2rem; align-items: center; background: var(--fp-navy); color: var(--fp-linen); font-family: var(--fp-sans);
+    font-weight: 700; font-size: 0.9rem; padding: 0.82rem 1.2rem; text-decoration: none; box-shadow: .35rem .35rem 0 #c2a14f; }
+  .fp-begin:hover { background: var(--fp-deep); transform: translate(-1px,-1px); }
+  .fp-howto { font-family: var(--fp-sans); font-size: 0.76rem; line-height: 1.35; color: var(--fp-navy); }
+
+  .fp-frontispiece { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; max-width: 62rem; margin: 1rem auto 5rem;
+    padding: 3.5rem 4rem; background: rgba(245,241,232,.72); border-top: 1px solid var(--fp-gold); border-bottom: 1px solid var(--fp-rule); }
+  .fp-front-dedication { align-self: center; font-style: italic; font-size: 1.08rem; }
+  .fp-front-epigraph :global(blockquote) { border: none; margin: 0 0 1.1rem; padding: 0; font-style: italic; }
+
+  .fp-opening-plate { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(17rem,.75fr); position: relative; max-width: 68rem;
+    margin: 0 auto 6.5rem; background: #efeade; border: 1px solid #d5cbb8; color: var(--fp-ink); text-decoration: none;
+    box-shadow: 0 1.3rem 3.5rem rgba(20,36,60,.08); }
+  .fp-opening-plate img { display: block; width: 100%; height: 100%; min-height: 25rem; object-fit: cover; border-right: 1px solid #d5cbb8; }
+  .fp-opening-plate-copy { align-self: center; padding: 2.4rem; }
+  .fp-opening-plate-copy .lab { display: block; margin-bottom: 1rem; color: var(--fp-gold); font: 700 .65rem/1 var(--fp-sans); letter-spacing: .16em; text-transform: uppercase; }
+  .fp-opening-plate-copy strong { display: block; color: var(--fp-navy); font: italic 600 2.1rem/1.05 var(--fp-serif); }
+  .fp-opening-plate-copy > span:last-child { display: block; margin-top: 1rem; color: #555148; font-size: 1.04rem; line-height: 1.45; }
+  .fp-opening-plate .go { position: absolute; right: 2.4rem; bottom: 1.8rem; color: var(--fp-navy); font: 700 .72rem/1 var(--fp-sans); }
+  .fp-opening-plate:hover { border-color: var(--fp-gold); }
+
+  .fp-toc { max-width: 62rem; margin: 0 auto; }
+  .fp-toc-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 3rem; margin-bottom: 1.4rem; }
+  .fp-toc-head h2 { margin: .2rem 0 0; color: var(--fp-navy); font: italic 600 3rem/1 var(--fp-serif); }
+  .fp-toc-head > p { margin: 0; color: #696155; font: .8rem/1.55 var(--fp-sans); }
+  .fp-toc-group { border-top: 1px solid var(--fp-rule); }
+  .fp-toc-group:last-child { border-bottom: 1px solid var(--fp-rule); }
+  .fp-toc-group summary { display: grid; grid-template-columns: 3rem 1fr auto; align-items: baseline; gap: 1rem; padding: 1rem .6rem;
+    cursor: pointer; list-style: none; color: var(--fp-navy); }
+  .fp-toc-group summary::-webkit-details-marker { display: none; }
+  .fp-toc-group summary::after { content: '+'; grid-column: 4; color: var(--fp-gold); font: 400 1.2rem/1 var(--fp-sans); }
+  .fp-toc-group[open] summary::after { content: '–'; }
+  .fp-toc-group summary:hover { background: rgba(245,241,232,.72); }
+  .fp-toc-group .part-no { color: var(--fp-gold); font: 700 .66rem/1 var(--fp-sans); letter-spacing: .1em; }
+  .fp-toc-group .part-name { font: 600 1.08rem/1.2 var(--fp-serif); }
+  .fp-toc-group .part-meta { color: #8b8374; font: .66rem/1 var(--fp-sans); white-space: nowrap; }
+  .fp-toc-group ol { list-style: none; margin: 0; padding: 0 0 .9rem 4.6rem; }
+  .fp-toc-group li a { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: .48rem .65rem;
+    text-decoration: none; color: var(--fp-ink); border-left: 1px solid var(--fp-rule); }
+  .fp-toc-group li a:hover { background: var(--fp-cream); border-left-color: var(--fp-gold); }
+  .fp-toc-group li a .t { font-size: 1.04rem; }
+  .fp-toc-group li a .w { font-family: var(--fp-sans); font-size: 0.66rem; color: #9a927e; white-space: nowrap; }
+  .fp-toc-group li.kind-part a .t { font-family: var(--fp-sans); font-weight: 700; letter-spacing: 0.05em; color: var(--fp-navy); text-transform: uppercase; font-size: 0.78rem; }
   .fp-toc-group li.kind-station a .t, .fp-toc-group li.kind-interlude a .t { font-style: italic; }
-  .fp-toc-group li.kind-chapter a .t { padding-left: 1rem; }
+  .fp-toc-group li.kind-chapter a .t { padding-left: .75rem; }
+
+  @media (max-width: 850px) {
+    .fp-home-hero { grid-template-columns: 1fr; min-height: 0; gap: 3.3rem; padding: .5rem 0 4rem; }
+    .fp-book-object { justify-self: center; width: min(78vw, 23rem); }
+    .fp-hero-copy { justify-self: center; max-width: 35rem; }
+    .fp-hero-overline { font-size: clamp(2.8rem, 11vw, 4.2rem); }
+    .fp-frontispiece { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem; }
+    .fp-opening-plate { grid-template-columns: 1fr; }
+    .fp-opening-plate img { min-height: 0; border-right: 0; border-bottom: 1px solid #d5cbb8; }
+    .fp-opening-plate-copy { padding: 1.6rem 1.4rem 3.8rem; }
+    .fp-opening-plate .go { left: 1.4rem; right: auto; bottom: 1.35rem; }
+    .fp-toc-head { grid-template-columns: 1fr; gap: 1rem; }
+  }
+  @media (max-width: 540px) {
+    .fp-book-cover { padding: 1.8rem 1.6rem 1.5rem; }
+    .fp-book-cover h1 { margin-top: 2rem; font-size: clamp(3.2rem, 18vw, 4.35rem); }
+    .fp-cover-grid { width: 8.6rem; height: 8.6rem; }
+    .fp-home-actions { align-items: flex-start; flex-direction: column; }
+    .fp-opening-plate { margin-bottom: 4.5rem; }
+    .fp-toc-group summary { grid-template-columns: 2.2rem 1fr auto; gap: .55rem; }
+    .fp-toc-group summary::after { grid-column: 3; grid-row: 2; justify-self: end; }
+    .fp-toc-group .part-meta { grid-column: 2; }
+    .fp-toc-group ol { padding-left: 2.75rem; }
+    .fp-toc-group li a .t { font-size: .98rem; }
+  }
 </style>

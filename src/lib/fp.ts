@@ -40,3 +40,65 @@ export async function fpContent<T = any>(env: any, name: string): Promise<T | nu
   if (!obj) return null;
   return (await obj.json()) as T;
 }
+
+const attr = (value: unknown): string =>
+  String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+function figureForMarker(figures: any[], marker: string, pageSlug: string): any | null {
+  const exact = figures.find((f) => String(f?.num || '').toLowerCase() === marker.toLowerCase()
+    && (!f?.where?.slug || f.where.slug === pageSlug));
+  if (exact) return exact;
+  if (/^part openers?$/i.test(marker)) {
+    return figures.find((f) => f?.where?.slug === pageSlug && /^part-opener/.test(String(f?.id || '')))
+      || figures.find((f) => f?.id === 'part-openers')
+      || null;
+  }
+  return figures.find((f) => String(f?.num || '').toLowerCase() === marker.toLowerCase())
+    || figures.find((f) => String(f?.id || '').toLowerCase() === marker.toLowerCase())
+    || null;
+}
+
+/**
+ * Reconciles the manuscript's stable figure anchors with the authoritative
+ * R2 figure register at render time. The manuscript remains untouched, while
+ * finished art, designed evidence placeholders, and current status language
+ * can never drift from the figure record again.
+ */
+export function fpEnhanceFigures(html: string, figures: any[], pageSlug: string): string {
+  if (!html || !figures?.length) return html;
+  return html.replace(
+    /<div class="fp-fig" data-fig="([^"]+)">([\s\S]*?)<\/div>/g,
+    (whole, marker: string, inside: string) => {
+      const f = figureForMarker(figures, marker, pageSlug);
+      if (!f) return whole;
+
+      let next = inside.replace(
+        /<span class="fp-fig-status">[\s\S]*?<\/span>/,
+        `<span class="fp-fig-status">${attr(f.status)}</span>`,
+      );
+
+      if (f.image) {
+        const imageUrl = `${FP_PREFIX}/asset/${encodeURIComponent(f.image)}`;
+        const recordUrl = `${FP_PREFIX}/figures/${encodeURIComponent(f.id)}/`;
+        const art = `<span class="fp-fig-art"><a class="fp-fig-image" href="${imageUrl}" target="_blank" rel="noopener" aria-label="Open ${attr(f.title)} at full size"><img src="${imageUrl}" alt="${attr(f.title)}" loading="lazy" decoding="async" /></a></span><span class="fp-fig-cap`;
+        next = next.replace(
+          /<span class="fp-fig-art">[\s\S]*?<\/span><span class="fp-fig-cap/,
+          art,
+        );
+        next = next.replace(
+          /<a class="fp-fig-link"[^>]*>[\s\S]*?<\/a>/,
+          `<a class="fp-fig-link" href="${recordUrl}">Caption, sources &amp; production record &rarr;</a>`,
+        );
+      }
+
+      const state = f.image
+        ? (/placeholder/i.test(String(f.status || '')) ? 'placeholder' : 'art')
+        : 'awaiting';
+      return `<figure class="fp-fig" data-fig="${attr(marker)}" data-figure-state="${state}">${next}</figure>`;
+    },
+  );
+}

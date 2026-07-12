@@ -2,7 +2,7 @@
 // One reading page per chapter / station / interlude / appendix.
 export const prerender = false;
 import Layout from '../../../layouts/ForeverPromiseLayout.astro';
-import { fpEnv, fpContent } from '../../../lib/fp';
+import { fpEnv, fpContent, fpEnhanceFigures } from '../../../lib/fp';
 
 const env = fpEnv(Astro.locals);
 const { slug } = Astro.params;
@@ -15,15 +15,21 @@ if (!page) {
 }
 const BASE = '/writing/forever-promise';
 const mins = Math.max(1, Math.round(page.words / 250));
+const figures: any[] = (await fpContent(env, 'figures.json')) || [];
+const pageHtml = fpEnhanceFigures(page.html, figures, page.slug);
+const chapterDeck = page.slug === 'chapter-1'
+  ? 'The inheritance is real, it is large, and it is invisible.'
+  : '';
 ---
 <Layout title={page.title} kind={page.kind} pageSlug={page.slug} suggest={true}>
-  <header class={page.kind === 'part' ? 'fp-opener' : ''}>
+  <header class={page.kind === 'part' ? 'fp-opener' : 'fp-chapter-head'}>
     {page.eyebrow && <p class="fp-eyebrow">{page.eyebrow}</p>}
     <h1 class="fp-title">{page.title}</h1>
+    {chapterDeck && <p class="fp-chapter-deck">{chapterDeck}</p>}
     <p class="fp-titlemeta">{mins} minute read · <a href={`${BASE}/`}>Contents</a></p>
   </header>
 
-  <article class="fp-body" set:html={page.html} />
+  <article class="fp-body" set:html={pageHtml} />
 
   <div class="fp-general">
     <p>Something about this whole section — its order, its tone, what it leaves out?</p>
