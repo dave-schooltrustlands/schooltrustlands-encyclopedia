@@ -1,0 +1,229 @@
+---
+// Private review-edition layout for THE FOREVER PROMISE.
+// Self-contained on purpose: no site Header/Footer, no analytics beyond the
+// site's own, no links out to (or in from) public navigation. noindex everywhere.
+interface Props {
+  title: string;
+  eyebrow?: string;
+  kind?: string;
+  pageSlug?: string;   // enables the suggest-a-change apparatus when set
+  suggest?: boolean;
+}
+const { title, eyebrow = '', kind = 'page', pageSlug = '', suggest = false } = Astro.props;
+const BASE = '/writing/forever-promise';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>{title} · The Forever Promise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body data-kind={kind}>
+  <nav class="fp-bar">
+    <a class="fp-bar-title" href={`${BASE}/`}>The Forever Promise</a>
+    <span class="fp-bar-tag">Advance review copy</span>
+    <span class="fp-bar-links">
+      <a href={`${BASE}/`}>Contents</a>
+      <a href={`${BASE}/figures/`}>Figures</a>
+      <a href={`${BASE}/how-this-works/`}>How to help</a>
+    </span>
+  </nav>
+  <main class="fp-main">
+    <slot />
+  </main>
+  <footer class="fp-foot">
+    <p>Advance review copy — July 2026. Not for sale or citation.</p>
+    <p>America's School Trust Library · private reading room for the review crew</p>
+  </footer>
+
+  {suggest && (
+    <script is:inline define:vars={{ pageSlug }}>
+      (function () {
+        var page = pageSlug;
+        var openBox = null;
+        function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+        function closeBox() { if (openBox) { openBox.remove(); openBox = null; } }
+        function snippetOf(p) {
+          var t = (p.innerText || '').replace(/\s+/g, ' ').trim();
+          return t.length > 240 ? t.slice(0, 240) + '…' : t;
+        }
+        function buildForm(anchor, pid, snippet, kind) {
+          closeBox();
+          var box = el('div', 'fp-sug-box');
+          var head = el('p', 'fp-sug-head', kind === 'general' ? 'A note on this whole section' : 'Suggest a change');
+          box.appendChild(head);
+          if (kind !== 'general') {
+            var q = el('p', 'fp-sug-quote', '“' + snippet + '”');
+            box.appendChild(q);
+          }
+          var nameLab = el('label', 'fp-sug-label', 'Your name');
+          var name = el('input', 'fp-sug-name'); name.type = 'text';
+          name.value = localStorage.getItem('fp_name') || '';
+          var sugLab = el('label', 'fp-sug-label', kind === 'general' ? 'Your note' : 'What would you change, and to what?');
+          var ta = el('textarea', 'fp-sug-text'); ta.rows = 4;
+          var row = el('div', 'fp-sug-row');
+          var send = el('button', 'fp-sug-send', 'Send to the writing crew'); send.type = 'button';
+          var cancel = el('button', 'fp-sug-cancel', 'Cancel'); cancel.type = 'button';
+          row.appendChild(send); row.appendChild(cancel);
+          box.appendChild(nameLab); box.appendChild(name);
+          box.appendChild(sugLab); box.appendChild(ta);
+          box.appendChild(row);
+          cancel.addEventListener('click', closeBox);
+          send.addEventListener('click', function () {
+            var suggestion = ta.value.trim();
+            if (!suggestion) { ta.focus(); return; }
+            localStorage.setItem('fp_name', name.value.trim());
+            send.disabled = true; send.textContent = 'Sending…';
+            fetch('/api/fp-suggest', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({ page: page, pid: pid, snippet: snippet, name: name.value.trim(), suggestion: suggestion, kind: kind }),
+            }).then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); }).then(function () {
+              box.innerHTML = '';
+              box.appendChild(el('p', 'fp-sug-done', 'Received — thank you. The writing crew will fold this into the next draft.'));
+              setTimeout(closeBox, 4000);
+            }).catch(function () {
+              send.disabled = false; send.textContent = 'Send to the writing crew';
+              var err = box.querySelector('.fp-sug-err') || box.insertBefore(el('p', 'fp-sug-err'), row);
+              err.textContent = 'That didn’t go through — please try once more, or copy your note and email it to the crew.';
+            });
+          });
+          anchor.insertAdjacentElement('afterend', box);
+          openBox = box;
+          ta.focus();
+        }
+        var art = document.querySelector('article.fp-body');
+        if (art) {
+          var ps = art.querySelectorAll('p[data-pid]');
+          ps.forEach(function (p) {
+            var b = el('button', 'fp-sug-btn', '✎');
+            b.type = 'button';
+            b.title = 'Suggest a change to this paragraph';
+            b.setAttribute('aria-label', 'Suggest a change to this paragraph');
+            p.appendChild(b);
+            b.addEventListener('click', function () { buildForm(p, p.getAttribute('data-pid'), snippetOf(p), 'paragraph'); });
+          });
+        }
+        var gen = document.getElementById('fp-general-open');
+        if (gen) gen.addEventListener('click', function () { buildForm(gen, 'general', '', 'general'); });
+      })();
+    </script>
+  )}
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --fp-ink: #1a1a2e; --fp-navy: #1b3252; --fp-deep: #14243c;
+    --fp-gold: #a87f2c; --fp-cream: #f5f1e8; --fp-linen: #fffdf7;
+    --fp-rule: #d8d1c2; --fp-serif: 'EB Garamond', Georgia, serif;
+    --fp-sans: 'Public Sans', system-ui, sans-serif;
+  }
+  html { background: var(--fp-linen); }
+  body { margin: 0; color: var(--fp-ink); font-family: var(--fp-serif); }
+
+  .fp-bar { position: sticky; top: 0; z-index: 40; display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+    background: var(--fp-deep); color: var(--fp-cream); padding: 0.55rem 1.2rem; font-family: var(--fp-sans); }
+  .fp-bar-title { color: var(--fp-cream); text-decoration: none; font-family: var(--fp-serif); font-style: italic; font-size: 1.02rem; }
+  .fp-bar-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fp-gold); }
+  .fp-bar-links { margin-left: auto; display: flex; gap: 1rem; }
+  .fp-bar-links a { color: #e8e2d4; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.03em; border-bottom: 1px solid transparent; }
+  .fp-bar-links a:hover { color: #fff; border-bottom-color: var(--fp-gold); }
+
+  .fp-main { max-width: 46rem; margin: 0 auto; padding: 2.6rem 1.4rem 4rem; }
+
+  .fp-eyebrow { font-family: var(--fp-sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--fp-gold); margin: 0 0 0.55rem; }
+  .fp-eyebrow::before { content: ''; display: block; width: 3.2rem; border-top: 2px solid var(--fp-gold); margin-bottom: 0.55rem; }
+  h1.fp-title { font-family: var(--fp-serif); font-style: italic; font-weight: 600; color: var(--fp-navy);
+    font-size: 2.15rem; line-height: 1.2; margin: 0 0 0.4rem; }
+  .fp-titlemeta { font-family: var(--fp-sans); font-size: 0.78rem; color: #6b6455; margin: 0.4rem 0 0; }
+
+  article.fp-body { margin-top: 2.2rem; font-size: 1.16rem; line-height: 1.78; }
+  article.fp-body p { margin: 0 0 1.05em; position: relative; }
+  article.fp-body h2 { font-family: var(--fp-serif); font-weight: 600; color: var(--fp-navy); font-size: 1.5rem; line-height: 1.3; margin: 2.2em 0 0.7em; }
+  article.fp-body h3 { font-family: var(--fp-serif); font-style: italic; font-weight: 600; color: var(--fp-navy); font-size: 1.22rem; margin: 1.9em 0 0.6em; }
+  article.fp-body blockquote { margin: 1.4em 0 1.4em 0.2em; padding: 0.1em 0 0.1em 1.1em; border-left: 1px solid var(--fp-navy);
+    font-style: italic; color: #2a2a40; }
+  article.fp-body blockquote em { font-style: normal; }
+  article.fp-body hr { border: none; text-align: center; margin: 2.2em 0; }
+  article.fp-body hr::after { content: '❦'; color: var(--fp-gold); font-size: 1.05rem; }
+  article.fp-body a { color: var(--fp-navy); text-decoration: underline; text-decoration-color: rgba(27,50,82,0.4); text-underline-offset: 2px; }
+  article.fp-body a:hover { text-decoration-color: var(--fp-gold); }
+  article.fp-body table { border-collapse: collapse; font-family: var(--fp-sans); font-size: 0.86rem; line-height: 1.5; margin: 1.6em 0; width: 100%; }
+  article.fp-body th { text-align: left; background: var(--fp-cream); color: var(--fp-deep); font-weight: 700; }
+  article.fp-body th, article.fp-body td { border: 1px solid var(--fp-rule); padding: 0.45rem 0.6rem; vertical-align: top; }
+  article.fp-body sup.footnote-ref a { text-decoration: none; color: var(--fp-gold); font-family: var(--fp-sans); font-size: 0.72em; }
+  .footnotes-sep { display: none; }
+  section.footnotes { margin-top: 3rem; border-top: 1px solid var(--fp-rule); padding-top: 1.2rem; font-size: 0.95rem; line-height: 1.6; color: #3a3a4e; }
+  section.footnotes ol { padding-left: 1.4rem; }
+  section.footnotes li { margin-bottom: 0.55em; }
+  a.footnote-backref { text-decoration: none; }
+
+  /* Figure panels */
+  .fp-fig { display: block; background: var(--fp-cream); border: 1px solid var(--fp-rule); padding: 1.15rem 1.3rem 1.05rem; margin: 2rem 0; }
+  .fp-fig-eyebrow { display: block; font-family: var(--fp-sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; color: var(--fp-gold); margin-bottom: 0.7rem; }
+  .fp-fig-art { display: block; background: var(--fp-linen); border: 1px solid var(--fp-rule); margin-bottom: 0.8rem; }
+  .fp-fig-art img { display: block; width: 100%; height: auto; }
+  .fp-fig-hold { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 7.5rem; padding: 1.4rem 1.2rem;
+    font-family: var(--fp-sans); font-size: 0.92rem; color: var(--fp-navy); }
+  .fp-fig-cap { display: block; font-family: var(--fp-sans); font-size: 0.84rem; line-height: 1.55; color: #33333f; }
+  .fp-fig-cap.fp-fig-desc { font-style: italic; color: #55554f; }
+  .fp-fig-status { display: block; margin-top: 0.55rem; font-family: var(--fp-sans); font-size: 0.72rem; letter-spacing: 0.04em; color: #75674a; }
+  .fp-fig-status::before { content: '◈ '; color: var(--fp-gold); }
+  .fp-fig-link { display: inline-block; margin-top: 0.45rem; font-family: var(--fp-sans); font-size: 0.76rem; font-weight: 600; color: var(--fp-navy); text-decoration: none; border-bottom: 1px solid var(--fp-gold); }
+  .fp-fig-link:hover { color: var(--fp-gold); }
+  a.fp-callout { color: var(--fp-navy); text-decoration: underline dotted; text-decoration-color: var(--fp-gold); text-underline-offset: 2px; }
+
+  /* Prev / next */
+  .fp-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 3.2rem; font-family: var(--fp-sans); }
+  .fp-nav a { display: block; background: var(--fp-cream); border: 1px solid var(--fp-rule); padding: 0.8rem 1rem; text-decoration: none; color: var(--fp-navy); }
+  .fp-nav a:hover { border-color: var(--fp-gold); }
+  .fp-nav .lab { display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fp-gold); margin-bottom: 0.25rem; }
+  .fp-nav .ttl { font-family: var(--fp-serif); font-style: italic; font-size: 1.02rem; }
+  .fp-nav .next { text-align: right; grid-column: 2; }
+
+  /* Broadside (the Muster) */
+  body[data-kind='muster'] article.fp-body { background: var(--fp-cream); border: 3px double var(--fp-navy); outline: 1px solid var(--fp-rule);
+    padding: 2.4rem 2rem; text-align: center; }
+  body[data-kind='muster'] article.fp-body p { margin-bottom: 1.2em; }
+  body[data-kind='muster'] article.fp-body strong { font-family: var(--fp-sans); letter-spacing: 0.12em; color: var(--fp-navy); }
+
+  /* Part opener */
+  body[data-kind='part'] .fp-opener { background: var(--fp-cream); border-top: 3px solid var(--fp-navy); border-bottom: 1px solid var(--fp-rule);
+    padding: 2.2rem 1.6rem 1.8rem; margin: 0 -1.6rem; }
+  body[data-kind='part'] h1.fp-title { font-size: 2.5rem; }
+
+  /* Suggest apparatus */
+  .fp-sug-btn { position: static; display: inline-block; margin-left: 0.45rem; padding: 0 0.3rem; border: none; background: none;
+    color: var(--fp-gold); font-size: 0.85em; line-height: 1; cursor: pointer; opacity: 0; transition: opacity 0.15s; vertical-align: baseline; }
+  article.fp-body p:hover .fp-sug-btn, .fp-sug-btn:focus { opacity: 0.85; }
+  @media (hover: none) { .fp-sug-btn { opacity: 0.4; } }
+  .fp-sug-box { background: var(--fp-linen); border: 1px solid var(--fp-gold); border-left-width: 3px; padding: 1rem 1.1rem; margin: 0.8rem 0 1.4rem; font-family: var(--fp-sans); }
+  .fp-sug-head { margin: 0 0 0.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fp-navy); }
+  .fp-sug-quote { margin: 0 0 0.7rem; font-family: var(--fp-serif); font-style: italic; font-size: 0.95rem; color: #55555f; }
+  .fp-sug-label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6455; margin: 0.7rem 0 0.25rem; }
+  .fp-sug-name, .fp-sug-text { width: 100%; box-sizing: border-box; border: 1px solid var(--fp-rule); border-radius: 3px; background: #fff;
+    font-family: var(--fp-sans); font-size: 0.92rem; padding: 0.45rem 0.55rem; }
+  .fp-sug-row { display: flex; gap: 0.6rem; margin-top: 0.8rem; }
+  .fp-sug-send { background: var(--fp-navy); color: var(--fp-linen); border: none; border-radius: 3px; padding: 0.5rem 0.9rem; font-family: var(--fp-sans); font-weight: 700; font-size: 0.8rem; cursor: pointer; }
+  .fp-sug-send:hover { background: var(--fp-deep); }
+  .fp-sug-cancel { background: none; border: 1px solid var(--fp-rule); border-radius: 3px; padding: 0.5rem 0.9rem; font-size: 0.8rem; color: #6b6455; cursor: pointer; }
+  .fp-sug-done { margin: 0; font-size: 0.92rem; color: #2f6f4e; font-weight: 600; }
+  .fp-sug-err { margin: 0.5rem 0 0; font-size: 0.8rem; color: #7a2e2e; }
+  .fp-general { margin-top: 3rem; border-top: 1px solid var(--fp-rule); padding-top: 1.4rem; }
+  .fp-general p { font-size: 1rem; font-style: italic; color: #55554f; }
+  #fp-general-open { background: none; border: 1px solid var(--fp-gold); border-radius: 3px; color: var(--fp-navy);
+    font-family: var(--fp-sans); font-size: 0.82rem; font-weight: 600; padding: 0.55rem 1rem; cursor: pointer; }
+  #fp-general-open:hover { background: var(--fp-cream); }
+
+  .fp-foot { border-top: 1px solid var(--fp-rule); margin-top: 2rem; padding: 1.6rem 1.4rem 2.4rem; text-align: center;
+    font-family: var(--fp-sans); font-size: 0.74rem; color: #8a8272; }
+  .fp-foot p { margin: 0.2rem 0; }
+  @media (max-width: 560px) { h1.fp-title { font-size: 1.7rem; } .fp-main { padding-top: 1.8rem; } .fp-bar-links { margin-left: 0; } }
+</style>

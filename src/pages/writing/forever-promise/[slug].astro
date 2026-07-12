@@ -1,0 +1,47 @@
+---
+// One reading page per chapter / station / interlude / appendix.
+export const prerender = false;
+import Layout from '../../../layouts/ForeverPromiseLayout.astro';
+import { fpEnv, fpContent } from '../../../lib/fp';
+
+const env = fpEnv(Astro.locals);
+const { slug } = Astro.params;
+const safe = String(slug || '').replace(/[^a-z0-9-]/g, '');
+const page: any = safe ? await fpContent(env, `pages/${safe}.json`) : null;
+if (!page) {
+  return new Response('That page of the review copy is not on the shelf. Try the contents page.', {
+    status: 404, headers: { 'content-type': 'text/plain; charset=utf-8' },
+  });
+}
+const BASE = '/writing/forever-promise';
+const mins = Math.max(1, Math.round(page.words / 250));
+---
+<Layout title={page.title} kind={page.kind} pageSlug={page.slug} suggest={true}>
+  <header class={page.kind === 'part' ? 'fp-opener' : ''}>
+    {page.eyebrow && <p class="fp-eyebrow">{page.eyebrow}</p>}
+    <h1 class="fp-title">{page.title}</h1>
+    <p class="fp-titlemeta">{mins} minute read · <a href={`${BASE}/`}>Contents</a></p>
+  </header>
+
+  <article class="fp-body" set:html={page.html} />
+
+  <div class="fp-general">
+    <p>Something about this whole section — its order, its tone, what it leaves out?</p>
+    <button id="fp-general-open" type="button">Leave a note on this section</button>
+  </div>
+
+  <nav class="fp-nav" aria-label="Book navigation">
+    {page.prev && (
+      <a class="prev" href={`${BASE}/${page.prev.slug}/`}>
+        <span class="lab">← Previous</span>
+        <span class="ttl">{page.prev.title}</span>
+      </a>
+    )}
+    {page.next && (
+      <a class="next" href={`${BASE}/${page.next.slug}/`}>
+        <span class="lab">Next →</span>
+        <span class="ttl">{page.next.title}</span>
+      </a>
+    )}
+  </nav>
+</Layout>

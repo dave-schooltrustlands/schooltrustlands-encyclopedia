@@ -1,0 +1,95 @@
+---
+// THE FOREVER PROMISE — private review edition home / table of contents.
+// Server-rendered; content fetched from R2. Gated by src/middleware.ts.
+export const prerender = false;
+import Layout from '../../../layouts/ForeverPromiseLayout.astro';
+import { fpEnv, fpContent } from '../../../lib/fp';
+
+const env = fpEnv(Astro.locals);
+const manifest: any = await fpContent(env, 'manifest.json');
+if (!manifest) {
+  return new Response('The book is being shelved — please check back in a few minutes.', {
+    status: 503, headers: { 'content-type': 'text/plain; charset=utf-8' },
+  });
+}
+const BASE = '/writing/forever-promise';
+const groups: { name: string; items: any[] }[] = [];
+for (const item of manifest.toc) {
+  const g = groups[groups.length - 1];
+  if (!g || g.name !== item.group) groups.push({ name: item.group, items: [item] });
+  else g.items.push(item);
+}
+const first = manifest.toc[0];
+---
+<Layout title="Contents" kind="home">
+  <header class="fp-home-head">
+    <p class="fp-eyebrow">America's School Trust Library · {manifest.edition}</p>
+    <h1 class="fp-home-title">The Forever Promise</h1>
+    <p class="fp-home-sub">{manifest.front.subtitle}</p>
+    <p class="fp-home-authors">{manifest.front.authors}</p>
+  </header>
+
+  <div class="fp-home-frontmatter">
+    <div class="fp-front-block" set:html={manifest.front.editionHtml} />
+    <div class="fp-front-block fp-front-dedication" set:html={manifest.front.dedicationHtml} />
+    <div class="fp-front-block fp-front-epigraph" set:html={manifest.front.epigraphHtml} />
+  </div>
+
+  <div class="fp-home-actions">
+    <a class="fp-begin" href={`${BASE}/${first.slug}/`}>Begin reading →</a>
+    <a class="fp-howto" href={`${BASE}/how-this-works/`}>New here? How this review copy works</a>
+  </div>
+
+  <nav class="fp-toc" aria-label="Contents">
+    <h2>Contents</h2>
+    {groups.map((g) => (
+      <section class="fp-toc-group">
+        <h3>{g.name}</h3>
+        <ol>
+          {g.items.map((it: any) => (
+            <li class={`kind-${it.kind}`}>
+              <a href={`${BASE}/${it.slug}/`}>
+                <span class="t">{it.title}</span>
+                <span class="w">{Math.max(1, Math.round(it.words / 250))} min</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+    <section class="fp-toc-group">
+      <h3>The figures</h3>
+      <ol>
+        <li><a href={`${BASE}/figures/`}><span class="t">The figure program — every image the finished book will carry</span></a></li>
+      </ol>
+    </section>
+  </nav>
+</Layout>
+
+<style>
+  .fp-home-head { text-align: center; border-bottom: 1px solid var(--fp-rule); padding-bottom: 1.8rem; }
+  .fp-home-head .fp-eyebrow::before { margin-left: auto; margin-right: auto; }
+  .fp-home-title { font-family: var(--fp-serif); color: var(--fp-navy); font-size: 3rem; font-weight: 600; letter-spacing: 0.03em; margin: 0.6rem 0 0.7rem; line-height: 1.1; }
+  .fp-home-sub { font-family: var(--fp-serif); font-style: italic; font-size: 1.18rem; color: #33334a; max-width: 34rem; margin: 0 auto 1rem; line-height: 1.5; }
+  .fp-home-authors { font-family: var(--fp-sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fp-gold); }
+  .fp-home-frontmatter { max-width: 34rem; margin: 2rem auto 0; text-align: center; font-size: 1.02rem; line-height: 1.65; color: #3a3a4e; }
+  .fp-front-block { margin-bottom: 1.4rem; }
+  .fp-front-dedication { font-style: italic; }
+  .fp-front-epigraph :global(blockquote) { border: none; margin: 1.1rem 0; padding: 0; font-style: italic; }
+  .fp-home-actions { text-align: center; margin: 2.4rem 0 1rem; }
+  .fp-begin { display: inline-block; background: var(--fp-navy); color: var(--fp-linen); font-family: var(--fp-sans); font-weight: 700; font-size: 0.95rem;
+    padding: 0.75rem 1.6rem; border-radius: 3px; text-decoration: none; }
+  .fp-begin:hover { background: var(--fp-deep); }
+  .fp-howto { display: block; margin-top: 0.9rem; font-family: var(--fp-sans); font-size: 0.82rem; color: var(--fp-navy); }
+  .fp-toc { margin-top: 3rem; }
+  .fp-toc h2 { font-family: var(--fp-serif); font-style: italic; color: var(--fp-navy); font-size: 1.6rem; border-bottom: 2px solid var(--fp-gold); padding-bottom: 0.4rem; }
+  .fp-toc-group h3 { font-family: var(--fp-sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fp-gold); margin: 1.8rem 0 0.5rem; }
+  .fp-toc-group ol { list-style: none; margin: 0; padding: 0; }
+  .fp-toc-group li a { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: 0.42rem 0.5rem; text-decoration: none; color: var(--fp-ink); border-bottom: 1px dotted var(--fp-rule); }
+  .fp-toc-group li a:hover { background: var(--fp-cream); }
+  .fp-toc-group li a .t { font-size: 1.05rem; }
+  .fp-toc-group li a .w { font-family: var(--fp-sans); font-size: 0.68rem; color: #9a927e; white-space: nowrap; }
+  .fp-toc-group li.kind-part a .t { font-family: var(--fp-sans); font-weight: 700; letter-spacing: 0.06em; color: var(--fp-navy); text-transform: uppercase; font-size: 0.85rem; }
+  .fp-toc-group li.kind-station a .t, .fp-toc-group li.kind-interlude a .t { font-style: italic; }
+  .fp-toc-group li.kind-chapter a .t { padding-left: 1rem; }
+</style>

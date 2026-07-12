@@ -1,0 +1,66 @@
+---
+// The review-crew page: plain-language orientation for the book's readers.
+export const prerender = false;
+import Layout from '../../../layouts/ForeverPromiseLayout.astro';
+---
+<Layout title="How this review copy works" kind="howto">
+  <header>
+    <p class="fp-eyebrow">For the Review Crew</p>
+    <h1 class="fp-title">How this review copy works</h1>
+  </header>
+  <article class="fp-body fp-howto-body">
+    <p>Welcome. What you are holding is the complete advance draft of <em>The Forever Promise</em> —
+    every chapter, the witness stations and interludes, the Muster, the Coda, and the three appendices —
+    set as a private reading room. It is not public: no search engine can see it, nothing on the
+    website links to it, and only people given the passcode can open it.</p>
+
+    <h2>Reading</h2>
+    <p>Start anywhere. The <a href="/writing/forever-promise/">contents page</a> lists everything in
+    reading order, and every page ends with a link to the next. Each page notes its reading time.
+    Notes appear at the bottom of each page, numbered afresh on every page.</p>
+
+    <h2>The pictures</h2>
+    <p>The book's photographs, maps, and drawings are still arriving. Where a picture will stand, you
+    will see a labeled panel describing it; each panel links to a page about that figure — what it will
+    show, where it appears, and where things stand. The <a href="/writing/forever-promise/figures/">figures
+    page</a> lists the whole program. As each image lands it will appear in place, and the words around
+    it will not move.</p>
+
+    <h2>Suggesting a change</h2>
+    <p>This is the important part, and it was built to take less effort than a pencil in a margin:</p>
+    <ul>
+      <li>Rest your cursor on any paragraph (on a phone or tablet, just look for the small
+      <span class="pencil">✎</span> at the end of the paragraph) and a pencil appears.</li>
+      <li>Tap the pencil, write what you would change — a word, a sentence, a worry, a memory the
+      passage stirred that belongs in the book — and add your name.</li>
+      <li>Press send. That is all.</li>
+    </ul>
+    <p>For thoughts about a whole chapter — its order, its tone, something it leaves out — every page
+    has a note box at the bottom.</p>
+
+    <h2>What happens to your suggestions</h2>
+    <p>Every suggestion goes straight to the writing crew's desk, attached to the exact paragraph you
+    marked. The crew gathers them, weighs them, and folds them into the next draft — and nothing
+    changes in this book without the authors. You cannot break anything, you cannot mark too much,
+    and no suggestion is too small. If a sentence made you stumble, that stumble is exactly what this
+    copy exists to catch.</p>
+
+    <h2>One request</h2>
+    <p>Please treat this copy as the private thing it is — an accounting still being checked. The
+    passcode is yours to use, not to pass on; when the book is ready for the world, it will go to the
+    world properly.</p>
+
+    <p class="fp-howto-close"><em>Thank you for standing this watch with us.</em></p>
+  </article>
+  <p class="fp-back"><a href="/writing/forever-promise/">← To the contents page</a></p>
+</Layout>
+
+<style>
+  .fp-howto-body h2 { margin-top: 1.8em; }
+  .fp-howto-body ul { padding-left: 1.4rem; }
+  .fp-howto-body li { margin-bottom: 0.6em; }
+  .pencil { color: var(--fp-gold); }
+  .fp-howto-close { margin-top: 2rem; }
+  .fp-back { margin-top: 2rem; font-family: var(--fp-sans); font-size: 0.85rem; }
+  .fp-back a { color: var(--fp-navy); }
+</style>

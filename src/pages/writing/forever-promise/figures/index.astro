@@ -1,0 +1,55 @@
+---
+// The figure program — index of every figure the finished book will carry.
+export const prerender = false;
+import Layout from '../../../../layouts/ForeverPromiseLayout.astro';
+import { fpEnv, fpContent } from '../../../../lib/fp';
+
+const env = fpEnv(Astro.locals);
+const figures: any[] = (await fpContent(env, 'figures.json')) || [];
+if (!figures.length) {
+  return new Response('The figure register is being shelved — please check back shortly.', {
+    status: 503, headers: { 'content-type': 'text/plain; charset=utf-8' },
+  });
+}
+const BASE = '/writing/forever-promise';
+const label = (f: any) => (f.num === 'Table 1.1' ? 'Table 1.1' : /^\d/.test(f.num) || /^R\./.test(f.num) ? 'Figure ' + f.num : f.num);
+---
+<Layout title="The Figures" kind="figures">
+  <header>
+    <p class="fp-eyebrow">The Figure Program</p>
+    <h1 class="fp-title">Every image the finished book will carry</h1>
+  </header>
+  <div class="fp-figs-intro">
+    <p>This review copy reads the way the finished book will read, but its pictures are still arriving.
+    Each figure below is planned, placed, and described; where you see a panel in a chapter, the finished
+    art will stand there. As photographs and drawings land, they will appear here first — the words around
+    them will not move.</p>
+  </div>
+  <ul class="fp-figs">
+    {figures.map((f) => (
+      <li>
+        <a href={`${BASE}/figures/${f.id}/`}>
+          <span class="num">{label(f)}</span>
+          <span class="mid">
+            <span class="ttl">{f.title}</span>
+            <span class="st">{f.status}{f.planned ? ' · placement planned for ' + f.where.label.replace(/ — .*/, '') : ''}</span>
+          </span>
+          <span class="go">→</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Layout>
+
+<style>
+  .fp-figs-intro p { font-size: 1.08rem; line-height: 1.7; color: #3a3a4e; margin-top: 1.6rem; }
+  .fp-figs { list-style: none; margin: 2rem 0 0; padding: 0; }
+  .fp-figs li a { display: flex; align-items: baseline; gap: 1rem; padding: 0.75rem 0.7rem; text-decoration: none; color: var(--fp-ink);
+    border-bottom: 1px solid var(--fp-rule); }
+  .fp-figs li a:hover { background: var(--fp-cream); }
+  .fp-figs .num { flex: 0 0 6.2rem; font-family: var(--fp-sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fp-gold); }
+  .fp-figs .mid { flex: 1; }
+  .fp-figs .ttl { display: block; font-family: var(--fp-serif); font-size: 1.08rem; color: var(--fp-navy); }
+  .fp-figs .st { display: block; font-family: var(--fp-sans); font-size: 0.72rem; color: #75674a; margin-top: 0.15rem; }
+  .fp-figs .go { font-family: var(--fp-sans); color: var(--fp-gold); }
+</style>

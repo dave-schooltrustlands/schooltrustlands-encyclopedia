@@ -1,0 +1,74 @@
+---
+// One page per figure — what it shows, its caption, where it appears, status.
+export const prerender = false;
+import Layout from '../../../../layouts/ForeverPromiseLayout.astro';
+import { fpEnv, fpContent } from '../../../../lib/fp';
+
+const env = fpEnv(Astro.locals);
+const { fig } = Astro.params;
+const figures: any[] = (await fpContent(env, 'figures.json')) || [];
+const f = figures.find((x) => x.id === fig);
+if (!f) {
+  return new Response('No such figure in the register. Try the figures index.', {
+    status: 404, headers: { 'content-type': 'text/plain; charset=utf-8' },
+  });
+}
+const BASE = '/writing/forever-promise';
+const label = f.num === 'Table 1.1' ? 'Table 1.1' : /^\d/.test(f.num) || /^R\./.test(f.num) ? 'Figure ' + f.num : f.title;
+const idx = figures.indexOf(f);
+const prevF = idx > 0 ? figures[idx - 1] : null;
+const nextF = idx < figures.length - 1 ? figures[idx + 1] : null;
+---
+<Layout title={label + ' · ' + f.title} kind="figure">
+  <header>
+    <p class="fp-eyebrow">{f.num === 'Table 1.1' ? 'Table 1.1' : /^[\dR]/.test(f.num) ? 'Figure ' + f.num : 'From the figure program'}</p>
+    <h1 class="fp-title">{f.title}</h1>
+  </header>
+
+  <div class="fp-fig-stage">
+    {f.image ? (
+      <img src={`${BASE}/asset/${f.image}`} alt={f.title} />
+    ) : (
+      <div class="fp-fig-await">
+        <span class="mark">◈</span>
+        <span>{f.status}</span>
+      </div>
+    )}
+  </div>
+
+  <dl class="fp-fig-meta">
+    <dt>What this figure shows</dt>
+    <dd>{f.shows}</dd>
+    {f.caption && <dt>Caption, as drafted</dt>}
+    {f.caption && <dd class="cap">“{f.caption}”</dd>}
+    <dt>Where it appears</dt>
+    <dd>
+      <a href={`${BASE}/${f.where.slug}/`}>{f.where.label}</a>
+      {f.planned ? ' — the exact spot on the page is chosen in the next design pass.' : ''}
+    </dd>
+    <dt>Status</dt>
+    <dd>{f.status}</dd>
+  </dl>
+
+  <nav class="fp-nav" aria-label="Figure navigation">
+    {prevF && <a class="prev" href={`${BASE}/figures/${prevF.id}/`}><span class="lab">← Previous figure</span><span class="ttl">{prevF.title}</span></a>}
+    {nextF && <a class="next" href={`${BASE}/figures/${nextF.id}/`}><span class="lab">Next figure →</span><span class="ttl">{nextF.title}</span></a>}
+  </nav>
+  <p class="fp-back"><a href={`${BASE}/figures/`}>← All figures</a></p>
+</Layout>
+
+<style>
+  .fp-fig-stage { margin-top: 2rem; background: var(--fp-cream); border: 1px solid var(--fp-rule); padding: 1rem; }
+  .fp-fig-stage img { display: block; width: 100%; height: auto; background: var(--fp-linen); }
+  .fp-fig-await { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; min-height: 13rem;
+    background: var(--fp-linen); border: 1px solid var(--fp-rule); text-align: center; padding: 2rem 1.4rem;
+    font-family: var(--fp-sans); font-size: 0.95rem; color: var(--fp-navy); }
+  .fp-fig-await .mark { color: var(--fp-gold); font-size: 1.5rem; }
+  .fp-fig-meta { margin-top: 2.2rem; }
+  .fp-fig-meta dt { font-family: var(--fp-sans); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fp-gold); margin: 1.3rem 0 0.3rem; }
+  .fp-fig-meta dd { margin: 0; font-size: 1.1rem; line-height: 1.65; }
+  .fp-fig-meta dd.cap { font-style: italic; color: #3a3a4e; }
+  .fp-fig-meta dd a { color: var(--fp-navy); }
+  .fp-back { margin-top: 1.6rem; font-family: var(--fp-sans); font-size: 0.85rem; }
+  .fp-back a { color: var(--fp-navy); }
+</style>
