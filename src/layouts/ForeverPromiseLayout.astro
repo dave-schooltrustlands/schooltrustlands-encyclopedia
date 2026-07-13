@@ -95,11 +95,14 @@ const BASE = '/writing/forever-promise';
             var q = el('p', 'fp-sug-quote', '“' + snippet + '”');
             box.appendChild(q);
           }
+          var formId = (page + '-' + pid + '-' + kind).replace(/[^a-z0-9_-]+/gi, '-');
           var nameLab = el('label', 'fp-sug-label', 'Your name');
           var name = el('input', 'fp-sug-name'); name.type = 'text';
+          name.id = 'fp-sug-name-' + formId; nameLab.htmlFor = name.id;
           name.value = localStorage.getItem('fp_name') || '';
           var sugLab = el('label', 'fp-sug-label', kind === 'general' ? 'Your note' : 'What would you change, and to what?');
           var ta = el('textarea', 'fp-sug-text'); ta.rows = 4;
+          ta.id = 'fp-sug-text-' + formId; sugLab.htmlFor = ta.id;
           var row = el('div', 'fp-sug-row');
           var send = el('button', 'fp-sug-send', 'Send to the writing crew'); send.type = 'button';
           var cancel = el('button', 'fp-sug-cancel', 'Cancel'); cancel.type = 'button';
@@ -154,7 +157,7 @@ const BASE = '/writing/forever-promise';
 <style is:global>
   :root {
     --fp-ink: #1a1a2e; --fp-navy: #1b3252; --fp-deep: #14243c;
-    --fp-gold: #a87f2c; --fp-gold-dark: #765719; --fp-cream: #f5f1e8; --fp-linen: #fffdf7;
+    --fp-gold: #765719; --fp-gold-light: #c9a85b; --fp-gold-dark: #604612; --fp-cream: #f5f1e8; --fp-linen: #fffdf7;
     --fp-rule: #d8d1c2; --fp-serif: 'EB Garamond', Georgia, serif;
     --fp-sans: 'Public Sans', system-ui, sans-serif;
   }
@@ -177,10 +180,10 @@ const BASE = '/writing/forever-promise';
   .fp-bar-links a, .fp-review-toggle { color: #e8e2d4; text-decoration: none; font: 500 0.75rem/1 var(--fp-sans);
     letter-spacing: 0.025em; border: 0; border-bottom: 1px solid transparent; background: none; padding: .45rem 0; cursor: pointer; }
   .fp-bar-links a:hover, .fp-bar-links a:focus-visible, .fp-review-toggle:hover, .fp-review-toggle:focus-visible {
-    color: #fff; border-bottom-color: var(--fp-gold); outline: none; }
+    color: #fff; border-bottom-color: var(--fp-gold-light); outline: none; }
   .fp-review-toggle[aria-pressed='true'] { color: #fff; border-bottom-color: #c9a85b; }
   .fp-progress { position: absolute; height: 2px; left: 0; right: 0; bottom: -2px; overflow: hidden; background: rgba(255,255,255,.06); }
-  .fp-progress span { display: block; width: 100%; height: 100%; background: var(--fp-gold); transform: scaleX(0); transform-origin: left center; }
+  .fp-progress span { display: block; width: 100%; height: 100%; background: var(--fp-gold-light); transform: scaleX(0); transform-origin: left center; }
 
   .fp-main { max-width: 46rem; margin: 0 auto; padding: 3.4rem 1.4rem 5rem; }
   body[data-kind='home'] .fp-main { max-width: 76rem; padding-top: 3.2rem; }
@@ -198,6 +201,7 @@ const BASE = '/writing/forever-promise';
   article.fp-body p { margin: 0 0 1.05em; position: relative; }
   article.fp-body h2 { font-family: var(--fp-serif); font-weight: 600; color: var(--fp-navy); font-size: 1.5rem; line-height: 1.3; margin: 2.2em 0 0.7em; }
   article.fp-body h3 { font-family: var(--fp-serif); font-style: italic; font-weight: 600; color: var(--fp-navy); font-size: 1.22rem; margin: 1.9em 0 0.6em; }
+  article.fp-body :is(h2[id], h3[id], p[id], li[id]) { scroll-margin-top: 5.5rem; }
   article.fp-body blockquote { margin: 1.4em 0 1.4em 0.2em; padding: 0.1em 0 0.1em 1.1em; border-left: 1px solid var(--fp-navy);
     font-style: italic; color: #2a2a40; }
   article.fp-body blockquote em { font-style: normal; }
@@ -307,7 +311,7 @@ const BASE = '/writing/forever-promise';
   #fp-general-open:hover { background: var(--fp-cream); }
 
   .fp-foot { border-top: 1px solid var(--fp-rule); margin-top: 2rem; padding: 1.6rem 1.4rem 2.4rem; text-align: center;
-    font-family: var(--fp-sans); font-size: 0.74rem; color: #8a8272; }
+    font-family: var(--fp-sans); font-size: 0.74rem; color: #6b6455; }
   .fp-foot p { margin: 0.2rem 0; }
   @media (max-width: 760px) {
     .fp-bar { align-items: stretch; flex-direction: column; gap: 0; padding: .5rem 1rem .55rem; }
@@ -327,6 +331,7 @@ const BASE = '/writing/forever-promise';
     body[data-kind='part'] h1.fp-title { font-size: clamp(2.7rem, 14vw, 4rem); }
     .fp-nav { grid-template-columns: 1fr; }
     .fp-nav .next { grid-column: 1; text-align: left; }
+    article.fp-body :is(h2[id], h3[id], p[id], li[id]) { scroll-margin-top: 7.5rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

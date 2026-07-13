@@ -21,6 +21,8 @@ for (const item of manifest.toc) {
 }
 const first = manifest.toc[0];
 const figures: any[] = (await fpContent(env, 'figures.json')) || [];
+const primaryFigures = figures.filter((f: any) => !f.legacy);
+const companionFigures = figures.filter((f: any) => f.legacy);
 const partOneFigure = figures.find((f) => f.id === 'part-openers');
 const partOne = manifest.toc.find((item: any) => item.slug === 'part-one');
 ---
@@ -59,7 +61,7 @@ const partOne = manifest.toc.find((item: any) => item.slug === 'part-one');
 
   {partOneFigure?.image && partOne && (
     <a class="fp-opening-plate" href={`${BASE}/${partOne.slug}/`}>
-      <img src={`${BASE}/asset/${partOneFigure.image}`} alt={partOneFigure.title} />
+      <img src={`${BASE}/asset/${partOneFigure.image}`} alt={partOneFigure.alt || partOneFigure.shows || partOneFigure.title} />
       <span class="fp-opening-plate-copy">
         <span class="lab">Inside the book</span>
         <strong>Part One — The Promise</strong>
@@ -100,7 +102,7 @@ const partOne = manifest.toc.find((item: any) => item.slug === 'part-one');
       <summary>
         <span class="part-no">◈</span>
         <span class="part-name">The figure program</span>
-        <span class="part-meta">{figures.length} records</span>
+        <span class="part-meta">{primaryFigures.length} primary · {companionFigures.length} companion</span>
       </summary>
       <ol>
         <li><a href={`${BASE}/figures/`}><span class="t">The figure program — every image the finished book will carry</span></a></li>

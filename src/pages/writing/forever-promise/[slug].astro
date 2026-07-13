@@ -20,17 +20,27 @@ const pageHtml = fpEnhanceFigures(page.html, figures, page.slug);
 const partFigure = page.kind === 'part'
   ? figures.find((f) => f?.where?.slug === page.slug && f?.image)
   : null;
-const chapterDeck = page.slug === 'chapter-1'
-  ? 'The inheritance is real, it is large, and it is invisible.'
-  : '';
+const chapterDeck = String(page.deck || '');
+const sectionMap = page.words >= 3000 && Array.isArray(page.sections)
+  ? page.sections.filter((s: any) => s?.level === 3 || s?.level === 2)
+  : [];
 ---
 <Layout title={page.title} kind={page.kind} pageSlug={page.slug} suggest={true}>
   <header class={page.kind === 'part' ? `fp-opener${partFigure ? ' fp-opener-art-led' : ''}` : 'fp-chapter-head'}>
     {page.eyebrow && <p class="fp-eyebrow">{page.eyebrow}</p>}
     <h1 class="fp-title">{page.title}</h1>
     {chapterDeck && <p class="fp-chapter-deck">{chapterDeck}</p>}
-    <p class="fp-titlemeta">{mins} minute read · <a href={`${BASE}/`}>Contents</a></p>
+    <p class="fp-titlemeta">{mins} {mins === 1 ? 'minute' : 'minutes'} read · <a href={`${BASE}/`}>Contents</a></p>
   </header>
+
+  {sectionMap.length >= 3 && (
+    <details class="fp-section-map">
+      <summary>On this page <span>{sectionMap.length} sections</span></summary>
+      <ol>
+        {sectionMap.map((s: any) => <li class={`level-${s.level}`}><a href={`#${s.id}`}>{s.title}</a></li>)}
+      </ol>
+    </details>
+  )}
 
   <article class="fp-body" set:html={pageHtml} />
 
@@ -54,3 +64,14 @@ const chapterDeck = page.slug === 'chapter-1'
     )}
   </nav>
 </Layout>
+
+<style>
+  .fp-section-map { margin: 1.35rem 0 2.2rem; border-block: 1px solid var(--fp-rule); padding: .85rem 0; }
+  .fp-section-map summary { cursor: pointer; font-family: var(--fp-sans); color: var(--fp-navy); font-weight: 700; letter-spacing: .04em; }
+  .fp-section-map summary span { margin-left: .45rem; color: #75674a; font-size: .72rem; font-weight: 500; text-transform: uppercase; letter-spacing: .09em; }
+  .fp-section-map ol { columns: 2; column-gap: 2rem; margin: .8rem 0 .15rem; padding-left: 1.35rem; }
+  .fp-section-map li { break-inside: avoid; margin: .28rem 0; padding-left: .2rem; font-family: var(--fp-sans); font-size: .82rem; line-height: 1.4; }
+  .fp-section-map li::marker { color: var(--fp-gold); }
+  .fp-section-map a { color: var(--fp-navy); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  @media (max-width: 42rem) { .fp-section-map ol { columns: 1; } }
+</style>

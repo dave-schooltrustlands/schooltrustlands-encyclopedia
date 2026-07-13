@@ -34,7 +34,7 @@ function gatePage(wrong: boolean): Response {
 <form class="card" method="post">
   <p class="eyebrow">Advance review copy</p>
   <h1>The Forever Promise</h1>
-  <p>This is a private reading room for the book&rsquo;s review crew. If you were invited, your note included a passcode.</p>
+  <p>This is a private, unpublished reading room for the book&rsquo;s review crew. If you were invited, your note included a passcode.</p>
   ${msg}
   <label for="fp_passcode">Passcode</label>
   <input id="fp_passcode" name="fp_passcode" type="password" autocomplete="off" autofocus required>
@@ -53,7 +53,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (!passcode) {
     return new Response('The review copy is not configured yet. Please check back shortly.', {
       status: 503,
-      headers: { 'content-type': 'text/plain; charset=utf-8', 'X-Robots-Tag': ROBOTS },
+      headers: { 'content-type': 'text/plain; charset=utf-8', 'X-Robots-Tag': ROBOTS, 'Cache-Control': 'private, no-store' },
     });
   }
   const expected = await fpToken(passcode);
@@ -72,6 +72,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
             location: pathname + (search || ''),
             'set-cookie': `fp_key=${expected}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=5184000`,
             'X-Robots-Tag': ROBOTS,
+            'Cache-Control': 'private, no-store',
           },
         });
       }
@@ -85,5 +86,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const res = await next();
   const out = new Response(res.body, res);
   out.headers.set('X-Robots-Tag', ROBOTS);
+  out.headers.set('Cache-Control', 'private, no-store');
+  out.headers.set('Pragma', 'no-cache');
   return out;
 });

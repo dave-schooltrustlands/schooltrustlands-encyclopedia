@@ -8,14 +8,87 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import MarkdownIt from 'markdown-it';
 import footnote from 'markdown-it-footnote';
+import productionRecords from './forever-promise-figure-records.mjs';
+
+// Repair UTF-8 text that has accidentally been decoded as Windows-1252 one
+// or more times.  The Round 2 handoff arrived with mixed single- and
+// double-encoded punctuation, so this normalization belongs at the generation
+// boundary rather than in individual templates.
+const CP1252 = new Map([
+  [0x20ac, 0x80], [0x201a, 0x82], [0x0192, 0x83], [0x201e, 0x84],
+  [0x2026, 0x85], [0x2020, 0x86], [0x2021, 0x87], [0x02c6, 0x88],
+  [0x2030, 0x89], [0x0160, 0x8a], [0x2039, 0x8b], [0x0152, 0x8c],
+  [0x017d, 0x8e], [0x2018, 0x91], [0x2019, 0x92], [0x201c, 0x93],
+  [0x201d, 0x94], [0x2022, 0x95], [0x2013, 0x96], [0x2014, 0x97],
+  [0x02dc, 0x98], [0x2122, 0x99], [0x0161, 0x9a], [0x203a, 0x9b],
+  [0x0153, 0x9c], [0x017e, 0x9e], [0x0178, 0x9f],
+]);
+const mojibakeScore = (s) => (s.match(/(?:Ã.|Â.|â[\x80-\uffff]{1,3}|ð.|ï¿½|�)/g) || []).length;
+function decodeWindows1252AsUtf8(value) {
+  const bytes = [];
+  for (const ch of value) {
+    const code = ch.codePointAt(0);
+    if (CP1252.has(code)) bytes.push(CP1252.get(code));
+    else if (code <= 0xff) bytes.push(code);
+    else return value;
+  }
+  return Buffer.from(bytes).toString('utf8');
+}
+function repairMojibake(value) {
+  let out = value;
+  for (let i = 0; i < 3 && mojibakeScore(out); i++) {
+    const candidate = decodeWindows1252AsUtf8(out);
+    if (candidate.includes('�') || mojibakeScore(candidate) >= mojibakeScore(out)) break;
+    out = candidate;
+  }
+  return out;
+}
+function cleanTextTree(value) {
+  if (typeof value === 'string') return repairMojibake(value);
+  if (Array.isArray(value)) return value.map(cleanTextTree);
+  if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, cleanTextTree(v)]));
+  return value;
+}
 
 const PARTS = { ONE: ['part-one', 'Part One — The Promise', 'I'], TWO: ['part-two', 'Part Two — The Duties', 'II'], THREE: ['part-three', 'Part Three — The Reckoning', 'III'], FOUR: ['part-four', 'Part Four — The Renewal', 'IV'] };
 const SRC = process.argv[2];
 const FIGS = process.argv[3];
 const OUT = process.argv[4] || '/tmp/fp-out';
 const BASE = '/writing/forever-promise';
-const raw = fs.readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n');
-const figures = JSON.parse(fs.readFileSync(FIGS, 'utf8'));
+const DECKS = {
+  'chapter-1': 'The inheritance is real, it is large, and it is invisible.',
+  'chapter-2': 'The founders wrote the promise into the one ledger they believed could outlast paper.',
+  'chapter-3': 'One promise crossed many state lines, and the law kept recognizing the same trust.',
+  'chapter-4': 'A trust is not a metaphor; it is a precise arrangement of property, duty, and people.',
+  'chapter-5': 'The trustee’s first duty is to know which hat cannot be worn at the same time.',
+  'chapter-6': 'A forever gift survives only when the yielding thing is not mistaken for its yield.',
+  'chapter-7': 'Before a trust can balance its books, it must remember what the trust paid for.',
+  'chapter-8': 'An accounting closes the loop only when it reaches the people who own the trust.',
+  'chapter-9': 'Every other duty depends on someone having both the standing and the will to watch.',
+  'chapter-10': 'Utah shows how quickly a constitutional promise can become a budget line.',
+  'chapter-11': 'Utah’s recovery began with people, became structure, and still requires tending.',
+  'chapter-12': 'A fire lookout, a locked public record, and one citizen’s decision to keep asking.',
+  'chapter-13': 'The taking was not one decision by one villain; it was a sequence that kept rewarding drift.',
+  'chapter-14': 'Three ordinary pressures become a machine when no signal returns from the beneficiary.',
+  'chapter-15': 'The loss is measured not only in land and money, but in the lives spent keeping watch.',
+  'chapter-16': 'A promise lasts when watching becomes a craft that can be taught, shared, and inherited.',
+  'chapter-17': 'The newest forever institutions are being built now, with old failure modes already available.',
+  'chapter-18': 'The choice is not between punishment and mercy, but between episodic reaction and maintained structure.',
+  'chapter-19': 'The proposed act pairs each recurring failure with a structural answer.',
+  'chapter-20': 'A usable trust law first opens the books, then opens the courthouse door.',
+  'chapter-21': 'Effective remedies can be firm toward disloyalty without punishing honest trustees for being untaught.',
+  'chapter-22': 'A trust maintains itself when duties, accounting, education, review, standing, and remedy form one loop.',
+  'chapter-23': 'A model act becomes a movement only when scholarship, lawyers, cases, legislatures, and beneficiaries carry it together.',
+  'chapter-24': 'The final assignment is specific enough to begin and broad enough for every kind of reader.',
+};
+const raw = repairMojibake(fs.readFileSync(SRC, 'utf8')).replace(/\r\n/g, '\n');
+const recordById = new Map(productionRecords.map((r) => [r.id, r]));
+const figures = cleanTextTree(JSON.parse(fs.readFileSync(FIGS, 'utf8'))).map((f) => {
+  const merged = { ...f, ...(recordById.get(f.id) || {}) };
+  return { ...merged, alt: merged.alt || merged.shows || merged.title };
+});
+const missingRecords = figures.filter((f) => !recordById.has(f.id)).map((f) => f.id);
+if (missingRecords.length) throw new Error('Missing figure production records: ' + missingRecords.join(', '));
 const figById = new Map(figures.map(f => [f.num, f]));
 
 // ---------- 1. split into units ----------
@@ -86,7 +159,12 @@ for (const u of units) {
 
 // ---------- 3. per-unit transforms ----------
 const md = new MarkdownIt({ html: true, typographer: true, linkify: false }).use(footnote);
-const mdi = (s) => md.renderInline(s);
+const LEGAL_MARKER_OPEN = '\uE000fp-legal-marker-';
+const LEGAL_MARKER_CLOSE = '\uE001';
+const protectLegalMarkers = (s) => s.replace(/\(([A-Za-z])\)/g, (_, letter) => LEGAL_MARKER_OPEN + letter + LEGAL_MARKER_CLOSE);
+const restoreLegalMarkers = (s) => s.replace(new RegExp(LEGAL_MARKER_OPEN + '([A-Za-z])' + LEGAL_MARKER_CLOSE, 'g'), '($1)');
+const renderMarkdown = (s) => restoreLegalMarkers(md.render(protectLegalMarkers(s)));
+const mdi = (s) => restoreLegalMarkers(md.renderInline(protectLegalMarkers(s)));
 const figId = (num) => num === 'Table 1.1' ? 'table-1-1' : num === 'Part openers' ? 'part-openers' : 'fig-' + num.replace('.', '-').toLowerCase();
 const figHref = (num) => `${BASE}/figures/${figId(num)}/`;
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -94,12 +172,12 @@ function panel(num, captionMd, extraHtml) {
   const f = figById.get(num);
   const href = figHref(num);
   const label = (num === 'Table 1.1' ? 'Table 1.1' : 'Figure ' + num);
-  const capHtml = captionMd ? '<span class="fp-fig-cap">' + mdi(captionMd) + '</span>'
-    : (f ? '<span class="fp-fig-cap fp-fig-desc">' + esc(f.shows) + '</span>' : '');
+  const capHtml = captionMd ? '<figcaption class="fp-fig-cap">' + mdi(captionMd) + '</figcaption>'
+    : '<figcaption class="fp-fig-cap fp-fig-desc">' + esc(f ? f.shows : label) + '</figcaption>';
   const status = f ? '<span class="fp-fig-status">' + esc(f.status) + '</span>' : '';
   return '\n<div class="fp-fig" data-fig="' + num + '">' +
     '<span class="fp-fig-eyebrow">' + label.toUpperCase() + '</span>' +
-    '<span class="fp-fig-art">' + (f && f.image ? '<img src="' + BASE + '/asset/' + f.image + '" alt="' + esc(f.title) + '" loading="lazy"/>' : '<span class="fp-fig-hold">' + esc(f ? f.title : label) + '</span>') + '</span>' +
+    '<span class="fp-fig-art">' + (f && f.image ? '<img src="' + BASE + '/asset/' + f.image + '" alt="' + esc(f.alt || f.title) + '" loading="lazy" decoding="async"/>' : '<span class="fp-fig-hold">' + esc(f ? f.title : label) + '</span>') + '</span>' +
     capHtml + (extraHtml || '') + status +
     '<a class="fp-fig-link" href="' + href + '">About this figure &rarr;</a></div>\n';
 }
@@ -126,19 +204,25 @@ for (const u of units) {
   for (let i = 0; i < src.length; i++) {
     const line = src[i];
     let m;
-    if ((m = line.match(/^> \*\*(Figure \d+\.\d+|Table 1\.1)\.?\*\*\s*(.*)$/))) {
+    if ((m = line.match(/^> \*\*Figure ((?:\d+|R)\.\d+)\.\s+([^*]+?)\.\*\*\s*(.*)$/))) {
+      const key = m[1];
+      const capMd = '**' + m[2].trim() + '.** ' + (m[3] || '');
+      const f = figById.get(key); if (f && !f.caption) f.caption = m[2].trim();
+      outLines.push(panel(key, capMd)); seenPanel.add(key); continue;
+    }
+    if ((m = line.match(/^> \*\*(Figure (?:\d+|R)\.\d+|Table 1\.1)\.?\*\*\s*(.*)$/))) {
       const num = m[1].replace(/^Figure /, '');
       const key = m[1].startsWith('Table') ? 'Table 1.1' : num;
       let cap = m[2].replace(/^\*|\*$/g, '');
       const f = figById.get(key); if (f && !f.caption) f.caption = cap.replace(/\*/g, '');
       outLines.push(panel(key, cap)); seenPanel.add(key); continue;
     }
-    if ((m = line.match(/^\*(Figure \d+\.\d+)\.\s+([\s\S]*)\*\s*$/))) {
+    if ((m = line.match(/^\*(Figure (?:\d+|R)\.\d+)\.\s+([\s\S]*)\*\s*$/))) {
       const key = m[1].replace(/^Figure /, '');
       const f = figById.get(key); if (f && !f.caption) f.caption = m[2];
       outLines.push(panel(key, m[2])); seenPanel.add(key); continue;
     }
-    if ((m = line.match(/^\*\*(Figure \d+\.\d+)\.\s+([^*]+)\*\*\s*(.*)$/))) {
+    if ((m = line.match(/^\*\*(Figure (?:\d+|R)\.\d+)\.\s+([^*]+)\*\*\s*(.*)$/))) {
       const key = m[1].replace(/^Figure /, '');
       const capMd = '**' + m[2].trim() + '** ' + (m[3] || '');
       const f = figById.get(key); if (f && !f.caption) f.caption = m[2].trim();
@@ -151,6 +235,10 @@ for (const u of units) {
     if (u.kind === 'part' && /^> \*[^*]/.test(line)) { outLines.push(panel('Part openers', line.replace(/^> \*/, '').replace(/\*\s*$/, ''))); seenPanel.add('Part openers'); continue; }
     if (u.kind === 'part' && /^\*The township mark[\s\S]*\*\s*$/.test(line)) { outLines.push(panel('Part openers', line.replace(/^\*/, '').replace(/\*\s*$/, ''))); seenPanel.add('Part openers'); continue; }
     outLines.push(line);
+  }
+  if (u.kind === 'part' && !seenPanel.has('Part openers')) {
+    outLines.unshift(panel('Part openers', null));
+    seenPanel.add('Part openers');
   }
   // placeholder panels for callouts with no caption block in this unit
   const need = [...new Set(u.calloutNums)].filter(n => !seenPanel.has(n));
@@ -177,7 +265,25 @@ for (const u of units) {
   const missing = used.filter(k => !defs.has(k));
   if (missing.length) throw new Error(u.slug + ': missing footnote defs: ' + missing.join(', '));
   if (used.length) u.text += '\n\n' + used.map(k => '[^' + k + ']: ' + defs.get(k)).join('\n\n') + '\n';
-  u.html = md.render(u.text);
+  u.html = renderMarkdown(u.text);
+  // The manuscript uses level-three headings directly beneath the page title
+  // in some chapters.  When no level-two heading exists, promote that first
+  // structural tier so assistive technology receives a coherent outline.
+  if (u.kind === 'chapter' && !/<h2(?:\s|>)/.test(u.html)) {
+    u.html = u.html.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
+  }
+  // Stable local navigation for long chapters. Keep h2/h3 hierarchy in the
+  // article, but give each section a durable in-page address.
+  u.sections = [];
+  const sectionCounts = new Map();
+  u.html = u.html.replace(/<(h[23])>([\s\S]*?)<\/h[23]>/g, (whole, tag, inner) => {
+    const plain = inner.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+    let id = plain.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'section';
+    const n = (sectionCounts.get(id) || 0) + 1; sectionCounts.set(id, n);
+    if (n > 1) id += '-' + n;
+    u.sections.push({ id, title: plain, level: tag === 'h2' ? 2 : 3 });
+    return `<${tag} id="${id}">${inner}</${tag}>`;
+  });
   // stable paragraph ids
   const counts = new Map();
   u.html = u.html.replace(/<p>([\s\S]*?)<\/p>/g, (whole, inner) => {
@@ -220,13 +326,13 @@ ORDER.forEach((slug, i) => {
   const u = bySlug.get(slug);
   const prev = i > 0 ? ORDER[i - 1] : null, next = i < ORDER.length - 1 ? ORDER[i + 1] : null;
   const t = (s) => s ? { slug: s, title: bySlug.get(s).title } : null;
-  const page = { slug, kind: u.kind, title: u.title, eyebrow: u.eyebrow || '', words: u.words, html: u.html, prev: t(prev), next: t(next), group: groupOf(slug) };
+  const page = { slug, kind: u.kind, title: u.title, eyebrow: u.eyebrow || '', deck: DECKS[slug] || '', words: u.words, sections: u.sections || [], html: u.html, prev: t(prev), next: t(next), group: groupOf(slug) };
   fs.writeFileSync(path.join(OUT, 'pages', slug + '.json'), JSON.stringify(page));
   toc.push({ slug, kind: u.kind, title: u.title, eyebrow: u.eyebrow || '', words: u.words, group: groupOf(slug) });
 });
 
 // front matter for the home page
-const F = (s) => { const u = bySlug.get(s); return u ? md.render(u.md ? u.text : '') : ''; };
+const F = (s) => { const u = bySlug.get(s); return u ? renderMarkdown(u.md ? u.text : '') : ''; };
 const front = {
   title: 'THE FOREVER PROMISE',
   subtitle: 'An accounting of America’s 250-year gift to its schools — and the plan to keep it for the next 250',
@@ -239,6 +345,13 @@ fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest));
 
 // figures out (with captions harvested from the body)
 fs.writeFileSync(path.join(OUT, 'figures.json'), JSON.stringify(figures, null, 1));
+
+const generatedText = JSON.stringify({ figures, pages: ORDER.map((s) => bySlug.get(s).html) });
+if (generatedText.includes(LEGAL_MARKER_OPEN)) throw new Error('Legal-marker sentinel leaked into generated content');
+if (mojibakeScore(generatedText)) throw new Error('Mojibake remains in generated Forever Promise content');
+if ((generatedText.match(/©/g) || []).length > (raw.match(/©/g) || []).length) {
+  throw new Error('A legal marker was converted to a copyright symbol');
+}
 
 // ---------- 6. report ----------
 console.log('pages:', ORDER.length, '| total words:', toc.reduce((a, b) => a + b.words, 0));

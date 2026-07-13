@@ -84,9 +84,10 @@ export function fpEnhanceFigures(html: string, figures: any[], pageSlug: string)
       if (f.image) {
         const imageUrl = `${FP_PREFIX}/asset/${encodeURIComponent(f.image)}`;
         const recordUrl = `${FP_PREFIX}/figures/${encodeURIComponent(f.id)}/`;
-        const art = `<span class="fp-fig-art"><a class="fp-fig-image" href="${imageUrl}" target="_blank" rel="noopener" aria-label="Open ${attr(f.title)} at full size"><img src="${imageUrl}" alt="${attr(f.title)}" loading="lazy" decoding="async" /></a></span><span class="fp-fig-cap`;
+        const alt = f.alt || f.title;
+        const art = `<span class="fp-fig-art"><a class="fp-fig-image" href="${imageUrl}" target="_blank" rel="noopener" aria-label="Open ${attr(f.title)} at full size"><img src="${imageUrl}" alt="${attr(alt)}" loading="lazy" decoding="async" /></a></span>`;
         next = next.replace(
-          /<span class="fp-fig-art">[\s\S]*?<\/span><span class="fp-fig-cap/,
+          /<span class="fp-fig-art">[\s\S]*?<\/span>(?=<figcaption class="fp-fig-cap)/,
           art,
         );
         next = next.replace(

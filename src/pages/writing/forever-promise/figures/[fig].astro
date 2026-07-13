@@ -15,9 +15,10 @@ if (!f) {
 }
 const BASE = '/writing/forever-promise';
 const label = f.num === 'Table 1.1' ? 'Table 1.1' : /^\d/.test(f.num) || /^R\./.test(f.num) ? 'Figure ' + f.num : f.title;
-const idx = figures.indexOf(f);
-const prevF = idx > 0 ? figures[idx - 1] : null;
-const nextF = idx < figures.length - 1 ? figures[idx + 1] : null;
+const primaryFigures = figures.filter((x: any) => !x.legacy);
+const idx = primaryFigures.indexOf(f);
+const prevF = idx > 0 ? primaryFigures[idx - 1] : null;
+const nextF = idx >= 0 && idx < primaryFigures.length - 1 ? primaryFigures[idx + 1] : null;
 ---
 <Layout title={label + ' · ' + f.title} kind="figure">
   <header>
@@ -25,16 +26,17 @@ const nextF = idx < figures.length - 1 ? figures[idx + 1] : null;
     <h1 class="fp-title">{f.title}</h1>
   </header>
 
-  <div class="fp-fig-stage">
+  <figure class="fp-fig-stage">
     {f.image ? (
-      <img src={`${BASE}/asset/${f.image}`} alt={f.title} />
+      <img src={`${BASE}/asset/${f.image}`} alt={f.alt || f.shows || f.title} />
     ) : (
       <div class="fp-fig-await">
         <span class="mark">◈</span>
         <span>{f.status}</span>
       </div>
     )}
-  </div>
+    {f.caption && <figcaption>{f.caption}</figcaption>}
+  </figure>
 
   <dl class="fp-fig-meta">
     <dt>What this figure shows</dt>
@@ -48,6 +50,16 @@ const nextF = idx < figures.length - 1 ? figures[idx + 1] : null;
     </dd>
     <dt>Status</dt>
     <dd>{f.status}</dd>
+    <dt>Source record</dt>
+    <dd>{f.sourceRecord}</dd>
+    <dt>Rights and permission</dt>
+    <dd>{f.rightsPermission}</dd>
+    <dt>Credit line</dt>
+    <dd>{f.credit}</dd>
+    <dt>Quality score</dt>
+    <dd>{f.qualityScore == null ? f.qualityScale : `${f.qualityScore} of 5`}</dd>
+    <dt>Improvement recommendation</dt>
+    <dd>{f.improvementRecommendation}</dd>
   </dl>
 
   <nav class="fp-nav" aria-label="Figure navigation">
@@ -58,8 +70,9 @@ const nextF = idx < figures.length - 1 ? figures[idx + 1] : null;
 </Layout>
 
 <style>
-  .fp-fig-stage { margin-top: 2rem; background: var(--fp-cream); border: 1px solid var(--fp-rule); padding: 1rem; }
+  .fp-fig-stage { margin: 2rem 0 0; background: var(--fp-cream); border: 1px solid var(--fp-rule); padding: 1rem; }
   .fp-fig-stage img { display: block; width: 100%; height: auto; background: var(--fp-linen); }
+  .fp-fig-stage figcaption { margin: .85rem .25rem .1rem; color: #3a3a4e; font-size: 1rem; line-height: 1.5; font-style: italic; }
   .fp-fig-await { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; min-height: 13rem;
     background: var(--fp-linen); border: 1px solid var(--fp-rule); text-align: center; padding: 2rem 1.4rem;
     font-family: var(--fp-sans); font-size: 0.95rem; color: var(--fp-navy); }

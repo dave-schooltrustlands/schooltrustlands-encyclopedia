@@ -12,6 +12,8 @@ if (!figures.length) {
   });
 }
 const BASE = '/writing/forever-promise';
+const primaryFigures = figures.filter((f: any) => !f.legacy);
+const companionFigures = figures.filter((f: any) => f.legacy);
 const label = (f: any) => (f.num === 'Table 1.1' ? 'Table 1.1' : /^\d/.test(f.num) || /^R\./.test(f.num) ? 'Figure ' + f.num : f.num);
 ---
 <Layout title="The Figures" kind="figures">
@@ -20,13 +22,12 @@ const label = (f: any) => (f.num === 'Table 1.1' ? 'Table 1.1' : /^\d/.test(f.nu
     <h1 class="fp-title">Every image the finished book will carry</h1>
   </header>
   <div class="fp-figs-intro">
-    <p>This review copy reads the way the finished book will read, but its pictures are still arriving.
-    Each figure below is planned, placed, and described; where you see a panel in a chapter, the finished
-    art will stand there. As photographs and drawings land, they will appear here first — the words around
-    them will not move.</p>
+    <p>All 33 plates in the author-review program are now visible. Some are finished art; others are
+    deliberately designed proxies for an open dataset, documentary record, photograph, credit, or adoption. The
+    record page states exactly which condition remains open, without leaving a hole in the reading experience.</p>
   </div>
   <ul class="fp-figs">
-    {figures.map((f) => (
+    {primaryFigures.map((f) => (
       <li>
         <a href={`${BASE}/figures/${f.id}/`}>
           <span class="num">{label(f)}</span>
@@ -39,6 +40,21 @@ const label = (f: any) => (f.num === 'Table 1.1' ? 'Table 1.1' : /^\d/.test(f.nu
       </li>
     ))}
   </ul>
+  <section class="fp-companions" aria-labelledby="companion-records">
+    <h2 id="companion-records">Companion records</h2>
+    <p>These five records preserve manuscript evidence or program notes outside the frozen 33-figure program.</p>
+    <ul class="fp-figs">
+      {companionFigures.map((f) => (
+        <li>
+          <a href={`${BASE}/figures/${f.id}/`}>
+            <span class="num">{label(f)}</span>
+            <span class="mid"><span class="ttl">{f.title}</span><span class="st">{f.status}</span></span>
+            <span class="go" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
 </Layout>
 
 <style>
@@ -52,4 +68,8 @@ const label = (f: any) => (f.num === 'Table 1.1' ? 'Table 1.1' : /^\d/.test(f.nu
   .fp-figs .ttl { display: block; font-family: var(--fp-serif); font-size: 1.08rem; color: var(--fp-navy); }
   .fp-figs .st { display: block; font-family: var(--fp-sans); font-size: 0.72rem; color: #75674a; margin-top: 0.15rem; }
   .fp-figs .go { font-family: var(--fp-sans); color: var(--fp-gold); }
+  .fp-companions { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--fp-rule); }
+  .fp-companions h2 { margin: 0; color: var(--fp-navy); font: italic 600 1.55rem/1.2 var(--fp-serif); }
+  .fp-companions > p { margin: .55rem 0 0; color: #555148; line-height: 1.55; }
+  .fp-companions .fp-figs { margin-top: 1rem; }
 </style>
