@@ -24,6 +24,20 @@ for (const f of figures) {
   }
 }
 
+const partRegisterIds = new Map([
+  ['part-openers', 'P1'], ['part-opener-2', 'P2'],
+  ['part-opener-3', 'P3'], ['part-opener-4', 'P4'],
+]);
+for (const [id, registerId] of partRegisterIds) {
+  if (figures.find((f) => f.id === id)?.registerId !== registerId) fail(`${id}: master register ID ${registerId} is not carried`);
+}
+const fig31 = figures.find((f) => f.id === 'fig-3-1');
+if (/for an Oregon township|showing section sixteen/i.test(fig31.caption + ' ' + fig31.shows)) fail('Figure 3.1 placeholder is still described as active Oregon evidence');
+const fig71 = figures.find((f) => f.id === 'fig-7-1');
+if (/photograph used|photographs of the actual labels/i.test(fig71.sourceRecord + ' ' + fig71.shows)) fail('Figure 7.1 placeholder is still described as an active photograph');
+const figR1 = figures.find((f) => f.id === 'fig-r-1');
+if (/images still to come/i.test(figR1.caption)) fail('Figure R.1 active diptych is still described as missing');
+
 if (/(?:Ã.|Â.|â[\x80-\uffff]{1,3}|ï¿½|�)/.test(allText)) fail('Mojibake remains in generated JSON');
 if (allText.includes('©')) fail('A legal (C)/(c) marker became ©');
 const legalMarkers = (allText.match(/\([A-Za-z]\)/g) || []).length;

@@ -50,6 +50,7 @@ const nextF = idx >= 0 && idx < primaryFigures.length - 1 ? primaryFigures[idx +
     </dd>
     <dt>Status</dt>
     <dd>{f.status}</dd>
+    {f.registerId && <><dt>Master register ID</dt><dd>{f.registerId}</dd></>}
     <dt>Source record</dt>
     <dd>{f.sourceRecord}</dd>
     <dt>Rights and permission</dt>

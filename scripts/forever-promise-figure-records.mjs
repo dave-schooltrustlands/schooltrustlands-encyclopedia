@@ -16,7 +16,7 @@ const legacy = (id, sourceRecord, rightsPermission, credit, improvementRecommend
   qualityScale: 'Not scored in the frozen 33-figure Round 1 program', improvementRecommendation,
 });
 
-export default [
+const records = [
   legacy('round-1-program-note',
     'Round 1 illustration-direction program note; see the frozen Round 1 manifest and master asset register.',
     'Internal editorial record; no third-party image rights implicated.',
@@ -166,3 +166,38 @@ export default [
     'Sullivan family record; final photographer/owner credit pending.',
     'Keep subordinate to Figure R.1 unless the authors choose a separate companion figure; pin final image and permission before publication.'),
 ];
+
+// Final active-asset reconciliation. These overrides describe what is
+// actually present in the author-review build; candidate sources that have not
+// been inserted must never be described as active evidence.
+const activeOverrides = {
+  'part-openers': { registerId: 'P1' },
+  'part-opener-2': { registerId: 'P2' },
+  'part-opener-3': { registerId: 'P3' },
+  'part-opener-4': { registerId: 'P4' },
+  'fig-3-1': {
+    title: 'Oregon field notes \u2014 exact page pending',
+    shows: 'A designed author-review placeholder reserving the location for the exact Oregon General Land Office field-note page.',
+    caption: 'The exact Oregon General Land Office field-note page remains to be pulled. This author-review placeholder shows where the verified record will appear; it is not documentary evidence.',
+    status: 'Designed placeholder in place \u2014 exact Oregon township record still open.',
+    sourceRecord: 'No Oregon township record is active in the current figure. A federal GLO field-notes specimen has been identified as a visual reference only; it has not been inserted and must not be treated as Oregon evidence.',
+    rightsPermission: 'Current active file is an original project placeholder; no third-party image is reproduced.',
+    credit: 'Original placeholder: America\u2019s School Trust Library / ChatGPT 5.6.',
+    improvementRecommendation: 'Replace only when the exact Oregon GLO page is verified, then record its township/range, repository, stable URL, and rights basis.',
+  },
+  'fig-7-1': {
+    title: 'Purchased with School Trust Funds \u2014 photograph pending',
+    shows: 'A designed author-review placeholder for the requested rights-cleared Utah sticker, plaque, or visible-benefit photograph.',
+    caption: 'Purchased with School Trust Funds \u2014 author-review placeholder. No sticker, plaque, or classroom photograph is inserted in the active figure.',
+    status: 'Designed placeholder in place \u2014 rights-cleared photograph still to be selected.',
+    sourceRecord: 'The active file is the original Round 1 placeholder. A 2018 Utah Trust Lands Administration classroom photograph has been identified as a possible author-review alternative but is not used in this figure.',
+    rightsPermission: 'Current active file is an original project placeholder. The candidate state-agency classroom photograph has no stated reuse permission and remains outside the active figure.',
+    credit: 'Original placeholder: America\u2019s School Trust Library / ChatGPT 5.6.',
+    improvementRecommendation: 'Select the requested rights-cleared sticker/plaque photograph, or explicitly approve and clear a visible-benefit classroom alternative before replacing the placeholder.',
+  },
+  'fig-r-1': {
+    caption: 'Two watchers before us \u2014 General William Henry Harrison Beadle, represented by the Architect of the Capitol\u2019s statue photograph, and Wes Sullivan, represented by the Sullivan family record. Author-review diptych; final image-specific rights and credit confirmation remains pending.',
+  },
+};
+
+export default records.map((record) => ({ ...record, ...(activeOverrides[record.id] || {}) }));
