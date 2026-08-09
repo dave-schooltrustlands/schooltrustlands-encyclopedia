@@ -1,3 +1,73 @@
+# ===========================================================================
+# ⚠ THIS FILE IS OVER CLOUDFLARE'S CEILING — verified live 2026-08-09.
+# Pages honours roughly the first 100 rules here and silently ignores the rest.
+# Probe: `/map` (rule 2) returns 301; `/reading/wsfc-vol1-ch13-who-stops-this`
+# (rule ~120) returns 404. That is a PRE-EXISTING defect — the tail of the
+# Who-Steals-From-Children chapter block has been inert since it was added.
+# The 2026-08-09 consolidation rules are placed FIRST for that reason.
+# TO FIX PROPERLY: prune the chained rules (several redirect to targets that
+# themselves redirect) and re-verify each surviving rule against production.
+# ===========================================================================
+
+# ---------------------------------------------------------------------------
+# 2026-08-09 — ONE LIBRARY. schooltrusts.org and schooltrusts.net were two
+# websites both presenting themselves as America's School Trust Library, with
+# different navigation and different names for the same shelves. They are now
+# one site, served at schooltrusts.org, built from this repository.
+#
+# These rules retire the paths that were unique to the old schooltrusts.org
+# worker. Every one of them was a live, linkable URL; none may 404.
+#
+# NOTE ON THE PRINTED BOOK: 51 QR codes in *The Forgotten Forever Gift*
+# (ISBN 979-8-1819289-2-3) resolve to schooltrusts.net/reading/us-XX/. Those
+# paths are unchanged in this build, and the schooltrusts.net domain must
+# redirect to schooltrusts.org preserving the path, forever. The .net
+# registration must never be allowed to lapse.
+# ---------------------------------------------------------------------------
+
+# The shelves have one name now: Catalog.
+/collection/   /catalog/   301
+/collection    /catalog/   301
+
+# How to help folds into Contribute.
+/help/   /contribute/   301
+/help    /contribute/   301
+
+# /record existed only to point at the archive site. This is the archive site.
+/record/   /   301
+/record    /   301
+
+# The founder's statement keeps its incumbent address.
+/founder/   /about/founder/   301
+/founder    /about/founder/   301
+
+# One corrections ledger, at the address the .net site already used.
+/corrections/   /about/corrections/log/   301
+/corrections    /about/corrections/log/   301
+
+# The advocacy organizations are separate bodies with their own site.
+# The Library does not host them.
+/advocates/   https://schooltrustlands.net/   301
+/advocates    https://schooltrustlands.net/   301
+
+# ---------------------------------------------------------------------------
+# STILL TO PLACE — /renewal and its six children.
+#
+# The Renewal is a law-reform program: model legislation, a pro bono panel,
+# test-case work. It cannot live under the masthead of an institution whose
+# adopted Constitution says it "takes no position in any litigation." It has
+# not been ported into this repository for that reason.
+#
+# Until Dave places it, the old worker (a-forever-gift-portal) still serves
+# these paths. THE DAY schooltrusts.org DNS MOVES TO THIS PAGES PROJECT, they
+# go dark. Before that cutover, one of these must be true:
+#   (a) the program is served at its own address — renewal.schooltrusts.org
+#       or a page on oastl.org — and the lines below point there; or
+#   (b) the lines below point somewhere honest that explains where it went.
+#
+# /renewal/*   https://<its new home>/:splat   301
+# ---------------------------------------------------------------------------
+
 /map/  /atlas/  301
 /map   /atlas/  301
 /states/:iso/  /reading/:iso/  301
@@ -143,62 +213,3 @@
 /reading/wsfc-vol1-ch13-who-stops-this                                /writing/who-steals-from-children/ch13-who-stops-this/             301
 /reading/wsfc-vol1-documentary-record/                                /writing/who-steals-from-children/documentary-record/              301
 /reading/wsfc-vol1-documentary-record                                 /writing/who-steals-from-children/documentary-record/              301
-
-# ---------------------------------------------------------------------------
-# 2026-08-09 — ONE LIBRARY. schooltrusts.org and schooltrusts.net were two
-# websites both presenting themselves as America's School Trust Library, with
-# different navigation and different names for the same shelves. They are now
-# one site, served at schooltrusts.org, built from this repository.
-#
-# These rules retire the paths that were unique to the old schooltrusts.org
-# worker. Every one of them was a live, linkable URL; none may 404.
-#
-# NOTE ON THE PRINTED BOOK: 51 QR codes in *The Forgotten Forever Gift*
-# (ISBN 979-8-1819289-2-3) resolve to schooltrusts.net/reading/us-XX/. Those
-# paths are unchanged in this build, and the schooltrusts.net domain must
-# redirect to schooltrusts.org preserving the path, forever. The .net
-# registration must never be allowed to lapse.
-# ---------------------------------------------------------------------------
-
-# The shelves have one name now: Catalog.
-/collection/   /catalog/   301
-/collection    /catalog/   301
-
-# How to help folds into Contribute.
-/help/   /contribute/   301
-/help    /contribute/   301
-
-# /record existed only to point at the archive site. This is the archive site.
-/record/   /   301
-/record    /   301
-
-# The founder's statement keeps its incumbent address.
-/founder/   /about/founder/   301
-/founder    /about/founder/   301
-
-# One corrections ledger, at the address the .net site already used.
-/corrections/   /about/corrections/log/   301
-/corrections    /about/corrections/log/   301
-
-# The advocacy organizations are separate bodies with their own site.
-# The Library does not host them.
-/advocates/   https://schooltrustlands.net/   301
-/advocates    https://schooltrustlands.net/   301
-
-# ---------------------------------------------------------------------------
-# STILL TO PLACE — /renewal and its six children.
-#
-# The Renewal is a law-reform program: model legislation, a pro bono panel,
-# test-case work. It cannot live under the masthead of an institution whose
-# adopted Constitution says it "takes no position in any litigation." It has
-# not been ported into this repository for that reason.
-#
-# Until Dave places it, the old worker (a-forever-gift-portal) still serves
-# these paths. THE DAY schooltrusts.org DNS MOVES TO THIS PAGES PROJECT, they
-# go dark. Before that cutover, one of these must be true:
-#   (a) the program is served at its own address — renewal.schooltrusts.org
-#       or a page on oastl.org — and the lines below point there; or
-#   (b) the lines below point somewhere honest that explains where it went.
-#
-# /renewal/*   https://<its new home>/:splat   301
-# ---------------------------------------------------------------------------
