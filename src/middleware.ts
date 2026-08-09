@@ -7,6 +7,7 @@
 import { defineMiddleware } from 'astro:middleware';
 import { FP_PREFIX, fpToken, readCookie } from './lib/fp';
 
+
 const ROBOTS = 'noindex, nofollow, noarchive';
 
 function gatePage(wrong: boolean): Response {
@@ -46,6 +47,7 @@ function gatePage(wrong: boolean): Response {
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const { pathname, search } = context.url;
+
   if (!pathname.startsWith(FP_PREFIX)) return next();
 
   const env: any = (context.locals as any)?.runtime?.env || {};

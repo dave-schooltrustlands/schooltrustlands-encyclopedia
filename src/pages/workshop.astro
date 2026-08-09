@@ -1,0 +1,105 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="The Workshop · America's School Trust Library"
+  description="Verification in public: what America's School Trust Library is building right now, shown honestly."
+  sourceId="workshop"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="kicker">Work in progress</p>
+    <h1>The Workshop</h1>
+
+    <p>
+      <span
+        class="status-badge"
+        data-library-status="workshop"
+        aria-label="Library status: Work in progress. Workshop material; not verified."
+        >Work in progress — nothing on this page is verified</span
+      >
+    </p>
+
+    <p>
+      This is where the Library works in public. Everything on this page is
+      provisional — real work, honestly shown, not yet settled authority. The
+      Library's <a href="/rights">Constitution</a> requires that provisional
+      work never wear the appearance of settled authority, so this page is blunt
+      about status.
+    </p>
+
+    <h2>Now on the bench: the first verified claim set</h2>
+
+    <p>
+      The Library's first candidate for its Verified shelf is under
+      construction: <strong>Canonical Claim Set 001 — Federal School-Grant
+      Doctrine</strong>, a set of narrow propositions about the trust character,
+      exclusive purpose, and full-value protection of the school-land grants,
+      each tied to exact quoted language from six United States Supreme Court
+      decisions spanning 1856 to 1989.
+    </p>
+
+    <p>
+      Current state, plainly: thirteen claim records drafted; every quotation
+      machine-checked against the retrieved opinions, twenty-nine of thirty
+      passing verbatim; one quotation flagged for re-keying against the official
+      reporter; two propositions held for narrowing; one held for counsel
+      review. The set becomes a frozen, citable release only after a named
+      editor signs every disposition with the evidence in view — and it earns
+      the Verified badge only after independent legal review that has not yet
+      happened. No calendar promises; version numbers instead.
+    </p>
+
+    <h2>The hornbook</h2>
+
+    <p>
+      The claim set is the first brick of a larger work: a one-volume reference
+      on school-trust law, drafted in public with its verification flags
+      showing. The
+      <a href="/writing/books/school-trust-lands-hornbook/">working edition</a>
+      is readable now, flags and all. The method is the point: the manuscript
+      proposes claims; the claim ledger checks them; nothing becomes settled by
+      erasing a flag.
+    </p>
+
+    <h2>Also on the bench</h2>
+
+    <p>
+      The state files beyond Oregon, Utah, and Mississippi — thin today, growing
+      by accession. The catalog's case-law gateways — 220 files held, 19 public
+      so far. The repairs the Library's own shelf-walk found — logged and being
+      fixed, because a library that audits itself in public should be seen doing
+      it.
+    </p>
+
+    <p>
+      Want a bench of your own? The Library needs hands:
+      <a href="/contribute/">how to help</a>.
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A88A4E;
+      margin: 0 0 0.4rem;
+    }
+    .status-badge {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.66rem;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border: 1.5px dashed #C9A24A;
+      border-radius: 3px;
+      background: #FBF3DF;
+      color: #8a5f10;
+    }
+  </style>
+</BaseLayout>

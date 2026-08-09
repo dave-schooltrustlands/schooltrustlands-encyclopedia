@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import NavIcon from './NavIcon.astro';
 import WalkingTour from './library/WalkingTour.astro';
-import FamilyBar from './FamilyBar.astro';
 import SiteWidePreviewBanner from './SiteWidePreviewBanner.astro';
 import LivingEditionLabel from './LivingEditionLabel.astro';
 import { SITE_PREVIEW } from '../site.config';
@@ -97,7 +96,6 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
   (prefix) => path === prefix || path.startsWith(`${prefix}/`),
 );
 ---
-<FamilyBar current="record" />
 {SITE_PREVIEW ? <SiteWidePreviewBanner correctHref="/correct/" /> : <LivingEditionLabel />}
 <header
   data-pagefind-ignore
