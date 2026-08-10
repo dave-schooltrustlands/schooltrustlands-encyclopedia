@@ -9,7 +9,7 @@ import catalog from '../../data/catalog/generated.json';
 type StatusKind = 'l0-held' | 'verified' | 'verify' | 'cited-in-briefing' | 'other';
 
 const statusLabels: Record<StatusKind, string> = {
-  'l0-held': 'L0 held',
+  'l0-held': 'Primary source held',
   verified: 'Verified',
   verify: 'Needs verification',
   'cited-in-briefing': 'Cited in briefing',
@@ -21,6 +21,12 @@ const formatDate = (iso: string) =>
   new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'short',
+    day: 'numeric',
+  }).format(new Date(iso));
+const formatDateLong = (iso: string) =>
+  new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
     day: 'numeric',
   }).format(new Date(iso));
 
@@ -43,7 +49,7 @@ const caseLawFolders = Object.entries(
   <head>
     <BaseHead
       title="Catalog - America's School Trust Library"
-      description="A public render of the Library's authority register, L0 case-law holdings, promoted figures, book manifests, and named collections."
+      description="A public render of the Library's authority register, case-law holdings, promoted figures, book manifests, and named collections."
     />
   </head>
   <body class="min-h-screen bg-archive-paper text-ink mode-library" data-source-id="catalog">
@@ -56,42 +62,37 @@ const caseLawFolders = Object.entries(
         <h1>America's School Trust Library Catalog</h1>
         <p class="catalog-lede">
           A public render of what the Library holds: the legal-authority
-          register, L0 case-law texts, promoted figures, current book
+          register, case-law texts, promoted figures, current book
           manifests, and named special collections. The source files remain
-          in the substrate; this page is the browsable card catalog.
+          in the Library's keeping; this page is the browsable card catalog.
         </p>
         <p class="catalog-updated">
-          Last rendered from substrate: <time datetime={catalog.generatedAt}>{formatDate(catalog.generatedAt)}</time>.
+          Last rendered: <time datetime={catalog.generatedAt}>{formatDateLong(catalog.generatedAt)}</time>.
         </p>
       </header>
 
-      <section class="metric-grid" aria-label="Catalog counts">
-        <a class="metric-card" href="#authority-heading" aria-label={`Jump to ${catalog.counts.authorities} authority records`}>
+      <nav class="metric-grid" aria-label="Catalog sections">
+        <a class="metric-card" href="#authority-heading">
           <span class="metric-card__label">Authority records</span>
-          <strong>{catalog.counts.authorities}</strong>
           <span>from the hornbook register</span>
         </a>
-        <a class="metric-card" href="#case-law-heading" aria-label={`Jump to ${catalog.counts.l0CaseLawFiles} L0 case-law files`}>
-          <span class="metric-card__label">L0 case-law files</span>
-          <strong>{catalog.counts.l0CaseLawFiles}</strong>
-          <span>{catalog.counts.l0CaseLawWithPublicGateway} with public gateways today</span>
+        <a class="metric-card" href="#case-law-heading">
+          <span class="metric-card__label">Case-law files</span>
+          <span>the Library's case-law holdings</span>
         </a>
-        <a class="metric-card" href="#figures-heading" aria-label={`Jump to ${catalog.counts.figures} reusable figures`}>
+        <a class="metric-card" href="#figures-heading">
           <span class="metric-card__label">Reusable figures</span>
-          <strong>{catalog.counts.figures}</strong>
-          <span>from L1_Figures</span>
+          <span>from the figures register</span>
         </a>
-        <a class="metric-card" href="#books-heading" aria-label={`Jump to ${catalog.counts.books} book manifests`}>
+        <a class="metric-card" href="#books-heading">
           <span class="metric-card__label">Book manifests</span>
-          <strong>{catalog.counts.books}</strong>
           <span>current generated-book records</span>
         </a>
-        <a class="metric-card" href="#collections-heading" aria-label={`Jump to ${catalog.counts.specialCollections} named collections`}>
+        <a class="metric-card" href="#collections-heading">
           <span class="metric-card__label">Named collections</span>
-          <strong>{catalog.counts.specialCollections}</strong>
           <span>finding aids and special shelves</span>
         </a>
-      </section>
+      </nav>
 
       <section class="catalog-section" aria-labelledby="authority-heading">
         <div class="section-heading-row">
@@ -144,7 +145,7 @@ const caseLawFolders = Object.entries(
       <section class="catalog-section" aria-labelledby="case-law-heading">
         <div class="section-heading-row">
           <div>
-            <p class="catalog-kicker">L0</p>
+            <p class="catalog-kicker">Primary sources</p>
             <h2 id="case-law-heading">Case-Law Holdings</h2>
           </div>
           <ul class="folder-counts" aria-label="Case-law folders">
@@ -169,14 +170,13 @@ const caseLawFolders = Object.entries(
                 <tr>
                   <td>
                     <span>{item.title}</span>
-                    <small>{item.substratePath}</small>
                   </td>
                   <td>{item.folder}</td>
                   <td>
                     {item.href ? (
                       <a href={item.href}>Open public entry</a>
                     ) : (
-                      <span class="muted">Held in L0; gateway pending</span>
+                      <span class="muted">Held in the Library's case-law files; gateway pending</span>
                     )}
                   </td>
                   <td><time datetime={item.modified}>{formatDate(item.modified)}</time></td>
@@ -190,7 +190,7 @@ const caseLawFolders = Object.entries(
       <section class="catalog-section" aria-labelledby="figures-heading">
         <div class="section-heading-row">
           <div>
-            <p class="catalog-kicker">L1</p>
+            <p class="catalog-kicker">Figures</p>
             <h2 id="figures-heading">Promoted Figures and Anchors</h2>
           </div>
           <dl class="status-summary">
@@ -237,7 +237,6 @@ const caseLawFolders = Object.entries(
               <h3>{book.title}</h3>
               {book.subtitle && <p class="book-card__subtitle">{book.subtitle}</p>}
               <p>{book.authorLine}</p>
-              <p class="book-card__meta">Body file: <code>{book.bodyFile}</code></p>
               <a href={book.href}>Open public shelf</a>
             </article>
           ))}

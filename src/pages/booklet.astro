@@ -1,0 +1,84 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="The Library in brief · America's School Trust Library"
+  description="A 20-page portrait of America's School Trust Library: what the school-land promise is, where its records live, what the Library holds, the standard it keeps, and the people who sign for it."
+  sourceId="booklet"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="kicker">Library publication</p>
+    <h1>The Library in brief</h1>
+
+    <p>
+      A 20-page portrait of America's School Trust Library: what the
+      school-land promise is, where its records live, what the Library holds,
+      the standard it keeps, and the people who sign for it. Published
+      August 10, 2026. First edition, working draft — like everything here,
+      corrected in public when it is wrong.
+    </p>
+
+    <p class="cover-figure">
+      <a href="/booklet/americas-school-trust-library-booklet-web.pdf">
+        <img
+          src="/booklet/booklet-cover.jpg"
+          alt="Cover of the booklet: America's School Trust Library — A building made of records"
+          width="963"
+          height="1238"
+          class="cover-img"
+        />
+      </a>
+    </p>
+
+    <p>
+      Read or download: Web copy (PDF, 4 MB) —
+      <a href="/booklet/americas-school-trust-library-booklet-web.pdf">/booklet/americas-school-trust-library-booklet-web.pdf</a>
+      · Press-quality copy (PDF, 13 MB) —
+      <a href="/booklet/americas-school-trust-library-booklet-press.pdf">/booklet/americas-school-trust-library-booklet-press.pdf</a>
+    </p>
+
+    <p class="hash-note">
+      The booklet is a Library publication and is catalogued like any other
+      holding. SHA-256: web
+      <code>926e1a184aad7d4961adb254a1bf69da009021d6a0122c4145dbbe577fd3ad67</code>
+      · press
+      <code>51d5ac3f90a0b9a876b77bada71b7e0f623c966fddb1baf461903259ca1938d5</code>
+    </p>
+  </article>
+
+  <style>
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A88A4E;
+      margin: 0 0 0.4rem;
+    }
+    .cover-figure {
+      margin: 1.5rem 0;
+    }
+    .cover-img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      display: block;
+      border: 1px solid rgba(22, 51, 92, 0.18);
+      border-radius: 3px;
+      box-shadow: 0 1px 4px rgba(14, 32, 56, 0.18);
+      margin: 0;
+    }
+    .hash-note {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: #4e617c;
+    }
+    .hash-note code {
+      font-size: 0.78em;
+      word-break: break-all;
+    }
+  </style>
+</BaseLayout>
