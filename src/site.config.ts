@@ -23,6 +23,13 @@ export const PREPUBLICATION = true;
 // does not serve this site yet only because a Worker route (a-forever-gift-portal,
 // `schooltrusts.org/*`) intercepts the hostname ahead of Pages.
 //
+// ✅ CUTOVER COMPLETED 2026-08-10. All four steps done and verified:
+//   the Worker route is deleted, schooltrusts.org serves this site, the
+//   schooltrusts.net zone carries a 301 Redirect Rule to schooltrusts.org with
+//   the path and query preserved, and the canonical below is flipped. The
+//   printed QR-code paths (/reading/us-XX/) were re-tested through the redirect
+//   after each step. The history is kept here because the ORDER is the lesson.
+//
 // THE CUTOVER, IN ORDER:
 //   1. Delete the `schooltrusts.org/*` Worker route in the Cloudflare dashboard.
 //      Pages then serves schooltrusts.org natively, with correctly scoped cookies.
@@ -46,7 +53,7 @@ export const PREPUBLICATION = true;
 // *The Forgotten Forever Gift* (ISBN 979-8-1819289-2-3) and every one resolves
 // to schooltrusts.net/reading/us-XX/. The redirect below is what keeps a
 // printed book working. It is permanent infrastructure, not a migration step.
-export const CONSOLIDATE_TO_ORG = false;
+export const CONSOLIDATE_TO_ORG = true;
 
 // Hostnames that redirect to schooltrusts.org, path preserved, once the
 // switch above is on.

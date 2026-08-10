@@ -6,9 +6,8 @@ import remarkStripVerify from './scripts/remark-strip-verify.mjs';
 
 // https://astro.build/config
 export default defineConfig({
-  // One Library at schooltrusts.org. This flips to .org in the same commit as
-  // CONSOLIDATE_TO_ORG in src/site.config.ts — see the cutover note there.
-  site: 'https://schooltrusts.net',
+  // One Library, one address. Cutover completed 2026-08-10.
+  site: 'https://schooltrusts.org',
   // The Forever Promise review room is a passcode gate handled entirely in
   // middleware (same-origin POST). Astro 5's default CSRF checkOrigin rejects
   // form POSTs whose Origin header is absent/mismatched with 403

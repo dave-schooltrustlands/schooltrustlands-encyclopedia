@@ -96,9 +96,9 @@ export const POST: APIRoute = async (Astro) => {
 
   const workSlug = work?.slug ?? '';
   const workTitle = work?.title ?? 'this work';
-  const workUrl = workSlug ? `https://schooltrusts.net/reading/${workSlug}/` : '';
+  const workUrl = workSlug ? `https://schooltrusts.org/reading/${workSlug}/` : '';
   const reviewUrl = workSlug
-    ? `https://schooltrusts.net/reading/${workSlug}/reviews/#review-${review.id}`
+    ? `https://schooltrusts.org/reading/${workSlug}/reviews/#review-${review.id}`
     : '';
 
   const send = await sendTemplateEmail({

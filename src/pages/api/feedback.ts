@@ -42,7 +42,7 @@ async function sendConfirmationEmail(
     '',
     'A librarian will follow up by email if a response is warranted. You can view your tickets at any time on your My Library page:',
     '',
-    'https://schooltrusts.net/my-library/',
+    'https://schooltrusts.org/my-library/',
     '',
     '— America’s School Trust Library',
   ];
@@ -51,7 +51,7 @@ async function sendConfirmationEmail(
     '<p>Thank you for your feedback. We have received it and assigned it ticket number ' +
     `<strong>${ticketNumber}</strong>.</p>` +
     '<p>A librarian will follow up by email if a response is warranted. You can view your tickets at any time on your ' +
-    '<a href="https://schooltrusts.net/my-library/">My Library page</a>.</p>' +
+    '<a href="https://schooltrusts.org/my-library/">My Library page</a>.</p>' +
     '<p>— America’s School Trust Library</p>';
 
   const fromAddress =

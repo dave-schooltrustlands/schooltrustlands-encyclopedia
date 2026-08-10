@@ -17,7 +17,7 @@ export async function GET(context: APIContext) {
     title: "America's School Trust Library — Newsroom",
     description:
       'Weekly survey of what changed in school trust lands across the United States.',
-    site: context.site ?? 'https://schooltrusts.net',
+    site: context.site ?? 'https://schooltrusts.org',
     items: entries.map((entry) => ({
       title: entry.data.title,
       link: `/newsroom/${entry.slug}/`,

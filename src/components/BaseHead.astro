@@ -9,7 +9,10 @@ interface Props {
 
 const { title, description } = Astro.props;
 
-const SITE_URL = 'https://schooltrusts.net';
+// One Library, one address. Kept in step with `site` in astro.config.mjs;
+// a second hardcoded host here is how the canonical URL got left behind at
+// the 2026-08-10 cutover.
+const SITE_URL = 'https://schooltrusts.org';
 const defaultTitle =
   "America's School Trust Library — An evidentiary archive of America's school trust lands and funds";
 const defaultDescription =
