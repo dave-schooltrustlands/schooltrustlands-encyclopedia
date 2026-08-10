@@ -1,10 +1,16 @@
 ---
-// v2.1 — Real portraits wired for 8 of 14 Cabinet cards (Margaret Bird,
-// Dave Sullivan, Bob Zybach, Laura Cooper, Daniel Crowe, Natalie Scott,
-// David Gould, Marguerite Herman). The remaining 6 (Bill Lansing, Roy
-// Andes, Jerry Phillips, Francis Elliott, Jerry Franklin, John A.
-// Charles Jr.) retain initial-style placeholders and carry an
-// "ai-pending" status pill until the AI-portrait round arrives.
+// v2.2 — Real portraits wired for 7 of 14 Cabinet cards (Margaret Bird,
+// Dave Sullivan, Bob Zybach, Laura Cooper, Daniel Crowe, David Gould,
+// Marguerite Herman). The other 7 carry initial-style placeholders:
+// Natalie Scott awaits a photograph; Bill Lansing, Roy Andes, Jerry
+// Phillips, Francis Elliott, Jerry Franklin, and John A. Charles Jr.
+// carry an "ai-pending" pill until the AI-portrait round arrives.
+//
+// ⚠ Portrait files are keyed by person, not by upload order. Four cards
+// were mis-wired in v2.1: Margaret's and Laura's photographs were
+// transposed, Laura's stood in for Daniel, and Daniel's stood in for
+// Natalie — who had no photograph at all. Confirm a face against the
+// name before adding or replacing any file in /images/founders/.
 import RoomLayout from '../layouts/RoomLayout.astro';
 ---
 <RoomLayout
@@ -42,7 +48,7 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     <article class="cabinet-card">
       <img
         class="portrait"
-        src="/images/founders/margaret-bird.png"
+        src="/images/founders/margaret-bird.jpg?v=2"
         alt="Portrait of Margaret Bird"
         width="72"
         height="72"
@@ -141,7 +147,7 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     <article class="cabinet-card">
       <img
         class="portrait"
-        src="/images/founders/laura-cooper.jpg"
+        src="/images/founders/laura-cooper.png?v=2"
         alt="Portrait of Laura D. Cooper"
         width="72"
         height="72"
@@ -172,7 +178,7 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     <article class="cabinet-card">
       <img
         class="portrait"
-        src="/images/founders/daniel-crowe.png"
+        src="/images/founders/daniel-crowe.png?v=2"
         alt="Portrait of Daniel Zene Crowe"
         width="72"
         height="72"
@@ -200,15 +206,11 @@ import RoomLayout from '../layouts/RoomLayout.astro';
       </div>
     </article>
 
-    <article class="cabinet-card">
-      <img
-        class="portrait"
-        src="/images/founders/natalie-scott.png"
-        alt="Portrait of Natalie Scott"
-        width="72"
-        height="72"
-        loading="lazy"
-      />
+    <article class="cabinet-card" data-portrait-status="photo-pending">
+      <div class="portrait-stack">
+        <div class="portrait-placeholder" aria-hidden="true">NS</div>
+        <span class="portrait-pill">Photograph to come.</span>
+      </div>
       <div class="card-body">
         <h3>Natalie Scott</h3>
         <p class="role-line">Attorney · The Scott Law Group</p>
@@ -233,7 +235,7 @@ import RoomLayout from '../layouts/RoomLayout.astro';
     <article class="cabinet-card in-memoriam">
       <img
         class="portrait portrait--memorial"
-        src="/images/founders/david-gould.jpg"
+        src="/images/founders/david-gould.jpg?v=2"
         alt="Portrait of David Gould (1942–2024)"
         width="72"
         height="72"
@@ -452,10 +454,10 @@ import RoomLayout from '../layouts/RoomLayout.astro';
   </section>
 
   <p class="closing-note">
-    <em>Eight portraits sourced from substrate; six remain placeholder
-    while AI-illustrated likenesses are prepared. The 1785 Confederation
-    Congress committee — Jefferson, Grayson, Williamson — will join this
-    cabinet in a future expansion.</em>
+    <em>Seven portraits sourced from substrate; seven remain placeholder
+    while photographs and AI-illustrated likenesses are prepared. The 1785
+    Confederation Congress committee — Jefferson, Grayson, Williamson —
+    will join this cabinet in a future expansion.</em>
   </p>
 </RoomLayout>
 
