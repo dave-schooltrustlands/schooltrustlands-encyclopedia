@@ -8,6 +8,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const LIBRARY_CARD_MAILTO =
   'mailto:library@schooltrusts.net?subject=Library%20Card%20signup';
 
+// Doors carried over from the retired schooltrusts.org /help page, which now
+// redirects here. Same structured-subject convention as the Library Card
+// mailto above, routed to the institutional inbox rather than to a person.
+const DOCUMENT_GIFT_MAILTO =
+  'mailto:library@schooltrusts.net?subject=A%20document%20for%20the%20Library';
+const BOARD_SERVICE_MAILTO =
+  'mailto:library@schooltrusts.net?subject=Board%20or%20Law%20Librarian%20service';
+
 // Site Update v9, Super-agent GAMMA, C.1 — four-question role-frame rewrite.
 // Each role answers four questions concretely:
 //   1. What public office are you occupying?
@@ -284,6 +292,38 @@ const roles = [
   </section>
 
   <article class="prose prose-slate mt-12 max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h2>Contribute documents</h2>
+    <p>
+      Not every contribution is a role. The collection grows by gift, and
+      attics matter as much as archives: old agency reports, school-board
+      minutes, lease and sale records, maps, letters, photographs, newspaper
+      clippings — public-record material from any of the school-trust states.
+      The Library preserves what you send, records where it came from, and
+      makes it findable for every reader after you. The provenance note is the
+      artifact you leave behind, and it stays with the document. If you are not
+      sure whether something belongs, describe it rather than send it, and the
+      Library will tell you.
+    </p>
+    <p>
+      <a href={DOCUMENT_GIFT_MAILTO}>Write to the Library about a document &rarr;</a>
+    </p>
+
+    <h2>Report an error</h2>
+    <p>
+      Public correction is one of the Library's founding promises, and since
+      August 3, 2026 it is an adopted one: the
+      <a href="/rights/">Constitution and Readers' Bill of Rights</a> devotes an
+      article to correction, challenge, and appeal, and gives every reader the
+      right to visible correction. If anything on these shelves looks wrong — a
+      figure, a date, a citation, a characterization — say so. Material errors
+      are fixed, the fix is made in public, and the reader who caught it has
+      done the Library a service. No Library Card is required.
+    </p>
+    <p>
+      <a href="/correct/">Report an error &rarr;</a> &nbsp;·&nbsp; The protocol
+      is at <a href="/about/corrections/">Corrections</a>.
+    </p>
+
     <h2>Pseudonymity</h2>
     <p>
       For contributors whose role might create employer or political conflict, the
@@ -296,6 +336,41 @@ const roles = [
       under their real name could be professionally costly.
     </p>
 
+    <h2>Serving as a director or as Law Librarian</h2>
+    <p>
+      America's School Trust Library is an Oregon nonprofit public benefit
+      corporation, and its board of directors — the three people named on the
+      <a href="/about/">About</a> page — was seated August 3, 2026 and adopted
+      the Library's governing documents by unanimous written consent.
+      <strong>Two director seats are open now.</strong> Under the
+      <a href="/bylaws/">Bylaws</a> the board may have between three and eleven
+      directors, and it intends to grow to five and then toward seven, with
+      particular attention to education, libraries and archives, finance, and
+      beneficiary communities. Directors serve one-year terms, serve without
+      compensation, and sign the annual disclosure in the
+      <a href="/governance/">Conflict of Interest Policy</a>.
+    </p>
+    <p>
+      A <strong>Law Librarian</strong> seat is open as well. The bylaws make it
+      a professional role rather than an officer or director seat: the Law
+      Librarian stewards the legal collection under a written charter covering
+      collection scope, cataloging, citation verification, public legal
+      information, and the separation of public Library work from privileged,
+      confidential, or active-litigation work. The Library provides legal
+      information, never legal advice.
+    </p>
+    <p>
+      There is no application form and no deadline, and it would be dishonest
+      to invent one. Write to the Library, say which seat interests you and
+      what you would bring to it, and the board will answer. Filling these
+      seats is not housekeeping: the adopted conflict-of-interest policy names
+      the growth of the board toward a disinterested majority as an important
+      safeguard in its own right.
+    </p>
+    <p>
+      <a href={BOARD_SERVICE_MAILTO}>Write to the Library about a board or Law Librarian seat &rarr;</a>
+    </p>
+
     <h2>What we don't ask</h2>
     <p>
       No copyright transfer (corrections and annotations are licensed CC BY 4.0 by
@@ -303,6 +378,29 @@ const roles = [
       political alignment — the Library is a fiduciary-data project, not an
       advocacy outlet, and accepts contributions from anyone with the accuracy and
       good faith to do the work. No commitment beyond what you choose. No fees.
+    </p>
+
+    <h2>About donations</h2>
+    <p>
+      The Library is not asking you for money, and that is deliberate: it asks
+      for documents and hands before dollars. The paperwork that authorizes a
+      nonprofit to invite donations is done — Oregon Department of Justice
+      Charitable Activities Registration No. 72571 was completed July 10, 2026,
+      and the corporation was formed July 21, 2026 — so this is a choice about
+      building the right way, not a legal barrier. The Library would rather owe
+      its early shape to contributors than to donors. The adopted
+      <a href="/rights/">Constitution and Readers' Bill of Rights</a> states the
+      same principle from the reader's side: access to the public record is not
+      conditioned on an account, a donation, or an affiliation.
+    </p>
+    <p>
+      So there is no donate button on this page, and no payment link. One
+      honest limit remains as well: no federal tax-exemption determination has
+      been issued, and until one is, the Library does not describe
+      contributions as tax-deductible. When the Library begins accepting
+      support, this page will say so plainly. Until then, the contributions it
+      actually needs are the ones listed above — a correction, a document, a
+      title, a state, a seat.
     </p>
 
     <h2>A note for state-lands-agency staff</h2>
@@ -321,7 +419,7 @@ const roles = [
     <hr class="my-10" />
 
     <p class="text-sm text-slate-600">
-      <em>Curated by Library editorial team, 2026-05-08.</em>
+      <em>Curated by Library editorial team, 2026-05-08; updated 2026-08-09.</em>
     </p>
   </article>
 </BaseLayout>

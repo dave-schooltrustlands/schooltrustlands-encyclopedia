@@ -1,12 +1,24 @@
 # ===========================================================================
-# ⚠ THIS FILE IS OVER CLOUDFLARE'S CEILING — verified live 2026-08-09.
-# Pages honours roughly the first 100 rules here and silently ignores the rest.
-# Probe: `/map` (rule 2) returns 301; `/reading/wsfc-vol1-ch13-who-stops-this`
-# (rule ~120) returns 404. That is a PRE-EXISTING defect — the tail of the
-# Who-Steals-From-Children chapter block has been inert since it was added.
-# The 2026-08-09 consolidation rules are placed FIRST for that reason.
-# TO FIX PROPERLY: prune the chained rules (several redirect to targets that
-# themselves redirect) and re-verify each surviving rule against production.
+# RULE BUDGET — read before adding anything here.
+#
+# Cloudflare Pages honours roughly the first 100 rules in this file and
+# silently ignores the rest. Measured on a preview deployment 2026-08-09: an
+# identical canary rule returned 301 at position 1 and did not fire at
+# position ~128. Before the prune below, the tail of the Who-Steals-From-
+# Children block had been dead since the day it was written.
+#
+# Two other things learned by measurement, both counter-intuitive:
+#   * BOTH slash forms are required. A rule written only as `/foo/` does not
+#     match a request for `/foo`. That is why every rule here is doubled, and
+#     why the budget is really ~50 destinations, not 100.
+#   * A static asset beats a redirect. Several `/reading/*` rules never fired
+#     because the legacy alias pages still build. Deleting a rule is not the
+#     same as breaking a URL — check whether the page still exists first.
+#
+# Kept under budget on 2026-08-09 by replacing thirty individual
+# Who-Steals-From-Children chapter rules and six interlude rules with splats.
+# The consolidation rules sit FIRST because they are the ones that must work.
+# If you add rules, count them, and re-verify the last rule in the file.
 # ===========================================================================
 
 # ---------------------------------------------------------------------------
@@ -50,23 +62,13 @@
 /advocates/   https://schooltrustlands.net/   301
 /advocates    https://schooltrustlands.net/   301
 
-# ---------------------------------------------------------------------------
-# STILL TO PLACE — /renewal and its six children.
-#
-# The Renewal is a law-reform program: model legislation, a pro bono panel,
-# test-case work. It cannot live under the masthead of an institution whose
-# adopted Constitution says it "takes no position in any litigation." It has
-# not been ported into this repository for that reason.
-#
-# Until Dave places it, the old worker (a-forever-gift-portal) still serves
-# these paths. THE DAY schooltrusts.org DNS MOVES TO THIS PAGES PROJECT, they
-# go dark. Before that cutover, one of these must be true:
-#   (a) the program is served at its own address — renewal.schooltrusts.org
-#       or a page on oastl.org — and the lines below point there; or
-#   (b) the lines below point somewhere honest that explains where it went.
-#
-# /renewal/*   https://<its new home>/:splat   301
-# ---------------------------------------------------------------------------
+# The Renewal is a law-reform program — model legislation, a pro bono panel,
+# test-case work. It cannot sit under the masthead of an institution whose
+# adopted Constitution says it takes no position in any litigation. It moved to
+# Oregon Advocates for School Trust Lands, which actually runs it, 2026-08-09.
+/renewal/*   https://oastl.org/renewal/:splat   301
+/renewal/    https://oastl.org/renewal/         301
+/renewal     https://oastl.org/renewal/         301
 
 /map/  /atlas/  301
 /map   /atlas/  301
@@ -84,30 +86,30 @@
 # v26 — Who Steals from Children Vol 1 chapter slug renames (Reader's Edition).
 # 11 chapter slugs were renamed from the v25 prosecutorial-register titles to
 # match the Reader's Edition chapter titles; the old URLs retire-redirect.
-/reading/wsfc-vol1-ch01-theft-in-plain-sight/                         /reading/wsfc-vol1-ch01-why-i-bought-a-tree-farm/                  301
-/reading/wsfc-vol1-ch01-theft-in-plain-sight                          /reading/wsfc-vol1-ch01-why-i-bought-a-tree-farm/                  301
-/reading/wsfc-vol1-ch02-what-oregon-promised-in-1859/                 /reading/wsfc-vol1-ch02-the-first-foia/                            301
-/reading/wsfc-vol1-ch02-what-oregon-promised-in-1859                  /reading/wsfc-vol1-ch02-the-first-foia/                            301
-/reading/wsfc-vol1-ch03-a-century-of-drift/                           /reading/wsfc-vol1-ch03-bob-and-barb-at-cougar-pass/               301
-/reading/wsfc-vol1-ch03-a-century-of-drift                            /reading/wsfc-vol1-ch03-bob-and-barb-at-cougar-pass/               301
-/reading/wsfc-vol1-ch04-the-1990s-capture/                            /reading/wsfc-vol1-ch04-the-secret-meeting-about-going-public/     301
-/reading/wsfc-vol1-ch04-the-1990s-capture                             /reading/wsfc-vol1-ch04-the-secret-meeting-about-going-public/     301
-/reading/wsfc-vol1-ch05-the-2017-sale-and-reverse/                    /reading/wsfc-vol1-ch05-the-sale-that-didnt-happen/                301
-/reading/wsfc-vol1-ch05-the-2017-sale-and-reverse                     /reading/wsfc-vol1-ch05-the-sale-that-didnt-happen/                301
-/reading/wsfc-vol1-ch06-the-2019-bond-substitution/                   /reading/wsfc-vol1-ch06-the-quiet-substitution/                    301
-/reading/wsfc-vol1-ch06-the-2019-bond-substitution                    /reading/wsfc-vol1-ch06-the-quiet-substitution/                    301
-/reading/wsfc-vol1-ch07-the-2022-osu-plan/                            /reading/wsfc-vol1-ch07-the-childrens-forest/                      301
-/reading/wsfc-vol1-ch07-the-2022-osu-plan                             /reading/wsfc-vol1-ch07-the-childrens-forest/                      301
-/reading/wsfc-vol1-ch08-the-secret-meetings/                          /reading/wsfc-vol1-ch08-david-gould/                               301
-/reading/wsfc-vol1-ch08-the-secret-meetings                           /reading/wsfc-vol1-ch08-david-gould/                               301
-/reading/wsfc-vol1-ch09-the-2023-withdrawal-that-wasnt/               /reading/wsfc-vol1-ch09-margaret-arrives/                          301
-/reading/wsfc-vol1-ch09-the-2023-withdrawal-that-wasnt                /reading/wsfc-vol1-ch09-margaret-arrives/                          301
-/reading/wsfc-vol1-ch10-oastl-forms-the-standing-victory/             /reading/wsfc-vol1-ch10-the-first-lawsuit/                         301
-/reading/wsfc-vol1-ch10-oastl-forms-the-standing-victory              /reading/wsfc-vol1-ch10-the-first-lawsuit/                         301
-/reading/wsfc-vol1-ch11-the-smoking-gun-and-the-discovery-stonewall/  /reading/wsfc-vol1-ch11-corvallis-high-school/                     301
-/reading/wsfc-vol1-ch11-the-smoking-gun-and-the-discovery-stonewall   /reading/wsfc-vol1-ch11-corvallis-high-school/                     301
-/reading/wsfc-vol1-ch12-whats-been-stolen/                            /reading/wsfc-vol1-ch12-the-smoking-gun/                           301
-/reading/wsfc-vol1-ch12-whats-been-stolen                             /reading/wsfc-vol1-ch12-the-smoking-gun/                           301
+/reading/wsfc-vol1-ch01-theft-in-plain-sight/                         /writing/who-steals-from-children/ch01-why-i-bought-a-tree-farm/  301
+/reading/wsfc-vol1-ch01-theft-in-plain-sight                          /writing/who-steals-from-children/ch01-why-i-bought-a-tree-farm/  301
+/reading/wsfc-vol1-ch02-what-oregon-promised-in-1859/                 /writing/who-steals-from-children/ch02-the-first-foia/  301
+/reading/wsfc-vol1-ch02-what-oregon-promised-in-1859                  /writing/who-steals-from-children/ch02-the-first-foia/  301
+/reading/wsfc-vol1-ch03-a-century-of-drift/                           /writing/who-steals-from-children/ch03-bob-and-barb-at-cougar-pass/  301
+/reading/wsfc-vol1-ch03-a-century-of-drift                            /writing/who-steals-from-children/ch03-bob-and-barb-at-cougar-pass/  301
+/reading/wsfc-vol1-ch04-the-1990s-capture/                            /writing/who-steals-from-children/ch04-the-secret-meeting-about-going-public/  301
+/reading/wsfc-vol1-ch04-the-1990s-capture                             /writing/who-steals-from-children/ch04-the-secret-meeting-about-going-public/  301
+/reading/wsfc-vol1-ch05-the-2017-sale-and-reverse/                    /writing/who-steals-from-children/ch05-the-sale-that-didnt-happen/  301
+/reading/wsfc-vol1-ch05-the-2017-sale-and-reverse                     /writing/who-steals-from-children/ch05-the-sale-that-didnt-happen/  301
+/reading/wsfc-vol1-ch06-the-2019-bond-substitution/                   /writing/who-steals-from-children/ch06-the-quiet-substitution/  301
+/reading/wsfc-vol1-ch06-the-2019-bond-substitution                    /writing/who-steals-from-children/ch06-the-quiet-substitution/  301
+/reading/wsfc-vol1-ch07-the-2022-osu-plan/                            /writing/who-steals-from-children/ch07-the-childrens-forest/  301
+/reading/wsfc-vol1-ch07-the-2022-osu-plan                             /writing/who-steals-from-children/ch07-the-childrens-forest/  301
+/reading/wsfc-vol1-ch08-the-secret-meetings/                          /writing/who-steals-from-children/ch08-david-gould/  301
+/reading/wsfc-vol1-ch08-the-secret-meetings                           /writing/who-steals-from-children/ch08-david-gould/  301
+/reading/wsfc-vol1-ch09-the-2023-withdrawal-that-wasnt/               /writing/who-steals-from-children/ch09-margaret-arrives/  301
+/reading/wsfc-vol1-ch09-the-2023-withdrawal-that-wasnt                /writing/who-steals-from-children/ch09-margaret-arrives/  301
+/reading/wsfc-vol1-ch10-oastl-forms-the-standing-victory/             /writing/who-steals-from-children/ch10-the-first-lawsuit/  301
+/reading/wsfc-vol1-ch10-oastl-forms-the-standing-victory              /writing/who-steals-from-children/ch10-the-first-lawsuit/  301
+/reading/wsfc-vol1-ch11-the-smoking-gun-and-the-discovery-stonewall/  /writing/who-steals-from-children/ch11-corvallis-high-school/  301
+/reading/wsfc-vol1-ch11-the-smoking-gun-and-the-discovery-stonewall   /writing/who-steals-from-children/ch11-corvallis-high-school/  301
+/reading/wsfc-vol1-ch12-whats-been-stolen/                            /writing/who-steals-from-children/ch12-the-smoking-gun/  301
+/reading/wsfc-vol1-ch12-whats-been-stolen                             /writing/who-steals-from-children/ch12-the-smoking-gun/  301
 
 # v60b — Book migration: /reading/* book pages → /writing/* book pages.
 # Three long-form works leave the Reading Room (now the curated catalog
@@ -165,12 +167,16 @@
 /reading/sacred-compact-vii-civic-practice                            /writing/eighth-anchor/vii/                                        301
 /reading/sacred-compact-viii-letter-to-architects/                    /writing/eighth-anchor/viii/                                       301
 /reading/sacred-compact-viii-letter-to-architects                     /writing/eighth-anchor/viii/                                       301
-/reading/sacred-compact-interlude-1-tektronix/                        /writing/eighth-anchor/interlude-1-tektronix/                      301
-/reading/sacred-compact-interlude-1-tektronix                         /writing/eighth-anchor/interlude-1-tektronix/                      301
-/reading/sacred-compact-interlude-2-computing-today/                  /writing/eighth-anchor/interlude-2-computing-today/                301
-/reading/sacred-compact-interlude-2-computing-today                   /writing/eighth-anchor/interlude-2-computing-today/                301
-/reading/sacred-compact-interlude-3-cognitive-partnership/            /writing/eighth-anchor/interlude-3-cognitive-partnership/          301
-/reading/sacred-compact-interlude-3-cognitive-partnership             /writing/eighth-anchor/interlude-3-cognitive-partnership/          301
+# The three interludes keep their slugs, so a pattern covers all six rules.
+/reading/sacred-compact-interlude-*/   /writing/eighth-anchor/interlude-:splat/   301
+/reading/sacred-compact-interlude-*    /writing/eighth-anchor/interlude-:splat/   301
+
+# Who Steals from Children — the whole Vol 1 chapter family moves by pattern.
+# Every /reading/wsfc-vol1-<slug>/ has a twin at
+# /writing/who-steals-from-children/<slug>/, so one splat replaces thirty rules.
+# This matters: this file is at Cloudflare's ceiling and rules past it are dead.
+/reading/wsfc-vol1-*/   /writing/who-steals-from-children/:splat/   301
+/reading/wsfc-vol1-*    /writing/who-steals-from-children/:splat/   301
 
 # Who Steals from Children — series landing + Vol 1 landing collapsed
 # into a single page under /writing/who-steals-from-children/. The 14
@@ -183,33 +189,3 @@
 /reading/who-steals-from-children                                     /writing/who-steals-from-children/                                 301
 /reading/who-steals-from-children-vol1-elliott/                       /writing/who-steals-from-children/                                 301
 /reading/who-steals-from-children-vol1-elliott                        /writing/who-steals-from-children/                                 301
-/reading/wsfc-vol1-preface/                                           /writing/who-steals-from-children/preface/                         301
-/reading/wsfc-vol1-preface                                            /writing/who-steals-from-children/preface/                         301
-/reading/wsfc-vol1-ch01-why-i-bought-a-tree-farm/                     /writing/who-steals-from-children/ch01-why-i-bought-a-tree-farm/   301
-/reading/wsfc-vol1-ch01-why-i-bought-a-tree-farm                      /writing/who-steals-from-children/ch01-why-i-bought-a-tree-farm/   301
-/reading/wsfc-vol1-ch02-the-first-foia/                               /writing/who-steals-from-children/ch02-the-first-foia/             301
-/reading/wsfc-vol1-ch02-the-first-foia                                /writing/who-steals-from-children/ch02-the-first-foia/             301
-/reading/wsfc-vol1-ch03-bob-and-barb-at-cougar-pass/                  /writing/who-steals-from-children/ch03-bob-and-barb-at-cougar-pass/ 301
-/reading/wsfc-vol1-ch03-bob-and-barb-at-cougar-pass                   /writing/who-steals-from-children/ch03-bob-and-barb-at-cougar-pass/ 301
-/reading/wsfc-vol1-ch04-the-secret-meeting-about-going-public/        /writing/who-steals-from-children/ch04-the-secret-meeting-about-going-public/ 301
-/reading/wsfc-vol1-ch04-the-secret-meeting-about-going-public         /writing/who-steals-from-children/ch04-the-secret-meeting-about-going-public/ 301
-/reading/wsfc-vol1-ch05-the-sale-that-didnt-happen/                   /writing/who-steals-from-children/ch05-the-sale-that-didnt-happen/ 301
-/reading/wsfc-vol1-ch05-the-sale-that-didnt-happen                    /writing/who-steals-from-children/ch05-the-sale-that-didnt-happen/ 301
-/reading/wsfc-vol1-ch06-the-quiet-substitution/                       /writing/who-steals-from-children/ch06-the-quiet-substitution/     301
-/reading/wsfc-vol1-ch06-the-quiet-substitution                        /writing/who-steals-from-children/ch06-the-quiet-substitution/     301
-/reading/wsfc-vol1-ch07-the-childrens-forest/                         /writing/who-steals-from-children/ch07-the-childrens-forest/       301
-/reading/wsfc-vol1-ch07-the-childrens-forest                          /writing/who-steals-from-children/ch07-the-childrens-forest/       301
-/reading/wsfc-vol1-ch08-david-gould/                                  /writing/who-steals-from-children/ch08-david-gould/                301
-/reading/wsfc-vol1-ch08-david-gould                                   /writing/who-steals-from-children/ch08-david-gould/                301
-/reading/wsfc-vol1-ch09-margaret-arrives/                             /writing/who-steals-from-children/ch09-margaret-arrives/           301
-/reading/wsfc-vol1-ch09-margaret-arrives                              /writing/who-steals-from-children/ch09-margaret-arrives/           301
-/reading/wsfc-vol1-ch10-the-first-lawsuit/                            /writing/who-steals-from-children/ch10-the-first-lawsuit/          301
-/reading/wsfc-vol1-ch10-the-first-lawsuit                             /writing/who-steals-from-children/ch10-the-first-lawsuit/          301
-/reading/wsfc-vol1-ch11-corvallis-high-school/                        /writing/who-steals-from-children/ch11-corvallis-high-school/      301
-/reading/wsfc-vol1-ch11-corvallis-high-school                         /writing/who-steals-from-children/ch11-corvallis-high-school/      301
-/reading/wsfc-vol1-ch12-the-smoking-gun/                              /writing/who-steals-from-children/ch12-the-smoking-gun/            301
-/reading/wsfc-vol1-ch12-the-smoking-gun                               /writing/who-steals-from-children/ch12-the-smoking-gun/            301
-/reading/wsfc-vol1-ch13-who-stops-this/                               /writing/who-steals-from-children/ch13-who-stops-this/             301
-/reading/wsfc-vol1-ch13-who-stops-this                                /writing/who-steals-from-children/ch13-who-stops-this/             301
-/reading/wsfc-vol1-documentary-record/                                /writing/who-steals-from-children/documentary-record/              301
-/reading/wsfc-vol1-documentary-record                                 /writing/who-steals-from-children/documentary-record/              301
