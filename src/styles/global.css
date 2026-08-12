@@ -733,6 +733,27 @@ h4[id] {
     color: var(--ink);
   }
 
+  /* The lede answers "why should I read this" before the page says what it is
+     — Barry Shane's note of 2026-08-11, and he was right: the reason had been
+     sitting near the bottom of the page. Set a step larger than the body so a
+     reader who reads one paragraph reads this one. */
+  .home-declaration__lede {
+    margin: 1.35rem 0 0;
+    max-width: 62ch;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.62;
+    color: var(--ink);
+  }
+  .home-declaration__lede + .home-declaration__lede {
+    margin-top: 0.9rem;
+  }
+  .home-declaration__lede a {
+    color: #1d4ed8;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   .home-doors__grid {
     list-style: none;
     padding: 0;
