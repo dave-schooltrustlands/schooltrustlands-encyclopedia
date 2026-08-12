@@ -1,15 +1,20 @@
 // Site-wide configuration flags.
 //
 // SITE_PREVIEW — board-adoption switch for the whole public Library site.
-// Keep true until Dave authorizes the post-organizational-meeting flip. When
-// false, the sitewide Preview strip is replaced by a Living Edition label.
-export const SITE_PREVIEW = true;
+// FLIPPED FALSE 2026-08-12 on Dave's instruction. The founding board was
+// seated August 3, 2026 and has been editing the site since; that is
+// adoption. There was never a bylaw requiring a separate vote to publish —
+// the gate was a drafting habit, not an instrument. The sitewide Preview
+// strip is replaced by the Living Edition label.
+export const SITE_PREVIEW = false;
 
 // PREPUBLICATION — when true, every Reading Room chapter page renders
-// the <PrepublicationBanner /> warning at the top of the chapter content
-// area. This is separate from SITE_PREVIEW: a board-adopted Library can still
-// carry visible draft notices on individual book chapters.
-export const PREPUBLICATION = true;
+// the <PrepublicationBanner /> "Beta draft" warning at the top of the
+// chapter content area. FLIPPED FALSE 2026-08-12 with SITE_PREVIEW: a
+// reader was seeing "Preview publication" at the top of the page and
+// "Beta draft" in the middle of it, from two different generations of
+// wording. Chapter-level status now lives in each chapter's own note.
+export const PREPUBLICATION = false;
 
 // CONSOLIDATE_TO_ORG — the .net → .org cutover switch.
 //
