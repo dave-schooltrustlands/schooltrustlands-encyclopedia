@@ -110,7 +110,7 @@ I want to give Anthony Davis his due. He did not have to write to Barb and me. H
 
 What it is, for the project this book is about, is the documentary anchor for everything that came after. The 2024 OASTL lawsuit — the case I am the lead plaintiff in — depends, at its evidentiary core, on the proposition that the State did not deliberate in front of its beneficiaries about the disposition of their trust asset. That proposition is, of course, supported by years of records-request stonewalls, redacted rosters, refused refusals on small public-good proposals like Cougar Pass, and the State's October 2025 Answer that the Plaintiffs are not owed the duties they say they are owed. But the cleanest single piece of evidence, the one that can be reproduced in two paragraphs in a brief and that requires no expert testimony to interpret, is the Davis email. The interim dean of the OSU College of Forestry, on the night of May 27, 2020, sat down and wrote to two members of the public that the panel he chaired would meet privately to plan its public communications. He sent the email. He copied his director of communications. He pressed send.
 
-It is in the record now. It will be in the record when the trial is held. It will, if I have anything to say about it, be quoted in the State's own court filings — by the plaintiffs, on the way to the State explaining why the plaintiffs are wrong that a fiduciary process requires the trustee to deliberate in the open.
+It is in the record now. It will, if I have anything to say about it, be quoted in the State's own court filings — by the plaintiffs, on the way to the State explaining why the plaintiffs are wrong that a fiduciary process requires the trustee to deliberate in the open.
 
 ## Closing scene
 

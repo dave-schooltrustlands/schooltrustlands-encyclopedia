@@ -1,6 +1,6 @@
 ---
 title: "Margaret Bird — Selected Published Essays and Policy Work"
-author: "Margaret Bird (architect of Utah's school-trust-lands reform; founder of the Children's Land Alliance Supporting Schools; co-author of Schools of the Republic)"
+author: "Margaret Bird (architect of Utah's school-trust-lands reform; founder of the Children's Land Alliance Supporting Schools; co-author of The Forgotten Forever Gift to Public Schools)"
 year: "1990s–2010s"
 category: "D"
 categoryName: "Contemporary scholarship & reference works"
@@ -19,11 +19,11 @@ This entry is a curated bibliography of the published essays, op-eds, policy mem
 
 ## Why the Library cites it
 
-The Library carries Margaret Bird's published essays because anyone trying to design school-trust reform in a state other than Utah has to read Margaret Bird first. Her doctoral research documented, with state-level financial precision, how Utah's school lands had been managed for the benefit of mining and grazing operators rather than for schools; her advocacy work translated that finding into the political case that produced the 1994 Title 53C reform and the institutional architecture — SITLA in 1994, and the Title 53D Land Trusts Protection and Advocacy Office in 2010 — that grew Utah's permanent school fund from roughly fifty million dollars in the 1980s to more than three billion dollars by the 2020s. The Eighth Anchor's argument that reform is operational, not theoretical, runs directly through her published work. The Library carries the bibliography as the entry door for readers who want to study how the only successful modern school-trust-lands reform in the United States actually got built.
+The Library carries Margaret Bird's published essays because anyone trying to design school-trust reform in a state other than Utah has to read Margaret Bird first. Her doctoral research documented, with state-level financial precision, how Utah's school lands had been managed for the benefit of mining and grazing operators rather than for schools; her advocacy work translated that finding into the political case that produced the 1994 Title 53C reform and the institutional architecture — SITLA in 1994, and the Title 53D Land Trusts Protection and Advocacy Office in 2010 — that grew Utah's permanent school fund from roughly fifty million dollars in the 1980s to more than three billion dollars by the 2020s. The argument in *Stewards of the Republic* that reform is operational, not theoretical, runs directly through her published work. The Library carries the bibliography as the entry door for readers who want to study how the only successful modern school-trust-lands reform in the United States actually got built.
 
 ## A representative essay
 
-"Where did all the school-trust lands go?" — Margaret Bird's most-quoted Salt Lake Tribune op-ed from the early reform period — opens with the observation that Utah's school children had inherited a federal land grant equal in size to several New England states and asks where that inheritance had ended up. The piece is short, plain-spoken, and structurally identical in register to the Library's own substrate work. The Children's Land Alliance briefings carry the same plain-language register applied to specific policy questions.
+"Where did all the school-trust lands go?" — Margaret Bird's most-quoted Salt Lake Tribune op-ed from the early reform period — opens with the observation that Utah's school children had inherited a federal land grant equal in size to several New England states and asks where that inheritance had ended up. The piece is short, plain-spoken, and structurally identical in register to the Library's own writing. The Children's Land Alliance briefings carry the same plain-language register applied to specific policy questions.
 
 ## Where to find it
 

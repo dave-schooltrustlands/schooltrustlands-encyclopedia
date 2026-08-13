@@ -7,7 +7,7 @@ name: ""
 
 Louisiana was admitted to the Union on April 30, 1812 — the first state carved from the Louisiana Purchase and one of the earliest beneficiaries of the federal Sixteenth Section land grant. Under the prevailing federal policy at the time, Louisiana received Section 16 of each township for the support of the schools of that township. Unlike the western grant states, Louisiana administers its school trust at the parish level: school boards function as statutory trustees for the Section 16 lands lying within their parish, with broader supervisory authority residing in the State Land Office and the legislature.
 
-Louisiana's school trust corpus is unusual in composition because so much of the original section-16 estate has been alienated, leased, or subjected to mineral development under the parish-based system over more than two centuries. Current acreage and corpus values [CITE PENDING for Phase 4 verification]. Revenue derives from agricultural leases, timber, and — importantly — oil, gas, and other mineral leases on retained Section 16 lands.
+Louisiana's school trust corpus is unusual in composition because so much of the original section-16 estate has been alienated, leased, or subjected to mineral development under the parish-based system over more than two centuries. Current acreage and corpus values [CITE PENDING]. Revenue derives from agricultural leases, timber, and — importantly — oil, gas, and other mineral leases on retained Section 16 lands.
 
 ## Enabling Act
 
@@ -20,7 +20,7 @@ The Louisiana Enabling Act of February 20, 1811 (2 Stat. 641), which authorized 
 
 ## Notable Attorney General opinions
 
-AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
+No Attorney General opinions for this state are on file yet. They are added as they are located and read.
 
 ## Trust Integrity grade and rationale
 

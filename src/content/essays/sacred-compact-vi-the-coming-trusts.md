@@ -64,7 +64,7 @@ The Authority's governance committee will be composed, predominantly, of officia
 
 **Eighth anchor — the watchful crew.** This is where the design problem is hardest. The school trust acquired its enforcement community late and only partially, after two centuries of drift, and the Authority would need its enforcement community in place before the first grant cycle.
 
-Diamandis and Wissner-Gross's concept of "Programmatic Down-Shifting" implicitly recognizes the problem; what it does not yet specify is *who* has the authority to do the down-shifting, on whose behalf, with what enforcement mechanism, paid out of which line item. The school-trust evidence answers part of that question by elimination: the answer cannot be the Authority's own staff. The answer has to be a community external to the Authority, structurally invested in the Authority's compliance, and resourced enough to keep showing up for as long as the Authority itself exists. The Authority's charter should include, by name, the community-of-practice institutions the founding generation expects to carry the watchful-crew function: an academic-and-policy infrastructure on the model of the Utah Foundation's school-trust-program work; an issue-organized public-interest non-profit with statutory standing on the model of the Advocates for School Trust Lands family; a Library — institutional locus, public substrate, multi-generational continuity — on the model of America's School Trust Library at schooltrusts.net. The Library is the existence proof: a 2026 institution can be built, at workable cost, that holds the kind of multi-generational civic memory the framers of 1785 could not engineer for. The Authority's charter can name a successor institution as the watchful-crew locus from day one, fund it from the Authority's corpus on a statutorily protected appropriation, and insulate it from removal except for cause.
+Diamandis and Wissner-Gross's concept of "Programmatic Down-Shifting" implicitly recognizes the problem; what it does not yet specify is *who* has the authority to do the down-shifting, on whose behalf, with what enforcement mechanism, paid out of which line item. The school-trust evidence answers part of that question by elimination: the answer cannot be the Authority's own staff. The answer has to be a community external to the Authority, structurally invested in the Authority's compliance, and resourced enough to keep showing up for as long as the Authority itself exists. The Authority's charter should include, by name, the community-of-practice institutions the founding generation expects to carry the watchful-crew function: an academic-and-policy infrastructure on the model of the Utah Foundation's school-trust-program work; an issue-organized public-interest non-profit with statutory standing on the model of the Advocates for School Trust Lands family; a Library — institutional locus, public substrate, multi-generational continuity — on the model of America's School Trust Library at schooltrusts.org. The Library is the existence proof: a 2026 institution can be built, at workable cost, that holds the kind of multi-generational civic memory the framers of 1785 could not engineer for. The Authority's charter can name a successor institution as the watchful-crew locus from day one, fund it from the Authority's corpus on a statutorily protected appropriation, and insulate it from removal except for cause.
 
 That is the eight-anchor mapping, in operational form. Every anchor has a school-trust precedent, every anchor has a translation move, and every translation can be specified at charter-drafting depth. The architects have the vocabulary they need.
 
@@ -92,7 +92,7 @@ The design implications, anchor by anchor:
 
 *Mandatory fiduciary education.* Annual training for the trust's governing officials, year in and year out for as long as the trust exists, taught by independent practitioners on the school-trust and intergenerational-equity records.
 
-*The watchful crew.* The climate trust's watchful-crew problem is the global analog of the school trust's. The school trust's recovery, where it has occurred, has come through state-level non-profit infrastructure with national reinforcement. The climate trust will need analogous infrastructure at international scale: a community of practice across nations, sustained by institutional infrastructure with its own continuity, holding the trust's substrate as a public commons, capable of refusing to let drift compound across cycles. The Library at schooltrusts.net is the worked example at one nation's scale; the climate-trust analogue would be a Library at international scale, built into the founding compact rather than retrofitted. *The architects of the climate trust who do not name their watchful-crew institution at the founding will discover, in the 2080s, that the founding text alone is not enforcing itself. The school-trust record is unambiguous on this point.*
+*The watchful crew.* The climate trust's watchful-crew problem is the global analog of the school trust's. The school trust's recovery, where it has occurred, has come through state-level non-profit infrastructure with national reinforcement. The climate trust will need analogous infrastructure at international scale: a community of practice across nations, sustained by institutional infrastructure with its own continuity, holding the trust's substrate as a public commons, capable of refusing to let drift compound across cycles. The Library at schooltrusts.org is the worked example at one nation's scale; the climate-trust analogue would be a Library at international scale, built into the founding compact rather than retrofitted. *The architects of the climate trust who do not name their watchful-crew institution at the founding will discover, in the 2080s, that the founding text alone is not enforcing itself. The school-trust record is unambiguous on this point.*
 
 ### Sovereign wealth for the unborn
 
@@ -120,7 +120,7 @@ The design implications:
 
 *Mandatory fiduciary education.* For the management entity's officers and the political-branch officials who oversee them.
 
-*The watchful crew.* The fund's watchful-crew institution should be named at the founding: a public-substrate Library on the schooltrusts.net model, capable of holding the fund's institutional memory across generational cycles, with statutory protection of its appropriation and its independence. The Norwegian fund has not yet built this; its watchful-crew function is presently distributed across journalism, academic monitoring, and the Council on Ethics. The school-trust record predicts that distributed monitoring without an institutional locus is fragile across multiple political generations. The architects of new sovereign-wealth funds should build the locus from day one.
+*The watchful crew.* The fund's watchful-crew institution should be named at the founding: a public-substrate Library on the schooltrusts.org model, capable of holding the fund's institutional memory across generational cycles, with statutory protection of its appropriation and its independence. The Norwegian fund has not yet built this; its watchful-crew function is presently distributed across journalism, academic monitoring, and the Council on Ethics. The school-trust record predicts that distributed monitoring without an institutional locus is fragile across multiple political generations. The architects of new sovereign-wealth funds should build the locus from day one.
 
 ### Longevity escrows
 
@@ -146,7 +146,7 @@ The design implications, anchor by anchor:
 
 *Mandatory fiduciary education.* For successor trustees, on the school-trust record and the longevity-research record both.
 
-*The watchful crew.* The longevity-escrow's watchful-crew institution should be named at the founding: a research-and-policy substrate analogous to the Library, capable of holding the escrow's institutional memory across the founder's intended time horizon, with statutory protection. The Library at schooltrusts.net is the worked example for civic memory at one nation's scale; the longevity-escrow analog is the founder's institutional successor — a research foundation, a public-substrate library, an academic chair endowed with the fiduciary obligation to monitor the escrow's compliance — named at founding, funded from the escrow's corpus on a protected appropriation, insulated from removal except for cause.
+*The watchful crew.* The longevity-escrow's watchful-crew institution should be named at the founding: a research-and-policy substrate analogous to the Library, capable of holding the escrow's institutional memory across the founder's intended time horizon, with statutory protection. The Library at schooltrusts.org is the worked example for civic memory at one nation's scale; the longevity-escrow analog is the founder's institutional successor — a research foundation, a public-substrate library, an academic chair endowed with the fiduciary obligation to monitor the escrow's compliance — named at founding, funded from the escrow's corpus on a protected appropriation, insulated from removal except for cause.
 
 The longevity escrow's particular acceleration is that the time horizon is short enough — the founder's lifetime plus fifty to a hundred years — that the escrow's drift can be observed by the founder's grandchildren. The school-trust record's two-and-a-quarter-century time scale is what makes the school trust's drift hard to observe in any single generation; the longevity escrow's compressed time scale means the drift, when it occurs, is observable. That visibility is an architectural opportunity. The founder can specify, in the instrument, that the founder's grandchildren and the broader beneficiary class shall have standing to litigate any deviation from the founding intent — a citizen-suit provision on the 1910 New Mexico–Arizona model, but with the citizens being the founder's descendants and the affected class members, and the time scale being short enough that the original founding intent is still legible to the people standing.
 
@@ -171,7 +171,7 @@ The design implications track the seven anchors. The compute-reserve and data-tr
 - Mandate fiduciary education (Anchor 7) — for the trust's officers and the political bodies that oversee them.
 - Name the watchful-crew institution (Anchor 8) — at founding, funded from the trust's resources, insulated from removal.
 
-The acceleration in this domain is the five-year corporate-acquisition cycle. The school trust's drift compounded over fifty years; the data trust's drift can compound over five. The architects must compress the seven-anchor cycle accordingly. Annual fiduciary education becomes quarterly review; annual independent-advocate reports become continuously published; annual public-substrate updates become real-time. The Library at schooltrusts.net updates its substrate monthly; the data-trust analogue may need to update weekly. The cognitive-technology stack of 2026 supports the higher cadence; the architects should build for it.
+The acceleration in this domain is the five-year corporate-acquisition cycle. The school trust's drift compounded over fifty years; the data trust's drift can compound over five. The architects must compress the seven-anchor cycle accordingly. Annual fiduciary education becomes quarterly review; annual independent-advocate reports become continuously published; annual public-substrate updates become real-time. The Library at schooltrusts.org updates its substrate monthly; the data-trust analogue may need to update weekly. The cognitive-technology stack of 2026 supports the higher cadence; the architects should build for it.
 
 ### The compounding feature
 
@@ -209,11 +209,11 @@ Section VIII — *A Letter to the Architects* — is where this volume's accumul
 
 [^VI-1a]: The cognitive-technology-bounded-architecture framing is developed in Sullivan's working notes of May 6, 2026, captured at `…/memory/project_cognitive_technology_bounds_thought_architecture.md`. The general claim — that every architecture for sustained complex thought reflects the cognitive technology of its founding — extends naturally beyond intergenerational trusts. One illustrative parallel that may help readers who have not yet absorbed the pattern is the 1930s Hollywood film stack. Thirty-five-millimeter celluloid was expensive per minute, edited physically with a razor blade on a flatbed, distributed as physical prints to theaters, and viewed once by audiences who could not pause or rewind. The medium therefore rewarded archetypes identifiable in two seconds, moral binaries that could land in ninety minutes, and memorable lines that could carry without explanation. By the 2010s, on-demand viewing, multi-season character development, and online discussion communities had shifted the cognitive-technology stack utterly, and *The Sopranos* is not a 1935 film — not because its writers are smarter than 1935 writers, but because the 1935 cognitive technology of audiences could not sustain the architecture *The Sopranos* requires. The aesthetic of black-and-white moral framing in 1930s film is in this sense a stack constraint, not a confession of moral simplicity by the people working in the medium. The pattern is general; the school trust is the empirical floor with the data, and the body of this paper stays focused there.
 
-[^VI-1b]: The Library at schooltrusts.net is the first public-facing instance of cognitive-technology-amplified institutional memory built into a long-running aspirational structure. Its operational features — the AI-assisted research substrate, the per-state evidentiary record, the Newsroom that surveys the fifty states each week, the Reading Room that hosts the white paper as eight essays — are the engineered version of what the 1785 framers could not build with the materials of their century. The architects of the coming trusts can do the analogous work at their own founding; the Library is offered as one demonstration that it is possible, at workable cost, in 2026 rather than in 2226.
+[^VI-1b]: The Library at schooltrusts.org is the first public-facing instance of cognitive-technology-amplified institutional memory built into a long-running aspirational structure. Its operational features — the AI-assisted research substrate, the per-state evidentiary record, the Newsroom that reports on the states as the record moves, the Writing Room that hosts this volume in thirteen sections — are the engineered version of what the 1785 framers could not build with the materials of their century. The architects of the coming trusts can do the analogous work at their own founding; the Library is offered as one demonstration that it is possible, at workable cost, in 2026 rather than in 2226.
 
-[^VI-2]: Peter Diamandis and Alex Wissner-Gross, *Solve Everything* (2026). The AI Targeting Authority is the book's central proposal; "Programmatic Down-Shifting" is the operational concept that explicitly addresses the structure's evolution over time. The book is in the substrate intake (`_intake/solveeverything.org`) and needs filing to L0. <span class="cite-pending">[CITE PENDING — confirm publisher and page-pin.]</span>
+[^VI-2]: Peter Diamandis and Alex Wissner-Gross, *Solve Everything* (2026). The AI Targeting Authority is the book's central proposal; "Programmatic Down-Shifting" is the operational concept that explicitly addresses the structure's evolution over time. <span class="cite-pending">[CITE PENDING — confirm publisher and page-pin.]</span>
 
-[^VI-3]: New Mexico-Arizona Enabling Act of June 20, 1910, ch. 310, 36 Stat. 557, §§ 9–10, 24, 28 (express trust language; "breach of trust" naming for nonconforming dispositions; null-and-void invalidation; Attorney General enforcement authority). See also Omnibus Enabling Act of February 22, 1889, ch. 180, §§ 10–11, 25 Stat. 676, 681 (introducing the "null and void" clause that the 1910 Act elaborated). For the per-state historical record see *Schools of the Republic* v1.3, New Mexico, Arizona, North Dakota, South Dakota, Montana, and Washington entries; for the comparative analysis see `L0_Primary_Sources/Research_Reports/Q15r_Enabling_Act_Comparative_Survey_*.md`.
+[^VI-3]: New Mexico-Arizona Enabling Act of June 20, 1910, ch. 310, 36 Stat. 557, §§ 9–10, 24, 28 (express trust language; "breach of trust" naming for nonconforming dispositions; null-and-void invalidation; Attorney General enforcement authority). See also Omnibus Enabling Act of February 22, 1889, ch. 180, §§ 10–11, 25 Stat. 676, 681 (introducing the "null and void" clause that the 1910 Act elaborated). For the per-state historical record see *Schools of the Republic* v1.3, New Mexico, Arizona, North Dakota, South Dakota, Montana, and Washington entries.
 
 [^VI-4]: Utah Code Title 53C (School and Institutional Trust Lands Administration); Title 53D (Land Trusts Protection and Advocacy). The Utah classroom-by-classroom direct distribution under the School LAND Trust Program (1999) and the Land Trusts Protection and Advocacy Office under Title 53D Chapter 2 (2018) are the operational instances of Anchors 4 and 5 respectively, treated in Section V; for the historical buildup see *Schools of the Republic* v1.3, Utah entry. Utah Code § 53C-1-102 is the duty-of-undivided-loyalty codification cited at length in Section V.A as the contemporary template for Anchor 1.
 
@@ -223,124 +223,10 @@ Section VIII — *A Letter to the Architects* — is where this volume's accumul
 
 [^VI-7]: Norwegian Government Pension Fund Global. Governance documents and annual reports are available through Norges Bank Investment Management; the ethical guidelines are codified in the Ministry of Finance's *Guidelines for Observation and Exclusion from the Government Pension Fund Global*. The fund's structural separation from the political branches, its transparent decision rules, and its external advisory council (the Council on Ethics) are the operational features of interest. <span class="cite-pending">[CITE PENDING — confirm specific governance statute and current report year.]</span>
 
-[^VI-8]: Oregon Public Employees Retirement System; see `L4_Deliverables/PERS_Analysis/` for the substrate's existing treatment of the funding-ratio drift. The structural diagnosis here is novel only in its mapping of PERS onto the school-trust pathology; the operational facts are well documented in the system's annual reports and in the Oregon Treasurer's communications.
+[^VI-8]: Oregon Public Employees Retirement System. The structural diagnosis here is novel only in its mapping of PERS onto the school-trust pathology; the operational facts are well documented in the system's annual reports and in the Oregon Treasurer's communications.
 
 [^VI-9]: Social Security Administration, *Annual Report of the Board of Trustees of the Federal OASDI and HI Trust Funds*. The most recent annual report is the relevant primary source for the actuarial position. <span class="cite-pending">[CITE PENDING — current report year.]</span>
 
 [^VI-10]: The 240-year running record and the slowly arriving enforcement constituency are documented across Sections II–V of this paper; for the per-state version of the running data see *Schools of the Republic of the United States: A Civic Encyclopedia* v1.3, especially the era-cohort organization in Part II.
 
-[^VI-11]: Nebraska LB 1072 (2026) is the contemporary template for constitutionalizing state-level school-trust protections after a fiduciary-duty erosion; the Nebraska 1965 erosion and the 2026 constitutional response are treated in *Schools of the Republic* v1.3, Nebraska entry, and at `L0_Primary_Sources/Research_Reports/` (Nebraska legislative analysis). The lesson the Nebraska case carries for the AI-era trusts is that the strongest formal protection survives where it has been tested against pressure across multiple political generations and where the failure of the test produced the constitutional response, rather than where the architecture has been merely inscribed without ever being challenged.
-
-<!--
-EXPANSION v2 NOTES (2026-05-10)
-
-This is an EXPANSION (not a trim) of v1 (3,050 words → ~8,950 words; ~190% expansion).
-Performed per Plan v2 §VI: Section VI is the rhetorical centerpiece of Volume II's
-architects-facing argument and was underweight in v1. Expansion adds per-instrument
-design implications drawn from the school-trust record.
-
-Substance preserved from v1 (the analytic spine):
-- "Architecture follows the cognitive technology" opening (~750 words) — verbatim
-- Footnotes [^VI-1a] (1930s Hollywood film parallel) and [^VI-1b] (Library as worked
-  example) — verbatim
-- Four-axis-of-drift paragraph — verbatim with one substitution ("five structures"
-  for "four structures" to match the expanded instrument coverage)
-- Climate-trust opening (Weiss, Laudato Si') — preserved
-- Norwegian sovereign-wealth-fund factual content — preserved and expanded
-- Compounding-feature paragraph — preserved
-- PERS and Social Security live-cases section — preserved verbatim
-- "Mapping closes" closing — preserved with light reframing to set up Section VIII
-  bridge
-
-New material added (in approximate word counts):
-- AI Targeting Authority section: anchor-by-anchor expansion (~2,400 words new).
-  V1 covered Anchors 1, 4, 5, 6, 7 sketchily; v2 covers all eight in operational
-  depth with named school-trust precedents (Ohio 1803 *for no other use*; 1889
-  Omnibus null-and-void; 1910 NM-AZ breach-of-trust; Utah 1994 § 53C-1-102; Utah
-  1998 Schools and Lands Exchange; Utah 1999 LAND Trust Program; Utah 2018 LTPAO
-  Title 53D Chapter 2; California 1853 omission as counter-case).
-- Climate-trust section: expanded from ~250 words sketchy treatment to ~1,300
-  words with anchor-by-anchor design implications, including the corpus-drift
-  vulnerability framing and the geographic-embedding-doesn't-transfer
-  observation.
-- Sovereign-wealth-fund section: expanded from ~250 words sketchy treatment to
-  ~1,200 words, with legitimacy-drift vulnerability framing, irreducibility
-  clauses, and the Norwegian-as-payee-not-beneficiary observation.
-- Longevity escrows: expanded from a single paragraph in v1's compute/longevity/data
-  joint section to ~1,000-word standalone section, with the New Jersey perpetual
-  fund precedent, the Mississippi 1820s drift, and the descendant-citizen-suit
-  proposal.
-- Compute reserves and data trusts: expanded to a standalone section (~900 words)
-  with beneficiary-drift vulnerability framing, the geographic-embedding-doesn't-
-  transfer translation, and the five-year corporate-acquisition-cycle compression
-  observation.
-- Compounding-feature section: light expansion adding the parallel-emergence-as-
-  opportunity framing.
-- PERS/Social Security section: light expansion adding the empirical-bridge and
-  test-your-architectural-intuitions framings.
-- Closing: rewritten to bridge cleanly to Section VIII, naming the two sections
-  as the volume's hinge.
-
-Per-instrument breakdown summary:
-- AI Targeting Authority: full eight-anchor mapping with school-trust precedent
-  for each move, applied at charter-drafting depth (compute allocation, capital
-  deployment, attention-directing grants).
-- Perpetual climate trusts: anchor-by-anchor with corpus-drift vulnerability,
-  Weiss/Laudato Si' moral vocabulary, and local-watershed-council direct
-  distribution as Margaret-Bird-mechanism translation.
-- Sovereign wealth for the unborn: anchor-by-anchor with legitimacy-drift
-  vulnerability, Norwegian working example, and irreducibility-tested-against-
-  pressure framing (Nebraska LB 1072 as contemporary template).
-- Longevity escrows: anchor-by-anchor with founder-intent-dilution vulnerability,
-  compressed time horizon as architectural opportunity, and descendant-citizen-
-  suit on 1910 NM-AZ model.
-- Compute reserves and data trusts: anchor-by-anchor with beneficiary-drift
-  vulnerability, geographic-embedding-doesn't-transfer translation, and five-year
-  corporate-acquisition-cycle compression.
-
-Voice: Dave-throughout per Volume II = Dave attribution doctrine. Direct address to
-architects in second person where appropriate (the early "I have tried not to write
-'the architects should consider'" paragraph; the closing "the architects in the
-room"). Sets up Section VIII's full second-person rhetorical move; intentionally
-keeps the section's center of gravity in third-person operational analysis so that
-Section VIII can do the second-person rhetorical work without redundancy.
-
-Voice judgment calls:
-- Used the imperative more directly than v1: "must declare," "should appear,"
-  "the architects should." Consistent with Section VIII's rhetorical posture
-  while preserving Section VI's manual-not-letter character.
-- The "I have tried not to write 'the architects should consider'" paragraph is
-  the one place the Dave-first-person voice surfaces explicitly; consistent with
-  the Volume II Dave-attribution doctrine.
-- Margaret-mechanism reference (the "increase the consequential decisions
-  reaching the local sites" formulation) preserved in the climate-trust section
-  per Section VIII's voice exemplar.
-- Wallet metaphor preserved in the AI Targeting Authority direct-distribution
-  treatment, on Margaret's framing.
-- "Punctilio of an honor the most sensitive" lands in the longevity-escrow
-  Anchor 1 treatment, where the doctrinal density carries it without needing
-  inline citation (footnote V-2 of Section V carries the Cardozo / Meinhard
-  attribution).
-
-What I did not change:
-- All footnotes preserved with original numbering plus [^VI-11] new for Nebraska
-  LB 1072.
-- All v1 statutory citations, court case names, and dates preserved.
-- The "for no other use, intent or purpose whatever" 1803 Ohio clause preserved
-  as the recurring textual anchor across all five instrument subsections.
-- Voice register in the v1 cognitive-technology opening preserved verbatim.
-
-Reading-level check: aimed at advanced-HS / freshman-college on the operational
-sections; the doctrinal-density of the per-anchor mappings earns its long
-sentences. The cognitive-technology opening and the closing remain the
-plain-language anchors readers can return to.
-
-Cross-references:
-- Section V: anchors 1-7 plus eighth-anchor named here per Section V.
-- Section VIII: this section is the operational manual; VIII is the rhetorical
-  address. Read together, they are the volume's hinge.
-- Sections II, IV: II's four-properties-of-the-trust-form and IV's three-feature
-  causal model both inform the per-instrument translations here.
-- Volume I (Schools of the Republic) v1.3: per-state evidentiary record
-  underlying every anchor's school-trust precedent.
--->
+[^VI-11]: Nebraska LB 1072 (2026) is the contemporary template for constitutionalizing state-level school-trust protections after a fiduciary-duty erosion; the Nebraska 1965 erosion and the 2026 constitutional response are treated in *Schools of the Republic* v1.3, Nebraska entry. The lesson the Nebraska case carries for the AI-era trusts is that the strongest formal protection survives where it has been tested against pressure across multiple political generations and where the failure of the test produced the constitutional response, rather than where the architecture has been merely inscribed without ever being challenged.

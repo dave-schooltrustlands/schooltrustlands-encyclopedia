@@ -2,7 +2,7 @@
 ## Appendix A — Arizona (v2)
 
 **June 6, 2026 (case line rebuilt against the full primary opinions, July 31, 2026)**
-**FROM: Claude (Cowork-side) — working draft for the legal librarian's review; not legal advice.**
+**Drafted with Claude, an AI system, and published by America's School Trust Library. Not legal advice.**
 
 *About this appendix.* The hornbook reads forward, from doctrine to cases. This appendix reads backward, from state to doctrine: Arizona's school-trust cases are listed in bullet form, each entry cross-citing the hornbook sections it supports, so a practitioner can open her own state's entry and walk into the treatise from there. Every case below was read against the full primary opinion held in the Library's collection; claims that could not be resolved from a primary are flagged rather than asserted. Arizona is the state where the United States Supreme Court did most of its modern school-trust work — and, less often noticed, the state whose own Supreme Court has repeatedly declined to follow that federal work, holding Arizona's trustee to the stricter standard of the state constitution instead.
 

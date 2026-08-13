@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const LIBRARY_CARD_MAILTO =
-  'mailto:library@schooltrusts.net?subject=State%20Co-Librarian%20%2F%20agency%20staff%20-%20Library%20Card%20signup';
+// The State Co-Librarian application is a form at /apply/state-co-librarian/.
+// The mailto below is for questions before applying, not for the application
+// itself.
+const APPLY_HREF = '/apply/state-co-librarian/';
+const QUESTIONS_MAILTO =
+  'mailto:library@schooltrusts.net?subject=State%20Co-Librarian%20%2F%20agency%20staff%20-%20question';
 ---
 <BaseLayout
   title="For state-lands-agency staff · Contribute · America's School Trust Library"
@@ -70,9 +74,9 @@ const LIBRARY_CARD_MAILTO =
       For staff whose participation under their real name could create employer
       or political conflict, the Library offers a pseudonymity tier. The
       verification process: you provide real name, agency, and contact
-      information to the Library Board's verification committee, which holds
-      those records confidentially. The public-facing State Co-Librarian
-      designation — the byline, the role on the state's State Records corner —
+      information to the board, which holds those records confidentially. The
+      public-facing State Co-Librarian designation — the byline, the role on
+      the state's State Records corner —
       accrues to the pseudonym you choose. State-of-employment is listed only at
       the regional level (e.g., "Mountain West state-lands agency") rather than
       naming the specific state where doing so would identify the contributor.
@@ -105,23 +109,25 @@ const LIBRARY_CARD_MAILTO =
     <h2>How to apply</h2>
     <p>
       <a
-        href={LIBRARY_CARD_MAILTO}
+        href={APPLY_HREF}
         class="inline-block rounded-md bg-blue-700 px-3 py-2 font-semibold text-white no-underline shadow hover:bg-blue-800"
-      >Apply (Library Card · State Co-Librarian)</a>
+      >Apply to be a State Co-Librarian</a>
     </p>
     <p>
-      In the role field, select "State Co-Librarian / agency staff." Note your
-      state and the name (or pseudonym) you wish to be credited under. The
-      Library Board's verification committee will follow up within a week to
-      complete verification and onboarding. If you have questions before
-      signing up, you can write to the Library directly; your inquiry is
+      The form asks for your name, where you work or recently worked, the state
+      or states you would curate, and how to reach you; there is a box to tick
+      if you want the pseudonymity tier described above. The board handles
+      verification itself, and a director will follow up to complete
+      verification and onboarding. If you have questions before you apply,
+      <a href={QUESTIONS_MAILTO}>write to the Library</a>; your inquiry is
       confidential.
     </p>
 
     <hr class="my-10" />
 
     <p class="text-sm text-slate-600">
-      <em>Curated by Library editorial team, 2026-05-07. The Library is grateful
+      <em>Curated by Library editorial team, 2026-05-07; application route updated
+      2026-08-12. The Library is grateful
       for the work the people who administer these lands do every day, and is
       built to make that work more visible to the country whose framers
       established it.</em>

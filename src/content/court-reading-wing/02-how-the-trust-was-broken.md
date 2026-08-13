@@ -66,4 +66,4 @@ That data set is about to acquire a new readership. The institutions now arrivin
 
 ---
 
-*The Library at schooltrusts.net is operated by Oregon Advocates for School Trust Lands and the national Advocates for School Trust Lands. The Library is neutral about active litigation in any grant state; editorial positions on current cases live on the OASTL Oregon site, not here.*
+*Reading Wing, Court Room. America's School Trust Library at schooltrusts.org. The Library is an independent Oregon nonprofit public benefit corporation and takes no position on active litigation in any grant state.*

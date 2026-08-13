@@ -5,7 +5,7 @@ iso: US-UT
 admissionNumber: 45
 admittedDate: 1896-01-04
 eraCohort: 6
-eraName: "4-Section Cohort (FIRST)"
+eraName: "4-Section Cohort"
 federalGrantAcres: 5844196
 governanceForm: SITLA Board of Trustees + School and Institutional Trust Lands Administration; advocacy through the Land Trusts Protection and Advocacy Office (Title 53D)
 permanentFundCorpus: null

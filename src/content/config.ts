@@ -168,8 +168,8 @@ const scholarship = defineCollection({
   }),
 });
 
-// How the Library works — the procedures manual. Eleven entries
-// (index + ten role pages) that describe what the Library is and
+// How the Library works — the procedures manual. Ten entries
+// (index + nine role pages) that describe what the Library is and
 // how a patron at any level takes part. Written in plain prose for
 // a general reader, not for developers.
 const howTheLibraryWorks = defineCollection({

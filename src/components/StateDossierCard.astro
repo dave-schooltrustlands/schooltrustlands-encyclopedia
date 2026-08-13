@@ -4,15 +4,16 @@
 // alongside the article). This card frames the entry: why the state
 // matters, what's actively contested, and where to find the state in
 // each library room. Editorial copy (summary, currentIssue) lives in
-// state frontmatter; absent overrides hydrate from the era / admission
-// / governance / grant fields so every state's card reads as functional.
+// state frontmatter; where a state has no summary the card falls back to
+// the admission year and the grant, which the Library can state for every
+// state.
+
+import courtStates from '../data/court-states.json';
 
 interface Props {
   iso: string; // lowercase, e.g. "us-or"
   name: string;
   admittedDate: Date;
-  eraName: string;
-  governanceForm: string;
   federalGrantAcres: number | null;
   summary?: string;
   currentIssue?: string;
@@ -27,8 +28,6 @@ const {
   iso,
   name,
   admittedDate,
-  eraName,
-  governanceForm,
   federalGrantAcres,
   summary,
   currentIssue,
@@ -49,9 +48,26 @@ const grantClause =
     ? `It received ${formatAcres(grantAcres)} in federal school-land grants at admission.`
     : 'It is a state-derived state — no federal school-land grant at admission.';
 
-const fallbackSummary = `${name} entered the Union in ${admittedYear} (${eraName} cohort) with a ${governanceForm} school-trust structure. ${grantClause}`;
+// Only a state with a hand-written `summary` in its frontmatter gets an
+// editorial line here. The fallback states the two things the Library can
+// assert for every state; it does not splice the paragraph-length
+// governance description into the middle of a sentence. Era, governance
+// form and grant detail are all carried in the fact table directly above
+// this card. Where a state warrants an editorial summary, write one into
+// that state's frontmatter.
+const fallbackSummary = `${name} entered the Union in ${admittedYear}. ${grantClause}`;
 const resolvedSummary = summary && summary.trim().length > 0 ? summary : fallbackSummary;
-const resolvedIssue = currentIssue && currentIssue.trim().length > 0 ? currentIssue : '—';
+// No `currentIssue` means the Library has not recorded one. The section is
+// omitted rather than stubbed with a dash.
+const resolvedIssue = currentIssue && currentIssue.trim().length > 0 ? currentIssue : null;
+
+// The Court Room carries a per-state dossier only for the states listed in
+// src/data/court-states.json. For the rest there is no state-scoped court
+// address, and this row must not promise one.
+const courtCode = iso.replace(/^us-/i, '').toUpperCase();
+const courtDossierHref = Object.prototype.hasOwnProperty.call(courtStates, courtCode)
+  ? `/court/atlas/${courtCode.toLowerCase()}/`
+  : null;
 ---
 
 <section
@@ -70,10 +86,12 @@ const resolvedIssue = currentIssue && currentIssue.trim().length > 0 ? currentIs
     <p class="mt-1 text-slate-700">{resolvedSummary}</p>
   </div>
 
-  <div class="mt-4">
-    <h2 class="text-base font-semibold tracking-tight text-slate-800">Current issue</h2>
-    <p class="mt-1 text-slate-700">{resolvedIssue}</p>
-  </div>
+  {resolvedIssue && (
+    <div class="mt-4">
+      <h2 class="text-base font-semibold tracking-tight text-slate-800">Current issue</h2>
+      <p class="mt-1 text-slate-700">{resolvedIssue}</p>
+    </div>
+  )}
 
   <div class="mt-4">
     <h2 class="text-base font-semibold tracking-tight text-slate-800">Find this state in</h2>
@@ -104,11 +122,13 @@ const resolvedIssue = currentIssue && currentIssue.trim().length > 0 ? currentIs
       </li>
       <li>
         <span class="font-medium text-slate-700">The Court Room:</span>{' '}
-        <span class="text-slate-500">opening later</span>
-      </li>
-      <li>
-        <span class="font-medium text-slate-700">The Records Room:</span>{' '}
-        <span class="text-slate-500">opening later</span>
+        {courtDossierHref ? (
+          <a href={courtDossierHref} class="text-blue-700 underline hover:text-blue-900">
+            this state's case record
+          </a>
+        ) : (
+          <span class="text-slate-500">no dossier for this state yet</span>
+        )}
       </li>
       <li>
         <span class="font-medium text-slate-700">Breach &amp; Recovery:</span>{' '}

@@ -24,6 +24,10 @@ The Library cites the 2026 standing opinion as a published court decision in the
 
 From the opinion: the Court of Appeals concluded that the plaintiffs had alleged a sufficient connection between the alleged fiduciary breach and the beneficiary class to support justiciability under Oregon law, that the trust character of the school-land grants was a question the courts could reach on a developed record, and that the case should proceed past the standing threshold for further proceedings on the merits.
 
+## Subsequent history
+
+The Oregon Supreme Court denied review on July 23, 2026 (S072734), making this decision final. Separately, on July 24, 2026, in *Siuslaw School District 97J et al. v. State of Oregon*, Coos County Circuit Court No. 24CV38372, Judge Combs granted the State summary judgment, holding that the State owes no legally enforceable fiduciary duty, and canceled the trial that had been set for August 18–28, 2026. The signed opinion letter is at [/court/filings/2026-07-24-combs-summary-judgment-letter-24cv38372.pdf](/court/filings/2026-07-24-combs-summary-judgment-letter-24cv38372.pdf). The Library takes no position on whether either ruling was right.
+
 ## Where to find it
 
-The Oregon Judicial Department's case-information system at https://ojd.courts.oregon.gov/ojcin/ is the canonical state-level access path; the Oregon Court of Appeals publications page is the fallback. The Library intends to host the full opinion at this entry page as a public-service contribution while the opinion remains relatively new in the reporters; that PDF upload is deferred to a v60 follow-up pending the canonical reporter URL pin-cite and an Internet Archive mirror.
+The Oregon Judicial Department's case-information system at https://ojd.courts.oregon.gov/ojcin/ is the canonical state-level access path; the Oregon Court of Appeals publications page is the fallback. The Library has not yet posted the full opinion here; use the access paths named above. The Library will note on this page when a hosted copy is added.

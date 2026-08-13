@@ -59,7 +59,6 @@ Article III's "forever" is the trust's durational mandate. When states sell trus
 - Full text (Avalon Project, Yale Law School): https://avalon.law.yale.edu/18th_century/nworder.asp
 - Library of Congress: https://www.loc.gov/resource/bdsdcc.22501/
 - National Archives, *Founders Online*: https://founders.archives.gov/
-- L0 substrate: `L0_Primary_Sources/Statutes/Northwest_Ordinance_1787.pdf`
 - Submit a correction or annotation: /contribute/
 
 ## Curated by

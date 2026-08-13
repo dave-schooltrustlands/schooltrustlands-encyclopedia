@@ -97,7 +97,7 @@ The Eighth Anchor frame holds that the legal foundation of the school trust is o
 - *Lassen v. Arizona ex rel. Arizona Highway Department*, 385 U.S. 458 (1967).
 - *Andrus v. Utah*, 446 U.S. 500 (1980).
 - *ASARCO Inc. v. Kadish*, 490 U.S. 605 (1989).
-- *United States v. New Mexico*, 425 U.S. 668 (1976).
+- *United States v. New Mexico*, 438 U.S. 696 (1978).
 
 ### State supreme courts
 
@@ -125,4 +125,4 @@ The Eighth Anchor frame holds that the legal foundation of the school trust is o
 
 ---
 
-*Reading Wing, Court Room. America's School Trust Library at schooltrusts.net.*
+*Reading Wing, Court Room. America's School Trust Library at schooltrusts.org.*

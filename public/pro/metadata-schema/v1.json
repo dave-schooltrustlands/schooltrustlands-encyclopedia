@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schooltrusts.net/pro/metadata-schema/v1.json",
+  "$id": "https://schooltrusts.org/pro/metadata-schema/v1.json",
   "title": "America's School Trust Library — Catalog Record Schema",
-  "description": "Machine-readable JSON Schema for the Library's metadata and provenance records. Schema version 1.0, adopted 2026-05-12. The human-readable spec is at https://schooltrusts.net/pro/metadata-schema/ and is the source of truth; this file is derived from it.",
+  "description": "Machine-readable JSON Schema for the Library's metadata and provenance records. Schema version 1.0, adopted 2026-05-12. The human-readable spec is at https://schooltrusts.org/pro/metadata-schema/ and is the source of truth; this file is derived from it.",
   "type": "object",
   "required": [
     "schema_version",

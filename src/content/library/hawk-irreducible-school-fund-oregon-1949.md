@@ -24,11 +24,11 @@ This entry has been corrected from the verified title page and bibliography of t
 
 ## How it connects to the Library's argument
 
-Hawk is the archival floor under the Oregon-specific portions of *Schools of the Republic* and under the OASTL litigation's empirical record. The corrected citation matters because the work is a doctoral dissertation about Oregon's irreducible school fund, not the differently described work previously shown here. That difference goes directly to the constitutional fund at issue in Oregon's trust-land story.
+Hawk is the archival floor under the Oregon-specific portions of *Schools of the Republic* and under the empirical record in the Oregon litigation. The corrected citation matters because the work is a doctoral dissertation about Oregon's irreducible school fund, not the differently described work previously shown here. That difference goes directly to the constitutional fund at issue in Oregon's trust-land story.
 
 ## How to engage
 
-- Full text: Internet Archive upload pending bibliographic citation confirmation. The 88 MiB scan exceeds the Cloudflare Pages 25 MiB host limit, so the canonical hosted copy will live on Internet Archive once the citation is verified; in the interim, search the University of Oregon Library for Norman Ray Hawk, *A History of the Irreducible School Fund in Oregon* (1949).
+- Full text: the scan is too large to host on this site, so the Library has not yet published a copy; in the interim, write to the Library for access or search the University of Oregon Libraries for Norman Ray Hawk, *A History of the Irreducible School Fund in Oregon* (1949). The Library's page for the digitization is at /reading/sources/hawk-2018/.
 - Submit a correction or annotation: /contribute/
 
 ## Curated by

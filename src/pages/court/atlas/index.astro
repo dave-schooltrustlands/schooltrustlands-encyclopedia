@@ -61,7 +61,7 @@ const GRADE_DOT: Record<StateRecord['trustIntegrityGrade'], string> = {
 // Legend — five categories that map the Library's 4-grade scheme plus
 // the "pending dossier" placeholder for states still in Phase 1
 // substrate. The ASTL "Failed / grant lost" and "Unscored" categories
-// don't apply to the twenty trust-lands states covered here.
+// don't apply to the states covered here.
 const legend = [
   {
     grade: 'intact-and-funded',
@@ -81,12 +81,12 @@ const legend = [
   {
     grade: 'under-review',
     label: 'Under review',
-    note: 'Performance signals mixed or under active dispute; grade pending substrate work.',
+    note: 'Performance signals mixed or disputed; the Library has not settled a grade.',
   },
   {
     grade: 'pending',
     label: 'Pending dossier',
-    note: 'Phase 2 substrate not yet ingested for this state.',
+    note: 'The Library has not yet completed a primary-source review of this state.',
   },
 ] as const;
 ---
@@ -101,18 +101,15 @@ const legend = [
     <span class="eyebrow">Court Room · The Atlas</span>
 
     <aside class="preview-banner" role="note">
-      <strong>First-draft preview.</strong> The Atlas covers the twenty
-      trust-lands states that received federal school-section grants on
-      admission to the Union, plus Texas (state-derived). Other states
-      are not included because they did not receive school-section
-      grants under the Land Ordinance regime. ←
+      The Atlas holds twenty-two state dossiers, including Texas, whose
+      school lands are state-derived rather than federally granted. ←
       <a href="/court/">Back to the Court Room lobby</a>.
     </aside>
 
     <p>
       Each state below opens a per-state dossier with the Enabling Act
       citation, the current fund value where known, the count of state
-      Attorney General opinions in substrate, the key precedent cases,
+      Attorney General opinions on file, the key precedent cases,
       and a Trust Integrity grade reflecting whether the state's school
       trust is presently intact, breached and recovered, breached and
       uncorrected, or under review. Hover or focus a state on the map
@@ -175,8 +172,8 @@ const legend = [
       <p>
         The link below leaves the Library for <strong>ASTL National</strong>,
         the contemporary national coalition building on the Eighth Anchor
-        campus. ASTL's State Tracker is the parallel real-time view: same
-        twenty trust-lands states, but scored against current
+        campus. ASTL's State Tracker is the parallel real-time view: the
+        same trust-lands states, but scored against current
         disclosure-and-fund-performance signals rather than the Library's
         historical-and-doctrinal Trust Integrity grade.
       </p>
@@ -190,9 +187,9 @@ const legend = [
     />
 
     <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7; margin-top: 1.25rem;">
-      First-draft preview. SVG tile-grid map and color-coded legend
-      adopted from the ASTL State Tracker pattern; Library's 4-grade
-      Trust Integrity scheme retained.
+      SVG tile-grid map and color-coded legend adopted from the ASTL
+      State Tracker pattern; the Library's four-grade Trust Integrity
+      scheme retained.
     </p>
   </article>
 </RoomLayout>

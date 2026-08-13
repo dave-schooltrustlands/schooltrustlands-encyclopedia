@@ -60,4 +60,4 @@ That is the long argument the rest of this Library is making. Utah is the proof 
 
 ---
 
-*Reading Wing, Court Room. America's School Trust Library at schooltrusts.net.*
+*Reading Wing, Court Room. America's School Trust Library at schooltrusts.org.*

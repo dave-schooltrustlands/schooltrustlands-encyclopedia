@@ -1,8 +1,6 @@
 ---
-// v3.1 — Per-case annotation page under /court/case-file/{slug}/.
-// Renders one of the eleven Phase 2 annotated cases as a long-form
-// first-draft entry. Phase 3 cross-AI review and Phase 4 revision
-// are still pending.
+// Per-case annotation page under /court/case-file/{slug}/. Renders one
+// annotated case from the court-cases collection as a long-form entry.
 import { getCollection, type CollectionEntry } from 'astro:content';
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 
@@ -45,13 +43,6 @@ const { Content } = await entry.render();
     </p>
 
     <Content />
-
-    <hr class="archival-divider" />
-
-    <aside class="preview-banner" role="note">
-      <strong>First-draft preview.</strong> Phase 3 cross-AI review and
-      Phase 4 revision are still pending.
-    </aside>
   </article>
 </RoomLayout>
 
@@ -63,12 +54,5 @@ const { Content } = await entry.render();
     background: #f8fafc;
     border-left: 3px solid #1e3a5f;
     font-size: 0.95rem;
-  }
-  .preview-banner {
-    border-left: 4px solid var(--old-gold, #B88A2E);
-    background: rgba(184, 138, 46, 0.08);
-    padding: 0.75rem 1rem;
-    margin: 1.25rem 0 0;
-    font-size: 0.92rem;
   }
 </style>

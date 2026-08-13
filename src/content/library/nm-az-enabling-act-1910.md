@@ -18,7 +18,7 @@ The joint New Mexico-Arizona Enabling Act, signed by President Taft on June 20, 
 
 ## Why the Library cites it
 
-The 1910 Act is the high-water mark of explicit fiduciary language in federal admission statutes. When the Library scores admission-act language strength against a four-axis rubric — express trust language, breach-of-trust standard, null-and-void clause, federal enforcement — the New Mexico-Arizona Act is the maximum score, and every other state's federal grant language is read against this one. The Eighth Anchor's argument that the federal government had, by 1910, learned from a century of state-level drift and codified the lessons into the strongest possible statutory protection rests on this Act. The Library uses the 1910 language as the floor below which federal admission law cannot now be plausibly read to have done less.
+The 1910 Act is the high-water mark of explicit fiduciary language in federal admission statutes. When the Library scores admission-act language strength against a four-axis rubric — express trust language, breach-of-trust standard, null-and-void clause, federal enforcement — the New Mexico-Arizona Act is the maximum score, and every other state's federal grant language is read against this one. The argument in *Stewards of the Republic* that the federal government had, by 1910, learned from a century of state-level drift and codified the lessons into the strongest possible statutory protection rests on this Act. The Library uses the 1910 language as the floor below which federal admission law cannot now be plausibly read to have done less.
 
 ## A representative provision
 

@@ -38,7 +38,7 @@ const cards = [
     title: 'Bylaws',
     href: '/pro/bylaws/',
     blurb:
-      "A stable pointer to the governance documents under founding-board review on the Library's institutional home.",
+      "A stable pointer to the adopted Bylaws, Version 7, published in full on this site.",
   },
   {
     title: 'Dispute Resolution',
@@ -48,9 +48,6 @@ const cards = [
   },
 ];
 
-const forthcoming = [
-  { title: 'How to Contribute', note: 'Consolidated overview of the contribution paths.' },
-];
 ---
 
 <ProLayout
@@ -82,21 +79,6 @@ const forthcoming = [
     ))}
   </section>
 
-  <section class="forthcoming" aria-label="Forthcoming Pro pages">
-    <h2>Forthcoming</h2>
-    <p class="forthcoming-intro">
-      The Pro side continues to fill out. The pages above are live today;
-      the following are in drafting and will ship next:
-    </p>
-    <ul class="forthcoming-list">
-      {forthcoming.map((f) => (
-        <li>
-          <strong>{f.title}.</strong> <span class="forthcoming-note">{f.note}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
-
   <section class="application-pointer" aria-label="Open application paths">
     <h2>Open application paths</h2>
     <p>
@@ -116,7 +98,9 @@ const forthcoming = [
     </ul>
     <p class="pointer-note">
       Other roles — Librarian, Citizen Historian, Contributor — have their own
-      paths. See <a href="/pro/roles/">Roles</a> for the full ladder.
+      paths. See <a href="/pro/roles/">Roles</a> for the full ladder, and
+      <a href="/contribute/">How to contribute</a> for the consolidated
+      overview of every contribution path.
     </p>
   </section>
 

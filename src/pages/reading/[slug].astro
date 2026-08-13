@@ -6,6 +6,7 @@ import StateDossierCard from '../../components/StateDossierCard.astro';
 import CrossSiteBridge from '../../components/CrossSiteBridge.astro';
 import BookmarkButton from '../../components/BookmarkButton.astro';
 import PrepublicationBanner from '../../components/PrepublicationBanner.astro';
+import { confidenceLabel, confidenceBadgeClass } from '../../lib/confidence';
 
 type EssayProps = { kind: 'essay'; entry: CollectionEntry<'essays'> };
 type StateProps = { kind: 'state'; entry: CollectionEntry<'states'> };
@@ -125,10 +126,11 @@ if (props.kind === 'essay') {
   seriesNav = { seriesLabel, series, prev, next };
 }
 
-// Cohort N → Reading Room chapter slug. Keys match the eraCohort
-// integers in state frontmatter; values are the essay slugs under
-// src/content/essays/ (with the leading NN- prefix stripped, per the
-// reading slug rule in getStaticPaths above).
+// Cohort N → chapter slug. Keys match the eraCohort integers in state
+// frontmatter; values are the chapter slugs of the volume, which now
+// lives in the Writing Room at /writing/schools-of-the-republic/. The
+// old /reading/<slug>/ addresses survive only as 301s in
+// public/_redirects, so the dossiers link to the live address directly.
 const COHORT_SLUGS: Record<number, string> = {
   1: 'founding-floor',
   2: 'statehood-without-federal-floor',
@@ -147,12 +149,27 @@ const COHORT_TOOLTIPS: Record<number, string> = {
   6: 'The 4-Section Cohort and outliers — Utah (1896) was first to receive the quadrupled grant (sections 2, 16, 32, 36); New Mexico and Arizona (1912) followed. Alaska and Hawaii (1959) are sui-generis outliers under modern federal-state-trust frameworks.',
 };
 
-const CONFIDENCE_LABEL: Record<string, string> = {
-  verified: 'Verified',
-  awaiting: 'Awaiting disclosure',
-  unknown: 'Disclosure unknown',
-  na: 'Not applicable',
-};
+// The confidence signals the site defines and explains at /start/. The
+// labels and badge classes come from src/lib/confidence.ts, which the
+// Counting House reads as well, so a state's figures never carry two
+// different words in two places. The frontmatter enum here spells the
+// keys differently from src/data/finance/states.json; the shared module
+// maps both spellings to the same labels.
+
+// Share of the admission-era grant still held in trust. For a few states
+// the retained-acreage figure and the grant figure come from different
+// sources and do not reconcile — the reported remainder equals or exceeds
+// the grant. Where that happens the Library prints the acreage and says
+// the two figures have not been reconciled, rather than printing a share
+// of 100 per cent or more.
+const acresPct =
+  props.kind === 'state' &&
+  props.entry.data.trustAcresRemaining &&
+  props.entry.data.federalGrantAcres
+    ? Math.round(
+        (props.entry.data.trustAcresRemaining / props.entry.data.federalGrantAcres) * 100,
+      )
+    : null;
 
 const layoutProps =
   props.kind === 'essay'
@@ -189,7 +206,7 @@ const layoutProps =
   {props.kind === 'essay' && (
     <Fragment slot="header-extras">
       <p class="mt-4 text-xs text-slate-500">
-        {num.format(props.entry.data.wordCount)} words · Substrate {props.entry.data.sourceVersion} · Last synced {dateFmt.format(props.entry.data.lastSynced)}
+        {num.format(props.entry.data.wordCount)} words · Manuscript synced {dateFmt.format(props.entry.data.lastSynced)}
       </p>
       <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
         <a href="/reading/" class="text-sm text-blue-700 underline hover:text-blue-900">
@@ -224,7 +241,7 @@ const layoutProps =
             {' '}
             {COHORT_SLUGS[props.entry.data.eraCohort] ? (
               <a
-                href={`/reading/${COHORT_SLUGS[props.entry.data.eraCohort]}/`}
+                href={`/writing/schools-of-the-republic/${COHORT_SLUGS[props.entry.data.eraCohort]}/`}
                 class="cohort-link"
                 title={COHORT_TOOLTIPS[props.entry.data.eraCohort]}
               >
@@ -254,14 +271,12 @@ const layoutProps =
                 <>
                   {' '}{num.format(props.entry.data.trustAcresRemaining)} acres
                   <span class="acres-percentage">
-                    ({Math.round(
-                      (props.entry.data.trustAcresRemaining /
-                        props.entry.data.federalGrantAcres) *
-                        100
-                    )}% of original grant)
+                    {acresPct !== null && acresPct < 100
+                      ? `(${acresPct}% of original grant)`
+                      : '(not reconciled with the grant figure above)'}
                   </span>
-                  {' '}<span class={`badge badge-${props.entry.data.trustAcresRemainingConfidence ?? 'verified'}`}>
-                    {CONFIDENCE_LABEL[props.entry.data.trustAcresRemainingConfidence ?? 'verified']}
+                  {' '}<span class={`badge ${confidenceBadgeClass(props.entry.data.trustAcresRemainingConfidence)}`}>
+                    {confidenceLabel(props.entry.data.trustAcresRemainingConfidence)}
                   </span>
                   {props.entry.data.trustAcresRemainingAsOf && (
                     <span class="as-of"> · As of {props.entry.data.trustAcresRemainingAsOf}</span>
@@ -276,7 +291,12 @@ const layoutProps =
                 </>
               ) : (
                 <>
-                  {' '}<span class="badge badge-unknown">Disclosure unknown</span>
+                  {/* No figure in the substrate for a federal-grant state —
+                      the same signal the Counting House shows for a figure it
+                      does not yet carry. "Disclosure unknown" is not used
+                      here: on this site that phrase is a transparency status,
+                      not a confidence signal. */}
+                  {' '}<span class="badge badge-awaiting">{confidenceLabel('awaiting')}</span>
                 </>
               )}
             </dd>
@@ -309,7 +329,7 @@ const layoutProps =
         )}
       </dl>
       <p class="mt-4 text-xs text-slate-500">
-        Substrate v{props.entry.data.substrateVersion} · Last reviewed {dateFmt.format(props.entry.data.lastReviewed)}
+        Last reviewed {dateFmt.format(props.entry.data.lastReviewed)}
       </p>
       <div class="mt-3">
         <BookmarkButton title={props.entry.data.name} />
@@ -323,8 +343,6 @@ const layoutProps =
         iso={props.entry.data.iso.toLowerCase()}
         name={props.entry.data.name}
         admittedDate={props.entry.data.admittedDate}
-        eraName={props.entry.data.eraName}
-        governanceForm={props.entry.data.governanceForm}
         federalGrantAcres={props.entry.data.federalGrantAcres}
         summary={props.entry.data.summary}
         currentIssue={props.entry.data.currentIssue}
@@ -333,9 +351,9 @@ const layoutProps =
         href={`https://schooltrustlands.net/briefing-room/${props.entry.data.name
           .toLowerCase()
           .replace(/\s+/g, '-')}/`}
-        label={`Coalition advocacy in ${props.entry.data.name}`}
-        sublabel="ASTL's Briefing Room tracks current coalition work, advocacy posture, and disclosure status for this state."
-        cta="See current advocacy →"
+        label={`ASTL National on ${props.entry.data.name}`}
+        sublabel="ASTL National, a separate organization, keeps a Briefing Room page on this state. The Library links it as an outside source and takes no position on its advocacy."
+        cta="Read ASTL National's page →"
       />
     </section>
   )}

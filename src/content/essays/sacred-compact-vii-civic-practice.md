@@ -48,18 +48,16 @@ Become part of the standing constituency.
 <p>Citizens need to be informed, and they need to hold their leaders accountable. They need to make sure the trust is not being used for other political purposes or for things that do not directly benefit the schools. When parents and citizens speak up, the legislators listen. They realize this is a valuable asset that belongs to the people's children, and they are more likely to take their responsibility as trustees seriously.</p>
 </aside>
 
-<!-- Box 12 from margaret_voice_inserts_from_transcripts_2026-05-08.md -->
 <aside class="boxed-insert">
-<p class="boxed-insert-title"><strong>Sunday dinner and the watchful crew.</strong> <em>— Margaret Bird, in her own voice, drawn from the August 2025 video transcripts (PXL_20250810_183245973 — Final Transcript / Utah Q&A).</em></p>
+<p class="boxed-insert-title"><strong>Sunday dinner and the watchful crew.</strong> <em>— Margaret Bird, in her own voice, drawn from the August 2025 video transcripts (PXL_20250810_183245973).</em></p>
 <p>A governor who wants to build durable political support for the school trust does it this way: increase the revenue to schools, and get it directly to every single school where the parents, the teachers, and the principal are deciding how the money is implemented. And all of a sudden, you have built a huge constituency.</p>
 <p>Thousands and thousands of people in Utah sit on the school community councils — approximately 9,000 people — all of whom go home and discuss the wonderful things that are happening in their local school at the Sunday dinner. And let me tell you, the word spreads fast.</p>
 <p>This is the part of the design that the original 1785 framers could not have specified, because the work of running it was not yet visible. But it is the part the next two centuries have taught us. A trust survives politically when the people who benefit from it know they benefit and have a place to deliberate about how the benefit is used. The school community council is that place. The Sunday dinner is the channel.</p>
 <p>If you want a watchful crew that lasts — not just a citizen here and there who reads the annual report, but a constituency thousands strong — you build it by routing the money where the deliberation already happens. The constituency follows the dollars to the table.</p>
 </aside>
 
-<!-- Box 13 from margaret_voice_inserts_from_transcripts_2026-05-08.md -->
 <aside class="boxed-insert">
-<p class="boxed-insert-title"><strong>One dissenting vote, and a sofa.</strong> <em>— Margaret Bird, in her own voice, drawn from the August 2025 video transcripts (PXL_20250810_183245973 — Final Transcript / Utah Q&A).</em></p>
+<p class="boxed-insert-title"><strong>One dissenting vote, and a sofa.</strong> <em>— Margaret Bird, in her own voice, drawn from the August 2025 video transcripts.</em></p>
 <p>Was Utah school-trust reform a partisan project? It was not. Both parties were equally supportive, and some of the bills passed half from one party, half from the other. This is a delightfully non-partisan issue. It does not matter what party you are in, or whether you are an independent — you still love your children, your grandchildren, and the other children who are all going to grow up, become workers, and pay your social security.</p>
 <p>The only close vote we had was when we passed the bill creating the land office to be run like a business. Even then, only one representative voted against it. He was a Republican, and he went home and proudly told his wife that he had voted against the bill, just the way she wanted. Only he had gotten confused. She is a PTA president. She said to him, "You, sir, are sleeping on the sofa tonight."</p>
 <p>The story is funny. It is also instructive. The political constituency for school-trust reform does not run primarily through the legislator's caucus. It runs through the parents at home — the PTA presidents, the school community councils, the people whose children are in the building. When the trustees finally understand who the constituency is and where it lives, the votes are not close.</p>
@@ -69,7 +67,7 @@ The eighth element of the architecture — the one Section V identified as quali
 
 The 2026 environment changes this. AI-augmented research has broken the institutional monopoly on historical memory, giving ordinary citizens the analytic leverage to monitor complex, multi-generational assets in real time. A retired tree farmer in Coos County can, in 2026, operate at a level of analytic competence on school-trust matters that would have required a state archivist's resources in 1986. The same is true for every other domain a standing constituency would attend to, which is the hopeful side of the same cognitive-technology shift Section VI describes.
 
-The operational task for the citizen is to become part of the standing community. The institutional locus exists: America's School Trust Library at schooltrusts.net. The Library is the first public-facing instance of the watchful crew this paper has named — the evidentiary archive, the weekly Newsroom, the per-state transparency reporting, the recruitment infrastructure for the deputy auditors and state correspondents who will, over the next decade, become the standing constituency the framers of 1785 could not engineer for.
+The operational task for the citizen is to become part of the standing community. The institutional locus exists: America's School Trust Library at schooltrusts.org. The Library is the first public-facing instance of the watchful crew this paper has named — the evidentiary archive, the Newsroom, the per-state transparency reporting, the recruitment infrastructure for the deputy auditors and state correspondents who will, over the next decade, become the standing constituency the framers of 1785 could not engineer for.
 
 A note on the register in which this work is being done.
 
@@ -142,32 +140,3 @@ That choice is what this paper exists to put on the page.
 [^VII-7]: The "forever gift to forever schools for a forever democracy" formulation is Margaret Bird's, articulated in the April 27, 2026 call with Dave Sullivan. The phrase is the strongest single rhetorical anchor in the paper's vocabulary, and the close of the section uses it deliberately. Attribution to Margaret is standing — the phrase is hers.
 
 [^VII-7a]: Rachel Carson, *Silent Spring* (Houghton Mifflin, 1962). The eight-year arc from publication to the establishment of the U.S. Environmental Protection Agency in 1970 is the canonical American instance of structural harm being made legible by sustained, calm scholarly work — and is the model this paper takes for its own register and for the Library's institutional posture. The Carson model is also a useful corrective to the alternative reference (Franklin Roosevelt's December 1941 wartime mobilization), which the school-trust record predicts will not be the form in which intergenerational-trust failures present themselves to the public.
-
-<!--
-Wave 1 Subagent D — Section VII run notes (2026-05-07)
-
-Word count (body, excluding frontmatter and footnotes): ~2,520 words. Source was ~1,994; expansion lands ~525 words above source, primarily from the new Carson-not-Roosevelt block (~520 words inserted into the For-Citizens subsection) and modest voice-rewrite expansion (subordinate clauses, named-actor concretization) elsewhere.
-
-Analytic moves folded in:
-1. Carson-not-Roosevelt block (Step 4 of Track B handoff). Inserted into the "For citizens" subsection between the paragraph ending "...the recruitment infrastructure for the deputy auditors and state correspondents who will, over the next decade, become the standing constituency the framers of 1785 could not engineer for." and the paragraph beginning "Around the Library are the advocacy organizations...". Substance per handoff: drift-mode failures don't produce crisis-mode wake-up calls; Pearl Harbor (December 7, 1941) is the canonical American galvanization but is the wrong reference; Mississippi 1820s sixteenth-section disposal at $1/acre, California 1853 disposal, Oregon's quiet 60-year drift to 20% of design, Chamberlain's 1907 "five or six times as large" message all produced no national crisis. Right reference: Rachel Carson's *Silent Spring* (1962) → EPA (1970), eight years from book to agency, calm scholarly voice making structural harm legible. Library is crisis-legibility instrument: making a slow disaster fast enough to read.
-2. Footnote [^VII-7a] added per Step 4 (Carson + EPA + Roosevelt-corrective).
-
-Voice rewrite:
-- Long sentences with subordinate clauses applied throughout, especially in the Carson block where the rhythm matters most.
-- Generous-but-firm tone retained ("the asks for that two-and-a-half-century delay were many. Each generation that did not show up had its reasons, sometimes good ones and sometimes only the reasons of distraction and exhaustion that are the ordinary lot of any working adult").
-- Margaret's anchor phrase preserved verbatim with explicit attribution at footnote VII-7.
-- Heritage/tradition framing applied at the close ("a forever gift to forever schools for a forever democracy" + "the eighteenth-century framers did not have").
-- Concrete grounding added (Oregon Common School Fund's reform-capital consumption, Utah's 1990s recovery, Chamberlain's 1907 number, "no editorial outrage in any paper that lasted more than a news cycle").
-- AI-staccato avoided. Literary elegance avoided.
-- Reading-level target advanced-HS / freshman-college; Flesch ~50 maintained.
-
-Judgment calls:
-- Smoothed the verbatim ~410-word block from Step 4 by adding subordinate clauses ("page by careful page," "in the way Carson's voice kept speaking through the decade between her book and the agency that her book, in the end, produced") and concrete naming ("no marches in the streets," "no editorial outrage in any paper that lasted more than a news cycle"). Substance and the Carson/EPA/Pearl Harbor anchors preserved exactly.
-- ASTL/OASTL footnote VII-5 corrected per the project_astl_full_name.md memory: ASTL = Advocates for School Trust Lands; OASTL = Oregon Advocates for School Trust Lands. Source had the older "Oregon Association of School Trust Lands" wording. Corrected on substance grounds; flagged here because it changes the original source text on a non-voice ground.
-- "Twenty percent of its design" wording for the Oregon Irreducible Fund retained from the handoff; the actual ratio derives from the Chamberlain 1907 "five or six times as large" formulation, which the white paper renders consistently across sections.
-- Did not promote Carson reference to an epigraph at section head (per Dave's open question 2 in the handoff). Held in running text per his current "go pedagogical" preference.
-
-Open questions for Dave's review:
-- Whether the Carson reference earns elevation to an epigraph in the print pass. Held in running text per current direction.
-- Whether the ASTL/OASTL naming correction in footnote VII-5 should be flagged as a v5.0 correction in the print-edition errata, or absorbed silently into the v6.0 manuscript.
--->

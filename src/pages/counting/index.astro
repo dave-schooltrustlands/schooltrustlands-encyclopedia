@@ -49,7 +49,7 @@ const transparencyLabels: Record<string, string> = {
 <RoomLayout
   room="counting"
   title="Counting House"
-  subtitle="Permanent funds, distributions, and transparency status across all 50 states. Every figure carries a confidence indicator. Empty cells are an editorial signal: where the substrate doesn't have a verified value, the badge tells you why."
+  subtitle="Permanent funds, distributions, and transparency status across all 50 states. Every figure carries a confidence indicator. Empty cells are an editorial signal: where the substrate doesn't carry a value, the badge tells you why."
   width="full"
   sourceId="finance-states-json"
 >
@@ -218,8 +218,8 @@ const transparencyLabels: Record<string, string> = {
                 <span class="text-slate-400" title="State-derived; never had a federal trust">—</span>
               ) : (
                 <>
-                  <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="Substrate has no verified value; awaiting state disclosure">
-                    Awaiting Disclosure
+                  <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="The substrate does not yet carry this figure">
+                    Awaiting State Disclosure
                   </span>
                   {/* v9 D.1 — Library Mode ornament. Empty-shelf for fully-
                       undisclosed corpus; ghosted-ledger for partially-
@@ -245,8 +245,8 @@ const transparencyLabels: Record<string, string> = {
                 <span class="text-slate-400" title="State-derived; never had a federal trust">—</span>
               ) : (
                 <>
-                  <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="Substrate has no verified value; awaiting state disclosure">
-                    Awaiting Disclosure
+                  <span class="inline-flex items-center rounded bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-800" title="The substrate does not yet carry this figure">
+                    Awaiting State Disclosure
                   </span>
                   {r.transparency.status === 'data-partially-published' ? (
                     <img src="/ornaments/ghosted-ledger.svg" alt="" class="state-ornament" data-ornament="ghosted-ledger" />
@@ -273,7 +273,7 @@ const transparencyLabels: Record<string, string> = {
   </div>
 
   <p class="mt-4 text-xs text-slate-500">
-    The em-dash means "not applicable" (state-derived states never had a federal trust); the orange "Awaiting Disclosure" badge means the dossier doesn't yet have a verified value for that field. Both are intentional editorial signals, not missing data.
+    The em-dash means "not applicable" (state-derived states never had a federal trust); the orange "Awaiting State Disclosure" badge means the substrate doesn't yet carry a value for that field. Both are intentional editorial signals, not missing data.
   </p>
 
   <script is:inline>

@@ -18,7 +18,7 @@ Cooper v. Roberts is the first United States Supreme Court decision to character
 
 ## Why the Library cites it
 
-Cooper v. Roberts is the doctrinal hinge on which the Library's argument that admission-act school grants are real trusts, rather than advisory dedications, turns. The Eighth Anchor's argument that the Section 16 reservation set the architectural template for every later school-trust grant, and that the template carries a trust character binding on the state-as-trustee, runs directly through this opinion. *Schools of the Republic* cites Cooper at the doctrinal floor of its trust-law argument. The case predates the explicit in-trust language of the 1910 New Mexico-Arizona Act by fifty-five years, but it establishes that the trust character of the school-land grants was already, in 1855, the way the Supreme Court understood the federal-state commitment.
+Cooper v. Roberts is the doctrinal hinge on which the Library's argument that admission-act school grants are real trusts, rather than advisory dedications, turns. The argument in *Stewards of the Republic* that the Section 16 reservation set the architectural template for every later school-trust grant, and that the template carries a trust character binding on the state-as-trustee, runs directly through this opinion. *Schools of the Republic* cites Cooper at the doctrinal floor of its trust-law argument. The case predates the explicit in-trust language of the 1910 New Mexico-Arizona Act by fifty-five years, but it establishes that the trust character of the school-land grants was already, in 1855, the way the Supreme Court understood the federal-state commitment.
 
 ## A representative holding
 

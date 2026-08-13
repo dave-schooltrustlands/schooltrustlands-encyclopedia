@@ -101,7 +101,7 @@ const GRADE_LABEL: Record<StateRecord['trustIntegrityGrade'], string> = {
   'breached-and-recovered': 'Breached and recovered',
   'breached-and-uncorrected': 'Breached and uncorrected',
   'under-review': 'Under review',
-  pending: 'Pending — Phase 2',
+  pending: 'Pending dossier',
 };
 
 function fmtFund(n: number | null): string {
@@ -114,12 +114,15 @@ const keyCases = state.keyCases
   .map((key) => ({ key, record: cases[key] }))
   .filter((c): c is { key: string; record: CaseRecord } => Boolean(c.record));
 
-// AG opinions filtered to this state, oldest first. As of v3.2.1 only
-// Oregon has opinions in substrate (six of them); other states show
-// the placeholder until Phase 4 sourcing fans out.
+// AG opinions filtered to this state, oldest first. court-opinions.json
+// holds structured records for Oregon only; where a state's long-form
+// dossier publishes its own list of opinions, the count on file is the
+// one recorded in court-states.json. The at-a-glance card takes the
+// larger of the two so it cannot contradict the dossier below it.
 const stateOpinions = Object.values(opinions)
   .filter((o) => o.state === code)
   .sort((a, b) => a.year - b.year);
+const agOpinionsOnFile = Math.max(stateOpinions.length, state.agOpinionCount ?? 0);
 ---
 <RoomLayout
   room="court"
@@ -132,22 +135,7 @@ const stateOpinions = Object.values(opinions)
   <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
     <span class="eyebrow">Court Room · The Atlas · {state.name}</span>
 
-    <aside class="preview-banner" role="note">
-      <strong>First-draft preview.</strong>{' '}
-      {DossierContent ? (
-        <>
-          Per-state dossier seeded from Phase 2 long-form substrate.
-          Phase 3 cross-AI review and Phase 4 revision are still pending.
-        </>
-      ) : (
-        <>
-          Per-state dossier seeded from Phase 0/1 substrate (Margaret
-          Bird's compilation, OASTL legal record, ASTL research). Phase 2
-          long-form content under development.
-        </>
-      )}{' '}
-      ← <a href="/court/atlas/">Back to the Atlas</a>.
-    </aside>
+    <p class="back-link">← <a href="/court/atlas/">Back to the Atlas</a></p>
 
     <section class={`dossier-card grade-${state.trustIntegrityGrade}`}>
       <header class="dossier-card__header">
@@ -162,8 +150,8 @@ const stateOpinions = Object.values(opinions)
         <dd>{state.enablingAct}</dd>
         <dt>Trust fund value</dt>
         <dd>{fmtFund(state.trustFundCurrentValue)}{state.trustFundAsOf ? ` (as of ${state.trustFundAsOf})` : ''}</dd>
-        <dt>AG opinions in substrate</dt>
-        <dd>{stateOpinions.length > 0 ? stateOpinions.length : 'Pending — Phase 4 sourcing'}</dd>
+        <dt>AG opinions on file</dt>
+        <dd>{agOpinionsOnFile > 0 ? agOpinionsOnFile : 'None on file'}</dd>
         <dt>Key cases</dt>
         <dd>{keyCases.length}</dd>
         <dt>Advocacy contact</dt>
@@ -259,30 +247,25 @@ const stateOpinions = Object.values(opinions)
           </div>
         ) : (
           <p>
-            AG opinions for {state.name} are being sourced in Phase 4 —
-            see the <a href="/court/atlas/">Atlas index</a> for a
-            campus-wide search.
+            No Attorney General opinions for {state.name} have been placed
+            on file here yet. They are added as they are located and read.
           </p>
         )}
+
+        <hr class="archival-divider" />
+
+        <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
+          Sources: Margaret Bird, <em>Trust Land Case Quotes by Topic</em>
+          (2021); the OASTL legal record; ASTL thematic research.
+        </p>
       </>
     )}
-
-    <hr class="archival-divider" />
-
-    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
-      {DossierContent
-        ? 'First-draft preview. Phase 2 substrate; Phase 3 cross-AI review and Phase 4 revision still pending.'
-        : 'First-draft preview. Substrate sources: Margaret Bird, Trust Land Case Quotes by Topic (2021); OASTL legal.md (2026-05-16); ASTL thematic research (2026-05-17). Phase 2 will deepen this dossier.'}
-    </p>
   </article>
 </RoomLayout>
 
 <style>
-  .preview-banner {
-    border-left: 4px solid var(--old-gold, #B88A2E);
-    background: rgba(184, 138, 46, 0.08);
-    padding: 0.75rem 1rem;
-    margin: 1rem 0 1.5rem;
+  .back-link {
+    margin: 0.75rem 0 1.25rem;
     font-size: 0.95rem;
   }
   .dossier-card {

@@ -2,10 +2,10 @@
 // v59 — Reading Room landing rebuild. The room reframes from a multi-door
 // lobby into a curated reference room with two collections: the Atlas of
 // 50 state dossiers (each at /reading/us-XX/), and a curated catalog of
-// 39 works by other authors at /reading/library/<slug>/. Four featured
-// entries sit above the six category sections. The Library's own books
-// remain at their existing /reading/* URLs pending a future migration to
-// the Writing Room.
+// works by other authors at /reading/library/<slug>/ — the size of that
+// catalog is derived below rather than written into the prose. Four
+// featured entries sit above the six category sections. The Library's own
+// books now live in the Writing Room.
 import { getCollection } from 'astro:content';
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import ReferenceDesk from '../../components/ReferenceDesk.astro';
@@ -29,7 +29,7 @@ const categoryNames: Record<Cat, string> = {
 const categoryBlurbs: Record<Cat, string> = {
   A: 'The federal acts of Congress, the territorial ordinances, the early state constitutions, and the admission acts on which the entire school-trust system rests. All public-domain by virtue of being federal or state government works.',
   B: 'The early- and mid-twentieth-century scholars who first reconstructed, state by state, what had happened to the school-trust corpora in their founding centuries. Close enough to the records to capture details modern researchers cannot easily recover.',
-  C: 'The cases American courts have decided on the questions the Library’s substrate turns on: whether admission-act grants are real trusts, what the trustee state owes the beneficiary, what the fiduciary standard is, what the remedies are when it is breached.',
+  C: 'The cases American courts have decided on the questions this Library turns on: whether admission-act grants are real trusts, what the trustee state owes the beneficiary, what the fiduciary standard is, what the remedies are when it is breached.',
   D: 'The standing academic and practitioner literature on school trust lands, trust doctrine generally, and school finance. Most are in copyright; the Library carries Tier 3 editorial summaries with Title-Steward recruitment open. Culp et al. is open-access.',
   E: 'State-level reports and studies that document school-trust-lands administration from inside the system. Reform statutes, agency annual reports, and the advocacy-office reporting that holds trustee states accountable to beneficiaries.',
   F: 'Works that are not directly about school trust lands but document what the trust was intended to fund — the public-school education the framers had in mind, and the cultural fabric the Section 16 grants were meant to support.',
@@ -69,6 +69,26 @@ for (const c of categoryOrder) byCategory[c].sort(sortByCategoryThenYear);
 const states = stateEntries
   .slice()
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+// The browse blurbs below quote the size of the curated collection. Derive
+// the number from the collection itself so it cannot drift out of step
+// with the shelf again.
+const ONES = [
+  'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
+  'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen',
+  'sixteen', 'seventeen', 'eighteen', 'nineteen',
+];
+const TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+// TENS only runs to ninety, so anything from 100 up is printed as a
+// numeral rather than as the string "undefined".
+const spellOut = (n: number): string =>
+  n < 20
+    ? ONES[n]
+    : n < 100
+      ? `${TENS[Math.floor(n / 10)]}${n % 10 ? `-${ONES[n % 10]}` : ''}`
+      : String(n);
+const entryCountWord = spellOut(libraryEntries.length);
+const EntryCountWord = entryCountWord.charAt(0).toUpperCase() + entryCountWord.slice(1);
 
 // v73 — Margaret Bird's 2026-05-15 ask: "I cannot figure out how to go
 // directly to just one state from the reading room." Pill row of the
@@ -119,7 +139,7 @@ const statePills = stateEntries
       <p>
         Below: four featured entries the Library most needs visitors to
         encounter first; the published shelf of finished works; the
-        full thirty-nine-entry browse organized into six categories;
+        full {entryCountWord}-entry browse organized into six categories;
         and the alphabetical roster of fifty state dossiers. The
         Library’s own books in progress live in the
         <a href="/writing/">Writing Room</a>.
@@ -200,8 +220,7 @@ const statePills = stateEntries
           <a href="https://a.co/d/8PpB6f8" rel="noopener" target="_blank">Amazon (Kindle / paperback / hardback) →</a>
         </p>
         <p class="shelf-note">
-          Also distributed by OASTL Oregon at
-          <a href="https://oastl-oregon.drdavesullivan.workers.dev" rel="noopener" target="_blank">oastl-oregon.drdavesullivan.workers.dev</a>.
+          Also distributed by OASTL Oregon.
         </p>
       </article>
 
@@ -244,7 +263,7 @@ const statePills = stateEntries
     <section class="lobby-browse" aria-label="Browse the curated collection by category">
       <h2 class="section-heading">Browse by category</h2>
       <p class="section-subhead">
-        Thirty-nine entries the Library carries because they belong on
+        {EntryCountWord} entries the Library carries because they belong on
         the reference shelf of anyone serious about school trust lands.
       </p>
 

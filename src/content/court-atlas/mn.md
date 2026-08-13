@@ -27,18 +27,18 @@ Substrate cited: Margaret Bird compilation, *TX, MN, AZ Big steals in 1800s*; se
 
 ## Key cases
 
-Minnesota's school-trust litigation record is comparatively thin — a function in part of the early and overwhelming loss of the corpus, which left less to litigate over than in states whose grants survived the nineteenth century in greater proportion. The 2026 HF 3900 / SF 3593 constitutional amendment process (currently advancing toward the November 2026 ballot, covered in the Newsroom) is the most consequential present-day legal action affecting the Minnesota Permanent School Fund. Phase 4 sourcing will fill in the case-law record.
+Minnesota's school-trust litigation record is comparatively thin — a function in part of the early and overwhelming loss of the corpus, which left less to litigate over than in states whose grants survived the nineteenth century in greater proportion. The 2026 HF 3900 / SF 3593 constitutional amendment process (currently advancing toward the November 2026 ballot, covered in the Newsroom) is the most consequential present-day legal action affecting the Minnesota Permanent School Fund. The case-law record has not yet been filled in.
 
 ## Notable Attorney General opinions
 
-AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
+No Attorney General opinions for this state are on file yet. They are added as they are located and read.
 
 ## Trust Integrity grade and rationale
 
-**Breached and uncorrected.** Minnesota's nineteenth-century breaches — phantom-homesteader fraud, land-officer bribery, lumber-company looting of the pine country, the 1904 investigation that came too late — are the deepest and best-documented losses in the original-cohort states. The reforms that followed the 1904 investigation stopped the active fraud, but no restoration mechanism returned the lost lands or the lost timber proceeds to the trust corpus. The remaining trust estate (administered today by the Minnesota Department of Natural Resources, with the Permanent School Fund as the corpus instrument) is a fraction of the original grant in both acreage and quality. The grade reflects the historical pattern as Bird's substrate records it, with the qualification that Phase 4 sourcing will need to test the substrate against the contemporary state-side record.
+**Breached and uncorrected.** Minnesota's nineteenth-century breaches — phantom-homesteader fraud, land-officer bribery, lumber-company looting of the pine country, the 1904 investigation that came too late — are the deepest and best-documented losses in the original-cohort states. The reforms that followed the 1904 investigation stopped the active fraud, but no restoration mechanism returned the lost lands or the lost timber proceeds to the trust corpus. The remaining trust estate (administered today by the Minnesota Department of Natural Resources, with the Permanent School Fund as the corpus instrument) is a fraction of the original grant in both acreage and quality. The grade reflects the historical pattern as Bird's substrate records it, with the qualification that the compiled record still needs to be tested against the contemporary state-side record.
 
 ## Current advocacy
 
-Minnesota's HF 3900 / SF 3593 constitutional amendment — passed by conference committee 7-1 in May 2026 and headed for the November 2026 ballot — is the live advocacy thread. The amendment, covered in the Newsroom Issues 3 and 4, would restructure the Permanent School Fund's distribution architecture. Phase 4 will track the campaign and the post-vote disposition.
+Minnesota's HF 3900 / SF 3593 constitutional amendment — passed by conference committee 7-1 in May 2026 and headed for the November 2026 ballot — is the live advocacy thread. The amendment, covered in the Newsroom Issues 3 and 4, would restructure the Permanent School Fund's distribution architecture. The Library will follow the campaign and the post-vote disposition.
 
 If you advocate for school trust lands in Minnesota, the Library welcomes contact through the pending Library contact form.

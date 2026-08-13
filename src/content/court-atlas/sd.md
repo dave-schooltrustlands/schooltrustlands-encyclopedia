@@ -5,7 +5,7 @@ name: "South Dakota"
 
 ## Overview
 
-South Dakota was admitted to the Union on November 2, 1889 under the same Omnibus Enabling Act that admitted Montana, North Dakota, and Washington. The state received sections 16 and 36 of each township as a trust for the support of common schools, plus separate grants for the state university, normal schools, and other named institutions — each held as a distinct trust for its named beneficiary. The South Dakota Office of School and Public Lands, headed by an elected Commissioner of School and Public Lands, administers the trust. Current acreage and corpus values [CITE PENDING for Phase 4 verification]; revenue derives primarily from agricultural and grazing leases on the prairie and rangeland trust estate.
+South Dakota was admitted to the Union on November 2, 1889 under the same Omnibus Enabling Act that admitted Montana, North Dakota, and Washington. The state received sections 16 and 36 of each township as a trust for the support of common schools, plus separate grants for the state university, normal schools, and other named institutions — each held as a distinct trust for its named beneficiary. The South Dakota Office of School and Public Lands, headed by an elected Commissioner of School and Public Lands, administers the trust. Current acreage and corpus values [CITE PENDING]; revenue derives primarily from agricultural and grazing leases on the prairie and rangeland trust estate.
 
 South Dakota's trust doctrine is most powerfully articulated by *Kanaly v. State*, in which the South Dakota Supreme Court synthesized federal and sister-state precedent into one of the strongest national statements of the perpetual-trust doctrine. In Margaret Bird's comparative ledger, South Dakota is also the strongest single counter-example to the loss-pattern she has documented in most other public-land states — a state whose institutional architecture has, by and large, defended the children's lands against the political pressure of the moment.
 
@@ -34,11 +34,11 @@ Substrate cited: Margaret Bird compilation, *MB stories of losses by state*, Oct
 
 ## Notable Attorney General opinions
 
-AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
+No Attorney General opinions for this state are on file yet. They are added as they are located and read.
 
 ## Trust Integrity grade and rationale
 
-**Under-review.** *Kanaly* establishes one of the strongest doctrinal floors in the country — "special, permanent and perpetual trust" with the state as trustee "beyond question" — and the elected Commissioner of School and Public Lands structure creates a degree of accountability not found in every grant state. The Beadle-Johnson lineage documented above is, in Margaret Bird's reading, the strongest single piece of evidence the trust framework can be made to work when an institution defends it. The Library nonetheless grades South Dakota under-review pending Phase 4 verification of (a) current lease-pricing performance relative to fair market value across the agricultural and grazing estate, (b) the distinct treatment of the institutional trusts, and (c) the legislature's recent record on appropriations from the permanent fund and the income distributions thereto. The doctrinal floor is high; the administrative record on top of it is the open question.
+**Under-review.** *Kanaly* establishes one of the strongest doctrinal floors in the country — "special, permanent and perpetual trust" with the state as trustee "beyond question" — and the elected Commissioner of School and Public Lands structure creates a degree of accountability not found in every grant state. The Beadle-Johnson lineage documented above is, in Margaret Bird's reading, the strongest single piece of evidence the trust framework can be made to work when an institution defends it. The Library nonetheless grades South Dakota under-review pending verification of (a) current lease-pricing performance relative to fair market value across the agricultural and grazing estate, (b) the distinct treatment of the institutional trusts, and (c) the legislature's recent record on appropriations from the permanent fund and the income distributions thereto. The doctrinal floor is high; the administrative record on top of it is the open question.
 
 ## Current advocacy
 

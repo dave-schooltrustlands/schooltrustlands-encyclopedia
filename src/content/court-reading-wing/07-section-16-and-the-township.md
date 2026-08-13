@@ -117,4 +117,4 @@ The American school trust was, in its origins, an act of geometry. It is the lon
 
 ---
 
-*Reading Wing, Court Room. America's School Trust Library at schooltrusts.net.*
+*Reading Wing, Court Room. America's School Trust Library at schooltrusts.org.*

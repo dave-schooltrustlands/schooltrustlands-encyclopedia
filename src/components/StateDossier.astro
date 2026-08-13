@@ -1,11 +1,12 @@
 ---
-// Right-rail dossier listing the six rooms for a given state. Atlas links
+// Right-rail dossier listing the rooms that carry a given state. Atlas links
 // to the cross-state map; the other rooms link to state-scoped routes
 // where they exist. Counting House row is hydrated with a one-line
 // financial summary derived from src/data/finance/states.json so the
 // dossier doesn't drift from the canonical numbers.
 
 import financeData from '../data/finance/states.json';
+import courtStates from '../data/court-states.json';
 
 interface Props {
   iso: string; // lowercase, e.g. "us-or"
@@ -73,6 +74,14 @@ function countingSummary(rec: FinanceRecord | undefined): CountingSummary {
 
 const counting = countingSummary(finance);
 
+// The Court Room holds a per-state dossier only for the states in
+// src/data/court-states.json. Where one exists this row points at it;
+// where none exists the row says so and points at the room itself.
+const courtCode = iso.replace(/^us-/i, '').toUpperCase();
+const courtDossierHref = Object.prototype.hasOwnProperty.call(courtStates, courtCode)
+  ? `/court/atlas/${courtCode.toLowerCase()}/`
+  : null;
+
 const rooms = [
   {
     id: 'reading',
@@ -98,8 +107,14 @@ const rooms = [
     awaitingDisclosure: counting.awaitingDisclosure,
     status: 'live' as const,
   },
-  { id: 'records', label: 'Records Room', href: null, summary: null, awaitingDisclosure: false, status: 'coming' as const },
-  { id: 'court', label: 'Court Room', href: null, summary: null, awaitingDisclosure: false, status: 'coming' as const },
+  {
+    id: 'court',
+    label: 'Court Room',
+    href: courtDossierHref ?? '/court/',
+    summary: courtDossierHref ? 'This state\'s case record' : 'No dossier for this state yet',
+    awaitingDisclosure: false,
+    status: 'live' as const,
+  },
   { id: 'breach', label: 'Breach & Recovery', href: null, summary: null, awaitingDisclosure: false, status: 'coming' as const },
 ];
 ---

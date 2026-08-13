@@ -67,7 +67,7 @@ Each step had a defensible rationale. The aggregate is the structural pattern. A
 
 The Oregon AG's office had, as it happened, ruled on exactly this question forty-five years before the Elliott decoupling. In 1977, asked whether income-producing Common School Grant Land could be designated as a Natural Area Preserve under ORS 273.562, the Attorney General answered yes only *"when such designation would adversely affect the financial contribution of such land to the Common School Trust Fund"* — meaning, in operational terms, no. The 2022 State Land Board did the categorical move anyway. The 1977 doctrine was not amended; it was bypassed.
 
-The 2024 OASTL case — *Advocates for School Trust Lands v. State of Oregon*, 24CV38372 — and the Oregon Court of Appeals' January 28, 2026 opinion granting standing to schoolchildren plaintiffs is the moment when, after 167 years, an organized beneficiary constituency finally appeared inside the courthouse and asserted the trust against the state as trustee.
+The 2024 OASTL case — *Siuslaw School District 97J et al. v. State of Oregon*, 24CV38372 — and the Oregon Court of Appeals' January 28, 2026 opinion granting standing to schoolchildren plaintiffs is the moment when, after 167 years, an organized beneficiary constituency finally appeared inside the courthouse and asserted the trust against the state as trustee. On July 24, 2026 the Coos County Circuit Court granted the State summary judgment in the 2024 case, holding that the State owes no legally enforceable fiduciary duty.
 
 Drift by capture is the hardest form of drift to oppose, because no individual decision in the chain looks like betrayal. Every actor in the room has a defensible reason. The drift happens at the level of the room itself.
 

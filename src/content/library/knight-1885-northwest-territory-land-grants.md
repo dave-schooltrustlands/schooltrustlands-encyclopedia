@@ -18,7 +18,7 @@ George Washington Knight's 195-page monograph, published in 1885 as Volume I, Nu
 
 ## Why the Library cites it
 
-Knight is the foundation Fletcher Harper Swift built on twenty-six years later, and the volume the Library reaches for first when working on any of the five Northwest Territory states. The Library's claim that the Section 16 reservation in the 1785 Land Ordinance set the architectural template for every later state-trust grant is grounded in Knight's parallel five-state reconstruction — the same form of grant, the same kinds of administrative apparatus, the same recurring failure modes. The Eighth Anchor's argument that the trust drift is structural rather than personal rests in part on Knight, because Knight was the first historian to look at five states at once and see the same pattern repeating in each.
+Knight is the foundation Fletcher Harper Swift built on twenty-six years later, and the volume the Library reaches for first when working on any of the five Northwest Territory states. The Library's claim that the Section 16 reservation in the 1785 Land Ordinance set the architectural template for every later state-trust grant is grounded in Knight's parallel five-state reconstruction — the same form of grant, the same kinds of administrative apparatus, the same recurring failure modes. The argument in *Stewards of the Republic* that the trust drift is structural rather than personal rests in part on Knight, because Knight was the first historian to look at five states at once and see the same pattern repeating in each.
 
 ## A representative finding
 

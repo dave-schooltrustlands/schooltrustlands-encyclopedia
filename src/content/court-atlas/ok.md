@@ -17,7 +17,7 @@ The Oklahoma Enabling Act of June 16, 1906 (34 Stat. 267) admitted Oklahoma on t
 
 ## Notable Attorney General opinions
 
-AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
+No Attorney General opinions for this state are on file yet. They are added as they are located and read.
 
 ## Trust Integrity grade and rationale
 

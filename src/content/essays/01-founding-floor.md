@@ -208,7 +208,7 @@ The work of holding what they built begins where they handed it forward.
 
 [^ch1-NEW2]: Thomas Jefferson to Charles Yancey, Monticello, January 6, 1816. Monticello, "Extract from Thomas Jefferson to Charles Yancey," https://www.monticello.org/research-education/thomas-jefferson-encyclopedia/extract-thomas-jefferson-charles-yancey/. The full sentence in the letter, with surrounding context, is part of Jefferson's late-life retrospective on the educational architecture his Bill 79 had attempted in 1779 and that the Virginia Literary Fund of 1810 had partially realized.
 
-[^ch1-NEW3]: Timothy Dwight, sermon as quoted in his *Travels in New-England and New-York*, vol. 4 (New Haven: published posthumously, 1821–22) and earlier in circulating preached form in the early 1800s. Source: substrate at `_intake/Q18_Press_and_Pulpit_Coverage_*.md` (Gemini, "Sermon and Pamphlet Literature"). [CITE PENDING — locate the original preached date and venue; the sermon circulated widely in the early 1800s but the publication-grade citation needs the underlying pulpit record.]
+[^ch1-NEW3]: Timothy Dwight, sermon as quoted in his *Travels in New-England and New-York*, vol. 4 (New Haven: published posthumously, 1821–22) and earlier in circulating preached form in the early 1800s. [CITE PENDING — the original preached date and venue are not yet located; the sermon circulated widely in the early 1800s, but a publication-grade citation needs the underlying pulpit record.]
 
 [^ch1-4]: Land Ordinance of May 20, 1785, in *Journals of the Continental Congress*, 28:375 (1933); Northwest Ordinance, July 13, 1787, in *Journals of the Continental Congress*, 32:340 (1936). Both apply to federal public lands ceded to the national government — not to lands of states already in the Union.
 
@@ -315,7 +315,3 @@ The work of holding what they built begins where they handed it forward.
 [^ch1-55]: S.C. Const. of 1973 revision, art. XI, § 3 (restoring a stronger version of the free-public-schools mandate).
 
 [^ch1-56]: 1956 Va. Acts limited convention amendment authorizing public aid for private-school students; *Harrison v. Day*, 200 Va. 439, 106 S.E.2d 636 (1959); *Griffin v. County School Board of Prince Edward County*, 377 U.S. 218 (1964).
-
----
-
-*Draft v2 ends. Voice notes for Margaret's review: the I-want-to-slow-down moves are deployed at the doctrinal-density passages (the trustee-of-political-authority framing in Adams 1765; the Connecticut 1795 fund-template moment; the New Hampshire 209-year-latency observation). The economist-by-training authority is used sparingly. The two-takeaways close folds in the Dwight sermon as the period's lay-readable version of the bind-the-future doctrine. Three substrate-enrichment migrations from Section II audit landed cleanly: Adams 1765 *Dissertation* at opening; Jefferson 1816 Yancey at Virginia transition; Dwight sermon at close. Cumulative voice-pass: ~7,500 words body, all of source v1.3 ch 1 (lines 207–271) voice-passed plus the three enrichments.*

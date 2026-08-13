@@ -21,7 +21,7 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
 <RoomLayout
   room="court"
   title="The Case File"
-  subtitle="Annotated SCOTUS cases, binding state-court precedents, and the active Oregon filings — statutes, AG opinions, official correspondence, litigation history, and expert declarations."
+  subtitle="Annotated SCOTUS cases, binding state-court precedents, and the Oregon filings — statutes, AG opinions, official correspondence, litigation history, and expert declarations."
   width="prose"
   sourceId="court-case-file"
 >
@@ -29,10 +29,10 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
     <span class="eyebrow">Court Room · Case File · Annotated Bibliography</span>
 
     <aside class="preview-banner" role="note">
-      <strong>First-draft preview.</strong> The Case File is one of the
-      Court Room's four subsections — Lineage, Atlas, Case File, Reading
-      Wing. Deeper annotations and additional cases continue to land in
-      each phase. ← <a href="/court/">Back to the Court Room lobby</a>.
+      <strong>The Case File</strong> is one of the Court Room's four
+      subsections — Lineage, Atlas, Case File, Reading Wing. Annotations
+      are added and corrected as the record is worked; corrections are
+      open and dated. ← <a href="/court/">Back to the Court Room lobby</a>.
     </aside>
 
     <p>
@@ -59,7 +59,7 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
     <nav class="prose-toc" aria-label="On this page">
       <h2 style="margin-top: 1.4rem;">On this page</h2>
       <ul>
-        <li><a href="#annotated-precedents">Annotated Precedent Cases (Phase 2)</a></li>
+        <li><a href="#annotated-precedents">Annotated Precedent Cases</a></li>
         <li><a href="#section-a">A. Foundational Constitutional Provisions</a></li>
         <li><a href="#section-b">B. Oregon Statutes</a></li>
         <li><a href="#section-c">C. Attorney General Opinions</a></li>
@@ -79,33 +79,17 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
       <h2 style="margin-top: 1.2rem;">Annotated Precedent Cases</h2>
       <p>
         Twenty-three canonical cases that govern American school trust lands
-        doctrine. Eleven are Phase 2 substrate; five — <em>Cooper v.
-        Roberts</em> (1855), <em>Beecher v. Wetherby</em> (1877),
-        <em>County of Yakima</em> (1992), <em>Idaho v. Coeur d'Alene
-        Tribe</em> (1997), and <em>Branson v. Romer</em> (10th Cir. 1998)
-        — were added in Phase 4 Wave 1 (v75); three more — <em>Asplund v.
-        Hannett</em> (1926), <em>Deer Valley v. Superior Court</em> (1988),
-        and <em>Propst v. Board</em> (1952) — were added in v88; two more
-        — <em>Conservation Northwest v. Commissioner of Public Lands</em>
-        (Wash. 2022) and <em>State v. University of Alaska</em> (1981) —
-        were added in v89; and two more — <em>Kanaly v. Janklow</em>
-        (S.D. 1985) and <em>Montanans for Responsible Use of the School
-        Trust v. Darkenwald</em> (Mont. 2005, Nelson dissent) — were added
-        in v91 as part of the CLASS Archive integration. Each annotation
-        follows the same structure — facts, holding, why it matters, the
-        jurisdictions in which the case is cited, and limits of the
-        annotation — and links to its own page and to the underlying
-        opinion at courtlistener.com or supreme.justia.com.
+        doctrine. Each annotation follows the same structure — facts,
+        holding, why it matters, the jurisdictions in which the case is
+        cited, and limits of the annotation — and links to its own page and
+        to the underlying opinion at courtlistener.com or
+        supreme.justia.com.
       </p>
       <aside class="preview-banner" role="note">
-        <strong>v75 — Phase 4 Wave 1 seed.</strong> Phase 4 added five new
-        annotations: <em>Cooper v. Roberts</em> (1855), <em>Beecher v.
-        Wetherby</em> (1877), <em>County of Yakima</em> (1992), <em>Idaho
-        v. Coeur d'Alene Tribe</em> (1997), and <em>Branson v. Romer</em>
-        (10th Cir. 1998). Each annotation is a Library-side summary, not a
-        full Shepard's treatment; readers should consult the linked
-        opinion and verify current law before relying on any annotation
-        in litigation.
+        <strong>What these annotations are.</strong> Each annotation is a
+        Library-side summary, not a full Shepard's treatment; readers
+        should consult the linked opinion and verify current law before
+        relying on any annotation in litigation.
       </aside>
 
       <h3>Supreme Court of the United States</h3>
@@ -460,6 +444,12 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
               new 2024 breaches including the "1000 Road" parcel transfer.
               First Amended Complaint streamlined the case to 2024-only
               breaches. Judge Combs issued a Letter Opinion in March 2025.
+              On July 24, 2026 Judge Combs granted the State summary judgment
+              on both claims, holding that neither the 1859 Admission Act nor
+              Article VIII of the Oregon Constitution imposes legally
+              enforceable fiduciary duties on the State, and canceled the
+              trial set for August 18–28, 2026.
+              <a href="/court/filings/2026-07-24-combs-summary-judgment-letter-24cv38372.pdf">Jul 2026 summary-judgment letter →</a> ·
               <a href="https://drive.google.com/file/d/1Qk4ysU3MFHLmGk7v8Uv2c7iKYr2Vc0AI/view?usp=drive_link" rel="noopener" target="_blank">Initial Complaint →</a> ·
               <a href="https://drive.google.com/file/d/1L_WH-buZ3O_C8E3HGj3pfLPtQj94a9Q4/view?usp=drive_link" rel="noopener" target="_blank">First Amended Complaint →</a> ·
               <a href="https://drive.google.com/file/d/1GKlbgBDo7blkTWOoFqbQcmwyse9_JpXf/view?usp=drive_link" rel="noopener" target="_blank">Mar 2025 Letter Opinion →</a>
@@ -472,8 +462,10 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
             <td>
               Appeal of the Coos County dismissal (23CV39056), arguing the
               trial court erred in applying legislative immunity to fiduciary
-              claims. This appeal produced the January 28, 2026 standing
-              victory described in Section J.
+              claims. This appeal produced the January 28, 2026 Court of
+              Appeals decision sustaining beneficiary standing. The Oregon
+              Supreme Court denied review in S072734 on July 23, 2026; that
+              decision is final and the appellate track is closed.
               <a href="https://drive.google.com/file/d/1bTnDeBGlyAps8cuesRwMEZDrzHulJgdQ/view?usp=drive_link" rel="noopener" target="_blank">Appellants' Opening Brief →</a>
             </td>
           </tr>
@@ -660,8 +652,9 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
 
     <h2 id="section-j">Section J — Oregon's Current Case</h2>
     <p>
-      For deep treatment of <em>Advocates for School Trust Lands v. State of
-      Oregon</em> and the January 28, 2026 standing victory, see
+      For the procedural posture of the Oregon cases — the July 23, 2026
+      denial of review in S072734 and the July 24, 2026 summary judgment for
+      the State in 24CV38372 — see
       <a href="/court/oregon-current-case/">Oregon's Current Case</a>.
     </p>
 

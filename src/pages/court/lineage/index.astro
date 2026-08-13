@@ -1,8 +1,6 @@
 ---
-// v3.1 — The Lineage subsection. Twelve milestone timeline cards now
-// link to per-milestone first-draft essays seeded from Phase 2
-// substrate (lineage_12_milestones.md). Phase 3 cross-AI review and
-// Phase 4 revision are still pending.
+// The Lineage subsection. Milestone timeline cards link to
+// per-milestone long-form essays in the court-lineage collection.
 import { getCollection } from 'astro:content';
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 
@@ -22,12 +20,12 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
     <span class="eyebrow">Court Room · The Lineage</span>
 
     <aside class="preview-banner" role="note">
-      <strong>First-draft preview.</strong> Fourteen milestone essays
-      sketch the doctrinal arc from Magna Carta and the 1601 Statute of
-      Charitable Uses through Asarco (1989) to the modern Uniform
-      Trust Code. Phase 4 Wave 1 (v75) added pull-quotes and
-      primary-source links to each waypoint and the methodological note
-      below. ← <a href="/court/">Back to the Court Room lobby</a>.
+      Fourteen milestone essays sketch the doctrinal arc from Magna Carta
+      and the 1601 Statute of Charitable Uses through <em>Asarco</em>
+      (1989) to the modern Uniform Trust Code. Each waypoint carries a
+      pull-quote and primary-source links, and the note below explains
+      what the timeline does and does not claim. ←
+      <a href="/court/">Back to the Court Room lobby</a>.
     </aside>
 
     <aside class="methodological-note" role="note">
@@ -78,12 +76,6 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
       ))}
     </ol>
 
-    <hr class="archival-divider" />
-
-    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
-      First-draft preview. Long-form essays seeded from Phase 2 substrate;
-      Phase 3 cross-AI review and Phase 4 revision still pending.
-    </p>
   </article>
 </RoomLayout>
 

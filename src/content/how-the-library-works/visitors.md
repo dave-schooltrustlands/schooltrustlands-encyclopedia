@@ -11,8 +11,8 @@ Most people who come to the Library never sign up for anything, and that is fine
 
 Everything that is published is open to you. You can:
 
-- Read every chapter of the three books in the Reading Room.
-- Read every state page in the Atlas.
+- Read every chapter of the three books in the Writing Room.
+- Read every state's dossier in the Reading Room, and every state on the Atlas map.
 - Read every map in the Map Room and every fund table in the Counting House.
 - Read every essay in Voices and every weekly note in the Newsroom.
 - Read every published book review.

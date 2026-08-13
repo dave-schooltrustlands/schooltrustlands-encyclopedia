@@ -18,7 +18,7 @@ The Utah Land Trusts Protection and Advocacy Office Annual Reports are the publi
 
 ## Why the Library cites it
 
-The Library carries the LTPAO Annual Reports because the institutional model is, in Cowork-side's substrate and in Margaret Bird's expressed view, what the Library wants other states to study and to consider emulating. The Eighth Anchor's argument that institutional advocacy is the load-bearing element of a working multi-generational trust depends on demonstrating that the model exists and is operating, year by year, in at least one American state. The LTPAO reports are that demonstration. The Library's ASTL Report Card framework draws on the LTPAO concept when it scores other states on whether they have any structurally-tasked advocacy body for school-trust beneficiaries, and the answer for forty-nine of the fifty states is no.
+The Library carries the LTPAO Annual Reports because the institutional model is, in Margaret Bird's expressed view, what the Library wants other states to study and to consider emulating. The argument in *Stewards of the Republic* that institutional advocacy is the load-bearing element of a working multi-generational trust depends on demonstrating that the model exists and is operating, year by year, in at least one American state. The LTPAO reports are that demonstration. The Library reads the LTPAO reports as the working example of a structurally tasked advocacy body for school-trust beneficiaries. Minnesota's Office of School Trust Lands, created in 2012 on the Utah model, is the nearest parallel the Library's state dossiers record.
 
 ## A representative finding
 

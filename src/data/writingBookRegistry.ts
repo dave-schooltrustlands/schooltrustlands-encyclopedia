@@ -36,7 +36,7 @@ export const writingBooks: WritingBook[] = [
     blurb:
       'A plain-language explanation of the Library as a working system: the source record, the public surfaces, the correction method, and the roles people can take.',
     status:
-      'Working alignment draft. The concept is public-facing; final form is still being tuned.',
+      'The web version is published as the Library\'s procedures manual — an index and nine role pages. The booklet form is still being tuned.',
     fit:
       'The orientation door. It helps boards, collaborators, and first readers understand the method before judging the products.',
     currentHref: '/how-the-library-works/',
@@ -113,14 +113,14 @@ export const writingBooks: WritingBook[] = [
   {
     slug: 'stewards-of-the-republic',
     title: 'Stewards of the Republic',
-    kicker: 'Book 07 - future',
+    kicker: 'Volume II - looking forward',
     byline: 'Dave Sullivan',
     blurb:
-      'What the long school-trust record teaches people designing and governing future long-term institutions, including AI-era trusts.',
+      'How America\'s school trusts go wrong — six failures that repeat in state after state — and the Uniform Public Trust Enforcement Act, the model law drafted to repair them.',
     status:
-      'Current working edition is the June 8, 2026 review build, with visible verification flags and source notes restored; correction and verification work continue.',
+      'Current edition is dated June 8, 2026. It carries the visible verification flags and source notes; correction and verification work continue.',
     fit:
-      'The forward anchor. It carries the school-trust lessons to the people designing the next forever institutions.',
+      'The forward anchor, and the companion to Volume I. It carries the school-trust lessons to the people designing the next forever institutions.',
     currentHref: '/writing/stewards-of-the-republic/',
     draftHref: '/drafts/stewards-of-the-republic-latest.docx',
     draftLabel: 'Download current Word draft',
@@ -166,7 +166,7 @@ export const writingBooks: WritingBook[] = [
     blurb:
       'The 2026 annual record of the fight for America\'s school trust lands: state portraits, dispatches, and named examples of diversion, neglect, defense, and repair.',
     status:
-      'Current 2026 working edition is the June 8, 2026 review build; updated as litigation and state records grow.',
+      'The current text is the June 8, 2026 edition; updated as litigation and state records grow.',
     fit:
       'The field record. It gathers the present-tense evidence that shows why the repair is needed and where the fight is already visible.',
     currentHref: '/writing/who-steals-from-children/',

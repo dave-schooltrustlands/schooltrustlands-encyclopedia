@@ -29,6 +29,25 @@ for (const cat of CATEGORY_ORDER) {
     a.data.title.localeCompare(b.data.title, undefined, { sensitivity: 'base' }),
   );
 }
+
+// The blurb below quotes the size of the collection. Derive it from the
+// collection so it cannot drift out of step with the shelf.
+const ONES = [
+  'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
+  'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen',
+  'sixteen', 'seventeen', 'eighteen', 'nineteen',
+];
+const TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+// TENS only runs to ninety, so anything from 100 up is printed as a
+// numeral rather than as the string "undefined".
+const spellOut = (n: number): string =>
+  n < 20
+    ? ONES[n]
+    : n < 100
+      ? `${TENS[Math.floor(n / 10)]}${n % 10 ? `-${ONES[n % 10]}` : ''}`
+      : String(n);
+const countWord = spellOut(entries.length);
+const CountWord = countWord.charAt(0).toUpperCase() + countWord.slice(1);
 ---
 <RoomLayout
   room="reading"
@@ -45,7 +64,7 @@ for (const cat of CATEGORY_ORDER) {
   <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
     <p>
       The curated collection is the Library's reference shelf of work by other
-      authors. Thirty-nine entries are organized into six categories below. Each
+      authors. {CountWord} entries are organized into six categories below. Each
       entry has its own page at <code>/reading/library/&lt;slug&gt;/</code>. The
       main category-grouped browse is on the Reading Room landing; this page is
       the flat "browse all" surface for readers arriving directly.

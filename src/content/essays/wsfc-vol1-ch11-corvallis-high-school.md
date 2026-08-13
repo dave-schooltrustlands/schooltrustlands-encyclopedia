@@ -88,7 +88,7 @@ I will not pretend the months between the argument and the opinion were the calm
 
 The Court of Appeals takes the time it takes. The panel that had heard the argument at Corvallis High was deliberating. The opinion would land when the opinion landed. Natalie said the same thing every time I asked, in the same tone: *We made the argument. The panel will write what the panel writes. Wait.*
 
-I did what I always do when I am waiting on a thing I cannot move. I read. I worked on the substrate. I sat at my desk in Kings Valley and watched the rain come across the Coast Range and tried to picture the room at Corvallis High, and the rows, and the faces of those teenagers, and tried to imagine what an opinion that did right by them would actually say.
+I did what I always do when I am waiting on a thing I cannot move. I read. I worked on the records. I sat at my desk in Kings Valley and watched the rain come across the Coast Range and tried to picture the room at Corvallis High, and the rows, and the faces of those teenagers, and tried to imagine what an opinion that did right by them would actually say.
 
 ## V. The morning of January 28
 

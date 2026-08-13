@@ -1,8 +1,7 @@
 ---
-// v3.1 — Per-milestone Lineage essay page. Renders a single
-// court-lineage collection entry as a long-form first-draft essay.
-// Phase 3 (cross-AI review) and Phase 4 (revision) are still pending;
-// inline [CITE PENDING] flags surface as italic notes via .cite-pending.
+// Per-milestone Lineage essay page. Renders a single court-lineage
+// collection entry as a long-form essay; inline [CITE PENDING] flags
+// surface as italic notes via .cite-pending.
 import { getCollection, type CollectionEntry } from 'astro:content';
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 
@@ -25,6 +24,7 @@ const currentIdx = all.findIndex((e) => e.slug === entry.slug);
 const prev = currentIdx > 0 ? all[currentIdx - 1] : null;
 const next = currentIdx < all.length - 1 ? all[currentIdx + 1] : null;
 const slugify = (s: string) => s.replace(/^\d+-/, '');
+const hasOpenCitations = (entry.body ?? '').includes('[CITE PENDING');
 ---
 <RoomLayout
   room="court"
@@ -56,14 +56,14 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
       )}
     </nav>
 
-    <hr class="archival-divider" />
-
-    <aside class="preview-banner" role="note">
-      <strong>First-draft preview.</strong> Phase 3 cross-AI review and
-      Phase 4 revision are still pending. Inline citations marked
-      <span class="cite-pending">[CITE PENDING]</span> remain to be
-      verified.
-    </aside>
+    {hasOpenCitations && (
+      <>
+        <hr class="archival-divider" />
+        <aside class="cite-note" role="note">
+          <strong>Open citations.</strong> Citations marked <span class="cite-pending">[CITE PENDING]</span> in this essay have not yet been checked against a primary source.
+        </aside>
+      </>
+    )}
   </article>
 </RoomLayout>
 
@@ -77,7 +77,7 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
     margin: 0 0 1.25rem;
     font-size: 0.95rem;
   }
-  .preview-banner {
+  .cite-note {
     border-left: 4px solid var(--old-gold, #B88A2E);
     background: rgba(184, 138, 46, 0.08);
     padding: 0.75rem 1rem;

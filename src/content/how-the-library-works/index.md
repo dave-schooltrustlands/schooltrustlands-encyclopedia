@@ -9,11 +9,11 @@ This page explains what America's School Trust Library is, what it has, and how 
 
 ## What the Library is
 
-The Library is a working research institution. It supports three books on the school trust lands the United States set aside for public education: *Schools of the Republic* by Margaret Bird and Dave Sullivan, *The Eighth Anchor* by Dave Sullivan, and *Who Steals from Children, Volume I* by Dave Sullivan. The Library publishes the source material those books draw on, the state-by-state record they rest on, and the ongoing public discussion of what the record means.
+The Library is a working research institution. Its books on the school trust lands the United States set aside for public education are written in the open in [the Writing Room](/writing/) — among them *The Forgotten Forever Gift to Public Schools* by Margaret Bird and David Sullivan, *Stewards of the Republic* by Dave Sullivan, and *Who Steals from Children*, edited by David Sullivan. The Library publishes the source material those books draw on, the state-by-state record they rest on, and the ongoing public discussion of what the record means.
 
 ## What the Library has
 
-You will find chapters from the three books in [the Reading Room](/reading/). Every state with a school-trust history has its own page in [the Atlas](/atlas/). The money side of the story — fund balances, distributions, beneficiary flows — lives in [the Counting House](/counting/). Where the trust lands actually sit, on the ground, is mapped in [the Map Room](/maps/). Weekly notes on what changed in a state, a court, or a legislature go in [the Newsroom](/newsroom/). Longer essays from contributors run in [Voices](/voices/). Open conversations between readers happen in [Discussions](/discussions/).
+You will find the book chapters in [the Writing Room](/writing/), and the curated catalog of sources in [the Reading Room](/reading/), which also carries a dossier for every state. [The Atlas](/atlas/) maps all fifty states under four lenses. The money side of the story — fund balances, distributions, beneficiary flows — lives in [the Counting House](/counting/). Where the trust lands actually sit, on the ground, is mapped in [the Map Room](/maps/). Weekly notes on what changed in a state, a court, or a legislature go in [the Newsroom](/newsroom/). Longer essays from contributors run in [Voices](/voices/). Open conversations between readers happen in [Discussions](/discussions/).
 
 ## What the Library is not
 

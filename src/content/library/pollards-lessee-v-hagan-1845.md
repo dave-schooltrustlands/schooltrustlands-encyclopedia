@@ -18,7 +18,7 @@ Pollard's Lessee v. Hagan is the foundational equal-footing decision of the Unit
 
 ## Why the Library cites it
 
-Pollard's Lessee matters to the Library at the doctrinal floor of the compact theory of statehood. The Library's argument that admission-act conditions on new states are real, binding bilateral compacts — not gifts the state may unilaterally modify after admission, and not impositions the federal government may unilaterally rescind — runs back through this case. The Eighth Anchor's claim that the school-trust grants are constitutional commitments, not discretionary congressional accommodations, rests in part on the equal-footing principle Pollard's Lessee installed in American constitutional law. The case also matters because it is the doctrinal anchor for the proposition that what a state accepts at admission carries a different legal status than what a state subsequently enacts on its own.
+Pollard's Lessee matters to the Library at the doctrinal floor of the compact theory of statehood. The Library's argument that admission-act conditions on new states are real, binding bilateral compacts — not gifts the state may unilaterally modify after admission, and not impositions the federal government may unilaterally rescind — runs back through this case. The claim in *Stewards of the Republic* that the school-trust grants are constitutional commitments, not discretionary congressional accommodations, rests in part on the equal-footing principle Pollard's Lessee installed in American constitutional law. The case also matters because it is the doctrinal anchor for the proposition that what a state accepts at admission carries a different legal status than what a state subsequently enacts on its own.
 
 ## A representative holding
 

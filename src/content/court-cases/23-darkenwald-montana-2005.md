@@ -31,4 +31,4 @@ For contemporary advocates and counsel in other states, the Nelson dissent funct
 
 **Cited in.** Montana trust-lands jurisprudence; the dissent is cited as persuasive authority by trust-lands plaintiffs across the western states for the "robs Peter to pay Paul" intergenerational-equity formulation and for the "Enron-style accounting" critique of commingling schemes.
 
-**Limits of this annotation.** This entry is a scholarly summary, not a Shepardized citation analysis, and is not a substitute for current legal research. The quoted dissent passage above is taken from Margaret Bird's 2022 TrustLaw compendium and should be verified against the official reporter before being relied on in any current filing. Drafted as part of Site update v91 — CLASS Archive integration. Last updated: 2026-05-25.
+**Limits of this annotation.** This entry is a scholarly summary, not a Shepardized citation analysis, and is not a substitute for current legal research. The quoted dissent passage above is taken from Margaret Bird's 2022 TrustLaw compendium and should be verified against the official reporter before being relied on in any current filing. Last updated: 2026-05-25.

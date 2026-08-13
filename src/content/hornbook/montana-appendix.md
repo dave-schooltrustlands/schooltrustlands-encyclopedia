@@ -2,7 +2,7 @@
 ## Appendix A — Montana (v2)
 
 **June 6, 2026 (case line rebuilt against the full primary opinions, August 3, 2026)**
-**FROM: Claude (Cowork-side) — working draft for the legal librarian's review; not legal advice.**
+**Drafted with Claude, an AI system, and published by America's School Trust Library. Not legal advice.**
 
 *About this appendix.* The hornbook reads forward, from doctrine to cases. This appendix reads backward, from state to doctrine: Montana's school-trust cases are listed in bullet form, each entry cross-citing the hornbook sections it supports, so a practitioner can open her own state's entry and walk into the treatise from there. Every case below was read against the full primary opinion held in the Library's collection; claims that could not be resolved from a primary are flagged rather than asserted. Montana matters because no other state pairs so firm a doctrinal floor with so live a counter-line: the same court that struck four enactments and a departmental pricing policy in 1999 sustained a General Fund commingling practice and a royalty-stream sale in 2005, over two dissents.
 
@@ -101,10 +101,10 @@ Three cautions govern the citing of this state, and each of them corrects someth
 
 ### Authorities identified but not yet verified
 
-- *State ex rel. Thompson v. Babcock* (1966), 147 Mont. 46, 409 P.2d 808 — the source of Montana's "higher duty to the public than does an ordinary businessman" formulation and of the sustained-yield policy, quoted at second hand in *Jerke*, *Pettibone*, *Montrust I* and *Wild Swan* (2005). Not held in L0; every use in this entry is a quotation-of-a-quotation and is marked as such. [VERIFY against the full opinion before any direct citation.]
-- *Toomey v. State Board of Land Commissioners* (1938), 106 Mont. 547, 81 P.2d 407 — the "strictly conform to the directions of the trust agreement" and "arbitrarily and, in effect, fraudulent" formulations, likewise quoted only at second hand here. Not held in L0. [VERIFY.]
-- *Skyline Sportsmen v. Board of Land Commissioners* (1997), 286 Mont. 108, 951 P.2d 29 — cited in Morris's *Wild Swan* (2005) concurrence for the proposition that neither the Board's fiduciary duty "nor ... other factors" relieve it of the obligation to follow legislative "regulations and restrictions." Not held in L0; and note that the passage is a solo concurrence, joined by no one. [VERIFY.]
-- *Wild West Motors, Inc. v. Lingle* (1986), 224 Mont. 76, 728 P.2d 412 — the source of *Montrust I*'s undivided-loyalty passage. Not held in L0. [VERIFY.]
+- *State ex rel. Thompson v. Babcock* (1966), 147 Mont. 46, 409 P.2d 808 — the source of Montana's "higher duty to the public than does an ordinary businessman" formulation and of the sustained-yield policy, quoted at second hand in *Jerke*, *Pettibone*, *Montrust I* and *Wild Swan* (2005). Not held in the Library's collection; every use in this entry is a quotation-of-a-quotation and is marked as such. [VERIFY against the full opinion before any direct citation.]
+- *Toomey v. State Board of Land Commissioners* (1938), 106 Mont. 547, 81 P.2d 407 — the "strictly conform to the directions of the trust agreement" and "arbitrarily and, in effect, fraudulent" formulations, likewise quoted only at second hand here. Not held in the Library's collection. [VERIFY.]
+- *Skyline Sportsmen v. Board of Land Commissioners* (1997), 286 Mont. 108, 951 P.2d 29 — cited in Morris's *Wild Swan* (2005) concurrence for the proposition that neither the Board's fiduciary duty "nor ... other factors" relieve it of the obligation to follow legislative "regulations and restrictions." Not held in the Library's collection; and note that the passage is a solo concurrence, joined by no one. [VERIFY.]
+- *Wild West Motors, Inc. v. Lingle* (1986), 224 Mont. 76, 728 P.2d 412 — the source of *Montrust I*'s undivided-loyalty passage. Not held in the Library's collection. [VERIFY.]
 
 ### Cross-reference map (section → Montana authority)
 

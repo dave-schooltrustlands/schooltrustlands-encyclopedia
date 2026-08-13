@@ -5,7 +5,7 @@ iso: US-WI
 admissionNumber: 30
 admittedDate: 1848-05-29
 eraCohort: 3
-eraName: "1-Section Cohort (LAST)"
+eraName: "1-Section Cohort"
 federalGrantAcres: 982329
 governanceForm: "Board of Commissioners of Public Lands — ex-officio: Secretary of State, State Treasurer, Attorney General (per Wisconsin Constitution Article X § 7). One of the country's cleanest constitutionally-defined ex-officio fiduciary boards."
 permanentFundCorpus: null

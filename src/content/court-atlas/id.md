@@ -7,7 +7,7 @@ name: ""
 
 Idaho was admitted to the Union on July 3, 1890 under the Idaho Admission Act of that same year. The state received sections 16 and 36 of each township in trust for the support of common schools, plus separate grants for the state university, normal schools, agricultural college, scientific schools, and other named institutions — each held as a distinct trust for its named beneficiary. The total endowment-land grant approached 3.65 million acres. Today the Idaho Department of Lands, under the direction of the State Board of Land Commissioners (composed of the Governor, Secretary of State, Attorney General, State Controller, and Superintendent of Public Instruction), administers the trust. Investment of the permanent fund is supervised by the Endowment Fund Investment Board.
 
-Current acreage retained, corpus value, and annual distribution to common schools [CITE PENDING for Phase 4 verification]. Revenue derives from timber on Idaho's productive forestlands, grazing on the rangeland trust estate, agricultural and recreational leases, and minerals.
+Current acreage retained, corpus value, and annual distribution to common schools [CITE PENDING]. Revenue derives from timber on Idaho's productive forestlands, grazing on the rangeland trust estate, agricultural and recreational leases, and minerals.
 
 ## Enabling Act
 
@@ -20,7 +20,7 @@ The Idaho Admission Act of July 3, 1890 (26 Stat. 215) admitted Idaho on the con
 
 ## Notable Attorney General opinions
 
-AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
+No Attorney General opinions for this state are on file yet. They are added as they are located and read.
 
 ## Trust Integrity grade and rationale
 

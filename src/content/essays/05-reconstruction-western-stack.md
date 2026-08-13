@@ -107,8 +107,6 @@ Second, the 1894 Act installs the express permanent-fund architecture that the 1
 
 Utah's 1896 Constitution then layered a second wall on top of the first. Article X carries an explicit guaranty clause stating that all public school funds shall be guaranteed by the State against loss or diversion.[^ch5-33] Most public-land state constitutions protect the principal against legislative invasion. Utah's also guarantees it against operational loss. It is a belt-and-suspenders provision, and the framers debated it openly: at the 1895 constitutional convention, Delegate Eichnor argued for explicit guarantor framing over what other delegates regarded as redundant protection, and the convention sided with Eichnor.[^ch5-34] About ninety years later, the wisdom of that choice would be tested.
 
-[BOXED-INSERT placeholder: chapter 5]
-
 ## The Utah story: drift, directed seizure, recovery
 
 If the Western Stack chapter has a hero state, it is Utah, and Utah earns the title not for its 1894 architecture but for what Utahns did with it ninety years later. I want to spend the rest of the chapter on this story, and I want to be candid about why. Utah is the state in which I have spent my working life. I was inside the institutional architecture during the recovery. I helped time the legislation. I sat on the school community councils. I have read every page of *Jensen v. Dinehart* more times than I can count. What follows is the story I can tell from the inside, and I am going to tell it carefully.
@@ -193,13 +191,13 @@ The next chapter goes to New Mexico and Arizona, 1910, where Congress wrote the 
 
 [^ch5-3]: Kansas Enabling Act, ch. 20, 12 Stat. 126 (Jan. 29, 1861); Kansas Constitution (Wyandotte), Article 6.
 
-[^ch5-4]: *Gannon v. State*, 298 Kan. 1107, 319 P.3d 1196 (Kan. 2014), and subsequent Kansas Supreme Court decisions in the same line. The contrast between Kansas's twentieth-century statutory liquidation programs and *Gannon*-era adequacy litigation is developed in the Kansas v0.4 substrate.
+[^ch5-4]: *Gannon v. State*, 298 Kan. 1107, 319 P.3d 1196 (Kan. 2014), and subsequent Kansas Supreme Court decisions in the same line.
 
-[^ch5-5]: Nevada Enabling Act, ch. 36, 13 Stat. 30 (Mar. 21, 1864); admission proclamation Oct. 31, 1864. On the political timing, see Eugene H. Berwanger, *The Frontier Against Slavery* (1967), and the substrate's discussion of the Thirteenth Amendment ratification math.
+[^ch5-5]: Nevada Enabling Act, ch. 36, 13 Stat. 30 (Mar. 21, 1864); admission proclamation Oct. 31, 1864. On the political timing, see Eugene H. Berwanger, *The Frontier Against Slavery* (1967).
 
 [^ch5-6]: Act of June 16, 1880, ch. 245, 21 Stat. 287 (relinquishing the in-place school grant in exchange for two million acres of in-lieu lands).
 
-[^ch5-7]: Nevada Division of State Lands; Western States Land Commissioners Association cross-state inventory. The exact residual figure varies by counting convention; Pass 1 estimate is approximately 3,000 acres.
+[^ch5-7]: Nevada Division of State Lands; Western States Land Commissioners Association cross-state inventory. The exact residual figure varies by counting convention; the working estimate is approximately 3,000 acres.
 
 [^ch5-8]: Nebraska Enabling Act, ch. 59, 13 Stat. 47 (Apr. 19, 1864); admission proclamation Mar. 1, 1867; Nebraska Constitution of 1875, Article VII.
 
@@ -213,7 +211,7 @@ The next chapter goes to New Mexico and Arizona, 1910, where Congress wrote the 
 
 [^ch5-13]: Colorado Constitution, Article IX, § 9 (1876, as substantially amended by Amendment 16 in 1996).
 
-[^ch5-14]: Colorado v0.4 substrate, notable_episodes: "Attempted Loan from Public School Fund to General Revenue (1893)"; "Eldorado Springs Mining Lease and Local Regulation Dispute (1969–1991)."
+[^ch5-14]: The Library's Colorado dossier, on the attempted 1893 loan from the Public School Fund to general revenue; the Eldorado Springs mining-lease and local-regulation dispute (1969–1991) is treated in that dossier's earlier versions.
 
 [^ch5-15]: Colorado Constitution, Article IX, §§ 3, 9, 10, as amended by Amendment 16 (1996); Colorado State Land Board, *Stewardship Trust* enabling materials.
 
@@ -239,7 +237,7 @@ The next chapter goes to New Mexico and Arizona, 1910, where Congress wrote the 
 
 [^ch5-26]: Wyoming Constitution of 1889, Article 7, §§ 2, 6, and Article 18, § 3 (as amended in 1922 to consolidate land-board authority); Wyoming Office of State Lands and Investments, Annual Report.
 
-[^ch5-27]: Wyoming v0.4 substrate, notable_episodes covering the 1997–2003 preferential agricultural lease challenge through the 2025–2026 Pronghorn-Sidewinder wind-lease controversy.
+[^ch5-27]: The Library's Wyoming dossier, covering the *Riedel* preferential agricultural-lease challenge and the *Merbanco* Teton Village exchange (both decided 2003) through the 2025–2026 Pronghorn-Sidewinder wind-lease controversy.
 
 [^ch5-28]: Idaho Constitution, Article IX, § 11, as amended November 5, 1968; 1969 Idaho Session Laws (creating the Endowment Fund Investment Board); Endowment Fund Investment Board, *History*, https://efib.idaho.gov/history/.
 
@@ -269,7 +267,7 @@ The next chapter goes to New Mexico and Arizona, 1910, where Congress wrote the 
 
 [^ch5-41]: Utah Foundation, Research Report No. 632, *supra* note 38; Harmer, *Utah's School Trust Lands*, *supra* note 35, at 22–25; Utah State Board of Education, *School Trust Lands in Utah* (2024), at 7, https://schools.utah.gov/schoollandtrust/_trustsystem/2024.SchoolTrustLandsInUtah.pdf.
 
-[^ch5-42]: Utah Project BOLD research memo, *L4_Deliverables/White_Paper/Sections/_Research/Utah_Project_Bold_research_v0.md*; Bryan Q. Cannon, *Land Grabbers, Toadstool Worshippers, and the Sagebrush Rebellion in Utah, 1979–1981*, BYU ScholarsArchive, https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1600&context=etd; Scott M. Matheson Papers, J. Willard Marriott Library, University of Utah, Box 29.
+[^ch5-42]: Bryan Q. Cannon, *Land Grabbers, Toadstool Worshippers, and the Sagebrush Rebellion in Utah, 1979–1981*, BYU ScholarsArchive, https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1600&context=etd; Scott M. Matheson Papers, J. Willard Marriott Library, University of Utah, Box 29.
 
 [^ch5-43]: Utah State Board of Education, *School Trust Lands in Utah*, *supra* note 41, at 9–10; UtahPTA.org, *Utah PTA and School Trust Lands*, https://www.utahpta.org/school-trust-lands.
 
@@ -290,7 +288,3 @@ The next chapter goes to New Mexico and Arizona, 1910, where Congress wrote the 
 [^ch5-51]: Utah Code § 53D-2-102, enacted by Ch. 448, 2018 General Session; Utah Code § 53D-2-201 (LTPAO duties).
 
 [^ch5-52]: Utah Amendment B, *State School Fund Distribution Cap Increase Amendment* (2024), https://ballotpedia.org/Utah_Amendment_B,_State_School_Fund_Distribution_Cap_Increase_Amendment_(2024); Utah Constitution, Article X, § 5, effective 2025.
-
----
-
-*Draft v2 ends. Voice notes for Margaret's review: the first-person register is carried throughout, with the most direct from-the-inside language reserved for the Utah passages where Margaret has institutional authority — the Sandra Skousen account, the page-124 Project BOLD passage (preserved verbatim from the v1.3 doctrinal-load-bearing language), the 9,000-council-member operative-principle paragraph in the School LAND Trust section, and the lesson-of-the-Utah-story close. The "I want to slow down" / "I want the reader to register" / "I want to spend a paragraph here" moves are deployed at the doctrinal-density passages: the 1939 amendment principle, the null-and-void clause, the Idaho 1968 separation-of-concerns lineage, and the Utah-recovery operative principle. The pull-quote epigraph (transcript pull-quote #5, "long-term game / future generations / short-term thinking") sits at the chapter's head and is then explicitly redeemed in the 1939-amendment passage and the Utah-recovery close. The boxed-insert placeholder is positioned at the threshold between the architecture-being-built passage (Utah 1894–1896 section) and the Utah-collapse-and-recovery story, where a sidebar can carry either the PTA-president-and-the-sofa anecdote (transcript pull-quote #27) or the 5M-to-150M revenue datapoint (transcript pull-quote #21) — both candidates for Margaret's choice. Body length: approximately 7,500 words.*

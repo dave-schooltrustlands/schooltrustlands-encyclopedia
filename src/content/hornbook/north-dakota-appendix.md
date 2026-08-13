@@ -2,7 +2,7 @@
 ## Appendix A — North Dakota (v1)
 
 **June 6, 2026 (case line populated June 14, 2026, from the primary opinions)**
-**FROM: Claude (Cowork-side) — working draft for the legal librarian's review; not legal advice.**
+**Drafted with Claude, an AI system, and published by America's School Trust Library. Not legal advice.**
 
 *About this appendix.* The hornbook reads forward, from doctrine to cases. This appendix reads backward, from state to doctrine: North Dakota's school-trust cases are listed in bullet form, each entry cross-citing the hornbook sections it supports, so a practitioner can open her own state's entry and walk into the treatise from there. The case line below was built directly from the primary opinions; candidate authorities named in secondary sources but not yet read against the primary are kept in a separate "identified but not yet verified" block, not cited as held. Nebraska is the proving sample for the form; North Dakota is the first Omnibus-Act (1889) state entry.
 

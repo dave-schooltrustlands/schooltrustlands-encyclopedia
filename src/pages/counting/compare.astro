@@ -1,6 +1,7 @@
 ---
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import financeData from '../../data/finance/states.json';
+import { CONFIDENCE_LABEL } from '../../lib/confidence';
 
 type FinanceRecord = {
   stateIso: string;
@@ -33,18 +34,15 @@ const transparencyLabels: Record<string, string> = {
   'never-had-trust': 'No federal trust to disclose',
 };
 
-const confidenceLabels: Record<string, string> = {
-  verified: 'Verified',
-  'awaiting-disclosure': 'Awaiting disclosure',
-  'source-conflict': 'Source conflict',
-  'not-applicable': 'Not applicable',
-};
+// One sitewide vocabulary (src/lib/confidence.ts); the signals are
+// explained in prose at /start/.
+const confidenceLabels = CONFIDENCE_LABEL;
 ---
 
 <RoomLayout
   room="counting"
   title="Compare two states side by side"
-  subtitle="Pick any two states. The table draws from the same Counting House substrate as the per-state cards; values that aren't yet in the substrate show as Awaiting Disclosure."
+  subtitle="Pick any two states. The table draws from the same Counting House substrate as the per-state cards; values that aren't yet in the substrate show as Awaiting State Disclosure."
   width="prose"
   sourceId="finance-compare"
   pageTitle="Compare states · Counting House · America's School Trust Library"
@@ -117,7 +115,7 @@ const confidenceLabels: Record<string, string> = {
           return s;
         }
         if (field.confidence === 'not-applicable') return '— (not applicable)';
-        return 'Awaiting Disclosure';
+        return confidenceLabels[field.confidence] ?? confidenceLabels['awaiting-disclosure'];
       }
 
       function fmtAcres(field) {

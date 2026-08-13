@@ -30,7 +30,262 @@ const formatDateLong = (iso: string) =>
     day: 'numeric',
   }).format(new Date(iso));
 
-const authorityRows = catalog.authorities;
+// The register these rows are generated from is an internal working file. Two
+// things follow. First, its shorthand and its production notes are expanded or
+// dropped here rather than published raw. Second, where a later verification
+// pass against the full primary opinion withdrew or narrowed an entry — the
+// withdrawals are recorded in the state appendices of the legal reference
+// manual — the corrected text is published here in place of the register's.
+// The second list is not complete: it covers the entries a verification pass
+// has reached, and it is added to as passes close.
+type AuthorityFix = { authority?: string; use?: string; statusKind?: string };
+
+const authorityFixes: Record<string, AuthorityFix> = {
+  'Trustees of Vincennes University v. Indiana': {
+    authority: 'Trustees of Vincennes University v. Indiana, 55 U.S. (14 How.) 268 (1852)',
+    use: 'Earliest characterization, corrected: the McLean majority at *274 — title to the school lands "has never been considered as vested in the State," which has "no inherent power to sell them, or appropriate them to any other purpose than for the benefit of schools." The phrase "as the trustee to administer the trust," at *279-80, is Taney, C.J., dissenting; the attribution was corrected against the full opinion on June 10, 2026.',
+  },
+  'Ervien v. United States': {
+    use: 'Diversion of New Mexico trust proceeds to promotional purposes held an enforceable breach of trust; the enumeration of purposes "necessarily exclusive of any other purpose" (at 47); the dedication "special and exact" (at 47-48). The "odious dereliction ... breach of trust in the State" phrase at *48 is the Court recounting the District Court\'s view while affirming its result.',
+  },
+  'Lassen v. Arizona ex rel. Arizona Highway Dept.': {
+    use: 'Full appraised value owed in money on an intra-governmental taking (at 469); the Act\'s restrictions read so that "only those beneficiaries profit from the trust" (at 467); the public-notice and auction machinery does not reach the State\'s own highway acquisitions (at 465). The "definite and specific ... separate and independent" language is United States v. Ervien, 246 F. 277, 279, quoted in Lassen at 467.',
+  },
+  'ASARCO Inc. v. Kadish': {
+    use: 'Modern capstone: Ariz. Rev. Stat. Ann. § 27-234(B) invalid as to nonhydrocarbon mineral leases for nonconformity with Enabling Act § 28 (at 633). Not a beneficiary-standing case: the Court found the state-court plaintiffs would not satisfy federal standing requirements (at 616-17) and reached the merits on the lessees\' certiorari petition (at 623-24).',
+  },
+  'Andrus v. Utah': {
+    use: '446 U.S. 500 (1980) — majority (Stevens, J.): the grant a "solemn agreement" analogized to a contract between private parties (507), the indemnity right existing to give the State "the benefit of the bargain" (508). Powell, J., dissenting, at 523: "solemn bilateral compacts between each State and the Federal Government," imposing "a binding and perpetual obligation to use the granted lands for the support of public education." The dissent pin was corrected from 522-23 to 523; Cascadia Wildlands quoted the Powell narrative at 522-23 and neither of those two phrases. See the Utah appendix.',
+  },
+  'State of Utah v. Kleppe': {
+    authority: 'State of Utah v. Kleppe, 586 F.2d 756 (10th Cir. 1978), rev\'d sub nom. Andrus v. Utah, 446 U.S. 500 (1980)',
+    use: '"The nature of the Congressional land grant program was \'bilateral\' in effect"; "The specific purpose was to create a binding permanent trust which would generate financial aid to support the public school systems of the \'public land\' states." Cite only with the subsequent history: the judgment was reversed in 1980, and the passages survive as the Tenth Circuit\'s articulation rather than as a governing rule. See the Utah appendix.',
+  },
+  'Hill v. Thompson': {
+    authority: 'Hill v. Thompson, 564 So. 2d 1 (Miss. 1989); Lambert v. State, 211 Miss. 129, 51 So. 2d 201 (1951)',
+    use: 'Hill voided ninety-nine-year sixteenth-section leases let for nominal one-time payments as "grossly inadequate" consideration; Lambert sustained an 1873 deed on a twenty-five-year adverse-possession presumption. The "spoliation" label the register carries for the pair was a research-file gloss: neither opinion uses the word. Verified against the full opinions, June 7, 2026; see the Granting Instruments chapter, § 1.3.',
+  },
+  'State v. University of Alaska': {
+    use: '624 P.2d 807, 813 (Alaska 1981) — park inclusion of university trust land without compensation held a breach of a federal trust; at *813 the court applies Lassen\'s "only those beneficiaries profit from the trust" (quoting 385 U.S. at 467) and adopts Scott on Trusts § 170 ("solely in the interest of the beneficiaries").',
+  },
+  'Deer Valley Unified School District No. 97 v. Superior Court': {
+    use: '157 Ariz. 537, 760 P.2d 537 (1988) — condemnation of school trust land by state actors, including a beneficiary school district, barred; decided on Ariz. Const. art. 10 alone, on independent state grounds, declining to follow Lassen. The phrase "is not state land," formerly carried here, does not appear in the opinion; see the Arizona appendix.',
+  },
+  'Montanans for the Responsible Use of the School Trust v. State (Montrust I)': {
+    use: '1999 MT 263 — four statutes (§§ 77-1-130, 77-5-211, 77-6-304, 77-6-305) and the Department\'s below-market cabin-site rental policy struck; § 77-1-208 sustained on its face; the court declined to adopt a trust-specific standard of review (¶¶ 18-19) and invalidated the enactments under the ordinary presumption of constitutionality; private-attorney-general doctrine adopted. The "presumption of constitutionality does not save breaching enactments" proposition formerly carried here is not in the opinion and is withdrawn; see the Montana appendix.',
+  },
+  'Montanans for the Responsible Use of the School Trust v. Darkenwald': {
+    use: '2005 MT 190, 328 Mont. 105 — General Fund commingling sustained on the State\'s ability to account (¶¶ 29-30) and the challenger\'s failure of proof (¶ 35); SB 495\'s sale of a thirty-year mineral royalty stream sustained (¶ 64). Nelson, J., dissenting, ¶ 71: the scheme "robs Peter (future generations of school children) to pay Paul (present day school children)." The field\'s leading counter-precedent. There is no reconciliation mechanism in the opinion.',
+  },
+  'Friends of the Wild Swan v. DNRC': {
+    use: '2005 MT 351, 330 Mont. 186 — § 77-1-202, MCA does not imply a harvest-level financial accounting duty (¶¶ 23, 28); the "largest measure of legitimate and reasonable advantage" is not exclusively economic (¶¶ 20-21). The trust-acceptance sentence at ¶ 8 is a recital of Montrust I, ¶ 13; cite Montrust I for that proposition.',
+  },
+  'State ex rel. Dept. of Highways v. Burlingame': {
+    use: '597 P.2d 51 (Mont. 1979) — not a school-trust case: an eminent-domain attorney-fees decision (a condemnee recovering less than the State\'s final offer did not "prevail"; no fees; Sheehy, J., dissenting). No school-trust use; the sustained-yield doctrine belongs to Jerke, 597 P.2d 49. Holding corrected June 10, 2026.',
+  },
+  'Ebke II': {
+    authority: 'State ex rel. Ebke v. Board of Educational Lands & Funds (Ebke II), 159 Neb. 79, 65 N.W.2d 392 (1954)',
+    use: 'The fee sequel to Ebke: the attorney\'s fee and expenses of the Ebke litigation were disallowed as a charge on the school-lands trust fund, the litigation having been conducted "for the personal benefit of the appellee Ebke, and not for the benefit of the school lands trust fund." Named in the Library\'s Nebraska source list without a citation; identified and read against the full opinion in the Nebraska appendix.',
+  },
+  'Plateau Mining Co. v. Utah Division of State Lands & Forestry': {
+    use: '802 P.2d 720 (Utah 1990) — "in administering the school trust lands, the State acts as a trustee and its duties are the same as the duties of other trustees" (728); no implied waiver of the higher royalty by prior acceptance of less (731); estoppel generally unavailable against the State. The Court expressly declined to reach the limitations question and left it to the trial court (732); the case is not authority for a no-limitations rule. The word "fiduciary" does not appear in the opinion.',
+  },
+  'Jensen v. Dinehart': {
+    use: '645 P.2d 32 (Utah 1982) — majority (Hall, C.J.): school-section mineral proceeds are properly placed in the currently expendable Uniform School Fund (*35); the disposition is "Remanded for entry of judgment in conformity herewith." Oaks, J., concurring in part and dissenting in part (*37): the Jones Act shows no intent to remove or modify the trust restriction Congress imposed on Enabling Act sections. "Reversed," formerly carried here, is a curatorial header and not the court\'s word.',
+  },
+  'Sherman v. Buick': {
+    use: '50 Cal. 421 (1875) — carried in an earlier table of authorities with a blank page reference; the use was not carried into the filed response.',
+  },
+  "North Carolina School Boards Ass'n v. Moore": {
+    use: '359 N.C. 474, 614 S.E.2d 504 (2005) — a constitutional duty present in the text but held non-self-executing; "a duty without an enforcement engine is a duty deferred."',
+  },
+  'Putnam v. Norblad': {
+    use: '134 Or 433 (1930) — mandamus and political-question case, cited by the State as lead authority and distinguished here as pre-modern doctrine; it recognized a ministerial-duty exception. The parallel citation is unsettled in the Library\'s records ("295 P 949" and "293 P. 940" both appear) and is not asserted.',
+  },
+  'State Land Board v. Lee': {
+    use: '84 Or 431, 441-42 (1917) — "not a mere dry trustee" (at 441-42, verified against the primary source June 8, 2026; an earlier note placing the phrase at 439 was mistaken, 439 being the statutory-loan framework); active-trustee classification; the statutory limitations exemption applies to Land Board administration of the Common School Fund.',
+  },
+  'Wood v. Honeyman': {
+    use: '178 Or 484, 555-57 (1946) — Oregon\'s general law of trusts. Verification note, June 7, 2026: the quotation formerly carried here ("A trustee is under a duty ... all doubts will be resolved against him") is a party\'s rendering and is not in the opinion; the opinion\'s own language on a trustee\'s records is at 555-56.',
+  },
+  'Lindland v. United Business Investments, Inc.': {
+    use: '298 Or 318, 327 (1984) — burden allocation for a private commercial fiduciary under the Restatement (Second) of Agency; cited by the State and distinguished as a different relationship. The parallel citation is unsettled in the Library\'s records ("692 P2d 91" and "693 P.2d 20" both appear) and is not asserted.',
+  },
+  'Couey v. Atkins': {
+    use: '357 Or 460 (2015) — initiative-petition mootness case: ORS 14.175 held validly enacted; Oregon\'s "judicial power" clause (Art. VII (Amended), § 1) imposes no Article III-style case-or-controversy or mootness limit, overruling Yancy v. Shatzer (2004). Not a political-question case; corrected June 10, 2026.',
+  },
+  'Advocates for School Trust Lands v. State': {
+    use: '346 Or App 668 (2026) (Jan. 28, 2026) — schoolchildren-beneficiary standing under Art. VIII; challenges to the validity of laws are not tort claims subject to the Oregon Tort Claims Act (note 9 at 684 remanded the lawmaking question). The Oregon Supreme Court denied review on July 23, 2026 (S072734); the decision is final.',
+    statusKind: 'l0-held',
+  },
+  'Evergreen West Business Center v. Emmert': {
+    use: '254 Or App 361 (2012), rev\'d on other grounds, 354 Or 790 (2014) — recital of the elements of a private-party fiduciary duty; distinguished. The parallel citation "327 P3d 568" may belong to the 2014 reversal and is not asserted.',
+  },
+  'Cascadia Wildlands v. Department of State Lands': {
+    use: '365 Or 750 (2019) — "Under the Admission Act, the state is the trustee of the lands granted to it" (758); no "core function" of revenue maximization invalidating a withdrawal statute, but "the \'greatest benefit\' mandate may require the State Land Board to maximize net profit, for example, by obtaining the best price for the authorized sale of timber" (766).',
+  },
+  'Letter Opinion, Mar. 6, 2025': {
+    use: '24CV38372 — standing found for districts and students under the trust theory; failure to state a claim denied on the 2024 claims; the trust-characterization and beneficiary-identity questions expressly reserved.',
+  },
+  'Letter Opinion, Sept. 5, 2025': {
+    use: '24CV38372 — Common School Fund claims held governed by common-law trust principles. Superseded at the trial level by the letter opinion of July 24, 2026, which granted the State summary judgment and canceled the trial.',
+  },
+  "Plaintiffs' Response + Cross-Motion for PSJ, filed May 29, 2026": {
+    authority: 'Plaintiffs\' response and cross-motion for partial summary judgment, Siuslaw School District 97J et al. v. State of Oregon, Coos County No. 24CV38372, filed May 29, 2026',
+    use: 'Held in the Library\'s court-filings collection with the Crowe declaration and the Admission Act exhibit. The positions in it are the parties\', not the Library\'s.',
+  },
+  'Oregon Admission Act': {
+    use: 'Act of Feb. 14, 1859, ch. 33, § 4, 11 Stat. 383 — "for the use of schools"; compact clause ("if accepted, shall be obligatory on the United States and upon the said State of Oregon"). The Act and Oregon\'s acceptance are held in the Library\'s court-filings collection as a filed exhibit. Ch. 1 (§ 1.4), Ch. 3.',
+  },
+  'Sabine River Authority v. U.S. Dept. of the Interior': {
+    use: 'Held in the Library\'s federal case-law files. No hornbook use is assigned, and the holding has not been confirmed against the primary.',
+  },
+  'Land Ordinance of 1785': {
+    use: 'May 20, 1785 — Section 16 reserved "for the maintenance of public schools, within the said township." The exact wording is not yet confirmed against the primary text. Ch. 1 (§ 1.2).',
+  },
+  'Northwest Ordinance of 1787': {
+    use: 'July 13, 1787 — Art. 3 ("schools and the means of education shall forever be encouraged"); compact preamble ("forever remain unalterable, unless by common consent"). The exact wording is not yet confirmed against the primary text. Ch. 1 (§ 1.2), Ch. 14.',
+  },
+  'Ohio Enabling Act of 1802': {
+    use: 'First Section-16 follower; "in trust" and "for no other use, intent or purpose whatever." Cited in briefing; the citation is not yet confirmed against the primary text. Ch. 1.',
+  },
+  'Restatement (Third) of Trusts': {
+    use: 'Prudent-investor framework; § 82 cmt. d, cited by the State on reporting, in a context not yet confirmed; §§ 170-184 (fiduciary accounting). Cited in briefing. Ch. 6, Ch. 11.',
+  },
+  'Norman Ray Hawk, *A History of the Irreducible School Fund in Oregon* (doctoral dissertation, 1949)': {
+    use: 'Offered alongside it as a learned treatise. Whether a copy is held in the Library\'s collection is not yet confirmed; it is not in the case-law files. Ch. 2 (Oregon reception history).',
+  },
+  'Sullivan & Bird, *Oregon\'s Constitutional Duties to Schools': {
+    use: 'Offered to the court as a learned treatise in the filed response (May 29, 2026). Held in the Library\'s published-books files. Ch. 2-3 Oregon material.',
+  },
+  'Arizona Bar Journal (Dec./Jan. 1988)': {
+    use: 'Judge Cannon: "Beware of the Enabling Act; it\'s guarding the hen house"; "state trust land is not owned by the State of Arizona." Quotation carried from a state dossier and not independently verified; it is the probable origin of the "is not state land" phrase once attributed to Deer Valley. Cited in briefing.',
+  },
+  'Tonia Day, *The Self-Dealing Shell Game: Utah\'s Book Cliffs Deal* (ASTL, May 2026)': {
+    authority: 'Tonia Day, "The Self-Dealing Shell Game: Utah\'s Book Cliffs Deal" (draft, May 2026)',
+    use: 'An unpublished draft shared by its author on May 17, 2026 and held as a candidate for publication, not as a published document. See the Utah appendix.',
+    statusKind: 'other',
+  },
+  'Uniform Public Trust Enforcement Act (Model Act v1, 2026)': {
+    use: 'The project\'s own model act. Chapter 19 subject matter.',
+  },
+  'Ferguson Act of 1898': {
+    authority: 'Ferguson Act of 1898, 30 Stat. 484',
+    use: '30 Stat. 484 — New Mexico territorial grants; the Asplund context. Source: the New Mexico state dossier. Ch. 1.',
+  },
+  'Utah Const. Art. IV § 10': {
+    authority: 'Utah Const. art. IV, § 10 (oath clause)',
+    use: 'The public-officials\' oath clause, invoked in the Book Cliffs analysis held in the Library\'s collection. Ch. 18.',
+  },
+  'Utah Code § 53C-4-104 (H.B. 262)': {
+    authority: 'Utah Code § 53C-4-104 (H.B. 262) and Utah Admin. R. R850-80-630',
+    use: 'The direct-sale-to-DNR mechanism at issue in the Book Cliffs transaction; the contemporary direct-sale statute named in Ch. 9 and Ch. 18. Source: the Utah state dossier.',
+  },
+  'Bogert, Trusts and Trustees §§ 961-973': {
+    authority: 'Bogert, Trusts and Trustees §§ 961-973',
+    use: 'Accounting independent of damages; § 962 cited in the A177308 opening brief\'s table of authorities. Cited in briefing. Ch. 11.',
+  },
+  'Scott on Trusts § 172': {
+    authority: 'Scott on Trusts § 172',
+    use: 'Cited in the A177308 opening brief\'s table of authorities. Cited in briefing. Ch. 11.',
+  },
+  'Uniform Civil Jury Instructions 50.02': {
+    authority: 'Uniform Civil Jury Instructions 50.02 (Oregon fiduciary elements)',
+    use: 'Cited by the State in its briefing. Ch. 16.',
+  },
+};
+
+// Register rows that should not be published: one opinion entered twice, and a
+// cross-reference to an entry this page does not render.
+const droppedAuthorities = new Set<string>([
+  'United States v. Cotter Corp.',
+  '⚑ A177308 / 21CV15024',
+]);
+
+const registerShorthand: Array<[RegExp, string]> = [
+  [/\*Source:\*\s*DOS-NM\.?/g, 'Source: the New Mexico state dossier.'],
+  [/\*Source:\*\s*DOS-AZ\.?/g, 'Source: the Arizona state dossier.'],
+  [/\*Source:\*\s*DOS-UT\.?/g, 'Source: the Utah state dossier.'],
+  [/\*Source:\*\s*SB § [IVXL]+\.?/g, ''],
+  [/\*Source:\*\s*FILED\.?/g, ''],
+  [/,\s*FAC\)/g, ')'],
+  [/;?\s*see CIS § [0-9A-Za-z]+/g, ''],
+  [/\bCIB\b\.?/g, 'Cited in briefing.'],
+  [/\bTOA\b/g, 'table of authorities'],
+  [/\bMSJ\b/g, 'summary-judgment motion'],
+];
+
+const stripFlags = (text: string) =>
+  text
+    .replace(/\[(?:TO )?VERIFY[^\]]*\]/gi, 'not yet confirmed against the primary source')
+    .replace(/[✅⚠⚑]/g, '');
+
+// The register italicises case names with markdown asterisks. This table is
+// plain text, and the rows corrected above set case names plain, so the markers
+// are removed rather than published. Star-pagination pins (*274) start with a
+// digit and are left alone.
+const deEmphasize = (text: string) => text.replace(/\*([A-Za-z][^*\n]*?)\*/g, '$1');
+
+const plain = (value?: string | null) => {
+  let text = (value || '').trim();
+  if (!text) return '';
+  for (const [pattern, replacement] of registerShorthand) text = text.replace(pattern, replacement);
+  text = stripFlags(text);
+  text = deEmphasize(text);
+  text = text.replace(/^\[(.+)\]$/, '$1');
+  text = text.replace(/\s{2,}/g, ' ').trim();
+  return text.endsWith('...') || text.endsWith('…') ? trimToLastCompleteClause(text) : text;
+};
+
+// The register truncates long entries mid-sentence. Publish the last complete
+// clause rather than a broken one, and nothing at all if none survives.
+function trimToLastCompleteClause(text: string) {
+  const body = text.replace(/[.…\s]+$/, '');
+  const breaks = [...body.matchAll(/[.;](?=\s)/g)].map((match) => match.index || 0);
+  for (let i = breaks.length - 1; i >= 0; i -= 1) {
+    const prefix = body.slice(0, breaks[i] + 1);
+    if (prefix.length < 40) break;
+    if (prefix.split('(').length !== prefix.split(')').length) continue;
+    if ((prefix.split('"').length - 1) % 2 !== 0) continue;
+    return prefix.endsWith(';') ? `${prefix.slice(0, -1)}.` : prefix;
+  }
+  return '';
+}
+
+// The register's chapter-assignment column is blank on some rows and truncated
+// to a bare "Ch" or "TBD" on others. Neither is evidence that no chapter uses
+// the authority — the published chapters cite several of these by section — so
+// the cell is rendered as unrecorded rather than as an assertion either way.
+const feedsLabel = (value?: string | null) => {
+  const text = (value || '').trim();
+  if (!text || /^(?:Ch\.?|TBD)$/i.test(text)) return 'Not recorded';
+  return text;
+};
+
+const plainSource = (value?: string | null) => {
+  const text = (value || '').trim();
+  if (/^\[(?:TO )?VERIFY[^\]]*\]$/i.test(text)) return 'Not yet confirmed against a primary source';
+  return text.replace(/^\[(.+)\]$/, '$1');
+};
+
+const authorityRows = catalog.authorities
+  .filter((item) => !droppedAuthorities.has(item.name))
+  .map((item) => {
+    const fix: AuthorityFix = authorityFixes[item.name] || {};
+    return {
+      ...item,
+      authority: fix.authority || plain(item.authority),
+      use: fix.use || plain(item.use),
+      statusKind: fix.statusKind || item.statusKind,
+      feeds: feedsLabel(item.feeds),
+    };
+  });
+
+const authorityStatusCounts = authorityRows.reduce<Record<string, number>>((acc, item) => {
+  acc[item.statusKind] = (acc[item.statusKind] || 0) + 1;
+  return acc;
+}, {});
+
 const caseLawRows = catalog.caseLaw;
 const figureRows = catalog.figures;
 const bookRows = catalog.books;
@@ -65,6 +320,11 @@ const caseLawFolders = Object.entries(
           register, case-law texts, promoted figures, current book
           manifests, and named special collections. The source files remain
           in the Library's keeping; this page is the browsable card catalog.
+          Some of these entries have since been read against the full primary
+          opinion; where that reading corrected an entry, the corrected text is
+          published in its row, and the state appendices in the
+          <a href="/writing/hornbook/">legal reference manual</a> record what was
+          withdrawn and why.
         </p>
         <p class="catalog-updated">
           Last rendered: <time datetime={catalog.generatedAt}>{formatDateLong(catalog.generatedAt)}</time>.
@@ -101,7 +361,7 @@ const caseLawFolders = Object.entries(
             <h2 id="authority-heading">Authority Register</h2>
           </div>
           <dl class="status-summary">
-            {Object.entries(catalog.counts.authoritiesByStatus).map(([kind, count]) => (
+            {Object.entries(authorityStatusCounts).map(([kind, count]) => (
               <div>
                 <dt><span class={statusClass(kind)}>{statusLabels[kind as StatusKind] || kind}</span></dt>
                 <dd>{count}</dd>
@@ -134,7 +394,7 @@ const caseLawFolders = Object.entries(
                     <span class={statusClass(item.statusKind)}>{statusLabels[item.statusKind as StatusKind] || item.statusKind}</span>
                   </td>
                   <td>{item.use}</td>
-                  <td>{item.feeds || 'Unassigned'}</td>
+                  <td>{item.feeds}</td>
                 </tr>
               ))}
             </tbody>
@@ -219,7 +479,7 @@ const caseLawFolders = Object.entries(
                   <td>{item.label}</td>
                   <td>{item.value}</td>
                   <td><span class={statusClass(item.statusKind)}>{statusLabels[item.statusKind as StatusKind] || item.statusKind}</span></td>
-                  <td>{item.source}</td>
+                  <td>{plainSource(item.source)}</td>
                 </tr>
               ))}
             </tbody>
@@ -233,7 +493,6 @@ const caseLawFolders = Object.entries(
         <div class="book-grid">
           {bookRows.map((book) => (
             <article class="book-card">
-              <p class="book-card__eyebrow">{book.id}</p>
               <h3>{book.title}</h3>
               {book.subtitle && <p class="book-card__subtitle">{book.subtitle}</p>}
               <p>{book.authorLine}</p>
@@ -249,7 +508,7 @@ const caseLawFolders = Object.entries(
         <div class="book-grid">
           {collectionRows.map((collection) => (
             <article class="book-card">
-              <p class="book-card__eyebrow">{collection.status}</p>
+              <p class="book-card__eyebrow">Proposed collection</p>
               <h3>{collection.title}</h3>
               <p>{collection.summary}</p>
               <a href={collection.href} rel="noopener">Open finding aid</a>

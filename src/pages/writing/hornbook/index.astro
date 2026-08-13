@@ -12,14 +12,14 @@ const parts = [
 const drafts = [
   {
     href: '/writing/hornbook/chapter-1/',
-    label: 'Draft chapter',
+    label: 'Chapter',
     title: 'Chapter 2 - The Granting Instruments (formerly Chapter 1)',
     description:
       'The federal and state instruments that created the school-land grants and framed the long-running trust question.',
   },
   {
     href: '/writing/hornbook/trust-character/',
-    label: 'Draft chapter',
+    label: 'Chapter',
     title: 'Chapter 4 - The Trust Character (formerly Chapter 3)',
     description:
       'The doctrinal question at the center of the field: whether school lands are enforceable trusts and what follows if they are.',
@@ -50,7 +50,7 @@ const drafts = [
     label: 'State appendix',
     title: 'Appendix A - Arizona',
     description:
-      'The state where the Supreme Court did its modern school-trust work - Lassen (1967), Alamo (1976), ASARCO v. Kadish (1989) - and whose own Supreme Court has repeatedly declined to follow it, holding Arizona\'s trustee to the stricter standard of the state constitution instead. Six opinions read against the full primary text; the entry records which v1 propositions the primaries would not support.',
+      'The state where the Supreme Court did its modern school-trust work - Lassen (1967), Alamo (1976), ASARCO v. Kadish (1989) - and whose own Supreme Court has repeatedly declined to follow it, holding Arizona\'s trustee to the stricter standard of the state constitution instead. Six opinions read against the full primary text; the entry records which earlier propositions the primaries would not support.',
   },
   {
     href: '/writing/hornbook/utah-appendix/',
@@ -64,7 +64,7 @@ const drafts = [
     label: 'State appendix',
     title: 'Appendix A - Montana',
     description:
-      'The state that states the rules and then tests them. Jerke (1979) puts sustained yield inside the constitutional full-market-value command; Pettibone (1985) holds school trust lands to a different set of rules than other public lands; Montrust I (1999) strikes four enactments and a departmental rental policy. Then the same court, 4-3 each time, declines to find a breach in General Fund commingling and refuses to imply a harvest-level accounting duty. Seven opinions read against the full primary text - and the entry records the eight v1 statements the primaries would not support, including a defense this treatise had named after a mechanism that does not appear in the case.',
+      'The state that states the rules and then tests them. Jerke (1979) puts sustained yield inside the constitutional full-market-value command; Pettibone (1985) holds school trust lands to a different set of rules than other public lands; Montrust I (1999) strikes four enactments and a departmental rental policy. Then the same court, 4-3 each time, declines to find a breach in General Fund commingling and refuses to imply a harvest-level accounting duty. Seven opinions read against the full primary text - and the entry records the eight earlier statements the primaries would not support, including a defense this treatise had named after a mechanism that does not appear in the case.',
   },
 ];
 ---
@@ -72,13 +72,13 @@ const drafts = [
 <RoomLayout
   room="writing"
   title="School Trust Lands Legal Reference Manual"
-  subtitle="The first one-volume treatise of American school-trust law, now a working edition."
+  subtitle="A one-volume treatise of American school-trust law, published as a working edition."
   width="full"
   sourceId="hornbook-landing"
 >
   <article class="prose prose-slate max-w-none mt-8 prose-a:text-blue-700 prose-a:underline">
     <p class="hornbook-status">
-      <strong>Working edition &mdash; June 2026.</strong> The treatise is complete in
+      <strong>Working edition.</strong> The treatise is complete in
       architecture &mdash; twenty chapters and twenty-one state appendices &mdash; and under
       active citation verification. <code>[VERIFY]</code> flags are shown
       honestly, and corrections are published as verification passes complete.
@@ -108,28 +108,37 @@ const drafts = [
     </p>
 
     <p class="hornbook-status">
-      <strong>Verification status, June 10, 2026.</strong> Published sample
-      pages preserve visible <code>[VERIFY]</code> flags rather than hiding
+      <strong>Verification status, August 12, 2026.</strong> Published pages
+      preserve visible <code>[VERIFY]</code> flags rather than hiding
       unfinished work. When checking closes a flag or finds an error, the page is
-      corrected in public. The Chapter 1 sample now reflects the June 10
-      citation pass, including the <em>Vincennes</em> dissent attribution, the
-      corrected <em>Jensen</em> holding direction, and resolved flags for
+      corrected in public and the correction is dated. The June 10, 2026 pass
+      corrected the <em>Vincennes</em> dissent attribution and the
+      <em>Jensen</em> holding direction, and closed flags for
       <em>Kleppe</em>, <em>Platte Valley</em>, <em>Kanaly</em>,
       <em>Clark</em>, <em>University of Alaska</em>, <em>Weiss</em>,
-      <em>NPCA</em>, and <em>Deer Valley</em>. The working edition download is
-      the current Word file for review.
+      <em>NPCA</em>, and <em>Deer Valley</em>. Later passes rebuilt the Arizona
+      and Utah appendices against the full primary opinions (July 31 and
+      August 1&ndash;2, 2026) and the Montana appendix (August 3, 2026); each
+      entry records what it withdrew. The two chapters were written under the
+      earlier numbering, in which the granting instruments were Chapter 1 and
+      the trust-character question Chapter 3; their internal section numbers
+      (&sect;&sect; 1.x, 3.x) are unchanged. The North Dakota, Colorado, Arizona,
+      Utah and Montana appendices cross-refer to the two chapters as Chapters 2
+      and 4; the Nebraska sample appendix was written first and still follows the
+      earlier numbering. The Word download is the June 7, 2026 file
+      and does not carry the later corrections.
     </p>
   </article>
 
   <section class="hornbook-drafts" aria-labelledby="drafts-heading">
-    <h2 id="drafts-heading">Founding draft pages</h2>
+    <h2 id="drafts-heading">Published chapters and appendices</h2>
     <div class="hornbook-card-grid">
       {drafts.map((draft) => (
         <a href={draft.href} class="hornbook-card">
           <span>{draft.label}</span>
           <h3>{draft.title}</h3>
           <p>{draft.description}</p>
-          <strong>Read draft -&gt;</strong>
+          <strong>Read -&gt;</strong>
         </a>
       ))}
     </div>
@@ -151,15 +160,14 @@ const drafts = [
   <section class="hornbook-onramp" aria-labelledby="onramp-heading">
     <h2 id="onramp-heading">For lawyers and legal librarians</h2>
     <p>
-      The legal reference manual is also the on-ramp for the lawyer and legal
-      librarian corps now forming around the Renewal program. Contributors can
-      start with a draft chapter, identify a citation or state appendix they can
-      verify, and then move toward panel work through a bounded work sample.
+      The legal reference manual is also where lawyers and legal librarians can
+      begin contributing to the Library. A contributor can start with a
+      published chapter or state appendix, take one citation or one entry, and
+      check it against the primary source.
     </p>
     <p>
       <a href="/for-lawyers/">Lawyer on-ramp</a> ·
-      <a href="/librarians/">Librarian corps</a> ·
-      <span>Renewal law-reform program (published separately from this Library)</span>
+      <a href="/librarians/">Librarian corps</a>
     </p>
   </section>
 </RoomLayout>

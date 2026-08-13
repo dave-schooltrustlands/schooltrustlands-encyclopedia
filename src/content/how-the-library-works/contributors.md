@@ -34,9 +34,9 @@ Click *Submit*. You get a ticket number like CR-2026-00017.
 
 ## 3. Book reviews
 
-Reviews are the place to react to one of the Library's books — *Schools of the Republic*, *The Eighth Anchor*, *Who Steals from Children, Volume I*.
+Reviews are the place to react to one of the Library's books — *The Forgotten Forever Gift to Public Schools*, *Stewards of the Republic*, *Who Steals from Children*.
 
-**How to submit.** Visit the reviews page for the book — for example, [/reading/schools-of-the-republic/reviews/](/reading/schools-of-the-republic/reviews/). Choose a rating from one to five stars, write your review, and click *Save*.
+**How to submit.** Visit the reviews page for the book — for example, [/reading/schools-of-the-republic/reviews/](/reading/schools-of-the-republic/reviews/), whose address keeps Volume I's earlier working title. Choose a rating from one to five stars, write your review, and click *Save*.
 
 **What happens next.** A librarian reads the review and publishes it when ready. Until publication, you can keep revising. Once published, the review appears on the book's reviews page with your display name and patron number, and you can no longer edit it directly; for changes after that, submit feedback on the reviews page.
 

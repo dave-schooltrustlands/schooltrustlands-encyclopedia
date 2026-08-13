@@ -7,7 +7,7 @@ name: ""
 
 Mississippi was admitted to the Union on December 10, 1817 — among the earliest states to receive the federal Sixteenth Section grant for the support of schools. Section 16 of every township was reserved in trust for the schools of that township, producing one of the longest continuous Sixteenth Section trust records in the country. Like Louisiana, Mississippi administers the trust at the local level: each school district functions as trustee for the Sixteenth Section lands within its boundaries, under state-level supervisory authority. Mississippi's Sixteenth Section record has, for over a century, been the subject of recurrent reform efforts and recurrent litigation — the case law refers candidly to historical "spoliation."
 
-Current Sixteenth Section acreage retained in trust, corpus values, and lease revenues [CITE PENDING for Phase 4 verification]. Revenue derives from agricultural leases, timber, hunting and recreational leases, and — particularly in the coastal plain and Mississippi Delta — oil and gas.
+Current Sixteenth Section acreage retained in trust, corpus values, and lease revenues [CITE PENDING]. Revenue derives from agricultural leases, timber, hunting and recreational leases, and — particularly in the coastal plain and Mississippi Delta — oil and gas.
 
 ## Enabling Act
 
@@ -20,7 +20,7 @@ The Mississippi Enabling Act of March 1, 1817 (3 Stat. 348), authorizing formati
 
 ## Notable Attorney General opinions
 
-AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener.
+No Attorney General opinions for this state are on file yet. They are added as they are located and read.
 
 ## Trust Integrity grade and rationale
 

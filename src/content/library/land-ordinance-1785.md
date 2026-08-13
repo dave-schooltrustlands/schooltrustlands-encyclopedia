@@ -55,7 +55,6 @@ Drift begins at the corpus. When states sell Section 16 lands at below-market pr
 
 - Full text (Avalon Project, Yale Law School): https://avalon.law.yale.edu/18th_century/land_ord.asp
 - Library of Congress, *Journals of the Continental Congress*, vol. 28: https://memory.loc.gov/ammem/amlaw/lwjclink.html
-- L0 substrate: `L0_Primary_Sources/Statutes/Land_Ordinance_1785.pdf`
 - Submit a correction or annotation: /contribute/
 
 ## Curated by

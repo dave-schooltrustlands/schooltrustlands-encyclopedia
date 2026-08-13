@@ -18,7 +18,7 @@ The Land Act of 1796, passed by the Fourth Congress and signed by President Wash
 
 ## Why the Library cites it
 
-The Library cites the 1796 Act at the points where the question is not what the 1785 Ordinance declared in principle but how the federal system actually put school-land reservation into operation. The Eighth Anchor's argument that the school-trust system was an operational, working machinery — not just a moral aspiration — turns on the existence of statutes like this one. Subsequent state-admission acts, including Ohio's in 1802 and every later admission act through Arizona and New Mexico in 1910, traced their procedural machinery to the 1796 Act rather than to the 1785 Ordinance alone. When the Library claims that Section 16 was operationally installed in federal practice before any state had ever inherited it, this statute is the citation.
+The Library cites the 1796 Act at the points where the question is not what the 1785 Ordinance declared in principle but how the federal system actually put school-land reservation into operation. The argument in *Stewards of the Republic* that the school-trust system was an operational, working machinery — not just a moral aspiration — turns on the existence of statutes like this one. Subsequent state-admission acts, including Ohio's in 1802 and every later admission act through Arizona and New Mexico in 1910, traced their procedural machinery to the 1796 Act rather than to the 1785 Ordinance alone. When the Library claims that Section 16 was operationally installed in federal practice before any state had ever inherited it, this statute is the citation.
 
 ## A representative provision
 

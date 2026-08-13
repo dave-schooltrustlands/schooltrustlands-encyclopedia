@@ -12,7 +12,7 @@ lastSynced: 2026-05-10
 
 # Documentary Record
 
-*Back matter to* Who Steals from Children: Volume 1 — Oregon and the Elliott. *The five sections that follow are the reader's verification apparatus. Third-person reference register: dense, source-anchored, terse. The reader uses this section to confirm, not to be entertained. Section E — "How to Verify Anything in This Book" — names the public-records and substrate paths a parent, journalist, school-board member, or lawyer can use to test any factual claim the body makes.*
+*Back matter to* Who Steals from Children: Volume 1 — Oregon and the Elliott. *The five sections that follow are the reader's verification apparatus. Section E — "How to Verify Anything in This Book" — names the public records and published sources a parent, journalist, school-board member, or lawyer can use to test any factual claim the body makes.*
 
 ---
 
@@ -32,7 +32,7 @@ lastSynced: 2026-05-10
 
 **Charles, John A., Jr.** — President, Cascade Policy Institute; quoted in Chapter 6 on the 2019 bond substitution: "Without knowing it, taxpayers bought a state forest that they already owned."
 
-**Crowe, Daniel Zene** — General Counsel for OASTL; lead counsel in *Advocates for School Trust Lands v. State of Oregon* (24CV38372); author of the April 21, 2026 declaration in support of plaintiffs' motion to compel; OASTL Joint Engagement Agreement signed December 19, 2025.
+**Crowe, Daniel Zene** — General Counsel for OASTL; lead counsel in *Siuslaw School District 97J et al. v. State of Oregon et al.* (24CV38372); author of the April 21, 2026 declaration in support of plaintiffs' motion to compel; OASTL Joint Engagement Agreement signed December 19, 2025.
 
 **Davis, Anthony** — Oregon State University administrator; author of the May 27, 2020 email to the Sullivans referring to the May 29 Science Advisory Panel meeting that became the *"secret meeting about going public"* episode on ElliottSecrets.
 
@@ -110,7 +110,7 @@ lastSynced: 2026-05-10
 - **Dec 11, 2022** — Margaret Bird's letter to the State Land Board: *"decoupling is a euphemism for selling."*
 - **Oct 13, 2023** — Huntington Governor's Office memo conceding the ESRF was designed for political rather than fiduciary ends.
 - **Nov 13, 2023** — OSU President Murthy withdrawal letter.
-- **2024** — OASTL incorporates; *Advocates for School Trust Lands v. State of Oregon* (24CV38372) filed in Coos County Circuit Court. David Gould passes away.
+- **2024** — OASTL incorporates; *Siuslaw School District 97J et al. v. State of Oregon et al.* (24CV38372) filed in Coos County Circuit Court. David Gould passes away.
 - **Apr 8, 2024** — Representative Court Boice's open letter to Kotek, Read, and Griffin-Valade.
 - **May 5, 2024** — Petersen sends Sullivan the final approved version of "Who Steals from Children?"
 - **May 7, 2024** — Petersen article publishes in *Evergreen Magazine*.
@@ -125,89 +125,92 @@ lastSynced: 2026-05-10
 - **May 2, 2026** — formal filing of the Motion to Compel.
 - **May 5, 2026** — Margaret Bird 90-minute call with Sullivan (the call from which several of this edition's editorial moves originate).
 - **May 10, 2026** — *Who Steals from Children: Volume 1 — Oregon and the Elliott* (Reader's Edition) drafted.
+- **Jul 23, 2026** — Oregon Supreme Court denies review in *S072734*, making the Court of Appeals standing decision final.
+- **Jul 24, 2026** — Judge Combs grants the State summary judgment in 24CV38372, holding that the State owes no legally enforceable fiduciary duty, and cancels the trial that had been set for August 18–28, 2026.
 
 ---
 
 ## C. Document Register
 
-Each entry names the document, its date and matter where applicable, and its L0 substrate path. Entries marked "recommended L0 path" identify the canonical filing location for substrate not yet deposited; the underlying source exists in Drive, Gmail, or web archive and is referenced in the source ledgers cited at the end of this section.
+Each entry names the document, its date, and its matter where applicable. Entries marked *not yet deposited* are documents that exist in the working files behind this book but have not yet been placed in a public archive.
 
-**Litigation filings — 24CV38372 (active)**
+**Litigation filings — 24CV38372**
 
-- *Plaintiffs' First Request for Production of Documents* (1/28/2026) — `L0_Primary_Sources/Discovery/20260128 - PLAINTIFFS' FIRST REQUEST FOR PRODUCTION OF DOCUMENTS TO DEFENDANTS (24CV38372) - For Transmittal.pdf`
-- *Defendants' Response to Plaintiffs' First Request for Production* (2/27/2026) — `L0_Primary_Sources/Discovery/20260227 - Siuslaw 8372 DISC Defs' Response to Pltfs' First RFP (1).pdf`
-- *Accounting Analysis — Reconciling Public CSF Reports with State Discovery Data* (4/1/2026) — `L0_Primary_Sources/Discovery/20260401 - Accounting Analysis - Reconciling Public CSF Reports with State Discovery Data (Lawyer Reviewed).pdf`
-- *Declaration of Daniel Zene Crowe in Support of Plaintiffs' Motion to Compel Production* (4/21/2026) — `L0_Primary_Sources/Discovery/20260421 - Daniel Zene Crowe - DECLARATION IN SUPPORT OF PLAINTIFFS' MOTION TO COMPEL PRODUCTION OF DOCUMENTS (24CV38372) (1).pdf`
-- *Plaintiffs' Motion to Compel Production of Documents* (4/21/2026, filed 5/2/2026) — `L0_Primary_Sources/Discovery/20260421 - PLAINTIFFS' MOTION TO COMPEL PRODUCTION OF DOCUMENTS (24CV38372) (1).pdf`
-- *OASTL Joint Engagement Agreement* (12/19/2025) — `L0_Primary_Sources/Discovery/Engagement/OASTL_Crowe_Joint_Engagement_2025-12-19.pdf` (recommended L0 path)
+- *Plaintiffs' First Request for Production of Documents* (1/28/2026)
+- *Defendants' Response to Plaintiffs' First Request for Production* (2/27/2026)
+- *Accounting Analysis — Reconciling Public CSF Reports with State Discovery Data* (4/1/2026)
+- *Declaration of Daniel Zene Crowe in Support of Plaintiffs' Motion to Compel Production* (4/21/2026)
+- *Plaintiffs' Motion to Compel Production of Documents* (4/21/2026, filed 5/2/2026)
+- *OASTL Joint Engagement Agreement* (12/19/2025) (not yet deposited)
+- *Opinion letter of Judge Combs granting the State summary judgment* (7/24/2026) — published by the Library at `/court/filings/2026-07-24-combs-summary-judgment-letter-24cv38372.pdf`
 
 **Litigation filings — 21CV15024 (predecessor)**
 
-- *Affidavit / Timeline of Facts* (Sullivan, 8/16/2021) — `L0_Primary_Sources/Discovery/2021_Case_21CV15024/Affidavit_Timeline_of_Facts_2021-08-16.pdf` (recommended L0 path; not yet filed)
-- *Zybach Declaration* (7/11/2021) — `L0_Primary_Sources/Discovery/2021_Case_21CV15024/Zybach_Declaration_2021-07-11.pdf` (recommended L0 path)
+- *Affidavit / Timeline of Facts* (Sullivan, 8/16/2021) (not yet deposited)
+- *Zybach Declaration* (7/11/2021) (not yet deposited)
 
 **Appellate authority**
 
-- *Court of Appeals opinion in Advocates for School Trust Lands v. State of Oregon*, 346 Or App 668 (1/28/2026) — `L0_Primary_Sources/Case_Law/Advocates_v_Oregon_COA_2026-01-28.pdf` (recommended L0 path)
-- *Eagle Point Irrigation District v. Cowden*, 137 Or. 121 (1931) — `L0_Primary_Sources/Case_Law/Eagle_Point_v_Cowden_1931.pdf` (recommended L0 path)
+- *Court of Appeals opinion in Advocates for School Trust Lands v. State of Oregon*, 346 Or App 668 (1/28/2026)
+- *Eagle Point Irrigation District v. Cowden*, 137 Or. 121 (1931)
 
 **Oregon Attorney General opinions**
 
-- *AG Opinion 7450 (Natural Area Preserve / Common School Grant Land)* (1977) — `L0_Primary_Sources/Statutes/Oregon_AG_Opinions/AGO_7450_1977.pdf` (recommended L0 path)
-- *AG Opinion 8223* (1992) — `L0_Primary_Sources/Statutes/Oregon_AG_Opinions/AGO_8223_1992.pdf` (recommended L0 path)
-- *AG Opinion 8279* (2003) — `L0_Primary_Sources/Statutes/Oregon_AG_Opinions/AGO_8279_2003.pdf` (recommended L0 path)
+- *AG Opinion 7450 (Natural Area Preserve / Common School Grant Land)* (1977)
+- *AG Opinion 8223* (1992)
+- *AG Opinion 8279* (2003)
 
 **Internal-State and OSU records**
 
-- *Davis "secret meeting about going public" email* (5/27/2020) — `L0_Primary_Sources/Discovery/Correspondence/Davis_Secret_Meeting_Email_2020-05-27.pdf` (recommended L0 path)
-- *Huntington Governor's Office memo on ESRF* (10/13/2023) — `L0_Primary_Sources/Discovery/Governor_Office_Memos/Huntington_ESRF_Memo_2023-10-13.pdf` (recommended L0 path)
-- *Murthy OSU withdrawal letter* (11/13/2023) — `L0_Primary_Sources/Discovery/OSU_Records/Murthy_Withdrawal_2023-11-13.pdf` (recommended L0 path)
-- *DSL Cougar Pass refusal letter* (~2020) — `L0_Primary_Sources/Discovery/Correspondence/DSL_Cougar_Pass_Refusal_2020.pdf` (recommended L0 path; text verbatim reproduced on ElliottSecrets home-page recovery, original letterhead pending filing)
-- *OSU ESRF Proposal, page 28* (Dec 2021) — `L0_Primary_Sources/Discovery/OSU_Records/ESRF_Proposal_2021_p28.pdf` (recommended L0 path; the "$2.1 million on an average annual basis for the first 50 years" paragraph)
+- *Davis "secret meeting about going public" email* (5/27/2020) (not yet deposited)
+- *Huntington Governor's Office memo on ESRF* (10/13/2023) (not yet deposited)
+- *Murthy OSU withdrawal letter* (11/13/2023) (not yet deposited)
+- *DSL Cougar Pass refusal letter* (~2020) (not yet deposited; the text is reproduced verbatim on the recovered ElliottSecrets home page, and the original letterhead is still to be filed)
+- *OSU ESRF Proposal, page 28* (Dec 2021) (not yet deposited) — the "$2.1 million on an average annual basis for the first 50 years" paragraph
 
 **Public correspondence and testimony**
 
-- *Margaret Bird, State Land Board Testimony Letter* (12/11/2022) — `L0_Primary_Sources/Discovery/Correspondence/Bird_SLB_Testimony_2022-12-11.pdf` (recommended L0 path; not yet filed)
-- *Court Boice Open Letter to Kotek/Read/Griffin-Valade* (4/8/2024) — `L0_Primary_Sources/Official_Correspondence/Boice_Open_Letter_to_Land_Board_2024-04-08.pdf` (recommended L0 path; pending filing from Gmail-source)
-- *David Gould Letter to State Land Board* (11/8/2021) — `L0_Primary_Sources/Discovery/Correspondence/Gould_SLB_Letter_2021-11-08.pdf` (recommended L0 path; pending filing from Gmail-source and Drive Gould folder)
-- *David Gould Buster Club Introduction* (3/3/2022) — Gmail thread `17f4fbbc9e280a98`; recommended L0 path `L0_Primary_Sources/Discovery/Correspondence/Gould_Buster_Club_2022-03-03.pdf`
+- *Margaret Bird, State Land Board Testimony Letter* (12/11/2022) (not yet deposited)
+- *Court Boice Open Letter to Kotek/Read/Griffin-Valade* (4/8/2024) (not yet deposited)
+- *David Gould Letter to State Land Board* (11/8/2021) (not yet deposited)
+- *David Gould Buster Club Introduction* (3/3/2022) (not yet deposited)
 
 **Historical sources**
 
-- *Jerry Phillips,* Caulked Boots and Cheese Sandwiches *(self-published memoir; canonical Elliott history)* — `L0_Primary_Sources/Published_Books/Phillips_Caulked_Boots_and_Cheese_Sandwiches.pdf` (recommended L0 path). Contains the annotated 1879 Coos Bay Fire map referenced in Chapter 1's valuation arithmetic.
-- *F.G. Young, "The Common School Fund"*, 11 *Oregon Historical Quarterly* (1910) — `L0_Primary_Sources/Historical/Young_1910_OHQ_Common_School_Fund.pdf` (recommended L0 path)
-- *Governor Chamberlain's 1907 message to the legislature* — `L0_Primary_Sources/Historical/Chamberlain_1907_Legislative_Message.pdf` (recommended L0 path)
-- *John Beuter, Elliott State Forest valuation analysis* (1994; ODF-commissioned) — `L0_Primary_Sources/Historical/Beuter_1994_Elliott_Valuation.pdf` (recommended L0 path)
+- *Jerry Phillips,* Caulked Boots and Cheese Sandwiches *(self-published memoir; canonical Elliott history)*. Contains the annotated 1879 Coos Bay Fire map referenced in Chapter 1's valuation arithmetic.
+- *F.G. Young, "The Common School Fund"*, 11 *Oregon Historical Quarterly* (1910)
+- *Governor Chamberlain's 1907 message to the legislature*
+- *John Beuter, Elliott State Forest valuation analysis* (1994; ODF-commissioned)
 
 **Press and outside commentary**
 
-- *Petersen, "Who Steals from Children?"*, *Evergreen Magazine* (5/7/2024) — `L0_Primary_Sources/Multimedia/Evergreen_2024_WhoStealsFromChildren/` (recommended L0 path; pending filing from Gmail thread `18f4a48674dff7c2` / `18f52b6eebf71ccf`)
+- *Petersen, "Who Steals from Children?"*, *Evergreen Magazine* (5/7/2024)
 
 **Biographical and origin-story sources**
 
-- *PCs and Tektronix* (Sullivan dictation transcript) — Drive Speechnotes folder, file `PCs and Tektronix .txt` (ID `16z6jLVrERWQ-nYPNG9OWZhInX5XZL6LO`); the Tektronix-OSU-1996 origin transcript anchoring Chapter 1.
-- *J Wesly Sullivan Memorial* — Drive root, `J Wesly Sullivan Memorial.doc`; biographical material on Dave Sullivan's father, former member of the Oregon State Board of Forestry and former editor of the Salem *Statesman-Journal*; Preface enrichment.
-- *Phillips/Gould/Giesy photograph* — Drive, `PhillipsGouldGeiseyPhoto.jpg` (ID `1GtVh1dgWCS2iekM3nRf3yCjScMuufdCW`); three men, two now deceased; Chapter 8 anchor.
+- *PCs and Tektronix* (Sullivan dictation transcript) — the Tektronix-OSU-1996 origin transcript anchoring Chapter 1 (not yet deposited).
+- *J. Wesley Sullivan memorial* — biographical material on Dave Sullivan's father, former member of the Oregon State Board of Forestry and former editor of the Salem *Statesman-Journal* (not yet deposited).
+- *Phillips/Gould/Giesy photograph* — three men, two now deceased; the Chapter 8 anchor (not yet deposited).
 
 **Web-archive sources**
 
 - *ElliottSecrets.net* (Wayback snapshot, 2022-01-12) — `https://web.archive.org/web/2022/https://sites.google.com/view/elliottsecrets/`. Dave Sullivan's 2020 documentary website; dedicated to J. Wesley Sullivan. Carries verbatim text of the DSL Cougar Pass refusal letter and the May 27, 2020 Davis email.
-- *cougarpass.org* — Drive Google Site, ID `13QDsVGgMG8RA2xvW5hl9_EQmr_6ejHZL`; Sullivan's Cougar Pass site, Forest Fire Lookout Association proposal materials.
-- *OASTL.org* — `https://oastl.org/`; the public docket for *Advocates for School Trust Lands v. State of Oregon* (24CV38372).
-- *America's School Trust Library* — `https://schooltrusts.net/`; the institutional home of the broader documentary record.
+- *cougarpass.org* — Sullivan's Cougar Pass site, carrying the Forest Fire Lookout Association proposal materials.
+- *OASTL.org* — `https://oastl.org/`; the public docket for *Siuslaw School District 97J et al. v. State of Oregon et al.* (24CV38372).
+- *America's School Trust Library* — `https://schooltrusts.org/`; the institutional home of the broader documentary record.
 
-**Source ledgers (substrate of substrate)** — the per-source catalogs the chapter sub-agents drew from:
+**Source ledgers.** The per-source catalogs from which this volume's citations were drawn:
 
-- `L0_Primary_Sources/Discovery/Gmail_Elliott_Source_Ledger_2026-05-10.md` — 101+ Gmail threads catalogued, 2022–2026.
-- `L0_Primary_Sources/Discovery/Drive_Elliott_Source_Ledger_2026-05-10.md` — Drive folder and file inventory: Speechnotes, CougarPass, Gould, FOIA scans, multimedia.
-- `L0_Primary_Sources/Discovery/Web_ElliottSecrets_Ledger_2026-05-10.md` — full ElliottSecrets website recovery via Wayback Machine, page by page.
-- `L0_Primary_Sources/Discovery/Web_OASTL_org_Ledger_2026-05-10.md` — full OASTL.org website inventory, current docket state.
+- *Gmail source ledger* (5/10/2026) — 101+ email threads catalogued, 2022–2026.
+- *Drive source ledger* (5/10/2026) — folder and file inventory: dictation transcripts, Cougar Pass, Gould, public-records scans, multimedia.
+- *ElliottSecrets web ledger* (5/10/2026) — full recovery of the ElliottSecrets website via the Wayback Machine, page by page.
+- *OASTL.org web ledger* (5/10/2026) — full inventory of the OASTL.org site and its docket page.
 
 ---
 
 ## D. Recommended Further Reading
 
-**The companion volumes.** *LOOKING BACK · Schools of the Republic*, by Margaret Bird and Dave Sullivan (2026), catalogs every state's school-trust-land record since 1785. *LOOKING FORWARD · The Eighth Anchor*, by Dave Sullivan (2026), names the Library itself — institutional watchfulness — as the eighth anchor against drift. Both are published by America's School Trust Library; the Oregon Elliott case is one entry in a fifty-state record, and the companion volumes supply the comparative architecture this book deliberately does not carry. Available at the Library, `https://schooltrusts.net/`.
+**The companion volumes.** *The Forgotten Forever Gift to Public Schools* (earlier titled *Schools of the Republic*), by Margaret Bird and Dave Sullivan (2026), traces the school-trust-land record state by state from 1785, as far as each state's published record allows. *Stewards of the Republic* (earlier titled *The Eighth Anchor*), by Dave Sullivan (2026), names the Library itself — institutional watchfulness — as the eighth anchor against drift. Both are published by America's School Trust Library; the Oregon Elliott case is one entry in a fifty-state record, and the companion volumes supply the comparative architecture this book deliberately does not carry. Available at the Library, `https://schooltrusts.org/`.
 
 **Jerry Phillips,** Caulked Boots and Cheese Sandwiches. The canonical Elliott history by the man who ran the Coos Bay District for thirty-three years (1956–1989). Phillips's annotated 1879 Coos Bay Fire map and his sustained-yield management record anchor the empirical floor of any honest Elliott valuation. The $790 million baseline that recurs through Chapter 1's arithmetic comes from Phillips.
 
@@ -217,29 +220,29 @@ Each entry names the document, its date and matter where applicable, and its L0 
 
 **Jim Petersen,** Evergreen Magazine. The 2024 article "Who Steals from Children?" — from which this series takes its title — is one of a sustained body of Petersen reportage on Pacific Northwest forest policy, school-trust lands, and the federal-and-state forest economy. Petersen's archive at evergreenmagazine.com carries the broader record. Petersen edits and publishes from Dalton Gardens, Idaho.
 
-**OASTL.org legal documents page.** All filings in *Advocates for School Trust Lands v. State of Oregon* (24CV38372) are linked from `https://oastl.org/`. The page is the public docket for the case, including the January 28, 2026 Court of Appeals opinion, the State's October 24, 2025 Answer, the discovery exchange, and the motion to compel.
+**OASTL.org legal documents page.** All filings in *Siuslaw School District 97J et al. v. State of Oregon et al.* (24CV38372) are linked from `https://oastl.org/`. The page is the public docket for the case, including the January 28, 2026 Court of Appeals opinion, the State's October 24, 2025 Answer, the discovery exchange, and the motion to compel.
 
 **The 1910** Oregon Historical Quarterly **archive.** F.G. Young's "The Common School Fund" is one of a sequence of OHS articles documenting Oregon's early administrative record on the school-land trust. The full archive is available through the Oregon Historical Society. Read alongside the period's federal land-fraud trial records (1904–1910) and Puter's *Looters*, it supplies the empirical floor for the historical chapters.
 
-**The next volumes.** *Who Steals from Children: Volume 2 — Utah* is being researched as this volume is published. Utah carries a different fact pattern — the state with the longest record of disciplined trust administration is under structurally different pressure — and Margaret Bird's archival depth on Utah makes Volume 2 the natural successor. Subsequent volumes follow as the cases mature. The series is updated at America's School Trust Library, `https://schooltrusts.net/`. Readers who want to follow can join the Library's mailing list at the same address; the *Friends of the Library* newsletter carries volume announcements.
+**The next volumes.** *Who Steals from Children: Volume 2 — Utah* is being researched as this volume is published. Utah carries a different fact pattern — the state with the longest record of disciplined trust administration is under structurally different pressure — and Margaret Bird's archival depth on Utah makes Volume 2 the natural successor. Subsequent volumes follow as the cases mature. The series is updated at America's School Trust Library, `https://schooltrusts.org/`. Readers who want to follow can join the Library's mailing list at the same address; the *Friends of the Library* newsletter carries volume announcements.
 
 ---
 
 ## E. How to Verify Anything in This Book
 
-This book makes factual claims about public actions of a public body — the Oregon State Land Board — and about filings in active litigation. Every claim of fact in the body chapters can be confirmed against a public record. The reader who wants to verify anything has three paths, and each path is named below with the specific URL or office that holds the underlying document.
+This book makes factual claims about public actions of a public body — the Oregon State Land Board — and about filings in the Coos County litigation. Every claim of fact in the body chapters can be confirmed against a public record. The reader who wants to verify anything has three paths, and each path is named below with the specific URL or office that holds the underlying document.
 
-**Path 1 — OASTL.org, for the active case.** The Oregon Advocates for School Trust Lands maintains a public legal-resources page at `https://oastl.org/`. Every filing in *Advocates for School Trust Lands v. State of Oregon* (Coos County Circuit Court 24CV38372) is linked there in PDF form. This is the path for confirming any litigation claim in Chapters 10, 11, and 12.
+**Path 1 — OASTL.org, for the Coos County case.** The Oregon Advocates for School Trust Lands maintains a public legal-resources page at `https://oastl.org/`. Every filing in *Siuslaw School District 97J et al. v. State of Oregon et al.* (Coos County Circuit Court 24CV38372) is linked there in PDF form. This is the path for confirming any litigation claim in Chapters 10, 11, and 12.
 
 - *To confirm the State's October 24, 2025 Answer language* — *"does not owe Plaintiffs the duties alleged"* — open `https://oastl.org/`, find the link labeled *Defendants' Answer* (or filed October 24, 2025), download the PDF, and read paragraph by paragraph. The operative sentence appears in the State's response to the breach-of-fiduciary-duty allegations.
 - *To confirm the discovery exchange* — the February 27, 2026 Response to RFP and the May 2, 2026 Motion to Compel — same page, two further links. Daniel Zene Crowe's April 21, 2026 declaration is filed with the motion and is the readable summary.
 - *To confirm the January 28, 2026 Court of Appeals opinion* — 346 Or App 668. The opinion is linked from OASTL.org and is also available directly from the Oregon Judicial Department's published-opinions archive at `https://www.courts.oregon.gov/publications/appellate/Pages/default.aspx`. Search for the case name *Advocates for School Trust Lands v. State of Oregon* and the date January 28, 2026.
 
-**Path 2 — schooltrusts.net, for the broader documentary record.** America's School Trust Library at `https://schooltrusts.net/` is the institutional home of the documentary substrate from which this book is rendered. The Reading Room at `/reading/` carries the long-form documents — *The Sacred Compact*, *Schools of the Republic*, *The Eighth Anchor* — and a per-state record at `/states/oregon/`. The Library is the path for confirming any claim about national-context architecture (the Margaret Bird letter; the Utah comparative record; the *Eagle Point* doctrine).
+**Path 2 — schooltrusts.org, for the broader documentary record.** America's School Trust Library at `https://schooltrusts.org/` is the institutional home of the wider record this book sits inside. The Writing Room carries the long-form volumes — *Stewards of the Republic* at `/writing/stewards-of-the-republic/` and *The Forgotten Forever Gift to Public Schools* at `/writing/schools-of-the-republic/`. The Reading Room at `/reading/` carries the fifty state dossiers; Oregon's is at `/reading/us-or/`. The Library is the path for confirming any claim about national-context architecture (the Utah comparative record; the *Eagle Point* doctrine).
 
-- *To confirm the Margaret Bird December 11, 2022 letter to the State Land Board* — open `https://schooltrusts.net/`, navigate to `/states/oregon/` and to the section labeled *Documentary Record*; the letter is linked there in full. The *"decoupling is a euphemism for selling"* line appears in the third paragraph. The letter is on Margaret Bird's letterhead as President of the national Advocates for School Trust Lands.
-- *To confirm any claim from the* Sacred Compact *or* Schools of the Republic — open the Reading Room directly at `https://schooltrusts.net/reading/`. Each volume's full text is published there; chapters and pull-quotes are anchored to primary sources.
-- *To confirm the Library's institutional posture and authorship structure* — `https://schooltrusts.net/about/` carries the About page.
+- *To confirm the Margaret Bird December 11, 2022 letter to the State Land Board* — the Library has not deposited the letter in its public archive. The *"decoupling is a euphemism for selling"* line is quoted in Chapters 9 and 13 of this book. The letter is on Margaret Bird's letterhead as President of the national Advocates for School Trust Lands.
+- *To confirm any claim from* Stewards of the Republic *or* The Forgotten Forever Gift to Public Schools — open the Writing Room at `https://schooltrusts.org/writing/`. Each volume's full text is published there; chapters and pull-quotes are anchored to primary sources.
+- *To confirm the Library's institutional posture and authorship structure* — `https://schooltrusts.org/about/` carries the About page.
 
 **Path 3 — Oregon public records, for direct State-of-Oregon verification.** Every Land Board vote, every Attorney General opinion, every statutory amendment is a public record of the State of Oregon. The reader who wants to confirm a State action against the State's own files goes here.
 
@@ -248,6 +251,6 @@ This book makes factual claims about public actions of a public body — the Ore
 - *To confirm a statute — for instance, ORS 273 (Department of State Lands), ORS 530 (state forests), the constitutional Article VIII* — the Oregon Legislative Assembly publishes the ORS at `https://oregonlegislature.gov/bills_laws/Pages/ORS.aspx` and the Oregon Constitution at the same site under *Constitution*.
 - *To confirm the OSU $2.1 million paragraph in the ESRF Proposal* — the OSU Elliott State Research Forest documentation is published by Oregon State University's College of Forestry; the proposal as filed with the State Land Board is also part of the Land Board's record-of-decision file at DSL. The operative language — *"$2.1 million on an average annual basis for the first 50 years"* — appears on page 28 of the proposal as submitted in December 2021. A parent or journalist who wants the exact language can request the document from DSL by public records request; the request form is at `https://www.oregon.gov/dsl/about/Pages/public-records.aspx`. Oregon Public Records Law (ORS 192.311–192.478) puts the burden on the agency to justify any withholding.
 
-**A note on the source ledgers.** The four ledgers cited in Section C — Gmail, Drive, Web ElliottSecrets, Web OASTL.org — are the substrate that catalogs every primary source cited in this book. They live in the OASTL substrate at `L0_Primary_Sources/Discovery/` and are not public documents. They are named here so that a future researcher, a litigation successor, or a journalist working with the OASTL counsel can confirm that this book's claims rest on a documented chain of custody. Margaret Bird, Daniel Crowe, and Natalie Scott have access to the substrate. A reader who needs deeper verification than the three public paths above can provide may contact OASTL through the contact page at `https://oastl.org/contact/`.
+**A note on the source ledgers.** The four ledgers named in Section C — Gmail, Drive, ElliottSecrets, OASTL.org — catalog every primary source cited in this book. They are held in the case's working files and are not public documents. They are named here so that a future researcher, a litigation successor, or a journalist working with the OASTL counsel can confirm that this book's claims rest on a documented chain of custody. Margaret Bird, Daniel Crowe, and Natalie Scott have access to them. A reader who needs deeper verification than the three public paths above can provide may contact OASTL through the contact page at `https://oastl.org/contact/`.
 
 The discipline of this book is that nothing here is taken on the author's word. Every load-bearing sentence in the body chapters is traceable, through one of the three paths above, to a public record. The reader who tests the book will find it. The reader who doesn't trust the author should not need to.

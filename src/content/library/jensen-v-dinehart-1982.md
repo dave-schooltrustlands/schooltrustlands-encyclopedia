@@ -18,7 +18,7 @@ Jensen v. Dinehart is the Utah Supreme Court decision that triggered Utah's 1983
 
 ## Why the Library cites it
 
-Jensen is, in the Library's substrate, the canonical example of what happens to a school-trust corpus when the architecture for defending it collapses without a functional advocate to stand in the way. The Eighth Anchor's argument that institutional advocacy — a Title 53D office, a standing organization with statutory standing, a culture of accountability — is the load-bearing element of a working trust depends on having a concrete demonstration of what the absence of advocacy produces. Jensen is that demonstration. Margaret Bird's career as the architect of Utah's recovery begins in the wake of the decision; the 1989-1994 reform movement begins with the realization that the corpus had been opened to ordinary legislative reach.
+Jensen is, in the Library's reading, the canonical example of what happens to a school-trust corpus when the architecture for defending it collapses without a functional advocate to stand in the way. The argument in *Stewards of the Republic* that institutional advocacy — a Title 53D office, a standing organization with statutory standing, a culture of accountability — is the load-bearing element of a working trust depends on having a concrete demonstration of what the absence of advocacy produces. Jensen is that demonstration. Margaret Bird's career as the architect of Utah's recovery begins in the wake of the decision; the 1989-1994 reform movement begins with the realization that the corpus had been opened to ordinary legislative reach.
 
 ## A representative finding
 

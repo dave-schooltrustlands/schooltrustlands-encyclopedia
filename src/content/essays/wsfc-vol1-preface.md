@@ -26,7 +26,7 @@ By 2017 the baseline was gone. The harvest had dropped to zero. The State Land B
 
 I want to tell you the moment the case crystallized for me.
 
-It was October 24, 2025. I was sitting at my desk in Kings Valley reading the State's formal Answer in *Advocates for School Trust Lands v. State of Oregon*. In paragraph after paragraph the State, through its Department of Justice, denied the substantive allegations in our complaint. That part I expected. What I did not expect was the language the State used to deny the duty itself. The State of Oregon, sitting as trustee of an Article VIII trust the Oregon Constitution had established in 1859 and the Oregon Supreme Court had recognized in *Eagle Point Irrigation District v. Cowden* in 1931 as a "trust of the highest nature," filed a pleading saying it "does not owe Plaintiffs the duties alleged."
+It was October 24, 2025. I was sitting at my desk in Kings Valley reading the State's formal Answer in *Siuslaw School District 97J et al. v. State of Oregon et al.* In paragraph after paragraph the State, through its Department of Justice, denied the substantive allegations in our complaint. That part I expected. What I did not expect was the language the State used to deny the duty itself. The State of Oregon, sitting as trustee of an Article VIII trust the Oregon Constitution had established in 1859 and the Oregon Supreme Court had recognized in *Eagle Point Irrigation District v. Cowden* in 1931 as a "trust of the highest nature," filed a pleading saying it "does not owe Plaintiffs the duties alleged."
 
 I read the sentence twice. Then I read it again. I sat at the desk for a while and did not move.
 
@@ -48,7 +48,7 @@ I have not written a partisan book. Oregon's drift has happened under Democratic
 
 I have not written an attack on environmentalism. I am a tree farmer. I love the Elliott. What I object to is not the *protection* of the forest but the *theft* of the forest from the trust — the use of "research" and "carbon" and "wildlife" as cover stories for the conversion of a billion-dollar asset out of the children's trust into a state agency the legislature can fund or defund as it pleases. The forest can be protected. The children can be served. The State has chosen to do neither while telling everyone it has done both.
 
-I have not written a final word. The case is in active litigation. The Court of Appeals' January 28, 2026 standing ruling has opened the door; the trial phase is ahead of us. I will update what I can in future printings.
+I have not written a final word, and the record moved after I wrote this one. On July 23, 2026 the Oregon Supreme Court denied review in *S072734*, which made the Court of Appeals' January 28, 2026 standing ruling final. On July 24, 2026, in *Siuslaw School District 97J et al. v. State of Oregon*, Coos County Circuit Court No. 24CV38372, Judge Combs granted the State summary judgment, holding that the State owes no legally enforceable fiduciary duty, and canceled the trial that had been set for August 18–28, 2026. I will update what I can in future printings.
 
 What I have written is the case as it stood on the day the State formally denied the duty: a fiduciary indictment in plain language, with the documents available for inspection, addressed to the parents and school administrators and journalists and legislators and trust-law specialists who can, between them, decide whether what is being taken will continue to be taken.
 

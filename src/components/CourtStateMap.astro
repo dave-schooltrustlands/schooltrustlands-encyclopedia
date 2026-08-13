@@ -2,11 +2,12 @@
 // CourtStateMap — US tile-grid map for the Court Room Atlas.
 //
 // v3.2: Library-side parallel to ASTL National's StateMap. Reads
-// src/data/court-states.json (twenty trust-lands states + Texas) and
-// src/data/us-tile-grid.json (8x12 tile-grid layout). Trust-lands
-// tiles are color-coded by the Library's 4-grade Trust Integrity
-// scheme. Non-trust states render as inert muted tiles for geographic
-// context.
+// src/data/court-states.json (twenty-two state dossiers, including
+// Texas, whose school lands are state-derived) and
+// src/data/us-tile-grid.json (8x12 tile-grid layout). Dossier tiles
+// are color-coded by the Library's 4-grade Trust Integrity scheme.
+// States without a dossier render as inert muted tiles for geographic
+// context — that is a coverage line, not a grant line.
 //
 // Visual register intentionally echoes the ASTL State Tracker
 // (tile-grid + colored legend + hover/focus tooltip) so the two
@@ -210,8 +211,8 @@ const tooltipId = `court-statemap-tooltip-${uid}`;
   <p class="court-statemap__hint">
     Hover or focus a trust-lands state to see its trust-integrity grade and
     a one-line summary. Click or press Enter to open its dossier. States
-    rendered in muted gray did not receive school-section grants under the
-    Land Ordinance regime.
+    rendered in muted gray do not yet have a Court Room dossier; some of
+    them received school-section grants and some did not.
   </p>
 </section>
 

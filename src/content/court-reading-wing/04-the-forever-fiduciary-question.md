@@ -87,4 +87,4 @@ The institutions arriving now to manage the AI-era forever-trusts will be making
 
 ---
 
-*Reading Wing, Court Room. America's School Trust Library at schooltrusts.net.*
+*Reading Wing, Court Room. America's School Trust Library at schooltrusts.org.*

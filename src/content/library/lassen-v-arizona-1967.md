@@ -18,7 +18,7 @@ Lassen v. Arizona is the modern United States Supreme Court restatement that adm
 
 ## Why the Library cites it
 
-Lassen is the case the Library cites at the point where the question is whether modern state actions affecting school-trust lands trigger real trust-law remedies. The answer is yes. The Eighth Anchor's argument that state-as-trustee owes the trust the same kind of accounting and the same prohibition on self-dealing that any other trustee would owe rests on this case. The Library also cites Lassen for the proposition that arguments about offsetting benefits — the trust will gain more than it loses, so no payment is needed — are not available to the state trustee. The standard is full value, in money, for any material taking, without speculative offsets.
+Lassen is the case the Library cites at the point where the question is whether modern state actions affecting school-trust lands trigger real trust-law remedies. The answer is yes. The argument in *Stewards of the Republic* that state-as-trustee owes the trust the same kind of accounting and the same prohibition on self-dealing that any other trustee would owe rests on this case. The Library also cites Lassen for the proposition that arguments about offsetting benefits — the trust will gain more than it loses, so no payment is needed — are not available to the state trustee. The standard is full value, in money, for any material taking, without speculative offsets.
 
 ## A representative holding
 

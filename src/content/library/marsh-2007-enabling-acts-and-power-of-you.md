@@ -50,7 +50,7 @@ First, they are the cleanest plain-language statement of the school-trust legal 
 
 Second, the two pieces document a particular moment in the trust-lands movement. *Skamania* was 23 years old in 2007; *Lassen* was 40 years old; *Andrus v. Utah* was 27 years old; *Plateau Mining* was 17 years old. The doctrinal framework was settled but not widely known. Marsh's project was to make the settled framework legible to a non-lawyer audience that had not been told about it. The Library inherits that project and extends it.
 
-Third, *The Power of You* names the relationship the Library and the broader OASTL coalition now structure their work around. The schoolchildren cannot speak for themselves; the work of speaking for them falls to people who care to do it. The 2007 piece states this plainly. The Library's contemporary work, this Reading Room included, is one of the forms that speaking takes.
+Third, *The Power of You* names the relationship this Library's work is built around. The schoolchildren cannot speak for themselves; the work of speaking for them falls to people who care to do it. The 2007 piece states this plainly. The Library's contemporary work, this Reading Room included, is one of the forms that speaking takes.
 
 ## Caveats
 
@@ -58,7 +58,7 @@ A few things to note about the 2007 vintage:
 
 Both pieces predate the Branson litigation cycle, the post-*Asarco* standing developments, the recent state-by-state renewable-energy and carbon-lease questions, and most of the contemporary Permanent Fund Distribution architecture debates. Treat case statements as accurate as of 2007.
 
-Marsh's reliance on *Kleppe*'s "equalize the status" rationale runs alongside a well-known counter-line in the case law — the *Pollard's Lessee* / *Coyle v. Smith* family — that holds equal-footing doctrine does not bind post-statehood land-disposition rules. Modern OASTL practice would flag the doctrinal contest rather than present *Kleppe* as wholly settled ground.
+Marsh's reliance on *Kleppe*'s "equalize the status" rationale runs alongside a well-known counter-line in the case law — the *Pollard's Lessee* / *Coyle v. Smith* family — that holds equal-footing doctrine does not bind post-statehood land-disposition rules. The Library flags the doctrinal contest rather than presenting *Kleppe* as wholly settled ground.
 
 The "trust fund babies" opening of *Power of You* is intentionally folksy. It works for the beneficiary-empowerment register Marsh was writing in and should be allowed its tone. It should not be carried into legal-brief or board-memo registers.
 

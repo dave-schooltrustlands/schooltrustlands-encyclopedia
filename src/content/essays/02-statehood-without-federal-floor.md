@@ -75,8 +75,6 @@ Kentucky's modern doctrinal record on § 184 is the counterpart to *Rose*'s § 1
 
 I want to leave a marker on this case. The absence of a federal school-land grant did not prevent Kentucky from building a school-funding lockbox. Section 184's "inviolate" clause and voter-approval mechanism function as a robust anti-diversion architecture — arguably more robust, in modern enforcement, than the federal-grant trust architecture in many public-land states. State-derived architecture can hold; holding it is continuous work, and the work runs through the 1891 framers, the 1989 court, the 2024 voters, and every legislator and parent who has had to decide, on the record, what to do with the duty.
 
-[BOXED-INSERT placeholder: chapter 2 — see Volume_I_Boxed_Inserts_2026-05-10.md]
-
 ## Tennessee, 1796: the awkwardest case, and a cautionary one
 
 Tennessee is the awkwardest member of the cohort, and the awkwardness is worth naming. Tennessee was admitted June 1, 1796, on land North Carolina had ceded to the United States — making it, in one sense, a public-domain admission like Ohio. But Tennessee predates the Ohio template by seven years, and the federal land system never fully took hold inside Tennessee's borders to begin with. Outstanding North Carolina warrants and settlement claims encumbered most of the federal domain inside the new state's borders before Congress could grant anything. The 1796 admission act is a one-paragraph instrument that contains no school-land provision.[^ch2-26]
@@ -227,13 +225,13 @@ Chapter 3 turns to the states the Land Ordinance template did reach — the fede
 
 [^ch2-31]: Tennessee Constitution of 1870, art. XI, § 12 (as amended March 31, 1978), https://publications.tnsosfiles.com/pub/2023%20TN%20Constitution.pdf.
 
-[^ch2-32]: See substrate file `16_TN_Tennessee_v0.4_[INTERNAL].md`, gaps_flagged: post-1978 disposition of the common-school-fund corpus is a Pass 3 financial-history target.
+[^ch2-32]: The post-1978 disposition of Tennessee's common-school-fund corpus is not yet traced to a primary source; the Library has flagged it as an open citation.
 
 [^ch2-33]: *Tennessee Small School Systems v. McWherter*, 851 S.W.2d 139 (Tenn. 1993), https://law.justia.com/cases/tennessee/supreme-court/1993/851-s-w-2d-139-2.html; 894 S.W.2d 734 (Tenn. 1995); 91 S.W.3d 232 (Tenn. 2002); Tennessee Investment in Student Achievement Act, signed May 2, 2022; Tennessee Department of Education, https://www.tn.gov/education/best-for-all/tnedufunding.html.
 
 [^ch2-34]: Articles of Separation, March 1819, ratified by Maine voters July 26, 1819; Maine Constitution, Article X, https://law.justia.com/constitution/maine/consar10.html; *Cushing v. State*, 434 A.2d 486, 489–90 (Me. 1981), https://law.justia.com/cases/maine/supreme-court/1981/434-a-2d-486-0.html.
 
-[^ch2-35]: The $362,500 figure for the 1853 Massachusetts-to-Maine sale is widely attested in Maine Bureau of Parks and Lands historical references; primary-source pin to Maine State Archives or Massachusetts Acts and Resolves of 1853 flagged for Pass 3 verification.
+[^ch2-35]: The $362,500 figure for the 1853 Massachusetts-to-Maine sale is widely attested in Maine Bureau of Parks and Lands historical references; the primary-source pin to the Maine State Archives or to the Massachusetts Acts and Resolves of 1853 is still open.
 
 [^ch2-36]: Maine Constitution, Article VIII, Part First, § 1, https://law.justia.com/constitution/maine/consar8.html.
 

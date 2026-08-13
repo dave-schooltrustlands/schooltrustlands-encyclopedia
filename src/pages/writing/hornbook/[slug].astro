@@ -15,18 +15,18 @@ import montanaAppendix from '../../../content/hornbook/montana-appendix.md?raw';
 export function getStaticPaths() {
   const documents = {
     'chapter-1': {
-      title: 'Chapter 1 - The Granting Instruments',
-      subtitle: 'Founding legal-reference draft. Citations under verification.',
+      title: 'Chapter 2 (formerly Chapter 1) - The Granting Instruments',
+      subtitle: 'Working edition. Written under the earlier numbering; its section numbers remain 1.x. Citations under verification.',
       content: chapterOne,
     },
     'trust-character': {
-      title: 'Chapter 3 - The Trust Character',
-      subtitle: 'Founding legal-reference draft. Citations under verification.',
+      title: 'Chapter 4 (formerly Chapter 3) - The Trust Character',
+      subtitle: 'Working edition. Written under the earlier numbering; its section numbers remain 3.x. Citations under verification.',
       content: trustCharacter,
     },
     'nebraska-appendix': {
       title: 'Appendix A - Nebraska',
-      subtitle: 'Sample state appendix. Citations under verification.',
+      subtitle: 'The sample state appendix, and the template for the entries that follow. Citations under verification.',
       content: nebraskaAppendix,
     },
     'north-dakota-appendix': {
@@ -41,17 +41,17 @@ export function getStaticPaths() {
     },
     'arizona-appendix': {
       title: 'Appendix A - Arizona',
-      subtitle: 'State appendix, v2. Every case read against the full primary opinion; sixteen v1 statements corrected and the withdrawals recorded in the entry.',
+      subtitle: 'State appendix. Every case read against the full primary opinion; sixteen earlier statements corrected, and the entry records what was withdrawn.',
       content: arizonaAppendix,
     },
     'utah-appendix': {
       title: 'Appendix A - Utah',
-      subtitle: 'State appendix, v2. Every case read against the full primary opinion; the entry records what the primaries would not support.',
+      subtitle: 'State appendix. Every case read against the full primary opinion; the entry records what the primaries would not support.',
       content: utahAppendix,
     },
     'montana-appendix': {
       title: 'Appendix A - Montana',
-      subtitle: 'State appendix, v2. Seven opinions read against the full primary text; eight v1 statements corrected and the withdrawals recorded in the entry.',
+      subtitle: 'State appendix. Seven opinions read against the full primary text; eight earlier statements corrected, and the entry records what was withdrawn.',
       content: montanaAppendix,
     },
   } as const;
@@ -78,15 +78,15 @@ const { slug, doc } = Astro.props;
   sourceId={`hornbook-${slug}`}
 >
   <aside class="hornbook-draft-status" role="note">
-    <strong>Founding draft.</strong> This page preserves the source draft's
-    citation flags and footnotes. <code>[VERIFY]</code> means the claim or
-    authority is still awaiting verification by the legal-reference process.
+    <strong>Working edition.</strong> This page preserves the document's
+    citation flags and footnotes. <code>[VERIFY]</code> marks a claim or
+    authority still awaiting confirmation against the primary source.
   </aside>
 
   <nav class="hornbook-doc-nav" aria-label="Legal-reference draft navigation">
     <a href="/writing/hornbook/">Reference manual landing</a>
-    <a href="/writing/hornbook/chapter-1/">Chapter 1</a>
-    <a href="/writing/hornbook/trust-character/">Chapter 3</a>
+    <a href="/writing/hornbook/chapter-1/">Chapter 2</a>
+    <a href="/writing/hornbook/trust-character/">Chapter 4</a>
     <a href="/writing/hornbook/nebraska-appendix/">Nebraska appendix</a>
     <a href="/writing/hornbook/north-dakota-appendix/">North Dakota appendix</a>
     <a href="/writing/hornbook/colorado-appendix/">Colorado appendix</a>

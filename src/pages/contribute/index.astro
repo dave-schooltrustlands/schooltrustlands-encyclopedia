@@ -1,16 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// Library Card signup CTA. The signup form is out of scope for v3 — using a
-// mailto placeholder that lands in the Library inbox with a structured
-// subject line. The mailto avoids a "coming soon" badge that would dampen
-// reader interest and routes serious inquiries to staff.
-const LIBRARY_CARD_MAILTO =
-  'mailto:library@schooltrusts.net?subject=Library%20Card%20signup';
+// Library Card signup CTA. The signup page at /library-card/ is live and
+// issues one-time login links, so both card links point there rather than at
+// the mailto stand-in they used during bring-up.
+const LIBRARY_CARD_HREF = '/library-card/';
 
 // Doors carried over from the retired schooltrusts.org /help page, which now
-// redirects here. Same structured-subject convention as the Library Card
-// mailto above, routed to the institutional inbox rather than to a person.
+// redirects here. Structured subject lines, routed to the institutional inbox
+// rather than to a person.
 const DOCUMENT_GIFT_MAILTO =
   'mailto:library@schooltrusts.net?subject=A%20document%20for%20the%20Library';
 const BOARD_SERVICE_MAILTO =
@@ -43,12 +41,12 @@ const roles = [
     office:
       'A registered patron of the Library. The card identifies you (real name or, where role conflict requires it, pseudonym verified by the Library Board) and gives you a place to stand inside the institution.',
     act:
-      'Sign up: email, state, role, and one line about what brought you here. After that, the easiest contribution is a correction. Read a source page, find an error, submit it.',
+      'Sign up with your email; the Library sends a one-time login link. After that, the easiest contribution is a correction. Read a source page, find an error, submit it.',
     artifact:
       'Your name (or pseudonym) on the Library’s patron rolls; the <a href="/newsroom/">Newsroom</a> in your inbox; the standing to submit corrections, annotations, and source suggestions for the Founders’ Library and the Scholarship section.',
     standing:
       'The patron tier. The entry tier for everyone who wants to be in the conversation rather than only watching it.',
-    cta: { href: LIBRARY_CARD_MAILTO, label: 'Get a Library Card' },
+    cta: { href: LIBRARY_CARD_HREF, label: 'Get a Library Card' },
   },
   {
     name: 'Contributor',
@@ -85,7 +83,7 @@ const roles = [
     artifact:
       'Newsroom items credited to you (or your pseudonym). A state-specific Newsroom feed delivered to your inbox.',
     standing:
-      'The named correspondent for your state. Light commitment, but a public office: when the Library cites a Newsroom item from your state, your name is on it.',
+      'The named correspondent for your state. Light commitment, but a public office: when the Library cites a Newsroom item from your state, your name is on it. There is no application form for this one: the roster grows a state at a time as items come in, and contributors who keep sending them are invited to hold the title.',
   },
   {
     name: 'State Co-Librarian',
@@ -110,7 +108,7 @@ const roles = [
     artifact:
       'Board minutes, annual editorial decisions, and the durable governance record of a public reference institution.',
     standing:
-      'Library trustee. The first three to five Board members are being recruited from library-science, archival, and digital-library-infrastructure backgrounds.',
+      'Library trustee. The board was seated August 3, 2026 and has three directors; two director seats are open now, with particular attention to education, libraries and archives, finance, and beneficiary communities.',
   },
 ];
 ---
@@ -175,10 +173,9 @@ const roles = [
       lawyer — is to speak up.
     </p>
     <p class="mt-3 text-xs italic text-slate-600">
-      Margaret Bird, video transcripts on file with the Library (held in the
-      editorial substrate — see <a href="/about/how-this-works/#substrate">How
-      this works · Substrate</a> — 2025–2026). The transcripts are being
-      prepared for public release as one of the open Library missions.
+      Margaret Bird, video transcripts on file with the Library, held in the
+      Library’s primary-source substrate and not yet published (2025–2026).
+      Transcribing them for public release is one of the open Library missions.
     </p>
   </section>
 
@@ -210,19 +207,17 @@ const roles = [
     <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">First step</p>
     <h2 class="mt-1 text-xl font-bold tracking-tight text-slate-900">Get a Library Card</h2>
     <p class="mt-2 text-sm text-slate-700">
-      The simplest first step is a free Library Card — email, state, role, and one
-      line about what brought you here. After that, the easiest contribution is a
-      correction: read a source page, find an error, submit it. Accepted corrections
-      produce named or pseudonymous credit on the source page.
+      The simplest first step is a free Library Card. Enter your email and the
+      Library sends a one-time login link; there is no password and no fee.
+      After that, the easiest contribution is a correction: read a source page,
+      find an error, submit it. Accepted corrections produce named or
+      pseudonymous credit on the source page.
     </p>
     <p class="mt-3 text-sm">
       <a
-        href={LIBRARY_CARD_MAILTO}
+        href={LIBRARY_CARD_HREF}
         class="inline-block rounded-md bg-blue-700 px-3 py-2 font-semibold text-white shadow hover:bg-blue-800"
       >Get a Library Card</a>
-      <span class="ml-2 text-xs italic text-slate-500">
-        (placeholder during signup-form bring-up; emails go to library staff)
-      </span>
     </p>
   </section>
 
@@ -331,9 +326,9 @@ const roles = [
       For contributors whose role might create employer or political conflict, the
       Library offers a pseudonymity tier. Verification happens internally: real
       name, employer, and contact information are held confidentially by the
-      Library Board's verification committee. The public-facing standing — the
-      byline on a source page, the Newsroom contributor credit, the State
-      Co-Librarian designation — accrues to the pseudonym. This is essential for
+      board. The public-facing standing — the byline on a source page, the
+      Newsroom contributor credit, the State Co-Librarian designation —
+      accrues to the pseudonym. This is essential for
       the recruitment of state-lands-agency staff and others whose participation
       under their real name could be professionally costly.
     </p>
@@ -409,8 +404,8 @@ const roles = [
     <p>
       If you work for a State Department of Lands, a State Land Board, the Utah
       School and Institutional Trust Lands Administration (SITLA), Washington's
-      DNR, or any of the other thirty-plus state agencies that administer school
-      trust lands — please read the
+      DNR, or any of the other agencies in the roughly twenty states that still
+      hold school trust lands — please read the
       <a href="/contribute/state-lands-agencies/">dedicated page for state-lands-agency staff</a>.
       The lands you administer were set aside in 1785 for the maintenance of
       public schools, and the Library is the institution that makes that record

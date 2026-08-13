@@ -1,7 +1,6 @@
 ---
-// v3.1 — The Reading Wing. Seven long-form essays seeded from Phase 2
-// substrate. Each essay card links to its own full-text page; Phase 3
-// cross-AI review and Phase 4 revision are still pending.
+// The Reading Wing. Seven long-form essays; each card links to its own
+// full-text page.
 import { getCollection } from 'astro:content';
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 
@@ -21,10 +20,8 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
     <span class="eyebrow">Court Room · The Reading Wing</span>
 
     <aside class="preview-banner" role="note">
-      <strong>First-draft preview.</strong> Seven Phase 2 essays
-      sit behind the cards below. Phase 3 cross-AI review and Phase 4
-      revision are still pending. ← <a href="/court/">Back to the Court
-      Room lobby</a>.
+      Seven long-form essays sit behind the cards below. ←
+      <a href="/court/">Back to the Court Room lobby</a>.
     </aside>
 
     <p>
@@ -47,12 +44,6 @@ const slugify = (s: string) => s.replace(/^\d+-/, '');
       ))}
     </section>
 
-    <hr class="archival-divider" />
-
-    <p style="font-size: 0.9rem; color: var(--ink); opacity: 0.7;">
-      First-draft preview. Seven essays seeded from Phase 2 substrate;
-      Phase 3 cross-AI review and Phase 4 revision still pending.
-    </p>
   </article>
 </RoomLayout>
 

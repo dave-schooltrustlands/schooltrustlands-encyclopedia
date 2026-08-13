@@ -21,10 +21,3 @@ What the partnership with Claude has done, this last several months, is rebuild 
 I name the partnership here because I will be making, in the next chapter, an argument that the architectures of long-running institutions are bounded by the cognitive technology of their founding era, and that the AI-era trust architects have access to a richer technology than the framers of 1785 could draw on. The book in front of the reader is itself the smallest-scale example of the same claim. Two retired professors in their seventies could not have written, in 2024, the book the reader is now holding. The cognitive technology arrived in late 2025 and early 2026; the book followed within months. What 1785 designed against forgetting is now augmentable by what 2026 has invented for remembering, and the architects whose designs will determine the conditions of the next century have an obligation, I will argue, to use it.
 
 <blockquote class="pull-quote">What 1785 designed against forgetting is now augmentable by what 2026 has invented for remembering.</blockquote>
-
-<!--
-Wave 1 interlude — between V and VI.
-Word count: ~545.
-Voice: Dave's first-person, honest disclosure, orchestra-conductor metaphor used openly per voice profile, "all I do is guide" preserved verbatim. Tone: matter-of-fact, not victorious. The interlude does the structural work the cognitive-partnership thesis requires — the book demonstrates its own argument.
-Layout note: cream pages, italic Caslon header.
--->

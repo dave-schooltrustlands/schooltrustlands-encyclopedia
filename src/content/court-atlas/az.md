@@ -20,7 +20,7 @@ The Arizona-New Mexico Enabling Act of June 20, 1910 (36 Stat. 557) admitted Ari
 
 ## Notable Attorney General opinions
 
-AG opinions for this state are being sourced in Phase 4 from state Attorney General offices and CourtListener. The *Arizona Bar Journal* (December/January 1988) carried Judge Cannon's pointed admonition — "Beware of the Enabling Act; it's guarding the hen house" — and the companion observation that "state trust land is not owned by the State of Arizona. It is held by the State in trust for specified beneficiaries."
+No Attorney General opinions for this state are on file yet. They are added as they are located and read. The *Arizona Bar Journal* (December/January 1988) carried Judge Cannon's pointed admonition — "Beware of the Enabling Act; it's guarding the hen house" — and the companion observation that "state trust land is not owned by the State of Arizona. It is held by the State in trust for specified beneficiaries."
 
 ## Trust Integrity grade and rationale
 

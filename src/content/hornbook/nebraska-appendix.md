@@ -2,9 +2,9 @@
 ## Appendix A (Sample Entry) — Nebraska (v0)
 
 **June 6, 2026**
-**FROM: Claude (Cowork-side) — working draft for the legal librarian's review; not legal advice.**
+**Drafted with Claude, an AI system, and published by America's School Trust Library. Not legal advice.**
 
-*About this appendix.* The hornbook reads forward, from doctrine to cases. This appendix reads backward, from state to doctrine: each state's school-trust cases are listed in bullet form, each entry cross-citing the hornbook sections it supports, so a practitioner can open her own state's entry and walk into the treatise from there. Cross-cites use drafted section numbers (§§ 1.x, 3.x) where the chapter exists, and chapter numbers per Architecture v1 where it does not yet. Nebraska is the proving sample for the form.
+*About this appendix.* The hornbook reads forward, from doctrine to cases. This appendix reads backward, from state to doctrine: each state's school-trust cases are listed in bullet form, each entry cross-citing the hornbook sections it supports, so a practitioner can open her own state's entry and walk into the treatise from there. Cross-cites use section numbers (§§ 1.x, 3.x) where the chapter is published, and chapter numbers where the chapter is not yet written. Nebraska was written first and its cross-cites follow the treatise's earlier numbering, in which the granting instruments were Chapter 1, reception into state organic law Chapter 2, and the trust-character question Chapter 3; the state appendices written since use the current numbering. Nebraska is the proving sample for the form.
 
 ---
 
@@ -63,4 +63,4 @@
 
 ---
 
-*End of Nebraska sample entry v0. The form proven here — instrument, reception, administering body, significance paragraph, case bullets with posture/holdings/supports, verification queue, and the section-to-authority table — is the template for the remaining state entries (wave 2: Washington, Utah, Montana, New Mexico, Arizona, Oklahoma).*
+*End of the Nebraska entry. The form proven here — instrument, reception, administering body, significance paragraph, case bullets with posture/holdings/supports, verification queue, and the section-to-authority table — is the template for the state entries that follow. North Dakota, Colorado, Arizona, Utah and Montana are published; the remaining states are not yet written.*

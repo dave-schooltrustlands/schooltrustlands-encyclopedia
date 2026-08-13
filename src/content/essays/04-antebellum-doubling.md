@@ -71,8 +71,6 @@ The financial endpoint is documented. The Iowa Legislative Fiscal Bureau reporte
 
 Iowa is the antebellum proof that a state architecture has to include both protection of the corpus *and* the named institutional actors who will guard it. Without the named, ex-officio trustee inside the constitutional text — without somebody whose job it is to make the inviolable-appropriation clause inviolable — the strongest fund language in the country becomes a wish. Iowa wished. Wisconsin staffed.
 
-[BOXED-INSERT placeholder: chapter 4]
-
 ## California: failure by omission
 
 California is the chapter's hard case. I have called it, in the white paper, the failure-by-omission case, and after a second pass through the primary record I am keeping the label, with one structural correction.
@@ -87,7 +85,7 @@ California's 1849 Constitution had a school provision. The 1879 Constitution tha
 
 K-12 finance in California today flows through Proposition 98 (1988), a voter-mandated constitutional minimum-spending guarantee from the general fund, layered with the Proposition 111 (1990) refinements.[^ch4-28] California has no school-trust permanent fund corpus to compare against Wisconsin's $1.6 billion or Minnesota's $2.5 billion, because the architecture that would have produced one was never installed. The honest sentence about California is the one this chapter has been building toward: **the architecture did not fail. It was never installed.** The grant happened; the trust did not.
 
-The Pass 2 research surfaced an additional finding worth pinning, because it tells you what the residue looks like when the trust never came into being. Beginning in 2006 the Legislative Analyst's Office recommended transferring the projected $59 million School Land Bank Fund reserve to the Teachers' Retirement Fund because the State Lands Commission had made almost no land-bank investments for several years.[^ch4-29] In 2020 the Administration borrowed $49 million from the School Land Bank Fund through two interfund loans — a $32 million loan to the General Fund and a $17 million loan to the California Earthquake Safety Fund.[^ch4-30] That is what the residue of California's school grant looks like in the twenty-first century: a small statutory fund, periodically eyed for cash transfers to other state purposes, holding less than a tenth of one percent of the value that even a moderately well-managed corpus on the original 5.5 million acres might hold today.
+Later research surfaced an additional finding worth pinning, because it tells you what the residue looks like when the trust never came into being. Beginning in 2006 the Legislative Analyst's Office recommended transferring the projected $59 million School Land Bank Fund reserve to the Teachers' Retirement Fund because the State Lands Commission had made almost no land-bank investments for several years.[^ch4-29] In 2020 the Administration borrowed $49 million from the School Land Bank Fund through two interfund loans — a $32 million loan to the General Fund and a $17 million loan to the California Earthquake Safety Fund.[^ch4-30] That is what the residue of California's school grant looks like in the twenty-first century: a small statutory fund, periodically eyed for cash transfers to other state purposes, holding less than a tenth of one percent of the value that even a moderately well-managed corpus on the original 5.5 million acres might hold today.
 
 I want to be careful here, because the temptation when reading California's record is to file it under "deliberate seizure." It is not, for the most part, that. California is the silent failure mode. The 1853 Survey Act left out the words "in trust," and a hundred and seventy-three years later the absence of those two words is still doing the work of disabling beneficiary enforcement. The state did not pass a statute revoking the trust. There was no Sherman-Antitrust-scale political fight about the school endowment. The endowment simply never came into being as a legally protected corpus, because the federal drafting did not give it the predicate, and California's own constitutional drafters did not supply the predicate themselves. Quiet, omissive, and durable. The cleanest possible illustration that the trust character of the school-lands grant cannot be assumed; it has to be drafted in, both at the federal level and at the state level, or it is not there.
 
@@ -105,7 +103,7 @@ The Minnesota Supreme Court's *Youngstown Mines Corp. v. Prout*, 266 Minn. 450, 
 
 ## Oregon: strong on paper, drift in practice
 
-Oregon arrives at the end of the cohort, the last of the antebellum admissions. The 1859 Admission Act gave Oregon the Minnesota template — sections 16 and 36, "for the use of schools."[^ch4-35] The 1857 Oregon Constitution went further than the federal text required. Article VIII § 2 set up a "separate, and irreducible fund, to be called the Common School Fund," with proceeds "exclusively applied" to common schools — the strong constitutional fund clause.[^ch4-36] Article VIII § 5 named, in the constitutional text, a Board of Commissioners composed of the Governor, the Secretary of State, and the State Treasurer — Oregon's State Land Board, modeled on Wisconsin's a decade earlier with the Governor's seat substituted for the Attorney General's.[^ch4-37] And Article VIII § 8, added by initiative in 2000, gave Oregon's public-school beneficiaries a constitutional foothold for enforcement of education-funding adequacy that has since proven critical to the modern school-trust litigation.[^ch4-38] That foothold is what carried the Oregon Court of Appeals' standing ruling in *Advocates for School Trust Lands v. State of Oregon* on January 28, 2026 — the standing victory the OASTL plaintiffs are now building from in *Coos County 24CV38372*.[^ch4-39]
+Oregon arrives at the end of the cohort, the last of the antebellum admissions. The 1859 Admission Act gave Oregon the Minnesota template — sections 16 and 36, "for the use of schools."[^ch4-35] The 1857 Oregon Constitution went further than the federal text required. Article VIII § 2 set up a "separate, and irreducible fund, to be called the Common School Fund," with proceeds "exclusively applied" to common schools — the strong constitutional fund clause.[^ch4-36] Article VIII § 5 named, in the constitutional text, a Board of Commissioners composed of the Governor, the Secretary of State, and the State Treasurer — Oregon's State Land Board, modeled on Wisconsin's a decade earlier with the Governor's seat substituted for the Attorney General's.[^ch4-37] And Article VIII § 8, added by initiative in 2000, gave Oregon's public-school beneficiaries a constitutional foothold for enforcement of education-funding adequacy that has since proven critical to the modern school-trust litigation.[^ch4-38] That foothold is what carried the Oregon Court of Appeals' standing ruling in *Advocates for School Trust Lands v. State of Oregon* on January 28, 2026, which the Oregon Supreme Court left standing when it denied review in *S072734* on July 23, 2026. In the companion trial-court case, *Coos County 24CV38372*, the court granted the State summary judgment on July 24, 2026, holding that the State owes no legally enforceable fiduciary duty.[^ch4-39]
 
 Oregon, on paper, is Wisconsin. In practice, Oregon is closer to Iowa in one respect and unique in another.
 
@@ -225,13 +223,13 @@ The next chapter takes up Reconstruction and the western stack — the cohort wh
 
 [^ch4-39]: *Advocates for School Trust Lands v. State of Oregon*, 346 Or. App. 668 (Jan. 28, 2026); *Coos County Circuit Court Case No. 24CV38372*.
 
-[^ch4-40]: Approximately 3,399,360 acres at admission; per the Oregon substrate. A verified GLO figure remains a Pass 2 research target.
+[^ch4-40]: Approximately 3,399,360 acres at admission, per the Library's Oregon record. A verified General Land Office figure is not yet pinned.
 
 [^ch4-41]: Oregon Department of State Lands annual reports, https://www.oregon.gov/dsl/.
 
 [^ch4-42]: Oregon Department of State Lands, "Land Board Meeting Recap — December 2022," https://www.oregon.gov/dsl/Newsroom%20Documents/NewsRelease_LandBoardMeetingRecap_December2022.pdf; Oregon Public Broadcasting, "Oregon Sells \$100 Million In Bonds For Elliott State Forest" (Mar. 21, 2019), https://www.opb.org/news/article/elliott-state-forest-bonds-oregon/.
 
-[^ch4-43]: The Pass 1 OASTL substrate flags this contestation. See *Coos County Circuit Court Case No. 24CV38372* (plaintiffs alleging losses including more than \$285 million in one declaratory claim related to Elliott State Forest management); Oregon Department of State Lands, Elliott State Forest, https://www.oregon.gov/dsl/pages/elliott.aspx (state's account of decoupling and compensation).
+[^ch4-43]: The contestation is documented in the OASTL case file. See *Coos County Circuit Court Case No. 24CV38372* (plaintiffs alleging losses including more than \$285 million in one declaratory claim related to Elliott State Forest management); Oregon Department of State Lands, Elliott State Forest, https://www.oregon.gov/dsl/pages/elliott.aspx (state's account of decoupling and compensation).
 
 [^ch4-44]: O.L. 1887, p. 63, discussed in F. G. Young, "Financial History of the State of Oregon: Oregon's Public Domain — The Sale of Oregon's Lands," *Oregon Historical Quarterly*, vol. 11 (1910), https://en.wikisource.org/wiki/Oregon_Historical_Quarterly/Volume_11/Financial_History_of_the_State_of_Oregon%3A_Oregon%27s_Public_Domain_-_The_Sale_of_Oregon%27s_Lands.
 
@@ -251,10 +249,10 @@ The next chapter takes up Reconstruction and the western stack — the cohort wh
 
 [^ch4-52]: Oregon Encyclopedia, "Oregon Land Fraud Trials (1904–1910)," https://www.oregonencyclopedia.org/articles/oregon_land_fraud_trials_1904_1910_/; Stephen A. D. Puter and Horace Stevens, *Looters of the Public Domain* (1907), https://archive.org/details/publicd00putelootersofrich; Oregon History Project, "Land Fraud Trial of Senator John Mitchell," https://www.oregonhistoryproject.org/articles/historical-records/land-fraud-trial-of-senator-john-mitchell/.
 
-[^ch4-53]: *Eagle Point Irrigation District v. Cowden*, 137 Or. 121, 1 P.2d 605 (1931). L0 source: `L0_Primary_Sources/Statutes/Oregon_AG_Opinions/Eagle Point 1931.pdf`.
+[^ch4-53]: *Eagle Point Irrigation District v. Cowden*, 137 Or. 121, 1 P.2d 605 (1931).
 
 [^ch4-54]: 43 Op. Att'y Gen. 140 (1983) (Oregon Attorney General).
 
 [^ch4-55]: 38 Op. Att'y Gen. 850 (1977), Op. No. 7450 (Oregon Attorney General) (Natural Area Preserve designation under ORS 273.562 permitted only where it does not reduce the financial contribution to the Common School Trust Fund).
 
-[^ch4-56]: 46 Op. Att'y Gen. 468 (1992), Op. No. 8223; Op. No. 8279 (2003) (Oregon Attorney General); see L0 source: `L0_Primary_Sources/Statutes/Oregon_AG_Opinions/`.
+[^ch4-56]: 46 Op. Att'y Gen. 468 (1992), Op. No. 8223; Op. No. 8279 (2003) (Oregon Attorney General).
