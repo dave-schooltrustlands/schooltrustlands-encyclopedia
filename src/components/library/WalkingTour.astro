@@ -89,7 +89,7 @@
       <p>
         The Counting House is the ledger. Every state, every fund, every figure
         with a confidence badge. Some states publish enough accounting for
-        public audit; many still do not. Visible incompleteness is the finding.
+        public audit; many still do not.
       </p>
       <a href="/counting/" class="lwt-room-link" data-lwt-enter>Click to enter the Counting House →</a>
     </div>
@@ -225,27 +225,9 @@
       open();
     });
 
-    // Auto-open on first home-page visit. v36 dropped the mode check —
-    // Library Mode is the only mode now.
-    function maybeAutoOpen() {
-      const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
-      if (!isHome) return;
-      let dismissed = null;
-      try {
-        dismissed = localStorage.getItem(STORAGE_KEY);
-      } catch (_) {
-        dismissed = '1'; // fail-closed if storage unavailable
-      }
-      if (!dismissed) {
-        // Small delay so the page paints first.
-        setTimeout(open, 600);
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', maybeAutoOpen);
-    } else {
-      maybeAutoOpen();
-    }
+    // 2026-08-13 reader-first restructure: the tour no longer opens itself.
+    // A newcomer's first experience should be the subject, not a modal about
+    // the Library. The tour remains available from any [data-open-walking-tour]
+    // trigger (About page and Librarians' Room).
   })();
 </script>

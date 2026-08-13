@@ -2,6 +2,10 @@
 // 2026-08-09 — one Library, one site. The institutional pages that used
 // to live on a separate schooltrusts.org site are now part of this build,
 // so these links are local paths.
+// 2026-08-13 — restructure: footer trimmed to the identity line, one link
+// row, the AI-disclosure line, and the license line. Everything
+// methodological now lives behind "For librarians" (/librarians/).
+// Oregon-litigation status lives on /court/oregon-current-case/.
 import ReferenceDeskFooter from './ReferenceDeskFooter.astro';
 import FeedbackLink from './FeedbackLink.astro';
 import CorrectionLink from './CorrectionLink.astro';
@@ -12,48 +16,26 @@ import CorrectionLink from './CorrectionLink.astro';
   <CorrectionLink />
   <div class="footer-credit">
     <p>
-      <strong>America's School Trust Library</strong> keeps this public record
-      building. It is an Oregon nonprofit public benefit corporation,
-      incorporated July 21, 2026 (Registry No. 259005891). The application for
-      federal tax exemption has been filed; no determination has been issued.
-      This site is the whole of it: the institutional record, the archive,
-      the catalog, the reading rooms, and the correction system.
+      <strong>America's School Trust Library</strong> &mdash; an Oregon
+      nonprofit public benefit corporation (Registry No. 259005891).
     </p>
     <p class="footer-pro-links">
-      Institutional documentation:
       <a href="/about/">About</a> ·
-      <a href="/bylaws">Bylaws</a> ·
-      <a href="/rights">Constitution</a> ·
-      <a href="/governance">Governance</a> ·
-      <a href="/organizing">Organizational record</a> ·
-      <a href="/contribute/">How to help</a>.
-      Library practice: <a href="/catalog/">Catalog</a> ·
-      <a href="/pro/editorial-standards/">Editorial Standards</a> ·
-      <a href="/about/cite/">How to Cite</a>.
-    </p>
-    <p class="footer-about-links">
-      For readers: <a href="/about/contributing/">Contributing</a> ·
-      <a href="/about/founder/">From the Founder</a> ·
-      <a href="/about/cite/">How to Cite</a> ·
-      <a href="/permissions/">Rights &amp; Takedown</a> ·
+      <a href="/catalog/">Catalog</a> ·
       <a href="/about/corrections/">Corrections</a> ·
-      <a href="/about/becoming/">Building This Library</a>.
+      <a href="/about/cite/">How to cite</a> ·
+      <a href="/contribute/">Contribute</a> ·
+      <a href="/librarians/">For librarians</a> ·
+      <a href="/permissions/">Rights &amp; takedown</a>
     </p>
   </div>
   <div class="footer-meta">
     <p>
-      Content licensed CC BY-SA 4.0 except where noted. Citation guidance and corrections:
-      <a href="/about/cite/">/about/cite</a>. Source repository:
-      <a href="https://github.com/dave-schooltrustlands/schooltrustlands-encyclopedia">GitHub</a>.
+      Built in the open with AI assistance &mdash;
+      <a href="/pro/editorial-standards/">editorial standards</a>.
     </p>
     <p>
-      Oregon litigation: <em>Siuslaw School District 97J et al. v. State of Oregon</em>,
-      Coos County Circuit Court 24CV38372. On July 24, 2026 the court granted the
-      State summary judgment and canceled the trial that had been set for
-      August 18&ndash;28, 2026. In the 23CV39056 line, the Oregon Supreme Court
-      denied review in S072734 on July 23, 2026, making the January 28, 2026
-      Court of Appeals standing decision final.
-      <a href="/court/oregon-current-case/">Case docket</a>.
+      Content licensed CC BY-SA 4.0 except where noted.
     </p>
     {/* v9 D.2 — small footer seal mark. Library Mode reveals; Reference
         and Standard hide. The image lands separately Cowork-side; until

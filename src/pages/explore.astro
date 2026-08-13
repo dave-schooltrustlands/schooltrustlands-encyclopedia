@@ -1,111 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-type Hotspot = {
-  href: string;
-  ariaLabel: string;
-  top: string;
-  left: string;
-  width: string;
-  height: string;
-  name: string;
-  description: string;
-  sections: string;
-  enterLabel?: string;
-};
-
-// v50 — hotspot percentages recalibrated by pixel-picking each labeled
-// room from the 1672×941 blueprint image. popup-up (tooltip flips
-// above) and tooltip-anchor-right (tooltip pins to right edge) are
-// derived from the percentages in the markup below — no manual class
-// list. The Great Hall keeps a softer 'Open →' affordance instead of
-// 'Enter →' because the room is the homepage.
-const hotspots: Hotspot[] = [
-  {
-    href: '/',
-    ariaLabel: 'Great Hall — the entrance and overview',
-    top: '34.0%', left: '37.1%', width: '12.6%', height: '18.6%',
-    name: 'Great Hall',
-    description: 'The entrance and overview. Start anywhere.',
-    sections: '',
-    enterLabel: 'Open →',
-  },
-  {
-    href: '/reading/',
-    ariaLabel: 'Reading Room — three book-length works on America’s school trust lands',
-    top: '32.4%', left: '10.2%', width: '14.4%', height: '18.1%',
-    name: 'Reading Room',
-    description: 'Three book-length works on America’s school trust lands.',
-    sections: 'Schools of the Republic · The Eighth Anchor · Who Steals from Children',
-  },
-  {
-    href: '/atlas/',
-    ariaLabel: 'Atlas — what every federal-grant state did with its school-trust lands',
-    top: '11.7%', left: '31.1%', width: '12.0%', height: '18.1%',
-    name: 'Atlas',
-    description: 'What every federal-grant state did with its school-trust lands.',
-    sections: 'Fifty state entries — federal-grant states in alphabetical order',
-  },
-  {
-    href: '/maps/',
-    ariaLabel: 'Map Room — state-by-state cartography of the trust geography',
-    top: '11.7%', left: '51.7%', width: '12.9%', height: '18.1%',
-    name: 'Map Room',
-    description: 'State-by-state cartography of the trust geography.',
-    sections: '',
-  },
-  {
-    href: '/counting/',
-    ariaLabel: 'Counting House — the financial record',
-    top: '42.0%', left: '65.8%', width: '11.7%', height: '12.2%',
-    name: 'Counting House',
-    description: 'The financial record. How much, where, and what was lost.',
-    sections: '',
-  },
-  {
-    href: '/newsroom/',
-    ariaLabel: 'Newsroom — a weekly survey of what’s changing across the fifty states',
-    top: '59.0%', left: '52.0%', width: '8.7%', height: '15.4%',
-    name: 'Newsroom',
-    description: 'A weekly survey of what’s changing across the fifty states.',
-    sections: 'About the Newsroom · Recent issues · Subscribe by email · RSS feed',
-  },
-  {
-    href: '/voices/',
-    ariaLabel: 'Voices — signed editorial pieces from named contributors',
-    top: '59.0%', left: '62.5%', width: '9.3%', height: '15.4%',
-    name: 'Voices',
-    description: 'Signed editorial pieces from named contributors.',
-    sections: '',
-  },
-  {
-    href: '/updates/',
-    ariaLabel: 'Updates — the running log of what’s shipped on the site',
-    top: '59.0%', left: '35.3%', width: '10.8%', height: '15.4%',
-    name: 'Updates',
-    description: 'The running log of what’s shipped on the site.',
-    sections: 'Weekly summaries by date',
-  },
-  {
-    href: '/pro/',
-    ariaLabel: 'Pro Wing — governance, editorial standards, collection development, roles, charter, dispute resolution',
-    top: '61.6%', left: '8.1%', width: '9.9%', height: '17.0%',
-    name: 'Pro Wing',
-    description: 'Governance, editorial standards, collection-development policy, roles, charter, dispute resolution.',
-    sections: 'Governance · Editorial Standards · Collection Development · Roles · Bylaws · Dispute Resolution',
-  },
-];
-
-function hotspotClasses(h: Hotspot): string {
-  const cls = ['hotspot'];
-  if (parseFloat(h.top) > 50) cls.push('popup-up');
-  if (parseFloat(h.left) > 55) cls.push('tooltip-anchor-right');
-  return cls.join(' ');
-}
 ---
 <BaseLayout
   title="Explore the Library · America's School Trust Library"
-  description="A floor plan of America's School Trust Library. Click any room to enter — Reading Room, Atlas, Map Room, Counting House, Newsroom, Voices, Updates, the Pro side. The Library's main spaces and how they connect."
+  description="A directory of the Library's main pages."
   sourceId="explore"
 >
   <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
@@ -113,165 +11,43 @@ function hotspotClasses(h: Hotspot): string {
     <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Explore the Library</h1>
 
     <p class="kicker text-slate-600">
-      Click any room to enter. The Library is built around the spaces shown below and the new Catalog spine: Catalog, Reading Room, Atlas, Counting House, Map Room, Newsroom, Voices, Updates, and the Pro side. Smaller alcoves and side rooms in the drawing are sketched for future expansion and aren't clickable yet.
+      A directory of the Library's main pages.
     </p>
 
-    <div class="floor-plan-container not-prose" data-floor-plan>
-      <img
-        src="/img/posters/library-spatial-blueprint-v1.png"
-        alt="Floor plan of America's School Trust Library showing rooms arranged around a Great Hall lobby — Reading Room, Atlas, Map Room, Counting House, Newsroom, Voices, Updates, Pro Wing — with hidden alcoves and corridors. Smaller decorative elements include a Primary Sources Alcove, a Scholarship Stack, and a Windowed Alcove."
-        class="floor-plan-image"
-      />
-      {hotspots.map((h) => (
-        <a
-          href={h.href}
-          class={hotspotClasses(h)}
-          style={`top:${h.top};left:${h.left};width:${h.width};height:${h.height}`}
-          aria-label={h.ariaLabel}
-        >
-          <span class="visually-hidden">{h.name}</span>
-          <span class="hotspot-tooltip" role="presentation">
-            <strong>{h.name}</strong>
-            <span class="tooltip-description">{h.description}</span>
-            {h.sections && <span class="tooltip-sections">{h.sections}</span>}
-            <span class="tooltip-enter">{h.enterLabel || 'Enter →'}</span>
-          </span>
-        </a>
-      ))}
-    </div>
-
-    <p class="text-sm text-slate-600 mt-6">
-      On phones and narrow screens, the floor plan above hides — the list below is the same content in text form. On wider screens it stays available as a quick directory.
-    </p>
-
+    <h2>The subject</h2>
     <ul class="room-list">
-      <li><a href="/"><strong>Great Hall</strong></a> — the entrance and overview. Start anywhere.</li>
-      <li><a href="/catalog/"><strong>Catalog</strong></a> — the rendered index of authority records, L0 case-law holdings, figures, books, and named collections.</li>
-      <li><a href="/reading/"><strong>Reading Room</strong></a> — three book-length works on America's school trust lands.</li>
+      <li><a href="/start/"><strong>Start here</strong></a> — school trust lands: a primer.</li>
+      <li><a href="/states/"><strong>Your state</strong></a> — the state-by-state record.</li>
       <li><a href="/atlas/"><strong>Atlas</strong></a> — what every federal-grant state did with its school-trust lands.</li>
       <li><a href="/maps/"><strong>Map Room</strong></a> — state-by-state cartography of the trust geography.</li>
+      <li><a href="/court/"><strong>The cases</strong></a> — the court record.</li>
       <li><a href="/counting/"><strong>Counting House</strong></a> — the financial record. How much, where, and what was lost.</li>
-      <li><a href="/newsroom/"><strong>Newsroom</strong></a> — a weekly survey of what's changing across the fifty states.</li>
-      <li><a href="/voices/"><strong>Voices</strong></a> — signed editorial pieces from named contributors.</li>
-      <li><a href="/updates/"><strong>Updates</strong></a> — the running log of what's shipped on the site.</li>
-      <li><a href="/pro/"><strong>Pro Wing</strong></a> — governance, editorial standards, collection-development policy, roles.</li>
+      <li><a href="/reading/"><strong>Reading Room</strong></a> — book-length works on America's school trust lands.</li>
+      <li><a href="/booklet/"><strong>The booklet</strong></a> — the Library in brief.</li>
+      <li><a href="/catalog/"><strong>Catalog</strong></a> — the Library's full index.</li>
     </ul>
 
-    <p class="mt-10 text-slate-700">
-      The Library is being built openly. If you find something missing or wrong, <a href="/about/founder/">tell the editor</a> — we welcome corrections and additions. For more on how the Library was conceived and built, see <a href="/about/">About the Library</a> and <a href="/about/how-this-works/">How this works</a>.
-    </p>
+    <h2>News</h2>
+    <ul class="room-list">
+      <li><a href="/newsroom/"><strong>Newsroom</strong></a> — a weekly survey of what's changing across the fifty states.</li>
+      <li><a href="/voices/"><strong>Voices</strong></a> — signed editorial pieces from named contributors.</li>
+      <li><a href="/updates/"><strong>Updates</strong></a> — the Library's milestones.</li>
+    </ul>
+
+    <h2>The Library</h2>
+    <ul class="room-list">
+      <li><a href="/about/"><strong>About</strong></a> — who runs the Library, and how to reach us.</li>
+      <li><a href="/contribute/"><strong>Contribute</strong></a> — send a source, correct a page, help maintain a state.</li>
+      <li><a href="/search/"><strong>Search</strong></a> — search the whole collection.</li>
+      <li><a href="/about/corrections/"><strong>Corrections</strong></a> — the corrections ledger.</li>
+      <li><a href="/about/cite/"><strong>How to cite</strong></a> — citation formats for Library pages.</li>
+      <li><a href="/librarians/"><strong>For librarians</strong></a> — how this library is made.</li>
+      <li><a href="/pro/"><strong>Pro Wing</strong></a> — governance, editorial standards, collection-development policy, roles.</li>
+    </ul>
   </article>
 </BaseLayout>
 
 <style>
-  .floor-plan-container {
-    position: relative;
-    width: min(95vw, 1600px);
-    margin: 1.5em auto;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .floor-plan-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .hotspot {
-    position: absolute;
-    background: transparent;
-    border: 2px solid transparent;
-    border-radius: 6px;
-    transition: background 0.15s, border 0.15s;
-    text-decoration: none;
-  }
-  .hotspot:hover,
-  .hotspot:focus {
-    background: rgba(212, 175, 55, 0.18);
-    border-color: rgba(212, 175, 55, 0.7);
-    outline: none;
-  }
-  /* v50 — ?debug=1 overlays a thin red outline on every hotspot so
-     visual recalibration is auditable on the deployed site without
-     hovering. Toggled by a data attribute set in the inline script. */
-  [data-floor-plan][data-debug='1'] .hotspot {
-    outline: 1px solid rgba(220, 38, 38, 0.85);
-    outline-offset: -1px;
-  }
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-  .hotspot-tooltip {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 8px;
-    background: #fbf6e9;
-    border: 1px solid #c8b78a;
-    padding: 10px 14px;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(31, 42, 68, 0.18);
-    font-size: 0.92rem;
-    line-height: 1.4;
-    min-width: 220px;
-    max-width: 320px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.15s, visibility 0.15s;
-    z-index: 20;
-    /* v50 — was pointer-events: none in v49. Setting auto restores
-       hover persistence when the cursor moves from hotspot onto
-       tooltip, and lets the tooltip body act as a click target
-       (clicks bubble to the parent <a> for navigation). */
-    pointer-events: auto;
-    color: #1f2a44;
-    text-align: left;
-  }
-  .hotspot.tooltip-anchor-right .hotspot-tooltip {
-    left: auto;
-    right: 0;
-  }
-  /* v50 — bottom-row hotspots flip the tooltip ABOVE the rectangle
-     so it stays on-screen instead of extending past the image. */
-  .hotspot.popup-up .hotspot-tooltip {
-    top: auto;
-    bottom: 100%;
-    margin-top: 0;
-    margin-bottom: 8px;
-  }
-  .hotspot-tooltip strong {
-    display: block;
-    font-size: 1.05rem;
-    margin-bottom: 4px;
-    color: #1f2a44;
-  }
-  .tooltip-description {
-    display: block;
-    margin-bottom: 6px;
-  }
-  .tooltip-sections {
-    display: block;
-    font-size: 0.85rem;
-    color: #4a5a72;
-  }
-  .tooltip-enter {
-    display: block;
-    margin-top: 6px;
-    text-align: right;
-    font-size: 0.85rem;
-    color: #1e3a5f;
-    text-decoration: underline;
-  }
-  .hotspot:hover .hotspot-tooltip,
-  .hotspot:focus .hotspot-tooltip,
-  .hotspot:focus-within .hotspot-tooltip {
-    opacity: 1;
-    visibility: visible;
-  }
   .room-list {
     list-style: disc;
     padding-left: 1.25rem;
@@ -281,21 +57,4 @@ function hotspotClasses(h: Hotspot): string {
     margin: 0.4rem 0;
     line-height: 1.5;
   }
-  @media (max-width: 768px) {
-    .floor-plan-container {
-      display: none;
-    }
-  }
 </style>
-
-<script is:inline>
-  // v50 — ?debug=1 toggles a red outline on every hotspot so a visual
-  // sweep at /explore/?debug=1 makes calibration eyeball-able.
-  (function () {
-    var params = new URLSearchParams(window.location.search);
-    if (params.get('debug') === '1') {
-      var fp = document.querySelector('[data-floor-plan]');
-      if (fp) fp.setAttribute('data-debug', '1');
-    }
-  })();
-</script>

@@ -6,6 +6,18 @@ import SiteWidePreviewBanner from './SiteWidePreviewBanner.astro';
 import LivingEditionLabel from './LivingEditionLabel.astro';
 import { SITE_PREVIEW } from '../site.config';
 
+// v63 — task-first relabel (2026-08-13 restructure):
+//   - Primary labels name the task, not the room: Start here · Your
+//     state · The cases · The money · Reading · Catalog · News ·
+//     Contribute · About.
+//   - Room names stay as flavor inside two small dropdowns (Your
+//     state ▾: Atlas, Map Room; Reading ▾: Writing Room, The booklet),
+//     reusing the v50/v55 details-disclosure mechanics unchanged.
+//   - Removed from the nav (pages stay live): Explore, Why, Reference
+//     Desk, and the coming-soon rooms (Breach & Recovery, Founders'
+//     Cabinet, Schoolroom, Lecture Hall). Founders' Cabinet stays
+//     reachable via /about/.
+//
 // v55 — Navigation Direction B:
 //   - Library rooms (Reading, Atlas, Map Room, Counting House) pulled
 //     into a new "Rooms ▾" disclosure (parallel to v50's "More ▾").
@@ -25,33 +37,39 @@ import { SITE_PREVIEW } from '../site.config';
 // v38 — header search rebuilt as a plain <form action="/search/" method="get">.
 // v36 — view toggle removed, mobile nav replaced with a hamburger overlay.
 
-const NAV_LINKS = [
-  { href: '/start/', label: 'Start Here' },
-  { href: '/explore/', label: 'Explore' },
-  { href: '/why/', label: 'Why' },
-  { href: '/contribute/', label: 'Contribute', icon: 'HandHeart' },
-  { href: '/about/', label: 'About', icon: 'Building2' },
-  // v57b cleanup — Newsroom moves out of the inline top-nav and into
-  // LIBRARY_ROOMS / Rooms ▾ dropdown. The word "room" is in the name;
-  // treating it as a non-library category was a v55 inconsistency.
+// v63 — primary nav, task-first. Split into segments so the two
+// dropdowns (Your state ▾, Reading ▾) can sit in reading order between
+// the plain links, mirroring the desktop order on mobile.
+const NAV_START = [
+  { href: '/start/', label: 'Start here' },
 ];
 
-const LIBRARY_ROOMS = [
-  { href: '/catalog/', label: 'Catalog', icon: 'Archive', live: true },
-  { href: '/reading/', label: 'Reading Room', icon: 'BookOpen', live: true },
-  { href: '/atlas/', label: 'Atlas', icon: 'Compass', live: true },
-  { href: '/maps/', label: 'Map Room', icon: 'Map', live: true },
-  { href: '/counting/', label: 'Counting House', icon: 'ScrollText', live: true },
-  { href: '/newsroom/', label: 'Newsroom', icon: 'Newspaper', live: true },
-  { href: '/reference-desk/', label: 'Reference Desk', icon: 'HandHeart', live: true },
-  { href: '/writing/', label: 'Writing Room', icon: 'BookOpen', live: true },
-  // v3.0 — Court Room promoted from Coming Soon to live with Phase 1
-  // of the Court Room Expansion Build. v3.2.1 collapsed the standalone
-  // Opinions Library into per-state dossiers under the Atlas; the
-  // lobby now lists four subsections: Lineage, Atlas, Case File,
-  // Reading Wing.
-  { href: '/court/', label: 'Court Room', icon: 'Scale', live: true },
-  { href: null, label: 'Breach & Recovery', icon: 'ShieldAlert', live: false },
+// "Your state ▾" — the state pages are the destination; the Atlas and
+// the Map Room ride along as the rooms that serve them.
+const STATE_LINKS = [
+  { href: '/states/', label: 'All states', icon: 'Map' },
+  { href: '/atlas/', label: 'Atlas', icon: 'Compass' },
+  { href: '/maps/', label: 'Map Room', icon: 'Map' },
+];
+
+const NAV_MIDDLE = [
+  { href: '/court/', label: 'The cases' },
+  { href: '/counting/', label: 'The money' },
+];
+
+// "Reading ▾" — the Reading Room is the destination; the Writing Room
+// and the booklet ride along.
+const READING_LINKS = [
+  { href: '/reading/', label: 'Reading Room', icon: 'BookOpen' },
+  { href: '/writing/', label: 'Writing Room', icon: 'BookOpen' },
+  { href: '/booklet/', label: 'The booklet', icon: 'BookOpen' },
+];
+
+const NAV_TAIL = [
+  { href: '/catalog/', label: 'Catalog' },
+  { href: '/newsroom/', label: 'News' },
+  { href: '/contribute/', label: 'Contribute', icon: 'HandHeart' },
+  { href: '/about/', label: 'About', icon: 'Building2' },
 ];
 
 const MORE_LINKS = [
@@ -62,37 +80,16 @@ const MORE_LINKS = [
   { href: '/updates/', label: 'Updates' },
 ];
 
-// v56 — Coming Soon ▾ disclosure. Each entry has a live stub page at
-// its eventual URL; the stub gets replaced in place when the room ships
-// in full. Entries render as italic slate links (not muted aria-disabled
-// spans) because the destination exists — it's a stub, not a dead link.
-//
-// v62 — Trimmed from nine entries to five. Records Room, Chronicle
-// Room, The Stacks, and Computer Room were withdrawn because their
-// functions overlap with existing surfaces: the v59 curated catalog
-// (Records / Stacks), the Counting House ledger as a host for the
-// counterfactual timeline (Chronicle), and /contribute/ +
-// /about/how-this-works/ (Computer Room). What remains is the five
-// argument-mode rooms — Court, Breach & Recovery, Founders' Cabinet,
-// Schoolroom, Lecture Hall.
-const COMING_SOON_LINKS = [
-  // v3.0 — Court Room removed from Coming Soon (promoted to live in
-  // LIBRARY_ROOMS above).
-  { href: '/breach-recovery/', label: 'Breach & Recovery', icon: 'ShieldAlert' },
-  { href: '/founders/', label: "Founders' Cabinet", icon: 'Building2' },
-  { href: '/school/', label: 'Schoolroom', icon: 'BookOpen' },
-  { href: '/lectures/', label: 'Lecture Hall', icon: 'Mic' },
-];
-
-const LIVE_LIBRARY_ROOMS = LIBRARY_ROOMS.filter((r) => r.live);
-const COMING_LIBRARY_ROOMS = LIBRARY_ROOMS.filter((r) => !r.live);
-
 // Active-state detection: which top-nav surface the current page belongs to.
 // Trailing-slash normalized so /reading and /reading/ both match.
 const rawPath = Astro.url.pathname;
 const path = rawPath.replace(/\/$/, '') || '/';
-const LIBRARY_PREFIXES = ['/catalog', '/reading', '/atlas', '/maps', '/counting', '/reference-desk', '/newsroom', '/writing', '/court'];
-const isInLibraryRoom = LIBRARY_PREFIXES.some(
+const STATE_PREFIXES = ['/states', '/atlas', '/maps'];
+const READING_PREFIXES = ['/reading', '/writing', '/booklet'];
+const isInStateSection = STATE_PREFIXES.some(
+  (prefix) => path === prefix || path.startsWith(`${prefix}/`),
+);
+const isInReadingSection = READING_PREFIXES.some(
   (prefix) => path === prefix || path.startsWith(`${prefix}/`),
 );
 ---
@@ -133,12 +130,11 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
     {/* Desktop nav — visible at lg+, hidden at smaller widths so the
         wordmark + hamburger + search fit on a single mobile row.
 
-        Order (v55): Start Here · Explore · Why · Rooms ▾ · Contribute
-        · About · Newsroom · More ▾ · Library Card · search-icon.
-        Rooms ▾ sits between Why and the front-of-house categories — adjacent
-        to Explore, the floor plan that introduces the rooms. */}
+        Order (v63): Start here · Your state ▾ · The cases · The money ·
+        Reading ▾ · Catalog · News · Contribute · About · More ▾ ·
+        Library Card · search-icon. */}
     <nav class="hidden flex-wrap items-center gap-x-1 gap-y-2 text-sm lg:flex sm:gap-x-3">
-      {NAV_LINKS.slice(0, 3).map((link) => (
+      {NAV_START.map((link) => (
         <a
           href={link.href}
           class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
@@ -148,50 +144,16 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
         </a>
       ))}
 
-      <details class="header-more header-rooms relative" data-header-rooms>
+      <details class="header-more header-rooms relative" data-header-state>
         <summary
           class:list={[
             'inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center px-2 text-blue-700 hover:underline',
-            isInLibraryRoom && 'header-rooms--active',
+            isInStateSection && 'header-rooms--active',
           ]}
-          aria-label="Library rooms"
-        >Rooms&nbsp;▾</summary>
+          aria-label="State pages"
+        >Your&nbsp;state&nbsp;▾</summary>
         <div class="header-more__panel" role="menu">
-          {LIVE_LIBRARY_ROOMS.map((room) => (
-            <a
-              href={room.href!}
-              role="menuitem"
-              class="header-more__link"
-            >
-              <NavIcon name={room.icon} />
-              <span>{room.label}</span>
-            </a>
-          ))}
-          <div class="header-more__divider" role="separator"></div>
-          {COMING_LIBRARY_ROOMS.map((room) => (
-            <span
-              class="header-more__link header-more__link--coming-soon"
-              aria-disabled="true"
-              role="menuitem"
-            >
-              <NavIcon name={room.icon} />
-              <span>{room.label}</span>
-              <small>coming soon</small>
-            </span>
-          ))}
-        </div>
-      </details>
-
-      {/* v56 — Coming Soon ▾ disclosure. Lists the ten rooms-being-planned
-          that have stub pages. Italicized slate text on each link
-          communicates "future thing, click to see what's planned." */}
-      <details class="header-more header-coming relative" data-header-coming>
-        <summary
-          class="inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center px-2 text-blue-700 hover:underline"
-          aria-label="Rooms being planned"
-        >Coming&nbsp;Soon&nbsp;▾</summary>
-        <div class="header-more__panel" role="menu">
-          {COMING_SOON_LINKS.map((room) => (
+          {STATE_LINKS.map((room) => (
             <a
               href={room.href}
               role="menuitem"
@@ -204,7 +166,39 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
         </div>
       </details>
 
-      {NAV_LINKS.slice(3).map((link) => (
+      {NAV_MIDDLE.map((link) => (
+        <a
+          href={link.href}
+          class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
+        >
+          {link.icon && <NavIcon name={link.icon} />}
+          {link.label.replace(/ /g, ' ')}
+        </a>
+      ))}
+
+      <details class="header-more header-rooms relative" data-header-reading>
+        <summary
+          class:list={[
+            'inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center px-2 text-blue-700 hover:underline',
+            isInReadingSection && 'header-rooms--active',
+          ]}
+          aria-label="Reading"
+        >Reading&nbsp;▾</summary>
+        <div class="header-more__panel" role="menu">
+          {READING_LINKS.map((room) => (
+            <a
+              href={room.href}
+              role="menuitem"
+              class="header-more__link"
+            >
+              <NavIcon name={room.icon} />
+              <span>{room.label}</span>
+            </a>
+          ))}
+        </div>
+      </details>
+
+      {NAV_TAIL.map((link) => (
         <a
           href={link.href}
           class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
@@ -411,15 +405,14 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
         aria-label="Close navigation menu"
       >×</button>
     </div>
-    {/* v55 — mobile overlay continues to list every live destination
-        inline. Order matches the desktop nav reading: front-of-house
-        first (Start Here · Explore · Why), then the four live library
-        rooms in a labeled group, then Contribute · About · Newsroom,
-        then the More disclosure entries (Pro · Voices · Updates).
-        Coming-soon rooms are intentionally omitted from mobile to keep
-        the menu uncluttered. */}
+    {/* v63 — mobile overlay lists every live destination inline, in the
+        same reading order as the desktop nav: Start here, then the
+        "Your state" group (All states · Atlas · Map Room), The cases ·
+        The money, the "Reading" group (Reading Room · Writing Room ·
+        The booklet), then Catalog · News · Contribute · About, then the
+        More disclosure entries. */}
     <ul class="mobile-nav-overlay__list">
-      {NAV_LINKS.slice(0, 3).map((link) => (
+      {NAV_START.map((link) => (
         <li>
           <a href={link.href} class="mobile-nav-overlay__link">
             {link.icon && <NavIcon name={link.icon} />}
@@ -427,36 +420,41 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
           </a>
         </li>
       ))}
-      <li class="mobile-nav-overlay__group-label" aria-hidden="true">Library rooms</li>
-      {LIVE_LIBRARY_ROOMS.map((room) => (
+      <li class="mobile-nav-overlay__group-label" aria-hidden="true">Your state</li>
+      {STATE_LINKS.map((room) => (
         <li>
-          <a href={room.href!} class="mobile-nav-overlay__link">
+          <a href={room.href} class="mobile-nav-overlay__link">
             <NavIcon name={room.icon} />
             <span>{room.label}</span>
           </a>
         </li>
       ))}
-      {/* v56 — Coming Soon group in the mobile overlay. Lists all ten
-          stub-page rooms inline so mobile readers see the planned scope
-          directly, without a nested dropdown. */}
-      <li class="mobile-nav-overlay__group-label" aria-hidden="true">Coming Soon</li>
-      {COMING_SOON_LINKS.map((room) => (
+      {NAV_MIDDLE.map((link) => (
         <li>
-          <a href={room.href} class="mobile-nav-overlay__link mobile-nav-overlay__link--coming">
+          <a href={link.href} class="mobile-nav-overlay__link">
+            {link.icon && <NavIcon name={link.icon} />}
+            <span>{link.label}</span>
+          </a>
+        </li>
+      ))}
+      <li class="mobile-nav-overlay__group-label" aria-hidden="true">Reading</li>
+      {READING_LINKS.map((room) => (
+        <li>
+          <a href={room.href} class="mobile-nav-overlay__link">
             <NavIcon name={room.icon} />
             <span>{room.label}</span>
+          </a>
+        </li>
+      ))}
+      {NAV_TAIL.map((link) => (
+        <li>
+          <a href={link.href} class="mobile-nav-overlay__link">
+            {link.icon && <NavIcon name={link.icon} />}
+            <span>{link.label}</span>
           </a>
         </li>
       ))}
       <li class="mobile-nav-overlay__divider"></li>
-      {NAV_LINKS.slice(3).map((link) => (
-        <li>
-          <a href={link.href} class="mobile-nav-overlay__link">
-            {link.icon && <NavIcon name={link.icon} />}
-            <span>{link.label}</span>
-          </a>
-        </li>
-      ))}
       {MORE_LINKS.map((link) => (
         <li>
           <a href={link.href} class="mobile-nav-overlay__link">
@@ -886,11 +884,11 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
     }
 
     // ---- v50/v55 — header disclosures: close on outside click + link nav ----
-    // Both the "Rooms ▾" (v55) and "More ▾" (v50) disclosures share the
-    // same UX contract: clicking outside closes; activating a link closes
-    // so the destination renders without the panel still hanging open.
+    // The "Your state ▾" / "Reading ▾" (v63) and "More ▾" (v50) disclosures
+    // share the same UX contract: clicking outside closes; activating a link
+    // closes so the destination renders without the panel still hanging open.
     const headerDisclosures = Array.from(
-      document.querySelectorAll('[data-header-rooms], [data-header-coming], [data-header-more]'),
+      document.querySelectorAll('[data-header-state], [data-header-reading], [data-header-more]'),
     );
     if (headerDisclosures.length > 0) {
       document.addEventListener('click', (ev) => {
@@ -911,8 +909,8 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
     }
     // Preserve the disclosure references for the Escape handler below.
     const moreDetails = document.querySelector('[data-header-more]');
-    const roomsDetails = document.querySelector('[data-header-rooms]');
-    const comingDetails = document.querySelector('[data-header-coming]');
+    const stateDetails = document.querySelector('[data-header-state]');
+    const readingDetails = document.querySelector('[data-header-reading]');
 
     // ---- v50 — Collapsing desktop search ----
     const searchWrap = document.querySelector('[data-search-wrap]');
@@ -977,12 +975,12 @@ const isInLibraryRoom = LIBRARY_PREFIXES.some(
           if (toggleBtn && typeof toggleBtn.focus === 'function') toggleBtn.focus();
           return;
         }
-        if (roomsDetails && roomsDetails.hasAttribute('open')) {
-          roomsDetails.removeAttribute('open');
+        if (stateDetails && stateDetails.hasAttribute('open')) {
+          stateDetails.removeAttribute('open');
           return;
         }
-        if (comingDetails && comingDetails.hasAttribute('open')) {
-          comingDetails.removeAttribute('open');
+        if (readingDetails && readingDetails.hasAttribute('open')) {
+          readingDetails.removeAttribute('open');
           return;
         }
         if (moreDetails && moreDetails.hasAttribute('open')) {
