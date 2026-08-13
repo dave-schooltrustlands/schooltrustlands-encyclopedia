@@ -48,6 +48,28 @@ function gatePage(wrong: boolean): Response {
 export const onRequest = defineMiddleware(async (context, next) => {
   const { pathname, search } = context.url;
 
+  // Trailing-slash normalizer (2026-08-14). Bare paths like /start reach this
+  // worker when no static asset matches them, and the worker's route matching
+  // has served them unreliably (the same defect that 404ed /booklet on
+  // 2026-08-10). public/_redirects sits at Cloudflare's ~100-rule ceiling, so
+  // the fix lives here instead: any slash-less GET/HEAD page path 301s to its
+  // canonical trailing-slash form, query string preserved. API, auth, and
+  // file requests pass through untouched.
+  const method = context.request.method;
+  if (
+    (method === 'GET' || method === 'HEAD') &&
+    !pathname.endsWith('/') &&
+    !pathname.startsWith('/api/') &&
+    !pathname.startsWith('/auth/') &&
+    !pathname.startsWith('/_') &&
+    !/\.[A-Za-z0-9]+$/.test(pathname)
+  ) {
+    return new Response(null, {
+      status: 301,
+      headers: { location: pathname + '/' + (search || '') },
+    });
+  }
+
   if (!pathname.startsWith(FP_PREFIX)) return next();
 
   const env: any = (context.locals as any)?.runtime?.env || {};
