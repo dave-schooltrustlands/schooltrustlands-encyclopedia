@@ -263,7 +263,7 @@ The next chapter goes to New Mexico and Arizona, 1910, where Congress wrote the 
 
 [^ch5-39]: *Jensen v. Dinehart*, 645 P.2d 32, 35 (Utah 1982) (the "free and unfettered" language of the majority opinion).
 
-[^ch5-40]: *Id.* at 36–40 (Oaks, J., concurring in part and dissenting in part).
+[^ch5-40]: *Id.* at *35–*37 (Oaks, J., concurring in part and dissenting in part). The separate opinion begins immediately after the majority's disposition at *35; the star pagination in the copy held in the Library's collection ends at *37, so the former "36–40" pin overshot the opinion.
 
 [^ch5-41]: Utah Foundation, Research Report No. 632, *supra* note 38; Harmer, *Utah's School Trust Lands*, *supra* note 35, at 22–25; Utah State Board of Education, *School Trust Lands in Utah* (2024), at 7, https://schools.utah.gov/schoollandtrust/_trustsystem/2024.SchoolTrustLandsInUtah.pdf.
 
