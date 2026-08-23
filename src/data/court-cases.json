@@ -118,16 +118,16 @@
     "url": "http://law.justia.com/cases/oklahoma/supreme-court/1982/5326.html"
   },
   "idaho-watersheds-1999": {
-    "caseName": "Idaho Watersheds Project v. State Board of Land Commissioners",
-    "citation": "133 Idaho 64",
+    "caseName": "Idaho Watersheds Project v. State Board of Land Commissioners (IWP II)",
+    "citation": "133 Idaho 64, 982 P.2d 367 (1999)",
     "court": "Idaho",
     "year": 1999,
-    "holding": "Below-market grazing leases on school trust lands violate the trust; the trust requires market-rate consideration.",
-    "whyItMatters": "Idaho's market-rate-leasing precedent. A clean example of a state supreme court striking down a non-revenue-maximizing leasing practice as a trust breach.",
+    "holding": "Idaho Code section 58-310B held unconstitutional under Article IX, section 8: the constitution requires the State to consider only the maximum long term financial return to the schools, so the Legislature may not direct the Land Board to weigh the state's general tax revenue or the livestock industry as well. The 1996 leases were ordered reopened for auction.",
+    "whyItMatters": "Idaho's sole-beneficiary precedent, and the field's cleanest authority that legislative redirection of a trustee's loyalty is a constitutional defect rather than a policy choice. Corrected August 23, 2026: this is not a below-market-valuation case and the opinion makes no breach finding. It is also not the same case as 133 Idaho 55, the H.J.R. 6 ballot-measure proceeding decided the same year under the same name.",
     "supports": ["full-value", "income-maximization"],
     "state": "ID",
     "topics": ["leasing", "full-value", "income-maximization"],
-    "url": "https://casetext.com/case/idaho-watersheds-project-v-state-board-of-land-comm"
+    "url": "https://www.courtlistener.com/opinion/1252918/idaho-watersheds-project-v-state-board-of-land-commissioners/"
   },
   "branson-v-romer-1997": {
     "caseName": "Branson School District RE-82 v. Romer",

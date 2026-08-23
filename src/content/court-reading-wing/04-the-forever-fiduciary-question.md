@@ -66,7 +66,7 @@ The institutions arriving now to manage the AI-era forever-trusts will be making
 - *Lassen v. Arizona ex rel. Arizona Highway Department*, 385 U.S. 458 (1967).
 - *Andrus v. Utah*, 446 U.S. 500 (1980).
 - *Trustees of Vincennes University v. Indiana*, 55 U.S. (14 How.) 268 (1852).
-- *Idaho Watersheds Project v. State Board of Land Commissioners*, 133 Idaho 64, 982 P.2d 358 (1999).
+- *Idaho Watersheds Project v. State Board of Land Commissioners (IWP II)*, 133 Idaho 64, 982 P.2d 367 (1999).
 - *State ex rel. Ebke v. Board of Educational Lands and Funds*, 154 Neb. 244, 47 N.W.2d 520 (1951).
 
 ### Statutes
