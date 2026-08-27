@@ -1,0 +1,2230 @@
+{
+  "generated": "2026-08-27",
+  "base_url": "http://www.orww.org/Elliott_Forest/History/Oral/",
+  "method_notes": [
+    "Link records only. No image was downloaded and no HTTP request of any kind was made for these files — everything here is parsed from the manifest URLs.",
+    "Filename grammar (Bob's ORWW convention): <frame>_<Place_Slug>_<YYYYMMDD>-<size>.jpg, e.g. 0866_Buehner_Camp_20171010-10.jpg. The parser is deliberately tolerant: the trailing -N is stripped first, then any 8-digit date is taken from anywhere in the stem, then the leading 3-5 digit frame number, and whatever remains is the place slug.",
+    "The trailing -N is an ORWW SIZE code, not a sequence: -10 files sit in /Photos/ and are the display images; -2 (and two -7) files sit in /Photos/icons/ and are the thumbnails of the same frame. It is reported as seq (as asked) and as rendition.",
+    "Renditions of one frame are folded into a photograph record keyed on folder date + frame number + place slug; photos[] still lists every URL individually.",
+    "Many frames on 2017-11-08 and 2017-12-06 carry no place slug at all (e.g. 1487-10.jpg) — Bob left them unnamed. They are kept with place_slug null rather than guessed at."
+  ],
+  "href": "/collections/zybach/elliott/photos/",
+  "rendition_note": "ORWW convention: -10 is the display image, -2 (in icons/) the thumbnail.",
+  "counts": {
+    "photographs": 156,
+    "interview_dates": 4,
+    "with_thumbnail": 103
+  },
+  "groups": [
+    {
+      "interview_key": "20171010",
+      "interview_date": "2017-10-10",
+      "interview_href": "/collections/zybach/elliott/interviews/20171010/",
+      "count": 39,
+      "places": [
+        {
+          "place_label": "Aerial Seeding",
+          "place_slug": "aerial-seeding",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0874|Aerial_Seeding",
+              "frame_number": "0874",
+              "date": "2017-10-10",
+              "place_slug": "Aerial_Seeding",
+              "place_label": "Aerial Seeding",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0874_Aerial_Seeding_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Ash Valley",
+          "place_slug": "ash-valley",
+          "count": 2,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0890|Ash_Valley",
+              "frame_number": "0890",
+              "date": "2017-10-10",
+              "place_slug": "Ash_Valley",
+              "place_label": "Ash Valley",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0890_Ash_Valley_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0893|Ash_Valley",
+              "frame_number": "0893",
+              "date": "2017-10-10",
+              "place_slug": "Ash_Valley",
+              "place_label": "Ash Valley",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0893_Ash_Valley_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Blacksmith Shop",
+          "place_slug": "blacksmith-shop",
+          "count": 2,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0872|Blacksmith_Shop",
+              "frame_number": "0872",
+              "date": "2017-10-10",
+              "place_slug": "Blacksmith_Shop",
+              "place_label": "Blacksmith Shop",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0872_Blacksmith_Shop",
+              "thumb_url": null,
+              "confidence": "unverified",
+              "notes": [
+                "No trailing -N size suffix on the filename.",
+                "Manifest URL has no file extension — the ORWW page link is truncated at the \".\" (the file itself is presumably .jpg).",
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171010|0873|Blacksmith_Shop",
+              "frame_number": "0873",
+              "date": "2017-10-10",
+              "place_slug": "Blacksmith_Shop",
+              "place_label": "Blacksmith Shop",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0873_Blacksmith_Shop",
+              "thumb_url": null,
+              "confidence": "unverified",
+              "notes": [
+                "No trailing -N size suffix on the filename.",
+                "Manifest URL has no file extension — the ORWW page link is truncated at the \".\" (the file itself is presumably .jpg).",
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            }
+          ]
+        },
+        {
+          "place_label": "Buehner Camp",
+          "place_slug": "buehner-camp",
+          "count": 4,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0864|Buehner_Camp",
+              "frame_number": "0864",
+              "date": "2017-10-10",
+              "place_slug": "Buehner_Camp",
+              "place_label": "Buehner Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0864_Buehner_Camp_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0865|Buehner_Camp",
+              "frame_number": "0865",
+              "date": "2017-10-10",
+              "place_slug": "Buehner_Camp",
+              "place_label": "Buehner Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0865_Buehner_Camp_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0866|Buehner_Camp",
+              "frame_number": "0866",
+              "date": "2017-10-10",
+              "place_slug": "Buehner_Camp",
+              "place_label": "Buehner Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0866_Buehner_Camp_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0866_Buehner_Camp_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0867|Buehner_Camp",
+              "frame_number": "0867",
+              "date": "2017-10-10",
+              "place_slug": "Buehner_Camp",
+              "place_label": "Buehner Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0867_Buehner_Camp_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Channel Change",
+          "place_slug": "channel-change",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0869|Channel_Change",
+              "frame_number": "0869",
+              "date": "2017-10-10",
+              "place_slug": "Channel_Change",
+              "place_label": "Channel Change",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0869_Channel_Change_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Cougar Pass LO",
+          "place_slug": "cougar-pass-lo",
+          "count": 4,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0904|Cougar_Pass_LO",
+              "frame_number": "0904",
+              "date": "2017-10-10",
+              "place_slug": "Cougar_Pass_LO",
+              "place_label": "Cougar Pass LO",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0904_Cougar_Pass_LO_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0904_Cougar_Pass_LO_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0905|Cougar_Pass_LO",
+              "frame_number": "0905",
+              "date": "2017-10-10",
+              "place_slug": "Cougar_Pass_LO",
+              "place_label": "Cougar Pass LO",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0905_Cougar_Pass_LO_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0909|Cougar_Pass_LO",
+              "frame_number": "0909",
+              "date": "2017-10-10",
+              "place_slug": "Cougar_Pass_LO",
+              "place_label": "Cougar Pass LO",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0909_Cougar_Pass_LO_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0909_Cougar_Pass_LO_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0916|Cougar_Pass_LO",
+              "frame_number": "0916",
+              "date": "2017-10-10",
+              "place_slug": "Cougar_Pass_LO",
+              "place_label": "Cougar Pass LO",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0916_Cougar_Pass_LO_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Cougar Pass Pano",
+          "place_slug": "cougar-pass-pano",
+          "count": 5,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0911|Cougar_Pass_Pano",
+              "frame_number": "0911",
+              "date": "2017-10-10",
+              "place_slug": "Cougar_Pass_Pano",
+              "place_label": "Cougar Pass Pano",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0911_Cougar_Pass_Pano_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0912|Cougar_Pass_Pano",
+              "frame_number": "0912",
+              "date": "2017-10-10",
+              "place_slug": "Cougar_Pass_Pano",
+              "place_label": "Cougar Pass Pano",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0912_Cougar_Pass_Pano_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0913|Cougar_Pass_Pano",
+              "frame_number": "0913",
+              "date": "2017-10-10",
+              "place_slug": "Cougar_Pass_Pano",
+              "place_label": "Cougar Pass Pano",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0913_Cougar_Pass_Pano_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0914|Cougar_Pass_Pano",
+              "frame_number": "0914",
+              "date": "2017-10-10",
+              "place_slug": "Cougar_Pass_Pano",
+              "place_label": "Cougar Pass Pano",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0914_Cougar_Pass_Pano_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0915|Cougar_Pass_Pano",
+              "frame_number": "0915",
+              "date": "2017-10-10",
+              "place_slug": "Cougar_Pass_Pano",
+              "place_label": "Cougar Pass Pano",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0915_Cougar_Pass_Pano_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Heritage Grove",
+          "place_slug": "heritage-grove",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0883|Heritage_Grove",
+              "frame_number": "0883",
+              "date": "2017-10-10",
+              "place_slug": "Heritage_Grove",
+              "place_label": "Heritage Grove",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0883_Heritage_Grove_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Huckleberries",
+          "place_slug": "huckleberries",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0900|Huckleberries",
+              "frame_number": "0900",
+              "date": "2017-10-10",
+              "place_slug": "Huckleberries",
+              "place_label": "Huckleberries",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0900_Huckleberries_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0900_Huckleberries_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Huckleberry Point",
+          "place_slug": "huckleberry-point",
+          "count": 2,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0895|Huckleberry_Point",
+              "frame_number": "0895",
+              "date": "2017-10-10",
+              "place_slug": "Huckleberry_Point",
+              "place_label": "Huckleberry Point",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0895_Huckleberry_Point_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0897|Huckleberry_Point",
+              "frame_number": "0897",
+              "date": "2017-10-10",
+              "place_slug": "Huckleberry_Point",
+              "place_label": "Huckleberry Point",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0897_Huckleberry_Point_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0897_Huckleberry_Point_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Indian Point",
+          "place_slug": "indian-point",
+          "count": 2,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0917|Indian_Point",
+              "frame_number": "0917",
+              "date": "2017-10-10",
+              "place_slug": "Indian_Point",
+              "place_label": "Indian Point",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0917_Indian_Point_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0917_Indian_Point_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0919|Indian_Point",
+              "frame_number": "0919",
+              "date": "2017-10-10",
+              "place_slug": "Indian_Point",
+              "place_label": "Indian Point",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0919_Indian_Point_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0919_Indian_Point_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Indian Trail Spring",
+          "place_slug": "indian-trail-spring",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0888|Indian_Trail_Spring",
+              "frame_number": "0888",
+              "date": "2017-10-10",
+              "place_slug": "Indian_Trail_Spring",
+              "place_label": "Indian Trail Spring",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0888_Indian_Trail_Spring_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0888_Indian_Trail_Spring_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Jerrys Reserve",
+          "place_slug": "jerrys-reserve",
+          "count": 3,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0884|Jerrys_Reserve",
+              "frame_number": "0884",
+              "date": "2017-10-10",
+              "place_slug": "Jerrys_Reserve",
+              "place_label": "Jerrys Reserve",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0884_Jerrys_Reserve_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0886|Jerrys_Reserve",
+              "frame_number": "0886",
+              "date": "2017-10-10",
+              "place_slug": "Jerrys_Reserve",
+              "place_label": "Jerrys Reserve",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0886_Jerrys_Reserve_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0887|Jerrys_Reserve",
+              "frame_number": "0887",
+              "date": "2017-10-10",
+              "place_slug": "Jerrys_Reserve",
+              "place_label": "Jerrys Reserve",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0887_Jerrys_Reserve_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0887_Jerrys_Reserve_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "N Marlow Ridge",
+          "place_slug": "n-marlow-ridge",
+          "count": 6,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0875|N_Marlow_Ridge",
+              "frame_number": "0875",
+              "date": "2017-10-10",
+              "place_slug": "N_Marlow_Ridge",
+              "place_label": "N Marlow Ridge",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0875_N_Marlow_Ridge_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0877|N_Marlow_Ridge",
+              "frame_number": "0877",
+              "date": "2017-10-10",
+              "place_slug": "N_Marlow_Ridge",
+              "place_label": "N Marlow Ridge",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0877_N_Marlow_Ridge_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0878|N_Marlow_Ridge",
+              "frame_number": "0878",
+              "date": "2017-10-10",
+              "place_slug": "N_Marlow_Ridge",
+              "place_label": "N Marlow Ridge",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0878_N_Marlow_Ridge_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0879|N_Marlow_Ridge",
+              "frame_number": "0879",
+              "date": "2017-10-10",
+              "place_slug": "N_Marlow_Ridge",
+              "place_label": "N Marlow Ridge",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0879_N_Marlow_Ridge_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0879_N_Marlow_Ridge_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0880|N_Marlow_Ridge",
+              "frame_number": "0880",
+              "date": "2017-10-10",
+              "place_slug": "N_Marlow_Ridge",
+              "place_label": "N Marlow Ridge",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0880_N_Marlow_Ridge_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0881|N_Marlow_Ridge",
+              "frame_number": "0881",
+              "date": "2017-10-10",
+              "place_slug": "N_Marlow_Ridge",
+              "place_label": "N Marlow Ridge",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0881_N_Marlow_Ridge_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Randy",
+          "place_slug": "randy",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0882|Randy",
+              "frame_number": "0882",
+              "date": "2017-10-10",
+              "place_slug": "Randy",
+              "place_label": "Randy",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0882_Randy_20171010-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Randy Amber Jerry",
+          "place_slug": "randy-amber-jerry",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0870|Randy_Amber_Jerry",
+              "frame_number": "0870",
+              "date": "2017-10-10",
+              "place_slug": "Randy_Amber_Jerry",
+              "place_label": "Randy Amber Jerry",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0870_Randy_Amber_Jerry_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0870_Randy_Amber_Jerry_20171010-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Zybach",
+          "place_slug": "zybach",
+          "count": 2,
+          "photographs": [
+            {
+              "photograph_key": "20171010|0894|Zybach",
+              "frame_number": "0894",
+              "date": "2017-10-10",
+              "place_slug": "Zybach",
+              "place_label": "Zybach",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0894_Zybach_20171010_0894-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/Zybach_20171010_0894-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171010|0904|Zybach",
+              "frame_number": "0904",
+              "date": "2017-10-10",
+              "place_slug": "Zybach",
+              "place_label": "Zybach",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/0904_Zybach_20171010-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Photos/icons/0904_Zybach_20171010-7.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "interview_key": "20171108",
+      "interview_date": "2017-11-08",
+      "interview_href": "/collections/zybach/elliott/interviews/20171108/",
+      "count": 38,
+      "places": [
+        {
+          "place_label": "1st Riparian Buffer",
+          "place_slug": "1st-riparian-buffer",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0982|1st_Riparian_Buffer",
+              "frame_number": "0982",
+              "date": "2017-11-08",
+              "place_slug": "1st_Riparian_Buffer",
+              "place_label": "1st Riparian Buffer",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0982_1st_Riparian_Buffer_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "David Gould",
+          "place_slug": "david-gould",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0968|David_Gould",
+              "frame_number": "0968",
+              "date": "2017-11-08",
+              "place_slug": "David_Gould",
+              "place_label": "David Gould",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0968_David_Gould_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Deans Mountain",
+          "place_slug": "deans-mountain",
+          "count": 2,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0989|Deans_Mountain",
+              "frame_number": "0989",
+              "date": "2017-11-08",
+              "place_slug": "Deans_Mountain",
+              "place_label": "Deans Mountain",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0989_Deans_Mountain_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0990|Deans_Mountain",
+              "frame_number": "0990",
+              "date": "2017-11-08",
+              "place_slug": "Deans_Mountain",
+              "place_label": "Deans Mountain",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0990_Deans_Mountain_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0990_Deans_Mountain_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Divide Spring",
+          "place_slug": "divide-spring",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0988|Divide_Spring",
+              "frame_number": "0988",
+              "date": "2017-11-08",
+              "place_slug": "Divide_Spring",
+              "place_label": "Divide Spring",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0988_Divide_Spring_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Divide Spring Camp",
+          "place_slug": "divide-spring-camp",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0987|Divide_Spring_Camp",
+              "frame_number": "0987",
+              "date": "2017-11-08",
+              "place_slug": "Divide_Spring_Camp",
+              "place_label": "Divide Spring Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0987_Divide_Spring_Camp_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Fishing Camp",
+          "place_slug": "fishing-camp",
+          "count": 6,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0951|Fishing_Camp",
+              "frame_number": "0951",
+              "date": "2017-11-08",
+              "place_slug": "Fishing_Camp",
+              "place_label": "Fishing Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0951_Fishing_Camp_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0952|Fishing_Camp",
+              "frame_number": "0952",
+              "date": "2017-11-08",
+              "place_slug": "Fishing_Camp",
+              "place_label": "Fishing Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0952_Fishing_Camp_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0953|Fishing_Camp",
+              "frame_number": "0953",
+              "date": "2017-11-08",
+              "place_slug": "Fishing_Camp",
+              "place_label": "Fishing Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0953_Fishing_Camp_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0953_Fishing_Camp_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0954|Fishing_Camp",
+              "frame_number": "0954",
+              "date": "2017-11-08",
+              "place_slug": "Fishing_Camp",
+              "place_label": "Fishing Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0954_Fishing_Camp_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0954_Fishing_Camp_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0955|Fishing_Camp",
+              "frame_number": "0955",
+              "date": "2017-11-08",
+              "place_slug": "Fishing_Camp",
+              "place_label": "Fishing Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0955_Fishing_Camp_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0955_Fishing_Camp_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0956|Fishing_Camp",
+              "frame_number": "0956",
+              "date": "2017-11-08",
+              "place_slug": "Fishing_Camp",
+              "place_label": "Fishing Camp",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0956_Fishing_Camp_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0956_Fishing_Camp_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Gould Barn",
+          "place_slug": "gould-barn",
+          "count": 2,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0960|Gould_Barn",
+              "frame_number": "0960",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Barn",
+              "place_label": "Gould Barn",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0960_Gould_Barn_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0962|Gould_Barn",
+              "frame_number": "0962",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Barn",
+              "place_label": "Gould Barn",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0962_Gould_Barn_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Gould Bridge",
+          "place_slug": "gould-bridge",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0957|Gould_Bridge",
+              "frame_number": "0957",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Bridge",
+              "place_label": "Gould Bridge",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0957_Gould_Bridge_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0957_Gould_Bridge_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Gould Lake",
+          "place_slug": "gould-lake",
+          "count": 3,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0971|Gould_Lake",
+              "frame_number": "0971",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Lake",
+              "place_label": "Gould Lake",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0971_Gould_Lake_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0973|Gould_Lake",
+              "frame_number": "0973",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Lake",
+              "place_label": "Gould Lake",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0973_Gould_Lake_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0974|Gould_Lake",
+              "frame_number": "0974",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Lake",
+              "place_label": "Gould Lake",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0974-Gould_Lake_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Gould Lake??",
+          "place_slug": "gould-lake",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0978|Gould_Lake??",
+              "frame_number": "0978",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Lake??",
+              "place_label": "Gould Lake??",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0978_Gould_Lake%3f%3f",
+              "thumb_url": null,
+              "confidence": "unverified",
+              "notes": [
+                "No trailing -N size suffix on the filename.",
+                "Manifest URL has no file extension — the ORWW page link is truncated at the \".\" (the file itself is presumably .jpg).",
+                "No YYYYMMDD in the filename; date taken from the ORWW folder.",
+                "Filename carries Bob's own question marks (place identification uncertain in the original)."
+              ]
+            }
+          ]
+        },
+        {
+          "place_label": "Gould Orchard",
+          "place_slug": "gould-orchard",
+          "count": 4,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0964|Gould_Orchard",
+              "frame_number": "0964",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Orchard",
+              "place_label": "Gould Orchard",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0964_Gould_Orchard_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0966|Gould_Orchard",
+              "frame_number": "0966",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Orchard",
+              "place_label": "Gould Orchard",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0966_Gould_Orchard_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0966_Gould_Orchard_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0967|Gould_Orchard",
+              "frame_number": "0967",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Orchard",
+              "place_label": "Gould Orchard",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0967_Gould_Orchard_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0969|Gould_Orchard",
+              "frame_number": "0969",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Orchard",
+              "place_label": "Gould Orchard",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0969_Gould_Orchard_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0969_Gould_Orchard_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Gould Rose",
+          "place_slug": "gould-rose",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0965|Gould_Rose",
+              "frame_number": "0965",
+              "date": "2017-11-08",
+              "place_slug": "Gould_Rose",
+              "place_label": "Gould Rose",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0965_Gould_Rose_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Human Scale",
+          "place_slug": "human-scale",
+          "count": 2,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0949|Human_Scale",
+              "frame_number": "0949",
+              "date": "2017-11-08",
+              "place_slug": "Human_Scale",
+              "place_label": "Human Scale",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0949_Human_Scale_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0991|Human_Scale",
+              "frame_number": "0991",
+              "date": "2017-11-08",
+              "place_slug": "Human_Scale",
+              "place_label": "Human Scale",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0991_Human_Scale_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0991_Human_Scale_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Muddy Spring",
+          "place_slug": "muddy-spring",
+          "count": 4,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0996|Muddy_Spring",
+              "frame_number": "0996",
+              "date": "2017-11-08",
+              "place_slug": "Muddy_Spring",
+              "place_label": "Muddy Spring",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0996_Muddy_Spring_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0997|Muddy_Spring",
+              "frame_number": "0997",
+              "date": "2017-11-08",
+              "place_slug": "Muddy_Spring",
+              "place_label": "Muddy Spring",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0997_Muddy_Spring_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0998|Muddy_Spring",
+              "frame_number": "0998",
+              "date": "2017-11-08",
+              "place_slug": "Muddy_Spring",
+              "place_label": "Muddy Spring",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0998_Muddy_Spring_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0999|Muddy_Spring",
+              "frame_number": "0999",
+              "date": "2017-11-08",
+              "place_slug": "Muddy_Spring",
+              "place_label": "Muddy Spring",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0999_Muddy_Spring_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0999_Muddy_Spring_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Old Maids Cabin",
+          "place_slug": "old-maids-cabin",
+          "count": 3,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0979|Old_Maids_Cabin",
+              "frame_number": "0979",
+              "date": "2017-11-08",
+              "place_slug": "Old_Maids_Cabin",
+              "place_label": "Old Maids Cabin",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0979_Old_Maids_Cabin_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0980|Old_Maids_Cabin",
+              "frame_number": "0980",
+              "date": "2017-11-08",
+              "place_slug": "Old_Maids_Cabin",
+              "place_label": "Old Maids Cabin",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0980_Old_Maids_Cabin_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171108|0983|Old_Maids_Cabin",
+              "frame_number": "0983",
+              "date": "2017-11-08",
+              "place_slug": "Old_Maids_Cabin",
+              "place_label": "Old Maids Cabin",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0983_Old_Maids_Cabin_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Old-Gowth Alder",
+          "place_slug": "old-gowth-alder",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0986|Old-Gowth_Alder",
+              "frame_number": "0986",
+              "date": "2017-11-08",
+              "place_slug": "Old-Gowth_Alder",
+              "place_label": "Old-Gowth Alder",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0986_Old-Gowth_Alder_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Radio Tower",
+          "place_slug": "radio-tower",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0992|Radio_Tower",
+              "frame_number": "0992",
+              "date": "2017-11-08",
+              "place_slug": "Radio_Tower",
+              "place_label": "Radio Tower",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0992_Radio_Tower_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0992_Radio_Tower_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Spawning Gravel",
+          "place_slug": "spawning-gravel",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0984|Spawning_Gravel",
+              "frame_number": "0984",
+              "date": "2017-11-08",
+              "place_slug": "Spawning_Gravel",
+              "place_label": "Spawning Gravel",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0984_Spawning_Gravel_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Sullivan Ridge Spring",
+          "place_slug": "sullivan-ridge-spring",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0947|Sullivan_Ridge_Spring",
+              "frame_number": "0947",
+              "date": "2017-11-08",
+              "place_slug": "Sullivan_Ridge_Spring",
+              "place_label": "Sullivan Ridge Spring",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0947_Sullivan_Ridge_Spring_20171108-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Sullivan Ridge Waterhole",
+          "place_slug": "sullivan-ridge-waterhole",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171108|0950|Sullivan_Ridge_Waterhole",
+              "frame_number": "0950",
+              "date": "2017-11-08",
+              "place_slug": "Sullivan_Ridge_Waterhole",
+              "place_label": "Sullivan Ridge Waterhole",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0950_Sullivan_Ridge_Waterhole_20171108-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/icons/0950_Sullivan_Ridge_Waterhole_20171108-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "interview_key": "20171206",
+      "interview_date": "2017-12-06",
+      "interview_href": "/collections/zybach/elliott/interviews/20171206/",
+      "count": 42,
+      "places": [
+        {
+          "place_label": "Deans Mountain",
+          "place_slug": "deans-mountain",
+          "count": 3,
+          "photographs": [
+            {
+              "photograph_key": "20171206|1490|Deans_Mountain",
+              "frame_number": "1490",
+              "date": "2017-12-06",
+              "place_slug": "Deans_Mountain",
+              "place_label": "Deans Mountain",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1490_Deans_Mountain-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1490_Deans_Mountain-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1501|Deans_Mountain",
+              "frame_number": "1501",
+              "date": "2017-12-06",
+              "place_slug": "Deans_Mountain",
+              "place_label": "Deans Mountain",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1501_20171206_Deans_Mountain-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1501_20171206_Deans_Mountain-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171206|1502|Deans_Mountain",
+              "frame_number": "1502",
+              "date": "2017-12-06",
+              "place_slug": "Deans_Mountain",
+              "place_label": "Deans Mountain",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1502_20171206_Deans_Mountain-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1502_20171206_Deans_Mountain-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Deans Mt",
+          "place_slug": "deans-mt",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171206|1492|Deans_Mt",
+              "frame_number": "1492",
+              "date": "2017-12-06",
+              "place_slug": "Deans_Mt",
+              "place_label": "Deans Mt",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1492_Deans_Mt_20171206-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1492_Deans_Mt_20171206-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Roger Johnson",
+          "place_slug": "roger-johnson",
+          "count": 1,
+          "photographs": [
+            {
+              "photograph_key": "20171206|1486|Roger_Johnson",
+              "frame_number": "1486",
+              "date": "2017-12-06",
+              "place_slug": "Roger_Johnson",
+              "place_label": "Roger Johnson",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1486_Roger_Johnson-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1486_Roger_Johnson-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            }
+          ]
+        },
+        {
+          "place_label": "Scotch Broom",
+          "place_slug": "scotch-broom",
+          "count": 2,
+          "photographs": [
+            {
+              "photograph_key": "20171206|1558|Scotch_Broom",
+              "frame_number": "1558",
+              "date": "2017-12-06",
+              "place_slug": "Scotch_Broom",
+              "place_label": "Scotch Broom",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1558_Scotch_Broom_20171206-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1558_Scotch_Broom_20171206-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            },
+            {
+              "photograph_key": "20171206|1559|Scotch_Broom",
+              "frame_number": "1559",
+              "date": "2017-12-06",
+              "place_slug": "Scotch_Broom",
+              "place_label": "Scotch Broom",
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1559_Scotch_Broom_20171206-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1559_Scotch_Broom_20171206-2.jpg",
+              "confidence": "verified",
+              "notes": null
+            }
+          ]
+        },
+        {
+          "place_label": "Unplaced",
+          "place_slug": "unplaced",
+          "count": 35,
+          "photographs": [
+            {
+              "photograph_key": "20171206|1487|",
+              "frame_number": "1487",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1487-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1487-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1489|",
+              "frame_number": "1489",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1489-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1489-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1491|",
+              "frame_number": "1491",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1491-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1491-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1493|",
+              "frame_number": "1493",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1493-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1493-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1494|",
+              "frame_number": "1494",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1494-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1494-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1495|",
+              "frame_number": "1495",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1495-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1495-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1496|",
+              "frame_number": "1496",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1496-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1496-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1497|",
+              "frame_number": "1497",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1497-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1497-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1498|",
+              "frame_number": "1498",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1498-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1498-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1499|",
+              "frame_number": "1499",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1499-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1499-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1500|",
+              "frame_number": "1500",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1500-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1500-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1503|",
+              "frame_number": "1503",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1503-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1503-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1506|",
+              "frame_number": "1506",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1506-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1506-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1507|",
+              "frame_number": "1507",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1507-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1507-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1510|",
+              "frame_number": "1510",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1510-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1510-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1512|",
+              "frame_number": "1512",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1512-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1512-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1515|",
+              "frame_number": "1515",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1515-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1515-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1516|",
+              "frame_number": "1516",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1516-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1516-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1519|",
+              "frame_number": "1519",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1519-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1519-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1525|",
+              "frame_number": "1525",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1525-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1525-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1535|",
+              "frame_number": "1535",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1535-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1535-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1536|",
+              "frame_number": "1536",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1536-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1536-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1537|",
+              "frame_number": "1537",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1537-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1537-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1538|",
+              "frame_number": "1538",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1538-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1538-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1539|",
+              "frame_number": "1539",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1539-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1539-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1541|",
+              "frame_number": "1541",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1541-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1541-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1546|",
+              "frame_number": "1546",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1546-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1546-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1547|",
+              "frame_number": "1547",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1547-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1547-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1548|",
+              "frame_number": "1548",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1548-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1548-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1549|",
+              "frame_number": "1549",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1549-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1549-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1550|",
+              "frame_number": "1550",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1550-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1550-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1551|",
+              "frame_number": "1551",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1551-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1551-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1552|",
+              "frame_number": "1552",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1552-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1552-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1553|",
+              "frame_number": "1553",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1553-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1553-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20171206|1554|",
+              "frame_number": "1554",
+              "date": "2017-12-06",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/1554-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Photos/icons/1554-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "interview_key": "20181010",
+      "interview_date": "2018-10-10",
+      "interview_href": "/collections/zybach/elliott/interviews/20181010/",
+      "count": 37,
+      "places": [
+        {
+          "place_label": "Unplaced",
+          "place_slug": "unplaced",
+          "count": 37,
+          "photographs": [
+            {
+              "photograph_key": "20181010|1009|",
+              "frame_number": "1009",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1009-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1009-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1012|",
+              "frame_number": "1012",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1012-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1012-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1013|",
+              "frame_number": "1013",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1013-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1013-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1018|",
+              "frame_number": "1018",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1018-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1018-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1019|",
+              "frame_number": "1019",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1019-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1019-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1020|",
+              "frame_number": "1020",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1020-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1020-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1022|",
+              "frame_number": "1022",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1022-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1022-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1023|",
+              "frame_number": "1023",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1023-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1023-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1024|",
+              "frame_number": "1024",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1024-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1024-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1025|",
+              "frame_number": "1025",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1025-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1025-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1026|",
+              "frame_number": "1026",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1026-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1026-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1027|",
+              "frame_number": "1027",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1027-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1027-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1029|",
+              "frame_number": "1029",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1029-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1029-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1030|",
+              "frame_number": "1030",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1030-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1030-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1031|",
+              "frame_number": "1031",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1031-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1031-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1032|",
+              "frame_number": "1032",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1032-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1032-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1033|",
+              "frame_number": "1033",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1033-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1033-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1034|",
+              "frame_number": "1034",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1034-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1034-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1035|",
+              "frame_number": "1035",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1035-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1035-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1037|",
+              "frame_number": "1037",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1037-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1037-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1038|",
+              "frame_number": "1038",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1038-10.jpg",
+              "thumb_url": null,
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1039|",
+              "frame_number": "1039",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1039-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1039-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1040|",
+              "frame_number": "1040",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1040-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1040-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1041|",
+              "frame_number": "1041",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1041-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1041-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1042|",
+              "frame_number": "1042",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1042-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1042-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1045|",
+              "frame_number": "1045",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1045-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1045-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1047|",
+              "frame_number": "1047",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1047-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1047-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1049|",
+              "frame_number": "1049",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1049-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1049-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1050|",
+              "frame_number": "1050",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1050-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1050-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1052|",
+              "frame_number": "1052",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1052-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1052-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1053|",
+              "frame_number": "1053",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1053-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1053-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1054|",
+              "frame_number": "1054",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1054-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1054-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1055|",
+              "frame_number": "1055",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1055-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1055-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1056|",
+              "frame_number": "1056",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1056-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1056-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1057|",
+              "frame_number": "1057",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1057-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1057-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1058|",
+              "frame_number": "1058",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1058-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1058-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            },
+            {
+              "photograph_key": "20181010|1059|",
+              "frame_number": "1059",
+              "date": "2018-10-10",
+              "place_slug": null,
+              "place_label": null,
+              "full_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/1059-10.jpg",
+              "thumb_url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Photos/icons/1059-2.jpg",
+              "confidence": "verified",
+              "notes": [
+                "No YYYYMMDD in the filename; date taken from the ORWW folder."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

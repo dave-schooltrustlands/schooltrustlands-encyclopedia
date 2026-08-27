@@ -1,0 +1,345 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import Transcript from '../../../../../components/zybach/soapcreek/Transcript.astro';
+import CitationBlock from '../../../../../components/zybach/soapcreek/CitationBlock.astro';
+import ProvenanceBlock from '../../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
+import ContentNote from '../../../../../components/zybach/soapcreek/ContentNote.astro';
+import { monographs, transcriptFor } from '../../../../../components/zybach/soapcreek/data';
+import type { Monograph, Chapter } from '../../../../../components/zybach/soapcreek/data';
+import {
+  monoHref,
+  chapterHref,
+  folioHref,
+  folioId,
+  folioLabel,
+  citationLabel,
+  prettyDate,
+  displayNarrators,
+} from '../../../../../components/zybach/soapcreek/links';
+import { plainNote } from '../../../../../components/zybach/labels';
+
+export async function getStaticPaths() {
+  const paths: any[] = [];
+  for (const m of monographs) {
+    const t = transcriptFor(m.zc_id);
+    const chapters = (t.chapters ?? []).slice();
+    // The front matter is a chapter of the book — the Series Index cites it as
+    // `15:v` and links to `/front-matter/#pv`. Most transcripts carry it
+    // already; where one does not, the monograph record's
+    // `front_matter_chapter` (the printed leaves) stands in for it.
+    const fmc: any = (m as any).front_matter_chapter;
+    if (fmc?.slug && !chapters.some((c) => c.slug === fmc.slug)) {
+      chapters.unshift({ ...fmc, entries: [] });
+    }
+    chapters.forEach((c, i) => {
+      if (!c?.slug) return;
+      paths.push({
+        params: { mono: m.slug, chapter: c.slug },
+        props: {
+          mono: m,
+          chapter: c,
+          prev: i > 0 ? chapters[i - 1] : null,
+          next: i < chapters.length - 1 ? chapters[i + 1] : null,
+          position: i + 1,
+          total: chapters.length,
+        },
+      });
+    });
+  }
+  return paths;
+}
+
+const { mono, chapter, prev, next, position, total } = Astro.props as {
+  mono: Monograph;
+  chapter: Chapter;
+  prev: Chapter | null;
+  next: Chapter | null;
+  position: number;
+  total: number;
+};
+
+const url = chapterHref(mono.slug, chapter.slug);
+const heading = [chapter.label, chapter.title].filter(Boolean).join('. ') || chapter.slug;
+
+// The session that produced this chapter, matched through the printed structure.
+const structRow = (mono.structure ?? []).find(
+  (s) =>
+    (s.slug && s.slug === chapter.slug) ||
+    (s.start_page !== undefined && String(s.start_page) === String(chapter.start_page)),
+);
+const session = (mono.sessions ?? []).find((s) => s.session_id === structRow?.session_id);
+
+const narratorNames = (mono.narrators ?? [])
+  .map((n) => n.display_name ?? n.name)
+  .filter(Boolean) as string[];
+const interviewerNames = session?.interviewers ?? [];
+
+const isFrontMatter = chapter.slug === 'front-matter' || chapter.chapter_type === 'front-matter';
+const frontSections: Array<{ title?: string; start_page?: any; end_page?: any }> =
+  (chapter as any).front_sections ?? [];
+
+/**
+ * Every printed page this chapter covers, in printed order. A citation names a
+ * printed page, not a paragraph, so each one gets an anchor even when the page
+ * carries no transcribed text (a plate, a leaf of the printed index).
+ */
+const printedPages: string[] = (() => {
+  if (isFrontMatter) {
+    const leaves = frontSections
+      .map((s) => (s.start_page === undefined || s.start_page === null ? '' : String(s.start_page)))
+      .filter(Boolean);
+    return [...new Set([...leaves, ...(chapter.entries ?? []).map((e) => String(e.page))])];
+  }
+  const mapped = Object.entries(mono.page_to_chapter ?? {})
+    .filter(([, slug]) => slug === chapter.slug)
+    .map(([page]) => page);
+  return mapped.sort((a, b) => (Number(a) || 0) - (Number(b) || 0));
+})();
+
+/** What to say on a printed page that carries no transcribed text. */
+const emptyNote =
+  chapter.slug === 'index' || chapter.level === 'index'
+    ? 'A leaf of the printed back-of-book index. Its entries are published, merged with the other fourteen, in the Series Index.'
+    : isFrontMatter
+      ? 'A printed leaf of the front matter. Its text is set out below.'
+      : 'No transcribed text on this printed page.';
+
+const pageNotes: Record<string, string> = {};
+for (const s of frontSections) {
+  if (s.start_page !== undefined && s.start_page !== null && s.title) {
+    pageNotes[String(s.start_page)] = `${s.title} — printed leaf ${s.start_page}.`;
+  }
+}
+/* A plate page can carry more than one printed caption. Collect every caption
+   for a page rather than letting the last one overwrite the rest — 22 captions
+   on 13 pages never reached the page they belong to. */
+const captionsByPage: Record<string, string[]> = {};
+for (const ph of mono.photographs ?? []) {
+  const p = ph.page_int ?? ph.page;
+  if (p === undefined || p === null) continue;
+  const key = String(p);
+  const text = ph.caption ?? ph.title;
+  if (!text) continue;
+  (captionsByPage[key] ??= []).push(String(text));
+}
+for (const [key, caps] of Object.entries(captionsByPage)) {
+  if (!printedPages.includes(key)) continue;
+  const seen = Array.from(new Set(caps));
+  pageNotes[key] =
+    seen.length === 1
+      ? `Photograph, as printed: “${seen[0]}”`
+      : `${seen.length} photographs on this printed page. Captions, as printed: ${seen
+          .map((c) => `“${c}”`)
+          .join(' · ')}`;
+}
+
+// Printed pages this chapter covers, for the content-note filter.
+const pagesHere = new Set([
+  ...(chapter.entries ?? []).map((e) => String(e.page)),
+  ...printedPages,
+]);
+const notesHere = (mono.content_notes ?? []).filter(
+  (n) => n && (n.display_note || n.note) && pagesHere.has(String(n.page)),
+);
+
+const pageRange =
+  chapter.start_page !== undefined && chapter.start_page !== null
+    ? String(chapter.end_page) !== String(chapter.start_page)
+      ? `pp. ${chapter.start_page}–${chapter.end_page}`
+      : `p. ${chapter.start_page}`
+    : '';
+
+const whatThisIs = [
+  `${heading} of ${mono.title}`,
+  pageRange ? `printed ${pageRange}` : '',
+  session?.date ? `recorded ${prettyDate(session.date)}${session.place ? ` at ${session.place}` : ''}` : '',
+].filter(Boolean).join(' — ') + '. Every printed page has its own permanent link.';
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+  { label: `#${mono.number} ${mono.title}`, href: monoHref(mono.slug) },
+];
+
+const entryCount = (chapter.entries ?? []).length;
+
+/* The worked example for "cite this passage": the first printed page this
+   chapter covers, so the reader sees the shape with a page that is really on
+   the screen in front of them. Arabic pages only — roman front-matter leaves
+   are addressed the same way but read oddly as an example. */
+const citePage: string | null =
+  printedPages.find((p) => /^\d+$/.test(p)) ?? null;
+
+/**
+ * A printed sub-heading can begin part-way down a page that another chapter
+ * owns; the chapter then has no page of its own. Point the reader at the page
+ * where the text actually is rather than at nothing.
+ */
+const elsewhereHref =
+  entryCount === 0 && printedPages.length === 0 && chapter.start_page != null
+    ? folioHref(mono.slug, chapter.start_page)
+    : null;
+
+/** The front matter as the book prints it, for the front-matter chapter page. */
+const frontMatterOrder: Array<[string, string]> = [
+  ['cover_text', 'Cover, as printed'],
+  ['cover_photo_caption', 'Cover photograph'],
+  ['title_page', 'Title page'],
+  ['series_list', 'The series, as listed inside the front cover'],
+  ['series_list_note', 'A note on that list'],
+  ['acknowledgements', 'Acknowledgments'],
+  ['project_statement', 'Soap Creek Valley History Project'],
+  ['introduction', 'Introduction'],
+  ['map_note', 'The map'],
+  ['table_of_contents', 'Table of contents, as printed'],
+];
+const fmRaw = mono.front_matter ?? {};
+const frontMatterProse = isFrontMatter
+  ? frontMatterOrder
+      .filter(([k]) => typeof fmRaw[k] === 'string' && (fmRaw[k] as string).trim().length > 0)
+      .map(([k, label]) => ({
+        key: k,
+        label,
+        text: k.endsWith('_note') ? plainNote(fmRaw[k] as string) : (fmRaw[k] as string),
+      }))
+  : [];
+---
+<SoapCreekPage
+  title={heading}
+  subtitle={whatThisIs}
+  kicker={`Soap Creek Valley · Monograph #${mono.number} · ${position} of ${total}`}
+  parents={parents}
+  sourceId={`zybach-${mono.zc_id}-${chapter.slug}`}
+  navCurrent="soap-creek"
+  pageTitle={`${heading} · ${mono.title} · The Zybach Collection`}
+>
+  {mono.citation_canonical && <p class="sc-canonical">{mono.citation_canonical}</p>}
+
+  <p class="sc-glossary">
+    <strong>p. 47</strong> = printed page 47 of the original book; the link on
+    each page number is a permanent address you can send to anyone.
+  </p>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'From', value: `#${mono.number} ${mono.title}`, href: monoHref(mono.slug) },
+      ...(displayNarrators(mono) ? [{ label: 'Narrator', value: displayNarrators(mono) }] : []),
+      ...(session
+        ? [
+            {
+              label: 'Recorded',
+              value: [prettyDate(session.date) || session.date, session.place].filter(Boolean).join(' · '),
+            },
+            ...(session.interviewers?.length
+              ? [{ label: 'Interviewer', value: session.interviewers.join(', ') }]
+              : []),
+          ]
+        : []),
+      ...(pageRange ? [{ label: 'Printed pages', value: pageRange }] : []),
+      ...(mono.pdf_url ? [{ label: 'Original', value: mono.pdf_url, href: mono.pdf_url }] : []),
+      {
+        label: 'Accessioned',
+        value: 'From Bob Zybach’s upload, 23 August 2026',
+        href: '/collections/zybach/provenance/',
+      },
+    ]}
+  />
+
+  {notesHere.map((n) => (
+    <ContentNote
+      text={`${n.display_note ?? n.note}${n.page !== undefined && n.page !== null ? ` (printed page ${n.page})` : ''}`}
+      level="page"
+    />
+  ))}
+
+  {session?.notes && <p class="sc-list-meta">{session.notes}</p>}
+
+  {entryCount > 0 || printedPages.length > 0 ? (
+    <Transcript
+      chapter={chapter}
+      narrators={narratorNames}
+      interviewers={interviewerNames}
+      pages={printedPages}
+      emptyNote={emptyNote}
+      pageNotes={pageNotes}
+      pageCaptions={captionsByPage}
+    />
+  ) : elsewhereHref ? (
+    <p class="sc-empty">
+      This heading is printed part-way down {folioLabel(chapter.start_page!)}, so
+      its text is set with the rest of that page.
+      {' '}<a href={elsewhereHref}>Read it there</a>.
+    </p>
+  ) : (
+    <p class="sc-empty">No transcribed text is printed under this heading.</p>
+  )}
+
+  {isFrontMatter && entryCount === 0 && frontMatterProse.length > 0 && (
+    <section aria-labelledby="fm-text">
+      <h2 id="fm-text">The front matter, as printed</h2>
+      {frontMatterProse.map((f) => (
+        <div class="sc-fm">
+          <h3>{f.label}</h3>
+          <div class="sc-verbatim">{f.text}</div>
+        </div>
+      ))}
+    </section>
+  )}
+
+  {chapter.slug === 'index' && (
+    <p class="sc-list-meta">
+      The printed index of this book is published, merged with the other
+      fourteen, as the
+      {' '}<a href="/collections/zybach/soap-creek/index/">Series Index</a>.
+    </p>
+  )}
+
+  <nav class="sc-prevnext" aria-label="Chapters in this monograph">
+    <span>
+      {prev ? (
+        <a href={chapterHref(mono.slug, prev.slug)}>← {[prev.label, prev.title].filter(Boolean).join('. ')}</a>
+      ) : (
+        <a href={monoHref(mono.slug)}>← Back to the monograph</a>
+      )}
+    </span>
+    <span>
+      {next ? (
+        <a href={chapterHref(mono.slug, next.slug)}>{[next.label, next.title].filter(Boolean).join('. ')} →</a>
+      ) : (
+        <a href={monoHref(mono.slug)}>Back to the monograph →</a>
+      )}
+    </span>
+  </nav>
+
+  <CitationBlock
+    canonical={mono.citation_canonical ?? ''}
+    short={mono.citation_short ?? ''}
+    url={url}
+    pdfUrl={mono.pdf_url ?? undefined}
+    accessed="2026"
+    thisPage={[heading, pageRange].filter(Boolean).join(', ')}
+    passage={citePage ? {
+      label: `${mono.citation_short ?? ''}, p. ${citePage} — Monograph #${citationLabel(mono.number as any, citePage)}`,
+      fragment: `#${folioId(citePage)}`,
+      note: `Swap ${citePage} for whichever printed page you are quoting: every page number in the margin is its own address.`,
+    } : undefined}
+  />
+</SoapCreekPage>
+
+<style is:global>
+  .sc-glossary {
+    margin: 0.75rem 0 1rem;
+    padding: 0.5rem 0.8rem;
+    border-left: 3px solid var(--old-gold, #a87f2c);
+    background: var(--linen-card, #fffdf7);
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: #4e617c;
+  }
+  .zc-cite__passage {
+    font-family: var(--font-serif);
+  }
+</style>

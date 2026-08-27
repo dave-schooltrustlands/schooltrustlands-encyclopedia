@@ -1,0 +1,145 @@
+---
+/**
+ * Bob Zybach's own index, as a table. Every cell is his: the stop label he
+ * assigned, the tape side, the minute on the tape, the topic as he wrote it,
+ * the transcript page he printed, and his photo count. Nothing is rephrased;
+ * the only additions are links — the page number to its anchor in the
+ * transcript below, the stop to its place page where the gazetteer places it,
+ * and the minute to the tape it belongs to.
+ */
+import type { Segment } from './data';
+import { getPlace, tapeAnchor } from './data';
+
+interface Props {
+  segments: Segment[];
+  caption?: string;
+  showInterview?: boolean;
+}
+const { segments, caption, showInterview = false } = Astro.props as Props;
+
+const rows = segments.map((s) => ({
+  s,
+  place: s.placeSlug ? getPlace(s.placeSlug) : null,
+  tapeAnchor: tapeAnchor(s.tape_side)
+    ? showInterview
+      ? `/collections/zybach/elliott/interviews/${s.interview_key}/#${tapeAnchor(s.tape_side)}`
+      : `#${tapeAnchor(s.tape_side)}`
+    : null,
+}));
+const totalPhotos = segments.reduce((n, s) => n + (s.photo_count ?? 0), 0);
+---
+
+{rows.length > 0 && (
+  <div class="zy-segwrap">
+    <table class="zy-segments">
+      {caption && <caption>{caption}</caption>}
+      <thead>
+        <tr>
+          <th scope="col">Stop</th>
+          {showInterview && <th scope="col">Interview</th>}
+          <th scope="col">Tape</th>
+          <th scope="col">Minute</th>
+          <th scope="col">Topic</th>
+          <th scope="col" class="num">Page</th>
+          <th scope="col" class="num">Photos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map(({ s, place, tapeAnchor }) => (
+          <tr id={s.segment_id}>
+            <th scope="row" class="stop">
+              {place ? (
+                <a href={place.href}>{s.stop_label ?? '—'}</a>
+              ) : (
+                s.stop_label ?? '—'
+              )}
+            </th>
+            {showInterview && (
+              <td>
+                <a href={`/collections/zybach/elliott/interviews/${s.interview_key}/`}>
+                  {s.interview_date}
+                </a>
+              </td>
+            )}
+            <td class="tape">
+              {tapeAnchor ? <a href={tapeAnchor}>{s.tape_side}</a> : s.tape_side ?? '—'}
+            </td>
+            <td class="min">{s.minute ?? '—'}</td>
+            <td class="topic">{s.topic ?? '—'}</td>
+            <td class="num">
+              {s.transcript_page != null ? (
+                <a href={s.href}>{s.transcript_page_as_printed ?? s.transcript_page}</a>
+              ) : (
+                '—'
+              )}
+            </td>
+            <td class="num">{s.photo_count != null ? s.photo_count : ''}</td>
+          </tr>
+        ))}
+      </tbody>
+      {totalPhotos > 0 && (
+        <tfoot>
+          <tr>
+            <td colspan={showInterview ? 6 : 5}>
+              {rows.length} stops indexed
+            </td>
+            <td class="num">{totalPhotos}</td>
+          </tr>
+        </tfoot>
+      )}
+    </table>
+  </div>
+)}
+
+<style>
+  .zy-segwrap {
+    overflow-x: auto;
+    margin: 1rem 0 1.5rem;
+  }
+  .zy-segments {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  .zy-segments caption {
+    text-align: left;
+    font-size: 0.8rem;
+    color: #475569;
+    padding-bottom: 0.5rem;
+  }
+  .zy-segments th,
+  .zy-segments td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.35rem 0.55rem 0.35rem 0;
+    text-align: left;
+    vertical-align: top;
+  }
+  .zy-segments thead th {
+    border-bottom: 2px solid var(--old-gold, #b58a45);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #475569;
+    white-space: nowrap;
+  }
+  .zy-segments tbody th.stop {
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .zy-segments .tape,
+  .zy-segments .min {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .zy-segments .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .zy-segments tfoot td {
+    border-bottom: none;
+    border-top: 2px solid var(--old-gold, #b58a45);
+    font-size: 0.78rem;
+    color: #475569;
+  }
+</style>

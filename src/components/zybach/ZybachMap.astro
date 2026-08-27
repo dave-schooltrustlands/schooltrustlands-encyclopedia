@@ -1,0 +1,449 @@
+---
+/* ZybachMap.astro — The Zybach Collection
+ *
+ * A MapLibre map on USGS National Map raster tiles. Points are drawn as circles
+ * coloured by `properties.kind`; LineString features are drawn as routes. A
+ * click opens a popup with the feature's title (linked to `properties.href`)
+ * and subtitle.
+ *
+ * Contract (BUILD_SPEC §"Shared component contracts"):
+ *   { id: string;
+ *     center: [lon, lat];
+ *     zoom: number;
+ *     features: GeoJSON.FeatureCollection;
+ *     height?: string;              // default '420px'
+ *     basemap?: 'topo' | 'imagery'; // default 'topo'
+ *     fit?: boolean }               // fit bounds to features
+ *
+ * The map is decoration over data that must also be readable without it: the
+ * CALLER is responsible for an equivalent list of the same features below the
+ * map. This component renders only the map and its own failure message.
+ *
+ * Works under `prerender = true` — everything below the frontmatter is a
+ * client-side script; the config for each instance travels in a JSON island so
+ * one bundled script can drive any number of maps on a page.
+ *
+ * MapLibre import pattern copied from src/pages/atlas.astro (bare `maplibre-gl`
+ * + its stylesheet, resolved from the existing dependency; no new packages).
+ */
+import {
+  MAP_GROUP_COLORS,
+  MAP_GROUP_LABELS,
+  MAP_GROUP_ORDER,
+  groupForProperties,
+} from './labels';
+import type { MapGroup } from './labels';
+
+interface Props {
+  id: string;
+  center: [number, number];
+  zoom: number;
+  features: any;
+  height?: string;
+  basemap?: 'topo' | 'imagery';
+  fit?: boolean;
+  /**
+   * The key under the map. Pass items to name the groups yourself; omit and
+   * the component lists the groups actually present in `features`; pass
+   * `false` to suppress it (a single-marker map needs no key).
+   */
+  legend?: Array<{ label: string; group?: string; color?: string }> | false;
+}
+
+const {
+  id,
+  center,
+  zoom,
+  features,
+  height = '420px',
+  basemap = 'topo',
+  fit = false,
+  legend,
+} = Astro.props;
+
+/* Marker colour is decided here, at build time, so the key under the map and
+   the dots on it cannot drift apart. */
+const featureList: any[] = Array.isArray(features?.features) ? features.features : [];
+const pointFeatures = featureList.filter(
+  (f) => f?.geometry?.type === 'Point' || f?.geometry?.type === 'MultiPoint',
+);
+const groupedFeatures = {
+  type: 'FeatureCollection',
+  features: featureList.map((f) => ({
+    ...f,
+    properties: { ...(f?.properties ?? {}), _group: groupForProperties(f?.properties) },
+  })),
+};
+
+const presentGroups = MAP_GROUP_ORDER.filter((g) =>
+  pointFeatures.some((f) => groupForProperties(f?.properties) === g),
+);
+
+const legendItems =
+  legend === false
+    ? []
+    : legend && legend.length
+      ? legend.map((item) => ({
+          label: item.label,
+          color:
+            item.color ??
+            MAP_GROUP_COLORS[(item.group ?? 'other') as MapGroup] ??
+            MAP_GROUP_COLORS.other,
+        }))
+      : presentGroups.length > 1
+        ? presentGroups.map((g) => ({ label: MAP_GROUP_LABELS[g], color: MAP_GROUP_COLORS[g] }))
+        : [];
+
+const config = JSON.stringify({
+  center,
+  zoom,
+  features: groupedFeatures,
+  basemap,
+  fit,
+  colors: MAP_GROUP_COLORS,
+}).replace(/</g, '\\u003c');
+---
+
+<figure class="zc-map-figure">
+  <div
+    id={id}
+    class="zc-map"
+    style={`height: ${height}`}
+    data-zybach-map
+    role="img"
+    aria-label="Interactive map. An equivalent list of every mapped place follows below."
+  >
+  </div>
+  <script
+    type="application/json"
+    data-zybach-map-config={id}
+    set:html={config}
+  />
+  <p class="zc-map__err" data-zybach-map-error={id} hidden>
+    The map could not load. The list below carries the same places.
+  </p>
+  {legendItems.length > 0 && (
+    <ul class="zc-map__legend" aria-label="What the marker colours mean">
+      {legendItems.map((item) => (
+        <li>
+          <span class="zc-map__swatch" style={`background:${item.color}`} aria-hidden="true"></span>
+          {item.label}
+        </li>
+      ))}
+    </ul>
+  )}
+  <figcaption class="zc-map__cap">
+    Basemap: USGS The National Map. Pan and zoom with the mouse or the + / −
+    controls; select a marker for its name and a link.
+  </figcaption>
+</figure>
+
+<style>
+  .zc-map-figure {
+    margin: 1.5rem 0;
+  }
+  .zc-map {
+    width: 100%;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 4px;
+    background: #eee9dd;
+  }
+  .zc-map__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: #4e617c;
+  }
+  .zc-map__legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+  }
+  .zc-map__swatch {
+    display: inline-block;
+    width: 0.62rem;
+    height: 0.62rem;
+    border-radius: 50%;
+    border: 1px solid #fffdf7;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+    flex: none;
+  }
+  .zc-map__cap {
+    margin: 0.45rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: #4e617c;
+  }
+  .zc-map__err {
+    margin: 0.5rem 0 0;
+    padding: 0.6rem 0.85rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    background: rgba(122, 46, 46, 0.06);
+    border-left: 3px solid var(--oxblood, #7a2e2e);
+  }
+  /* MapLibre popup, dressed in the Library's register. */
+  :global(.zc-map-popup) {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    max-width: 15rem;
+  }
+  :global(.zc-map-popup .zc-map-popup__title) {
+    display: block;
+    font-weight: 700;
+    color: #14243c;
+  }
+  :global(.zc-map-popup .zc-map-popup__sub) {
+    display: block;
+    margin-top: 0.15rem;
+    color: #4e617c;
+  }
+</style>
+
+<script>
+  import maplibregl from 'maplibre-gl';
+  import 'maplibre-gl/dist/maplibre-gl.css';
+
+  const TILE_URLS = {
+    topo: 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}',
+    imagery:
+      'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}',
+  };
+
+  // Markers are coloured by the group the page computed for each feature and
+  // stamped on it as `_group` — tour stops in old gold, narrator home sites in
+  // oxblood, everything else in trust blue. The key under the map is built
+  // from the same groups, so the two cannot drift apart.
+  const FALLBACK_COLORS = {
+    stop: '#a87f2c',
+    'interview-stop': '#a87f2c',
+    'field-trip-stop': '#6f7f52',
+    home: '#7a2e2e',
+    other: '#1b3252',
+  };
+
+  function colorExpression(colors) {
+    const table = colors && typeof colors === 'object' ? colors : FALLBACK_COLORS;
+    const pairs = [];
+    for (const [group, color] of Object.entries(table)) {
+      if (group === 'other') continue;
+      pairs.push(group, color);
+    }
+    return [
+      'match',
+      ['coalesce', ['get', '_group'], 'other'],
+      ...pairs,
+      table.other ?? FALLBACK_COLORS.other,
+    ];
+  }
+
+  function bboxOf(fc) {
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    const visit = (coords) => {
+      if (typeof coords[0] === 'number') {
+        const [x, y] = coords;
+        if (Number.isFinite(x) && Number.isFinite(y)) {
+          if (x < minX) minX = x;
+          if (y < minY) minY = y;
+          if (x > maxX) maxX = x;
+          if (y > maxY) maxY = y;
+        }
+        return;
+      }
+      for (const c of coords) visit(c);
+    };
+    for (const f of fc.features ?? []) {
+      if (f?.geometry?.coordinates) visit(f.geometry.coordinates);
+    }
+    return minX === Infinity ? null : [[minX, minY], [maxX, maxY]];
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function buildMap(el) {
+    const id = el.id;
+    const configEl = document.querySelector(
+      `script[data-zybach-map-config="${id}"]`,
+    );
+    const errEl = document.querySelector(`[data-zybach-map-error="${id}"]`);
+    const fail = (label, e) => {
+      console.error(`[ZybachMap ${id}] ${label}`, e);
+      if (errEl) errEl.hidden = false;
+    };
+    if (!configEl) return fail('config', 'no config island');
+
+    let cfg;
+    try {
+      cfg = JSON.parse(configEl.textContent || '{}');
+    } catch (e) {
+      return fail('config parse', e);
+    }
+
+    const fc =
+      cfg.features && cfg.features.type === 'FeatureCollection'
+        ? cfg.features
+        : { type: 'FeatureCollection', features: [] };
+
+    let map;
+    try {
+      map = new maplibregl.Map({
+        container: id,
+        style: {
+          version: 8,
+          sources: {
+            usgs: {
+              type: 'raster',
+              tiles: [TILE_URLS[cfg.basemap] ?? TILE_URLS.topo],
+              tileSize: 256,
+              maxzoom: 16,
+              attribution: 'USGS The National Map',
+            },
+            places: { type: 'geojson', data: fc },
+          },
+          layers: [
+            { id: 'usgs-tiles', type: 'raster', source: 'usgs' },
+            {
+              id: 'zc-routes',
+              type: 'line',
+              source: 'places',
+              filter: [
+                'in',
+                ['geometry-type'],
+                ['literal', ['LineString', 'MultiLineString']],
+              ],
+              layout: { 'line-cap': 'round', 'line-join': 'round' },
+              paint: {
+                'line-color': '#7a2e2e',
+                'line-width': 3,
+                'line-opacity': 0.85,
+              },
+            },
+            {
+              id: 'zc-points',
+              type: 'circle',
+              source: 'places',
+              filter: [
+                'in',
+                ['geometry-type'],
+                ['literal', ['Point', 'MultiPoint']],
+              ],
+              paint: {
+                'circle-radius': 6,
+                'circle-color': colorExpression(cfg.colors),
+                'circle-stroke-color': '#fffdf7',
+                'circle-stroke-width': 1.5,
+              },
+            },
+          ],
+        },
+        center: cfg.center ?? [-123.27, 44.7],
+        zoom: cfg.zoom ?? 8,
+        attributionControl: false,
+      });
+    } catch (e) {
+      return fail('construct', e);
+    }
+
+    // A basemap tile that will not load is a bad-looking map, not a broken
+    // one: the markers, the popups and the pan/zoom all still work. Only a
+    // failure before the style loads means the reader has nothing, and only
+    // that raises the notice pointing them at the list.
+    let styleLoaded = false;
+    map.on('load', () => {
+      styleLoaded = true;
+    });
+    map.on('error', (e) => {
+      const err = e?.error || e;
+      if (e?.sourceId || e?.tile || styleLoaded) {
+        console.warn(`[ZybachMap ${id}] tile or source error`, err);
+        return;
+      }
+      fail('maplibre', err);
+    });
+
+    map.addControl(
+      new maplibregl.AttributionControl({
+        customAttribution: 'USGS The National Map',
+        compact: true,
+      }),
+    );
+    map.addControl(
+      new maplibregl.NavigationControl({ showCompass: false }),
+      'top-right',
+    );
+
+    if (cfg.fit) {
+      const bounds = bboxOf(fc);
+      if (bounds) {
+        map.on('load', () => {
+          try {
+            map.fitBounds(bounds, {
+              padding: 56,
+              maxZoom: cfg.zoom ?? 11,
+              animate: false,
+            });
+          } catch (e) {
+            fail('fitBounds', e);
+          }
+        });
+      }
+    }
+
+    const popup = new maplibregl.Popup({
+      closeButton: true,
+      closeOnClick: true,
+      offset: 10,
+      className: 'zc-map-popup-wrap',
+    });
+
+    const openPopup = (e) => {
+      const f = e.features && e.features[0];
+      if (!f) return;
+      const p = f.properties || {};
+      const title = escapeHtml(p.title || p.name || 'Untitled');
+      const sub = p.subtitle ? escapeHtml(p.subtitle) : '';
+      const href = typeof p.href === 'string' ? p.href : '';
+      const titleHtml = href
+        ? `<a class="zc-map-popup__title" href="${escapeHtml(href)}">${title}</a>`
+        : `<span class="zc-map-popup__title">${title}</span>`;
+      const subHtml = sub ? `<span class="zc-map-popup__sub">${sub}</span>` : '';
+      const at =
+        f.geometry && f.geometry.type === 'Point'
+          ? f.geometry.coordinates
+          : [e.lngLat.lng, e.lngLat.lat];
+      popup
+        .setLngLat(at)
+        .setHTML(`<div class="zc-map-popup">${titleHtml}${subHtml}</div>`)
+        .addTo(map);
+    };
+
+    for (const layer of ['zc-points', 'zc-routes']) {
+      map.on('click', layer, openPopup);
+      map.on('mouseenter', layer, () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+      map.on('mouseleave', layer, () => {
+        map.getCanvas().style.cursor = '';
+      });
+    }
+  }
+
+  for (const el of document.querySelectorAll('[data-zybach-map]')) {
+    buildMap(el);
+  }
+</script>

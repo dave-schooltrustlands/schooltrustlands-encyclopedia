@@ -1,0 +1,465 @@
+---
+/**
+ * The frame every Soap Creek page sits in.
+ *
+ * RoomLayout supplies the library chrome (header, banner, breadcrumb, footer,
+ * Pagefind facets). This wrapper adds what the series needs on every page: the
+ * collection sub-nav, the series kicker, the Pagefind series facet, and the
+ * "Corrections" foot that BUILD_SPEC requires on every item page.
+ */
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from './ZybachNav.astro';
+
+export interface Props {
+  title: string;
+  /** The one-line "what this is", in plain language. */
+  subtitle?: string;
+  kicker?: string;
+  parents?: ReadonlyArray<{ label: string; href: string }>;
+  sourceId: string;
+  navCurrent?: string;
+  width?: 'prose' | 'full';
+  pageTitle?: string;
+  /** Adds the corrections foot. Item pages: true. Registers: false. */
+  corrections?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  kicker = 'Soap Creek Valley oral history series',
+  parents,
+  sourceId,
+  navCurrent = 'soap-creek',
+  width = 'prose',
+  pageTitle,
+  corrections = true,
+} = Astro.props as Props;
+---
+<RoomLayout
+  room="collections"
+  title={title}
+  subtitle={subtitle}
+  width={width}
+  parents={parents}
+  sourceId={sourceId}
+  pageTitle={pageTitle}
+  noindex={true}
+>
+  <Fragment slot="before-title">
+    <ZybachNav current={navCurrent} />
+    {kicker && <p class="kicker">{kicker}</p>}
+  </Fragment>
+
+  <span data-pagefind-meta="series:soap-creek" hidden></span>
+  <span data-pagefind-filter="series:soap-creek" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <slot />
+
+  {corrections && (
+    <p class="sc-corrections" data-pagefind-ignore>
+      Something wrong on this page?
+      {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the
+      form opens with this page already filled in, and the same
+      "Submit a correction" control sits at the foot of every page in the
+      Library. Corrections are made in public:
+      {' '}<a href="/about/corrections/">how that works</a>.
+    </p>
+  )}
+</RoomLayout>
+
+<style is:global>
+  /* Soap Creek series styles. Scoped by the .sc- prefix so nothing here can
+     reach another room's pages. Kept in this component (rather than
+     global.css, which SOAPCREEK does not own) and emitted once per page. */
+
+  .sc-corrections {
+    margin: 2.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-size: 0.85rem;
+    color: #6b6355;
+  }
+
+  .sc-whatis {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: #3f3a33;
+  }
+
+  /* The canonical citation, printed as Bob prints it. */
+  .sc-canonical {
+    margin: 1.25rem 0;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--old-gold, #a87f2c);
+    background: rgba(168, 127, 44, 0.05);
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  /* ---- Transcript ------------------------------------------------- */
+
+  .sc-transcript {
+    margin: 2rem 0;
+  }
+  .sc-page {
+    position: relative;
+    padding-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    scroll-margin-top: 5rem;
+  }
+  .sc-folio {
+    float: right;
+    margin: 0.15rem 0 0.35rem 1rem;
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: #8a8172;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 0.05rem 0.3rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .sc-folio:hover,
+  .sc-folio:focus-visible {
+    color: var(--deep-navy, #14243c);
+    border-color: var(--rule-border, #d8d1c2);
+    background: var(--linen-card, #fffdf7);
+  }
+  .sc-page + .sc-page {
+    border-top: 1px dotted #e4ddcc;
+    padding-top: 0.9rem;
+  }
+
+  .sc-turn {
+    margin: 0 0 0.85rem;
+    line-height: 1.6;
+  }
+  .sc-speaker {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--trust-blue, #1b3252);
+    display: inline;
+    margin-right: 0.35rem;
+  }
+  .sc-turn-q .sc-speaker {
+    color: var(--old-gold, #a87f2c);
+  }
+  .sc-turn-a .sc-speaker {
+    color: var(--trust-blue, #1b3252);
+  }
+  .sc-turn-narrator2 .sc-speaker {
+    color: var(--sage, #6f7f52);
+  }
+  .sc-turn-editorial {
+    color: #6b6355;
+    font-style: italic;
+    font-size: 0.92rem;
+    margin-left: 0;
+  }
+  .sc-turn-heading {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b6355;
+    margin: 1.5rem 0 0.75rem;
+  }
+  .sc-hold {
+    margin: 1rem 0;
+    padding: 0.6rem 0.9rem;
+    border-left: 3px solid var(--oxblood, #7a2e2e);
+    background: rgba(122, 46, 46, 0.05);
+    font-size: 0.9rem;
+    color: #5c3232;
+  }
+  .sc-caption-fig {
+    margin: 1.25rem 0;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    background: var(--linen-card, #fffdf7);
+  }
+  .sc-caption-fig figcaption {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: #4a4438;
+  }
+  .sc-caption-fig .sc-cap-meta {
+    display: block;
+    margin-top: 0.3rem;
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.72rem;
+    color: #8a8172;
+  }
+
+  /* A narrator's own bracketed correction, printed distinctly. */
+  .sc-correction {
+    background: rgba(111, 127, 82, 0.16);
+    border-bottom: 1px dotted var(--sage, #6f7f52);
+    padding: 0 0.12em;
+    font-style: normal;
+  }
+
+  .sc-attr-note {
+    margin: 1.25rem 0 0;
+    padding-top: 0.6rem;
+    border-top: 1px solid #e4ddcc;
+    font-size: 0.76rem;
+    color: #8a8172;
+    font-family: var(--font-sans, system-ui);
+  }
+  .sc-attr-note__mark {
+    margin-right: 0.35rem;
+    color: var(--old-gold, #a87f2c);
+  }
+
+  .sc-fm h3 {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b6355;
+    margin: 1.5rem 0 0.4rem;
+  }
+
+  .sc-page-empty {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #8a8172;
+    font-style: italic;
+    font-family: var(--font-sans, system-ui);
+  }
+
+  /* ---- Registers, shelves, lists ---------------------------------- */
+
+  .sc-shelf {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: 1.4rem 1.1rem;
+  }
+  .sc-shelf li {
+    margin: 0;
+  }
+  .sc-shelf-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    background: #efeadd;
+    box-shadow: 0 1px 3px rgba(26, 26, 46, 0.14);
+  }
+  .sc-shelf-cover-missing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3 / 4;
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.72rem;
+    color: #8a8172;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  .sc-shelf-num {
+    display: block;
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: #8a8172;
+    margin-top: 0.45rem;
+  }
+  .sc-shelf-title {
+    display: block;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin-top: 0.1rem;
+  }
+  .sc-shelf-sub {
+    display: block;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    color: #6b6355;
+    margin-top: 0.2rem;
+  }
+
+  .sc-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  .sc-list > li {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #ece5d5;
+  }
+  .sc-list > li:last-child {
+    border-bottom: none;
+  }
+  .sc-list-meta {
+    display: block;
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.76rem;
+    color: #6b6355;
+    margin-top: 0.15rem;
+  }
+
+  .sc-cols {
+    columns: 2 16rem;
+    column-gap: 2rem;
+  }
+  .sc-cols > * {
+    break-inside: avoid;
+  }
+
+  .sc-refs {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.8rem;
+    color: #6b6355;
+  }
+  .sc-refs a {
+    white-space: nowrap;
+  }
+
+  .sc-table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .sc-table {
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    min-width: 100%;
+  }
+  .sc-table th,
+  .sc-table td {
+    border: 1px solid var(--rule-border, #d8d1c2);
+    padding: 0.35rem 0.55rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .sc-table thead th {
+    background: rgba(168, 127, 44, 0.08);
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+  }
+
+  .sc-verbatim {
+    white-space: pre-wrap;
+    font-family: var(--font-serif, Georgia, serif);
+    line-height: 1.6;
+  }
+
+  .sc-quote {
+    margin: 0.5rem 0 0.35rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-serif, Georgia, serif);
+    line-height: 1.55;
+  }
+
+  .sc-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.6rem 0;
+    align-items: center;
+  }
+  .sc-chip {
+    display: inline-block;
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.45rem;
+    border-radius: 2px;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    color: #6b6355;
+    background: var(--linen-card, #fffdf7);
+  }
+  .sc-chip-verified {
+    border-color: var(--sage, #6f7f52);
+    color: #47552f;
+  }
+  .sc-chip-inferred {
+    border-color: var(--old-gold, #a87f2c);
+    color: #7a5c1e;
+  }
+  .sc-chip-conflict {
+    border-color: var(--oxblood, #7a2e2e);
+    color: var(--oxblood, #7a2e2e);
+  }
+
+  .sc-prevnext {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 2rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.85rem;
+  }
+
+  .sc-alpha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin: 1.25rem 0;
+    font-family: var(--font-sans, system-ui);
+  }
+  .sc-alpha a,
+  .sc-alpha span {
+    display: inline-block;
+    min-width: 2rem;
+    text-align: center;
+    padding: 0.25rem 0.35rem;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .sc-alpha span {
+    color: #b8b0a0;
+    background: #f2ede1;
+  }
+
+  /* The Series Index, set the way Bob sets it: heading, then subentries
+     indented under it, page refs in a smaller sans face. */
+  .sc-index-entry {
+    margin: 0 0 0.7rem;
+    break-inside: avoid;
+  }
+  .sc-index-heading {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.98rem;
+  }
+  .sc-index-sub {
+    list-style: none;
+    margin: 0.1rem 0 0 1.1rem;
+    padding: 0;
+  }
+  .sc-index-sub li {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .sc-index-see {
+    font-style: italic;
+    color: #6b6355;
+    font-size: 0.88rem;
+  }
+
+  .sc-empty {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px dashed var(--rule-border, #d8d1c2);
+    color: #6b6355;
+    font-size: 0.9rem;
+  }
+</style>

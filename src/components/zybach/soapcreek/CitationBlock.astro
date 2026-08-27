@@ -1,0 +1,11 @@
+---
+/**
+ * SOAPCREEK indirection for the shared `src/components/zybach/CitationBlock.astro`
+ * (owner: ROOM). Every SOAPCREEK page imports this path, so if the shared
+ * component is unavailable or its contract moves, the swap is one file.
+ * Props are passed through unchanged.
+ */
+import Shared from '../CitationBlock.astro';
+const props = Astro.props;
+---
+<Shared {...props} />

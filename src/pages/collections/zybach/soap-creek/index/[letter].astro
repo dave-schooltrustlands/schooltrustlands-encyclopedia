@@ -1,0 +1,83 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import IndexEntries from '../../../../../components/zybach/soapcreek/IndexEntries.astro';
+import { seriesIndexLetter, seriesIndexLetterSlugs } from '../../../../../components/zybach/soapcreek/data';
+import type { IndexEntry } from '../../../../../components/zybach/soapcreek/data';
+import { indexHref, indexLetterHref } from '../../../../../components/zybach/soapcreek/links';
+
+export async function getStaticPaths() {
+  // One page per letter file the pipeline wrote (`a` … `z`, `other`). The
+  // entries themselves are read per page, below, so a 6 MB index is never
+  // held in memory all at once.
+  const slugs = [...seriesIndexLetterSlugs].sort();
+  return slugs.map((slug, i) => ({
+    params: { letter: slug },
+    props: {
+      prev: i > 0 ? slugs[i - 1] : null,
+      next: i < slugs.length - 1 ? slugs[i + 1] : null,
+      allSlugs: slugs,
+    },
+  }));
+}
+
+const { prev, next, allSlugs } = Astro.props as {
+  prev: string | null;
+  next: string | null;
+  allSlugs: string[];
+};
+
+const letter = Astro.params.letter as string;
+const entries: IndexEntry[] = [...seriesIndexLetter(letter)].sort((a, b) =>
+  (a.heading ?? '').localeCompare(b.heading ?? '', undefined, { sensitivity: 'base' }),
+);
+const label = letter === 'other' ? 'Numbers and other headings' : letter.toUpperCase();
+const refCount = entries.reduce(
+  (n, e) => n + (e.refs?.length ?? 0) + (e.subentries ?? []).reduce((m, s) => m + (s.refs?.length ?? 0), 0),
+  0,
+);
+
+const ALPHA = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const alphaRows = [...ALPHA, ...(allSlugs.includes('other') ? ['other'] : [])];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+  { label: 'Series Index', href: indexHref() },
+];
+---
+<SoapCreekPage
+  title={label}
+  subtitle={`${entries.length.toLocaleString()} headings, ${refCount.toLocaleString()} page references across the fifteen monographs. A reference reads 05:47 — monograph five, printed page forty-seven.`}
+  kicker="Soap Creek Valley · Series Index"
+  parents={parents}
+  sourceId={`zybach-sc-series-index-${letter}`}
+  navCurrent="index"
+  width="full"
+  corrections={false}
+  pageTitle={`${label} · Series Index · The Zybach Collection`}
+>
+  <nav class="sc-alpha" aria-label="Index letters">
+    {alphaRows.map((s) =>
+      s === letter ? (
+        <span aria-current="page">{s === 'other' ? '#' : s.toUpperCase()}</span>
+      ) : allSlugs.includes(s) ? (
+        <a href={indexLetterHref(s)}>{s === 'other' ? '#' : s.toUpperCase()}</a>
+      ) : (
+        <span aria-disabled="true">{s === 'other' ? '#' : s.toUpperCase()}</span>
+      ),
+    )}
+  </nav>
+
+  {entries.length > 0 ? (
+    <IndexEntries entries={entries} />
+  ) : (
+    <p class="sc-empty">No headings under this letter.</p>
+  )}
+
+  <nav class="sc-prevnext" aria-label="Index letters">
+    <span>{prev ? <a href={indexLetterHref(prev)}>← {prev.toUpperCase()}</a> : <a href={indexHref()}>← The whole index</a>}</span>
+    <span>{next ? <a href={indexLetterHref(next)}>{next.toUpperCase()} →</a> : <a href={indexHref()}>The whole index →</a>}</span>
+  </nav>
+</SoapCreekPage>

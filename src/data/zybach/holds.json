@@ -1,0 +1,98 @@
+{
+  "generated": "2026-08-27",
+  "policy": "Held in this preview: the page is present and citable, but its text is replaced by a hold notice. Everything else is shown.",
+  "counts": {
+    "records": 4,
+    "pages": 28
+  },
+  "holds": [
+    {
+      "zc_id": "zc-sc-m09",
+      "mono_slug": "m09-glender",
+      "record_href": "/collections/zybach/soap-creek/m09-glender/",
+      "ranges": [
+        [
+          129,
+          146
+        ]
+      ],
+      "pages": [
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146
+      ],
+      "what": "Appendix E — 1941 Corvallis Telephone Directory (addresses and telephone numbers of named residents)",
+      "reason": "Contains personal data about named individuals; held pending review."
+    },
+    {
+      "zc_id": "zc-sc-m08",
+      "mono_slug": "m08-vanderburg",
+      "record_href": "/collections/zybach/soap-creek/m08-vanderburg/",
+      "ranges": [
+        [
+          145,
+          149
+        ]
+      ],
+      "pages": [
+        145,
+        146,
+        147,
+        148,
+        149
+      ],
+      "what": "Appendix A — genealogy pages naming children of the narrators",
+      "reason": "Contains personal data about named individuals; held pending review."
+    },
+    {
+      "zc_id": "zc-sc-m11",
+      "mono_slug": "m11-murphy",
+      "record_href": "/collections/zybach/soap-creek/m11-murphy/",
+      "ranges": [
+        [
+          43,
+          43
+        ]
+      ],
+      "pages": [
+        43
+      ],
+      "what": "Printed footnote giving a named individual's street address",
+      "reason": "Contains personal data about named individuals; held pending review."
+    },
+    {
+      "zc_id": "zc-sc-thesis-1999",
+      "mono_slug": null,
+      "record_href": "/collections/zybach/soap-creek/thesis/",
+      "ranges": [
+        [
+          255,
+          258
+        ]
+      ],
+      "pages": [
+        255,
+        256,
+        257,
+        258
+      ],
+      "what": "Table D.4 — Modern landowner names and locations, 1990 (names and tax lots)",
+      "reason": "Contains personal data about named individuals; held pending review."
+    }
+  ]
+}

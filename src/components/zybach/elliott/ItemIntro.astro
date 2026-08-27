@@ -1,0 +1,57 @@
+---
+/**
+ * The opening block every Elliott item page carries, in the order BUILD_SPEC
+ * sets: what this is, the canonical citation as printed, provenance, and a
+ * content note where one applies. The kicker and the title itself come from
+ * RoomLayout.
+ */
+import { ProvenanceBlock, ContentNote } from './shared';
+
+interface Props {
+  whatThisIs: string;
+  canonical?: string | null;
+  provenance?: Array<{ label: string; value: string; href?: string }>;
+  contentNote?: string | null;
+  noteLevel?: 'collection' | 'item' | 'page';
+}
+const {
+  whatThisIs,
+  canonical,
+  provenance = [],
+  contentNote,
+  noteLevel = 'item',
+} = Astro.props as Props;
+---
+
+<p class="zy-what">{whatThisIs}</p>
+{canonical && (
+  <p class="zy-canonical">
+    <span class="lbl">Cite as</span>
+    {canonical}
+  </p>
+)}
+<ProvenanceBlock items={provenance} />
+{contentNote && <ContentNote text={contentNote} level={noteLevel} />}
+
+<style>
+  .zy-what {
+    font-size: 1.02rem;
+    margin: 1rem 0 0.8rem;
+  }
+  .zy-canonical {
+    font-family: var(--font-serif, Newsreader, Georgia, serif);
+    font-size: 0.92rem;
+    margin: 0 0 0.8rem;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--old-gold, #b58a45);
+  }
+  .zy-canonical .lbl {
+    display: block;
+    font-family: var(--font-sans, 'Public Sans', system-ui, sans-serif);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 0.15rem;
+  }
+</style>

@@ -1,0 +1,44 @@
+{
+  "generated": "2026-08-27",
+  "letter": "X",
+  "letter_file": "x",
+  "href": "/collections/zybach/soap-creek/index/x/",
+  "counts": {
+    "entries": 1,
+    "refs": 1,
+    "subentries": 0
+  },
+  "entries": [
+    {
+      "entry_id": "zc-sc-idx-xi-sigma-pi",
+      "heading": "Xi Sigma Pi",
+      "kind": "other",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        15
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m15",
+          "mono_slug": "m15-rowley",
+          "mono_number": 15,
+          "page": 123,
+          "page_kind": "body",
+          "printed": "123",
+          "ref": "15:123",
+          "href": "/collections/zybach/soap-creek/m15-rowley/appendix-b-seventy-five-years-with-the-oregon-state-university-school-of-forestrys/#p123",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    }
+  ]
+}

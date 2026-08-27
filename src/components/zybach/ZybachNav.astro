@@ -1,0 +1,79 @@
+---
+/* ZybachNav.astro — The Zybach Collection sub-navigation.
+ *
+ * One strip, on every page of the collection, so a reader always knows the
+ * eight doors: the finding aid, the two series that are described item by item,
+ * and the four ways into the Soap Creek apparatus, plus how to cite.
+ *
+ * Contract (BUILD_SPEC §"Shared component contracts"):
+ *   { current: string }  — the key of the entry to mark as the current page.
+ *
+ * Keys: finding-aid · soap-creek · elliott · index · places · people ·
+ *       timeline · how-to-cite
+ */
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+
+const LINKS: ReadonlyArray<{ key: string; label: string; href: string }> = [
+  { key: 'finding-aid', label: 'Finding aid', href: '/collections/zybach/' },
+  { key: 'soap-creek', label: 'Soap Creek', href: '/collections/zybach/soap-creek/' },
+  { key: 'elliott', label: 'Elliott', href: '/collections/zybach/elliott/' },
+  { key: 'index', label: 'Series Index', href: '/collections/zybach/soap-creek/index/' },
+  { key: 'places', label: 'Places', href: '/collections/zybach/soap-creek/places/' },
+  { key: 'people', label: 'People', href: '/collections/zybach/soap-creek/people/' },
+  { key: 'timeline', label: 'Timeline', href: '/collections/zybach/soap-creek/timeline/' },
+  { key: 'how-to-cite', label: 'How to cite', href: '/collections/zybach/how-to-cite/' },
+];
+---
+
+<nav class="zc-nav" aria-label="The Zybach Collection" data-pagefind-ignore>
+  <ul>
+    {LINKS.map((link) => (
+      <li>
+        {link.key === current ? (
+          <span class="zc-nav__current" aria-current="page">{link.label}</span>
+        ) : (
+          <a href={link.href}>{link.label}</a>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .zc-nav {
+    margin: 0 0 1.5rem;
+    padding: 0.55rem 0 0.65rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    border-bottom: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+  }
+  .zc-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .zc-nav li {
+    margin: 0;
+    padding: 0;
+    font-size: 0.82rem;
+  }
+  .zc-nav a {
+    color: var(--room-link, #14243c);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(27, 50, 82, 0.28);
+  }
+  .zc-nav a:hover {
+    border-bottom-color: currentColor;
+  }
+  .zc-nav__current {
+    font-weight: 700;
+    color: var(--room-accent, #1b3252);
+  }
+</style>

@@ -1,0 +1,212 @@
+---
+/**
+ * The Series Index, set the way Bob sets it.
+ *
+ * A two-tier back-of-book index: heading, then subentries indented beneath,
+ * each followed by its page references. Across the series Bob cites `05:47` —
+ * monograph five, printed page forty-seven — so that is what is printed here,
+ * and every one of them is a link straight to the page.
+ */
+import type { IndexEntry, Ref } from './data';
+import {
+  folioHref,
+  placeHref,
+  personHref,
+  hasPlacePage,
+  hasPersonPage,
+  placeSlugForName,
+  personSlugForName,
+  citationLabel,
+  indexLetterHref,
+} from './links';
+
+export interface Props {
+  entries: IndexEntry[];
+  /** Set when the entries are confined to one monograph: refs print as bare
+   *  page numbers rather than `NN:PP`. */
+  monoSlug?: string;
+}
+const { entries, monoSlug } = Astro.props as Props;
+
+function refHref(r: Ref): string | null {
+  if (r?.href) return r.href;
+  const mono = r?.mono_slug ?? r?.mono_number ?? r?.zc_id;
+  if (mono == null || r?.page == null) return null;
+  return folioHref(mono, r.page);
+}
+
+function refLabel(r: Ref): string {
+  if (monoSlug) return String(r?.printed ?? r?.page ?? '');
+  if (r?.ref) return r.ref;
+  if (r?.mono_number != null) return citationLabel(r.mono_number, r.page ?? '');
+  return String(r?.page ?? '');
+}
+
+/**
+ * Two of the printed indexes (#06 and #07) were compiled against a pagination
+ * the finished book did not carry, so a printed reference can point a few
+ * pages off. The printed reference is what the book says and stays first; the
+ * page the Library worked the reference out to is shown beside it, marked as
+ * worked out rather than as fact. Nothing is silently renumbered.
+ */
+function correctedFor(r: Ref): { page: number | string; href: string | null; verified: boolean } | null {
+  const corrected = (r as any)?.page_corrected;
+  if (corrected === null || corrected === undefined) return null;
+  if (String(corrected) === String(r?.page)) return null;
+  const mono = r?.mono_slug ?? r?.mono_number ?? r?.zc_id;
+  return {
+    page: corrected,
+    href: mono != null ? folioHref(mono as any, corrected) : null,
+    verified: (r as any)?.page_verified !== null && (r as any)?.page_verified !== undefined,
+  };
+}
+
+/** A heading that names a place or a person gets a link to its page. */
+function headingHref(e: IndexEntry): string | null {
+  const names = [e.heading, ...(e.variants ?? [])].filter(Boolean) as string[];
+  if (e.kind === 'person') {
+    for (const n of names) {
+      const s = personSlugForName(n);
+      if (hasPersonPage(s)) return personHref(s!);
+    }
+    return null;
+  }
+  for (const n of names) {
+    const s = placeSlugForName(n);
+    if (hasPlacePage(s)) return placeHref(s!);
+  }
+  if (e.kind !== 'place') {
+    for (const n of names) {
+      const s = personSlugForName(n);
+      if (hasPersonPage(s)) return personHref(s!);
+    }
+  }
+  return null;
+}
+
+/**
+ * A cross-reference — "See TREES", "See also World War II". The index has been
+ * resolved against itself, so each one arrives as
+ * `{ text, entry_id, heading, resolved }`; where the target exists it is a link
+ * to that entry on its own letter page. Earlier files held a plain string.
+ */
+type XRef = string | { text?: string; entry_id?: string | null; heading?: string | null };
+function xref(x: XRef): { label: string; href: string | null } {
+  if (typeof x === 'string') return { label: x, href: null };
+  const label = x?.text ?? x?.heading ?? '';
+  const target = x?.heading ?? x?.text ?? '';
+  const href = x?.entry_id
+    ? `${indexLetterHref(target.trim().charAt(0))}#${x.entry_id}`
+    : null;
+  return { label, href };
+}
+---
+
+<div class="sc-cols">
+  {entries.map((e) => {
+    const hHref = headingHref(e);
+    const refs = e.refs ?? [];
+    const subs = e.subentries ?? [];
+    return (
+      <div class="sc-index-entry" id={e.entry_id}>
+        <span class="sc-index-heading">
+          {hHref ? <a href={hHref}>{e.heading}</a> : e.heading}
+        </span>
+        {refs.length > 0 && (
+          <span class="sc-refs">
+            {' '}
+            {refs.map((r, i) => {
+              const href = refHref(r);
+              const corr = correctedFor(r);
+              return (
+                <>
+                  {i > 0 && ', '}
+                  {href ? <a href={href}>{refLabel(r)}</a> : <span>{refLabel(r)}</span>}
+                  {corr && (
+                    <span
+                      class="sc-ref-corrected"
+                      title={corr.verified
+                        ? 'Printed reference first; the checked page beside it.'
+                        : 'Printed reference first; the page the Library worked it out to beside it. Not checked against the book.'}
+                    >
+                      {' ['}
+                      {corr.href ? <a href={corr.href}>p. {corr.page}</a> : <>p. {corr.page}</>}
+                      {corr.verified ? ', checked]' : ', worked out]'}
+                    </span>
+                  )}
+                </>
+              );
+            })}
+          </span>
+        )}
+        {(e.see ?? []).length > 0 && (
+          <span class="sc-index-see">
+            {' '}See{' '}
+            {(e.see ?? []).map((x, i) => {
+              const { label, href } = xref(x as XRef);
+              return (
+                <>
+                  {i > 0 && '; '}
+                  {href ? <a href={href}>{label}</a> : label}
+                </>
+              );
+            })}.
+          </span>
+        )}
+        {(e.see_also ?? []).length > 0 && (
+          <span class="sc-index-see">
+            {' '}See also{' '}
+            {(e.see_also ?? []).map((x, i) => {
+              const { label, href } = xref(x as XRef);
+              return (
+                <>
+                  {i > 0 && '; '}
+                  {href ? <a href={href}>{label}</a> : label}
+                </>
+              );
+            })}.
+          </span>
+        )}
+        {subs.length > 0 && (
+          <ul class="sc-index-sub">
+            {subs.map((s) => (
+              <li>
+                {s.subheading}
+                {(s.refs ?? []).length > 0 && (
+                  <span class="sc-refs">
+                    {' '}
+                    {(s.refs ?? []).map((r, i) => {
+                      const href = refHref(r);
+                      const corr = correctedFor(r);
+                      return (
+                        <>
+                          {i > 0 && ', '}
+                          {href ? <a href={href}>{refLabel(r)}</a> : <span>{refLabel(r)}</span>}
+                          {corr && (
+                            <span class="sc-ref-corrected">
+                              {' ['}
+                              {corr.href ? <a href={corr.href}>p. {corr.page}</a> : <>p. {corr.page}</>}
+                              {corr.verified ? ', checked]' : ', worked out]'}
+                            </span>
+                          )}
+                        </>
+                      );
+                    })}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  })}
+</div>
+
+<style is:global>
+  .sc-ref-corrected {
+    font-size: 0.82em;
+    color: #6b5a3e;
+    white-space: nowrap;
+  }
+</style>

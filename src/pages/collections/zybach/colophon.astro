@@ -1,0 +1,238 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import { collection } from '../../../components/zybach/_data';
+
+const col = collection?.colophon ?? null;
+
+const FALLBACK_DID = [
+  'Read the fifteen printed Soap Creek monographs, the 1999 thesis and the 1989 Auto Tour page by page, and recorded what was on each page.',
+  'Extracted the transcript text and kept every printed page number, so a citation like 05:47 still lands on printed page 47.',
+  'Recovered speaker turns from the typography of the printed page, and marked every one of them as inferred.',
+  'Corrected obvious scanning errors — a mangled name, a broken word — and logged each fix with its page and its before-and-after.',
+  'Merged the printed back-of-book indexes into one live index across the series, and rebuilt entries from the transcript text wherever the printed index was compiled against a different pagination.',
+  'Built a gazetteer of the places the narrators name, with a coordinate, the method used to get it, and a confidence for each.',
+  'Assembled a chronology from the dated statements the narrators made, quoting them verbatim.',
+  'Ingested Bob Zybach’s own 2019 Elliott index — stop number, tape side, minute, topic, transcript page, photograph count — rather than inventing a new one.',
+  'Linked every item to the creator’s own published copy, and recorded the source file and its checksum.',
+  'Wrote content notes, at page level, describing passages a reader should know about before reading.',
+];
+
+const FALLBACK_DID_NOT = [
+  'Did not rewrite, summarize or paraphrase a narrator’s words into the text. What reads as the transcript is the transcript.',
+  'Did not correct a narrator. The printed transcripts were checked and approved by the people who spoke them; disagreements go to a review queue, not into the text.',
+  'Did not rename Bob’s series, monographs, chapters or tour stops, or restyle his citation strings.',
+  'Did not fill an empty field with a plausible guess. A blank means the document did not say.',
+  'Did not present an inference as a fact: derived speakers, coordinates and dates are labelled and carry their method.',
+  'Did not edit or soften offensive language in the sources. It is noted, not altered.',
+  'Did not publish personal data about named individuals: pages carrying addresses, telephone numbers or children’s names are held, with the reason shown.',
+  'Did not copy the originals. The monograph PDFs, recordings and videos stay on the creator’s own sites.',
+  'Did not read, describe or retain private financial or medical files found in the upload, and did not delete them.',
+  'Did not decide anything the creator has not seen. This whole collection is a preview for his review.',
+];
+
+const did = col?.what_the_fleet_did?.length ? col.what_the_fleet_did : FALLBACK_DID;
+const didNot = col?.what_it_did_not_do?.length
+  ? col.what_it_did_not_do
+  : FALLBACK_DID_NOT;
+const models = col?.models ?? [];
+
+/* `dates` may be a string, a list, or a map of named dates. Render whichever
+   arrived, without inventing a shape. */
+const rawDates = col?.dates as unknown;
+const dateRows: Array<{ label: string; value: string }> =
+  rawDates && typeof rawDates === 'object' && !Array.isArray(rawDates)
+    ? Object.entries(rawDates as Record<string, unknown>).map(([k, v]) => ({
+        label: k.replace(/_/g, ' ').replace(/^\w/, (c) => c.toUpperCase()),
+        value: Array.isArray(v) ? v.join(', ') : String(v),
+      }))
+    : [];
+const datesLine = Array.isArray(rawDates)
+  ? rawDates.join(' – ')
+  : typeof rawDates === 'string'
+    ? rawDates
+    : dateRows.length
+      ? ''
+      : 'August 2026';
+---
+
+<RoomLayout
+  room="collections"
+  title="Colophon"
+  subtitle="What was done to build these pages, what was deliberately not done, and by whom."
+  width="prose"
+  sourceId="collections-zybach-colophon"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="finding-aid" />
+
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+    </p>
+
+    <p>
+      A colophon is the note at the back of a book that says how the book was
+      made. This one exists because the making matters: the words in this
+      collection are Bob Zybach's and his narrators', and a reader is entitled
+      to know exactly where the Library's hand fell.
+    </p>
+
+    <p>
+      The description was built with AI assistance, under the Library's
+      disclosure rule. The division of labour was deliberate and narrow. The
+      machines read, extracted, aligned, indexed and linked. They did not write
+      the text a reader reads as the source, and they did not decide what the
+      collection means.
+    </p>
+
+    <h2 id="did">What was done</h2>
+
+    <ul class="zc-did">
+      {did.map((line) => <li>{line}</li>)}
+    </ul>
+
+    <h2 id="did-not">What was not done</h2>
+
+    <ul class="zc-did-not">
+      {didNot.map((line) => <li>{line}</li>)}
+    </ul>
+
+    <h2 id="apparatus">Apparatus is labelled as apparatus</h2>
+
+    <p>
+      Indexes, place pages, person pages, timelines and maps are the Library's
+      work, built out of Bob's material. They are navigation, not scholarship in
+      the Library's own voice. Every entry in them points back to a printed page
+      you can check, and the pages say when a link was derived rather than
+      stated.
+    </p>
+
+    <h2 id="known">Known problems in this preview</h2>
+
+    <ul>
+      <li>
+        The printed back indexes of monographs #06 and #07 were compiled against
+        a different pagination and drift by up to two and seven pages. Place and
+        topic entries for those volumes are rebuilt from the transcript text;
+        the printed index is recorded as printed.
+      </li>
+      <li>
+        Printed page 107 is missing from monograph #10, and pages 76–77 from
+        #12: gaps in the scan, not in the book.
+      </li>
+      <li>
+        Monograph #07 gives its first session as 29 January 1990; the OSU
+        finding aid gives 20 January 1990. Both are recorded; neither has been
+        resolved.
+      </li>
+      <li>
+        Recognition of the 1990s typescripts is not perfect. Each item page
+        carries a sampled error rate, and the corrections ledger takes reports.
+      </li>
+      <li>
+        Coordinates for places named only in speech are inferred from the name
+        and the surrounding text. They are good enough to navigate by and not
+        good enough to survey by; each one shows its method.
+      </li>
+    </ul>
+
+    <h2 id="credits">Credits</h2>
+
+    <dl class="zc-credits">
+      <div>
+        <dt>Interviews, transcription, editing, indexing, photography, maps</dt>
+        <dd>
+          Bob Zybach and the interviewers, transcribers and auditors named in
+          each volume's front matter.
+        </dd>
+      </div>
+      <div>
+        <dt>Publishers of the originals</dt>
+        <dd>
+          OSU Research Forests and College of Forestry; NW Maps Co.; Oregon
+          Websites and Watersheds Project, Inc.
+        </dd>
+      </div>
+      <div>
+        <dt>Preservation of the recordings</dt>
+        <dd>
+          OSU Special Collections and Archives Research Center (OH 006, OH 047,
+          OH 005, MSS Zybach).
+        </dd>
+      </div>
+      <div>
+        <dt>Description and site</dt>
+        <dd>America's School Trust Library, built in the open with AI assistance.</dd>
+      </div>
+      {models.length > 0 && (
+        <div>
+          <dt>Models used</dt>
+          <dd>{models.join(', ')}</dd>
+        </div>
+      )}
+      {datesLine && (
+        <div>
+          <dt>Built</dt>
+          <dd>{datesLine}</dd>
+        </div>
+      )}
+      {dateRows.map((row) => (
+        <div>
+          <dt>{row.label}</dt>
+          <dd>{row.value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <p class="see-also">
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/content-note/">Content note</a> ·
+      <a href="/pro/editorial-standards/">Editorial standards</a> ·
+      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-did li,
+  .zc-did-not li {
+    margin-bottom: 0.45rem;
+    line-height: 1.6;
+  }
+  .zc-did-not {
+    padding-left: 1.2rem;
+    border-left: 3px solid rgba(122, 46, 46, 0.35);
+  }
+  .zc-credits div {
+    display: grid;
+    grid-template-columns: 15em 1fr;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    border-top: 1px solid rgba(27, 50, 82, 0.12);
+  }
+  .zc-credits dt {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #4e617c;
+  }
+  .zc-credits dd {
+    margin: 0;
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+  @media (max-width: 560px) {
+    .zc-credits div {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

@@ -1,0 +1,1875 @@
+{
+  "type": "FeatureCollection",
+  "generated": "2026-08-27",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-adams-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.155668,
+          43.545948
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-adams-creek",
+        "name": "Adams Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Adams Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-adams-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-alder-gulch",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.082386,
+          43.591268
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-alder-gulch",
+        "name": "Alder Gulch",
+        "kind": "valley",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Alder Gulch",
+        "subtitle": "valley",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-alder-gulch/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-allegany",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.032327,
+          43.425947
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-allegany",
+        "name": "Allegany",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Allegany",
+        "subtitle": "populated place · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-allegany/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-ash-valley",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.825341,
+          43.579995
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-ash-valley",
+        "name": "Ash Valley",
+        "kind": "valley",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Ash Valley",
+        "subtitle": "valley · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-ash-valley/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-ash-valley-school",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.826762,
+          43.53776
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-ash-valley-school",
+        "name": "Ash Valley School",
+        "kind": "school site",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Ash Valley School",
+        "subtitle": "school site · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-ash-valley-school/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-baltimore-crane-house",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.943924,
+          43.560044
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-baltimore-crane-house",
+        "name": "Baltimore Crane House",
+        "kind": "cabin site",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Baltimore Crane House",
+        "subtitle": "cabin site · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-baltimore-crane-house/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-benson-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.104832,
+          43.564282
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-benson-creek",
+        "name": "Benson Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Benson Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-benson-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-bickford-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.830466,
+          43.564098
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-bickford-creek",
+        "name": "Bickford Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Bickford Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-bickford-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-big-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.106221,
+          43.591504
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-big-creek",
+        "name": "Big Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Big Creek",
+        "subtitle": "stream · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-big-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-big-saddle",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.9308,
+          43.511227
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-big-saddle",
+        "name": "Big Saddle",
+        "kind": "saddle",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Big Saddle",
+        "subtitle": "saddle · 2 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-big-saddle/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-bob-jacobson-fishing-camp",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.963516,
+          43.531731
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-bob-jacobson-fishing-camp",
+        "name": "Bob Jacobson Fishing Camp",
+        "kind": "fishing camp",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Bob Jacobson Fishing Camp",
+        "subtitle": "fishing camp · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-bob-jacobson-fishing-camp/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-brandy-bar",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.929549,
+          43.679006
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-brandy-bar",
+        "name": "Brandy Bar",
+        "kind": "bar",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Brandy Bar",
+        "subtitle": "bar",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-brandy-bar/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-buck-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.967604,
+          43.563449
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-buck-creek",
+        "name": "Buck Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Buck Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-buck-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-buehners-logging-camp",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.030742,
+          43.445568
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-buehners-logging-camp",
+        "name": "Buehner's Logging Camp",
+        "kind": "historic logging camp",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Buehner's Logging Camp",
+        "subtitle": "historic logging camp · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-buehners-logging-camp/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-cedar-cabin",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.982965,
+          43.545815
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-cedar-cabin",
+        "name": "Cedar Cabin",
+        "kind": "cabin site",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Cedar Cabin",
+        "subtitle": "cabin site · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-cedar-cabin/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-charleston",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.330117,
+          43.340111
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-charleston",
+        "name": "Charleston",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Charleston",
+        "subtitle": "populated place",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-charleston/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-charlotte-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.918715,
+          43.660672
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-charlotte-creek",
+        "name": "Charlotte Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Charlotte Creek",
+        "subtitle": "stream · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-charlotte-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-charlotte-ridge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.95607,
+          43.656799
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-charlotte-ridge",
+        "name": "Charlotte Ridge",
+        "kind": "ridge",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Charlotte Ridge",
+        "subtitle": "ridge",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-charlotte-ridge/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-clarence-gould-cabin",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.943924,
+          43.560044
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-clarence-gould-cabin",
+        "name": "Clarence Gould Cabin",
+        "kind": "cabin site",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Clarence Gould Cabin",
+        "subtitle": "cabin site · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-clarence-gould-cabin/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-coos-bay",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.21789,
+          43.366501
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-coos-bay",
+        "name": "Coos Bay",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Coos Bay",
+        "subtitle": "populated place",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-coos-bay/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-cougar-pass",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.865785,
+          43.598392
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-cougar-pass",
+        "name": "Cougar Pass",
+        "kind": "gap / fire lookout site",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Cougar Pass",
+        "subtitle": "gap / fire lookout site · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-cougar-pass/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-dean-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.000106,
+          43.694005
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-dean-creek",
+        "name": "Dean Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Dean Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-dean-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-dean-mountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.979708,
+          43.614439
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-dean-mountain",
+        "name": "Dean Mountain",
+        "kind": "summit",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Dean Mountain",
+        "subtitle": "summit · 2 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-dean-mountain/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-deer-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.961493,
+          43.581505
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-deer-creek",
+        "name": "Deer Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Deer Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-deer-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-deer-head-point",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.913785,
+          43.693899
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-deer-head-point",
+        "name": "Deer Head Point",
+        "kind": "summit",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Deer Head Point",
+        "subtitle": "summit",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-deer-head-point/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-east-fork-millicoma-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.030382,
+          43.42428
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-east-fork-millicoma-river",
+        "name": "East Fork Millicoma River",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "East Fork Millicoma River",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-east-fork-millicoma-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-elk-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.931492,
+          43.582894
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-elk-creek",
+        "name": "Elk Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Elk Creek",
+        "subtitle": "stream · 2 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-elk-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-elk-peak",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.909797,
+          43.540435
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-elk-peak",
+        "name": "Elk Peak",
+        "kind": "summit",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Elk Peak",
+        "subtitle": "summit · 2 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-elk-peak/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-elkhorn-ranch",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.963548,
+          43.545837
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-elkhorn-ranch",
+        "name": "Elkhorn Ranch",
+        "kind": "historic ranch / homestead",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Elkhorn Ranch",
+        "subtitle": "historic ranch / homestead · 3 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-elkhorn-ranch/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-elkton",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.568152,
+          43.637617
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-elkton",
+        "name": "Elkton",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Elkton",
+        "subtitle": "populated place",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-elkton/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-fish-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.920103,
+          43.58206
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-fish-creek",
+        "name": "Fish Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Fish Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-fish-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-footlog-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.86788,
+          43.642895
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-footlog-creek",
+        "name": "Footlog Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Footlog Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-footlog-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-glenn-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.956213,
+          43.454559
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-glenn-creek",
+        "name": "Glenn Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Glenn Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-glenn-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-golden-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.79149,
+          43.668451
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-golden-creek",
+        "name": "Golden Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Golden Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-golden-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-golden-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.927879,
+          43.485115
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-golden-falls",
+        "name": "Golden Falls",
+        "kind": "falls",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Golden Falls",
+        "subtitle": "falls",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-golden-falls/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-gould-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.944436,
+          43.536859
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-gould-lake",
+        "name": "Gould Lake",
+        "kind": "lake",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Gould Lake",
+        "subtitle": "lake · 3 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-gould-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-hakki-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.00594,
+          43.687616
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-hakki-creek",
+        "name": "Hakki Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Hakki Creek",
+        "subtitle": "stream · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-hakki-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-howell-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.884545,
+          43.51956
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-howell-creek",
+        "name": "Howell Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Howell Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-howell-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-indian-charlie-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.923715,
+          43.66845
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-indian-charlie-creek",
+        "name": "Indian Charlie Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Indian Charlie Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-indian-charlie-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-indian-point",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.855735,
+          43.629928
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-indian-point",
+        "name": "Indian Point",
+        "kind": "point / Indian allotment",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Indian Point",
+        "subtitle": "point / Indian allotment · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-indian-point/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-indian-trail-spring",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.951764,
+          43.503163
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-indian-trail-spring",
+        "name": "Indian Trail Spring",
+        "kind": "spring",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Indian Trail Spring",
+        "subtitle": "spring · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-indian-trail-spring/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-jerry-phillips-private-reserve",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.951764,
+          43.503163
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-jerry-phillips-private-reserve",
+        "name": "Jerry Phillips Private Reserve",
+        "kind": "forest reserve",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "Jerry Phillips Private Reserve",
+        "subtitle": "forest reserve · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-jerry-phillips-private-reserve/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-joes-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.963437,
+          43.573171
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-joes-creek",
+        "name": "Joes Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Joes Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-joes-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-johnson-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.116221,
+          43.544004
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-johnson-creek",
+        "name": "Johnson Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Johnson Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-johnson-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-kelly-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.907047,
+          43.580949
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-kelly-creek",
+        "name": "Kelly Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Kelly Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-kelly-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-knife-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.944826,
+          43.58706
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-knife-creek",
+        "name": "Knife Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Knife Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-knife-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-lakeside",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.175114,
+          43.57567
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-lakeside",
+        "name": "Lakeside",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Lakeside",
+        "subtitle": "populated place · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-lakeside/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-larson-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.141222,
+          43.478169
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-larson-creek",
+        "name": "Larson Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Larson Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-larson-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-larson-slough",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.194835,
+          43.462335
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-larson-slough",
+        "name": "Larson Slough",
+        "kind": "stream/slough",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Larson Slough",
+        "subtitle": "stream/slough",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-larson-slough/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-little-mill-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.82649,
+          43.654561
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-little-mill-creek",
+        "name": "Little Mill Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Little Mill Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-little-mill-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-little-salander-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.842323,
+          43.585672
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-little-salander-creek",
+        "name": "Little Salander Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Little Salander Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-little-salander-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-loon-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.837092,
+          43.586824
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-loon-lake",
+        "name": "Loon Lake",
+        "kind": "lake",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Loon Lake",
+        "subtitle": "lake · 2 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-loon-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-luder-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.90177,
+          43.650672
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-luder-creek",
+        "name": "Luder Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Luder Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-luder-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-marlow-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.02566,
+          43.434003
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-marlow-creek",
+        "name": "Marlow Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Marlow Creek",
+        "subtitle": "stream · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-marlow-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-mill-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.874269,
+          43.655395
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-mill-creek",
+        "name": "Mill Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Mill Creek",
+        "subtitle": "stream · 2 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-mill-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-millicoma-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.098162,
+          43.380113
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-millicoma-river",
+        "name": "Millicoma River",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Millicoma River",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-millicoma-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-millicoma-river-rearing-pond",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.948956,
+          43.437885
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-millicoma-river-rearing-pond",
+        "name": "Millicoma River Rearing Pond",
+        "kind": "hatchery",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Millicoma River Rearing Pond",
+        "subtitle": "hatchery · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-millicoma-river-rearing-pond/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-nesika-county-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.995381,
+          43.440114
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-nesika-county-park",
+        "name": "Nesika County Park",
+        "kind": "county park",
+        "confidence": "unverified",
+        "method": "nominatim",
+        "title": "Nesika County Park",
+        "subtitle": "county park",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-nesika-county-park/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-north-bend",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.22428,
+          43.406501
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-north-bend",
+        "name": "North Bend",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "North Bend",
+        "subtitle": "populated place",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-north-bend/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-north-marlow-ridge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.971575,
+          43.503138
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-north-marlow-ridge",
+        "name": "North Marlow Ridge",
+        "kind": "ridge / 1958 clearcut",
+        "confidence": "inferred",
+        "method": "map-reading",
+        "title": "North Marlow Ridge",
+        "subtitle": "ridge / 1958 clearcut · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-north-marlow-ridge/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-north-tenmile-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.151639,
+          43.590543
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-north-tenmile-lake",
+        "name": "North Tenmile Lake",
+        "kind": "lake",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "North Tenmile Lake",
+        "subtitle": "lake",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-north-tenmile-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-panther-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.91788,
+          43.57456
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-panther-creek",
+        "name": "Panther Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Panther Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-panther-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-piledriver-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.00427,
+          43.472614
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-piledriver-creek",
+        "name": "Piledriver Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Piledriver Creek",
+        "subtitle": "stream · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-piledriver-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-reedsport",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.096778,
+          43.702339
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-reedsport",
+        "name": "Reedsport",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Reedsport",
+        "subtitle": "populated place",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-reedsport/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-roberts-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.078442,
+          43.542337
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-roberts-creek",
+        "name": "Roberts Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Roberts Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-roberts-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-salander-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.842045,
+          43.582894
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-salander-creek",
+        "name": "Salander Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Salander Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-salander-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-scholfield-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.107815,
+          43.698327
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-scholfield-creek",
+        "name": "Scholfield Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Scholfield Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-scholfield-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-scholfield-ridge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.983597,
+          43.613884
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-scholfield-ridge",
+        "name": "Scholfield Ridge",
+        "kind": "ridge",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Scholfield Ridge",
+        "subtitle": "ridge · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-scholfield-ridge/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-schumacher-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.039828,
+          43.480114
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-schumacher-creek",
+        "name": "Schumacher Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Schumacher Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-schumacher-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-scottsburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.816768,
+          43.654006
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-scottsburg",
+        "name": "Scottsburg",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Scottsburg",
+        "subtitle": "populated place",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-scottsburg/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-silver-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.930935,
+          43.481504
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-silver-creek",
+        "name": "Silver Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Silver Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-silver-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-silver-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.934546,
+          43.488448
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-silver-falls",
+        "name": "Silver Falls",
+        "kind": "falls",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Silver Falls",
+        "subtitle": "falls",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-silver-falls/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-south-slough",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.323172,
+          43.315111
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-south-slough",
+        "name": "South Slough",
+        "kind": "gut/estuary",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "South Slough",
+        "subtitle": "gut/estuary · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-south-slough/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-stulls-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.995659,
+          43.510948
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-stulls-falls",
+        "name": "Stulls Falls",
+        "kind": "falls",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Stulls Falls",
+        "subtitle": "falls · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-stulls-falls/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-sullivan-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.141222,
+          43.478169
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-sullivan-creek",
+        "name": "Sullivan Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Sullivan Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-sullivan-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-surprise-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.858155,
+          43.524838
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-surprise-creek",
+        "name": "Surprise Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Surprise Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-surprise-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-tenmile",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.19567,
+          43.576226
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-tenmile",
+        "name": "Tenmile",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Tenmile",
+        "subtitle": "populated place",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-tenmile-butte",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.094241,
+          43.5255
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-tenmile-butte",
+        "name": "Tenmile Butte",
+        "kind": "summit",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Tenmile Butte",
+        "subtitle": "summit · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile-butte/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-tenmile-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.232061,
+          43.561781
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-tenmile-creek",
+        "name": "Tenmile Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Tenmile Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-tenmile-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.12343,
+          43.550021
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-tenmile-lake",
+        "name": "Tenmile Lake",
+        "kind": "lake",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Tenmile Lake",
+        "subtitle": "lake · 1 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-tenmile-lake-county-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.170669,
+          43.573448
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-tenmile-lake-county-park",
+        "name": "Tenmile Lake County Park",
+        "kind": "county park",
+        "confidence": "unverified",
+        "method": "nominatim",
+        "title": "Tenmile Lake County Park",
+        "subtitle": "county park",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile-lake-county-park/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-trail-butte",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.037289,
+          43.50115
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-trail-butte",
+        "name": "Trail Butte",
+        "kind": "summit",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Trail Butte",
+        "subtitle": "summit · 3 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-trail-butte/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-trout-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.976214,
+          43.522337
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-trout-creek",
+        "name": "Trout Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Trout Creek",
+        "subtitle": "stream · 2 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-trout-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-umpcoos-ridge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.893087,
+          43.606276
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-umpcoos-ridge",
+        "name": "Umpcoos Ridge",
+        "kind": "ridge",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Umpcoos Ridge",
+        "subtitle": "ridge · 2 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-umpcoos-ridge/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-umpqua-wayside",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.93306,
+          43.677435
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-umpqua-wayside",
+        "name": "Umpqua Wayside",
+        "kind": "state wayside",
+        "confidence": "unverified",
+        "method": "nominatim",
+        "title": "Umpqua Wayside",
+        "subtitle": "state wayside",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-umpqua-wayside/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-west-fork-glenn-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.893156,
+          43.513727
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-west-fork-glenn-creek",
+        "name": "West Fork Glenn Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "West Fork Glenn Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-west-fork-glenn-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-west-fork-millicoma-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.030104,
+          43.42428
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-west-fork-millicoma-river",
+        "name": "West Fork Millicoma River",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "West Fork Millicoma River",
+        "subtitle": "stream · 3 stops",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-west-fork-millicoma-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-west-fork-silver-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.93399,
+          43.485393
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-west-fork-silver-creek",
+        "name": "West Fork Silver Creek",
+        "kind": "stream",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "West Fork Silver Creek",
+        "subtitle": "stream",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-west-fork-silver-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zc-el-pl-winchester-bay",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.174837,
+          43.677061
+        ]
+      },
+      "properties": {
+        "slug": "zc-el-pl-winchester-bay",
+        "name": "Winchester Bay",
+        "kind": "populated place",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Winchester Bay",
+        "subtitle": "populated place",
+        "href": "/collections/zybach/elliott/places/zc-el-pl-winchester-bay/"
+      }
+    }
+  ]
+}

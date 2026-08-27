@@ -1,0 +1,59 @@
+---
+/** Fallback for ROOM's ZybachNav (collection sub-navigation). Props per BUILD_SPEC. */
+interface Props {
+  current: string;
+}
+const { current } = Astro.props as Props;
+
+const links = [
+  { key: 'finding-aid', label: 'Finding aid', href: '/collections/zybach/' },
+  { key: 'soap-creek', label: 'Soap Creek', href: '/collections/zybach/soap-creek/' },
+  { key: 'elliott', label: 'Elliott', href: '/collections/zybach/elliott/' },
+  { key: 'index', label: 'Series Index', href: '/collections/zybach/soap-creek/index/' },
+  { key: 'places', label: 'Places', href: '/collections/zybach/soap-creek/places/' },
+  { key: 'people', label: 'People', href: '/collections/zybach/soap-creek/people/' },
+  { key: 'timeline', label: 'Timeline', href: '/collections/zybach/soap-creek/timeline/' },
+  { key: 'how-to-cite', label: 'How to cite', href: '/collections/zybach/how-to-cite/' },
+];
+---
+
+<nav class="zy-nav" aria-label="The Zybach Collection">
+  <ul>
+    {links.map((l) => (
+      <li>
+        {l.key === current ? (
+          <span aria-current="page">{l.label}</span>
+        ) : (
+          <a href={l.href}>{l.label}</a>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .zy-nav {
+    margin: 0 0 1.25rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+  }
+  .zy-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.9rem;
+    font-size: 0.8rem;
+  }
+  .zy-nav li {
+    margin: 0;
+  }
+  .zy-nav a {
+    color: var(--trust-blue, #1f3851);
+  }
+  .zy-nav [aria-current='page'] {
+    font-weight: 700;
+    color: var(--oxblood, #7a2e2e);
+  }
+</style>

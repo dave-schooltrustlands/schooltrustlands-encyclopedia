@@ -1,0 +1,193 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import { ZybachNav } from '../../../../components/zybach/elliott/shared';
+import { confidenceLabel } from '../../../../components/zybach/labels';
+import {
+  BASE,
+  RIGHTS,
+  mapsRegister,
+  mapsIntroVerbatim,
+  mapsSourcePage,
+  interviews,
+  longDate,
+  bytesLabel,
+  counts,
+} from '../../../../components/zybach/elliott/data';
+
+const routeMaps = mapsRegister.filter((m) => m.interview_date);
+const otherMaps = mapsRegister.filter((m) => !m.interview_date);
+
+function interviewFor(date: string | null) {
+  return date ? interviews.find((iv) => iv.date === date) ?? null : null;
+}
+---
+
+<RoomLayout
+  room="collections"
+  title="Maps"
+  subtitle={`${counts.maps} maps from Bob Zybach's ORWW map page`}
+  width="full"
+  sourceId="zybach-elliott-maps"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+    { label: 'Elliott State Forest', href: `${BASE}/` },
+  ]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Elliott State Forest · Register</p>
+
+  <ZybachNav current="elliott" />
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <p>
+    The maps Bob Zybach published for the Elliott State Forest, with his titles
+    as he wrote them. Thumbnails and titles link to the images on orww.org.
+  </p>
+  {mapsIntroVerbatim && (
+    <blockquote class="zy-intro">
+      <p>{mapsIntroVerbatim}</p>
+      {mapsSourcePage && (
+        <footer>
+          From <a href={mapsSourcePage}>{mapsSourcePage}</a>, verbatim.
+        </footer>
+      )}
+    </blockquote>
+  )}
+  <p class="zy-rights-line">{RIGHTS.orww}</p>
+
+  {routeMaps.length > 0 && (
+    <section aria-labelledby="route-heading">
+      <h2 id="route-heading">Interview route maps</h2>
+      <ul class="zy-map-grid">
+        {routeMaps.map((m) => {
+          const iv = interviewFor(m.interview_date);
+          return (
+            <li>
+              {m.url ? (
+                <a href={m.url}>
+                  {m.thumbnail ? (
+                    <img src={m.thumbnail} alt={m.title} loading="lazy" width="200" height="150" />
+                  ) : (
+                    <span class="nothumb">map</span>
+                  )}
+                </a>
+              ) : (
+                <span class="nothumb">map</span>
+              )}
+              <span class="cap">{m.url ? <a href={m.url}>{m.title}</a> : m.title}</span>
+              {m.caption && m.caption !== m.title && <span class="sub">{m.caption}</span>}
+              <span class="sub">
+                {m.interview_date && (
+                  <>
+                    {longDate(m.interview_date)}
+                    {iv && (
+                      <>
+                        {' '}— <a href={iv.href}>the interview</a>
+                      </>
+                    )}
+                  </>
+                )}
+              </span>
+              <span class="sub">
+                {m.format}
+                {m.bytes ? ` · ${bytesLabel(m.bytes)}` : ''}
+                {m.confidence ? ` · ${confidenceLabel(m.confidence)}` : ''}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="all-heading">
+    <h2 id="all-heading">The map register</h2>
+    <ul class="zy-map-grid">
+      {otherMaps.map((m) => (
+        <li>
+          {m.url ? (
+            <a href={m.url}>
+              {m.thumbnail ? (
+                <img src={m.thumbnail} alt={m.title} loading="lazy" width="200" height="150" />
+              ) : (
+                <span class="nothumb">map</span>
+              )}
+            </a>
+          ) : (
+            <span class="nothumb">map</span>
+          )}
+          <span class="cap">{m.url ? <a href={m.url}>{m.title}</a> : m.title}</span>
+          {m.caption && m.caption !== m.title && <span class="sub">{m.caption}</span>}
+          <span class="sub">
+            {m.kind}
+            {m.date ? ` · ${m.date}` : ''}
+          </span>
+          <span class="sub">
+            {m.format}
+            {m.bytes ? ` · ${bytesLabel(m.bytes)}` : ''}
+            {m.confidence ? ` · ${confidenceLabel(m.confidence)}` : ''}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <p class="see-also"><a href={`${BASE}/`}>Back to the Elliott State Forest series</a></p>
+</RoomLayout>
+
+<style>
+  .zy-rights-line {
+    font-size: 0.82rem;
+    color: #475569;
+  }
+  .zy-intro {
+    margin: 1rem 0;
+    border-left: 3px solid var(--old-gold, #b58a45);
+    padding-left: 0.9rem;
+    font-family: var(--font-serif, Newsreader, Georgia, serif);
+    font-size: 0.92rem;
+  }
+  .zy-intro footer {
+    font-family: var(--font-sans, 'Public Sans', system-ui, sans-serif);
+    font-size: 0.75rem;
+    color: #94a3b8;
+    overflow-wrap: anywhere;
+  }
+  .zy-map-grid {
+    list-style: none;
+    margin: 1rem 0 2rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+  .zy-map-grid li {
+    font-size: 0.78rem;
+  }
+  .zy-map-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #d6cfbf;
+    background: #eee8dc;
+  }
+  .zy-map-grid .nothumb {
+    display: block;
+    padding: 2rem 0;
+    text-align: center;
+    border: 1px dashed #d6cfbf;
+    color: #94a3b8;
+  }
+  .zy-map-grid .cap {
+    display: block;
+    margin-top: 0.3rem;
+    font-weight: 600;
+  }
+  .zy-map-grid .sub {
+    display: block;
+    color: #94a3b8;
+  }
+</style>

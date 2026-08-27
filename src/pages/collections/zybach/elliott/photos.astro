@@ -1,0 +1,106 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import { ZybachNav } from '../../../../components/zybach/elliott/shared';
+import PhotoGrid from '../../../../components/zybach/elliott/PhotoGrid.astro';
+import {
+  BASE,
+  RIGHTS,
+  photoDates,
+  photosByPlace,
+  interviews,
+  longDate,
+  counts,
+  projectPhotosNote,
+} from '../../../../components/zybach/elliott/data';
+
+const groupsByDate = photoDates.map((d) => ({
+  ...d,
+  interview: interviews.find((iv) => iv.date === d.date) ?? null,
+  groups: photosByPlace(d.date),
+}));
+---
+
+<RoomLayout
+  room="collections"
+  title="Photographs"
+  subtitle={`${counts.photographs} photographs, by date and place`}
+  width="full"
+  sourceId="zybach-elliott-photos"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+    { label: 'Elliott State Forest', href: `${BASE}/` },
+  ]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Elliott State Forest · Register</p>
+
+  <ZybachNav current="elliott" />
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <p>
+    Photographs made on the interview days, published on Bob Zybach's server and
+    grouped here by the place in each file's name. Thumbnails link to the full
+    image on orww.org; nothing is copied into this library.
+  </p>
+  {projectPhotosNote && <p class="zy-note-line">{projectPhotosNote}</p>}
+  <p class="zy-rights-line">{RIGHTS.orww}</p>
+
+  <nav class="zy-jump" aria-label="Jump to a date">
+    {groupsByDate.map((g) => (
+      <a href={`#d${g.date.replace(/-/g, '')}`}>
+        {longDate(g.date)} ({g.count})
+      </a>
+    ))}
+  </nav>
+
+  {groupsByDate.map((g) => (
+    <section id={`d${g.date.replace(/-/g, '')}`} class="zy-date-section">
+      <h2>
+        {longDate(g.date)}
+        {g.interview && (
+          <span class="ivlink">
+            {' '}— <a href={g.interview.href}>{g.interview.title_as_printed}</a>
+          </span>
+        )}
+      </h2>
+      <PhotoGrid
+        groups={g.groups}
+        heading={`${g.count} photographs`}
+        headingId={`h${g.date.replace(/-/g, '')}`}
+      />
+    </section>
+  ))}
+
+  <p class="see-also"><a href={`${BASE}/`}>Back to the Elliott State Forest series</a></p>
+</RoomLayout>
+
+<style>
+  .zy-rights-line,
+  .zy-note-line {
+    font-size: 0.82rem;
+    color: #475569;
+  }
+  .zy-jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1rem;
+    font-size: 0.85rem;
+    margin: 1rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .zy-date-section {
+    scroll-margin-top: 4rem;
+  }
+  .zy-date-section > h2 {
+    font-size: 1.15rem;
+    margin: 1.6rem 0 0;
+  }
+  .ivlink {
+    font-weight: 400;
+    font-size: 0.85rem;
+  }
+</style>

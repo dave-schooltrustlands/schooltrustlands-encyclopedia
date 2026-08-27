@@ -1479,3 +1479,20 @@ html.reveal-ready [data-reveal].is-in {
   opacity: 1;
   transform: none;
 }
+
+/* -------------------------------------------------------------------
+   The Zybach Collection (Phase 3) — Collections room accent.
+
+   Named special collections are archival surfaces: the register is the
+   finding aid, not the newspaper. The accent is the Library's archive
+   green-grey, one step cooler than the Reading Room's amber, with the
+   Reading Room's parchment grain reused so a reader crossing from the
+   stacks into a collection feels continuity rather than a new site.
+   Appended per BUILD_SPEC file ownership (ROOM agent: this block only).
+   ------------------------------------------------------------------- */
+[data-room='collections'] {
+  --room-accent: #4A5B4A;          /* archive green */
+  --room-link:   #2F3D2F;
+  --room-bg-grain: url('/textures/parchment-grain.svg');
+  --room-border-texture: 1px solid rgba(74, 91, 74, 0.28);
+}

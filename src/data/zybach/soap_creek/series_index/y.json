@@ -1,0 +1,372 @@
+{
+  "generated": "2026-08-27",
+  "letter": "Y",
+  "letter_file": "y",
+  "href": "/collections/zybach/soap-creek/index/y/",
+  "counts": {
+    "entries": 8,
+    "refs": 16,
+    "subentries": 1
+  },
+  "entries": [
+    {
+      "entry_id": "zc-sc-idx-yaquina-bridge",
+      "heading": "Yaquina Bridge",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        4
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m04",
+          "mono_slug": "m04-sekermestrovich",
+          "mono_number": 4,
+          "page": 23,
+          "page_kind": "body",
+          "printed": "23-24",
+          "ref": "04:23",
+          "href": "/collections/zybach/soap-creek/m04-sekermestrovich/14-driving-accident-stories/#p23",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m04",
+          "mono_slug": "m04-sekermestrovich",
+          "mono_number": 4,
+          "page": 24,
+          "page_kind": "body",
+          "printed": "23-24",
+          "ref": "04:24",
+          "href": "/collections/zybach/soap-creek/m04-sekermestrovich/14-driving-accident-stories/#p24",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 2
+    },
+    {
+      "entry_id": "zc-sc-idx-yaquina-head",
+      "heading": "Yaquina Head",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        8
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m08",
+          "mono_slug": "m08-vanderburg",
+          "mono_number": 8,
+          "page": 65,
+          "page_kind": "body",
+          "printed": "65",
+          "ref": "08:65",
+          "href": "/collections/zybach/soap-creek/m08-vanderburg/q-the-mill-pond-creek/#p65",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-yates-jean",
+      "heading": "YATES, JEAN",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        1
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m01",
+          "mono_slug": "m01-grabe",
+          "mono_number": 1,
+          "page": 8,
+          "page_kind": "body",
+          "printed": "8",
+          "ref": "01:8",
+          "href": "/collections/zybach/soap-creek/m01-grabe/soap-creek-neighborhood/#p8",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m01",
+          "mono_slug": "m01-grabe",
+          "mono_number": 1,
+          "page": 11,
+          "page_kind": "body",
+          "printed": "11",
+          "ref": "01:11",
+          "href": "/collections/zybach/soap-creek/m01-grabe/local-recreation/#p11",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 2
+    },
+    {
+      "entry_id": "zc-sc-idx-yates-sam",
+      "heading": "Yates, Sam",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        3
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m03",
+          "mono_slug": "m03-dickey",
+          "mono_number": 3,
+          "page": 17,
+          "page_kind": "body",
+          "printed": "17",
+          "ref": "03:17",
+          "href": "/collections/zybach/soap-creek/m03-dickey/04-wildlife/#p17",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m03",
+          "mono_slug": "m03-dickey",
+          "mono_number": 3,
+          "page": 20,
+          "page_kind": "body",
+          "printed": "20",
+          "ref": "03:20",
+          "href": "/collections/zybach/soap-creek/m03-dickey/05-farming-and-milling/#p20",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 2
+    },
+    {
+      "entry_id": "zc-sc-idx-yoder-ray",
+      "heading": "YODER, RAY",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        13
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m13",
+          "mono_slug": "m13-davies",
+          "mono_number": 13,
+          "page": 30,
+          "page_kind": "body",
+          "printed": "30",
+          "ref": "13:30",
+          "href": "/collections/zybach/soap-creek/m13-davies/01-oak-creek/#p30",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m13",
+          "mono_slug": "m13-davies",
+          "mono_number": 13,
+          "page": 40,
+          "page_kind": "body",
+          "printed": "40",
+          "ref": "13:40",
+          "href": "/collections/zybach/soap-creek/m13-davies/04-peavy-s-cabin/#p40",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m13",
+          "mono_slug": "m13-davies",
+          "mono_number": 13,
+          "page": 60,
+          "page_kind": "body",
+          "printed": "60",
+          "ref": "13:60",
+          "href": "/collections/zybach/soap-creek/m13-davies/appendix-a-college-of-forestry-publications/#p60",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m13",
+          "mono_slug": "m13-davies",
+          "mono_number": 13,
+          "page": 62,
+          "page_kind": "body",
+          "printed": "62",
+          "ref": "13:62",
+          "href": "/collections/zybach/soap-creek/m13-davies/appendix-a-college-of-forestry-publications/#p62",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 4
+    },
+    {
+      "entry_id": "zc-sc-idx-youngblood",
+      "heading": "Youngblood [Coroner]",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        7
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m07",
+          "mono_slug": "m07-olson",
+          "mono_number": 7,
+          "page": 54,
+          "page_kind": "body",
+          "printed": "54",
+          "ref": "07:54",
+          "href": "/collections/zybach/soap-creek/m07-olson/f-sulphur-springs/#p54",
+          "page_verified": null,
+          "page_corrected": 52,
+          "confidence": "inferred"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-youngblood-mabel-b",
+      "heading": "Youngblood, Mabel B.",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        12
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m12",
+          "mono_slug": "m12-cook",
+          "mono_number": 12,
+          "page": 80,
+          "page_kind": "body",
+          "printed": "80",
+          "ref": "12:80",
+          "href": "/collections/zybach/soap-creek/m12-cook/october-13-1939-court-order/#p80",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m12",
+          "mono_slug": "m12-cook",
+          "mono_number": 12,
+          "page": 81,
+          "page_kind": "body",
+          "printed": "81",
+          "ref": "12:81",
+          "href": "/collections/zybach/soap-creek/m12-cook/october-13-1939-court-order/#p81",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 2
+    },
+    {
+      "entry_id": "zc-sc-idx-yugoslavia",
+      "heading": "Yugoslavia",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        4
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m04",
+          "mono_slug": "m04-sekermestrovich",
+          "mono_number": 4,
+          "page": 36,
+          "page_kind": "body",
+          "printed": "36",
+          "ref": "04:36",
+          "href": "/collections/zybach/soap-creek/m04-sekermestrovich/biographical-sketch-body-heading-background-edward-sekermestrovich/#p36",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [
+        {
+          "subheading": "Vukovar",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m04",
+              "mono_slug": "m04-sekermestrovich",
+              "mono_number": 4,
+              "page": 36,
+              "page_kind": "body",
+              "printed": "36",
+              "ref": "04:36",
+              "href": "/collections/zybach/soap-creek/m04-sekermestrovich/biographical-sketch-body-heading-background-edward-sekermestrovich/#p36",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 2
+    }
+  ]
+}

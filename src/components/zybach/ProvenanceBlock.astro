@@ -1,0 +1,85 @@
+---
+/* ProvenanceBlock.astro — The Zybach Collection
+ *
+ * Where a thing came from, who made it, and when — as a plain definition list.
+ * Every page in this collection carries one. Values are shown as given; a value
+ * with an `href` becomes a link, nothing more.
+ *
+ * Contract (BUILD_SPEC §"Shared component contracts"):
+ *   { items: Array<{ label: string; value: string; href?: string }> }
+ */
+interface Props {
+  items: ReadonlyArray<{ label: string; value: string; href?: string }>;
+}
+
+const { items } = Astro.props;
+const rows = items.filter((i) => i && i.value);
+---
+
+{rows.length > 0 && (
+  <section class="zc-prov" aria-label="Provenance">
+    <h2 class="zc-prov__head">Provenance</h2>
+    <dl class="zc-prov__list">
+      {rows.map((item) => (
+        <div class="zc-prov__row">
+          <dt>{item.label}</dt>
+          <dd>
+            {item.href ? <a href={item.href}>{item.value}</a> : item.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+)}
+
+<style>
+  .zc-prov {
+    margin: 1.75rem 0;
+    padding: 1rem 1.2rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+  }
+  .zc-prov__head {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--old-gold, #a87f2c);
+  }
+  .zc-prov__list {
+    margin: 0;
+  }
+  .zc-prov__row {
+    display: grid;
+    grid-template-columns: 12em 1fr;
+    gap: 0.75rem;
+    padding: 0.42rem 0;
+    border-top: 1px solid rgba(27, 50, 82, 0.12);
+  }
+  .zc-prov__row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .zc-prov__row dt {
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: #4e617c;
+  }
+  .zc-prov__row dd {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    .zc-prov__row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

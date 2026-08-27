@@ -1,0 +1,234 @@
+---
+/**
+ * Fallback for ROOM's `src/components/zybach/ZybachMap.astro`.
+ * Same prop contract (BUILD_SPEC): id, center, zoom, features, height,
+ * basemap, fit. MapLibre GL over USGS National Map raster tiles.
+ *
+ * The keyboard-accessible equivalent list is the caller's job; every Elliott
+ * page that mounts a map renders one immediately below it.
+ */
+interface Props {
+  id: string;
+  center: [number, number];
+  zoom: number;
+  features: any;
+  height?: string;
+  basemap?: 'topo' | 'imagery';
+  fit?: boolean;
+}
+
+const {
+  id,
+  center,
+  zoom,
+  features,
+  height = '420px',
+  basemap = 'topo',
+  fit = false,
+} = Astro.props as Props;
+
+const config = { id, center, zoom, basemap, fit, features };
+---
+
+<div class="zybach-map-wrap">
+  <div
+    id={id}
+    class="zybach-map"
+    style={`height:${height}`}
+    role="img"
+    aria-label="Map of Elliott State Forest places. An equivalent list follows below."
+  ></div>
+  <script
+    type="application/json"
+    class="zybach-map-config"
+    data-for={id}
+    is:inline
+    set:html={JSON.stringify(config)}
+  ></script>
+  <p class="zybach-map-attrib">Basemap: USGS The National Map</p>
+</div>
+
+<style>
+  .zybach-map-wrap {
+    margin: 1.5rem 0 0.5rem;
+  }
+  .zybach-map {
+    width: 100%;
+    border: 1px solid var(--old-gold, #b58a45);
+    background: #eee8dc;
+  }
+  .zybach-map-attrib {
+    margin: 0.35rem 0 0;
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+  :global(.zybach-popup) {
+    font-family: var(--font-sans, 'Public Sans', system-ui, sans-serif);
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+  :global(.zybach-popup a) {
+    font-weight: 600;
+    color: var(--trust-blue, #1f3851);
+  }
+  :global(.zybach-popup .sub) {
+    display: block;
+    color: #475569;
+    margin-top: 0.15rem;
+  }
+</style>
+
+<script>
+  import maplibregl from 'maplibre-gl';
+  import 'maplibre-gl/dist/maplibre-gl.css';
+
+  const TILES: Record<string, string> = {
+    topo: 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}',
+    imagery:
+      'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}',
+  };
+
+  // Points are coloured by properties.kind, grouped so the legend stays short.
+  function kindColor(kind: string | undefined): string {
+    const k = (kind || '').toLowerCase();
+    if (k.includes('stream') || k.includes('creek') || k.includes('river') || k.includes('slough'))
+      return '#2f6f8f';
+    if (k.includes('lake') || k.includes('pond') || k.includes('estuary') || k.includes('bar'))
+      return '#3a7f6f';
+    if (k.includes('summit') || k.includes('ridge') || k.includes('gap') || k.includes('saddle') || k.includes('point'))
+      return '#8a5a2b';
+    if (k.includes('camp') || k.includes('cabin') || k.includes('ranch') || k.includes('school') || k.includes('mill'))
+      return '#7a2e2e';
+    if (k.includes('populated')) return '#1f3851';
+    return '#5b6470';
+  }
+
+  function mount(node: HTMLScriptElement) {
+    let cfg: any;
+    try {
+      cfg = JSON.parse(node.textContent || '{}');
+    } catch {
+      return;
+    }
+    const container = document.getElementById(cfg.id);
+    if (!container) return;
+
+    const fc = cfg.features && cfg.features.type ? cfg.features : { type: 'FeatureCollection', features: [] };
+    const pts = (fc.features || []).filter((f: any) => f?.geometry?.type === 'Point');
+    const lines = (fc.features || []).filter(
+      (f: any) => f?.geometry?.type === 'LineString' || f?.geometry?.type === 'MultiLineString'
+    );
+
+    for (const f of pts) {
+      f.properties = f.properties || {};
+      f.properties._color = kindColor(f.properties.kind);
+    }
+
+    let map: any;
+    try {
+      map = new maplibregl.Map({
+        container: cfg.id,
+        style: {
+          version: 8,
+          sources: {
+            usgs: {
+              type: 'raster',
+              tiles: [TILES[cfg.basemap] || TILES.topo],
+              tileSize: 256,
+              attribution: 'USGS The National Map',
+            },
+          },
+          layers: [{ id: 'usgs', type: 'raster', source: 'usgs' }],
+        },
+        center: cfg.center,
+        zoom: cfg.zoom,
+        attributionControl: { compact: true },
+      });
+    } catch (e) {
+      container.innerHTML =
+        '<p style="padding:1rem;font-size:0.85rem">The map could not be drawn in this browser. The list below carries the same places.</p>';
+      return;
+    }
+
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+    map.scrollZoom.disable();
+
+    map.on('load', () => {
+      if (lines.length) {
+        map.addSource('zybach-lines', {
+          type: 'geojson',
+          data: { type: 'FeatureCollection', features: lines },
+        });
+        map.addLayer({
+          id: 'zybach-lines',
+          type: 'line',
+          source: 'zybach-lines',
+          paint: { 'line-color': '#7a2e2e', 'line-width': 3, 'line-opacity': 0.85 },
+        });
+      }
+      map.addSource('zybach-points', {
+        type: 'geojson',
+        data: { type: 'FeatureCollection', features: pts },
+      });
+      map.addLayer({
+        id: 'zybach-points',
+        type: 'circle',
+        source: 'zybach-points',
+        paint: {
+          'circle-radius': 6,
+          'circle-color': ['coalesce', ['get', '_color'], '#5b6470'],
+          'circle-stroke-width': 1.5,
+          'circle-stroke-color': '#fdfaf3',
+        },
+      });
+
+      map.on('mouseenter', 'zybach-points', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+      map.on('mouseleave', 'zybach-points', () => {
+        map.getCanvas().style.cursor = '';
+      });
+      map.on('click', 'zybach-points', (ev: any) => {
+        const f = ev.features && ev.features[0];
+        if (!f) return;
+        const p = f.properties || {};
+        const esc = (s: string) =>
+          String(s).replace(/[&<>"]/g, (c) =>
+            ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c] as string
+          );
+        const title = p.href
+          ? `<a href="${esc(p.href)}">${esc(p.title || p.name || '')}</a>`
+          : esc(p.title || p.name || '');
+        const sub = p.subtitle ? `<span class="sub">${esc(p.subtitle)}</span>` : '';
+        new maplibregl.Popup({ closeButton: true, maxWidth: '240px' })
+          .setLngLat((f.geometry as any).coordinates.slice())
+          .setHTML(`<div class="zybach-popup">${title}${sub}</div>`)
+          .addTo(map);
+      });
+
+      if (cfg.fit) {
+        const coords: [number, number][] = [];
+        for (const f of pts) coords.push(f.geometry.coordinates as [number, number]);
+        for (const f of lines) {
+          const g = f.geometry;
+          const rings = g.type === 'LineString' ? [g.coordinates] : g.coordinates;
+          for (const ring of rings) for (const c of ring) coords.push(c as [number, number]);
+        }
+        if (coords.length === 1) {
+          map.setCenter(coords[0]);
+          map.setZoom(Math.max(cfg.zoom, 12));
+        } else if (coords.length > 1) {
+          const b = coords.reduce(
+            (acc: any, c) => acc.extend(c),
+            new maplibregl.LngLatBounds(coords[0], coords[0])
+          );
+          map.fitBounds(b, { padding: 40, maxZoom: 13, duration: 0 });
+        }
+      }
+    });
+  }
+
+  document
+    .querySelectorAll<HTMLScriptElement>('script.zybach-map-config')
+    .forEach((n) => mount(n));
+</script>

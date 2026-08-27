@@ -1,0 +1,173 @@
+---
+/**
+ * A video from the ORWWmedia playlist: the YouTube embed, and Bob Zybach's
+ * own time-coded index as clickable entries. Clicking a time reloads the
+ * iframe at ?start=<seconds>, so the reader lands on the moment he indexed.
+ * Where a time code names a stop that the gazetteer has placed, the stop
+ * number links to the place page.
+ */
+import type { Video } from './data';
+import { getPlace } from './data';
+
+interface Props {
+  video: Video;
+}
+const { video } = Astro.props as Props;
+
+const rows = video.segments.map((s) => ({
+  s,
+  place: s.placeSlug ? getPlace(s.placeSlug) : null,
+}));
+---
+
+<div class="zy-video">
+  <div class="zy-video-frame">
+    <iframe
+      id={`yt-${video.video_id}`}
+      src={`${video.embed}?rel=0`}
+      title={video.title}
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      data-embed={video.embed}
+    ></iframe>
+  </div>
+  <p class="zy-video-links">
+    <a href={video.url}>Watch on YouTube</a>
+    {video.length_label && <span> · {video.length_label}</span>}
+    {video.published && <span> · published {video.published}</span>}
+  </p>
+
+  {rows.length > 0 && (
+    <section class="zy-timecodes" aria-labelledby={`tc-${video.video_id}`}>
+      <h2 id={`tc-${video.video_id}`}>Time codes</h2>
+      <p class="note">
+        {rows.length} entries, as written in the video description. Select a
+        time to start the video there.
+      </p>
+      <ol>
+        {rows.map(({ s, place }) => (
+          <li>
+            <button
+              type="button"
+              class="tc"
+              data-target={`yt-${video.video_id}`}
+              data-start={s.t_seconds}
+              data-src={s.embed_url}
+            >
+              {s.t_label || '0:00'}
+            </button>
+            <span class="label">{s.label}</span>
+            {s.stop_number != null && (
+              <span class="stop">
+                {place ? (
+                  <a href={place.href}>Stop {s.stop_number}</a>
+                ) : (
+                  <>Stop {s.stop_number}</>
+                )}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+</div>
+
+<style>
+  .zy-video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #111;
+    border: 1px solid #d6cfbf;
+  }
+  .zy-video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .zy-video-links {
+    margin: 0.4rem 0 1.2rem;
+    font-size: 0.82rem;
+    color: #475569;
+  }
+  .zy-timecodes h2 {
+    font-size: 1.05rem;
+    margin: 1.5rem 0 0.3rem;
+  }
+  .zy-timecodes .note {
+    font-size: 0.8rem;
+    color: #475569;
+    margin: 0 0 0.6rem;
+  }
+  .zy-timecodes ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+  }
+  .zy-timecodes li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.22rem 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .zy-timecodes .tc {
+    font-family: inherit;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8rem;
+    min-width: 4rem;
+    text-align: right;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--trust-blue, #1f3851);
+    color: var(--trust-blue, #1f3851);
+    cursor: pointer;
+    padding: 0 0 1px;
+  }
+  .zy-timecodes .tc:hover,
+  .zy-timecodes .tc:focus {
+    color: var(--oxblood, #7a2e2e);
+    border-color: var(--oxblood, #7a2e2e);
+  }
+  .zy-timecodes .tc[aria-current='true'] {
+    font-weight: 700;
+    color: var(--oxblood, #7a2e2e);
+  }
+  .zy-timecodes .stop {
+    font-size: 0.75rem;
+    color: #475569;
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  // Re-point the iframe at ?start=<seconds>. No YouTube API, no third-party
+  // script: the src swap is enough and keeps the page free of extra loads.
+  document.querySelectorAll<HTMLButtonElement>('button.tc').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.target;
+      const start = btn.dataset.start;
+      if (!id || start == null) return;
+      const frame = document.getElementById(id) as HTMLIFrameElement | null;
+      if (!frame) return;
+      const embed = frame.dataset.embed || frame.src.split('?')[0];
+      // The pipeline emits the exact embed URL for each time code; fall back
+      // to composing one if it is absent.
+      const src = btn.dataset.src
+        ? `${btn.dataset.src}${btn.dataset.src.includes('?') ? '&' : '?'}rel=0&autoplay=1`
+        : `${embed}?rel=0&autoplay=1&start=${start}`;
+      frame.src = src;
+      document
+        .querySelectorAll<HTMLButtonElement>(`button.tc[data-target="${id}"]`)
+        .forEach((b) => b.removeAttribute('aria-current'));
+      btn.setAttribute('aria-current', 'true');
+      frame.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    });
+  });
+</script>

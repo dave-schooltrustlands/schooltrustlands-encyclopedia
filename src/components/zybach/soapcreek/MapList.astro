@@ -1,0 +1,106 @@
+---
+/**
+ * The map's equivalent list. Required beside every ZybachMap: the map is a
+ * convenience, this is the record. Grouped by `properties.kind` so a reader
+ * using a keyboard or a screen reader gets the same structure the colours give.
+ */
+export interface Props {
+  features: any;
+  heading?: string;
+  headingLevel?: 'h2' | 'h3';
+  /** Kinds to list first, in this order. */
+  order?: string[];
+}
+
+const { features, heading = 'Everything on this map', headingLevel = 'h2', order = [] } =
+  Astro.props as Props;
+
+const fc = features?.type === 'FeatureCollection' ? features : { features: [] };
+const points = (fc.features ?? []).filter((f: any) => f?.geometry?.type === 'Point');
+
+const KIND_LABELS: Record<string, string> = {
+  'auto-tour-stop': 'Auto Tour stops',
+  'narrator-home': 'Narrator home sites',
+  home: 'Narrator home sites',
+  settlement: 'Settlements and communities',
+  community: 'Settlements and communities',
+  school: 'Schools',
+  cemetery: 'Cemeteries',
+  stream: 'Streams',
+  creek: 'Streams',
+  river: 'Streams',
+  ridge: 'Ridges, peaks and buttes',
+  peak: 'Ridges, peaks and buttes',
+  butte: 'Ridges, peaks and buttes',
+  mountain: 'Ridges, peaks and buttes',
+  valley: 'Valleys',
+  road: 'Roads',
+  farm: 'Farms and ranches',
+  ranch: 'Farms and ranches',
+  mill: 'Mills',
+};
+
+const groups = new Map<string, any[]>();
+for (const f of points) {
+  const kind = f?.properties?.kind ?? 'other';
+  const label = KIND_LABELS[kind] ?? (kind === 'other' ? 'Other places' : kind);
+  if (!groups.has(label)) groups.set(label, []);
+  groups.get(label)!.push(f);
+}
+
+const orderedLabels = [
+  ...order.map((k) => KIND_LABELS[k] ?? k).filter((l) => groups.has(l)),
+  ...[...groups.keys()].filter((l) => !order.map((k) => KIND_LABELS[k] ?? k).includes(l)).sort(),
+];
+const seen = new Set<string>();
+const finalLabels = orderedLabels.filter((l) => (seen.has(l) ? false : (seen.add(l), true)));
+const Heading = headingLevel;
+---
+
+{points.length > 0 && (
+  <section class="sc-maplist">
+    <Heading id="map-list">{heading}</Heading>
+    {finalLabels.map((label) => {
+      const items = (groups.get(label) ?? []).slice().sort((a: any, b: any) =>
+        String(a?.properties?.title ?? a?.properties?.name ?? '').localeCompare(
+          String(b?.properties?.title ?? b?.properties?.name ?? ''),
+        ),
+      );
+      return (
+        <div class="sc-maplist-group">
+          <h3>{label} <span class="sc-maplist-count">({items.length})</span></h3>
+          <ul class="sc-list">
+            {items.map((f: any) => {
+              const p = f.properties ?? {};
+              const title = p.title ?? p.name ?? p.slug ?? 'Unnamed place';
+              return (
+                <li>
+                  {p.href ? <a href={p.href}>{title}</a> : <span>{title}</span>}
+                  {p.subtitle && <span class="sc-list-meta">{p.subtitle}</span>}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    })}
+  </section>
+)}
+
+<style>
+  .sc-maplist {
+    margin: 1.5rem 0 2rem;
+  }
+  .sc-maplist h3 {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6b6355;
+    margin: 1.25rem 0 0.25rem;
+  }
+  .sc-maplist-count {
+    color: #a39a88;
+    font-weight: 400;
+  }
+</style>

@@ -1,0 +1,175 @@
+---
+/**
+ * The tapes of one interview. Each side gets the part heading Bob printed,
+ * the transcript pages it covers, a link to the MP3 on his server, and a
+ * native audio element that streams the same file. If cross-origin streaming
+ * fails in the reader's browser the link above it still works.
+ */
+import type { Tape } from './data';
+import { getRecording } from './data';
+
+interface Props {
+  tapes: Tape[];
+  interviewKey: string;
+}
+const { tapes, interviewKey } = Astro.props as Props;
+
+const rows = tapes.map((t) => ({
+  t,
+  rec: getRecording(t.mp3_url),
+}));
+---
+
+{rows.length > 0 && (
+  <section class="zy-tapes" aria-labelledby="tapes-heading">
+    <h2 id="tapes-heading">Tapes</h2>
+    <p class="zy-tapes-note">
+      Audio streams from Bob Zybach's server at orww.org. The link opens the
+      same file directly.
+    </p>
+    {rows.map(({ t, rec }) => (
+      <article class="zy-tape" id={t.anchorId}>
+        {t.altAnchorId && t.altAnchorId !== t.anchorId && (
+          <span id={t.altAnchorId} class="zy-alt-anchor"></span>
+        )}
+        <h3>
+          <span class="label">Tape {t.label}</span>
+          {t.part_label && <span class="part"> · {t.part_label}</span>}
+        </h3>
+        {t.part_title && <p class="part-title">{t.part_title}</p>}
+        <p class="meta">
+          {t.minutes && <span>{t.minutes} on tape</span>}
+          {t.pages && <span>transcript pp. {t.pages}</span>}
+          {rec?.size_label && <span>{rec.size_label}</span>}
+          {!rec?.size_label && t.mp3_mb != null && <span>{t.mp3_mb} MB</span>}
+          {rec?.duration && <span>{rec.duration} (estimated)</span>}
+          {t.segments.length > 0 && (
+            <span>
+              {t.segments.length} indexed stop{t.segments.length === 1 ? '' : 's'}
+            </span>
+          )}
+        </p>
+        {t.notes && <p class="notes">{t.notes}</p>}
+        {t.mp3_url ? (
+          <>
+            <p class="mp3">
+              <a href={t.mp3_url}>{t.mp3_url.split('/').pop()}</a>
+              <span class="host"> — orww.org</span>
+            </p>
+            <audio controls preload="none" src={t.mp3_url}>
+              Your browser cannot play this file. Use the link above to
+              download it.
+            </audio>
+          </>
+        ) : (
+          <p class="mp3 missing">No public MP3 has been matched to this side.</p>
+        )}
+        {t.segments.length > 0 && (
+          <ul class="stops">
+            {t.segments.map((s) => (
+              <li>
+                <span class="stop">{s.stop_label ?? '—'}</span>
+                <span class="min">{s.minute}</span>
+                <a href={s.href}>{s.topic}</a>
+                {s.transcript_page != null && (
+                  <span class="pg">p. {s.transcript_page_as_printed ?? s.transcript_page}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </article>
+    ))}
+  </section>
+)}
+
+<style>
+  .zy-tapes {
+    margin: 2rem 0;
+  }
+  .zy-tapes-note {
+    font-size: 0.82rem;
+    color: #475569;
+    margin: 0 0 1rem;
+  }
+  .zy-alt-anchor {
+    display: block;
+    height: 0;
+    scroll-margin-top: 4rem;
+  }
+  .zy-tape {
+    border-top: 1px solid #e2e8f0;
+    padding: 0.9rem 0 1.1rem;
+    scroll-margin-top: 4rem;
+  }
+  .zy-tape h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .zy-tape .label {
+    font-variant-numeric: tabular-nums;
+  }
+  .zy-tape .part {
+    font-weight: 400;
+    color: #475569;
+  }
+  .zy-tape .part-title {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-serif, Newsreader, Georgia, serif);
+    font-size: 1.02rem;
+  }
+  .zy-tape .meta {
+    margin: 0.35rem 0 0;
+    font-size: 0.78rem;
+    color: #475569;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.9rem;
+  }
+  .zy-tape .notes {
+    margin: 0.3rem 0 0;
+    font-size: 0.82rem;
+    color: #475569;
+    font-style: italic;
+  }
+  .zy-tape .mp3 {
+    margin: 0.5rem 0 0.3rem;
+    font-size: 0.82rem;
+    overflow-wrap: anywhere;
+  }
+  .zy-tape .mp3 .host {
+    color: #94a3b8;
+  }
+  .zy-tape .mp3.missing {
+    color: #7a2e2e;
+  }
+  .zy-tape audio {
+    width: 100%;
+    max-width: 32rem;
+    margin: 0.2rem 0 0.4rem;
+  }
+  .zy-tape .stops {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    font-size: 0.82rem;
+  }
+  .zy-tape .stops li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.15rem 0;
+  }
+  .zy-tape .stops .stop {
+    font-weight: 600;
+    min-width: 4.5rem;
+  }
+  .zy-tape .stops .min {
+    font-variant-numeric: tabular-nums;
+    color: #475569;
+    min-width: 3.2rem;
+  }
+  .zy-tape .stops .pg {
+    color: #94a3b8;
+  }
+</style>

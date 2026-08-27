@@ -1,0 +1,316 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import { ZybachNav, CitationBlock } from '../../../../components/zybach/elliott/shared';
+import MapWithList from '../../../../components/zybach/elliott/MapWithList.astro';
+import ItemIntro from '../../../../components/zybach/elliott/ItemIntro.astro';
+import {
+  BASE,
+  ACCESSION,
+  CREATOR,
+  RIGHTS,
+  counts,
+  gazetteerGeoJSON,
+  interviews,
+  projectInterviews,
+  relatedTranscripts,
+  videos,
+  videoPlaylistUrl,
+  videoChannel,
+  longDate,
+  projectTitle,
+  projectReportLine,
+  projectPreparedFor,
+  projectInterviewees,
+  projectInterviewers,
+  projectRouteMapNote,
+  totalsAsPrinted,
+  ELLIOTT_CENTER,
+} from '../../../../components/zybach/elliott/data';
+
+const pagePath = `${BASE}/`;
+const url = `https://schooltrusts.org${pagePath}`;
+
+const provenance = [
+  { label: 'Creator', value: CREATOR },
+  ...(projectReportLine ? [{ label: 'Project report', value: projectReportLine }] : []),
+  ...(projectPreparedFor ? [{ label: 'Prepared for', value: projectPreparedFor }] : []),
+  ...(projectInterviewees ? [{ label: 'Interviewees', value: projectInterviewees }] : []),
+  ...(projectInterviewers ? [{ label: 'Interviewers', value: projectInterviewers }] : []),
+  {
+    label: 'Originals',
+    value: 'Recordings, transcripts, photographs and maps on orww.org',
+    href: RIGHTS.orwwRoot,
+  },
+  {
+    label: 'Described by',
+    value: RIGHTS.osuLabel,
+    href: RIGHTS.osuFindingAid,
+  },
+  { label: 'Accession', value: ACCESSION },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Elliott State Forest"
+  subtitle="Oral histories, field trips, videos, photographs and maps, 1962–2024"
+  width="full"
+  sourceId="zybach-elliott-series"
+  parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Series</p>
+
+  <ZybachNav current="elliott" />
+
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <ItemIntro
+    whatThisIs="Bob Zybach's Elliott State Forest work: six recorded interviews made while driving the forest's roads with the men who managed it, the transcripts he printed and indexed stop by stop, the photographs and route maps he made along the way, the earlier recordings he gathered, and nineteen videos in which he walks through the same ground again."
+    provenance={provenance}
+  />
+
+  <section aria-labelledby="map-heading">
+    <h2 id="map-heading">The ground</h2>
+    <p>
+      Every place below carries a coordinate and the method used to get it.
+      Select a point for its place page: what was said there, on which tape, at
+      which minute, on which transcript page, and which photographs were taken.
+    </p>
+    <MapWithList
+      id="elliott-series-map"
+      features={gazetteerGeoJSON}
+      center={ELLIOTT_CENTER}
+      zoom={9}
+      height="520px"
+      fit={true}
+      listTitle="Places in this series"
+      listNote="Coordinates and the method behind each one are shown on the place page."
+    />
+    <p class="see-also">
+      <a href={`${BASE}/places/`}>All {counts.places} places</a>
+      {counts.geocoded !== counts.places && (
+        <span> · {counts.geocoded} of them mapped</span>
+      )}
+    </p>
+  </section>
+
+  <section aria-labelledby="interviews-heading">
+    <h2 id="interviews-heading">The interviews</h2>
+    {projectTitle && <p class="zy-project-title">{projectTitle}</p>}
+    <p>
+      {counts.interviews} interviews on {counts.tapes} tape sides, indexed by
+      Bob Zybach into {counts.segments} stops.
+      {totalsAsPrinted?.as_printed && (
+        <span class="zy-totals"> His own totals: {totalsAsPrinted.as_printed}</span>
+      )}
+    </p>
+    <ol class="zy-cards">
+      {projectInterviews.map((iv) => (
+        <li>
+          <h3>
+            <a href={iv.href}>
+              {iv.number_as_printed && <span class="num">{iv.number_as_printed} </span>}
+              {iv.title_as_printed}
+            </a>
+          </h3>
+          <p class="meta">
+            <span>{iv.date_as_printed ?? longDate(iv.date)}</span>
+            {iv.tour_label && <span>{iv.tour_label}</span>}
+            {iv.tapes.length > 0 && <span>{iv.tapes.length} tape sides</span>}
+            {iv.total_audio && <span>{iv.total_audio}</span>}
+            {iv.total_pages != null && <span>{iv.total_pages} pages</span>}
+            {iv.segments.length > 0 && <span>{iv.segments.length} stops</span>}
+            {iv.photographs.length > 0 && <span>{iv.photographs.length} photographs</span>}
+          </p>
+          {iv.participants.length > 0 && (
+            <p class="parts">With {iv.participants.join(', ')}</p>
+          )}
+        </li>
+      ))}
+    </ol>
+    {projectRouteMapNote && <p class="zy-note-line">{projectRouteMapNote}</p>}
+  </section>
+
+  {relatedTranscripts.length > 0 && (
+    <section aria-labelledby="related-heading">
+      <h2 id="related-heading">Recordings and transcripts filed alongside</h2>
+      <p>
+        Bob Zybach filed these under the same tree: earlier recordings of Herman
+        Larson made by others, Oregon State University transcripts of Bob
+        Jacobson, David Gould's editing copy of the November 8 interview, and
+        Gould's own written statement.
+      </p>
+      <ul class="zy-list">
+        {relatedTranscripts.map((iv) => (
+          <li>
+            <a href={iv.href}>{iv.title_as_printed}</a>
+            <span class="meta">
+              {' '}· {longDate(iv.date)}
+              {iv.total_pages != null && <span> · {iv.total_pages} pages</span>}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="videos-heading">
+    <h2 id="videos-heading">The videos</h2>
+    <p>
+      {counts.videos} videos on the {videoChannel ?? 'ORWWmedia'} playlist, with{' '}
+      {counts.videoSegments} time-coded entries in Bob Zybach's own
+      descriptions. Each video page cues the embed to the moment he marked.
+      {videoPlaylistUrl && (
+        <>
+          {' '}
+          <a href={videoPlaylistUrl}>The playlist on YouTube</a>.
+        </>
+      )}
+    </p>
+    <ol class="zy-list zy-videos">
+      {videos.map((v) => (
+        <li>
+          <a href={v.href}>{v.title}</a>
+          <span class="meta">
+            {v.length_label && <span> · {v.length_label}</span>}
+            {v.published && <span> · {v.published}</span>}
+            <span> · {v.segments.length} time codes</span>
+          </span>
+        </li>
+      ))}
+    </ol>
+    <p class="see-also"><a href={`${BASE}/videos/`}>The video register</a></p>
+  </section>
+
+  <section aria-labelledby="registers-heading">
+    <h2 id="registers-heading">Registers</h2>
+    <ul class="zy-registers">
+      <li>
+        <a href={`${BASE}/recordings/`}>Recordings</a> — {counts.recordings} MP3
+        files on orww.org, with size, estimated duration and date.
+      </li>
+      <li>
+        <a href={`${BASE}/photos/`}>Photographs</a> — {counts.photographs}{' '}
+        photographs, by date and place.
+      </li>
+      <li>
+        <a href={`${BASE}/maps/`}>Maps</a> — {counts.maps} maps from Bob
+        Zybach's ORWW map page, captions as he wrote them.
+      </li>
+      <li>
+        <a href={`${BASE}/places/`}>Places</a> — {counts.places} places, with
+        the method and confidence behind each coordinate.
+      </li>
+      <li>
+        <a href={`${BASE}/interviews/`}>Interviews</a> — all{' '}
+        {interviews.length} transcripts, with a permanent link on every printed page.
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="rights-heading" class="zy-rights">
+    <h2 id="rights-heading">Rights and originals</h2>
+    <p>
+      {RIGHTS.osu} <a href={RIGHTS.osuFindingAid}>{RIGHTS.osuLabel}</a>.
+    </p>
+    <p>{RIGHTS.orww} <a href={RIGHTS.orwwRoot}>{RIGHTS.orwwRoot}</a></p>
+  </section>
+
+  <CitationBlock
+    canonical={
+      projectTitle && projectReportLine
+        ? `${projectTitle}. ${projectReportLine}`
+        : 'Elliott State Forest 2017-2019 Oral History Project'
+    }
+    short="Zybach Collection, Elliott State Forest series"
+    url={url}
+  />
+
+  <p class="zy-corrections">
+    Something wrong on this page?
+    {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the form
+    opens with this page already filled in, the same control that sits at the foot
+    of every page in the Library.
+    {' '}<a href="/about/corrections/">How corrections work</a>.
+  </p>
+</RoomLayout>
+
+<style>
+  .zy-project-title {
+    font-family: var(--font-serif, Newsreader, Georgia, serif);
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem;
+  }
+  .zy-totals {
+    color: #475569;
+    font-size: 0.85rem;
+  }
+  .zy-cards {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .zy-cards li {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 0.8rem;
+  }
+  .zy-cards h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .zy-cards .num {
+    color: #94a3b8;
+  }
+  .zy-cards .meta,
+  .zy-list .meta {
+    font-size: 0.78rem;
+    color: #475569;
+  }
+  .zy-cards .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem 0.85rem;
+    margin: 0.25rem 0 0;
+  }
+  .zy-cards .parts {
+    margin: 0.2rem 0 0;
+    font-size: 0.8rem;
+    color: #475569;
+  }
+  .zy-list {
+    list-style: none;
+    margin: 0.8rem 0 0;
+    padding: 0;
+  }
+  .zy-list li {
+    padding: 0.28rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+  }
+  .zy-registers {
+    margin: 0.8rem 0 0;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+  }
+  .zy-registers li {
+    margin-bottom: 0.4rem;
+  }
+  .zy-rights p {
+    font-size: 0.88rem;
+  }
+  .zy-note-line {
+    font-size: 0.82rem;
+    color: #475569;
+  }
+  .zy-corrections {
+    font-size: 0.8rem;
+    color: #475569;
+    margin-top: 1.5rem;
+  }
+</style>

@@ -1,0 +1,266 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
+import { seriesBySlug, clean } from '../../../components/zybach/_data';
+
+const s = seriesBySlug('osbornes');
+const title = clean(s?.title) || 'The Osbornes Project';
+const summary =
+  clean(s?.summary) ||
+  'Repeat photography: 1930s panoramas made with the Osborne fire-finder camera from Oregon lookout points, rephotographed from the same points from 2006 onward.';
+
+/* What the generator recorded about how this series was described, and how
+   many accessioned files carry its name. Both are shown as measured. */
+const describedFrom = clean(s?.described_from);
+const matchingFiles = s?.counts?.accessioned_files_matching_name;
+---
+
+<RoomLayout
+  room="collections"
+  title={title}
+  subtitle="Series — described at inventory level"
+  width="prose"
+  sourceId="collections-zybach-osbornes"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:osbornes" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="finding-aid" />
+
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+      This series is described at inventory level: what exists and where it is,
+      not item by item. Everything below is drawn from the creator's public
+      pages.
+    </p>
+
+    <p class="kicker">Series · inventory level</p>
+
+    <p>{summary}</p>
+
+    <h2 id="what">What this is</h2>
+
+    <p>
+      In the 1930s the U.S. Forest Service equipped Oregon's fire lookouts with
+      the Osborne photo-recording transit, a camera that swept a 120-degree
+      panorama from a surveyed point. The negatives were made to help spotters
+      locate smoke. Seventy years later they turned out to be something else: a
+      dated, precisely located photograph of the forest as it stood before the
+      century's changes in logging, fire suppression and settlement.
+    </p>
+
+    <p>
+      From the mid-2000s onward, Judd Lehman and Bob Zybach worked back to those
+      points and photographed them again. Two panoramas from the same tripod
+      position, seventy years apart, show what changed without anyone having to
+      argue about it. This is the same evidentiary habit as the oral histories —
+      go to the place, record what is there, date it — done with a camera.
+    </p>
+
+    <h2 id="inventory">Inventory</h2>
+
+    <table class="zc-inv">
+      <thead>
+        <tr><th scope="col">What</th><th scope="col">Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Photographs</th>
+          <td>
+            Panoramas made from western Oregon fire lookouts between 1932 and
+            1940.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">The project</th>
+          <td>
+            The project page names Judd Lehman and Bob Zybach and gives 2006 as
+            its start. The creator's own project listing counts four earlier
+            collections — 2004, 2006, 2007 and 2010 — consolidated by county in
+            2020, when Benton, Lane, Lincoln and Polk counties were added. Both
+            accounts are recorded; they have not been reconciled.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Arrangement</th>
+          <td>
+            An icon map plus a county index: Benton, Curry, Douglas, Jackson,
+            Josephine, Klamath, Lincoln, Linn and Polk counties, with separate
+            sub-sites for the Kalmiopsis Wilderness and for individual river
+            basins.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Completed sets</th>
+          <td>
+            Kalmiopsis Wilderness 2006; Linn County 2007; upper South Umpqua
+            2010; Elliott State Forest lookouts 2018.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Funding</th>
+          <td>Expansion funded in 2020 by the Starker family.</td>
+        </tr>
+        <tr>
+          <th scope="row">Background literature</th>
+          <td>
+            The project's references cite Griffith 1945, Arnst 1985 and Petersen
+            1994 on the Osborne camera and the lookout system.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Companion project</th>
+          <td>
+            A separate ORWW repeat-photography site collects the same method
+            applied outside the lookout panoramas.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Accessioned</th>
+          <td>
+            {typeof matchingFiles === 'number' ? `${matchingFiles} files` : 'No files'}
+            {' '}whose names match this series were accessioned in the 2026
+            upload.{describedFrom ? ` Described from: ${describedFrom}.` : ''}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="originals">The originals</h2>
+
+    <ul class="zc-links">
+      <li>
+        <a href="http://www.orww.org/Osbornes_Project/index.html">The Osbornes Project</a>
+        — icon map and county index.
+      </li>
+      <li>
+        <a href="http://www.orww.org/Osbornes_Project/Douglas/Index.html">
+          Douglas County panoramas
+        </a>
+      </li>
+      <li>
+        <a href="http://www.orww.org/Osbornes_Project/References/">
+          Osbornes Project references
+        </a>
+      </li>
+      <li>
+        <a href="http://www.orww.org/Repeat_Photography/index.html">
+          ORWW repeat photography
+        </a>
+      </li>
+      <li>
+        <a href="https://www.orww.store/osbornes/">
+          The Osbornes Project — public guide page (2020)
+        </a>
+        <span class="zc-host-note">orww.store — the creator's own project and bookshop site, a different domain from his orww.org archive.</span>
+      </li>
+    </ul>
+
+    <h2 id="gaps">Known gaps</h2>
+
+    <ul>
+      <li>
+        The Library has not counted the panoramas. The public site organizes
+        them by county page rather than as a list, and no image inventory has
+        been made.
+      </li>
+      <li>
+        Rights in the 1930s originals sit with the agencies that made them; the
+        rephotographs are the project's. The two need separating before any
+        image is republished rather than linked.
+      </li>
+      <li>
+        The lookout points have surveyed coordinates in the original records.
+        Those coordinates have not been extracted, and until they are, this
+        series cannot be put on the collection's map.
+      </li>
+    </ul>
+
+    <h2 id="next">What describing this properly would take</h2>
+
+    <p>
+      A page per lookout point: the historical panorama, the repeat, the date of
+      each, the coordinates from the original survey, and the photographer.
+      Paired images with a shared location and two dates are, in archival terms,
+      an easy item — the work is in the counting and the rights, not in the
+      description.
+    </p>
+
+    <ProvenanceBlock
+      items={[
+        { label: 'Creators', value: 'Judd Lehman and Dr. Bob Zybach; Oregon Websites and Watersheds Project, Inc.' },
+        { label: 'Historical images', value: 'U.S. Forest Service Osborne panoramas, 1930s' },
+        { label: 'Published at', value: 'orww.org/Osbornes_Project/', href: 'http://www.orww.org/Osbornes_Project/index.html' },
+        { label: 'In this collection', value: 'Inventory-level description only; no items published' },
+        { label: 'Rights', value: 'Rights status: under review for the rephotographs; no deed of gift has been executed. Rights in the 1930s Osborne panoramas are not established.' },
+      ]}
+    />
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/wildfire/">Oregon wildfire and forest restoration</a> ·
+      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-inv {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .zc-inv th,
+  .zc-inv td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem 0.65rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    line-height: 1.5;
+  }
+  .zc-inv thead th {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+  }
+  .zc-inv tbody th {
+    width: 11em;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .zc-links {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    .zc-inv tbody th { width: auto; }
+    .zc-inv, .zc-inv thead, .zc-inv tbody, .zc-inv tr, .zc-inv th, .zc-inv td { display: block; }
+    .zc-inv thead { display: none; }
+    .zc-inv tbody td { border-top: 0; padding-top: 0; }
+  }
+</style>
+
+<style>
+  .zc-host-note {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: #4e617c;
+    line-height: 1.45;
+  }
+</style>

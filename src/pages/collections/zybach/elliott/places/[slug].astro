@@ -1,0 +1,353 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import { ZybachNav, CitationBlock } from '../../../../../components/zybach/elliott/shared';
+import ItemIntro from '../../../../../components/zybach/elliott/ItemIntro.astro';
+import MapWithList from '../../../../../components/zybach/elliott/MapWithList.astro';
+import SegmentTable from '../../../../../components/zybach/elliott/SegmentTable.astro';
+import PhotoGrid from '../../../../../components/zybach/elliott/PhotoGrid.astro';
+import {
+  methodLabel,
+  confidenceLabel,
+  coordinateSourceLabel,
+  coordinateConfidenceLabel,
+  plainNote,
+} from '../../../../../components/zybach/labels';
+import {
+  BASE,
+  ACCESSION,
+  CREATOR,
+  RIGHTS,
+  places,
+  geoJSONFor,
+  segmentsForPlace,
+  videosForPlace,
+  photosForPlace,
+  getInterview,
+  longDate,
+  ELLIOTT_CENTER,
+} from '../../../../../components/zybach/elliott/data';
+
+export function getStaticPaths() {
+  return places.map((p) => ({ params: { slug: p.slug }, props: { place: p } }));
+}
+
+const { place } = Astro.props;
+const pagePath = `${BASE}/places/${place.slug}/`;
+const url = `https://schooltrusts.org${pagePath}`;
+
+const segments = segmentsForPlace(place);
+const vids = videosForPlace(place);
+const photos = photosForPlace(place);
+const photoGroups = photos.length
+  ? [
+      {
+        label: place.name,
+        slug: place.slug,
+        place: null,
+        photos: [...photos].sort(
+          (a, b) =>
+            (a.interview_date ?? '').localeCompare(b.interview_date ?? '') ||
+            (a.frame ?? '').localeCompare(b.frame ?? '')
+        ),
+      },
+    ]
+  : [];
+
+const features = geoJSONFor([place.slug]);
+
+const interviewsHere = [
+  ...new Set(segments.map((s) => s.interview_key)),
+]
+  .map((k) => getInterview(k))
+  .filter(Boolean);
+
+const badgeClass =
+  place.confidence === 'verified'
+    ? 'badge-verified'
+    : place.confidence === 'inferred'
+      ? 'badge-inferred'
+      : 'badge-unverified';
+
+const provenance = [
+  { label: 'How the coordinate was found', value: coordinateSourceLabel(place.method) },
+  {
+    label: 'How far to trust it',
+    value: coordinateConfidenceLabel(place.method, place.confidence),
+  },
+  ...(place.precision_note
+    ? [{ label: 'Precision', value: plainNote(place.precision_note) }]
+    : []),
+  ...(place.kind ? [{ label: 'Feature type', value: place.kind }] : []),
+  { label: 'Accession', value: ACCESSION },
+];
+
+const summaryBits = [
+  segments.length
+    ? `${segments.length} indexed interview stop${segments.length === 1 ? '' : 's'}`
+    : null,
+  place.field_trip_stops.length
+    ? `${place.field_trip_stops.length} field-trip stop${place.field_trip_stops.length === 1 ? '' : 's'}`
+    : null,
+  vids.length ? `${vids.length} video${vids.length === 1 ? '' : 's'}` : null,
+  photos.length ? `${photos.length} photograph${photos.length === 1 ? '' : 's'}` : null,
+].filter(Boolean);
+---
+
+<RoomLayout
+  room="collections"
+  title={place.name}
+  subtitle={[place.kind, place.variants.length ? `also: ${place.variants.join(', ')}` : null]
+    .filter(Boolean)
+    .join(' · ')}
+  width="full"
+  sourceId={`zybach-elliott-place-${place.slug}`}
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+    { label: 'Elliott State Forest', href: `${BASE}/` },
+    { label: 'Places', href: `${BASE}/places/` },
+  ]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Elliott State Forest · Place</p>
+
+  <ZybachNav current="elliott" />
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <ItemIntro
+    whatThisIs={
+      summaryBits.length
+        ? `What the Elliott State Forest records hold for this place: ${summaryBits.join(', ')}.`
+        : 'A place named in the Elliott State Forest records. Nothing in the series has yet been tied to it beyond the entry in the places list.'
+    }
+    provenance={provenance}
+  />
+
+  <p class="zy-coord">
+    {place.lat != null && place.lon != null ? (
+      <>
+        <span class="nums">{place.lat.toFixed(6)}, {place.lon.toFixed(6)}</span>
+        <span class={`badge ${badgeClass}`}>{confidenceLabel(place.confidence)}</span>
+        <span class="method">found with {methodLabel(place.method)}</span>
+      </>
+    ) : (
+      <span class="method">No coordinate has been established for this place.</span>
+    )}
+  </p>
+
+  {place.lat != null && place.lon != null && (
+    <MapWithList
+      id={`elliott-place-${place.slug}-map`}
+      features={features}
+      center={[place.lon, place.lat]}
+      zoom={13}
+      height="360px"
+      fit={true}
+      listTitle="This place"
+    />
+  )}
+
+  {segments.length > 0 && (
+    <section aria-labelledby="stops-heading">
+      <h2 id="stops-heading">What was said here</h2>
+      <p>
+        Bob Zybach's own index rows for this place. Each page number opens the
+        transcript at that page; each tape side opens the recording's entry on
+        the interview page.
+      </p>
+      <SegmentTable segments={segments} showInterview={true} />
+      <p class="see-also">
+        {interviewsHere.map((iv: any, i: number) => (
+          <>
+            {i > 0 && ' · '}
+            <a href={iv.href}>{iv.title_as_printed}</a>
+          </>
+        ))}
+      </p>
+    </section>
+  )}
+
+  {place.field_trip_stops.length > 0 && (
+    <section aria-labelledby="ft-heading">
+      <h2 id="ft-heading">Field-trip stops</h2>
+      <p>
+        This place is a numbered stop on Bob Zybach's Elliott field trips.
+      </p>
+      <ul class="zy-ft">
+        {place.field_trip_stops.map((f) => (
+          <li>
+            <span class="trip">{f.trip}</span>
+            {f.stop_number && <span class="stop">Stop {f.stop_number}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {vids.length > 0 && (
+    <section aria-labelledby="video-heading">
+      <h2 id="video-heading">On video</h2>
+      <p>
+        Videos whose time-coded description names this place. Each entry opens
+        the video page, where the time code cues the embed.
+      </p>
+      <ul class="zy-vids">
+        {vids.map(({ video, segments: hits }) => (
+          <li>
+            <a href={video.href}>{video.title}</a>
+            <ul class="times">
+              {hits.map((h) => (
+                <li>
+                  <span class="t">{h.t_label}</span>
+                  <span class="lab">{h.label}</span>
+                  {h.stop_number != null && <span class="stop">Stop {h.stop_number}</span>}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <PhotoGrid
+    groups={photoGroups}
+    heading="Photographs taken here"
+    headingId="photographs"
+  />
+
+  {place.evidence.length > 0 && (
+    <section aria-labelledby="evidence-heading">
+      <h2 id="evidence-heading">Where the coordinate comes from</h2>
+      <ul class="zy-evidence">
+        {place.evidence.map((e: any) => (
+          <li>
+            {e.detail && <span class="detail">{e.detail}</span>}
+            {e.source && <span class="src">{e.source}</span>}
+            {!e.detail && !e.source && <span class="detail">{JSON.stringify(e)}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="rights-heading" class="zy-rights">
+    <h2 id="rights-heading">Rights</h2>
+    <p>
+      {RIGHTS.orww} The interviews are described by{' '}
+      <a href={RIGHTS.osuFindingAid}>{RIGHTS.osuLabel}</a>.
+    </p>
+  </section>
+
+  <CitationBlock
+    canonical={`${place.name}, Elliott State Forest places list, The Zybach Collection.`}
+    short={`${place.name} (Elliott places list)`}
+    url={url}
+  />
+
+  <p class="zy-corrections">
+    Something wrong on this page?
+    {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the form
+    opens with this page already filled in, the same control that sits at the foot
+    of every page in the Library.
+    {' '}<a href="/about/corrections/">How corrections work</a>.
+  </p>
+</RoomLayout>
+
+<style>
+  .zy-coord {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    margin: 0 0 0.5rem;
+  }
+  .zy-coord .nums {
+    font-variant-numeric: tabular-nums;
+  }
+  .zy-coord .method {
+    color: #475569;
+  }
+  .zy-coord .badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+  }
+  .zy-ft {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    font-size: 0.88rem;
+  }
+  .zy-ft li {
+    padding: 0.2rem 0;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .zy-ft .trip {
+    font-weight: 600;
+  }
+  .zy-ft .stop {
+    color: #475569;
+  }
+  .zy-vids {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+  }
+  .zy-vids > li {
+    margin-bottom: 0.9rem;
+    font-size: 0.9rem;
+  }
+  .zy-vids .times {
+    list-style: none;
+    margin: 0.2rem 0 0;
+    padding: 0 0 0 1rem;
+    font-size: 0.82rem;
+  }
+  .zy-vids .times li {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    padding: 0.1rem 0;
+  }
+  .zy-vids .t {
+    font-variant-numeric: tabular-nums;
+    color: #475569;
+    min-width: 3.4rem;
+  }
+  .zy-vids .stop {
+    color: #94a3b8;
+  }
+  .zy-evidence {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    font-size: 0.8rem;
+  }
+  .zy-evidence li {
+    margin-bottom: 0.5rem;
+  }
+  .zy-evidence .detail {
+    display: block;
+  }
+  .zy-evidence .src {
+    display: block;
+    color: #94a3b8;
+    overflow-wrap: anywhere;
+  }
+  .zy-rights p {
+    font-size: 0.88rem;
+  }
+  .zy-corrections {
+    font-size: 0.78rem;
+    color: #475569;
+  }
+</style>

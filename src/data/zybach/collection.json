@@ -1,0 +1,316 @@
+{
+ "name": "The Zybach Collection",
+ "subtitle": "The life's work of Dr. Bob Zybach: Oregon forest history, oral history and historical ecology",
+ "generated": "2026-08-27",
+ "generator": "zybach pipeline build_data.py",
+ "generator_version": "1.0",
+ "href": "/collections/zybach/",
+ "series": [
+  {
+   "slug": "soap-creek",
+   "code": "sc",
+   "title": "Soap Creek Valley Oral History Series",
+   "kind": "item-level",
+   "href": "/collections/zybach/soap-creek/",
+   "dates": "1989–2009",
+   "summary": "Fifteen printed oral-history monographs recorded in Soap Creek Valley, Benton County, Oregon between 1989 and 2009 by Bob Zybach and colleagues for Oregon State University Research Forests, with the 1989 Historic Soap Creek Valley Auto Tour and the 1999 M.A.I.S. thesis that draws on them. Narrators were born between 1890 and 1930; each transcript was reviewed and approved by its narrator and printed with its own back index.",
+   "counts": {
+    "monographs": 15,
+    "printed_pages": 1591,
+    "transcript_entries": 24597,
+    "narrators": 21,
+    "chapters": 395,
+    "photographs": 175,
+    "places": 1071,
+    "people_indexed": 59,
+    "index_entries": 1823,
+    "index_refs": 12618,
+    "chronology_entries": 1571,
+    "auto_tour_stops": 11,
+    "thesis_pages": 321
+   }
+  },
+  {
+   "slug": "elliott",
+   "code": "el",
+   "title": "Elliott State Forest oral histories, field trips and videos",
+   "kind": "item-level",
+   "href": "/collections/zybach/elliott/",
+   "dates": "1962–2024",
+   "summary": "The Elliott State Forest 2017–2019 Oral History Project: six recorded interviews and driving tours with Jerry Phillips, David Gould, Bob Jacobson, Roger Johnson and Gary Vonderohe, interviewed by Bob Zybach with Amber Ross and Randy Wiest, indexed by tape side and minute. Filed with them are earlier Herman Larson recordings, OSU SCARC Jacobson transcripts, the ORWW photograph, map and MP3 registers, and the ORWWmedia video playlist.",
+   "counts": {
+    "interviews": 12,
+    "tapes": 28,
+    "segments": 112,
+    "transcripts": 12,
+    "videos": 19,
+    "video_segments": 531,
+    "recordings": 36,
+    "photographs": 156,
+    "maps": 43,
+    "places": 124
+   }
+  },
+  {
+   "slug": "alberta-street",
+   "code": "as",
+   "title": "Alberta Street",
+   "kind": "inventory",
+   "href": "/collections/zybach/alberta-street/",
+   "summary": "The 1992 Alberta Street Cultural Resource Inventory in North/Northeast Portland, researched by Portland African American high-school students, and the 2015 replication that updated its methods and recommendations. Published by ORWW as the 2015 Alberta Street Project, with a chapter history of the neighbourhood from the Chinookan villages to 2015 gentrification, cultural-resource inventories, maps and public-safety and education sections.",
+   "summary_basis": [
+    "http://www.orww.org/Alberta_Street/index.html",
+    "ORWW home page project listing, '2015 1992 Alberta Street Project Revisited'"
+   ],
+   "public_sources": [
+    "http://www.orww.org/Alberta_Street/"
+   ],
+   "described_from": "public ORWW project pages; no files accessioned in the 2026 upload",
+   "counts": {
+    "accessioned_files_matching_name": 0
+   }
+  },
+  {
+   "slug": "osbornes",
+   "code": "os",
+   "title": "The Osbornes Project",
+   "kind": "inventory",
+   "href": "/collections/zybach/osbornes/",
+   "summary": "Western Oregon Osborne photographs, 1932–1940: panoramic photographs taken from 1930s fire lookouts, collected across four earlier ORWW projects (2004, 2006, 2007, 2010) and consolidated in 2020 by county, with Benton, Lane, Lincoln and Polk counties added. Used for repeat photography and forest-cover comparison.",
+   "summary_basis": [
+    "ORWW home page project listing, '2020 Western Oregon Osborne Photos, 1932-1940'"
+   ],
+   "public_sources": [
+    "https://www.orww.store/osbornes/",
+    "http://www.orww.org/Osbornes_Project/index.html",
+    "http://www.orww.org/Osbornes_Project/References/"
+   ],
+   "described_from": "public ORWW project pages; no files accessioned in the 2026 upload",
+   "counts": {
+    "accessioned_files_matching_name": 7
+   }
+  },
+  {
+   "slug": "jedediah-smith",
+   "code": "js",
+   "title": "Jedediah Smith and the 1828 Umpqua Memorial",
+   "kind": "inventory",
+   "href": "/collections/zybach/jedediah-smith/",
+   "summary": "Research and memorial project on the July 14, 1828 killing of fifteen beaver trappers under Jedediah Smith at the mouth of the Smith River near Reedsport, Oregon, and the burial of eleven of them that October by a Hudson's Bay Company brigade. Includes reports, references, maps and Fort Umpqua photographs.",
+   "summary_basis": [
+    "ORWW home page project listing, '2023 1828 Umpqua Memorial'"
+   ],
+   "public_sources": [
+    "https://www.orww.store/umpqua-1828/",
+    "http://www.orww.org/1828_Umpqua_Memorial/",
+    "http://www.orww.org/Jedediah_Smith/1828_Umpqua_Memorial/index.html"
+   ],
+   "described_from": "public ORWW project pages and accessioned files",
+   "counts": {
+    "accessioned_files_matching_name": 126
+   }
+  },
+  {
+   "slug": "letitia-carson",
+   "code": "lc",
+   "title": "Letitia Carson, 1845–1888",
+   "kind": "inventory",
+   "href": "/collections/zybach/letitia-carson/",
+   "summary": "Documentation of the life of Letitia Carson, a Black pioneer who settled in Soap Creek Valley, Benton County, in 1845: the ORWW Letitia Carson library and documentation archive, and current K–12 curriculum drafts.",
+   "summary_basis": [
+    "Demonstration finding aid, src/pages/collections/zybach.astro, Series III"
+   ],
+   "public_sources": [
+    "https://www.orww.store/letitia-carson/",
+    "http://www.orww.org/History/Letitia_Carson/",
+    "http://www.orww.org/History/Letitia_Carson/Library/",
+    "http://www.orww.org/History/Letitia_Carson/Documentation/"
+   ],
+   "described_from": "public ORWW project pages and accessioned files",
+   "counts": {
+    "accessioned_files_matching_name": 118
+   }
+  },
+  {
+   "slug": "wildfire",
+   "code": "wf",
+   "title": "Wildfire and Oregon forest fire history",
+   "kind": "inventory",
+   "href": "/collections/zybach/wildfire/",
+   "summary": "Western Oregon forest fire history, 1765 to 2022: the ORWW educational wildfire websites (2004 B&B Complex, 2005 Deer Creek, 2007 Southwestern Oregon, 2008 Biscuit, 2009 Wildfire Economic, 2016 Douglas Fir Region) and the 2020 Labor Day Fires documentation. Based on Dr. Zybach's 2003 PhD dissertation, The Great Fires.",
+   "summary_basis": [
+    "ORWW home page project listing, '2022 Western Oregon Forest Fire History, 1765 to 2022'"
+   ],
+   "public_sources": [
+    "http://www.orww.org/"
+   ],
+   "described_from": "public ORWW project pages; no files accessioned in the 2026 upload",
+   "counts": {
+    "accessioned_files_matching_name": 5
+   }
+  },
+  {
+   "slug": "reforestation-records",
+   "code": "rr",
+   "title": "Reforestation records and correspondence",
+   "kind": "inventory",
+   "href": "/collections/zybach/reforestation-records/",
+   "summary": "Field records, working correspondence and unpublished materials from Dr. Zybach's reforestation contracting and research work. Described only after creator review; restricted or private materials would be opened item by item, if at all.",
+   "summary_basis": [
+    "Demonstration finding aid, src/pages/collections/zybach.astro, Series V"
+   ],
+   "public_sources": [],
+   "described_from": "creator review pending; not yet described at item level",
+   "counts": {
+    "accessioned_files_matching_name": 0
+   }
+  }
+ ],
+ "counts": {
+  "series": 8,
+  "item_level_series": 2,
+  "inventory_series": 6,
+  "soap_creek": {
+   "monographs": 15,
+   "printed_pages": 1591,
+   "transcript_entries": 24597,
+   "narrators": 21,
+   "chapters": 395,
+   "photographs": 175,
+   "places": 1071,
+   "people_indexed": 59,
+   "index_entries": 1823,
+   "index_refs": 12618,
+   "chronology_entries": 1571,
+   "auto_tour_stops": 11,
+   "thesis_pages": 321
+  },
+  "elliott": {
+   "interviews": 12,
+   "tapes": 28,
+   "segments": 112,
+   "transcripts": 12,
+   "videos": 19,
+   "video_segments": 531,
+   "recordings": 36,
+   "photographs": 156,
+   "maps": 43,
+   "places": 124
+  },
+  "accessioned_files": 1857
+ },
+ "provenance": {
+  "accession_statement": "Accessioned from Bob Zybach's upload of the 'ORWW Special Collection' shared Drive folder, together with material fetched from his public project sites nwmapsco.com and orww.org. Every item record carries its source URL or Drive path and a SHA-256 checksum of the file that was read.",
+  "upload_dates": [
+   "2026-05-20",
+   "2026-05-21",
+   "2026-06-18",
+   "2026-08-23",
+   "2026-08-24"
+  ],
+  "upload_branches": {
+   "01 Soap Creek Oral Histories": 139,
+   "02 Elliott State Forest": 1474,
+   "orww (Claude Cowork trove, depth<=3)": 244
+  },
+  "accessioned_files": 1857,
+  "owner": "ZybachB@NWMapsCo.com",
+  "public_sources": [
+   {
+    "label": "NW Maps Co. — Soap Creek Valley oral histories (PDFs and covers)",
+    "url": "http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/"
+   },
+   {
+    "label": "NW Maps Co. — Historic Soap Creek Valley Auto Tour",
+    "url": "http://www.nwmapsco.com/ZybachB/Tours/Soap_Creek_Valley/"
+   },
+   {
+    "label": "NW Maps Co. — Zybach 1999 M.A.I.S. thesis",
+    "url": "http://www.nwmapsco.com/ZybachB/Thesis/Zybach_MAIS_1999.pdf"
+   },
+   {
+    "label": "ORWW — Elliott State Forest oral history (transcripts, MP3s, photographs, maps)",
+    "url": "http://www.orww.org/Elliott_Forest/History/Oral/"
+   },
+   {
+    "label": "ORWWmedia — Elliott State Forest video playlist",
+    "url": "https://www.youtube.com/playlist?list=PL1JyKCHg2GmHjLtQzXXDks4Rb-LE9HoJ-"
+   },
+   {
+    "label": "USGS GNIS Domestic Names, Oregon (coordinates)",
+    "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip"
+   }
+  ]
+ },
+ "rights": {
+  "statement": "Rights status: under review. The monographs were published by Oregon State University Research Forests and College of Forestry; the Elliott interviews are described by OSU under OH 047; the creator’s deed of gift and OSU’s terms are still to be settled. Until then the Library links to the creator’s own copies and displays derived text for education and research.",
+  "statement_source": "demonstration finding aid, src/pages/collections/zybach.astro",
+  "draft": true,
+  "note": "Rights are not settled: no deed of gift has been executed, and the Soap Creek monographs were published by OSU Research Forests and the College of Forestry, which funded the project. Nothing here asserts who holds copyright.",
+  "per_series": [
+   {
+    "series": "soap-creek",
+    "statement": "Printed monographs published by Oregon State University Research Forests and College of Forestry; the transcripts were reviewed and approved by their narrators. Displayed here for education and research, with attribution. Originals remain at the creator's site.",
+    "draft": true
+   },
+   {
+    "series": "elliott",
+    "statement": "Recordings, transcripts, photographs and maps published by Oregon Websites and Watersheds Project, Inc. (ORWW); videos published on the ORWWmedia YouTube channel. Displayed here for education and research, with attribution. Media are linked at their originals, not copied.",
+    "draft": true
+   }
+  ]
+ },
+ "creator": {
+  "display_name": "Dr. Bob Zybach",
+  "bio_source_note": "Draft text carried over from the demonstration finding aid at src/pages/collections/zybach.astro ('About the creator'). Not written or approved by Dr. Zybach.",
+  "bio_text_draft_flag": true,
+  "bio_text": "Dr. Zybach is a historical ecologist and Oregon forest-history researcher. His current public project pages are at orww.store, and the long-running Oregon Websites and Watersheds archive is at orww.org.",
+  "links": [
+   {
+    "label": "orww.store",
+    "url": "https://www.orww.store"
+   },
+   {
+    "label": "orww.org",
+    "url": "http://www.orww.org"
+   },
+   {
+    "label": "nwmapsco.com",
+    "url": "http://www.nwmapsco.com/ZybachB/"
+   }
+  ]
+ },
+ "colophon": {
+  "what_the_fleet_did": [
+   "Fetched the public PDFs, photographs, maps and MP3 link registers from nwmapsco.com and orww.org, and recorded a SHA-256 checksum for every file read.",
+   "Read each printed monograph page by page with pdftotext, keeping the printed page number as the citation unit and recording the PDF-to-printed page rule used.",
+   "Recovered speaker turns from the printed typography, and marked every attribution that was inferred rather than printed.",
+   "Rebuilt the series index from the fifteen printed back indexes, merged headings, and resolved page references to chapters.",
+   "Assembled place, person and chronology authorities from the records, geocoding place names against USGS GNIS where a match existed.",
+   "Consolidated the readers' content notes with an independent pattern scan, and kept only high and medium severity notes for display.",
+   "Generated this site's data files from those records, applying the holds and the withheld-place policy."
+  ],
+  "what_it_did_not_do": [
+   "It did not paraphrase, summarise or rewrite any narrator's or the creator's prose; quoted text is character-for-character from the page.",
+   "It did not correct content. Only obvious OCR artefacts were fixed, and every fix is recorded with page and before/after.",
+   "It did not invent missing values. Fields that could not be filled from the document are null and listed in gaps.",
+   "It did not decide the sensitive questions: content notes, holds and withheld places are flagged for human decision, not resolved.",
+   "It did not verify coordinates in the field; a coordinate carries its method and confidence."
+  ],
+  "models": [
+   "claude-opus-5"
+  ],
+  "dates": {
+   "records_built": "2026-08-27",
+   "sources_fetched": "2026-08-27",
+   "drive_uploads": [
+    "2026-05-20",
+    "2026-05-21",
+    "2026-06-18",
+    "2026-08-23",
+    "2026-08-24"
+   ],
+   "data_generated": "2026-08-27"
+  }
+ }
+}

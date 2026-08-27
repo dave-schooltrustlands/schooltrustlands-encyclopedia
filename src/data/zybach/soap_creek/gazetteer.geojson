@@ -1,0 +1,5907 @@
+{
+  "type": "FeatureCollection",
+  "generated": "2026-08-27",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "aberdeen",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.815722,
+          46.975371
+        ]
+      },
+      "properties": {
+        "slug": "aberdeen",
+        "name": "Aberdeen",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Aberdeen",
+        "subtitle": "town · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/aberdeen/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "adair-village",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2178759,
+          44.6706763
+        ]
+      },
+      "properties": {
+        "slug": "adair-village",
+        "name": "Adair Village",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Adair Village",
+        "subtitle": "city · 10 mentions",
+        "href": "/collections/zybach/soap-creek/places/adair-village/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "airlie",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3314898,
+          44.7503972
+        ]
+      },
+      "properties": {
+        "slug": "airlie",
+        "name": "Airlie",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Airlie",
+        "subtitle": "community · 47 mentions",
+        "href": "/collections/zybach/soap-creek/places/airlie/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "airlie-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.31754,
+          44.7419667
+        ]
+      },
+      "properties": {
+        "slug": "airlie-road",
+        "name": "Airlie Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Airlie Road",
+        "subtitle": "road · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/airlie-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "akron",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.518485,
+          41.083064
+        ]
+      },
+      "properties": {
+        "slug": "akron",
+        "name": "Akron",
+        "kind": null,
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Akron",
+        "subtitle": "place · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/akron/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "albany",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.105928,
+          44.636511
+        ]
+      },
+      "properties": {
+        "slug": "albany",
+        "name": "Albany",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Albany",
+        "subtitle": "town · 57 mentions",
+        "href": "/collections/zybach/soap-creek/places/albany/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "alder-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.517604,
+          44.45401
+        ]
+      },
+      "properties": {
+        "slug": "alder-creek",
+        "name": "Alder Creek [Benton Co.]",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Alder Creek [Benton Co.]",
+        "subtitle": "creek · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/alder-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "allegany",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.032327,
+          43.425947
+        ]
+      },
+      "properties": {
+        "slug": "allegany",
+        "name": "Allegany",
+        "kind": "county",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Allegany",
+        "subtitle": "county · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/allegany/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "aloha",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.867045,
+          45.494284
+        ]
+      },
+      "properties": {
+        "slug": "aloha",
+        "name": "Aloha",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Aloha",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/aloha/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "alpine",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.360377,
+          44.330122
+        ]
+      },
+      "properties": {
+        "slug": "alpine",
+        "name": "Alpine",
+        "kind": "place-in-state",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Alpine",
+        "subtitle": "place-in-state · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/alpine/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "alsea",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.5964942,
+          44.3815098
+        ]
+      },
+      "properties": {
+        "slug": "alsea",
+        "name": "Alsea",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Alsea",
+        "subtitle": "community · 21 mentions",
+        "href": "/collections/zybach/soap-creek/places/alsea/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "alsea-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.080953,
+          44.422619
+        ]
+      },
+      "properties": {
+        "slug": "alsea-river",
+        "name": "Alsea River",
+        "kind": "water",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Alsea River",
+        "subtitle": "water · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/alsea-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "amity",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.207326,
+          45.115672
+        ]
+      },
+      "properties": {
+        "slug": "amity",
+        "name": "Amity",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Amity",
+        "subtitle": "town · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/amity/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ashland",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.709477,
+          42.194576
+        ]
+      },
+      "properties": {
+        "slug": "ashland",
+        "name": "Ashland",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Ashland",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/ashland/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "astoria",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.831253,
+          46.187884
+        ]
+      },
+      "properties": {
+        "slug": "astoria",
+        "name": "Astoria",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Astoria",
+        "subtitle": "town · 5 mentions",
+        "href": "/collections/zybach/soap-creek/places/astoria/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "aurora-oregon",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.755927,
+          45.230954
+        ]
+      },
+      "properties": {
+        "slug": "aurora-oregon",
+        "name": "Aurora, Oregon",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Aurora, Oregon",
+        "subtitle": "city · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/aurora-oregon/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bakers-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3134336,
+          44.6423426
+        ]
+      },
+      "properties": {
+        "slug": "bakers-creek",
+        "name": "Bakers Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Bakers Creek",
+        "subtitle": "creek · 9 mentions",
+        "href": "/collections/zybach/soap-creek/places/bakers-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bakers-mountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.302161,
+          44.658152
+        ]
+      },
+      "properties": {
+        "slug": "bakers-mountain",
+        "name": "Bakers Mountain",
+        "kind": "mountain",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Bakers Mountain",
+        "subtitle": "mountain · 26 mentions",
+        "href": "/collections/zybach/soap-creek/places/bakers-mountain/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bald-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3348085,
+          44.5656712
+        ]
+      },
+      "properties": {
+        "slug": "bald-hill",
+        "name": "Bald Hill [Philomath, Benton Co.]",
+        "kind": "hill",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Bald Hill [Philomath, Benton Co.]",
+        "subtitle": "hill · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/bald-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bay-city",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.889296,
+          45.522604
+        ]
+      },
+      "properties": {
+        "slug": "bay-city",
+        "name": "Bay City",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Bay City",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/bay-city/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "beaver-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.596774,
+          44.789006
+        ]
+      },
+      "properties": {
+        "slug": "beaver-creek",
+        "name": "Beaver Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Beaver Creek",
+        "subtitle": "creek · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/beaver-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "beaverton",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.80371,
+          45.487062
+        ]
+      },
+      "properties": {
+        "slug": "beaverton",
+        "name": "Beaverton",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Beaverton",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/beaverton/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "beldon-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.322496,
+          44.658152
+        ]
+      },
+      "properties": {
+        "slug": "beldon-creek",
+        "name": "Beldon Creek",
+        "kind": "creek",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Beldon Creek",
+        "subtitle": "creek · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/beldon-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bellfountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.355377,
+          44.363733
+        ]
+      },
+      "properties": {
+        "slug": "bellfountain",
+        "name": "Bellfountain",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Bellfountain",
+        "subtitle": "community · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/bellfountain/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bend",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.31531,
+          44.058173
+        ]
+      },
+      "properties": {
+        "slug": "bend",
+        "name": "Bend",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Bend",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/bend/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "berlin",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.747865,
+          44.497901
+        ]
+      },
+      "properties": {
+        "slug": "berlin",
+        "name": "Berlin",
+        "kind": "place-in-country",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Berlin",
+        "subtitle": "place-in-country · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/berlin/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "berry-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.228987,
+          44.730953
+        ]
+      },
+      "properties": {
+        "slug": "berry-creek",
+        "name": "Berry Creek",
+        "kind": "creek",
+        "confidence": "conflict",
+        "method": "gnis",
+        "title": "Berry Creek",
+        "subtitle": "creek · 112 mentions",
+        "href": "/collections/zybach/soap-creek/places/berry-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "berry-creek-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3047187,
+          44.7283406
+        ]
+      },
+      "properties": {
+        "slug": "berry-creek-road",
+        "name": "Berry Creek Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Berry Creek Road",
+        "subtitle": "road",
+        "href": "/collections/zybach/soap-creek/places/berry-creek-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "black-rock",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.496218,
+          44.87095
+        ]
+      },
+      "properties": {
+        "slug": "black-rock",
+        "name": "Black Rock",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Black Rock",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/black-rock/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "blaine",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.704559,
+          45.27733
+        ]
+      },
+      "properties": {
+        "slug": "blaine",
+        "name": "Blaine",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Blaine",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/blaine/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "blodgett",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.5195493,
+          44.5970639
+        ]
+      },
+      "properties": {
+        "slug": "blodgett",
+        "name": "Blodgett",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Blodgett",
+        "subtitle": "community · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/blodgett/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "boring",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.374811,
+          45.429843
+        ]
+      },
+      "properties": {
+        "slug": "boring",
+        "name": "Boring",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Boring",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/boring/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bowers-slough",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.171486,
+          44.634566
+        ]
+      },
+      "properties": {
+        "slug": "bowers-slough",
+        "name": "Bowers Slough",
+        "kind": "slough",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Bowers Slough",
+        "subtitle": "slough · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/bowers-slough/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "brinkley-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.311,
+          44.721
+        ]
+      },
+      "properties": {
+        "slug": "brinkley-hill",
+        "name": "Brinkley Hill",
+        "kind": "hill",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Brinkley Hill",
+        "subtitle": "hill · 9 mentions",
+        "href": "/collections/zybach/soap-creek/places/brinkley-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "brooklyn",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.637317,
+          45.490397
+        ]
+      },
+      "properties": {
+        "slug": "brooklyn",
+        "name": "Brooklyn",
+        "kind": "place",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Brooklyn",
+        "subtitle": "place · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/brooklyn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "brownsville",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.984811,
+          44.393457
+        ]
+      },
+      "properties": {
+        "slug": "brownsville",
+        "name": "Brownsville",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Brownsville",
+        "subtitle": "town · 6 mentions",
+        "href": "/collections/zybach/soap-creek/places/brownsville/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "buell",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4184397,
+          45.0162269
+        ]
+      },
+      "properties": {
+        "slug": "buell",
+        "name": "Buell",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Buell",
+        "subtitle": "community · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/buell/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "buena-vista",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.150652,
+          44.769565
+        ]
+      },
+      "properties": {
+        "slug": "buena-vista",
+        "name": "Buena Vista",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Buena Vista",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/buena-vista/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "burnt-woods",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.622885,
+          44.60373
+        ]
+      },
+      "properties": {
+        "slug": "burnt-woods",
+        "name": "Burnt Woods",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Burnt Woods",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/burnt-woods/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "calapooia-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.110095,
+          44.639011
+        ]
+      },
+      "properties": {
+        "slug": "calapooia-river",
+        "name": "Calapooia River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Calapooia River",
+        "subtitle": "river · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/calapooia-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "calloway-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.185375,
+          44.6690099
+        ]
+      },
+      "properties": {
+        "slug": "calloway-creek",
+        "name": "Calloway Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Calloway Creek",
+        "subtitle": "creek · 14 mentions",
+        "href": "/collections/zybach/soap-creek/places/calloway-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "camp-adair",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2083333,
+          44.7
+        ]
+      },
+      "properties": {
+        "slug": "camp-adair",
+        "name": "Camp Adair",
+        "kind": "military camp",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Camp Adair",
+        "subtitle": "military camp · 87 mentions",
+        "href": "/collections/zybach/soap-creek/places/camp-adair/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "camp-arboretum",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2321059,
+          44.6559783
+        ]
+      },
+      "properties": {
+        "slug": "camp-arboretum",
+        "name": "Camp Arboretum",
+        "kind": "CCC camp (former)",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Camp Arboretum",
+        "subtitle": "CCC camp (former) · 22 mentions",
+        "href": "/collections/zybach/soap-creek/places/camp-arboretum/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "camp-white",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.858333,
+          42.4375
+        ]
+      },
+      "properties": {
+        "slug": "camp-white",
+        "name": "Camp White",
+        "kind": "military camp",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Camp White",
+        "subtitle": "military camp · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/camp-white/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "canyonville",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.281175,
+          42.927341
+        ]
+      },
+      "properties": {
+        "slug": "canyonville",
+        "name": "Canyonville",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Canyonville",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/canyonville/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "carroll",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.351053,
+          44.653488
+        ]
+      },
+      "properties": {
+        "slug": "carroll",
+        "name": "Carroll",
+        "kind": "county",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Carroll",
+        "subtitle": "county · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/carroll/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cascade-range",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.760374,
+          46.852886
+        ]
+      },
+      "properties": {
+        "slug": "cascade-range",
+        "name": "Cascade Range",
+        "kind": "mountain range",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Cascade Range",
+        "subtitle": "mountain range · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/cascade-range/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cedar-grove",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.342831,
+          44.643672
+        ]
+      },
+      "properties": {
+        "slug": "cedar-grove",
+        "name": "Cedar Grove",
+        "kind": "grove",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Cedar Grove",
+        "subtitle": "grove · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/cedar-grove/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "champoeg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.898153,
+          45.24873
+        ]
+      },
+      "properties": {
+        "slug": "champoeg",
+        "name": "Champoeg",
+        "kind": "locality",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Champoeg",
+        "subtitle": "locality · 5 mentions",
+        "href": "/collections/zybach/soap-creek/places/champoeg/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "chicago",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.624421,
+          41.875562
+        ]
+      },
+      "properties": {
+        "slug": "chicago",
+        "name": "Chicago",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Chicago",
+        "subtitle": "city · 6 mentions",
+        "href": "/collections/zybach/soap-creek/places/chicago/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "china-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.146659,
+          44.587483
+        ]
+      },
+      "properties": {
+        "slug": "china-lake",
+        "name": "China Lake",
+        "kind": "place-in-state",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "China Lake",
+        "subtitle": "place-in-state · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/china-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "chip-ross-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2827139,
+          44.6103011
+        ]
+      },
+      "properties": {
+        "slug": "chip-ross-park",
+        "name": "Chip Ross Park",
+        "kind": "park",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Chip Ross Park",
+        "subtitle": "park · 5 mentions",
+        "href": "/collections/zybach/soap-creek/places/chip-ross-park/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "clatsop",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.716999,
+          46.017526
+        ]
+      },
+      "properties": {
+        "slug": "clatsop",
+        "name": "Clatsop",
+        "kind": "county",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Clatsop",
+        "subtitle": "county · 8 mentions",
+        "href": "/collections/zybach/soap-creek/places/clatsop/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "coburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.066476,
+          44.137069
+        ]
+      },
+      "properties": {
+        "slug": "coburg",
+        "name": "Coburg",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Coburg",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/coburg/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "coffin-butte",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2377428,
+          44.7013617
+        ]
+      },
+      "properties": {
+        "slug": "coffin-butte",
+        "name": "Coffin Butte",
+        "kind": "butte",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Coffin Butte",
+        "subtitle": "butte · 94 mentions",
+        "href": "/collections/zybach/soap-creek/places/coffin-butte/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "coffin-butte-landfill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2331034,
+          44.7001913
+        ]
+      },
+      "properties": {
+        "slug": "coffin-butte-landfill",
+        "name": "Coffin Butte Landfill",
+        "kind": "landfill",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Coffin Butte Landfill",
+        "subtitle": "landfill · 8 mentions",
+        "href": "/collections/zybach/soap-creek/places/coffin-butte-landfill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "columbia",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.088251,
+          45.94378
+        ]
+      },
+      "properties": {
+        "slug": "columbia",
+        "name": "Columbia",
+        "kind": "county",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Columbia",
+        "subtitle": "county · 9 mentions",
+        "href": "/collections/zybach/soap-creek/places/columbia/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "columbia-gorge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.265331,
+          45.550159
+        ]
+      },
+      "properties": {
+        "slug": "columbia-gorge",
+        "name": "Columbia Gorge",
+        "kind": "landform",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Columbia Gorge",
+        "subtitle": "landform · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/columbia-gorge/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "columbia-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.05793,
+          46.244267
+        ]
+      },
+      "properties": {
+        "slug": "columbia-river",
+        "name": "Columbia River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Columbia River",
+        "subtitle": "river · 13 mentions",
+        "href": "/collections/zybach/soap-creek/places/columbia-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "coos-bay",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.21789,
+          43.366501
+        ]
+      },
+      "properties": {
+        "slug": "coos-bay",
+        "name": "Coos Bay",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Coos Bay",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/coos-bay/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "corvallis",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2620435,
+          44.5645659
+        ]
+      },
+      "properties": {
+        "slug": "corvallis",
+        "name": "Corvallis",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Corvallis",
+        "subtitle": "city · 226 mentions",
+        "href": "/collections/zybach/soap-creek/places/corvallis/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cottage-grove",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.059525,
+          43.797623
+        ]
+      },
+      "properties": {
+        "slug": "cottage-grove",
+        "name": "Cottage Grove",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Cottage Grove",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/cottage-grove/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "crescent-valley",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2623214,
+          44.626232
+        ]
+      },
+      "properties": {
+        "slug": "crescent-valley",
+        "name": "Crescent Valley",
+        "kind": "valley",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Crescent Valley",
+        "subtitle": "valley · 9 mentions",
+        "href": "/collections/zybach/soap-creek/places/crescent-valley/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "crescent-valley-high-school",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2649412,
+          44.6169002
+        ]
+      },
+      "properties": {
+        "slug": "crescent-valley-high-school",
+        "name": "Crescent Valley High School",
+        "kind": "school",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Crescent Valley High School",
+        "subtitle": "school · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/crescent-valley-high-school/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cronemiller-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2396027,
+          44.6635934
+        ]
+      },
+      "properties": {
+        "slug": "cronemiller-lake",
+        "name": "Cronemiller Lake",
+        "kind": "lake",
+        "confidence": "verified",
+        "method": "nominatim",
+        "title": "Cronemiller Lake",
+        "subtitle": "lake · 10 mentions",
+        "href": "/collections/zybach/soap-creek/places/cronemiller-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "crystal-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.253,
+          44.546999
+        ]
+      },
+      "properties": {
+        "slug": "crystal-lake",
+        "name": "Crystal Lake",
+        "kind": "cemetery",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Crystal Lake",
+        "subtitle": "cemetery · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/crystal-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dallas",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.315869,
+          44.9189206
+        ]
+      },
+      "properties": {
+        "slug": "dallas",
+        "name": "Dallas",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Dallas",
+        "subtitle": "city · 17 mentions",
+        "href": "/collections/zybach/soap-creek/places/dallas/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dayton",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.076213,
+          45.220673
+        ]
+      },
+      "properties": {
+        "slug": "dayton",
+        "name": "Dayton",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Dayton",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/dayton/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "deadwood-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.366413,
+          42.308191
+        ]
+      },
+      "properties": {
+        "slug": "deadwood-creek",
+        "name": "Deadwood Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Deadwood Creek",
+        "subtitle": "creek · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/deadwood-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dimple-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3182512,
+          44.6148223
+        ]
+      },
+      "properties": {
+        "slug": "dimple-hill",
+        "name": "Dimple Hill",
+        "kind": "hill",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Dimple Hill",
+        "subtitle": "hill · 14 mentions",
+        "href": "/collections/zybach/soap-creek/places/dimple-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dixon-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.252877,
+          44.574288
+        ]
+      },
+      "properties": {
+        "slug": "dixon-creek",
+        "name": "Dixon Creek [Benton Co.]",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Dixon Creek [Benton Co.]",
+        "subtitle": "creek · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/dixon-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eddyville",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.7765,
+          44.634563
+        ]
+      },
+      "properties": {
+        "slug": "eddyville",
+        "name": "Eddyville",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Eddyville",
+        "subtitle": "town · 5 mentions",
+        "href": "/collections/zybach/soap-creek/places/eddyville/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "elk-city",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.879558,
+          44.619563
+        ]
+      },
+      "properties": {
+        "slug": "elk-city",
+        "name": "Elk City",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Elk City",
+        "subtitle": "community · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/elk-city/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "elsie",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.594849,
+          45.865667
+        ]
+      },
+      "properties": {
+        "slug": "elsie",
+        "name": "Elsie",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Elsie",
+        "subtitle": "town · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/elsie/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eola-hills",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.145577,
+          45.067864
+        ]
+      },
+      "properties": {
+        "slug": "eola-hills",
+        "name": "Eola Hills",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Eola Hills",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/eola-hills/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "estacada",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.333696,
+          45.289566
+        ]
+      },
+      "properties": {
+        "slug": "estacada",
+        "name": "Estacada",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Estacada",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/estacada/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eugene",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.086754,
+          44.052069
+        ]
+      },
+      "properties": {
+        "slug": "eugene",
+        "name": "Eugene",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Eugene",
+        "subtitle": "town · 18 mentions",
+        "href": "/collections/zybach/soap-creek/places/eugene/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "falls-city",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.435938,
+          44.8662285
+        ]
+      },
+      "properties": {
+        "slug": "falls-city",
+        "name": "Falls City",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Falls City",
+        "subtitle": "city · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/falls-city/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "fir-grove",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.138145,
+          44.119013
+        ]
+      },
+      "properties": {
+        "slug": "fir-grove",
+        "name": "Fir Grove",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Fir Grove",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/fir-grove/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "florence",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.099841,
+          43.982621
+        ]
+      },
+      "properties": {
+        "slug": "florence",
+        "name": "Florence",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Florence",
+        "subtitle": "town · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/florence/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "forest-grove",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.110663,
+          45.519836
+        ]
+      },
+      "properties": {
+        "slug": "forest-grove",
+        "name": "Forest Grove",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Forest Grove",
+        "subtitle": "city · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/forest-grove/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "forest-peak",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.315358,
+          44.679361
+        ]
+      },
+      "properties": {
+        "slug": "forest-peak",
+        "name": "Forest Peak",
+        "kind": "peak",
+        "confidence": "conflict",
+        "method": "gnis",
+        "title": "Forest Peak",
+        "subtitle": "peak · 40 mentions",
+        "href": "/collections/zybach/soap-creek/places/forest-peak/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "forestry-club-cabin",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2321059,
+          44.6559783
+        ]
+      },
+      "properties": {
+        "slug": "forestry-club-cabin",
+        "name": "Forestry Club Cabin",
+        "kind": "building",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Forestry Club Cabin",
+        "subtitle": "building · 15 mentions",
+        "href": "/collections/zybach/soap-creek/places/forestry-club-cabin/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "fort-hoskins",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4620612,
+          44.6773682
+        ]
+      },
+      "properties": {
+        "slug": "fort-hoskins",
+        "name": "Fort Hoskins",
+        "kind": "fort",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Fort Hoskins",
+        "subtitle": "fort · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/fort-hoskins/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "fossil",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.216137,
+          44.998186
+        ]
+      },
+      "properties": {
+        "slug": "fossil",
+        "name": "Fossil",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Fossil",
+        "subtitle": "town · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/fossil/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "foster-reservoir",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.793629,
+          42.793059
+        ]
+      },
+      "properties": {
+        "slug": "foster-reservoir",
+        "name": "Foster Reservoir",
+        "kind": "water",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Foster Reservoir",
+        "subtitle": "water · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/foster-reservoir/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "franklin",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.30454,
+          44.160956
+        ]
+      },
+      "properties": {
+        "slug": "franklin",
+        "name": "Franklin",
+        "kind": "school",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Franklin",
+        "subtitle": "school · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/franklin/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "frazier-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2359318,
+          44.6067879
+        ]
+      },
+      "properties": {
+        "slug": "frazier-creek",
+        "name": "Frazier Creek [Benton Co.]",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Frazier Creek [Benton Co.]",
+        "subtitle": "creek · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/frazier-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "fullerton",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.929416,
+          33.870821
+        ]
+      },
+      "properties": {
+        "slug": "fullerton",
+        "name": "Fullerton",
+        "kind": "place",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Fullerton",
+        "subtitle": "place · 6 mentions",
+        "href": "/collections/zybach/soap-creek/places/fullerton/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gales-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.214833,
+          45.586501
+        ]
+      },
+      "properties": {
+        "slug": "gales-creek",
+        "name": "Gales Creek [Washington Co.]",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Gales Creek [Washington Co.]",
+        "subtitle": "creek · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/gales-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "garfield",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.278695,
+          45.277065
+        ]
+      },
+      "properties": {
+        "slug": "garfield",
+        "name": "Garfield (Town)",
+        "kind": "town/region",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Garfield (Town)",
+        "subtitle": "town/region · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/garfield/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "glenders-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.241155,
+          44.672633
+        ]
+      },
+      "properties": {
+        "slug": "glenders-hill",
+        "name": "Glenders Hill",
+        "kind": "hill",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Glenders Hill",
+        "subtitle": "hill · 7 mentions",
+        "href": "/collections/zybach/soap-creek/places/glenders-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "government-island",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.519537,
+          45.577063
+        ]
+      },
+      "properties": {
+        "slug": "government-island",
+        "name": "Government Island",
+        "kind": "island",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Government Island",
+        "subtitle": "island · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/government-island/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "grand-ronde",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.609277,
+          45.060113
+        ]
+      },
+      "properties": {
+        "slug": "grand-ronde",
+        "name": "Grand Ronde",
+        "kind": "reservation",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Grand Ronde",
+        "subtitle": "reservation · 13 mentions",
+        "href": "/collections/zybach/soap-creek/places/grand-ronde/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "grass-mountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.673815,
+          44.423836
+        ]
+      },
+      "properties": {
+        "slug": "grass-mountain",
+        "name": "Grass Mountain",
+        "kind": "mountain",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Grass Mountain",
+        "subtitle": "mountain · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/grass-mountain/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gresham",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.43148,
+          45.498176
+        ]
+      },
+      "properties": {
+        "slug": "gresham",
+        "name": "Gresham",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Gresham",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/gresham/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "halsey",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.109814,
+          44.384012
+        ]
+      },
+      "properties": {
+        "slug": "halsey",
+        "name": "Halsey",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Halsey",
+        "subtitle": "town · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/halsey/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hanish-homestead",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3018,
+          44.7157
+        ]
+      },
+      "properties": {
+        "slug": "hanish-homestead",
+        "name": "Hanish Homestead",
+        "kind": "homestead",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Hanish Homestead",
+        "subtitle": "homestead · 10 mentions",
+        "href": "/collections/zybach/soap-creek/places/hanish-homestead/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "harlan",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.693164,
+          44.539842
+        ]
+      },
+      "properties": {
+        "slug": "harlan",
+        "name": "Harlan",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Harlan",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/harlan/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "harrisburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.170648,
+          44.274012
+        ]
+      },
+      "properties": {
+        "slug": "harrisburg",
+        "name": "Harrisburg",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Harrisburg",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/harrisburg/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hemlock",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.836785,
+          45.315661
+        ]
+      },
+      "properties": {
+        "slug": "hemlock",
+        "name": "Hemlock",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Hemlock",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/hemlock/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "highland-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2622421,
+          44.6038862
+        ]
+      },
+      "properties": {
+        "slug": "highland-road",
+        "name": "Highland Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Highland Road",
+        "subtitle": "road · 11 mentions",
+        "href": "/collections/zybach/soap-creek/places/highland-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "highway-99",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2021654,
+          44.6993162
+        ]
+      },
+      "properties": {
+        "slug": "highway-99",
+        "name": "Highway 99",
+        "kind": "highway",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Highway 99",
+        "subtitle": "highway · 16 mentions",
+        "href": "/collections/zybach/soap-creek/places/highway-99/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hillsdale",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.694818,
+          45.481507
+        ]
+      },
+      "properties": {
+        "slug": "hillsdale",
+        "name": "Hillsdale",
+        "kind": "place",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Hillsdale",
+        "subtitle": "place · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/hillsdale/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "holbrook",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.863436,
+          45.659838
+        ]
+      },
+      "properties": {
+        "slug": "holbrook",
+        "name": "Holbrook",
+        "kind": "farm",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Holbrook",
+        "subtitle": "farm · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/holbrook/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "horner-museum",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2805799,
+          44.5612668
+        ]
+      },
+      "properties": {
+        "slug": "horner-museum",
+        "name": "Horner Museum",
+        "kind": "museum",
+        "confidence": "inferred",
+        "method": "nominatim",
+        "title": "Horner Museum",
+        "subtitle": "museum · 18 mentions",
+        "href": "/collections/zybach/soap-creek/places/horner-museum/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hoskins",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4687151,
+          44.6767857
+        ]
+      },
+      "properties": {
+        "slug": "hoskins",
+        "name": "Hoskins",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Hoskins",
+        "subtitle": "community · 5 mentions",
+        "href": "/collections/zybach/soap-creek/places/hoskins/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hospital-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.22082,
+          44.672633
+        ]
+      },
+      "properties": {
+        "slug": "hospital-hill",
+        "name": "Hospital Hill",
+        "kind": "hill",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Hospital Hill",
+        "subtitle": "hill · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/hospital-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hudson",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.017891,
+          46.091501
+        ]
+      },
+      "properties": {
+        "slug": "hudson",
+        "name": "Hudson",
+        "kind": "place",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Hudson",
+        "subtitle": "place · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/hudson/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "independence",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.191303,
+          44.8560029
+        ]
+      },
+      "properties": {
+        "slug": "independence",
+        "name": "Independence",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Independence",
+        "subtitle": "city · 20 mentions",
+        "href": "/collections/zybach/soap-creek/places/independence/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "iowa-city-iowa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.529911,
+          41.661256
+        ]
+      },
+      "properties": {
+        "slug": "iowa-city-iowa",
+        "name": "Iowa City, Iowa",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Iowa City, Iowa",
+        "subtitle": "city · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/iowa-city-iowa/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "jackson-county-oregon",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.728518,
+          42.432156
+        ]
+      },
+      "properties": {
+        "slug": "jackson-county-oregon",
+        "name": "Jackson County, Oregon",
+        "kind": "county",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Jackson County, Oregon",
+        "subtitle": "county · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/jackson-county-oregon/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "jackson-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2448209,
+          44.6142878
+        ]
+      },
+      "properties": {
+        "slug": "jackson-creek",
+        "name": "Jackson Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Jackson Creek",
+        "subtitle": "creek · 7 mentions",
+        "href": "/collections/zybach/soap-creek/places/jackson-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "jackson-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.028136,
+          44.835949
+        ]
+      },
+      "properties": {
+        "slug": "jackson-hill",
+        "name": "Jackson Hill",
+        "kind": "hill",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Jackson Hill",
+        "subtitle": "hill · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/jackson-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "jefferson",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.010371,
+          44.719566
+        ]
+      },
+      "properties": {
+        "slug": "jefferson",
+        "name": "Jefferson",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Jefferson",
+        "subtitle": "town · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/jefferson/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "junction-city",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.205648,
+          44.21929
+        ]
+      },
+      "properties": {
+        "slug": "junction-city",
+        "name": "Junction City",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Junction City",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/junction-city/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kiger-island",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.234265,
+          44.512622
+        ]
+      },
+      "properties": {
+        "slug": "kiger-island",
+        "name": "Kiger Island",
+        "kind": "island",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Kiger Island",
+        "subtitle": "island · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/kiger-island/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kings-valley",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4345476,
+          44.7067856
+        ]
+      },
+      "properties": {
+        "slug": "kings-valley",
+        "name": "Kings Valley",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Kings Valley",
+        "subtitle": "community · 59 mentions",
+        "href": "/collections/zybach/soap-creek/places/kings-valley/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kings-valley-ridge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.322496,
+          44.672633
+        ]
+      },
+      "properties": {
+        "slug": "kings-valley-ridge",
+        "name": "Kings Valley Ridge",
+        "kind": "ridge",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Kings Valley Ridge",
+        "subtitle": "ridge · 8 mentions",
+        "href": "/collections/zybach/soap-creek/places/kings-valley-ridge/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "klamath-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.78167,
+          42.224867
+        ]
+      },
+      "properties": {
+        "slug": "klamath-falls",
+        "name": "Klamath Falls",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Klamath Falls",
+        "subtitle": "town · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/klamath-falls/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "klamath-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.08113,
+          41.53306
+        ]
+      },
+      "properties": {
+        "slug": "klamath-river",
+        "name": "Klamath River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Klamath River",
+        "subtitle": "river · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/klamath-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "la-grande",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.087719,
+          45.324577
+        ]
+      },
+      "properties": {
+        "slug": "la-grande",
+        "name": "La Grande",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "La Grande",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/la-grande/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lacomb",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.74342,
+          44.585123
+        ]
+      },
+      "properties": {
+        "slug": "lacomb",
+        "name": "LaComb",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "LaComb",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/lacomb/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lake-county-oregon",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.387338,
+          42.793461
+        ]
+      },
+      "properties": {
+        "slug": "lake-county-oregon",
+        "name": "Lake County, Oregon",
+        "kind": "county",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lake County, Oregon",
+        "subtitle": "county · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/lake-county-oregon/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lakeview",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.345792,
+          42.188772
+        ]
+      },
+      "properties": {
+        "slug": "lakeview",
+        "name": "Lakeview",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lakeview",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/lakeview/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lancaster",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.195649,
+          44.252901
+        ]
+      },
+      "properties": {
+        "slug": "lancaster",
+        "name": "Lancaster",
+        "kind": "place",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lancaster",
+        "subtitle": "place · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/lancaster/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "larch-mountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.427262,
+          45.659347
+        ]
+      },
+      "properties": {
+        "slug": "larch-mountain",
+        "name": "Larch Mountain [Multnomah Co.]",
+        "kind": "peak",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Larch Mountain [Multnomah Co.]",
+        "subtitle": "peak · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/larch-mountain/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "laurel-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.03549,
+          42.422484
+        ]
+      },
+      "properties": {
+        "slug": "laurel-hill",
+        "name": "Laurel Hill [Clackamas Co.]",
+        "kind": "hill/peak",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Laurel Hill [Clackamas Co.]",
+        "subtitle": "hill/peak · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/laurel-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "laurelhurst",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.622872,
+          45.52623
+        ]
+      },
+      "properties": {
+        "slug": "laurelhurst",
+        "name": "Laurelhurst",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Laurelhurst",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/laurelhurst/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lebanon",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.907034,
+          44.536512
+        ]
+      },
+      "properties": {
+        "slug": "lebanon",
+        "name": "Lebanon",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lebanon",
+        "subtitle": "town · 11 mentions",
+        "href": "/collections/zybach/soap-creek/places/lebanon/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lewis",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.094601,
+          45.690707
+        ]
+      },
+      "properties": {
+        "slug": "lewis",
+        "name": "Lewis [Washington Co.]",
+        "kind": "water",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lewis [Washington Co.]",
+        "subtitle": "water · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/lewis/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lewisburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2414875,
+          44.62901
+        ]
+      },
+      "properties": {
+        "slug": "lewisburg",
+        "name": "Lewisburg",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lewisburg",
+        "subtitle": "community · 47 mentions",
+        "href": "/collections/zybach/soap-creek/places/lewisburg/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lewisburg-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.295934,
+          44.63673
+        ]
+      },
+      "properties": {
+        "slug": "lewisburg-road",
+        "name": "Lewisburg Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Lewisburg Road",
+        "subtitle": "road · 8 mentions",
+        "href": "/collections/zybach/soap-creek/places/lewisburg-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lewisburg-saddle",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.296211,
+          44.637065
+        ]
+      },
+      "properties": {
+        "slug": "lewisburg-saddle",
+        "name": "Lewisburg Saddle",
+        "kind": "saddle",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lewisburg Saddle",
+        "subtitle": "saddle · 44 mentions",
+        "href": "/collections/zybach/soap-creek/places/lewisburg-saddle/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lewisville",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3453795,
+          44.7881744
+        ]
+      },
+      "properties": {
+        "slug": "lewisville",
+        "name": "Lewisville",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Lewisville",
+        "subtitle": "community · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/lewisville/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lincoln",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.907655,
+          44.645844
+        ]
+      },
+      "properties": {
+        "slug": "lincoln",
+        "name": "Lincoln",
+        "kind": "county",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lincoln",
+        "subtitle": "county · 7 mentions",
+        "href": "/collections/zybach/soap-creek/places/lincoln/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lobster-valley",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.703618,
+          44.288543
+        ]
+      },
+      "properties": {
+        "slug": "lobster-valley",
+        "name": "Lobster Valley",
+        "kind": "valley",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lobster Valley",
+        "subtitle": "valley · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/lobster-valley/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "logan",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.834914,
+          41.731306
+        ]
+      },
+      "properties": {
+        "slug": "logan",
+        "name": "Logan",
+        "kind": null,
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Logan",
+        "subtitle": "place · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/logan/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "long-tom-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.24843,
+          44.380123
+        ]
+      },
+      "properties": {
+        "slug": "long-tom-river",
+        "name": "Long Tom River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Long Tom River",
+        "subtitle": "river · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/long-tom-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "los-angeles",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.242766,
+          34.053691
+        ]
+      },
+      "properties": {
+        "slug": "los-angeles",
+        "name": "Los Angeles",
+        "kind": "place-in-state",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Los Angeles",
+        "subtitle": "place-in-state · 8 mentions",
+        "href": "/collections/zybach/soap-creek/places/los-angeles/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lost-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.505278,
+          41.94
+        ]
+      },
+      "properties": {
+        "slug": "lost-river",
+        "name": "Lost River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Lost River",
+        "subtitle": "river · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/lost-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "luckiamute-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1484299,
+          44.7542872
+        ]
+      },
+      "properties": {
+        "slug": "luckiamute-river",
+        "name": "Luckiamute River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Luckiamute River",
+        "subtitle": "river · 13 mentions",
+        "href": "/collections/zybach/soap-creek/places/luckiamute-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "marys-peak",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.5525325,
+          44.5043582
+        ]
+      },
+      "properties": {
+        "slug": "marys-peak",
+        "name": "Marys Peak",
+        "kind": "peak",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Marys Peak",
+        "subtitle": "peak · 6 mentions",
+        "href": "/collections/zybach/soap-creek/places/marys-peak/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "marys-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.261488,
+          44.5556771
+        ]
+      },
+      "properties": {
+        "slug": "marys-river",
+        "name": "Marys River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Marys River",
+        "subtitle": "river · 14 mentions",
+        "href": "/collections/zybach/soap-creek/places/marys-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "maxfield-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.438992,
+          44.698452
+        ]
+      },
+      "properties": {
+        "slug": "maxfield-creek",
+        "name": "Maxfield Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Maxfield Creek",
+        "subtitle": "creek · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/maxfield-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mcculloch-peak",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.342831,
+          44.629192
+        ]
+      },
+      "properties": {
+        "slug": "mcculloch-peak",
+        "name": "McCulloch Peak",
+        "kind": "peak",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "McCulloch Peak",
+        "subtitle": "peak · 7 mentions",
+        "href": "/collections/zybach/soap-creek/places/mcculloch-peak/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mcdonald-forest",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.28302,
+          44.625757
+        ]
+      },
+      "properties": {
+        "slug": "mcdonald-forest",
+        "name": "McDonald Forest",
+        "kind": "forest",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "McDonald Forest",
+        "subtitle": "forest · 58 mentions",
+        "href": "/collections/zybach/soap-creek/places/mcdonald-forest/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mcminnville",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.198716,
+          45.210116
+        ]
+      },
+      "properties": {
+        "slug": "mcminnville",
+        "name": "McMinnville",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "McMinnville",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/mcminnville/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "medford",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.875595,
+          42.326515
+        ]
+      },
+      "properties": {
+        "slug": "medford",
+        "name": "Medford",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Medford",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/medford/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "miami-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.893741,
+          45.559827
+        ]
+      },
+      "properties": {
+        "slug": "miami-river",
+        "name": "Miami River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Miami River",
+        "subtitle": "river · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/miami-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mill-city",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.478139,
+          44.754011
+        ]
+      },
+      "properties": {
+        "slug": "mill-city",
+        "name": "Mill City",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Mill City",
+        "subtitle": "city · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/mill-city/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mill-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.623161,
+          44.392899
+        ]
+      },
+      "properties": {
+        "slug": "mill-creek",
+        "name": "Mill Creek",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Mill Creek",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/mill-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "millersburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.061483,
+          44.680955
+        ]
+      },
+      "properties": {
+        "slug": "millersburg",
+        "name": "Millersburg",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Millersburg",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/millersburg/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "milwaukie",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.639261,
+          45.44623
+        ]
+      },
+      "properties": {
+        "slug": "milwaukie",
+        "name": "Milwaukie",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Milwaukie",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/milwaukie/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "monmouth",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2290777,
+          44.8486414
+        ]
+      },
+      "properties": {
+        "slug": "monmouth",
+        "name": "Monmouth",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Monmouth",
+        "subtitle": "city · 16 mentions",
+        "href": "/collections/zybach/soap-creek/places/monmouth/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "monroe",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.296764,
+          44.314012
+        ]
+      },
+      "properties": {
+        "slug": "monroe",
+        "name": "Monroe",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Monroe",
+        "subtitle": "city · 8 mentions",
+        "href": "/collections/zybach/soap-creek/places/monroe/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "moss-rock-drive",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2937096,
+          44.6526794
+        ]
+      },
+      "properties": {
+        "slug": "moss-rock-drive",
+        "name": "Moss Rock Drive",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Moss Rock Drive",
+        "subtitle": "road · 8 mentions",
+        "href": "/collections/zybach/soap-creek/places/moss-rock-drive/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mount-hood",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.568408,
+          45.537895
+        ]
+      },
+      "properties": {
+        "slug": "mount-hood",
+        "name": "Mount Hood",
+        "kind": "mountain",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Mount Hood",
+        "subtitle": "mountain · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/mount-hood/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mount-jefferson",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.799469,
+          44.674208
+        ]
+      },
+      "properties": {
+        "slug": "mount-jefferson",
+        "name": "Mount Jefferson",
+        "kind": "mountain",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Mount Jefferson",
+        "subtitle": "mountain · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/mount-jefferson/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mountain-view",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2192647,
+          44.6262323
+        ]
+      },
+      "properties": {
+        "slug": "mountain-view",
+        "name": "Mountain View",
+        "kind": "community",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Mountain View",
+        "subtitle": "community · 17 mentions",
+        "href": "/collections/zybach/soap-creek/places/mountain-view/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "multnomah",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.707318,
+          45.469563
+        ]
+      },
+      "properties": {
+        "slug": "multnomah",
+        "name": "Multnomah",
+        "kind": "county",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Multnomah",
+        "subtitle": "county · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/multnomah/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nashville",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.60844,
+          44.653452
+        ]
+      },
+      "properties": {
+        "slug": "nashville",
+        "name": "Nashville",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Nashville",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/nashville/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nestucca-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.957339,
+          45.184271
+        ]
+      },
+      "properties": {
+        "slug": "nestucca-river",
+        "name": "Nestucca River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Nestucca River",
+        "subtitle": "river · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/nestucca-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nettleton-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2821103,
+          44.6410041
+        ]
+      },
+      "properties": {
+        "slug": "nettleton-road",
+        "name": "Nettleton Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Nettleton Road",
+        "subtitle": "road · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/nettleton-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "newport",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.05345,
+          44.636784
+        ]
+      },
+      "properties": {
+        "slug": "newport",
+        "name": "Newport",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Newport",
+        "subtitle": "town · 6 mentions",
+        "href": "/collections/zybach/soap-creek/places/newport/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "norton-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.512327,
+          44.591509
+        ]
+      },
+      "properties": {
+        "slug": "norton-creek",
+        "name": "Norton Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Norton Creek",
+        "subtitle": "creek · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/norton-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "oak-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.278155,
+          44.554844
+        ]
+      },
+      "properties": {
+        "slug": "oak-creek",
+        "name": "Oak Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Oak Creek",
+        "subtitle": "creek · 61 mentions",
+        "href": "/collections/zybach/soap-creek/places/oak-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "oak-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2692517,
+          44.7162258
+        ]
+      },
+      "properties": {
+        "slug": "oak-hill",
+        "name": "Oak Hill",
+        "kind": "hill",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Oak Hill",
+        "subtitle": "hill · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/oak-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "oakridge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.461716,
+          43.746512
+        ]
+      },
+      "properties": {
+        "slug": "oakridge",
+        "name": "Oakridge",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Oakridge",
+        "subtitle": "town · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/oakridge/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ontario",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.962938,
+          44.026553
+        ]
+      },
+      "properties": {
+        "slug": "ontario",
+        "name": "Ontario",
+        "kind": "place",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Ontario",
+        "subtitle": "place · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/ontario/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "oregon-city",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.606758,
+          45.357343
+        ]
+      },
+      "properties": {
+        "slug": "oregon-city",
+        "name": "Oregon City",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Oregon City",
+        "subtitle": "city · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/oregon-city/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "oregon-state-university",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.283923,
+          44.563056
+        ]
+      },
+      "properties": {
+        "slug": "oregon-state-university",
+        "name": "Oregon State University",
+        "kind": "university",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Oregon State University",
+        "subtitle": "university · 30 mentions",
+        "href": "/collections/zybach/soap-creek/places/oregon-state-university/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osu-research-forests",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.282758,
+          44.650588
+        ]
+      },
+      "properties": {
+        "slug": "osu-research-forests",
+        "name": "OSU Research Forests",
+        "kind": "forest",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "OSU Research Forests",
+        "subtitle": "forest · 27 mentions",
+        "href": "/collections/zybach/soap-creek/places/osu-research-forests/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "patterson-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3317727,
+          44.6078052
+        ]
+      },
+      "properties": {
+        "slug": "patterson-road",
+        "name": "Patterson Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Patterson Road",
+        "subtitle": "road · 6 mentions",
+        "href": "/collections/zybach/soap-creek/places/patterson-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "paul-m-dunn-forest",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.285346,
+          44.671446
+        ]
+      },
+      "properties": {
+        "slug": "paul-m-dunn-forest",
+        "name": "Paul M. Dunn Forest",
+        "kind": "forest",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Paul M. Dunn Forest",
+        "subtitle": "forest · 48 mentions",
+        "href": "/collections/zybach/soap-creek/places/paul-m-dunn-forest/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pearl-harbor",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -157.999149,
+          21.355775
+        ]
+      },
+      "properties": {
+        "slug": "pearl-harbor",
+        "name": "Pearl Harbor",
+        "kind": "place",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Pearl Harbor",
+        "subtitle": "place · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/pearl-harbor/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "peavy-arboretum",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2321059,
+          44.6559783
+        ]
+      },
+      "properties": {
+        "slug": "peavy-arboretum",
+        "name": "Peavy Arboretum",
+        "kind": "arboretum",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Peavy Arboretum",
+        "subtitle": "arboretum · 35 mentions",
+        "href": "/collections/zybach/soap-creek/places/peavy-arboretum/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "peavy-hall",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.283923,
+          44.563056
+        ]
+      },
+      "properties": {
+        "slug": "peavy-hall",
+        "name": "Peavy Hall",
+        "kind": "building",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Peavy Hall",
+        "subtitle": "building · 8 mentions",
+        "href": "/collections/zybach/soap-creek/places/peavy-hall/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pedee",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4135669,
+          44.7527782
+        ]
+      },
+      "properties": {
+        "slug": "pedee",
+        "name": "Pedee",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Pedee",
+        "subtitle": "community · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/pedee/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "peoria",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.207319,
+          44.448734
+        ]
+      },
+      "properties": {
+        "slug": "peoria",
+        "name": "Peoria",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Peoria",
+        "subtitle": "town · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/peoria/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "periwinkle-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.086761,
+          44.642066
+        ]
+      },
+      "properties": {
+        "slug": "periwinkle-creek",
+        "name": "Periwinkle Creek [Benton Co.]",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Periwinkle Creek [Benton Co.]",
+        "subtitle": "creek · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/periwinkle-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "philomath",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.367613,
+          44.5400013
+        ]
+      },
+      "properties": {
+        "slug": "philomath",
+        "name": "Philomath",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Philomath",
+        "subtitle": "city · 38 mentions",
+        "href": "/collections/zybach/soap-creek/places/philomath/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poison-oak-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.225996,
+          44.688353
+        ]
+      },
+      "properties": {
+        "slug": "poison-oak-hill",
+        "name": "Poison Oak Hill",
+        "kind": "landform",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Poison Oak Hill",
+        "subtitle": "landform · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/poison-oak-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "portland",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.676207,
+          45.523452
+        ]
+      },
+      "properties": {
+        "slug": "portland",
+        "name": "Portland",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Portland",
+        "subtitle": "town · 106 mentions",
+        "href": "/collections/zybach/soap-creek/places/portland/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "powder-house-saddle",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.251323,
+          44.665392
+        ]
+      },
+      "properties": {
+        "slug": "powder-house-saddle",
+        "name": "Powder House Saddle",
+        "kind": "saddle",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Powder House Saddle",
+        "subtitle": "saddle · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/powder-house-saddle/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radio-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.261491,
+          44.643672
+        ]
+      },
+      "properties": {
+        "slug": "radio-hill",
+        "name": "Radio Hill",
+        "kind": "hill",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Radio Hill",
+        "subtitle": "hill · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/radio-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "redmond",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.173921,
+          44.27262
+        ]
+      },
+      "properties": {
+        "slug": "redmond",
+        "name": "Redmond",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Redmond",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/redmond/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "reedsport",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.096778,
+          43.702339
+        ]
+      },
+      "properties": {
+        "slug": "reedsport",
+        "name": "Reedsport",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Reedsport",
+        "subtitle": "town · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/reedsport/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "research-ponds",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.281826,
+          44.672633
+        ]
+      },
+      "properties": {
+        "slug": "research-ponds",
+        "name": "Research Ponds",
+        "kind": "pond",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Research Ponds",
+        "subtitle": "pond · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/research-ponds/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "rickreall",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.234224,
+          44.9317755
+        ]
+      },
+      "properties": {
+        "slug": "rickreall",
+        "name": "Rickreall",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Rickreall",
+        "subtitle": "community · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/rickreall/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "rifle-range",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.261491,
+          44.701593
+        ]
+      },
+      "properties": {
+        "slug": "rifle-range",
+        "name": "Rifle Range",
+        "kind": "range",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Rifle Range",
+        "subtitle": "range · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/rifle-range/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ritter",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.143591,
+          44.892375
+        ]
+      },
+      "properties": {
+        "slug": "ritter",
+        "name": "Ritter",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Ritter",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/ritter/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "river-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1337,
+          44.084013
+        ]
+      },
+      "properties": {
+        "slug": "river-road",
+        "name": "River Road",
+        "kind": "road/trail",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "River Road",
+        "subtitle": "road/trail · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/river-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "robison-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2349006,
+          44.7131234
+        ]
+      },
+      "properties": {
+        "slug": "robison-road",
+        "name": "Robison Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Robison Road",
+        "subtitle": "road · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/robison-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "rohner-farm",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.228,
+          44.7013
+        ]
+      },
+      "properties": {
+        "slug": "rohner-farm",
+        "name": "Rohner Farm",
+        "kind": "farm",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Rohner Farm",
+        "subtitle": "farm · 8 mentions",
+        "href": "/collections/zybach/soap-creek/places/rohner-farm/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "roseburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.341738,
+          43.216505
+        ]
+      },
+      "properties": {
+        "slug": "roseburg",
+        "name": "Roseburg",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Roseburg",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/roseburg/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "salem",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.035096,
+          44.942898
+        ]
+      },
+      "properties": {
+        "slug": "salem",
+        "name": "Salem",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Salem",
+        "subtitle": "town · 48 mentions",
+        "href": "/collections/zybach/soap-creek/places/salem/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "san-diego",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.162772,
+          32.71742
+        ]
+      },
+      "properties": {
+        "slug": "san-diego",
+        "name": "San Diego",
+        "kind": "place-in-state",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "San Diego",
+        "subtitle": "place-in-state · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/san-diego/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "san-francisco",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.40752,
+          37.787936
+        ]
+      },
+      "properties": {
+        "slug": "san-francisco",
+        "name": "San Francisco",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "San Francisco",
+        "subtitle": "city · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/san-francisco/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "savage-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3017669,
+          44.7156754
+        ]
+      },
+      "properties": {
+        "slug": "savage-creek",
+        "name": "Savage Creek",
+        "kind": "creek",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Savage Creek",
+        "subtitle": "creek · 28 mentions",
+        "href": "/collections/zybach/soap-creek/places/savage-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "scio",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.849256,
+          44.704845
+        ]
+      },
+      "properties": {
+        "slug": "scio",
+        "name": "Scio",
+        "kind": null,
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Scio",
+        "subtitle": "place · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/scio/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "seattle",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.330062,
+          47.603832
+        ]
+      },
+      "properties": {
+        "slug": "seattle",
+        "name": "Seattle",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Seattle",
+        "subtitle": "city · 5 mentions",
+        "href": "/collections/zybach/soap-creek/places/seattle/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sheridan",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.394829,
+          45.099281
+        ]
+      },
+      "properties": {
+        "slug": "sheridan",
+        "name": "Sheridan",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Sheridan",
+        "subtitle": "town · 6 mentions",
+        "href": "/collections/zybach/soap-creek/places/sheridan/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sherwood",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.840098,
+          45.356507
+        ]
+      },
+      "properties": {
+        "slug": "sherwood",
+        "name": "Sherwood",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Sherwood",
+        "subtitle": "city · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/sherwood/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "siletz",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.920113,
+          44.721784
+        ]
+      },
+      "properties": {
+        "slug": "siletz",
+        "name": "Siletz",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Siletz",
+        "subtitle": "town · 13 mentions",
+        "href": "/collections/zybach/soap-creek/places/siletz/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "siletz-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.011503,
+          44.903444
+        ]
+      },
+      "properties": {
+        "slug": "siletz-river",
+        "name": "Siletz River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Siletz River",
+        "subtitle": "river · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/siletz-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "silverton",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.783146,
+          45.005121
+        ]
+      },
+      "properties": {
+        "slug": "silverton",
+        "name": "Silverton",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Silverton",
+        "subtitle": "town · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/silverton/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "siuslaw",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.220645,
+          43.904012
+        ]
+      },
+      "properties": {
+        "slug": "siuslaw",
+        "name": "Siuslaw",
+        "kind": "forest",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Siuslaw",
+        "subtitle": "forest · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/siuslaw/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "skunk-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.33899,
+          44.590676
+        ]
+      },
+      "properties": {
+        "slug": "skunk-creek",
+        "name": "Skunk Creek",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Skunk Creek",
+        "subtitle": "road · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/skunk-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "smith-peak",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.281826,
+          44.716073
+        ]
+      },
+      "properties": {
+        "slug": "smith-peak",
+        "name": "Smith Peak",
+        "kind": "peak",
+        "confidence": "conflict",
+        "method": "trs-centroid",
+        "title": "Smith Peak",
+        "subtitle": "peak · 33 mentions",
+        "href": "/collections/zybach/soap-creek/places/smith-peak/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "soap-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.163708,
+          44.7301207
+        ]
+      },
+      "properties": {
+        "slug": "soap-creek",
+        "name": "Soap Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Soap Creek",
+        "subtitle": "creek · 344 mentions",
+        "href": "/collections/zybach/soap-creek/places/soap-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "soap-creek-logging-camp",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.27,
+          44.67
+        ]
+      },
+      "properties": {
+        "slug": "soap-creek-logging-camp",
+        "name": "Soap Creek Logging Camp",
+        "kind": "logging camp (former)",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Soap Creek Logging Camp",
+        "subtitle": "logging camp (former)",
+        "href": "/collections/zybach/soap-creek/places/soap-creek-logging-camp/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "soap-creek-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.275593,
+          44.6657391
+        ]
+      },
+      "properties": {
+        "slug": "soap-creek-road",
+        "name": "Soap Creek Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Soap Creek Road",
+        "subtitle": "road · 19 mentions",
+        "href": "/collections/zybach/soap-creek/places/soap-creek-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "soap-creek-school",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2796655,
+          44.6603484
+        ]
+      },
+      "properties": {
+        "slug": "soap-creek-school",
+        "name": "Soap Creek School",
+        "kind": "school",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Soap Creek School",
+        "subtitle": "school · 22 mentions",
+        "href": "/collections/zybach/soap-creek/places/soap-creek-school/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "soap-creek-schoolhouse",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2796655,
+          44.6603484
+        ]
+      },
+      "properties": {
+        "slug": "soap-creek-schoolhouse",
+        "name": "Soap Creek Schoolhouse",
+        "kind": "building",
+        "confidence": "verified",
+        "method": "nominatim",
+        "title": "Soap Creek Schoolhouse",
+        "subtitle": "building · 21 mentions",
+        "href": "/collections/zybach/soap-creek/places/soap-creek-schoolhouse/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "soap-creek-valley",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.291995,
+          44.69435
+        ]
+      },
+      "properties": {
+        "slug": "soap-creek-valley",
+        "name": "Soap Creek Valley",
+        "kind": "valley",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Soap Creek Valley",
+        "subtitle": "valley · 246 mentions",
+        "href": "/collections/zybach/soap-creek/places/soap-creek-valley/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sodaville",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.871755,
+          44.484568
+        ]
+      },
+      "properties": {
+        "slug": "sodaville",
+        "name": "Sodaville",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Sodaville",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/sodaville/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "south-fork-bridge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.301767,
+          44.715675
+        ]
+      },
+      "properties": {
+        "slug": "south-fork-bridge",
+        "name": "South Fork Bridge",
+        "kind": "bridge",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "South Fork Bridge",
+        "subtitle": "bridge · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/south-fork-bridge/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "south-prairie",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.808236,
+          45.401614
+        ]
+      },
+      "properties": {
+        "slug": "south-prairie",
+        "name": "South Prairie",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "South Prairie",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/south-prairie/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "spirit-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.243442,
+          43.463726
+        ]
+      },
+      "properties": {
+        "slug": "spirit-lake",
+        "name": "Spirit Lake",
+        "kind": "lake",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Spirit Lake",
+        "subtitle": "lake · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/spirit-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "springfield",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.022029,
+          44.046236
+        ]
+      },
+      "properties": {
+        "slug": "springfield",
+        "name": "Springfield",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Springfield",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/springfield/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "staats-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2851,
+          44.734564
+        ]
+      },
+      "properties": {
+        "slug": "staats-creek",
+        "name": "Staats Creek",
+        "kind": "creek",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Staats Creek",
+        "subtitle": "creek · 5 mentions",
+        "href": "/collections/zybach/soap-creek/places/staats-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "stage-stop-lane",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2591484,
+          44.6758507
+        ]
+      },
+      "properties": {
+        "slug": "stage-stop-lane",
+        "name": "Stage Stop Lane",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Stage Stop Lane",
+        "subtitle": "road · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/stage-stop-lane/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "starker-forests",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.335444,
+          44.542102
+        ]
+      },
+      "properties": {
+        "slug": "starker-forests",
+        "name": "Starker Forests",
+        "kind": "forest",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Starker Forests",
+        "subtitle": "forest · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/starker-forests/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-1-berry-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3021,
+          44.7202
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-1-berry-creek",
+        "name": "STOP #1 BERRY CREEK [Trapping]",
+        "kind": "auto-tour-stop",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "STOP #1 BERRY CREEK [Trapping]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-1-berry-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-10-lewisburg-saddle",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.296211,
+          44.637065
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-10-lewisburg-saddle",
+        "name": "STOP #10 LEWISBURG SADDLE [Logging]",
+        "kind": "auto-tour-stop",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "STOP #10 LEWISBURG SADDLE [Logging]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-10-lewisburg-saddle/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-11-old-growth-trail",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.29421,
+          44.63327
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-11-old-growth-trail",
+        "name": "STOP #11 OLD-GROWTH TRAIL [Ecology]",
+        "kind": "auto-tour-stop",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "STOP #11 OLD-GROWTH TRAIL [Ecology]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-11-old-growth-trail/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-2-smith-peak",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.28283,
+          44.71057
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-2-smith-peak",
+        "name": "STOP #2  SMITH PEAK [Trails]",
+        "kind": "auto-tour-stop",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "STOP #2  SMITH PEAK [Trails]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-2-smith-peak/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-3-coffin-butte",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.25112,
+          44.69432
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-3-coffin-butte",
+        "name": "STOP #3 COFFIN BUTTE [Pioneers]",
+        "kind": "auto-tour-stop",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "STOP #3 COFFIN BUTTE [Pioneers]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-3-coffin-butte/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-4-soap-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.24408,
+          44.69072
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-4-soap-creek",
+        "name": "STOP #4 SOAP CREEK [Settlers]",
+        "kind": "auto-tour-stop",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "STOP #4 SOAP CREEK [Settlers]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-4-soap-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-5-tampico",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.23353,
+          44.685303
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-5-tampico",
+        "name": "STOP #5 TAMPICO [Towns]",
+        "kind": "auto-tour-stop",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "STOP #5 TAMPICO [Towns]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-5-tampico/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-6-elephant-tooth",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.24308,
+          44.68014
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-6-elephant-tooth",
+        "name": "STOP #6 ELEPHANT TOOTH [Early People]",
+        "kind": "auto-tour-stop",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "STOP #6 ELEPHANT TOOTH [Early People]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-6-elephant-tooth/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-7-beef-barns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.25263,
+          44.67498
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-7-beef-barns",
+        "name": "STOP #7 BEEF BARNS [Agriculture]",
+        "kind": "auto-tour-stop",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "STOP #7 BEEF BARNS [Agriculture]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-7-beef-barns/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-8-soap-creek-school",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2796655,
+          44.6603484
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-8-soap-creek-school",
+        "name": "STOP #8 SOAP CREEK SCHOOL [Education]",
+        "kind": "auto-tour-stop",
+        "confidence": "verified",
+        "method": "nominatim",
+        "title": "STOP #8 SOAP CREEK SCHOOL [Education]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-8-soap-creek-school/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "auto-tour-stop-9-sulphur-springs",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3156559,
+          44.6423426
+        ]
+      },
+      "properties": {
+        "slug": "auto-tour-stop-9-sulphur-springs",
+        "name": "STOP #9 SULPHUR SPRINGS [Recreation]",
+        "kind": "auto-tour-stop",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "STOP #9 SULPHUR SPRINGS [Recreation]",
+        "subtitle": "auto-tour-stop · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/auto-tour-stop-9-sulphur-springs/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sulphur-springs",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3156559,
+          44.6423426
+        ]
+      },
+      "properties": {
+        "slug": "sulphur-springs",
+        "name": "Sulphur Springs",
+        "kind": "spring",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Sulphur Springs",
+        "subtitle": "spring · 93 mentions",
+        "href": "/collections/zybach/soap-creek/places/sulphur-springs/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sulphur-springs-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3153741,
+          44.6431787
+        ]
+      },
+      "properties": {
+        "slug": "sulphur-springs-road",
+        "name": "Sulphur Springs Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Sulphur Springs Road",
+        "subtitle": "road · 17 mentions",
+        "href": "/collections/zybach/soap-creek/places/sulphur-springs-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sulphur-springs-stock-ranch",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.292,
+          44.6579
+        ]
+      },
+      "properties": {
+        "slug": "sulphur-springs-stock-ranch",
+        "name": "Sulphur Springs Stock Ranch",
+        "kind": "ranch",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Sulphur Springs Stock Ranch",
+        "subtitle": "ranch · 7 mentions",
+        "href": "/collections/zybach/soap-creek/places/sulphur-springs-stock-ranch/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "summit",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.5787175,
+          44.6378969
+        ]
+      },
+      "properties": {
+        "slug": "summit",
+        "name": "Summit",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Summit",
+        "subtitle": "community · 14 mentions",
+        "href": "/collections/zybach/soap-creek/places/summit/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sunnyside",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.026762,
+          44.844843
+        ]
+      },
+      "properties": {
+        "slug": "sunnyside",
+        "name": "Sunnyside",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Sunnyside",
+        "subtitle": "town · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/sunnyside/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sutherlin",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.312576,
+          43.390118
+        ]
+      },
+      "properties": {
+        "slug": "sutherlin",
+        "name": "Sutherlin",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Sutherlin",
+        "subtitle": "city · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/sutherlin/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "suver",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2073202,
+          44.7428981
+        ]
+      },
+      "properties": {
+        "slug": "suver",
+        "name": "Suver",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Suver",
+        "subtitle": "community · 32 mentions",
+        "href": "/collections/zybach/soap-creek/places/suver/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sweet-home",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.736196,
+          44.397625
+        ]
+      },
+      "properties": {
+        "slug": "sweet-home",
+        "name": "Sweet Home",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Sweet Home",
+        "subtitle": "town · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/sweet-home/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "table-mountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.492797,
+          42.197712
+        ]
+      },
+      "properties": {
+        "slug": "table-mountain",
+        "name": "Table Mountain [Lincoln Co.]",
+        "kind": "peak",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Table Mountain [Lincoln Co.]",
+        "subtitle": "peak · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/table-mountain/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tampico",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.23353,
+          44.685303
+        ]
+      },
+      "properties": {
+        "slug": "tampico",
+        "name": "Tampico",
+        "kind": "town (former)",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Tampico",
+        "subtitle": "town (former) · 106 mentions",
+        "href": "/collections/zybach/soap-creek/places/tampico/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tampico-ridge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.22082,
+          44.687113
+        ]
+      },
+      "properties": {
+        "slug": "tampico-ridge",
+        "name": "Tampico Ridge",
+        "kind": "ridge",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Tampico Ridge",
+        "subtitle": "ridge · 9 mentions",
+        "href": "/collections/zybach/soap-creek/places/tampico-ridge/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tampico-road",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2731765,
+          44.6988606
+        ]
+      },
+      "properties": {
+        "slug": "tampico-road",
+        "name": "Tampico Road",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Tampico Road",
+        "subtitle": "road · 29 mentions",
+        "href": "/collections/zybach/soap-creek/places/tampico-road/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tampico-school",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.242,
+          44.6853
+        ]
+      },
+      "properties": {
+        "slug": "tampico-school",
+        "name": "Tampico School",
+        "kind": "school (former)",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Tampico School",
+        "subtitle": "school (former) · 9 mentions",
+        "href": "/collections/zybach/soap-creek/places/tampico-school/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "the-dalles",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.178682,
+          45.594564
+        ]
+      },
+      "properties": {
+        "slug": "the-dalles",
+        "name": "The Dalles",
+        "kind": "place",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "The Dalles",
+        "subtitle": "place · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/the-dalles/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "the-dickey-farm",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.296,
+          44.718
+        ]
+      },
+      "properties": {
+        "slug": "the-dickey-farm",
+        "name": "The Dickey Farm",
+        "kind": "farm",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "The Dickey Farm",
+        "subtitle": "farm · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/the-dickey-farm/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "the-vanderburg-place",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.29,
+          44.7199
+        ]
+      },
+      "properties": {
+        "slug": "the-vanderburg-place",
+        "name": "The Vanderburg Place",
+        "kind": "farm",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "The Vanderburg Place",
+        "subtitle": "farm · 7 mentions",
+        "href": "/collections/zybach/soap-creek/places/the-vanderburg-place/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tigard",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.771486,
+          45.431229
+        ]
+      },
+      "properties": {
+        "slug": "tigard",
+        "name": "Tigard",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Tigard",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/tigard/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tillamook",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.844014,
+          45.456216
+        ]
+      },
+      "properties": {
+        "slug": "tillamook",
+        "name": "Tillamook",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Tillamook",
+        "subtitle": "town · 21 mentions",
+        "href": "/collections/zybach/soap-creek/places/tillamook/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "toledo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.938448,
+          44.621507
+        ]
+      },
+      "properties": {
+        "slug": "toledo",
+        "name": "Toledo",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Toledo",
+        "subtitle": "city · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/toledo/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "triangle-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.578992,
+          44.170677
+        ]
+      },
+      "properties": {
+        "slug": "triangle-lake",
+        "name": "Triangle Lake",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Triangle Lake",
+        "subtitle": "community · 4 mentions",
+        "href": "/collections/zybach/soap-creek/places/triangle-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "troutdale",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.387313,
+          45.539286
+        ]
+      },
+      "properties": {
+        "slug": "troutdale",
+        "name": "Troutdale",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Troutdale",
+        "subtitle": "town · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/troutdale/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tualatin",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.763985,
+          45.384008
+        ]
+      },
+      "properties": {
+        "slug": "tualatin",
+        "name": "Tualatin",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Tualatin",
+        "subtitle": "community · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/tualatin/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tule-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.281659,
+          42.110987
+        ]
+      },
+      "properties": {
+        "slug": "tule-lake",
+        "name": "Tule Lake",
+        "kind": "lake",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Tule Lake",
+        "subtitle": "lake · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/tule-lake/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ukiah",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.932481,
+          45.13403
+        ]
+      },
+      "properties": {
+        "slug": "ukiah",
+        "name": "Ukiah",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Ukiah",
+        "subtitle": "community · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/ukiah/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "umpqua",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.468418,
+          43.365393
+        ]
+      },
+      "properties": {
+        "slug": "umpqua",
+        "name": "Umpqua",
+        "kind": "forest",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Umpqua",
+        "subtitle": "forest · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/umpqua/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "umpqua-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.109302,
+          43.711948
+        ]
+      },
+      "properties": {
+        "slug": "umpqua-river",
+        "name": "Umpqua River",
+        "kind": "river",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Umpqua River",
+        "subtitle": "river · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/umpqua-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "valsetz",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.6587174,
+          44.8403737
+        ]
+      },
+      "properties": {
+        "slug": "valsetz",
+        "name": "Valsetz",
+        "kind": "town (former)",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Valsetz",
+        "subtitle": "town (former) · 7 mentions",
+        "href": "/collections/zybach/soap-creek/places/valsetz/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "vancouver",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.674456,
+          45.630695
+        ]
+      },
+      "properties": {
+        "slug": "vancouver",
+        "name": "Vancouver",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Vancouver",
+        "subtitle": "town · 6 mentions",
+        "href": "/collections/zybach/soap-creek/places/vancouver/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "vernonia",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.192893,
+          45.858723
+        ]
+      },
+      "properties": {
+        "slug": "vernonia",
+        "name": "Vernonia",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Vernonia",
+        "subtitle": "city · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/vernonia/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "vineyard-mountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2742888,
+          44.6402586
+        ]
+      },
+      "properties": {
+        "slug": "vineyard-mountain",
+        "name": "Vineyard Mountain",
+        "kind": "mountain",
+        "confidence": "verified",
+        "method": "gnis",
+        "title": "Vineyard Mountain",
+        "subtitle": "mountain · 5 mentions",
+        "href": "/collections/zybach/soap-creek/places/vineyard-mountain/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "waldport",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.06873,
+          44.426786
+        ]
+      },
+      "properties": {
+        "slug": "waldport",
+        "name": "Waldport",
+        "kind": "city",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Waldport",
+        "subtitle": "city · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/waldport/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wells",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.203,
+          44.692
+        ]
+      },
+      "properties": {
+        "slug": "wells",
+        "name": "Wells",
+        "kind": "town (former)",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Wells",
+        "subtitle": "town (former) · 52 mentions",
+        "href": "/collections/zybach/soap-creek/places/wells/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wellsdale",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.203,
+          44.692
+        ]
+      },
+      "properties": {
+        "slug": "wellsdale",
+        "name": "Wellsdale",
+        "kind": "railroad depot (former)",
+        "confidence": "inferred",
+        "method": "described-relative-to",
+        "title": "Wellsdale",
+        "subtitle": "railroad depot (former) · 13 mentions",
+        "href": "/collections/zybach/soap-creek/places/wellsdale/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wiles-lane",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2439834,
+          44.7033448
+        ]
+      },
+      "properties": {
+        "slug": "wiles-lane",
+        "name": "Wiles Lane",
+        "kind": "road",
+        "confidence": "stated",
+        "method": "nominatim",
+        "title": "Wiles Lane",
+        "subtitle": "road · 5 mentions",
+        "href": "/collections/zybach/soap-creek/places/wiles-lane/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "willamette-river",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2385,
+          44.5645
+        ]
+      },
+      "properties": {
+        "slug": "willamette-river",
+        "name": "Willamette River",
+        "kind": "river",
+        "confidence": "inferred",
+        "method": "gnis",
+        "title": "Willamette River",
+        "subtitle": "river · 13 mentions",
+        "href": "/collections/zybach/soap-creek/places/willamette-river/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "willamette-valley",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.50148,
+          45.50012
+        ]
+      },
+      "properties": {
+        "slug": "willamette-valley",
+        "name": "Willamette Valley",
+        "kind": "valley",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Willamette Valley",
+        "subtitle": "valley · 74 mentions",
+        "href": "/collections/zybach/soap-creek/places/willamette-valley/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "willamina",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.485942,
+          45.078725
+        ]
+      },
+      "properties": {
+        "slug": "willamina",
+        "name": "Willamina",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Willamina",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/willamina/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "witham-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.301154,
+          44.580302
+        ]
+      },
+      "properties": {
+        "slug": "witham-hill",
+        "name": "Witham Hill",
+        "kind": "hill",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Witham Hill",
+        "subtitle": "hill · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/witham-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "woodburn",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.855373,
+          45.143731
+        ]
+      },
+      "properties": {
+        "slug": "woodburn",
+        "name": "Woodburn",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Woodburn",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/woodburn/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wren",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4284361,
+          44.5876201
+        ]
+      },
+      "properties": {
+        "slug": "wren",
+        "name": "Wren",
+        "kind": "community",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Wren",
+        "subtitle": "community · 10 mentions",
+        "href": "/collections/zybach/soap-creek/places/wren/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "writsman-creek",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.302161,
+          44.672633
+        ]
+      },
+      "properties": {
+        "slug": "writsman-creek",
+        "name": "Writsman Creek",
+        "kind": "creek",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Writsman Creek",
+        "subtitle": "creek · 2 mentions",
+        "href": "/collections/zybach/soap-creek/places/writsman-creek/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "writsmans-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.261491,
+          44.687113
+        ]
+      },
+      "properties": {
+        "slug": "writsmans-hill",
+        "name": "Writsmans Hill",
+        "kind": "hill",
+        "confidence": "inferred",
+        "method": "trs-centroid",
+        "title": "Writsmans Hill",
+        "subtitle": "hill · 24 mentions",
+        "href": "/collections/zybach/soap-creek/places/writsmans-hill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "yachats",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.104842,
+          44.311231
+        ]
+      },
+      "properties": {
+        "slug": "yachats",
+        "name": "Yachats",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Yachats",
+        "subtitle": "town · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/yachats/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "yamhill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.187329,
+          45.341504
+        ]
+      },
+      "properties": {
+        "slug": "yamhill",
+        "name": "Yamhill",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Yamhill",
+        "subtitle": "town · 6 mentions",
+        "href": "/collections/zybach/soap-creek/places/yamhill/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "yaquina-head",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.076506,
+          44.675116
+        ]
+      },
+      "properties": {
+        "slug": "yaquina-head",
+        "name": "Yaquina Head",
+        "kind": "place",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Yaquina Head",
+        "subtitle": "place · 1 mentions",
+        "href": "/collections/zybach/soap-creek/places/yaquina-head/"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "yoncalla",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.283417,
+          43.598453
+        ]
+      },
+      "properties": {
+        "slug": "yoncalla",
+        "name": "Yoncalla",
+        "kind": "town",
+        "confidence": "stated",
+        "method": "gnis",
+        "title": "Yoncalla",
+        "subtitle": "town · 3 mentions",
+        "href": "/collections/zybach/soap-creek/places/yoncalla/"
+      }
+    }
+  ]
+}

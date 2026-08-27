@@ -1,0 +1,231 @@
+---
+/**
+ * A chapter of a printed transcript, page by page.
+ *
+ * Page anchors are sacred (rule 7): every printed page opens its own
+ * `<section id="pNN">` and carries a folio permalink in the right margin, so
+ * `05:47` resolves to a URL that will not move.
+ *
+ * Speakers come resolved from the pipeline: `speaker_display` is the name to
+ * print, `speaker_role` says what kind of turn it is, and `speaker_inferred`
+ * marks a name recovered from the typography rather than printed on the page.
+ * Inferred attributions are footnoted once per page, not once per turn.
+ * Nothing is paraphrased; bracketed matter is kept and marked.
+ */
+import type { Chapter, TranscriptEntry } from './data';
+import { folioId, folioLabel } from './links';
+
+export interface Props {
+  chapter: Chapter;
+  /** `speaker_legend` from the transcript file. */
+  legend?: {
+    narrator?: string | null;
+    narrator_2?: string | null;
+    interviewers?: string[];
+    inferred_note?: string;
+    method?: string;
+  };
+  /** Fallbacks when a turn carries no resolved display name. */
+  narrators?: string[];
+  interviewers?: string[];
+  /**
+   * Every printed page this chapter covers, from the monograph's
+   * `page_to_chapter`. A page with no transcribed text — a plate, a leaf of the
+   * printed back-of-book index — still opens its own anchored section, because
+   * `05:47` must resolve whether or not that page carries speech.
+   */
+  pages?: Array<number | string>;
+  /** What to say on a page that carries no transcribed text. */
+  emptyNote?: string;
+  /** Per-page override of `emptyNote`, keyed by the printed page number. */
+  pageNotes?: Record<string, string>;
+  /**
+   * Printed photograph captions, keyed by the printed page they are set on.
+   * A plate leaf can carry several, and they belong on the page they were
+   * printed on whether or not that page also carries transcribed speech.
+   */
+  pageCaptions?: Record<string, string[]>;
+}
+
+const {
+  chapter,
+  legend,
+  narrators = [],
+  interviewers = [],
+  pages = [],
+  emptyNote = 'No transcribed text on this printed page.',
+  pageNotes = {},
+  pageCaptions = {},
+} = Astro.props as Props;
+
+const entries = (chapter.entries ?? []).slice();
+
+type PageGroup = { page: string; entries: TranscriptEntry[] };
+const groups: PageGroup[] = [];
+for (const e of entries) {
+  const page = e.page === undefined || e.page === null ? '' : String(e.page);
+  const last = groups[groups.length - 1];
+  if (last && last.page === page) last.entries.push(e);
+  else groups.push({ page, entries: [e] });
+}
+
+// Printed pages the chapter covers but the transcript has no words for: give
+// each one its anchor, in printed order, so no citation lands nowhere.
+const pageNum = (p: string) => (/^\d+$/.test(p) ? Number(p) : Number.NaN);
+const havePages = new Set(groups.map((g) => g.page));
+const extras = pages
+  .map((p) => String(p))
+  .filter((p) => p && !havePages.has(p))
+  .sort((a, b) => (pageNum(a) || 0) - (pageNum(b) || 0));
+for (const p of extras) {
+  const n = pageNum(p);
+  let at = groups.length;
+  if (!Number.isNaN(n)) {
+    const i = groups.findIndex((g) => !Number.isNaN(pageNum(g.page)) && pageNum(g.page) > n);
+    if (i >= 0) at = i;
+  }
+  groups.splice(at, 0, { page: p, entries: [] });
+}
+
+// One id per printed page, even if its turns are split by an interleaved page.
+const idUsed = new Set<string>();
+
+const narratorName = legend?.narrator ?? narrators[0] ?? 'Narrator';
+const soleInterviewer =
+  (legend?.interviewers ?? interviewers).length === 1
+    ? (legend?.interviewers ?? interviewers)[0]
+    : null;
+
+function role(e: TranscriptEntry): string {
+  const r = (e.speaker_role ?? '').toLowerCase();
+  if (r) return r;
+  const s = (e.speaker ?? '').toLowerCase();
+  if (s === 'q') return 'interviewer';
+  if (s === 'a') return 'narrator';
+  return s;
+}
+
+function speakerLabel(e: TranscriptEntry): string | null {
+  if (e.speaker_display) return e.speaker_display;
+  const r = role(e);
+  if (r === 'interviewer') return soleInterviewer ?? 'Interviewer';
+  if (r === 'narrator' || r === 'a') return e.speaker_name ?? narratorName;
+  if ((e.speaker ?? '') === 'narrator-2') return e.speaker_name ?? legend?.narrator_2 ?? 'Second narrator';
+  return e.speaker_name ?? null;
+}
+
+function turnClass(e: TranscriptEntry): string {
+  const r = role(e);
+  if (r === 'interviewer') return 'sc-turn sc-turn-q';
+  if (r === 'narrator' || r === 'a') return 'sc-turn sc-turn-a';
+  if ((e.speaker ?? '') === 'narrator-2') return 'sc-turn sc-turn-narrator2';
+  return 'sc-turn';
+}
+
+const escapeHtml = (s: string) =>
+  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+/**
+ * Bracketed matter inside a printed turn is a correction or clarification the
+ * narrator or the editor added to the tape's words. It is shown, never
+ * removed, and marked so a reader can tell it from what was said aloud.
+ */
+function renderText(text: string): string {
+  const escaped = escapeHtml(text ?? '');
+  const marked = escaped.replace(
+    /\[[^\][]{0,600}\]/g,
+    (m) => `<span class="sc-correction" title="Bracketed in the printed transcript">${m}</span>`,
+  );
+  return marked.replace(/\n{2,}/g, '</p><p class="sc-turn-cont">').replace(/\n/g, '<br>');
+}
+
+/**
+ * Does any turn on this page carry a speaker name recovered from the
+ * typography rather than printed as a name? The generator says so two ways:
+ * the boolean `speaker_inferred`, and `speaker_confidence: 'inferred'` on
+ * transcripts coded from layout indentation. Either counts.
+ *
+ * The footnote is shown once for the page, under the transcript — not once per
+ * printed folio and not once per turn.
+ */
+const hasInferred = entries.some(
+  (e) =>
+    e.speaker_inferred === true ||
+    String(e.speaker_confidence ?? '').toLowerCase().startsWith('inferred'),
+);
+const inferredNote =
+  legend?.inferred_note ??
+  'Speaker attribution inferred from typography where the printed page prints only Q and A.';
+---
+
+<div class="sc-transcript">
+  {groups.map((g) => {
+    const first = !!g.page && !idUsed.has(g.page);
+    if (g.page) idUsed.add(g.page);
+    return (
+    <section id={first ? folioId(g.page) : undefined} class="sc-page">
+      {g.page && (
+        <a
+          class="sc-folio"
+          href={`#${folioId(g.page)}`}
+          aria-label={`Permanent link to printed page ${g.page}`}
+        >
+          {folioLabel(g.page)}
+        </a>
+      )}
+      {g.entries.map((e) => {
+        if (e.held) {
+          return <p class="sc-hold">{e.text}</p>;
+        }
+        const r = role(e);
+        if (r === 'heading') {
+          return <h2 class="sc-turn-heading">{e.text}</h2>;
+        }
+        if (r === 'caption') {
+          return (
+            <figure class="sc-caption-fig">
+              <figcaption>
+                {e.text}
+                <span class="sc-cap-meta">
+                  Caption as printed{g.page ? `, ${folioLabel(g.page)}` : ''}.
+                </span>
+              </figcaption>
+            </figure>
+          );
+        }
+        if (r === 'editorial') {
+          return <p class="sc-turn sc-turn-editorial" set:html={renderText(e.text ?? '')} />;
+        }
+        const label = speakerLabel(e);
+        return (
+          <p class={turnClass(e)}>
+            {label && <b class="sc-speaker">{label}:</b>}
+            <Fragment set:html={renderText(e.text ?? '')} />
+          </p>
+        );
+      })}
+      {g.entries.length === 0 && (
+        <p class="sc-page-empty">{pageNotes[g.page] ?? emptyNote}</p>
+      )}
+      {g.entries.length > 0 && (pageCaptions[g.page] ?? []).length > 0 && (
+        <figure class="sc-caption-fig">
+          {(pageCaptions[g.page] ?? []).map((c) => (
+            <figcaption>
+              {c}
+              <span class="sc-cap-meta">
+                Photograph caption as printed{g.page ? `, ${folioLabel(g.page)}` : ''}.
+              </span>
+            </figcaption>
+          ))}
+        </figure>
+      )}
+    </section>
+    );
+  })}
+  {hasInferred && (
+    <p class="sc-attr-note" role="note">
+      <span class="sc-attr-note__mark" aria-hidden="true">†</span>
+      {inferredNote}
+    </p>
+  )}
+</div>

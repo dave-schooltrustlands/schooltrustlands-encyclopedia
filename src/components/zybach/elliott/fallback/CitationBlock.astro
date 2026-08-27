@@ -1,0 +1,63 @@
+---
+/** Fallback for ROOM's CitationBlock. Props per BUILD_SPEC. */
+interface Props {
+  canonical: string;
+  short: string;
+  url: string;
+  pdfUrl?: string;
+  accessed?: string;
+}
+const { canonical, short, url, pdfUrl, accessed } = Astro.props as Props;
+---
+
+<section class="zy-cite" aria-labelledby="how-to-cite">
+  <h2 id="how-to-cite">How to cite this item</h2>
+  <dl>
+    <dt>As the creator prints it</dt>
+    <dd class="canonical">{canonical}</dd>
+    <dt>Short form</dt>
+    <dd>{short}</dd>
+    <dt>This page</dt>
+    <dd><a href={url}>{url}</a></dd>
+    {pdfUrl && (
+      <>
+        <dt>Original file</dt>
+        <dd><a href={pdfUrl}>{pdfUrl}</a></dd>
+      </>
+    )}
+    {accessed && (
+      <>
+        <dt>Accessed</dt>
+        <dd>{accessed}</dd>
+      </>
+    )}
+  </dl>
+</section>
+
+<style>
+  .zy-cite {
+    margin: 2.5rem 0 1rem;
+    border-top: 2px solid var(--old-gold, #b58a45);
+    padding-top: 1rem;
+  }
+  .zy-cite h2 {
+    font-size: 1.05rem;
+    margin: 0 0 0.6rem;
+  }
+  .zy-cite dl {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .zy-cite dt {
+    font-weight: 600;
+    color: #475569;
+    margin-top: 0.55rem;
+  }
+  .zy-cite dd {
+    margin: 0.1rem 0 0;
+    overflow-wrap: anywhere;
+  }
+  .zy-cite .canonical {
+    font-family: var(--font-serif, Newsreader, Georgia, serif);
+  }
+</style>

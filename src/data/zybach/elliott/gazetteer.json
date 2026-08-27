@@ -1,0 +1,3402 @@
+{
+  "generated": "2026-08-27",
+  "method_notes": {
+    "summary": "Coordinates for the named places of Bob Zybach's Elliott State Forest oral-history tours (2017-2018) and the 2018 SWOCC Forest Recreation field trips.",
+    "sources_tested": [
+      {
+        "endpoint": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip",
+        "result": "WORKED - 36,780 Oregon records, used as the primary geocoder (file dated 2026-07-06)"
+      },
+      {
+        "endpoint": "https://nominatim.openstreetmap.org/search",
+        "result": "WORKED but very thin for this area - only 3 of 19 queried places returned a match; used at <=1 request/second with a User-Agent naming America's School Trust Library"
+      },
+      {
+        "endpoint": "https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2",
+        "result": "WORKED - PLSS section polygons (Willamette Meridian) used to turn township/range/section readings off Bob's maps into coordinates"
+      },
+      {
+        "endpoint": "http://www.orww.org/Elliott_Forest/Recreation/Field_Trips/ and .../Recreation/<trip>/Zybach_2018*_Field_Trip.pdf",
+        "result": "WORKED - the six field-trip pages and their 2018 itinerary handouts (the numbered/lettered stop lists) were fetched from ORWW"
+      }
+    ],
+    "method_gnis": "Exact name + county (+ feature class or feature_id) match against the USGS GNIS Oregon domestic-names file. GNIS coordinates are reproduced unchanged; no rounding beyond the source precision. For STREAMS the GNIS primary point is the MOUTH, which is often miles from the tour stop - this is stated in every stream record's precision_note.",
+    "method_map_reading": "Bob's four hand-labeled route maps (Maps/Zybach-Ross_2017*.jpg, Zybach-Ross_20181010-10.jpg) carry a PLSS township/range/section grid with the township labels (22S9W ... 25S12W) and section numbers printed. For places with no GNIS or OSM entry, the stop marker was located on a zoomed crop, its section read from the printed grid, and the coordinate taken as the centroid of that section in BLM CadNSDI. Typical accuracy +/-0.5 mi (a section is 1 mi square); markers near a section or township line are flagged with a wider bound. These records are confidence \"inferred\". The georeference was validated independently: the BLM centroid of T22S R11W sec.35 falls 0.13 mi from the GNIS Dean Mountain summit, which is the summit Bob's map marks with its \"Dean Mountain Repeater\" symbol in that same section.",
+    "not_done": "No coordinate was invented. 33 places that Bob names on his maps or in the transcripts have lat/lon null and confidence \"unresolved\"; each carries a precision_note saying why and, where known, which named feature it sits on.",
+    "stop_labels": "stops_here[].stop_label reproduces Bob's own map-stop label and TOC line verbatim from sources/elliott/oral/Oral_History_TOC-2019.pdf. field_trip_stops[].stop_number reproduces the numbering used in his 2018 itinerary handouts (1-10 for Elkhorn Ranch, A-F / A-E / A-D for the others; unnumbered trips carry the stop name).",
+    "interview_dates": {
+      "2017-10-06": "Interview #1 Coos Bay test interview",
+      "2017-10-10": "Interview #2, map A stops #A-01..#A-26",
+      "2017-11-08": "Interview #3, map B stops #B-01..#B-37",
+      "2017-11-28": "Interview #4 Bob Jacobson, Coos History Museum",
+      "2017-12-06": "Interview #5, map C stops #C-01..#C-25",
+      "2018-10-10": "Interview #6, map D stops #D-01..#D-09"
+    },
+    "bbox_test": "bbox_ok = lon within -124.25..-123.75 and lat within 43.45..43.75; null where no coordinate."
+  },
+  "counts": {
+    "places": 124,
+    "geocoded": 89,
+    "with_stops": 65,
+    "with_field_trip_stops": 35,
+    "withheld": 0
+  },
+  "places": [
+    {
+      "slug": "zc-el-pl-adams-creek",
+      "name": "Adams Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.545948,
+      "lon": -124.155668,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5459479, -124.1556678); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5276146, -124.0970534.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1137014 \"Adams Creek\", Stream, Coos County, quad Lakeside"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-adams-creek/"
+    },
+    {
+      "slug": "zc-el-pl-adams-ridge",
+      "name": "Adams Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-01 9-A. 15:22 Sukurski's Bamboo to Adams Ridge"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-12-06 #C-01 9-A. 15:22 Sukurski's Bamboo to Adams Ridge"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-adams-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-alder-gulch",
+      "name": "Alder Gulch",
+      "variants": [],
+      "kind": "valley",
+      "lat": 43.591268,
+      "lon": -124.082386,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Valley); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1137090 \"Alder Gulch\", Valley, Coos County, quad Trail Butte"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-alder-gulch/"
+    },
+    {
+      "slug": "zc-el-pl-allegany",
+      "name": "Allegany",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.425947,
+      "lon": -124.032327,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad Allegany.",
+      "bbox_ok": false,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "Allegany store (references)"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Millicoma Fish Hatchery",
+          "stop_number": "B"
+        },
+        {
+          "trip": "Golden and Silver Falls",
+          "stop_number": "Allegany School / Mahaffy Ranch Pumpkin Patch"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1116873 \"Allegany\", Populated Place, Coos County, quad Allegany"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-allegany/"
+    },
+    {
+      "slug": "zc-el-pl-ash-valley",
+      "name": "Ash Valley",
+      "variants": [],
+      "kind": "valley",
+      "lat": 43.579995,
+      "lon": -123.825341,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Valley); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-18 3-A. 2:23 The 1850 Road to Ash Valley"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1117064 \"Ash Valley\", Valley, Douglas County, quad Loon Lake"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-ash-valley/"
+    },
+    {
+      "slug": "zc-el-pl-ash-valley-school",
+      "name": "Ash Valley School",
+      "variants": [
+        "Ash Valley School & State Prison Camp"
+      ],
+      "kind": "school site",
+      "lat": 43.53776,
+      "lon": -123.826762,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171010-10.jpg, \"Elliott Forest Oral History Tour, October 10, 2017\"): stop marker #A-19 (marker 19) falls in PLSS T23S R10W 25 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.6 mile. Not a surveyed position for the named feature. On County Rd 3. NOTE: GNIS places the Ash Valley feature itself about 3 mi north (43.5800, -123.8253), so the school site and the GNIS valley point are not interchangeable.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-19 3-A. 11:00 Ash Valley School, State Prison Camp & Lunch"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171010-10.jpg",
+          "detail": "stop #A-19 (marker 19) plotted in T23S R10W 25"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T23S R10W 25 section centroid 43.537760, -123.826762"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-ash-valley-school/"
+    },
+    {
+      "slug": "zc-el-pl-baltimore-crane-house",
+      "name": "Baltimore Crane House",
+      "variants": [
+        "Balty Crane House",
+        "Baldy Crane House"
+      ],
+      "kind": "cabin site",
+      "lat": 43.560044,
+      "lon": -123.943924,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171108-10.jpg, \"Elliott Forest Oral History Tour, November 8, 2017\"): stop marker #B-20 (marker 47) falls in PLSS T23S R11W 24 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.7 mile. Not a surveyed position for the named feature. One of the four stops in the interview's missing 45-minute tape segment; located from the map only.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-20 7-A. 0:00 Baltimore \"Balty/Baldy\" Crane House"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171108-10.jpg",
+          "detail": "stop #B-20 (marker 47) plotted in T23S R11W 24"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T23S R11W 24 section centroid 43.560044, -123.943924"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-baltimore-crane-house/"
+    },
+    {
+      "slug": "zc-el-pl-bear-wallow",
+      "name": "Bear Wallow",
+      "variants": [
+        "Bear Wallow Homestead"
+      ],
+      "kind": "homestead / plantation",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-01 5-A. 22:52 Bear Wallow Homestead & Plantation"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-01 5-A. 22:52 Bear Wallow Homestead & Plantation"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-bear-wallow/"
+    },
+    {
+      "slug": "zc-el-pl-beaver-creek",
+      "name": "Beaver Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "The Beaver Creek shown inside the Elliott on Bob's tour maps (a West Fork Millicoma tributary near Elkhorn Ranch and Elk Creek) is not a named feature in USGS GNIS; the six Oregon \"Beaver Creek\" entries in Coos/Douglas/Lane are all elsewhere. Left null rather than mis-geocoded.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-12 6-B. 14:53 CCC Fire Patrol Trail to Beaver Creek Old-Growth"
+        },
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-04 13-B. 0:52 West Fork to Beaver Creek"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171108-10.jpg",
+          "detail": "\"Beaver Creek\" labelled between Trout Creek and Elk Creek"
+        },
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-12 6-B. 14:53 CCC Fire Patrol Trail to Beaver Creek Old-Growth; 2018-10-10 #D-04 13-B. 0:52 West Fork to Beaver Creek"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-beaver-creek/"
+    },
+    {
+      "slug": "zc-el-pl-benson-creek",
+      "name": "Benson Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.564282,
+      "lon": -124.104832,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5642816, -124.1048321); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.568171, -123.985382.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1137932 \"Benson Creek\", Stream, Coos County, quad Trail Butte"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-benson-creek/"
+    },
+    {
+      "slug": "zc-el-pl-benson-ridge-road",
+      "name": "Benson Ridge Road",
+      "variants": [
+        "Benson Ridge (4000) Road",
+        "Benson Ridge"
+      ],
+      "kind": "forest road",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Linear feature; labelled \"Benson Ridge Rd.\" (the 4000 Road) on the route maps. The Tenmile Lakes field trip visits its Elliott entrance.",
+      "bbox_ok": null,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Tenmile Lakes",
+          "stop_number": "D"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "orww.org/Elliott_Forest/Recreation/Field_Trips/ (2018 itinerary handouts)",
+          "detail": "named as a field-trip stop at Tenmile Lakes stop D"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-benson-ridge-road/"
+    },
+    {
+      "slug": "zc-el-pl-berts-cabin",
+      "name": "Bert's Cabin",
+      "variants": [],
+      "kind": "cabin site",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B (Haynes) 5-A. 0:04 The Big Burn to Bert’s Cabin Photos"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B (Haynes) 5-A. 0:04 The Big Burn to Bert’s Cabin Photos"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-berts-cabin/"
+    },
+    {
+      "slug": "zc-el-pl-bickford-creek",
+      "name": "Bickford Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.564098,
+      "lon": -123.830466,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5640984, -123.8304663); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5403515, -123.8604641.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1132215 \"Bickford Creek\", Stream, Douglas County, quad Loon Lake"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-bickford-creek/"
+    },
+    {
+      "slug": "zc-el-pl-big-creek",
+      "name": "Big Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.591504,
+      "lon": -124.106221,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5915042, -124.1062214); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5978936, -123.9789934.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-32 8-A. 9:30 Big Creek Riparian Zone & Judge Shopping"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1138005 \"Big Creek\", Stream, Coos County, quad Trail Butte"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-big-creek/"
+    },
+    {
+      "slug": "zc-el-pl-big-saddle",
+      "name": "Big Saddle",
+      "variants": [],
+      "kind": "saddle",
+      "lat": 43.511227,
+      "lon": -123.9308,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171010-10.jpg, \"Elliott Forest Oral History Tour, October 10, 2017\"): stop marker #A-16 (marker 16) falls in PLSS T24S R10W 6 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.7 mile. Not a surveyed position for the named feature. Marker lies close to the T24S R11W/R10W township line, so the section read is the least certain of the map readings here.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-16 2-B. 13:15 Big Saddle (1), Birds & Old Growth"
+        },
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-13 6-B. 34:06 Big Saddle (2) to Gould's Lake"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171010-10.jpg",
+          "detail": "stop #A-16 (marker 16) plotted in T24S R10W 6"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T24S R10W 6 section centroid 43.511227, -123.930800"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-big-saddle/"
+    },
+    {
+      "slug": "zc-el-pl-bob-jacobson-fishing-camp",
+      "name": "Bob Jacobson Fishing Camp",
+      "variants": [
+        "Jacobson Fishing Camp",
+        "Bob Jacobson Fishing Hole",
+        "Fishing Camp"
+      ],
+      "kind": "fishing camp",
+      "lat": 43.531731,
+      "lon": -123.963516,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171108-10.jpg, \"Elliott Forest Oral History Tour, November 8, 2017\"): stop marker #B-08 (marker 35) falls in PLSS T23S R11W 35 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.5 mile. Not a surveyed position for the named feature. Seasonal West Fork Millicoma fishing site.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-08 6-A. 5:32 Bob Jacobson Fishing Camp"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 4
+        }
+      ],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171108-10.jpg",
+          "detail": "stop #B-08 (marker 35) plotted in T23S R11W 35"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T23S R11W 35 section centroid 43.531731, -123.963516"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-bob-jacobson-fishing-camp/"
+    },
+    {
+      "slug": "zc-el-pl-brandy-bar",
+      "name": "Brandy Bar",
+      "variants": [],
+      "kind": "bar",
+      "lat": 43.679006,
+      "lon": -123.929549,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Bar); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Loon Lake",
+          "stop_number": "B"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1138571 \"Brandy Bar\", Bar, Douglas County, quad Deer Head Point"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-brandy-bar/"
+    },
+    {
+      "slug": "zc-el-pl-buck-creek",
+      "name": "Buck Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.563449,
+      "lon": -123.967604,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5634489, -123.9676037); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5661111, -123.9811111.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1118180 \"Buck Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-buck-creek/"
+    },
+    {
+      "slug": "zc-el-pl-buehners-logging-camp",
+      "name": "Buehner's Logging Camp",
+      "variants": [
+        "Boehner Logging Camp",
+        "Buehner Camp",
+        "Boehner's WW I-era railroad logging camp"
+      ],
+      "kind": "historic logging camp",
+      "lat": 43.445568,
+      "lon": -124.030742,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171010-10.jpg, \"Elliott Forest Oral History Tour, October 10, 2017\"): stop marker #A-01 (marker 1) falls in PLSS T24S R11W 32 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.5 mile. Not a surveyed position for the named feature. Marker sits in the east third of sec. 32, on the Marlow Creek [1000] Road; GNIS Marlow Creek mouth is 0.8 mi SSE.",
+      "bbox_ok": false,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-01 1-B. 0:50 Buehner's Logging Camp"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 10
+        }
+      ],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171010-10.jpg",
+          "detail": "stop #A-01 (marker 1) plotted in T24S R11W 32"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T24S R11W 32 section centroid 43.445568, -124.030742"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-buehners-logging-camp/"
+    },
+    {
+      "slug": "zc-el-pl-burnt-ridge",
+      "name": "Burnt Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "The two GNIS \"Burnt Ridge\" entries (Coos 43.20348/-123.717824 and Douglas 43.145323/-123.675274) are 25-30 mi south-east of the Elliott and are NOT this ridge. Bob's Burnt Ridge is on the Elliott's south side between Larson Slough and Trail Butte. Left null.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-03 5-B. 0:04 Burnt Ridge to Trail Butte (1)"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": "Burnt Ridge"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-03 5-B. 0:04 Burnt Ridge to Trail Butte (1)"
+        },
+        {
+          "source": "orww.org/Elliott_Forest/Recreation/Field_Trips/ (2018 itinerary handouts)",
+          "detail": "named as a field-trip stop at Elkhorn Ranch stop Burnt Ridge"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-burnt-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-cedar-cabin",
+      "name": "Cedar Cabin",
+      "variants": [],
+      "kind": "cabin site",
+      "lat": 43.545815,
+      "lon": -123.982965,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171108-10.jpg, \"Elliott Forest Oral History Tour, November 8, 2017\"): stop marker #B-06 (marker 33) falls in PLSS T23S R11W 27 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.5 mile. Not a surveyed position for the named feature. Marker is on the Dean Mountain Road above Trout Creek.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-06 5-B. 34:16 Cedar Cabin & Trout Creek Canyon"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171108-10.jpg",
+          "detail": "stop #B-06 (marker 33) plotted in T23S R11W 27"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T23S R11W 27 section centroid 43.545815, -123.982965"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-cedar-cabin/"
+    },
+    {
+      "slug": "zc-el-pl-charleston",
+      "name": "Charleston",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.340111,
+      "lon": -124.330117,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad Charleston.",
+      "bbox_ok": false,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1136140 \"Charleston\", Populated Place, Coos County, quad Charleston"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-charleston/"
+    },
+    {
+      "slug": "zc-el-pl-charlotte-creek",
+      "name": "Charlotte Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.660672,
+      "lon": -123.918715,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6606721, -123.918715); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6220606, -123.9403816.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-26 4-A. 1:10 1850 Mill Creek Sawmill to Charlotte Creek"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1139579 \"Charlotte Creek\", Stream, Douglas County, quad Deer Head Point"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-charlotte-creek/"
+    },
+    {
+      "slug": "zc-el-pl-charlotte-ridge",
+      "name": "Charlotte Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": 43.656799,
+      "lon": -123.95607,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Ridge); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 2813293 \"Charlotte Ridge\", Ridge, Douglas County, quad Deer Head Point"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-charlotte-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-childrens-fishing-pond",
+      "name": "Children's Fishing Pond",
+      "variants": [],
+      "kind": "pond",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Not in GNIS or Nominatim; adjacent to the Millicoma Fish Hatchery.",
+      "bbox_ok": null,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Millicoma Fish Hatchery",
+          "stop_number": "D"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "orww.org/Elliott_Forest/Recreation/Field_Trips/ (2018 itinerary handouts)",
+          "detail": "named as a field-trip stop at Millicoma Fish Hatchery stop D"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-childrens-fishing-pond/"
+    },
+    {
+      "slug": "zc-el-pl-clarence-gould-cabin",
+      "name": "Clarence Gould Cabin",
+      "variants": [],
+      "kind": "cabin site",
+      "lat": 43.560044,
+      "lon": -123.943924,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171108-10.jpg, \"Elliott Forest Oral History Tour, November 8, 2017\"): stop marker #B-21 (marker unnumbered on map B) falls in PLSS T23S R11W 24 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.7 mile. Not a surveyed position for the named feature. Read to the same section as the Baltimore Crane House marker (~0.8 mi apart on the map); one of the four stops in the missing tape segment.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-21 7-A. 0:00 Clarence Gould Cabin"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171108-10.jpg",
+          "detail": "stop #B-21 (marker unnumbered on map B) plotted in T23S R11W 24"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T23S R11W 24 section centroid 43.560044, -123.943924"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-clarence-gould-cabin/"
+    },
+    {
+      "slug": "zc-el-pl-coos-bay",
+      "name": "Coos Bay",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.366501,
+      "lon": -124.21789,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad Coos Bay.",
+      "bbox_ok": false,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1166633 \"Coos Bay\", Populated Place, Coos County, quad Coos Bay"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-coos-bay/"
+    },
+    {
+      "slug": "zc-el-pl-cougar-pass",
+      "name": "Cougar Pass",
+      "variants": [
+        "Cougar Pass Lookout",
+        "Cougar Pass CCC Fire Lookout"
+      ],
+      "kind": "gap / fire lookout site",
+      "lat": 43.598392,
+      "lon": -123.865785,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171010-10.jpg, \"Elliott Forest Oral History Tour, October 10, 2017\"): stop marker #A-23 (marker 23) and the map's \"Cougar Pass Lookout\" symbol falls in PLSS T23S R10W 3 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.5 mile. Not a surveyed position for the named feature. Not in GNIS for Coos/Douglas (the two Oregon \"Cougar Pass\" GNIS entries are in Lane and NE Douglas counties and are different features). Tower built 1935 by the CCC (Phillips 1998: 92-94).",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-23 3-B. 4:15 Cougar Pass CCC Fire Lookout"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Deans Mountain",
+          "stop_number": "Cougar Pass Lookout"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171010-10.jpg",
+          "detail": "stop #A-23 (marker 23) and the map's \"Cougar Pass Lookout\" symbol plotted in T23S R10W 3"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T23S R10W 3 section centroid 43.598392, -123.865785"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-cougar-pass/"
+    },
+    {
+      "slug": "zc-el-pl-dean-creek",
+      "name": "Dean Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.694005,
+      "lon": -124.000106,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6940053, -124.0001064); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6198382, -123.9764936.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Loon Lake",
+          "stop_number": "A"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1140764 \"Dean Creek\", Stream, Douglas County, quad Deer Head Point"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-dean-creek/"
+    },
+    {
+      "slug": "zc-el-pl-dean-mountain",
+      "name": "Dean Mountain",
+      "variants": [
+        "Dean's Mountain",
+        "Deans Mountain"
+      ],
+      "kind": "summit",
+      "lat": 43.614439,
+      "lon": -123.979708,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Summit), USGS 7.5-minute quad Elk Peak.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-35 7-C. 16:46 CCC Road to \"Dean’s Mountain\""
+        },
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-15 10-B. 12:10 Planting Specs, Dean Mountain & Unhappy Owls"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Deans Mountain",
+          "stop_number": "Deans Mountain Lookout"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1119774 \"Dean Mountain\", Summit, Douglas County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-dean-mountain/"
+    },
+    {
+      "slug": "zc-el-pl-deans-ridge",
+      "name": "Dean's Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-24 11-B. 12:51 Forest Dynamics, Dean's Ridge & Historic Roads"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-12-06 #C-24 11-B. 12:51 Forest Dynamics, Dean's Ridge & Historic Roads"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-deans-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-deer-creek",
+      "name": "Deer Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.581505,
+      "lon": -123.961493,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5815047, -123.9614926); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6247222, -123.9436111.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1119810 \"Deer Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-deer-creek/"
+    },
+    {
+      "slug": "zc-el-pl-deer-head-point",
+      "name": "Deer Head Point",
+      "variants": [],
+      "kind": "summit",
+      "lat": 43.693899,
+      "lon": -123.913785,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Summit), USGS 7.5-minute quad Deer Head Point.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1140850 \"Deer Head Point\", Summit, Douglas County, quad Deer Head Point"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-deer-head-point/"
+    },
+    {
+      "slug": "zc-el-pl-divide-spring",
+      "name": "Divide Spring",
+      "variants": [],
+      "kind": "spring",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-32 7-C. 0:08 Roberts Ridge Myrtle Grove to Divide Spring"
+        },
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-33 8-A. 0:38 Divide Spring (2) to Strawberry Creek Questions"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-32 7-C. 0:08 Roberts Ridge Myrtle Grove to Divide Spring; 2017-11-08 #B-33 8-A. 0:38 Divide Spring (2) to Strawberry Creek Questions"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-divide-spring/"
+    },
+    {
+      "slug": "zc-el-pl-dry-ridge",
+      "name": "Dry Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-03 9-B. 16:20 Trail Butte (2), Dry Ridge (2) & Oral Histories"
+        },
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-12 10-B. 0:10 Boomer Trapping, Lamprey Eels & Dry Ridge"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-12-06 #C-03 9-B. 16:20 Trail Butte (2), Dry Ridge (2) & Oral Histories; 2017-12-06 #C-12 10-B. 0:10 Boomer Trapping, Lamprey Eels & Dry Ridge"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-dry-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-east-fork-millicoma-river",
+      "name": "East Fork Millicoma River",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.42428,
+      "lon": -124.030382,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4242802, -124.030382); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.4140042, -123.767872.",
+      "bbox_ok": false,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1120315 \"East Fork Millicoma River\", Stream, Coos County, quad Allegany"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-east-fork-millicoma-river/"
+    },
+    {
+      "slug": "zc-el-pl-east-hakki-ridge",
+      "name": "East Hakki Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-25 11-B. 27:53 East Hakki Ridge, South Slough & Faye Stewart"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-12-06 #C-25 11-B. 27:53 East Hakki Ridge, South Slough & Faye Stewart"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-east-hakki-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-elk-cabin",
+      "name": "Elk Cabin",
+      "variants": [],
+      "kind": "cabin site",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-22 7-A. 0:00 Elk Cabin"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-22 7-A. 0:00 Elk Cabin"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-elk-cabin/"
+    },
+    {
+      "slug": "zc-el-pl-elk-creek",
+      "name": "Elk Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.582894,
+      "lon": -123.931492,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5828938, -123.9314918); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5441667, -123.9069444.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-05 13-B. 23:01 Beaver Creek to Elk Creek & Gould's Lake"
+        },
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-06 14-A 6:03 Elk Creek ODF Structures: Dynamic Design"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1120437 \"Elk Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-elk-creek/"
+    },
+    {
+      "slug": "zc-el-pl-elk-peak",
+      "name": "Elk Peak",
+      "variants": [
+        "Elk's Peak",
+        "Elks Peak"
+      ],
+      "kind": "summit",
+      "lat": 43.540435,
+      "lon": -123.909797,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Summit), USGS 7.5-minute quad Elk Peak.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-14 2-A. 35:08 Elk's Peak Lookout"
+        },
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-17 2-B. 27:01 Elk's Peak Landslides"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1120460 \"Elk Peak\", Summit, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-elk-peak/"
+    },
+    {
+      "slug": "zc-el-pl-elk-ridge-road",
+      "name": "Elk Ridge Road",
+      "variants": [
+        "Elk Ridge",
+        "Elk Ridge Rd."
+      ],
+      "kind": "forest road",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Linear feature. Labelled \"Elk Ridge Rd.\" on all four route maps, running from the Marlow Creek [1000] Road NE past stops #A-05 to #A-16; no single point is given.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "Interview #2 title: \"Elk Ridge Road to Loon Lake & Umpqua River\""
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171010-10.jpg",
+          "detail": "\"Elk Ridge Rd.\" labelled along the yellow 1000 Rd. corridor"
+        },
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-10-10 Interview #2 title: \"Elk Ridge Road to Loon Lake & Umpqua River\""
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-elk-ridge-road/"
+    },
+    {
+      "slug": "zc-el-pl-elkhorn-ranch",
+      "name": "Elkhorn Ranch",
+      "variants": [
+        "The Elkhorn Ranch",
+        "Gould's Elkhorn Ranch",
+        "Elkhorn"
+      ],
+      "kind": "historic ranch / homestead",
+      "lat": 43.545837,
+      "lon": -123.963548,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171108-10.jpg, \"Elliott Forest Oral History Tour, November 8, 2017\"): stop marker #B-11 (marker 38) falls in PLSS T23S R11W 26 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-1.0 mile. Not a surveyed position for the named feature. Bob plots two Elkhorn markers: #B-11 in sec. 26 and #B-10 in sec. 23 (1 mi north), so the ranch complex, orchard, bridge site and lunch stop span both sections. GNIS Gould Lake lies 1.3 mi SE, consistent with the Gould family ranch location.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-11 6-A. 14:36 Potato Patch & Elkhorn Ranch"
+        },
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-10 6-B. 2:33 Elkhorn Ranch Lunch Break"
+        },
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-03 13-A. 21:40 Mud Runners to Elkhorn River Crossing"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 3
+        },
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 5
+        }
+      ],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171108-10.jpg",
+          "detail": "stop #B-11 (marker 38) plotted in T23S R11W 26"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T23S R11W 26 section centroid 43.545837, -123.963548"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-elkhorn-ranch/"
+    },
+    {
+      "slug": "zc-el-pl-elkton",
+      "name": "Elkton",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.637617,
+      "lon": -123.568152,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad Elkton.",
+      "bbox_ok": false,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1120478 \"Elkton\", Populated Place, Douglas County, quad Elkton"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-elkton/"
+    },
+    {
+      "slug": "zc-el-pl-fish-creek",
+      "name": "Fish Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.58206,
+      "lon": -123.920103,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5820604, -123.9201026); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6133333, -123.9005556.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1120755 \"Fish Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-fish-creek/"
+    },
+    {
+      "slug": "zc-el-pl-flag-peak",
+      "name": "Flag Peak",
+      "variants": [],
+      "kind": "summit",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-05 5-B. 13:40 Trail Butte & Flag Peak to Stull Falls"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-05 5-B. 13:40 Trail Butte & Flag Peak to Stull Falls"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-flag-peak/"
+    },
+    {
+      "slug": "zc-el-pl-footlog-creek",
+      "name": "Footlog Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.642895,
+      "lon": -123.86788,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6428946, -123.8678801); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6123386, -123.8914912.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1158996 \"Footlog Creek\", Stream, Douglas County, quad Scottsburg"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-footlog-creek/"
+    },
+    {
+      "slug": "zc-el-pl-glenn-creek",
+      "name": "Glenn Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.454559,
+      "lon": -123.956213,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4545589, -123.9562128); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5287271, -123.8651001.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Golden and Silver Falls",
+          "stop_number": "Glenn Creek / Mahaffy Tree Farm plantation"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1121166 \"Glenn Creek\", Stream, Coos County, quad Golden Falls"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-glenn-creek/"
+    },
+    {
+      "slug": "zc-el-pl-golden-creek",
+      "name": "Golden Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.668451,
+      "lon": -123.79149,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6684507, -123.7914897); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6883333, -123.7775.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1142832 \"Golden Creek\", Stream, Douglas County, quad Scottsburg"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-golden-creek/"
+    },
+    {
+      "slug": "zc-el-pl-golden-falls",
+      "name": "Golden Falls",
+      "variants": [],
+      "kind": "falls",
+      "lat": 43.485115,
+      "lon": -123.927879,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Falls), USGS 7.5-minute quad Golden Falls.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Golden and Silver Falls",
+          "stop_number": "Silver and Golden Falls"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1121219 \"Golden Falls\", Falls, Coos County, quad Golden Falls"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-golden-falls/"
+    },
+    {
+      "slug": "zc-el-pl-gould-lake",
+      "name": "Gould Lake",
+      "variants": [
+        "Gould's Lake",
+        "Goulds Lake"
+      ],
+      "kind": "lake",
+      "lat": 43.536859,
+      "lon": -123.944436,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Lake); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-13 6-B. 34:06 Big Saddle (2) to Gould's Lake"
+        },
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-05 13-B. 23:01 Beaver Creek to Elk Creek & Gould's Lake"
+        },
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-05 14-A. 0:01 Gould's Lake & Historical Family Photos"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1120456 \"Gould Lake\", Lake, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-gould-lake/"
+    },
+    {
+      "slug": "zc-el-pl-hakki-creek",
+      "name": "Hakki Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.687616,
+      "lon": -124.00594,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6876164, -124.0059398); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6613889, -124.0233333.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-25 11-B. 27:53 East Hakki Ridge, South Slough & Faye Stewart"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1143198 \"Hakki Creek\", Stream, Douglas County, quad Reedsport"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-hakki-creek/"
+    },
+    {
+      "slug": "zc-el-pl-howell-creek",
+      "name": "Howell Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.51956,
+      "lon": -123.884545,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5195602, -123.8845449); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5419444, -123.9011111.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1122085 \"Howell Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-howell-creek/"
+    },
+    {
+      "slug": "zc-el-pl-huckleberry-point",
+      "name": "Huckleberry Point",
+      "variants": [],
+      "kind": "point / BLM campsite",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Not in GNIS or Nominatim. Bob's Loon Lake handout places it on Elliott Forest lake frontage on Loon Lake (GNIS Loon Lake 43.5868235, -123.8370921) with a BLM campsite; the point itself was not resolved.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-20 3-A. 34:33 Lake Mountain to Huckleberry Point"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Loon Lake",
+          "stop_number": "D"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-10-10 #A-20 3-A. 34:33 Lake Mountain to Huckleberry Point"
+        },
+        {
+          "source": "orww.org/Elliott_Forest/Recreation/Field_Trips/ (2018 itinerary handouts)",
+          "detail": "named as a field-trip stop at Loon Lake stop D"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-huckleberry-point/"
+    },
+    {
+      "slug": "zc-el-pl-indian-charlie-creek",
+      "name": "Indian Charlie Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.66845,
+      "lon": -123.923715,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6684499, -123.9237152); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6602778, -123.9422222.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1144018 \"Indian Charlie Creek\", Stream, Douglas County, quad Deer Head Point"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-indian-charlie-creek/"
+    },
+    {
+      "slug": "zc-el-pl-indian-point",
+      "name": "Indian Point",
+      "variants": [
+        "Indian Point Trail",
+        "Indian Point Ridgeline"
+      ],
+      "kind": "point / Indian allotment",
+      "lat": 43.629928,
+      "lon": -123.855735,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171010-10.jpg, \"Elliott Forest Oral History Tour, October 10, 2017\"): stop marker #A-24 (marker 24) falls in PLSS T22S R10W 26 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.7 mile. Not a surveyed position for the named feature. Marker sits on or very near the sec. 23 / sec. 26 line along Mill Creek; the coordinate is the sec. 26 centroid.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-24 3-B. 23:36 Indian Point, Allotments, Old-Growth & Sawmills"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Loon Lake",
+          "stop_number": "E"
+        },
+        {
+          "trip": "Deans Mountain",
+          "stop_number": "Indian Point Trail"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171010-10.jpg",
+          "detail": "stop #A-24 (marker 24) plotted in T22S R10W 26"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T22S R10W 26 section centroid 43.629928, -123.855735"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-indian-point/"
+    },
+    {
+      "slug": "zc-el-pl-indian-trail-spring",
+      "name": "Indian Trail Spring",
+      "variants": [],
+      "kind": "spring",
+      "lat": 43.503163,
+      "lon": -123.951764,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171010-10.jpg, \"Elliott Forest Oral History Tour, October 10, 2017\"): stop marker #A-15 (marker 15) falls in PLSS T24S R11W 12 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.5 mile. Not a surveyed position for the named feature. On Elk Ridge Road. Markers 14 and 15 are only ~0.2 mi apart, so this section reading cannot separate Indian Trail Spring from the Jerry Phillips Reserve stop.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-15 2-B. 3:55 Indian Trail Spring"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 7
+        }
+      ],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171010-10.jpg",
+          "detail": "stop #A-15 (marker 15) plotted in T24S R11W 12"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T24S R11W 12 section centroid 43.503163, -123.951764"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-indian-trail-spring/"
+    },
+    {
+      "slug": "zc-el-pl-jerry-phillips-private-reserve",
+      "name": "Jerry Phillips Private Reserve",
+      "variants": [
+        "Jerry Phillips Reserve",
+        "Jerry Phillips' Private Reserve",
+        "Jerry's Reserve"
+      ],
+      "kind": "forest reserve",
+      "lat": 43.503163,
+      "lon": -123.951764,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171010-10.jpg, \"Elliott Forest Oral History Tour, October 10, 2017\"): stop marker #A-14 (marker 14) falls in PLSS T24S R11W 12 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.5 mile. Not a surveyed position for the named feature. Same PLSS section as the Indian Trail Spring marker; the two map markers are ~0.2 mi apart.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-14 2-A. 20:20 Jerry Phillips Private Reserve"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171010-10.jpg",
+          "detail": "stop #A-14 (marker 14) plotted in T24S R11W 12"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T24S R11W 12 section centroid 43.503163, -123.951764"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-jerry-phillips-private-reserve/"
+    },
+    {
+      "slug": "zc-el-pl-joes-lake",
+      "name": "Joe's Lake",
+      "variants": [
+        "Joes Lake"
+      ],
+      "kind": "lake",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-25 7-B. 26:14 Pheasant Cabin to Joe's Lake"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-25 7-B. 26:14 Pheasant Cabin to Joe's Lake"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-joes-lake/"
+    },
+    {
+      "slug": "zc-el-pl-joes-creek",
+      "name": "Joes Creek",
+      "variants": [
+        "Joe's Creek"
+      ],
+      "kind": "stream",
+      "lat": 43.573171,
+      "lon": -123.963437,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5731712, -123.963437); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.59, -123.9763889.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1122441 \"Joes Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-joes-creek/"
+    },
+    {
+      "slug": "zc-el-pl-johnson-creek",
+      "name": "Johnson Creek",
+      "variants": [
+        "Johnson Creek (Trail Butte quad)"
+      ],
+      "kind": "stream",
+      "lat": 43.544004,
+      "lon": -124.116221,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5440036, -124.1162213); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.54, -124.0008333.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1144326 \"Johnson Creek\", Stream, Coos County, quad Trail Butte"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-johnson-creek/"
+    },
+    {
+      "slug": "zc-el-pl-johnson-ridge",
+      "name": "Johnson Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-05 10-A. 0:26 Johnson Ridge Huckleberries & Balloon Logging"
+        },
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-08 10-A. 14:26 Johnson Ridge Roads, Maps, Photos & Reprod"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-12-06 #C-05 10-A. 0:26 Johnson Ridge Huckleberries & Balloon Logging; 2017-12-06 #C-08 10-A. 14:26 Johnson Ridge Roads, Maps, Photos & Reprod"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-johnson-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-kelly-creek",
+      "name": "Kelly Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.580949,
+      "lon": -123.907047,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5809494, -123.9070466); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5969444, -123.8977778.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1122667 \"Kelly Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-kelly-creek/"
+    },
+    {
+      "slug": "zc-el-pl-knife-creek",
+      "name": "Knife Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.58706,
+      "lon": -123.944826,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5870603, -123.9448256); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6161111, -123.92.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1122813 \"Knife Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-knife-creek/"
+    },
+    {
+      "slug": "zc-el-pl-lake-mountain",
+      "name": "Lake Mountain",
+      "variants": [],
+      "kind": "summit",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-20 3-A. 34:33 Lake Mountain to Huckleberry Point"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-10-10 #A-20 3-A. 34:33 Lake Mountain to Huckleberry Point"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-lake-mountain/"
+    },
+    {
+      "slug": "zc-el-pl-lakeside",
+      "name": "Lakeside",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.57567,
+      "lon": -124.175114,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad Lakeside.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "Lakeside 8-A. 32:27 Lakeside CCC Bridge & Airport"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Tenmile Lakes",
+          "stop_number": "A"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1144789 \"Lakeside\", Populated Place, Coos County, quad Lakeside"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-lakeside/"
+    },
+    {
+      "slug": "zc-el-pl-landslide-lakes",
+      "name": "Landslide Lakes",
+      "variants": [],
+      "kind": "landslide-dammed ponds",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-08 14-A 18:27 Landslide Lakes: Big Fish, Moving Logs & Gravel"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2018-10-10 #D-08 14-A 18:27 Landslide Lakes: Big Fish, Moving Logs & Gravel"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-landslide-lakes/"
+    },
+    {
+      "slug": "zc-el-pl-larson-creek",
+      "name": "Larson Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.478169,
+      "lon": -124.141222,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4781692, -124.1412217); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.4865031, -124.0784408.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1144837 \"Larson Creek\", Stream, Coos County, quad North Bend"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-larson-creek/"
+    },
+    {
+      "slug": "zc-el-pl-larson-ridge",
+      "name": "Larson Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B (\"Larson\") 5-A. 8:42 Larson Ridge to Sullivan Ridge (1)"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B (\"Larson\") 5-A. 8:42 Larson Ridge to Sullivan Ridge (1)"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-larson-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-larson-slough",
+      "name": "Larson Slough",
+      "variants": [],
+      "kind": "stream/slough",
+      "lat": 43.462335,
+      "lon": -124.194835,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4623354, -124.1948353); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.4783333, -124.14.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 1
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1144839 \"Larson Slough\", Stream, Coos County, quad North Bend"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-larson-slough/"
+    },
+    {
+      "slug": "zc-el-pl-little-mill-creek",
+      "name": "Little Mill Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.654561,
+      "lon": -123.82649,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6545615, -123.8264903); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.7044444, -123.8069444.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1145210 \"Little Mill Creek\", Stream, Douglas County, quad Scottsburg"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-little-mill-creek/"
+    },
+    {
+      "slug": "zc-el-pl-little-salander-creek",
+      "name": "Little Salander Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.585672,
+      "lon": -123.842323,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5856721, -123.8423227); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5880556, -123.8694444.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1134838 \"Little Salander Creek\", Stream, Douglas County, quad Loon Lake"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-little-salander-creek/"
+    },
+    {
+      "slug": "zc-el-pl-lockhart-bridge",
+      "name": "Lockhart Bridge",
+      "variants": [],
+      "kind": "bridge / splash dam site",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Not in GNIS (the GNIS Lockhart Creek is in Curry County, 50 mi south) or Nominatim.",
+      "bbox_ok": null,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Golden and Silver Falls",
+          "stop_number": "Lockhart Bridge"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "orww.org/Elliott_Forest/Recreation/Field_Trips/ (2018 itinerary handouts)",
+          "detail": "named as a field-trip stop at Golden and Silver Falls stop Lockhart Bridge"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-lockhart-bridge/"
+    },
+    {
+      "slug": "zc-el-pl-loon-lake",
+      "name": "Loon Lake",
+      "variants": [],
+      "kind": "lake",
+      "lat": 43.586824,
+      "lon": -123.837092,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Lake); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-21 3-B. 0:13 E.K. Wood's Loon Lake & Mill Creek Logging"
+        },
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-19 7-A. 0:00 Trail to Loon Lake"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Loon Lake",
+          "stop_number": "C"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1123474 \"Loon Lake\", Lake, Douglas County, quad Loon Lake"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-loon-lake/"
+    },
+    {
+      "slug": "zc-el-pl-luder-creek",
+      "name": "Luder Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.650672,
+      "lon": -123.90177,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6506721, -123.90177); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6178942, -123.9026027.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1145669 \"Luder Creek\", Stream, Douglas County, quad Deer Head Point"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-luder-creek/"
+    },
+    {
+      "slug": "zc-el-pl-mahaffy-ranch-pumpkin-patch",
+      "name": "Mahaffy Ranch Pumpkin Patch",
+      "variants": [
+        "Mahaffy Ranch",
+        "Mahaffey Ranch Pumpkin Patch"
+      ],
+      "kind": "farm / seasonal attraction",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Not in GNIS or Nominatim. Near Allegany, across the road from the former Allegany School.",
+      "bbox_ok": null,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Golden and Silver Falls",
+          "stop_number": "Mahaffy Ranch Pumpkin Patch"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "orww.org/Elliott_Forest/Recreation/Field_Trips/ (2018 itinerary handouts)",
+          "detail": "named as a field-trip stop at Golden and Silver Falls stop Mahaffy Ranch Pumpkin Patch"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-mahaffy-ranch-pumpkin-patch/"
+    },
+    {
+      "slug": "zc-el-pl-marlow-creek",
+      "name": "Marlow Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.434003,
+      "lon": -124.02566,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4340027, -124.0256596); the tour stop may be anywhere along the reach. GNIS also carries a source (headwater) point at 42.6576101, -123.9798098, which is 0.8 degrees from the mouth and is almost certainly an error in GNIS; it is not used here.",
+      "bbox_ok": false,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-03 1-B. 12:23 Marlow Creek Channel Bypass"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 9
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1123778 \"Marlow Creek\", Stream, Coos County, quad Allegany"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-marlow-creek/"
+    },
+    {
+      "slug": "zc-el-pl-mill-creek",
+      "name": "Mill Creek",
+      "variants": [
+        "Mill Creek (Scottsburg / Loon Lake drainage)"
+      ],
+      "kind": "stream",
+      "lat": 43.655395,
+      "lon": -123.874269,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6553946, -123.8742693); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5959499, -123.8445452.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-21 3-B. 0:13 E.K. Wood's Loon Lake & Mill Creek Logging"
+        },
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-26 4-A. 1:10 1850 Mill Creek Sawmill to Charlotte Creek"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Deans Mountain",
+          "stop_number": "Mill Creek Log Dump (head of tidewater)"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1146236 \"Mill Creek\", Stream, Douglas County, quad Scottsburg"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-mill-creek/"
+    },
+    {
+      "slug": "zc-el-pl-millicoma-river",
+      "name": "Millicoma River",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.380113,
+      "lon": -124.098162,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.3801126, -124.0981624); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.4244444, -124.0288889.",
+      "bbox_ok": false,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1124217 \"Millicoma River\", Stream, Coos County, quad Allegany"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-millicoma-river/"
+    },
+    {
+      "slug": "zc-el-pl-millicoma-river-rearing-pond",
+      "name": "Millicoma River Rearing Pond",
+      "variants": [
+        "Millicoma Fish Hatchery",
+        "Millicoma STEP Hatchery"
+      ],
+      "kind": "hatchery",
+      "lat": 43.437885,
+      "lon": -123.948956,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Reservoir), USGS 7.5-minute quad Golden Falls.",
+      "bbox_ok": false,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-28",
+          "stop_label": "8-C 18:10 Tom Rumreich's Millicoma STEP Hatchery & Program"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Millicoma Fish Hatchery",
+          "stop_number": "C"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1133610 \"Millicoma River Rearing Pond\", Reservoir, Coos County, quad Golden Falls"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-millicoma-river-rearing-pond/"
+    },
+    {
+      "slug": "zc-el-pl-mud-flat-side-camp",
+      "name": "Mud Flat Side Camp",
+      "variants": [
+        "CCC Mud Flat Side Camp"
+      ],
+      "kind": "CCC side camp",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-36 7-C. 29:58 Umpcoos Road to Mud Flat Side Camp"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-36 7-C. 29:58 Umpcoos Road to Mud Flat Side Camp"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-mud-flat-side-camp/"
+    },
+    {
+      "slug": "zc-el-pl-nesika-county-park",
+      "name": "Nesika County Park",
+      "variants": [
+        "Nesika Park"
+      ],
+      "kind": "county park",
+      "lat": 43.440114,
+      "lon": -123.995381,
+      "method": "nominatim",
+      "confidence": "unverified",
+      "precision_note": "OSM polygon centroid returned by Nominatim; not cross-checked against a second source.",
+      "bbox_ok": false,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Golden and Silver Falls",
+          "stop_number": "Millicoma State Park / Nesika County Park"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "OpenStreetMap Nominatim (https://nominatim.openstreetmap.org/search), queried 2026-08-27",
+          "detail": "q=\"Nesika County Park, Coos County, Oregon\" -> park, 43.4401140, -123.9953806"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-nesika-county-park/"
+    },
+    {
+      "slug": "zc-el-pl-north-bend",
+      "name": "North Bend",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.406501,
+      "lon": -124.22428,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad North Bend.",
+      "bbox_ok": false,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1146883 \"North Bend\", Populated Place, Coos County, quad North Bend"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-north-bend/"
+    },
+    {
+      "slug": "zc-el-pl-north-marlow-ridge",
+      "name": "North Marlow Ridge",
+      "variants": [
+        "North Marlow Ridge Clearcut",
+        "North Marlow (\"1000\") Road ridge"
+      ],
+      "kind": "ridge / 1958 clearcut",
+      "lat": 43.503138,
+      "lon": -123.971575,
+      "method": "map-reading",
+      "confidence": "inferred",
+      "precision_note": "Read off Bob Zybach's hand-labeled tour-route map (Zybach-Ross_20171010-10.jpg, \"Elliott Forest Oral History Tour, October 10, 2017\"): stop marker #A-12 (marker 12) falls in PLSS T24S R11W 11 (Willamette Meridian). Coordinate is the centroid of that section from BLM CadNSDI; accuracy about +/-0.6 mile. Not a surveyed position for the named feature. Point is the 1958 clearcut stop on the ridge, not the ridge centroid.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-12 2-A. 7:08 1958 North Marlow Ridge Clearcut"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 8
+        }
+      ],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Maps/Zybach-Ross_20171010-10.jpg",
+          "detail": "stop #A-12 (marker 12) plotted in T24S R11W 11"
+        },
+        {
+          "source": "BLM National PLSS CadNSDI (https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/2), queried 2026-08-27",
+          "detail": "T24S R11W 11 section centroid 43.503138, -123.971575"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-north-marlow-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-north-tenmile-lake",
+      "name": "North Tenmile Lake",
+      "variants": [],
+      "kind": "lake",
+      "lat": 43.590543,
+      "lon": -124.151639,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Lake); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1147067 \"North Tenmile Lake\", Lake, Coos County, quad Lakeside"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-north-tenmile-lake/"
+    },
+    {
+      "slug": "zc-el-pl-old-maids-cabin",
+      "name": "Old Maid's Cabin",
+      "variants": [],
+      "kind": "cabin site",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-23 7-B. 0:39 Old Maid's Cabin, Spawning Gravel & Old-Growth"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-23 7-B. 0:39 Old Maid's Cabin, Spawning Gravel & Old-Growth"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-old-maids-cabin/"
+    },
+    {
+      "slug": "zc-el-pl-old-railroad-grade",
+      "name": "Old Railroad Grade",
+      "variants": [],
+      "kind": "historic railroad grade",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-07 1-B. 41:59 Old Railroad Grade"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-10-10 #A-07 1-B. 41:59 Old Railroad Grade"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-old-railroad-grade/"
+    },
+    {
+      "slug": "zc-el-pl-panther-creek",
+      "name": "Panther Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.57456,
+      "lon": -123.91788,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5745604, -123.9178802); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5461111, -123.9005556.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1125158 \"Panther Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-panther-creek/"
+    },
+    {
+      "slug": "zc-el-pl-pheasant-cabin",
+      "name": "Pheasant Cabin",
+      "variants": [],
+      "kind": "cabin site",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-25 7-B. 26:14 Pheasant Cabin to Joe's Lake"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-25 7-B. 26:14 Pheasant Cabin to Joe's Lake"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-pheasant-cabin/"
+    },
+    {
+      "slug": "zc-el-pl-piledriver-creek",
+      "name": "Piledriver Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.472614,
+      "lon": -124.00427,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4726144, -124.0042703); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.4811111, -124.0033333.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-06 1-B. 31:28 Piledriver Creek & Blacksmith Shop"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1125377 \"Piledriver Creek\", Stream, Coos County, quad Allegany"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-piledriver-creek/"
+    },
+    {
+      "slug": "zc-el-pl-potato-patch",
+      "name": "Potato Patch",
+      "variants": [],
+      "kind": "clearing / homestead field",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-11 6-A. 14:36 Potato Patch & Elkhorn Ranch"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-11 6-A. 14:36 Potato Patch & Elkhorn Ranch"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-potato-patch/"
+    },
+    {
+      "slug": "zc-el-pl-reedsport",
+      "name": "Reedsport",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.702339,
+      "lon": -124.096778,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad Reedsport.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1148362 \"Reedsport\", Populated Place, Douglas County, quad Reedsport"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-reedsport/"
+    },
+    {
+      "slug": "zc-el-pl-roberts-creek",
+      "name": "Roberts Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.542337,
+      "lon": -124.078442,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.542337, -124.0784416); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.556782, -123.9798261.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1148537 \"Roberts Creek\", Stream, Coos County, quad Trail Butte"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-roberts-creek/"
+    },
+    {
+      "slug": "zc-el-pl-roberts-ridge",
+      "name": "Roberts Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-30 7-B. 36:16 Old-Growth Alder to Roberts Ridge"
+        },
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-32 7-C. 0:08 Roberts Ridge Myrtle Grove to Divide Spring"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-30 7-B. 36:16 Old-Growth Alder to Roberts Ridge; 2017-11-08 #B-32 7-C. 0:08 Roberts Ridge Myrtle Grove to Divide Spring"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-roberts-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-rooke-higgins-county-park",
+      "name": "Rooke-Higgins County Park",
+      "variants": [],
+      "kind": "county park",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Not in GNIS; Nominatim returned no match. On the East Fork Millicoma near Allegany.",
+      "bbox_ok": null,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Millicoma Fish Hatchery",
+          "stop_number": "A"
+        },
+        {
+          "trip": "Golden and Silver Falls",
+          "stop_number": "Rooke-Higgins County Park"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "orww.org/Elliott_Forest/Recreation/Field_Trips/ (2018 itinerary handouts)",
+          "detail": "named as a field-trip stop at Millicoma Fish Hatchery stop A; Golden and Silver Falls stop Rooke-Higgins County Park"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-rooke-higgins-county-park/"
+    },
+    {
+      "slug": "zc-el-pl-salander-creek",
+      "name": "Salander Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.582894,
+      "lon": -123.842045,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5828943, -123.8420448); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5608333, -123.8675.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1126503 \"Salander Creek\", Stream, Douglas County, quad Loon Lake"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-salander-creek/"
+    },
+    {
+      "slug": "zc-el-pl-scholfield-creek",
+      "name": "Scholfield Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.698327,
+      "lon": -124.107815,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.6983265, -124.1078154); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.6155691, -123.9819846.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1149127 \"Scholfield Creek\", Stream, Douglas County, quad Reedsport"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-scholfield-creek/"
+    },
+    {
+      "slug": "zc-el-pl-scholfield-ridge",
+      "name": "Scholfield Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": 43.613884,
+      "lon": -123.983597,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Ridge); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-19 11-A. 0:13 Forest Aesthetics, Myrtle & Old-Growth Diversity"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 2678495 \"Scholfield Ridge\", Ridge, Douglas County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-scholfield-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-scholfield-waterhole",
+      "name": "Scholfield Waterhole",
+      "variants": [],
+      "kind": "spring / water source",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-17 10-B. 28:20 Scholfield Waterhole & Road Numbers"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "Zybach 2018 Deans Mountain field-trip handout (orww.org/Elliott_Forest/Recreation/Deans_Mountain/Zybach_20180529_Field_Trip.pdf)",
+          "detail": "\"The freshwater source was on the west side of the hill and is known as the “Scholfield Waterhole.”\" (Deans Mountain stop)"
+        },
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-12-06 #C-17 10-B. 28:20 Scholfield Waterhole & Road Numbers"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-scholfield-waterhole/"
+    },
+    {
+      "slug": "zc-el-pl-school-land-bay",
+      "name": "School Land Bay",
+      "variants": [
+        "School Lands Bay"
+      ],
+      "kind": "bay / ODF 80 acres",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Not in GNIS or Nominatim. Bob's Tenmile handout describes it as an 80-acre ODF parcel above \"School Lands Bay\" on Tenmile Lake, managed for the benefit of Coos County.",
+      "bbox_ok": null,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Tenmile Lakes",
+          "stop_number": "C"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "orww.org/Elliott_Forest/Recreation/Field_Trips/ (2018 itinerary handouts)",
+          "detail": "named as a field-trip stop at Tenmile Lakes stop C"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-school-land-bay/"
+    },
+    {
+      "slug": "zc-el-pl-schumacher-creek",
+      "name": "Schumacher Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.480114,
+      "lon": -124.039828,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4801143, -124.0398277); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5051147, -124.026494.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1149149 \"Schumacher Creek\", Stream, Coos County, quad Allegany"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-schumacher-creek/"
+    },
+    {
+      "slug": "zc-el-pl-scottsburg",
+      "name": "Scottsburg",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.654006,
+      "lon": -123.816768,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad Scottsburg.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1149180 \"Scottsburg\", Populated Place, Douglas County, quad Scottsburg"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-scottsburg/"
+    },
+    {
+      "slug": "zc-el-pl-silver-creek",
+      "name": "Silver Creek",
+      "variants": [
+        "Silver Creek (Golden Falls quad)"
+      ],
+      "kind": "stream",
+      "lat": 43.481504,
+      "lon": -123.930935,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.481504, -123.9309346); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5081709, -123.9303795.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1126961 \"Silver Creek\", Stream, Coos County, quad Golden Falls"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-silver-creek/"
+    },
+    {
+      "slug": "zc-el-pl-silver-creek-heritage-grove",
+      "name": "Silver Creek Heritage Grove",
+      "variants": [
+        "Heritage Grove"
+      ],
+      "kind": "old-growth grove",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Not in GNIS or Nominatim. Lies on Silver Creek (GNIS 43.481504, -123.930935) inside the Elliott, but the grove's own position was not read from a map in this pass.",
+      "bbox_ok": null,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 6
+        }
+      ],
+      "evidence": [
+        {
+          "source": "orww.org/Elliott_Forest/Recreation/Field_Trips/ (2018 itinerary handouts)",
+          "detail": "named as a field-trip stop at Elkhorn Ranch stop 6"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-silver-creek-heritage-grove/"
+    },
+    {
+      "slug": "zc-el-pl-silver-falls",
+      "name": "Silver Falls",
+      "variants": [],
+      "kind": "falls",
+      "lat": 43.488448,
+      "lon": -123.934546,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Falls), USGS 7.5-minute quad Golden Falls.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Golden and Silver Falls",
+          "stop_number": "Silver and Golden Falls"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1126968 \"Silver Falls\", Falls, Coos County, quad Golden Falls"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-silver-falls/"
+    },
+    {
+      "slug": "zc-el-pl-south-slough",
+      "name": "South Slough",
+      "variants": [],
+      "kind": "gut/estuary",
+      "lat": 43.315111,
+      "lon": -124.323172,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Gut), USGS 7.5-minute quad Charleston.",
+      "bbox_ok": false,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-25 11-B. 27:53 East Hakki Ridge, South Slough & Faye Stewart"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1161526 \"South Slough\", Gut, Coos County, quad Charleston"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-south-slough/"
+    },
+    {
+      "slug": "zc-el-pl-strawberry-creek",
+      "name": "Strawberry Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Not carried in GNIS for Coos or Douglas County within the Elliott bbox.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-33 8-A. 0:38 Divide Spring (2) to Strawberry Creek Questions"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B-33 8-A. 0:38 Divide Spring (2) to Strawberry Creek Questions"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-strawberry-creek/"
+    },
+    {
+      "slug": "zc-el-pl-stulls-falls",
+      "name": "Stulls Falls",
+      "variants": [
+        "Stull Falls"
+      ],
+      "kind": "falls",
+      "lat": 43.510948,
+      "lon": -123.995659,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Falls), USGS 7.5-minute quad Elk Peak.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-05 5-B. 13:40 Trail Butte & Flag Peak to Stull Falls"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1127675 \"Stulls Falls\", Falls, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-stulls-falls/"
+    },
+    {
+      "slug": "zc-el-pl-sullivan-creek",
+      "name": "Sullivan Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.478169,
+      "lon": -124.141222,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4781692, -124.1412217); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.4706694, -124.0828853.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1150572 \"Sullivan Creek\", Stream, Coos County, quad North Bend"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-sullivan-creek/"
+    },
+    {
+      "slug": "zc-el-pl-sullivan-ridge",
+      "name": "Sullivan Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B (\"Larson\") 5-A. 8:42 Larson Ridge to Sullivan Ridge (1)"
+        },
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-02 9-B. 0:33 Sullivan Ridge (2), Mexican Treeplanters & Bears"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-11-08 #B (\"Larson\") 5-A. 8:42 Larson Ridge to Sullivan Ridge (1); 2017-12-06 #C-02 9-B. 0:33 Sullivan Ridge (2), Mexican Treeplanters & Bears"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-sullivan-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-surprise-creek",
+      "name": "Surprise Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.524838,
+      "lon": -123.858155,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5248383, -123.8581553); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5333333, -123.8569444.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1133060 \"Surprise Creek\", Stream, Douglas County, quad Loon Lake"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-surprise-creek/"
+    },
+    {
+      "slug": "zc-el-pl-tenmile",
+      "name": "Tenmile",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.576226,
+      "lon": -124.19567,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad Lakeside.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1154644 \"Tenmile\", Populated Place, Coos County, quad Lakeside"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile/"
+    },
+    {
+      "slug": "zc-el-pl-tenmile-butte",
+      "name": "Tenmile Butte",
+      "variants": [],
+      "kind": "summit",
+      "lat": 43.5255,
+      "lon": -124.094241,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Summit), USGS 7.5-minute quad Trail Butte.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-01 9-A. 32:05 Tenmile Butte Salmonberry & Umpqua Road Rock"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1150971 \"Tenmile Butte\", Summit, Coos County, quad Trail Butte"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile-butte/"
+    },
+    {
+      "slug": "zc-el-pl-tenmile-creek",
+      "name": "Tenmile Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.561781,
+      "lon": -124.232061,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5617811, -124.2320607); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5733333, -124.1733333.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1150972 \"Tenmile Creek\", Stream, Coos County, quad Lakeside"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile-creek/"
+    },
+    {
+      "slug": "zc-el-pl-tenmile-lake",
+      "name": "Tenmile Lake",
+      "variants": [],
+      "kind": "lake",
+      "lat": 43.550021,
+      "lon": -124.12343,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Lake); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "Tenmile 9-A. 2:22 Tenmile Lake, Tree Planting & Boomer Colonies"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Tenmile Lakes",
+          "stop_number": "B"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1150976 \"Tenmile Lake\", Lake, Coos County, quad Trail Butte"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile-lake/"
+    },
+    {
+      "slug": "zc-el-pl-tenmile-lake-county-park",
+      "name": "Tenmile Lake County Park",
+      "variants": [],
+      "kind": "county park",
+      "lat": 43.573448,
+      "lon": -124.170669,
+      "method": "nominatim",
+      "confidence": "unverified",
+      "precision_note": "OSM polygon centroid returned by Nominatim; not cross-checked against a second source.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Tenmile Lakes",
+          "stop_number": "B"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "OpenStreetMap Nominatim (https://nominatim.openstreetmap.org/search), queried 2026-08-27",
+          "detail": "q=\"Tenmile Lake County Park, Lakeside, Oregon\" -> park"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-tenmile-lake-county-park/"
+    },
+    {
+      "slug": "zc-el-pl-trail-butte",
+      "name": "Trail Butte",
+      "variants": [],
+      "kind": "summit",
+      "lat": 43.50115,
+      "lon": -124.037289,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Summit), USGS 7.5-minute quad Trail Butte.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-03 5-B. 0:04 Burnt Ridge to Trail Butte (1)"
+        },
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-05 5-B. 13:40 Trail Butte & Flag Peak to Stull Falls"
+        },
+        {
+          "interview_date": "2017-12-06",
+          "stop_label": "#C-03 9-B. 16:20 Trail Butte (2), Dry Ridge (2) & Oral Histories"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Elkhorn Ranch",
+          "stop_number": 2
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1151363 \"Trail Butte\", Summit, Coos County, quad Trail Butte"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-trail-butte/"
+    },
+    {
+      "slug": "zc-el-pl-trout-creek",
+      "name": "Trout Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.522337,
+      "lon": -123.976214,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5223374, -123.9762144); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5444444, -123.9955556.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-06 5-B. 34:16 Cedar Cabin & Trout Creek Canyon"
+        },
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-01 13-A. 0:10 Trout Creek Fry, Waterfalls & Landslides"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1128237 \"Trout Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-trout-creek/"
+    },
+    {
+      "slug": "zc-el-pl-umpcoos-ridge",
+      "name": "Umpcoos Ridge",
+      "variants": [],
+      "kind": "ridge",
+      "lat": 43.606276,
+      "lon": -123.893087,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point for an areal/linear feature (Ridge); it is a single representative point, not the feature extent.",
+      "bbox_ok": true,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-17 2-B. 35:28 Umpcoos Ridge CCC Road"
+        },
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-36 7-C. 29:58 Umpcoos Road to Mud Flat Side Camp"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1128404 \"Umpcoos Ridge\", Ridge, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-umpcoos-ridge/"
+    },
+    {
+      "slug": "zc-el-pl-umpqua-wayside",
+      "name": "Umpqua Wayside",
+      "variants": [
+        "Oregon Parks Brandy Bar Umpqua Wayside"
+      ],
+      "kind": "state wayside",
+      "lat": 43.677435,
+      "lon": -123.93306,
+      "method": "nominatim",
+      "confidence": "unverified",
+      "precision_note": "OSM feature returned by Nominatim. Bob calls this the \"Brandy Bar Umpqua Wayside\"; GNIS Brandy Bar (43.6790056, -123.9295488) is 0.2 mi NE, which corroborates the location.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [
+        {
+          "trip": "Loon Lake",
+          "stop_number": "B"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "OpenStreetMap Nominatim (https://nominatim.openstreetmap.org/search), queried 2026-08-27",
+          "detail": "q=\"Umpqua Wayside, Douglas County, Oregon\" -> park, 43.6774350, -123.9330596"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-umpqua-wayside/"
+    },
+    {
+      "slug": "zc-el-pl-west-fork-glenn-creek",
+      "name": "West Fork Glenn Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.513727,
+      "lon": -123.893156,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.5137268, -123.8931562); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5327778, -123.9152778.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1128850 \"West Fork Glenn Creek\", Stream, Coos County, quad Elk Peak"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-west-fork-glenn-creek/"
+    },
+    {
+      "slug": "zc-el-pl-west-fork-millicoma-river",
+      "name": "West Fork Millicoma River",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.42428,
+      "lon": -124.030104,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4242802, -124.0301042); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5523382, -123.8881567.",
+      "bbox_ok": false,
+      "stops_here": [
+        {
+          "interview_date": "2017-11-08",
+          "stop_label": "#B-07 6-A. 0:08 West Fork Old-Growth Alder"
+        },
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-02 13-A. 7:10 West Fork Spawning Gravel to New Beave Dam"
+        },
+        {
+          "interview_date": "2018-10-10",
+          "stop_label": "#D-04 13-B. 0:52 West Fork to Beaver Creek"
+        }
+      ],
+      "field_trip_stops": [
+        {
+          "trip": "Millicoma Fish Hatchery",
+          "stop_number": "F"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1152094 \"West Fork Millicoma River\", Stream, Coos County, quad Allegany"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-west-fork-millicoma-river/"
+    },
+    {
+      "slug": "zc-el-pl-west-fork-silver-creek",
+      "name": "West Fork Silver Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": 43.485393,
+      "lon": -123.93399,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS primary point is the stream MOUTH (43.4853929, -123.9339903); the tour stop may be anywhere along the reach. GNIS source (headwater) point: 43.5034485, -123.9584358.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1128867 \"West Fork Silver Creek\", Stream, Coos County, quad Golden Falls"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-west-fork-silver-creek/"
+    },
+    {
+      "slug": "zc-el-pl-winchester-bay",
+      "name": "Winchester Bay",
+      "variants": [],
+      "kind": "populated place",
+      "lat": 43.677061,
+      "lon": -124.174837,
+      "method": "gnis",
+      "confidence": "verified",
+      "precision_note": "GNIS point feature (Populated Place), USGS 7.5-minute quad Winchester Bay.",
+      "bbox_ok": true,
+      "stops_here": [],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "USGS GNIS Domestic Names, Oregon file DomesticNames_OR.txt (https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_OR_Text.zip), downloaded 2026-08-27",
+          "detail": "feature_id 1152475 \"Winchester Bay\", Populated Place, Douglas County, quad Winchester Bay"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-winchester-bay/"
+    },
+    {
+      "slug": "zc-el-pl-y-creek",
+      "name": "Y Creek",
+      "variants": [],
+      "kind": "stream",
+      "lat": null,
+      "lon": null,
+      "method": null,
+      "confidence": "unresolved",
+      "precision_note": "Named in Bob's TOC/transcripts and plotted on his route maps, but not carried in USGS GNIS or OSM/Nominatim, and not yet read to a PLSS section in this pass. Left null rather than guessed.",
+      "bbox_ok": null,
+      "stops_here": [
+        {
+          "interview_date": "2017-10-10",
+          "stop_label": "#A-04 1-B. 27:40 Y Creek"
+        }
+      ],
+      "field_trip_stops": [],
+      "evidence": [
+        {
+          "source": "sources/elliott/oral/Oral_History_TOC-2019.pdf",
+          "detail": "named in Bob Zybach's 2019 Table of Contents at 2017-10-10 #A-04 1-B. 27:40 Y Creek"
+        }
+      ],
+      "href": "/collections/zybach/elliott/places/zc-el-pl-y-creek/"
+    }
+  ],
+  "withheld": []
+}

@@ -1,0 +1,287 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
+import { collection, RIGHTS_STATEMENT } from '../../../components/zybach/_data';
+
+const prov = collection?.provenance ?? null;
+
+const FALLBACK_SOURCES = [
+  {
+    label: 'Soap Creek Valley monographs, thesis and Auto Tour (nwmapsco.com)',
+    url: 'http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/index.html',
+  },
+  {
+    label: 'M.A.I.S. thesis, 1999, by chapter (nwmapsco.com)',
+    url: 'http://www.nwmapsco.com/ZybachB/Thesis/index.html',
+  },
+  {
+    label: 'Historic Soap Creek Valley Auto Tour, 1989 (nwmapsco.com)',
+    url: 'http://www.nwmapsco.com/ZybachB/Tours/Soap_Creek_Valley/index.html',
+  },
+  {
+    label: 'Elliott State Forest oral histories: recordings, transcripts, photos (orww.org)',
+    url: 'http://www.orww.org/Elliott_Forest/History/Oral/',
+  },
+  {
+    label: 'Elliott State Forest maps, photographs and field trips (orww.org)',
+    url: 'http://www.orww.org/Elliott_Forest/',
+  },
+  {
+    label: 'ORWWmedia YouTube channel — field-trip and lecture videos',
+    url: 'https://www.youtube.com/user/ORWWmedia/',
+  },
+];
+
+const rawSources = Array.isArray(prov?.public_sources) ? prov!.public_sources! : [];
+const sources = rawSources.length
+  ? rawSources.map((s) =>
+      typeof s === 'string' ? { label: s, url: s } : { label: s.label ?? s.url ?? '', url: s.url },
+    )
+  : FALLBACK_SOURCES;
+
+const uploadDates = Array.isArray(prov?.upload_dates) && prov!.upload_dates!.length
+  ? prov!.upload_dates!.join(', ')
+  : '23 August 2026';
+
+const items = [
+  { label: 'Creator', value: collection?.creator?.display_name ?? 'Dr. Bob Zybach' },
+  {
+    label: 'Originating bodies',
+    value:
+      'OSU Research Forests and College of Forestry (Soap Creek monograph series); NW Maps Co. (thesis, books, tours); Oregon Websites and Watersheds Project, Inc. (Elliott, Alberta Street, Osbornes)',
+  },
+  { label: 'Received', value: `Uploaded by the creator, ${uploadDates}` },
+  {
+    label: 'Accession statement',
+    value:
+      (prov?.accession_statement as string) ??
+      (prov?.accession as string) ??
+      "Accessioned from Bob Zybach's upload to the Library's working Drive; original folder paths preserved on every record.",
+  },
+  { label: 'Rights', value: RIGHTS_STATEMENT },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Provenance"
+  subtitle="Where this collection came from, who made each part of it, and what the Library did to it."
+  width="prose"
+  sourceId="collections-zybach-provenance"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="finding-aid" />
+
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+    </p>
+
+    <p>
+      Provenance is the answer to a plain question: how do you know? For every
+      page in this collection the Library can say who recorded the words, who
+      typed them, who checked them, when they were printed, where the tape is,
+      which file the text came from, and what was done to that file. This page
+      states it for the collection as a whole; each item page states it for
+      itself.
+    </p>
+
+    <ProvenanceBlock items={items} />
+
+    <h2 id="chain">Chain of custody</h2>
+
+    <ol class="zc-chain">
+      <li>
+        <strong>Recorded.</strong> The Soap Creek sessions run from July 1975 to
+        August 1995, on cassette; the Elliott State Forest interviews and field
+        trips from 2017 to 2019, with field-trip and lecture videos to 2024. Two
+        earlier tapes Bob collected and posted with the Elliott material — Herman
+        Larson, interviewed by John and Maralee Brelage — were recorded on 8
+        October 1962 and 11 November 1965.
+      </li>
+      <li>
+        <strong>Who asked the questions.</strong> The 1978–1980 sessions were
+        conducted for the Oregon State University College of Forestry by
+        <a href="/collections/zybach/soap-creek/people/royal-g-jackson/">Royal G.
+        Jackson</a> and <a href="/collections/zybach/soap-creek/people/jennifer-lee/">Jennifer
+        A. Lee</a> — Paul M. Dunn (1978–79), William A. Davies (1979) and Marvin
+        Rowley (1979) — and by Jackson with Karen Thomas for Edward
+        Sekermestrovich (1980). SCARC lists Jackson, Lee, Zybach, the College of
+        Forestry and the Research Forests' Soap Creek Valley History Project as
+        the creators of OH 006. The two earliest Soap Creek sessions, with Bessie
+        Murphy in July and August 1975, were recorded by Judy Carlson. From 1989
+        Bob Zybach conducted the sessions, sometimes with a second interviewer:
+        Neil Vanderburg (#03), Kevin Sherer (#06 and #12), Angela C. Sondenaa
+        (#07), George B. Wisner (#08), Janet Meranda (#09), and Judy Carlson,
+        Marlene Finley and Phil Hays (#11). Every name here is taken from the
+        citation the monograph prints in its own front matter. On the Elliott,
+        Bob Zybach conducted the interviews; the November 2019 group interview at
+        the Coos History Museum was led by Steve Greif. Most Soap Creek sessions
+        were recorded in the narrators' homes or at the places being discussed.
+      </li>
+      <li>
+        <strong>Transcribed and audited.</strong> Transcripts were typed,
+        checked against the tape, and then sent to the narrator. Narrators
+        corrected and approved them before printing. This is why the printed
+        transcript, not the tape, is the authoritative text of the Soap Creek
+        series — and why the Library does not "fix" what a narrator approved.
+      </li>
+      <li>
+        <strong>Printed and published.</strong> Fifteen numbered monographs,
+        1990–2009, by the OSU Research Forests and College of Forestry, Bob
+        Zybach series editor; the 1989 Auto Tour booklet; the 1999 M.A.I.S.
+        thesis. Front matter in each volume names the people at each step.
+      </li>
+      <li>
+        <strong>Put online by the creator.</strong> Scanned PDFs on
+        nwmapsco.com; the Elliott recordings, transcripts, maps and photographs
+        on orww.org; videos on the ORWWmedia YouTube channel. These remain the
+        published originals.
+      </li>
+      <li>
+        <strong>Where the originals went.</strong> Two statements, and nothing
+        between them is the Library's own account. Bob Zybach's 1999 thesis
+        describes the project's own practice, p. 51: <q cite="http://www.nwmapsco.com/ZybachB/Thesis/">In
+        most instances, master copies of monographs were stored at Research
+        Forests offices, original tape recordings were sent to the Oral History
+        Department of the Oregon Historical Society in Portland, Oregon, and
+        original maps, correspondence, photographs, photograph copies, and copies
+        of tape recordings were sent to OSU Archives in Corvallis, Oregon.</q>
+        The OSU Special Collections and Archives Research Center's acquisition
+        note for OH 006 describes how what it holds arrived: <q cite="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309">The
+        published transcripts were transferred to the Archives by the Research
+        Forests regularly as they were issued between 1991 and 1996. The sound
+        recordings, as well as published transcripts and related materials, were
+        part of the Horner Museum oral history collections until they were
+        transferred to the Archives in 1996. Materials donated by Bob Zybach to
+        the Archives in 2009 were organized into this collection in 2017.</q>
+        For the Elliott, SCARC's acquisition note reads in full: <q cite="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=3293">Collection
+        materials were donated to SCARC by Bob Zybach in 2019.</q> Bob's
+        reforestation business records are held at OSU as the Bob Zybach
+        Collection (MSS Zybach).
+      </li>
+      <li>
+        <strong>Uploaded to the Library's working Drive.</strong> {uploadDates},
+        by the creator: three branches — Soap Creek, Elliott, and a wildfire and
+        restoration folder. Folder paths were preserved as received.
+      </li>
+      <li>
+        <strong>Described here.</strong> The Library read the files, extracted
+        the text and the structure, and built this description. It did not
+        rewrite the words. See the <a href="/collections/zybach/colophon/">colophon</a>
+        for exactly what was done and what was not.
+      </li>
+    </ol>
+
+    <h2 id="published-originals">Published originals</h2>
+
+    <p>
+      Every item page links to the creator's own copy. These are the index pages
+      those links point into.
+    </p>
+
+    <ul class="zc-sources">
+      {sources.map((s) => (
+        <li>
+          {s.url ? <a href={s.url}>{s.label}</a> : s.label}
+        </li>
+      ))}
+    </ul>
+
+    <h2 id="elsewhere">The same material elsewhere</h2>
+
+    <p>
+      A researcher who needs the tape, not the transcript, should go to Oregon
+      State. The Library describes; OSU preserves.
+    </p>
+
+    <ul>
+      <li>
+        <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309">
+          OH 006 — Soap Creek Valley History Project Oral Histories, 1978–2009
+        </a>: "2.2 cubic feet (91 audiocassettes; 20 photographs; 5 boxes)",
+        dated 1978–2009 with predominant dates 1990–1995. Open for research.
+      </li>
+      <li>
+        <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=3293">
+          OH 047 — Elliott State Forest Oral History Collection, 2017–2022
+        </a>: "15 audiocassette tapes; 2.24 GB born digital including 136
+        digital photographs." Open for research. SCARC's finding-aid page
+        carries the Center's standard footer, "This work is licensed under a
+        Creative Commons Attribution 4.0 International License" — that statement
+        is on the page describing the collection, and describes SCARC's own
+        finding aid. It is not a licence on the recordings, the transcripts or
+        the photographs, and nothing here should be read as one.
+      </li>
+      <li>
+        <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2302">
+          OH 005 — Rex Wakefield interview (1989) and Applegate Trail commentary
+          (1991)
+        </a>.
+      </li>
+      <li>
+        <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=1303">
+          MSS Zybach — the Bob Zybach Collection, reforestation business
+          records, 1972–1990
+        </a>. Described in this collection; not published here.
+      </li>
+    </ul>
+
+    <h2 id="what-was-excluded">What was excluded, and why</h2>
+
+    <p>
+      The upload contained material that does not belong in a public archive:
+      bank statements, a credit report, corporate tax filings, invoices, a
+      voided check. None of it was read past identification, none of it is
+      described here, and none of it was deleted — exclusion is the Library's
+      act; deletion would be the creator's. The same rule governs personal data
+      inside the transcripts themselves: pages carrying home addresses,
+      telephone numbers or the names of children are held from this preview with
+      the reason shown, rather than quietly cut.
+    </p>
+
+    <p>
+      Places identified in the sources as American Indian burial, grave or
+      artifact sites are recorded but withheld from the public places list and its
+      maps.
+    </p>
+
+    <h2 id="verification">How to check the Library's work</h2>
+
+    <p>
+      Each item page carries the source file it was built from and a checksum of
+      that file. Where the Library inferred something — a speaker turn recovered
+      from typography, a coordinate derived from a place name, a date read from
+      context — the page says <em>inferred</em> and names the method. Where a
+      source contradicts another source, both are recorded and the item is
+      marked as a conflict. A blank field means the document did not say; it
+      never means the Library guessed.
+    </p>
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/colophon/">Colophon</a> ·
+      <a href="/collections/zybach/how-to-cite/">How to cite</a> ·
+      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-chain li {
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+  }
+  .zc-sources {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>

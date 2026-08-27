@@ -1,0 +1,451 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import ZybachMap from '../../../../../components/zybach/soapcreek/ZybachMap.astro';
+import ProvenanceBlock from '../../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
+import CitationBlock from '../../../../../components/zybach/soapcreek/CitationBlock.astro';
+import { gazetteer, monographs, people, chronology, indexEntriesForPlace } from '../../../../../components/zybach/soapcreek/data';
+import type { GazetteerPlace } from '../../../../../components/zybach/soapcreek/data';
+import {
+  placeHref,
+  placesHref,
+  monoHref,
+  personHref,
+  stopHref,
+  periodHref,
+  folioHref,
+  hasPersonPage,
+  narratorHomeOf,
+  displayNarrators,
+  recordLabel,
+  recordHref,
+} from '../../../../../components/zybach/soapcreek/links';
+import {
+  methodLabel,
+  confidenceLabel,
+  coordinateSourceLabel,
+  coordinateConfidenceLabel,
+} from '../../../../../components/zybach/labels';
+
+export async function getStaticPaths() {
+  return gazetteer.map((p) => ({ params: { slug: p.slug }, props: { place: p } }));
+}
+
+const { place } = Astro.props as { place: GazetteerPlace };
+const url = placeHref(place.slug);
+const hasCoord = typeof place.lat === 'number' && typeof place.lon === 'number';
+
+const features = hasCoord
+  ? {
+      type: 'FeatureCollection',
+      features: [
+        {
+          type: 'Feature',
+          geometry: { type: 'Point', coordinates: [place.lon, place.lat] },
+          properties: {
+            kind: place.kind ?? 'other',
+            group:
+              place.auto_tour_stop != null
+                ? 'stop'
+                : (place.narrator_home_of ?? []).length > 0
+                  ? 'home'
+                  : 'other',
+            title: place.name ?? place.slug,
+            subtitle: place.kind ?? '',
+            href: url,
+          },
+        },
+      ],
+    }
+  : { type: 'FeatureCollection', features: [] };
+
+/** Mentions, grouped by the narrator who spoke — not by the book. */
+type Group = {
+  key: string;
+  narrator: string;
+  narratorSlug?: string;
+  monoSlug: string;
+  monoLabel: string;
+  /** For the thesis and the Auto Tour, which are not monographs. */
+  monoHrefOverride?: string;
+  isAuthorWork?: boolean;
+  pages: Array<{ page: any; href: string | null }>;
+};
+const groups: Group[] = [];
+for (const m of place.mentions ?? []) {
+  const mono = monographs.find((x) => x.slug === m.mono_slug || x.zc_id === m.zc_id);
+  if (mono) {
+    const narrator = displayNarrators(mono) || mono.title || mono.slug;
+    const narratorSlug = mono.narrators?.[0]?.person_slug;
+    groups.push({
+      key: mono.slug,
+      narrator,
+      narratorSlug,
+      monoSlug: mono.slug,
+      monoLabel: `#${mono.number} ${mono.title}`,
+      pages: (m.pages ?? []).map((p) => ({ page: p, href: folioHref(mono.slug, p) })),
+    });
+    continue;
+  }
+  /* Not a monograph: the 1999 thesis or the 1989 Auto Tour. Both are Bob's
+     own writing rather than a narrator's speech, and both carry their own
+     page links in the record — 1,037 references across the series used to be
+     dropped here because the monograph lookup failed. */
+  const label = recordLabel((m as any).zc_id);
+  if (!label) continue;
+  const base = (m as any).record_href ?? recordHref((m as any).zc_id);
+  const links: Record<string, string> = {};
+  for (const pl of ((m as any).page_links ?? []) as any[]) {
+    if (pl?.page != null && pl?.href) links[String(pl.page)] = pl.href;
+  }
+  groups.push({
+    key: String((m as any).zc_id),
+    narrator: label,
+    narratorSlug: undefined,
+    monoSlug: '',
+    monoLabel: label,
+    monoHrefOverride: base ?? undefined,
+    isAuthorWork: true,
+    pages: ((m as any).pages ?? []).map((p: any) => ({
+      page: p,
+      href: links[String(p)] ?? (base ? `${base}#p${p}` : null),
+    })),
+  } as Group);
+}
+groups.sort((a, b) => a.narrator.localeCompare(b.narrator));
+
+const evidence = (place.evidence ?? []).map((e) => {
+  const mono = monographs.find((x) => x.zc_id === e.zc_id || x.slug === (e as any).mono_slug);
+  return {
+    quote: e.quote ?? '',
+    page: e.page,
+    monoSlug: mono?.slug ?? null,
+    monoHref: mono ? monoHref(mono.slug) : recordHref((e as any).zc_id),
+    monoLabel: mono ? `#${mono.number} ${mono.title}` : recordLabel((e as any).zc_id),
+    narrator: mono ? displayNarrators(mono) : '',
+    href: mono && e.page != null ? folioHref(mono.slug, e.page) : ((e as any).href ?? null),
+  };
+});
+
+/* Who this place is the home site of. `narrator_home_of` names the monograph
+   that plots it on Map 9, not the narrator, so the resolution lives in
+   links.ts and is shared with the people pages. */
+const homeOf = narratorHomeOf(place);
+
+// Dated statements that name this place.
+const timelineHits = (chronology.periods ?? []).flatMap((per) =>
+  (per.entries ?? [])
+    .filter((e) =>
+      (e.places ?? []).some((p) =>
+        typeof p === 'string' ? p === place.slug || p === place.name : p?.slug === place.slug,
+      ),
+    )
+    .map((e) => ({ ...e, period: per })),
+);
+
+const totalMentions = groups.reduce((n, g) => n + g.pages.length, 0);
+
+/* Tour-map keys arrive as `{ zc_id, letter, chapter_title, pages }`; the reader
+   wants the letter. De-duplicated, because two monographs can key the same
+   place. */
+const tourLetters = Array.from(
+  new Set(
+    ((place.tour_letters ?? []) as any[])
+      .map((l) => (typeof l === 'string' ? l : (l?.letter ?? null)))
+      .filter((l): l is string => typeof l === 'string' && l.trim() !== ''),
+  ),
+).sort();
+
+const confidenceClass =
+  place.confidence === 'verified'
+    ? 'sc-chip sc-chip-verified'
+    : place.confidence === 'conflict'
+      ? 'sc-chip sc-chip-conflict'
+      : place.confidence === 'inferred'
+        ? 'sc-chip sc-chip-inferred'
+        : 'sc-chip';
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+  { label: 'Places', href: placesHref() },
+];
+
+/* The printed back-of-book indexes are a separate count from the transcript
+   text, and they disagree by design. Both are shown, each labelled. */
+const idxEntries = indexEntriesForPlace(place);
+const indexRefs = idxEntries.reduce(
+  (n, e) => n + (e.ref_count ?? (e.refs ?? []).length),
+  0,
+);
+const indexLetter = ((place.name ?? place.slug ?? '').trim()[0] ?? '').toLowerCase();
+const indexLetterHrefForPlace = /^[a-z]$/.test(indexLetter)
+  ? `/collections/zybach/soap-creek/index/${indexLetter}/`
+  : '/collections/zybach/soap-creek/index/';
+const recordCount = new Set(groups.map((g) => g.key)).size;
+
+const whatThisIs = totalMentions
+  ? `Everything the Soap Creek narrators said about ${place.name ?? place.slug}: ${totalMentions} transcript mention${
+      totalMentions === 1 ? '' : 's'
+    } across ${recordCount} record${recordCount === 1 ? '' : 's'}, grouped by who was speaking.`
+  : `A place named in the Soap Creek Valley oral histories.`;
+---
+<SoapCreekPage
+  title={place.name ?? place.slug}
+  subtitle={whatThisIs}
+  kicker="Soap Creek Valley · Place"
+  parents={parents}
+  sourceId={`zybach-sc-place-${place.slug}`}
+  navCurrent="places"
+  pageTitle={`${place.name ?? place.slug} · Soap Creek Valley · The Zybach Collection`}
+>
+  <div class="sc-badge-row">
+    {place.kind && <span class="sc-chip">{place.kind}</span>}
+    {place.auto_tour_stop != null && (
+      <a class="sc-chip" href={stopHref(place.auto_tour_stop)}>Auto Tour stop {place.auto_tour_stop}</a>
+    )}
+    {tourLetters.map((l) => <span class="sc-chip">Tour map key {l}</span>)}
+    {hasCoord && (
+      <span class={confidenceClass}>
+        Coordinate: {coordinateConfidenceLabel(place.method, place.confidence)}
+      </span>
+    )}
+    {!hasCoord && <span class="sc-chip">No coordinate</span>}
+  </div>
+
+  {(place.variants ?? []).length > 0 && (
+    <p class="sc-list-meta">Also printed as: {place.variants!.join(' · ')}</p>
+  )}
+
+  <dl class="sc-counts" aria-label="How often this place is referred to">
+    <div>
+      <dt>Index references (printed indexes)</dt>
+      <dd>
+        {indexRefs > 0 ? (
+          <a href={indexLetterHrefForPlace}>{indexRefs.toLocaleString('en-US')}</a>
+        ) : (
+          '0'
+        )}
+      </dd>
+    </div>
+    <div>
+      <dt>Transcript mentions</dt>
+      <dd>{totalMentions.toLocaleString('en-US')}</dd>
+    </div>
+  </dl>
+
+  <p class="sc-list-meta">
+    These two numbers count different things and rarely match. The first is how
+    often the back-of-book indexes the books themselves print point at this
+    place; an indexer chose those. The second is how often the name occurs in
+    the transcript text, counted by machine. <a href={placesHref()}>More on the
+    difference</a>.
+  </p>
+
+  {hasCoord ? (
+    <ZybachMap
+      id={`place-${place.slug}-map`}
+      center={[place.lon as number, place.lat as number]}
+      zoom={13}
+      features={features}
+      height="340px"
+    />
+  ) : (
+    <p class="sc-empty">
+      This place has not been given a coordinate. It appears here because the
+      narrators named it; where it stood is not established.
+    </p>
+  )}
+
+  <ProvenanceBlock
+    items={[
+      ...(hasCoord
+        ? [
+            {
+              label: 'Coordinates',
+              value: `${(place.lat as number).toFixed(5)}, ${(place.lon as number).toFixed(5)}`,
+            },
+            { label: 'How they were found', value: coordinateSourceLabel(place.method) },
+            {
+              label: 'How far to trust it',
+              value: coordinateConfidenceLabel(place.method, place.confidence),
+            },
+          ]
+        : []),
+      ...(homeOf.length
+        ? [
+            {
+              label: 'Home site of',
+              value: homeOf.map((p) => p.display_name).join(', '),
+              href: homeOf.length === 1 && hasPersonPage(homeOf[0].slug)
+                ? personHref(homeOf[0].slug as string)
+                : undefined,
+            },
+          ]
+        : []),
+      {
+        label: 'Built from',
+        value: 'The printed transcripts and back-of-book indexes of the fifteen monographs',
+        href: '/collections/zybach/soap-creek/',
+      },
+      {
+        label: 'Accessioned',
+        value: 'From Bob Zybach’s upload, 23 August 2026',
+        href: '/collections/zybach/provenance/',
+      },
+    ]}
+  />
+
+  {homeOf.length > 0 && (
+    <section aria-labelledby="home-site">
+      <h2 id="home-site">Home site</h2>
+      <p>
+        On Map 9 of the 1999 thesis this is plotted as the home site of{' '}
+        {homeOf.map((p, i: number) => (
+          <>
+            {i > 0 && ', '}
+            {hasPersonPage(p.slug) ? <a href={personHref(p.slug as string)}>{p.display_name}</a> : p.display_name}
+          </>
+        ))}
+        .
+      </p>
+      {homeOf.some((p) => p.note) && (
+        <p class="sc-list-meta">
+          Plotted {homeOf.find((p) => p.note)!.note}.
+        </p>
+      )}
+    </section>
+  )}
+
+  <section aria-labelledby="who-speaks">
+    <h2 id="who-speaks">Who speaks of it</h2>
+    {groups.length > 0 ? (
+      <ul class="sc-list">
+        {groups.map((g) => (
+          <li>
+            <strong>
+              {g.narratorSlug && hasPersonPage(g.narratorSlug) ? (
+                <a href={personHref(g.narratorSlug)}>{g.narrator}</a>
+              ) : (
+                g.narrator
+              )}
+            </strong>
+            <span class="sc-list-meta">
+              {g.isAuthorWork ? (
+                g.monoHrefOverride ? (
+                  <>written by Bob Zybach — <a href={g.monoHrefOverride}>{g.monoLabel}</a></>
+                ) : (
+                  <>written by Bob Zybach — {g.monoLabel}</>
+                )
+              ) : (
+                <>in <a href={monoHref(g.monoSlug)}>{g.monoLabel}</a></>
+              )}
+            </span>
+            <span class="sc-refs">
+              {g.pages.map((p, i) => (
+                <>
+                  {i > 0 && ', '}
+                  {p.href ? <a href={p.href}>p. {p.page}</a> : <span>p. {p.page}</span>}
+                </>
+              ))}
+            </span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="sc-empty">No page mentions have been recorded for this place yet.</p>
+    )}
+  </section>
+
+  {evidence.length > 0 && (
+    <section aria-labelledby="in-their-words">
+      <h2 id="in-their-words">In their words</h2>
+      <p class="sc-list-meta">
+        Quoted character for character from the printed page, with the page it is
+        on.
+      </p>
+      {evidence.map((e) => (
+        <figure class="sc-evidence">
+          <blockquote class="sc-quote">{e.quote}</blockquote>
+          <figcaption class="sc-list-meta">
+            {e.narrator && <>{e.narrator}, </>}
+            {e.monoHref ? <a href={e.monoHref}>{e.monoLabel}</a> : e.monoLabel}
+            {e.page != null && (
+              <>
+                , {e.href ? <a href={e.href}>p. {e.page}</a> : <>p. {e.page}</>}
+              </>
+            )}
+          </figcaption>
+        </figure>
+      ))}
+    </section>
+  )}
+
+  {timelineHits.length > 0 && (
+    <section aria-labelledby="place-timeline">
+      <h2 id="place-timeline">Dated statements about this place</h2>
+      <ul class="sc-list">
+        {timelineHits.slice(0, 40).map((e: any) => (
+          <li>
+            <strong>{e.date_label ?? e.label}</strong> — {e.statement}
+            <span class="sc-list-meta">
+              {e.narrator && <>{e.narrator} · </>}
+              {e.href ? <a href={e.href}>source</a> : null}
+              {e.period && (
+                <> · <a href={periodHref(e.period.slug)}>{e.period.label}</a></>
+              )}
+            </span>
+          </li>
+        ))}
+      </ul>
+      {timelineHits.length > 40 && (
+        <p class="sc-list-meta">
+          {timelineHits.length - 40} more in the <a href="/collections/zybach/soap-creek/timeline/">timeline</a>.
+        </p>
+      )}
+    </section>
+  )}
+
+  <CitationBlock
+    canonical={`The Zybach Collection, Soap Creek Valley series: ${place.name ?? place.slug} (place record).`}
+    short={`Soap Creek Valley: ${place.name ?? place.slug}`}
+    url={url}
+  />
+</SoapCreekPage>
+
+<style is:global>
+  .sc-evidence {
+    margin: 1.1rem 0;
+  }
+  .sc-evidence figcaption {
+    margin-top: 0.25rem;
+  }
+  .sc-counts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 2rem;
+    margin: 0.9rem 0 0.4rem;
+    padding: 0.7rem 0.95rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+  }
+  .sc-counts div {
+    margin: 0;
+  }
+  .sc-counts dt {
+    margin: 0;
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+    color: #4e617c;
+  }
+  .sc-counts dd {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--deep-navy, #14243c);
+    line-height: 1.2;
+  }
+</style>

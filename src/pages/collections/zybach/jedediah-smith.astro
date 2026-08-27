@@ -1,0 +1,287 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
+import { seriesBySlug, clean } from '../../../components/zybach/_data';
+
+const s = seriesBySlug('jedediah-smith');
+const title = clean(s?.title) || 'Jedediah Smith and the 1828 Umpqua Memorial';
+const summary =
+  clean(s?.summary) ||
+  'Research, maps, guidebooks, photographs and memorial-project records on the July 1828 events at the Umpqua River and the Jedediah Smith party — including the 2023 memorial and rendezvous.';
+
+/* What the generator recorded about how this series was described, and how
+   many accessioned files carry its name. Both are shown as measured. */
+const describedFrom = clean(s?.described_from);
+const matchingFiles = s?.counts?.accessioned_files_matching_name;
+---
+
+<RoomLayout
+  room="collections"
+  title={title}
+  subtitle="Series — described at inventory level"
+  width="prose"
+  sourceId="collections-zybach-jedediah-smith"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="finding-aid" />
+
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+      This series is described at inventory level. The file counts below come
+      from a census of the creator's uploaded folders taken on 27 August 2026;
+      that census stopped three levels down, so they are floors, not totals.
+    </p>
+
+    <p class="kicker">Series · inventory level</p>
+
+    <p>{summary}</p>
+
+    <h2 id="what">What this is</h2>
+
+    <p>
+      On 14 July 1828, fifteen beaver trappers travelling under Jedediah Smith
+      were killed near the mouth of the Smith River, close to present-day
+      Reedsport; that October a Hudson's Bay Company brigade buried eleven of
+      them. The event has been written about for two centuries, largely from the
+      survivors' accounts. This series is the research file behind a modern
+      project to establish where it happened, to place a historical marker, and
+      to convene the 2023 rendezvous and the guidebooks that went with it —
+      assembled with the Jedediah Smith Society, the Oregon-California Trails
+      Association, and local landowners.
+    </p>
+
+    <h2 id="inventory">Inventory</h2>
+
+    <p class="zc-caption">
+      Counted in the creator's uploaded folders, 27 August 2026. Folders deeper
+      than three levels were counted but not opened, so the true totals are
+      larger.
+    </p>
+
+    <table class="zc-inv">
+      <thead>
+        <tr>
+          <th scope="col">Folder</th>
+          <th scope="col">Files</th>
+          <th scope="col">What is in it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Accessioned</th>
+          <td>{typeof matchingFiles === 'number' ? matchingFiles : '—'}</td>
+          <td>
+            Files whose names match this series, taken into the Library's
+            records.{describedFrom ? ` Described from ${describedFrom}.` : ''}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Whole series</th>
+          <td>135 (8.46 GB)</td>
+          <td>
+            As counted in the Drive census — a wider net than the accessioned
+            figure above, and a floor, since 46 subfolders were not all opened.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">References</th>
+          <td>49 (198.7 MB)</td>
+          <td>Secondary literature and source documents.</td>
+        </tr>
+        <tr>
+          <th scope="row">JSS</th>
+          <td>19 (4.4 MB)</td>
+          <td>Jedediah Smith Society material.</td>
+        </tr>
+        <tr>
+          <th scope="row">Massacre Site</th>
+          <td>19 (63.9 MB)</td>
+          <td>
+            Site research, with subfolders for applications, maps, the memorial
+            and the Umpqua memorial.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Fort Umpqua photos</th>
+          <td>18 (4.9 MB)</td>
+          <td>Photographs.</td>
+        </tr>
+        <tr>
+          <th scope="row">Reports</th>
+          <td>15 (94.9 MB)</td>
+          <td>Project reports.</td>
+        </tr>
+        <tr>
+          <th scope="row">1828 Umpqua Memorial</th>
+          <td>1 at top level</td>
+          <td>
+            Ten subfolders — 2023 guidebooks, historical markers, the 2023
+            rendezvous, maps, photographs, references, reports, video — none
+            opened by the census.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2023 Rendezvous</th>
+          <td>—</td>
+          <td>
+            Eight subfolders: article, guidebooks, handouts, historical markers,
+            itinerary, maps, OCTA, photographs.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Largest single file</th>
+          <td>1 (8.5 GB)</td>
+          <td>
+            A 2024 video interview recording. Too large to host; it would be
+            linked or served from the creator's own storage.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="originals">The originals</h2>
+
+    <ul class="zc-links">
+      <li>
+        <a href="http://www.orww.org/1828_Umpqua_Memorial/">
+          ORWW 1828 Umpqua Memorial Project
+        </a>
+      </li>
+      <li>
+        <a href="http://www.orww.org/1828_Umpqua_Memorial/References/">References</a>
+      </li>
+      <li>
+        <a href="http://www.orww.org/1828_Umpqua_Memorial/Reports/">Reports</a>
+      </li>
+      <li>
+        <a href="http://www.orww.org/1828_Umpqua_Memorial/Maps/">Maps</a>
+      </li>
+      <li>
+        <a href="https://www.orww.store/umpqua-1828/">
+          1828 Umpqua Memorial / Jedediah Smith — public guide page (2023)
+        </a>
+        <span class="zc-host-note">orww.store — the creator's own project and bookshop site, a different domain from his orww.org archive.</span>
+      </li>
+    </ul>
+
+    <h2 id="gaps">Known gaps and cautions</h2>
+
+    <ul>
+      <li>
+        The census did not open most of the deep folders, so the inventory above
+        is a floor. A full walk is needed before anything is described item by
+        item.
+      </li>
+      <li>
+        Several file names contain full web addresses with colons and slashes.
+        They will need renaming before publication.
+      </li>
+      <li>
+        This series concerns a violent event between a trapping party and the
+        Lower Umpqua people, and it involves a memorial on the ground. How it is
+        described is not the Library's decision alone; the tribes and the
+        landowners have standing here, and the creator's own project already
+        works with them.
+      </li>
+      <li>
+        Site locations are not published. Where a document identifies a burial
+        or artifact site, the Library records it internally and keeps it off the
+        public map.
+      </li>
+    </ul>
+
+    <h2 id="next">What describing this properly would take</h2>
+
+    <p>
+      A complete folder walk, then a decision — with the creator and with the
+      tribes — about which parts of a site-location file belong in public at
+      all. The guidebooks, the itinerary and the historical-marker record are
+      straightforward publications; the site research is not.
+    </p>
+
+    <ProvenanceBlock
+      items={[
+        { label: 'Creator', value: 'Dr. Bob Zybach; Oregon Websites and Watersheds Project, Inc.; NW Maps Co.' },
+        { label: 'Partners named in the files', value: 'Jedediah Smith Society; Oregon-California Trails Association' },
+        { label: 'Received', value: "Uploaded by the creator; census of 27 August 2026, depth-limited" },
+        { label: 'Published at', value: 'orww.org/1828_Umpqua_Memorial/', href: 'http://www.orww.org/1828_Umpqua_Memorial/' },
+        { label: 'In this collection', value: 'Inventory-level description only; no items published' },
+      ]}
+    />
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/letitia-carson/">Letitia Carson</a> ·
+      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-inv {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .zc-inv th,
+  .zc-inv td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem 0.65rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    line-height: 1.5;
+  }
+  .zc-inv thead th {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+  }
+  .zc-inv tbody th {
+    width: 11em;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .zc-caption {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #4e617c;
+  }
+  .zc-links {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    .zc-inv tbody th { width: auto; }
+    .zc-inv, .zc-inv thead, .zc-inv tbody, .zc-inv tr, .zc-inv th, .zc-inv td { display: block; }
+    .zc-inv thead { display: none; }
+    .zc-inv tbody td { border-top: 0; padding-top: 0; }
+  }
+</style>
+
+<style>
+  .zc-host-note {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: #4e617c;
+    line-height: 1.45;
+  }
+</style>

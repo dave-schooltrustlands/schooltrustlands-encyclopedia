@@ -1,0 +1,219 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import CitationBlock from '../../../components/zybach/CitationBlock.astro';
+import { RIGHTS_STATEMENT } from '../../../components/zybach/_data';
+import { monographs } from '../../../components/zybach/soapcreek/data';
+import { citationLabel, chapterHref, folioHref } from '../../../components/zybach/soapcreek/links';
+
+/* The worked example is a real record, printed verbatim — never a specimen
+   written for this page. #05 is the one the Series Index cites most. */
+const example = monographs.find((m) => String(m.number) === '5') ?? monographs[0] ?? null;
+const exampleCanonical = example?.citation_canonical ?? '';
+const exampleShort = example?.citation_short ?? '';
+const examplePage = 13;
+const exampleHref = example ? folioHref(example.slug, examplePage) : null;
+const exampleShorthand = example ? citationLabel(example.number as any, examplePage) : '';
+---
+
+<RoomLayout
+  room="collections"
+  title="How to cite the Zybach Collection"
+  subtitle="Cite the book the way Bob prints it. Cite this page when you mean this page."
+  width="prose"
+  sourceId="collections-zybach-how-to-cite"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="how-to-cite" />
+
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+      Page addresses in this preview are intended to be permanent, but they are
+      not guaranteed until the collection is published.
+    </p>
+
+    <p>
+      Bob Zybach's series has cited itself the same way since 1993, and that
+      habit is the most useful thing in it. Keep using it. The Library's
+      addresses exist to get you to the page, not to replace the citation.
+    </p>
+
+    <h2 id="rule">The first rule</h2>
+
+    <p>
+      <strong>Cite the source, not the website.</strong> If you are quoting a
+      narrator, you are quoting a printed monograph; cite the monograph and the
+      printed page. Add the Library's address after it if you want a reader to
+      be able to click through, the way you would add a DOI.
+    </p>
+
+    <h2 id="monographs">Soap Creek monographs</h2>
+
+    <p>
+      Every monograph carries a canonical citation in its own front matter. The
+      Library prints that string verbatim at the top and bottom of each item
+      page. Copy it as printed — including the monograph number, which is how
+      the series' own index refers to it.
+    </p>
+
+    {exampleCanonical && (
+      <>
+        <p class="zc-example">{exampleCanonical}</p>
+        <p class="zc-caption">
+          That is the string monograph #{example!.number} prints in its own front
+          matter, reproduced here character for character — spacing and all. It
+          is the same string the item page prints under "As printed".
+        </p>
+      </>
+    )}
+
+    <h3 id="passage">Citing one page of it</h3>
+
+    <p>
+      For a passage, name the printed page and add the series' own shorthand,
+      which is monograph number, colon, page. Every item page prints this line
+      for you, made from the page you are looking at:
+    </p>
+
+    {exampleShort && (
+      <p class="zc-example">
+        <strong>{exampleShort}, p. {examplePage} — Monograph #{exampleShorthand}</strong>
+        <br />
+        {exampleHref
+          ? `https://schooltrusts.org${exampleHref}`
+          : `https://schooltrusts.org/collections/zybach/soap-creek/${example?.slug}/`}
+      </p>
+    )}
+
+    <p>
+      The shorthand — <strong>{exampleShorthand || '05:13'}</strong> — is what
+      Bob's master index has used since 1993, so a reader with the printed books
+      and a reader with this site are citing the same thing.
+    </p>
+
+    <h2 id="page-anchors">Page addresses</h2>
+
+    <p>
+      Printed page numbers are the citation unit for the whole series, so they
+      are the citation unit here too. Every printed page begins its own block of
+      text with its page number in the margin, and that page number is a link. A
+      reference like <strong>05:47</strong> resolves to the chapter of monograph
+      #5 that contains printed page 47, ending in <code>#p47</code> — the
+      permanent address of that one printed page.
+    </p>
+
+    <p class="zc-example">
+      https://schooltrusts.org/collections/zybach/soap-creek/m05-rohner/&lt;chapter&gt;/#p47
+    </p>
+
+    <p>
+      Click the little "p. 47" in the margin and the address in your browser bar
+      is that page's permanent link. Send it to anyone.
+    </p>
+
+    <p>
+      Front matter numbered in roman numerals keeps its roman page numbers and is
+      addressed separately, so <code>#pv</code> and <code>#p5</code> are
+      different pages.
+    </p>
+
+    <h2 id="elliott">Elliott interviews, recordings and videos</h2>
+
+    <p>
+      The Elliott material is indexed the way Bob indexed it in 2019: by
+      interview date, tape side, minute, and transcript page. Cite all four when
+      you can.
+    </p>
+
+    <p class="zc-example">
+      Phillips, Jerry. Interviewed by Bob Zybach, 10 October 2017, Elliott State
+      Forest field tour. Tape 3-B at 4:15; transcript p. 97. Elliott State
+      Forest Oral History Collection, Oregon Websites and Watersheds Project.
+    </p>
+
+    <p>
+      For a video, cite the video and the time code, as its own description
+      does: title, channel, date, and the minute. The Library's video pages link
+      each time code back to the same moment.
+    </p>
+
+    <h2 id="thesis">Thesis and Auto Tour</h2>
+
+    <p class="zc-example">
+      Zybach, Bob. 1999. <em>Using Oral Histories to Document Changing Forest
+      Cover Patterns: Soap Creek Valley, Oregon, 1500–1999</em>. M.A.I.S.
+      thesis, Oregon State University. 321 pp.
+    </p>
+
+    <p class="zc-example">
+      Zybach, Bob. 1989. <em>Historic Soap Creek Valley Auto Tour</em>.
+      Corvallis: Oregon State University Research Forests. 32 pp.
+    </p>
+
+    <h2 id="tapes">If you need the tape</h2>
+
+    <p>
+      The recordings are held at the OSU Special Collections and Archives
+      Research Center. Cite them by collection number and interview date — OH
+      006 for Soap Creek, OH 047 for the Elliott — and request them from SCARC.
+      Two Soap Creek interviews (Rawie and Davies) have no extant cassette; for
+      those the printed transcript is the only record.
+    </p>
+
+    <h2 id="this-collection">The collection as a whole</h2>
+
+    <CitationBlock
+      canonical="The Zybach Collection. America's School Trust Library, 2026. Finding aid."
+      short="The Zybach Collection, finding aid."
+      url="/collections/zybach/"
+      accessed="2026"
+    />
+
+    <h2 id="rights">Reuse</h2>
+
+    <p>{RIGHTS_STATEMENT}</p>
+
+    <p>
+      SCARC's finding-aid pages carry the Center's standard footer, "This work is
+      licensed under a Creative Commons Attribution 4.0 International License."
+      That covers SCARC's own description of the collections. It is not a licence
+      on the recordings, the transcripts or the photographs.
+    </p>
+
+    <h2 id="corrections">If a citation here is wrong</h2>
+
+    <p>
+      Say so. The Library corrects in public: the old wording, the new wording,
+      and the reason all stay visible in the
+      <a href="/about/corrections/">corrections ledger</a>. A wrong page number
+      in an index is worth reporting; it propagates.
+    </p>
+
+    <p class="see-also">
+      See also: <a href="/about/cite/">How to cite the Library</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/">Finding aid</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-example {
+    margin: 0.9rem 0;
+    padding: 0.7rem 1rem;
+    background: var(--linen-card, #fffdf7);
+    border-left: 3px solid var(--old-gold, #a87f2c);
+    border-radius: 3px;
+    font-size: 0.94rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+</style>

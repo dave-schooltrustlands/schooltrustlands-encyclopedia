@@ -1,0 +1,429 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import {
+  ZybachNav,
+  CitationBlock,
+  ContentNote,
+} from '../../../../../components/zybach/elliott/shared';
+import ItemIntro from '../../../../../components/zybach/elliott/ItemIntro.astro';
+import MapWithList from '../../../../../components/zybach/elliott/MapWithList.astro';
+import SegmentTable from '../../../../../components/zybach/elliott/SegmentTable.astro';
+import TapeList from '../../../../../components/zybach/elliott/TapeList.astro';
+import Transcript from '../../../../../components/zybach/elliott/Transcript.astro';
+import PhotoGrid from '../../../../../components/zybach/elliott/PhotoGrid.astro';
+import { plainNote } from '../../../../../components/zybach/labels';
+import {
+  BASE,
+  ACCESSION,
+  CREATOR,
+  RIGHTS,
+  interviews,
+  getInterview,
+  geoJSONFor,
+  photosByPlace,
+  longDate,
+  bytesLabel,
+  projectTitle,
+  projectReportLine,
+  ELLIOTT_CENTER,
+} from '../../../../../components/zybach/elliott/data';
+
+export function getStaticPaths() {
+  return interviews.map((iv) => ({ params: { key: iv.key }, props: { iv } }));
+}
+
+const { iv } = Astro.props;
+const pagePath = `${BASE}/interviews/${iv.key}/`;
+const url = `https://schooltrusts.org${pagePath}`;
+const t = iv.transcript;
+
+const placeSlugs = [
+  ...new Set(iv.segments.map((s) => s.placeSlug).filter(Boolean) as string[]),
+];
+const features = geoJSONFor(placeSlugs);
+
+const photoGroups = photosByPlace(iv.date);
+
+const provenance = [
+  { label: 'Creator', value: CREATOR },
+  ...(iv.interviewer ? [{ label: 'Interviewer', value: iv.interviewer }] : []),
+  ...(iv.participants.length
+    ? [{ label: 'Participants', value: iv.participants.join(', ') }]
+    : []),
+  ...(iv.date ? [{ label: 'Recorded', value: longDate(iv.date) }] : []),
+  ...(t?.scan_type ? [{ label: 'Transcript source', value: t.scan_type }] : []),
+  ...(t?.extraction_method
+    ? [{ label: 'Text recovered by', value: t.extraction_method }]
+    : []),
+  ...(iv.public_url ?? t?.public_url
+    ? [
+        {
+          label: 'Original transcript',
+          value: (iv.public_url ?? t?.public_url) as string,
+          href: (iv.public_url ?? t?.public_url) as string,
+        },
+      ]
+    : []),
+  ...(t?.sha256
+    ? [{ label: 'Source file checksum', value: `sha256 ${t.sha256}` }]
+    : []),
+  {
+    label: 'Described by',
+    value: RIGHTS.osuLabel,
+    href: RIGHTS.osuFindingAid,
+  },
+  { label: 'Accession', value: ACCESSION },
+];
+
+const canonical =
+  projectTitle && iv.isProjectInterview
+    ? `${projectTitle}. ${iv.number_as_printed ? `${iv.number_as_printed} ` : ''}${iv.title_as_printed}${projectReportLine ? `. ${projectReportLine}` : ''}`
+    : iv.title_as_printed;
+
+const totalIndexedPhotos = iv.segments.reduce(
+  (n, s) => n + (s.photo_count ?? 0),
+  0
+);
+
+const relatedPages = (iv.related ?? [])
+  .map((r: any) => ({
+    r,
+    page: interviews.find((x) => x.zc_id === r.zc_id && x.key !== iv.key) ?? null,
+  }))
+  .filter((x: any) => x.r.zc_id);
+
+const contentNotes = (t?.content_notes ?? []).filter(
+  (n: any) => n && (n.note || n.display_note)
+);
+const notePages = [
+  ...new Set(contentNotes.map((n: any) => n.page).filter((p: any) => p != null)),
+];
+const noteSummary = contentNotes.length
+  ? `This transcript carries ${contentNotes.length} passage${contentNotes.length === 1 ? '' : 's'} flagged in review${notePages.length ? `, on page${notePages.length === 1 ? '' : 's'} ${notePages.join(', ')}` : ''}. Nothing in the text has been altered.`
+  : null;
+---
+
+<RoomLayout
+  room="collections"
+  title={iv.title_as_printed}
+  subtitle={[
+    iv.date_as_printed ?? longDate(iv.date),
+    iv.tour_label,
+  ]
+    .filter(Boolean)
+    .join(' · ')}
+  width="full"
+  sourceId={`zybach-elliott-interview-${iv.key}`}
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+    { label: 'Elliott State Forest', href: `${BASE}/` },
+    { label: 'Interviews', href: `${BASE}/interviews/` },
+  ]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">
+    The Zybach Collection · Elliott State Forest
+    {iv.number_as_printed && <span> · Interview {iv.number_as_printed}</span>}
+  </p>
+
+  <ZybachNav current="elliott" />
+
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+  {iv.date && <span data-pagefind-meta={`interview-date:${iv.date}`} hidden></span>}
+
+  <ItemIntro
+    whatThisIs={
+      iv.isProjectInterview
+        ? `A recorded interview from Bob Zybach's Elliott State Forest oral history project, made ${longDate(iv.date)}${iv.tapes.length ? ` on ${iv.tapes.length} tape sides` : ''}${iv.total_pages != null ? ` and printed as a ${iv.total_pages}-page transcript` : ''}, with his own stop-by-stop index.`
+        : `A transcript Bob Zybach filed with the Elliott State Forest oral histories: ${longDate(iv.date)}${iv.total_pages != null ? `, ${iv.total_pages} printed pages` : ''}.`
+    }
+    canonical={canonical}
+    provenance={provenance}
+  />
+
+  {noteSummary && <ContentNote text={noteSummary} level="item" />}
+  {contentNotes.length > 0 && (
+    <details class="zy-notes-detail">
+      <summary>What those passages are, page by page</summary>
+      <ul>
+        {contentNotes.map((n: any) => (
+          <li>
+            {n.page != null && <span class="pg">p. {n.page}</span>}
+            <span>{plainNote(n.display_note ?? n.note)}</span>
+          </li>
+        ))}
+      </ul>
+    </details>
+  )}
+
+  <section aria-labelledby="about-heading">
+    <h2 id="about-heading">The day</h2>
+    <dl class="zy-facts">
+      {iv.date && (
+        <div><dt>Date</dt><dd>{iv.date_as_printed ?? longDate(iv.date)}</dd></div>
+      )}
+      {iv.tour_label && <div><dt>Tour</dt><dd>{iv.tour_label}</dd></div>}
+      {iv.participants.length > 0 && (
+        <div><dt>Participants</dt><dd>{iv.participants.join(', ')}</dd></div>
+      )}
+      {iv.interviewer && (
+        <div><dt>Interviewer</dt><dd>{iv.interviewer}</dd></div>
+      )}
+      {iv.total_audio && <div><dt>Recorded</dt><dd>{iv.total_audio}</dd></div>}
+      {iv.total_pages != null && (
+        <div><dt>Transcript</dt><dd>{iv.total_pages} printed pages</dd></div>
+      )}
+      {iv.segments.length > 0 && (
+        <div><dt>Stops indexed</dt><dd>{iv.segments.length}</dd></div>
+      )}
+      {totalIndexedPhotos > 0 && (
+        <div>
+          <dt>Photographs, as counted in the index</dt>
+          <dd>{totalIndexedPhotos}</dd>
+        </div>
+      )}
+      {iv.photographs.length > 0 && (
+        <div>
+          <dt>Photographs online</dt>
+          <dd>{iv.photographs.length}</dd>
+        </div>
+      )}
+    </dl>
+    {iv.route_description && (
+      <p class="zy-route">{iv.route_description}</p>
+    )}
+  </section>
+
+  {iv.maps.length > 0 && (
+    <section aria-labelledby="maps-heading">
+      <h2 id="maps-heading">Route maps</h2>
+      <ul class="zy-maps">
+        {iv.maps.map((m) => (
+          <li>
+            {m.url ? (
+              <a href={m.url}>
+                {m.thumbnail ? (
+                  <img src={m.thumbnail} alt={m.title} loading="lazy" width="180" height="130" />
+                ) : (
+                  <span class="nothumb">map</span>
+                )}
+              </a>
+            ) : (
+              <span class="nothumb">map</span>
+            )}
+            <span class="cap">{m.title}</span>
+            {m.caption && m.caption !== m.title && <span class="sub">{m.caption}</span>}
+            <span class="sub">
+              {m.format}
+              {m.bytes ? ` · ${bytesLabel(m.bytes)}` : ''}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {placeSlugs.length > 0 && (
+    <section aria-labelledby="stopmap-heading">
+      <h2 id="stopmap-heading">Where this day went</h2>
+      <p>
+        The stops on this interview that have been given a location. Select a
+        point for the place page.
+      </p>
+      <MapWithList
+        id={`elliott-iv-${iv.key}-map`}
+        features={features}
+        center={ELLIOTT_CENTER}
+        zoom={10}
+        height="420px"
+        fit={true}
+        listTitle="Stops placed on the map"
+      />
+    </section>
+  )}
+
+  {iv.tapes.length > 0 && <TapeList tapes={iv.tapes} interviewKey={iv.key} />}
+
+  {iv.segments.length > 0 && (
+    <section aria-labelledby="index-heading">
+      <h2 id="index-heading">Bob Zybach's index</h2>
+      <p>
+        His own table, as he compiled it in 2019: the stop he numbered, the tape
+        side, the minute on the tape, his topic line, the transcript page, and
+        his photograph count. Page numbers link into the transcript below;
+        stops link to their place page where a location has been established.
+      </p>
+      <SegmentTable
+        segments={iv.segments}
+        caption={`${iv.segments.length} indexed stops across ${iv.tapes.length} tape sides.`}
+      />
+    </section>
+  )}
+
+  {relatedPages.length > 0 && (
+    <section aria-labelledby="related-heading">
+      <h2 id="related-heading">Filed with this interview</h2>
+      <ul class="zy-related">
+        {relatedPages.map(({ r, page }: any) => (
+          <li>
+            {page ? <a href={page.href}>{r.title}</a> : r.title}
+            {r.note && <span class="note"> — {r.note}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {t ? (
+    <Transcript transcript={t} pagePath={pagePath} />
+  ) : (
+    <p class="zy-missing">
+      No transcript has been parsed for this interview yet.
+    </p>
+  )}
+
+  {t && t.gaps.length > 0 && (
+    <section aria-labelledby="gaps-heading" class="zy-gaps">
+      <h2 id="gaps-heading">What is missing or uncertain here</h2>
+      <ul>
+        {t.gaps.map((g: any) => (
+          <li>{plainNote(typeof g === 'string' ? g : (g?.note ?? ''))}</li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <PhotoGrid
+    groups={photoGroups}
+    heading="Photographs from this interview"
+    headingId="photographs"
+    note={
+      totalIndexedPhotos > 0 && totalIndexedPhotos !== iv.photographs.length
+        ? `Bob Zybach's index counts ${totalIndexedPhotos} photographs for this day; ${iv.photographs.length} are published on orww.org.`
+        : undefined
+    }
+  />
+
+  <CitationBlock
+    canonical={canonical}
+    short={`${iv.zc_id ?? iv.interview_id}:<page>`}
+    url={url}
+    pdfUrl={t?.public_url ?? undefined}
+  />
+  <p class="zy-cite-note">
+    Bob Zybach did not print a citation string for the Elliott interviews. The
+    form above is assembled from his own project title and the title he gave
+    this interview; the short form is this library's, citing the printed page.
+  </p>
+
+  <p class="zy-corrections">
+    Something wrong on this page?
+    {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the form
+    opens with this page already filled in, the same control that sits at the foot
+    of every page in the Library.
+    {' '}<a href="/about/corrections/">How corrections work</a>.
+  </p>
+</RoomLayout>
+
+<style>
+  .zy-facts {
+    margin: 0.8rem 0 0;
+    font-size: 0.88rem;
+  }
+  .zy-facts > div {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    gap: 0.5rem;
+    padding: 0.22rem 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  @media (max-width: 40rem) {
+    .zy-facts > div {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+  .zy-facts dt {
+    color: #475569;
+    font-weight: 600;
+  }
+  .zy-facts dd {
+    margin: 0;
+  }
+  .zy-route {
+    margin: 0.9rem 0 0;
+    font-size: 0.9rem;
+  }
+  .zy-maps {
+    list-style: none;
+    margin: 0.8rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .zy-maps li {
+    font-size: 0.78rem;
+  }
+  .zy-maps img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #d6cfbf;
+    display: block;
+  }
+  .zy-maps .nothumb {
+    display: block;
+    padding: 1.6rem 0;
+    text-align: center;
+    border: 1px dashed #d6cfbf;
+    color: #94a3b8;
+  }
+  .zy-maps .cap {
+    display: block;
+    margin-top: 0.3rem;
+  }
+  .zy-maps .sub {
+    display: block;
+    color: #94a3b8;
+  }
+  .zy-notes-detail {
+    font-size: 0.82rem;
+    color: #475569;
+    margin: 0 0 1rem;
+  }
+  .zy-notes-detail summary {
+    cursor: pointer;
+  }
+  .zy-notes-detail .pg {
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+  .zy-related {
+    font-size: 0.9rem;
+    margin: 0.6rem 0 0;
+    padding-left: 1.1rem;
+  }
+  .zy-related .note {
+    color: #475569;
+  }
+  .zy-gaps {
+    margin: 2rem 0 0;
+  }
+  .zy-gaps ul {
+    font-size: 0.85rem;
+    color: #475569;
+    padding-left: 1.1rem;
+  }
+  .zy-missing {
+    font-style: italic;
+    color: #7a2e2e;
+  }
+  .zy-cite-note,
+  .zy-corrections {
+    font-size: 0.78rem;
+    color: #475569;
+  }
+</style>

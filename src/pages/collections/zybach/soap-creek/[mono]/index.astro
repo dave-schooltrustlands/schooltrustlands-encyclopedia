@@ -1,0 +1,545 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import CitationBlock from '../../../../../components/zybach/soapcreek/CitationBlock.astro';
+import ProvenanceBlock from '../../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
+import ContentNote from '../../../../../components/zybach/soapcreek/ContentNote.astro';
+import {
+  monographs,
+  transcriptFor,
+  allIndexEntries,
+  people,
+} from '../../../../../components/zybach/soapcreek/data';
+import type { Monograph, Chapter, StructureItem } from '../../../../../components/zybach/soapcreek/data';
+import {
+  monoHref,
+  chapterHref,
+  personHref,
+  placeHref,
+  indexHref,
+  folioHref,
+  prettyDate,
+  displayNarrators,
+  hasPersonPage,
+} from '../../../../../components/zybach/soapcreek/links';
+import { plainNote } from '../../../../../components/zybach/labels';
+import { confidenceLabel } from '../../../../../components/zybach/labels';
+
+export async function getStaticPaths() {
+  return monographs.map((m) => ({ params: { mono: m.slug }, props: { mono: m } }));
+}
+
+const { mono } = Astro.props as { mono: Monograph };
+const t = transcriptFor(mono.zc_id);
+const chapters: Chapter[] = t.chapters ?? [];
+const chapterBySlug = new Map(chapters.map((c) => [c.slug, c]));
+
+const url = monoHref(mono.slug);
+const structure: StructureItem[] = mono.structure ?? [];
+
+/** Match a printed structure row to the transcript chapter that holds it. */
+function chapterForStructure(s: StructureItem): Chapter | undefined {
+  if (s.slug && chapterBySlug.has(s.slug)) return chapterBySlug.get(s.slug);
+  const start = s.start_page;
+  if (start !== undefined && start !== null) {
+    const ch = chapters.find(
+      (c) => String(c.start_page) === String(start) || (c.entries ?? []).some((e) => String(e.page) === String(start)),
+    );
+    if (ch) return ch;
+  }
+  if (s.title) {
+    const ch = chapters.find((c) => (c.title ?? '').trim() === s.title!.trim());
+    if (ch) return ch;
+  }
+  return undefined;
+}
+
+const frontMatterOrder: Array<[string, string]> = [
+  ['cover_text', 'Cover, as printed'],
+  ['cover_photo_caption', 'Cover photograph'],
+  ['title_page', 'Title page'],
+  ['series_list', 'The series, as listed inside the front cover'],
+  ['series_list_note', 'A note on that list'],
+  ['acknowledgements', 'Acknowledgments'],
+  ['project_statement', 'Soap Creek Valley History Project'],
+  ['introduction', 'Introduction'],
+  ['map_note', 'The map'],
+  ['table_of_contents', 'Table of contents, as printed'],
+];
+const fm = mono.front_matter ?? {};
+const frontMatter = frontMatterOrder
+  .filter(([k]) => typeof fm[k] === 'string' && (fm[k] as string).trim().length > 0)
+  .map(([k, label]) => ({
+    key: k,
+    label,
+    /* `*_note` fields are the Library's own notes about the leaf, not the
+       printed text; they get plain wording. Printed text is untouched. */
+    text: k.endsWith('_note') ? plainNote(fm[k] as string) : (fm[k] as string),
+  }));
+
+const sessions = mono.sessions ?? [];
+const photographs = (mono.photographs ?? []).filter((p) => p && (p.caption || p.title));
+const maps = mono.maps ?? [];
+const notes = (mono.content_notes ?? []).filter((n) => n && (n.display_note || n.note));
+const missing = mono.missing_pages ?? [];
+const holdRanges = mono.holds ?? [];
+
+const drift =
+  typeof mono.index_drift === 'object' && mono.index_drift
+    ? mono.index_drift
+    : { drift: !!mono.index_drift, note: mono.index_drift_note };
+const driftNote = plainNote((drift as any)?.note ?? mono.index_drift_note ?? '');
+
+// This book's own back-of-book index, made live: every entry in the merged
+// Series Index that carries a reference into this monograph.
+const bookIndex = allIndexEntries()
+  .map((e) => {
+    const refs = (e.refs ?? []).filter((r) => r.mono_slug === mono.slug);
+    const subs = (e.subentries ?? [])
+      .map((s) => ({ ...s, refs: (s.refs ?? []).filter((r) => r.mono_slug === mono.slug) }))
+      .filter((s) => s.refs.length > 0);
+    return { ...e, refs, subentries: subs };
+  })
+  .filter((e) => e.refs.length > 0 || e.subentries.length > 0)
+  .sort((a, b) => (a.heading ?? '').localeCompare(b.heading ?? ''));
+
+const narratorPeople = (mono.narrators ?? [])
+  .map((n) => ({
+    name: n.display_name ?? n.name ?? '',
+    slug: n.person_slug,
+  }))
+  .filter((n) => n.name);
+
+const contributors = (mono.contributors ?? []).filter((c) => c && (c.name || c.display_name));
+
+const source: any = mono.source ?? {};
+const provenanceItems = [
+  { label: 'Creator', value: 'Dr. Bob Zybach', href: '/collections/zybach/' },
+  ...(narratorPeople.length
+    ? [{ label: 'Narrator', value: narratorPeople.map((n) => n.name).join(', ') }]
+    : []),
+  ...(sessions.length
+    ? [
+        {
+          label: 'Recorded',
+          value: `${sessions.length} session${sessions.length === 1 ? '' : 's'}, ${prettyDate(sessions[0]?.date)}${
+            sessions.length > 1 ? ` to ${prettyDate(sessions[sessions.length - 1]?.date)}` : ''
+          }`,
+        },
+      ]
+    : []),
+  ...(contributors.length
+    ? [
+        {
+          label: 'Transcribed, audited, edited',
+          value: contributors
+            .map((c) => `${c.display_name ?? c.name}${c.role ? ` (${c.role})` : ''}`)
+            .join('; '),
+        },
+      ]
+    : []),
+  ...(mono.year_printed
+    ? [
+        {
+          label: 'Printed',
+          value: `${mono.year_printed}${mono.printing ? `, ${mono.printing}` : ''}${
+            mono.publisher ? ` · ${mono.publisher}` : ''
+          }`,
+        },
+      ]
+    : []),
+  ...(mono.pages_printed ? [{ label: 'Pages', value: `${mono.pages_printed} printed pages` }] : []),
+  ...(mono.pdf_url ? [{ label: 'Original', value: mono.pdf_url, href: mono.pdf_url }] : []),
+  {
+    label: 'Accessioned',
+    value: 'From Bob Zybach’s upload, 23 August 2026',
+    href: '/collections/zybach/provenance/',
+  },
+  ...(source.sha256 ? [{ label: 'Source file checksum', value: `sha256:${String(source.sha256).slice(0, 32)}…` }] : []),
+];
+
+const whatThisIs = `Monograph #${mono.number} in the Soap Creek Valley oral history series: ${
+  displayNarrators(mono) || mono.title
+}, recorded in ${sessions.length || 'several'} session${sessions.length === 1 ? '' : 's'}${
+  sessions.length ? ` between ${prettyDate(sessions[0]?.date)} and ${prettyDate(sessions[sessions.length - 1]?.date)}` : ''
+}, printed ${mono.year_printed ?? ''}.`;
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+];
+---
+<SoapCreekPage
+  title={mono.title ?? mono.slug}
+  subtitle={whatThisIs}
+  kicker={`Soap Creek Valley oral history series · Monograph #${mono.number}`}
+  parents={parents}
+  sourceId={`zybach-${mono.zc_id}`}
+  navCurrent="soap-creek"
+>
+  {mono.subtitle && <p class="sc-whatis"><em>{mono.subtitle}</em></p>}
+
+  {mono.cover_url && (
+    <figure class="sc-cover">
+      <a href={mono.cover_url} rel="external">
+        <img
+          src={mono.thumb_url ?? mono.cover_url}
+          alt={`Cover of ${mono.title ?? `monograph #${mono.number}`} as printed`}
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <figcaption>
+        The printed cover. <a href={mono.cover_url} rel="external">Full-size scan</a> on
+        the creator's own site, nwmapsco.com.
+      </figcaption>
+    </figure>
+  )}
+
+  {mono.citation_canonical && <p class="sc-canonical">{mono.citation_canonical}</p>}
+
+  <ProvenanceBlock items={provenanceItems} />
+
+  {notes.map((n) => (
+    <ContentNote
+      text={`${n.display_note ?? n.note}${n.page !== undefined && n.page !== null ? ` (printed page ${n.page})` : ''}`}
+      level="item"
+    />
+  ))}
+
+  {(missing.length > 0 || holdRanges.length > 0 || (drift as any)?.drift) && (
+    <section aria-labelledby="what-is-not-here" class="sc-gaps">
+      <h2 id="what-is-not-here">What is not here, and why</h2>
+      <ul class="sc-list">
+        {missing.length > 0 && (
+          <li>
+            <strong>Missing pages.</strong>
+            <span class="sc-list-meta">
+              Printed page{missing.length === 1 ? '' : 's'} {missing.join(', ')}{' '}
+              {missing.length === 1 ? 'is' : 'are'} absent from the scanned copy. The
+              page number is preserved in the sequence so citations still resolve.
+            </span>
+          </li>
+        )}
+        {holdRanges.map((h) => (
+          <li>
+            <strong>Held for review.</strong>
+            <span class="sc-list-meta">
+              {Array.isArray(h.pages) ? `Pages ${(h.pages as any[]).join(', ')}. ` : ''}
+              {h.reason}
+            </span>
+          </li>
+        ))}
+        {(drift as any)?.drift && (
+          <li>
+            <strong>The printed index does not match these page numbers.</strong>
+            <span class="sc-list-meta">
+              {driftNote ||
+                'The back-of-book index in this volume was compiled against a different pagination, so its page numbers run ahead of the printed page numbers. Place and topic pages for this book are built from the transcript text rather than from that index.'}
+            </span>
+          </li>
+        )}
+      </ul>
+    </section>
+  )}
+
+  {frontMatter.length > 0 && (
+    <section aria-labelledby="front-matter">
+      <h2 id="front-matter">Front matter, as printed</h2>
+      {frontMatter.map((f) => (
+        <div class="sc-fm">
+          <h3>{f.label}</h3>
+          <div class="sc-verbatim">{f.text}</div>
+        </div>
+      ))}
+    </section>
+  )}
+
+  {sessions.length > 0 && (
+    <section aria-labelledby="sessions">
+      <h2 id="sessions">The recording sessions</h2>
+      <ul class="sc-list">
+        {sessions.map((s) => (
+          <li>
+            <strong>{prettyDate(s.date) || s.date}</strong>
+            {s.place && <> — {s.place}</>}
+            <span class="sc-list-meta">
+              {[
+                s.interviewers?.length ? `Interviewer${s.interviewers.length === 1 ? '' : 's'}: ${s.interviewers.join(', ')}` : null,
+                s.mode ? `Mode: ${s.mode}` : null,
+                s.confidence ? `Source: ${confidenceLabel(s.confidence)}` : null,
+              ]
+                .filter(Boolean)
+                .join(' · ')}
+            </span>
+            {s.notes && <span class="sc-list-meta">{s.notes}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="contents">
+    <h2 id="contents">Contents</h2>
+    {structure.length > 0 ? (
+      <ol class="sc-toc">
+        {structure.map((s) => {
+          const ch = chapterForStructure(s);
+          const label = [s.label, s.title].filter(Boolean).join('. ');
+          const pages =
+            s.start_page !== undefined && s.start_page !== null
+              ? s.end_page !== undefined && s.end_page !== null && String(s.end_page) !== String(s.start_page)
+                ? `pp. ${s.start_page}–${s.end_page}`
+                : `p. ${s.start_page}`
+              : '';
+          return (
+            <li class={`sc-toc-${s.level ?? 'other'}`}>
+              {ch ? (
+                <a href={chapterHref(mono.slug, ch.slug)}>{label || ch.title}</a>
+              ) : (
+                <span>{label}</span>
+              )}
+              {pages && <span class="sc-toc-pages">{pages}</span>}
+            </li>
+          );
+        })}
+      </ol>
+    ) : chapters.length > 0 ? (
+      <ol class="sc-toc">
+        {chapters.map((c) => (
+          <li>
+            <a href={chapterHref(mono.slug, c.slug)}>{[c.label, c.title].filter(Boolean).join('. ')}</a>
+            {c.start_page !== undefined && (
+              <span class="sc-toc-pages">
+                pp. {c.start_page}–{c.end_page}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <p class="sc-empty">The transcript for this monograph has not been generated yet.</p>
+    )}
+  </section>
+
+  {maps.length > 0 && (
+    <section aria-labelledby="maps">
+      <h2 id="maps">Maps printed in this volume</h2>
+      <ul class="sc-list">
+        {maps.map((m) => (
+          <li>
+            <strong>{m.title}</strong>
+            {m.page !== undefined && <span class="sc-list-meta">Printed page {m.page}</span>}
+            {m.keys && m.keys.length > 0 && (
+              <span class="sc-list-meta">Legend: {m.keys.join(' · ')}</span>
+            )}
+            {m.note && <span class="sc-list-meta">{m.note}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {photographs.length > 0 && (
+    <section aria-labelledby="photographs">
+      <h2 id="photographs">Photographs</h2>
+      <p class="sc-list-meta">
+        Captions are printed exactly as they appear in the book. The photographs
+        themselves are in the printed volume and are not online yet; the scanned
+        PDF of the whole book shows them.
+      </p>
+      <ul class="sc-list">
+        {photographs.map((p) => {
+          const imageUrl = (p as any).url ?? (p as any).image_url ?? null;
+          const pageHref =
+            (p as any).href ??
+            (typeof p.page === 'number' ? folioHref(mono.slug, p.page) : null) ??
+            null;
+          const caption = p.caption ?? p.title ?? '';
+          const pageLabel =
+            p.page !== undefined && p.page !== null
+              ? /^\d+$/.test(String(p.page))
+                ? `p. ${p.page}`
+                : String(p.page)
+              : null;
+          return (
+            <li>
+              {imageUrl ? <a href={imageUrl}>{caption}</a> : <span>{caption}</span>}
+              <span class="sc-list-meta">
+                {imageUrl
+                  ? null
+                  : pageLabel
+                    ? `Photograph in the printed book, ${pageLabel} (not yet online)`
+                    : 'Photograph in the printed book (not yet online)'}
+              </span>
+              <span class="sc-list-meta">
+                {[
+                  p.date,
+                  p.photographer ? `Photograph by ${p.photographer}` : null,
+                  p.courtesy ? `Courtesy ${p.courtesy}` : null,
+                ]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </span>
+              {pageHref && (
+                <span class="sc-list-meta">
+                  <a href={pageHref}>Read the page it is printed on</a>
+                </span>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )}
+
+  {bookIndex.length > 0 && (
+    <section aria-labelledby="book-index">
+      <h2 id="book-index">Index to this volume</h2>
+      <p class="sc-list-meta">
+        Bob's own back-of-book index, made live: each page number opens that page
+        of the transcript. Every heading also appears in the
+        {' '}<a href={indexHref()}>Series Index</a>, where it gathers references
+        from all fifteen monographs.
+      </p>
+      <div class="sc-cols">
+        {bookIndex.map((e) => (
+          <div class="sc-index-entry">
+            <span class="sc-index-heading">
+              {e.place_slug ? (
+                <a href={placeHref(e.place_slug)}>{e.heading}</a>
+              ) : e.person_slug && hasPersonPage(e.person_slug) ? (
+                <a href={personHref(e.person_slug)}>{e.heading}</a>
+              ) : (
+                e.heading
+              )}
+            </span>
+            {e.refs.length > 0 && (
+              <span class="sc-refs">
+                {' '}
+                {e.refs.map((r, i) => (
+                  <>
+                    {i > 0 && ', '}
+                    {r.href ?? folioHref(mono.slug, r.page ?? '') ? (
+                      <a href={r.href ?? folioHref(mono.slug, r.page ?? '')!}>{r.page}</a>
+                    ) : (
+                      <span>{r.page}</span>
+                    )}
+                  </>
+                ))}
+              </span>
+            )}
+            {e.subentries.length > 0 && (
+              <ul class="sc-index-sub">
+                {e.subentries.map((s) => (
+                  <li>
+                    {s.subheading}{' '}
+                    <span class="sc-refs">
+                      {(s.refs ?? []).map((r, i) => (
+                        <>
+                          {i > 0 && ', '}
+                          {r.href ?? folioHref(mono.slug, r.page ?? '') ? (
+                            <a href={r.href ?? folioHref(mono.slug, r.page ?? '')!}>{r.page}</a>
+                          ) : (
+                            <span>{r.page}</span>
+                          )}
+                        </>
+                      ))}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section aria-labelledby="the-original">
+    <h2 id="the-original">The printed original</h2>
+    <ul class="sc-list">
+      {mono.pdf_url && (
+        <li>
+          <a href={mono.pdf_url} rel="external">Read the original PDF</a>
+          <span class="sc-list-meta">
+            The whole monograph as printed, on the creator's own site, nwmapsco.com.
+          </span>
+        </li>
+      )}
+      {mono.cover_url && (
+        <li>
+          <a href={mono.cover_url} rel="external">The cover image</a>
+          <span class="sc-list-meta">On the creator's own site, nwmapsco.com.</span>
+        </li>
+      )}
+    </ul>
+  </section>
+
+  <CitationBlock
+    canonical={mono.citation_canonical ?? ''}
+    short={mono.citation_short ?? ''}
+    url={url}
+    pdfUrl={mono.pdf_url ?? undefined}
+  />
+</SoapCreekPage>
+
+<style is:global>
+  .sc-fm h3 {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b6355;
+    margin: 1.5rem 0 0.4rem;
+  }
+  .sc-toc {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  .sc-toc li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dotted #e4ddcc;
+  }
+  .sc-toc-front,
+  .sc-toc-index {
+    color: #6b6355;
+    font-size: 0.92rem;
+  }
+  .sc-toc-chapter {
+    padding-left: 1.2rem !important;
+    font-size: 0.92rem;
+  }
+  .sc-toc-pages {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.76rem;
+    color: #8a8172;
+    white-space: nowrap;
+  }
+  .sc-gaps {
+    margin: 1.5rem 0;
+  }
+  .sc-cover {
+    width: min(200px, 55%);
+    margin: 1.2rem 0;
+  }
+  .sc-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #d8d1c2;
+    background: #fffdf7;
+  }
+  .sc-cover figcaption {
+    margin-top: 0.35rem;
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.72rem;
+    line-height: 1.4;
+    color: #6b6355;
+  }
+</style>

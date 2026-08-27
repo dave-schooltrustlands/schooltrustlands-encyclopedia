@@ -1,0 +1,197 @@
+{
+  "generated": "2026-08-27",
+  "letter": "Q",
+  "letter_file": "q",
+  "href": "/collections/zybach/soap-creek/index/q/",
+  "counts": {
+    "entries": 1,
+    "refs": 12,
+    "subentries": 1
+  },
+  "entries": [
+    {
+      "entry_id": "zc-sc-idx-quarries",
+      "heading": "Quarries",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        4,
+        5,
+        8,
+        12
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m04",
+          "mono_slug": "m04-sekermestrovich",
+          "mono_number": 4,
+          "page": 12,
+          "page_kind": "body",
+          "printed": "12",
+          "ref": "04:12",
+          "href": "/collections/zybach/soap-creek/m04-sekermestrovich/08-camp-clothes-and-cars/#p12",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m04",
+          "mono_slug": "m04-sekermestrovich",
+          "mono_number": 4,
+          "page": 13,
+          "page_kind": "body",
+          "printed": "13",
+          "ref": "04:13",
+          "href": "/collections/zybach/soap-creek/m04-sekermestrovich/09-camp-jobs/#p13",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m04",
+          "mono_slug": "m04-sekermestrovich",
+          "mono_number": 4,
+          "page": 26,
+          "page_kind": "body",
+          "printed": "26",
+          "ref": "04:26",
+          "href": "/collections/zybach/soap-creek/m04-sekermestrovich/16-camp-buildings/#p26",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m05",
+          "mono_slug": "m05-rohner",
+          "mono_number": 5,
+          "page": 15,
+          "page_kind": "body",
+          "printed": "15-17",
+          "ref": "05:15",
+          "href": "/collections/zybach/soap-creek/m05-rohner/a-coffin-butte-landfill/#p15",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m05",
+          "mono_slug": "m05-rohner",
+          "mono_number": 5,
+          "page": 16,
+          "page_kind": "body",
+          "printed": "15-17",
+          "ref": "05:16",
+          "href": "/collections/zybach/soap-creek/m05-rohner/a-coffin-butte-landfill/#p16",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m05",
+          "mono_slug": "m05-rohner",
+          "mono_number": 5,
+          "page": 17,
+          "page_kind": "body",
+          "printed": "15-17",
+          "ref": "05:17",
+          "href": "/collections/zybach/soap-creek/m05-rohner/a-coffin-butte-landfill/#p17",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m05",
+          "mono_slug": "m05-rohner",
+          "mono_number": 5,
+          "page": 19,
+          "page_kind": "body",
+          "printed": "19",
+          "ref": "05:19",
+          "href": "/collections/zybach/soap-creek/m05-rohner/b-rohner-drive/#p19",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m05",
+          "mono_slug": "m05-rohner",
+          "mono_number": 5,
+          "page": 63,
+          "page_kind": "body",
+          "printed": "63",
+          "ref": "05:63",
+          "href": "/collections/zybach/soap-creek/m05-rohner/06-overpass-photograph/#p63",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m05",
+          "mono_slug": "m05-rohner",
+          "mono_number": 5,
+          "page": 86,
+          "page_kind": "body",
+          "printed": "86",
+          "ref": "05:86",
+          "href": "/collections/zybach/soap-creek/m05-rohner/18-stellmacher-house-photograph/#p86",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m08",
+          "mono_slug": "m08-vanderburg",
+          "mono_number": 8,
+          "page": 101,
+          "page_kind": "body",
+          "printed": "101",
+          "ref": "08:101",
+          "href": "/collections/zybach/soap-creek/m08-vanderburg/v-sulphur-springs-and-charlie-white/#p101",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m12",
+          "mono_slug": "m12-cook",
+          "mono_number": 12,
+          "page": 52,
+          "page_kind": "body",
+          "printed": "52",
+          "ref": "12:52",
+          "href": "/collections/zybach/soap-creek/m12-cook/j-lewisburg-saddle-viewpoint/#p52",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [
+        {
+          "subheading": "Rock Pit",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m05",
+              "mono_slug": "m05-rohner",
+              "mono_number": 5,
+              "page": 15,
+              "page_kind": "body",
+              "printed": "15",
+              "ref": "05:15",
+              "href": "/collections/zybach/soap-creek/m05-rohner/a-coffin-butte-landfill/#p15",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 12
+    }
+  ]
+}

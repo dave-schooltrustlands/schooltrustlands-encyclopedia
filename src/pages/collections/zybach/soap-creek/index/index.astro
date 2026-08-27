@@ -1,0 +1,126 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import { seriesIndexMeta, monographs } from '../../../../../components/zybach/soapcreek/data';
+import { indexLetterHref, letterSlug, placesHref, peopleHref } from '../../../../../components/zybach/soapcreek/links';
+
+/** `headings` carries a summary row per heading — enough to count this page
+ *  without loading any of the (large) per-letter entry files. */
+const letters: Record<string, Array<{ ref_count?: number }>> = seriesIndexMeta.headings ?? {};
+
+const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const buckets = new Map<string, { label: string; entries: number; refs: number }>();
+
+for (const [rawLetter, entries] of Object.entries(letters)) {
+  const slug = letterSlug(rawLetter);
+  const label = slug === 'other' ? 'Other' : slug.toUpperCase();
+  const refs = (entries ?? []).reduce((n, e) => n + (e.ref_count ?? 0), 0);
+  const prev = buckets.get(slug) ?? { label, entries: 0, refs: 0 };
+  buckets.set(slug, { label, entries: prev.entries + (entries?.length ?? 0), refs: prev.refs + refs });
+}
+
+const totalEntries = [...buckets.values()].reduce((n, b) => n + b.entries, 0);
+const totalRefs = [...buckets.values()].reduce((n, b) => n + b.refs, 0);
+
+const rows = [
+  ...ALPHA.map((L) => ({ slug: L.toLowerCase(), label: L, ...(buckets.get(L.toLowerCase()) ?? { entries: 0, refs: 0 }) })),
+  ...(buckets.has('other') ? [{ slug: 'other', label: 'Other', ...buckets.get('other')! }] : []),
+];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+];
+---
+<SoapCreekPage
+  title="The Series Index"
+  subtitle="Bob Zybach printed a two-tier index in the back of every monograph. Merged across all fifteen and made live, they become one index to the whole series — and every page reference is a link to the page."
+  kicker="Soap Creek Valley · Series Index"
+  parents={parents}
+  sourceId="zybach-sc-series-index"
+  navCurrent="index"
+  width="full"
+  corrections={false}
+>
+  <p>
+    A reference reads <code>05:47</code> — monograph five, printed page
+    forty-seven. That is the citation unit Bob used across the whole series and
+    in the thesis, and it is preserved here exactly. Click one and you land on
+    that printed page of that transcript.
+  </p>
+
+  {totalEntries > 0 ? (
+    <p class="sc-list-meta">
+      {totalEntries.toLocaleString()} headings · {totalRefs.toLocaleString()} page
+      references · {monographs.length} monographs.
+    </p>
+  ) : (
+    <p class="sc-empty">The Series Index has not been generated yet.</p>
+  )}
+
+  <nav class="sc-alpha" aria-label="Index letters">
+    {rows.map((r) =>
+      r.entries > 0 ? (
+        <a href={indexLetterHref(r.slug)} aria-label={`${r.label}, ${r.entries} headings`}>
+          {r.label}
+        </a>
+      ) : (
+        <span aria-disabled="true">{r.label}</span>
+      ),
+    )}
+  </nav>
+
+  {totalEntries > 0 && (
+    <div class="sc-table-wrap">
+      <table class="sc-table">
+        <caption class="sc-list-meta">Headings and page references, by letter.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Letter</th>
+            <th scope="col">Headings</th>
+            <th scope="col">Page references</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows
+            .filter((r) => r.entries > 0)
+            .map((r) => (
+              <tr>
+                <th scope="row"><a href={indexLetterHref(r.slug)}>{r.label}</a></th>
+                <td>{r.entries.toLocaleString()}</td>
+                <td>{r.refs.toLocaleString()}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+
+  <section aria-labelledby="living">
+    <h2 id="living">Why this index is living</h2>
+    <p>
+      Bob's printed indexes were compiled book by book, by hand, over twenty
+      years. Merging them turns fifteen separate finding tools into one: a
+      heading that appears in three books now shows all three books' pages in one
+      place. Headings that name a place also link to that
+      {' '}<a href={placesHref()}>place's page</a>, where the same references are
+      grouped by narrator and quoted; headings that name one of the narrators,
+      interviewers or contributors link to
+      {' '}<a href={peopleHref()}>their page</a>.
+    </p>
+    <h3 id="drift">Two books whose index numbers run ahead</h3>
+    <p>
+      The printed indexes of #06 Hanish and #07 Olson were compiled against a
+      pagination the finished volumes did not carry, so their references point a
+      few pages ahead of where the text actually is — 1,644 references in all.
+      Nothing has been renumbered. The reference the book prints comes first and
+      is the link, exactly as printed. Where the Library has worked out which
+      printed page the reference means, that page is shown beside it in square
+      brackets and marked <em>worked out</em>, or <em>checked</em> where a second
+      reader has confirmed it against the book. At present none of the 1,644 has
+      been checked, so all of them read <em>worked out</em>: treat them as the
+      Library's best reading, not as the book's word.
+    </p>
+  </section>
+</SoapCreekPage>

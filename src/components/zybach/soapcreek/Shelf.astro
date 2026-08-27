@@ -1,0 +1,60 @@
+---
+/**
+ * The shelf: fifteen monographs as Bob's own covers, in series order, each one
+ * a door into the book. Covers are served from the creator's own site
+ * (nwmapsco.com); where no cover URL is known the tile shows the number and
+ * title instead of a broken image.
+ */
+import type { Monograph } from './data';
+import { monoHref, displayNarrators } from './links';
+
+export interface Props {
+  monographs: Monograph[];
+}
+const { monographs } = Astro.props as Props;
+---
+
+<ul class="sc-shelf">
+  {monographs.map((m) => {
+    const href = monoHref(m.slug);
+    const num = m.number != null ? `#${m.number}` : '';
+    const people = displayNarrators(m);
+    return (
+      <li>
+        <a href={href} class="sc-shelf-link">
+          {m.cover_url ? (
+            <img
+              class="sc-shelf-cover"
+              src={m.thumb_url ?? m.cover_url}
+              alt={`Cover of ${m.title}${m.year_printed ? `, ${m.year_printed}` : ''}`}
+              loading="lazy"
+              width="240"
+              height="320"
+            />
+          ) : (
+            <span class="sc-shelf-cover sc-shelf-cover-missing">
+              {num} {m.title}
+            </span>
+          )}
+          <span class="sc-shelf-num">Monograph {num}{m.year_printed ? ` · ${m.year_printed}` : ''}</span>
+          <span class="sc-shelf-title">{m.title}</span>
+        </a>
+        {m.subtitle && <span class="sc-shelf-sub">{m.subtitle}</span>}
+        {people && people !== m.title && <span class="sc-shelf-sub">Narrator: {people}</span>}
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  .sc-shelf-link {
+    text-decoration: none;
+    display: block;
+  }
+  .sc-shelf-link:hover .sc-shelf-title,
+  .sc-shelf-link:focus-visible .sc-shelf-title {
+    text-decoration: underline;
+    text-decoration-color: var(--old-gold, #a87f2c);
+    text-underline-offset: 3px;
+  }
+</style>

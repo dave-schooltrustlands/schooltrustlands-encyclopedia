@@ -1,0 +1,90 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import { ZybachNav } from '../../../../../components/zybach/elliott/shared';
+import {
+  BASE,
+  videos,
+  videoChannel,
+  videoPlaylistUrl,
+  counts,
+} from '../../../../../components/zybach/elliott/data';
+---
+
+<RoomLayout
+  room="collections"
+  title="Videos"
+  subtitle={`${counts.videos} videos on the ${videoChannel ?? 'ORWWmedia'} playlist, time-coded`}
+  width="full"
+  sourceId="zybach-elliott-videos"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+    { label: 'Elliott State Forest', href: `${BASE}/` },
+  ]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Elliott State Forest</p>
+
+  <ZybachNav current="elliott" />
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <p>
+    Bob Zybach wrote a time-coded index into each of these descriptions —{' '}
+    {counts.videoSegments} entries in all, many of them numbered to a stop on a
+    field trip. Each video page cues the embed to the moment.
+    {videoPlaylistUrl && (
+      <>
+        {' '}
+        <a href={videoPlaylistUrl}>The playlist on YouTube</a>.
+      </>
+    )}
+  </p>
+
+  <ol class="zy-video-list">
+    {videos.map((v) => (
+      <li>
+        <h2><a href={v.href}>{v.title}</a></h2>
+        <p class="meta">
+          {v.position != null && <span>#{v.position}</span>}
+          {v.length_label && <span>{v.length_label}</span>}
+          {v.published && <span>{v.published}</span>}
+          <span>{v.segments.length} time codes</span>
+          {v.segments.some((s) => s.stop_number != null) && (
+            <span>
+              {v.segments.filter((s) => s.stop_number != null).length} numbered stops
+            </span>
+          )}
+          {v.orww_links.length > 0 && <span>{v.orww_links.length} ORWW links</span>}
+        </p>
+      </li>
+    ))}
+  </ol>
+
+  <p class="see-also"><a href={`${BASE}/`}>Back to the Elliott State Forest series</a></p>
+</RoomLayout>
+
+<style>
+  .zy-video-list {
+    list-style: none;
+    margin: 1.2rem 0 2rem;
+    padding: 0;
+  }
+  .zy-video-list li {
+    border-top: 1px solid #e2e8f0;
+    padding: 0.7rem 0;
+  }
+  .zy-video-list h2 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  .zy-video-list .meta {
+    margin: 0.2rem 0 0;
+    font-size: 0.78rem;
+    color: #475569;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem 0.85rem;
+  }
+</style>

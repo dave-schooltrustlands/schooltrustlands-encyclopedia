@@ -1,0 +1,73 @@
+---
+/* ContentNote.astro — The Zybach Collection
+ *
+ * A quiet, oxblood-bordered note. Archives describe; they do not edit. When a
+ * page, an item, or the whole collection carries language or personal detail a
+ * reader should know about before reading, the note says so plainly and leaves
+ * the source untouched.
+ *
+ * Contract (BUILD_SPEC §"Shared component contracts"):
+ *   { text: string; level?: 'collection' | 'item' | 'page' }
+ *
+ * `draft` adds a one-line eyebrow above the note. The collection-level
+ * statement is written but not yet agreed with the creator, and a reader
+ * should be able to see that from the note itself rather than from a banner
+ * somewhere else on the page.
+ */
+interface Props {
+  text: string;
+  level?: 'collection' | 'item' | 'page';
+  draft?: boolean;
+}
+
+const { text, level = 'item', draft = false } = Astro.props;
+
+const LABEL: Record<NonNullable<Props['level']>, string> = {
+  collection: 'Note on this collection',
+  item: 'Note on this item',
+  page: 'Note on this page',
+};
+---
+
+<aside class="zc-note" data-level={level} aria-label={LABEL[level]}>
+  {draft && (
+    <p class="zc-note__draft">Draft statement — pending review with the creator</p>
+  )}
+  <p class="zc-note__label">{LABEL[level]}</p>
+  <p class="zc-note__text">{text}</p>
+</aside>
+
+<style>
+  .zc-note {
+    margin: 1.5rem 0;
+    padding: 0.85rem 1.1rem;
+    background: rgba(122, 46, 46, 0.045);
+    border-left: 3px solid var(--oxblood, #7a2e2e);
+    border-radius: 3px;
+    font-family: var(--font-sans);
+  }
+  .zc-note__draft {
+    margin: 0 0 0.35rem;
+    font-size: 0.7rem;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    color: #5c5346;
+  }
+  .zc-note__label {
+    margin: 0 0 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--oxblood, #7a2e2e);
+  }
+  .zc-note__text {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    max-width: 62ch;
+  }
+  .zc-note[data-level='collection'] {
+    background: rgba(122, 46, 46, 0.07);
+  }
+</style>

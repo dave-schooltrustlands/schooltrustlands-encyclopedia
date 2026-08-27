@@ -1,0 +1,431 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import ZybachMap from '../../../../../components/zybach/soapcreek/ZybachMap.astro';
+import ProvenanceBlock from '../../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
+import CitationBlock from '../../../../../components/zybach/soapcreek/CitationBlock.astro';
+import {
+  people,
+  monographs,
+  gazetteer,
+  allIndexEntries,
+  chronology,
+} from '../../../../../components/zybach/soapcreek/data';
+import type { Person } from '../../../../../components/zybach/soapcreek/data';
+import {
+  personHref,
+  peopleHref,
+  monoHref,
+  placeHref,
+  chapterHref,
+  folioHref,
+  periodHref,
+  prettyDate,
+  hasPersonPage,
+  displayNarrators,
+  personSlugForName,
+  isHomeSiteOf,
+  sessionLabel,
+} from '../../../../../components/zybach/soapcreek/links';
+
+export async function getStaticPaths() {
+  return people.map((p) => ({ params: { slug: p.slug }, props: { person: p } }));
+}
+
+const { person } = Astro.props as { person: Person };
+const url = personHref(person.slug);
+
+const narratorOf = (person.narrator_of ?? [])
+  .map((s) => monographs.find((m) => m.slug === s || m.zc_id === s))
+  .filter(Boolean) as any[];
+
+/**
+ * `sources` records where each fact about this person was read, as
+ * `{ zc_id, field, pages, confidence }`. Print it the way a reader would say
+ * it: the book, the printed page, and what it was read for.
+ */
+const OTHER_WORKS: Record<string, string> = {
+  'zc-sc-thesis-1999': 'the 1999 thesis',
+  'zc-sc-autotour-1989': 'the 1989 Auto Tour',
+};
+function sourceLabel(src: any): string {
+  if (typeof src === 'string') return src;
+  if (!src || typeof src !== 'object') return '';
+  const mono = monographs.find((m) => m.zc_id === src.zc_id || m.slug === src.zc_id);
+  const work = mono
+    ? `#${mono.number} ${mono.title}`
+    : (OTHER_WORKS[src.zc_id] ?? src.zc_id ?? '');
+  /* A credit read from a session rather than from a printed page carries the
+     session's record id here. A record id is not something to show a reader:
+     print the date the session was recorded instead. */
+  const pages = (src.pages ?? [])
+    .map((x: any) => {
+      const s = String(x);
+      if (/^\d+$/.test(s)) return `p. ${s}`;
+      if (/-s\d{6,8}|-s\d{4}[a-z]{3,9}$/i.test(s)) {
+        return sessionLabel(s).replace(/^Session of /, 'session of ');
+      }
+      return s;
+    })
+    .join(', ');
+  return [work, pages, src.field].filter(Boolean).join(', ');
+}
+const sourceLabels = Array.from(
+  new Set((person.sources ?? []).map(sourceLabel).filter((s) => s !== '')),
+);
+
+// Monographs this person worked on as interviewer or contributor.
+const workedOn = monographs.filter(
+  (m) =>
+    !narratorOf.includes(m) &&
+    ((m.sessions ?? []).some((s) => (s.interviewers ?? []).some((i) => i === person.display_name)) ||
+      (m.contributors ?? []).some(
+        (c) => c.person_slug === person.slug || (c.display_name ?? c.name) === person.display_name,
+      )),
+);
+
+const sessions = person.sessions?.length
+  ? person.sessions
+  : narratorOf.flatMap((m) => (m.sessions ?? []).map((s: any) => ({ ...s, _mono: m })));
+
+// Places this person speaks of: every gazetteer entry with a mention in a
+// monograph they narrate.
+const narratedSlugs = new Set(narratorOf.map((m) => m.slug));
+const placesSpokenOf = person.places?.length
+  ? person.places
+      .map((p) => {
+        const g = gazetteer.find((x) => x.slug === p.slug || x.name === p.name);
+        return g ? { place: g, pages: p.pages ?? [], monoSlug: p.mono_slug } : null;
+      })
+      .filter(Boolean)
+  : gazetteer
+      .map((g) => {
+        const hits = (g.mentions ?? []).filter((m) => narratedSlugs.has(m.mono_slug ?? ''));
+        if (hits.length === 0) return null;
+        return {
+          place: g,
+          pages: hits.flatMap((h) => h.pages ?? []),
+          monoSlug: hits[0].mono_slug,
+        };
+      })
+      .filter(Boolean);
+
+const sortedPlaces = (placesSpokenOf as any[])
+  .slice()
+  .sort((a, b) => (b.pages?.length ?? 0) - (a.pages?.length ?? 0));
+
+const homePlace = gazetteer.find((g) => isHomeSiteOf(g, person.slug));
+const homeFeatures = homePlace && typeof homePlace.lat === 'number' && typeof homePlace.lon === 'number'
+  ? {
+      type: 'FeatureCollection',
+      features: [
+        {
+          type: 'Feature',
+          geometry: { type: 'Point', coordinates: [homePlace.lon, homePlace.lat] },
+          properties: {
+            kind: 'narrator-home',
+            title: homePlace.name ?? homePlace.slug,
+            subtitle: `Home site of ${person.display_name}`,
+            href: placeHref(homePlace.slug),
+          },
+        },
+      ],
+    }
+  : null;
+
+// Where the Series Index names this person.
+const indexMentions = allIndexEntries().filter((e: any) => {
+  const names = [e?.heading, ...(e?.variants ?? [])].filter(Boolean) as string[];
+  return names.some((n) => personSlugForName(n) === person.slug);
+});
+
+const mentionedIn = (person.mentioned_in ?? [])
+  .map((m) => {
+    const mono = monographs.find((x) => x.slug === m.mono_slug || x.zc_id === m.zc_id);
+    if (!mono) return null;
+    return {
+      monoSlug: mono.slug,
+      label: `#${mono.number} ${mono.title}`,
+      narrator: displayNarrators(mono),
+      pages: (m.pages ?? []).map((p) => ({ page: p, href: folioHref(mono.slug, p) })),
+    };
+  })
+  .filter(Boolean) as any[];
+
+const timelineHits = (chronology.periods ?? []).flatMap((per) =>
+  (per.entries ?? [])
+    .filter(
+      (e) =>
+        e.narrator_slug === person.slug ||
+        e.narrator === person.display_name ||
+        (e.people ?? []).some((p) => (typeof p === 'string' ? p === person.slug || p === person.display_name : p?.slug === person.slug)),
+    )
+    .map((e) => ({ ...e, period: per })),
+);
+
+const roles = person.roles ?? [];
+const roleLine = roles.length ? roles.join(' · ') : '';
+
+const whatThisIs = [
+  person.display_name,
+  roles.length ? `— ${roles.join(', ')} in the Soap Creek Valley oral history series` : '',
+  narratorOf.length
+    ? `. Recorded in ${sessions.length} session${sessions.length === 1 ? '' : 's'} and printed as ${
+        narratorOf.length === 1 ? 'monograph' : 'monographs'
+      } ${narratorOf.map((m) => `#${m.number}`).join(', ')}.`
+    : '.',
+].join('');
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+  { label: 'People', href: peopleHref() },
+];
+---
+<SoapCreekPage
+  title={person.display_name ?? person.slug}
+  subtitle={whatThisIs}
+  kicker="Soap Creek Valley · Person"
+  parents={parents}
+  sourceId={`zybach-sc-person-${person.slug}`}
+  navCurrent="people"
+  pageTitle={`${person.display_name ?? person.slug} · Soap Creek Valley · The Zybach Collection`}
+>
+  <div class="sc-badge-row">
+    {roles.map((r) => <span class="sc-chip">{r}</span>)}
+  </div>
+
+  <ProvenanceBlock
+    items={[
+      ...(person.born || person.died
+        ? [{ label: 'Dates', value: `${person.born ?? 'unknown'} – ${person.died ?? 'unknown'}` }]
+        : []),
+      ...(person.profession ? [{ label: 'Work', value: person.profession }] : []),
+      ...(person.home_site
+        ? [
+            {
+              label: 'Home site',
+              value: person.home_site,
+              href: homePlace ? placeHref(homePlace.slug) : undefined,
+            },
+          ]
+        : []),
+      ...(person.interview_focus ? [{ label: 'Interview focus', value: person.interview_focus }] : []),
+      ...(narratorOf.length
+        ? [{ label: 'Narrator of', value: narratorOf.map((m) => `#${m.number} ${m.title}`).join('; ') }]
+        : []),
+      ...(sourceLabels.length
+        ? [{ label: 'Where this comes from', value: sourceLabels.join('; ') }]
+        : []),
+      {
+        label: 'Accessioned',
+        value: 'From Bob Zybach’s upload, 23 August 2026',
+        href: '/collections/zybach/provenance/',
+      },
+    ]}
+  />
+
+  {homeFeatures && (
+    <section aria-labelledby="home">
+      <h2 id="home">Home site</h2>
+      <p>
+        Plotted at <a href={placeHref(homePlace!.slug)}>{homePlace!.name}</a>, as on
+        Map 9 of the 1999 thesis.
+      </p>
+      <ZybachMap
+        id={`person-${person.slug}-map`}
+        center={[homePlace!.lon as number, homePlace!.lat as number]}
+        zoom={12}
+        features={homeFeatures}
+        height="320px"
+      />
+    </section>
+  )}
+
+  {narratorOf.length > 0 && (
+    <section aria-labelledby="own-books">
+      <h2 id="own-books">In their own words</h2>
+      <ul class="sc-list">
+        {narratorOf.map((m) => (
+          <li>
+            <a href={monoHref(m.slug)}>#{m.number} {m.title}</a>
+            {m.subtitle && <span class="sc-list-meta">{m.subtitle}</span>}
+            <span class="sc-list-meta">
+              {[m.citation_short, m.pages_printed ? `${m.pages_printed} printed pages` : null]
+                .filter(Boolean)
+                .join(' · ')}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {sessions.length > 0 && (
+    <section aria-labelledby="sessions">
+      <h2 id="sessions">Sessions</h2>
+      <ul class="sc-list">
+        {sessions.map((s: any) => (
+          <li>
+            <strong>{prettyDate(s.date) || s.date}</strong>
+            {s.place && <> — {s.place}</>}
+            <span class="sc-list-meta">
+              {[
+                s.interviewers?.length
+                  ? `Interviewer${s.interviewers.length === 1 ? '' : 's'}: ${s.interviewers.join(', ')}`
+                  : null,
+                s.mode,
+                s._mono ? `in #${s._mono.number} ${s._mono.title}` : null,
+              ]
+                .filter(Boolean)
+                .join(' · ')}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {workedOn.length > 0 && (
+    <section aria-labelledby="worked-on">
+      <h2 id="worked-on">Worked on</h2>
+      <ul class="sc-list">
+        {workedOn.map((m) => (
+          <li>
+            <a href={monoHref(m.slug)}>#{m.number} {m.title}</a>
+            <span class="sc-list-meta">
+              {(m.contributors ?? [])
+                .filter((c) => c.person_slug === person.slug || (c.display_name ?? c.name) === person.display_name)
+                .map((c) => c.role)
+                .filter(Boolean)
+                .join(', ') || 'interviewer'}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {sortedPlaces.length > 0 && (
+    <section aria-labelledby="places-spoken-of">
+      <h2 id="places-spoken-of">Places they speak of</h2>
+      <p class="sc-list-meta">
+        {sortedPlaces.length} places, ordered by how often each is named. Each page
+        number opens the printed page.
+      </p>
+      <ul class="sc-list sc-cols">
+        {sortedPlaces.slice(0, 120).map((p: any) => (
+          <li>
+            <a href={placeHref(p.place.slug)}>{p.place.name ?? p.place.slug}</a>
+            <span class="sc-refs">
+              {(p.pages ?? []).slice(0, 12).map((pg: any, i: number) => {
+                const href = p.monoSlug ? folioHref(p.monoSlug, pg) : null;
+                return (
+                  <>
+                    {i > 0 && ', '}
+                    {href ? <a href={href}>{pg}</a> : <span>{pg}</span>}
+                  </>
+                );
+              })}
+              {(p.pages ?? []).length > 12 && <> …</>}
+            </span>
+          </li>
+        ))}
+      </ul>
+      {sortedPlaces.length > 120 && (
+        <p class="sc-list-meta">{sortedPlaces.length - 120} more on the place pages.</p>
+      )}
+    </section>
+  )}
+
+  {mentionedIn.length > 0 && (
+    <section aria-labelledby="mentioned-in">
+      <h2 id="mentioned-in">Where others mention them</h2>
+      <ul class="sc-list">
+        {mentionedIn.map((m) => (
+          <li>
+            <a href={monoHref(m.monoSlug)}>{m.label}</a>
+            {m.narrator && <span class="sc-list-meta">Narrator: {m.narrator}</span>}
+            <span class="sc-refs">
+              {m.pages.map((p: any, i: number) => (
+                <>
+                  {i > 0 && ', '}
+                  {p.href ? <a href={p.href}>p. {p.page}</a> : <span>p. {p.page}</span>}
+                </>
+              ))}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {(person.family_links ?? []).length > 0 && (
+    <section aria-labelledby="family">
+      <h2 id="family">Family named in the transcripts</h2>
+      <ul class="sc-list">
+        {(person.family_links ?? []).map((f) => (
+          <li>
+            {f.slug && hasPersonPage(f.slug) ? (
+              <a href={personHref(f.slug)}>{f.display_name ?? f.slug}</a>
+            ) : (
+              <span>{f.display_name ?? f.slug}</span>
+            )}
+            {f.relation && <span class="sc-list-meta">{f.relation}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {timelineHits.length > 0 && (
+    <section aria-labelledby="person-timeline">
+      <h2 id="person-timeline">Dates they give</h2>
+      <ul class="sc-list">
+        {timelineHits.slice(0, 40).map((e: any) => (
+          <li>
+            <strong>{e.date_label ?? e.label}</strong> — {e.statement}
+            <span class="sc-list-meta">
+              {e.href ? <a href={e.href}>source</a> : null}
+              {e.period && <> · <a href={periodHref(e.period.slug)}>{e.period.label}</a></>}
+            </span>
+          </li>
+        ))}
+      </ul>
+      {timelineHits.length > 40 && (
+        <p class="sc-list-meta">{timelineHits.length - 40} more in the timeline.</p>
+      )}
+    </section>
+  )}
+
+  {indexMentions.length > 0 && (
+    <section aria-labelledby="index-mentions">
+      <h2 id="index-mentions">In the Series Index</h2>
+      <ul class="sc-list">
+        {indexMentions.slice(0, 12).map((e: any) => (
+          <li>
+            <strong>{e.heading}</strong>
+            <span class="sc-refs">
+              {(e.refs ?? []).map((r: any, i: number) => {
+                const href = r.href ?? (r.mono_slug ? folioHref(r.mono_slug, r.page) : null);
+                return (
+                  <>
+                    {i > 0 && ', '}
+                    {href ? <a href={href}>{r.mono_number ? `${String(r.mono_number).padStart(2, '0')}:${r.page}` : r.page}</a> : <span>{r.page}</span>}
+                  </>
+                );
+              })}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <CitationBlock
+    canonical={`The Zybach Collection, Soap Creek Valley series: ${person.display_name} (person record).`}
+    short={`Soap Creek Valley: ${person.display_name}`}
+    url={url}
+  />
+</SoapCreekPage>

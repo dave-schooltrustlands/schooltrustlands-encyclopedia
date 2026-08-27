@@ -1,0 +1,2747 @@
+{
+  "zc_id": "zc-sc-autotour-1989",
+  "kind": "auto-tour",
+  "generated": "2026-08-27",
+  "href": "/collections/zybach/soap-creek/auto-tour/",
+  "title": "Historic Soap Creek Valley Auto Tour",
+  "title_as_printed_on_cover": "HISTORIC SOAP CREEK VALLEY AUTO TOUR / Oregon State University Research Forests / Bob Zybach",
+  "subtitle": null,
+  "citation_canonical": "Zybach, Bob 1989.  Historic Soap Creek Valley Auto Tour.  Oregon State University Research Forests and College of Forestry, Corvallis, Oregon: 32 pp.",
+  "citation_short": "Zybach 1989",
+  "year_printed": 1989,
+  "publisher": "Oregon State University Research Forests and College of Forestry, Corvallis, Oregon; printed by OSU Book Stores, Inc., Corvallis, Oregon",
+  "pages_printed": 32,
+  "pages_cited": 32,
+  "source": {
+    "public_url": "http://www.nwmapsco.com/ZybachB/Tours/Soap_Creek_Valley/Zybach_1989.pdf",
+    "index_url": "http://www.nwmapsco.com/ZybachB/Tours/Soap_Creek_Valley/index.html",
+    "local_file": "/home/claude/zybach_build/sources/soap_creek/auto_tour/Zybach_1989.pdf",
+    "sha256": "1455ec72b923cfce9c3d8fba2b864ece2f21e0ee49be44cda1a172fbd029bf83",
+    "drive_path": null,
+    "accession_id": null,
+    "scan_type": "ocr-scan",
+    "page_images": "18 JPEG spreads in /home/claude/zybach_build/sources/soap_creek/auto_tour/ (2000 px wide, one spread = two booklet pages) plus 5 enlargements in .../auto_tour/Enlarged/. The JPEGs are higher resolution than the images embedded in the PDF (1352 px per spread) and were used as the reading copy.",
+    "pdf_page_mapping": "18 PDF pages = 18 scanned spreads. PDF p.1 = back cover (tour map) + front cover; PDF p.2 = blank inside front cover + printed p.1; PDF p.3 = pp.2-3; and thereafter PDF page n = printed pages (2n-4, 2n-3) through PDF p.17 = pp.30-31; PDF p.18 = printed p.32 + blank inside back cover.",
+    "text_layer": "The PDF text layer contains only a 2013 running header (\"Zybach 1989: Soap Creek Valley Auto Tour (1st printing)\") and PDF page numbers 1-18; it holds none of the booklet's text. All text was recovered by reading the page images and cross-checking against tesseract 5.3.4 OCR of the split half-spreads."
+  },
+  "front_matter": {
+    "cover_text": "HISTORIC SOAP CREEK VALLEY / AUTO TOUR / Oregon State University Research Forests / Bob Zybach",
+    "cover_photo_caption": "\"Soap Creek Valley, Summer, 1989\"   View from Lewisburg Saddle",
+    "acknowledgements": "This historical tour has been made possible through the combined efforts of many people. It would not have been undertaken or completed at all without the authorization, direction, and encouragement of William Atkinson, Director of the OSU Research Forests. Key suggestions, information, and critical reviews were provided by John C. Jackson, Royal Jackson, and Kenneth Munford.\n\nLocal historical research was provided and aided by Debora Cummings, Patricia Dunning, Eugene Glender, Lorna Grabe, James Hanish, Judy Rycraft Juntunen, Janet F. Meranda, Margaret Mitchell, Velma Carter Rawie, Marvin Rowley, and Angela C. Sondenaa.\n\nPublished works and personal conversations with John Eliot Allen, Ira S. Allison, Robert E. Buckman, Henry P. Hansen, and Richard K. Hermann were the principal sources of geological and ecological information contained in this guide, particularly as they related to historical plant succession and prehistoric man.\n\nI would also like to acknowledge several other individuals who contributed to the creation of this tour, but there is insufficient space. Credit for any successes associated with this project must properly rest with the people and institutions who made it possible. Naturally, any problems with typography, interpretation, and organization must rest entirely with the author, as final decisions and approval were my own.",
+    "copyright_block": "Copyright 1989 / By Bob Zybach and / OSU Research Forests            College of Forestry / Oregon State University / Corvallis, Oregon 97331\n\nPrinted in Corvallis, Oregon / OSU Book Stores, Inc. / 1989",
+    "project_statement": null,
+    "introduction": "You are about to take a journey through time.\n\nBeginning with the arrival of the first people in the Willamette Valley - at least 10,000 years ago - and continuing until the present, the Soap Creek Valley has been the scene of a wide variety of human experiences and events. Elephants once roamed this valley, and humans may have hunted them. Indians traded obsidian here, and Mountain Men trapped beaver. The first pioneers in Benton County settled here in the 1840's, the first black child was born here before 1850, and confederate sympathizers met here at the outbreak of the Civil War.\n\nThe pioneering north-south trail that first connected California with the Pacific Northwest passed through this valley. Many figures familiar to Oregon history followed its course; cattlemen, school teachers, depression-era farmers and loggers, World War II soldiers and modern students and scientists have all had a hand in shaping the history of this valley. Today you will also be taking part in that history.\n\nThis tour has been designed so that you may visit the sites and view the scenes in which many events significant to local, state, and national history have taken place. Each stop is associated with a theme to help relate these influences of the past to our current lives and undertakings.\n\nWe hope you enjoy your visit.",
+    "introduction_page": 5,
+    "driving_safety_note": "DRIVING SAFETY: These roads are often used by many commercial logging and road-building trucks. Give commercial vehicles plenty of room along straight stretches, and use extreme caution when rounding curves.",
+    "map_note": "Back cover: \"TOUR MAP / HISTORIC SOAP CREEK VALLEY\". Legend: APPLEGATE TRAIL (1846-1853); DESIGNATED STOP; OSU RESEARCH FOREST; PAVED ROAD; GRAVEL ROAD; HIKING TRAIL; 1853 HOMES; FOREST PEAKS; also \"FOREST PEAK 1982\" and \"1.5 [arrow] DISTANCE AND DIRECTION MARKERS\". Scale 1\" = 8000'. Signed \"BZ 7-30-89\". Credited on p.4: \"Cover Photo and Tour Map ... Bob Zybach\"; \"Cartographics ... Bob Edmond\".",
+    "list_of_illustrations_page": 4,
+    "list_of_illustrations_credits": [
+      "Cover Photo and Tour Map ... Bob Zybach",
+      "Format Graphics ... Paul Gorow",
+      "Cartographics ... Bob Edmond"
+    ]
+  },
+  "route": {
+    "start_point": "The entrance to Peavy Arboretum (marked START on the back-cover tour map), north of Corvallis off Highway 99.",
+    "total_miles": 22.7,
+    "total_miles_note": "The booklet prints no explicit \"total mileage\" figure; 22.7 is the last (Stop #11) entry in the cumulative Miles column of the CONTENTS table, p.3. The shorter all-paved version reaches 9.6 miles at Stop #11.",
+    "total_time": "1-5 hours. Depending upon pace, route, and whether or not hiking trails are taken.",
+    "total_mileage_note": "The mileages listed below use the entrance to Peavy Arboretum as the tour starting point. Several miles of the designated route are over good gravel roads and walking trails, as depicted on the map. A shorter version of the tour, one that follows only paved roads, is listed under the column titled \"Paved.\"",
+    "driving_directions_as_printed": "The booklet prints no turn-by-turn directions. Directions are carried by (a) the cumulative Miles / Paved columns of the CONTENTS table on p.3, (b) the back-cover tour map with its numbered stop circles and its distance-and-direction markers, and (c) the RETURN ROUTE box on p.3. The map's markers, read in route order from START at Peavy Arboretum, are: 1.7 MI. north to Adair Village; 4.6 MI. north along Highway 99 past Cahoon; then Suver Junction; 4.41 MI. west on Airlie Road; 1.5 MI. south on Berry Creek Road to Stop #1 (1.7 + 4.6 + 4.41 + 1.5 = 12.21, matching the printed 12.2 miles for Stop #1).",
+    "route_order": [
+      "START: Peavy Arboretum entrance",
+      "Adair Village",
+      "Highway 99 north",
+      "Suver Junction",
+      "Airlie Road west",
+      "Berry Creek Road south",
+      "STOP #1 Berry Creek",
+      "STOP #2 Smith Peak (Tampico Road)",
+      "STOP #3 Coffin Butte",
+      "STOP #4 Soap Creek",
+      "STOP #5 Tampico",
+      "STOP #6 Elephant Tooth",
+      "STOP #7 Beef Barns (Tampico Rd / Sulphur Springs Rd junction)",
+      "STOP #8 Soap Creek School",
+      "STOP #9 Sulphur Springs",
+      "STOP #10 Lewisburg Saddle",
+      "STOP #11 Old-Growth Trail"
+    ],
+    "return_route": "Beginning at STOP #11, continue along the general route of travel, heading down the south side of the Lewisburg Saddle. From Sulphur Springs Road, bear left toward Lewisburg, as indicated on the back cover map. An early historical road to Corvallis can be followed by turning right on Highland Drive, before returning to Highway 99.",
+    "mileage_table": [
+      {
+        "item": "INTRODUCTION [Themes]",
+        "page": 5,
+        "miles": null,
+        "paved": null
+      },
+      {
+        "item": "STOP #1  BERRY CREEK [Trappers]",
+        "page": 7,
+        "miles": 12.2,
+        "paved": null
+      },
+      {
+        "item": "STOP #2  SMITH PEAK [Trails]",
+        "page": 9,
+        "miles": 13.3,
+        "paved": null
+      },
+      {
+        "item": "STOP #3  COFFIN BUTTE [Pioneers]",
+        "page": 11,
+        "miles": 15.1,
+        "paved": null
+      },
+      {
+        "item": "STOP #4  SOAP CREEK [Settlers]",
+        "page": 13,
+        "miles": 15.5,
+        "paved": null
+      },
+      {
+        "item": "STOP #5  TAMPICO [Towns]",
+        "page": 15,
+        "miles": 16.1,
+        "paved": 3.0
+      },
+      {
+        "item": "STOP #6  ELEPHANT TOOTH [Early People]",
+        "page": 19,
+        "miles": 16.7,
+        "paved": 3.6
+      },
+      {
+        "item": "STOP #7  BEEF BARNS  [Agriculture]",
+        "page": 21,
+        "miles": 17.3,
+        "paved": 4.2
+      },
+      {
+        "item": "STOP #8  SOAP CREEK SCHOOL [Education]",
+        "page": 23,
+        "miles": 19.0,
+        "paved": 5.9
+      },
+      {
+        "item": "STOP #9  SULPHUR SPRINGS [Recreation]",
+        "page": 25,
+        "miles": 21.3,
+        "paved": 8.2
+      },
+      {
+        "item": "STOP #10 LEWISBURG SADDLE [Logging]",
+        "page": 27,
+        "miles": 22.4,
+        "paved": 9.3
+      },
+      {
+        "item": "STOP #11 OLD-GROWTH TRAIL [Ecology]",
+        "page": 29,
+        "miles": 22.7,
+        "paved": 9.6
+      },
+      {
+        "item": "EPILOGUE [The Future]",
+        "page": 30,
+        "miles": null,
+        "paved": null
+      },
+      {
+        "item": "ADDITIONAL SOURCES OF INFORMATION",
+        "page": 31,
+        "miles": null,
+        "paved": null
+      }
+    ],
+    "road_markers_on_map": [
+      {
+        "label": "4.41 MI.",
+        "meaning": "west from Suver Junction along Airlie Road",
+        "confidence": "stated"
+      },
+      {
+        "label": "1.5 MI.",
+        "meaning": "south from Airlie Road down Berry Creek Road to Stop #1",
+        "confidence": "stated"
+      },
+      {
+        "label": "4.6 MI.",
+        "meaning": "north along Highway 99 from the Cahoon corner",
+        "confidence": "stated"
+      },
+      {
+        "label": "1.7 MI.",
+        "meaning": "north from START (Peavy Arboretum) to Adair Village",
+        "confidence": "stated"
+      }
+    ],
+    "confidence": "stated"
+  },
+  "map": {
+    "title": "TOUR MAP  HISTORIC SOAP CREEK VALLEY",
+    "location": "Back cover (also reproduced as an enlargement, Enlarged/Zybach_1989_00-map-10.jpg)",
+    "credit": "Bob Zybach (cover photo and tour map, p.4); Bob Edmond (cartographics, p.4); lettered \"BZ 7-30-89\"",
+    "scale": "1\" = 8000'",
+    "description": "A hand-drawn route map of northern Benton County and the southern edge of Polk County, oriented north-up with a compass rose. The OSU Research Forest is tinted; the Applegate Trail (1846-1853) is a heavy red dashed line; the eleven designated stops are red circled numerals; 1853 donation land claims are drawn as outlined polygons with the claimant's surname, and 1853 homes as small squares. Township and range lines (T.9 S./T.10 S., T.10 S./T.11 S., R.5 W./R.4 W.) and the Polk Co./Benton Co. line are dash-dot. The tour route runs from START at Peavy Arboretum north on Highway 99 through Adair Village to Suver Junction, west on Airlie Road, south on Berry Creek Road to Stop #1, then southeast on Tampico Road through Stops #2-#7, southwest on Sulphur Springs Road to Stops #8-#9, and up to the Lewisburg Saddle for Stops #10-#11, returning by Lewisburg to Highway 99.",
+    "features_labeled": {
+      "communities_and_junctions": [
+        "AIRLIE",
+        "SUVER JUNCTION",
+        "ADAIR VILLAGE",
+        "PEAVY ARBORETUM",
+        "LEWISBURG",
+        "START"
+      ],
+      "roads": [
+        "AIRLIE ROAD",
+        "BERRY CR. RD.",
+        "TAMPICO RD.",
+        "SULPHUR SPRINGS ROAD",
+        "HIGHWAY 99"
+      ],
+      "hills_and_peaks": [
+        "BRINKLEYS HILL 1930",
+        "SMITH PEAK 1853",
+        "OAK HILL 1982",
+        "COFFIN BUTTE 1853",
+        "FOREST PEAK 1853",
+        "GLENDERS HILL 1925",
+        "VINEYARD HILL 1982"
+      ],
+      "land_claims_and_1853_homes": [
+        "JEWETT",
+        "W. J. BERRY",
+        "T. W. BERRY",
+        "SAVAGE",
+        "SMITH",
+        "WILES",
+        "WRITSMAN",
+        "HUGHARTS",
+        "DAVIS",
+        "ROBERTS",
+        "CAHOON",
+        "HODGES",
+        "GARRISON",
+        "CARSON ESTATE",
+        "CARSON",
+        "JONES",
+        "MOODIE",
+        "A. WRITSMAN",
+        "READ"
+      ],
+      "survey_and_boundary_lines": [
+        "T. 9 S. / T. 10 S.",
+        "T. 10 S. / T. 11 S.",
+        "R. 5 W. / R. 4 W. (two places)",
+        "POLK CO. / BENTON CO."
+      ],
+      "distance_and_direction_markers": [
+        "4.41 MI.",
+        "1.5 MI.",
+        "4.6 MI.",
+        "1.7 MI."
+      ],
+      "stop_circles": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "legend": [
+        "APPLEGATE TRAIL (1846-1853)",
+        "DESIGNATED STOP",
+        "OSU RESEARCH FOREST",
+        "PAVED ROAD",
+        "GRAVEL ROAD",
+        "HIKING TRAIL",
+        "1853 HOMES",
+        "FOREST PEAKS",
+        "FOREST PEAK 1982",
+        "1.5 [arrow] DISTANCE AND DIRECTION MARKERS"
+      ]
+    },
+    "confidence": "stated"
+  },
+  "maps": [
+    {
+      "title": "TOUR MAP  HISTORIC SOAP CREEK VALLEY",
+      "page": "back-cover",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "note": "Route map; scale 1\" = 8000'; lettered BZ 7-30-89."
+    },
+    {
+      "title": "\"Plot Of The Town Of Tampico\"",
+      "page": 14,
+      "keys": [],
+      "note": "1857 town plat by William J. Crouch, from the Benton County Public Works Department, recorded Nov. 10th 1857 by Jno. B. Ordwood [sic], Recorder; annotated in pencil by the author: \"BZ 5/27/89 / NE 1/4, SE 1/4 Sec. 24 / TP. 10 S., RNG. 5 W.\""
+    }
+  ],
+  "photographs": [
+    {
+      "caption": "This man was sketched near present-day Monroe, Oregon by an artist with the Wilkes Expedition of 1841. Notice the Coast Range hills in the background. The Willamette Valley of that time was largely inhabited by a few hundred Kalapuyan-speaking people that regularly burned the areas in which they lived. This practice created a beautiful and productive landscape of grassy oak savannah and flowering prairie that was much favored by the first American settlers to arrive in Oregon. These pioneers found a sparsely inhabited country that featured ready pasturage for their livestock, cleared land for their crops, mild weather, abundant water, and thousands of scenic homesites that were free for the taking.",
+      "title": "\"COSTUME OF A CALLAPUYA INDIAN\"",
+      "page": 1,
+      "date": "1841",
+      "photographer": "Alfred T. Agate",
+      "courtesy": "[Wilkes, 1845: Vol. V, p.223]",
+      "discussed_in_chapter": null
+    },
+    {
+      "caption": "Beaver trappers and traders began entering the Coffin Butte area in the early part of the nineteenth century. By the late 1820's, the seasonal crossings along Berry and Soap Creeks had formed an important link in the Hudson's Bay Company (HBC) \"California Trail.\" This commercial pack trail connected the Columbia River (Fort Vancouver and Astoria) to the Umpqua Valley, Sacramento River, and San Fransisco,  much as I-5 still does today.",
+      "title": "\"THE TRAPPER'S LAST SHOT\"",
+      "page": 6,
+      "date": "1870",
+      "photographer": "N. Orr & Co.",
+      "courtesy": "[Victor, 1870: p.229]",
+      "discussed_in_chapter": "STOP #1"
+    },
+    {
+      "caption": "After first surviving buffalo stampedes, disease and hostile Indian attacks, Oregon Trail pioneers were faced with the difficult and deadly Columbia River \"Cascades\" near The Dalles. Construction of the Applegate and Barlow Trails during 1845 and 1846 avoided these dangerous rapids and provided American emigrants with a safer and cheaper passage to their new homes in the Willamette Valley. This stop is along an 1853 stretch of the \"Applegate Trail\" that connected \"rainy season\" crossings of Berry and Soap Creeks.",
+      "title": "\"GOVERNOR LANE AND MARSHAL MEEK ENROUTE TO OREGON\"",
+      "page": 8,
+      "date": "1870",
+      "photographer": "N. Orr & Co.",
+      "courtesy": "[Victor, 1870: p.476]",
+      "discussed_in_chapter": "STOP #2"
+    },
+    {
+      "caption": "Mount Jefferson appears in the background of this drawing of Coffin Butte, published in 1885. The Writsman's were early settlers along Soap Creek. Their property included one of the first cabins to be constructed in Benton County, and was maintained for several decades as a reminder of their \"Humble Beginnings.\"",
+      "title": "\"FARM RESIDENCE OF J. W. WRITSMAN\"",
+      "page": 10,
+      "date": "1885",
+      "photographer": "James T. Pickett",
+      "courtesy": "[Fagan, 1885: p. 424]",
+      "discussed_in_chapter": "STOP #3"
+    },
+    {
+      "caption": "Green Berry Smith was the most powerful and influential landowner in the Soap Creek neighborhood in the latter half of the nineteenth century. Often involved in litigation with his neighbors, he was reputed to own about 10,000 acres of land in Benton and Polk Counties during the later years of his life.",
+      "title": "\"G. B. SMITH, CORVALLIS, OR.\"",
+      "page": 12,
+      "date": "c.1880",
+      "photographer": "(unknown)",
+      "courtesy": "[courtesy of Oregon Historical Society]",
+      "discussed_in_chapter": "STOP #4"
+    },
+    {
+      "caption": "Tampico was platted October 27, 1857 by William J. Crouch and shut down on January 23, 1860 by Green Berry Smith, who had purchased it earlier in the day. One tradition has it that Smith was attempting to remove a source of corruption to local residents.",
+      "title": "\"PLOT OF THE TOWN OF TAMPICO\"",
+      "page": 14,
+      "date": "1857",
+      "photographer": "William J. Crouch",
+      "courtesy": "[Benton County Public Works Department]",
+      "discussed_in_chapter": "STOP #5"
+    },
+    {
+      "caption": "This watercolor, painted under the direction of historian John Horner in 1925, attempts to depict Tampico about the time of the Civil War. The view is from the south, with Tampico School on the hill to the west (left) and Coffin Butte to the northeast (right).",
+      "title": "\"TAMPICO, EARLY RIVAL OF CORVALLIS\"",
+      "page": 16,
+      "date": "1925",
+      "photographer": "William Ball",
+      "courtesy": "[courtesy of Horner Museum]",
+      "discussed_in_chapter": "STOP #5"
+    },
+    {
+      "caption": "By 1885, Tampico had become a \"ghost town.\" Only the local tavern and several colorful stories remained.",
+      "title": "\"THE ARCADE SALOON, 1904\"",
+      "page": 17,
+      "date": "1904",
+      "photographer": "Glender Brothers",
+      "courtesy": "[courtesy of Soap Creek Schoolhouse Foundation]",
+      "discussed_in_chapter": "STOP #5"
+    },
+    {
+      "caption": "William Glender proudly displays a 15 pound elephant tooth that was excavated from his family's stock watering spring in the early 1920's. Other elephant fossils were also removed from the same spring at that time, and again during the mid-1930's.",
+      "title": "\"CARSON'S SPRING ELEPHANT TOOTH\"",
+      "page": 18,
+      "date": "c.1925",
+      "photographer": "Glender Brothers",
+      "courtesy": "[courtesy of Eugene Glender]",
+      "discussed_in_chapter": "STOP #6"
+    },
+    {
+      "caption": "The Moore's were a prominent Soap Creek Valley farming family at the turn of the century, raising cattle, sheep, and hogs.. Sam Moore's father, James, donated the land upon which the Soap Creek Schoolhouse is located. Notice Coffin Butte in the left background, the developing fir and oak forest on the right, and the fencing. The view is from \"Sheep Hill,\" on the old Alfred Writsman Homestead. It can be approximated today from Moss Rock Drive, about 3 miles southwest of this spot.",
+      "title": "\"SAM H. MOORE ON 'BILLY BOWLEGS'\"",
+      "page": 20,
+      "date": "c.1899",
+      "photographer": "Josephine Moore",
+      "courtesy": "[courtesy of Soap Creek Schoolhouse Foundation]",
+      "discussed_in_chapter": "STOP #7"
+    },
+    {
+      "caption": "This picture, taken in 1900, is of the new Soap Creek schoolhouse. It may have actually been the third, fourth, or fifth building to serve the district since its inception, sometime after 1845. The previous school, also constructed in 1899 and used for just a few months, was simply hauled to the rear of the new building and converted to a woodshed.  The small structure in the background is not the woodshed.",
+      "title": "\"THE SECOND SCHOOL\"",
+      "page": 22,
+      "date": "c.1900",
+      "photographer": "Sam H. Moore",
+      "courtesy": "[courtesy of Soap Creek Schoolhouse Foundation]",
+      "discussed_in_chapter": "STOP #8"
+    },
+    {
+      "caption": "This picture of a Wells Community Picnic was taken at Sulphur Springs around 1920. The community was originally named \"Wells Station\" when it developed as a railroad town in the 1880's and became known as \"Wellsdale\" until it was purchased by the government at the outset of World War II.  The Wellsdale site, originally pioneered by Tolbert Carter by 1849, became part of Camp Adair in 1941.",
+      "title": "\"WELLS COMMUNITY PICNIC\"",
+      "page": 24,
+      "date": "c.1920",
+      "photographer": "(unknown)",
+      "courtesy": "[courtesy of Velma Carter Rawie]",
+      "discussed_in_chapter": "STOP #9"
+    },
+    {
+      "caption": "This mill operated during the Great Depression in the vicinity of the Soap Creek Schoolhouse. Logging and milling operations provided employment for Soap Creek residents before World War II, but the work was irregular and the pay was scanty.",
+      "title": "\"SOAP CREEK LOGGING CAMP\"",
+      "page": 26,
+      "date": "c.1932",
+      "photographer": "Ina Thompson",
+      "courtesy": "[courtesy of Donna Clayton]",
+      "discussed_in_chapter": "STOP #10"
+    },
+    {
+      "caption": "Although these old-growth trees are titled \"pines,\" it appears that they are a stand of Douglas-fir and Hemlock, possibly in the vicinity of Astoria. The sailors making the measurement were members of Charles Wilkes' 1838-1842 \"United States Exploring Expedition.\" Pictures such as this, first published in 1845, gave rise to Oregon's reputation as a land of giant evergreen trees.",
+      "title": "\"PINE FORESTS OF OREGON\"",
+      "page": 28,
+      "date": "1841",
+      "photographer": "Joseph Drayton",
+      "courtesy": "[Wilkes, 1845: Vol. V, p. 116]",
+      "discussed_in_chapter": "STOP #11"
+    },
+    {
+      "caption": "This drawing of a Kalapuyan boy was  made in the Willamette Valley by Alfred T. Agate in 1841, although it was first printed 10 years later in Charles Pickering's The Races Of Men And Their Geographical Distribution. Notice the rounded forehead, which was considered unusual for western Oregon Indians of that era. In 1856 most Kalapuyans were moved to the Grand Ronde reservation, near Sheridan, in Polk County, where they were forced to spend the remainder of their lives.",
+      "title": "\"A KALAPUYA LAD\"",
+      "page": 32,
+      "date": "1841",
+      "photographer": "Alfred T. Agate",
+      "courtesy": "[Pickering, 1854: p. 32]",
+      "discussed_in_chapter": null
+    },
+    {
+      "caption": "\"Soap Creek Valley, Summer, 1989\"   View from Lewisburg Saddle",
+      "title": null,
+      "page": "front-cover",
+      "date": "1989",
+      "photographer": "Bob Zybach",
+      "courtesy": null,
+      "discussed_in_chapter": "STOP #10"
+    }
+  ],
+  "structure": [
+    {
+      "level": "front",
+      "label": null,
+      "title": "Front cover",
+      "start_page": "front-cover",
+      "end_page": "front-cover",
+      "chapter_type": "other"
+    },
+    {
+      "level": "front",
+      "label": null,
+      "title": "\"Costume Of A Callapuya Indian\"",
+      "start_page": 1,
+      "end_page": 1,
+      "chapter_type": "photograph"
+    },
+    {
+      "level": "front",
+      "label": null,
+      "title": "ACKNOWLEDGEMENTS",
+      "start_page": 2,
+      "end_page": 2,
+      "chapter_type": "other"
+    },
+    {
+      "level": "front",
+      "label": null,
+      "title": "HISTORIC SOAP CREEK VALLEY OSU RESEARCH FORESTS AUTO TOUR (Total Mileage, Total Time, Contents, Return Route)",
+      "start_page": 3,
+      "end_page": 3,
+      "chapter_type": "other"
+    },
+    {
+      "level": "front",
+      "label": null,
+      "title": "LIST OF ILLUSTRATIONS",
+      "start_page": 4,
+      "end_page": 4,
+      "chapter_type": "other"
+    },
+    {
+      "level": "chapter",
+      "label": null,
+      "title": "INTRODUCTION [Themes]",
+      "start_page": 5,
+      "end_page": 5,
+      "chapter_type": "topical"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #1",
+      "title": "STOP #1 BERRY CREEK [Trapping]",
+      "start_page": 6,
+      "end_page": 7,
+      "map_key": "1",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #2",
+      "title": "STOP #2  SMITH PEAK [Trails]",
+      "start_page": 8,
+      "end_page": 9,
+      "map_key": "2",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #3",
+      "title": "STOP #3 COFFIN BUTTE [Pioneers]",
+      "start_page": 10,
+      "end_page": 11,
+      "map_key": "3",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #4",
+      "title": "STOP #4 SOAP CREEK [Settlers]",
+      "start_page": 12,
+      "end_page": 13,
+      "map_key": "4",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #5",
+      "title": "STOP #5 TAMPICO [Towns]",
+      "start_page": 14,
+      "end_page": 15,
+      "map_key": "5",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #6",
+      "title": "STOP #6 ELEPHANT TOOTH [Early People]",
+      "start_page": 18,
+      "end_page": 19,
+      "map_key": "6",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #7",
+      "title": "STOP #7 BEEF BARNS [Agriculture]",
+      "start_page": 20,
+      "end_page": 21,
+      "map_key": "7",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #8",
+      "title": "STOP #8 SOAP CREEK SCHOOL [Education]",
+      "start_page": 22,
+      "end_page": 23,
+      "map_key": "8",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #9",
+      "title": "STOP #9 SULPHUR SPRINGS [Recreation]",
+      "start_page": 24,
+      "end_page": 25,
+      "map_key": "9",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #10",
+      "title": "STOP #10 LEWISBURG SADDLE [Logging]",
+      "start_page": 26,
+      "end_page": 27,
+      "map_key": "10",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": "STOP #11",
+      "title": "STOP #11 OLD-GROWTH TRAIL [Ecology]",
+      "start_page": 28,
+      "end_page": 29,
+      "map_key": "11",
+      "chapter_type": "location"
+    },
+    {
+      "level": "chapter",
+      "label": null,
+      "title": "EPILOGUE [The Future]",
+      "start_page": 30,
+      "end_page": 30,
+      "chapter_type": "topical"
+    },
+    {
+      "level": "chapter",
+      "label": null,
+      "title": "ADDITIONAL SOURCES OF INFORMATION",
+      "start_page": 31,
+      "end_page": 31,
+      "chapter_type": "appendix"
+    },
+    {
+      "level": "front",
+      "label": null,
+      "title": "\"A Kalapuya Lad\"",
+      "start_page": 32,
+      "end_page": 32,
+      "chapter_type": "photograph"
+    },
+    {
+      "level": "front",
+      "label": null,
+      "title": "TOUR MAP: HISTORIC SOAP CREEK VALLEY (back cover)",
+      "start_page": "back-cover",
+      "end_page": "back-cover",
+      "chapter_type": "other"
+    }
+  ],
+  "stops": [
+    {
+      "stop_number": 1,
+      "stop_label": "STOP #1",
+      "slug": "stop-1",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-1/",
+      "title": "STOP #1 BERRY CREEK [Trapping]",
+      "title_in_contents": "STOP #1  BERRY CREEK [Trappers]",
+      "theme": "Trapping",
+      "page": 7,
+      "text": "David Douglas was a Scottish botanist who spent several years in the Pacific Northwest. During his first visit to the Willamette Valley in August, 1825, he noted that most of it had been trapped clean of beaver. Traders based in Astoria had been operating in the area since 1811, encouraging the local Indians to exchange native foods and animal skins for blue beads, guns, blankets, horses and alcohol. Beaver pelts, the principal article of trade, were in great demand by European hatmakers.\n\nThe advent of trade goods, metal traps, and flintlocks quickly created a difference in valley wildlife populations. White-tail deer, grizzly bears, and beaver soon became scarce. Elk, wolves, and black-tail deer became wary and more difficult to kill. The impact of new diseases in the 1830's had a similar effect on local human populations. Whole families and communities of Kalapuyans were destroyed in a few short years, and soon forgotten.\n\nBerry Creek (which you will be crossing on your way to the next stop), like Soap Creek and other Willamette Valley streams, had been heavily impounded by beaver dams. As beaver populations were decimated, these streams became free-flowing and choked with brush and trees. The elimination of beaver ponds also resulted in a reduction of certain animal populations, such as mosquitos and ducks, due to the loss of habitat. Not all species suffered by these changes. The demise of the beaver dams removed migration barriers to anadromous fish and left behind \"flats\" of rich soil for invading plant species.\n\nThus, international trade, based upon a hat style, had forever changed a wilderness.",
+      "road_or_landmark": "Berry Creek Road, about 1.5 miles south of Airlie Road, at the Polk County / Benton County line near the W. J. Berry and T. W. Berry 1853 claims (tour map).",
+      "mileage_from_start": null,
+      "cumulative_miles": 12.2,
+      "cumulative_miles_paved_route": null,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "1811-1830s (fur trade era); references to 1825, 1826, 1830s",
+      "standing_notice": "PARKING: So far as possible, adequate parking has been provided at each of the eleven designated stops along this tour. Please lock your car if you leave it. Always park so as to not create a hazard or inconvenience for others.",
+      "places_named": [
+        "Pacific Northwest",
+        "Willamette Valley",
+        "Astoria",
+        "Berry Creek",
+        "Soap Creek"
+      ],
+      "people_named": [
+        "David Douglas"
+      ],
+      "photo_captions": [
+        {
+          "page": 6,
+          "title": "\"THE TRAPPER'S LAST SHOT\"",
+          "caption": "Beaver trappers and traders began entering the Coffin Butte area in the early part of the nineteenth century. By the late 1820's, the seasonal crossings along Berry and Soap Creeks had formed an important link in the Hudson's Bay Company (HBC) \"California Trail.\" This commercial pack trail connected the Columbia River (Fort Vancouver and Astoria) to the Umpqua Valley, Sacramento River, and San Fransisco,  much as I-5 still does today.",
+          "source": "N. Orr & Co.",
+          "year": "1870",
+          "credit": "[Victor, 1870: p.229]"
+        }
+      ],
+      "lat": 44.7202,
+      "lon": -123.3021,
+      "coordinate_source": "gazetteer (described-relative-to)",
+      "place_slug": "auto-tour-stop-1-berry-creek",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-1-berry-creek/",
+      "gazetteer_method": "described-relative-to",
+      "gazetteer_confidence": "inferred",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 12.2 from the Peavy Arboretum entrance (p.3). Tour map shows circled \"1\" on Berry Creek Road (\"BERRY CR. RD.\"), about 1.5 miles south of Airlie Road (map marker \"1.5 MI.\" with a south arrow), astride the \"POLK CO. / BENTON CO.\" line, between the \"W. J. BERRY\" claim (west) and the \"T. W. BERRY\" claim (east), just east of \"BRINKLEYS HILL 1930\"; an 1853-home square is drawn at the stop. Stop text: \"Berry Creek (which you will be crossing on your way to the next stop)\" (p.7). Reached from Suver Junction by 4.41 miles west on Airlie Road (map marker \"4.41 MI.\").",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 2,
+      "stop_label": "STOP #2",
+      "slug": "stop-2",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-2/",
+      "title": "STOP #2  SMITH PEAK [Trails]",
+      "title_in_contents": "STOP #2  SMITH PEAK [Trails]",
+      "theme": "Trails",
+      "page": 9,
+      "text": "By facing to the east from this stop, you can see the crest of the hill called \"Smith Peak\" by the government land surveyor in 1853. Called \"Smith Hill\" today and \"Oak Hill\" at other times, this early barrier to north-south wagon traffic was known to local farmers for its nests of rattlesnakes and patches of poison oak.\n\nIn the fall of 1826, while David Douglas and HBC brigade leader Alexander McLeod were blazing the first horse trail from the Columbia River to southwest Oregon, Kalapuyans were burning most of the prairies throughout the Willamette Valley. The road builders were forced to follow these coastal hills to the west in order to find both forage for their animals as well as food for themselves. By 1841, a United States Exploring Expedition under the direction of Lieutenant Charles Wilkes was able to follow the well-established \"California Trail\" from Oregon City to San Francisco.\n\nFive years later, in 1846, when Jesse Applegate, Moses \"Black\" Harris, Levi Scott and a dozen other men were establishing the \"Applegate Trail\" for American pioneers, they followed the same course taken by Douglas and the Wilkes Expedition. But in addition to necessary food and forage, these men also had to consider the traversing of streams, muddy bogs, and steep hillsides with metal-wheeled wagons.\n\nThe Gold Rush to California in 1848 further defined the route for the stage coaches and produce wagons of the 1850's. Today, over 160 years later, we are still following almost exactly the same road that was first pioneered by a Scottish botanist and a beaver hunter.",
+      "road_or_landmark": "Tampico Road, southeast of the Berry Creek Road junction, west of Smith Peak and north of the Savage claim (tour map).",
+      "mileage_from_start": null,
+      "cumulative_miles": 13.3,
+      "cumulative_miles_paved_route": null,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "1826-1850s (pack trail, Applegate Trail, Gold Rush stage road)",
+      "standing_notice": "POISON OAK: The Soap Creek Valley contains some of the highest concentrations of poison oak in Oregon. Become familiar with this highly toxic plant and avoid it whenever possible. Treat immediately with soap and water if accidentally contacted. Additional medical treatment may be required for particularly sensitive individuals.",
+      "places_named": [
+        "Smith Peak",
+        "Smith Hill",
+        "Oak Hill",
+        "Columbia River",
+        "southwest Oregon",
+        "Willamette Valley",
+        "Oregon City",
+        "San Francisco",
+        "California"
+      ],
+      "people_named": [
+        "David Douglas",
+        "Alexander McLeod",
+        "Charles Wilkes",
+        "Jesse Applegate",
+        "Moses \"Black\" Harris",
+        "Levi Scott"
+      ],
+      "photo_captions": [
+        {
+          "page": 8,
+          "title": "\"GOVERNOR LANE AND MARSHAL MEEK ENROUTE TO OREGON\"",
+          "caption": "After first surviving buffalo stampedes, disease and hostile Indian attacks, Oregon Trail pioneers were faced with the difficult and deadly Columbia River \"Cascades\" near The Dalles. Construction of the Applegate and Barlow Trails during 1845 and 1846 avoided these dangerous rapids and provided American emigrants with a safer and cheaper passage to their new homes in the Willamette Valley. This stop is along an 1853 stretch of the \"Applegate Trail\" that connected \"rainy season\" crossings of Berry and Soap Creeks.",
+          "source": "N. Orr & Co.",
+          "year": "1870",
+          "credit": "[Victor, 1870: p.476]"
+        }
+      ],
+      "lat": 44.71057,
+      "lon": -123.28283,
+      "coordinate_source": "gazetteer (described-relative-to)",
+      "place_slug": "auto-tour-stop-2-smith-peak",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-2-smith-peak/",
+      "gazetteer_method": "described-relative-to",
+      "gazetteer_confidence": "inferred",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 13.3 (p.3), 1.1 miles beyond Stop #1. Tour map shows circled \"2\" on Tampico Road at the west end of the \"TAMPICO\" road label, south of the \"SAVAGE\" claim boundary and west of \"SMITH PEAK 1853\", with the gravel-road symbol and the Applegate Trail (1846-1853) running alongside. Stop text: \"By facing to the east from this stop, you can see the crest of the hill called 'Smith Peak'... Called 'Smith Hill' today and 'Oak Hill' at other times\" (p.9).",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 3,
+      "stop_label": "STOP #3",
+      "slug": "stop-3",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-3/",
+      "title": "STOP #3 COFFIN BUTTE [Pioneers]",
+      "title_in_contents": "STOP #3  COFFIN BUTTE [Pioneers]",
+      "theme": "Pioneers",
+      "page": 11,
+      "text": "The view of Coffin Butte from this stop is very similar to the one used for the illustration on the left. Notice the location of the road intersection to the rear of the horseman, and of the vegetation pattern on the north side of the butte. How does this compare to what we see today?  During World War II Coffin Butte was quarried for road building rock. Today, solid waste from local communities is restoring its former contours.\n\nBy the time Oregon became a U.S. Territory in 1849, most of the surrounding farmland had been claimed by emigrant families that had arrived overland along the Oregon Trail. Many of the pioneers associated with the establishment and construction of the Barlow and Applegate Trails settled near here.\n\nDavid \"Uncle Davey\" Carson, the Irish Mountain Man, guided families through a snowy pass south of Mount Hood during the fall of 1845. That winter William Berry guarded a cache of goods along the same trail - which became known as the \"Barlow Toll Road\" when it was completed the following spring. Morgan Savage and Tolbert Carter, whose original cabin sites you passed along the eastern base of Coffin Butte and the northern base of Smith Peak, helped construct the Applegate Trail from Fort Hall in Idaho to the Willamette Valley in 1846. The following year, David D. Davis brought his family to the Soap Creek Valley along the same route.\n\nWithin a two-year period, the prime bottom lands of the Soap Creek Valley and the adjacent prairies had all been claimed by American pioneers. Two years later, in 1849, Oregon became a Territory of the United States.",
+      "road_or_landmark": "Tampico Road, west of the Writsman claim, looking east toward Coffin Butte (tour map).",
+      "mileage_from_start": null,
+      "cumulative_miles": 15.1,
+      "cumulative_miles_paved_route": null,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "1845-1849 (Barlow and Applegate Trails, Donation-era settlement); WWII quarrying",
+      "standing_notice": "DRIVING COURTESY: Many local residents, businesses, and OSU students use the roads over which this tour is routed. Please be aware of those that may be in a greater hurry than yourself, and allow them to pass at every safe opportunity",
+      "places_named": [
+        "Coffin Butte",
+        "Oregon",
+        "Mount Hood",
+        "Barlow Toll Road",
+        "Smith Peak",
+        "Fort Hall",
+        "Idaho",
+        "Willamette Valley",
+        "Soap Creek Valley"
+      ],
+      "people_named": [
+        "David \"Uncle Davey\" Carson",
+        "William Berry",
+        "Morgan Savage",
+        "Tolbert Carter",
+        "David D. Davis"
+      ],
+      "photo_captions": [
+        {
+          "page": 10,
+          "title": "\"FARM RESIDENCE OF J. W. WRITSMAN\"",
+          "caption": "Mount Jefferson appears in the background of this drawing of Coffin Butte, published in 1885. The Writsman's were early settlers along Soap Creek. Their property included one of the first cabins to be constructed in Benton County, and was maintained for several decades as a reminder of their \"Humble Beginnings.\"",
+          "source": "James T. Pickett",
+          "year": "1885",
+          "credit": "[Fagan, 1885: p. 424]"
+        }
+      ],
+      "lat": 44.69432,
+      "lon": -123.25112,
+      "coordinate_source": "gazetteer (described-relative-to)",
+      "place_slug": "auto-tour-stop-3-coffin-butte",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-3-coffin-butte/",
+      "gazetteer_method": "described-relative-to",
+      "gazetteer_confidence": "inferred",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 15.1 (p.3). Tour map shows circled \"3\" on Tampico Road west of the \"WRITSMAN\" claim, where the Applegate Trail and Tampico Road converge, northwest of \"COFFIN BUTTE 1853\". Stop text: \"The view of Coffin Butte from this stop is very similar to the one used for the illustration on the left. Notice the location of the road intersection to the rear of the horseman\" (p.11); the illustration is the 1885 J. W. Writsman farm residence with Coffin Butte behind it (p.10).",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 4,
+      "stop_label": "STOP #4",
+      "slug": "stop-4",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-4/",
+      "title": "STOP #4 SOAP CREEK [Settlers]",
+      "title_in_contents": "STOP #4  SOAP CREEK [Settlers]",
+      "theme": "Settlers",
+      "page": 13,
+      "text": "As you traveled Airlie Road during the first part of this tour, did you notice the shape of the hills to the south? Could you see how Coffin Butte came to be named? This landmark was used by HBC beaver hunters in the 1830's, by pioneer road builders in the 1840's, and by subsistance farmers in the 1920's to guide their way to the Soap Creek Valley.\n\nThe Writsman's weren't the first family to homestead their claim. They had purchased their cabin and an unregistered land claim from surveyor George Stump. This was not unusual.\n\nMany homesteads in Oregon were bought, sold, and traded before the enactment of the Oregon Donation Land Act of 1850. Although this Act provided free land to white adult emigrants to the new territory, many arrivals were content to purchase the developed claims of their predecessors. An unusual feature of the Act is that it allowed a man's wife to claim, and in her own name, an amount of land identical in size to her husband's claim. Before long the legal age of marriage for women in the new Territory was twelve.\n\nIn this manner, William Berry sold his claim near Oregon City and moved to the Soap Creek area in 1849. Following David Carson's death in 1853, his wife Letitia (a former Kentucky slave) had to sue the executor of her husband's estate for the money from the sale of her own farm. Not only was slavery illegal in Oregon at that time - so was being black. George Roberts \"proved up\" on his claim, and then quickly sold parts of it to his neighbors Green Berry Smith, David D. Davis, and others in the mid-1850's. The town of Tampico was partially constructed on a portion of the Robert's claim.\n\nAs was the case in many areas of the Willamette Valley, the people who first \"pioneered\" the Soap Creek Valley area were not always the same as the ones who ultimately settled here.",
+      "road_or_landmark": "Tampico Road, just southeast of Stop #3, near the junction with the road toward the Hugharts and Davis claims (tour map).",
+      "mileage_from_start": null,
+      "cumulative_miles": 15.5,
+      "cumulative_miles_paved_route": null,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "1849-1850s (Oregon Donation Land Act, claim sales)",
+      "standing_notice": "RESEARCH: For those interested in learning more of the history of Oregon and of the Soap Creek area, a preliminary list of references is given on page 31 of this guide.",
+      "places_named": [
+        "Airlie Road",
+        "Coffin Butte",
+        "Soap Creek Valley",
+        "Oregon",
+        "Oregon City",
+        "Tampico",
+        "Willamette Valley",
+        "Kentucky"
+      ],
+      "people_named": [
+        "George Stump",
+        "William Berry",
+        "David Carson",
+        "Letitia Carson",
+        "George Roberts",
+        "Green Berry Smith",
+        "David D. Davis"
+      ],
+      "photo_captions": [
+        {
+          "page": 12,
+          "title": "\"G. B. SMITH, CORVALLIS, OR.\"",
+          "caption": "Green Berry Smith was the most powerful and influential landowner in the Soap Creek neighborhood in the latter half of the nineteenth century. Often involved in litigation with his neighbors, he was reputed to own about 10,000 acres of land in Benton and Polk Counties during the later years of his life.",
+          "source": "(unknown)",
+          "year": "c.1880",
+          "credit": "[courtesy of Oregon Historical Society]"
+        }
+      ],
+      "lat": 44.69072,
+      "lon": -123.24408,
+      "coordinate_source": "gazetteer (described-relative-to)",
+      "place_slug": "auto-tour-stop-4-soap-creek",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-4-soap-creek/",
+      "gazetteer_method": "described-relative-to",
+      "gazetteer_confidence": "inferred",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 15.5 (p.3), 0.4 miles beyond Stop #3. Tour map shows circled \"4\" on Tampico Road just southeast of Stop #3, at the junction with the road running southeast past the \"HUGHARTS\" and \"DAVIS\" claims. Stop text refers back to Airlie Road and the shape of Coffin Butte, and forward to the Writsman, Berry, Carson, Roberts, Smith and Davis claims (p.13).",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 5,
+      "stop_label": "STOP #5",
+      "slug": "stop-5",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-5/",
+      "title": "STOP #5 TAMPICO [Towns]",
+      "title_in_contents": "STOP #5  TAMPICO [Towns]",
+      "theme": "Towns",
+      "page": 15,
+      "text": "It is hard to imagine that an entire town was once located in this quiet valley.  Tampico was officially a town for less than three years. Yet, despite its short existence, tales of rowdiness and general lawlessness have survived to this day.\n\nPerhaps it was the proximity of Fort Hoskins and the newly-formed Siletz Indian Reservation; or else the character of the local settlers; or maybe just the condition of pre-statehood Oregon in general; but for whatever reason, Tampico seems to hold a particular degree of infamy in the memories of its citizens and their descendents.\n\nColorful tales of fist fights, gambling, stagecoach robberies, murder, horse racing, tent revivals, drunken sprees, and hangings persisted in the stories of former residents and neighbors until the land was finally purchased by the U.S. Army during World War II. Modern research seems to place a certain amount of credibility in these stories.\n\nThis is not to say that the area was completely lawless;  most residents were honest and hardworking citizens who supported healthy and productive families. Many held prominent positions in local government, taught school, or otherwise figured positively in the affairs of their community. Perhaps it was the nostalgia of these people, passing away hours in the comfort of one another's company, that most encouraged and nourished the tales of long-ago Tampico.",
+      "road_or_landmark": "Tampico townsite, west of the George Roberts claim, on the Applegate Trail loop between Stop #6 and Highway 99 (tour map).",
+      "mileage_from_start": null,
+      "cumulative_miles": 16.1,
+      "cumulative_miles_paved_route": 3.0,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "1857-1860 (town platted and closed); tales persisting to WWII Army purchase",
+      "standing_notice": "TRESPASSING: Several of the landmarks on this tour are private property, or are dedicated to research and educational programs. Trespassing is illegal. Please don't leave designated trails, parking areas, or public roadways without prior permission.",
+      "places_named": [
+        "Tampico",
+        "Fort Hoskins",
+        "Siletz Indian Reservation",
+        "Oregon"
+      ],
+      "people_named": [],
+      "photo_captions": [
+        {
+          "page": 14,
+          "title": "\"PLOT OF THE TOWN OF TAMPICO\"",
+          "caption": "Tampico was platted October 27, 1857 by William J. Crouch and shut down on January 23, 1860 by Green Berry Smith, who had purchased it earlier in the day. One tradition has it that Smith was attempting to remove a source of corruption to local residents.",
+          "source": "William J. Crouch",
+          "year": "1857",
+          "credit": "[Benton County Public Works Department]"
+        },
+        {
+          "page": 16,
+          "title": "\"TAMPICO, EARLY RIVAL OF CORVALLIS\"",
+          "caption": "This watercolor, painted under the direction of historian John Horner in 1925, attempts to depict Tampico about the time of the Civil War. The view is from the south, with Tampico School on the hill to the west (left) and Coffin Butte to the northeast (right).",
+          "source": "William Ball",
+          "year": "1925",
+          "credit": "[courtesy of Horner Museum]"
+        },
+        {
+          "page": 17,
+          "title": "\"THE ARCADE SALOON, 1904\"",
+          "caption": "By 1885, Tampico had become a \"ghost town.\" Only the local tavern and several colorful stories remained.",
+          "source": "Glender Brothers",
+          "year": "1904",
+          "credit": "[courtesy of Soap Creek Schoolhouse Foundation]"
+        }
+      ],
+      "lat": 44.685303,
+      "lon": -123.23353,
+      "coordinate_source": "gazetteer (trs-centroid)",
+      "place_slug": "auto-tour-stop-5-tampico",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-5-tampico/",
+      "gazetteer_method": "trs-centroid",
+      "gazetteer_confidence": "inferred",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 16.1, first stop with a paved-route mileage (3.0) (p.3). Tour map shows circled \"5\" east of circled \"6\", west of the \"ROBERTS\" claim, inside a loop of the Applegate Trail, on the paved road running down to Cahoon and Highway 99. Stop text (p.13): \"The town of Tampico was partially constructed on a portion of the Robert's claim.\" The 1857 plat reproduced on p.14 carries Bob Zybach's pencilled location note: \"BZ 5/27/89 / NE 1/4, SE 1/4 Sec. 24 / TP. 10 S., RNG. 5 W.\" Page 23 additionally places the Tampico school at \"the intersection of Tampico and Sulphur Springs Roads [Stop #5]\", which does not agree with the map placement - both readings are recorded, neither resolved.",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 6,
+      "stop_label": "STOP #6",
+      "slug": "stop-6",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-6/",
+      "title": "STOP #6 ELEPHANT TOOTH [Early People]",
+      "title_in_contents": "STOP #6  ELEPHANT TOOTH [Early People]",
+      "theme": "Early People",
+      "page": 19,
+      "text": "If you look across the field lying to the north of this stop you will see a transformer on a telephone pole. It is located next to a spring on the old David and Letitia Carson homestead. While making improvements to this spring almost 70 years ago, William and Charles Glender discovered an elephant tooth about 15 feet below ground, in gravel that scientists say originated in Canada or Idaho.\n\nHow did the gravel get here? Near the end of the last ice age, between 12,800 and 15,000 years ago, a warming climate caused at least a hundred huge floods (called the \"Bretz Floods\") to course down the Columbia River. These cataclysmic occurrences filled the entire Willamette Valley with hundreds of feet of water, mud, and gravel.  If humans lived here at that time they must have been crushed or drowned, before being buried with sediments. That is probably what happened to the Glender's elephant.\n\nHow long have people lived in the Soap Creek Valley? Recent archeological findings indicate a period of at least 10,000 years - time enough to have contributed to the extinction of a number of large ice age mammals, but not long enough to have been directly affected by the gargantuan floods that forever leveled the valley's floor with silt and gravel. Some evidence indicates that humans may have first entered the Willamette Valley as many as 60,000 years ago.",
+      "road_or_landmark": "Soap Creek / Tampico Road corridor northwest of Stop #5, adjacent to the Davis claim, facing the old David and Letitia Carson homestead spring to the north (tour map and stop text).",
+      "mileage_from_start": null,
+      "cumulative_miles": 16.7,
+      "cumulative_miles_paved_route": 3.6,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "Ice age (12,800-15,000 years ago) to the mid-1930s",
+      "standing_notice": "POT HUNTING: Disturbing or removing cultural artifacts is called \"pot hunting.\" In addition to compromising the experiences of other visitors, valuable information is lost or destroyed by these practices. Please Don't Touch! Take a photograph and record the location instead. Leave things as you find them. If you believe you have discovered something of value, report your find to the OSU Research Forests office at Peavy Arboretum.",
+      "places_named": [
+        "Soap Creek Valley",
+        "Canada",
+        "Idaho",
+        "Columbia River",
+        "Willamette Valley"
+      ],
+      "people_named": [
+        "David Carson",
+        "Letitia Carson",
+        "William Glender",
+        "Charles Glender",
+        "J Harlen Bretz (as \"Bretz Floods\")"
+      ],
+      "photo_captions": [
+        {
+          "page": 18,
+          "title": "\"CARSON'S SPRING ELEPHANT TOOTH\"",
+          "caption": "William Glender proudly displays a 15 pound elephant tooth that was excavated from his family's stock watering spring in the early 1920's. Other elephant fossils were also removed from the same spring at that time, and again during the mid-1930's.",
+          "source": "Glender Brothers",
+          "year": "c.1925",
+          "credit": "[courtesy of Eugene Glender]"
+        }
+      ],
+      "lat": 44.68014,
+      "lon": -123.24308,
+      "coordinate_source": "gazetteer (described-relative-to)",
+      "place_slug": "auto-tour-stop-6-elephant-tooth",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-6-elephant-tooth/",
+      "gazetteer_method": "described-relative-to",
+      "gazetteer_confidence": "inferred",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 16.7 (p.3), 0.6 miles beyond Stop #5. Tour map shows circled \"6\" on the road northwest of circled \"5\", adjacent to the \"DAVIS\" claim and north of \"CARSON\"/\"CARSON ESTATE\". Stop text: \"If you look across the field lying to the north of this stop you will see a transformer on a telephone pole. It is located next to a spring on the old David and Letitia Carson homestead\" (p.19).",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 7,
+      "stop_label": "STOP #7",
+      "slug": "stop-7",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-7/",
+      "title": "STOP #7 BEEF BARNS [Agriculture]",
+      "title_in_contents": "STOP #7  BEEF BARNS  [Agriculture]",
+      "theme": "Agriculture",
+      "page": 21,
+      "text": "The first cattle brought into the Willamette Valley were a wild and untamed herd imported from Mexican California by Ewing Young in 1837. Fences were put up around pioneer homesteads and fields to keep the cattle out, not in. Children were often chased or threatened on their way to school. One of the first fenced wheat fields in Benton County, dating to the 1840's, is believed to be located near this stop, about 1/4 mile northeast of here.\n\nWith the discovery of gold in the 1840's, '50's, and '60's - first in California, then in southern Oregon, and finally in eastern Oregon and Idaho - the butchering and selling of beef and hogs to hopeful miners formed a lucrative portion of many Soap Creek farmers' incomes. Gradually, however, the smaller farms were consolidated into larger holdings and, by 1900, sheep and tillable crops had replaced cattle raising for most local landowners.\n\nThe shift from grazing to tilling had the effect of concentrating agricultural activities onto the flatter areas of the valley, allowing surrounding forests to seed abandoned pastures and hayfields along the hillsides. By World War I, many families had become more dependent upon the timber industry than upon farming for their income. Depression-era subsistance farming saw several families with a few milk cows, but most unable to afford to raise or eat beef.\n\nFollowing the creation of Camp Adair during World War II, the local farmers were bought out by the Army and their pastures turned into training grounds and rifle ranges. Today, the trend has come full circle, and the OSU College of Agriculture is once again raising cattle on these lands.",
+      "road_or_landmark": "Junction of Tampico Road and Sulphur Springs Road, beside the Carson claim and the Carson Estate, west of Glenders Hill (tour map).",
+      "mileage_from_start": null,
+      "cumulative_miles": 17.3,
+      "cumulative_miles_paved_route": 4.2,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "1837-1989 (Ewing Young's cattle to the OSU College of Agriculture)",
+      "standing_notice": "CAMP ADAIR: In August, 1941, the U.S. Army announced plans for a military training camp to be located in north Benton County. On December 12, just a few days after Pearl Harbor, Camp Adair was established to handle 33,000 men. The site of the new camp, transformed from family farms to army base in just a few months, encompassed most of the land you have been driving through today.",
+      "places_named": [
+        "Willamette Valley",
+        "Mexican California",
+        "Benton County",
+        "California",
+        "southern Oregon",
+        "eastern Oregon",
+        "Idaho",
+        "Camp Adair"
+      ],
+      "people_named": [
+        "Ewing Young"
+      ],
+      "photo_captions": [
+        {
+          "page": 20,
+          "title": "\"SAM H. MOORE ON 'BILLY BOWLEGS'\"",
+          "caption": "The Moore's were a prominent Soap Creek Valley farming family at the turn of the century, raising cattle, sheep, and hogs.. Sam Moore's father, James, donated the land upon which the Soap Creek Schoolhouse is located. Notice Coffin Butte in the left background, the developing fir and oak forest on the right, and the fencing. The view is from \"Sheep Hill,\" on the old Alfred Writsman Homestead. It can be approximated today from Moss Rock Drive, about 3 miles southwest of this spot.",
+          "source": "Josephine Moore",
+          "year": "c.1899",
+          "credit": "[courtesy of Soap Creek Schoolhouse Foundation]"
+        }
+      ],
+      "lat": 44.67498,
+      "lon": -123.25263,
+      "coordinate_source": "gazetteer (described-relative-to)",
+      "place_slug": "auto-tour-stop-7-beef-barns",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-7-beef-barns/",
+      "gazetteer_method": "described-relative-to",
+      "gazetteer_confidence": "inferred",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 17.3 (p.3), 0.6 miles beyond Stop #6. Tour map shows circled \"7\" at the junction of Tampico Road and Sulphur Springs Road (\"SPRINGS ROAD\"), immediately west of the \"CARSON\" claim, south of \"CARSON ESTATE\" and west of \"GLENDERS HILL 1925\"; an 1853-home square is drawn just west of the stop. Stop text: \"One of the first fenced wheat fields in Benton County, dating to the 1840's, is believed to be located near this stop, about 1/4 mile northeast of here\" (p.21).",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 8,
+      "stop_label": "STOP #8",
+      "slug": "stop-8",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-8/",
+      "title": "STOP #8 SOAP CREEK SCHOOL [Education]",
+      "title_in_contents": "STOP #8  SOAP CREEK SCHOOL [Education]",
+      "theme": "Education",
+      "page": 23,
+      "text": "The Soap Creek School District is reputed to be the oldest in Benton County, with some authorities placing its beginning in a log structure erected during the fall of 1847. It was finally closed in the spring of 1946 and the remaining children transferred to Mountain View School the following school year.\n\nDuring the century of their mutual existences, the Soap Creek and Tampico schools were occasionally one and the same. The location of the school varied from the intersection of Tampico and Sulphur Springs Roads [Stop #5] and this stop, with at least 2 additional locations in between. Generally the location depended upon the sizes of the local families and the ages of their children. When conditions warranted, both schools would operate simultaneously, as occurred between 1924 and 1941.\n\nThis particular building was first used in 1932. The Soap Creek Schoolhouse Foundation is preserving and restoring the school and its grounds as an historic site. During \"open houses\" scheduled in May, July, and October, visitors may read collected local histories, see early Soap Creek Valley photographs, and observe the books, equipment, and furnishings typical of a depression-era \"country\" school.\n\nFor more information, please refer to page 31 of this guide.",
+      "road_or_landmark": "Sulphur Springs Road southwest of Stop #7, below Glenders Hill and east of the Moodie and A. Writsman claims (tour map). Soap Creek Schoolhouse, 37465 Soap Creek Rd., Corvallis, Oregon 97330 (page 31).",
+      "mileage_from_start": null,
+      "cumulative_miles": 19.0,
+      "cumulative_miles_paved_route": 5.9,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "1847-1946 (school district); building first used 1932",
+      "standing_notice": "PRIVATE PROPERTY: The Soap Creek Schoolhouse is private property and should be treated with respect. Visitors are reminded that there are no public toilet or water facilities and are asked not to use fire, camp, or pick the wildflowers that grow about the school.",
+      "places_named": [
+        "Benton County",
+        "Mountain View School",
+        "Tampico",
+        "Tampico Road",
+        "Sulphur Springs Road",
+        "Soap Creek Valley"
+      ],
+      "people_named": [],
+      "photo_captions": [
+        {
+          "page": 22,
+          "title": "\"THE SECOND SCHOOL\"",
+          "caption": "This picture, taken in 1900, is of the new Soap Creek schoolhouse. It may have actually been the third, fourth, or fifth building to serve the district since its inception, sometime after 1845. The previous school, also constructed in 1899 and used for just a few months, was simply hauled to the rear of the new building and converted to a woodshed.  The small structure in the background is not the woodshed.",
+          "source": "Sam H. Moore",
+          "year": "c.1900",
+          "credit": "[courtesy of Soap Creek Schoolhouse Foundation]"
+        }
+      ],
+      "lat": 44.6603484,
+      "lon": -123.2796655,
+      "coordinate_source": "gazetteer (nominatim)",
+      "place_slug": "auto-tour-stop-8-soap-creek-school",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-8-soap-creek-school/",
+      "gazetteer_method": "nominatim",
+      "gazetteer_confidence": "verified",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 19.0 (p.3), 1.7 miles beyond Stop #7. Tour map shows circled \"8\" on Sulphur Springs Road southwest of Stop #7, below the \"GLENDERS HILL 1925\" label, east of the \"MOODIE\" and \"A. WRITSMAN\" claims, with an 1853-home square drawn just northeast of the stop. Page 31 gives the Soap Creek Schoolhouse Foundation address: \"37465 Soap Creek Rd., Corvallis, Oregon 97330.\" Page 20 caption: the Soap Creek Schoolhouse stands on land donated by James Moore, and the \"Sheep Hill\" viewpoint \"can be approximated today from Moss Rock Drive, about 3 miles southwest of this spot.\"",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 9,
+      "stop_label": "STOP #9",
+      "slug": "stop-9",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-9/",
+      "title": "STOP #9 SULPHUR SPRINGS [Recreation]",
+      "title_in_contents": "STOP #9  SULPHUR SPRINGS [Recreation]",
+      "theme": "Recreation",
+      "page": 25,
+      "text": "Sulphur Springs has been a destination for many Benton County recreationists for over 100 years.  A two story hotel was constructed on this spot sometime around 1870 or 1880. It remained standing until about 1920, when it was burned down by an arsonist. The hotel had probably not operated for at least twenty years by that time, however.\n\nIn addition to playing ball, camping, hunting, and picnicking, people came to drink the water, which was considered very healthful. A wooden floor with benches was constructed around the spring and a concrete fountain about two feet in height served those wishing to enjoy the benefits that the water had to offer.\n\nIn the 1890's many Corvallis residents took part in the new fad of bicycling by taking a trip to Sulphur Springs. By 1915 the fad had changed to automobiling, but the destination remained the same.  A CCC camp based at Peavy Arboretum constructed benches and tables at the site in the 1930's, but the advent of World War II put an end to further development.\n\nA shot from a hunter's rifle shattered the concrete fountain, nature and vandals have erased the traces of wooden structures, and trees have covered the field where the old hotel once stood. Today all that remains to remind the visitor of what used to be is a concrete slab marked \"Sulphur Spring\" where the slightly acrid water trickles from the earth.",
+      "road_or_landmark": "Spur off Sulphur Springs Road on the west side, just south of the T.10 S. / T.11 S. township line, at the head of a hiking trail (tour map).",
+      "mileage_from_start": null,
+      "cumulative_miles": 21.3,
+      "cumulative_miles_paved_route": 8.2,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "c.1870-1940s (hotel, springs resort, CCC camp)",
+      "standing_notice": "DESIGNATED TRAILS: Please stay on designated trails. The unwanted trampling of delicate vegetation and the encountering of hazardous and unsafe conditions are two common results of leaving marked trails. In addition to getting lost, other potential problems include poison oak, steep embankments, and swollen creeks.",
+      "places_named": [
+        "Sulphur Springs",
+        "Benton County",
+        "Corvallis",
+        "Peavy Arboretum"
+      ],
+      "people_named": [],
+      "photo_captions": [
+        {
+          "page": 24,
+          "title": "\"WELLS COMMUNITY PICNIC\"",
+          "caption": "This picture of a Wells Community Picnic was taken at Sulphur Springs around 1920. The community was originally named \"Wells Station\" when it developed as a railroad town in the 1880's and became known as \"Wellsdale\" until it was purchased by the government at the outset of World War II.  The Wellsdale site, originally pioneered by Tolbert Carter by 1849, became part of Camp Adair in 1941.",
+          "source": "(unknown)",
+          "year": "c.1920",
+          "credit": "[courtesy of Velma Carter Rawie]"
+        }
+      ],
+      "lat": 44.6423426,
+      "lon": -123.3156559,
+      "coordinate_source": "gazetteer (gnis)",
+      "place_slug": "auto-tour-stop-9-sulphur-springs",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-9-sulphur-springs/",
+      "gazetteer_method": "gnis",
+      "gazetteer_confidence": "stated",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 21.3 (p.3), 2.3 miles beyond Stop #8. Tour map shows circled \"9\" on a short spur on the west side of Sulphur Springs Road, just south of the \"T. 10 S. / T. 11 S.\" township line, at the end of a dotted hiking trail, inside the green OSU Research Forest tint. Stop text: a two-storey hotel stood \"on this spot\", and \"Today all that remains ... is a concrete slab marked 'Sulphur Spring'\" (p.25). Page 24 caption places the Wells Community Picnic of about 1920 at Sulphur Springs.",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 10,
+      "stop_label": "STOP #10",
+      "slug": "stop-10",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-10/",
+      "title": "STOP #10 LEWISBURG SADDLE [Logging]",
+      "title_in_contents": "STOP #10 LEWISBURG SADDLE [Logging]",
+      "theme": "Logging",
+      "page": 27,
+      "text": "The view before you has changed little during the past 100 years. Early pioneers from the United States found a landscape that had more clearings, ponds, and oak, and fewer conifers than today. This was mostly because of floods, beaver, and Indian fires. Grazing animals belonging to early settlers also had the tendency to suppress new forest growth.\n\nAs fire protection became stronger and grazing practices changed, young fir trees began to spread outward from pockets of old-growth, protected by rugged terrain or shielded by fire-resistant oak groves. At the turn of the century local builders, previously dependent upon logging and milling operations to the west in Kings Valley, began to realize the potential for a more localized industry. By World War I, logging and milling were firmly established in the Soap Creek Valley.  The picture to the left is of a logging camp that was home to several families during the depression. Two tramroads [planked roadways with metal rails] connected the camp to the rest of the Soap Creek community.\n\nA Pacific Northwest logging tradition that includes splash dams, teams of oxen, flumes, and railroads was largely precluded from the history of Soap Creek due to the differing conditions noted above. Today this area continues to support the forest products industry, as it has for the past 70 or 80 years.",
+      "road_or_landmark": "Lewisburg Saddle, on the ridge road east of Stop #9 and north of Stop #11, at a hiking-trail head west of Vineyard Hill (tour map).",
+      "mileage_from_start": null,
+      "cumulative_miles": 22.4,
+      "cumulative_miles_paved_route": 9.3,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "c.1850-1989, concentrated on 1900-1940 logging and milling",
+      "standing_notice": "OSU RESEARCH FORESTS: The OSU Research Forests have been owned and managed by OSU's world-renowned College of Forestry for over sixty years. These lands have been acquired by donation and purchase for the purpose of strengthening the research and educational programs of the College. Over the years they have been the site of many pioneering research studies and have been used for training thousands of young foresters.\n\nToday the Research Forests are valuable for production of timber and clean water, as well as hiking, biking, horseback riding and other recreational pursuits. Management is aimed at demonstrating that all forest values can co-exist together.",
+      "places_named": [
+        "United States",
+        "Kings Valley",
+        "Soap Creek Valley",
+        "Soap Creek",
+        "Pacific Northwest"
+      ],
+      "people_named": [],
+      "photo_captions": [
+        {
+          "page": 26,
+          "title": "\"SOAP CREEK LOGGING CAMP\"",
+          "caption": "This mill operated during the Great Depression in the vicinity of the Soap Creek Schoolhouse. Logging and milling operations provided employment for Soap Creek residents before World War II, but the work was irregular and the pay was scanty.",
+          "source": "Ina Thompson",
+          "year": "c.1932",
+          "credit": "[courtesy of Donna Clayton]"
+        }
+      ],
+      "lat": 44.637065,
+      "lon": -123.296211,
+      "coordinate_source": "gazetteer (gnis)",
+      "place_slug": "auto-tour-stop-10-lewisburg-saddle",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-10-lewisburg-saddle/",
+      "gazetteer_method": "gnis",
+      "gazetteer_confidence": "stated",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 22.4 (p.3), 1.1 miles beyond Stop #9. Tour map shows circled \"10\" on the ridge road east of Stop #9, at the junction where a dotted hiking trail leaves the road, west of \"VINEYARD HILL 1982\". The front cover photograph is captioned \"Soap Creek Valley, Summer, 1989\"  View from Lewisburg Saddle. The RETURN ROUTE note (p.3) heads \"down the south side of the Lewisburg Saddle\" toward Lewisburg on Highway 99.",
+      "confidence": "stated"
+    },
+    {
+      "stop_number": 11,
+      "stop_label": "STOP #11",
+      "slug": "stop-11",
+      "href": "/collections/zybach/soap-creek/auto-tour/stop-11/",
+      "title": "STOP #11 OLD-GROWTH TRAIL [Ecology]",
+      "title_in_contents": "STOP #11 OLD-GROWTH TRAIL [Ecology]",
+      "theme": "Ecology",
+      "page": 29,
+      "text": "The Old-Growth Trail was constructed by OSU College of Forestry students in order to provide a variety of forest-related environments to the hiker. A clearcut and research plantation, numerous species of native wildflowers, shrubs and trees are all encountered along its route. And, of course, some of the largest and oldest trees to be found in the Soap Creek Valley are also represented.\n\nThis is one of ten stands of old-growth trees that have been identified and set aside from logging by the OSU Research Forests. Many of these trees are approaching 300 years of age.\n\nThere are many reasons for attempting to preserve these stands. For most visitors, large trees have an intrinsic quality that gives them value in and of themselves. This value may be spiritual, one of awe, or simply a sense of history; these plants have been around a long time. David Douglas may have rested beneath one of these trees, or Jedediah Smith may have watched a grizzly bear escape into their confines.\n\nAnother reason is their value to science.  Why did these plants survive so long? Which of them parented the younger stands that have reforested the surrounding hills and draws? How will these trees respond to global warming? To acid rain? Do they provide a unique or necessary environment for other plants and animals?\n\nAs you walk this trail, try and taste the air. Look closely at the leaves and blossoms.  How does this make you feel?  Are you learning anything? Try and compare these thoughts and sensations with other experiences you have had today. That is why this trail was built.",
+      "road_or_landmark": "Old-Growth Trail head just south of the Lewisburg Saddle (Stop #10), on the loop where the hiking trail leaves and rejoins the road (tour map).",
+      "mileage_from_start": null,
+      "cumulative_miles": 22.7,
+      "cumulative_miles_paved_route": 9.6,
+      "mileage_note": "As printed in the CONTENTS table, p.3: cumulative miles from the entrance to Peavy Arboretum. The booklet prints no leg-by-leg mileage; the 'Paved' column is a shorter all-paved version of the tour and begins at Stop #5.",
+      "historical_period": "Trees approaching 300 years of age; trail built by OSU students, 1980s",
+      "standing_notice": "WILD FLOWERS: Many visitors to the OSU Research Forests are interested in the wide variety of wild flowers that grow here. Please do not pick or otherwise disturb the flowers and other plants you find growing along roads and trails. They are for the enjoyment and benefit of everyone.",
+      "places_named": [
+        "Soap Creek Valley"
+      ],
+      "people_named": [
+        "David Douglas",
+        "Jedediah Smith"
+      ],
+      "photo_captions": [
+        {
+          "page": 28,
+          "title": "\"PINE FORESTS OF OREGON\"",
+          "caption": "Although these old-growth trees are titled \"pines,\" it appears that they are a stand of Douglas-fir and Hemlock, possibly in the vicinity of Astoria. The sailors making the measurement were members of Charles Wilkes' 1838-1842 \"United States Exploring Expedition.\" Pictures such as this, first published in 1845, gave rise to Oregon's reputation as a land of giant evergreen trees.",
+          "source": "Joseph Drayton",
+          "year": "1841",
+          "credit": "[Wilkes, 1845: Vol. V, p. 116]"
+        }
+      ],
+      "lat": 44.63327,
+      "lon": -123.29421,
+      "coordinate_source": "gazetteer (described-relative-to)",
+      "place_slug": "auto-tour-stop-11-old-growth-trail",
+      "place_href": "/collections/zybach/soap-creek/places/auto-tour-stop-11-old-growth-trail/",
+      "gazetteer_method": "described-relative-to",
+      "gazetteer_confidence": "inferred",
+      "geolocation_method": "Read from the printed back-cover tour map (stop circles against named roads, township / range lines, county line and 1853 donation-claim outlines) plus the stop's own printed text and the p.3 mileage table. No coordinates are printed in the booklet and none were computed.",
+      "geolocation_confidence": "inferred",
+      "geolocation_hint": "Printed evidence: mileage 22.7 (p.3), 0.3 miles beyond Stop #10, and the last stop. Tour map shows circled \"11\" immediately south of circled \"10\", on the loop where the dotted hiking trail (the Old-Growth Trail) leaves and rejoins the road, west of \"VINEYARD HILL 1982\"; the road continues southeast to Lewisburg. Stop text: \"The Old-Growth Trail was constructed by OSU College of Forestry students... This is one of ten stands of old-growth trees that have been identified and set aside from logging by the OSU Research Forests\" (p.29).",
+      "confidence": "stated"
+    }
+  ],
+  "pages_text": {
+    "front-cover": [
+      {
+        "page": "front-cover",
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "HISTORIC SOAP CREEK VALLEY"
+      },
+      {
+        "page": "front-cover",
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "\"Soap Creek Valley, Summer, 1989\"   View from Lewisburg Saddle"
+      },
+      {
+        "page": "front-cover",
+        "seq": 3,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "AUTO TOUR"
+      },
+      {
+        "page": "front-cover",
+        "seq": 4,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "Oregon State University Research Forests"
+      },
+      {
+        "page": "front-cover",
+        "seq": 5,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "Bob Zybach"
+      }
+    ],
+    "1": [
+      {
+        "page": 1,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"COSTUME OF A CALLAPUYA INDIAN\""
+      },
+      {
+        "page": 1,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "This man was sketched near present-day Monroe, Oregon by an artist with the Wilkes Expedition of 1841. Notice the Coast Range hills in the background. The Willamette Valley of that time was largely inhabited by a few hundred Kalapuyan-speaking people that regularly burned the areas in which they lived. This practice created a beautiful and productive landscape of grassy oak savannah and flowering prairie that was much favored by the first American settlers to arrive in Oregon. These pioneers found a sparsely inhabited country that featured ready pasturage for their livestock, cleared land for their crops, mild weather, abundant water, and thousands of scenic homesites that were free for the taking."
+      }
+    ],
+    "2": [
+      {
+        "page": 2,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "OSU RESEARCH FORESTS  COLLEGE OF FORESTRY"
+      },
+      {
+        "page": 2,
+        "seq": 2,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "ACKNOWLEDGEMENTS"
+      },
+      {
+        "page": 2,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "This historical tour has been made possible through the combined efforts of many people. It would not have been undertaken or completed at all without the authorization, direction, and encouragement of William Atkinson, Director of the OSU Research Forests. Key suggestions, information, and critical reviews were provided by John C. Jackson, Royal Jackson, and Kenneth Munford."
+      },
+      {
+        "page": 2,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Local historical research was provided and aided by Debora Cummings, Patricia Dunning, Eugene Glender, Lorna Grabe, James Hanish, Judy Rycraft Juntunen, Janet F. Meranda, Margaret Mitchell, Velma Carter Rawie, Marvin Rowley, and Angela C. Sondenaa."
+      },
+      {
+        "page": 2,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Published works and personal conversations with John Eliot Allen, Ira S. Allison, Robert E. Buckman, Henry P. Hansen, and Richard K. Hermann were the principal sources of geological and ecological information contained in this guide, particularly as they related to historical plant succession and prehistoric man."
+      },
+      {
+        "page": 2,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "I would also like to acknowledge several other individuals who contributed to the creation of this tour, but there is insufficient space. Credit for any successes associated with this project must properly rest with the people and institutions who made it possible. Naturally, any problems with typography, interpretation, and organization must rest entirely with the author, as final decisions and approval were my own."
+      },
+      {
+        "page": 2,
+        "seq": 7,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Copyright 1989 / By Bob Zybach and / OSU Research Forests            College of Forestry / Oregon State University / Corvallis, Oregon 97331\n\nPrinted in Corvallis, Oregon / OSU Book Stores, Inc. / 1989"
+      }
+    ],
+    "3": [
+      {
+        "page": 3,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "HISTORIC SOAP CREEK VALLEY"
+      },
+      {
+        "page": 3,
+        "seq": 2,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "OSU RESEARCH FORESTS AUTO TOUR"
+      },
+      {
+        "page": 3,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "TOTAL MILEAGE: The mileages listed below use the entrance to Peavy Arboretum as the tour starting point. Several miles of the designated route are over good gravel roads and walking trails, as depicted on the map. A shorter version of the tour, one that follows only paved roads, is listed under the column titled \"Paved.\""
+      },
+      {
+        "page": 3,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "TOTAL TIME: 1-5 hours. Depending upon pace, route, and whether or not hiking trails are taken."
+      },
+      {
+        "page": 3,
+        "seq": 5,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "CONTENTS:                                      Page   Miles   Paved"
+      },
+      {
+        "page": 3,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "INTRODUCTION [Themes] .................... 5"
+      },
+      {
+        "page": 3,
+        "seq": 7,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #1  BERRY CREEK [Trappers] .... 7   12.2"
+      },
+      {
+        "page": 3,
+        "seq": 8,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #2  SMITH PEAK [Trails] .... 9   13.3"
+      },
+      {
+        "page": 3,
+        "seq": 9,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #3  COFFIN BUTTE [Pioneers] .... 11   15.1"
+      },
+      {
+        "page": 3,
+        "seq": 10,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #4  SOAP CREEK [Settlers] .... 13   15.5"
+      },
+      {
+        "page": 3,
+        "seq": 11,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #5  TAMPICO [Towns] .... 15   16.1   3.0"
+      },
+      {
+        "page": 3,
+        "seq": 12,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #6  ELEPHANT TOOTH [Early People] .... 19   16.7   3.6"
+      },
+      {
+        "page": 3,
+        "seq": 13,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #7  BEEF BARNS  [Agriculture] .... 21   17.3   4.2"
+      },
+      {
+        "page": 3,
+        "seq": 14,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #8  SOAP CREEK SCHOOL [Education] .... 23   19.0   5.9"
+      },
+      {
+        "page": 3,
+        "seq": 15,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #9  SULPHUR SPRINGS [Recreation] .... 25   21.3   8.2"
+      },
+      {
+        "page": 3,
+        "seq": 16,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #10 LEWISBURG SADDLE [Logging] .... 27   22.4   9.3"
+      },
+      {
+        "page": 3,
+        "seq": 17,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #11 OLD-GROWTH TRAIL [Ecology] .... 29   22.7   9.6"
+      },
+      {
+        "page": 3,
+        "seq": 18,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "EPILOGUE [The Future]  .................... 30"
+      },
+      {
+        "page": 3,
+        "seq": 19,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "ADDITIONAL SOURCES OF INFORMATION  ... 31"
+      },
+      {
+        "page": 3,
+        "seq": 20,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "RETURN ROUTE: Beginning at STOP #11, continue along the general route of travel, heading down the south side of the Lewisburg Saddle. From Sulphur Springs Road, bear left toward Lewisburg, as indicated on the back cover map. An early historical road to Corvallis can be followed by turning right on Highland Drive, before returning to Highway 99."
+      }
+    ],
+    "4": [
+      {
+        "page": 4,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "LIST OF ILLUSTRATIONS"
+      },
+      {
+        "page": 4,
+        "seq": 2,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "PAGE      TITLE           SOURCE      YEAR"
+      },
+      {
+        "page": 4,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "1 \"COSTUME OF A CALLAPUYA INDIAN\" ...... Alfred T. Agate  1841  [Wilkes, 1845: Vol. V, p.223]"
+      },
+      {
+        "page": 4,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "6 \"THE TRAPPER'S LAST SHOT\" ...... N. Orr & Co.  1870  [Victor, 1870: p.229]"
+      },
+      {
+        "page": 4,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "8 \"GOVERNOR LANE AND MARSHAL MEEK ENROUTE TO OREGON\" ...... N. Orr & Co.  1870  [Victor, 1870: p.476]"
+      },
+      {
+        "page": 4,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "10 \"FARM RESIDENCE OF J. W. WRITSMAN\" ...... James T. Pickett  1885  [Fagan, 1885: p. 424]"
+      },
+      {
+        "page": 4,
+        "seq": 7,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "12 \"G. B. SMITH, CORVALLIS, OR.\" ...... (unknown)  c.1880  [courtesy of Oregon Historical Society]"
+      },
+      {
+        "page": 4,
+        "seq": 8,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "14 \"PLOT OF THE TOWN OF TAMPICO\" ...... William J. Crouch  1857  [Benton County Public Works Department]"
+      },
+      {
+        "page": 4,
+        "seq": 9,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "16 \"TAMPICO, EARLY RIVAL OF CORVALLIS\" ...... William Ball  1925  [courtesy of Horner Museum]"
+      },
+      {
+        "page": 4,
+        "seq": 10,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "17 \"THE ARCADE SALOON, 1904\" ...... Glender Brothers  1904  [courtesy of Soap Creek Schoolhouse Foundation]"
+      },
+      {
+        "page": 4,
+        "seq": 11,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "18 \"CARSON'S SPRING ELEPHANT TOOTH\" ...... Glender Brothers  c.1925  [courtesy of Eugene Glender]"
+      },
+      {
+        "page": 4,
+        "seq": 12,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "20 \"SAM H. MOORE ON 'BILLY BOWLEGS'\" ...... Josephine Moore  c.1899  [courtesy of Soap Creek Schoolhouse Foundation]"
+      },
+      {
+        "page": 4,
+        "seq": 13,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "22 \"THE SECOND SCHOOL\" ...... Sam H. Moore  c.1900  [courtesy of Soap Creek Schoolhouse Foundation]"
+      },
+      {
+        "page": 4,
+        "seq": 14,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "24 \"WELLS COMMUNITY PICNIC\" ...... (unknown)  c.1920  [courtesy of Velma Carter Rawie]"
+      },
+      {
+        "page": 4,
+        "seq": 15,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "26 \"SOAP CREEK LOGGING CAMP\" ...... Ina Thompson  c.1932  [courtesy of Donna Clayton]"
+      },
+      {
+        "page": 4,
+        "seq": 16,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "28 \"PINE FORESTS OF OREGON\" ...... Joseph Drayton  1841  [Wilkes, 1845: Vol. V, p. 116]"
+      },
+      {
+        "page": 4,
+        "seq": 17,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "32 \"A KALAPUYA LAD\" ...... Alfred T. Agate  1841  [Pickering, 1854: p. 32]"
+      },
+      {
+        "page": 4,
+        "seq": 18,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Cover Photo and Tour Map ..................... Bob Zybach"
+      },
+      {
+        "page": 4,
+        "seq": 19,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Format Graphics .............................. Paul Gorow"
+      },
+      {
+        "page": 4,
+        "seq": 20,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Cartographics ................................ Bob Edmond"
+      }
+    ],
+    "5": [
+      {
+        "page": 5,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "INTRODUCTION"
+      },
+      {
+        "page": 5,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "You are about to take a journey through time."
+      },
+      {
+        "page": 5,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Beginning with the arrival of the first people in the Willamette Valley - at least 10,000 years ago - and continuing until the present, the Soap Creek Valley has been the scene of a wide variety of human experiences and events. Elephants once roamed this valley, and humans may have hunted them. Indians traded obsidian here, and Mountain Men trapped beaver. The first pioneers in Benton County settled here in the 1840's, the first black child was born here before 1850, and confederate sympathizers met here at the outbreak of the Civil War."
+      },
+      {
+        "page": 5,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The pioneering north-south trail that first connected California with the Pacific Northwest passed through this valley. Many figures familiar to Oregon history followed its course; cattlemen, school teachers, depression-era farmers and loggers, World War II soldiers and modern students and scientists have all had a hand in shaping the history of this valley. Today you will also be taking part in that history."
+      },
+      {
+        "page": 5,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "This tour has been designed so that you may visit the sites and view the scenes in which many events significant to local, state, and national history have taken place. Each stop is associated with a theme to help relate these influences of the past to our current lives and undertakings."
+      },
+      {
+        "page": 5,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "We hope you enjoy your visit."
+      },
+      {
+        "page": 5,
+        "seq": 7,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "DRIVING SAFETY: These roads are often used by many commercial logging and road-building trucks. Give commercial vehicles plenty of room along straight stretches, and use extreme caution when rounding curves."
+      }
+    ],
+    "6": [
+      {
+        "page": 6,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"THE TRAPPER'S LAST SHOT\""
+      },
+      {
+        "page": 6,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "Beaver trappers and traders began entering the Coffin Butte area in the early part of the nineteenth century. By the late 1820's, the seasonal crossings along Berry and Soap Creeks had formed an important link in the Hudson's Bay Company (HBC) \"California Trail.\" This commercial pack trail connected the Columbia River (Fort Vancouver and Astoria) to the Umpqua Valley, Sacramento River, and San Fransisco,  much as I-5 still does today."
+      }
+    ],
+    "7": [
+      {
+        "page": 7,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #1 BERRY CREEK [Trapping]"
+      },
+      {
+        "page": 7,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "David Douglas was a Scottish botanist who spent several years in the Pacific Northwest. During his first visit to the Willamette Valley in August, 1825, he noted that most of it had been trapped clean of beaver. Traders based in Astoria had been operating in the area since 1811, encouraging the local Indians to exchange native foods and animal skins for blue beads, guns, blankets, horses and alcohol. Beaver pelts, the principal article of trade, were in great demand by European hatmakers."
+      },
+      {
+        "page": 7,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The advent of trade goods, metal traps, and flintlocks quickly created a difference in valley wildlife populations. White-tail deer, grizzly bears, and beaver soon became scarce. Elk, wolves, and black-tail deer became wary and more difficult to kill. The impact of new diseases in the 1830's had a similar effect on local human populations. Whole families and communities of Kalapuyans were destroyed in a few short years, and soon forgotten."
+      },
+      {
+        "page": 7,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Berry Creek (which you will be crossing on your way to the next stop), like Soap Creek and other Willamette Valley streams, had been heavily impounded by beaver dams. As beaver populations were decimated, these streams became free-flowing and choked with brush and trees. The elimination of beaver ponds also resulted in a reduction of certain animal populations, such as mosquitos and ducks, due to the loss of habitat. Not all species suffered by these changes. The demise of the beaver dams removed migration barriers to anadromous fish and left behind \"flats\" of rich soil for invading plant species."
+      },
+      {
+        "page": 7,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Thus, international trade, based upon a hat style, had forever changed a wilderness."
+      },
+      {
+        "page": 7,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "PARKING: So far as possible, adequate parking has been provided at each of the eleven designated stops along this tour. Please lock your car if you leave it. Always park so as to not create a hazard or inconvenience for others."
+      }
+    ],
+    "8": [
+      {
+        "page": 8,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"GOVERNOR LANE AND MARSHAL MEEK ENROUTE TO OREGON\""
+      },
+      {
+        "page": 8,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "After first surviving buffalo stampedes, disease and hostile Indian attacks, Oregon Trail pioneers were faced with the difficult and deadly Columbia River \"Cascades\" near The Dalles. Construction of the Applegate and Barlow Trails during 1845 and 1846 avoided these dangerous rapids and provided American emigrants with a safer and cheaper passage to their new homes in the Willamette Valley. This stop is along an 1853 stretch of the \"Applegate Trail\" that connected \"rainy season\" crossings of Berry and Soap Creeks."
+      }
+    ],
+    "9": [
+      {
+        "page": 9,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #2  SMITH PEAK [Trails]"
+      },
+      {
+        "page": 9,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "By facing to the east from this stop, you can see the crest of the hill called \"Smith Peak\" by the government land surveyor in 1853. Called \"Smith Hill\" today and \"Oak Hill\" at other times, this early barrier to north-south wagon traffic was known to local farmers for its nests of rattlesnakes and patches of poison oak."
+      },
+      {
+        "page": 9,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "In the fall of 1826, while David Douglas and HBC brigade leader Alexander McLeod were blazing the first horse trail from the Columbia River to southwest Oregon, Kalapuyans were burning most of the prairies throughout the Willamette Valley. The road builders were forced to follow these coastal hills to the west in order to find both forage for their animals as well as food for themselves. By 1841, a United States Exploring Expedition under the direction of Lieutenant Charles Wilkes was able to follow the well-established \"California Trail\" from Oregon City to San Francisco."
+      },
+      {
+        "page": 9,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Five years later, in 1846, when Jesse Applegate, Moses \"Black\" Harris, Levi Scott and a dozen other men were establishing the \"Applegate Trail\" for American pioneers, they followed the same course taken by Douglas and the Wilkes Expedition. But in addition to necessary food and forage, these men also had to consider the traversing of streams, muddy bogs, and steep hillsides with metal-wheeled wagons."
+      },
+      {
+        "page": 9,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The Gold Rush to California in 1848 further defined the route for the stage coaches and produce wagons of the 1850's. Today, over 160 years later, we are still following almost exactly the same road that was first pioneered by a Scottish botanist and a beaver hunter."
+      },
+      {
+        "page": 9,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "POISON OAK: The Soap Creek Valley contains some of the highest concentrations of poison oak in Oregon. Become familiar with this highly toxic plant and avoid it whenever possible. Treat immediately with soap and water if accidentally contacted. Additional medical treatment may be required for particularly sensitive individuals."
+      }
+    ],
+    "10": [
+      {
+        "page": 10,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"FARM RESIDENCE OF J. W. WRITSMAN\""
+      },
+      {
+        "page": 10,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "Mount Jefferson appears in the background of this drawing of Coffin Butte, published in 1885. The Writsman's were early settlers along Soap Creek. Their property included one of the first cabins to be constructed in Benton County, and was maintained for several decades as a reminder of their \"Humble Beginnings.\""
+      }
+    ],
+    "11": [
+      {
+        "page": 11,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #3 COFFIN BUTTE [Pioneers]"
+      },
+      {
+        "page": 11,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The view of Coffin Butte from this stop is very similar to the one used for the illustration on the left. Notice the location of the road intersection to the rear of the horseman, and of the vegetation pattern on the north side of the butte. How does this compare to what we see today?  During World War II Coffin Butte was quarried for road building rock. Today, solid waste from local communities is restoring its former contours."
+      },
+      {
+        "page": 11,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "By the time Oregon became a U.S. Territory in 1849, most of the surrounding farmland had been claimed by emigrant families that had arrived overland along the Oregon Trail. Many of the pioneers associated with the establishment and construction of the Barlow and Applegate Trails settled near here."
+      },
+      {
+        "page": 11,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "David \"Uncle Davey\" Carson, the Irish Mountain Man, guided families through a snowy pass south of Mount Hood during the fall of 1845. That winter William Berry guarded a cache of goods along the same trail - which became known as the \"Barlow Toll Road\" when it was completed the following spring. Morgan Savage and Tolbert Carter, whose original cabin sites you passed along the eastern base of Coffin Butte and the northern base of Smith Peak, helped construct the Applegate Trail from Fort Hall in Idaho to the Willamette Valley in 1846. The following year, David D. Davis brought his family to the Soap Creek Valley along the same route."
+      },
+      {
+        "page": 11,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Within a two-year period, the prime bottom lands of the Soap Creek Valley and the adjacent prairies had all been claimed by American pioneers. Two years later, in 1849, Oregon became a Territory of the United States."
+      },
+      {
+        "page": 11,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "DRIVING COURTESY: Many local residents, businesses, and OSU students use the roads over which this tour is routed. Please be aware of those that may be in a greater hurry than yourself, and allow them to pass at every safe opportunity"
+      }
+    ],
+    "12": [
+      {
+        "page": 12,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"G. B. SMITH, CORVALLIS, OR.\""
+      },
+      {
+        "page": 12,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "Green Berry Smith was the most powerful and influential landowner in the Soap Creek neighborhood in the latter half of the nineteenth century. Often involved in litigation with his neighbors, he was reputed to own about 10,000 acres of land in Benton and Polk Counties during the later years of his life."
+      }
+    ],
+    "13": [
+      {
+        "page": 13,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #4 SOAP CREEK [Settlers]"
+      },
+      {
+        "page": 13,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "As you traveled Airlie Road during the first part of this tour, did you notice the shape of the hills to the south? Could you see how Coffin Butte came to be named? This landmark was used by HBC beaver hunters in the 1830's, by pioneer road builders in the 1840's, and by subsistance farmers in the 1920's to guide their way to the Soap Creek Valley."
+      },
+      {
+        "page": 13,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The Writsman's weren't the first family to homestead their claim. They had purchased their cabin and an unregistered land claim from surveyor George Stump. This was not unusual."
+      },
+      {
+        "page": 13,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Many homesteads in Oregon were bought, sold, and traded before the enactment of the Oregon Donation Land Act of 1850. Although this Act provided free land to white adult emigrants to the new territory, many arrivals were content to purchase the developed claims of their predecessors. An unusual feature of the Act is that it allowed a man's wife to claim, and in her own name, an amount of land identical in size to her husband's claim. Before long the legal age of marriage for women in the new Territory was twelve."
+      },
+      {
+        "page": 13,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "In this manner, William Berry sold his claim near Oregon City and moved to the Soap Creek area in 1849. Following David Carson's death in 1853, his wife Letitia (a former Kentucky slave) had to sue the executor of her husband's estate for the money from the sale of her own farm. Not only was slavery illegal in Oregon at that time - so was being black. George Roberts \"proved up\" on his claim, and then quickly sold parts of it to his neighbors Green Berry Smith, David D. Davis, and others in the mid-1850's. The town of Tampico was partially constructed on a portion of the Robert's claim."
+      },
+      {
+        "page": 13,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "As was the case in many areas of the Willamette Valley, the people who first \"pioneered\" the Soap Creek Valley area were not always the same as the ones who ultimately settled here."
+      },
+      {
+        "page": 13,
+        "seq": 7,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "RESEARCH: For those interested in learning more of the history of Oregon and of the Soap Creek area, a preliminary list of references is given on page 31 of this guide."
+      }
+    ],
+    "14": [
+      {
+        "page": 14,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"PLOT OF THE TOWN OF TAMPICO\""
+      },
+      {
+        "page": 14,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "Tampico was platted October 27, 1857 by William J. Crouch and shut down on January 23, 1860 by Green Berry Smith, who had purchased it earlier in the day. One tradition has it that Smith was attempting to remove a source of corruption to local residents."
+      }
+    ],
+    "15": [
+      {
+        "page": 15,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #5 TAMPICO [Towns]"
+      },
+      {
+        "page": 15,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "It is hard to imagine that an entire town was once located in this quiet valley.  Tampico was officially a town for less than three years. Yet, despite its short existence, tales of rowdiness and general lawlessness have survived to this day."
+      },
+      {
+        "page": 15,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Perhaps it was the proximity of Fort Hoskins and the newly-formed Siletz Indian Reservation; or else the character of the local settlers; or maybe just the condition of pre-statehood Oregon in general; but for whatever reason, Tampico seems to hold a particular degree of infamy in the memories of its citizens and their descendents."
+      },
+      {
+        "page": 15,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Colorful tales of fist fights, gambling, stagecoach robberies, murder, horse racing, tent revivals, drunken sprees, and hangings persisted in the stories of former residents and neighbors until the land was finally purchased by the U.S. Army during World War II. Modern research seems to place a certain amount of credibility in these stories."
+      },
+      {
+        "page": 15,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "This is not to say that the area was completely lawless;  most residents were honest and hardworking citizens who supported healthy and productive families. Many held prominent positions in local government, taught school, or otherwise figured positively in the affairs of their community. Perhaps it was the nostalgia of these people, passing away hours in the comfort of one another's company, that most encouraged and nourished the tales of long-ago Tampico."
+      },
+      {
+        "page": 15,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "TRESPASSING: Several of the landmarks on this tour are private property, or are dedicated to research and educational programs. Trespassing is illegal. Please don't leave designated trails, parking areas, or public roadways without prior permission."
+      }
+    ],
+    "16": [
+      {
+        "page": 16,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"TAMPICO, EARLY RIVAL OF CORVALLIS\""
+      },
+      {
+        "page": 16,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "This watercolor, painted under the direction of historian John Horner in 1925, attempts to depict Tampico about the time of the Civil War. The view is from the south, with Tampico School on the hill to the west (left) and Coffin Butte to the northeast (right)."
+      }
+    ],
+    "17": [
+      {
+        "page": 17,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"THE ARCADE SALOON, 1904\""
+      },
+      {
+        "page": 17,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "By 1885, Tampico had become a \"ghost town.\" Only the local tavern and several colorful stories remained."
+      }
+    ],
+    "18": [
+      {
+        "page": 18,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"CARSON'S SPRING ELEPHANT TOOTH\""
+      },
+      {
+        "page": 18,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "William Glender proudly displays a 15 pound elephant tooth that was excavated from his family's stock watering spring in the early 1920's. Other elephant fossils were also removed from the same spring at that time, and again during the mid-1930's."
+      }
+    ],
+    "19": [
+      {
+        "page": 19,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #6 ELEPHANT TOOTH [Early People]"
+      },
+      {
+        "page": 19,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "If you look across the field lying to the north of this stop you will see a transformer on a telephone pole. It is located next to a spring on the old David and Letitia Carson homestead. While making improvements to this spring almost 70 years ago, William and Charles Glender discovered an elephant tooth about 15 feet below ground, in gravel that scientists say originated in Canada or Idaho."
+      },
+      {
+        "page": 19,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "How did the gravel get here? Near the end of the last ice age, between 12,800 and 15,000 years ago, a warming climate caused at least a hundred huge floods (called the \"Bretz Floods\") to course down the Columbia River. These cataclysmic occurrences filled the entire Willamette Valley with hundreds of feet of water, mud, and gravel.  If humans lived here at that time they must have been crushed or drowned, before being buried with sediments. That is probably what happened to the Glender's elephant."
+      },
+      {
+        "page": 19,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "How long have people lived in the Soap Creek Valley? Recent archeological findings indicate a period of at least 10,000 years - time enough to have contributed to the extinction of a number of large ice age mammals, but not long enough to have been directly affected by the gargantuan floods that forever leveled the valley's floor with silt and gravel. Some evidence indicates that humans may have first entered the Willamette Valley as many as 60,000 years ago."
+      },
+      {
+        "page": 19,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "POT HUNTING: Disturbing or removing cultural artifacts is called \"pot hunting.\" In addition to compromising the experiences of other visitors, valuable information is lost or destroyed by these practices. Please Don't Touch! Take a photograph and record the location instead. Leave things as you find them. If you believe you have discovered something of value, report your find to the OSU Research Forests office at Peavy Arboretum."
+      }
+    ],
+    "20": [
+      {
+        "page": 20,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"SAM H. MOORE ON 'BILLY BOWLEGS'\""
+      },
+      {
+        "page": 20,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "The Moore's were a prominent Soap Creek Valley farming family at the turn of the century, raising cattle, sheep, and hogs.. Sam Moore's father, James, donated the land upon which the Soap Creek Schoolhouse is located. Notice Coffin Butte in the left background, the developing fir and oak forest on the right, and the fencing. The view is from \"Sheep Hill,\" on the old Alfred Writsman Homestead. It can be approximated today from Moss Rock Drive, about 3 miles southwest of this spot."
+      }
+    ],
+    "21": [
+      {
+        "page": 21,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #7 BEEF BARNS [Agriculture]"
+      },
+      {
+        "page": 21,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The first cattle brought into the Willamette Valley were a wild and untamed herd imported from Mexican California by Ewing Young in 1837. Fences were put up around pioneer homesteads and fields to keep the cattle out, not in. Children were often chased or threatened on their way to school. One of the first fenced wheat fields in Benton County, dating to the 1840's, is believed to be located near this stop, about 1/4 mile northeast of here."
+      },
+      {
+        "page": 21,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "With the discovery of gold in the 1840's, '50's, and '60's - first in California, then in southern Oregon, and finally in eastern Oregon and Idaho - the butchering and selling of beef and hogs to hopeful miners formed a lucrative portion of many Soap Creek farmers' incomes. Gradually, however, the smaller farms were consolidated into larger holdings and, by 1900, sheep and tillable crops had replaced cattle raising for most local landowners."
+      },
+      {
+        "page": 21,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The shift from grazing to tilling had the effect of concentrating agricultural activities onto the flatter areas of the valley, allowing surrounding forests to seed abandoned pastures and hayfields along the hillsides. By World War I, many families had become more dependent upon the timber industry than upon farming for their income. Depression-era subsistance farming saw several families with a few milk cows, but most unable to afford to raise or eat beef."
+      },
+      {
+        "page": 21,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Following the creation of Camp Adair during World War II, the local farmers were bought out by the Army and their pastures turned into training grounds and rifle ranges. Today, the trend has come full circle, and the OSU College of Agriculture is once again raising cattle on these lands."
+      },
+      {
+        "page": 21,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "CAMP ADAIR: In August, 1941, the U.S. Army announced plans for a military training camp to be located in north Benton County. On December 12, just a few days after Pearl Harbor, Camp Adair was established to handle 33,000 men. The site of the new camp, transformed from family farms to army base in just a few months, encompassed most of the land you have been driving through today."
+      }
+    ],
+    "22": [
+      {
+        "page": 22,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"THE SECOND SCHOOL\""
+      },
+      {
+        "page": 22,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "This picture, taken in 1900, is of the new Soap Creek schoolhouse. It may have actually been the third, fourth, or fifth building to serve the district since its inception, sometime after 1845. The previous school, also constructed in 1899 and used for just a few months, was simply hauled to the rear of the new building and converted to a woodshed.  The small structure in the background is not the woodshed."
+      }
+    ],
+    "23": [
+      {
+        "page": 23,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #8 SOAP CREEK SCHOOL [Education]"
+      },
+      {
+        "page": 23,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The Soap Creek School District is reputed to be the oldest in Benton County, with some authorities placing its beginning in a log structure erected during the fall of 1847. It was finally closed in the spring of 1946 and the remaining children transferred to Mountain View School the following school year."
+      },
+      {
+        "page": 23,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "During the century of their mutual existences, the Soap Creek and Tampico schools were occasionally one and the same. The location of the school varied from the intersection of Tampico and Sulphur Springs Roads [Stop #5] and this stop, with at least 2 additional locations in between. Generally the location depended upon the sizes of the local families and the ages of their children. When conditions warranted, both schools would operate simultaneously, as occurred between 1924 and 1941."
+      },
+      {
+        "page": 23,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "This particular building was first used in 1932. The Soap Creek Schoolhouse Foundation is preserving and restoring the school and its grounds as an historic site. During \"open houses\" scheduled in May, July, and October, visitors may read collected local histories, see early Soap Creek Valley photographs, and observe the books, equipment, and furnishings typical of a depression-era \"country\" school."
+      },
+      {
+        "page": 23,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "For more information, please refer to page 31 of this guide."
+      },
+      {
+        "page": 23,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "PRIVATE PROPERTY: The Soap Creek Schoolhouse is private property and should be treated with respect. Visitors are reminded that there are no public toilet or water facilities and are asked not to use fire, camp, or pick the wildflowers that grow about the school."
+      }
+    ],
+    "24": [
+      {
+        "page": 24,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"WELLS COMMUNITY PICNIC\""
+      },
+      {
+        "page": 24,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "This picture of a Wells Community Picnic was taken at Sulphur Springs around 1920. The community was originally named \"Wells Station\" when it developed as a railroad town in the 1880's and became known as \"Wellsdale\" until it was purchased by the government at the outset of World War II.  The Wellsdale site, originally pioneered by Tolbert Carter by 1849, became part of Camp Adair in 1941."
+      }
+    ],
+    "25": [
+      {
+        "page": 25,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #9 SULPHUR SPRINGS [Recreation]"
+      },
+      {
+        "page": 25,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Sulphur Springs has been a destination for many Benton County recreationists for over 100 years.  A two story hotel was constructed on this spot sometime around 1870 or 1880. It remained standing until about 1920, when it was burned down by an arsonist. The hotel had probably not operated for at least twenty years by that time, however."
+      },
+      {
+        "page": 25,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "In addition to playing ball, camping, hunting, and picnicking, people came to drink the water, which was considered very healthful. A wooden floor with benches was constructed around the spring and a concrete fountain about two feet in height served those wishing to enjoy the benefits that the water had to offer."
+      },
+      {
+        "page": 25,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "In the 1890's many Corvallis residents took part in the new fad of bicycling by taking a trip to Sulphur Springs. By 1915 the fad had changed to automobiling, but the destination remained the same.  A CCC camp based at Peavy Arboretum constructed benches and tables at the site in the 1930's, but the advent of World War II put an end to further development."
+      },
+      {
+        "page": 25,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "A shot from a hunter's rifle shattered the concrete fountain, nature and vandals have erased the traces of wooden structures, and trees have covered the field where the old hotel once stood. Today all that remains to remind the visitor of what used to be is a concrete slab marked \"Sulphur Spring\" where the slightly acrid water trickles from the earth."
+      },
+      {
+        "page": 25,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "DESIGNATED TRAILS: Please stay on designated trails. The unwanted trampling of delicate vegetation and the encountering of hazardous and unsafe conditions are two common results of leaving marked trails. In addition to getting lost, other potential problems include poison oak, steep embankments, and swollen creeks."
+      }
+    ],
+    "26": [
+      {
+        "page": 26,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"SOAP CREEK LOGGING CAMP\""
+      },
+      {
+        "page": 26,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "This mill operated during the Great Depression in the vicinity of the Soap Creek Schoolhouse. Logging and milling operations provided employment for Soap Creek residents before World War II, but the work was irregular and the pay was scanty."
+      }
+    ],
+    "27": [
+      {
+        "page": 27,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #10 LEWISBURG SADDLE [Logging]"
+      },
+      {
+        "page": 27,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The view before you has changed little during the past 100 years. Early pioneers from the United States found a landscape that had more clearings, ponds, and oak, and fewer conifers than today. This was mostly because of floods, beaver, and Indian fires. Grazing animals belonging to early settlers also had the tendency to suppress new forest growth."
+      },
+      {
+        "page": 27,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "As fire protection became stronger and grazing practices changed, young fir trees began to spread outward from pockets of old-growth, protected by rugged terrain or shielded by fire-resistant oak groves. At the turn of the century local builders, previously dependent upon logging and milling operations to the west in Kings Valley, began to realize the potential for a more localized industry. By World War I, logging and milling were firmly established in the Soap Creek Valley.  The picture to the left is of a logging camp that was home to several families during the depression. Two tramroads [planked roadways with metal rails] connected the camp to the rest of the Soap Creek community."
+      },
+      {
+        "page": 27,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "A Pacific Northwest logging tradition that includes splash dams, teams of oxen, flumes, and railroads was largely precluded from the history of Soap Creek due to the differing conditions noted above. Today this area continues to support the forest products industry, as it has for the past 70 or 80 years."
+      },
+      {
+        "page": 27,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "OSU RESEARCH FORESTS: The OSU Research Forests have been owned and managed by OSU's world-renowned College of Forestry for over sixty years. These lands have been acquired by donation and purchase for the purpose of strengthening the research and educational programs of the College. Over the years they have been the site of many pioneering research studies and have been used for training thousands of young foresters.\n\nToday the Research Forests are valuable for production of timber and clean water, as well as hiking, biking, horseback riding and other recreational pursuits. Management is aimed at demonstrating that all forest values can co-exist together."
+      }
+    ],
+    "28": [
+      {
+        "page": 28,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"PINE FORESTS OF OREGON\""
+      },
+      {
+        "page": 28,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "Although these old-growth trees are titled \"pines,\" it appears that they are a stand of Douglas-fir and Hemlock, possibly in the vicinity of Astoria. The sailors making the measurement were members of Charles Wilkes' 1838-1842 \"United States Exploring Expedition.\" Pictures such as this, first published in 1845, gave rise to Oregon's reputation as a land of giant evergreen trees."
+      }
+    ],
+    "29": [
+      {
+        "page": 29,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "STOP #11 OLD-GROWTH TRAIL [Ecology]"
+      },
+      {
+        "page": 29,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "The Old-Growth Trail was constructed by OSU College of Forestry students in order to provide a variety of forest-related environments to the hiker. A clearcut and research plantation, numerous species of native wildflowers, shrubs and trees are all encountered along its route. And, of course, some of the largest and oldest trees to be found in the Soap Creek Valley are also represented."
+      },
+      {
+        "page": 29,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "This is one of ten stands of old-growth trees that have been identified and set aside from logging by the OSU Research Forests. Many of these trees are approaching 300 years of age."
+      },
+      {
+        "page": 29,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "There are many reasons for attempting to preserve these stands. For most visitors, large trees have an intrinsic quality that gives them value in and of themselves. This value may be spiritual, one of awe, or simply a sense of history; these plants have been around a long time. David Douglas may have rested beneath one of these trees, or Jedediah Smith may have watched a grizzly bear escape into their confines."
+      },
+      {
+        "page": 29,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Another reason is their value to science.  Why did these plants survive so long? Which of them parented the younger stands that have reforested the surrounding hills and draws? How will these trees respond to global warming? To acid rain? Do they provide a unique or necessary environment for other plants and animals?"
+      },
+      {
+        "page": 29,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "As you walk this trail, try and taste the air. Look closely at the leaves and blossoms.  How does this make you feel?  Are you learning anything? Try and compare these thoughts and sensations with other experiences you have had today. That is why this trail was built."
+      },
+      {
+        "page": 29,
+        "seq": 7,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "WILD FLOWERS: Many visitors to the OSU Research Forests are interested in the wide variety of wild flowers that grow here. Please do not pick or otherwise disturb the flowers and other plants you find growing along roads and trails. They are for the enjoyment and benefit of everyone."
+      }
+    ],
+    "30": [
+      {
+        "page": 30,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "EPILOGUE"
+      },
+      {
+        "page": 30,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "In the space of a few hours we have traveled from the ice age to the present. The Willamette Valley has been filled to the brim with muddy waters - called Lake Allison by geologists - and receded time and again. The sediments from these floods have leveled whole canyons and left a landscape dominated by swamps and prairies  covered with annual grasses and flowers. These prairies, in turn, were browsed by giant beavers, camels and elephants, and then quickly inhabited by people."
+      },
+      {
+        "page": 30,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "People at first had no metals or domestic livestock; only fire, stone, and ingenuity with which to make a living. Using these tools they changed the landscape again. Some plants were favored over others, prairies were carved from forests, and certain animals were driven to extinction. New people began arriving from other areas of the planet, bringing metals, new plants, new animals, and deadly diseases with them. The landscape changed again. Humans and their tamed herds and flocks quickly became the most numerous inhabitants."
+      },
+      {
+        "page": 30,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Today, grasses are grown in geometrically shaped areas and cut to specific heights.  Prairies and savannahs are being replaced with forests. Synthetic surfaces cover soils and new gases are breathed in with the air. These changes are neither good nor bad - only inevitable. They are one reason why we study history. If we can understand and anticipate change, then we can better guide our common destinies. But mostly we study history for another reason - because it is fun and brings pleasure and enjoyment into our lives."
+      },
+      {
+        "page": 30,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "We hope you have enjoyed your journey through time."
+      }
+    ],
+    "31": [
+      {
+        "page": 31,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "ADDITIONAL SOURCES OF INFORMATION"
+      },
+      {
+        "page": 31,
+        "seq": 2,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Much of the information used to assemble this tour guide was derived from the following sources:"
+      },
+      {
+        "page": 31,
+        "seq": 3,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Allen, John E. and Marjorie Burns, with Sam C. Sargent, Cataclysms On The Columbia. Portland, Oregon: 1986."
+      },
+      {
+        "page": 31,
+        "seq": 4,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Carey, Charles H., General History Of Oregon. Portland, Oregon: 1971."
+      },
+      {
+        "page": 31,
+        "seq": 5,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Davies, K. G., ed., Peter Skene Ogden's Snake Country Journal 1826-27. London, England: 1961."
+      },
+      {
+        "page": 31,
+        "seq": 6,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Davis, Edward E., and David R. Davis, Our Davis Pioneer Ancestors. Portland, Oregon: 1978."
+      },
+      {
+        "page": 31,
+        "seq": 7,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Fagan, David D., History of Benton County, Oregon; Including Its Geology, Topography, Soil and Productions, etc. Portland, Oregon: 1885."
+      },
+      {
+        "page": 31,
+        "seq": 8,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Jackson, Royal, McDonald-Dunn Forests: Human Use And Occupation. Corvallis, Oregon: 1980."
+      },
+      {
+        "page": 31,
+        "seq": 9,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Mackey, Harold, The Kalapuyans. Salem, Oregon: 1974."
+      },
+      {
+        "page": 31,
+        "seq": 10,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "McDonald, Marlene, When School Bells Rang: Schools Of Benton County, Oregon. Philomath, Oregon: 1983."
+      },
+      {
+        "page": 31,
+        "seq": 11,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Smith, Wilmer C., The Smith Chronicle: Two Centuries Of An American Farm Family. Corvallis, Oregon: 1974."
+      },
+      {
+        "page": 31,
+        "seq": 12,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Victor, Frances F., The River Of The West. Portland, Oregon: 1870."
+      },
+      {
+        "page": 31,
+        "seq": 13,
+        "speaker": "editorial",
+        "speaker_name": "Bob Zybach",
+        "text": "Visitors to the OSU Research Forests interested in finding out more about the history and culture of this area may also wish to visit the Oregon Historical Society Library in Portland, the Oregon State Library in Salem, the Kerr Library and Horner Museum on the OSU campus, the Benton County Museum in Philomath, or contact the Soap Creek Schoolhouse Foundation by writing to 37465 Soap Creek Rd., Corvallis, Oregon 97330."
+      }
+    ],
+    "32": [
+      {
+        "page": 32,
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "\"A KALAPUYA LAD\""
+      },
+      {
+        "page": 32,
+        "seq": 2,
+        "speaker": "caption",
+        "speaker_name": "Bob Zybach",
+        "text": "This drawing of a Kalapuyan boy was  made in the Willamette Valley by Alfred T. Agate in 1841, although it was first printed 10 years later in Charles Pickering's The Races Of Men And Their Geographical Distribution. Notice the rounded forehead, which was considered unusual for western Oregon Indians of that era. In 1856 most Kalapuyans were moved to the Grand Ronde reservation, near Sheridan, in Polk County, where they were forced to spend the remainder of their lives."
+      }
+    ],
+    "back-cover": [
+      {
+        "page": "back-cover",
+        "seq": 1,
+        "speaker": "heading",
+        "speaker_name": "Bob Zybach",
+        "text": "TOUR MAP  HISTORIC SOAP CREEK VALLEY"
+      }
+    ]
+  },
+  "editions": {
+    "this_copy": "First printing. The PDF carries a running header added by Bob Zybach in 2013: \"Zybach 1989: Soap Creek Valley Auto Tour (1st printing)\". The booklet itself prints only \"Copyright 1989 By Bob Zybach and OSU Research Forests\" and \"Printed in Corvallis, Oregon / OSU Book Stores, Inc. / 1989\" (p.2); it names no printing or edition.",
+    "printings_described_by_the_author": "From Bob Zybach's own tour index page (sources/soap_creek/auto_tour/index.html): \"Copies were given away free: the first printing was 2500 copies and was distributed in a few months time. A second edition, with fancier cover graphics and an 8' x 10\" foldout map, was produced in two printings -- first, 1000 copies, and then 500. So far as known, these were the only printings of this tour guide.\"",
+    "1996_second_printing_edit": null,
+    "1996_note": "No 1996 second-printing edit is identifiable in this PDF. The scanned booklet is the first printing and carries no 1996 date anywhere; the only later date in the file is the 2013 PDF creation date. The second edition is described by the author only on his index page (quoted above), without a year. Recorded as a gap rather than guessed.",
+    "confidence": "stated"
+  },
+  "quality": {
+    "ocr_error_rate_sample": 0.0,
+    "pages_failed": [],
+    "speaker_turn_method": "Not applicable: this is a single-author guidebook, not an interview transcript. All transcript entries are the author's own text, tagged heading / caption / editorial.",
+    "self_assessment": "High. The PDF has no usable text layer, so every word was read from the 2000-px JPEG page images (split into single pages) and independently cross-checked against tesseract 5.3.4 OCR of the same images; the two agreed on all 32 printed pages. Line-break hyphenation was rejoined; no other change was made to the wording, punctuation or the source's own misspellings. The p.3 mileage table was re-read at 2x magnification digit by digit, and the four map distance markers sum to the printed 12.2 miles for Stop #1, which is an independent check on both readings. Stop locations are inferred from the printed map and text and are marked as such; no coordinates were invented.",
+    "verification_method": "Two independent reads per page (vision on the JPEG half-spreads; tesseract --psm 4 on the same files), plus targeted 2x-3x crops for the mileage table and the pencilled township note on the 1857 Tampico plat."
+  },
+  "gaps": [
+    "No latitude/longitude is printed anywhere in the booklet; every stop's lat_lon is null.",
+    "No 1996 second-printing edit could be identified. This PDF is the first printing (per the author's own PDF header) and contains no 1996 date; the second edition is described only on the author's index page, undated. editions.1996_second_printing_edit is left null.",
+    "There is no \"Stop 5a\" in the booklet. The file Zybach_1989_Stop_05a-10.jpg is the scan of printed pages 16-17, two further Tampico illustrations (\"Tampico, Early Rival Of Corvallis\" and \"The Arcade Saloon, 1904\") that belong to Stop #5. There are exactly eleven numbered stops, as the map, the contents table and the p.7 PARKING note (\"each of the eleven designated stops\") all state.",
+    "The booklet prints no turn-by-turn driving directions and no leg-by-leg mileages; only cumulative miles from Peavy Arboretum, the RETURN ROUTE box and the map's four distance-and-direction markers.",
+    "No index is printed in the booklet, so index_entries is empty.",
+    "The stop-page headers and the p.3 contents table disagree on two theme words: p.7 header reads \"[Trapping]\" where the contents reads \"[Trappers]\". Both are recorded (title and title_in_contents).",
+    "The 1857 Tampico plat's recorder's name is written in a difficult secretary hand; read as \"Jno. B. Ordwood\" but not confirmed.",
+    "No accession id or Drive path was supplied for this document, so source.accession_id and source.drive_path are null."
+  ],
+  "stops_geojson": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "stop-1",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.3021,
+            44.7202
+          ]
+        },
+        "properties": {
+          "slug": "stop-1",
+          "kind": "auto-tour-stop",
+          "name": "STOP #1 BERRY CREEK [Trapping]",
+          "title": "STOP #1",
+          "subtitle": "STOP #1 BERRY CREEK [Trapping]",
+          "confidence": "inferred",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-1/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-2",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.28283,
+            44.71057
+          ]
+        },
+        "properties": {
+          "slug": "stop-2",
+          "kind": "auto-tour-stop",
+          "name": "STOP #2  SMITH PEAK [Trails]",
+          "title": "STOP #2",
+          "subtitle": "STOP #2  SMITH PEAK [Trails]",
+          "confidence": "inferred",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-2/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-3",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.25112,
+            44.69432
+          ]
+        },
+        "properties": {
+          "slug": "stop-3",
+          "kind": "auto-tour-stop",
+          "name": "STOP #3 COFFIN BUTTE [Pioneers]",
+          "title": "STOP #3",
+          "subtitle": "STOP #3 COFFIN BUTTE [Pioneers]",
+          "confidence": "inferred",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-3/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-4",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.24408,
+            44.69072
+          ]
+        },
+        "properties": {
+          "slug": "stop-4",
+          "kind": "auto-tour-stop",
+          "name": "STOP #4 SOAP CREEK [Settlers]",
+          "title": "STOP #4",
+          "subtitle": "STOP #4 SOAP CREEK [Settlers]",
+          "confidence": "inferred",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-4/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-5",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.23353,
+            44.685303
+          ]
+        },
+        "properties": {
+          "slug": "stop-5",
+          "kind": "auto-tour-stop",
+          "name": "STOP #5 TAMPICO [Towns]",
+          "title": "STOP #5",
+          "subtitle": "STOP #5 TAMPICO [Towns]",
+          "confidence": "inferred",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-5/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-6",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.24308,
+            44.68014
+          ]
+        },
+        "properties": {
+          "slug": "stop-6",
+          "kind": "auto-tour-stop",
+          "name": "STOP #6 ELEPHANT TOOTH [Early People]",
+          "title": "STOP #6",
+          "subtitle": "STOP #6 ELEPHANT TOOTH [Early People]",
+          "confidence": "inferred",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-6/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-7",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.25263,
+            44.67498
+          ]
+        },
+        "properties": {
+          "slug": "stop-7",
+          "kind": "auto-tour-stop",
+          "name": "STOP #7 BEEF BARNS [Agriculture]",
+          "title": "STOP #7",
+          "subtitle": "STOP #7 BEEF BARNS [Agriculture]",
+          "confidence": "inferred",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-7/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-8",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.2796655,
+            44.6603484
+          ]
+        },
+        "properties": {
+          "slug": "stop-8",
+          "kind": "auto-tour-stop",
+          "name": "STOP #8 SOAP CREEK SCHOOL [Education]",
+          "title": "STOP #8",
+          "subtitle": "STOP #8 SOAP CREEK SCHOOL [Education]",
+          "confidence": "verified",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-8/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-9",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.3156559,
+            44.6423426
+          ]
+        },
+        "properties": {
+          "slug": "stop-9",
+          "kind": "auto-tour-stop",
+          "name": "STOP #9 SULPHUR SPRINGS [Recreation]",
+          "title": "STOP #9",
+          "subtitle": "STOP #9 SULPHUR SPRINGS [Recreation]",
+          "confidence": "stated",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-9/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-10",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.296211,
+            44.637065
+          ]
+        },
+        "properties": {
+          "slug": "stop-10",
+          "kind": "auto-tour-stop",
+          "name": "STOP #10 LEWISBURG SADDLE [Logging]",
+          "title": "STOP #10",
+          "subtitle": "STOP #10 LEWISBURG SADDLE [Logging]",
+          "confidence": "stated",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-10/"
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "stop-11",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -123.29421,
+            44.63327
+          ]
+        },
+        "properties": {
+          "slug": "stop-11",
+          "kind": "auto-tour-stop",
+          "name": "STOP #11 OLD-GROWTH TRAIL [Ecology]",
+          "title": "STOP #11",
+          "subtitle": "STOP #11 OLD-GROWTH TRAIL [Ecology]",
+          "confidence": "inferred",
+          "href": "/collections/zybach/soap-creek/auto-tour/stop-11/"
+        }
+      }
+    ]
+  },
+  "counts": {
+    "stops": 11,
+    "stops_geocoded": 11,
+    "photographs": 16,
+    "pages_with_text": 34
+  }
+}

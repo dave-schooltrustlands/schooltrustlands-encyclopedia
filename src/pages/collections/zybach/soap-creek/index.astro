@@ -1,0 +1,281 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import ZybachMap from '../../../../components/zybach/soapcreek/ZybachMap.astro';
+import MapList from '../../../../components/zybach/soapcreek/MapList.astro';
+import Shelf from '../../../../components/zybach/soapcreek/Shelf.astro';
+import ContentNote from '../../../../components/zybach/soapcreek/ContentNote.astro';
+import {
+  monographs,
+  gazetteer,
+  valleyGeoJSON,
+  outsideValleyCount,
+  people,
+  chronology,
+  thesis,
+  autotour,
+  autotourStops,
+  contentNotes,
+  seriesIndexMeta,
+  dataReady,
+} from '../../../../components/zybach/soapcreek/data';
+import {
+  thesisHref,
+  tourHref,
+  stopHref,
+  indexHref,
+  placesHref,
+  peopleHref,
+  timelineHref,
+  personHref,
+  periodHref,
+  placeHref,
+} from '../../../../components/zybach/soapcreek/links';
+
+const narrators = people
+  .filter((p) => p.is_narrator || (p.roles ?? []).includes('narrator'))
+  .sort((a, b) => (a.sort_name ?? a.display_name ?? '').localeCompare(b.sort_name ?? b.display_name ?? ''));
+
+const geocoded = gazetteer.filter((p) => typeof p.lat === 'number' && typeof p.lon === 'number');
+const periods = (chronology.periods ?? []).filter((p) => (p.count ?? p.entries?.length ?? 0) > 0);
+const totalTimelineEntries = periods.reduce((n, p) => n + (p.count ?? p.entries?.length ?? 0), 0);
+
+const pagesPrinted = monographs.reduce((n, m) => n + (Number(m.pages_printed) || 0), 0);
+const indexRefs = seriesIndexMeta?.counts?.refs ?? 0;
+const indexHeadings = seriesIndexMeta?.counts?.entries ?? 0;
+
+const homeSites = gazetteer.filter((p) => (p.narrator_home_of ?? []).length > 0);
+
+const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' }];
+---
+<SoapCreekPage
+  title="Soap Creek Valley"
+  subtitle="Seventeen people who farmed, logged, taught and kept house in one Oregon valley, recorded between 1979 and 1995 and printed as fifteen monographs — with the 1989 Auto Tour, the 1999 thesis that used them as evidence, and a live index tying every page to every other."
+  kicker="The Zybach Collection · Series"
+  parents={parents}
+  sourceId="zybach-soap-creek-series"
+  navCurrent="soap-creek"
+  width="full"
+  corrections={false}
+>
+  {!dataReady && (
+    <p class="sc-empty">
+      The series data has not been generated yet. What follows will fill in when it
+      lands.
+    </p>
+  )}
+
+  {contentNotes.collection_statement && (
+    <ContentNote text={contentNotes.collection_statement} level="collection" draft={true} />
+  )}
+
+  <section aria-labelledby="the-valley">
+    <h2 id="the-valley">The valley, its stops and its people</h2>
+    <p>
+      The map carries three things at once: the eleven stops of Bob Zybach's 1989
+      <a href={tourHref()}> Historic Soap Creek Valley Auto Tour</a>; the home sites of
+      the narrators, as plotted on Map 9 of the <a href={thesisHref()}>1999 thesis</a>;
+      and every place inside the valley that a narrator named and that could be given
+      a coordinate. Click a point for the place. The same list, in full, is below the
+      map.
+    </p>
+
+    {valleyGeoJSON.features.length > 0 ? (
+      <>
+        <ZybachMap
+          id="soap-creek-series-map"
+          center={[-123.25, 44.70]}
+          zoom={11}
+          features={valleyGeoJSON}
+          height="520px"
+          basemap="topo"
+          fit={true}
+        />
+        <MapList
+          features={valleyGeoJSON}
+          heading="Everything on this map"
+          order={['auto-tour-stop', 'narrator-home']}
+        />
+        {outsideValleyCount > 0 && (
+          <p class="sc-list-meta">
+            {outsideValleyCount} more geocoded places named by the narrators lie outside
+            the valley — Portland, the Coast, the places they came from and went to.
+            They are on the <a href={placesHref()}>places index</a>.
+          </p>
+        )}
+      </>
+    ) : (
+      <p class="sc-empty">The places list has not been generated yet.</p>
+    )}
+  </section>
+
+  <section aria-labelledby="the-shelf">
+    <h2 id="the-shelf">The shelf</h2>
+    <p>
+      Fifteen monographs, printed between 1990 and 2009 by the OSU Research Forests
+      and the College of Forestry{pagesPrinted ? `, ${pagesPrinted.toLocaleString()} printed pages in all` : ''}.
+      Each cover opens the book: the front matter as printed, the recording sessions,
+      the transcript page by page, the photographs, and the index.
+    </p>
+    {monographs.length > 0 ? (
+      <Shelf monographs={monographs} />
+    ) : (
+      <p class="sc-empty">The shelf is empty until the monograph records are generated.</p>
+    )}
+  </section>
+
+  <section aria-labelledby="the-narrators">
+    <h2 id="the-narrators">The narrators</h2>
+    {narrators.length > 0 ? (
+      <ul class="sc-list sc-cols">
+        {narrators.map((n) => {
+          const monos = (n.narrator_of ?? [])
+            .map((x) => monographs.find((m) => m.slug === x.mono_slug || m.zc_id === x.zc_id))
+            .filter(Boolean);
+          return (
+            <li>
+              <a href={personHref(n.slug)}>{n.display_name}</a>
+              <span class="sc-list-meta">
+                {[
+                  n.lifetime_as_printed,
+                  n.profession,
+                  monos.length ? monos.map((m: any) => `#${m.number}`).join(', ') : null,
+                ]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    ) : (
+      <p class="sc-empty">The narrator records have not been generated yet.</p>
+    )}
+    <p><a href={peopleHref()}>Everyone in the series →</a></p>
+  </section>
+
+  <section aria-labelledby="the-timeline">
+    <h2 id="the-timeline">A timeline the narrators built</h2>
+    <p>
+      {totalTimelineEntries > 0
+        ? `${totalTimelineEntries.toLocaleString()} dated statements, verbatim from the transcripts and the thesis chronology, sorted into Bob's own periods. Where two narrators remember a date differently, both are kept and the disagreement is marked.`
+        : 'Dated statements from the transcripts and the thesis chronology, sorted into Bob’s own periods.'}
+    </p>
+    {periods.length > 0 ? (
+      <ul class="sc-list">
+        {periods.map((p) => (
+          <li>
+            <a href={periodHref(p.slug)}>{p.label}</a>
+            <span class="sc-list-meta">
+              {[p.range, `${(p.count ?? p.entries?.length ?? 0).toLocaleString()} entries`]
+                .filter(Boolean)
+                .join(' · ')}
+            </span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="sc-empty">The chronology has not been generated yet.</p>
+    )}
+    <p><a href={timelineHref()}>The whole timeline →</a></p>
+  </section>
+
+  <section aria-labelledby="thesis-and-tour">
+    <h2 id="thesis-and-tour">The thesis and the Auto Tour</h2>
+    <div class="sc-cards">
+      <article class="sc-card">
+        <p class="eyebrow">1999 · M.A.I.S. thesis</p>
+        <h3><a href={thesisHref()}>{thesis?.title ?? 'Using Oral Histories to Document Changing Forest Cover Patterns: Soap Creek Valley, Oregon, 1500-1999'}</a></h3>
+        <p>
+          The study that used these interviews as evidence: how the informants were
+          chosen, how their memories were tested against maps, photographs and the
+          written record, and the chronology of forest-cover change it produced. Its
+          references point back into the monographs, page by page.
+        </p>
+        {thesis?.citation_canonical && <p class="sc-canonical">{thesis.citation_canonical}</p>}
+      </article>
+
+      <article class="sc-card">
+        <p class="eyebrow">1989 · Auto Tour</p>
+        <h3><a href={tourHref()}>{autotour?.title ?? 'Historic Soap Creek Valley Auto Tour'}</a></h3>
+        <p>
+          A driving tour of the valley in eleven stops, each one a short essay on what
+          happened there. The text is Bob's, printed in 1989; each stop page carries
+          the narrators who speak of that place.
+        </p>
+        {autotourStops.length > 0 && (
+          <ol class="sc-stoplist">
+            {autotourStops.map((s) => (
+              <li>
+                <a href={stopHref(s.stop_number ?? '')}>
+                  {s.title_in_contents ?? s.title ?? `Stop #${s.stop_number}`}
+                </a>
+              </li>
+            ))}
+          </ol>
+        )}
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="ways-in">
+    <h2 id="ways-in">Ways in</h2>
+    <ul class="sc-list">
+      <li>
+        <a href={indexHref()}>The Series Index</a>
+        <span class="sc-list-meta">
+          {indexHeadings
+            ? `Bob's two-tier back-of-book indexes, merged across all fifteen monographs and made live: ${indexHeadings.toLocaleString()} headings, ${indexRefs.toLocaleString()} page references, every one a link.`
+            : 'Bob’s two-tier back-of-book indexes, merged across all fifteen monographs and made live.'}
+        </span>
+      </li>
+      <li>
+        <a href={placesHref()}>Places</a>
+        <span class="sc-list-meta">
+          {gazetteer.length
+            ? `${gazetteer.length.toLocaleString()} named places, ${geocoded.length} with coordinates — what every narrator said about each, with page citations.`
+            : 'Named places in the valley — what every narrator said about each, with page citations.'}
+        </span>
+      </li>
+      <li>
+        <a href={peopleHref()}>People</a>
+        <span class="sc-list-meta">
+          Narrators, interviewers, transcribers and auditors: their sessions, the places
+          they speak of, and where others mention them.
+          {homeSites.length > 0 && ` ${homeSites.length} home sites are on the map.`}
+        </span>
+      </li>
+      <li>
+        <a href={timelineHref()}>Timeline</a>
+        <span class="sc-list-meta">Dated statements, verbatim, by period.</span>
+      </li>
+    </ul>
+  </section>
+</SoapCreekPage>
+
+<style is:global>
+  .sc-cards {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    margin: 1.25rem 0;
+  }
+  .sc-card {
+    border: 1px solid var(--rule-border, #d8d1c2);
+    background: var(--linen-card, #fffdf7);
+    padding: 1rem 1.1rem;
+    border-radius: 3px;
+  }
+  .sc-card h3 {
+    margin: 0.2rem 0 0.5rem;
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+  .sc-stoplist {
+    margin: 0.5rem 0 0;
+    padding-left: 1.2rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+</style>

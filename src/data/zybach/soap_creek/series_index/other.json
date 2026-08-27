@@ -1,0 +1,181 @@
+{
+  "generated": "2026-08-27",
+  "letter": "#",
+  "letter_file": "other",
+  "href": "/collections/zybach/soap-creek/index/other/",
+  "counts": {
+    "entries": 5,
+    "refs": 6,
+    "subentries": 0
+  },
+  "entries": [
+    {
+      "entry_id": "zc-sc-idx-mexican-the-c-1930-vandersanten-employee",
+      "heading": "\"Mexican, The\" (c. 1930 Vandersanten employee)",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        14
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m14",
+          "mono_slug": "m14-hindes",
+          "mono_number": 14,
+          "page": 16,
+          "page_kind": "body",
+          "printed": "16",
+          "ref": "14:16",
+          "href": "/collections/zybach/soap-creek/m14-hindes/08-albert-zundt-the-rohners-and-agnes-dobrinin/#p16",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-walter-c-1930-arlie-resident",
+      "heading": "\"Walter\" (c. 1930 Arlie resident)",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        14
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m14",
+          "mono_slug": "m14-hindes",
+          "mono_number": 14,
+          "page": 16,
+          "page_kind": "body",
+          "printed": "16",
+          "ref": "14:16",
+          "href": "/collections/zybach/soap-creek/m14-hindes/08-albert-zundt-the-rohners-and-agnes-dobrinin/#p16",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-100-road",
+      "heading": "100 Road",
+      "kind": "place",
+      "concordance_category": "Roads and Trails",
+      "variants": [],
+      "monographs": [
+        15
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m15",
+          "mono_slug": "m15-rowley",
+          "mono_number": 15,
+          "page": 107,
+          "page_kind": "body",
+          "printed": "107",
+          "ref": "15:107",
+          "href": "/collections/zybach/soap-creek/m15-rowley/part-vi-may-8-1995/#p107",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-500-road",
+      "heading": "500 Road",
+      "kind": "place",
+      "concordance_category": "Roads and Trails",
+      "variants": [],
+      "monographs": [
+        15
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m15",
+          "mono_slug": "m15-rowley",
+          "mono_number": 15,
+          "page": 83,
+          "page_kind": "body",
+          "printed": "83",
+          "ref": "15:83",
+          "href": "/collections/zybach/soap-creek/m15-rowley/part-v-february-23-1991/#p83",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m15",
+          "mono_slug": "m15-rowley",
+          "mono_number": 15,
+          "page": 112,
+          "page_kind": "body",
+          "printed": "112",
+          "ref": "15:112",
+          "href": "/collections/zybach/soap-creek/m15-rowley/part-vi-may-8-1995/#p112",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 2
+    },
+    {
+      "entry_id": "zc-sc-idx-600-road",
+      "heading": "600 Road",
+      "kind": "place",
+      "concordance_category": "Roads and Trails",
+      "variants": [],
+      "monographs": [
+        15
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m15",
+          "mono_slug": "m15-rowley",
+          "mono_number": 15,
+          "page": 112,
+          "page_kind": "body",
+          "printed": "112",
+          "ref": "15:112",
+          "href": "/collections/zybach/soap-creek/m15-rowley/part-vi-may-8-1995/#p112",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    }
+  ]
+}

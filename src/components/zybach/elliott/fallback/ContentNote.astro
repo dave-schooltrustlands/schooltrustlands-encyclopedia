@@ -1,0 +1,41 @@
+---
+/** Fallback for ROOM's ContentNote. Props per BUILD_SPEC. */
+interface Props {
+  text: string;
+  level?: 'collection' | 'item' | 'page';
+}
+const { text, level = 'item' } = Astro.props as Props;
+const labels: Record<string, string> = {
+  collection: 'Note on this collection',
+  item: 'Note on this item',
+  page: 'Note on this page',
+};
+---
+
+{text && (
+  <aside class="zy-note" data-level={level}>
+    <p class="zy-note-label">{labels[level] ?? labels.item}</p>
+    <p class="zy-note-text">{text}</p>
+  </aside>
+)}
+
+<style>
+  .zy-note {
+    margin: 1.25rem 0;
+    border-left: 3px solid var(--oxblood, #7a2e2e);
+    padding: 0.6rem 0 0.6rem 0.9rem;
+    background: rgba(122, 46, 46, 0.04);
+  }
+  .zy-note-label {
+    margin: 0 0 0.2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--oxblood, #7a2e2e);
+    font-weight: 700;
+  }
+  .zy-note-text {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+</style>

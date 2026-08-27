@@ -26,9 +26,13 @@ interface Props {
   // route to the founding-officers queue. Other pages leave it unset
   // and the modal writes the default 'general' kind.
   feedbackKind?: 'general' | 'institutional_formation';
+  // Zybach Collection (Phase 3) — mirrors the RoomLayout prop. Pages that
+  // are published but not yet ready for search engines (a preview under
+  // review) pass `noindex` and get <meta name="robots" content="noindex">.
+  noindex?: boolean;
 }
 
-const { title, description, sourceId, room, feedbackKind } = Astro.props;
+const { title, description, sourceId, room, feedbackKind, noindex = false } = Astro.props;
 
 const ornamentShapeByRoom: Record<NonNullable<Props['room']>, 'mic' | 'newspaper'> = {
   voices: 'mic',
@@ -41,6 +45,7 @@ const ornamentShapeByRoom: Record<NonNullable<Props['room']>, 'mic' | 'newspaper
     <BaseHead title={title} description={description}>
       <slot name="head" />
     </BaseHead>
+    {noindex && <meta name="robots" content="noindex" />}
   </head>
   <body
     class="min-h-screen bg-archive-paper text-ink mode-library"

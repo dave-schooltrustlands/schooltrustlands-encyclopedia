@@ -1,0 +1,245 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
+import { seriesBySlug, clean } from '../../../components/zybach/_data';
+
+const s = seriesBySlug('alberta-street');
+const title = clean(s?.title) || 'Alberta Street Project';
+const summary =
+  clean(s?.summary) ||
+  'Two cultural-resource inventories of the Alberta Street neighborhood in North and Northeast Portland, 1992 and 2015, and the working files behind them.';
+
+/* What the generator recorded about how this series was described, and how
+   many accessioned files carry its name. Both are shown as measured. */
+const describedFrom = clean(s?.described_from);
+const matchingFiles = s?.counts?.accessioned_files_matching_name;
+---
+
+<RoomLayout
+  room="collections"
+  title={title}
+  subtitle="Series — described at inventory level"
+  width="prose"
+  sourceId="collections-zybach-alberta-street"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:alberta-street" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="finding-aid" />
+
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+      This series is described at inventory level: what exists and where it is,
+      not item by item. Everything below is drawn from the creator's public
+      pages.
+    </p>
+
+    <p class="kicker">Series · inventory level</p>
+
+    <p>{summary}</p>
+
+    <h2 id="what">What this is</h2>
+
+    <p>
+      In 1992 African American high-school students from Portland surveyed the
+      cultural resources of the Alberta Street corridor in North and Northeast
+      Portland, and the inventory and its recommendations were published through
+      Urban Forestry, Inc. In 2015 a second team repeated the survey, updating
+      its methods and its recommendations and adding a chapter history of the
+      neighborhood from the Chinookan villages to the gentrification of the
+      2010s. The two reports, twenty-three years apart, are the same
+      neighborhood measured twice by the people who live in it.
+    </p>
+
+    <p>
+      The 1992 inventory matters to the rest of this collection for a second
+      reason: Bob Zybach's 1999 thesis cites it as one of the projects that led
+      him toward what he calls a <em>geographical oral history</em> — asking
+      people about places rather than about themselves.
+    </p>
+
+    <h2 id="inventory">Inventory</h2>
+
+    <table class="zc-inv">
+      <thead>
+        <tr><th scope="col">What</th><th scope="col">Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1992 report</th>
+          <td>
+            Gardner, Clark, Foster, Horn, Owens, Stroud and Ward, <em>1992
+            Alberta Street Cultural Resource Inventory with Recommendations</em>.
+            Urban Forestry, Inc., Portland. 150 pp. Online as one PDF.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2015 report</th>
+          <td>
+            Davis, Arigbon, Williams, Mandley and May, <em>2015 Alberta Street
+            Cultural Resource Inventory With Recommendations</em>. 140 pp.
+            Online as one PDF (about 20 MB) and as a section-by-section web
+            edition.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2015 web edition</th>
+          <td>
+            Thirteen sections, 00_Preface through 12_Archives_2014, mirroring
+            the printed report's table of contents.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Interviews</th>
+          <td>
+            The 2015 site's interviews section holds three scanned images of a
+            single 2014 page. No interview audio and no transcripts are online.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2014 planning files</th>
+          <td>Planning documents in the 2014 archives section, as PDFs.</td>
+        </tr>
+        <tr>
+          <th scope="row">Video</th>
+          <td>The project page promises videos; none are posted.</td>
+        </tr>
+        <tr>
+          <th scope="row">Accessioned</th>
+          <td>
+            {typeof matchingFiles === 'number' ? `${matchingFiles} files` : 'No files'}
+            {' '}whose names match this series were accessioned in the 2026
+            upload.{describedFrom ? ` Described from: ${describedFrom}.` : ''}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="originals">The originals</h2>
+
+    <ul class="zc-links">
+      <li>
+        <a href="http://www.orww.org/Alberta_Street_Project/">Alberta Street Project</a>
+        — the project landing page.
+      </li>
+      <li>
+        <a href="http://www.orww.org/Alberta_Street_Project/2015_Report/index.html">
+          2015 report, web edition
+        </a> — the sectioned table of contents.
+      </li>
+      <li>
+        <a href="http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Davis_et_al_20151020.pdf">
+          Davis et al. 2015 (PDF, about 20 MB)
+        </a>
+      </li>
+      <li>
+        <a href="http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Gardner_et_al_19920918.pdf">
+          Gardner et al. 1992 (PDF)
+        </a>
+      </li>
+    </ul>
+
+    <h2 id="gaps">Known gaps</h2>
+
+    <ul>
+      <li>
+        <strong>The interviews are not online.</strong> The 2015 project
+        conducted interviews; what is published is one scanned page. Whether
+        recordings survive, and where, is not established.
+      </li>
+      <li>
+        <strong>Recordings possibly at the Oregon Historical Society.</strong>
+        The creator has mentioned this; the Library has not confirmed it, and no
+        catalogue record has been found. Unverified.
+      </li>
+      <li>
+        <strong>No Oregon State finding aid.</strong> No SCARC collection for
+        the Alberta Street Project has been located. Files were reportedly
+        transferred to a cloud folder in August 2026; no collection identifier
+        is known. Unverified.
+      </li>
+      <li>
+        <strong>The project's own site is incomplete</strong>, by its creator's
+        description.
+      </li>
+    </ul>
+
+    <h2 id="next">What describing this properly would take</h2>
+
+    <p>
+      Two things, in order: find out whether the interview recordings exist and
+      who holds them, and get permission from the people who made the reports —
+      this is a community's record of itself, and the survey teams were largely
+      residents of the neighborhood. Only then does an item-level description
+      make sense. Nothing here should be published item by item on the strength
+      of a link alone.
+    </p>
+
+    <ProvenanceBlock
+      items={[
+        { label: 'Creator', value: 'Oregon Websites and Watersheds Project, Inc.; Dr. Bob Zybach' },
+        { label: 'Report authors', value: 'Gardner et al. (1992); Davis et al. (2015)' },
+        { label: 'Published at', value: 'orww.org/Alberta_Street_Project/', href: 'http://www.orww.org/Alberta_Street_Project/' },
+        { label: 'In this collection', value: 'Inventory-level description only; no items published' },
+        { label: 'Rights', value: 'Rights status: under review; no deed of gift has been executed. The Library links; it does not republish.' },
+      ]}
+    />
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-inv {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .zc-inv th,
+  .zc-inv td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem 0.65rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    line-height: 1.5;
+  }
+  .zc-inv thead th {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+  }
+  .zc-inv tbody th {
+    width: 11em;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .zc-links {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    .zc-inv tbody th { width: auto; }
+    .zc-inv, .zc-inv thead, .zc-inv tbody, .zc-inv tr, .zc-inv th, .zc-inv td { display: block; }
+    .zc-inv thead { display: none; }
+    .zc-inv tbody td { border-top: 0; padding-top: 0; }
+  }
+</style>

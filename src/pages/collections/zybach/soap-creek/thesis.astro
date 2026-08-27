@@ -1,0 +1,550 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import CitationBlock from '../../../../components/zybach/soapcreek/CitationBlock.astro';
+import ProvenanceBlock from '../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
+import ContentNote from '../../../../components/zybach/soapcreek/ContentNote.astro';
+import { thesis, monographs, chronology } from '../../../../components/zybach/soapcreek/data';
+import {
+  thesisHref,
+  folioId,
+  folioLabel,
+  monoHref,
+  timelineHref,
+  personHref,
+  hasPersonPage,
+  resolveMonoSlug,
+} from '../../../../components/zybach/soapcreek/links';
+import { plainNote } from '../../../../components/zybach/labels';
+
+const t: any = thesis ?? {};
+const url = thesisHref();
+
+const abstract: string = t.abstract ?? '';
+const toc: any[] = t.table_of_contents ?? t.toc ?? [];
+const methodology: any[] = t.methodology ?? [];
+const tables: any[] = t.tables ?? [];
+const maps: any[] = t.maps ?? [];
+const figures: any[] = t.figures ?? [];
+const appendices: any[] = t.appendices ?? [];
+const references: any[] = t.references ?? [];
+const committee: any[] = t.committee ?? [];
+const notes: any[] = (t.content_notes ?? []).filter((n: any) => n && (n.display_note || n.note));
+const gaps: string[] = (t.gaps ?? []).map((g: string) => plainNote(g));
+
+/**
+ * Held pages. The thesis is a single page here rather than a run of chapters,
+ * so the pages held from this preview would otherwise have no address at all
+ * and no notice: a reader citing printed p. 256 would land nowhere and be told
+ * nothing. Each held page gets its own `<section id="pNN">` and the same
+ * "[Held for review: …]" block the monograph chapters carry.
+ */
+type HeldPage = { page: number; what: string; reason: string };
+const heldPages: HeldPage[] = (t.holds ?? []).flatMap((h: any) => {
+  const list: number[] = Array.isArray(h?.page_list) && h.page_list.length
+    ? h.page_list
+    : Array.isArray(h?.pages) && h.pages.length === 2
+      ? Array.from({ length: h.pages[1] - h.pages[0] + 1 }, (_, i) => h.pages[0] + i)
+      : (h?.pages ?? []);
+  return list.map((p: number) => ({
+    page: p,
+    what: h?.what ?? 'Held from this preview',
+    reason: h?.reason ?? 'Held pending review.',
+  }));
+});
+const heldSet = new Set(heldPages.map((h) => String(h.page)));
+const heldRangeLabel = heldPages.length
+  ? heldPages.length === 1
+    ? `p. ${heldPages[0].page}`
+    : `pp. ${heldPages[0].page}–${heldPages[heldPages.length - 1].page}`
+  : '';
+
+// Table 4 — the informant profile — rendered as a real table, not a picture.
+const table4: any =
+  t.table_4_full ?? t.table_4 ?? tables.find((x: any) => String(x?.number) === '4') ?? null;
+const t4Head: string[] = table4?.column_headings ?? [];
+const t4Rows: any[] = table4?.rows ?? [];
+
+function cells(row: any): string[] {
+  if (Array.isArray(row)) return row.map((c) => (c === null || c === undefined ? '' : String(c)));
+  if (row && typeof row === 'object') {
+    if (Array.isArray(row.cells)) return row.cells.map((c: any) => String(c ?? ''));
+    if (t4Head.length) return t4Head.map((h: string) => String(row[h] ?? ''));
+    return Object.values(row).map((c) => String(c ?? ''));
+  }
+  return [String(row ?? '')];
+}
+
+/** A reference row that names one of the fifteen monographs links to it. */
+function refMono(r: any): string | null {
+  const id = r?.soap_creek_monograph_zc_id ?? r?.mono_slug ?? r?.zc_id ?? null;
+  return id ? resolveMonoSlug(id) : null;
+}
+
+const linkedRefs = references.filter((r) => refMono(r));
+
+/**
+ * The dated statements the thesis prints, gathered by the printed page they
+ * appear on. Every one of them is cited from elsewhere in the collection as
+ * `/thesis/#pNN`, so the printed page is the anchor here, exactly as it is in
+ * the monograph transcripts.
+ */
+const dated: any[] = [...(t.chronology ?? []), ...(t.dated_statements ?? [])].filter(
+  (e: any) => e && e.statement,
+);
+const byPage = new Map<string, any[]>();
+for (const e of dated) {
+  if (e.page === undefined || e.page === null) continue;
+  const k = String(e.page);
+  (byPage.get(k) ?? byPage.set(k, []).get(k)!).push(e);
+}
+const datedPages = [...byPage.entries()]
+  .filter(([page]) => !heldSet.has(String(page)))
+  .map(([page, entries]) => ({
+    page,
+    entries: entries.slice().sort((a, b) => String(a.date ?? '').localeCompare(String(b.date ?? ''))),
+  }))
+  .sort((a, b) => (Number(a.page) || 0) - (Number(b.page) || 0));
+const periodCount = (chronology.periods ?? []).length;
+const chronCount = (chronology.periods ?? []).reduce(
+  (n, p) => n + (p.count ?? p.entries?.length ?? 0),
+  0,
+);
+
+/**
+ * Every printed page of the thesis, so that every `#pNN` citation lands.
+ *
+ * The Series Index, the places list and the timeline all cite the thesis by
+ * printed page, and 1,037 of those references pointed at pages this page had
+ * no address for. The thesis is not transcribed in full, so most of these
+ * carry no text — but a citation to printed p. 65 must resolve to something
+ * that says what p. 65 is and where to read it, not to nothing.
+ *
+ * Pages that already open a section above (a page of dated statements, a held
+ * page) keep that section as their anchor and are skipped here, so no id is
+ * emitted twice.
+ */
+const pageLabels = new Map<number, string[]>();
+const addPageLabel = (page: any, label: string) => {
+  const n = Number(page);
+  if (!Number.isInteger(n) || n < 1) return;
+  const list = pageLabels.get(n) ?? [];
+  if (!list.includes(label)) list.push(label);
+  pageLabels.set(n, list);
+};
+for (const row of toc) {
+  const label = [row?.label, row?.title].filter(Boolean).join('. ');
+  if (label) addPageLabel(row?.start_page, label);
+}
+for (const x of tables) addPageLabel(x?.page, `Table ${x?.number}. ${x?.title ?? ''}`.trim());
+for (const x of maps) addPageLabel(x?.page, `Map ${x?.number}. ${x?.title ?? ''}`.trim());
+for (const x of figures) addPageLabel(x?.page, `Figure ${x?.number}. ${x?.title ?? ''}`.trim());
+for (const a of appendices) addPageLabel(a?.page, `Appendix ${a?.letter}. ${a?.title ?? ''}`.trim());
+for (const m of methodology) addPageLabel(m?.page, plainNote(`Quoted on this page: ${m?.topic ?? ''}`).trim());
+for (const r of references) {
+  const rp = Array.isArray(r?.pages) ? r.pages : r?.pages != null ? [r.pages] : [];
+  for (const p of rp) addPageLabel(p, 'A reference is cited on this page');
+}
+
+const totalThesisPages = Number(t.pages_printed ?? t.pages ?? 0) || 0;
+const anchoredElsewhere = new Set<string>([
+  ...datedPages.map((g) => String(g.page)),
+  ...heldPages.map((h) => String(h.page)),
+]);
+const pageIndex = totalThesisPages
+  ? Array.from({ length: totalThesisPages }, (_, i) => i + 1)
+      .filter((n) => !anchoredElsewhere.has(String(n)))
+      .map((n) => ({ page: n, labels: pageLabels.get(n) ?? [] }))
+  : [];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+];
+
+const source: any = t.source ?? {};
+---
+<SoapCreekPage
+  title={t.title ?? 'Using Oral Histories to Document Changing Forest Cover Patterns: Soap Creek Valley, Oregon, 1500-1999'}
+  subtitle="Bob Zybach's 1999 Master of Arts in Interdisciplinary Studies thesis: the study that used these fifteen oral histories as evidence, and the method it built for testing memory against maps, photographs and the written record."
+  kicker="Soap Creek Valley · 1999 M.A.I.S. thesis"
+  parents={parents}
+  sourceId="zybach-sc-thesis-1999"
+  navCurrent="soap-creek"
+>
+  {t.citation_canonical && <p class="sc-canonical">{t.citation_canonical}</p>}
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Author', value: t.author ?? 'Bob Zybach' },
+      ...(t.degree?.as_printed_title_page
+        ? [{ label: 'Degree', value: t.degree.as_printed_title_page }]
+        : []),
+      ...(t.date_presented_as_printed
+        ? [{ label: 'Presented', value: t.date_presented_as_printed }]
+        : []),
+      ...(t.commencement ? [{ label: 'Commencement', value: t.commencement }] : []),
+      ...(committee.length
+        ? [
+            {
+              label: 'Committee',
+              value: committee
+                .map((c: any) => `${c.name}${c.role_as_printed ? ` (${c.role_as_printed})` : ''}`)
+                .join('; '),
+            },
+          ]
+        : []),
+      ...(t.pages ? [{ label: 'Pages', value: `${t.pages} pages` }] : []),
+      ...(source.public_url ? [{ label: 'Original', value: source.public_url, href: source.public_url }] : []),
+      {
+        label: 'Accessioned',
+        value: 'From Bob Zybach’s upload, 23 August 2026',
+        href: '/collections/zybach/provenance/',
+      },
+      ...(source.sha256
+        ? [{ label: 'Source file checksum', value: `sha256:${String(source.sha256).slice(0, 32)}…` }]
+        : []),
+    ]}
+  />
+
+  {notes.map((n: any) => (
+    <ContentNote
+      text={`${n.display_note ?? n.note}${n.page ? ` (printed page ${n.page})` : ''}`}
+      level="item"
+    />
+  ))}
+
+  {abstract && (
+    <section aria-labelledby="abstract">
+      <h2 id="abstract">Abstract, as printed</h2>
+      <div class="sc-verbatim">{abstract}</div>
+    </section>
+  )}
+
+  {toc.length > 0 && (
+    <section aria-labelledby="contents">
+      <h2 id="contents">Contents</h2>
+      <ol class="sc-toc">
+        {toc.map((row: any) => (
+          <li class={`sc-toc-${(row.level ?? 'other').toString().toLowerCase()}`}>
+            <span>{[row.label, row.title].filter(Boolean).join('. ')}</span>
+            {row.start_page !== undefined && row.start_page !== null && (
+              <span class="sc-toc-pages">p. {row.start_page}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  {methodology.length > 0 && (
+    <section aria-labelledby="methodology">
+      <h2 id="methodology">How the study was done, in the author's words</h2>
+      <p class="sc-list-meta">
+        Passages transcribed verbatim from the printed thesis, with the page they
+        appear on. Nothing here is a summary.
+      </p>
+      {methodology.map((m: any) => (
+        <div class="sc-fm">
+          <h3>{plainNote(m.topic)}{m.page !== undefined && m.page !== null ? ` — p. ${m.page}` : ''}</h3>
+          <div class="sc-verbatim">{m.text}</div>
+        </div>
+      ))}
+    </section>
+  )}
+
+  {table4 && (
+    <section aria-labelledby="table-4">
+      <h2 id="table-4">{table4.title ? `Table ${table4.number ?? 4}. ${table4.title}` : 'Table 4. Informant profile'}</h2>
+      {table4.page !== undefined && table4.page !== null && (
+        <p class="sc-list-meta">Printed page {table4.page}.</p>
+      )}
+      <div class="sc-table-wrap">
+        <table class="sc-table">
+          {t4Head.length > 0 && (
+            <thead>
+              <tr>{t4Head.map((h: string) => <th scope="col">{h}</th>)}</tr>
+            </thead>
+          )}
+          <tbody>
+            {t4Rows.map((row: any) => (
+              <tr>
+                {cells(row).map((c, i) => (i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>))}
+              </tr>
+            ))}
+          </tbody>
+          {table4.total_row_verbatim && (
+            <tfoot>
+              <tr>
+                <td colspan={Math.max(t4Head.length, 1)}>{table4.total_row_verbatim}</td>
+              </tr>
+            </tfoot>
+          )}
+        </table>
+      </div>
+      {table4.key_verbatim && <p class="sc-list-meta">{table4.key_verbatim}</p>}
+    </section>
+  )}
+
+  {tables.length > 0 && (
+    <section aria-labelledby="tables">
+      <h2 id="tables">Tables</h2>
+      <ul class="sc-list sc-cols">
+        {tables.map((x: any) => (
+          <li>
+            <strong>Table {x.number}.</strong> {x.title}
+            {x.page !== undefined && x.page !== null && (
+              <span class="sc-list-meta">Printed page {x.page}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {maps.length > 0 && (
+    <section aria-labelledby="thesis-maps">
+      <h2 id="thesis-maps">Maps</h2>
+      <ul class="sc-list sc-cols">
+        {maps.map((x: any) => (
+          <li>
+            <strong>Map {x.number}.</strong> {x.title}
+            {x.page !== undefined && x.page !== null && (
+              <span class="sc-list-meta">Printed page {x.page}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {figures.length > 0 && (
+    <section aria-labelledby="thesis-figures">
+      <h2 id="thesis-figures">Figures</h2>
+      <ul class="sc-list sc-cols">
+        {figures.map((x: any) => (
+          <li>
+            <strong>Figure {x.number}.</strong> {x.title}
+            {x.page !== undefined && x.page !== null && (
+              <span class="sc-list-meta">Printed page {x.page}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {appendices.length > 0 && (
+    <section aria-labelledby="appendices">
+      <h2 id="appendices">Appendices</h2>
+      <ul class="sc-list">
+        {appendices.map((a: any) => (
+          <li>
+            <strong>Appendix {a.letter}.</strong> {a.title}
+            {a.page !== undefined && a.page !== null && (
+              <span class="sc-list-meta">Printed page {a.page}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {datedPages.length > 0 && (
+    <section aria-labelledby="dated">
+      <h2 id="dated">Dated statements, by printed page</h2>
+      <p class="sc-list-meta">
+        {dated.length.toLocaleString()} dated statements transcribed verbatim
+        from {datedPages.length} printed pages — Chapter V's chronological
+        account and the dated claims made elsewhere in the thesis. Each printed
+        page has its own permanent link, so a citation into the thesis lands on the page
+        it names. Statements printed on a held page are not shown.
+      </p>
+      <div class="sc-transcript">
+        {datedPages.map((g) => (
+          <section id={folioId(g.page)} class="sc-page">
+            <a
+              class="sc-folio"
+              href={`#${folioId(g.page)}`}
+              aria-label={`Permanent link to printed page ${g.page}`}
+            >
+              {folioLabel(g.page)}
+            </a>
+            <ul class="sc-list">
+              {g.entries.map((e: any) => (
+                <li>
+                  <strong>{e.date_label ?? e.date}.</strong>{' '}
+                  <span>{e.statement}</span>
+                  {e.cited_source && (
+                    <span class="sc-list-meta">Cited in the thesis as: {e.cited_source}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {heldPages.length > 0 && (
+    <section aria-labelledby="held">
+      <h2 id="held">Pages held from this preview</h2>
+      <p class="sc-list-meta">
+        {heldRangeLabel} of the printed thesis {heldPages.length === 1 ? 'is' : 'are'}
+        {' '}held from this preview. The pages keep their places in the sequence
+        and their permanent links, so a citation to any of them lands here and is
+        told why, rather than landing nowhere.
+      </p>
+      <div class="sc-transcript">
+        {heldPages.map((h) => (
+          <section id={folioId(h.page)} class="sc-page">
+            <a
+              class="sc-folio"
+              href={`#${folioId(h.page)}`}
+              aria-label={`Permanent link to printed page ${h.page}`}
+            >
+              {folioLabel(h.page)}
+            </a>
+            <p class="sc-hold">[Held for review: {h.what}. {h.reason}]</p>
+          </section>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section aria-labelledby="chronology-pointer">
+    <h2 id="chronology-pointer">The chronology</h2>
+    <p>
+      Chapter V of the thesis is a chronological account of forest-cover change in
+      the valley. Its dated entries, together with the dated statements the
+      narrators made in the interviews, are gathered into the series
+      {' '}<a href={timelineHref()}>timeline</a>
+      {periodCount > 0 && chronCount > 0
+        ? ` — ${chronCount.toLocaleString()} entries across ${periodCount} periods, each one verbatim and each one linked back to the page it came from.`
+        : '.'}
+    </p>
+  </section>
+
+  {references.length > 0 && (
+    <section aria-labelledby="references">
+      <h2 id="references">References</h2>
+      <p class="sc-list-meta">
+        {references.length} entries, transcribed as printed.
+        {linkedRefs.length > 0 &&
+          ` ${linkedRefs.length} of them are the Soap Creek monographs themselves; those link to the book.`}
+      </p>
+      <p class="sc-list-meta">
+        One entry ends with a web address at New-Albion.com, printed in the
+        thesis as "copy available as of August 30, 1999 on Internet". It is part
+        of the printed reference and is reproduced with it rather than turned
+        into a link: the Library has not established who runs that host now, and
+        a 1999 address is not a working citation.
+      </p>
+      <ol class="sc-reflist">
+        {references.map((r: any) => {
+          const slug = refMono(r);
+          const text = r.entry ?? r.text ?? '';
+          return (
+            <li>
+              {slug ? <a href={monoHref(slug)}>{text}</a> : <span>{text}</span>}
+              {r.pages && <span class="sc-list-meta">Printed page {Array.isArray(r.pages) ? r.pages.join(', ') : r.pages}</span>}
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  )}
+
+  {gaps.length > 0 && (
+    <section aria-labelledby="thesis-gaps">
+      <h2 id="thesis-gaps">What is not here</h2>
+      <ul class="sc-list">
+        {gaps.map((g: string) => <li>{g}</li>)}
+      </ul>
+    </section>
+  )}
+
+  {pageIndex.length > 0 && (
+    <section aria-labelledby="page-index">
+      <h2 id="page-index">Every printed page</h2>
+      <p class="sc-list-meta">
+        The thesis is cited by printed page all over this collection, so every
+        one of its {totalThesisPages} printed pages has a permanent link here.
+        The pages set out above — the dated statements, the pages held from this
+        preview — carry their text. The rest are listed so that a citation lands
+        somewhere and is told what is on the page; the text of those pages is in
+        the original PDF.
+      </p>
+      <ol class="sc-page-index">
+        {pageIndex.map((p) => (
+          <li id={folioId(p.page)}>
+            <a class="pg" href={`#${folioId(p.page)}`}>{folioLabel(p.page)}</a>
+            {p.labels.length > 0 ? (
+              <span class="lbl">{p.labels.join(' · ')}</span>
+            ) : (
+              <span class="lbl lbl--none">not transcribed here — read it in the original PDF</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  <section aria-labelledby="thesis-original">
+    <h2 id="thesis-original">The original</h2>
+    <ul class="sc-list">
+      {source.public_url && (
+        <li>
+          <a href={source.public_url} rel="external">The whole thesis as a PDF</a>
+          <span class="sc-list-meta">On the creator's own site, nwmapsco.com.</span>
+        </li>
+      )}
+    </ul>
+  </section>
+
+  <CitationBlock
+    canonical={t.citation_canonical ?? ''}
+    short={t.citation_short ?? 'Zybach 1999'}
+    url={url}
+    pdfUrl={source.public_url ?? undefined}
+  />
+</SoapCreekPage>
+
+<style is:global>
+  .sc-reflist {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    padding-left: 1.4rem;
+  }
+  .sc-reflist li {
+    margin-bottom: 0.45rem;
+  }
+  .sc-page-index {
+    list-style: none;
+    margin: 0.6rem 0;
+    padding: 0;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+  .sc-page-index li {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.18rem 0;
+    border-bottom: 1px solid rgba(27, 50, 82, 0.08);
+    scroll-margin-top: 4rem;
+  }
+  .sc-page-index .pg {
+    flex: 0 0 4.2rem;
+    font-family: var(--font-sans);
+    color: var(--old-gold, #a87f2c);
+    text-decoration: none;
+  }
+  .sc-page-index .pg:hover {
+    text-decoration: underline;
+  }
+  .sc-page-index .lbl--none {
+    color: #8b8578;
+  }
+</style>

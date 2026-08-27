@@ -1,0 +1,194 @@
+---
+/**
+ * The transcript, page by page, as printed.
+ *
+ * Every printed page opens a <section id="pNN"> with a folio in the right
+ * margin that is a permalink, so a citation like 20171010:97 has a stable
+ * address. Where Bob printed a stop-and-minute marker, that marker keeps its
+ * own anchor (tape-3b-4-15) and its own line, so the segment table above and
+ * the tape recording below both land on the exact spot in the text.
+ */
+import type { Transcript } from './data';
+import { tapeAnchor } from './data';
+
+interface Props {
+  transcript: Transcript;
+  pagePath: string;
+}
+const { transcript, pagePath } = Astro.props as Props;
+
+// Marker anchors live in their own namespace ("t3b-4-15") so they cannot
+// collide with the tape ids on the recordings above.
+function anchorId(tape: string | null, minute: string | null): string | null {
+  const t = tapeAnchor(tape);
+  if (!t) return null;
+  const base = t.replace(/^tape-/, 't');
+  if (!minute) return base;
+  return `${base}-${minute.replace(/:/g, '-')}`;
+}
+
+// A tape's own anchor goes on the first marker that names it.
+const seenTape = new Set<string>();
+const pages = transcript.pages.map((pg) => {
+  const anchors = pg.anchors.map((a) => {
+    const t = tapeAnchor(a.tape_side);
+    const firstOfTape = t ? !seenTape.has(t) : false;
+    if (t) seenTape.add(t);
+    return {
+      ...a,
+      id: anchorId(a.tape_side, a.minute),
+      tapeId: firstOfTape && t ? t.replace(/^tape-/, 'tr-tape-') : null,
+    };
+  });
+  return { ...pg, markers: anchors };
+});
+
+// Tape sides that never appeared in an anchor still need a landing point, so
+// the first entry carrying that side gets the anchor.
+const orphanTape = new Map<number, string>();
+{
+  const placed = new Set(seenTape);
+  for (const pg of pages) {
+    for (const e of pg.entries) {
+      const t = tapeAnchor(e.tape_side);
+      if (t && !placed.has(t) && pg.page != null) {
+        placed.add(t);
+        orphanTape.set(pg.page, t.replace(/^tape-/, 'tr-tape-'));
+        break;
+      }
+    }
+  }
+}
+
+const hasInferred = transcript.inferredSpeakers;
+---
+
+<section class="zy-transcript" aria-labelledby="transcript-heading">
+  <h2 id="transcript-heading">Transcript</h2>
+  <p class="zy-tr-note">
+    Pages are numbered as Bob Zybach printed them. Each page number is a
+    permalink.
+    {transcript.page_mapping_rule && <span> {transcript.page_mapping_rule}</span>}
+  </p>
+  {hasInferred && (
+    <p class="zy-tr-note zy-tr-inferred">
+      Some speaker labels on this transcript were recovered from the typography
+      of the printed page rather than printed as names; those attributions are
+      inferred.
+    </p>
+  )}
+
+  {pages.map((pg) => (
+    <section class="zy-page" id={pg.page != null ? `p${pg.page}` : undefined}>
+      {pg.page != null && (
+        <a class="zy-folio" href={`${pagePath}#p${pg.page}`} aria-label={`Link to printed page ${pg.page}`}>
+          p.&nbsp;{pg.page}
+        </a>
+      )}
+      {orphanTape.get(pg.page ?? -1) && <span id={orphanTape.get(pg.page ?? -1)} class="zy-tape-anchor"></span>}
+      {pg.markers.map((m) => (
+        <p class="zy-marker" id={m.id ?? undefined}>
+          {m.tapeId && <span id={m.tapeId} class="zy-tape-anchor"></span>}
+          {m.stop_label && <span class="stop">{m.stop_label}</span>}
+          {m.tape_side && <span class="tape">{m.tape_side}</span>}
+          {m.minute && <span class="min">{m.minute}</span>}
+          {m.topic && <span class="topic">{m.topic}</span>}
+        </p>
+      ))}
+      {pg.entries.map((e) =>
+        e.kind === 'speech' ? (
+          <p class="zy-turn">
+            <span class="zy-speaker" data-confidence={e.speaker_confidence ?? 'unknown'}>
+              {e.speaker_name ?? e.speaker ?? 'Speaker'}:
+            </span>{' '}
+            {e.text}
+          </p>
+        ) : (
+          <p class="zy-editorial">{e.text}</p>
+        )
+      )}
+    </section>
+  ))}
+</section>
+
+<style>
+  .zy-transcript {
+    margin: 2.5rem 0 1rem;
+  }
+  .zy-tr-note {
+    font-size: 0.82rem;
+    color: #475569;
+    margin: 0 0 0.4rem;
+  }
+  .zy-tr-inferred {
+    border-left: 3px solid var(--old-gold, #b58a45);
+    padding-left: 0.7rem;
+  }
+  .zy-page {
+    position: relative;
+    padding: 0.6rem 0 0.2rem;
+    border-top: 1px dotted #d6cfbf;
+    scroll-margin-top: 4rem;
+  }
+  .zy-folio {
+    float: right;
+    margin: 0 0 0.25rem 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+    text-decoration: none;
+    font-variant-numeric: tabular-nums;
+  }
+  .zy-folio:hover,
+  .zy-folio:focus {
+    color: var(--oxblood, #7a2e2e);
+    text-decoration: underline;
+  }
+  .zy-tape-anchor {
+    display: block;
+    height: 0;
+    scroll-margin-top: 4rem;
+  }
+  .zy-marker {
+    margin: 0.7rem 0 0.5rem;
+    padding: 0.3rem 0.5rem;
+    background: rgba(181, 138, 69, 0.12);
+    border-left: 3px solid var(--old-gold, #b58a45);
+    font-size: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.7rem;
+    scroll-margin-top: 4rem;
+  }
+  .zy-marker .stop {
+    font-weight: 700;
+  }
+  .zy-marker .tape,
+  .zy-marker .min {
+    font-variant-numeric: tabular-nums;
+    color: #475569;
+  }
+  .zy-marker .topic {
+    font-style: italic;
+  }
+  .zy-turn {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-serif, Newsreader, Georgia, serif);
+    line-height: 1.6;
+  }
+  .zy-speaker {
+    font-family: var(--font-sans, 'Public Sans', system-ui, sans-serif);
+    font-weight: 700;
+    font-size: 0.82rem;
+  }
+  .zy-speaker[data-confidence='inferred'],
+  .zy-speaker[data-confidence='inferred+typography'] {
+    border-bottom: 1px dotted var(--old-gold, #b58a45);
+  }
+  .zy-editorial {
+    margin: 0 0 0.6rem;
+    font-size: 0.85rem;
+    color: #475569;
+    font-style: italic;
+  }
+</style>

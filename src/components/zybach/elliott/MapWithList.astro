@@ -1,0 +1,123 @@
+---
+/**
+ * ZybachMap plus the equivalent list the map's accessibility depends on.
+ * The list is not a fallback — it is the same information in text, always
+ * rendered, so the page works with the map switched off.
+ */
+import { ZybachMap } from './shared';
+
+interface Props {
+  id: string;
+  features: any;
+  center?: [number, number];
+  zoom?: number;
+  height?: string;
+  fit?: boolean;
+  basemap?: 'topo' | 'imagery';
+  listTitle?: string;
+  listNote?: string;
+  emptyNote?: string;
+}
+
+const {
+  id,
+  features,
+  center = [-124.0, 43.55],
+  zoom = 10,
+  height = '460px',
+  fit = true,
+  basemap = 'topo',
+  listTitle = 'Places on this map',
+  listNote,
+  emptyNote = 'No place on this page has been given coordinates yet.',
+} = Astro.props as Props;
+
+const items = ((features && features.features) || [])
+  .filter((f: any) => f?.geometry?.type === 'Point')
+  .map((f: any) => ({
+    title: f.properties?.title ?? f.properties?.name ?? '',
+    subtitle: f.properties?.subtitle ?? '',
+    href: f.properties?.href ?? null,
+    coords: f.geometry.coordinates as [number, number],
+  }))
+  .sort((a: any, b: any) => String(a.title).localeCompare(String(b.title)));
+---
+
+{items.length > 0 ? (
+  <>
+    <ZybachMap
+      id={id}
+      center={center}
+      zoom={zoom}
+      features={features}
+      height={height}
+      basemap={basemap}
+      fit={fit}
+    />
+    <details class="zy-maplist" open={items.length <= 12}>
+      <summary>
+        {listTitle} ({items.length})
+      </summary>
+      {listNote && <p class="zy-maplist-note">{listNote}</p>}
+      <ul>
+        {items.map((i: any) => (
+          <li>
+            {i.href ? <a href={i.href}>{i.title}</a> : <span>{i.title}</span>}
+            {i.subtitle && <span class="sub"> — {i.subtitle}</span>}
+            <span class="coords">
+              {i.coords[1].toFixed(5)}, {i.coords[0].toFixed(5)}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </details>
+  </>
+) : (
+  <p class="zy-maplist-empty">{emptyNote}</p>
+)}
+
+<style>
+  .zy-maplist {
+    margin: 0.5rem 0 1.5rem;
+    font-size: 0.85rem;
+  }
+  .zy-maplist summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--trust-blue, #1f3851);
+  }
+  .zy-maplist-note {
+    margin: 0.4rem 0 0.2rem;
+    color: #475569;
+  }
+  .zy-maplist ul {
+    columns: 2;
+    column-gap: 2rem;
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+  }
+  @media (max-width: 40rem) {
+    .zy-maplist ul {
+      columns: 1;
+    }
+  }
+  .zy-maplist li {
+    break-inside: avoid;
+    margin: 0 0 0.35rem;
+  }
+  .zy-maplist .sub {
+    color: #475569;
+  }
+  .zy-maplist .coords {
+    display: block;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    font-variant-numeric: tabular-nums;
+  }
+  .zy-maplist-empty {
+    font-size: 0.85rem;
+    color: #475569;
+    font-style: italic;
+  }
+</style>

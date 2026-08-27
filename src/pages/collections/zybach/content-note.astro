@@ -1,0 +1,131 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import ContentNote from '../../../components/zybach/ContentNote.astro';
+import { collectionStatement } from '../../../components/zybach/_data';
+
+/* The statement is drafted, not adopted. Verbatim from the review that
+   produced it; it stands until the creator and the Library agree on wording. */
+const FALLBACK_STATEMENT =
+  'The Soap Creek Valley oral histories were recorded between 1989 and 2009 and print the words of narrators born between 1890 and 1930, together with historical documents reproduced as appendices. Some interviews contain terms for African Americans, American Indians, and people of Asian, Mexican and European descent, and language about women and disability, that readers will find offensive today. Some contain personal information about named individuals — health, deaths, criminal allegations, addresses — and describe the locations of American Indian burial and artifact sites. The narrators reviewed and approved these transcripts. Nothing has been altered. Page-level notes identify specific passages so readers can approach the material knowingly.';
+
+const statement = collectionStatement() ?? FALLBACK_STATEMENT;
+---
+
+<RoomLayout
+  room="collections"
+  title="Content note"
+  subtitle="What is in this collection that a reader should know about before reading it."
+  width="prose"
+  sourceId="collections-zybach-content-note"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="finding-aid" />
+
+    <p class="provisional-note">
+      <strong>Draft — under review by the creator; not yet adopted.</strong>
+      The statement below was written for this collection and has not been
+      agreed with Dr. Zybach or with the Oregon State archive that holds the
+      recordings. The Library is publishing the draft rather than a placeholder
+      so that the wording can be argued with.
+    </p>
+
+    <h2 id="statement">The collection statement</h2>
+
+    <ContentNote text={statement} level="collection" draft={true} />
+
+    <h2 id="practice">How the Library handles this</h2>
+
+    <p>
+      Archives describe; they do not edit. The transcripts in this collection
+      were corrected and approved by the people who spoke them, and the Library
+      does not alter what a narrator approved, soften a word, or quietly drop a
+      passage. Instead it notes.
+    </p>
+
+    <ul>
+      <li>
+        <strong>At page level.</strong> Where a specific passage carries
+        offensive language or sensitive personal detail, a short neutral note
+        appears on that page saying so. The note describes; it does not quote.
+      </li>
+      <li>
+        <strong>At collection level.</strong> The statement above appears on the
+        finding aid, so nobody meets this material without warning.
+      </li>
+      <li>
+        <strong>Held pages.</strong> A page whose content is personal data about
+        named individuals — a 1941 directory of addresses and telephone numbers,
+        an appendix naming children, a table of landowners and tax lots — is
+        held from this preview. The page still exists in the sequence and says
+        it is held, and why. Nothing is silently missing.
+      </li>
+      <li>
+        <strong>Withheld places.</strong> Places identified in the sources as
+        American Indian burial, grave or artifact sites are recorded internally
+        but kept out of the public places list and off the maps. Whether to
+        describe them at all is not the Library's decision alone; it belongs
+        with the tribes.
+      </li>
+    </ul>
+
+    <h2 id="osu">Oregon State's own notice</h2>
+
+    <p>
+      Oregon State University's Special Collections and Archives Research Center
+      holds the recordings and publishes its own statement about this language,
+      dated April 2025, on the
+      <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309">finding
+      aid for OH 006, the Soap Creek Valley History Project Oral Histories</a>.
+      It reads, in part: "Please be aware that some of the Soap Creek Valley
+      History Project Oral Histories include racist terms that may be disturbing
+      or activating. Specifically, the interviewer, in attempting to collect
+      demographic information about early-twentieth-century Corvallis, uses
+      derogatory terms for African Americans and East Asians. The interviewer and
+      some of the interviewees also refer to a location known as 'Savage Creek'.
+      We acknowledge the racism represented by this language and the harm it may
+      cause our users. Providing access to these historical materials does not
+      endorse any attitudes or behavior depicted therein." SCARC also points
+      readers to its Anti-Racist Actions Statement.
+    </p>
+
+    <h2 id="context">Where the language comes from</h2>
+
+    <p>
+      The narrators were born between 1890 and 1930 and were speaking in the
+      1970s through the 2000s about a valley and a coast range they had worked
+      all their lives. The language appears in the narrators' answers, in the
+      interviewer's questions, and in historical documents reprinted as
+      appendices. The Library does not weigh those against each other, and does
+      not tell a reader in advance whose words a passage carries: the page-level
+      notes say what is on the page and where, and the page itself shows who
+      said it.
+    </p>
+
+    <h2 id="disagree">If you think a note is wrong</h2>
+
+    <p>
+      Notes can be too heavy, too light, or in the wrong place. All three are
+      correctable, and the Library would rather hear it than not:
+      <a href="/about/corrections/">send a correction</a>. Descendants of
+      narrators and of people named in the interviews are especially welcome to
+      write; the Library will act on a family's request about personal
+      information about their own relatives.
+    </p>
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/colophon/">Colophon</a> ·
+      <a href="/rights/">Rights and takedown</a>
+    </p>
+  </div>
+</RoomLayout>

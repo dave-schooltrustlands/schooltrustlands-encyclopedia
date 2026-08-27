@@ -1,0 +1,345 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import ZybachMap from '../../../../../components/zybach/soapcreek/ZybachMap.astro';
+import MapList from '../../../../../components/zybach/soapcreek/MapList.astro';
+import CitationBlock from '../../../../../components/zybach/soapcreek/CitationBlock.astro';
+import ProvenanceBlock from '../../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
+import {
+  autotour,
+  autotourStops,
+  gazetteer,
+  monographs,
+} from '../../../../../components/zybach/soapcreek/data';
+import type { Stop, GazetteerPlace } from '../../../../../components/zybach/soapcreek/data';
+import {
+  tourHref,
+  stopHref,
+  placeHref,
+  personHref,
+  monoHref,
+  folioHref,
+  hasPersonPage,
+  displayNarrators,
+  slugify,
+  folioId,
+  folioLabel,
+} from '../../../../../components/zybach/soapcreek/links';
+
+export async function getStaticPaths() {
+  const stops = autotourStops;
+  return stops
+    .filter((s) => s.stop_number != null)
+    .map((s, i) => ({
+      params: { n: String(s.stop_number) },
+      props: {
+        stop: s,
+        prev: i > 0 ? stops[i - 1] : null,
+        next: i < stops.length - 1 ? stops[i + 1] : null,
+      },
+    }));
+}
+
+const { stop, prev, next } = Astro.props as { stop: Stop; prev: Stop | null; next: Stop | null };
+const a: any = autotour ?? {};
+const url = stopHref(stop.stop_number ?? '');
+
+/** The gazetteer entries this stop stands on: its own, plus the places it names. */
+const stopPlace: GazetteerPlace | undefined = gazetteer.find(
+  (p) => p.auto_tour_stop === stop.stop_number,
+);
+const namedSlugs = new Set<string>([
+  ...(stop.place_slugs ?? []),
+  ...(stop.places_named ?? []).map((n) => slugify(String(n))),
+]);
+const namedPlaces = gazetteer.filter(
+  (p) =>
+    namedSlugs.has(p.slug) ||
+    (stop.places_named ?? []).some(
+      (n) =>
+        String(n).toLowerCase() === (p.name ?? '').toLowerCase() ||
+        (p.variants ?? []).some((v) => v.toLowerCase() === String(n).toLowerCase()),
+    ),
+);
+const placesHere = [stopPlace, ...namedPlaces].filter(Boolean) as GazetteerPlace[];
+const uniquePlaces = Array.from(new Map(placesHere.map((p) => [p.slug, p])).values());
+
+function lonLat(s: any): [number, number] | null {
+  if (typeof s?.lon === 'number' && typeof s?.lat === 'number') return [s.lon, s.lat];
+  const ll = s?.lat_lon;
+  if (Array.isArray(ll) && ll.length === 2) {
+    const [x, y] = ll as [number, number];
+    return Math.abs(x) > Math.abs(y) ? [x, y] : [y, x];
+  }
+  if (ll && typeof ll === 'object' && typeof ll.lat === 'number' && typeof ll.lon === 'number') {
+    return [ll.lon, ll.lat];
+  }
+  if (stopPlace && typeof stopPlace.lon === 'number' && typeof stopPlace.lat === 'number') {
+    return [stopPlace.lon, stopPlace.lat];
+  }
+  return null;
+}
+
+const here = lonLat(stop);
+const features = {
+  type: 'FeatureCollection',
+  features: [
+    ...(here
+      ? [
+          {
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: here },
+            properties: {
+              kind: 'auto-tour-stop',
+              title: stop.title_in_contents ?? stop.title ?? `Stop #${stop.stop_number}`,
+              subtitle: stop.theme ?? '',
+              href: url,
+            },
+          },
+        ]
+      : []),
+    ...uniquePlaces
+      .filter((p) => typeof p.lat === 'number' && typeof p.lon === 'number' && p.slug !== stopPlace?.slug)
+      .map((p) => ({
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [p.lon, p.lat] },
+        properties: {
+          kind: p.kind ?? 'other',
+          title: p.name ?? p.slug,
+          subtitle: 'Named at this stop',
+          href: placeHref(p.slug),
+        },
+      })),
+  ],
+};
+
+/**
+ * The narrators who speak of this place. Every mention the gazetteer records
+ * for any place this stop stands on, gathered by the monograph it is in, so a
+ * reader can go from Bob's 1989 essay to the people who lived it.
+ */
+type Voice = { monoSlug: string; label: string; narrators: string; refs: Array<{ page: any; href: string | null; place: string }> };
+const voiceMap = new Map<string, Voice>();
+for (const p of uniquePlaces) {
+  for (const m of p.mentions ?? []) {
+    const slug = m.mono_slug ?? '';
+    const mono = monographs.find((x) => x.slug === slug || x.zc_id === m.zc_id);
+    if (!mono) continue;
+    const key = mono.slug;
+    if (!voiceMap.has(key)) {
+      voiceMap.set(key, {
+        monoSlug: mono.slug,
+        label: `#${mono.number} ${mono.title}`,
+        narrators: displayNarrators(mono),
+        refs: [],
+      });
+    }
+    for (const pg of m.pages ?? []) {
+      voiceMap.get(key)!.refs.push({
+        page: pg,
+        href: folioHref(mono.slug, pg),
+        place: p.name ?? p.slug,
+      });
+    }
+  }
+}
+const voices = [...voiceMap.values()].sort((a, b) => a.label.localeCompare(b.label, undefined, { numeric: true }));
+
+const photoCaptions = (stop.photo_captions ?? []).map((c) =>
+  typeof c === 'string' ? { caption: c, page: undefined } : c,
+);
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+  { label: 'Auto Tour', href: tourHref() },
+];
+
+const source: any = a.source ?? {};
+const title = stop.title ?? stop.stop_label ?? `Stop #${stop.stop_number}`;
+---
+<SoapCreekPage
+  title={title}
+  subtitle={`Stop ${stop.stop_number} of the 1989 Historic Soap Creek Valley Auto Tour${
+    stop.page != null ? `, printed page ${stop.page}` : ''
+  }. The text below is Bob Zybach's, in full, as printed.`}
+  kicker="Soap Creek Valley · 1989 Auto Tour"
+  parents={parents}
+  sourceId={`zybach-sc-autotour-stop-${stop.stop_number}`}
+  navCurrent="soap-creek"
+  pageTitle={`${title} · Auto Tour · The Zybach Collection`}
+>
+  {a.citation_canonical && <p class="sc-canonical">{a.citation_canonical}</p>}
+
+  <ProvenanceBlock
+    items={[
+      { label: 'From', value: 'Historic Soap Creek Valley Auto Tour (1989)', href: tourHref() },
+      { label: 'Author', value: a.author ?? 'Bob Zybach' },
+      ...(stop.page != null ? [{ label: 'Printed page', value: String(stop.page) }] : []),
+      ...(stop.road_or_landmark ? [{ label: 'Where it is', value: stop.road_or_landmark }] : []),
+      ...(here && stop.geolocation_method
+        ? [
+            {
+              label: 'Coordinates',
+              value: `${here[1].toFixed(5)}, ${here[0].toFixed(5)} — ${stop.geolocation_method}${
+                stop.geolocation_confidence ? ` (${stop.geolocation_confidence})` : ''
+              }`,
+            },
+          ]
+        : []),
+      {
+        label: 'Accessioned',
+        value: 'From Bob Zybach’s upload, 23 August 2026',
+        href: '/collections/zybach/provenance/',
+      },
+    ]}
+  />
+
+  {stop.standing_notice && <p class="sc-list-meta">{stop.standing_notice}</p>}
+
+  {features.features.length > 0 ? (
+    <>
+      <ZybachMap
+        id={`stop-${stop.stop_number}-map`}
+        center={(here ?? [-123.29, 44.72]) as [number, number]}
+        zoom={13}
+        features={features}
+        height="360px"
+        fit={features.features.length > 1}
+      />
+      <MapList features={features} heading="On this map" headingLevel="h3" order={['auto-tour-stop']} />
+    </>
+  ) : (
+    <p class="sc-empty">This stop has not been given a coordinate.</p>
+  )}
+
+  <section aria-labelledby="stop-text">
+    <h2 id="stop-text">The text, as printed</h2>
+    {/* The stop is printed on one folio of the booklet; the folio is the
+        permalink, so a citation into the tour lands here. */}
+    <section id={stop.page != null ? folioId(stop.page) : undefined} class="sc-page">
+      {stop.page != null && (
+        <a
+          class="sc-folio"
+          href={`#${folioId(stop.page)}`}
+          aria-label={`Permanent link to printed page ${stop.page}`}
+        >
+          {folioLabel(stop.page)}
+        </a>
+      )}
+      <div class="sc-verbatim">{stop.text}</div>
+    </section>
+  </section>
+
+  {(stop.people_named?.length || stop.places_named?.length) && (
+    <section aria-labelledby="named-here">
+      <h2 id="named-here">Named at this stop</h2>
+      {stop.places_named?.length > 0 && (
+        <p>
+          <strong>Places.</strong>{' '}
+          {stop.places_named.map((n, i) => {
+            const p = uniquePlaces.find(
+              (x) =>
+                (x.name ?? '').toLowerCase() === String(n).toLowerCase() ||
+                (x.variants ?? []).some((v) => v.toLowerCase() === String(n).toLowerCase()),
+            );
+            return (
+              <>
+                {i > 0 && ' · '}
+                {p ? <a href={placeHref(p.slug)}>{n}</a> : <span>{n}</span>}
+              </>
+            );
+          })}
+        </p>
+      )}
+      {stop.people_named?.length > 0 && (
+        <p>
+          <strong>People.</strong>{' '}
+          {stop.people_named.map((n, i) => {
+            const s = slugify(String(n));
+            return (
+              <>
+                {i > 0 && ' · '}
+                {hasPersonPage(s) ? <a href={personHref(s)}>{n}</a> : <span>{n}</span>}
+              </>
+            );
+          })}
+        </p>
+      )}
+    </section>
+  )}
+
+  <section aria-labelledby="voices">
+    <h2 id="voices">Narrators who speak of this place</h2>
+    {voices.length > 0 ? (
+      <>
+        <p class="sc-list-meta">
+          Every page in the fifteen monographs where a narrator names
+          {uniquePlaces.length === 1
+            ? ` ${uniquePlaces[0].name}`
+            : ' one of the places this stop stands on'}. Each number opens that page
+          of the transcript.
+        </p>
+        <ul class="sc-list">
+          {voices.map((v) => (
+            <li>
+              <a href={monoHref(v.monoSlug)}>{v.label}</a>
+              {v.narrators && <span class="sc-list-meta">Narrator: {v.narrators}</span>}
+              <span class="sc-refs">
+                {v.refs.map((r, i) => (
+                  <>
+                    {i > 0 && ', '}
+                    {r.href ? <a href={r.href}>p. {r.page}</a> : <span>p. {r.page}</span>}
+                  </>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </>
+    ) : (
+      <p class="sc-empty">
+        No narrator mention of this place has been recorded yet.
+      </p>
+    )}
+  </section>
+
+  {photoCaptions.length > 0 && (
+    <section aria-labelledby="stop-photos">
+      <h2 id="stop-photos">Photographs printed with this stop</h2>
+      <ul class="sc-list">
+        {photoCaptions.map((c: any) => (
+          <li>
+            {c.caption}
+            {c.page != null && <span class="sc-list-meta">Printed page {c.page}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <nav class="sc-prevnext" aria-label="Auto Tour stops">
+    <span>
+      {prev ? (
+        <a href={stopHref(prev.stop_number ?? '')}>← {prev.title_in_contents ?? prev.title}</a>
+      ) : (
+        <a href={tourHref()}>← The whole tour</a>
+      )}
+    </span>
+    <span>
+      {next ? (
+        <a href={stopHref(next.stop_number ?? '')}>{next.title_in_contents ?? next.title} →</a>
+      ) : (
+        <a href={tourHref()}>The whole tour →</a>
+      )}
+    </span>
+  </nav>
+
+  <CitationBlock
+    canonical={a.citation_canonical ?? ''}
+    short={a.citation_short ?? 'Zybach 1989'}
+    url={url}
+    pdfUrl={source.public_url ?? undefined}
+  />
+</SoapCreekPage>

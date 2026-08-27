@@ -1,0 +1,142 @@
+---
+/**
+ * Photographs, grouped by the place in Bob Zybach's file names. Thumbnails
+ * link to the full image on orww.org; nothing is copied into this library.
+ * Where a caption exists it is his, verbatim; where none exists the file's own
+ * place label and frame number stand in and are marked as such.
+ */
+import type { Photograph, Place } from './data';
+
+interface Props {
+  groups: Array<{ label: string; slug: string | null; place: Place | null; photos: Photograph[] }>;
+  heading?: string;
+  headingId?: string;
+  note?: string;
+}
+const { groups, heading = 'Photographs', headingId = 'photographs', note } =
+  Astro.props as Props;
+const total = groups.reduce((n, g) => n + g.photos.length, 0);
+---
+
+{total > 0 && (
+  <section class="zy-photos" aria-labelledby={headingId}>
+    <h2 id={headingId}>{heading}</h2>
+    <p class="zy-photos-note">
+      {total} photograph{total === 1 ? '' : 's'} in {groups.length} place group
+      {groups.length === 1 ? '' : 's'}. Each image is served from the creator's
+      own site, orww.org, and opens there at full size.
+      {note && <span> {note}</span>}
+    </p>
+    {groups.map((g) => (
+      <div class="zy-photo-group">
+        <h3>
+          {g.place ? <a href={g.place.href}>{g.label}</a> : g.label}
+          <span class="count"> ({g.photos.length})</span>
+        </h3>
+        <ul>
+          {g.photos.map((p) => (
+            <li>
+              {p.full_url ? (
+                <a href={p.full_url}>
+                  <img
+                    src={p.thumb_url ?? p.full_url}
+                    alt={p.caption ?? `${g.label}, frame ${p.frame ?? ''}, ${p.interview_date ?? ''}`}
+                    loading="lazy"
+                  />
+                </a>
+              ) : (
+                <span class="nothumb">{p.frame ?? 'image'}</span>
+              )}
+              <span class="cap">
+                {p.caption ? (
+                  p.caption
+                ) : (
+                  <span class="derived">
+                    {g.label}
+                    {p.frame ? `, frame ${p.frame}` : ''}
+                    {p.interview_date ? `, ${p.interview_date}` : ''}
+                  </span>
+                )}
+              </span>
+              {p.credit && <span class="credit">{p.credit}</span>}
+              {p.page != null && <span class="pg">p. {p.page}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+    <p class="zy-photos-derived-note">
+      Where a photograph carries no printed caption, the label shown is the
+      place and frame number from the file itself, not a caption by the
+      photographer.
+    </p>
+  </section>
+)}
+
+<style>
+  .zy-photos {
+    margin: 2rem 0;
+  }
+  .zy-photos-note,
+  .zy-photos-derived-note {
+    font-size: 0.8rem;
+    color: #475569;
+    margin: 0 0 0.8rem;
+  }
+  .zy-photos-derived-note {
+    margin-top: 1rem;
+    font-style: italic;
+  }
+  .zy-photo-group {
+    margin: 0 0 1.4rem;
+  }
+  .zy-photo-group h3 {
+    font-size: 0.95rem;
+    margin: 0 0 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.2rem;
+  }
+  .zy-photo-group .count {
+    font-weight: 400;
+    color: #94a3b8;
+    font-size: 0.8rem;
+  }
+  .zy-photo-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.9rem;
+  }
+  .zy-photo-group li {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+  .zy-photo-group img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #d6cfbf;
+    background: #eee8dc;
+  }
+  .zy-photo-group .nothumb {
+    display: block;
+    padding: 1.4rem 0.4rem;
+    text-align: center;
+    border: 1px dashed #d6cfbf;
+    color: #94a3b8;
+  }
+  .zy-photo-group .cap {
+    display: block;
+    margin-top: 0.3rem;
+  }
+  .zy-photo-group .derived {
+    color: #475569;
+  }
+  .zy-photo-group .credit,
+  .zy-photo-group .pg {
+    display: block;
+    color: #94a3b8;
+  }
+</style>

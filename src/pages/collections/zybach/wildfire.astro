@@ -1,0 +1,256 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
+import { seriesBySlug, clean } from '../../../components/zybach/_data';
+
+const s = seriesBySlug('wildfire');
+const title = clean(s?.title) || 'Oregon wildfire and forest restoration';
+const summary =
+  clean(s?.summary) ||
+  "Fire history, catastrophic-fire research and forest-restoration work, including the 2003 doctoral dissertation on Coast Range fire patterns and the 2020 Labor Day fires.";
+
+/* What the generator recorded about how this series was described, and how
+   many accessioned files carry its name. Both are shown as measured. */
+const describedFrom = clean(s?.described_from);
+const matchingFiles = s?.counts?.accessioned_files_matching_name;
+---
+
+<RoomLayout
+  room="collections"
+  title={title}
+  subtitle="Series — described at inventory level"
+  width="prose"
+  sourceId="collections-zybach-wildfire"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:wildfire" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="finding-aid" />
+
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+      This series is described at inventory level, and it is the thinnest
+      description in the collection: the folder set aside for it in the
+      creator's upload is still empty. What follows is drawn from published work.
+    </p>
+
+    <p class="kicker">Series · inventory level</p>
+
+    <p>{summary}</p>
+
+    <h2 id="what">What this is</h2>
+
+    <p>
+      Fire is the argument that runs underneath the rest of this collection. The
+      Soap Creek narrators describe a valley that burned regularly and then
+      stopped burning; the Elliott tours cross ground shaped by old fires
+      and by a century of suppression; the Osborne panoramas record a forest
+      before and after. The creator's doctoral work made that the explicit
+      subject: <em>The Great Fires: Indian Burning and Catastrophic Forest Fire
+      Patterns of the Oregon Coast Range, 1491–1951</em>, Oregon State
+      University, 2003, reissued by NW Maps Co. in 2018.
+    </p>
+
+    <p>
+      The series would gather that work with the restoration projects, reports
+      and public testimony that followed it, and with the 2020 Labor Day fires
+      material recorded at the time.
+    </p>
+
+    <h2 id="inventory">Inventory</h2>
+
+    <table class="zc-inv">
+      <thead>
+        <tr><th scope="col">What</th><th scope="col">Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">In the upload</th>
+          <td>
+            A folder was created for this series on 21 August 2026 and is still
+            empty: no files, no subfolders, as of the census of 27 August 2026.
+            The series exists as an intention, not yet as a deposit.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Accessioned</th>
+          <td>
+            {typeof matchingFiles === 'number' ? `${matchingFiles} files` : 'No files'}
+            {' '}whose names match this series were accessioned from elsewhere
+            in the upload.{describedFrom ? ` Described from: ${describedFrom}.` : ''}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">ORWW wildfire sites</th>
+          <td>
+            Six educational websites on the creator's own catalogue: the 2004
+            B&amp;B Complex, 2005 Deer Creek, 2007 southwestern Oregon, 2008
+            Biscuit, 2009 wildfire economics and 2016 Douglas-fir region, with
+            the 2020 Labor Day fires documented separately. Together they cover
+            western Oregon fire history from 1765 to 2022.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2003 dissertation</th>
+          <td>
+            <em>The Great Fires: Indian Burning and Catastrophic Forest Fire
+            Patterns of the Oregon Coast Range, 1491–1951</em>. Ph.D.,
+            environmental sciences, Oregon State University. Second edition
+            2018, NW Maps Co., 364 pp.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2020 Labor Day fires</th>
+          <td>
+            A video playlist on the creator's YouTube channel, recorded during
+            and after the September 2020 fires.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Reports and presentations</th>
+          <td>
+            The creator's own project catalogue lists more than thirty-five
+            projects and reports, a number of them on fire history and
+            restoration. They have not been enumerated here.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Related in this collection</th>
+          <td>
+            Fire runs through the Soap Creek monographs, the Elliott interviews
+            and the Osborne panoramas; those are described in their own series.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="originals">The originals</h2>
+
+    <ul class="zc-links">
+      <li>
+        <a href="http://www.nwmapsco.com/Books/Great_Fires/Abstract.html">
+          The Great Fires — abstract and second edition (NW Maps Co.)
+        </a>
+      </li>
+      <li>
+        <a href="https://ir.library.oregonstate.edu/concern/graduate_thesis_or_dissertations/0p096972r">
+          The Great Fires — ScholarsArchive@OSU record
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/playlist?list=PL1JyKCHg2GmFDAhfxSIDygJ_9N0LlmCe6">
+          2020 Labor Day Fires — video playlist
+        </a>
+      </li>
+      <li>
+        <a href="http://www.orww.org/">
+          Oregon Websites and Watersheds Project — project and report catalogue
+        </a>
+      </li>
+    </ul>
+
+    <h2 id="gaps">Known gaps</h2>
+
+    <ul>
+      <li>
+        <strong>No deposit yet.</strong> Nothing has been uploaded for this
+        series. Until something is, the description cannot go further than the
+        published record.
+      </li>
+      <li>
+        <strong>Scope is undefined.</strong> "Wildfire and forest restoration"
+        could mean the dissertation and its sources, or the whole body of
+        consulting and testimony that followed. That is the creator's call, not
+        the Library's.
+      </li>
+      <li>
+        <strong>Commercial and political material.</strong> Some of the
+        creator's fire and forest-policy work is published commercially, and
+        some carries political opinion that he has deliberately published under
+        his business rather than under the non-profit. Both are identified by
+        reference only.
+      </li>
+      <li>
+        The second edition of the dissertation is a book for sale. The Library
+        links to it; it does not host it.
+      </li>
+    </ul>
+
+    <h2 id="next">What describing this properly would take</h2>
+
+    <p>
+      A conversation about scope, then a deposit. If the dissertation's own
+      sources came with it — the fire chronologies, the burned-area maps, the
+      early accounts — this series would become the evidentiary base under the
+      oral histories, and the two would cite each other.
+    </p>
+
+    <ProvenanceBlock
+      items={[
+        { label: 'Creator', value: 'Dr. Bob Zybach; NW Maps Co.; Oregon Websites and Watersheds Project, Inc.' },
+        { label: 'Deposit status', value: 'Folder created 21 August 2026; empty as of the census of 27 August 2026' },
+        { label: 'Published at', value: 'nwmapsco.com and orww.org', href: 'http://www.orww.org/' },
+        { label: 'In this collection', value: 'Inventory-level description only; no items published' },
+        { label: 'Rights', value: 'Rights status: under review; no deed of gift has been executed. Commercial editions are identified by reference only.' },
+      ]}
+    />
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/osbornes/">The Osbornes Project</a> ·
+      <a href="/collections/zybach/elliott/">Elliott State Forest</a> ·
+      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-inv {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .zc-inv th,
+  .zc-inv td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem 0.65rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    line-height: 1.5;
+  }
+  .zc-inv thead th {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+  }
+  .zc-inv tbody th {
+    width: 11em;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .zc-links {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    .zc-inv tbody th { width: auto; }
+    .zc-inv, .zc-inv thead, .zc-inv tbody, .zc-inv tr, .zc-inv th, .zc-inv td { display: block; }
+    .zc-inv thead { display: none; }
+    .zc-inv tbody td { border-top: 0; padding-top: 0; }
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+/** Fallback for ROOM's ProvenanceBlock. Props per BUILD_SPEC. */
+interface Props {
+  items: Array<{ label: string; value: string; href?: string }>;
+}
+const { items } = Astro.props as Props;
+const rows = (items ?? []).filter((i) => i && i.label && i.value);
+---
+
+{rows.length > 0 && (
+  <section class="zy-prov" aria-label="Provenance">
+    <dl>
+      {rows.map((i) => (
+        <div class="row">
+          <dt>{i.label}</dt>
+          <dd>{i.href ? <a href={i.href}>{i.value}</a> : i.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+)}
+
+<style>
+  .zy-prov {
+    margin: 1.25rem 0;
+    border-left: 3px solid var(--sage, #7c8b74);
+    padding: 0.15rem 0 0.15rem 0.9rem;
+    background: rgba(124, 139, 116, 0.05);
+  }
+  .zy-prov dl {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+  .zy-prov .row {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+  }
+  @media (max-width: 40rem) {
+    .zy-prov .row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+  .zy-prov dt {
+    font-weight: 600;
+    color: #475569;
+  }
+  .zy-prov dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+</style>

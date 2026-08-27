@@ -1,0 +1,172 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import { ZybachNav } from '../../../../components/zybach/elliott/shared';
+import {
+  BASE,
+  RIGHTS,
+  recordings,
+  recordingDates,
+  interviews,
+  longDate,
+  bytesLabel,
+  counts,
+} from '../../../../components/zybach/elliott/data';
+
+const byDate = recordingDates.map((d) => ({
+  date: d,
+  interview: interviews.find((iv) => iv.date === d) ?? null,
+  items: recordings.filter((r) => r.interview_date === d),
+}));
+const undated = recordings.filter((r) => !r.interview_date);
+
+const totalBytes = recordings.reduce((n, r) => n + (r.size_bytes ?? 0), 0);
+---
+
+<RoomLayout
+  room="collections"
+  title="Recordings"
+  subtitle={`${counts.recordings} MP3 files on orww.org`}
+  width="full"
+  sourceId="zybach-elliott-recordings"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+    { label: 'Elliott State Forest', href: `${BASE}/` },
+  ]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Elliott State Forest · Register</p>
+
+  <ZybachNav current="elliott" />
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <p>
+    Every audio file published under Bob Zybach's Elliott oral history folders:
+    {' '}{counts.recordings} files, {bytesLabel(totalBytes)} in all. Durations are
+    estimated from the file's own bitrate and length, not measured by playing
+    it; each is marked as such. Nothing is copied into this library — the links
+    go to his server.
+  </p>
+  <p class="zy-rights-line">{RIGHTS.orww}</p>
+
+  {byDate.map((g) => (
+    <section aria-labelledby={`d-${g.date.replace(/-/g, '')}`}>
+      <h2 id={`d-${g.date.replace(/-/g, '')}`}>
+        {longDate(g.date)}
+        {g.interview && (
+          <span class="ivlink">
+            {' '}— <a href={g.interview.href}>{g.interview.title_as_printed}</a>
+          </span>
+        )}
+      </h2>
+      <table class="zy-rec-table">
+        <thead>
+          <tr>
+            <th scope="col">File</th>
+            <th scope="col">Tape</th>
+            <th scope="col" class="num">Size</th>
+            <th scope="col" class="num">Duration</th>
+            <th scope="col">Listen</th>
+          </tr>
+        </thead>
+        <tbody>
+          {g.items.map((r) => (
+            <tr>
+              <th scope="row"><a href={r.url}>{r.filename ?? r.url}</a></th>
+              <td class="tape">
+                {r.tape ? `${r.tape}-` : ''}{r.side ?? r.tape_side_raw ?? ''}
+              </td>
+              <td class="num">{r.size_label}</td>
+              <td class="num">
+                {r.duration ?? '—'}
+                {r.duration && <span class="est"> est.</span>}
+              </td>
+              <td class="audio">
+                <audio controls preload="none" src={r.url}>
+                  Your browser cannot play this file.
+                </audio>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  ))}
+
+  {undated.length > 0 && (
+    <section aria-labelledby="undated-heading">
+      <h2 id="undated-heading">Not matched to a date</h2>
+      <ul class="zy-undated">
+        {undated.map((r) => (
+          <li><a href={r.url}>{r.filename ?? r.url}</a> — {r.size_label}</li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <p class="zy-method">
+    Durations are inferred: (file length minus tag offset) × 8 ÷ bitrate, on
+    files that are constant bitrate with no variable-bitrate header. Sizes are
+    the server's own Content-Length.
+  </p>
+
+  <p class="see-also"><a href={`${BASE}/`}>Back to the Elliott State Forest series</a></p>
+</RoomLayout>
+
+<style>
+  .zy-rights-line,
+  .zy-method {
+    font-size: 0.82rem;
+    color: #475569;
+  }
+  .zy-rec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin: 0.6rem 0 1.6rem;
+  }
+  .zy-rec-table th,
+  .zy-rec-table td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.35rem 0.6rem 0.35rem 0;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .zy-rec-table thead th {
+    border-bottom: 2px solid var(--old-gold, #b58a45);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #475569;
+  }
+  .zy-rec-table tbody th {
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+  .zy-rec-table .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .zy-rec-table .tape {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .zy-rec-table .est {
+    color: #94a3b8;
+  }
+  .zy-rec-table audio {
+    width: 220px;
+    max-width: 100%;
+    height: 32px;
+  }
+  .ivlink {
+    font-weight: 400;
+    font-size: 0.85rem;
+  }
+  .zy-undated {
+    font-size: 0.85rem;
+  }
+</style>

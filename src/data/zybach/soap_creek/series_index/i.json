@@ -1,0 +1,2065 @@
+{
+  "generated": "2026-08-27",
+  "letter": "I",
+  "letter_file": "i",
+  "href": "/collections/zybach/soap-creek/index/i/",
+  "counts": {
+    "entries": 22,
+    "refs": 111,
+    "subentries": 31
+  },
+  "entries": [
+    {
+      "entry_id": "zc-sc-idx-ice-storm",
+      "heading": "ice storm",
+      "kind": "event",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        15
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m15",
+          "mono_slug": "m15-rowley",
+          "mono_number": 15,
+          "page": 45,
+          "page_kind": "body",
+          "printed": "45",
+          "ref": "15:45",
+          "href": "/collections/zybach/soap-creek/m15-rowley/part-iv-february-7-1979/#p45",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m15",
+          "mono_slug": "m15-rowley",
+          "mono_number": 15,
+          "page": 105,
+          "page_kind": "body",
+          "printed": "105",
+          "ref": "15:105",
+          "href": "/collections/zybach/soap-creek/m15-rowley/part-vi-may-8-1995/#p105",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 2
+    },
+    {
+      "entry_id": "zc-sc-idx-idaho",
+      "heading": "Idaho",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        2,
+        12
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 5,
+          "page_kind": "body",
+          "printed": "5",
+          "ref": "02:5",
+          "href": "/collections/zybach/soap-creek/m02-dunn/the-great-depression/#p5",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 31,
+          "page_kind": "body",
+          "printed": "31",
+          "ref": "02:31",
+          "href": "/collections/zybach/soap-creek/m02-dunn/influential-individuals/#p31",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m12",
+          "mono_slug": "m12-cook",
+          "mono_number": 12,
+          "page": 29,
+          "page_kind": "body",
+          "printed": "29",
+          "ref": "12:29",
+          "href": "/collections/zybach/soap-creek/m12-cook/10-wanda-s-ghost-story/#p29",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 3
+    },
+    {
+      "entry_id": "zc-sc-idx-illinois",
+      "heading": "Illinois",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        4,
+        6,
+        7,
+        8,
+        10,
+        14
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m04",
+          "mono_slug": "m04-sekermestrovich",
+          "mono_number": 4,
+          "page": 4,
+          "page_kind": "body",
+          "printed": "4",
+          "ref": "04:4",
+          "href": "/collections/zybach/soap-creek/m04-sekermestrovich/05-a-train-load-of-3-c-boys/#p4",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m04",
+          "mono_slug": "m04-sekermestrovich",
+          "mono_number": 4,
+          "page": 31,
+          "page_kind": "body",
+          "printed": "31",
+          "ref": "04:31",
+          "href": "/collections/zybach/soap-creek/m04-sekermestrovich/20-the-great-depression/#p31",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m06",
+          "mono_slug": "m06-hanish",
+          "mono_number": 6,
+          "page": 77,
+          "page_kind": "body",
+          "printed": "77",
+          "ref": "06:77",
+          "href": "/collections/zybach/soap-creek/m06-hanish/index/#p77",
+          "page_verified": null,
+          "page_corrected": 75,
+          "confidence": "inferred"
+        },
+        {
+          "zc_id": "zc-sc-m14",
+          "mono_slug": "m14-hindes",
+          "mono_number": 14,
+          "page": 1,
+          "page_kind": "body",
+          "printed": "1",
+          "ref": "14:1",
+          "href": "/collections/zybach/soap-creek/m14-hindes/01-family-history/#p1",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m14",
+          "mono_slug": "m14-hindes",
+          "mono_number": 14,
+          "page": 5,
+          "page_kind": "body",
+          "printed": "5",
+          "ref": "14:5",
+          "href": "/collections/zybach/soap-creek/m14-hindes/03-lewis-clark-exposition-to-great-depression/#p5",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [
+        {
+          "subheading": "Chicago",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m04",
+              "mono_slug": "m04-sekermestrovich",
+              "mono_number": 4,
+              "page": 4,
+              "page_kind": "body",
+              "printed": "4",
+              "ref": "04:4",
+              "href": "/collections/zybach/soap-creek/m04-sekermestrovich/05-a-train-load-of-3-c-boys/#p4",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m04",
+              "mono_slug": "m04-sekermestrovich",
+              "mono_number": 4,
+              "page": 31,
+              "page_kind": "body",
+              "printed": "31",
+              "ref": "04:31",
+              "href": "/collections/zybach/soap-creek/m04-sekermestrovich/20-the-great-depression/#p31",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 9,
+              "page_kind": "body",
+              "printed": "9",
+              "ref": "06:9",
+              "href": "/collections/zybach/soap-creek/m06-hanish/c-coote-s-mill/#p9",
+              "page_verified": 9,
+              "page_corrected": null,
+              "confidence": "verified"
+            },
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 76,
+              "page_kind": "body",
+              "printed": "76",
+              "ref": "06:76",
+              "href": "/collections/zybach/soap-creek/m06-hanish/appendix-autobiographical-sketch/#p76",
+              "page_verified": null,
+              "page_corrected": 74,
+              "confidence": "inferred"
+            },
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 77,
+              "page_kind": "body",
+              "printed": "77",
+              "ref": "06:77",
+              "href": "/collections/zybach/soap-creek/m06-hanish/index/#p77",
+              "page_verified": null,
+              "page_corrected": 75,
+              "confidence": "inferred"
+            },
+            {
+              "zc_id": "zc-sc-m07",
+              "mono_slug": "m07-olson",
+              "mono_number": 7,
+              "page": 111,
+              "page_kind": "body",
+              "printed": "111",
+              "ref": "07:111",
+              "href": "/collections/zybach/soap-creek/m07-olson/03-soap-creek-neighborhood/#p111",
+              "page_verified": null,
+              "page_corrected": 106,
+              "confidence": "inferred"
+            }
+          ],
+          "count": 6
+        },
+        {
+          "subheading": "Elmhurst",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 77,
+              "page_kind": "body",
+              "printed": "77",
+              "ref": "06:77",
+              "href": "/collections/zybach/soap-creek/m06-hanish/index/#p77",
+              "page_verified": null,
+              "page_corrected": 75,
+              "confidence": "inferred"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Milledgeville",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m08",
+              "mono_slug": "m08-vanderburg",
+              "mono_number": 8,
+              "page": 145,
+              "page_kind": "body",
+              "printed": "145",
+              "ref": "08:145",
+              "href": "/collections/zybach/soap-creek/m08-vanderburg/appendix-a-vanderburg-genealogy/#p145",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Morgan County",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m10",
+              "mono_slug": "m10-rawie",
+              "mono_number": 10,
+              "page": 3,
+              "page_kind": "body",
+              "printed": "3",
+              "ref": "10:3",
+              "href": "/collections/zybach/soap-creek/m10-rawie/01-family-photographs/#p3",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m10",
+              "mono_slug": "m10-rawie",
+              "mono_number": 10,
+              "page": 85,
+              "page_kind": "body",
+              "printed": "85",
+              "ref": "10:85",
+              "href": "/collections/zybach/soap-creek/m10-rawie/chapter-i-pioneer-days-chapter-i/#p85",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 2
+        },
+        {
+          "subheading": "Rockford",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m14",
+              "mono_slug": "m14-hindes",
+              "mono_number": 14,
+              "page": 1,
+              "page_kind": "body",
+              "printed": "1",
+              "ref": "14:1",
+              "href": "/collections/zybach/soap-creek/m14-hindes/01-family-history/#p1",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 16
+    },
+    {
+      "entry_id": "zc-sc-idx-illinois-counties",
+      "heading": "Illinois Counties",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        8
+      ],
+      "refs": [],
+      "subentries": [
+        {
+          "subheading": "Carroll",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m08",
+              "mono_slug": "m08-vanderburg",
+              "mono_number": 8,
+              "page": 145,
+              "page_kind": "body",
+              "printed": "145",
+              "ref": "08:145",
+              "href": "/collections/zybach/soap-creek/m08-vanderburg/appendix-a-vanderburg-genealogy/#p145",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Mackinara",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m08",
+              "mono_slug": "m08-vanderburg",
+              "mono_number": 8,
+              "page": 139,
+              "page_kind": "body",
+              "printed": "139",
+              "ref": "08:139",
+              "href": "/collections/zybach/soap-creek/m08-vanderburg/appendix-a-vanderburg-genealogy/#p139",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Meramera",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m08",
+              "mono_slug": "m08-vanderburg",
+              "mono_number": 8,
+              "page": 139,
+              "page_kind": "body",
+              "printed": "139",
+              "ref": "08:139",
+              "href": "/collections/zybach/soap-creek/m08-vanderburg/appendix-a-vanderburg-genealogy/#p139",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Wayne",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m08",
+              "mono_slug": "m08-vanderburg",
+              "mono_number": 8,
+              "page": 139,
+              "page_kind": "body",
+              "printed": "139",
+              "ref": "08:139",
+              "href": "/collections/zybach/soap-creek/m08-vanderburg/appendix-a-vanderburg-genealogy/#p139",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 4
+    },
+    {
+      "entry_id": "zc-sc-idx-india",
+      "heading": "India",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        9
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m09",
+          "mono_slug": "m09-glender",
+          "mono_number": 9,
+          "page": 109,
+          "page_kind": "body",
+          "printed": "109",
+          "ref": "09:109",
+          "href": "/collections/zybach/soap-creek/m09-glender/appendix-b-hunting-elephants-in-the-oregon-country/#p109",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-indian-sites",
+      "heading": "Indian sites",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        2
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 36,
+          "page_kind": "body",
+          "printed": "36",
+          "ref": "02:36",
+          "href": "/collections/zybach/soap-creek/m02-dunn/cultural-resources/#p36",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-indiana",
+      "heading": "Indiana",
+      "kind": "other",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        6
+      ],
+      "refs": [],
+      "subentries": [
+        {
+          "subheading": "Terra Haute",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 76,
+              "page_kind": "body",
+              "printed": "76",
+              "ref": "06:76",
+              "href": "/collections/zybach/soap-creek/m06-hanish/appendix-autobiographical-sketch/#p76",
+              "page_verified": null,
+              "page_corrected": 74,
+              "confidence": "inferred"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-indians",
+      "heading": "Indians",
+      "kind": "topic",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        3
+      ],
+      "refs": [],
+      "subentries": [],
+      "see": [
+        {
+          "text": "American Indians",
+          "entry_id": "zc-sc-idx-american-indians",
+          "heading": "American Indians",
+          "resolved": true
+        }
+      ],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 0
+    },
+    {
+      "entry_id": "zc-sc-idx-indians-south-american",
+      "heading": "Indians, South American",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        11
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m11",
+          "mono_slug": "m11-murphy",
+          "mono_number": 11,
+          "page": 93,
+          "page_kind": "body",
+          "printed": "93",
+          "ref": "11:93",
+          "href": "/collections/zybach/soap-creek/m11-murphy/part-v-september-29-1990-interview/#p93",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-insects",
+      "heading": "Insects",
+      "kind": "flora-fauna",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "refs": [],
+      "subentries": [
+        {
+          "subheading": "Bees",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m05",
+              "mono_slug": "m05-rohner",
+              "mono_number": 5,
+              "page": 66,
+              "page_kind": "body",
+              "printed": "66",
+              "ref": "05:66",
+              "href": "/collections/zybach/soap-creek/m05-rohner/08-barracks-photograph/#p66",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m05",
+              "mono_slug": "m05-rohner",
+              "mono_number": 5,
+              "page": 78,
+              "page_kind": "body",
+              "printed": "78",
+              "ref": "05:78",
+              "href": "/collections/zybach/soap-creek/m05-rohner/14-chicken-hawks-bears-and-bee-trees/#p78",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m05",
+              "mono_slug": "m05-rohner",
+              "mono_number": 5,
+              "page": 81,
+              "page_kind": "body",
+              "printed": "81",
+              "ref": "05:81",
+              "href": "/collections/zybach/soap-creek/m05-rohner/15-father-and-calves-photograph/#p81",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 9,
+              "page_kind": "body",
+              "printed": "9",
+              "ref": "06:9",
+              "href": "/collections/zybach/soap-creek/m06-hanish/c-coote-s-mill/#p9",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m07",
+              "mono_slug": "m07-olson",
+              "mono_number": 7,
+              "page": 18,
+              "page_kind": "body",
+              "printed": "18",
+              "ref": "07:18",
+              "href": "/collections/zybach/soap-creek/m07-olson/c-lewisburg-clearcut/#p18",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m07",
+              "mono_slug": "m07-olson",
+              "mono_number": 7,
+              "page": 152,
+              "page_kind": "body",
+              "printed": "152",
+              "ref": "07:152",
+              "href": "/collections/zybach/soap-creek/m07-olson/13-health-situations/#p152",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m08",
+              "mono_slug": "m08-vanderburg",
+              "mono_number": 8,
+              "page": 42,
+              "page_kind": "body",
+              "printed": "42",
+              "ref": "08:42",
+              "href": "/collections/zybach/soap-creek/m08-vanderburg/j-the-vanderburg-place/#p42",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m09",
+              "mono_slug": "m09-glender",
+              "mono_number": 9,
+              "page": 32,
+              "page_kind": "body",
+              "printed": "32",
+              "ref": "09:32",
+              "href": "/collections/zybach/soap-creek/m09-glender/j-a-fatal-accident-at-govier-s-mill/#p32",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m10",
+              "mono_slug": "m10-rawie",
+              "mono_number": 10,
+              "page": 57,
+              "page_kind": "body",
+              "printed": "57",
+              "ref": "10:57",
+              "href": "/collections/zybach/soap-creek/m10-rawie/11-the-wells-school/#p57",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m10",
+              "mono_slug": "m10-rawie",
+              "mono_number": 10,
+              "page": 81,
+              "page_kind": "body",
+              "printed": "81",
+              "ref": "10:81",
+              "href": "/collections/zybach/soap-creek/m10-rawie/appendix-a-wells-station/#p81",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m10",
+              "mono_slug": "m10-rawie",
+              "mono_number": 10,
+              "page": 94,
+              "page_kind": "body",
+              "printed": "94",
+              "ref": "10:94",
+              "href": "/collections/zybach/soap-creek/m10-rawie/chapter-vi-pioneer-days-chapter-vi/#p94",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m12",
+              "mono_slug": "m12-cook",
+              "mono_number": 12,
+              "page": 21,
+              "page_kind": "body",
+              "printed": "21",
+              "ref": "12:21",
+              "href": "/collections/zybach/soap-creek/m12-cook/08-married-life/#p21",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 12
+        },
+        {
+          "subheading": "Grasshoppers",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m05",
+              "mono_slug": "m05-rohner",
+              "mono_number": 5,
+              "page": 62,
+              "page_kind": "body",
+              "printed": "62",
+              "ref": "05:62",
+              "href": "/collections/zybach/soap-creek/m05-rohner/03-backhoe-photograph/#p62",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m07",
+              "mono_slug": "m07-olson",
+              "mono_number": 7,
+              "page": 31,
+              "page_kind": "body",
+              "printed": "31",
+              "ref": "07:31",
+              "href": "/collections/zybach/soap-creek/m07-olson/c-lewisburg-clearcut/#p31",
+              "page_verified": null,
+              "page_corrected": 30,
+              "confidence": "inferred"
+            },
+            {
+              "zc_id": "zc-sc-m07",
+              "mono_slug": "m07-olson",
+              "mono_number": 7,
+              "page": 139,
+              "page_kind": "body",
+              "printed": "139",
+              "ref": "07:139",
+              "href": "/collections/zybach/soap-creek/m07-olson/10-fiddle-playing/#p139",
+              "page_verified": null,
+              "page_corrected": 134,
+              "confidence": "inferred"
+            },
+            {
+              "zc_id": "zc-sc-m07",
+              "mono_slug": "m07-olson",
+              "mono_number": 7,
+              "page": 178,
+              "page_kind": "body",
+              "printed": "178",
+              "ref": "07:178",
+              "href": "/collections/zybach/soap-creek/m07-olson/index/#p178",
+              "page_verified": null,
+              "page_corrected": 171,
+              "confidence": "inferred"
+            },
+            {
+              "zc_id": "zc-sc-m08",
+              "mono_slug": "m08-vanderburg",
+              "mono_number": 8,
+              "page": 47,
+              "page_kind": "body",
+              "printed": "47",
+              "ref": "08:47",
+              "href": "/collections/zybach/soap-creek/m08-vanderburg/j-the-vanderburg-place/#p47",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m11",
+              "mono_slug": "m11-murphy",
+              "mono_number": 11,
+              "page": 10,
+              "page_kind": "body",
+              "printed": "10",
+              "ref": "11:10",
+              "href": "/collections/zybach/soap-creek/m11-murphy/part-iii-january-26-1989-interview/#p10",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m11",
+              "mono_slug": "m11-murphy",
+              "mono_number": 11,
+              "page": 40,
+              "page_kind": "body",
+              "printed": "40",
+              "ref": "11:40",
+              "href": "/collections/zybach/soap-creek/m11-murphy/part-iv-january-4-1990-interview/#p40",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m11",
+              "mono_slug": "m11-murphy",
+              "mono_number": 11,
+              "page": 94,
+              "page_kind": "body",
+              "printed": "94",
+              "ref": "11:94",
+              "href": "/collections/zybach/soap-creek/m11-murphy/part-v-september-29-1990-interview/#p94",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 8
+        },
+        {
+          "subheading": "Hornets",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 7,
+              "page_kind": "body",
+              "printed": "7",
+              "ref": "06:7",
+              "href": "/collections/zybach/soap-creek/m06-hanish/c-coote-s-mill/#p7",
+              "page_verified": null,
+              "page_corrected": 6,
+              "confidence": "inferred"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Lice",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m11",
+              "mono_slug": "m11-murphy",
+              "mono_number": 11,
+              "page": 103,
+              "page_kind": "body",
+              "printed": "103",
+              "ref": "11:103",
+              "href": "/collections/zybach/soap-creek/m11-murphy/index/#p103",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Lice, Body",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m11",
+              "mono_slug": "m11-murphy",
+              "mono_number": 11,
+              "page": 103,
+              "page_kind": "body",
+              "printed": "103",
+              "ref": "11:103",
+              "href": "/collections/zybach/soap-creek/m11-murphy/index/#p103",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Mosquitoes",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m09",
+              "mono_slug": "m09-glender",
+              "mono_number": 9,
+              "page": 38,
+              "page_kind": "body",
+              "printed": "38",
+              "ref": "09:38",
+              "href": "/collections/zybach/soap-creek/m09-glender/l-tampico-from-elephants-to-camp-adair/#p38",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Moths, Coddling",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m11",
+              "mono_slug": "m11-murphy",
+              "mono_number": 11,
+              "page": 35,
+              "page_kind": "body",
+              "printed": "35",
+              "ref": "11:35",
+              "href": "/collections/zybach/soap-creek/m11-murphy/part-iv-january-4-1990-interview/#p35",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Wasps",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 7,
+              "page_kind": "body",
+              "printed": "7",
+              "ref": "06:7",
+              "href": "/collections/zybach/soap-creek/m06-hanish/c-coote-s-mill/#p7",
+              "page_verified": 7,
+              "page_corrected": null,
+              "confidence": "verified"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Weevils",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m05",
+              "mono_slug": "m05-rohner",
+              "mono_number": 5,
+              "page": 22,
+              "page_kind": "body",
+              "printed": "22",
+              "ref": "05:22",
+              "href": "/collections/zybach/soap-creek/m05-rohner/d-camp-adair/#p22",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m05",
+              "mono_slug": "m05-rohner",
+              "mono_number": 5,
+              "page": 23,
+              "page_kind": "body",
+              "printed": "23",
+              "ref": "05:23",
+              "href": "/collections/zybach/soap-creek/m05-rohner/e-earth-day-plantation/#p23",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 2
+        },
+        {
+          "subheading": "Yellow Jackets",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m05",
+              "mono_slug": "m05-rohner",
+              "mono_number": 5,
+              "page": 104,
+              "page_kind": "body",
+              "printed": "104",
+              "ref": "05:104",
+              "href": "/collections/zybach/soap-creek/m05-rohner/24-harvesting-harding-grass/#p104",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 7,
+              "page_kind": "body",
+              "printed": "7",
+              "ref": "06:7",
+              "href": "/collections/zybach/soap-creek/m06-hanish/c-coote-s-mill/#p7",
+              "page_verified": 7,
+              "page_corrected": null,
+              "confidence": "verified"
+            },
+            {
+              "zc_id": "zc-sc-m06",
+              "mono_slug": "m06-hanish",
+              "mono_number": 6,
+              "page": 61,
+              "page_kind": "body",
+              "printed": "61",
+              "ref": "06:61",
+              "href": "/collections/zybach/soap-creek/m06-hanish/j-hanish-homestead/#p61",
+              "page_verified": null,
+              "page_corrected": 60,
+              "confidence": "inferred"
+            }
+          ],
+          "count": 3
+        },
+        {
+          "subheading": "Yellowjackets",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m12",
+              "mono_slug": "m12-cook",
+              "mono_number": 12,
+              "page": 41,
+              "page_kind": "body",
+              "printed": "41",
+              "ref": "12:41",
+              "href": "/collections/zybach/soap-creek/m12-cook/f-the-cook-place/#p41",
+              "page_verified": 41,
+              "page_corrected": null,
+              "confidence": "verified"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 32
+    },
+    {
+      "entry_id": "zc-sc-idx-iowa",
+      "heading": "Iowa",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [
+        "IOWA"
+      ],
+      "monographs": [
+        1,
+        2,
+        3
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m01",
+          "mono_slug": "m01-grabe",
+          "mono_number": 1,
+          "page": 4,
+          "page_kind": "body",
+          "printed": "4",
+          "ref": "01:4",
+          "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p4",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m01",
+          "mono_slug": "m01-grabe",
+          "mono_number": 1,
+          "page": 13,
+          "page_kind": "body",
+          "printed": "13",
+          "ref": "01:13",
+          "href": "/collections/zybach/soap-creek/m01-grabe/local-recreation/#p13",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m01",
+          "mono_slug": "m01-grabe",
+          "mono_number": 1,
+          "page": 61,
+          "page_kind": "body",
+          "printed": "61",
+          "ref": "01:61",
+          "href": "/collections/zybach/soap-creek/m01-grabe/foundation-plans/#p61",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 1,
+          "page_kind": "body",
+          "printed": "1-5",
+          "ref": "02:1",
+          "href": "/collections/zybach/soap-creek/m02-dunn/world-war-i/#p1",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 2,
+          "page_kind": "body",
+          "printed": "1-5",
+          "ref": "02:2",
+          "href": "/collections/zybach/soap-creek/m02-dunn/college-education/#p2",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 3,
+          "page_kind": "body",
+          "printed": "1-5",
+          "ref": "02:3",
+          "href": "/collections/zybach/soap-creek/m02-dunn/early-career/#p3",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 4,
+          "page_kind": "body",
+          "printed": "1-5",
+          "ref": "02:4",
+          "href": "/collections/zybach/soap-creek/m02-dunn/the-great-depression/#p4",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 5,
+          "page_kind": "body",
+          "printed": "1-5",
+          "ref": "02:5",
+          "href": "/collections/zybach/soap-creek/m02-dunn/the-great-depression/#p5",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 12,
+          "page_kind": "body",
+          "printed": "12",
+          "ref": "02:12",
+          "href": "/collections/zybach/soap-creek/m02-dunn/industrial-forestry-career/#p12",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 15,
+          "page_kind": "body",
+          "printed": "15",
+          "ref": "02:15",
+          "href": "/collections/zybach/soap-creek/m02-dunn/corvallis-retirement/#p15",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 16,
+          "page_kind": "body",
+          "printed": "16",
+          "ref": "02:16",
+          "href": "/collections/zybach/soap-creek/m02-dunn/osc-career-reflections/#p16",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m02",
+          "mono_slug": "m02-dunn",
+          "mono_number": 2,
+          "page": 31,
+          "page_kind": "body",
+          "printed": "31",
+          "ref": "02:31",
+          "href": "/collections/zybach/soap-creek/m02-dunn/influential-individuals/#p31",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m03",
+          "mono_slug": "m03-dickey",
+          "mono_number": 3,
+          "page": 39,
+          "page_kind": "body",
+          "printed": "39",
+          "ref": "03:39",
+          "href": "/collections/zybach/soap-creek/m03-dickey/11-oregon-state-college/#p39",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [
+        {
+          "subheading": "Ames",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m01",
+              "mono_slug": "m01-grabe",
+              "mono_number": 1,
+              "page": 6,
+              "page_kind": "body",
+              "printed": "6",
+              "ref": "01:6",
+              "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p6",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m02",
+              "mono_slug": "m02-dunn",
+              "mono_number": 2,
+              "page": 2,
+              "page_kind": "body",
+              "printed": "2",
+              "ref": "02:2",
+              "href": "/collections/zybach/soap-creek/m02-dunn/college-education/#p2",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 2
+        },
+        {
+          "subheading": "Fort Des Moines",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m02",
+              "mono_slug": "m02-dunn",
+              "mono_number": 2,
+              "page": 2,
+              "page_kind": "body",
+              "printed": "2",
+              "ref": "02:2",
+              "href": "/collections/zybach/soap-creek/m02-dunn/college-education/#p2",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "HOLSTEIN",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m01",
+              "mono_slug": "m01-grabe",
+              "mono_number": 1,
+              "page": 3,
+              "page_kind": "body",
+              "printed": "3",
+              "ref": "01:3",
+              "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p3",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "IOWA CITY",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m01",
+              "mono_slug": "m01-grabe",
+              "mono_number": 1,
+              "page": 1,
+              "page_kind": "body",
+              "printed": "1",
+              "ref": "01:1",
+              "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p1",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m01",
+              "mono_slug": "m01-grabe",
+              "mono_number": 1,
+              "page": 2,
+              "page_kind": "body",
+              "printed": "2",
+              "ref": "01:2",
+              "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p2",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m01",
+              "mono_slug": "m01-grabe",
+              "mono_number": 1,
+              "page": 3,
+              "page_kind": "body",
+              "printed": "3",
+              "ref": "01:3",
+              "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p3",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m01",
+              "mono_slug": "m01-grabe",
+              "mono_number": 1,
+              "page": 5,
+              "page_kind": "body",
+              "printed": "5",
+              "ref": "01:5",
+              "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p5",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 4
+        },
+        {
+          "subheading": "Iowa State College",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m02",
+              "mono_slug": "m02-dunn",
+              "mono_number": 2,
+              "page": 33,
+              "page_kind": "body",
+              "printed": "33",
+              "ref": "02:33",
+              "href": "/collections/zybach/soap-creek/m02-dunn/mary-mcdonald-acquisitions/#p33",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Le Mars",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m02",
+              "mono_slug": "m02-dunn",
+              "mono_number": 2,
+              "page": 1,
+              "page_kind": "body",
+              "printed": "1-3",
+              "ref": "02:1",
+              "href": "/collections/zybach/soap-creek/m02-dunn/world-war-i/#p1",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m02",
+              "mono_slug": "m02-dunn",
+              "mono_number": 2,
+              "page": 2,
+              "page_kind": "body",
+              "printed": "1-3",
+              "ref": "02:2",
+              "href": "/collections/zybach/soap-creek/m02-dunn/college-education/#p2",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m02",
+              "mono_slug": "m02-dunn",
+              "mono_number": 2,
+              "page": 3,
+              "page_kind": "body",
+              "printed": "1-3",
+              "ref": "02:3",
+              "href": "/collections/zybach/soap-creek/m02-dunn/early-career/#p3",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m02",
+              "mono_slug": "m02-dunn",
+              "mono_number": 2,
+              "page": 16,
+              "page_kind": "body",
+              "printed": "16",
+              "ref": "02:16",
+              "href": "/collections/zybach/soap-creek/m02-dunn/osc-career-reflections/#p16",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 4
+        },
+        {
+          "subheading": "National Guard",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m02",
+              "mono_slug": "m02-dunn",
+              "mono_number": 2,
+              "page": 1,
+              "page_kind": "body",
+              "printed": "1",
+              "ref": "02:1",
+              "href": "/collections/zybach/soap-creek/m02-dunn/world-war-i/#p1",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "OASIS",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m01",
+              "mono_slug": "m01-grabe",
+              "mono_number": 1,
+              "page": 2,
+              "page_kind": "body",
+              "printed": "2",
+              "ref": "01:2",
+              "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p2",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "PIERSON",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m01",
+              "mono_slug": "m01-grabe",
+              "mono_number": 1,
+              "page": 3,
+              "page_kind": "body",
+              "printed": "3",
+              "ref": "01:3",
+              "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p3",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 1
+        },
+        {
+          "subheading": "Sioux City",
+          "refs": [
+            {
+              "zc_id": "zc-sc-m01",
+              "mono_slug": "m01-grabe",
+              "mono_number": 1,
+              "page": 3,
+              "page_kind": "body",
+              "printed": "3",
+              "ref": "01:3",
+              "href": "/collections/zybach/soap-creek/m01-grabe/family-history/#p3",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            },
+            {
+              "zc_id": "zc-sc-m02",
+              "mono_slug": "m02-dunn",
+              "mono_number": 2,
+              "page": 1,
+              "page_kind": "body",
+              "printed": "1",
+              "ref": "02:1",
+              "href": "/collections/zybach/soap-creek/m02-dunn/world-war-i/#p1",
+              "page_verified": null,
+              "page_corrected": null,
+              "confidence": "stated"
+            }
+          ],
+          "count": 2
+        }
+      ],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 31
+    },
+    {
+      "entry_id": "zc-sc-idx-ireland-north",
+      "heading": "Ireland, North",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        11
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m11",
+          "mono_slug": "m11-murphy",
+          "mono_number": 11,
+          "page": 6,
+          "page_kind": "body",
+          "printed": "6",
+          "ref": "11:6",
+          "href": "/collections/zybach/soap-creek/m11-murphy/part-ii-august-4-1975-interview/#p6",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-irgens-moller-helge",
+      "heading": "IRGENS-MOLLER, HELGE",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        13
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m13",
+          "mono_slug": "m13-davies",
+          "mono_number": 13,
+          "page": 60,
+          "page_kind": "body",
+          "printed": "60",
+          "ref": "13:60",
+          "href": "/collections/zybach/soap-creek/m13-davies/appendix-a-college-of-forestry-publications/#p60",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-irish",
+      "heading": "Irish",
+      "kind": "topic",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        7,
+        12
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m07",
+          "mono_slug": "m07-olson",
+          "mono_number": 7,
+          "page": 113,
+          "page_kind": "body",
+          "printed": "113",
+          "ref": "07:113",
+          "href": "/collections/zybach/soap-creek/m07-olson/03-soap-creek-neighborhood/#p113",
+          "page_verified": null,
+          "page_corrected": 108,
+          "confidence": "inferred"
+        },
+        {
+          "zc_id": "zc-sc-m12",
+          "mono_slug": "m12-cook",
+          "mono_number": 12,
+          "page": 48,
+          "page_kind": "body",
+          "printed": "48",
+          "ref": "12:48",
+          "href": "/collections/zybach/soap-creek/m12-cook/h-sheep-hill/#p48",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 2
+    },
+    {
+      "entry_id": "zc-sc-idx-italian",
+      "heading": "Italian",
+      "kind": "topic",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        12
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m12",
+          "mono_slug": "m12-cook",
+          "mono_number": 12,
+          "page": 5,
+          "page_kind": "body",
+          "printed": "5",
+          "ref": "12:5",
+          "href": "/collections/zybach/soap-creek/m12-cook/03-the-marcks-farm/#p5",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-italy",
+      "heading": "Italy",
+      "kind": "place",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        11
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m11",
+          "mono_slug": "m11-murphy",
+          "mono_number": 11,
+          "page": 64,
+          "page_kind": "body",
+          "printed": "64",
+          "ref": "11:64",
+          "href": "/collections/zybach/soap-creek/m11-murphy/part-v-september-29-1990-interview/#p64",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-iv-hill",
+      "heading": "IV Hill [Benton Co.]",
+      "kind": "place",
+      "concordance_category": "Peaks and Hills",
+      "variants": [],
+      "monographs": [
+        11
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m11",
+          "mono_slug": "m11-murphy",
+          "mono_number": 11,
+          "page": 12,
+          "page_kind": "body",
+          "printed": "12",
+          "ref": "11:12",
+          "href": "/collections/zybach/soap-creek/m11-murphy/part-iii-january-26-1989-interview/#p12",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m11",
+          "mono_slug": "m11-murphy",
+          "mono_number": 11,
+          "page": 31,
+          "page_kind": "body",
+          "printed": "31",
+          "ref": "11:31",
+          "href": "/collections/zybach/soap-creek/m11-murphy/part-iv-january-4-1990-interview/#p31",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m11",
+          "mono_slug": "m11-murphy",
+          "mono_number": 11,
+          "page": 31,
+          "page_kind": "body",
+          "printed": "31",
+          "ref": "11:31",
+          "href": "/collections/zybach/soap-creek/m11-murphy/part-iv-january-4-1990-interview/#p31",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m11",
+          "mono_slug": "m11-murphy",
+          "mono_number": 11,
+          "page": 41,
+          "page_kind": "body",
+          "printed": "41",
+          "ref": "11:41",
+          "href": "/collections/zybach/soap-creek/m11-murphy/part-iv-january-4-1990-interview/#p41",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m11",
+          "mono_slug": "m11-murphy",
+          "mono_number": 11,
+          "page": 65,
+          "page_kind": "body",
+          "printed": "65",
+          "ref": "11:65",
+          "href": "/collections/zybach/soap-creek/m11-murphy/part-v-september-29-1990-interview/#p65",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 5
+    },
+    {
+      "entry_id": "zc-sc-idx-ivers-family",
+      "heading": "Ivers Family",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        9
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m09",
+          "mono_slug": "m09-glender",
+          "mono_number": 9,
+          "page": 95,
+          "page_kind": "body",
+          "printed": "95",
+          "ref": "09:95",
+          "href": "/collections/zybach/soap-creek/m09-glender/r-neighbors/#p95",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-ivers-art",
+      "heading": "Ivers, Art",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        10
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m10",
+          "mono_slug": "m10-rawie",
+          "mono_number": 10,
+          "page": 56,
+          "page_kind": "body",
+          "printed": "56",
+          "ref": "10:56",
+          "href": "/collections/zybach/soap-creek/m10-rawie/11-the-wells-school/#p56",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    },
+    {
+      "entry_id": "zc-sc-idx-ivers-camilla",
+      "heading": "Ivers, Camilla",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        5,
+        10
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m05",
+          "mono_slug": "m05-rohner",
+          "mono_number": 5,
+          "page": 111,
+          "page_kind": "body",
+          "printed": "111",
+          "ref": "05:111",
+          "href": "/collections/zybach/soap-creek/m05-rohner/25-local-blacksmiths/#p111",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m10",
+          "mono_slug": "m10-rawie",
+          "mono_number": 10,
+          "page": 56,
+          "page_kind": "body",
+          "printed": "56",
+          "ref": "10:56",
+          "href": "/collections/zybach/soap-creek/m10-rawie/11-the-wells-school/#p56",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 2
+    },
+    {
+      "entry_id": "zc-sc-idx-ivers-ed",
+      "heading": "Ivers, Ed",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        10
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m10",
+          "mono_slug": "m10-rawie",
+          "mono_number": 10,
+          "page": 42,
+          "page_kind": "body",
+          "printed": "42",
+          "ref": "10:42",
+          "href": "/collections/zybach/soap-creek/m10-rawie/07-local-families/#p42",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m10",
+          "mono_slug": "m10-rawie",
+          "mono_number": 10,
+          "page": 43,
+          "page_kind": "body",
+          "printed": "43",
+          "ref": "10:43",
+          "href": "/collections/zybach/soap-creek/m10-rawie/08-farm-life-and-wildlife/#p43",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        },
+        {
+          "zc_id": "zc-sc-m10",
+          "mono_slug": "m10-rawie",
+          "mono_number": 10,
+          "page": 56,
+          "page_kind": "body",
+          "printed": "56",
+          "ref": "10:56",
+          "href": "/collections/zybach/soap-creek/m10-rawie/11-the-wells-school/#p56",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 3
+    },
+    {
+      "entry_id": "zc-sc-idx-ivers-meyer",
+      "heading": "Ivers, Meyer",
+      "kind": "person",
+      "concordance_category": null,
+      "variants": [],
+      "monographs": [
+        5
+      ],
+      "refs": [
+        {
+          "zc_id": "zc-sc-m05",
+          "mono_slug": "m05-rohner",
+          "mono_number": 5,
+          "page": 111,
+          "page_kind": "body",
+          "printed": "111",
+          "ref": "05:111",
+          "href": "/collections/zybach/soap-creek/m05-rohner/25-local-blacksmiths/#p111",
+          "page_verified": null,
+          "page_corrected": null,
+          "confidence": "stated"
+        }
+      ],
+      "subentries": [],
+      "see": [],
+      "see_also": [],
+      "confidence": "stated",
+      "kind_confidence": "inferred",
+      "ref_count": 1
+    }
+  ]
+}

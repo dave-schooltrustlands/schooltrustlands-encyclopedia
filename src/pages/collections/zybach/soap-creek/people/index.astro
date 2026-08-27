@@ -1,0 +1,140 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import ZybachMap from '../../../../../components/zybach/soapcreek/ZybachMap.astro';
+import MapList from '../../../../../components/zybach/soapcreek/MapList.astro';
+import { people, monographs, gazetteer, peopleIndex } from '../../../../../components/zybach/soapcreek/data';
+import { personHref, monoHref, indexHref, placeHref, narratorHomeNames } from '../../../../../components/zybach/soapcreek/links';
+
+const byRole = (re: RegExp) =>
+  people
+    .filter((p) => (p.roles ?? []).some((r) => re.test(r)))
+    .sort((a, b) => (a.display_name ?? '').localeCompare(b.display_name ?? ''));
+
+const narrators = byRole(/narrator/i);
+const interviewers = byRole(/interviewer/i).filter((p) => !narrators.includes(p));
+const contributors = people
+  .filter((p) => !narrators.includes(p) && !interviewers.includes(p))
+  .sort((a, b) => (a.display_name ?? '').localeCompare(b.display_name ?? ''));
+
+// Narrator home sites, as plotted on Map 9 of the thesis.
+const homeFeatures = {
+  type: 'FeatureCollection',
+  features: gazetteer
+    .filter((p) => (p.narrator_home_of ?? []).length > 0 && typeof p.lat === 'number' && typeof p.lon === 'number')
+    .map((p) => ({
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [p.lon, p.lat] },
+      properties: {
+        kind: 'narrator-home',
+        title: p.name ?? p.slug,
+        subtitle: `Home site of ${narratorHomeNames(p)}`,
+        href: placeHref(p.slug),
+      },
+    })),
+};
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+];
+
+function meta(p: any) {
+  const monos = (p.narrator_of ?? [])
+    .map((s: string) => monographs.find((m) => m.slug === s || m.zc_id === s))
+    .filter(Boolean);
+  return [
+    p.born || p.died ? `${p.born ?? '?'}–${p.died ?? '?'}` : null,
+    p.profession,
+    monos.length ? monos.map((m: any) => `#${m.number}`).join(', ') : null,
+    (p.sessions ?? []).length ? `${p.sessions.length} session${p.sessions.length === 1 ? '' : 's'}` : null,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+}
+---
+<SoapCreekPage
+  title="People"
+  subtitle="The narrators who were recorded, the interviewers who asked, and the transcribers, auditors and editors named in the front matter of the fifteen monographs."
+  kicker="Soap Creek Valley · People"
+  parents={parents}
+  sourceId="zybach-sc-people"
+  navCurrent="people"
+  width="full"
+  corrections={false}
+>
+  {people.length === 0 && <p class="sc-empty">The people records have not been generated yet.</p>}
+
+  {homeFeatures.features.length > 0 && (
+    <section aria-labelledby="home-sites">
+      <h2 id="home-sites">Where they lived</h2>
+      <p>
+        The narrators' home sites, as Bob Zybach plotted them on Map 9 of the 1999
+        thesis. The valley's history in these books is told from these addresses.
+      </p>
+      <ZybachMap
+        id="people-map"
+        center={[-123.29, 44.72]}
+        zoom={11}
+        features={homeFeatures}
+        height="440px"
+        fit={true}
+      />
+      <MapList features={homeFeatures} heading="Home sites" headingLevel="h3" order={['narrator-home']} />
+    </section>
+  )}
+
+  {narrators.length > 0 && (
+    <section aria-labelledby="narrators">
+      <h2 id="narrators">Narrators ({narrators.length})</h2>
+      <ul class="sc-list sc-cols">
+        {narrators.map((p) => (
+          <li>
+            <a href={personHref(p.slug)}>{p.display_name}</a>
+            <span class="sc-list-meta">{meta(p)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {interviewers.length > 0 && (
+    <section aria-labelledby="interviewers">
+      <h2 id="interviewers">Interviewers ({interviewers.length})</h2>
+      <ul class="sc-list sc-cols">
+        {interviewers.map((p) => (
+          <li>
+            <a href={personHref(p.slug)}>{p.display_name}</a>
+            <span class="sc-list-meta">{meta(p)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {contributors.length > 0 && (
+    <section aria-labelledby="contributors">
+      <h2 id="contributors">Transcribers, auditors and editors ({contributors.length})</h2>
+      <ul class="sc-list sc-cols">
+        {contributors.map((p) => (
+          <li>
+            <a href={personHref(p.slug)}>{p.display_name}</a>
+            <span class="sc-list-meta">{(p.roles ?? []).join(' · ')}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="everyone-else">
+    <h2 id="everyone-else">Everyone else named in the transcripts</h2>
+    <p>
+      {peopleIndex.length > 0
+        ? `About ${peopleIndex.length.toLocaleString()} other people are named somewhere in these books — neighbours, teachers, loggers, children, the dead. They do not have pages of their own; they are findable through the `
+        : 'Other people named in the transcripts are findable through the '}
+      <a href={indexHref()}>Series Index</a>, where each name carries the pages it
+      appears on.
+    </p>
+  </section>
+</SoapCreekPage>

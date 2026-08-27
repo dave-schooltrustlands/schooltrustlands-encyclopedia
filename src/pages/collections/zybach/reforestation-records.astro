@@ -1,0 +1,215 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
+import ContentNote from '../../../components/zybach/ContentNote.astro';
+import { seriesBySlug, clean } from '../../../components/zybach/_data';
+
+const s = seriesBySlug('reforestation-records');
+const title = clean(s?.title) || 'Reforestation business records';
+const summary =
+  clean(s?.summary) ||
+  'Records of the creator’s contract reforestation business, 1972–1990, held at Oregon State University. Described here; not published.';
+
+/* What the generator recorded about how this series was described, and how
+   many accessioned files carry its name. Both are shown as measured. */
+const describedFrom = clean(s?.described_from);
+const matchingFiles = s?.counts?.accessioned_files_matching_name;
+---
+
+<RoomLayout
+  room="collections"
+  title={title}
+  subtitle="Series — described at inventory level · restricted"
+  width="prose"
+  sourceId="collections-zybach-reforestation-records"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:reforestation-records" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="finding-aid" />
+
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+      This series is <strong>restricted</strong>. It is described so that a
+      researcher knows it exists and whom to ask. Nothing from it is published
+      here, and nothing from it was uploaded to the Library.
+    </p>
+
+    <p class="kicker">Series · inventory level · restricted</p>
+
+    <p>{summary}</p>
+
+    <h2 id="what">What this is</h2>
+
+    <p>
+      Before the oral histories, Bob Zybach worked in contract reforestation.
+      Oregon State's description of this series is brief — reforestation
+      business records, 1972 to 1990 — and the Library has not seen the boxes.
+      What such a business generates is the working paper of one of the trades
+      this collection's narrators talk about, kept by the man who later became
+      its historian.
+    </p>
+
+    <p>
+      It also explains where the rest of the collection comes from. The habit of
+      going to a place, writing down what is there and dating it did not start
+      with an interview; it started with a planting contract.
+    </p>
+
+    <h2 id="restriction">Why it is restricted</h2>
+
+    <ContentNote
+      level="collection"
+      text="Business records of a working firm contain personal information about named employees, contract terms with named clients, and financial detail. None of that belongs in public without the consent of the people in it. The Library therefore describes the series and stops there."
+    />
+
+    <h2 id="inventory">Inventory</h2>
+
+    <table class="zc-inv">
+      <thead>
+        <tr><th scope="col">What</th><th scope="col">Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Where it is</th>
+          <td>
+            Oregon State University Special Collections and Archives Research
+            Center, collection MSS Zybach.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Dates</th>
+          <td>1972–1990.</td>
+        </tr>
+        <tr>
+          <th scope="row">Contents</th>
+          <td>
+            Reforestation business records. The finding aid records that the
+            collection contains no oral histories — those are held separately as
+            OH 006 and OH 047.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">In the upload</th>
+          <td>
+            {typeof matchingFiles === 'number' && matchingFiles > 0
+              ? `${matchingFiles} files whose names match this series were accessioned in the 2026 upload.`
+              : 'Nothing. This series was not part of the August 2026 upload and the Library holds no copy of it.'}
+            {describedFrom ? ` ${describedFrom.replace(/^\w/, (c) => c.toUpperCase())}.` : ''}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Access</th>
+          <td>
+            Through Oregon State's archive, under that archive's terms — not
+            through this Library.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="originals">Where to ask</h2>
+
+    <ul class="zc-links">
+      <li>
+        <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=1303">
+          MSS Zybach — finding aid, OSU Special Collections and Archives
+          Research Center
+        </a>
+      </li>
+      <li>
+        <a href="https://scarc.library.oregonstate.edu/findingaids/?id=10427&p=creators/creator">
+          All Zybach-related collections at OSU
+        </a>
+      </li>
+    </ul>
+
+    <h2 id="not-this">What this series is not</h2>
+
+    <p>
+      It is not the corporate and financial material that turned up inside the
+      August 2026 upload — bank statements, a credit report, tax filings,
+      invoices. Those are unrelated to this series, were identified and set
+      aside without being read, are not described anywhere in this collection,
+      and were not deleted from the creator's own files.
+    </p>
+
+    <h2 id="next">What describing this properly would take</h2>
+
+    <p>
+      A decision by the creator, and by Oregon State as the holding repository,
+      about whether any part of the series can be opened — probably item by
+      item, and probably only the parts that carry no personal or contractual
+      detail: unit maps, species and stocking records, and the like. Until then
+      the right description is this one.
+    </p>
+
+    <ProvenanceBlock
+      items={[
+        { label: 'Creator', value: 'Dr. Bob Zybach' },
+        { label: 'Held at', value: 'OSU Special Collections and Archives Research Center — MSS Zybach', href: 'https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=1303' },
+        { label: 'Dates', value: '1972–1990' },
+        { label: 'In this collection', value: 'Described by reference only. Restricted; nothing published.' },
+        { label: 'Access', value: "Through OSU's archive, under its terms" },
+      ]}
+    />
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/content-note/">Content note</a> ·
+      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-inv {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .zc-inv th,
+  .zc-inv td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem 0.65rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    line-height: 1.5;
+  }
+  .zc-inv thead th {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+  }
+  .zc-inv tbody th {
+    width: 11em;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .zc-links {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    .zc-inv tbody th { width: auto; }
+    .zc-inv, .zc-inv thead, .zc-inv tbody, .zc-inv tr, .zc-inv th, .zc-inv td { display: block; }
+    .zc-inv thead { display: none; }
+    .zc-inv tbody td { border-top: 0; padding-top: 0; }
+  }
+</style>

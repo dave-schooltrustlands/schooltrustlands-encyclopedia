@@ -1,0 +1,1084 @@
+{
+  "generated": "2026-08-27",
+  "base_url": "http://www.orww.org/Elliott_Forest/History/Oral/",
+  "method_notes": [
+    "Link records only. No MP3 was downloaded; each record is one URL on orww.org plus what a HEAD (and a 64 KB Range probe of the MPEG header) reports about it.",
+    "All 36 MP3 URLs in the manifest returned HTTP 200 with an audio/mpeg Content-Length. Requests were serialised at ~1.1 s apart with a User-Agent naming America's School Trust Library.",
+    "Filename grammar: <Surname(-Surname|_et_al)>_<YYYYMMDD>-<tape><side>.mp3. tape = the leading digits, side = the trailing letter; either may be absent (1962/1965 cassettes carry only a side letter, the 2019 Greif files only a number).",
+    "surname is the FIRST surname in the filename. Bob's convention through the 2017-2019 series puts the narrator first and the interviewer (Zybach) second, but that role split is not asserted here — surnames[] and name_part_verbatim carry the filename as written.",
+    "interview_date is taken from the ORWW folder (authoritative for where Bob filed it); filename_date is kept separately because three files disagree with their folder.",
+    "duration_seconds_estimated is derived, not measured: every file is CBR (no Xing/Info header), so seconds = (Content-Length - ID3 offset) x 8 / bitrate. Expect a second or two of error, not more."
+  ],
+  "href": "/collections/zybach/elliott/recordings/",
+  "counts": {
+    "recordings": 36,
+    "interview_dates": 10,
+    "total_mb": 1958.1
+  },
+  "by_interview_date": {
+    "1962-10-08": [
+      "orww-mp3-19621008-A",
+      "orww-mp3-19621008-B"
+    ],
+    "1965-11-11": [
+      "orww-mp3-19651111-A",
+      "orww-mp3-19651111-B",
+      "orww-mp3-19651111-C"
+    ],
+    "2017-10-06": [
+      "orww-mp3-20171006-1A"
+    ],
+    "2017-10-10": [
+      "orww-mp3-20171010-1B",
+      "orww-mp3-20171010-2A",
+      "orww-mp3-20171010-2B",
+      "orww-mp3-20171010-3A",
+      "orww-mp3-20171010-3B",
+      "orww-mp3-20171010-4A",
+      "orww-mp3-20171010-4B"
+    ],
+    "2017-11-08": [
+      "orww-mp3-20171108-5A",
+      "orww-mp3-20171108-5B",
+      "orww-mp3-20171108-6A",
+      "orww-mp3-20171108-6B",
+      "orww-mp3-20171108-7B",
+      "orww-mp3-20171108-7C",
+      "orww-mp3-20171108-8A"
+    ],
+    "2017-11-28": [
+      "orww-mp3-20171128-8C",
+      "orww-mp3-20171128-8D"
+    ],
+    "2017-12-06": [
+      "orww-mp3-20171206-9A",
+      "orww-mp3-20171206-9B",
+      "orww-mp3-20171206-10A",
+      "orww-mp3-20171206-10B",
+      "orww-mp3-20171206-11A",
+      "orww-mp3-20171206-11B",
+      "orww-mp3-20171206-12A"
+    ],
+    "2018-10-10": [
+      "orww-mp3-20181010-13A",
+      "orww-mp3-20181010-13B",
+      "orww-mp3-20181010-14A"
+    ],
+    "2019-10-08": [
+      "orww-mp3-20191008-15A",
+      "orww-mp3-20191008-15B"
+    ],
+    "2019-11-11": [
+      "orww-mp3-20191111-1",
+      "orww-mp3-20191111-2"
+    ]
+  },
+  "recordings": [
+    {
+      "recording_id": "orww-mp3-19621008-A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/19621008/Recordings/Larson-Brelage_19621008-A.mp3",
+      "filename": "Larson-Brelage_19621008-A.mp3",
+      "interview_date": "1962-10-08",
+      "interview_key": "19621008",
+      "interview_href": "/collections/zybach/elliott/interviews/19621008/",
+      "surnames": [
+        "Larson",
+        "Brelage"
+      ],
+      "tape": null,
+      "side": "A",
+      "size_mb": 42.7,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:31:05",
+      "duration_seconds_estimated": 1865,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-19621008-B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/19621008/Recordings/Larson-Brelage_19621008-B.mp3",
+      "filename": "Larson-Brelage_19621008-B.mp3",
+      "interview_date": "1962-10-08",
+      "interview_key": "19621008",
+      "interview_href": "/collections/zybach/elliott/interviews/19621008/",
+      "surnames": [
+        "Larson",
+        "Brelage"
+      ],
+      "tape": null,
+      "side": "B",
+      "size_mb": 43.3,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:31:32",
+      "duration_seconds_estimated": 1892,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-19651111-A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/19651111/Recordings/Larson-Signalness_19651100-A.mp3",
+      "filename": "Larson-Signalness_19651100-A.mp3",
+      "interview_date": "1965-11-11",
+      "interview_key": "19651111",
+      "interview_href": "/collections/zybach/elliott/interviews/19651111/",
+      "surnames": [
+        "Larson",
+        "Signalness"
+      ],
+      "tape": null,
+      "side": "A",
+      "size_mb": 43.0,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:31:19",
+      "duration_seconds_estimated": 1879,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "conflict"
+    },
+    {
+      "recording_id": "orww-mp3-19651111-B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/19651111/Recordings/Larson-Signalness_19651100-B.mp3",
+      "filename": "Larson-Signalness_19651100-B.mp3",
+      "interview_date": "1965-11-11",
+      "interview_key": "19651111",
+      "interview_href": "/collections/zybach/elliott/interviews/19651111/",
+      "surnames": [
+        "Larson",
+        "Signalness"
+      ],
+      "tape": null,
+      "side": "B",
+      "size_mb": 22.1,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:16:06",
+      "duration_seconds_estimated": 966,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "conflict"
+    },
+    {
+      "recording_id": "orww-mp3-19651111-C",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/19651111/Recordings/Larson-Signalness_19651100-C.mp3",
+      "filename": "Larson-Signalness_19651100-C.mp3",
+      "interview_date": "1965-11-11",
+      "interview_key": "19651111",
+      "interview_href": "/collections/zybach/elliott/interviews/19651111/",
+      "surnames": [
+        "Larson",
+        "Signalness"
+      ],
+      "tape": null,
+      "side": "C",
+      "size_mb": 21.0,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:15:16",
+      "duration_seconds_estimated": 916,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "conflict"
+    },
+    {
+      "recording_id": "orww-mp3-20171006-1A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171006/Recording/Phillips-Zybach_20171006-1A.mp3",
+      "filename": "Phillips-Zybach_20171006-1A.mp3",
+      "interview_date": "2017-10-06",
+      "interview_key": "20171006",
+      "interview_href": "/collections/zybach/elliott/interviews/20171006/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "1",
+      "side": "A",
+      "size_mb": 17.7,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:19:22",
+      "duration_seconds_estimated": 1162,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 128,
+        "sample_rate_hz": 48000,
+        "channel_mode": "joint_stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171010-1B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Recordings/Phillips-Zybach_20171010-1B.mp3",
+      "filename": "Phillips-Zybach_20171010-1B.mp3",
+      "interview_date": "2017-10-10",
+      "interview_key": "20171010",
+      "interview_href": "/collections/zybach/elliott/interviews/20171010/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "1",
+      "side": "B",
+      "size_mb": 43.3,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:15",
+      "duration_seconds_estimated": 2835,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 128,
+        "sample_rate_hz": 48000,
+        "channel_mode": "joint_stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171010-2A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Recordings/Phillips-Zybach_20171010-2A.mp3",
+      "filename": "Phillips-Zybach_20171010-2A.mp3",
+      "interview_date": "2017-10-10",
+      "interview_key": "20171010",
+      "interview_href": "/collections/zybach/elliott/interviews/20171010/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "2",
+      "side": "A",
+      "size_mb": 46.3,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:50:33",
+      "duration_seconds_estimated": 3033,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 128,
+        "sample_rate_hz": 48000,
+        "channel_mode": "joint_stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171010-2B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Recordings/Phillips-Zybach_20171010-2B.mp3",
+      "filename": "Phillips-Zybach_20171010-2B.mp3",
+      "interview_date": "2017-10-10",
+      "interview_key": "20171010",
+      "interview_href": "/collections/zybach/elliott/interviews/20171010/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "2",
+      "side": "B",
+      "size_mb": 65.3,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:33",
+      "duration_seconds_estimated": 2853,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171010-3A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Recordings/Phillips-Zybach_20171010-3A.mp3",
+      "filename": "Phillips-Zybach_20171010-3A.mp3",
+      "interview_date": "2017-10-10",
+      "interview_key": "20171010",
+      "interview_href": "/collections/zybach/elliott/interviews/20171010/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "3",
+      "side": "A",
+      "size_mb": 65.0,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:18",
+      "duration_seconds_estimated": 2838,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171010-3B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Recordings/Phillips-Zybach_20171010-3B.mp3",
+      "filename": "Phillips-Zybach_20171010-3B.mp3",
+      "interview_date": "2017-10-10",
+      "interview_key": "20171010",
+      "interview_href": "/collections/zybach/elliott/interviews/20171010/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "3",
+      "side": "B",
+      "size_mb": 64.9,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:16",
+      "duration_seconds_estimated": 2836,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171010-4A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Recordings/Phillips-Zybach_20171010-4A.mp3",
+      "filename": "Phillips-Zybach_20171010-4A.mp3",
+      "interview_date": "2017-10-10",
+      "interview_key": "20171010",
+      "interview_href": "/collections/zybach/elliott/interviews/20171010/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "4",
+      "side": "A",
+      "size_mb": 43.5,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:31:38",
+      "duration_seconds_estimated": 1898,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171010-4B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171010/Recordings/Phillips-Zybach_20171010-4B.mp3",
+      "filename": "Phillips-Zybach_20171010-4B.mp3",
+      "interview_date": "2017-10-10",
+      "interview_key": "20171010",
+      "interview_href": "/collections/zybach/elliott/interviews/20171010/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "4",
+      "side": "B",
+      "size_mb": 16.2,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:11:49",
+      "duration_seconds_estimated": 709,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171108-5A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Recordings/Phillips-Zybach_20171108-5A.mp3",
+      "filename": "Phillips-Zybach_20171108-5A.mp3",
+      "interview_date": "2017-11-08",
+      "interview_key": "20171108",
+      "interview_href": "/collections/zybach/elliott/interviews/20171108/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "5",
+      "side": "A",
+      "size_mb": 65.4,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:38",
+      "duration_seconds_estimated": 2858,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171108-5B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Recordings/Phillips-Zybach_20171108-5B.mp3",
+      "filename": "Phillips-Zybach_20171108-5B.mp3",
+      "interview_date": "2017-11-08",
+      "interview_key": "20171108",
+      "interview_href": "/collections/zybach/elliott/interviews/20171108/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "5",
+      "side": "B",
+      "size_mb": 65.2,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:30",
+      "duration_seconds_estimated": 2850,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171108-6A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Recordings/Phillips-Zybach_20171108-6A.mp3",
+      "filename": "Phillips-Zybach_20171108-6A.mp3",
+      "interview_date": "2017-11-08",
+      "interview_key": "20171108",
+      "interview_href": "/collections/zybach/elliott/interviews/20171108/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "6",
+      "side": "A",
+      "size_mb": 65.5,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:43",
+      "duration_seconds_estimated": 2863,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171108-6B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Recordings/Phillips-Zybach_20171108-6B.mp3",
+      "filename": "Phillips-Zybach_20171108-6B.mp3",
+      "interview_date": "2017-11-08",
+      "interview_key": "20171108",
+      "interview_href": "/collections/zybach/elliott/interviews/20171108/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "6",
+      "side": "B",
+      "size_mb": 65.2,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:29",
+      "duration_seconds_estimated": 2849,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171108-7B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Recordings/Phillips-Zybach_20171108-7B.mp3",
+      "filename": "Phillips-Zybach_20171108-7B.mp3",
+      "interview_date": "2017-11-08",
+      "interview_key": "20171108",
+      "interview_href": "/collections/zybach/elliott/interviews/20171108/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "7",
+      "side": "B",
+      "size_mb": 65.2,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:27",
+      "duration_seconds_estimated": 2847,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171108-7C",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Recordings/Phillips-Zybach_20171108-7C.mp3",
+      "filename": "Phillips-Zybach_20171108-7C.mp3",
+      "interview_date": "2017-11-08",
+      "interview_key": "20171108",
+      "interview_href": "/collections/zybach/elliott/interviews/20171108/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "7",
+      "side": "C",
+      "size_mb": 65.0,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:20",
+      "duration_seconds_estimated": 2840,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171108-8A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Recordings/Phillips-Zybach_20181108-8A.mp3",
+      "filename": "Phillips-Zybach_20181108-8A.mp3",
+      "interview_date": "2017-11-08",
+      "interview_key": "20171108",
+      "interview_href": "/collections/zybach/elliott/interviews/20171108/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "8",
+      "side": "A",
+      "size_mb": 65.5,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:42",
+      "duration_seconds_estimated": 2862,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "conflict"
+    },
+    {
+      "recording_id": "orww-mp3-20171128-8C",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171128/Recordings/Jacobson-Zybach_20171128-8C.mp3",
+      "filename": "Jacobson-Zybach_20171128-8C.mp3",
+      "interview_date": "2017-11-28",
+      "interview_key": "20171128",
+      "interview_href": "/collections/zybach/elliott/interviews/20171128/",
+      "surnames": [
+        "Jacobson",
+        "Zybach"
+      ],
+      "tape": "8",
+      "side": "C",
+      "size_mb": 65.0,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:21",
+      "duration_seconds_estimated": 2841,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171128-8D",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171128/Recordings/Jacobson-Zybach_20171128-8D.mp3",
+      "filename": "Jacobson-Zybach_20171128-8D.mp3",
+      "interview_date": "2017-11-28",
+      "interview_key": "20171128",
+      "interview_href": "/collections/zybach/elliott/interviews/20171128/",
+      "surnames": [
+        "Jacobson",
+        "Zybach"
+      ],
+      "tape": "8",
+      "side": "D",
+      "size_mb": 16.3,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:11:50",
+      "duration_seconds_estimated": 710,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171206-10A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Recordings/Phillips-Zybach_20171206-10A.mp3",
+      "filename": "Phillips-Zybach_20171206-10A.mp3",
+      "interview_date": "2017-12-06",
+      "interview_key": "20171206",
+      "interview_href": "/collections/zybach/elliott/interviews/20171206/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "10",
+      "side": "A",
+      "size_mb": 65.1,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:24",
+      "duration_seconds_estimated": 2844,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171206-10B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Recordings/Phillips-Zybach_20171206-10B.mp3",
+      "filename": "Phillips-Zybach_20171206-10B.mp3",
+      "interview_date": "2017-12-06",
+      "interview_key": "20171206",
+      "interview_href": "/collections/zybach/elliott/interviews/20171206/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "10",
+      "side": "B",
+      "size_mb": 65.1,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:26",
+      "duration_seconds_estimated": 2846,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171206-11A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Recordings/Phillips-Zybach_20171206-11A.mp3",
+      "filename": "Phillips-Zybach_20171206-11A.mp3",
+      "interview_date": "2017-12-06",
+      "interview_key": "20171206",
+      "interview_href": "/collections/zybach/elliott/interviews/20171206/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "11",
+      "side": "A",
+      "size_mb": 65.1,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:26",
+      "duration_seconds_estimated": 2846,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171206-11B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Recordings/Phillips-Zybach_20171206-11B.mp3",
+      "filename": "Phillips-Zybach_20171206-11B.mp3",
+      "interview_date": "2017-12-06",
+      "interview_key": "20171206",
+      "interview_href": "/collections/zybach/elliott/interviews/20171206/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "11",
+      "side": "B",
+      "size_mb": 65.0,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:21",
+      "duration_seconds_estimated": 2841,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171206-12A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Recordings/Phillips-Zybach_20171206-12A.mp3",
+      "filename": "Phillips-Zybach_20171206-12A.mp3",
+      "interview_date": "2017-12-06",
+      "interview_key": "20171206",
+      "interview_href": "/collections/zybach/elliott/interviews/20171206/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "12",
+      "side": "A",
+      "size_mb": 52.6,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:38:19",
+      "duration_seconds_estimated": 2299,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171206-9A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Recordings/Phillips-Zybach_20171206-9A.mp3",
+      "filename": "Phillips-Zybach_20171206-9A.mp3",
+      "interview_date": "2017-12-06",
+      "interview_key": "20171206",
+      "interview_href": "/collections/zybach/elliott/interviews/20171206/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "9",
+      "side": "A",
+      "size_mb": 65.2,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:29",
+      "duration_seconds_estimated": 2849,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20171206-9B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171206/Recordings/Phillips-Zybach_20171206-9B.mp3",
+      "filename": "Phillips-Zybach_20171206-9B.mp3",
+      "interview_date": "2017-12-06",
+      "interview_key": "20171206",
+      "interview_href": "/collections/zybach/elliott/interviews/20171206/",
+      "surnames": [
+        "Phillips",
+        "Zybach"
+      ],
+      "tape": "9",
+      "side": "B",
+      "size_mb": 65.5,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:42",
+      "duration_seconds_estimated": 2862,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20181010-13A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Recordings/Gould-Zybach_20181010-13A.mp3",
+      "filename": "Gould-Zybach_20181010-13A.mp3",
+      "interview_date": "2018-10-10",
+      "interview_key": "20181010",
+      "interview_href": "/collections/zybach/elliott/interviews/20181010/",
+      "surnames": [
+        "Gould",
+        "Zybach"
+      ],
+      "tape": "13",
+      "side": "A",
+      "size_mb": 64.5,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:46:58",
+      "duration_seconds_estimated": 2818,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20181010-13B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Recordings/Gould-Zybach_20181010-13B.mp3",
+      "filename": "Gould-Zybach_20181010-13B.mp3",
+      "interview_date": "2018-10-10",
+      "interview_key": "20181010",
+      "interview_href": "/collections/zybach/elliott/interviews/20181010/",
+      "surnames": [
+        "Gould",
+        "Zybach"
+      ],
+      "tape": "13",
+      "side": "B",
+      "size_mb": 62.3,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:45:24",
+      "duration_seconds_estimated": 2724,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20181010-14A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20181010/Recordings/Gould-Zybach_20181010-14A.mp3",
+      "filename": "Gould-Zybach_20181010-14A.mp3",
+      "interview_date": "2018-10-10",
+      "interview_key": "20181010",
+      "interview_href": "/collections/zybach/elliott/interviews/20181010/",
+      "surnames": [
+        "Gould",
+        "Zybach"
+      ],
+      "tape": "14",
+      "side": "A",
+      "size_mb": 41.7,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:30:23",
+      "duration_seconds_estimated": 1823,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20191008-15A",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20191008/Recordings/Vonderohe-Zybach_20191008-15A.mp3",
+      "filename": "Vonderohe-Zybach_20191008-15A.mp3",
+      "interview_date": "2019-10-08",
+      "interview_key": "20191008",
+      "interview_href": "/collections/zybach/elliott/interviews/20191008/",
+      "surnames": [
+        "Vonderohe",
+        "Zybach"
+      ],
+      "tape": "15",
+      "side": "A",
+      "size_mb": 64.7,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:47:08",
+      "duration_seconds_estimated": 2828,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20191008-15B",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20191008/Recordings/Vonderohe-Zybach_20191008-15B.mp3",
+      "filename": "Vonderohe-Zybach_20191008-15B.mp3",
+      "interview_date": "2019-10-08",
+      "interview_key": "20191008",
+      "interview_href": "/collections/zybach/elliott/interviews/20191008/",
+      "surnames": [
+        "Vonderohe",
+        "Zybach"
+      ],
+      "tape": "15",
+      "side": "B",
+      "size_mb": 32.4,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "0:23:35",
+      "duration_seconds_estimated": 1415,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20191111-1",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20191111/Recordings/Greif_et_al_20191111-1.mp3",
+      "filename": "Greif_et_al_20191111-1.mp3",
+      "interview_date": "2019-11-11",
+      "interview_key": "20191111",
+      "interview_href": "/collections/zybach/elliott/interviews/20191111/",
+      "surnames": [
+        "Greif"
+      ],
+      "tape": "1",
+      "side": null,
+      "size_mb": 83.9,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "1:01:06",
+      "duration_seconds_estimated": 3666,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    },
+    {
+      "recording_id": "orww-mp3-20191111-2",
+      "url": "http://www.orww.org/Elliott_Forest/History/Oral/20191111/Recordings/Greif_et_al_20191111-2.mp3",
+      "filename": "Greif_et_al_20191111-2.mp3",
+      "interview_date": "2019-11-11",
+      "interview_key": "20191111",
+      "interview_href": "/collections/zybach/elliott/interviews/20191111/",
+      "surnames": [
+        "Greif"
+      ],
+      "tape": "2",
+      "side": null,
+      "size_mb": 92.4,
+      "content_type": "audio/mpeg",
+      "duration_hms_estimated": "1:07:17",
+      "duration_seconds_estimated": 4037,
+      "duration_confidence": "inferred+method: (Content-Length - ID3 offset) x 8 / bitrate; every file is CBR with no Xing/Info VBR header",
+      "audio": {
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 48000,
+        "channel_mode": "stereo",
+        "mpeg_version": "MPEG-1",
+        "constant_bitrate": true
+      },
+      "http_status": "200",
+      "confidence": "verified"
+    }
+  ]
+}

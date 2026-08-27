@@ -1,0 +1,46 @@
+{
+  "generated": "2026-08-27",
+  "policy": "Place record identifies an American Indian burial, grave or artifact site. Withheld from the public gazetteer and map pending consultation with the Confederated Tribes of Grand Ronde and Siletz.",
+  "policy_source": "BUILD_SPEC.md data contract; records/verification/content_notes_consolidated.json",
+  "counts": {
+    "withheld": 3
+  },
+  "places": [
+    {
+      "place_id": "american-indians-coffin-butte-burial-site",
+      "name": "American Indians Coffin Butte Burial Site",
+      "kind": null,
+      "variants": [],
+      "matched_on": "name/kind",
+      "reason": "Place record identifies an American Indian burial, grave or artifact site. Withheld from the public gazetteer and map pending consultation with the Confederated Tribes of Grand Ronde and Siletz.",
+      "mention_count": 1,
+      "records": [
+        "zc-sc-m10"
+      ]
+    },
+    {
+      "place_id": "american-indians-indian-graveyard",
+      "name": "American Indians Indian graveyard",
+      "kind": null,
+      "variants": [],
+      "matched_on": "name/kind",
+      "reason": "Place record identifies an American Indian burial, grave or artifact site. Withheld from the public gazetteer and map pending consultation with the Confederated Tribes of Grand Ronde and Siletz.",
+      "mention_count": 1,
+      "records": [
+        "zc-sc-m10"
+      ]
+    },
+    {
+      "place_id": "american-indians-soap-creek-burial-sites",
+      "name": "American Indians Soap Creek Burial Sites",
+      "kind": null,
+      "variants": [],
+      "matched_on": "name/kind",
+      "reason": "Place record identifies an American Indian burial, grave or artifact site. Withheld from the public gazetteer and map pending consultation with the Confederated Tribes of Grand Ronde and Siletz.",
+      "mention_count": 1,
+      "records": [
+        "zc-sc-m14"
+      ]
+    }
+  ]
+}

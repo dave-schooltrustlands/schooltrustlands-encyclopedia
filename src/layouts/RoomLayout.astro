@@ -21,7 +21,8 @@ type RoomId =
   | 'court'
   | 'breach-recovery'
   | 'founders'
-  | 'lectures';
+  | 'lectures'
+  | 'collections';
 
 // Rooms that have a signature banner image in /public/banners/.
 // v10 sub-release v1.B — banner-above-h1 slot lives in RoomLayout so
@@ -35,7 +36,9 @@ type RoomId =
 // v3.0 — Court Room promoted from Coming Soon to live and joins the
 // banner-room set; banner image already installed in v56 at
 // /banners/court.jpg.
-type BannerRoomId = 'reading' | 'atlas' | 'maps' | 'counting' | 'newsroom' | 'reference-desk' | 'writing' | 'court';
+// Zybach Collection (Phase 3) — Collections joins the RoomId union and the
+// banner set; banner image installed at /banners/collections.jpg.
+type BannerRoomId = 'reading' | 'atlas' | 'maps' | 'counting' | 'newsroom' | 'reference-desk' | 'writing' | 'court' | 'collections';
 const BANNER_ROOMS: ReadonlyArray<BannerRoomId> = [
   'reading',
   'atlas',
@@ -45,6 +48,7 @@ const BANNER_ROOMS: ReadonlyArray<BannerRoomId> = [
   'reference-desk',
   'writing',
   'court',
+  'collections',
 ];
 const isBannerRoom = (id: RoomId): id is BannerRoomId =>
   (BANNER_ROOMS as ReadonlyArray<RoomId>).includes(id);
@@ -72,6 +76,11 @@ interface Props {
   // Optional Pagefind facet overrides (era for essays, etc.). Room
   // and state are emitted automatically as facets when present.
   pagefindEra?: string;
+  // Zybach Collection (Phase 3) — pages that are published but not yet
+  // ready to be indexed by search engines (a preview under review by the
+  // creator) pass `noindex` and get <meta name="robots" content="noindex">.
+  // Pagefind still indexes them, so site search keeps working.
+  noindex?: boolean;
 }
 
 const {
@@ -84,6 +93,7 @@ const {
   parents,
   sourceId,
   pagefindEra,
+  noindex = false,
 } = Astro.props;
 
 // v61 — Lower-nav room-tab strip retired. Sideways navigation moves to
@@ -105,6 +115,7 @@ const roomNameMap: Record<RoomId, string> = {
   'breach-recovery': 'Breach & Recovery',
   founders: "Founders' Cabinet",
   lectures: 'Lecture Hall',
+  collections: 'Collections',
 };
 const roomHrefMap: Record<RoomId, string> = {
   reading: '/reading/',
@@ -119,6 +130,7 @@ const roomHrefMap: Record<RoomId, string> = {
   'breach-recovery': '/breach-recovery/',
   founders: '/founders/',
   lectures: '/lectures/',
+  collections: '/collections/',
 };
 
 // Build the breadcrumb segments. Lobby is always the first segment.
@@ -166,6 +178,7 @@ const mainClass =
 <html lang="en">
   <head>
     <BaseHead title={resolvedTitle} />
+    {noindex && <meta name="robots" content="noindex" />}
   </head>
   <body
     class="min-h-screen bg-archive-paper text-ink mode-library"

@@ -1,0 +1,163 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import { ZybachNav, CitationBlock } from '../../../../../components/zybach/elliott/shared';
+import ItemIntro from '../../../../../components/zybach/elliott/ItemIntro.astro';
+import VideoPlayer from '../../../../../components/zybach/elliott/VideoPlayer.astro';
+import {
+  BASE,
+  ACCESSION,
+  CREATOR,
+  RIGHTS,
+  videos,
+  videoChannel,
+  videoPlaylistUrl,
+} from '../../../../../components/zybach/elliott/data';
+
+export function getStaticPaths() {
+  return videos.map((v) => ({ params: { id: v.video_id }, props: { v } }));
+}
+
+const { v } = Astro.props;
+const pagePath = `${BASE}/videos/${v.video_id}/`;
+const url = `https://schooltrusts.org${pagePath}`;
+
+const stopSegments = v.segments.filter((s) => s.stop_number != null);
+
+const provenance = [
+  { label: 'Creator', value: CREATOR },
+  ...(videoChannel ? [{ label: 'Channel', value: videoChannel }] : []),
+  ...(v.published ? [{ label: 'Published', value: v.published }] : []),
+  ...(v.length_label ? [{ label: 'Length', value: v.length_label }] : []),
+  { label: 'Original', value: v.url, href: v.url },
+  ...(videoPlaylistUrl
+    ? [{ label: 'Playlist', value: videoPlaylistUrl, href: videoPlaylistUrl }]
+    : []),
+  { label: 'Accession', value: ACCESSION },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title={v.title}
+  subtitle={[videoChannel, v.length_label, v.published].filter(Boolean).join(' · ')}
+  width="full"
+  sourceId={`zybach-elliott-video-${v.video_id}`}
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+    { label: 'Elliott State Forest', href: `${BASE}/` },
+    { label: 'Videos', href: `${BASE}/videos/` },
+  ]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Elliott State Forest · Video</p>
+
+  <ZybachNav current="elliott" />
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <ItemIntro
+    whatThisIs={`A video from Bob Zybach's ORWWmedia playlist, with the time-coded index he wrote into its description: ${v.segments.length} entries${stopSegments.length ? `, ${stopSegments.length} of them numbered to a field-trip stop` : ''}.`}
+    provenance={provenance}
+  />
+
+  <VideoPlayer video={v} />
+
+  {v.orww_links.length > 0 && (
+    <section aria-labelledby="orww-heading">
+      <h2 id="orww-heading">Links in the description</h2>
+      <ul class="zy-links">
+        {v.orww_links.map((l) => (
+          <li><a href={l}>{l}</a></li>
+        ))}
+        {v.external_links.map((l) => (
+          <li><a href={l}>{l}</a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="desc-heading">
+    <h2 id="desc-heading">The description, as written</h2>
+    <p class="zy-desc-note">
+      The video's description exactly as it stands on YouTube, including the
+      time codes above.
+    </p>
+    <pre class="zy-desc">{v.description}</pre>
+  </section>
+
+  {v.sponsor_note && (
+    <p class="zy-sponsor">{v.sponsor_note}</p>
+  )}
+
+  <section aria-labelledby="rights-heading" class="zy-rights">
+    <h2 id="rights-heading">Rights</h2>
+    <p>
+      The video plays from YouTube; nothing is copied here. The related
+      recordings and transcripts are Bob Zybach's public files on orww.org, and
+      the interviews are described by{' '}
+      <a href={RIGHTS.osuFindingAid}>{RIGHTS.osuLabel}</a>.
+    </p>
+  </section>
+
+  <CitationBlock
+    canonical={`${v.title}. ${videoChannel ?? 'ORWWmedia'}${v.published ? `, ${v.published}` : ''}. ${v.url}`}
+    short={`${v.title} (video)`}
+    url={url}
+  />
+  <p class="zy-cite-note">
+    The citation above is assembled from the video's own title, channel and
+    publication date; Bob Zybach prints no citation string for the videos.
+  </p>
+
+  <p class="zy-corrections">
+    Something wrong on this page?
+    {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the form
+    opens with this page already filled in, the same control that sits at the foot
+    of every page in the Library.
+    {' '}<a href="/about/corrections/">How corrections work</a>.
+  </p>
+</RoomLayout>
+
+<style>
+  .zy-links {
+    list-style: none;
+    margin: 0.6rem 0 1.4rem;
+    padding: 0;
+    font-size: 0.82rem;
+  }
+  .zy-links li {
+    padding: 0.15rem 0;
+    overflow-wrap: anywhere;
+  }
+  .zy-desc-note {
+    font-size: 0.8rem;
+    color: #475569;
+    margin: 0 0 0.5rem;
+  }
+  .zy-desc {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    background: #faf7f0;
+    border: 1px solid #e2e8f0;
+    padding: 0.9rem;
+    max-height: 40rem;
+    overflow-y: auto;
+  }
+  .zy-sponsor {
+    font-size: 0.8rem;
+    color: #475569;
+  }
+  .zy-rights p {
+    font-size: 0.88rem;
+  }
+  .zy-cite-note,
+  .zy-corrections {
+    font-size: 0.78rem;
+    color: #475569;
+  }
+</style>

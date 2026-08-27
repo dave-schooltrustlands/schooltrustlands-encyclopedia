@@ -1,0 +1,140 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import ZybachMap from '../../../../../components/zybach/soapcreek/ZybachMap.astro';
+import MapList from '../../../../../components/zybach/soapcreek/MapList.astro';
+import { gazetteer, gazetteerGeoJSON, withheldPlaces } from '../../../../../components/zybach/soapcreek/data';
+import { placeHref, stopHref } from '../../../../../components/zybach/soapcreek/links';
+
+const places = gazetteer.slice().sort((a, b) => (a.name ?? a.slug).localeCompare(b.name ?? b.slug));
+const geocoded = places.filter((p) => typeof p.lat === 'number' && typeof p.lon === 'number');
+const mentionCount = places.reduce(
+  (n, p) => n + (p.mentions ?? []).reduce((m, x) => m + (x.pages?.length ?? 0), 0),
+  0,
+);
+
+const byInitial = new Map<string, typeof places>();
+for (const p of places) {
+  const c = (p.name ?? p.slug).trim().charAt(0).toUpperCase();
+  const key = /^[A-Z]$/.test(c) ? c : '#';
+  if (!byInitial.has(key)) byInitial.set(key, []);
+  byInitial.get(key)!.push(p);
+}
+const initials = [...byInitial.keys()].sort();
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+];
+---
+<SoapCreekPage
+  title="Places"
+  subtitle="The places list for Soap Creek Valley: every place the narrators named, with what each of them said about it and the page it is said on. Bob Zybach's geographic pivot, made navigable."
+  kicker="Soap Creek Valley · Places"
+  parents={parents}
+  sourceId="zybach-sc-places"
+  navCurrent="places"
+  width="full"
+  corrections={false}
+>
+  {places.length === 0 ? (
+    <p class="sc-empty">The places list has not been generated yet.</p>
+  ) : (
+    <p class="sc-list-meta">
+      {places.length.toLocaleString()} places · {geocoded.length.toLocaleString()} with
+      coordinates · {mentionCount.toLocaleString()} transcript mentions across the
+      monographs, the 1999 thesis and the 1989 Auto Tour.
+    </p>
+  )}
+
+  <section aria-labelledby="two-numbers" id="two-numbers-note">
+    <h2 id="two-numbers">Two numbers, and why they differ</h2>
+    <p>
+      Each place page shows <strong>index references (printed indexes)</strong>
+      — how often the back-of-book indexes the books themselves print point at
+      that place — beside <strong>transcript mentions</strong>, how often the
+      name occurs in the transcript text; the first was chosen by the people who
+      indexed each volume and covers only what they thought worth indexing,
+      while the second is counted by machine over every page, so the two rarely
+      match and neither contains the other.
+    </p>
+  </section>
+
+  {geocoded.length > 0 && (
+    <>
+      <ZybachMap
+        id="places-map"
+        center={[-123.29, 44.72]}
+        zoom={11}
+        features={gazetteerGeoJSON}
+        height="520px"
+        fit={true}
+      />
+      <MapList
+        features={gazetteerGeoJSON}
+        heading="Every mapped place"
+        order={['auto-tour-stop', 'narrator-home']}
+      />
+    </>
+  )}
+
+  <section aria-labelledby="all-places">
+    <h2 id="all-places">Every place, A to Z</h2>
+    <nav class="sc-alpha" aria-label="Places by initial">
+      {initials.map((c) => <a href={`#letter-${c === '#' ? 'other' : c}`}>{c}</a>)}
+    </nav>
+    {initials.map((c) => (
+      <div class="sc-place-group">
+        <h3 id={`letter-${c === '#' ? 'other' : c}`}>{c}</h3>
+        <ul class="sc-list sc-cols">
+          {byInitial.get(c)!.map((p) => {
+            const mentions = (p.mentions ?? []).reduce((n, m) => n + (m.pages?.length ?? 0), 0);
+            return (
+              <li>
+                <a href={placeHref(p.slug)}>{p.name ?? p.slug}</a>
+                <span class="sc-list-meta">
+                  {[
+                    p.kind,
+                    mentions ? `${mentions} mention${mentions === 1 ? '' : 's'}` : null,
+                    p.auto_tour_stop != null ? `Auto Tour stop ${p.auto_tour_stop}` : null,
+                    (p.narrator_home_of ?? []).length ? 'narrator home site' : null,
+                    typeof p.lat === 'number' ? null : 'no coordinate',
+                  ]
+                    .filter(Boolean)
+                    .join(' · ')}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  {withheldPlaces.length > 0 && (
+    <section aria-labelledby="withheld">
+      <h2 id="withheld">Places not mapped here</h2>
+      <p>
+        {withheldPlaces.length} place{withheldPlaces.length === 1 ? '' : 's'} named in
+        the transcripts {withheldPlaces.length === 1 ? 'is' : 'are'} deliberately left
+        off this places list and off the map: burial places, graves and artifact sites
+        of American Indian people. The transcripts that mention them are unaltered;
+        what is withheld is the coordinate and the finding aid that would lead
+        someone to the ground.
+      </p>
+    </section>
+  )}
+</SoapCreekPage>
+
+<style is:global>
+  .sc-place-group h3 {
+    font-family: var(--font-sans, system-ui);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--old-gold, #a87f2c);
+    margin: 1.5rem 0 0.3rem;
+    border-bottom: 1px solid var(--rule-border, #d8d1c2);
+    scroll-margin-top: 4rem;
+  }
+</style>

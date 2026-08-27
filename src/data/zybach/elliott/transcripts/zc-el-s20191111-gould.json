@@ -1,0 +1,1204 @@
+{
+  "zc_id": "zc-el-s20191111-gould",
+  "interview_date": "2019-11-11",
+  "interview_key": "20191111",
+  "href": "/collections/zybach/elliott/interviews/20191111/",
+  "title_as_printed": "November 11, 2019. Interview with David Gould about his oral/family history in The Elliott State Forest, boundaries and beyond, and more complete history of forest fires in the region.",
+  "participants_as_printed": [
+    "David Gould"
+  ],
+  "interviewer": null,
+  "source": {
+    "public_url": "http://www.orww.org/Elliott_Forest/History/Oral/20191111/Gould_20191111.pdf",
+    "local_file": "/home/claude/zybach_build/sources/elliott/oral/20191111/Gould_20191111.pdf",
+    "sha256": "5bd172707b5dac7b09ebb80431d74e98f644964592c30ce07167ad168414acca",
+    "scan_type": "scanned image-only PDF (no embedded text layer) of a typed statement",
+    "extracted": "2026-08-27",
+    "extraction_method": "pdftoppm -r 300 -gray, then tesseract --psm 6; printed page number read from the foot of each page"
+  },
+  "front_matter": {
+    "opening_as_printed": "November 11, 2019 Interview with David Gould about his oral/family history in The Elliott State Forest, boundaries and beyond, and more complete history of forest fires in the region. “TO THE BEST OF MY KNOWLEDGE, NO WRITEN FIRST HAND EYEWITNESS ACCOUNTS OF THIS FOREST FIRE EXIST. All WE REALLY KNOW IS WHAT HEARSAY HAS PASSED DOWN, EVIDENCE THAT IS APPERANT ON THE GROUND, AND WRITTEN COMMENTS OF OTHER WRITERS. ALSO SOME PHOTOGRAPHS TAKEN IN THE YEARS FOLLOWING THE FIRE DO EXIST. MY WRITING HERE USE ALL THESE SOURCES KNOWN TO ME. IT IS HARD TO BELIEVE THE DESTRUCTION.” Jerry Phillips, The Great Coos Bay Forest Fire of 1868. In Ray O, Sims, “Loon Lake and Ash Valley Revisited,” 1998, Page 287 This document is a correction to existing documents and provides a revised history of the 1868 Coos Bay Fire and an 1879 Schofield-Larson Fire that overlapped. FROM: William Byars, #292 survey of T23S, R10W of Willamette Meridian Oregon; August 7, 1878 for the Northern Pacific Railway Co. which deposited money for the survey. The survey commenced May 28 1879 and was completed June 6, 1879. When investigating the maps and field notes, the fire boundaries can be determined. His map shows the direction of the 1868 fire in Salander Creek drainage and ignition area on East Side of Loon Lake behind Huckleberry Point. He calls this Timber, old burn nearly all destroyed underbrush dense fir, mountai",
+    "note": "Page 1 opens with the date, a one-sentence statement of scope, an upper-case epigraph quoted from Jerry Phillips, and a sentence saying the document is a correction to existing documents."
+  },
+  "page_mapping_rule": {
+    "rule": "printed page N is on PDF page N (no offset)",
+    "offset_pdf_minus_printed": [
+      0
+    ],
+    "printed_page_range": [
+      1,
+      6
+    ],
+    "pdf_page_count": 6,
+    "footer_form": "a bare page number at the foot of pages 2-6; page 1 carries no visible number",
+    "confidence": "inferred",
+    "method": "numbers 2-6 read from the page feet; page 1 assigned by position"
+  },
+  "printed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "generated": "2026-08-27",
+  "counts": {
+    "entries": 26,
+    "pages": 6,
+    "anchors": 0,
+    "photographs": 0
+  },
+  "anchors": [],
+  "photographs": [],
+  "places_mentioned": [
+    {
+      "name": "Coos Bay",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "count_pages": 5,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Elliott State Forest",
+      "pages": [
+        1,
+        2,
+        5,
+        6
+      ],
+      "count_pages": 4,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Loon Lake",
+      "pages": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "count_pages": 4,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Ash Valley",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "count_pages": 3,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Elkhorn Ranch",
+      "pages": [
+        2,
+        3,
+        4
+      ],
+      "count_pages": 3,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Elliott Forest",
+      "pages": [
+        3,
+        4,
+        5
+      ],
+      "count_pages": 3,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Umpqua River",
+      "pages": [
+        2,
+        3,
+        4
+      ],
+      "count_pages": 3,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Coos River",
+      "pages": [
+        3,
+        4
+      ],
+      "count_pages": 2,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Mill Creek",
+      "pages": [
+        1,
+        3
+      ],
+      "count_pages": 2,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Scottsburg",
+      "pages": [
+        2,
+        4
+      ],
+      "count_pages": 2,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "West Fork",
+      "pages": [
+        3,
+        4
+      ],
+      "count_pages": 2,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Catching Inlet",
+      "pages": [
+        4
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Coos County",
+      "pages": [
+        5
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Cougar Pass",
+      "pages": [
+        1
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "East Fork",
+      "pages": [
+        4
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Elk Creek",
+      "pages": [
+        3
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Gardiner",
+      "pages": [
+        4
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Huckleberry Point",
+      "pages": [
+        1
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Indian Point",
+      "pages": [
+        3
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Larson Inlet",
+      "pages": [
+        5
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Marshfield",
+      "pages": [
+        5
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Millicoma",
+      "pages": [
+        2
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "North Bend",
+      "pages": [
+        6
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Oregon State",
+      "pages": [
+        6
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Oregon State University",
+      "pages": [
+        6
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Portland",
+      "pages": [
+        3
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Salander Creek",
+      "pages": [
+        1
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Tenmile",
+      "pages": [
+        2
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    },
+    {
+      "name": "Tenmile Lake",
+      "pages": [
+        2
+      ],
+      "count_pages": 1,
+      "confidence": "inferred",
+      "method": "exact string match of place name against transcript text; name list seeded from Bob Zybach's own stop labels, part titles and 2019 tape index"
+    }
+  ],
+  "dated_statements": [
+    {
+      "date_as_printed": "November 11, 2019",
+      "year": "2019",
+      "statement": "November 11, 2019 Interview with David Gould about his oral/family history in The Elliott State Forest, boundaries and beyond, and more complete history of forest fires in the region.",
+      "page": 1,
+      "seq": 1,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1868",
+      "year": "1868",
+      "statement": "” Jerry Phillips, The Great Coos Bay Forest Fire of 1868.",
+      "page": 1,
+      "seq": 1,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1998",
+      "year": "1998",
+      "statement": "In Ray O, Sims, “Loon Lake and Ash Valley Revisited,” 1998, Page 287 This document is a correction to existing documents and provides a revised history of the 1868 Coos Bay Fire and an 1879 Schofield-Larson Fire that overlapped.",
+      "page": 1,
+      "seq": 1,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "August 7, 1878",
+      "year": "1878",
+      "statement": "FROM: William Byars, #292 survey of T23S, R10W of Willamette Meridian Oregon; August 7, 1878 for the Northern Pacific Railway Co.",
+      "page": 1,
+      "seq": 2,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "May 28, 1879",
+      "year": "1879",
+      "statement": "The survey commenced May 28 1879 and was completed June 6, 1879.",
+      "page": 1,
+      "seq": 2,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1868",
+      "year": "1868",
+      "statement": "His map shows the direction of the 1868 fire in Salander Creek drainage and ignition area on East Side of Loon Lake behind Huckleberry Point.",
+      "page": 1,
+      "seq": 2,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1868",
+      "year": "1868",
+      "statement": "North boundary line on the divide ‘Umpcoos near Cougar Pass on to the Fish Ridge Divide’ it is 8-10in fir that corresponds to the 1868 fir.",
+      "page": 1,
+      "seq": 2,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "June 20, 1905",
+      "year": "1905",
+      "statement": "Walker #703 survey of T23S, R10W of Willamette Meridian Oregon; June 20, 1905.",
+      "page": 1,
+      "seq": 3,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1886",
+      "year": "1886",
+      "statement": "Page 27-28 is the location where Oelo Mc Clay enters the Big Burn in 1886 ‘Recollection of Elkhorn Living’.",
+      "page": 1,
+      "seq": 3,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1905",
+      "year": "1905",
+      "statement": "Walker is reporting 10-18 inch fir in 1905 that were 6 inch fir in Byars 1879 survey.",
+      "page": 1,
+      "seq": 3,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1905",
+      "year": "1905",
+      "statement": "Gould’s 1905 survey is dominated with 6 in fir through the center of the burn.",
+      "page": 1,
+      "seq": 3,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1879",
+      "year": "1879",
+      "statement": "An 1879 fire in Salander creek may have burnt here and shows as 6in fir on Walkers notes and map in 1906",
+      "page": 1,
+      "seq": 3,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "July 12, 1905",
+      "year": "1905",
+      "statement": "Gould) #762 survey of T23S, R11W of Willamette Meridian Oregon; July 12, 1905.",
+      "page": 1,
+      "seq": 4,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "April 6",
+      "year": null,
+      "statement": "April 6\", 1910, Albert N.",
+      "page": 2,
+      "seq": 5,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1905",
+      "year": "1905",
+      "statement": "The tree diameters are the same as 1905 the Walker survey.",
+      "page": 2,
+      "seq": 5,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1886",
+      "year": "1886",
+      "statement": "There is a photos from 1886 and oral documentation that can be useful for the fire history.",
+      "page": 2,
+      "seq": 5,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1894",
+      "year": "1894",
+      "statement": "The land slide photo on 9000 line at 3 mile in the 1894 documents the different fires.",
+      "page": 2,
+      "seq": 5,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1840",
+      "year": "1840",
+      "statement": "The 20in leaning trees confirm that the 1840, 1868, or 1879 fires covered and or over shadowed the previous fire.",
+      "page": 2,
+      "seq": 5,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1879",
+      "year": "1879",
+      "statement": "Byars 1879 map showing 1868 fire at Loon Lake on the SW corner of map the surveyor has marked ‘BURN’.",
+      "page": 2,
+      "seq": 6,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1885",
+      "year": "1885",
+      "statement": "Gould the Big Burn in 1885.",
+      "page": 2,
+      "seq": 6,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1889",
+      "year": "1889",
+      "statement": "Page 286: This 1889 photo documents the extreme change to the way the 1840, 1868, and 1879 forest fires.",
+      "page": 2,
+      "seq": 6,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1868",
+      "year": "1868",
+      "statement": "Gould stated that this great Coos Bay fire of 1868 had evidently started near Scottsburg.",
+      "page": 2,
+      "seq": 6,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "June 4, 1906",
+      "year": "1906",
+      "statement": "June 4, 1906.",
+      "page": 3,
+      "seq": 9,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1979",
+      "year": "1979",
+      "statement": "FROM: Oelo McClay, Oregon Historical Quarterly, Spring 1979.",
+      "page": 3,
+      "seq": 10,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1905",
+      "year": "1905",
+      "statement": "”Going to the 1905 Worlds’ Fair in Portland, Oregon”: Page #64: The photo was taken on the divide near 7 mile marker of the 2000 line in the Elliott Forest.",
+      "page": 3,
+      "seq": 10,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1770",
+      "year": "1770",
+      "statement": "All the fires from “Above the Falls”, Page 184, the 1440, 1770, 1840, 1868, and 1879 fires all passed through here.",
+      "page": 3,
+      "seq": 10,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1885",
+      "year": "1885",
+      "statement": "FROM: Aileen Barker Rickard, “The Goulds of Elkhorn”: Page 34: In the Big Burn on the Divide between Elk Creek and Coos River they stood observing the country (1885).",
+      "page": 3,
+      "seq": 11,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1890",
+      "year": "1890",
+      "statement": "FROM: Lionel Youst, “Above the Falls,” Page 185: Photo of Elkhorn Ranch in the Big Burn about 1890.",
+      "page": 3,
+      "seq": 13,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1840",
+      "year": "1840",
+      "statement": "Page 184, states the fire of 1840 did not go into the West Fork side of the ridge.",
+      "page": 3,
+      "seq": 13,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1840",
+      "year": "1840",
+      "statement": "The fire of 1840 crossed the Umpqua as stated by Indian Bill.",
+      "page": 3,
+      "seq": 13,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1868",
+      "year": "1868",
+      "statement": "Page 159: The 1868 fire started at East side of Loon Lake, burned up Salander creek into the Headwaters of Coos River.",
+      "page": 3,
+      "seq": 13,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1868",
+      "year": "1868",
+      "statement": "The Gordon Ross Family fought fire in 1868 on South Coos River and Catching Inlet.",
+      "page": 4,
+      "seq": 15,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1991",
+      "year": "1991",
+      "statement": "Chapter 9: Pages 103-08: With reference to the 1991 slide that blocked the East Fork road, my company, Coos Bay Timber Operators, Inc.",
+      "page": 4,
+      "seq": 16,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1957",
+      "year": "1957",
+      "statement": "My grandfather took me out of school in 1957 to see the final South Fork, Coos River dam when it was ‘splashed’.",
+      "page": 4,
+      "seq": 16,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1956",
+      "year": "1956",
+      "statement": "FROM: Jerry Phillips, “Caulked Boots and Cheese Sandwiches,” Page 95: This photo, taken in 1956, shows the smaller snags of the Southern Elliott Forest.",
+      "page": 4,
+      "seq": 17,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1770",
+      "year": "1770",
+      "statement": "After the 1770 fire, regrowth was slow to regenerate so the timber was 55 years old and less than 30” when the 1840 killed the stand the forester is managing in 1956.",
+      "page": 4,
+      "seq": 17,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1948",
+      "year": "1948",
+      "statement": "1948 -1964; and retold today.",
+      "page": 4,
+      "seq": 18,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1953",
+      "year": "1953",
+      "statement": "When he was living next to Kentuck Creek in 1953 he would look at old snags and at the dead limbs and the tops, and try to determine when his child hood “skeleton forest” had burned.",
+      "page": 4,
+      "seq": 18,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1950",
+      "year": "1950",
+      "statement": "The tree of the 1950’s had been strangled by guy wires applied 23 years earlier to support heavier lines to load a few loads of old growth logs.",
+      "page": 4,
+      "seq": 18,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1870",
+      "year": "1870",
+      "statement": "The McClay and Gould families first settled along the Umpqua River between present day Elkton and Scottsburg in the late 1870's, other settlers’ families in the region prior to 1882 could not tell them when this fire crossed the Umpqua River.",
+      "page": 4,
+      "seq": 18,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1851",
+      "year": "1851",
+      "statement": "There was no recorded history of a fire before 1851 in the immediate area.",
+      "page": 4,
+      "seq": 18,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1851",
+      "year": "1851",
+      "statement": "My conclusion after researching previous documents and oral histories is: The fire crossed the Umpqua River before records were kept in 1851, when Scottsburg, Gardiner, Middle Town at the mouth of Dean Creek, and all commerce on this river began.",
+      "page": 4,
+      "seq": 18,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "October 13, 2019",
+      "year": "2019",
+      "statement": "FROM: David Gould Oral History: I had studied all this history presented here by October 13, 2019 and found the point of origin of the Coos Bay Fire of 1868.",
+      "page": 5,
+      "seq": 20,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1885",
+      "year": "1885",
+      "statement": "” Dave Gould comment: This is a complete surprise to me but makes perfect sense, knowing what the land was like when my family lived and crafted a living in the BIG BURN from 1885 until after 1913.",
+      "page": 5,
+      "seq": 20,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1882",
+      "year": "1882",
+      "statement": "Elliott foresters thought an 1882 fire corresponds with the current stand germination for much of the Elliott Forest.",
+      "page": 5,
+      "seq": 20,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1866",
+      "year": "1866",
+      "statement": "FROM: History of Larson and Brelage families on the Larson Homestead, and timber claim on Larson Inlet, Coos County Oregon from 1866, as told in 1962-3 as oral history to Dennis Signalness and John and Maralee Brelage.",
+      "page": 5,
+      "seq": 21,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1868",
+      "year": "1868",
+      "statement": "There was no mention of the 1868 fire but the interview says they “moved to Marshfield in ‘74 .",
+      "page": 5,
+      "seq": 21,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "August 7, 1878",
+      "year": "1878",
+      "statement": "” David Gould comment: In summary, I believe the 1879 fire started after Byars survey begun August 7, 1878-1879.",
+      "page": 5,
+      "seq": 21,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "October 20",
+      "year": null,
+      "statement": "FROM: Elliott State Watershed Analysis October 2003: Location of township corners and identification numbers created from the General Land Office township survey notes for the Forest and the 1868 fire boundaries as mapped by James A.",
+      "page": 5,
+      "seq": 22,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1859",
+      "year": "1859",
+      "statement": "The Federal government created school lands-two sections out of each Township at the time Oregon was granted statehood in 1859.",
+      "page": 5,
+      "seq": 23,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1930",
+      "year": "1930",
+      "statement": "To consolidate stray pieces of land into a usable forest, lands were traded by different entities to create the Elliott State Forest in 1930, which was put into trust for all",
+      "page": 5,
+      "seq": 23,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1990",
+      "year": "1990",
+      "statement": "Oregon school children, with generated revenue designated for the Common School Fund The endangered species Act was passed in the early 1990 by the same governing body that gave Oregon statehood.",
+      "page": 6,
+      "seq": 25,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1990",
+      "year": "1990",
+      "statement": "Cutting back harvest rates between 1990 and 2012 from 50 million bd.",
+      "page": 6,
+      "seq": 25,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    },
+    {
+      "date_as_printed": "1974",
+      "year": "1974",
+      "statement": "David Gould 96079 Kentuck Way Lane North Bend, Or 97459 Advocates for School Trust Lands cbto1974@yahoo.",
+      "page": 6,
+      "seq": 25,
+      "speaker": "David Gould",
+      "confidence": "stated"
+    }
+  ],
+  "content_notes": [
+    {
+      "page": 6,
+      "seq": null,
+      "speaker": "David Gould",
+      "trigger_as_printed": "postal address and personal e-mail address",
+      "note": "The closing block prints David Gould's home street address and personal e-mail address. Present in the publicly posted original; flagged so a human can decide whether to surface it.",
+      "action": "no text altered"
+    }
+  ],
+  "quality": {
+    "text_layer": "none",
+    "ocr_required": true,
+    "ocr_engine": "tesseract 5 --psm 6, 300 dpi grayscale",
+    "ocr_quality": "good — clean laser-printed typescript; the main residual defect is the capital I rendered as '|' or '1'",
+    "confidence": "unverified",
+    "entries": 26,
+    "speech_turns": 0,
+    "speaker_turn_counts": {},
+    "word_count": 3541,
+    "anchors": 0,
+    "printed_pages": 6,
+    "ocr_fixes_applied": 18,
+    "page_sample_verification": {
+      "method": "three sample pages (first, middle, last) re-rendered from the PDF at 200 dpi and OCR'd independently; the words this build extracted for that printed page were then looked for in the render's OCR. Recall 1.0 means every extracted word was found in the independent render.",
+      "caveat": "for the image-only sources the extraction and the check both come from tesseract, so a high score shows OCR stability, not independent accuracy; for those a page was also read by eye against the render",
+      "pages": [
+        {
+          "printed_page": 1,
+          "pdf_page": 1,
+          "extracted_words": 646,
+          "render_ocr_words": 645,
+          "words_matched": 643,
+          "recall_of_extracted_text_in_render_ocr": 0.995,
+          "render": "zc-el-s20191111-gould-001-1.png"
+        },
+        {
+          "printed_page": 4,
+          "pdf_page": 4,
+          "extracted_words": 651,
+          "render_ocr_words": 649,
+          "words_matched": 649,
+          "recall_of_extracted_text_in_render_ocr": 0.997,
+          "render": "zc-el-s20191111-gould-004-4.png"
+        },
+        {
+          "printed_page": 6,
+          "pdf_page": 6,
+          "extracted_words": 355,
+          "render_ocr_words": 354,
+          "words_matched": 354,
+          "recall_of_extracted_text_in_render_ocr": 0.997,
+          "render": "zc-el-s20191111-gould-006-6.png"
+        }
+      ]
+    }
+  },
+  "gaps": [
+    "This item is filed at ORWW folder level (20191111/), not under a Transcript/ subfolder; there is no Transcript/ directory for this date.",
+    "It is not a question-and-answer transcript: there are no speaker labels, no tape sides and no minute marks, so anchors[] is empty and every paragraph is anchored by printed page only.",
+    "Speaker attribution for every paragraph is inferred from the document's first-person voice and its signature block, not from printed speaker labels.",
+    "The handwritten/typed epigraph on page 1 is quoted by Gould from Jerry Phillips and is reproduced as printed, upper case and all."
+  ],
+  "entries": [
+    {
+      "page": 1,
+      "pdf_page": 1,
+      "seq": 1,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "November 11, 2019 Interview with David Gould about his oral/family history in The Elliott State Forest, boundaries and beyond, and more complete history of forest fires in the region. “TO THE BEST OF MY KNOWLEDGE, NO WRITEN FIRST HAND EYEWITNESS ACCOUNTS OF THIS FOREST FIRE EXIST. All WE REALLY KNOW IS WHAT HEARSAY HAS PASSED DOWN, EVIDENCE THAT IS APPERANT ON THE GROUND, AND WRITTEN COMMENTS OF OTHER WRITERS. ALSO SOME PHOTOGRAPHS TAKEN IN THE YEARS FOLLOWING THE FIRE DO EXIST. MY WRITING HERE USE ALL THESE SOURCES KNOWN TO ME. IT IS HARD TO BELIEVE THE DESTRUCTION.” Jerry Phillips, The Great Coos Bay Forest Fire of 1868. In Ray O, Sims, “Loon Lake and Ash Valley Revisited,” 1998, Page 287 This document is a correction to existing documents and provides a revised history of the 1868 Coos Bay Fire and an 1879 Schofield-Larson Fire that overlapped."
+    },
+    {
+      "page": 1,
+      "pdf_page": 1,
+      "seq": 2,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: William Byars, #292 survey of T23S, R10W of Willamette Meridian Oregon; August 7, 1878 for the Northern Pacific Railway Co. which deposited money for the survey. The survey commenced May 28 1879 and was completed June 6, 1879. When investigating the maps and field notes, the fire boundaries can be determined. His map shows the direction of the 1868 fire in Salander Creek drainage and ignition area on East Side of Loon Lake behind Huckleberry Point. He calls this Timber, old burn nearly all destroyed underbrush dense fir, mountain balm, laurels etc. North boundary line on the divide ‘Umpcoos near Cougar Pass on to the Fish Ridge Divide’ it is 8-10in fir that corresponds to the 1868 fir. Mill Creek and slope west to just short of Umpcoos divide is 30 inch fir. Between sec, 11 and 12 at 39.25 chains crossing Old Coos Trail shows 8in fir. Byars states timber principally destroyed by fire at sec. cor. 10, 11, 14, and 15."
+    },
+    {
+      "page": 1,
+      "pdf_page": 1,
+      "seq": 3,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Levi C. Walker #703 survey of T23S, R10W of Willamette Meridian Oregon; June 20, 1905. This is a resurvey over the same ground with 26 year growth on trees. Page 27-28 is the location where Oelo Mc Clay enters the Big Burn in 1886 ‘Recollection of Elkhorn Living’. Walker is reporting 10-18 inch fir in 1905 that were 6 inch fir in Byars 1879 survey. (Oelo McClay was the sister of Harriett (Hattie) Eliza McClay Gould. More in Oelo’s Testament of Elkhorn Living) Walkers map actually has burn and plotted direction of the fire out of Salander creek with 6 inch fir. The problem I see is that A.N. Gould’s 1905 survey is dominated with 6 in fir through the center of the burn. An 1879 fire in Salander creek may have burnt here and shows as 6in fir on Walkers notes and map in 1906"
+    },
+    {
+      "page": 1,
+      "pdf_page": 1,
+      "seq": 4,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: A.N. Gould (A.N. Gould, son of George A and Harriet E. Gould) #762 survey of T23S, R11W of Willamette Meridian Oregon; July 12, 1905. This survey is directly west of Walkers and in the middle of the Coos Bay Fire. Also Elkhorn ranch that extended 12 miles NE,14 miles NE, 8 miles ESE, 4 miles S, and 3 miles W. from the homestead. Because there were few live trees 12 inches the minimal size for BT’s Albert changed the procedure as follows. “Dead stubs were used for BT’s (bearing trees) for the reason they are more durable than any small sapling that could be found. This part of the country was burned over a great many years ago killing all the large timber leaving a lot of burned snags standing, which in the lapse of years have become almost solid pitch and as sound as they ever were. Every year or so large portions of this country are still burned over by light fires killing all small trees and under growth, which 1"
+    },
+    {
+      "page": 2,
+      "pdf_page": 2,
+      "seq": 5,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "fall down and provide fuel for another brush fire. These small brush fires seldom have any effect on these old charred stubs at all and this the reason I went out of my way to mark stubs instead of small saplings. I marked alder BT’s in the bark for the reason that the marks are much more durable when made in the bark as they are visible as long as the tree lives and the bark is the last part of the tree to decay; they will show long after the rest of the tree had decayed and fell away. Of course the letters will become larger as the tree grows, but all portions are enlarged in the same proportion so that the letters always retain their proper shape and proportion. Wood was used for post instead of stone for the reason that all surface rock has been so burned by the fire that it is constantly crumbling and scaling off when above ground. I used my best judgement (gained by practical experience) in the selection of post and BT's to longer perpetuate the core. No officer qualified to administer oaths being available without great inconvenience, delay and expense; I administered the necessary preliminary and final oaths to assistants. April 6\", 1910, Albert N. Gould U.S. Deputy Surveyor” Stands of alder dominated this Township after the fires. This survey is of George Gould’s land claim with Elkhorn Ranch in the center of today’s Elliott State Forest. The tree diameters are the same as 1905 the Walker survey. There is a photos from 1886 and oral documentation that can be useful for the fire history. The land slide photo on 9000 line at 3 mile in the 1894 documents the different fires. The 20in leaning trees confirm that the 1840, 1868, or 1879 fires covered and or over shadowed the previous fire. Snags in the foreground are blackened showing additional fire. There are 8 foot high trees scattered on a hillside with no underbrush that shows how devastating it burned to create a perfect grazing environment for cattle ranching."
+    },
+    {
+      "page": 2,
+      "pdf_page": 2,
+      "seq": 6,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Ray O. Sims, “Loon Lake and Ash Valley Revised”: Page 75: Map of T23S, R10W. Byars 1879 map showing 1868 fire at Loon Lake on the SW corner of map the surveyor has marked ‘BURN’. Page 82: map of Dickerson homestead, the person that showed George A. Gould the Big Burn in 1885. Page 73: map of Hartman homestead, the person Indian Bill told about the fire before the white settlers came that drove the tribe into the Umpqua River. Page 286: This 1889 photo documents the extreme change to the way the 1840, 1868, and 1879 forest fires. This ground was burnt, reburnt, and burnt over again. Page 285: Sims says Lionel Youst in his book “Above the Falls” writes about a catastrophic burn in the drainage of the Millicoma, Tenmile Lake and Lower Umpqua. We now know of this burn as the Elliott State Forest. George Gould’s Elkhorn Ranch was located on the edge of it. Gould stated that this great Coos Bay fire of 1868 had evidently started near Scottsburg. Somebody's slash fire got away from them. It burned 92,000 acres of the finest old growth before the white man came to the Umpqua. Dave Gould comment: All my oral history shows this is false and was made up by Sims and twisted and turned by other authors. The Gould family never knew when or where the fires began. Sims has my McClay family history throughout this book."
+    },
+    {
+      "page": 2,
+      "pdf_page": 2,
+      "seq": 7,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Oelo McClay’s “Testament of Elkhorn Living”: which tells her story of traveling into the Big Burn. “The next day we climbed up a high ridge out of this valley (Lake Creek), they soon left the heavy green timber behind and came to what is known as the Big Burn, this being a skeleton forest. It was indeed a sad sight, to men who love, living, growing things; this being once one of the largest and finest forests"
+    },
+    {
+      "page": 2,
+      "pdf_page": 2,
+      "seq": 8,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "2"
+    },
+    {
+      "page": 3,
+      "pdf_page": 3,
+      "seq": 9,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "on the west coast, but had been burned. No one knew when, as the oldest Indians then knew nothing of when it was burned. Leaving this high land they descended into a valley with a tiny spring and creek, which the surveyor told them was the head of Coos River”. The location is over the divide in the Headwaters of the West Fork of Coos River from the 7000 and 1000 junction in the Elliott Forest. Levi Walker survey crossed this spot on the Old Coos Trail from Coos Bay to Ash Valley. From cor. Of secs 21, 22, 27, and 26 running N.0*1'w., bet. Secs. 21 and 22. On a straight 66.35 chains: Leaving green timber and dense underbrush, bears E. and W. ENTER BURN. 67.35 chains: Old Coos trail, on spur sloping W., bears E. and W.: Re-enter green timber and dense undergrowth, bears E. and West.: 80 Chains set fir post in ground, for cor. Of secs. 15, 16, 21, and 22: an alder 6 ins. Diameter, fir, 18 ins. Diam.., fir, 12 ins. Diam., and alder, 8 ins.: Timber, mostly 2™ growth fir with some hemlock and alder. Underbrush, salal and huckleberry. June 4, 1906. Oelo’s cabin is referenced in the headwaters I mile to the NW in SE cor. sec 8. In some books/maps it is called “Old Maid’s Cabin”, as she did stake a land claim but didn’t prove up. Clarence my grandfather to me that two near firs had limbs that when they rubbed sounded like her."
+    },
+    {
+      "page": 3,
+      "pdf_page": 3,
+      "seq": 10,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Oelo McClay, Oregon Historical Quarterly, Spring 1979.”Going to the 1905 Worlds’ Fair in Portland, Oregon”: Page #64: The photo was taken on the divide near 7 mile marker of the 2000 line in the Elliott Forest. Dave Gould note: all snags are under 10 inch diameter along the open trail. All the fires from “Above the Falls”, Page 184, the 1440, 1770, 1840, 1868, and 1879 fires all passed through here."
+    },
+    {
+      "page": 3,
+      "pdf_page": 3,
+      "seq": 11,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Aileen Barker Rickard, “The Goulds of Elkhorn”: Page 34: In the Big Burn on the Divide between Elk Creek and Coos River they stood observing the country (1885). “So new, not a sound of civilization, not even the Indians, who did sometimes come here to hunt and collect berries. Mr. Gould and Mr. Dickerson decided it would be an ideal place for a cattle range; as far as they could see was green-grass- bordered streams beautiful to look at. But for all the beauty, there was a kind of sadness for near and far were the tall dead trees. Not even a leaf to murmur at a breath of wind toward the coast.”"
+    },
+    {
+      "page": 3,
+      "pdf_page": 3,
+      "seq": 12,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Harriet Ward, “Gold Saga of the Umpqua” Pages 158-9: “An Englishman named Walker and other adventurers homesteaded on Schofield Inlet. There, dwellings became known as ‘up Walker’. “Evidence of proceeding fires — left dead silver bodies against blue skies - on many ridges and mountainsides. Once green trees, phantoms now — stood the ridgetops, above Gould ranch — likewise, along the Umpqua River below Mill Creek. No white man saw-this fiery demon jump, the Umpqua River.—to rage south, sucking the breath —of every breathing thing. But an Indian did. Indian Bill told Fred Hartman who settled in Ash Valley ‘that the great fire jumped the Umpqua many Moons before big canoes bring white man to river” FROM: Sims, “Loon Lake ...” Page 172: Hartman homestead location."
+    },
+    {
+      "page": 3,
+      "pdf_page": 3,
+      "seq": 13,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Lionel Youst, “Above the Falls,” Page 185: Photo of Elkhorn Ranch in the Big Burn about 1890. The Timber and the Land. Page 184, states the fire of 1840 did not go into the West Fork side of the ridge. Dave Gould note: This is an incorrect statement. The fire of 1840 crossed the Umpqua as stated by Indian Bill. Indian Bill lived at Indian Point on Mill Creek. Page 159: The 1868 fire started at East side of Loon Lake, burned up Salander creek into the Headwaters of Coos River. But it stopped on Elk Creek ‘9000 line’ and Silver Creek West Fork divide “1000 line’ and burned past Eastside of Coos Bay. This is a"
+    },
+    {
+      "page": 3,
+      "pdf_page": 3,
+      "seq": 14,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "3"
+    },
+    {
+      "page": 4,
+      "pdf_page": 4,
+      "seq": 15,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "well written document. The Gordon Ross Family fought fire in 1868 on South Coos River and Catching Inlet."
+    },
+    {
+      "page": 4,
+      "pdf_page": 4,
+      "seq": 16,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Lionel Youst, “Lost in Coos” With David Gould’s side notes to events mentioned in this book. Chapter 2: pages 19-25: My grandfather, Clarence Gould, told me how he found Frank Bremer, who was overdue returning from establishing his trap-line. Clarence went to Elkhorn Ranch and followed below the trail and found broken fern and sign where something left the trail. He followed this trail to the edge of a slope along the river and found Frank’s body on the rocks below. My grandfather was a true woodsman who ranged in the West Fork of Coos River his entire life. Growing up I spent many hours hearing the old stories and venturing into this region with him. Chapter 9: Pages 103-08: With reference to the 1991 slide that blocked the East Fork road, my company, Coos Bay Timber Operators, Inc., took the contract and opened the highway. We blew up rock the size of a 3-story house, scaled hanging boulders, and hauled debris 8 miles to a stable location. After removing the car it took two weeks to open the road to traffic. Chapter 10: Page 103: Harold and Erma Ott were my aunt and uncle, who drove into the river in extreme fog. Almost every chapter in this book has one of my relatives involved Lemuel Gray is Clarence’s brother-in-law; Herman Edward and George Gault are related to the Ott family. Chapter 1: Page 17: Is a photo of a splash dam on South Fork, Coos River. My Grandfather Clarence had splash dams below Lionel Youst’s home on Coos River, and also along the West Fork near the present Elliott Forest. My grandfather took me out of school in 1957 to see the final South Fork, Coos River dam when it was ‘splashed’. It was the end of an era and he wanted me to see how it had been done for over 50 years. It was a wonderful, sight watching those logs flowing as a mass for miles down to the bay."
+    },
+    {
+      "page": 4,
+      "pdf_page": 4,
+      "seq": 17,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Jerry Phillips, “Caulked Boots and Cheese Sandwiches,” Page 95: This photo, taken in 1956, shows the smaller snags of the Southern Elliott Forest. The majority of the timber was 24” or less before it was killed by fire. After the 1770 fire, regrowth was slow to regenerate so the timber was 55 years old and less than 30” when the 1840 killed the stand the forester is managing in 1956."
+    },
+    {
+      "page": 4,
+      "pdf_page": 4,
+      "seq": 18,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Oral history by Clarence Gould as told to David Glae Gould ca.1948 -1964; and retold today. Clarence was 5 years old when his family moved in to Elkhorn and didn’t know when the land burned. When he was living next to Kentuck Creek in 1953 he would look at old snags and at the dead limbs and the tops, and try to determine when his child hood “skeleton forest” had burned. The tree of the 1950’s had been strangled by guy wires applied 23 years earlier to support heavier lines to load a few loads of old growth logs. I have watched this decay take place until it and similar trees are only rotten stubs in the 20teens. The McClay and Gould families first settled along the Umpqua River between present day Elkton and Scottsburg in the late 1870's, other settlers’ families in the region prior to 1882 could not tell them when this fire crossed the Umpqua River. There was no recorded history of a fire before 1851 in the immediate area. My conclusion after researching previous documents and oral histories is: The fire crossed the Umpqua River before records were kept in 1851, when Scottsburg, Gardiner, Middle Town at the mouth of Dean Creek, and all commerce on this river began."
+    },
+    {
+      "page": 4,
+      "pdf_page": 4,
+      "seq": 19,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "4"
+    },
+    {
+      "page": 5,
+      "pdf_page": 5,
+      "seq": 20,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: David Gould Oral History: I had studied all this history presented here by October 13, 2019 and found the point of origin of the Coos Bay Fire of 1868. It is the Northeast shore of Loon Lake, probably started by a settler burning brush. While reading Herman Larson’s oral interview that follows, I found another fire that we all had missed. I wonder if it started at Loon Lake instead of Scofield Creek. “79- that’s the time we had the big fire. We moved back to the farm just after the fire. Everything burnt out, not the house, the barn burnt out.” Dave Gould comment: This is a complete surprise to me but makes perfect sense, knowing what the land was like when my family lived and crafted a living in the BIG BURN from 1885 until after 1913. Elliott foresters thought an 1882 fire corresponds with the current stand germination for much of the Elliott Forest. The Watershed document on the following page mentions this."
+    },
+    {
+      "page": 5,
+      "pdf_page": 5,
+      "seq": 21,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: History of Larson and Brelage families on the Larson Homestead, and timber claim on Larson Inlet, Coos County Oregon from 1866, as told in 1962-3 as oral history to Dennis Signalness and John and Maralee Brelage. Comments by Dave Gould: The property belongs to John’s sons today. I went to school with Andrea Sigalness and the Brelage boys so this information is verifiable. There was no mention of the 1868 fire but the interview says they “moved to Marshfield in ‘74 ...so I and my oldest sister could go to school ..... The Larsons moved back “back to Larson Inlet...in ‘79” when Herman was 10 or 12 years old. In discussing the fire, Herman stated,” We were living in Marshfield at the time when it broke out. It came from Schofield’s Creek; came down to about the head of Larson Inlet. It spread, from coast to over as far as Golden Falls.” John Brelage said: “Let me hold that for you. You talk better with your hands.” Herman says “The fire started up Schofield Creek. It came down as far as Glasgow down there. It spread from the coast to Loon Lake...About 15 miles long and about 14 miles wide.” David Gould comment: In summary, I believe the 1879 fire started after Byars survey begun August 7, 1878-1879."
+    },
+    {
+      "page": 5,
+      "pdf_page": 5,
+      "seq": 22,
+      "kind": "narrative_with_source_citation",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "FROM: Elliott State Watershed Analysis October 2003: Location of township corners and identification numbers created from the General Land Office township survey notes for the Forest and the 1868 fire boundaries as mapped by James A. (Jerry) Phillips. David Gould comment: I feel there are extreme errors in this information. It is biased and misleading when used for the required Habitat Conservation Plan that restricts harvest volumes that have deprived Oregon schools of funds since the Endangered Species Act implementation. I will present surveys and compare. We need to observe and discuss this topic."
+    },
+    {
+      "page": 5,
+      "pdf_page": 5,
+      "seq": 23,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "History stops here: People question why I have spent six years studying the fire history of this region. The Federal government created school lands-two sections out of each Township at the time Oregon was granted statehood in 1859. To consolidate stray pieces of land into a usable forest, lands were traded by different entities to create the Elliott State Forest in 1930, which was put into trust for all"
+    },
+    {
+      "page": 5,
+      "pdf_page": 5,
+      "seq": 24,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "5"
+    },
+    {
+      "page": 6,
+      "pdf_page": 6,
+      "seq": 25,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "Oregon school children, with generated revenue designated for the Common School Fund The endangered species Act was passed in the early 1990 by the same governing body that gave Oregon statehood. Due to the ESA and numerous lawsuits by environmental groups, logging has not been conducted in the Elliot for over ten years. With no logging, the Common School Fund receives no money. My fiduciary duty is to the School Children of North Bend School District #13. Today, the Elliott State Forest is a dysfunctional forest, not providing the funds that were vested at a harvest rate of 50 million board feet annually. The annual growth is more than 70 million bf growing. The Division of State Lands is trying to decouple the Elliott from the Common School Fund by having Oregon State University run a carbon experimental forest. The endangered species management plan has devalued the forest to $220,800,000 fair market value. Cutting back harvest rates between 1990 and 2012 from 50 million bd. ft. /year; the vested harvest with a loss of revenue was recorded. Greg Stone, P.E. and Jerry Phillips acquired the price of each timber sale sold during this time and subtracted volume that was not harvested from the 50 million vested. They estimated $200,000,000 cash was not distributed to the Common School Fund. The standing forest has a value of more than a billion dollars while it grows an additional 55 million bd. ft. annually. When decoupled, this value can never be retrieved so I call it a TAKE of the Common School Fund or an outright theft of the children’s funds. Furthermore they say the children must be compensated for the value of the forest. The older trees being declared untouchable are the forest. My conclusion is if Oregon State University assumes ownership as proposed, the $220,800,000 should be a payment for the take and be managed with OSU’s habitat conservation plan but; not be decoupled from the common school fund. David Gould 96079 Kentuck Way Lane North Bend, Or 97459 Advocates for School Trust Lands cbto1974@yahoo.com"
+    },
+    {
+      "page": 6,
+      "pdf_page": 6,
+      "seq": 26,
+      "kind": "narrative",
+      "speaker": "David Gould",
+      "speaker_name": null,
+      "speaker_confidence": "inferred",
+      "tape_side": null,
+      "anchor_ref": null,
+      "text": "6"
+    }
+  ]
+}

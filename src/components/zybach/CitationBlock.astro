@@ -1,0 +1,150 @@
+---
+/* CitationBlock.astro — The Zybach Collection
+ *
+ * Bob Zybach's own citation string is the citation. It is printed here exactly
+ * as he prints it, first and unaltered; the web form and the permalink follow
+ * so a reader can cite either the book or this page.
+ *
+ * Contract (BUILD_SPEC §"Shared component contracts"):
+ *   { canonical: string; short: string; url: string; pdfUrl?: string; accessed?: string }
+ */
+interface Props {
+  canonical: string;
+  short: string;
+  url: string;
+  pdfUrl?: string;
+  accessed?: string;
+  /** What this page is, in the source's own terms: "Part II, pp. 13–58". */
+  thisPage?: string;
+  /**
+   * How to cite one printed page of this item. `label` is the citation a
+   * reader should copy — "Rohner 1993, p. 13 — Monograph #05:13" — and
+   * `fragment` is the page anchor appended to the permalink.
+   */
+  passage?: { label: string; fragment: string; note?: string };
+}
+
+const { canonical, short, url, pdfUrl, accessed, thisPage, passage } = Astro.props;
+
+const SITE = 'https://schooltrusts.org';
+const absolute = url.startsWith('http') ? url : `${SITE}${url}`;
+const passageUrl = passage ? `${absolute}${passage.fragment}` : null;
+---
+
+<section class="zc-cite" aria-label="How to cite this item">
+  <h2 class="zc-cite__head">How to cite this item</h2>
+
+  <p class="zc-cite__lede">
+    The first line is the citation as it is printed in the original. Use it when
+    you cite the work itself. Use the second when you cite this page.
+  </p>
+
+  <dl class="zc-cite__list">
+    <div class="zc-cite__row">
+      <dt>As printed</dt>
+      <dd><cite class="zc-cite__canonical">{canonical}</cite></dd>
+    </div>
+    <div class="zc-cite__row">
+      <dt>This page</dt>
+      <dd>
+        {thisPage ? `${short.replace(/\.\s*$/, '')}. ${thisPage}. ` : `${short.replace(/\.\s*$/, '')}. `}
+        <em>America's School Trust Library</em>, The Zybach Collection.
+        {' '}<a href={absolute} class="zc-cite__url">{absolute}</a>
+        {accessed && <span class="zc-cite__accessed"> (accessed {accessed}).</span>}
+      </dd>
+    </div>
+    {passage && (
+      <div class="zc-cite__row">
+        <dt>Cite this passage</dt>
+        <dd>
+          <strong class="zc-cite__passage">{passage.label}</strong>
+          <br />
+          <a href={passage.fragment} class="zc-cite__url">{passageUrl}</a>
+          {passage.note && <span class="zc-cite__accessed"> {passage.note}</span>}
+        </dd>
+      </div>
+    )}
+    <div class="zc-cite__row">
+      <dt>Permalink</dt>
+      <dd><a href={absolute} class="zc-cite__url">{absolute}</a></dd>
+    </div>
+    {pdfUrl && (
+      <div class="zc-cite__row">
+        <dt>Original PDF</dt>
+        <dd><a href={pdfUrl} class="zc-cite__url">{pdfUrl}</a></dd>
+      </div>
+    )}
+  </dl>
+
+  <p class="zc-cite__foot">
+    More on citing this collection: <a href="/collections/zybach/how-to-cite/">How to cite the Zybach Collection</a>.
+  </p>
+</section>
+
+<style>
+  .zc-cite {
+    margin: 2rem 0 1.25rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 4px solid var(--old-gold, #a87f2c);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+  }
+  .zc-cite__head {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--old-gold, #a87f2c);
+  }
+  .zc-cite__lede {
+    margin: 0 0 0.8rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #4e617c;
+    max-width: 62ch;
+  }
+  .zc-cite__list {
+    margin: 0;
+  }
+  .zc-cite__row {
+    display: grid;
+    grid-template-columns: 9em 1fr;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    border-top: 1px solid rgba(27, 50, 82, 0.12);
+  }
+  .zc-cite__row dt {
+    margin: 0;
+    font-size: 0.78rem;
+    color: #4e617c;
+  }
+  .zc-cite__row dd {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+  .zc-cite__canonical {
+    font-style: normal;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+  }
+  .zc-cite__accessed {
+    color: #4e617c;
+  }
+  .zc-cite__foot {
+    margin: 0.9rem 0 0;
+    font-size: 0.82rem;
+    color: #4e617c;
+  }
+  @media (max-width: 560px) {
+    .zc-cite__row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

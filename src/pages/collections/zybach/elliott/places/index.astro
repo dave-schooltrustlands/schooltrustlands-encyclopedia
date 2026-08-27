@@ -1,0 +1,170 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import { ZybachNav } from '../../../../../components/zybach/elliott/shared';
+import MapWithList from '../../../../../components/zybach/elliott/MapWithList.astro';
+import { coordinateSourceLabel, coordinateConfidenceLabel } from '../../../../../components/zybach/labels';
+import {
+  BASE,
+  places,
+  gazetteerGeoJSON,
+  segmentsForPlace,
+  videosForPlace,
+  photosForPlace,
+  counts,
+  ELLIOTT_CENTER,
+} from '../../../../../components/zybach/elliott/data';
+
+const rows = places.map((p) => ({
+  p,
+  stops: segmentsForPlace(p).length,
+  trips: p.field_trip_stops.length,
+  vids: videosForPlace(p).length,
+  photos: photosForPlace(p).length,
+}));
+
+const withMaterial = rows.filter((r) => r.stops || r.trips || r.vids || r.photos);
+const nameOnly = rows.filter((r) => !(r.stops || r.trips || r.vids || r.photos));
+---
+
+<RoomLayout
+  room="collections"
+  title="Places"
+  subtitle={`${counts.places} places in the Elliott State Forest records, ${counts.geocoded} of them mapped`}
+  width="full"
+  sourceId="zybach-elliott-places"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+    { label: 'Elliott State Forest', href: `${BASE}/` },
+  ]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Elliott State Forest</p>
+
+  <ZybachNav current="elliott" />
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <p>
+    The geography Bob Zybach drove and named. Every coordinate records the
+    method that produced it and how far it can be trusted; a place page gathers
+    the interview stops made there, the field-trip stops, the videos that name
+    it, and the photographs taken there.
+  </p>
+
+  <MapWithList
+    id="elliott-places-map"
+    features={gazetteerGeoJSON}
+    center={ELLIOTT_CENTER}
+    zoom={9}
+    height="520px"
+    fit={true}
+    listTitle="Every mapped place"
+  />
+
+  <h2>Places with material in this series</h2>
+  <table class="zy-place-table">
+    <thead>
+      <tr>
+        <th scope="col">Place</th>
+        <th scope="col">Type</th>
+        <th scope="col">Coordinate</th>
+        <th scope="col" class="num">Stops</th>
+        <th scope="col" class="num">Trips</th>
+        <th scope="col" class="num">Videos</th>
+        <th scope="col" class="num">Photos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {withMaterial.map((r) => (
+        <tr>
+          <th scope="row"><a href={r.p.href}>{r.p.name}</a></th>
+          <td class="kind">{r.p.kind ?? ''}</td>
+          <td class="conf">{coordinateConfidenceLabel(r.p.method, r.p.confidence)}{r.p.method ? ` · ${coordinateSourceLabel(r.p.method)}` : ''}</td>
+          <td class="num">{r.stops || ''}</td>
+          <td class="num">{r.trips || ''}</td>
+          <td class="num">{r.vids || ''}</td>
+          <td class="num">{r.photos || ''}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  {nameOnly.length > 0 && (
+    <section aria-labelledby="named-heading">
+      <h2 id="named-heading">Named, but not yet tied to an item</h2>
+      <p>
+        These places are in the places list with a coordinate, but no interview
+        stop, field-trip stop, video time code or photograph has been joined to
+        them yet.
+      </p>
+      <ul class="zy-nameonly">
+        {nameOnly.map((r) => (
+          <li>
+            <a href={r.p.href}>{r.p.name}</a>
+            {r.p.kind && <span class="kind"> — {r.p.kind}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <p class="see-also"><a href={`${BASE}/`}>Back to the Elliott State Forest series</a></p>
+</RoomLayout>
+
+<style>
+  .zy-place-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 0.8rem 0 2rem;
+  }
+  .zy-place-table th,
+  .zy-place-table td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.32rem 0.6rem 0.32rem 0;
+    text-align: left;
+    vertical-align: top;
+  }
+  .zy-place-table thead th {
+    border-bottom: 2px solid var(--old-gold, #b58a45);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #475569;
+  }
+  .zy-place-table .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .zy-place-table .kind,
+  .zy-place-table .conf {
+    color: #475569;
+  }
+  .zy-nameonly {
+    columns: 3;
+    column-gap: 2rem;
+    list-style: none;
+    margin: 0.6rem 0 2rem;
+    padding: 0;
+    font-size: 0.85rem;
+  }
+  @media (max-width: 50rem) {
+    .zy-nameonly {
+      columns: 2;
+    }
+  }
+  @media (max-width: 32rem) {
+    .zy-nameonly {
+      columns: 1;
+    }
+  }
+  .zy-nameonly li {
+    break-inside: avoid;
+    padding: 0.12rem 0;
+  }
+  .zy-nameonly .kind {
+    color: #94a3b8;
+  }
+</style>

@@ -1,0 +1,182 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import { chronology, monographs, people } from '../../../../../components/zybach/soapcreek/data';
+import type { Period } from '../../../../../components/zybach/soapcreek/data';
+import {
+  periodHref,
+  timelineHref,
+  monoHref,
+  personHref,
+  placeHref,
+  folioHref,
+  hasPersonPage,
+  hasPlacePage,
+} from '../../../../../components/zybach/soapcreek/links';
+
+export async function getStaticPaths() {
+  const periods = chronology.periods ?? [];
+  return periods.map((p, i) => ({
+    params: { period: p.slug },
+    props: {
+      period: p,
+      prev: i > 0 ? periods[i - 1] : null,
+      next: i < periods.length - 1 ? periods[i + 1] : null,
+    },
+  }));
+}
+
+const { period, prev, next } = Astro.props as {
+  period: Period;
+  prev: Period | null;
+  next: Period | null;
+};
+
+const entries = (period.entries ?? []).slice();
+const conflicts = entries.filter((e) => e.conflict);
+
+function entryHref(e: any): string | null {
+  if (e.href) return e.href;
+  if (e.mono_slug && e.page != null) return folioHref(e.mono_slug, e.page);
+  return null;
+}
+
+function narratorLink(e: any) {
+  const slug =
+    e.narrator_slug ??
+    people.find((p) => p.display_name === e.narrator)?.slug ??
+    null;
+  return slug && hasPersonPage(slug) ? { slug, name: e.narrator } : null;
+}
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+  { label: 'Timeline', href: timelineHref() },
+];
+---
+<SoapCreekPage
+  title={period.label ?? period.slug}
+  subtitle={`${period.range ? `${period.range}. ` : ''}${entries.length.toLocaleString()} dated statements, each one printed exactly as it was said or written, with the narrator and the page.`}
+  kicker="Soap Creek Valley · Timeline"
+  parents={parents}
+  sourceId={`zybach-sc-timeline-${period.slug}`}
+  navCurrent="timeline"
+  width="full"
+  corrections={false}
+  pageTitle={`${period.label ?? period.slug} · Timeline · The Zybach Collection`}
+>
+  {period.note && <p class="sc-whatis">{period.note}</p>}
+
+  {conflicts.length > 0 && (
+    <p class="sc-list-meta">
+      {conflicts.length} of these entries conflict with another source. Both are
+      kept and marked; nothing has been reconciled.
+    </p>
+  )}
+
+  {entries.length > 0 ? (
+    <ol class="sc-chron">
+      {entries.map((e: any) => {
+        const href = entryHref(e);
+        const nl = narratorLink(e);
+        const mono = monographs.find((m) => m.slug === e.mono_slug);
+        return (
+          <li class={e.conflict ? 'sc-chron-entry sc-chron-conflict' : 'sc-chron-entry'} id={e.entry_id}>
+            <span class="sc-chron-date">{e.date_label ?? e.label ?? ''}</span>
+            <div class="sc-chron-body">
+              <p class="sc-chron-statement">{e.statement}</p>
+              <p class="sc-list-meta">
+                {nl ? <a href={personHref(nl.slug)}>{nl.name}</a> : e.narrator ? <span>{e.narrator}</span> : null}
+                {mono && (
+                  <>
+                    {e.narrator ? ' · ' : ''}
+                    <a href={monoHref(mono.slug)}>#{mono.number} {mono.title}</a>
+                  </>
+                )}
+                {e.page != null && (
+                  <>
+                    {', '}
+                    {href ? <a href={href}>p. {e.page}</a> : <>p. {e.page}</>}
+                  </>
+                )}
+                {(e.places ?? []).length > 0 && (
+                  <>
+                    {' · '}
+                    {(e.places ?? []).map((p: any, i: number) => {
+                      const slug = typeof p === 'string' ? p : p?.slug;
+                      const name = typeof p === 'string' ? p : (p?.name ?? p?.slug);
+                      return (
+                        <>
+                          {i > 0 && ', '}
+                          {hasPlacePage(slug) ? <a href={placeHref(slug)}>{name}</a> : <span>{name}</span>}
+                        </>
+                      );
+                    })}
+                  </>
+                )}
+              </p>
+              {e.conflict && (
+                <p class="sc-badge-row">
+                  <span class="sc-chip sc-chip-conflict">
+                    Sources disagree{typeof e.conflict === 'string' ? `: ${e.conflict}` : ''}
+                  </span>
+                </p>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  ) : (
+    <p class="sc-empty">No entries in this period yet.</p>
+  )}
+
+  <nav class="sc-prevnext" aria-label="Periods">
+    <span>
+      {prev ? <a href={periodHref(prev.slug)}>← {prev.label}</a> : <a href={timelineHref()}>← The whole timeline</a>}
+    </span>
+    <span>
+      {next ? <a href={periodHref(next.slug)}>{next.label} →</a> : <a href={timelineHref()}>The whole timeline →</a>}
+    </span>
+  </nav>
+</SoapCreekPage>
+
+<style is:global>
+  .sc-chron {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+  .sc-chron-entry {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    gap: 0 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #ece5d5;
+    scroll-margin-top: 5rem;
+  }
+  @media (max-width: 40rem) {
+    .sc-chron-entry {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+  .sc-chron-date {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--old-gold, #a87f2c);
+    letter-spacing: 0.02em;
+  }
+  .sc-chron-statement {
+    margin: 0 0 0.2rem;
+    line-height: 1.55;
+  }
+  .sc-chron-conflict {
+    border-left: 3px solid var(--oxblood, #7a2e2e);
+    padding-left: 0.7rem;
+    margin-left: -0.7rem;
+  }
+</style>

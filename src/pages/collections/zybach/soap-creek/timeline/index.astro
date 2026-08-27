@@ -1,0 +1,142 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import { chronology, monographs } from '../../../../../components/zybach/soapcreek/data';
+import { periodHref, thesisHref, folioHref, monoHref } from '../../../../../components/zybach/soapcreek/links';
+
+const periods = chronology.periods ?? [];
+const total = periods.reduce((n, p) => n + (p.count ?? p.entries?.length ?? 0), 0);
+const conflicts = periods.reduce(
+  (n, p) => n + (p.entries ?? []).filter((e) => e.conflict).length,
+  0,
+);
+const topEvents = chronology.events_top ?? [];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+];
+---
+<SoapCreekPage
+  title="Timeline"
+  subtitle="A chronology of Soap Creek Valley built out of what the narrators actually said — every entry verbatim, with the person who said it and the printed page it is on."
+  kicker="Soap Creek Valley · Timeline"
+  parents={parents}
+  sourceId="zybach-sc-timeline"
+  navCurrent="timeline"
+  width="full"
+  corrections={false}
+>
+  {periods.length === 0 ? (
+    <p class="sc-empty">The chronology has not been generated yet.</p>
+  ) : (
+    <>
+      <p>
+        Bob Zybach divided the valley's history into eight periods in his 1999
+        <a href={thesisHref()}> thesis</a>. Two more sit either side of them here: what
+        the narrators say about the valley before the 1844 Donation Land Claims,
+        and what has happened since the last interview was recorded. Everything in
+        between is theirs.
+      </p>
+      <p class="sc-list-meta">
+        {total.toLocaleString()} dated statements
+        {conflicts > 0 && <> · {conflicts} where sources disagree, both kept</>} ·
+        drawn from {monographs.length} monographs and the thesis chronology.
+      </p>
+
+      <ol class="sc-periods">
+        {periods.map((p) => (
+          <li>
+            <a href={periodHref(p.slug)} class="sc-period-link">
+              <span class="sc-period-range">{p.range ?? ''}</span>
+              <span class="sc-period-label">{p.label}</span>
+              <span class="sc-period-count">
+                {(p.count ?? p.entries?.length ?? 0).toLocaleString()} entries
+              </span>
+            </a>
+            {p.note && <span class="sc-list-meta">{p.note}</span>}
+          </li>
+        ))}
+      </ol>
+    </>
+  )}
+
+  {topEvents.length > 0 && (
+    <section aria-labelledby="events">
+      <h2 id="events">Events several narrators remember</h2>
+      <p class="sc-list-meta">
+        Where more than one person dates the same event, the entries are grouped so
+        the differences show.
+      </p>
+      <ul class="sc-list">
+        {topEvents.slice(0, 30).map((e: any) => (
+          <li>
+            <strong>{e.label ?? e.event_key}</strong>
+            <span class="sc-list-meta">
+              {[
+                e.date_label,
+                e.count ? `${e.count} narrators` : null,
+                e.conflict ? 'sources disagree' : null,
+              ]
+                .filter(Boolean)
+                .join(' · ')}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="how-built">
+    <h2 id="how-built">How this timeline was built</h2>
+    <p>
+      Every entry is a sentence a narrator said, or a line Bob wrote in the thesis
+      chronology, copied without change. Nothing here is a paraphrase and nothing
+      is a synthesis. Where two people give a different year for the same event,
+      both entries stand and the disagreement is marked rather than resolved — the
+      disagreement is part of the record.
+    </p>
+  </section>
+</SoapCreekPage>
+
+<style is:global>
+  .sc-periods {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+  .sc-periods > li {
+    border-bottom: 1px solid #ece5d5;
+    padding: 0.6rem 0;
+  }
+  .sc-period-link {
+    display: grid;
+    grid-template-columns: 8rem 1fr auto;
+    gap: 0.75rem;
+    align-items: baseline;
+    text-decoration: none;
+  }
+  @media (max-width: 40rem) {
+    .sc-period-link {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+  }
+  .sc-period-range {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.8rem;
+    color: var(--old-gold, #a87f2c);
+    letter-spacing: 0.04em;
+  }
+  .sc-period-label {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.02rem;
+  }
+  .sc-period-count {
+    font-family: var(--font-sans, system-ui);
+    font-size: 0.76rem;
+    color: #8a8172;
+    white-space: nowrap;
+  }
+</style>

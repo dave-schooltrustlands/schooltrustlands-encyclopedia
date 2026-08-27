@@ -1,0 +1,301 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
+import { seriesBySlug, clean } from '../../../components/zybach/_data';
+
+const s = seriesBySlug('letitia-carson');
+const title = clean(s?.title) || 'Letitia Carson, 1845–1888';
+const summary =
+  clean(s?.summary) ||
+  'Biography, genealogy, land records, newspaper articles, court papers and illustrations documenting Letitia Carson, a Black pioneer who came over the Oregon Trail in 1845 and settled in Soap Creek Valley.';
+
+/* What the generator recorded about how this series was described, and how
+   many accessioned files carry its name. Both are shown as measured. */
+const describedFrom = clean(s?.described_from);
+const matchingFiles = s?.counts?.accessioned_files_matching_name;
+---
+
+<RoomLayout
+  room="collections"
+  title={title}
+  subtitle="Series — described at inventory level"
+  width="prose"
+  sourceId="collections-zybach-letitia-carson"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  ]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="finding-aid" />
+
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+      This series is described at inventory level. The file counts below come
+      from a census of the creator's uploaded folders taken on 27 August 2026;
+      that census stopped three levels down, so they are floors, not totals.
+    </p>
+
+    <p class="kicker">Series · inventory level</p>
+
+    <p>{summary}</p>
+
+    <h2 id="what">What this is</h2>
+
+    <p>
+      Letitia Carson was a Black pioneer of the 1845 Oregon Trail migration who
+      settled in Soap Creek Valley — the same ground as the oral-history series
+      at the centre of this collection. The creator has worked on her life since
+      at least 2012, and the research file is unusually well organized. Its own
+      arrangement tells you the shape of the story: chapters for Kentucky,
+      Ireland, Missouri, the Oregon Trail, Soap Creek, the Carson estate, Carson
+      v. Smith, Cow Creek, Letitia Creek and the Umatilla allotments, with
+      appendices for a chronology from 1845 to 1888 and for two family lines
+      traced from 1775 to 1922.
+    </p>
+
+    <p>
+      Alongside the biography sit the documents it was built from: newspaper
+      articles sorted by period, censuses, land surveys, court papers,
+      genealogies, commissioned illustrations, exhibit material and books for
+      younger readers. This is the same valley as the monographs, a century
+      earlier, reached through the documentary record rather than through living
+      memory — one of the few places in the collection where the documents speak
+      for someone the oral histories could not reach.
+    </p>
+
+    <h2 id="inventory">Inventory</h2>
+
+    <p class="zc-caption">
+      Counted in the creator's uploaded folders, 27 August 2026. Folders deeper
+      than three levels were counted but not opened.
+    </p>
+
+    <table class="zc-inv">
+      <thead>
+        <tr>
+          <th scope="col">Folder</th>
+          <th scope="col">Files</th>
+          <th scope="col">What is in it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Accessioned</th>
+          <td>{typeof matchingFiles === 'number' ? matchingFiles : '—'}</td>
+          <td>
+            Files whose names match this series, taken into the Library's
+            records.{describedFrom ? ` Described from ${describedFrom}.` : ''}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Whole series</th>
+          <td>153 (262.9 MB)</td>
+          <td>
+            As counted in the Drive census — a wider net than the accessioned
+            figure above. 77 subfolders, not all opened.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Biography</th>
+          <td>8 at top level</td>
+          <td>
+            Seventeen subfolders arranged as chapters — Kentucky, Ireland,
+            Missouri, the Oregon Trail, Soap Creek, the Carson estate, Carson v.
+            Smith, Cow Creek, Letitia Creek, the Umatilla allotments — plus a
+            chronology 1845–1888, a Carson family line 1775–1922, a Lavadour
+            family line 1775–1922, maps and references.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Letitia-Lavadours</th>
+          <td>33 (15.9 MB)</td>
+          <td>Descendant research with the Lavadour family.</td>
+        </tr>
+        <tr>
+          <th scope="row">Letitia Carson 2012</th>
+          <td>19 (69.7 MB)</td>
+          <td>
+            The earlier working file: archives, articles, biographies, censuses,
+            databases, documents, genealogies, illustrations, land surveys.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Articles</th>
+          <td>6 at top level</td>
+          <td>
+            Newspaper articles in four period folders: 1853–1861, 1862–1869,
+            1870–1888, 1889–1922.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Billings</th>
+          <td>13 (1.1 MB)</td>
+          <td>
+            Project administration. Contains financial records, which are
+            excluded from description.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Illustrations</th>
+          <td>9 (32.8 MB)</td>
+          <td>Commissioned artwork.</td>
+        </tr>
+        <tr>
+          <th scope="row">Exhibit</th>
+          <td>7 (17.5 MB)</td>
+          <td>Exhibit materials.</td>
+        </tr>
+        <tr>
+          <th scope="row">Children's books</th>
+          <td>7 (4.0 MB)</td>
+          <td>Published and draft books for younger readers.</td>
+        </tr>
+        <tr>
+          <th scope="row">2024 and 2025 work</th>
+          <td>3 + dated folders</td>
+          <td>Recent drafts and a K–12 teaching file.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="originals">The originals</h2>
+
+    <ul class="zc-links">
+      <li>
+        <a href="http://www.orww.org/History/Letitia_Carson/">
+          ORWW Oregon History: Letitia Carson, 1845–1888
+        </a>
+      </li>
+      <li>
+        <a href="http://www.orww.org/History/Letitia_Carson/Library/">
+          Letitia Carson Library
+        </a>
+      </li>
+      <li>
+        <a href="http://www.orww.org/History/Letitia_Carson/Documentation/">
+          Letitia Carson Documentation
+        </a>
+      </li>
+      <li>
+        <a href="https://www.orww.store/letitia-carson/">
+          Letitia Carson, 1845–1888 — public guide page (2014)
+        </a>
+        <span class="zc-host-note">orww.store — the creator's own project and bookshop site, a different domain from his orww.org archive.</span>
+      </li>
+    </ul>
+
+    <h2 id="gaps">Known gaps and cautions</h2>
+
+    <ul>
+      <li>
+        Financial and billing records in the project folders are excluded from
+        description and not published.
+      </li>
+      <li>
+        The genealogy runs to living descendants. Family lines are recorded, but
+        no personal information about living people is published, and
+        descendants' own material stays theirs to release.
+      </li>
+      <li>
+        Commissioned illustrations and the children's books are commercial work
+        and are identified by reference only.
+      </li>
+      <li>
+        Several drafts of the biography exist across folders from 2012 to 2025.
+        Which is current has not been established.
+      </li>
+    </ul>
+
+    <h2 id="next">What describing this properly would take</h2>
+
+    <p>
+      Ask the creator which draft is the text, then describe the documentary
+      appendices — the chronology, the two family lines, the period article
+      runs, the land and court records — as a source set with a page per
+      document. The chapters named for places connect directly to the Soap Creek
+      places list, and Letitia Creek is on the same ground the narrators describe.
+    </p>
+
+    <ProvenanceBlock
+      items={[
+        { label: 'Creator', value: 'Dr. Bob Zybach; Oregon Websites and Watersheds Project, Inc.' },
+        { label: 'Received', value: 'Uploaded by the creator; census of 27 August 2026, depth-limited' },
+        { label: 'Published at', value: 'orww.org/History/Letitia_Carson/', href: 'http://www.orww.org/History/Letitia_Carson/' },
+        { label: 'In this collection', value: 'Inventory-level description only; no items published' },
+        { label: 'Excluded', value: 'Billing and financial records; personal information about living descendants' },
+      ]}
+    />
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/soap-creek/">Soap Creek Valley</a> ·
+      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-inv {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .zc-inv th,
+  .zc-inv td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem 0.65rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    line-height: 1.5;
+  }
+  .zc-inv thead th {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+  }
+  .zc-inv tbody th {
+    width: 11em;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .zc-caption {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #4e617c;
+  }
+  .zc-links {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    .zc-inv tbody th { width: auto; }
+    .zc-inv, .zc-inv thead, .zc-inv tbody, .zc-inv tr, .zc-inv th, .zc-inv td { display: block; }
+    .zc-inv thead { display: none; }
+    .zc-inv tbody td { border-top: 0; padding-top: 0; }
+  }
+</style>
+
+<style>
+  .zc-host-note {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: #4e617c;
+    line-height: 1.45;
+  }
+</style>

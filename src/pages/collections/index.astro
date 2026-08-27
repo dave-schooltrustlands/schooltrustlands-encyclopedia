@@ -1,0 +1,165 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../layouts/RoomLayout.astro';
+import { collection, clean } from '../../components/zybach/_data';
+
+const zybachName = clean(collection?.name) || 'The Zybach Collection';
+const zybachSubtitle =
+  clean(collection?.subtitle) ||
+  'Oregon forest history, told by the people who lived it — the working archive of Dr. Bob Zybach.';
+const seriesCount = collection?.series?.length ?? 8;
+const itemLevelCount =
+  (collection?.counts?.item_level_series as number) ??
+  collection?.series?.filter((s) => s.kind !== 'inventory').length ??
+  2;
+---
+
+<RoomLayout
+  room="collections"
+  title="Collections"
+  subtitle="Named special collections: bodies of work the Library accepts whole, keeps intact, and describes in a published finding aid."
+  width="prose"
+  sourceId="collections-index"
+  noindex={true}
+>
+  <div class="source-page">
+    <p class="provisional-note">
+      <strong>Preview — under review by the creator; not yet public.</strong>
+      The Library's first named special collection is being described in the
+      open. The pages below are complete enough to read and to correct, and
+      nothing here is settled until the creator has been through it.
+    </p>
+
+    <p>
+      Most of the Library is organized by subject: the cases, the money, the
+      states. A <strong>named special collection</strong> is organized the other
+      way round — by the person or organization whose work it is. The Library
+      takes the body of work as a whole rather than pulling out the useful
+      pieces, keeps the creator's own arrangement, credits the creator on every
+      page, and publishes a <em>finding aid</em>: the map of what a collection
+      holds and how to use it.
+    </p>
+
+    <p>
+      Collections are described before they are complete. A finding aid that
+      says plainly what is here, what is elsewhere, and what has not been looked
+      at yet is more useful to a researcher than a polished page that hides the
+      gaps.
+    </p>
+
+    <h2>In the Library now</h2>
+
+    <section class="collection-card">
+      <p class="kicker">Named special collection · preview</p>
+      <h3><a href="/collections/zybach/">{zybachName}</a></h3>
+      <p class="collection-card__dek">{zybachSubtitle}</p>
+      <p class="collection-card__facts">
+        {seriesCount} series, {itemLevelCount} of them described item by item ·
+        the Soap Creek Valley oral histories (1989–2009), the 1999 M.A.I.S.
+        thesis, the 1989 Auto Tour, and the Elliott State Forest oral histories,
+        field trips and videos (2017–2024).
+      </p>
+      <p class="collection-card__links">
+        <a href="/collections/zybach/">Finding aid</a> ·
+        <a href="/collections/zybach/provenance/">Provenance</a> ·
+        <a href="/collections/zybach/how-to-cite/">How to cite</a> ·
+        <a href="/collections/zybach/colophon/">Colophon</a>
+      </p>
+    </section>
+
+    <h2>How the Library treats a collection</h2>
+
+    <p>
+      The terms are the same for every collection the Library accepts. They are
+      written down so a creator can read them before deciding, and so a reader
+      knows what a page is claiming.
+    </p>
+
+    <ul>
+      <li>
+        <strong>Rights are settled in writing before anything is claimed.</strong>
+        The Library's intended terms are a deed of gift, and it does not state a
+        collection's rights as settled until one is signed and any publisher's
+        or repository's terms are reconciled. For
+        <a href="/collections/zybach/">the Zybach Collection</a>:
+        <em>Rights status: under review. The monographs were published by Oregon
+        State University Research Forests and College of Forestry; the Elliott
+        interviews are described by OSU under OH 047; the creator's deed of gift
+        and OSU's terms are still to be settled. Until then the Library links to
+        the creator's own copies and displays derived text for education and
+        research.</em>
+      </li>
+      <li>
+        <strong>The creator's arrangement stands.</strong> Series, titles,
+        chapter names and citation strings are the creator's. The Library adds
+        apparatus — indexes, maps, a permanent link for every printed page,
+        cross-links — and says so.
+      </li>
+      <li>
+        <strong>Originals stay where they are until the paperwork exists.</strong>
+        Until a deed of gift is signed, the Library links to the creator's own
+        hosted copies rather than mirroring them.
+      </li>
+      <li>
+        <strong>Provenance travels with every item.</strong> Who made it, when,
+        where it came from, and what the Library did to it.
+      </li>
+      <li>
+        <strong>Nothing private.</strong> Personal, financial and medical
+        material is excluded before description begins, and exclusion is never
+        deletion — the creator's own files are untouched.
+      </li>
+      <li>
+        <strong>Reversible.</strong> A collection that a creator declines comes
+        down, and the public site is unchanged.
+      </li>
+    </ul>
+
+    <p class="see-also">
+      Related: <a href="/pro/collection-development/">Collection development
+      policy</a> · <a href="/permissions/">Rights and permissions</a> ·
+      <a href="/about/cite/">How to cite the Library</a> ·
+      <a href="/about/corrections/">Corrections</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .collection-card {
+    margin: 1.25rem 0 1.75rem;
+    padding: 1.1rem 1.3rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 4px solid var(--room-accent, #4a5b4a);
+    border-radius: 4px;
+  }
+  .collection-card h3 {
+    margin: 0.2rem 0 0.4rem;
+    font-size: 1.35rem;
+  }
+  .collection-card h3 a {
+    color: var(--deep-navy, #14243c);
+    text-decoration: none;
+  }
+  .collection-card h3 a:hover {
+    text-decoration: underline;
+  }
+  .collection-card__dek {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  .collection-card__facts {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.87rem;
+    line-height: 1.5;
+    color: #4e617c;
+  }
+  .collection-card__links {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+</style>

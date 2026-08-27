@@ -1,0 +1,138 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import { ZybachNav } from '../../../../../components/zybach/elliott/shared';
+import {
+  BASE,
+  interviews,
+  projectInterviews,
+  relatedTranscripts,
+  longDate,
+  counts,
+} from '../../../../../components/zybach/elliott/data';
+---
+
+<RoomLayout
+  room="collections"
+  title="Interviews"
+  subtitle="Every transcript in the Elliott State Forest series, with a permanent link on every printed page"
+  width="full"
+  sourceId="zybach-elliott-interviews"
+  parents={[
+    { label: 'The Zybach Collection', href: '/collections/zybach/' },
+    { label: 'Elliott State Forest', href: `${BASE}/` },
+  ]}
+  noindex={true}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Elliott State Forest</p>
+
+  <ZybachNav current="elliott" />
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <p>
+    {counts.interviews} interviews from Bob Zybach's 2017–2019 project and{' '}
+    {counts.relatedTranscripts} further transcripts he filed with them.
+    {counts.transcriptPages > 0 && (
+      <span> {counts.transcriptPages} printed pages in all, each one addressable.</span>
+    )}
+  </p>
+
+  <h2>The project interviews</h2>
+  <table class="zy-iv-table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Interview</th>
+        <th scope="col" class="num">Tapes</th>
+        <th scope="col" class="num">Stops</th>
+        <th scope="col" class="num">Pages</th>
+        <th scope="col">Recorded</th>
+      </tr>
+    </thead>
+    <tbody>
+      {projectInterviews.map((iv) => (
+        <tr>
+          <td class="date">{iv.date_as_printed ?? longDate(iv.date)}</td>
+          <th scope="row">
+            <a href={iv.href}>
+              {iv.number_as_printed && <span class="num-lbl">{iv.number_as_printed} </span>}
+              {iv.title_as_printed}
+            </a>
+          </th>
+          <td class="num">{iv.tapes.length}</td>
+          <td class="num">{iv.segments.length}</td>
+          <td class="num">{iv.total_pages ?? ''}</td>
+          <td class="dur">{iv.total_audio ?? ''}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  {relatedTranscripts.length > 0 && (
+    <>
+      <h2>Filed alongside</h2>
+      <table class="zy-iv-table">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Document</th>
+            <th scope="col" class="num">Pages</th>
+          </tr>
+        </thead>
+        <tbody>
+          {relatedTranscripts.map((iv) => (
+            <tr>
+              <td class="date">{longDate(iv.date)}</td>
+              <th scope="row"><a href={iv.href}>{iv.title_as_printed}</a></th>
+              <td class="num">{iv.total_pages ?? ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  )}
+
+  <p class="see-also">
+    <a href={`${BASE}/`}>Back to the Elliott State Forest series</a> ·{' '}
+    <a href={`${BASE}/recordings/`}>Recordings register</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .zy-iv-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin: 0.8rem 0 2rem;
+  }
+  .zy-iv-table th,
+  .zy-iv-table td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.4rem 0.6rem 0.4rem 0;
+    text-align: left;
+    vertical-align: top;
+  }
+  .zy-iv-table thead th {
+    border-bottom: 2px solid var(--old-gold, #b58a45);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #475569;
+  }
+  .zy-iv-table .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .zy-iv-table .date,
+  .zy-iv-table .dur {
+    white-space: nowrap;
+    color: #475569;
+    font-variant-numeric: tabular-nums;
+  }
+  .zy-iv-table .num-lbl {
+    color: #94a3b8;
+  }
+</style>
