@@ -1,0 +1,99 @@
+---
+import { mirrored } from '../_data';
+/* Plate.astro — The Zybach Collection, front door.
+ *
+ * A picture with a real caption and a real credit. Every image on a front-door
+ * page goes through here so that three things are always true: the caption
+ * says what the picture is, the credit says whose it is, and a picture that
+ * fails to load leaves a quiet ruled frame rather than a broken page.
+ *
+ * The images are served from the creator's own sites. Nothing is copied here.
+ *
+ * Owner: FRONTDOOR. New file; nothing else imports it.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  credit?: string;
+  /** Wrap the picture in a link — the page it illustrates. */
+  href?: string;
+  /** Native pixel size, when known. Keeps the layout from shifting. */
+  width?: number;
+  height?: number;
+  /** Aspect ratio for the frame, e.g. "504 / 345". */
+  ratio?: string;
+  /** `wide` fills the column; `plate` caps at a comfortable picture width. */
+  size?: 'wide' | 'plate';
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  src,
+  alt,
+  caption,
+  credit,
+  href,
+  width,
+  height,
+  ratio,
+  size = 'plate',
+  loading = 'lazy',
+} = Astro.props as Props;
+
+const frameStyle = ratio ? `aspect-ratio: ${ratio};` : undefined;
+---
+
+<figure class:list={['fd-plate', `fd-plate--${size}`]}>
+  {href ? (
+    <a class="fd-plate__frame" href={href} style={frameStyle}>
+      <img src={mirrored(src)} alt={alt} width={width} height={height} loading={loading} decoding="async" />
+    </a>
+  ) : (
+    <span class="fd-plate__frame" style={frameStyle}>
+      <img src={mirrored(src)} alt={alt} width={width} height={height} loading={loading} decoding="async" />
+    </span>
+  )}
+  {(caption || credit) && (
+    <figcaption class="fd-plate__cap">
+      {caption}
+      {credit && <span class="fd-plate__credit">{credit}</span>}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .fd-plate {
+    margin: 1.75rem 0 2rem;
+  }
+  .fd-plate--plate {
+    max-width: 34rem;
+  }
+  .fd-plate__frame {
+    display: block;
+    background: #efeadd;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    box-shadow: 0 1px 4px rgba(26, 26, 46, 0.12);
+    overflow: hidden;
+  }
+  .fd-plate__frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .fd-plate__cap {
+    margin-top: 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #4a4438;
+    max-width: 46ch;
+  }
+  .fd-plate__credit {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.74rem;
+    color: #8a8172;
+  }
+</style>

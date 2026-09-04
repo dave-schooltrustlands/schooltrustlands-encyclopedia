@@ -2,122 +2,127 @@
 export const prerender = true;
 
 import RoomLayout from '../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
 import ZybachMap from '../../../components/zybach/ZybachMap.astro';
 import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
 import ContentNote from '../../../components/zybach/ContentNote.astro';
-import CitationBlock from '../../../components/zybach/CitationBlock.astro';
+import Opening from '../../../components/zybach/frontdoor/Opening.astro';
+import Plate from '../../../components/zybach/frontdoor/Plate.astro';
+import Voices from '../../../components/zybach/frontdoor/Voices.astro';
+import CoverShelf from '../../../components/zybach/frontdoor/CoverShelf.astro';
+import Doors from '../../../components/zybach/frontdoor/Doors.astro';
+import Measure from '../../../components/zybach/frontdoor/Measure.astro';
+import AboutStrip from '../../../components/zybach/frontdoor/AboutStrip.astro';
 import { collection, collectionStatement, clean, RIGHTS_STATEMENT } from '../../../components/zybach/_data';
-
-/* Count keys are record field names. Where the field name would mislead a
-   reader, the reader gets the true unit instead: Bob's 2019 Elliott index
-   counts cassette SIDES, not cassettes. */
-const COUNT_LABELS: Record<string, string> = {
-  tapes: 'tape sides',
-  video_segments: 'time-coded video sections',
-  people_indexed: 'people with pages',
-  index_refs: 'index references',
-};
-const countLabel = (k: string) => COUNT_LABELS[k] ?? k.replace(/_/g, ' ');
+import { monographs } from '../../../components/zybach/soapcreek/data';
+import {
+  videos as elliottVideos,
+  counts as elliottCounts,
+} from '../../../components/zybach/elliott/data';
 
 const name = clean(collection?.name) || 'The Zybach Collection';
 const subtitle =
   clean(collection?.subtitle) ||
   'Oregon forest history, told by the people who lived it — the working archive of Dr. Bob Zybach.';
 
-/* Headline counts, as the generator measured them. */
 const sc = (collection?.counts?.soap_creek ?? {}) as Record<string, number>;
 const el = (collection?.counts?.elliott ?? {}) as Record<string, number>;
-const headline: Array<{ n: number; label: string }> = [
-  { n: sc.monographs, label: 'printed monographs' },
-  { n: sc.printed_pages, label: 'printed pages' },
-  { n: sc.narrators, label: 'narrators' },
-  { n: sc.places, label: 'places named' },
-  { n: el.interviews, label: 'Elliott interviews' },
-  { n: el.videos, label: 'videos' },
-].filter((c) => typeof c.n === 'number' && c.n > 0);
 
-/* The series list is the generator's when it exists. The fallback is the
-   collection's shape as set out in the build plan (§3c): two series described
-   item by item, six described at inventory level in this generation. */
-const FALLBACK_SERIES = [
+/* The books, in printed order, as a shelf a reader can walk along. Covers are
+   the creator's own scans on his own site; nothing is copied here. */
+/* A handful of title pages are set in full capitals. Where that is all the
+   title is, the person's own name as the collection records it is shown
+   instead; nothing else about the title is touched. */
+const titleOf = (m: (typeof monographs)[number]) => {
+  const printed = clean(m.title);
+  return /[a-z]/.test(printed) ? printed : (m.narrators?.[0]?.display_name ?? printed);
+};
+
+const shelf = monographs.map((m) => ({
+  href: m.href ?? `/collections/zybach/soap-creek/${m.slug}/`,
+  img: m.thumb_url ?? m.cover_url ?? null,
+  number: m.number != null ? `#${String(m.number).padStart(2, '0')}` : '',
+  title: titleOf(m),
+  year: m.year_printed ?? null,
+}));
+
+/* Three passages, verbatim, each linked to the printed page it stands on.
+   Every one was checked against the transcript before it was set here, and
+   none stands on a page the Library is holding back. */
+const QUOTES = [
   {
-    slug: 'soap-creek',
-    title: 'Soap Creek Valley',
-    kind: 'item-level',
-    href: '/collections/zybach/soap-creek/',
-    summary:
-      'The Soap Creek Valley History Project: fifteen printed interview monographs (1990–2009), the 1999 M.A.I.S. thesis, and the 1989 Auto Tour. Described item by item, page by page.',
+    text:
+      "Yeah, the oaks were there first and they'd died off because the firs grew up and shut off the sun. You had to be very careful in working in there because you'd go up to a tree that looked like a small oak tree and you could tell it was dead because the bark would be off of it and you could push it right over, because the firs, they reach for the sun right away and the oaks lost out.",
+    speaker: 'James Hanish',
+    role: 'Logger',
+    source: 'Monograph #06, page 19',
+    href: '/collections/zybach/soap-creek/m06-hanish/c-coote-s-mill/#p19',
   },
   {
-    slug: 'elliott',
-    title: 'Elliott State Forest',
-    kind: 'item-level',
-    href: '/collections/zybach/elliott/',
-    summary:
-      'Oral histories, field-trip tours, route maps, photographs and time-coded videos recorded on the Elliott State Forest, 2017–2024. Interviews and videos described item by item.',
+    text:
+      "You go down to the school house. And there was a little creek that came down from up above and we got our water for the school house out of that little creek. There isn't any creek now. Right below the school house was a bridge across Soap Creek. That bridge floated out three different times while I was a kid and right now I don't think that creek was over it's banks.",
+    speaker: 'Charlie Olson',
+    role: 'Farmer, auto mechanic, sawmill worker, school bus operator',
+    source: 'Monograph #07, page 33',
+    href: '/collections/zybach/soap-creek/m07-olson/c-lewisburg-clearcut/#p33',
   },
   {
-    slug: 'alberta-street',
-    title: 'Alberta Street Project',
-    kind: 'inventory',
-    href: '/collections/zybach/alberta-street/',
-    summary:
-      'Two cultural-resource inventories of the Alberta Street neighborhood in North/Northeast Portland, 1992 and 2015.',
-  },
-  {
-    slug: 'osbornes',
-    title: 'The Osbornes Project',
-    kind: 'inventory',
-    href: '/collections/zybach/osbornes/',
-    summary:
-      'Repeat photography: 1930s Osborne-camera panoramas from Oregon fire lookouts, rephotographed from the same points beginning in 2006.',
-  },
-  {
-    slug: 'jedediah-smith',
-    title: 'Jedediah Smith and the 1828 Umpqua Memorial',
-    kind: 'inventory',
-    href: '/collections/zybach/jedediah-smith/',
-    summary:
-      'Research, maps, guidebooks and memorial-project records on the 1828 Umpqua River events and the Jedediah Smith party.',
-  },
-  {
-    slug: 'letitia-carson',
-    title: 'Letitia Carson, 1845–1888',
-    kind: 'inventory',
-    href: '/collections/zybach/letitia-carson/',
-    summary:
-      'Biography, genealogy, land and court records for Letitia Carson, a Black pioneer who settled in Soap Creek Valley.',
-  },
-  {
-    slug: 'wildfire',
-    title: 'Oregon wildfire and forest restoration',
-    kind: 'inventory',
-    href: '/collections/zybach/wildfire/',
-    summary:
-      'Fire history, catastrophic-fire research and forest-restoration work, including the 2003 Ph.D. dissertation on Coast Range fire patterns.',
-  },
-  {
-    slug: 'reforestation-records',
-    title: 'Reforestation business records',
-    kind: 'inventory',
-    href: '/collections/zybach/reforestation-records/',
-    summary:
-      'Contract reforestation business records, 1972–1990, held at Oregon State University as the Bob Zybach Collection. Described here; not published here.',
+    text:
+      "Well, yes. It was a link, link with your neighbors. Party line, everybody was on the line. And if you were smart, you wanted to be careful what you said, because you knew your neighbors were listening in.",
+    speaker: 'Wanda Marcks Cook',
+    role: 'Farm wife; later a cosmetologist in Portland',
+    source: 'Monograph #12, page 23',
+    href: '/collections/zybach/soap-creek/m12-cook/08-married-life/#p23',
   },
 ];
 
-const series = collection?.series?.length ? collection.series : FALLBACK_SERIES;
-const itemLevel = series.filter((s) => s.kind !== 'inventory');
-const inventory = series.filter((s) => s.kind === 'inventory');
+/* One still from the Elliott videos, chosen from the creator's own playlist. */
+const elkhorn =
+  elliottVideos.find((v: any) => /Elkhorn Ranch/i.test(v.title ?? '')) ?? elliottVideos[0] ?? null;
+
+/* The six series described at inventory level in this edition. One calm
+   sentence each: what it is, and what the Library has done with it so far. */
+const COMING = [
+  {
+    title: 'Letitia Carson, 1845–1888',
+    href: '/collections/zybach/letitia-carson/',
+    line:
+      'Biography, genealogy, land and court records for a Black pioneer who settled in Soap Creek Valley — the next series the Library will describe item by item.',
+  },
+  {
+    title: 'The Alberta Street Project',
+    href: '/collections/zybach/alberta-street/',
+    line:
+      'Two cultural-resource inventories of the Alberta Street neighborhood in North and Northeast Portland, 1992 and 2015; described here, with item pages to come.',
+  },
+  {
+    title: 'The Osbornes Project',
+    href: '/collections/zybach/osbornes/',
+    line:
+      'Panoramas made from Oregon fire lookouts with an Osborne camera in the 1930s, rephotographed from the same points from 2006; described here, with item pages to come.',
+  },
+  {
+    title: 'Jedediah Smith and the 1828 Umpqua Memorial',
+    href: '/collections/zybach/jedediah-smith/',
+    line:
+      'Research, maps, guidebooks and memorial-project records on the 1828 Umpqua River events; described here, with item pages to come.',
+  },
+  {
+    title: 'Oregon wildfire and forest restoration',
+    href: '/collections/zybach/wildfire/',
+    line:
+      'The creator publishes his fire-history and forest-restoration work himself, on orww.org; the Library points readers there rather than making a second copy.',
+  },
+  {
+    title: 'Reforestation business records',
+    href: '/collections/zybach/reforestation-records/',
+    line:
+      'Contract reforestation business records, 1972–1990, held at Oregon State University; described here and published nowhere on this site.',
+  },
+];
 
 const statement = collectionStatement();
-
-const creator = collection?.creator ?? null;
-const bioText =
-  creator?.bio_text ??
-  'Dr. Bob Zybach is a historical ecologist and Oregon forest-history researcher. He edited the Soap Creek Valley History Project monograph series for the OSU Research Forests and College of Forestry, wrote the 1989 Historic Soap Creek Valley Auto Tour, took an M.A.I.S. at Oregon State in 1999 and a Ph.D. in environmental sciences there in 2003, and co-founded the Oregon Websites and Watersheds Project in 1996. His current project pages are at orww.store — his own project and bookshop site — and the long-running Oregon Websites and Watersheds archive is at orww.org.';
-const bioDraft = creator?.bio_text_draft_flag !== false;
 
 /* Two regions, so a reader can see at a glance where this collection is.
    Coordinates are approximate centroids, marked as such below the map. */
@@ -130,8 +135,7 @@ const regions = {
       properties: {
         kind: 'region',
         title: 'Soap Creek Valley',
-        subtitle:
-          'Benton County — fifteen monographs, the thesis, the Auto Tour',
+        subtitle: 'Benton County — fifteen books, the thesis, the Auto Tour',
         href: '/collections/zybach/soap-creek/',
       },
     },
@@ -141,7 +145,7 @@ const regions = {
       properties: {
         kind: 'region',
         title: 'Elliott State Forest',
-        subtitle: 'Coos and Douglas counties — oral histories, tours, videos',
+        subtitle: 'Coos and Douglas counties — interviews, tours, videos',
         href: '/collections/zybach/elliott/',
       },
     },
@@ -149,31 +153,41 @@ const regions = {
 };
 
 const provenanceItems = [
-  {
-    label: 'Creator',
-    value: creator?.display_name ?? 'Dr. Bob Zybach',
-  },
+  { label: 'Creator', value: collection?.creator?.display_name ?? 'Dr. Bob Zybach' },
   {
     label: 'Accessioned from',
     value:
       (collection?.provenance?.accession_statement as string) ??
       (collection?.provenance?.accession as string) ??
-      "Bob Zybach's upload to the Library's working Drive, 23 August 2026; original folder paths preserved.",
+      "Bob Zybach's upload to the Library's working Drive, 23 August 2026; his own folder order preserved.",
   },
   {
     label: 'Originals',
-    value: 'nwmapsco.com (Soap Creek), orww.org (Elliott and the other series)',
+    value: 'nwmapsco.com for the Soap Creek books; orww.org for the Elliott and the rest',
     href: 'http://www.orww.org/',
   },
   {
     label: 'Also held at',
-    value: 'OSU Special Collections and Archives Research Center — each finding aid linked below',
+    value: 'Oregon State University Special Collections and Archives Research Center — finding aids linked below',
   },
-  { label: 'Rights', value: RIGHTS_STATEMENT },
-  {
-    label: 'Status',
-    value: 'Preview. Not approved by the creator or by the Library.',
-  },
+];
+
+/* The collection-level rights statement is written once, in one place, and
+   printed identically wherever rights are stated. It ends by naming the rights
+   page; here that becomes a link rather than a path a reader has to retype. */
+const RIGHTS_HREF = '/collections/zybach/rights/';
+const rightsProse = RIGHTS_STATEMENT.replace(/[:\s]*\/collections\/zybach\/rights\/\s*$/, '.');
+
+const MEASURE = [
+  { n: sc.monographs, label: 'printed books' },
+  { n: sc.printed_pages, label: 'printed pages' },
+  { n: sc.narrators, label: 'people interviewed' },
+  { n: sc.places, label: 'places named' },
+  { n: sc.index_refs, label: 'index references' },
+  { n: sc.chronology_entries, label: 'dated statements' },
+  { n: elliottCounts.interviews, label: 'Elliott interviews' },
+  { n: elliottCounts.videos, label: 'Elliott videos' },
+  { n: elliottCounts.photographs || el.photographs, label: 'Elliott photographs' },
 ];
 ---
 
@@ -181,261 +195,273 @@ const provenanceItems = [
   room="collections"
   title={name}
   subtitle={subtitle}
-  width="prose"
+  width="full"
   sourceId="collections-zybach-finding-aid"
-  noindex={true}
 >
+  <p slot="before-title" class="kicker">A named special collection</p>
+
   <span data-pagefind-meta="collection:zybach" hidden></span>
 
-  <div class="source-page">
-    <ZybachNav current="finding-aid" />
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
 
-    <p class="provisional-note">
-      <strong>Preview — under review by the creator; not yet public.</strong>
-      This finding aid was prepared for Dr. Zybach's review. Item lists,
-      transcripts and indexes are drawn from his own published work and from
-      files he uploaded, and nothing here is approved until he has been through
-      it. Corrections are welcome now:
-      <a href="/about/corrections/">tell us what is wrong</a>.
-    </p>
-
-    <p class="kicker">Finding aid</p>
-
+  <Opening>
     <p>
-      A <strong>finding aid</strong> is a library's map of what a collection
-      holds and how to use it: what the material is, how it is arranged, where
-      it came from, who may use it, and where the originals are. This one
-      describes the life's work of Dr. Bob Zybach — thirty-five years of Oregon
-      forest history recorded from the people who lived it.
+      Soap Creek Valley is a small farming valley in northern Benton County,
+      Oregon, a few miles north of Corvallis. Between 1975 and 1995 the people
+      who had spent their lives in it — farmers, loggers, schoolteachers, a
+      botanist, a Civilian Conservation Corps enrollee, and the foresters who
+      came to manage the hills above them — sat down with a tape recorder and
+      told the valley's history in their own words.
     </p>
-
     <p>
-      The collection's spine is oral history done geographically. Bob
-      interviewed people about places, often standing in them, and then
-      published the transcripts as numbered monographs with an index that cites
-      by monograph and page. That citation habit is what makes this collection
-      navigable: a reference like <em>05:47</em> means monograph #5, page 47,
-      and it has meant that since 1993. The Library keeps his numbering, his
-      chapter names and his citation strings, and adds only the apparatus — a
-      permanent link for every printed page, cross-links, maps, and indexes made
-      live.
+      Twenty-one of them are here. Their interviews were printed as fifteen
+      books between 1990 and 2009, indexed and cross-referenced so that a
+      sentence about a creek in one book leads to the same creek in another.
+      The tapes are at Oregon State University. This collection is the whole
+      of that work, made readable page by page, with a second body of
+      recordings made a generation later on the Elliott State Forest.
     </p>
+    <p>
+      The recording was not one man's doing. Royal G. Jackson and Jennifer Lee
+      began in 1978, Karen Thomas joined in 1980, and Bob Zybach — who edited
+      the series and carried it into print — recorded from 1989. Research
+      assistants, students and transcribers worked on it too, and each book
+      names its own.
+    </p>
+  </Opening>
 
-    {headline.length > 0 && (
-      <ul class="zc-headline" aria-label="What is described here">
-        {headline.map((c) => (
-          <li>
-            <span class="zc-headline__n">{c.n.toLocaleString('en-US')}</span>
-            <span class="zc-headline__l">{c.label}</span>
-          </li>
-        ))}
-      </ul>
-    )}
+  <Plate
+    src="http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/Soap_Creek_Valley-7.jpg"
+    alt="Black-and-white photograph of a farmstead in an open valley, with bare hills behind it."
+    width={504}
+    height={345}
+    ratio="504 / 345"
+    size="wide"
+    loading="eager"
+    href="/collections/zybach/soap-creek/"
+    caption="The Moore family farm on Soap Creek, photographed about 1899 or 1900 by Samuel H. Moore. The creator puts it at the head of the series, and nine of the fifteen books carry it on their covers."
+    credit="Reproduced courtesy of Myra Moore Lauridson and the Soap Creek Schoolhouse Foundation, from the creator's own pages at nwmapsco.com."
+  />
 
-    <h2 id="scope">Scope</h2>
+  <Voices
+    heading="What they said"
+    headingId="voices"
+    quotes={QUOTES}
+    lede="Every passage below is printed exactly as it stands in the book, and every one links to the page it came from, where the sentence before it and the sentence after it are waiting."
+  />
 
+  <section aria-labelledby="the-books">
+    <h2 id="the-books">Fifteen books</h2>
+    <p class="fd-para">
+      One valley, one book at a time, each named for the person who talks in
+      it. Open a cover and you get the front matter as printed, the recording
+      sessions, the transcript page by page, the photographs and the index.
+    </p>
+    <CoverShelf
+      items={shelf}
+      credit="Covers as the creator scans and publishes them at nwmapsco.com; the Library shows a display copy and links to his originals."
+    />
+    <p class="fd-more">
+      <a href="/collections/zybach/soap-creek/">The Soap Creek Valley series, in full</a>
+    </p>
+  </section>
+
+  <section aria-labelledby="the-elliott">
+    <h2 id="the-elliott">And then the Elliott</h2>
+    <div class="fd-split">
+      <div>
+        <p class="fd-para">
+          Forty years after the Soap Creek tapes began, Bob Zybach did the same
+          thing on the Elliott State Forest, in Coos and Douglas counties: drove
+          its roads with his narrators, recorded what they said at each stop, and
+          tied every stop to a minute on the tape and a page in the transcript.
+          Then he went back with a camera. Nineteen videos follow the same
+          ground — field trips, class sessions and talks.
+        </p>
+        <p class="fd-para">
+          The Elliott was school trust land for most of a century, until the
+          State Land Board decoupled it from the Common School Fund in 2022.
+          That is why a school-trust library keeps this part of the record.
+        </p>
+        <p class="fd-more">
+          <a href="/collections/zybach/elliott/">The Elliott State Forest series</a>
+        </p>
+      </div>
+      {elkhorn?.thumbnail && (
+        <Plate
+          src={elkhorn.thumbnail}
+          alt={`Still frame from the video "${elkhorn.title}".`}
+          width={480}
+          height={360}
+          ratio="480 / 360"
+          size="wide"
+          href={elkhorn.href}
+          caption={`A still from "${elkhorn.title}", one of nineteen videos on the creator's own playlist.`}
+          credit="Frame from the creator's video, ORWWmedia."
+        />
+      )}
+    </div>
+  </section>
+
+  <Doors
+    doors={[
+      {
+        who: 'You live nearby, or you drive through',
+        lede:
+          'Start with the ground. The 1989 Auto Tour is eleven stops with a short essay at each one, and the places index tells you what every narrator said about the spot you are standing in.',
+        links: [
+          { label: 'The Historic Soap Creek Valley Auto Tour', href: '/collections/zybach/soap-creek/auto-tour/', note: 'Eleven stops, the text as printed in 1989' },
+          { label: 'Places', href: '/collections/zybach/soap-creek/places/', note: 'Every named place, with page citations' },
+          { label: 'The valley map', href: '/collections/zybach/soap-creek/#the-ground' },
+        ],
+      },
+      {
+        who: 'You are looking for a family name',
+        lede:
+          'Start with the people. Everyone the narrators mention has a page: who they were, where they turn up, and the printed pages that say so. The merged index of all fifteen books is the fastest way to a surname.',
+        links: [
+          { label: 'People', href: '/collections/zybach/soap-creek/people/', note: 'Narrators, interviewers, and everyone named' },
+          { label: 'The Series Index, A to Z', href: '/collections/zybach/soap-creek/index/', note: "The books' own back-of-book indexes, merged and made live" },
+          { label: 'How to cite what you find', href: '/collections/zybach/how-to-cite/' },
+        ],
+      },
+      {
+        who: 'You are a researcher or a teacher',
+        lede:
+          'Start with the evidence. Every printed page has its own permanent link, the 1999 thesis shows how these interviews were tested against maps and photographs, and the timeline sets the narrators’ dated statements side by side, disagreements included.',
+        links: [
+          { label: 'The 1999 thesis', href: '/collections/zybach/soap-creek/thesis/', note: 'How the informants were chosen and how their memories were checked' },
+          { label: 'Timeline', href: '/collections/zybach/soap-creek/timeline/', note: 'Dated statements, verbatim, by period' },
+          { label: 'The Elliott videos', href: '/collections/zybach/elliott/videos/', note: 'Time-coded, so a class can jump to the minute' },
+        ],
+      },
+    ]}
+  />
+
+  <p class="fd-more fd-more--doors">
+    <a href="/collections/zybach/start-here/">A longer walk through, with the
+    first thing to read in each case</a>
+  </p>
+
+  <section aria-labelledby="series">
+    <h2 id="series">What else is in the collection</h2>
+    <p class="fd-para">
+      Bob Zybach's work runs wider than these two forests. Six further bodies of
+      work are described here — what exists, where it is, and what it would take
+      to open it — without item pages yet.
+    </p>
+    <ul class="fd-coming">
+      {COMING.map((s) => (
+        <li>
+          <a href={s.href}>{s.title}</a>
+          <span>{s.line}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="where">
+    <h2 id="where">Where this collection is</h2>
+
+    <ZybachMap
+      id="collection-overview-map"
+      center={[-123.6, 44.15]}
+      zoom={6.4}
+      features={regions}
+      height="400px"
+      fit={true}
+    />
+
+    <ul class="fd-places">
+      <li>
+        <a href="/collections/zybach/soap-creek/">Soap Creek Valley</a> — about
+        44.70° N, 123.27° W. A 15,000-acre sub-basin of the Luckiamute River in
+        northern Benton County. Fifteen books, the 1999 thesis, the 1989 Auto
+        Tour.
+      </li>
+      <li>
+        <a href="/collections/zybach/elliott/">Elliott State Forest</a> — about
+        43.60° N, 124.00° W. Coos and Douglas counties, inland from Reedsport.
+        Interviews, field tours, route maps, photographs, videos.
+      </li>
+    </ul>
+    <p class="fd-note">
+      Both coordinates are approximate regional centres chosen for this overview
+      map, not survey positions. Place coordinates on the series pages carry
+      their own method and confidence.
+    </p>
+  </section>
+
+  <section aria-labelledby="how-big">
+    <h2 id="how-big">How big it is</h2>
+    <Measure
+      items={MEASURE}
+      note="Counts are of what the Library has described so far, not of everything the creator holds. The six series above are counted as descriptions, not as items."
+    />
+  </section>
+
+  {statement && <ContentNote text={statement} level="collection" draft={true} />}
+
+  <AboutStrip>
+    <h3>Scope</h3>
     <p>
       Materials documenting Oregon forest and pioneer history: the Soap Creek
       Valley oral histories and the research built on them; the Elliott State
-      Forest's management, ecology and public history — school trust land for
-      most of a century, until the State Land Board decoupled it from the Common
-      School Fund in 2022; Oregon coastal fire history; and related Oregon
-      pioneer-history projects where they help readers understand the school
-      trust record.
+      Forest's management, ecology and public history; Oregon coastal fire
+      history; and related Oregon pioneer-history projects where they help
+      readers understand the school trust record.
     </p>
 
-    <h3 id="creators">Who made it</h3>
+    <h3>Dates</h3>
+    <p>
+      Soap Creek interviews were recorded between 1975 and 1995 and printed
+      between 1990 and 2009. The Elliott interviews and field trips were
+      recorded 2017–2019, with videos to 2024. Two earlier tapes the creator
+      collected and published alongside the Elliott material date from 8
+      October 1962 and 11 November 1965. Oregon State dates its own Soap Creek
+      collection 1978–2009 and its Elliott collection 2017–2022.
+    </p>
 
+    <h3>Who made it</h3>
     <p>
       Dr. Bob Zybach is the creator of this collection and the editor of the
-      Soap Creek series. He is not its only author. Oregon State University's
-      finding aid for the same oral histories, OH 006, lists five creators: the
-      OSU Research Forests' Soap Creek Valley History Project, Royal G. Jackson,
+      Soap Creek series; he is not its only author. Oregon State University's
+      finding aid for the same oral histories lists five creators: the OSU
+      Research Forests' Soap Creek Valley History Project, Royal G. Jackson,
       Jennifer A. Lee, the Oregon State University College of Forestry, and Bob
       Zybach. The Soap Creek work was funded by the OSU Research Forests and the
       College of Forestry; the Elliott work by the Oregon Department of State
       Lands and the OSU College of Forestry.
+      {' '}<a href="/collections/zybach/about-the-creator/">About the creator</a>.
     </p>
 
-    <h3 id="dates">Dates</h3>
-
-    <p>
-      Soap Creek interviews were recorded between July 1975 and August 1995 and
-      printed between 1990 and 2009. The Elliott interviews and field trips were
-      recorded 2017–2019, with videos to 2024. Two earlier tapes Bob collected
-      and published with the Elliott material — Herman Larson, interviewed by
-      John and Maralee Brelage — date from 8 October 1962 and 11 November 1965.
-      OSU dates OH 006 1978–2009 and OH 047 2017–2022.
-    </p>
-
-    <p class="zc-caption">
-      Rights status: under review. The monographs were published by Oregon State
-      University Research Forests and College of Forestry; the Elliott interviews
-      are described by OSU under OH 047; the creator's deed of gift and OSU's
-      terms are still to be settled. Until then the Library links to the
-      creator's own copies and displays derived text for education and research.
-    </p>
-
-    <p class="provisional-note">
-      In this generation the Library hosts the <em>derived</em> layer only —
-      catalog records, transcript text, indexes, maps and a permanent link for
-      every printed page. Every
-      monograph PDF, recording and video links to the creator's own hosted copy
-      at nwmapsco.com, orww.org or YouTube. The linked pages remain the source;
-      this preview does not copy the underlying materials. Mirroring to the
-      Library's storage follows the paperwork; it does not precede it.
-    </p>
-
-    {statement && <ContentNote text={statement} level="collection" draft={true} />}
-
-    <p class="zc-caption">
-      Oregon State University, which holds the recordings, publishes its own
-      statement about this language, dated April 2025, on the
-      <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309">finding
-      aid for OH 006</a>; the Library's
-      <a href="/collections/zybach/content-note/">content note</a> quotes it.
-    </p>
-    {!statement && (
-      <ContentNote
-        level="collection"
-        draft={true}
-        text="Some interviews in this collection contain derogatory language, and some pages carry personal information about named people. Following the practice of the OSU archive that holds the tapes, the Library notes such passages on the pages where they appear rather than altering the record. Pages with personal data about living or recently living people are held from this preview pending review."
-      />
-    )}
-
-    <h2 id="where">Where this collection is</h2>
-
-    <ZybachMap
-      id="zc-finding-aid-map"
-      center={[-123.6, 44.15]}
-      zoom={6.4}
-      features={regions}
-      height="440px"
-      fit={true}
-    />
-
-    <ul class="zc-map-list">
-      <li>
-        <a href="/collections/zybach/soap-creek/">Soap Creek Valley</a> —
-        approx. 44.70° N, 123.27° W. A 15,000-acre sub-basin of the Luckiamute
-        River in northern Benton County. Fifteen monographs, the 1999 thesis,
-        the 1989 Auto Tour.
-      </li>
-      <li>
-        <a href="/collections/zybach/elliott/">Elliott State Forest</a> —
-        approx. 43.60° N, 124.00° W. Coos and Douglas counties, inland from
-        Reedsport. Oral histories, field-trip tours, route maps, photographs,
-        videos.
-      </li>
-    </ul>
-
-    <p class="zc-caption">
-      Both coordinates are approximate regional centroids chosen for this
-      overview map, not survey positions. Place coordinates on the series pages
-      carry their own method and confidence.
-    </p>
-
-    <h2 id="series">Series</h2>
-
-    <p>
-      Two series are described item by item in this generation. The other six
-      are described at inventory level: what exists, where it is, and what it
-      would take to open it. That is a first generation, not a limit.
-    </p>
-
-    <h3 id="series-item-level">Described item by item</h3>
-
-    {itemLevel.map((s) => (
-      <section class="zc-series">
-        <h4>
-          <a href={s.href ?? `/collections/zybach/${s.slug}/`}>{clean(s.title)}</a>
-        </h4>
-        {s.summary && <p class="zc-series__summary">{clean(s.summary)}</p>}
-        {s.counts && (
-          <p class="zc-series__counts">
-            {Object.entries(s.counts)
-              .filter(([k]) => k !== 'accessioned_files_matching_name')
-              .map(([k, v]) => `${Number(v).toLocaleString('en-US')} ${countLabel(k)}`)
-              .join(' · ')}
-          </p>
-        )}
-        {s.slug === 'elliott' && (
-          <p class="zc-caption">
-            "Tape sides" counts cassette sides as Bob Zybach's 2019 index counts
-            them. OSU's finding aid for the same material, OH 047, lists 15
-            audiocassettes.
-          </p>
-        )}
-      </section>
-    ))}
-
-    <h3 id="series-inventory">Described at inventory level</h3>
-
-    <p class="zc-series__note">
-      These six series are real bodies of work with public pages of their own.
-      Here they carry a description, an inventory of what the Library has seen,
-      and links to the creator's originals — not item pages.
-    </p>
-
-    {inventory.map((s) => (
-      <section class="zc-series zc-series--inventory">
-        <h4>
-          <a href={s.href ?? `/collections/zybach/${s.slug}/`}>{clean(s.title)}</a>
-        </h4>
-        {s.summary && <p class="zc-series__summary">{clean(s.summary)}</p>}
-        {typeof s.counts?.accessioned_files_matching_name === 'number' && (
-          <p class="zc-series__counts">
-            {s.counts.accessioned_files_matching_name} accessioned files carry
-            this series' name
-            {s.described_from ? ` · described from ${clean(s.described_from)}` : ''}
-          </p>
-        )}
-      </section>
-    ))}
-
-    <h2 id="arrangement">Arrangement and access</h2>
-
-    <p>
-      Series follow the creator's own project divisions. Within Soap Creek, the
-      unit is the printed monograph and the page as printed; within the Elliott,
-      it is the interview date, the tape side and the minute. Both resolve to
-      the same idea — a segment: a stretch of talk about a place, at a time, on
-      a record.
-    </p>
-
+    <h3>Arrangement and access</h3>
     <ul>
+      <li>
+        <strong>Arrangement.</strong> Series follow the creator's own project
+        divisions. In Soap Creek the unit is the printed book and the page as
+        printed; on the Elliott it is the interview date, the tape side and the
+        minute. Both come to the same thing: a stretch of talk about a place, at
+        a time, on a record.
+      </li>
       <li>
         <strong>Open.</strong> Everything published here is open for research.
         The Library asks for attribution and correction, not permission.
       </li>
       <li>
-        <strong>Held.</strong> A small number of pages containing personal data
-        about named individuals — home addresses, telephone numbers, children's
-        names, landowner tax lots — are held from this preview pending review.
-        Held pages are shown as held, with a reason, rather than silently
-        removed.
+        <strong>Held.</strong> A small number of pages are held back and shown
+        as held, with a reason, rather than quietly removed. They can be
+        requested.
       </li>
       <li>
-        <strong>Held at OSU, not here.</strong> The reforestation business
-        records are described here and published nowhere on this site; they are
-        held at Oregon State as the Bob Zybach Collection (MSS Zybach). OSU does
-        not restrict them.
-      </li>
-      <li>
-        <strong>Commercial.</strong> Materials Bob sells are identified by
-        reference only, so researchers know they exist and whom to ask.
+        <strong>Held at Oregon State, not here.</strong> The reforestation
+        business records are described here and published nowhere on this site.
       </li>
     </ul>
 
-    <ProvenanceBlock items={provenanceItems} />
-
-    <h3 id="also-held-at">The same material at Oregon State</h3>
-
-    <p>
-      A researcher who needs the tape, not the transcript, should go to OSU. Each
-      finding aid is linked directly.
-    </p>
-
+    <h3>The same material at Oregon State</h3>
+    <p>A reader who needs the tape rather than the transcript should go to OSU.</p>
     <ul>
       <li>
         <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309">
@@ -452,8 +478,7 @@ const provenanceItems = [
           OH 005 — Oral History Interviews, Personal Histories, and Sound
           Recordings Collection on Agriculture, Forestry, and Oregon History,
           1908–2022
-        </a>: a collection of many hands, 0.8 cubic feet, in which Bob Zybach is
-        one of the listed creators.
+        </a>
       </li>
       <li>
         <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=1303">
@@ -462,124 +487,110 @@ const provenanceItems = [
       </li>
     </ul>
 
-    <p class="see-also">
-      <a href="/collections/zybach/provenance/">Full provenance and chain of
-      custody</a> · <a href="/collections/zybach/how-to-cite/">How to cite this
-      collection</a> · <a href="/collections/zybach/content-note/">Content
-      note</a> · <a href="/collections/zybach/colophon/">Colophon</a>
+    <ProvenanceBlock items={provenanceItems} />
+
+    <h3>Rights</h3>
+    <p>{rightsProse}</p>
+    <p>
+      <a href={RIGHTS_HREF}>Rights, use and takedown</a> sets out how the Library
+      decides what it can publish, and how to ask for a change.
     </p>
 
-    <h2 id="creator">About the creator</h2>
-
-    {bioDraft && (
-      <p class="provisional-note">
-        Draft biography, written from public sources for Dr. Zybach to correct
-        or replace with his own words. It is not his text yet.
-      </p>
-    )}
-
-    <p class="zc-bio">{bioText}</p>
-
-    {creator?.bio_source_note && (
-      <p class="zc-caption">{creator.bio_source_note}</p>
-    )}
-
-    <CitationBlock
-      canonical="The Zybach Collection. America's School Trust Library, Corvallis and Portland, Oregon. Preview edition, 2026."
-      short="The Zybach Collection, finding aid."
-      url="/collections/zybach/"
-      accessed="2026"
-    />
-
-    <p class="see-also">
-      Something wrong on this page? <a href="/about/corrections/">Corrections</a>
-      — the Library corrects in public and keeps the old wording visible.
+    <h3>Citing this collection, and how it was made</h3>
+    <p>
+      Cite the book first and this page second; both forms are set out on the
+      citation page. How the pages were made, and by what, is in the colophon.
+      Corrections already made are listed on the errata page.
     </p>
-  </div>
+    <p class="fd-about-links">
+      <a href="/collections/zybach/how-to-cite/">How to cite</a> ·
+      <a href="/collections/zybach/provenance/">Provenance and chain of custody</a> ·
+      <a href="/collections/zybach/content-note/">Content note</a> ·
+      <a href="/collections/zybach/errata/">Errata</a> ·
+      <a href="/collections/zybach/colophon/">Colophon</a> ·
+      <a href="/about/corrections/">Corrections</a>
+    </p>
+  </AboutStrip>
+
+  <p class="fd-corrections" data-pagefind-ignore>
+    Something wrong on this page?
+    {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the
+    Library corrects in public and keeps the old wording visible.
+  </p>
 </RoomLayout>
 
 <style>
-  .zc-headline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1.6rem;
+  .fd-para {
+    max-width: 66ch;
+    font-size: 1rem;
+    line-height: 1.68;
+  }
+  .fd-more {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    margin-top: 1rem;
+  }
+  .fd-more--doors {
+    margin-top: -0.75rem;
+  }
+  .fd-split {
+    display: grid;
+    gap: 0 2.25rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  @media (min-width: 56rem) {
+    .fd-split {
+      grid-template-columns: 1.35fr 1fr;
+    }
+  }
+  .fd-coming {
     list-style: none;
-    margin: 1.25rem 0 1.5rem;
-    padding: 0.85rem 1rem;
-    background: var(--linen-card, #fffdf7);
-    border: 1px solid var(--rule-border, #d8d1c2);
-    border-radius: 4px;
-    font-family: var(--font-sans);
-  }
-  .zc-headline li {
-    margin: 0;
+    margin: 1.25rem 0;
     padding: 0;
+    max-width: 68ch;
   }
-  .zc-headline__n {
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 700;
+  .fd-coming li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #ece5d5;
+  }
+  .fd-coming li:last-child {
+    border-bottom: 0;
+  }
+  .fd-coming a {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.02rem;
     color: var(--deep-navy, #14243c);
-    line-height: 1.2;
   }
-  .zc-headline__l {
+  .fd-coming span {
     display: block;
-    font-size: 0.76rem;
-    letter-spacing: 0.03em;
-    color: #4e617c;
-  }
-  .zc-series {
-    margin: 0.85rem 0;
-    padding: 0.85rem 1.05rem;
-    background: var(--linen-card, #fffdf7);
-    border-left: 4px solid var(--old-gold, #a87f2c);
-    border-radius: 3px;
-  }
-  .zc-series--inventory {
-    border-left-color: rgba(168, 127, 44, 0.45);
-    background: rgba(255, 253, 247, 0.6);
-  }
-  .zc-series h4 {
-    margin: 0 0 0.35rem;
-    font-size: 1.08rem;
-  }
-  .zc-series h4 a {
-    color: var(--deep-navy, #14243c);
-    text-decoration: none;
-  }
-  .zc-series h4 a:hover {
-    text-decoration: underline;
-  }
-  .zc-series__summary {
-    margin: 0;
-    font-size: 0.95rem;
+    margin-top: 0.15rem;
+    font-size: 0.9rem;
     line-height: 1.55;
+    color: #4a4438;
   }
-  .zc-series__counts {
-    margin: 0.4rem 0 0;
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    color: #4e617c;
-  }
-  .zc-series__note {
+  .fd-places {
+    max-width: 66ch;
     font-size: 0.95rem;
-  }
-  .zc-map-list {
-    font-size: 0.95rem;
-    line-height: 1.55;
-  }
-  .zc-caption {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    line-height: 1.5;
-    color: #4e617c;
-  }
-  .zc-bio {
-    padding: 1rem 1.2rem;
-    background: var(--linen-card, #fffdf7);
-    border: 1px solid var(--rule-border, #d8d1c2);
-    border-radius: 4px;
-    font-size: 0.97rem;
     line-height: 1.6;
+  }
+  .fd-note {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: #6b6355;
+    max-width: 64ch;
+  }
+  .fd-about-links {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+  .fd-corrections {
+    margin: 2.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
   }
 </style>

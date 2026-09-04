@@ -1,0 +1,64 @@
+---
+/* AboutStrip.astro — The Zybach Collection, front door.
+ *
+ * The apparatus, kept where apparatus belongs: near the bottom, quiet, and
+ * complete. Where a collection came from, who may use it, how to cite it and
+ * how it was made are things a reader should be able to find in ten seconds
+ * and should not have to walk past to reach the material.
+ *
+ * Owner: FRONTDOOR. New file; nothing else imports it.
+ */
+interface Props {
+  heading?: string;
+  headingId?: string;
+}
+const { heading = 'About this collection', headingId = 'about' } = Astro.props as Props;
+---
+
+<section class="fd-about" aria-labelledby={headingId}>
+  <h2 id={headingId} class="fd-about__head">{heading}</h2>
+  <div class="fd-about__body">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .fd-about {
+    margin: 3rem 0 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+  }
+  .fd-about__head {
+    margin: 0 0 0.9rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--old-gold, #a87f2c);
+  }
+  .fd-about__body {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #3f3a33;
+  }
+  .fd-about__body :global(h3) {
+    margin: 1.5rem 0 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--trust-blue, #1b3252);
+  }
+  .fd-about__body :global(p) {
+    max-width: 68ch;
+  }
+  .fd-about__body :global(ul) {
+    max-width: 68ch;
+    padding-left: 1.15rem;
+  }
+  .fd-about__body :global(li) {
+    margin-bottom: 0.4rem;
+  }
+</style>

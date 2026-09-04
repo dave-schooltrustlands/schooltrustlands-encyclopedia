@@ -1,0 +1,141 @@
+---
+import { mirrored } from '../_data';
+/* CoverShelf.astro — The Zybach Collection, front door.
+ *
+ * The books on a shelf, in the order they were printed, each cover a door into
+ * the book. Covers are the creator's own scans, served from his own site; the
+ * Library links to them and copies nothing. A cover that does not load leaves a
+ * ruled frame, and the name, the year and the person are printed underneath
+ * either way, so the shelf is legible without any picture at all.
+ *
+ * Owner: FRONTDOOR. New file; nothing else imports it.
+ */
+export interface ShelfItem {
+  href: string;
+  /** Small cover image, as the creator publishes it. */
+  img?: string | null;
+  /** "#05" */
+  number: string;
+  /** The person the book is about, as the title page names them. */
+  title: string;
+  /** The book's own subtitle, as printed. */
+  subtitle?: string | null;
+  year?: number | string | null;
+  /** Who talks in it, when that differs from the title. */
+  people?: string | null;
+  /** A few words on who they were, as the book prints it. */
+  role?: string | null;
+}
+
+interface Props {
+  items: ReadonlyArray<ShelfItem>;
+  credit?: string;
+}
+
+const { items, credit } = Astro.props as Props;
+---
+
+<ul class="fd-shelf">
+  {items.map((m) => (
+    <li class="fd-shelf__item">
+      <a class="fd-shelf__link" href={m.href}>
+        <span class="fd-shelf__frame">
+          {m.img ? (
+            <img src={mirrored(m.img)} alt={`Cover of ${m.title}${m.year ? `, ${m.year}` : ''}`} loading="lazy" decoding="async" />
+          ) : (
+            <span class="fd-shelf__nocover">{m.number}</span>
+          )}
+        </span>
+        <span class="fd-shelf__num">{m.number}{m.year ? ` · ${m.year}` : ''}</span>
+        <span class="fd-shelf__title">{m.title}</span>
+      </a>
+      {m.role && <span class="fd-shelf__role">{m.role}</span>}
+      {m.people && <span class="fd-shelf__role">With {m.people}</span>}
+      {m.subtitle && <span class="fd-shelf__sub">{m.subtitle}</span>}
+    </li>
+  ))}
+</ul>
+{credit && <p class="fd-shelf__credit">{credit}</p>}
+
+<style>
+  .fd-shelf {
+    list-style: none;
+    margin: 1.5rem 0 0.75rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    gap: 1.75rem 1.25rem;
+  }
+  .fd-shelf__item {
+    margin: 0;
+  }
+  .fd-shelf__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .fd-shelf__frame {
+    display: block;
+    aspect-ratio: 109 / 144;
+    background: #efeadd;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    box-shadow: 0 1px 3px rgba(26, 26, 46, 0.14);
+    overflow: hidden;
+  }
+  .fd-shelf__frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .fd-shelf__nocover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #8a8172;
+  }
+  .fd-shelf__num {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.07em;
+    color: #8a8172;
+  }
+  .fd-shelf__title {
+    display: block;
+    margin-top: 0.1rem;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1rem;
+    line-height: 1.25;
+    color: var(--deep-navy, #14243c);
+  }
+  .fd-shelf__link:hover .fd-shelf__title,
+  .fd-shelf__link:focus-visible .fd-shelf__title {
+    text-decoration: underline;
+    text-decoration-color: var(--old-gold, #a87f2c);
+    text-underline-offset: 3px;
+  }
+  .fd-shelf__role,
+  .fd-shelf__sub {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: #6b6355;
+  }
+  .fd-shelf__sub {
+    font-family: var(--font-serif, Georgia, serif);
+    font-style: italic;
+  }
+  .fd-shelf__credit {
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    color: #8a8172;
+    max-width: 60ch;
+  }
+</style>

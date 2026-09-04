@@ -2,9 +2,14 @@
 export const prerender = true;
 
 import RoomLayout from '../../../../layouts/RoomLayout.astro';
-import { ZybachNav, CitationBlock } from '../../../../components/zybach/elliott/shared';
+import { mirrored } from '../../../../components/zybach/_data';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import { ZybachNav } from '../../../../components/zybach/elliott/shared';
 import MapWithList from '../../../../components/zybach/elliott/MapWithList.astro';
-import ItemIntro from '../../../../components/zybach/elliott/ItemIntro.astro';
+import Opening from '../../../../components/zybach/frontdoor/Opening.astro';
+import Plate from '../../../../components/zybach/frontdoor/Plate.astro';
+import Measure from '../../../../components/zybach/frontdoor/Measure.astro';
+import AboutStrip from '../../../../components/zybach/frontdoor/AboutStrip.astro';
 import {
   BASE,
   ACCESSION,
@@ -15,6 +20,7 @@ import {
   interviews,
   projectInterviews,
   relatedTranscripts,
+  photographs,
   videos,
   videoPlaylistUrl,
   videoChannel,
@@ -25,41 +31,60 @@ import {
   projectInterviewees,
   projectInterviewers,
   projectRouteMapNote,
-  totalsAsPrinted,
   ELLIOTT_CENTER,
 } from '../../../../components/zybach/elliott/data';
 
 const pagePath = `${BASE}/`;
-const url = `https://schooltrusts.org${pagePath}`;
 
-const provenance = [
-  { label: 'Creator', value: CREATOR },
-  ...(projectReportLine ? [{ label: 'Project report', value: projectReportLine }] : []),
-  ...(projectPreparedFor ? [{ label: 'Prepared for', value: projectPreparedFor }] : []),
-  ...(projectInterviewees ? [{ label: 'Interviewees', value: projectInterviewees }] : []),
-  ...(projectInterviewers ? [{ label: 'Interviewers', value: projectInterviewers }] : []),
-  {
-    label: 'Originals',
-    value: 'Recordings, transcripts, photographs and maps on orww.org',
-    href: RIGHTS.orwwRoot,
-  },
-  {
-    label: 'Described by',
-    value: RIGHTS.osuLabel,
-    href: RIGHTS.osuFindingAid,
-  },
-  { label: 'Accession', value: ACCESSION },
+/* Three of the creator's own field photographs, chosen for what they show
+   rather than for what they are filed under. Captions carry his own place
+   label and the date of the interview they were taken on; nothing is guessed
+   about who or what is in the frame. */
+const WANTED = [
+  'N Marlow Ridge',
+  'Gould Orchard',
+  'Scotch Broom',
+  'Fishing Camp',
+  'Deans Mountain',
+  'Sullivan Ridge Waterhole',
+];
+const plates = WANTED.map((label) =>
+  photographs.find((p: any) => p.place_label === label && p.thumb_url),
+)
+  .filter(Boolean)
+  .slice(0, 3) as any[];
+
+/** The interview page for the day a photograph was taken, when there is one. */
+const interviewHrefForDate = (date: string | null): string =>
+  interviews.find((i: any) => i.date === date)?.href ?? `${BASE}/photos/`;
+
+/* Three field-trip videos, as the hook they are. */
+const FILM_ORDER = ['Elkhorn Ranch', 'Deans Mountain', 'Loon Lake'];
+const films = FILM_ORDER.map((t) => videos.find((v: any) => (v.title ?? '').includes(t)))
+  .filter(Boolean)
+  .slice(0, 3) as any[];
+
+const MEASURE = [
+  { n: counts.interviews, label: 'recorded interviews' },
+  { n: counts.tapes, label: 'tape sides' },
+  { n: counts.segments, label: 'indexed stops' },
+  { n: counts.transcriptPages, label: 'transcript pages' },
+  { n: counts.videos, label: 'videos' },
+  { n: counts.videoSegments, label: 'time-coded video sections' },
+  { n: counts.photographs, label: 'photographs' },
+  { n: counts.maps, label: 'maps' },
+  { n: counts.places, label: 'places named' },
+  { n: counts.recordings, label: 'sound files' },
 ];
 ---
 
 <RoomLayout
   room="collections"
   title="Elliott State Forest"
-  subtitle="Oral histories, field trips, videos, photographs and maps, 1962–2024"
+  subtitle="Six recorded interviews, nineteen videos that walk the same ground, and the photographs, maps and sound files that go with them."
   width="full"
   sourceId="zybach-elliott-series"
   parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }]}
-  noindex={true}
 >
   <p slot="before-title" class="kicker">The Zybach Collection · Series</p>
 
@@ -68,14 +93,162 @@ const provenance = [
   <span data-pagefind-meta="series:elliott" hidden></span>
   <span data-pagefind-filter="series:elliott" hidden></span>
 
-  <ItemIntro
-    whatThisIs="Bob Zybach's Elliott State Forest work: six recorded interviews made while driving the forest's roads with the men who managed it, the transcripts he printed and indexed stop by stop, the photographs and route maps he made along the way, the earlier recordings he gathered, and nineteen videos in which he walks through the same ground again."
-    provenance={provenance}
-  />
+  <WorkingEditionBanner />
 
-  <section aria-labelledby="map-heading">
-    <h2 id="map-heading">The ground</h2>
+  <Opening>
     <p>
+      In the autumn of 2017 Bob Zybach drove the roads of the Elliott State
+      Forest with a tape recorder running, and stopped wherever there was
+      something to say. Jerry Phillips, David Gould, Bob Jacobson, Roger Johnson
+      and Gary Vonderohe talked at the stops — a 1958 clearcut, a landslide, a
+      fishing camp, a lookout — and every stop was tied to a minute on the tape,
+      a page in the transcript, and a point on the map.
+    </p>
+    <p>
+      Then he went back with a camera. Nineteen videos on his own playlist walk
+      the same ground: field trips down the forest roads in the spring of 2020,
+      class sessions for a community-college forestry course, and, in 2024, four
+      more, including a two-and-a-half-hour history of the forest.
+    </p>
+    <p>
+      The Elliott was school trust land for most of a century, until the State
+      Land Board decoupled it from the Common School Fund in 2022. That is why a
+      school-trust library keeps this part of the record.
+    </p>
+  </Opening>
+
+  {plates.length > 0 && (
+    <div class="el-plates">
+      {plates.map((p) => (
+        <Plate
+          src={mirrored(p.thumb_url)}
+          alt={`Photograph taken on the Elliott State Forest, ${longDate(p.interview_date)}.`}
+          size="wide"
+          ratio="3 / 2"
+          href={interviewHrefForDate(p.interview_date)}
+          caption={`${p.place_label}, ${longDate(p.interview_date)}.`}
+          credit={p.credit ?? "The creator's own photograph, from his files on orww.org."}
+        />
+      ))}
+    </div>
+  )}
+
+  <section aria-labelledby="the-videos">
+    <h2 id="the-videos">Come along</h2>
+    <p class="el-para">
+      {counts.videos} videos, with {counts.videoSegments} time-coded entries in
+      the creator's own descriptions, so a reader — or a class — can jump
+      straight to the minute he marked. Each video page cues the embed to that
+      moment.
+      {videoPlaylistUrl && (
+        <Fragment>
+          {' '}The whole playlist is on
+          {' '}<a href={videoPlaylistUrl}>{videoChannel ?? 'YouTube'}</a>.
+        </Fragment>
+      )}
+    </p>
+
+    {films.length > 0 && (
+      <div class="el-films">
+        {films.map((v) => (
+          <article class="el-film">
+            {v.thumbnail && (
+              <a class="el-film__still" href={v.href}>
+                <img
+                  src={v.thumbnail}
+                  alt={`Still frame from the video "${v.title}".`}
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            )}
+            <h3><a href={v.href}>{v.title}</a></h3>
+            <p class="el-film__meta">
+              {[v.length_label, v.published, `${v.segments.length} time codes`]
+                .filter(Boolean)
+                .join(' · ')}
+            </p>
+          </article>
+        ))}
+      </div>
+    )}
+
+    <p class="el-more"><a href={`${BASE}/videos/`}>All {counts.videos} videos</a></p>
+  </section>
+
+  <section aria-labelledby="the-interviews">
+    <h2 id="the-interviews">The interviews</h2>
+    <p class="el-para">
+      {counts.interviews} interviews on {counts.tapes} tape sides, which the
+      creator indexed in 2019 into {counts.segments} stops — each one a place, a
+      minute and a transcript page. That index is kept here exactly as he made
+      it; nothing has been renumbered.
+    </p>
+    <ol class="el-cards">
+      {projectInterviews.map((iv) => (
+        <li>
+          <h3>
+            <a href={iv.href}>
+              {iv.number_as_printed && <span class="num">{iv.number_as_printed} </span>}
+              {iv.title_as_printed}
+            </a>
+          </h3>
+          <p class="el-cards__meta">
+            {[
+              iv.date_as_printed ?? longDate(iv.date),
+              iv.tour_label,
+              iv.tapes.length ? `${iv.tapes.length} tape sides` : null,
+              iv.total_audio,
+              iv.total_pages != null ? `${iv.total_pages} pages` : null,
+              iv.segments.length ? `${iv.segments.length} stops` : null,
+              iv.photographs.length ? `${iv.photographs.length} photographs` : null,
+            ]
+              .filter(Boolean)
+              .join(' · ')}
+          </p>
+          {iv.participants.length > 0 && (
+            <p class="el-cards__parts">With {iv.participants.join(', ')}</p>
+          )}
+        </li>
+      ))}
+    </ol>
+    {projectRouteMapNote && <p class="el-note">{projectRouteMapNote}</p>}
+    <p class="el-more">
+      <a href={`${BASE}/interviews/`}>
+        All {interviews.length} transcripts, with a permanent link on every printed page
+      </a>
+    </p>
+  </section>
+
+  {relatedTranscripts.length > 0 && (
+    <section aria-labelledby="filed-alongside">
+      <h2 id="filed-alongside">Filed alongside</h2>
+      <p class="el-para">
+        Recordings and transcripts the creator kept in the same folder without
+        making them part of the project: older tapes he gathered from other
+        people, interviews recorded elsewhere, and working copies. Each has its
+        own page, described as it stands.
+      </p>
+      <ul class="el-list">
+        {relatedTranscripts.map((iv) => (
+          <li>
+            <a href={iv.href}>{iv.title_as_printed}</a>
+            <span>
+              {[longDate(iv.date), iv.total_pages != null ? `${iv.total_pages} pages` : null]
+                .filter(Boolean)
+                .join(' · ')}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="the-ground">
+    <h2 id="the-ground">The ground</h2>
+    <p class="el-para">
       Every place below carries a coordinate and the method used to get it.
       Select a point for its place page: what was said there, on which tape, at
       which minute, on which transcript page, and which photographs were taken.
@@ -85,232 +258,231 @@ const provenance = [
       features={gazetteerGeoJSON}
       center={ELLIOTT_CENTER}
       zoom={9}
-      height="520px"
+      height="500px"
       fit={true}
       listTitle="Places in this series"
       listNote="Coordinates and the method behind each one are shown on the place page."
     />
-    <p class="see-also">
+    <p class="el-more">
       <a href={`${BASE}/places/`}>All {counts.places} places</a>
       {counts.geocoded !== counts.places && (
-        <span> · {counts.geocoded} of them mapped</span>
+        <span class="el-note-inline"> — {counts.geocoded} of them mapped</span>
       )}
     </p>
   </section>
 
-  <section aria-labelledby="interviews-heading">
-    <h2 id="interviews-heading">The interviews</h2>
-    {projectTitle && <p class="zy-project-title">{projectTitle}</p>}
-    <p>
-      {counts.interviews} interviews on {counts.tapes} tape sides, indexed by
-      Bob Zybach into {counts.segments} stops.
-      {totalsAsPrinted?.as_printed && (
-        <span class="zy-totals"> His own totals: {totalsAsPrinted.as_printed}</span>
-      )}
-    </p>
-    <ol class="zy-cards">
-      {projectInterviews.map((iv) => (
-        <li>
-          <h3>
-            <a href={iv.href}>
-              {iv.number_as_printed && <span class="num">{iv.number_as_printed} </span>}
-              {iv.title_as_printed}
-            </a>
-          </h3>
-          <p class="meta">
-            <span>{iv.date_as_printed ?? longDate(iv.date)}</span>
-            {iv.tour_label && <span>{iv.tour_label}</span>}
-            {iv.tapes.length > 0 && <span>{iv.tapes.length} tape sides</span>}
-            {iv.total_audio && <span>{iv.total_audio}</span>}
-            {iv.total_pages != null && <span>{iv.total_pages} pages</span>}
-            {iv.segments.length > 0 && <span>{iv.segments.length} stops</span>}
-            {iv.photographs.length > 0 && <span>{iv.photographs.length} photographs</span>}
-          </p>
-          {iv.participants.length > 0 && (
-            <p class="parts">With {iv.participants.join(', ')}</p>
-          )}
-        </li>
-      ))}
-    </ol>
-    {projectRouteMapNote && <p class="zy-note-line">{projectRouteMapNote}</p>}
-  </section>
-
-  {relatedTranscripts.length > 0 && (
-    <section aria-labelledby="related-heading">
-      <h2 id="related-heading">Recordings and transcripts filed alongside</h2>
-      <p>
-        Bob Zybach filed these under the same tree: earlier recordings of Herman
-        Larson made by others, Oregon State University transcripts of Bob
-        Jacobson, David Gould's editing copy of the November 8 interview, and
-        Gould's own written statement.
-      </p>
-      <ul class="zy-list">
-        {relatedTranscripts.map((iv) => (
-          <li>
-            <a href={iv.href}>{iv.title_as_printed}</a>
-            <span class="meta">
-              {' '}· {longDate(iv.date)}
-              {iv.total_pages != null && <span> · {iv.total_pages} pages</span>}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )}
-
-  <section aria-labelledby="videos-heading">
-    <h2 id="videos-heading">The videos</h2>
-    <p>
-      {counts.videos} videos on the {videoChannel ?? 'ORWWmedia'} playlist, with{' '}
-      {counts.videoSegments} time-coded entries in Bob Zybach's own
-      descriptions. Each video page cues the embed to the moment he marked.
-      {videoPlaylistUrl && (
-        <>
-          {' '}
-          <a href={videoPlaylistUrl}>The playlist on YouTube</a>.
-        </>
-      )}
-    </p>
-    <ol class="zy-list zy-videos">
-      {videos.map((v) => (
-        <li>
-          <a href={v.href}>{v.title}</a>
-          <span class="meta">
-            {v.length_label && <span> · {v.length_label}</span>}
-            {v.published && <span> · {v.published}</span>}
-            <span> · {v.segments.length} time codes</span>
-          </span>
-        </li>
-      ))}
-    </ol>
-    <p class="see-also"><a href={`${BASE}/videos/`}>The video register</a></p>
-  </section>
-
-  <section aria-labelledby="registers-heading">
-    <h2 id="registers-heading">Registers</h2>
-    <ul class="zy-registers">
-      <li>
-        <a href={`${BASE}/recordings/`}>Recordings</a> — {counts.recordings} MP3
-        files on orww.org, with size, estimated duration and date.
-      </li>
+  <section aria-labelledby="registers">
+    <h2 id="registers">The rest of it</h2>
+    <ul class="el-registers">
       <li>
         <a href={`${BASE}/photos/`}>Photographs</a> — {counts.photographs}{' '}
-        photographs, by date and place.
+        frames, by date and place.
       </li>
       <li>
-        <a href={`${BASE}/maps/`}>Maps</a> — {counts.maps} maps from Bob
-        Zybach's ORWW map page, captions as he wrote them.
+        <a href={`${BASE}/maps/`}>Maps</a> — {counts.maps} maps from the
+        creator's own map page, with his captions as he wrote them.
       </li>
       <li>
-        <a href={`${BASE}/places/`}>Places</a> — {counts.places} places, with
-        the method and confidence behind each coordinate.
+        <a href={`${BASE}/recordings/`}>Recordings</a> — {counts.recordings}{' '}
+        sound files, with size, estimated duration and date.
       </li>
       <li>
-        <a href={`${BASE}/interviews/`}>Interviews</a> — all{' '}
-        {interviews.length} transcripts, with a permanent link on every printed page.
+        <a href={`${BASE}/places/`}>Places</a> — {counts.places} places, with the
+        method and confidence behind each coordinate.
       </li>
     </ul>
   </section>
 
-  <section aria-labelledby="rights-heading" class="zy-rights">
-    <h2 id="rights-heading">Rights and originals</h2>
-    <p>
-      {RIGHTS.osu} <a href={RIGHTS.osuFindingAid}>{RIGHTS.osuLabel}</a>.
-    </p>
-    <p>{RIGHTS.orww} <a href={RIGHTS.orwwRoot}>{RIGHTS.orwwRoot}</a></p>
+  <section aria-labelledby="how-big">
+    <h2 id="how-big">How big it is</h2>
+    <Measure
+      items={MEASURE}
+      note="Tape sides are counted as the creator's own 2019 index counts them. Oregon State's description of the same material lists 15 audiocassettes."
+    />
   </section>
 
-  <CitationBlock
-    canonical={
-      projectTitle && projectReportLine
-        ? `${projectTitle}. ${projectReportLine}`
-        : 'Elliott State Forest 2017-2019 Oral History Project'
-    }
-    short="Zybach Collection, Elliott State Forest series"
-    url={url}
-  />
+  <AboutStrip heading="About this series">
+    <h3>What it is</h3>
+    <p>
+      {projectTitle ?? 'The Elliott State Forest oral history project'}
+      {projectReportLine ? `. ${projectReportLine}.` : '.'}
+      {projectPreparedFor ? ` ${projectPreparedFor}.` : ''}
+    </p>
+    <p>
+      {projectInterviewees ? `${projectInterviewees}. ` : ''}
+      {projectInterviewers ? `${projectInterviewers}.` : ''}
+    </p>
 
-  <p class="zy-corrections">
+    <h3>Provenance</h3>
+    <ul>
+      <li><strong>Creator.</strong> {CREATOR}.</li>
+      <li>
+        <strong>Originals.</strong> The recordings, transcripts, photographs and
+        maps are the creator's own public files on
+        {' '}<a href={RIGHTS.orwwRoot}>orww.org</a>, where he has published them
+        since 2019. The videos are on his own playlist. The Library links to
+        them for every recording, video and full-size photograph; the small
+        photographs shown inline are display copies of his images.
+      </li>
+      <li>
+        <strong>Described by.</strong> Oregon State University Libraries
+        Special Collections and Archives Research Center describes this material
+        as <a href={RIGHTS.osuFindingAid}>{RIGHTS.osuLabel}</a>.
+      </li>
+      <li><strong>Accession.</strong> {ACCESSION}</li>
+    </ul>
+
+    <h3>Rights and reuse</h3>
+    <p>
+      Rights are stated series by series on the rights page. Nothing on these pages asserts who holds
+      copyright, and the Library will take down or correct anything on request.
+      {' '}<a href="/collections/zybach/rights/">Rights, use and takedown</a>.
+    </p>
+
+    <h3>Citing this series</h3>
+    <p class="el-aboutlinks">
+      <a href="/collections/zybach/how-to-cite/">How to cite</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/errata/">Errata</a> ·
+      <a href="/collections/zybach/colophon/">Colophon</a> ·
+      <a href="/collections/zybach/">The whole collection</a>
+    </p>
+  </AboutStrip>
+
+  <p class="el-corrections" data-pagefind-ignore>
     Something wrong on this page?
-    {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the form
-    opens with this page already filled in, the same control that sits at the foot
-    of every page in the Library.
+    {' '}<a href={`/correct${pagePath}`}>Submit a correction</a> — the form opens
+    with this page already filled in.
     {' '}<a href="/about/corrections/">How corrections work</a>.
   </p>
 </RoomLayout>
 
 <style>
-  .zy-project-title {
-    font-family: var(--font-serif, Newsreader, Georgia, serif);
-    font-size: 1.05rem;
-    margin: 0 0 0.4rem;
-  }
-  .zy-totals {
-    color: #475569;
-    font-size: 0.85rem;
-  }
-  .zy-cards {
-    list-style: none;
-    margin: 1rem 0 0;
-    padding: 0;
-    display: grid;
-    gap: 1rem;
-  }
-  .zy-cards li {
-    border-top: 1px solid #e2e8f0;
-    padding-top: 0.8rem;
-  }
-  .zy-cards h3 {
-    margin: 0;
+  .el-para {
+    max-width: 66ch;
     font-size: 1rem;
+    line-height: 1.68;
   }
-  .zy-cards .num {
-    color: #94a3b8;
-  }
-  .zy-cards .meta,
-  .zy-list .meta {
-    font-size: 0.78rem;
-    color: #475569;
-  }
-  .zy-cards .meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.1rem 0.85rem;
-    margin: 0.25rem 0 0;
-  }
-  .zy-cards .parts {
-    margin: 0.2rem 0 0;
-    font-size: 0.8rem;
-    color: #475569;
-  }
-  .zy-list {
-    list-style: none;
-    margin: 0.8rem 0 0;
-    padding: 0;
-  }
-  .zy-list li {
-    padding: 0.28rem 0;
-    border-bottom: 1px solid #f1f5f9;
-    font-size: 0.9rem;
-  }
-  .zy-registers {
-    margin: 0.8rem 0 0;
-    padding-left: 1.1rem;
-    font-size: 0.9rem;
-  }
-  .zy-registers li {
-    margin-bottom: 0.4rem;
-  }
-  .zy-rights p {
+  .el-more {
+    font-family: var(--font-sans);
     font-size: 0.88rem;
   }
-  .zy-note-line {
-    font-size: 0.82rem;
-    color: #475569;
-  }
-  .zy-corrections {
+  .el-note,
+  .el-note-inline {
+    font-family: var(--font-sans);
     font-size: 0.8rem;
-    color: #475569;
-    margin-top: 1.5rem;
+    line-height: 1.55;
+    color: #6b6355;
+    max-width: 66ch;
+  }
+
+  .el-plates {
+    display: grid;
+    gap: 0 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  .el-films {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    margin: 1.25rem 0;
+  }
+  .el-film__still {
+    display: block;
+    background: #efeadd;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+  .el-film__still img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .el-film h3 {
+    margin: 0.6rem 0 0.2rem;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  .el-film__meta {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: #6b6355;
+  }
+
+  .el-cards {
+    list-style: none;
+    margin: 1.25rem 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+    max-width: 70ch;
+  }
+  .el-cards li {
+    border-top: 1px solid #ece5d5;
+    padding-top: 0.75rem;
+  }
+  .el-cards h3 {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.35;
+  }
+  .el-cards .num {
+    color: #a39a88;
+  }
+  .el-cards__meta,
+  .el-cards__parts {
+    margin: 0.25rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: #6b6355;
+  }
+
+  .el-list {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+    max-width: 70ch;
+  }
+  .el-list li {
+    padding: 0.45rem 0;
+    border-bottom: 1px solid #f1ece0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .el-list span {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+  }
+
+  .el-registers {
+    margin: 1rem 0;
+    padding-left: 1.15rem;
+    max-width: 66ch;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .el-registers li {
+    margin-bottom: 0.4rem;
+  }
+
+  .el-aboutlinks {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+  .el-corrections {
+    margin: 2.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
   }
 </style>

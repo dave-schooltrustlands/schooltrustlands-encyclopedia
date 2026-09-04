@@ -5,7 +5,7 @@ import SoapCreekPage from '../../../../components/zybach/soapcreek/SoapCreekPage
 import CitationBlock from '../../../../components/zybach/soapcreek/CitationBlock.astro';
 import ProvenanceBlock from '../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
 import ContentNote from '../../../../components/zybach/soapcreek/ContentNote.astro';
-import { thesis, monographs, chronology } from '../../../../components/zybach/soapcreek/data';
+import { thesis, monographs, chronology, holdNotice } from '../../../../components/zybach/soapcreek/data';
 import {
   thesisHref,
   folioId,
@@ -40,25 +40,37 @@ const gaps: string[] = (t.gaps ?? []).map((g: string) => plainNote(g));
  * nothing. Each held page gets its own `<section id="pNN">` and the same
  * "[Held for review: …]" block the monograph chapters carry.
  */
-type HeldPage = { page: number; what: string; reason: string };
-const heldPages: HeldPage[] = (t.holds ?? []).flatMap((h: any) => {
-  const list: number[] = Array.isArray(h?.page_list) && h.page_list.length
-    ? h.page_list
-    : Array.isArray(h?.pages) && h.pages.length === 2
-      ? Array.from({ length: h.pages[1] - h.pages[0] + 1 }, (_, i) => h.pages[0] + i)
-      : (h?.pages ?? []);
-  return list.map((p: number) => ({
-    page: p,
-    what: h?.what ?? 'Held from this preview',
-    reason: h?.reason ?? 'Held pending review.',
-  }));
-});
+type HeldPage = { page: number };
+const heldPages: HeldPage[] = (t.holds ?? [])
+  .flatMap((h: any) => {
+    const list: number[] = Array.isArray(h?.page_list) && h.page_list.length
+      ? h.page_list
+      : Array.isArray(h?.pages) && h.pages.length
+        ? h.pages
+        : (h?.ranges ?? []).flatMap(([a, b]: [number, number]) =>
+            Array.from({ length: b - a + 1 }, (_, i) => a + i),
+          );
+    return list.map((p: number) => ({ page: p }));
+  })
+  .sort((a: HeldPage, b: HeldPage) => a.page - b.page);
 const heldSet = new Set(heldPages.map((h) => String(h.page)));
-const heldRangeLabel = heldPages.length
-  ? heldPages.length === 1
-    ? `p. ${heldPages[0].page}`
-    : `pp. ${heldPages[0].page}–${heldPages[heldPages.length - 1].page}`
-  : '';
+/* Held pages are described as a count and a set of runs, never one by one with
+   a reason each: the notice is the same for every one of them, and what is
+   withheld is not to be inferred from which pages carry it. */
+const heldRuns: string[] = (() => {
+  const out: string[] = [];
+  let start: number | null = null;
+  let prev: number | null = null;
+  for (const { page } of heldPages) {
+    if (start === null) { start = prev = page; continue; }
+    if (page === (prev as number) + 1) { prev = page; continue; }
+    out.push(start === prev ? `p. ${start}` : `pp. ${start}–${prev}`);
+    start = prev = page;
+  }
+  if (start !== null) out.push(start === prev ? `p. ${start}` : `pp. ${start}–${prev}`);
+  return out;
+})();
+const heldRangeLabel = heldRuns.join(', ');
 
 // Table 4 — the informant profile — rendered as a real table, not a picture.
 const table4: any =
@@ -390,12 +402,12 @@ const source: any = t.source ?? {};
 
   {heldPages.length > 0 && (
     <section aria-labelledby="held">
-      <h2 id="held">Pages held from this preview</h2>
+      <h2 id="held">Pages withheld from this edition</h2>
       <p class="sc-list-meta">
         {heldRangeLabel} of the printed thesis {heldPages.length === 1 ? 'is' : 'are'}
-        {' '}held from this preview. The pages keep their places in the sequence
-        and their permanent links, so a citation to any of them lands here and is
-        told why, rather than landing nowhere.
+        {' '}withheld while the Library completes a review. The pages keep their
+        places in the sequence and their permanent links, so a citation to any of
+        them lands here rather than landing nowhere.
       </p>
       <div class="sc-transcript">
         {heldPages.map((h) => (
@@ -407,7 +419,7 @@ const source: any = t.source ?? {};
             >
               {folioLabel(h.page)}
             </a>
-            <p class="sc-hold">[Held for review: {h.what}. {h.reason}]</p>
+            <p class="sc-hold">{holdNotice}</p>
           </section>
         ))}
       </div>
@@ -472,8 +484,8 @@ const source: any = t.source ?? {};
       <p class="sc-list-meta">
         The thesis is cited by printed page all over this collection, so every
         one of its {totalThesisPages} printed pages has a permanent link here.
-        The pages set out above — the dated statements, the pages held from this
-        preview — carry their text. The rest are listed so that a citation lands
+        The pages set out above — the dated statements, and the withheld pages
+        with their notice — already have their own sections. The rest are listed so that a citation lands
         somewhere and is told what is on the page; the text of those pages is in
         the original PDF.
       </p>

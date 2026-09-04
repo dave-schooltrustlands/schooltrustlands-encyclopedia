@@ -2,7 +2,7 @@
 /* ZybachNav.astro — The Zybach Collection sub-navigation.
  *
  * One strip, on every page of the collection, so a reader always knows the
- * eight doors: the finding aid, the two series that are described item by item,
+ * doors: the finding aid, the two series that are described item by item,
  * and the four ways into the Soap Creek apparatus, plus how to cite.
  *
  * Contract (BUILD_SPEC §"Shared component contracts"):
@@ -18,13 +18,16 @@ interface Props {
 const { current } = Astro.props;
 
 const LINKS: ReadonlyArray<{ key: string; label: string; href: string }> = [
-  { key: 'finding-aid', label: 'Finding aid', href: '/collections/zybach/' },
+  { key: 'finding-aid', label: 'Overview', href: '/collections/zybach/' },
+  { key: 'start-here', label: 'Start here', href: '/collections/zybach/start-here/' },
   { key: 'soap-creek', label: 'Soap Creek', href: '/collections/zybach/soap-creek/' },
   { key: 'elliott', label: 'Elliott', href: '/collections/zybach/elliott/' },
   { key: 'index', label: 'Series Index', href: '/collections/zybach/soap-creek/index/' },
   { key: 'places', label: 'Places', href: '/collections/zybach/soap-creek/places/' },
   { key: 'people', label: 'People', href: '/collections/zybach/soap-creek/people/' },
   { key: 'timeline', label: 'Timeline', href: '/collections/zybach/soap-creek/timeline/' },
+  { key: 'about-the-creator', label: 'The creator', href: '/collections/zybach/about-the-creator/' },
+  { key: 'rights', label: 'Rights', href: '/collections/zybach/rights/' },
   { key: 'how-to-cite', label: 'How to cite', href: '/collections/zybach/how-to-cite/' },
 ];
 ---

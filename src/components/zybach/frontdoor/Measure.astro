@@ -1,0 +1,73 @@
+---
+/* Measure.astro — The Zybach Collection, front door.
+ *
+ * How big the thing is, in plain words, kept below the reading. Counts are
+ * useful to a researcher deciding whether to spend an afternoon here; they are
+ * not a reason to open a page, so they sit under the material rather than in
+ * front of it. Every label is English — "index references", not a field name.
+ *
+ * Owner: FRONTDOOR. New file; nothing else imports it.
+ */
+interface Props {
+  items: ReadonlyArray<{ n: number | string; label: string }>;
+  note?: string;
+}
+const { items, note } = Astro.props as Props;
+const shown = items.filter((i) => i && i.n !== undefined && i.n !== null && i.n !== 0 && i.n !== '');
+---
+
+{shown.length > 0 && (
+  <>
+    <ul class="fd-measure">
+      {shown.map((i) => (
+        <li>
+          <span class="fd-measure__n">
+            {typeof i.n === 'number' ? i.n.toLocaleString('en-US') : i.n}
+          </span>
+          <span class="fd-measure__l">{i.label}</span>
+        </li>
+      ))}
+    </ul>
+    {note && <p class="fd-measure__note">{note}</p>}
+  </>
+)}
+
+<style>
+  .fd-measure {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.9rem;
+    list-style: none;
+    margin: 1rem 0 0.6rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 3px;
+    font-family: var(--font-sans);
+  }
+  .fd-measure li {
+    margin: 0;
+    padding: 0;
+  }
+  .fd-measure__n {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--deep-navy, #14243c);
+    font-variant-numeric: tabular-nums;
+  }
+  .fd-measure__l {
+    display: block;
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+    color: #6b6355;
+  }
+  .fd-measure__note {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: #6b6355;
+    max-width: 66ch;
+  }
+</style>

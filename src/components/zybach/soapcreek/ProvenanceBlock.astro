@@ -4,8 +4,50 @@
  * (owner: ROOM). Every SOAPCREEK page imports this path, so if the shared
  * component is unavailable or its contract moves, the swap is one file.
  * Props are passed through unchanged.
+ *
+ * One prop is handled here rather than passed on: `rights`. Give it a record
+ * slug ("m02-dunn"), a series slug ("soap-creek"), or a population key, and a
+ * "Rights" row is appended to the provenance list carrying that group's own
+ * statement — not one generic sentence for the whole collection. Omit it and
+ * the list is exactly what the caller passed.
  */
 import Shared from '../ProvenanceBlock.astro';
-const props = Astro.props;
+import { rightsFor, rightsLabel } from '../_data';
+
+const { rights: rightsKey, items, ...rest } = Astro.props as Record<string, any>;
+const pop = rightsFor(rightsKey);
+
+/* The shared block takes plain strings, so the statement is flattened into
+   one: the vocabulary label, the plain-language gloss, and who to ask. The
+   link to the full explanation goes below the block, where it can be a link. */
+function rightsValue(): string {
+  if (!pop) return '';
+  const parts = [rightsLabel(pop)];
+  if (pop.gloss) parts.push(pop.gloss);
+  if (pop.disclosure) parts.push(pop.disclosure);
+  const who = (pop.pointers ?? []).map((p: any) => p.label).filter(Boolean);
+  if (who.length) parts.push(`Who to ask: ${who.join('; ')}.`);
+  return parts.join(' ');
+}
+
+const rows = Array.isArray(items) ? [...items] : [];
+if (pop) rows.push({ label: 'Rights', value: rightsValue() });
 ---
-<Shared {...props} />
+
+<Shared items={rows} {...rest} />
+
+{pop && (
+  <p class="zc-rights-foot">
+    Why this statement and not another, and how to ask us to change something:{' '}
+    <a href="/collections/zybach/rights/">Rights, use, and takedown</a>.
+  </p>
+)}
+
+<style>
+  .zc-rights-foot {
+    margin: -1rem 0 1.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #4e617c;
+  }
+</style>

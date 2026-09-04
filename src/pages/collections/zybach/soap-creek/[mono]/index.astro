@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import { mirrored } from '../../../../../components/zybach/_data';
 import CitationBlock from '../../../../../components/zybach/soapcreek/CitationBlock.astro';
 import ProvenanceBlock from '../../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
 import ContentNote from '../../../../../components/zybach/soapcreek/ContentNote.astro';
@@ -25,6 +26,7 @@ import {
 } from '../../../../../components/zybach/soapcreek/links';
 import { plainNote } from '../../../../../components/zybach/labels';
 import { confidenceLabel } from '../../../../../components/zybach/labels';
+import { isSuppressedChapter } from '../../../../../components/zybach/soapcreek/suppress';
 
 export async function getStaticPaths() {
   return monographs.map((m) => ({ params: { mono: m.slug }, props: { mono: m } }));
@@ -84,6 +86,35 @@ const maps = mono.maps ?? [];
 const notes = (mono.content_notes ?? []).filter((n) => n && (n.display_note || n.note));
 const missing = mono.missing_pages ?? [];
 const holdRanges = mono.holds ?? [];
+/* Every withheld page of this volume, stated once as a set of runs. One notice
+   for the volume, not one per hold: which pages are withheld is public, why any
+   particular one is withheld is not. */
+const heldPageNumbers: number[] = [
+  ...new Set(
+    holdRanges.flatMap((h) =>
+      (Array.isArray(h.pages) && h.pages.length
+        ? h.pages
+        : (h.ranges ?? []).flatMap(([a, b]) => Array.from({ length: b - a + 1 }, (_, i) => a + i))
+      ).map(Number),
+    ),
+  ),
+]
+  .filter((n) => Number.isFinite(n))
+  .sort((a, b) => a - b);
+const heldPageCount = heldPageNumbers.length;
+const heldPageRuns: string[] = (() => {
+  const out: string[] = [];
+  let start: number | null = null;
+  let prev: number | null = null;
+  for (const n of heldPageNumbers) {
+    if (start === null) { start = prev = n; continue; }
+    if (n === (prev as number) + 1) { prev = n; continue; }
+    out.push(start === prev ? `p. ${start}` : `pp. ${start}–${prev}`);
+    start = prev = n;
+  }
+  if (start !== null) out.push(start === prev ? `p. ${start}` : `pp. ${start}–${prev}`);
+  return out;
+})();
 
 const drift =
   typeof mono.index_drift === 'object' && mono.index_drift
@@ -184,7 +215,7 @@ const parents = [
     <figure class="sc-cover">
       <a href={mono.cover_url} rel="external">
         <img
-          src={mono.thumb_url ?? mono.cover_url}
+          src={mirrored(mono.thumb_url ?? mono.cover_url)}
           alt={`Cover of ${mono.title ?? `monograph #${mono.number}`} as printed`}
           loading="lazy"
           decoding="async"
@@ -222,15 +253,21 @@ const parents = [
             </span>
           </li>
         )}
-        {holdRanges.map((h) => (
+        {heldPageRuns.length > 0 && (
           <li>
-            <strong>Held for review.</strong>
+            <strong>Withheld from this edition.</strong>
             <span class="sc-list-meta">
-              {Array.isArray(h.pages) ? `Pages ${(h.pages as any[]).join(', ')}. ` : ''}
-              {h.reason}
+              Printed {heldPageRuns.join(', ')} — {heldPageCount}{' '}
+              page{heldPageCount === 1 ? '' : 's'} of this volume{' '}
+              {heldPageCount === 1 ? 'is' : 'are'} withheld while the Library
+              completes a review. Each keeps its number and its permanent link, so a
+              citation to any of them still lands on the page it names. The reasons
+              differ from page to page and are not given here, so that the notice on
+              one page says nothing about another.
+              {' '}<a href="/collections/zybach/content-note/">What is withheld, and why</a>.
             </span>
           </li>
-        ))}
+        )}
         {(drift as any)?.drift && (
           <li>
             <strong>The printed index does not match these page numbers.</strong>
@@ -293,12 +330,16 @@ const parents = [
                 ? `pp. ${s.start_page}–${s.end_page}`
                 : `p. ${s.start_page}`
               : '';
+          /* A suppressed chapter keeps its place in the printed sequence and
+             its page range, but nothing here links to it: the address itself
+             carries the name that is being withheld. */
+          const linkable = ch && !isSuppressedChapter(mono.zc_id, ch.slug);
           return (
             <li class={`sc-toc-${s.level ?? 'other'}`}>
-              {ch ? (
-                <a href={chapterHref(mono.slug, ch.slug)}>{label || ch.title}</a>
+              {linkable ? (
+                <a href={chapterHref(mono.slug, ch!.slug)}>{label || ch!.title}</a>
               ) : (
-                <span>{label}</span>
+                <span>{label || ch?.title}</span>
               )}
               {pages && <span class="sc-toc-pages">{pages}</span>}
             </li>
@@ -309,7 +350,11 @@ const parents = [
       <ol class="sc-toc">
         {chapters.map((c) => (
           <li>
-            <a href={chapterHref(mono.slug, c.slug)}>{[c.label, c.title].filter(Boolean).join('. ')}</a>
+            {isSuppressedChapter(mono.zc_id, c.slug) ? (
+              <span>{c.title}</span>
+            ) : (
+              <a href={chapterHref(mono.slug, c.slug)}>{[c.label, c.title].filter(Boolean).join('. ')}</a>
+            )}
             {c.start_page !== undefined && (
               <span class="sc-toc-pages">
                 pp. {c.start_page}–{c.end_page}

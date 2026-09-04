@@ -3,6 +3,7 @@ export const prerender = true;
 
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
 import { seriesBySlug, clean } from '../../../components/zybach/_data';
 
@@ -27,7 +28,6 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
   parents={[
     { label: 'The Zybach Collection', href: '/collections/zybach/' },
   ]}
-  noindex={true}
 >
   <span data-pagefind-meta="collection:zybach" hidden></span>
   <span data-pagefind-meta="series:alberta-street" hidden></span>
@@ -35,12 +35,7 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
   <div class="source-page">
     <ZybachNav current="finding-aid" />
 
-    <p class="provisional-note">
-      <strong>Preview — under review by the creator; not yet public.</strong>
-      This series is described at inventory level: what exists and where it is,
-      not item by item. Everything below is drawn from the creator's public
-      pages.
-    </p>
+    <WorkingEditionBanner />
 
     <p class="kicker">Series · inventory level</p>
 
@@ -185,11 +180,11 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
 
     <ProvenanceBlock
       items={[
-        { label: 'Creator', value: 'Oregon Websites and Watersheds Project, Inc.; Dr. Bob Zybach' },
+        { label: 'Creator', value: 'Oregon Websites and Watershed Project, Inc.; Dr. Bob Zybach' },
         { label: 'Report authors', value: 'Gardner et al. (1992); Davis et al. (2015)' },
         { label: 'Published at', value: 'orww.org/Alberta_Street_Project/', href: 'http://www.orww.org/Alberta_Street_Project/' },
         { label: 'In this collection', value: 'Inventory-level description only; no items published' },
-        { label: 'Rights', value: 'Rights status: under review; no deed of gift has been executed. The Library links; it does not republish.' },
+        { label: 'Rights', value: 'Working edition. The creator publishes this material himself and retains all rights; the Library describes it with his participation and links to his originals. Per-series rights statements: /collections/zybach/rights/.' },
       ]}
     />
 

@@ -1,0 +1,160 @@
+{
+  "generated": "2026-09-04",
+  "policy": "Companion to holds.json. holds.json says which printed pages are withheld; this file says what in the derived layer — the Series Index, the gazetteer, the timeline, the people index, the printed contents — would otherwise lead a reader to them. Nothing listed here is rendered.",
+  "render_rule": "Every list here is a deny-list applied in src/components/zybach/soapcreek/data.ts before any page sees the data. Fields beginning `_internal` are the Library's working record and must never reach a page.",
+  "reason_classes": [
+    "site-location — names or fixes the position of an American Indian burial, grave, artifact scatter or archaeological site",
+    "leads-to-held — the reference itself is harmless but its target is a held page"
+  ],
+  "chapters": [
+    {
+      "zc_id": "zc-sc-m05",
+      "mono_slug": "m05-rohner",
+      "slug": "12-indian-graves",
+      "_internal_reason": "site-location — the printed chapter title names the subject of the pages it heads; all of its pages are held."
+    },
+    {
+      "zc_id": "zc-sc-m14",
+      "mono_slug": "m14-hindes",
+      "slug": "12-glender-s-farm-and-the-prehistoric-dig",
+      "_internal_reason": "site-location — the printed chapter title pairs a named property with an excavation; all of its pages are held."
+    }
+  ],
+  "chapter_replacement_title": "Withheld section",
+  "entries": [
+    {
+      "zc_id": "zc-sc-m14",
+      "page": "v",
+      "seq": 36,
+      "_internal_reason": "leads-to-held — the printed table-of-contents line reproduces a suppressed chapter title and its page number."
+    }
+  ],
+  "series_index": {
+    "entries": [
+      {
+        "entry_id": "zc-sc-idx-indian-sites",
+        "_internal_heading": "Indian sites",
+        "_internal_reason": "site-location — the heading itself is a finding aid to sites."
+      }
+    ],
+    "subentries": [
+      {
+        "entry_id": "zc-sc-idx-american-indians",
+        "_internal_heading": "American Indians",
+        "_internal_reason": "site-location — each of these subheadings gathers, under one label, the page references that together locate sites across the series. The parent heading and its other subheadings stay: Native history is not withheld.",
+        "subheadings": [
+          "Arrowheads",
+          "Artifacts",
+          "Artifacts, Bowls",
+          "Beads",
+          "Bowls",
+          "Burial Sites",
+          "Camp sites",
+          "Coffin Butte Burial Site",
+          "Coffin Butte Site",
+          "Forest Peak Site",
+          "Fortifications",
+          "Indian graveyard",
+          "Indian Pits",
+          "Indian Sites",
+          "Kalapuyan",
+          "Lore",
+          "Mortars",
+          "Pestles",
+          "Quarry, Prehistoric",
+          "Soap Creek Burial Sites",
+          "Soap Creek \"Indian Fort\""
+        ]
+      }
+    ],
+    "refs": [],
+    "drop_empty_entries": true,
+    "drop_empty_subentries": true
+  },
+  "places": [
+    {
+      "place_id": "american-indians-camp-sites",
+      "_internal_reason": "site-location"
+    },
+    {
+      "place_id": "american-indians-coffin-butte-site",
+      "_internal_reason": "site-location"
+    },
+    {
+      "place_id": "american-indians-forest-peak-site",
+      "_internal_reason": "site-location"
+    },
+    {
+      "place_id": "american-indians-quarry-prehistoric",
+      "_internal_reason": "site-location"
+    },
+    {
+      "place_id": "american-indians-soap-creek-indian-fort",
+      "_internal_reason": "site-location"
+    }
+  ],
+  "chronology": [
+    {
+      "entry_id": "zc-sc-chron-0814",
+      "_internal_reason": "site-location — dates a named artifact find to a named peak."
+    },
+    {
+      "entry_id": "zc-sc-chron-0854",
+      "_internal_reason": "site-location — the same find, restated from the thesis."
+    },
+    {
+      "entry_id": "zc-sc-chron-0147",
+      "_internal_reason": "leads-to-held — describes the contents of a withheld table."
+    },
+    {
+      "entry_id": "zc-sc-chron-1575",
+      "_internal_reason": "leads-to-held — points the reader to a withheld table."
+    }
+  ],
+  "thesis": {
+    "figures": [12],
+    "_internal_figures_reason": "site-location — Figure 12's printed title names a find and the peak it came from.",
+    "dated_statements": [
+      {
+        "page": 49,
+        "date": "1930",
+        "_internal_reason": "site-location — restates the named find."
+      },
+      {
+        "page": 249,
+        "date": "1841",
+        "_internal_reason": "leads-to-held — describes the contents of a withheld table."
+      },
+      {
+        "page": 201,
+        "date": "1990",
+        "_internal_reason": "leads-to-held — points the reader to a withheld table."
+      }
+    ],
+    "tables_not_rendered": ["D.1"],
+    "_internal_tables_reason": "Table D.1's rows are held with printed pp.250-251; the row data must not be rendered from thesis.json either."
+  },
+  "statement_rewrites": [
+    {
+      "was": "and describe the locations of American Indian burial and artifact sites.",
+      "now": "and some describe the locations of American Indian burial and artifact sites; those pages are held while the Library consults the Confederated Tribes of Grand Ronde and the Confederated Tribes of Siletz Indians.",
+      "_internal_reason": "The collection statement described the material in the present tense after it was withheld. Same substitution the content-note page makes, applied once at the data layer so every surface reads the same."
+    }
+  ],
+  "statement_patterns": [
+    "obsidian bi-?face",
+    "Forest Peak obsidian",
+    "Kalapuyan site",
+    "Indian burial",
+    "burial site",
+    "Indian graveyard",
+    "Indian fort",
+    "Indian pits",
+    "prehistoric quarry",
+    "prehistoric sites?\\b",
+    "\\b35 ?BD ?\\d+",
+    "Table D\\.1(?![0-9])",
+    "Table D\\.4(?![0-9])"
+  ],
+  "_internal_statement_patterns_note": "A last-resort filter applied only to short derived-layer strings — chronology statements, thesis dated statements, gazetteer evidence quotes, place notes and index headings. It is never applied to transcript body text, which is withheld page by page instead."
+}

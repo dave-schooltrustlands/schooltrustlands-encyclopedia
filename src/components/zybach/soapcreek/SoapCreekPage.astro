@@ -22,6 +22,13 @@ export interface Props {
   pageTitle?: string;
   /** Adds the corrections foot. Item pages: true. Registers: false. */
   corrections?: boolean;
+  /**
+   * Keep the page out of the site search index. Set on a page whose printed
+   * matter is withheld: the text is already replaced by the hold notice, but
+   * the address itself can still carry the withheld thing's name, and a search
+   * result shows the address. See `suppress.ts`.
+   */
+  pagefindIgnore?: boolean;
 }
 
 const {
@@ -34,6 +41,7 @@ const {
   width = 'prose',
   pageTitle,
   corrections = true,
+  pagefindIgnore = false,
 } = Astro.props as Props;
 ---
 <RoomLayout
@@ -44,18 +52,27 @@ const {
   parents={parents}
   sourceId={sourceId}
   pageTitle={pageTitle}
-  noindex={true}
 >
   <Fragment slot="before-title">
     <ZybachNav current={navCurrent} />
     {kicker && <p class="kicker">{kicker}</p>}
   </Fragment>
 
-  <span data-pagefind-meta="series:soap-creek" hidden></span>
-  <span data-pagefind-filter="series:soap-creek" hidden></span>
-  <span data-pagefind-meta="collection:zybach" hidden></span>
+  {!pagefindIgnore && (
+    <Fragment>
+      <span data-pagefind-meta="series:soap-creek" hidden></span>
+      <span data-pagefind-filter="series:soap-creek" hidden></span>
+      <span data-pagefind-meta="collection:zybach" hidden></span>
+    </Fragment>
+  )}
 
-  <slot />
+  {pagefindIgnore ? (
+    <div data-pagefind-ignore="all" style="display:contents">
+      <slot />
+    </div>
+  ) : (
+    <slot />
+  )}
 
   {corrections && (
     <p class="sc-corrections" data-pagefind-ignore>

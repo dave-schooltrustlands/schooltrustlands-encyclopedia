@@ -19,6 +19,7 @@ import {
   displayNarrators,
 } from '../../../../../components/zybach/soapcreek/links';
 import { plainNote } from '../../../../../components/zybach/labels';
+import { isSuppressedChapter } from '../../../../../components/zybach/soapcreek/suppress';
 
 export async function getStaticPaths() {
   const paths: any[] = [];
@@ -33,6 +34,17 @@ export async function getStaticPaths() {
     if (fmc?.slug && !chapters.some((c) => c.slug === fmc.slug)) {
       chapters.unshift({ ...fmc, entries: [] });
     }
+    /* A chapter whose printed title is itself withheld keeps its page — a
+       citation to one of its printed folios must still land somewhere — but it
+       is not something the previous or next chapter offers a reader on the way
+       past. Step over it in both directions. */
+    const listed = (i: number, step: 1 | -1): Chapter | null => {
+      for (let j = i + step; j >= 0 && j < chapters.length; j += step) {
+        const c = chapters[j];
+        if (c?.slug && !isSuppressedChapter(m.zc_id, c.slug)) return c;
+      }
+      return null;
+    };
     chapters.forEach((c, i) => {
       if (!c?.slug) return;
       paths.push({
@@ -40,10 +52,11 @@ export async function getStaticPaths() {
         props: {
           mono: m,
           chapter: c,
-          prev: i > 0 ? chapters[i - 1] : null,
-          next: i < chapters.length - 1 ? chapters[i + 1] : null,
+          prev: listed(i, -1),
+          next: listed(i, 1),
           position: i + 1,
           total: chapters.length,
+          suppressed: isSuppressedChapter(m.zc_id, c.slug),
         },
       });
     });
@@ -51,17 +64,22 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { mono, chapter, prev, next, position, total } = Astro.props as {
+const { mono, chapter, prev, next, position, total, suppressed } = Astro.props as {
   mono: Monograph;
   chapter: Chapter;
   prev: Chapter | null;
   next: Chapter | null;
   position: number;
   total: number;
+  suppressed?: boolean;
 };
 
 const url = chapterHref(mono.slug, chapter.slug);
-const heading = [chapter.label, chapter.title].filter(Boolean).join('. ') || chapter.slug;
+/* `chapter.title` already arrives neutralised for a suppressed chapter (the
+   data layer replaces it), so the slug must never be the fallback here. */
+const heading = suppressed
+  ? (chapter.title ?? 'Withheld section')
+  : [chapter.label, chapter.title].filter(Boolean).join('. ') || chapter.slug;
 
 // The session that produced this chapter, matched through the printed structure.
 const structRow = (mono.structure ?? []).find(
@@ -175,12 +193,16 @@ const citePage: string | null =
 /**
  * A printed sub-heading can begin part-way down a page that another chapter
  * owns; the chapter then has no page of its own. Point the reader at the page
- * where the text actually is rather than at nothing.
+ * where the text actually is rather than at nothing — unless the page it would
+ * point at belongs to a chapter whose own title is withheld, because the
+ * address carries that title.
  */
-const elsewhereHref =
-  entryCount === 0 && printedPages.length === 0 && chapter.start_page != null
-    ? folioHref(mono.slug, chapter.start_page)
-    : null;
+const elsewhereHref = (() => {
+  if (!(entryCount === 0 && printedPages.length === 0 && chapter.start_page != null)) return null;
+  const target = (mono.page_to_chapter ?? {})[String(chapter.start_page)];
+  if (target && isSuppressedChapter(mono.zc_id, target)) return null;
+  return folioHref(mono.slug, chapter.start_page);
+})();
 
 /** The front matter as the book prints it, for the front-matter chapter page. */
 const frontMatterOrder: Array<[string, string]> = [
@@ -214,6 +236,8 @@ const frontMatterProse = isFrontMatter
   sourceId={`zybach-${mono.zc_id}-${chapter.slug}`}
   navCurrent="soap-creek"
   pageTitle={`${heading} · ${mono.title} · The Zybach Collection`}
+  pagefindIgnore={!!suppressed}
+  corrections={!suppressed}
 >
   {mono.citation_canonical && <p class="sc-canonical">{mono.citation_canonical}</p>}
 
@@ -313,6 +337,22 @@ const frontMatterProse = isFrontMatter
     </span>
   </nav>
 
+  {suppressed ? (
+    /* The citation block prints this page's own address. On a withheld section
+       the address is the last thing still carrying the printed title, so the
+       volume is what is offered to cite instead. */
+    <section aria-labelledby="cite-suppressed" class="sc-cite-suppressed">
+      <h2 id="cite-suppressed">Citing this</h2>
+      <p>
+        Cite the volume rather than this section:
+      </p>
+      <p class="sc-canonical">{mono.citation_canonical}</p>
+      <p class="sc-list-meta">
+        The printed pages this section covers keep their numbers, and the volume
+        is at{' '}<a href={monoHref(mono.slug)}>{`#${mono.number} ${mono.title}`}</a>.
+      </p>
+    </section>
+  ) : (
   <CitationBlock
     canonical={mono.citation_canonical ?? ''}
     short={mono.citation_short ?? ''}
@@ -326,6 +366,7 @@ const frontMatterProse = isFrontMatter
       note: `Swap ${citePage} for whichever printed page you are quoting: every page number in the margin is its own address.`,
     } : undefined}
   />
+  )}
 </SoapCreekPage>
 
 <style is:global>

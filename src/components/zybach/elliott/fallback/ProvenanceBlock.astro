@@ -1,10 +1,32 @@
 ---
-/** Fallback for ROOM's ProvenanceBlock. Props per BUILD_SPEC. */
+/** Fallback for ROOM's ProvenanceBlock. Props per BUILD_SPEC.
+ *
+ * `rights` is optional and additive: give it a record slug, a series slug
+ * ("elliott"), or a population key and a Rights row is appended carrying that
+ * group's own statement rather than one generic sentence for the whole
+ * collection. Omit it and the list is exactly what the caller passed.
+ */
+import { rightsFor, rightsLabel } from '../../_data';
+
 interface Props {
   items: Array<{ label: string; value: string; href?: string }>;
+  rights?: string;
 }
-const { items } = Astro.props as Props;
-const rows = (items ?? []).filter((i) => i && i.label && i.value);
+const { items, rights } = Astro.props as Props;
+const pop = rightsFor(rights);
+
+function rightsValue(): string {
+  if (!pop) return '';
+  const parts = [rightsLabel(pop)];
+  if (pop.gloss) parts.push(pop.gloss);
+  if (pop.disclosure) parts.push(pop.disclosure);
+  const who = (pop.pointers ?? []).map((p) => p.label).filter(Boolean);
+  if (who.length) parts.push(`Who to ask: ${who.join('; ')}.`);
+  return parts.join(' ');
+}
+
+const base = (items ?? []).filter((i) => i && i.label && i.value);
+const rows = pop ? [...base, { label: 'Rights', value: rightsValue() }] : base;
 ---
 
 {rows.length > 0 && (
@@ -13,10 +35,16 @@ const rows = (items ?? []).filter((i) => i && i.label && i.value);
       {rows.map((i) => (
         <div class="row">
           <dt>{i.label}</dt>
-          <dd>{i.href ? <a href={i.href}>{i.value}</a> : i.value}</dd>
+          <dd>{(i as any).href ? <a href={(i as any).href}>{i.value}</a> : i.value}</dd>
         </div>
       ))}
     </dl>
+    {pop && (
+      <p class="rights-foot">
+        Why this statement and not another, and how to ask us to change
+        something: <a href="/collections/zybach/rights/">Rights, use, and takedown</a>.
+      </p>
+    )}
   </section>
 )}
 
@@ -50,5 +78,10 @@ const rows = (items ?? []).filter((i) => i && i.label && i.value);
   .zy-prov dd {
     margin: 0;
     overflow-wrap: anywhere;
+  }
+  .zy-prov .rights-foot {
+    margin: 0.5rem 0 0.2rem;
+    font-size: 0.8rem;
+    color: #475569;
   }
 </style>

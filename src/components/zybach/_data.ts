@@ -133,12 +133,112 @@ export function countPairs(
 export const hasCollectionData = collection !== null;
 
 /* --- rights ---------------------------------------------------------------
- * One sentence of policy, printed identically wherever rights are stated:
- * the room page, the finding aid, how-to-cite and provenance. Nothing here
- * asserts who holds copyright, because nobody has settled it: the monographs
- * were published by OSU Research Forests and the College of Forestry, OSU
- * describes the Elliott interviews under OH 047, and no deed of gift has been
- * executed. Saying more than that would be inventing terms.
+ * The collection-level statement, printed identically wherever rights are
+ * stated: the finding aid, provenance, how-to-cite. It says what posture the
+ * Library is publishing under and sends the reader to the page that sets out
+ * the rest. It deliberately asserts nothing about who holds copyright — that
+ * is a per-population question, and rights.json answers it population by
+ * population. A single label across the whole collection would be a
+ * convenient falsehood.
  */
 export const RIGHTS_STATEMENT =
-  'Rights status: under review. The monographs were published by Oregon State University Research Forests and College of Forestry; the Elliott interviews are described by OSU under OH 047; the creator’s deed of gift and OSU’s terms are still to be settled. Until then the Library links to the creator’s own copies and displays derived text for education and research.';
+  'This is a working edition, published with the creator’s permission while rights and consultation reviews continue. The material here was made at different times, under different agreements, by different people, so each part of the collection carries its own rights statement rather than one label across all of it. The indexes and apparatus are the Library’s own work and an open licence for them is under consideration. How the Library decides what it can publish, and how to ask for a change: /collections/zybach/rights/';
+
+/** The one-line banner text, so the page and the banner cannot drift apart. */
+export const WORKING_EDITION_LINE =
+  'Working edition, September 2026 — published with the creator’s permission while rights and consultation reviews continue. Some pages are held.';
+
+/* --- rights.json ----------------------------------------------------------
+ * Per-population rights statements, in the RightsStatements.org vocabulary,
+ * keyed by record slug and by series. Only InC, UND and InC-RUU are used;
+ * InC-EDU never is, and no Creative Commons licence is applied to any source.
+ */
+
+export interface RightsPointer {
+  label: string;
+  note?: string;
+  href?: string;
+}
+
+export interface RightsPopulation {
+  key: string;
+  label: string;
+  dates?: string;
+  /** 'InC' | 'UND' | 'InC-RUU', or null for the Library's own derived layer. */
+  code?: string | null;
+  /** The vocabulary label, spelled out for a reader. */
+  statement: string;
+  uri?: string | null;
+  /** One sentence of plain language. */
+  gloss?: string;
+  detail?: string;
+  pointers?: RightsPointer[];
+  disclosure?: string;
+  never?: string;
+  confirm?: string;
+  built_with?: string;
+  escalation?: { code: string; statement: string; uri?: string; note?: string };
+}
+
+export interface RightsRecord {
+  generated?: string;
+  edition?: string;
+  vocabulary?: string;
+  note?: string;
+  populations?: RightsPopulation[];
+  derived?: RightsPopulation;
+  records?: Record<string, string>;
+  series?: Record<string, string>;
+}
+
+export const rights: RightsRecord | null = load<RightsRecord>('rights');
+
+/** Every source population, in the order the file lists them. */
+export function rightsPopulations(): RightsPopulation[] {
+  return rights?.populations ?? [];
+}
+
+/** The Library's own derived layer. */
+export function derivedRights(): RightsPopulation | null {
+  return rights?.derived ?? null;
+}
+
+/** A population by its own key. */
+export function rightsPopulation(key: string | null | undefined): RightsPopulation | null {
+  if (!key) return null;
+  return rightsPopulations().find((p) => p.key === key) ?? null;
+}
+
+/**
+ * The rights statement that governs one thing, by record slug first and by
+ * series slug second. `rightsFor('m02-dunn')`, `rightsFor('elliott')`, or a
+ * population key directly. Returns null when nothing matches — a caller that
+ * gets null prints nothing rather than printing the wrong statement.
+ */
+export function rightsFor(key: string | null | undefined): RightsPopulation | null {
+  if (!key) return null;
+  const byRecord = rights?.records?.[key];
+  if (byRecord) return rightsPopulation(byRecord);
+  const bySeries = rights?.series?.[key];
+  if (bySeries) return rightsPopulation(bySeries);
+  return rightsPopulation(key);
+}
+
+/** "In Copyright (InC)" — the label a block prints above the gloss. */
+export function rightsLabel(p: RightsPopulation | null): string {
+  if (!p) return '';
+  return p.code ? `${p.statement} (${p.code})` : p.statement;
+}
+
+
+/* Display copies of the creator's cover and thumbnail images. His sites serve
+   HTTP only, and a browser will not load an http: image inside an https: page,
+   so the images a reader sees inline come from the Library's own copy; every
+   link to a full-size original still points at his site. Map built by
+   scripts/mirror-zybach-images (see image_mirror.json); unknown URLs pass through. */
+import imageMirror from '../../data/zybach/image_mirror.json';
+const IMAGE_MIRROR = imageMirror as Record<string, string>;
+export function mirrored(url: string | null | undefined): string | undefined {
+  if (!url) return undefined;
+  return IMAGE_MIRROR[url] ?? url;
+}

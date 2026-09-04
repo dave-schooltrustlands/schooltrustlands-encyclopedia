@@ -1,0 +1,159 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
+
+/* Every link on this page points at a page that exists in
+   src/pages/collections/zybach/ (or one of its dynamic routes). Nothing here
+   is a promise about a page that has not been built. */
+---
+
+<RoomLayout
+  room="collections"
+  title="Start here"
+  subtitle="Three ways in, depending on why you came."
+  width="prose"
+  sourceId="collections-zybach-start-here"
+  parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }]}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <div class="source-page">
+    <WorkingEditionBanner />
+    <ZybachNav current="start-here" />
+
+    <p>
+      This collection is mostly people talking. Between 1978 and 2019, farmers,
+      loggers, foresters, a schoolteacher and a botanist sat down with a tape
+      recorder and described the country they had lived in. Their words were typed up,
+      checked, and printed as books. Everything else here — the indexes, the
+      maps, the dates — was built to get you to those words.
+    </p>
+
+    <h2 id="neighbor">If you live nearby, or you are simply curious</h2>
+
+    <p>
+      Read one life, straight through, the way you would read a short book.
+      <a href="/collections/zybach/soap-creek/m01-grabe/">Lorna Grabe</a> was the
+      first one printed: a former schoolteacher on her family, and on the group
+      that looks after the Soap Creek schoolhouse.
+      <a href="/collections/zybach/soap-creek/m05-rohner/">Jake and Willie
+      Rohner</a> is a Swiss family's farming life on the north slope of Coffin
+      Butte, from a farm bought at the end of one world war to its sale to the
+      U.S. Army at the start of the next.
+    </p>
+
+    <p>
+      Then take the <a href="/collections/zybach/soap-creek/auto-tour/">Auto
+      Tour</a>. It is a drive through the valley, stop by stop, written in 1989.
+      You can still follow it.
+    </p>
+
+    <h2 id="family">If you are looking for a family</h2>
+
+    <ul class="zc-guide">
+      <li>
+        <a href="/collections/zybach/soap-creek/people/">People</a> — everyone
+        the narrators named, and the pages where they are mentioned. Start with
+        a surname.
+      </li>
+      <li>
+        <a href="/collections/zybach/soap-creek/index/">Series Index</a> — the
+        index printed at the back of each book, merged into one alphabet across
+        all fifteen. Names, farms, roads, schools, mills, creeks.
+      </li>
+      <li>
+        <a href="/collections/zybach/soap-creek/places/">Places</a> — the farms
+        and landmarks the narrators talk about, each one on a page of its own.
+      </li>
+    </ul>
+
+    <p>
+      Every printed page here has its own address. Click the small page number
+      in the margin and your browser's address bar will point at that one
+      printed page — so you can send a relative the page, not the book, and
+      they will land on the paragraph you meant.
+      <a href="/collections/zybach/how-to-cite/#page-anchors">How to cite</a>
+      shows what that looks like.
+    </p>
+
+    <h2 id="researcher">If you are researching or teaching</h2>
+
+    <ul class="zc-guide">
+      <li>
+        <a href="/collections/zybach/soap-creek/timeline/">Timeline</a> — dated
+        statements in the narrators' own words, arranged by period.
+      </li>
+      <li>
+        <a href="/collections/zybach/soap-creek/thesis/">The 1999 thesis</a> —
+        the study built on these interviews, including the chapter on how they
+        were made.
+      </li>
+      <li>
+        <a href="/collections/zybach/how-to-cite/">How to cite</a> — cite the
+        printed book and the printed page; add the Library's address if you
+        want a reader to be able to click.
+      </li>
+      <li>
+        <a href="/collections/zybach/how-to-cite/#rights">Reuse and rights</a>,
+        and <a href="/collections/zybach/provenance/">provenance</a> — who made
+        each part, who published it, and what the Library did to it.
+      </li>
+      <li>
+        <a href="/collections/zybach/elliott/">The Elliott interviews</a> — the
+        second series in this collection: Oregon's Elliott State Forest,
+        recorded 2017–2019.
+      </li>
+    </ul>
+
+    <p>
+      <strong>Where the tapes are.</strong> The recordings are held at Oregon
+      State University's Special Collections and Archives Research Center — OH
+      006 for Soap Creek, OH 047 for the Elliott — and you request them from
+      SCARC. Two Soap Creek interviews have no surviving cassette; for those the
+      printed transcript is the only record.
+    </p>
+
+    <p>
+      <strong>Where the originals are.</strong> Bob Zybach publishes all fifteen
+      monographs, the thesis and the Auto Tour as PDFs on his own site, and the
+      Elliott material on ORWW. The Library's pages point at his copies rather
+      than replacing them; the links are on the
+      <a href="/collections/zybach/provenance/">provenance page</a>.
+    </p>
+
+    <h2 id="before">Two things to know before you read</h2>
+
+    <p>
+      Some of this is hard to read. People recalling the 1920s and 1930s use
+      words that were ordinary then and are not now. Nothing has been softened
+      or quietly edited out; the
+      <a href="/collections/zybach/content-note/">content note</a> explains how
+      the Library handles it and why.
+    </p>
+
+    <p>
+      A few pages are held back. Where that happens the page says so, and says
+      the reason, rather than leaving a gap you would have to guess at.
+    </p>
+
+    <p class="see-also">
+      See also: <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/about-the-creator/">About the creator</a> ·
+      <a href="/collections/zybach/colophon/">How this was made</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-guide {
+    margin: 1rem 0 1.4rem;
+    padding-left: 1.2rem;
+  }
+  .zc-guide li {
+    margin-bottom: 0.7rem;
+    line-height: 1.6;
+  }
+</style>

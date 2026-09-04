@@ -1,0 +1,64 @@
+---
+/* WorkingEditionBanner.astro — The Zybach Collection
+ *
+ * One banner, at the top of every page of the collection, saying what edition
+ * a reader is looking at and where to write. Two lines, no more: what this is,
+ * and how to reach us. It replaces the "preview — not yet public" notice that
+ * stood here while the collection was closed.
+ *
+ * Contract:
+ *   { compact?: boolean }  — `compact` drops the bottom margin for pages that
+ *                            already open with a rule.
+ *
+ * Owner: RIGHTS lane. Other pages import it; nobody needs to pass it anything.
+ */
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+const RIGHTS_HREF = '/collections/zybach/rights/';
+---
+
+<aside class:list={['zc-edition', { 'zc-edition--compact': compact }]} aria-label="About this edition">
+  <p class="zc-edition__line">
+    <strong>Working edition, September 2026</strong> — published with the
+    creator's participation while rights and consultation reviews continue. Some
+    pages are held.
+  </p>
+  <p class="zc-edition__line zc-edition__line--second">
+    Corrections and requests: <a href={RIGHTS_HREF}>Rights, use, and takedown</a>.
+  </p>
+</aside>
+
+<style>
+  .zc-edition {
+    margin: 0 0 1.5rem;
+    padding: 0.7rem 1rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 4px solid var(--old-gold, #a87f2c);
+    border-radius: 3px;
+    font-family: var(--font-sans);
+  }
+  .zc-edition--compact {
+    margin-bottom: 0.9rem;
+  }
+  .zc-edition__line {
+    margin: 0;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: #3d4d63;
+    max-width: 68ch;
+  }
+  .zc-edition__line--second {
+    margin-top: 0.25rem;
+  }
+  .zc-edition__line strong {
+    color: var(--room-accent, #1b3252);
+  }
+  .zc-edition a {
+    color: var(--room-link, #14243c);
+  }
+</style>

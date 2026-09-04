@@ -3,6 +3,7 @@ export const prerender = true;
 
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
 import { seriesBySlug, clean } from '../../../components/zybach/_data';
 
@@ -27,7 +28,6 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
   parents={[
     { label: 'The Zybach Collection', href: '/collections/zybach/' },
   ]}
-  noindex={true}
 >
   <span data-pagefind-meta="collection:zybach" hidden></span>
   <span data-pagefind-meta="series:wildfire" hidden></span>
@@ -35,12 +35,7 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
   <div class="source-page">
     <ZybachNav current="finding-aid" />
 
-    <p class="provisional-note">
-      <strong>Preview — under review by the creator; not yet public.</strong>
-      This series is described at inventory level, and it is the thinnest
-      description in the collection: the folder set aside for it in the
-      creator's upload is still empty. What follows is drawn from published work.
-    </p>
+    <WorkingEditionBanner />
 
     <p class="kicker">Series · inventory level</p>
 
@@ -152,7 +147,7 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
       </li>
       <li>
         <a href="http://www.orww.org/">
-          Oregon Websites and Watersheds Project — project and report catalogue
+          Oregon Websites and Watershed Project (ORWW) — project and report catalogue
         </a>
       </li>
     </ul>
@@ -195,11 +190,11 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
 
     <ProvenanceBlock
       items={[
-        { label: 'Creator', value: 'Dr. Bob Zybach; NW Maps Co.; Oregon Websites and Watersheds Project, Inc.' },
+        { label: 'Creator', value: 'Dr. Bob Zybach; NW Maps Co.; Oregon Websites and Watershed Project, Inc.' },
         { label: 'Deposit status', value: 'Folder created 21 August 2026; empty as of the census of 27 August 2026' },
         { label: 'Published at', value: 'nwmapsco.com and orww.org', href: 'http://www.orww.org/' },
         { label: 'In this collection', value: 'Inventory-level description only; no items published' },
-        { label: 'Rights', value: 'Rights status: under review; no deed of gift has been executed. Commercial editions are identified by reference only.' },
+        { label: 'Rights', value: 'Working edition. The creator publishes this material himself and retains all rights; the Library describes it with his participation and links to his originals. Per-series rights statements: /collections/zybach/rights/.' },
       ]}
     />
 

@@ -1,0 +1,663 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
+import {
+  rights,
+  rightsPopulations,
+  derivedRights,
+  rightsLabel,
+} from '../../../components/zybach/_data';
+
+/* The per-population statements are read from the collection's own rights
+   file, so this page and the statement printed on an item page cannot drift
+   apart. If the file has not landed, the page still renders and says so. */
+const populations = rightsPopulations();
+const derived = derivedRights();
+
+const CONTACT = 'library@schooltrusts.net';
+const CONTACT_MAILTO = `mailto:${CONTACT}?subject=${encodeURIComponent(
+  'The Zybach Collection — a request',
+)}`;
+---
+
+<RoomLayout
+  room="collections"
+  title="Rights, use, and takedown"
+  subtitle="How the Library decides what it can publish, what it knows and does not know about the rights in this collection, and how to ask for a change."
+  width="prose"
+  sourceId="collections-zybach-rights"
+  parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }]}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="rights" />
+    <WorkingEditionBanner />
+
+    <h2 id="what-this-is">What this page is</h2>
+
+    <p>
+      This collection publishes oral history: recordings, transcripts and
+      printed volumes in which people described their own lives, their
+      families, their work and the places they lived. Some of the people who
+      spoke are still living. Some died decades ago. Some of what they said is
+      precise and generous. Some of it is wrong, and some of it is ugly.
+    </p>
+
+    <p>
+      We publish it because it matters, and because a person's account of their
+      own life belongs in the world. But publishing other people's words
+      carries obligations, and this page sets out what ours are: how we decide
+      what we can publish, how to tell us we have got something wrong, what we
+      will do about it, and how fast.
+    </p>
+
+    <p>
+      We would rather be told than not told. Nobody who writes to us about this
+      material is treated as an adversary.
+    </p>
+
+    <h2 id="how-we-decide">How we decide what we can publish</h2>
+
+    <p>
+      Everything we put online rests on at least one of five bases, and we
+      record which one for every group of material, so you can see our reasoning
+      rather than take our word for it.
+    </p>
+
+    <ol class="zc-bases">
+      <li>
+        <strong>The work is in the public domain.</strong> Copyright has
+        expired, or the work never carried copyright to begin with. Nothing in
+        this collection currently rests on this basis.
+      </li>
+      <li>
+        <strong>We own the rights.</strong> The Library holds copyright, or
+        holds permission broad enough to cover what we have done. This covers
+        the indexes and apparatus we built ourselves, and nothing else.
+      </li>
+      <li>
+        <strong>We have the creator's participation, and are documenting his
+        permission.</strong> Bob Zybach, who made this collection, reviewed this
+        edition with the Library in August 2026 and publishes the same material
+        himself. His written permission for this working edition is being
+        recorded now, and the formal instrument follows; if it is not given,
+        this edition comes down.
+      </li>
+      <li>
+        <strong>Our use is a fair use.</strong> For material still in copyright
+        where we could not obtain permission, we publish under a considered
+        fair-use rationale for education, scholarship and research. This is a
+        judgment, not a certainty, and we treat it as one.
+      </li>
+      <li>
+        <strong>We know of no restriction.</strong> After a documented search we
+        found no evidence that anyone holds rights our use would infringe. "No
+        known restrictions" means exactly that: no known ones. It is not a claim
+        that none exist.
+      </li>
+    </ol>
+
+    <p>
+      <strong>Custody is not ownership.</strong> Holding a copy of something
+      does not make you its owner. Some of what we describe is held by archives
+      that have the physical originals but not the copyright, and we do not
+      describe those institutions as having granted rights they do not have.
+    </p>
+
+    <p>
+      <strong>We do not put a single rights label on the whole collection.</strong>
+      This material was made at different times, under different agreements, by
+      different people, for different institutions. Some of it was covered by a
+      signed release; some by a different signed release with different terms;
+      some, as far as anyone can now tell, by nothing at all. One label across
+      all of it would be a convenient falsehood. Each group carries its own
+      statement, below and on the item pages themselves.
+    </p>
+
+    <h2 id="what-we-know">What we know about rights in this collection</h2>
+
+    <p>
+      Plainly, and including what we do not know. The short codes are from
+      RightsStatements.org, the standard vocabulary libraries and archives use
+      so that a statement means the same thing everywhere:
+      <strong>In Copyright</strong> means the work is protected and we are
+      telling you who to ask; <strong>Copyright Undetermined</strong> means we
+      have looked and cannot say who owns it.
+    </p>
+
+    {populations.length === 0 && (
+      <p class="zc-missing">
+        The per-item rights statements are not available on this page right now.
+        Write to us at <a href={CONTACT_MAILTO}>{CONTACT}</a> and we will send
+        them.
+      </p>
+    )}
+
+    {populations.map((p) => (
+      <section class="zc-pop" aria-label={p.label}>
+        <h3 class="zc-pop__head">
+          {p.label}
+          {p.dates && <span class="zc-pop__dates">{p.dates}</span>}
+        </h3>
+        <p class="zc-pop__status">{rightsLabel(p)}</p>
+        {p.gloss && <p class="zc-pop__gloss">{p.gloss}</p>}
+        {p.detail && <p class="zc-pop__detail">{p.detail}</p>}
+        {p.disclosure && (
+          <p class="zc-pop__disclosure">
+            <strong>Money owed to somebody else.</strong> {p.disclosure}
+          </p>
+        )}
+        {p.never && <p class="zc-pop__never">{p.never}</p>}
+        {p.escalation && (
+          <p class="zc-pop__detail">
+            Where we have searched for a particular person and cannot find them,
+            that one item is marked <strong>{p.escalation.statement}</strong>
+            {p.escalation.code && <> ({p.escalation.code})</>}. {p.escalation.note}
+          </p>
+        )}
+        {p.pointers && p.pointers.length > 0 && (
+          <>
+            <p class="zc-pop__ask">Who to ask:</p>
+            <ul class="zc-pop__pointers">
+              {p.pointers.map((ptr) => (
+                <li>
+                  {ptr.href ? <a href={ptr.href}>{ptr.label}</a> : ptr.label}
+                  {ptr.note && <span class="zc-pop__note"> — {ptr.note}</span>}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        {p.confirm && (
+          <p class="zc-pop__open">
+            <strong>Still open:</strong> {p.confirm}
+          </p>
+        )}
+      </section>
+    ))}
+
+    {derived && (
+      <section class="zc-pop zc-pop--derived" aria-label={derived.label}>
+        <h3 class="zc-pop__head">
+          {derived.label}
+          {derived.dates && <span class="zc-pop__dates">{derived.dates}</span>}
+        </h3>
+        <p class="zc-pop__status">{derived.statement}</p>
+        {derived.gloss && <p class="zc-pop__gloss">{derived.gloss}</p>}
+        {derived.detail && <p class="zc-pop__detail">{derived.detail}</p>}
+        {derived.built_with && <p class="zc-pop__detail">{derived.built_with}</p>}
+      </section>
+    )}
+
+    <p>
+      We keep a dated log of the rights work behind these statements — each step
+      taken, each source consulted, each question asked and the answer we got,
+      including the answers that were "no" and the ones that were "we don't
+      know". Ask and we will send it. A rights statement that shows only its
+      conclusions is asking you to trust us, and we would rather show the
+      working.
+    </p>
+
+    <h2 id="narrators">If you are a narrator, or a narrator's family</h2>
+
+    <p class="zc-standout">
+      If you are one of the people whose interview appears here, or you are next
+      of kin of someone who is, and you want something restricted or removed, we
+      will do it. You do not have to give a reason and you do not have to have a
+      legal claim.
+    </p>
+
+    <p>
+      This is not a copyright question and we will not turn it into one.
+      Whatever the paperwork says, whatever a release form signed thirty years
+      ago allows us to do, a person who spoke into a microphone about their own
+      life — or that person's family — gets to change their mind about what
+      happens to it. There is a real professional disagreement about this. Some
+      in our field would say a defensible legal position is enough. We do not
+      think it is.
+    </p>
+
+    <p>What that means in practice:</p>
+
+    <ul class="zc-practice">
+      <li>
+        Write to us and say what you want — removal, restriction, a note added,
+        a name taken out, a passage cut. Whatever it is.
+      </li>
+      <li>
+        We act on it. <strong>We do not investigate first, we do not ask you to
+        prove anything, and we do not send you to a lawyer.</strong>
+      </li>
+      <li>
+        If you want something taken out of our search results and indexes
+        straight away while we sort out the rest, say so and we do that first.
+      </li>
+      <li>
+        If you want an item gone entirely, it goes. We keep a preservation copy
+        that nobody can see, unless you ask us not to, and we tell you which.
+      </li>
+      <li>We confirm in writing what we did.</li>
+      <li>You can change your mind again later, in either direction.</li>
+    </ul>
+
+    <p>
+      If you are not sure whether you count as next of kin for this purpose,
+      write to us anyway. We would rather have that conversation than not.
+    </p>
+
+    <h2 id="sensitive">Sensitive information</h2>
+
+    <p>
+      Some material here is sensitive for reasons that have nothing to do with
+      copyright, and we handle it separately.
+    </p>
+
+    <h3 id="site-locations">Places that should not be easy to find</h3>
+
+    <p>
+      These volumes contain passages in which narrators describe where American
+      Indian burial, grave and artifact sites are. Turning that prose into a
+      searchable, mappable point is not the same act as printing it on page 100
+      of a monograph in 1993. It is our act, performed now, and it would make
+      those places easy to find rather than merely findable.
+    </p>
+
+    <p>
+      <strong>So those pages are held, and so are the index entries, place pages
+      and timeline entries that would lead a reader to them.</strong> They stay
+      held until we have consulted the Confederated Tribes of Grand Ronde and
+      the Confederated Tribes of Siletz Indians, whose country this collection
+      covers. That consultation is being opened now, and nothing locational
+      will be published before it concludes.
+      Silence is not agreement, and we will not read it as agreement. If a
+      tribal government or tribal historic preservation office asks us to
+      withhold, generalise or restrict anything else here, we do it on request
+      and discuss it afterwards.
+    </p>
+
+    <p>
+      Two things this does not mean. It does not mean we are withholding
+      Kalapuya history — that history stays, and it is one of the reasons this
+      collection is worth reading. And it does not mean we have deleted
+      anything: a held page is still in the sequence, still citable, and says it
+      is held.
+    </p>
+
+    <h3 id="personal-data">Personal information about living people</h3>
+
+    <p>
+      Pages carrying home addresses, telephone numbers, tax lots and the names
+      of children are held, with the reason shown. Historical addresses that are
+      part of the story — where a family farmed, which house burned — are
+      treated as content rather than contact details, but tell us if we have got
+      that balance wrong for you.
+    </p>
+
+    <h3 id="other-sensitive">Other sensitive content</h3>
+
+    <p>
+      The collection contains derogatory language, unproven allegations about
+      named people, and references to children who are now adults. We do not
+      quietly delete this material — altering the historical record is its own
+      kind of dishonesty — but we note it, and there are several things short of
+      deletion we can do. The list is further down this page. The
+      <a href="/collections/zybach/content-note/">content note</a> says what is
+      in this collection and where.
+    </p>
+
+    <h2 id="machines">Machine assistance, stated plainly</h2>
+
+    <p>
+      The apparatus around this collection was built with AI assistance under
+      human direction: the page anchoring that lets you link to one printed
+      page, the indexes, the place and people pages, and the timeline. That is
+      the Library's layer, and it is labelled as the Library's layer wherever it
+      appears.
+    </p>
+
+    <p>
+      <strong>The transcripts are the creator's printed text, unaltered.</strong>
+      They were typed, checked against the tape, and approved by the narrators
+      before the volumes were printed. We extracted that text; we did not
+      generate it, rewrite it, summarise it, correct it or enhance it. No
+      generated text is presented as source material. No image has been
+      sharpened, upscaled or interpolated. No audio has been synthesised and no
+      narrator's voice has been re-rendered.
+    </p>
+
+    <p>
+      The Library notifies Oregon State University's Special Collections and
+      Archives Research Center, which holds the original recordings, of this use
+      and of the machine assistance behind it, under the Center's notification-of-use
+      practice.
+    </p>
+
+    <p>
+      Machine alignment makes mistakes. If you find one, tell us — corrections
+      are welcome and are not takedown requests. The
+      <a href="/collections/zybach/errata/">errata page</a> logs what we have
+      fixed, and the <a href="/collections/zybach/colophon/">colophon</a> says
+      exactly what was done and what was deliberately not done.
+    </p>
+
+    <h2 id="asking">Asking us to change or remove something</h2>
+
+    <p>Write to us. There is no form and no fee.</p>
+
+    <p>Please include, as far as you can:</p>
+
+    <ul class="zc-practice">
+      <li>
+        <strong>Your name, and how to reach you.</strong> We need to be able to
+        reply.
+      </li>
+      <li>
+        <strong>Which page or pages</strong> — a link is ideal; the volume and
+        printed page number is just as good.
+      </li>
+      <li>
+        <strong>Your relationship to the material</strong>, if you are willing
+        to say: narrator, family member, rights holder, someone named or
+        described, a tribal government or office, an institution, or none of
+        these. This is not required, but it changes how fast we act, and in some
+        cases it decides the matter.
+      </li>
+      <li>
+        <strong>What the problem is</strong> — copyright, privacy, cultural
+        sensitivity, a factual error, harmful or offensive content, or something
+        else.
+      </li>
+      <li>
+        <strong>What you would like us to do.</strong> The list in the next
+        section may help, but you do not have to choose from it.
+      </li>
+    </ul>
+
+    <p>
+      A request missing some of this still gets a response. We will not bounce
+      anything back on a technicality. If we need more, we will ask.
+    </p>
+
+    <h2 id="clock">What happens when we receive a request</h2>
+
+    <ul class="zc-clock">
+      <li>
+        <strong>Within 2 business days</strong> — we acknowledge your request
+        and tell you who is handling it.
+      </li>
+      <li>
+        <strong>Immediately, on request</strong> — we take the material out of
+        our search results, our indexes and our maps while we look into it. You
+        only have to ask. Doing that is not a finding that you are right; it is
+        what we do while we work out whether you are.
+      </li>
+      <li>
+        <strong>Immediately</strong> — if a tribal government or tribal historic
+        preservation office asks for material to be withheld pending discussion,
+        we withhold first and discuss afterwards.
+      </li>
+      <li>
+        <strong>Within 10 business days</strong> — we give you a decision in
+        writing, with our reasons. If we cannot meet that, we tell you before
+        the ten days are up, explain why, and give you a date.
+      </li>
+      <li>
+        <strong>Afterwards</strong> — if you think we got it wrong, say so and a
+        different person reviews it.
+      </li>
+    </ul>
+
+    <p>
+      <strong>Before we permanently remove anything, the person who gave us the
+      material gets to be heard.</strong> We tell him what has been asked and
+      why. That is not a veto — the decision is ours — but somebody who trusted
+      us with a collection deserves to know before part of it disappears, and he
+      often knows something we do not.
+    </p>
+
+    <p>
+      <strong>Two exceptions, and they matter.</strong> A request from a
+      narrator or their next of kin is acted on at once and is not delayed for
+      anyone's comment. And taking something out of the indexes happens straight
+      away when you ask; the conversation happens while it is out, not before.
+    </p>
+
+    <p>We keep a record of every request, what was asked, what we did, and why.</p>
+
+    <h2 id="responses">What we can do — the range of responses</h2>
+
+    <p>
+      We do not have only two settings. Removal is one option among many, and it
+      is often not the one that fixes the problem. We start with the least
+      drastic response that genuinely addresses what has been raised, and go
+      further where that is what you want.
+    </p>
+
+    <ul class="zc-ladder">
+      <li>
+        <strong>Edit the description.</strong> Correct a name, a date, a place,
+        a heading. The commonest fix and often the whole fix.
+      </li>
+      <li>
+        <strong>Add a note.</strong> The material stays as it is, with context
+        attached — including context you write, if you want to write it.
+      </li>
+      <li>
+        <strong>Anonymize.</strong> Replace a person's name with a description
+        of their role, so the account survives without the identification.
+      </li>
+      <li>
+        <strong>Redact.</strong> Remove a specific passage, name or detail from
+        the published page while keeping the rest available.
+      </li>
+      <li>
+        <strong>De-index.</strong> The page stays at its own address but comes
+        out of our search results, indexes and maps, so it is no longer put in
+        front of people who were not looking for it.
+      </li>
+      <li>
+        <strong>Hold.</strong> The page is withdrawn from view but stays in the
+        sequence, citable, saying that it is held.
+      </li>
+      <li>
+        <strong>Restrict.</strong> The material is available only on request, or
+        only to a defined group — researchers, family members, a tribal office —
+        on stated terms.
+      </li>
+      <li>
+        <strong>Remove.</strong> It comes down. We keep a preservation copy
+        nobody can see unless we are asked not to, and we tell you which.
+      </li>
+    </ul>
+
+    <p>
+      We explain which of these we chose and why. If you asked for removal and
+      we think de-indexing solves the problem, we will say so and ask what you
+      think — and if you still want removal, that carries a great deal of weight
+      with us.
+    </p>
+
+    <h2 id="will-not">What we will not do</h2>
+
+    <ul class="zc-practice">
+      <li>
+        <strong>We will not charge you.</strong> There is no fee for a request,
+        an appeal, or a copy of our record of what we did.
+      </li>
+      <li>
+        <strong>We will not treat a request as an accusation.</strong> Most of
+        what we get told is a correction, and corrections make the collection
+        better.
+      </li>
+      <li>
+        <strong>We will not remove something and pretend it was never
+        there.</strong> A withdrawn page leaves a stub saying that something was
+        removed, on what date, and in general terms why — without identifying
+        anyone who asked.
+      </li>
+      <li>
+        <strong>We will not hide behind the paperwork.</strong> "The release
+        form allows it" is an answer to a legal question. It is not an answer to
+        a narrator or a family, and we will not use it as one.
+      </li>
+      <li>
+        <strong>We will not claim rights we do not have.</strong> We do not put
+        an open licence on material we do not own, and we do not tell you our
+        sources are freely reusable when we do not know that they are.
+      </li>
+    </ul>
+
+    <h2 id="contact">Contact</h2>
+
+    <p>
+      <strong>America's School Trust Library</strong><br />
+      an Oregon public benefit nonprofit corporation, Oregon Registry No.
+      259005891
+    </p>
+
+    <p>
+      Email <a href={CONTACT_MAILTO}>{CONTACT}</a>, with "The Zybach Collection"
+      somewhere in the subject line so it reaches the right person.
+    </p>
+
+    <p>
+      Every request gets a person, an acknowledgment within two business days,
+      and a written answer with reasons. Nobody who writes to us about this
+      material is treated as an adversary. Requests are handled by the
+      Library's president; an appeal is reviewed by a Library director who took
+      no part in the first decision.
+    </p>
+
+    <p class="zc-revised">
+      This page was last revised on 4 September 2026. When it changes, the
+      change is logged on the
+      <a href="/collections/zybach/errata/">errata page</a>, so you can see what
+      it said before.
+    </p>
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/content-note/">Content note</a> ·
+      <a href="/collections/zybach/colophon/">Colophon</a> ·
+      <a href="/collections/zybach/errata/">Errata</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-bases li,
+  .zc-practice li,
+  .zc-clock li,
+  .zc-ladder li {
+    margin-bottom: 0.55rem;
+    line-height: 1.6;
+  }
+  .zc-standout {
+    margin: 1.25rem 0;
+    padding: 0.9rem 1.1rem;
+    background: rgba(122, 46, 46, 0.05);
+    border-left: 4px solid var(--oxblood, #7a2e2e);
+    border-radius: 3px;
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+  .zc-pop {
+    margin: 1.4rem 0;
+    padding: 0.95rem 1.15rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 4px;
+  }
+  .zc-pop--derived {
+    border-left: 4px solid var(--sage, #7c8b74);
+  }
+  .zc-pop__head {
+    margin: 0 0 0.15rem;
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+  .zc-pop__dates {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: #6b6355;
+  }
+  .zc-pop__status {
+    margin: 0.5rem 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--old-gold, #a87f2c);
+  }
+  .zc-pop__gloss {
+    margin: 0 0 0.6rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .zc-pop__detail,
+  .zc-pop__never {
+    margin: 0 0 0.6rem;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    color: #3d4d63;
+  }
+  .zc-pop__disclosure {
+    margin: 0 0 0.6rem;
+    padding: 0.6rem 0.8rem;
+    background: rgba(168, 127, 44, 0.09);
+    border-radius: 3px;
+    font-size: 0.93rem;
+    line-height: 1.6;
+  }
+  .zc-pop__ask {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: #6b6355;
+  }
+  .zc-pop__pointers {
+    margin: 0 0 0.6rem;
+    padding-left: 1.15rem;
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+  .zc-pop__pointers li {
+    margin-bottom: 0.3rem;
+  }
+  .zc-pop__note {
+    color: #4e617c;
+  }
+  .zc-pop__open {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #4e617c;
+  }
+  .zc-confirm {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #7a2e2e;
+    white-space: nowrap;
+  }
+  .zc-revised {
+    margin-top: 2rem;
+    font-size: 0.86rem;
+    color: #4e617c;
+  }
+  .zc-missing {
+    padding: 0.8rem 1rem;
+    border: 1px dashed var(--rule-border, #d8d1c2);
+    border-radius: 3px;
+    font-size: 0.93rem;
+  }
+</style>

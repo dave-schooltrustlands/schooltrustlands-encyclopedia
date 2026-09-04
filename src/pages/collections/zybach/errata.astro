@@ -1,0 +1,134 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
+
+/* One section, dated entries, newest first. A correction is made in the text
+   where it belongs and recorded here — not marked up in place. Add an entry by
+   adding a line to this list; nothing else on the page needs touching. */
+const ENTRIES: ReadonlyArray<{ date: string; text: string }> = [
+  {
+    date: 'September 2026',
+    text: 'Working edition opened. Page anchors, indexes and holds are under continuing review.',
+  },
+];
+
+const CONTACT = 'library@schooltrusts.net';
+const CONTACT_MAILTO = `mailto:${CONTACT}?subject=${encodeURIComponent(
+  'The Zybach Collection — a correction',
+)}`;
+---
+
+<RoomLayout
+  room="collections"
+  title="Errata"
+  subtitle="Corrections to this collection: what was changed, and when."
+  width="prose"
+  sourceId="collections-zybach-errata"
+  parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }]}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <div class="source-page">
+    <ZybachNav current="errata" />
+    <WorkingEditionBanner />
+
+    <p>
+      A printed book puts its errata at the back. This collection does the same
+      thing, in one place, on this page.
+    </p>
+
+    <h2 id="how">How corrections work here</h2>
+
+    <p>
+      <strong>A correction is made in the text, where it belongs, and recorded
+      here.</strong> We do not strike words through, leave the mistake standing
+      with a marker beside it, or make a reader assemble the right version out
+      of two wrong ones. The page you read is the corrected page. This is the
+      list of what changed and when.
+    </p>
+
+    <p>
+      Two things are outside that rule, and both are the same principle from the
+      other side. We do not correct a narrator: the transcripts were checked and
+      approved by the people who spoke them, and what looks like an error in a
+      narrator's memory is evidence, not a typo. And we do not quietly remove
+      anything. A page withdrawn at somebody's request leaves a stub saying that
+      something was withdrawn and roughly why — see
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a>.
+    </p>
+
+    <p>
+      What does get corrected: our transcription of the printed page, our page
+      numbers and anchors, our index and place entries, our dates, our
+      descriptions, and anything else that is the Library's work rather than the
+      creator's words.
+    </p>
+
+    <h2 id="log">The log</h2>
+
+    <dl class="zc-errata">
+      {ENTRIES.map((entry) => (
+        <div class="zc-errata__row">
+          <dt>{entry.date}</dt>
+          <dd>{entry.text}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <h2 id="report">If you find something wrong</h2>
+
+    <p>
+      Tell us. A wrong page number in an index is worth reporting — it
+      propagates. Email <a href={CONTACT_MAILTO}>{CONTACT}</a>, or
+      <a href={`/correct${Astro.url.pathname}`}>submit a correction</a> through
+      the form. Corrections are welcome and are not takedown requests; if what
+      you want is a page held or removed, the
+      <a href="/collections/zybach/rights/">rights page</a> says how to ask and
+      how fast we answer.
+    </p>
+
+    <p class="see-also">
+      <a href="/collections/zybach/">Finding aid</a> ·
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a> ·
+      <a href="/collections/zybach/colophon/">Colophon</a> ·
+      <a href="/about/corrections/">How corrections work across the Library</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-errata {
+    margin: 1.25rem 0 2rem;
+  }
+  .zc-errata__row {
+    display: grid;
+    grid-template-columns: 11em 1fr;
+    gap: 0.75rem;
+    padding: 0.65rem 0;
+    border-top: 1px solid rgba(27, 50, 82, 0.12);
+  }
+  .zc-errata__row:first-child {
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+  }
+  .zc-errata__row dt {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    color: #6b6355;
+  }
+  .zc-errata__row dd {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  @media (max-width: 560px) {
+    .zc-errata__row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

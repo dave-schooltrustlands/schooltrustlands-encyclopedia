@@ -6,6 +6,7 @@
  * title instead of a broken image.
  */
 import type { Monograph } from './data';
+import { mirrored } from '../_data';
 import { monoHref, displayNarrators } from './links';
 
 export interface Props {
@@ -25,7 +26,7 @@ const { monographs } = Astro.props as Props;
           {m.cover_url ? (
             <img
               class="sc-shelf-cover"
-              src={m.thumb_url ?? m.cover_url}
+              src={mirrored(m.thumb_url ?? m.cover_url)}
               alt={`Cover of ${m.title}${m.year_printed ? `, ${m.year_printed}` : ''}`}
               loading="lazy"
               width="240"

@@ -377,11 +377,11 @@ const gazPlacesRaw: any[] = Array.isArray(gazetteerRaw)
   : arr<any>(gazetteerRaw?.places);
 
 function placeSlugOf(p: any): string {
-  return (
+  const raw =
     str(p?.slug) ??
-    (str(p?.place_id) ?? '').replace(/^zc-el-pl-/, '') ??
-    slugify(String(p?.name ?? ''))
-  ) || slugify(String(p?.name ?? 'place'));
+    str(p?.place_id) ??
+    slugify(String(p?.name ?? ''));
+  return (raw || slugify(String(p?.name ?? 'place'))).replace(/^zc-el-pl-/, '');
 }
 
 export const places: Place[] = gazPlacesRaw
@@ -481,9 +481,10 @@ function buildGeoJSON(): any {
       features: fc.features.map((f: any) => {
         const props = { ...(f.properties ?? {}) };
         const slug =
-          str(props.slug) ??
-          (str(props.place_id) ?? '').replace(/^zc-el-pl-/, '') ??
-          slugify(String(props.name ?? ''));
+          (str(props.slug) ?? str(props.place_id) ?? slugify(String(props.name ?? ''))).replace(
+            /^zc-el-pl-/,
+            ''
+          );
         props.slug = slug;
         props.group = placeGroup(placeBySlug.get(slug));
         props.title = str(props.title) ?? str(props.name) ?? slug;
@@ -492,7 +493,9 @@ function buildGeoJSON(): any {
           [props.kind, props.confidence ? `coordinate ${coordinateConfidenceLabel(props.method, props.confidence)}` : null]
             .filter(Boolean)
             .join(' · ');
-        props.href = str(props.href) ?? `${BASE}/places/${slug}/`;
+        // Always derive the address from the reader-facing slug; the pipeline's
+        // own href carries the internal identifier.
+        props.href = `${BASE}/places/${slug}/`;
         return { ...f, properties: props };
       }),
     };
@@ -1046,7 +1049,7 @@ for (const iv of interviewRecords) {
 
   const segments: Segment[] = [];
   const tapes: Tape[] = arr<any>(iv?.tapes).map((t): Tape => {
-    const label = str(t?.tape_label_as_printed) ?? str(t?.label) ?? str(t?.tape_id) ?? '';
+    const label = str(t?.tape_label_as_printed) ?? str(t?.label) ?? str(t?.tape_label_in_toc) ?? str(t?.tape_id) ?? '';
     const tape_id = str(t?.tape_id) ?? `${interview_id}-${slugify(label)}`;
     const segs: Segment[] = arr<any>(t?.segments).map((s): Segment => {
       const stop_label = str(s?.stop_label_as_printed) ?? str(s?.stop_label);
@@ -1257,12 +1260,12 @@ function seriesRights(): string | null {
 export const RIGHTS = {
   osu:
     seriesRights() ??
-    'The Elliott State Forest oral history interviews are described by Oregon State University Libraries Special Collections and Archives Research Center as collection OH 047, which OSU publishes under a Creative Commons Attribution 4.0 International licence (CC BY 4.0).',
+    'The Elliott State Forest oral history interviews are described by Oregon State University Libraries Special Collections and Archives Research Center as collection OH 047.',
   osuFindingAid:
     'https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=3293',
   osuLabel: 'OSU SCARC finding aid, OH 047',
   orww:
-    'The recordings, transcripts, photographs and maps linked from these pages are Bob Zybach’s own public files on orww.org. This library links to them; it does not host copies.',
+    'The recordings, transcripts, photographs and maps linked from these pages are Bob Zybach’s own public files on orww.org. The Library links to them and shows small display copies of his photographs.',
   orwwRoot: 'http://www.orww.org/Elliott_Forest/History/Oral/',
 };
 

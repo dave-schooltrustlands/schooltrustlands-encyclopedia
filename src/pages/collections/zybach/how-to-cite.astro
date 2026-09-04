@@ -4,7 +4,7 @@ export const prerender = true;
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
 import CitationBlock from '../../../components/zybach/CitationBlock.astro';
-import { RIGHTS_STATEMENT } from '../../../components/zybach/_data';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 import { monographs } from '../../../components/zybach/soapcreek/data';
 import { citationLabel, chapterHref, folioHref } from '../../../components/zybach/soapcreek/links';
 
@@ -27,17 +27,18 @@ const exampleShorthand = example ? citationLabel(example.number as any, exampleP
   parents={[
     { label: 'The Zybach Collection', href: '/collections/zybach/' },
   ]}
-  noindex={true}
 >
   <span data-pagefind-meta="collection:zybach" hidden></span>
 
   <div class="source-page">
     <ZybachNav current="how-to-cite" />
+    <WorkingEditionBanner />
 
-    <p class="provisional-note">
-      <strong>Preview — under review by the creator; not yet public.</strong>
-      Page addresses in this preview are intended to be permanent, but they are
-      not guaranteed until the collection is published.
+    <p>
+      Page addresses here are meant to be permanent, and the Library intends to
+      keep them. Cite the edition you used —
+      <strong>working edition, 2026</strong> — and a later reader will know
+      which text you were looking at.
     </p>
 
     <p>
@@ -136,7 +137,7 @@ const exampleShorthand = example ? citationLabel(example.number as any, exampleP
     <p class="zc-example">
       Phillips, Jerry. Interviewed by Bob Zybach, 10 October 2017, Elliott State
       Forest field tour. Tape 3-B at 4:15; transcript p. 97. Elliott State
-      Forest Oral History Collection, Oregon Websites and Watersheds Project.
+      Forest Oral History Collection, Oregon Websites and Watershed Project, Inc.
     </p>
 
     <p>
@@ -171,35 +172,53 @@ const exampleShorthand = example ? citationLabel(example.number as any, exampleP
     <h2 id="this-collection">The collection as a whole</h2>
 
     <CitationBlock
-      canonical="The Zybach Collection. America's School Trust Library, 2026. Finding aid."
-      short="The Zybach Collection, finding aid."
+      canonical="The Zybach Collection. Working edition, 2026. America's School Trust Library. Finding aid."
+      short="The Zybach Collection, working edition, 2026, finding aid."
       url="/collections/zybach/"
       accessed="2026"
     />
 
     <h2 id="rights">Reuse</h2>
 
-    <p>{RIGHTS_STATEMENT}</p>
+    <p>
+      There is no single rights label on this collection, because the material
+      was made at different times under different agreements. Each group of
+      material carries its own statement, and each says who to ask. Before you
+      reuse anything beyond quotation, read
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a> — it
+      sets out what the Library knows, what it does not, and where to write.
+    </p>
 
     <p>
-      SCARC's finding-aid pages carry the Center's standard footer, "This work is
+      The indexes, place and people pages, the timeline and the page anchoring
+      are the Library's own work rather than the creator's. An open licence for
+      that layer is under consideration and has not been granted; when it is,
+      the rights page will say so and date it. Whatever the Library decides
+      covers only the layer it made. It cannot cover the sources.
+    </p>
+
+    <p>
+      One thing worth knowing, because it trips people up: the Oregon State
+      finding-aid pages carry the Center's standard footer, "This work is
       licensed under a Creative Commons Attribution 4.0 International License."
-      That covers SCARC's own description of the collections. It is not a licence
-      on the recordings, the transcripts or the photographs.
+      That covers Oregon State's own description of the collections. It is not a
+      licence on the recordings, the transcripts or the photographs, and nothing
+      here should be read as one.
     </p>
 
     <h2 id="corrections">If a citation here is wrong</h2>
 
     <p>
-      Say so. The Library corrects in public: the old wording, the new wording,
-      and the reason all stay visible in the
-      <a href="/about/corrections/">corrections ledger</a>. A wrong page number
-      in an index is worth reporting; it propagates.
+      Say so. A correction is made in the text, where it belongs, and recorded
+      on the <a href="/collections/zybach/errata/">errata page</a> with its
+      date. A wrong page number in an index is worth reporting; it propagates.
     </p>
 
     <p class="see-also">
       See also: <a href="/about/cite/">How to cite the Library</a> ·
       <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a> ·
+      <a href="/collections/zybach/errata/">Errata</a> ·
       <a href="/collections/zybach/">Finding aid</a>
     </p>
   </div>

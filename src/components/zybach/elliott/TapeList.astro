@@ -53,13 +53,9 @@ const rows = tapes.map((t) => ({
         {t.mp3_url ? (
           <>
             <p class="mp3">
-              <a href={t.mp3_url}>{t.mp3_url.split('/').pop()}</a>
-              <span class="host"> — orww.org</span>
+              <a href={t.mp3_url} rel="external">Listen or download: {t.mp3_url.split('/').pop()}</a>
+              <span class="host"> — on orww.org, the creator's site, where the recordings are hosted</span>
             </p>
-            <audio controls preload="none" src={t.mp3_url}>
-              Your browser cannot play this file. Use the link above to
-              download it.
-            </audio>
           </>
         ) : (
           <p class="mp3 missing">No public MP3 has been matched to this side.</p>

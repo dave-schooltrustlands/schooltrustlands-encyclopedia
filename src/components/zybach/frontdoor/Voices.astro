@@ -1,0 +1,115 @@
+---
+/* Voices.astro — The Zybach Collection, front door.
+ *
+ * Pull quotes, verbatim. Each one carries the name of the person who said it,
+ * the book and the printed page it comes from, and a link to that page in the
+ * transcript, so a reader can check it in one click and read what came before
+ * and after. Nothing here is trimmed, tidied or joined up: what is printed is
+ * the turn as it stands on the page, including the narrator's own hesitations.
+ *
+ * Owner: FRONTDOOR. New file; nothing else imports it.
+ */
+export interface Quote {
+  /** The turn, exactly as printed. */
+  text: string;
+  /** The person who said it, as the book prints the name. */
+  speaker: string;
+  /** Who they were, in a few words, as the book prints it. */
+  role?: string;
+  /** "Monograph #07, page 33" — plain words, no record numbers. */
+  source: string;
+  /** Permanent link to that printed page. */
+  href: string;
+}
+
+interface Props {
+  quotes: ReadonlyArray<Quote>;
+  heading?: string;
+  headingId?: string;
+  lede?: string;
+}
+
+const { quotes, heading, headingId, lede } = Astro.props as Props;
+---
+
+{quotes.length > 0 && (
+  <section class="fd-voices" aria-labelledby={headingId}>
+    {heading && <h2 id={headingId}>{heading}</h2>}
+    {lede && <p class="fd-voices__lede">{lede}</p>}
+    <div class="fd-voices__grid">
+      {quotes.map((q) => (
+        <figure class="fd-voice">
+          <blockquote class="fd-voice__text">{q.text}</blockquote>
+          <figcaption class="fd-voice__cite">
+            <span class="fd-voice__who">{q.speaker}</span>
+            {q.role && <span class="fd-voice__role">{q.role}</span>}
+            <a class="fd-voice__src" href={q.href}>{q.source}</a>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .fd-voices {
+    margin: 2.25rem 0;
+  }
+  .fd-voices__lede {
+    max-width: 62ch;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .fd-voices__grid {
+    display: grid;
+    gap: 1.5rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    margin-top: 1.25rem;
+  }
+  .fd-voice {
+    margin: 0;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--old-gold, #a87f2c);
+  }
+  .fd-voice__text {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.08rem;
+    line-height: 1.55;
+    color: var(--deep-navy, #14243c);
+  }
+  .fd-voice__text::before {
+    content: '\201C';
+  }
+  .fd-voice__text::after {
+    content: '\201D';
+  }
+  .fd-voice__cite {
+    margin-top: 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: #6b6355;
+  }
+  .fd-voice__who {
+    display: block;
+    font-weight: 700;
+    color: var(--trust-blue, #1b3252);
+  }
+  .fd-voice__role {
+    display: block;
+  }
+  .fd-voice__src {
+    display: inline-block;
+    margin-top: 0.15rem;
+    color: var(--room-link, #14243c);
+  }
+
+  @media (min-width: 60rem) {
+    .fd-voice__text {
+      font-size: 1.14rem;
+    }
+  }
+</style>

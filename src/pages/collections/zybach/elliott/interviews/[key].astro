@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import { mirrored } from '../../../../../components/zybach/_data';
 import {
   ZybachNav,
   CitationBlock,
@@ -101,7 +102,7 @@ const notePages = [
   ...new Set(contentNotes.map((n: any) => n.page).filter((p: any) => p != null)),
 ];
 const noteSummary = contentNotes.length
-  ? `This transcript carries ${contentNotes.length} passage${contentNotes.length === 1 ? '' : 's'} flagged in review${notePages.length ? `, on page${notePages.length === 1 ? '' : 's'} ${notePages.join(', ')}` : ''}. Nothing in the text has been altered.`
+  ? `This transcript carries ${contentNotes.length} passage${contentNotes.length === 1 ? '' : 's'} the Library flagged for a closer look${notePages.length ? `, on page${notePages.length === 1 ? '' : 's'} ${notePages.join(', ')}` : ''}. Nothing in the text has been altered.`
   : null;
 ---
 
@@ -121,7 +122,6 @@ const noteSummary = contentNotes.length
     { label: 'Elliott State Forest', href: `${BASE}/` },
     { label: 'Interviews', href: `${BASE}/interviews/` },
   ]}
-  noindex={true}
 >
   <p slot="before-title" class="kicker">
     The Zybach Collection · Elliott State Forest
@@ -206,7 +206,7 @@ const noteSummary = contentNotes.length
             {m.url ? (
               <a href={m.url}>
                 {m.thumbnail ? (
-                  <img src={m.thumbnail} alt={m.title} loading="lazy" width="180" height="130" />
+                  <img src={mirrored(m.thumbnail)} alt={m.title} loading="lazy" width="180" height="130" />
                 ) : (
                   <span class="nothumb">map</span>
                 )}
@@ -309,7 +309,7 @@ const noteSummary = contentNotes.length
 
   <CitationBlock
     canonical={canonical}
-    short={`${iv.zc_id ?? iv.interview_id}:<page>`}
+    short={`Elliott State Forest interviews, ${iv.date_as_printed ?? longDate(iv.date) ?? iv.title_as_printed}:<page>`}
     url={url}
     pdfUrl={t?.public_url ?? undefined}
   />

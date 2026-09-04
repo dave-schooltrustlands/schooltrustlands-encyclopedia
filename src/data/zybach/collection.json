@@ -39,10 +39,10 @@
    "dates": "1962–2024",
    "summary": "The Elliott State Forest 2017–2019 Oral History Project: six recorded interviews and driving tours with Jerry Phillips, David Gould, Bob Jacobson, Roger Johnson and Gary Vonderohe, interviewed by Bob Zybach with Amber Ross and Randy Wiest, indexed by tape side and minute. Filed with them are earlier Herman Larson recordings, OSU SCARC Jacobson transcripts, the ORWW photograph, map and MP3 registers, and the ORWWmedia video playlist.",
    "counts": {
-    "interviews": 12,
+    "interviews": 13,
     "tapes": 28,
     "segments": 112,
-    "transcripts": 12,
+    "transcripts": 13,
     "videos": 19,
     "video_segments": 531,
     "recordings": 36,
@@ -186,10 +186,10 @@
    "thesis_pages": 321
   },
   "elliott": {
-   "interviews": 12,
+   "interviews": 13,
    "tapes": 28,
    "segments": 112,
-   "transcripts": 12,
+   "transcripts": 13,
    "videos": 19,
    "video_segments": 531,
    "recordings": 36,
@@ -243,9 +243,9 @@
   ]
  },
  "rights": {
-  "statement": "Rights status: under review. The monographs were published by Oregon State University Research Forests and College of Forestry; the Elliott interviews are described by OSU under OH 047; the creator’s deed of gift and OSU’s terms are still to be settled. Until then the Library links to the creator’s own copies and displays derived text for education and research.",
+  "statement": "Working edition, 2026. The Library publishes this collection with the creator's participation while rights and consultation reviews continue. The monographs were published by Oregon State University Research Forests and College of Forestry and are published by the creator on his own site; narrator releases ran to OSU Research Forests and to the Horner Museum (now the Benton County Historical Society). The creator retains all rights he holds; the Library's indexes, place and people pages and timeline are the Library's own work. Rights are stated series by series at /collections/zybach/rights/, which also says how to ask for a change or removal.",
   "statement_source": "demonstration finding aid, src/pages/collections/zybach.astro",
-  "draft": true,
+  "draft": false,
   "note": "Rights are not settled: no deed of gift has been executed, and the Soap Creek monographs were published by OSU Research Forests and the College of Forestry, which funded the project. Nothing here asserts who holds copyright.",
   "per_series": [
    {
@@ -255,7 +255,7 @@
    },
    {
     "series": "elliott",
-    "statement": "Recordings, transcripts, photographs and maps published by Oregon Websites and Watersheds Project, Inc. (ORWW); videos published on the ORWWmedia YouTube channel. Displayed here for education and research, with attribution. Media are linked at their originals, not copied.",
+    "statement": "Recordings, transcripts, photographs and maps published by Oregon Websites and Watershed Project, Inc. (ORWW); videos published on the ORWWmedia YouTube channel. Displayed here for education and research, with attribution. Media are linked at their originals, not copied.",
     "draft": true
    }
   ]

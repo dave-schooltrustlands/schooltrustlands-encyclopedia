@@ -4,6 +4,7 @@ export const prerender = true;
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
 import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 import { collection, RIGHTS_STATEMENT } from '../../../components/zybach/_data';
 
 const prov = collection?.provenance ?? null;
@@ -51,7 +52,7 @@ const items = [
   {
     label: 'Originating bodies',
     value:
-      'OSU Research Forests and College of Forestry (Soap Creek monograph series); NW Maps Co. (thesis, books, tours); Oregon Websites and Watersheds Project, Inc. (Elliott, Alberta Street, Osbornes)',
+      'OSU Research Forests and College of Forestry (Soap Creek monograph series); NW Maps Co., the creator’s own imprint (thesis, books, tours); Oregon Websites and Watershed Project, Inc. (Elliott, Alberta Street, Osbornes)',
   },
   { label: 'Received', value: `Uploaded by the creator, ${uploadDates}` },
   {
@@ -74,16 +75,12 @@ const items = [
   parents={[
     { label: 'The Zybach Collection', href: '/collections/zybach/' },
   ]}
-  noindex={true}
 >
   <span data-pagefind-meta="collection:zybach" hidden></span>
 
   <div class="source-page">
     <ZybachNav current="finding-aid" />
-
-    <p class="provisional-note">
-      <strong>Preview — under review by the creator; not yet public.</strong>
-    </p>
+    <WorkingEditionBanner />
 
     <p>
       Provenance is the answer to a plain question: how do you know? For every
@@ -92,6 +89,22 @@ const items = [
       which file the text came from, and what was done to that file. This page
       states it for the collection as a whole; each item page states it for
       itself.
+    </p>
+
+    <p class="zc-mirror">
+      <strong>The plainest fact about this collection first.</strong> Bob Zybach
+      publishes the fifteen monographs, his 1999 thesis and the 1989 Auto Tour
+      himself, as PDFs on
+      <a href="http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/">his
+      own site</a>, and he has done for years. The Library's pages mirror that
+      printed text page for page, with his participation; his written permission
+      for this working edition is being recorded and the formal instrument
+      follows.
+      What the Library adds is around the text, not in it: the page anchoring,
+      the indexes, the place and people pages, the timeline. Who holds which
+      rights in the underlying material is a separate question, answered group by
+      group on
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a>.
     </p>
 
     <ProvenanceBlock items={items} />
@@ -244,14 +257,24 @@ const items = [
       described here, and none of it was deleted — exclusion is the Library's
       act; deletion would be the creator's. The same rule governs personal data
       inside the transcripts themselves: pages carrying home addresses,
-      telephone numbers or the names of children are held from this preview with
-      the reason shown, rather than quietly cut.
+      telephone numbers or the names of children are held — each held page
+      keeps its number and its address and carries the same notice — rather
+      than quietly cut. The reasons are kept in the Library's records and on
+      the <a href="/collections/zybach/rights/">rights page</a>, not printed
+      page by page.
     </p>
 
     <p>
-      Places identified in the sources as American Indian burial, grave or
-      artifact sites are recorded but withheld from the public places list and its
-      maps.
+      Pages describing the locations of American Indian burial, grave or
+      artifact sites are held, and so are the index entries, place pages and
+      timeline entries that would lead a reader to them. They stay held while
+      the Library consults the Confederated Tribes of Grand Ronde and the
+      Confederated Tribes of Siletz Indians. Printing a passage in a monograph
+      in 1993 and putting a searchable point on a public map in 2026 are not the
+      same act, and the second one is the Library's. Kalapuya history itself is
+      not withheld: what is held is where things are.
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a> sets
+      out the reasoning and how to ask us to change it.
     </p>
 
     <h2 id="verification">How to check the Library's work</h2>
@@ -270,7 +293,9 @@ const items = [
       <a href="/collections/zybach/">Finding aid</a> ·
       <a href="/collections/zybach/colophon/">Colophon</a> ·
       <a href="/collections/zybach/how-to-cite/">How to cite</a> ·
-      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a> ·
+      <a href="/collections/zybach/errata/">Errata</a> ·
+      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
     </p>
   </div>
 </RoomLayout>
@@ -283,5 +308,20 @@ const items = [
   .zc-sources {
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+  .zc-mirror {
+    margin: 1.25rem 0;
+    padding: 0.85rem 1.05rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 4px solid var(--sage, #7c8b74);
+    border-radius: 3px;
+    line-height: 1.62;
+  }
+  .zc-confirm {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #7a2e2e;
+    white-space: nowrap;
   }
 </style>

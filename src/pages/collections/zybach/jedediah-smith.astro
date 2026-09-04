@@ -3,6 +3,7 @@ export const prerender = true;
 
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
 import { seriesBySlug, clean } from '../../../components/zybach/_data';
 
@@ -27,7 +28,6 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
   parents={[
     { label: 'The Zybach Collection', href: '/collections/zybach/' },
   ]}
-  noindex={true}
 >
   <span data-pagefind-meta="collection:zybach" hidden></span>
   <span data-pagefind-meta="series:jedediah-smith" hidden></span>
@@ -35,12 +35,7 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
   <div class="source-page">
     <ZybachNav current="finding-aid" />
 
-    <p class="provisional-note">
-      <strong>Preview — under review by the creator; not yet public.</strong>
-      This series is described at inventory level. The file counts below come
-      from a census of the creator's uploaded folders taken on 27 August 2026;
-      that census stopped three levels down, so they are floors, not totals.
-    </p>
+    <WorkingEditionBanner />
 
     <p class="kicker">Series · inventory level</p>
 
@@ -211,7 +206,7 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
 
     <ProvenanceBlock
       items={[
-        { label: 'Creator', value: 'Dr. Bob Zybach; Oregon Websites and Watersheds Project, Inc.; NW Maps Co.' },
+        { label: 'Creator', value: 'Dr. Bob Zybach; Oregon Websites and Watershed Project, Inc.; NW Maps Co.' },
         { label: 'Partners named in the files', value: 'Jedediah Smith Society; Oregon-California Trails Association' },
         { label: 'Received', value: "Uploaded by the creator; census of 27 August 2026, depth-limited" },
         { label: 'Published at', value: 'orww.org/1828_Umpqua_Memorial/', href: 'http://www.orww.org/1828_Umpqua_Memorial/' },

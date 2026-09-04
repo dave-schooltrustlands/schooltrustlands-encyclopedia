@@ -4,8 +4,87 @@
  * (owner: ROOM). Every SOAPCREEK page imports this path, so if the shared
  * component is unavailable or its contract moves, the swap is one file.
  * Props are passed through unchanged.
+ *
+ * One prop is handled here rather than passed on: `rights`. Give it a record
+ * slug ("m02-dunn"), a series slug ("soap-creek"), or a population key, and
+ * this file prints that group's own rights statement under the citation — the
+ * statement that actually governs the page a reader is on, rather than one
+ * generic sentence for the whole collection. Omit it and nothing is added.
  */
 import Shared from '../CitationBlock.astro';
-const props = Astro.props;
+import { rightsFor, rightsLabel } from '../_data';
+
+const { rights: rightsKey, ...props } = Astro.props as Record<string, any>;
+const pop = rightsFor(rightsKey);
 ---
+
 <Shared {...props} />
+
+{pop && (
+  <section class="zc-rights" aria-label="Rights for this material">
+    <h2 class="zc-rights__head">Rights</h2>
+    <p class="zc-rights__status">{rightsLabel(pop)}</p>
+    {pop.gloss && <p class="zc-rights__gloss">{pop.gloss}</p>}
+    {pop.disclosure && <p class="zc-rights__gloss">{pop.disclosure}</p>}
+    {pop.pointers && pop.pointers.length > 0 && (
+      <p class="zc-rights__ask">
+        Who to ask:{' '}
+        {pop.pointers.map((ptr, i) => (
+          <>
+            {i > 0 && '; '}
+            {ptr.href ? <a href={ptr.href}>{ptr.label}</a> : ptr.label}
+          </>
+        ))}.
+      </p>
+    )}
+    <p class="zc-rights__foot">
+      Why this statement and not another, and how to ask us to change something:{' '}
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a>.
+    </p>
+  </section>
+)}
+
+<style>
+  .zc-rights {
+    margin: 0 0 1.5rem;
+    padding: 0.9rem 1.15rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 4px solid var(--sage, #7c8b74);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+  }
+  .zc-rights__head {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--old-gold, #a87f2c);
+  }
+  .zc-rights__status {
+    margin: 0 0 0.4rem;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--room-accent, #1b3252);
+  }
+  .zc-rights__gloss {
+    margin: 0 0 0.45rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    max-width: 66ch;
+  }
+  .zc-rights__ask {
+    margin: 0 0 0.45rem;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: #4e617c;
+    max-width: 66ch;
+  }
+  .zc-rights__foot {
+    margin: 0;
+    font-size: 0.82rem;
+    color: #4e617c;
+  }
+</style>

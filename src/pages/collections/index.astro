@@ -3,6 +3,7 @@ export const prerender = true;
 
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import { collection, clean } from '../../components/zybach/_data';
+import WorkingEditionBanner from '../../components/zybach/WorkingEditionBanner.astro';
 
 const zybachName = clean(collection?.name) || 'The Zybach Collection';
 const zybachSubtitle =
@@ -21,15 +22,9 @@ const itemLevelCount =
   subtitle="Named special collections: bodies of work the Library accepts whole, keeps intact, and describes in a published finding aid."
   width="prose"
   sourceId="collections-index"
-  noindex={true}
 >
   <div class="source-page">
-    <p class="provisional-note">
-      <strong>Preview — under review by the creator; not yet public.</strong>
-      The Library's first named special collection is being described in the
-      open. The pages below are complete enough to read and to correct, and
-      nothing here is settled until the creator has been through it.
-    </p>
+    <WorkingEditionBanner />
 
     <p>
       Most of the Library is organized by subject: the cases, the money, the
@@ -78,17 +73,14 @@ const itemLevelCount =
 
     <ul>
       <li>
-        <strong>Rights are settled in writing before anything is claimed.</strong>
-        The Library's intended terms are a deed of gift, and it does not state a
-        collection's rights as settled until one is signed and any publisher's
-        or repository's terms are reconciled. For
-        <a href="/collections/zybach/">the Zybach Collection</a>:
-        <em>Rights status: under review. The monographs were published by Oregon
-        State University Research Forests and College of Forestry; the Elliott
-        interviews are described by OSU under OH 047; the creator's deed of gift
-        and OSU's terms are still to be settled. Until then the Library links to
-        the creator's own copies and displays derived text for education and
-        research.</em>
+        <strong>Rights are stated, not assumed.</strong> The Library does not
+        call a collection's rights settled until the paper says so. For
+        <a href="/collections/zybach/">the Zybach Collection</a>, a working
+        edition published with the creator's participation while rights and
+        consultation reviews continue, the rights are stated series by series on
+        its <a href="/collections/zybach/rights/">rights page</a>, which also
+        says how to ask for a change or a removal. The Library links to the
+        creator's own copies throughout.
       </li>
       <li>
         <strong>The creator's arrangement stands.</strong> Series, titles,

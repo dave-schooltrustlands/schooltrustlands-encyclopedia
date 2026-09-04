@@ -13,6 +13,28 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import {
+  HOLD_NOTICE,
+  heldPagesOf,
+  isHeldPage,
+  isSuppressedPlace,
+  isSuppressedChapter,
+  SUPPRESSED_CHAPTER_TITLE,
+  filterChapter,
+  filterIndexEntry,
+  filterPlace,
+  filterMentions,
+  chronEntryIsVisible,
+  cleanChronEntry,
+  contentNoteIsVisible,
+  cleanChapterLike,
+  hrefTouchesSuppressedChapter,
+  namesASite,
+  thesisSuppressedFigures,
+  thesisTablesNotRendered,
+  isSuppressedThesisStatement,
+  rewriteStatement,
+} from './suppress';
 
 const DATA_ROOT = path.resolve(process.cwd(), 'src/data/zybach');
 const SC = path.join(DATA_ROOT, 'soap_creek');
@@ -34,6 +56,21 @@ function unwrap<T>(raw: any, key: string): T[] {
 
 export const dataReady = fs.existsSync(path.join(DATA_ROOT, '_READY'));
 export const dataReadyV2 = fs.existsSync(path.join(DATA_ROOT, '_READY_v2'));
+
+/**
+ * `holds.json` is the register of withheld pages for the whole collection;
+ * each record's own `holds[]` is a view of it. Reading them from one place
+ * means a page added to the register is withheld everywhere at once.
+ */
+const holdsRegister: Hold[] = unwrap<Hold>(readJSON<any>(path.join(DATA_ROOT, 'holds.json'), {}), 'holds');
+function holdsFor(zc_id?: string): Hold[] {
+  if (!zc_id) return [];
+  return holdsRegister
+    .filter((h) => h.zc_id === zc_id)
+    .map((h) => ({ ...h, what: HOLD_NOTICE, reason: HOLD_NOTICE, page_list: h.pages }));
+}
+/** The one sentence that stands in for every held page, everywhere. */
+export const holdNotice = HOLD_NOTICE;
 
 /* ------------------------------------------------------------------ *
  * Types — the fields SOAPCREEK pages actually read, all optional so a
@@ -366,12 +403,46 @@ export interface Stop {
 
 export const collection: Record<string, any> = readJSON(path.join(DATA_ROOT, 'collection.json'), {});
 
+/**
+ * The withheld layer is applied here, once, so that no page can forget it.
+ * `suppress.ts` holds the rules; this file is where they are put on the data
+ * every Soap Creek page reads. A page that renders `monographs`, `gazetteer`,
+ * `chronology`, `people`, the Series Index or a transcript is already clean.
+ */
 export const monographs: Monograph[] = unwrap<Monograph>(
   readJSON<any>(path.join(SC, 'monographs.json'), []),
   'monographs',
 )
   .filter((m) => m && (m.slug || m.zc_id))
   .map((m) => ({ ...m, slug: m.slug ?? String(m.zc_id).replace(/^zc-sc-/, '') }))
+  .map((m) => {
+    const held = heldPagesOf(m.zc_id);
+    const keepPage = (p: unknown) => !held.has(String(p));
+    return {
+      ...m,
+      // A printed contents row and a transcript chapter both carry the title.
+      structure: (m.structure ?? []).map((s) => cleanChapterLike(m.zc_id, s)),
+      chapters: (m.chapters ?? []).map((c) => cleanChapterLike(m.zc_id, c)),
+      front_matter_chapter: (m as any).front_matter_chapter
+        ? cleanChapterLike(m.zc_id, (m as any).front_matter_chapter)
+        : (m as any).front_matter_chapter,
+      /* Captions and map notes printed on a held page go with the page — and a
+         caption that names a site is withheld wherever it is printed. Monograph
+         #06's plate caption is on a front-matter leaf, not on a held page, and
+         it names the find and the peak it came from. */
+      photographs: (m.photographs ?? []).filter(
+        (p) => keepPage(p?.page_int ?? p?.page) && !namesASite(`${p?.caption ?? ''} ${p?.title ?? ''}`),
+      ),
+      maps: (m.maps ?? []).filter(
+        (x) => keepPage(x?.page) && !namesASite(`${x?.title ?? ''} ${(x as any)?.note ?? ''}`),
+      ),
+      // A note that says what a held page contains is itself a pointer to it.
+      content_notes: (m.content_notes ?? []).filter((n) =>
+        contentNoteIsVisible({ ...n, zc_id: n.zc_id ?? m.zc_id }),
+      ),
+      holds: holdsFor(m.zc_id),
+    };
+  })
   .sort((a, b) => (a.number ?? 0) - (b.number ?? 0));
 
 const transcriptCache = new Map<string, TranscriptDoc>();
@@ -379,18 +450,24 @@ export function transcriptFor(zc_id?: string): TranscriptDoc {
   if (!zc_id) return { chapters: [] };
   const hit = transcriptCache.get(zc_id);
   if (hit) return hit;
-  const doc = readJSON<TranscriptDoc>(path.join(SC, 'transcripts', `${zc_id}.json`), {
+  const raw = readJSON<TranscriptDoc>(path.join(SC, 'transcripts', `${zc_id}.json`), {
     zc_id,
     chapters: [],
   });
+  const doc: TranscriptDoc = {
+    ...raw,
+    holds: holdsFor(zc_id),
+    chapters: (raw.chapters ?? []).map((c) => filterChapter(zc_id, c)),
+  };
   transcriptCache.set(zc_id, doc);
   return doc;
 }
 
 const gazetteerRaw = readJSON<any>(path.join(SC, 'gazetteer.json'), {});
-export const gazetteer: GazetteerPlace[] = unwrap<GazetteerPlace>(gazetteerRaw, 'places').filter(
-  (p) => p && p.slug,
-);
+export const gazetteer: GazetteerPlace[] = unwrap<GazetteerPlace>(gazetteerRaw, 'places')
+  .filter((p) => p && p.slug)
+  .map((p) => filterPlace(p))
+  .filter(Boolean) as GazetteerPlace[];
 export const gazetteerMeta = {
   counts: gazetteerRaw?.counts ?? {},
   method_notes: gazetteerRaw?.method_notes ?? [],
@@ -412,7 +489,9 @@ const homeSiteSlugs = new Set(
 );
 export const gazetteerGeoJSON: any = {
   ...gazetteerGeoJSONRaw,
-  features: (gazetteerGeoJSONRaw.features ?? []).map((f: any) => {
+  features: (gazetteerGeoJSONRaw.features ?? [])
+    .filter((f: any) => !isSuppressedPlace(f?.properties?.slug) && !namesASite(f?.properties?.name))
+    .map((f: any) => {
     const props = { ...(f?.properties ?? {}) };
     const kind = String(props.kind ?? '').toLowerCase();
     props.group = /(auto-)?tour-stop|^stop$/.test(kind)
@@ -442,7 +521,21 @@ export const withheldPolicy: string = withheldRaw?.policy ?? '';
 export const people: Person[] = unwrap<Person>(
   readJSON<any>(path.join(SC, 'people.json'), {}),
   'people',
-).filter((p) => p && p.slug);
+)
+  .filter((p) => p && p.slug)
+  .map((p) => ({
+    ...p,
+    // A person page is a list of pages to turn to; the held ones come off it.
+    mentioned_in: filterMentions(p.mentioned_in as any[]).map((m: any) =>
+      namesASite(m?.as_index_heading) ? { ...m, as_index_heading: undefined } : m,
+    ),
+    /* The printed informant profile can describe a narrator by what he was
+       interviewed about. "Whom to ask" is a finding aid of its own. */
+    interview_focus: namesASite(p.interview_focus) ? null : p.interview_focus,
+    profession: namesASite(p.profession) ? null : p.profession,
+    home_site: namesASite(p.home_site) ? null : p.home_site,
+    notes: (p.notes ?? []).filter((n) => !namesASite(n)),
+  }));
 
 export const peopleIndex: Array<{
   slug?: string;
@@ -451,7 +544,17 @@ export const peopleIndex: Array<{
   roles?: string[];
   mentions?: any[];
   mention_count?: number;
-}> = unwrap<any>(readJSON<any>(path.join(SC, 'people_index.json'), {}), 'people');
+}> = unwrap<any>(readJSON<any>(path.join(SC, 'people_index.json'), {}), 'people').map((p: any) => {
+  const mentions = filterMentions(p?.mentions);
+  return {
+    ...p,
+    mentions,
+    mention_count: mentions.reduce(
+      (n: number, m: any) => n + (m.pages?.length ?? m.page_links?.length ?? 0),
+      0,
+    ),
+  };
+});
 
 /** Series index metadata; the entries live one file per letter. */
 export const seriesIndexMeta: Record<string, any> = readJSON(path.join(SC, 'series_index.json'), {});
@@ -462,7 +565,9 @@ export function seriesIndexLetter(letterSlugName: string): IndexEntry[] {
   const hit = letterCache.get(key);
   if (hit) return hit;
   const raw = readJSON<any>(path.join(SC, 'series_index', `${key}.json`), {});
-  const entries = unwrap<IndexEntry>(raw, 'entries');
+  const entries = unwrap<IndexEntry>(raw, 'entries')
+    .map((e) => filterIndexEntry(e))
+    .filter(Boolean) as IndexEntry[];
   letterCache.set(key, entries);
   return entries;
 }
@@ -558,17 +663,85 @@ export const chronology: {
   method_notes?: string[];
   gaps?: string[];
 } = {
-  periods: (chronRaw?.periods ?? []).filter((p: any) => p && p.slug),
-  events_top: chronRaw?.events_top ?? [],
-  named_events_top: chronRaw?.named_events_top ?? [],
-  conflicts: chronRaw?.conflicts ?? [],
+  periods: (chronRaw?.periods ?? [])
+    .filter((p: any) => p && p.slug)
+    .map((p: any) => {
+      const entries = (p.entries ?? []).filter(chronEntryIsVisible).map(cleanChronEntry);
+      return { ...p, entries, count: entries.length };
+    }),
+  events_top: (chronRaw?.events_top ?? []).filter((e: any) => !namesASite(e?.label ?? e?.statement ?? e)),
+  named_events_top: (chronRaw?.named_events_top ?? []).filter(
+    (e: any) => !namesASite(e?.label ?? e?.statement ?? e),
+  ),
+  conflicts: (chronRaw?.conflicts ?? []).filter(chronEntryIsVisible),
   counts: chronRaw?.counts ?? {},
   period_note: chronRaw?.period_note,
   method_notes: chronRaw?.method_notes ?? [],
   gaps: chronRaw?.gaps ?? [],
 };
 
-export const thesis: Record<string, any> = readJSON(path.join(SC, 'thesis.json'), {});
+const thesisRaw: Record<string, any> = readJSON(path.join(SC, 'thesis.json'), {});
+const thesisHeld = heldPagesOf('zc-sc-thesis-1999');
+export const thesis: Record<string, any> = {
+  ...thesisRaw,
+  holds: holdsFor('zc-sc-thesis-1999'),
+  // Figures, tables and maps printed on a held page keep no listing, and a
+  // figure whose printed title names a site keeps none either.
+  figures: (thesisRaw.figures ?? []).filter(
+    (f: any) =>
+      !thesisSuppressedFigures.has(String(f?.number)) &&
+      !thesisHeld.has(String(f?.page)) &&
+      !namesASite(f?.title),
+  ),
+  appendix_figures: (thesisRaw.appendix_figures ?? []).filter(
+    (f: any) => !thesisHeld.has(String(f?.page)) && !namesASite(f?.title),
+  ),
+  tables: (thesisRaw.tables ?? []).filter(
+    (x: any) => !thesisHeld.has(String(x?.page)) && !thesisTablesNotRendered.has(String(x?.number)),
+  ),
+  appendix_tables: (thesisRaw.appendix_tables ?? []).filter(
+    (x: any) => !thesisHeld.has(String(x?.page)) && !thesisTablesNotRendered.has(String(x?.number)),
+  ),
+  maps: (thesisRaw.maps ?? []).filter((x: any) => !thesisHeld.has(String(x?.page)) && !namesASite(x?.title)),
+  methodology: (thesisRaw.methodology ?? []).filter((m: any) => !thesisHeld.has(String(m?.page))),
+  // Appendix D still lists; its withheld table's rows do not travel with it.
+  appendices: (thesisRaw.appendices ?? []).map((a: any) => {
+    const { table_d1, ...rest } = a ?? {};
+    return rest;
+  }),
+  chronology: (thesisRaw.chronology ?? []).filter(
+    (e: any) =>
+      !thesisHeld.has(String(e?.page)) &&
+      !isSuppressedThesisStatement(e) &&
+      !namesASite(e?.statement) &&
+      !namesASite(e?.cited_source),
+  ),
+  dated_statements: (thesisRaw.dated_statements ?? []).filter(
+    (e: any) =>
+      !thesisHeld.has(String(e?.page)) &&
+      !isSuppressedThesisStatement(e) &&
+      !namesASite(e?.statement) &&
+      !namesASite(e?.cited_source),
+  ),
+  content_notes: (thesisRaw.content_notes ?? []).filter((n: any) =>
+    contentNoteIsVisible({ ...n, zc_id: 'zc-sc-thesis-1999' }),
+  ),
+  // Page lists are finding aids too: a name whose only printed page is withheld
+  // no longer has a page to send anyone to.
+  places_mentioned: (thesisRaw.places_mentioned ?? [])
+    .filter((p: any) => !namesASite(p?.name))
+    .map((p: any) => ({ ...p, pages: (p?.pages ?? []).filter((n: any) => !thesisHeld.has(String(n))) }))
+    .filter((p: any) => (p.pages?.length ?? 0) > 0),
+  people_mentioned: (thesisRaw.people_mentioned ?? [])
+    .map((p: any) => ({ ...p, pages: (p?.pages ?? []).filter((n: any) => !thesisHeld.has(String(n))) }))
+    .filter((p: any) => (p.pages?.length ?? 0) > 0),
+  printed_errors_left_as_printed: (thesisRaw.printed_errors_left_as_printed ?? []).filter(
+    (e: any) => !thesisHeld.has(String(e?.page)) && !/Table D\.[14]/i.test(String(e?.description ?? '')),
+  ),
+  // The full-table payloads of the withheld tables never travel with the record.
+  table_d1: undefined,
+  table_d4: undefined,
+};
 
 export const autotour: Record<string, any> = readJSON(path.join(SC, 'autotour.json'), {});
 export const autotourStops: Stop[] = Array.isArray(autotour?.stops) ? autotour.stops.filter(Boolean) : [];
@@ -580,16 +753,24 @@ export const contentNotes: {
   items: ContentNoteRec[];
   counts: Record<string, any>;
 } = {
-  collection_statement:
+  collection_statement: rewriteStatement(
     typeof cnRaw?.collection_statement === 'string'
       ? cnRaw.collection_statement
       : (cnRaw?.collection_statement?.text ?? ''),
+  ),
   draft: cnRaw?.draft ?? true,
-  items: cnRaw?.items ?? [],
+  // A page-level note is a finding aid. One that describes a withheld page
+  // would carry a reader straight to it, so it is withheld with the page.
+  items: (cnRaw?.items ?? []).filter(contentNoteIsVisible),
   counts: cnRaw?.counts ?? {},
 };
 
-export const holds: Hold[] = unwrap<Hold>(readJSON<any>(path.join(DATA_ROOT, 'holds.json'), {}), 'holds');
+export const holds: Hold[] = holdsRegister.map((h) => ({
+  ...h,
+  what: HOLD_NOTICE,
+  reason: HOLD_NOTICE,
+  page_list: h.pages as number[] | undefined,
+}));
 
 /* ------------------------------------------------------------------ *
  * Cross-cutting lookups

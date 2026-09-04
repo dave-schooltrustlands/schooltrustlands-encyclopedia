@@ -1,0 +1,301 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
+
+/* Every fact on this page comes from one of four published sources, all of
+ * them the creator's own or printed in his own work:
+ *
+ *   CV      — Bob Zybach, "Curriculum Vitae", http://www.nwmapsco.com/ZybachB/Curriculum_Vitae.htm
+ *             (retrieved 4 September 2026)
+ *   SERIES  — "Soap Creek Valley Oral History Series, 1989 - 1999",
+ *             http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/ (retrieved 4 September 2026)
+ *   ORWW    — Oregon Websites and Watersheds Project, http://www.orww.org/ (retrieved 4 September 2026)
+ *   THESIS  — Zybach 1999, front matter and Chapter 2, as recorded in
+ *             src/data/zybach/soap_creek/thesis.json
+ *   MONO#n  — the front matter of Soap Creek monograph #n, as recorded in
+ *             src/data/zybach/soap_creek/monographs.json
+ *
+ * No sentence here rests on memory, correspondence or conversation. Where a
+ * fact would have needed one, the page says [CONFIRM] instead.
+ */
+
+const THESIS = '/collections/zybach/soap-creek/thesis/';
+
+/* Verbatim from the thesis, with the printed page each passage sits on.
+   Read from thesis.json → methodology[]; not retyped from the PDF. */
+const passages: ReadonlyArray<{ page: number; text: string; gloss: string }> = [
+  {
+    page: 28,
+    gloss: 'On what kind of history this is',
+    text:
+      'The Soap Creek Valley Oral History Series, however, is probably best categorized as a “geographical oral history,” qualifying as a possible fourth type of oral history.',
+  },
+  {
+    page: 35,
+    gloss: 'On who he asked',
+    text:
+      'Two criteria were applied to all selections: participants must have had a first-hand knowledge of events in Soap Creek Valley and they must have lived or worked in the area for a significant period of time.',
+  },
+  {
+    page: 44,
+    gloss: 'On the tape being the record, and the narrator keeping the last word',
+    text:
+      'The recording can always be used to determine exactly what was said, and the oral historian can safely quote transcribed text with assurance that historical documentation is given priority over human recollection. Likewise, subjects are given opportunity to amend or edit their words if, upon review, an opinion is deemed to be poorly stated, inaccurate, or unnecessarily harsh or judgmental.',
+  },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="About the creator"
+  subtitle="Bob Zybach, as far as possible in his own published words."
+  width="prose"
+  sourceId="collections-zybach-about-the-creator"
+  parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }]}
+  noindex={true}
+>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <div class="source-page">
+    <WorkingEditionBanner />
+    <ZybachNav current="about-the-creator" />
+
+    <p class="zc-draftline">Draft for the creator's review — September 2026.</p>
+
+    <!-- source: Bob Zybach, "Curriculum Vitae", nwmapsco.com/ZybachB/Curriculum_Vitae.htm,
+         read 4 September 2026. "Relevant Employment History": 1966-1970 Pacific
+         Reforestation, Inc., Lake Oswego, Lead Man; 1970-1991 Phoenix Reforestation, Inc.,
+         Eddyville, President; 1981-1985 Associated Reforestation Contractors, Inc.,
+         A.R.C. Quarterly, Vice-President / Editor / Associate Editor. "Education &
+         Awards": December 1982, Inc. 500, #332; January 31, 1990, Certificate in Northwest
+         Studies (one of the last two awarded); June 9, 1991, BS, OSU College of Forestry,
+         Forest Resource Recreation, focus Cultural Resources Management. -->
+    <p>
+      Bob Zybach's first working life was in reforestation. He was lead man at
+      Pacific Reforestation, Inc. of Lake Oswego from 1966 to 1970, and
+      president of his own firm, Phoenix Reforestation, Inc. of Eddyville,
+      Oregon, from 1970 to 1991 — a company that <em>Inc.</em> magazine ranked
+      332nd on its first Inc. 500 list of fastest-growing private companies in
+      December 1982. From 1981 to 1985 he was vice-president, editor and then
+      associate editor of the <em>A.R.C. Quarterly</em>, the Associated
+      Reforestation Contractors' trade journal, which reached about 1,500
+      readers nationally and concentrated on worker safety and on replanting
+      federal and industrial forestland in the western states. Those dates
+      overlap his return to Oregon State University: a certificate in Northwest
+      Studies in January 1990 — one of the last two the program awarded — and a
+      B.S. from the College of Forestry in June 1991, in forest resource
+      recreation, with an academic focus on cultural resources management.
+    </p>
+
+    <!-- source: "Curriculum Vitae", nwmapsco.com/ZybachB/Curriculum_Vitae.htm, read
+         4 September 2026 - 1989-1996 OSU Research Forests, Cultural Resources Management
+         Forester; MAIS September 3, 1999 (Forest Ecology; Cultural Anthropology; Historical
+         Archaeology); PhD December 12, 2003, OSU Environmental Sciences Program, dissertation
+         "The Great Fires"; NW Maps Co., President, 1994-present; ORWW, Program Manager,
+         1996-present; Benton County Historic Resources Commission 1994-2002, Historic
+         Resources Protection Chair; Alberta Street inventories 1992 and 2015; Oregon
+         Heritage Excellence Award April 17, 2009; Oregon Black Pioneers award March 2, 2019;
+         Nathan Douthit Local Historian Award August 24, 2023; Coquelle Trails (Zybach and
+         Ivy) 2013; Jerry Phillips' Elliott State Forest Oral Histories 2019, 545 pp.
+         source: monograph #01, front matter, INTRODUCTION, signed "Bob Zybach / Corvallis,
+         Oregon / June 11, 1990" - the quoted sentence on why the project was undertaken.
+         source: Zybach 1999 thesis - title page and abstract page (title; presented March 5,
+         1999; 321 pp.); Chapter 2, printed p.43, for the quoted sentence naming the two
+         interviewers.
+         source: "Soap Creek Valley Oral History Series, 1989 - 1999",
+         nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/, read 4 September 2026 - the
+         fifteen monographs with full citations, and the page's own byline "Bob Zybach, PhD,
+         Soap Creek Valley Oral History Series Editor".
+         source: orww.org, read 4 September 2026 - ORWW "first conceived and designed in Fall
+         1996"; first launch January 15, 1997; "likely the oldest independent educational
+         website in existence". -->
+    <p>
+      From 1989 to 1996 he was cultural resources management forester for the
+      OSU Research Forests, and that is the job this collection came out of.
+      The Soap Creek Valley History Project, he wrote in the introduction he
+      signed at Corvallis on 11 June 1990, "was undertaken by Oregon State
+      University (OSU) Research Forests in 1989 for the purpose of better
+      understanding the history and culture of an area impacted by OSU forestry
+      and agricultural practices for nearly sixty years." He made the Soap
+      Creek recordings himself; of the whole twenty-year run of tapes his
+      thesis says that "only two people, Jackson (1978-1980 OSU College of
+      Forestry recordings) and Zybach (1989-1997 Soap Creek Valley
+      recordings), conducted almost all interviews." Fifteen monographs were
+      printed between 1990 and 2009; he is named as an author on thirteen of
+      them, led ten, and his own site lists him as the series editor. Then he
+      wrote the series up. <em>Using Oral Histories to Document Changing Forest
+      Cover Patterns: Soap Creek Valley, Oregon, 1500-1999</em> was presented on
+      5 March 1999, ran to 321 pages, and earned a Master of Arts in
+      Interdisciplinary Studies that September in forest ecology, cultural
+      anthropology and historical archaeology. A Ph.D. in environmental
+      sciences followed on 12 December 2003, for a dissertation titled
+      <em>The Great Fires: Indian burning and catastrophic forest fire patterns
+      of the Oregon Coast Range, 1491-1951</em>. He
+      has been president of NW Maps Co. since 1994 and program manager of the
+      Oregon Websites and Watersheds Project since 1996 — an organization
+      conceived in the autumn of 1996 whose first website went online on 15
+      January 1997 and which describes itself as "likely the oldest independent
+      educational website in existence." He sat on the Benton County Historic
+      Resources Commission from 1994 to 2002 as its historic resources
+      protection chair. The work since has kept the same shape: cultural
+      resource inventories of Alberta Street in Portland with high-school
+      students in 1992 and again in 2015; <em>Coquelle Trails</em>, written
+      with Coquille chief Don Ivy in 2013; and the 545-page <em>Jerry Phillips'
+      Elliott State Forest Oral Histories</em>, published in 2019 — the second
+      series in this collection. Three awards mark the range: the Oregon
+      Heritage Excellence Award in 2009, accepted on behalf of ORWW and the
+      Confederated Tribes of Grand Ronde; an Oregon Black Pioneers award in
+      2019 for lifetime achievement in Oregon Black history research,
+      particularly on Letitia Carson; and the Coos County Historical Society's
+      Nathan Douthit Local Historian Award in 2023.
+    </p>
+
+    <h2 id="own-words">In his own words</h2>
+
+    <p>
+      Three passages from the 1999 thesis, printed here as they are printed
+      there. Each page number is the printed page, and it links to that page in
+      the Library's copy.
+    </p>
+
+    {passages.map((p) => (
+      <blockquote class="zc-passage">
+        <p class="zc-passage__gloss">{p.gloss}</p>
+        <p>{p.text}</p>
+        <p class="zc-passage__cite">
+          Zybach 1999, p. {p.page}.{' '}
+          <a href={`${THESIS}#p${p.page}`}>Go to printed page {p.page}</a>
+        </p>
+      </blockquote>
+    ))}
+
+    <h2 id="collection-and-library">The collection and the Library</h2>
+
+    <p>
+      <strong>The creator keeps his rights.</strong> Publishing here transfers
+      nothing. The originals stay where he put them: all fifteen Soap Creek
+      monographs, the 1999 thesis and the 1989 Auto Tour are on his own site as
+      PDFs, and the Elliott interviews are on ORWW. The Library's pages are a
+      page-by-page mirror of what he already publishes, plus the indexes,
+      places, people and timeline the Library built on top of it.
+    </p>
+
+    <p>
+      <strong>The Library publishes with his participation.</strong> He
+      reviewed this edition with the Library in August 2026; his written
+      permission for it is being recorded and the formal instrument follows.
+      He gives up nothing by allowing it, and he can ask for any part of it to
+      come down.
+    </p>
+
+    <p>
+      The monographs were printed and funded by the OSU Research Forests and
+      the College of Forestry, and the narrators' consents ran to institutions
+      rather than to him personally. Those interests are set out item by item
+      on the <a href="/collections/zybach/provenance/">provenance page</a>;
+      reuse is covered under <a href="/collections/zybach/how-to-cite/#rights">how
+      to cite</a>.
+    </p>
+
+    <!-- source: CV masthead ("Contact: ZybachB@NWMapsCo.com / ZybachB@ORWW.org"), which
+         publishes both addresses on his own site. -->
+    <p>
+      <strong>How to reach him.</strong> His current work is at
+      <a href="http://www.orww.org/" rel="external">orww.org</a> and
+      <a href="http://www.nwmapsco.com/ZybachB/" rel="external">nwmapsco.com</a>,
+      and his own curriculum vitae, on the second of those sites, gives his
+      addresses.
+    </p>
+
+    <h2 id="sources">Where these facts come from</h2>
+
+    <p>
+      This page cites nothing that is not already published. If a date or a
+      title here is wrong, the fix goes in the
+      <a href="/about/corrections/">corrections ledger</a>, in public, with the
+      old wording next to the new.
+    </p>
+
+    <ul class="zc-sources">
+      <li>
+        Bob Zybach, <em>Curriculum Vitae</em> —
+        <a href="http://www.nwmapsco.com/ZybachB/Curriculum_Vitae.htm" rel="external">nwmapsco.com</a>.
+        Employment history, degrees, awards and bibliography. Read 4 September 2026.
+      </li>
+      <li>
+        <em>Soap Creek Valley Oral History Series, 1989 - 1999</em> —
+        <a href="http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/" rel="external">nwmapsco.com</a>.
+        The fifteen monographs with their full citations. Read 4 September 2026.
+      </li>
+      <li>
+        Oregon Websites and Watersheds Project —
+        <a href="http://www.orww.org/" rel="external">orww.org</a>. Project
+        dates and the organization's own account of itself. Read 4 September 2026.
+      </li>
+      <li>
+        Zybach 1999, front matter and Chapter 2 (Methodology) —
+        <a href={THESIS}>in the Library</a>.
+      </li>
+      <li>
+        The front matter of Soap Creek monograph #01 —
+        <a href="/collections/zybach/soap-creek/m01-grabe/">Lorna Grabe</a> —
+        for the project's own statement of what it was for.
+      </li>
+    </ul>
+
+    <p class="see-also">
+      See also: <a href="/collections/zybach/start-here/">Start here</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/colophon/">Colophon</a> ·
+      <a href="/collections/zybach/">Finding aid</a>
+    </p>
+  </div>
+</RoomLayout>
+
+<style>
+  .zc-draftline {
+    margin: 0 0 1.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: #4e617c;
+  }
+  .zc-passage {
+    margin: 1.4rem 0;
+    padding: 0.9rem 1.2rem;
+    background: var(--linen-card, #fffdf7);
+    border-left: 3px solid var(--old-gold, #a87f2c);
+    border-radius: 3px;
+  }
+  .zc-passage p {
+    margin: 0 0 0.5rem;
+    line-height: 1.6;
+  }
+  .zc-passage p:last-child {
+    margin-bottom: 0;
+  }
+  .zc-passage__gloss {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #4e617c;
+  }
+  .zc-passage__cite {
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+    color: #4e617c;
+  }
+  .zc-confirm {
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+    color: #7a2e2e;
+  }
+  .zc-sources li {
+    margin-bottom: 0.55rem;
+    line-height: 1.55;
+  }
+</style>

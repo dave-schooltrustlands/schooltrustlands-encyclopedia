@@ -3,6 +3,7 @@ export const prerender = true;
 
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
 import ContentNote from '../../../components/zybach/ContentNote.astro';
 import { seriesBySlug, clean } from '../../../components/zybach/_data';
@@ -28,7 +29,6 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
   parents={[
     { label: 'The Zybach Collection', href: '/collections/zybach/' },
   ]}
-  noindex={true}
 >
   <span data-pagefind-meta="collection:zybach" hidden></span>
   <span data-pagefind-meta="series:reforestation-records" hidden></span>
@@ -36,12 +36,7 @@ const matchingFiles = s?.counts?.accessioned_files_matching_name;
   <div class="source-page">
     <ZybachNav current="finding-aid" />
 
-    <p class="provisional-note">
-      <strong>Preview — under review by the creator; not yet public.</strong>
-      This series is <strong>restricted</strong>. It is described so that a
-      researcher knows it exists and whom to ask. Nothing from it is published
-      here, and nothing from it was uploaded to the Library.
-    </p>
+    <WorkingEditionBanner />
 
     <p class="kicker">Series · inventory level · restricted</p>
 

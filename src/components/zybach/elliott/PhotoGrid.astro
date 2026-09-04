@@ -6,6 +6,7 @@
  * place label and frame number stand in and are marked as such.
  */
 import type { Photograph, Place } from './data';
+import { mirrored } from '../_data';
 
 interface Props {
   groups: Array<{ label: string; slug: string | null; place: Place | null; photos: Photograph[] }>;
@@ -39,7 +40,7 @@ const total = groups.reduce((n, g) => n + g.photos.length, 0);
               {p.full_url ? (
                 <a href={p.full_url}>
                   <img
-                    src={p.thumb_url ?? p.full_url}
+                    src={mirrored(p.thumb_url ?? p.full_url)}
                     alt={p.caption ?? `${g.label}, frame ${p.frame ?? ''}, ${p.interview_date ?? ''}`}
                     loading="lazy"
                   />

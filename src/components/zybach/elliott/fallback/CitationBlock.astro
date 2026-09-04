@@ -1,13 +1,23 @@
 ---
-/** Fallback for ROOM's CitationBlock. Props per BUILD_SPEC. */
+/** Fallback for ROOM's CitationBlock. Props per BUILD_SPEC.
+ *
+ * `rights` is optional and additive: give it a record slug, a series slug
+ * ("elliott"), or a population key and the block prints that group's own
+ * rights statement rather than one generic sentence for the whole collection.
+ * Omit it and the block is exactly what it was.
+ */
+import { rightsFor, rightsLabel } from '../../_data';
+
 interface Props {
   canonical: string;
   short: string;
   url: string;
   pdfUrl?: string;
   accessed?: string;
+  rights?: string;
 }
-const { canonical, short, url, pdfUrl, accessed } = Astro.props as Props;
+const { canonical, short, url, pdfUrl, accessed, rights } = Astro.props as Props;
+const pop = rightsFor(rights);
 ---
 
 <section class="zy-cite" aria-labelledby="how-to-cite">
@@ -29,6 +39,28 @@ const { canonical, short, url, pdfUrl, accessed } = Astro.props as Props;
       <>
         <dt>Accessed</dt>
         <dd>{accessed}</dd>
+      </>
+    )}
+    {pop && (
+      <>
+        <dt>Rights</dt>
+        <dd>
+          <strong>{rightsLabel(pop)}</strong>
+          {pop.gloss && <> — {pop.gloss}</>}
+          {pop.disclosure && <> {pop.disclosure}</>}
+          {pop.pointers && pop.pointers.length > 0 && (
+            <>
+              {' '}Who to ask:{' '}
+              {pop.pointers.map((ptr, i) => (
+                <>
+                  {i > 0 && '; '}
+                  {ptr.href ? <a href={ptr.href}>{ptr.label}</a> : ptr.label}
+                </>
+              ))}.
+            </>
+          )}
+          {' '}<a href="/collections/zybach/rights/">Rights, use, and takedown</a>.
+        </dd>
       </>
     )}
   </dl>

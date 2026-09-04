@@ -3,6 +3,7 @@ export const prerender = true;
 
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 import { collection } from '../../../components/zybach/_data';
 
 const col = collection?.colophon ?? null;
@@ -30,7 +31,7 @@ const FALLBACK_DID_NOT = [
   'Did not publish personal data about named individuals: pages carrying addresses, telephone numbers or children’s names are held, with the reason shown.',
   'Did not copy the originals. The monograph PDFs, recordings and videos stay on the creator’s own sites.',
   'Did not read, describe or retain private financial or medical files found in the upload, and did not delete them.',
-  'Did not decide anything the creator has not seen. This whole collection is a preview for his review.',
+  'Did not settle the sensitive questions by machine. Content notes, holds and withheld places are flagged for a person to decide, and the decisions on this page are the Library’s, made by people.',
 ];
 
 const did = col?.what_the_fleet_did?.length ? col.what_the_fleet_did : FALLBACK_DID;
@@ -67,16 +68,12 @@ const datesLine = Array.isArray(rawDates)
   parents={[
     { label: 'The Zybach Collection', href: '/collections/zybach/' },
   ]}
-  noindex={true}
 >
   <span data-pagefind-meta="collection:zybach" hidden></span>
 
   <div class="source-page">
     <ZybachNav current="finding-aid" />
-
-    <p class="provisional-note">
-      <strong>Preview — under review by the creator; not yet public.</strong>
-    </p>
+    <WorkingEditionBanner />
 
     <p>
       A colophon is the note at the back of a book that says how the book was
@@ -87,10 +84,12 @@ const datesLine = Array.isArray(rawDates)
 
     <p>
       The description was built with AI assistance, under the Library's
-      disclosure rule. The division of labour was deliberate and narrow. The
-      machines read, extracted, aligned, indexed and linked. They did not write
-      the text a reader reads as the source, and they did not decide what the
-      collection means.
+      disclosure rule and under human direction. The division of labour was
+      deliberate and narrow. The machines read, extracted, aligned, indexed and
+      linked. They did not write the text a reader reads as the source, and they
+      did not decide what the collection means. The rights posture behind all of
+      it is set out on
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a>.
     </p>
 
     <h2 id="did">What was done</h2>
@@ -115,7 +114,13 @@ const datesLine = Array.isArray(rawDates)
       stated.
     </p>
 
-    <h2 id="known">Known problems in this preview</h2>
+    <h2 id="known">Known problems</h2>
+
+    <p>
+      These are the ones the Library knows about and has not yet fixed. When one
+      is fixed, the fix is made in the text and recorded on the
+      <a href="/collections/zybach/errata/">errata page</a>.
+    </p>
 
     <ul>
       <li>
@@ -157,8 +162,8 @@ const datesLine = Array.isArray(rawDates)
       <div>
         <dt>Publishers of the originals</dt>
         <dd>
-          OSU Research Forests and College of Forestry; NW Maps Co.; Oregon
-          Websites and Watersheds Project, Inc.
+          OSU Research Forests and College of Forestry; NW Maps Co., the
+          creator's own imprint; Oregon Websites and Watershed Project, Inc.
         </dd>
       </div>
       <div>
@@ -195,6 +200,8 @@ const datesLine = Array.isArray(rawDates)
     <p class="see-also">
       <a href="/collections/zybach/provenance/">Provenance</a> ·
       <a href="/collections/zybach/content-note/">Content note</a> ·
+      <a href="/collections/zybach/rights/">Rights, use, and takedown</a> ·
+      <a href="/collections/zybach/errata/">Errata</a> ·
       <a href="/pro/editorial-standards/">Editorial standards</a> ·
       <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
     </p>

@@ -1,0 +1,37 @@
+---
+/* Opening.astro — The Zybach Collection, front door.
+ *
+ * The first thing a reader meets. One block of larger serif text that says
+ * what this is and why a stranger would care, before any count, any accession
+ * note and any rights statement. Nothing else on the page competes with it.
+ *
+ * Owner: FRONTDOOR. New file; nothing else imports it.
+ */
+---
+
+<div class="fd-opening">
+  <slot />
+</div>
+
+<style>
+  .fd-opening {
+    margin: 0.5rem 0 1.75rem;
+  }
+  .fd-opening :global(p) {
+    max-width: 40em;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.12rem;
+    line-height: 1.68;
+    color: #2c2a26;
+  }
+  .fd-opening :global(p:first-child) {
+    font-size: 1.24rem;
+    line-height: 1.6;
+    color: var(--deep-navy, #14243c);
+  }
+  @media (min-width: 60rem) {
+    .fd-opening :global(p:first-child) {
+      font-size: 1.34rem;
+    }
+  }
+</style>

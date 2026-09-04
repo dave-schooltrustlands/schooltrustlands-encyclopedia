@@ -1,0 +1,94 @@
+---
+/* Doors.astro — The Zybach Collection, front door.
+ *
+ * "Start here." A collection this size has no single right way in, so it
+ * offers three, each addressed to a real person rather than to a category:
+ * someone who lives nearby, someone looking for a family name, someone who
+ * needs evidence they can cite. Every door points at pages that already exist.
+ *
+ * Owner: FRONTDOOR. New file; nothing else imports it.
+ */
+export interface Door {
+  /** Who this door is for — a person, not a segment. */
+  who: string;
+  /** One or two sentences: what you will find, and why start here. */
+  lede: string;
+  links: ReadonlyArray<{ label: string; href: string; note?: string }>;
+}
+
+interface Props {
+  doors: ReadonlyArray<Door>;
+  heading?: string;
+  headingId?: string;
+}
+
+const { doors, heading = 'Start here', headingId = 'start-here' } = Astro.props as Props;
+---
+
+<section class="fd-doors" aria-labelledby={headingId}>
+  <h2 id={headingId}>{heading}</h2>
+  <div class="fd-doors__grid">
+    {doors.map((d) => (
+      <article class="fd-door">
+        <h3 class="fd-door__who">{d.who}</h3>
+        <p class="fd-door__lede">{d.lede}</p>
+        <ul class="fd-door__links">
+          {d.links.map((l) => (
+            <li>
+              <a href={l.href}>{l.label}</a>
+              {l.note && <span class="fd-door__note">{l.note}</span>}
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .fd-doors {
+    margin: 2.5rem 0;
+  }
+  .fd-doors__grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    margin-top: 1.25rem;
+  }
+  .fd-door {
+    padding: 1.1rem 1.25rem 1.25rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-top: 3px solid var(--old-gold, #a87f2c);
+    border-radius: 3px;
+  }
+  .fd-door__who {
+    margin: 0 0 0.4rem;
+    font-size: 1.05rem;
+    line-height: 1.25;
+  }
+  .fd-door__lede {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .fd-door__links {
+    list-style: none;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    font-family: var(--font-sans);
+  }
+  .fd-door__links li {
+    margin: 0 0 0.55rem;
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+  .fd-door__links li:last-child {
+    margin-bottom: 0;
+  }
+  .fd-door__note {
+    display: block;
+    font-size: 0.78rem;
+    color: #6b6355;
+  }
+</style>
