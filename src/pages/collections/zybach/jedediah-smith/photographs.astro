@@ -1,0 +1,248 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import { photoSets, HOLD_NOTICE, postedOn, SECTION } from '../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+
+/* Two files in the second-day folder are photographs of the ground itself,
+   captioned by the creator as the site of the burials. The entries stay; the
+   links do not. */
+const HELD_FILES = new Set([
+  '2-9_Moore-Umpqua_site-01.jpg',
+  '2-9_Moore-Umpqua%20site-03.jpg',
+]);
+
+const anchorOf = (folder: string) => (folder.split('/').pop() ?? '').toLowerCase();
+
+const rendezvousSets = photoSets.filter((s) => s.folder.startsWith('Photos/2023_Rendezvous'));
+const businessSets = photoSets.filter((s) => s.folder.startsWith('Photos/Businesses/'));
+const otherSets = photoSets.filter(
+  (s) => !s.folder.startsWith('Photos/2023_Rendezvous') && !s.folder.startsWith('Photos/Businesses/'),
+);
+
+const total = photoSets.reduce((n, s) => n + s.count, 0);
+const heldSets = photoSets.filter((s) => s.display === 'held');
+
+/* Who took a picture is usually in the file name: "2-1_Meyerhof-IMG_9721.jpeg".
+   Reading that off the name is a guess about a person, so the page says the
+   names are the creator's file names and nothing more. */
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Photographs"
+  subtitle={`Fifteen registered sets, ${total} files — the four days of the 2023 Rendezvous, the two markers, the businesses that built the memorial, and two sets that are counted but not shown.`}
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-photographs"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-lede">
+    The creator’s own summary: “Photographs are organized by topic and date.”
+    They are, in fifteen folders on his site, and this page is the register of
+    all of them: every file, the day it went up, its size, and a link to his copy.
+    The photographs themselves are large — several are over 20 MB — and most were
+    taken by the people on the trip rather than by him, so the Library lists and
+    links them rather than reproducing them. The few pictures shown anywhere in
+    this series are his own work or long out of copyright, and each is credited
+    where it appears.
+  </p>
+  <p class="sm-note">
+    File names carry what look like photographers’ surnames. Those are the
+    creator’s file names, printed as he wrote them; the Library has not turned
+    them into attributions.
+  </p>
+  {heldSets.length > 0 && (
+    <p class="sm-note">
+      {heldSets.length} of the fifteen sets are registered, dated and counted but
+      not shown: one is a search for graves, the other is aerial photography of
+      the ground on which they lie. Each keeps its entry and its count.
+    </p>
+  )}
+
+  <section aria-labelledby="rendezvous-days">
+    <h2 id="rendezvous-days">The 2023 Rendezvous, day by day</h2>
+    {rendezvousSets.map((s) => (
+      <div class="sm-set" id={anchorOf(s.folder)}>
+        <h3>{s.title} <span class="sm-set__n">{s.count} files</span></h3>
+        <p class="sm-set__note">{s.note}</p>
+        <details>
+          <summary>Every file in this folder ({s.count})</summary>
+          <ul class="sm-files">
+            {s.items.map((f) => (
+              HELD_FILES.has(f.name) ? (
+                <li data-held="true">
+                  <span class="sm-files__name">{f.name}</span>
+                  <span class="sm-files__meta">{postedOn(f.modified)} · {f.size}</span>
+                  <span class="sm-files__hold">{HOLD_NOTICE}</span>
+                </li>
+              ) : (
+                <li>
+                  <a class="sm-files__name" href={f.url}>{f.name}</a>
+                  <span class="sm-files__meta">{postedOn(f.modified)} · {f.size}</span>
+                </li>
+              )
+            ))}
+          </ul>
+        </details>
+        <p class="sm-set__src"><a href={s.url}>The folder on the creator’s site</a></p>
+      </div>
+    ))}
+  </section>
+
+  <section aria-labelledby="other-sets">
+    <h2 id="other-sets">Markers, aerials and the canine search</h2>
+    {otherSets.map((s) => (
+      <div
+        class="sm-set"
+        id={s.folder.includes('Cadaver_Dog') ? 'canine-search' : anchorOf(s.folder)}
+      >
+        <h3>{s.title} <span class="sm-set__n">{s.count} files</span></h3>
+        <p class="sm-set__note">{s.note}</p>
+        {s.display === 'held' ? (
+          <p class="sm-set__hold">{HOLD_NOTICE}</p>
+        ) : (
+          <>
+            <details>
+              <summary>Every file in this folder ({s.count})</summary>
+              <ul class="sm-files">
+                {s.items.map((f) => (
+                  <li>
+                    <a class="sm-files__name" href={f.url}>{f.name}</a>
+                    <span class="sm-files__meta">{postedOn(f.modified)} · {f.size}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+            <p class="sm-set__src"><a href={s.url}>The folder on the creator’s site</a></p>
+          </>
+        )}
+      </div>
+    ))}
+    <p class="sm-note">
+      On the canine search: the creator’s index records it as the work of “Max,
+      the Cadaver Dog,” handled by Cathy Schneider of Northwest Canine Resources,
+      and dates it 2 May 2023. Her report and her field map are catalogued on the
+      {' '}<a href={`${base}/writings/#other-authors`}>writings page</a> and the
+      {' '}<a href={`${base}/maps/`}>maps page</a>. The Library publishes the
+      fact of the search, its date, its author and the number of photographs, and
+      nothing about where it took place or what it found.
+    </p>
+  </section>
+
+  <section aria-labelledby="businesses">
+    <h2 id="businesses">The businesses that built the memorial</h2>
+    <p class="sm-note">
+      Seven folders, one for each firm that gave time, machinery or materials.
+      The creator names them on his sponsors page and photographed their people
+      at work; the
+      {' '}<a href={`${base}/writings/report-3-dedication/`}>third photographic report</a>
+      follows the plaque from the foundry floor to the stone.
+    </p>
+    {businessSets.map((s) => (
+      <div class="sm-set" id={anchorOf(s.folder)}>
+        <h3>{s.title} <span class="sm-set__n">{s.count} files</span></h3>
+        <p class="sm-set__note">{s.note}</p>
+        <details>
+          <summary>Every file in this folder ({s.count})</summary>
+          <ul class="sm-files">
+            {s.items.map((f) => (
+              <li>
+                <a class="sm-files__name" href={f.url}>{f.name}</a>
+                <span class="sm-files__meta">{postedOn(f.modified)} · {f.size}</span>
+              </li>
+            ))}
+          </ul>
+        </details>
+        <p class="sm-set__src"><a href={s.url}>The folder on the creator’s site</a></p>
+      </div>
+    ))}
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Creator', value: 'Bob Zybach, and the participants in the 2023 Rendezvous, as his file names record them' },
+      { label: 'Published at', value: 'orww.org/1828_Umpqua_Memorial/Photos/', href: `${SECTION}Photos/` },
+      { label: 'Counted', value: `${total} files across ${photoSets.length} folders, as the creator's own directory listings give them on 4 September 2026` },
+      { label: 'Rights', value: 'Photographs by other hands are identified by reference and not reproduced. Photographs shown elsewhere in this series are the creator’s own or long out of copyright.' },
+      { label: 'Held', value: 'The canine-search set and the aerial photographs of the same ground: registered, dated and counted, not shown' },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href={`${base}/rendezvous/`}>The Rendezvous</a> ·
+    <a href={`${base}/markers/`}>Historical markers</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede { max-width: 64ch; font-size: 1rem; line-height: 1.68; }
+  .sm-note { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; color: #3f3a33; }
+  .sm-set { padding: 0.9rem 0; border-top: 1px solid #ece5d5; scroll-margin-top: 4rem; }
+  .sm-set h3 { margin: 0 0 0.25rem; font-size: 0.98rem; line-height: 1.42; }
+  .sm-set__n {
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    font-weight: 400;
+    color: #6b6355;
+  }
+  .sm-set__note { margin: 0 0 0.4rem; max-width: 64ch; font-size: 0.92rem; line-height: 1.58; }
+  .sm-set__src { margin: 0.4rem 0 0; font-family: var(--font-sans); font-size: 0.76rem; }
+  .sm-set__hold {
+    margin: 0.4rem 0 0;
+    padding: 0.5rem 0.8rem;
+    font-family: var(--font-sans);
+    font-size: 0.79rem;
+    line-height: 1.5;
+    color: #5c5346;
+    background: rgba(122, 46, 46, 0.045);
+    border-left: 3px solid var(--oxblood, #7a2e2e);
+    border-radius: 3px;
+  }
+  .sm-set details summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.79rem;
+    color: #4e617c;
+  }
+  .sm-files { list-style: none; margin: 0.6rem 0 0; padding: 0; columns: 2 21rem; column-gap: 2rem; }
+  .sm-files li { break-inside: avoid; padding: 0.2rem 0; }
+  .sm-files__name {
+    display: block;
+    font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+    font-size: 0.74rem;
+    overflow-wrap: anywhere;
+  }
+  .sm-files__meta {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    color: #6b6355;
+  }
+  .sm-files__hold {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    color: #7a2e2e;
+    max-width: 30ch;
+  }
+  .sm-files li[data-held] .sm-files__name { color: #6b6355; }
+  .sm-see-also { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.84rem; }
+</style>

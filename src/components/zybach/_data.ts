@@ -242,3 +242,20 @@ export function mirrored(url: string | null | undefined): string | undefined {
   if (!url) return undefined;
   return IMAGE_MIRROR[url] ?? url;
 }
+
+
+/* Narrator portraits, cropped from the front matter of the creator's own
+   published PDFs (see soap_creek/portraits.json). Twelve of the fifteen
+   monographs print one; three do not, and nothing is substituted. */
+import portraitsRaw from '../../data/zybach/soap_creek/portraits.json';
+export interface Portrait {
+  slug: string; number: number; file: string; pdf_page: number | null;
+  printed_caption: string | null; who: string | null; credit: string | null; note: string | null;
+  printed_page_label?: string | null;
+}
+const PORTRAITS = ((portraitsRaw as any)?.portraits ?? []) as Portrait[];
+export function portraitFor(slug: string | null | undefined): Portrait | null {
+  if (!slug) return null;
+  return PORTRAITS.find((p) => p.slug === slug) ?? null;
+}
+export const allPortraits: Portrait[] = PORTRAITS;

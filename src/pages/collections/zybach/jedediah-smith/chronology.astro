@@ -1,0 +1,152 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import { chronology, dateWords, SECTION } from '../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+
+const PERIODS = [
+  {
+    label: '1826–1830 — the expeditions',
+    match: '1826–1828 — the expeditions',
+    lede:
+      'Where the party was, in its own words and in the creator’s guidebooks. Campsite entries are the headings of his own tables of contents: the name the project gave the place, and the date in 1828. Everything else is quoted from a journal or a letter.',
+  },
+  {
+    label: '1987–2024 — the memorial project',
+    match: '1987–2024 — the memorial project',
+    lede:
+      'What the project did, from a student draft in an English department to a bronze plaque on a stone. Every line traces to a page of something the creator publishes.',
+  },
+];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Chronology"
+  subtitle={`${chronology.length} dated statements, each one traceable to a page of something the creator publishes.`}
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-chronology"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-lede">
+    Two runs of dates that belong to one story: what happened in 1826–1830, and
+    what a group of people did about it between 1987 and 2024. The Library built
+    this list; it invented nothing for it. Every entry carries the document it
+    comes from, and most carry a link that lands on the page.
+  </p>
+  <p class="sm-note">
+    Where the sources disagree, both readings are kept and the disagreement is
+    marked. They disagree about how many men were killed on 14 July 1828 —
+    fourteen or fifteen — and about whether McLoughlin’s report to London is
+    dated 10 or 11 August 1828.
+  </p>
+
+  {PERIODS.map((p) => {
+    const rows = chronology.filter((e) => e.period === p.match);
+    return (
+      <section aria-labelledby={p.match.slice(0, 4)}>
+        <h2 id={p.match.slice(0, 4)}>{p.label} <span class="sm-count">({rows.length})</span></h2>
+        <p class="sm-note">{p.lede}</p>
+        <ol class="sm-chron">
+          {rows.map((e) => (
+            <li>
+              <p class="sm-chron__date">{dateWords(e.date)}</p>
+              <div class="sm-chron__body">
+                <p class="sm-chron__text">{e.text}</p>
+                <p class="sm-chron__src">
+                  {e.href ? <a href={e.href}>{e.source}</a> : e.source}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    );
+  })}
+
+  <section aria-labelledby="what-is-not-dated">
+    <h2 id="what-is-not-dated">What is not dated here</h2>
+    <p class="sm-note">
+      Nothing in this chronology says where anything happened, beyond the river
+      mouth, the towns and the public places the creator names himself. The
+      entries for the canine search of 2 May 2023 and for the report that
+      followed it record that they happened, who did them and when; they record
+      nothing about the ground.
+    </p>
+    <p class="sm-note">
+      Two things this series does not record, though a reader might expect them:
+      whether the interpretive sign was ever installed, and what answer the
+      Confederated Tribes of Coos, Lower Umpqua and Siuslaw Indians gave to the
+      invitation of July 2023. The creator’s published files carry neither, and
+      the Library will not supply an ending it has not been given.
+    </p>
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Built by', value: 'America’s School Trust Library, from the creator’s published files' },
+      { label: 'Sources', value: 'The Smith and Rogers journals, McLoughlin’s and McLeod’s papers, the four 2023 guidebooks, the three photographic reports, the sign drafts, and the creator’s own project index' },
+      { label: 'Method', value: 'Every entry is either a quotation with its page or a statement of what a named document records. Nothing is inferred, and nothing is dated from memory.' },
+      { label: 'The creator’s pages', value: 'orww.org/1828_Umpqua_Memorial/', href: SECTION },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href={`${base}/the-1828-record/`}>The 1828 record</a> ·
+    <a href={`${base}/people/`}>People</a> ·
+    <a href={`${base}/markers/`}>Historical markers</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede { max-width: 64ch; font-size: 1rem; line-height: 1.68; }
+  .sm-note { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; color: #3f3a33; }
+  .sm-count { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 400; color: #6b6355; }
+  .sm-chron { list-style: none; margin: 1rem 0 2rem; padding: 0; }
+  .sm-chron li {
+    display: grid;
+    grid-template-columns: 9.5rem 1fr;
+    gap: 0 1.25rem;
+    padding: 0.65rem 0;
+    border-top: 1px solid #ece5d5;
+  }
+  .sm-chron__date {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .sm-chron__body { min-width: 0; }
+  .sm-chron__text { margin: 0 0 0.2rem; max-width: 62ch; font-size: 0.94rem; line-height: 1.6; }
+  .sm-chron__src {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    color: #6b6355;
+    overflow-wrap: anywhere;
+  }
+  .sm-see-also { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.84rem; }
+  @media (max-width: 40rem) {
+    .sm-chron li { grid-template-columns: 1fr; gap: 0.2rem; }
+  }
+</style>

@@ -1,0 +1,155 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import CitationBlock from '../../../../../components/zybach/CitationBlock.astro';
+import Pages from '../../../../../components/zybach/smith/Pages.astro';
+import {
+  works, SECTION, canonicalOf, shortOf,
+  type Work,
+} from '../../../../../components/zybach/smith/data';
+
+export function getStaticPaths() {
+  return works.map((w) => ({ params: { slug: w.slug }, props: { work: w } }));
+}
+
+const { work } = Astro.props as { work: Work };
+const base = '/collections/zybach/jedediah-smith';
+const unit = work.slug === 'octa-presentation-2023' ? 'Slide' : 'Page';
+
+const idx = works.findIndex((w) => w.slug === work.slug);
+const prev = idx > 0 ? works[idx - 1] : null;
+const next = idx >= 0 && idx < works.length - 1 ? works[idx + 1] : null;
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+  { label: 'Reports and the creator’s writings', href: `${base}/writings/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title={work.title}
+  subtitle={`${work.author} · ${work.date_display}`}
+  width="prose"
+  parents={parents}
+  sourceId={`zybach-jedediah-smith-${work.slug}`}
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-blurb">{work.blurb}</p>
+
+  <dl class="sm-facts">
+    <div><dt>Extent</dt><dd>{work.pages_total} {unit.toLowerCase()}s{work.words ? `, ${work.words.toLocaleString('en-US')} words of text` : ''}</dd></div>
+    {work.pages_held > 0 && (
+      <div>
+        <dt>Held</dt>
+        <dd>
+          {work.pages_held} {work.pages_held === 1 ? 'page is' : 'pages are'} withheld
+          from this edition pending review. Each keeps its number and its anchor.
+        </dd>
+      </div>
+    )}
+    <div>
+      <dt>The creator’s file</dt>
+      <dd>
+        <a href={work.url}>{work.file_name}</a>{work.size ? `, ${work.size}` : ''} —
+        in <a href={work.folder_url}>his own folder</a>.
+      </dd>
+    </div>
+  </dl>
+
+  <Pages pages={work.pages} unit={unit} />
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Author', value: work.author },
+      { label: 'Date', value: work.date_display },
+      { label: 'Published at', value: work.url, href: work.url },
+      { label: 'Rights', value: 'In copyright. The creator publishes this himself; the Library’s copy is a display copy; permission being recorded.' },
+      { label: 'How this was made', value: 'Text taken from the creator’s own PDF and printed page by page, unedited. Line breaks follow the page; nothing is joined up, corrected or spelled differently.' },
+    ]}
+  />
+
+  <CitationBlock
+    canonical={canonicalOf(work)}
+    short={shortOf(work)}
+    url={`${base}/writings/${work.slug}/`}
+    pdfUrl={work.url}
+    thisPage={`${work.pages_total} ${unit.toLowerCase()}s`}
+    passage={{
+      label: `${shortOf(work)}, ${unit.toLowerCase()} 1 — ${work.file_name}:1`,
+      fragment: '#p1',
+      note: `Every ${unit.toLowerCase()} has its own anchor: append #p and the number.`,
+    }}
+  />
+
+  <nav class="sm-seq" aria-label="Other writings">
+    {prev && <a href={`${base}/writings/${prev.slug}/`}>← {prev.title}</a>}
+    <a href={`${base}/writings/`}>All the writings</a>
+    {next && <a href={`${base}/writings/${next.slug}/`}>{next.title} →</a>}
+  </nav>
+
+  <p class="sm-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-blurb {
+    max-width: 64ch;
+    font-size: 1rem;
+    line-height: 1.68;
+  }
+  .sm-facts {
+    margin: 1.25rem 0 0.5rem;
+    padding: 0.85rem 1rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+  }
+  .sm-facts > div {
+    display: grid;
+    grid-template-columns: 10em 1fr;
+    gap: 0.7rem;
+    padding: 0.3rem 0;
+  }
+  .sm-facts dt {
+    color: #6b6355;
+    letter-spacing: 0.02em;
+  }
+  .sm-facts dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+  .sm-seq {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 2rem 0 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+  }
+  .sm-corrections {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+  @media (max-width: 42rem) {
+    .sm-facts > div { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>

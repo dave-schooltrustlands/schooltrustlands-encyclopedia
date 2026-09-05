@@ -1,0 +1,162 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import Register from '../../../../../components/zybach/carson/Register.astro';
+import type { RegisterRow } from '../../../../../components/zybach/carson/data';
+import { BASE, ORWW, media } from '../../../../../components/zybach/carson/data';
+
+const groups = media.maps ?? [];
+const counts = media.map_counts ?? {};
+const emptyFolders = media.empty_map_folders ?? [];
+
+/** What a sheet is, from the creator's own filename convention. */
+function describe(file: string): string | null {
+  const f = file.replace(/^.*\//, '');
+  if (/^USGS_/.test(f)) {
+    const m = /^USGS_(.+?)_(\d{4})_([\d.]+'?)/.exec(f);
+    return m
+      ? `United States Geological Survey ${m[1].replace(/_/g, ' ')} quadrangle, ${m[2]}, ${m[3]} series.`
+      : 'United States Geological Survey quadrangle.';
+  }
+  const t = /^(\d{2})[sS]_?(\d{2})[wW]/.exec(f);
+  if (t) {
+    const yr = /(?:_|-)(?:ca\.)?(\d{4})/.exec(f);
+    return `General Land Office plat of Township ${Number(t[1])} South, Range ${Number(t[2])} West, Willamette Meridian${yr ? `, ${/ca\./.test(f) ? 'about ' : ''}${yr[1]}` : ''}.`;
+  }
+  if (/Letitia_Homestead/.test(f)) return 'The creator’s own map of the homestead, June 2024.';
+  if (/12_Mile_Ranch/.test(f)) return 'The creator’s own map of trails, June 2024.';
+  if (/Stephens_Graveyard/.test(f)) return 'The burying ground, 1970.';
+  if (/^img\d+/.test(f)) return null;
+  return null;
+}
+
+function rowsFor(g: (typeof groups)[number]): RegisterRow[] {
+  return g.items.map((i) => ({
+    title: i.file,
+    meta: /-LC[a-z]?\./i.test(i.file)
+      ? 'The creator’s marked copy — “LC” for Letitia Carson'
+      : null,
+    note: describe(i.file),
+    thumb: i.thumb,
+    href: i.url,
+    linkLabel: i.file.toLowerCase().endsWith('.pdf') ? 'The creator’s PDF' : 'The creator’s scan',
+  }));
+}
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Maps"
+  subtitle="Township plats and topographic sheets for each place the family lived, several of them marked up by the creator to show the Carson claim."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-letitia-carson-maps"
+>
+  <p slot="before-title" class="kicker">Letitia Carson · Register</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="maps" />
+
+  <p class="lc-lede">
+    {counts.files ?? 0} sheets in {counts.folders ?? 0} folders. Almost all are
+    federal: General Land Office township plats made when the country was first
+    surveyed, and United States Geological Survey quadrangles. Government maps
+    are not under copyright. Two are the creator’s own, drawn in June 2024. The
+    Library shows his thumbnails where he made them and links his full-size
+    files.
+  </p>
+
+  <p class="lc-note">
+    Sheets whose filename ends “-LC” are his copies with the Carson claim picked
+    out. The Library reads what his filenames say about township, range and
+    year, and describes the sheets from that; where a filename says nothing, the
+    Library says nothing.
+  </p>
+
+  {groups.map((g) => (
+    <section id={g.slug} class="lc-mapgroup" aria-labelledby={`h-${g.slug}`}>
+      <h2 id={`h-${g.slug}`}>{g.title} <span class="lc-mapgroup__n">{g.count}</span></h2>
+      <p class="lc-mapgroup__note">{g.note}</p>
+      <Register rows={rowsFor(g)} />
+      <p class="lc-mapgroup__link"><a href={g.url}>The creator’s folder</a></p>
+    </section>
+  ))}
+
+  {emptyFolders.length > 0 && (
+    <>
+      <h2 id="empty">Folders he has opened but not filled</h2>
+      <p class="lc-note">
+        {emptyFolders.map((f) => f.replace(/_/g, ' ')).join(', ')}. Recorded
+        because his arrangement says where the Irish, Missouri, North Carolina
+        and national maps are meant to go, and that they are not there yet.
+      </p>
+    </>
+  )}
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Records', value: 'General Land Office plats and USGS quadrangles — federal maps, not under copyright' },
+      { label: 'Marked copies and two 2024 sheets', value: 'The creator’s own work' },
+      { label: 'Published at', value: 'orww.org/History/Letitia_Carson/Maps/', href: `${ORWW}Maps/` },
+      { label: 'Counted', value: 'Against the creator’s own directory listings, 4 September 2026' },
+    ]}
+  />
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-lede {
+    font-size: 1.02rem;
+    line-height: 1.68;
+    max-width: 66ch;
+  }
+  .lc-note {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.58;
+    color: #6b6355;
+    max-width: 66ch;
+  }
+  .lc-mapgroup { scroll-margin-top: 5rem; }
+  .lc-mapgroup__n {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: #a39a88;
+  }
+  .lc-mapgroup__note {
+    font-size: 0.93rem;
+    line-height: 1.58;
+    max-width: 64ch;
+  }
+  .lc-mapgroup__link {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    margin-top: -0.75rem;
+  }
+  .lc-corrections {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

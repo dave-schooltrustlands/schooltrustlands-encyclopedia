@@ -1,0 +1,119 @@
+---
+/* Figure.astro — SMITH lane.
+ *
+ * A picture with a caption and a credit. Two things this has to get right:
+ *
+ *   1. The creator's sites serve HTTP only, and a browser will not load an
+ *      http: image inside an https: page. Every image therefore goes through
+ *      `mirrored()`, which returns the Library's own display copy. Until a
+ *      display copy exists, `mirrored()` hands the original back — and rather
+ *      than emit a src the browser will refuse, this component draws a ruled
+ *      frame with the caption and a link to the creator's own file. The page
+ *      reads correctly either way and no http: image is ever requested.
+ *
+ *   2. A held picture is never requested at all: the frame carries the one
+ *      hold notice this series uses, and the register keeps the entry.
+ *
+ * Owner: SMITH. New file; nothing outside src/components/zybach/smith and
+ * src/pages/collections/zybach/jedediah-smith imports it.
+ */
+import { mirrored } from '../_data';
+import { HOLD_NOTICE } from './data';
+
+interface Props {
+  /** The creator's own http URL for the image. */
+  src?: string;
+  alt: string;
+  caption?: string;
+  credit?: string;
+  /** Where the reader goes for the full-size original. */
+  href?: string;
+  held?: boolean;
+  size?: 'wide' | 'plate' | 'thumb';
+  ratio?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  src, alt, caption, credit, href, held = false,
+  size = 'plate', ratio, loading = 'lazy',
+} = Astro.props as Props;
+
+const resolved = held || !src ? null : mirrored(src);
+/* Only a same-origin display copy is ever put in a src attribute. */
+const displaySrc = resolved && !/^https?:\/\//i.test(resolved) ? resolved : null;
+const frameStyle = ratio ? `aspect-ratio: ${ratio};` : undefined;
+---
+
+<figure class="sm-fig" data-size={size}>
+  <div class="sm-fig__frame" style={frameStyle}>
+    {displaySrc ? (
+      href ? (
+        <a href={href}><img src={displaySrc} alt={alt} loading={loading} decoding="async" /></a>
+      ) : (
+        <img src={displaySrc} alt={alt} loading={loading} decoding="async" />
+      )
+    ) : (
+      <p class="sm-fig__stand">
+        {held ? HOLD_NOTICE : 'Picture not shown here.'}
+        {!held && href && (
+          <>
+            {' '}<a href={href}>See it on the creator’s own site</a>.
+          </>
+        )}
+      </p>
+    )}
+  </div>
+  {(caption || credit) && (
+    <figcaption class="sm-fig__cap">
+      {caption && <span class="sm-fig__caption">{caption}</span>}
+      {credit && <span class="sm-fig__credit">{credit}</span>}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .sm-fig {
+    margin: 1.5rem 0 1.75rem;
+  }
+  .sm-fig[data-size='plate'] { max-width: 34rem; }
+  .sm-fig[data-size='thumb'] { max-width: 15rem; margin: 0; }
+  .sm-fig__frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 3px;
+    overflow: hidden;
+    min-height: 4.5rem;
+  }
+  .sm-fig__frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .sm-fig__stand {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #6b6355;
+    text-align: center;
+  }
+  .sm-fig__cap {
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: #4e4638;
+  }
+  .sm-fig__caption { display: block; }
+  .sm-fig__credit {
+    display: block;
+    margin-top: 0.2rem;
+    color: #6b6355;
+    font-size: 0.75rem;
+  }
+</style>

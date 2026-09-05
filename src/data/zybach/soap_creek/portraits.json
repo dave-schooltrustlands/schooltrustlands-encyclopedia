@@ -1,0 +1,156 @@
+{
+ "portraits": [
+  {
+   "slug": "m02-dunn",
+   "number": 2,
+   "file": "/zybach/portraits/m02-dunn.jpg",
+   "pdf_page": 2,
+   "printed_page_label": "front-2 (frontispiece, facing the title page)",
+   "printed_caption": "Paul M. Dunn, 1962",
+   "who": "Paul M. Dunn",
+   "credit": null,
+   "note": "Formal studio portrait, printed opposite the title page. A small illegible signature/embossed studio mark appears in the lower right of the print itself but is not a printed caption or credit line."
+  },
+  {
+   "slug": "m03-dickey",
+   "number": 3,
+   "file": "/zybach/portraits/m03-dickey.jpg",
+   "pdf_page": 4,
+   "printed_page_label": "front-4 (one of three photos on this plate)",
+   "printed_caption": "Don and Maxine Dickey, c. 1944",
+   "who": "Donald M. Dickey and Maxine Dickey",
+   "credit": null,
+   "note": "Front-4 carries three photos (the Dickey home, this couple portrait, and a later family group of five); this is the middle one, matching both listed narrators (Donald M. Dickey and Maxine Dickey)."
+  },
+  {
+   "slug": "m05-rohner",
+   "number": 5,
+   "file": "/zybach/portraits/m05-rohner.jpg",
+   "pdf_page": 2,
+   "printed_page_label": "front-2 (title page)",
+   "printed_caption": "Title Page Photo: This photograph of the Rohner family was taken in front of their first Benton County residence, the old Writsman home near Coffin Butte. Pictured with their parents are young Jake (b. 1914), Nellie (b. 1915), and Sam (b. 1916). All of the children were born in this house.",
+   "who": "John Jacob \"Jake\" Rohner (pictured as a young child) with his parents and siblings Nellie and Sam Rohner",
+   "credit": null,
+   "note": "The narrators of record are John Jacob \"Jake\" Rohner and his wife Wilma; this is the only portrait-type photo in the front matter, but it shows Jake as a small boy with his parents and siblings, decades before his marriage to Wilma — Wilma does not appear in it. The caption is printed on the Acknowledgements page (front-3), not beneath the photo itself."
+  },
+  {
+   "slug": "m06-hanish",
+   "number": 6,
+   "file": "/zybach/portraits/m06-hanish.jpg",
+   "pdf_page": 2,
+   "printed_page_label": "front-2 (title page)",
+   "printed_caption": "Title Page Photo: Jim Hanish and his mother, Connie at the Hanish home along Berry Creek c. 1935. Mrs. Hanish died a few years after these interviews were completed. She lived to be over 100 years old.",
+   "who": "James (Jim) Hanish, pictured as a boy, with his mother Connie Hanish",
+   "credit": null,
+   "note": "Narrator pictured as a child with his mother, outside the family home. Caption printed on the Acknowledgements page (front-3), not beneath the photo itself."
+  },
+  {
+   "slug": "m07-olson",
+   "number": 7,
+   "file": "/zybach/portraits/m07-olson.jpg",
+   "pdf_page": 2,
+   "printed_page_label": "front-2 (title page)",
+   "printed_caption": "Title Page Photo: Olson Family [c. 1901] Mother, Anna Frestrom; father, John, sister, Hilda; brother, Augustus \"Gus\"; and Charlie.",
+   "who": "Charlie Olson (pictured as a boy, back row right) with mother Anna Frestrom, father John Olson, sister Hilda, and brother Augustus \"Gus\" Olson",
+   "credit": null,
+   "note": "Formal studio family portrait; narrator pictured as a boy standing in the back row. Caption printed on the Acknowledgements page (front-3), not beneath the photo itself."
+  },
+  {
+   "slug": "m08-vanderburg",
+   "number": 8,
+   "file": "/zybach/portraits/m08-vanderburg.jpg",
+   "pdf_page": 2,
+   "printed_page_label": "front-2 (title page)",
+   "printed_caption": "Title Page Photo: Edith Vanderburg and her husband, Neil. Rockhounding in Wildhorse, Arizona, February, 1994.",
+   "who": "Neil Elton Vanderburg and his wife, Edith Vanderburg",
+   "credit": null,
+   "note": "Contemporary snapshot (Feb. 1994), taken close to the interview/publication period, of narrator Neil Vanderburg with his wife in front of their RV. Caption printed on the Acknowledgements page (front-3), not beneath the photo itself. Crop keeps the full printed photograph (including the RV) rather than cropping in tighter on the couple."
+  },
+  {
+   "slug": "m10-rawie",
+   "number": 10,
+   "file": "/zybach/portraits/m10-rawie.jpg",
+   "pdf_page": 2,
+   "printed_page_label": "front-2 (title page)",
+   "printed_caption": "Title Page Photo: Velma Carter Rawie and her two granddaughters, Tonya Rawie and Traci Rawie. Mrs. Rawie's oral history outlines the story of six generations of this Benton County pioneer family, between 1846 and 1994.",
+   "who": "Velma Carter Rawie with granddaughters Tonya Rawie and Traci Rawie",
+   "credit": null,
+   "note": "Caption printed on the Acknowledgements page (front-3), not beneath the photo itself."
+  },
+  {
+   "slug": "m11-murphy",
+   "number": 11,
+   "file": "/zybach/portraits/m11-murphy.jpg",
+   "pdf_page": 3,
+   "printed_page_label": "front-3 (title page)",
+   "printed_caption": "Title Page Photo: Bessie Murphy and her friend, Frances Stilwell, at Soap Creek Schoolhouse celebration in 1989.",
+   "who": "Bessie Murphy with her friend, Frances Stilwell",
+   "credit": null,
+   "note": "Caption printed on the Acknowledgements page (front-4), not beneath the photo itself."
+  },
+  {
+   "slug": "m12-cook",
+   "number": 12,
+   "file": "/zybach/portraits/m12-cook.jpg",
+   "pdf_page": 13,
+   "printed_page_label": "page x (in the roman-numbered front matter, listed in the List of Illustrations)",
+   "printed_caption": "Marcks Family photo, c. 1912. This picture of Wanda Marcks and her family was probably taken by Ernest Cook and shows Wanda as a teenager, a few year before her wedding to Ernest. To Wanda's left are her brothers, Raymond and Wallace, her sister, Florence, her mother, Helen, and her father, Louis.",
+   "who": "Wanda Marcks (later Wanda Marcks Cook), pictured as a teenager, with brothers Raymond and Wallace Marcks, sister Florence Marcks, mother Helen Marcks, and father Louis Marcks",
+   "credit": "Probably taken by Ernest Cook (per printed caption)",
+   "note": "The book's actual title-page photo (front-3) is a 1914 landscape view of the Sulphur Springs Stock Ranch, not a portrait, so it was not used. This is instead the photo on printed page 'x' (PDF page 13), still within the roman-numbered front matter that precedes Chapter 1 (per the List of Illustrations on page viii) — the only photograph of narrator Wanda Marcks Cook herself anywhere in the front matter. Caption is printed directly beneath the photo on the page."
+  },
+  {
+   "slug": "m13-davies",
+   "number": 13,
+   "file": "/zybach/portraits/m13-davies.jpg",
+   "pdf_page": 2,
+   "printed_page_label": "front-2 (title page)",
+   "printed_caption": "William A. Davies, 1964",
+   "who": "William A. Davies",
+   "credit": "Photo courtesy: Joan Davies",
+   "note": "Caption and credit line as printed on the Acknowledgements page (front-3): \"Title Page Photo: William A. Davies, 1964 (Photo courtesy: Joan Davies).\" No caption text appears directly beneath the portrait on the title page itself."
+  },
+  {
+   "slug": "m14-hindes",
+   "number": 14,
+   "file": "/zybach/portraits/m14-hindes.jpg",
+   "pdf_page": 9,
+   "printed_page_label": "page vi (in the roman-numbered front matter)",
+   "printed_caption": "C. Hindes — N. Hindes 1960",
+   "who": "Charles Hindes (seated) and Norman Hindes (standing)",
+   "credit": null,
+   "note": "The book's actual title-page photo (front-3) shows the Soap Creek logging/sawmilling camp site, not the narrators, so it was not used. This snapshot on printed page vi (PDF page 9), still within the roman-numbered front matter, is the only photograph of both narrators together; the caption is handwritten directly beneath the photo in the original print."
+  },
+  {
+   "slug": "m15-rowley",
+   "number": 15,
+   "file": "/zybach/portraits/m15-rowley.jpg",
+   "pdf_page": 4,
+   "printed_page_label": "front-4 (title page)",
+   "printed_caption": null,
+   "who": "Marvin Rowley",
+   "credit": null,
+   "note": "Formal head-and-shoulders portrait printed on the title page; no caption text accompanies this photo anywhere in the monograph. (A different, full-body photo of Rowley standing on McCulloch Peak is used as the cover and is captioned there: \"Marvin Rowley standing on McCulloch Peak in McDonald Forest.\")"
+  }
+ ],
+ "missing": [
+  {
+   "slug": "m01-grabe",
+   "number": 1,
+   "title": "Lorna Grabe",
+   "reason": "No photograph of Lorna Grabe appears anywhere in the monograph. Checked: cover (front-1, a 1899 Moore farm landscape by Samuel H. Moore -- not a portrait), title page (front-2), Acknowledgements (front-3), Table of Contents (front-4), the two-page Introduction (front-5/6), the full text of Chapters 1-15 via the photographs caption list (empty -- no photo entries beyond the cover), the back-of-book \"Appendix: Personal Biography\" (printed pp. 68-69, PDF pages 74-75, text only, no image), and the Index (PDF pages 76-84, text only). The only photograph printed in this monograph is the 1899 cover landscape."
+  },
+  {
+   "slug": "m04-sekermestrovich",
+   "number": 4,
+   "title": "Edward Sekermestrovich",
+   "reason": "No individual photograph of Edward Sekermestrovich appears anywhere in the monograph. Checked: cover (front-1, an early OSC School of Forestry work-crew group photo from Royal Jackson's collection -- not the narrator), title page (front-2), Acknowledgements (front-3), the CCC Company 3503 group photo (front-4), Table of Contents, \"The Soap Creek Valley History Project\" essay (p. i), \"Introduction to Edward Sekermestrovich Interview\" (p. ii), the opening page of the interview transcript, and the back-of-book \"Background: Edward Sekermestrovich\" biographical appendix (printed pp. 35-37, written by his wife Ida May Warner Sekermestrovich -- text only, no image) and the Index (p. 38). The only photographs in this monograph are the cover work-crew photo and the CCC Company 3503 group photo (p. 4); neither singles out Edward Sekermestrovich."
+  },
+  {
+   "slug": "m09-glender",
+   "number": 9,
+   "title": "Eugene Glender",
+   "reason": "The book's title-page photo (front-2) is captioned \"Sisters Leone (left) and Elvera (right) Glender pose in front of the Glender family farmhouse in the early 1920s\" -- it depicts narrator Eugene (\"Gene\") Glender's sisters, not Gene himself, and at any usable resolution the two figures are tiny, distant silhouettes in front of a farmhouse landscape rather than a portrait. No other photograph of Gene Glender appears in the front matter (checked cover, title page, Acknowledgements, Table of Contents, \"The Soap Creek Valley History Project\" essay, Soap Creek Valley map, and the Glender Tampico Tour map through printed page vi). Per instructions not to substitute a different photograph for a missing frontispiece/title-page portrait, none was selected. For the record: solo and family snapshots of Gene Glender DO exist much later in the book, in \"Appendix B: Hunting Elephants in the Oregon Country\" and \"Appendix C: Family Photos\" (around printed pp. 106-117) -- including a 1989 photo of the adult Gene Glender at the elephant-fossil spring site, photographed by Bob Zybach -- but these are deep interior/appendix material, not front matter, and were not used."
+  }
+ ]
+}

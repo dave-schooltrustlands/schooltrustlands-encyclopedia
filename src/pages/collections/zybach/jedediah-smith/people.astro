@@ -1,0 +1,217 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import { people, SECTION } from '../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+const dead = people.the_dead;
+const roster = people.roster;
+const bios = people.biographies;
+const historical = people.historical ?? [];
+const project = people.project ?? [];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="People"
+  subtitle="The men who died, the roll of the party as its clerk wrote it, the people on both sides in 1828, and the people who made the memorial."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-people"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-lede">
+    Everyone on this page is named because a document in this series names them.
+    Nobody living appears except in the public role the creator himself
+    publishes: no address, no telephone number, no email, and nothing about
+    anyone’s private life.
+  </p>
+
+  {dead && (
+    <section aria-labelledby="the-dead">
+      <h2 id="the-dead">{dead.heading}</h2>
+      <p class="sm-note">{dead.note}</p>
+      <ul class="sm-names">
+        {dead.names.map((n) => <li>{n}</li>)}
+      </ul>
+      <p class="sm-src"><a href={dead.href}>{dead.source}</a></p>
+    </section>
+  )}
+
+  {bios && (
+    <section aria-labelledby="who-they-were">
+      <h2 id="who-they-were">Who they were</h2>
+      <p class="sm-note">
+        For the interpretive sign the creator wrote a line or two about each man,
+        mostly out of the journals. They are printed here as he wrote them,
+        grouped as he grouped them. Note that his list treats “Peter Ranne” and
+        “John Peter Ranne” as two men, as the clerk’s roll below does, while the
+        plaque carries one — which is one reason the project’s own accounts give
+        the number killed as fourteen in some places and fifteen in others.
+      </p>
+      {bios.groups.map(([heading, note, rows]) => (
+        <div class="sm-bios">
+          <h3>{heading}</h3>
+          <p class="sm-note">{note}</p>
+          <dl class="sm-bios__list">
+            {rows.map(([name, text]) => (
+              <div>
+                <dt>{name}</dt>
+                <dd>{text}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+      <p class="sm-src">
+        <a href={bios.url}>{bios.source}</a>. Transcribed from his draft; the
+        ligatures in his PDF do not survive text extraction and have been
+        restored. Nothing else is altered.
+      </p>
+    </section>
+  )}
+
+  {roster && (
+    <section aria-labelledby="the-roster">
+      <h2 id="the-roster">{roster.heading}</h2>
+      <p class="sm-note">{roster.note}</p>
+      <ul class="sm-names sm-names--roster">
+        {roster.names.map((n) => <li>{n}</li>)}
+      </ul>
+      <p class="sm-src"><a href={roster.href}>{roster.source}</a></p>
+    </section>
+  )}
+
+  <section aria-labelledby="in-1828">
+    <h2 id="in-1828">In 1828</h2>
+    <p class="sm-note">
+      Everyone else the record names: the survivors, the Hudson’s Bay Company men
+      who went to look for them, the Umpqua chief who told McLeod what had
+      happened, and the surveyor who found the place thirty years later.
+    </p>
+    <dl class="sm-people">
+      {historical.map(([name, note, src]) => (
+        <div>
+          <dt>{name}</dt>
+          <dd>
+            {note}
+            {src && <span class="sm-people__src">{src}</span>}
+          </dd>
+        </div>
+      ))}
+    </dl>
+    <p class="sm-note">
+      Chief St. Arnoose’s own account of the cause is printed in full on the
+      {' '}<a href={`${base}/the-1828-record/#native-account`}>1828 record page</a>.
+    </p>
+  </section>
+
+  <section aria-labelledby="the-project">
+    <h2 id="the-project">The project</h2>
+    <p class="sm-note">
+      The people the creator names on his own pages as having done the work, in
+      the role his pages give them. Businesses and their named contacts are on
+      the <a href={`${base}/markers/#sponsors`}>sponsors table</a>, exactly as he
+      publishes them.
+    </p>
+    <dl class="sm-people">
+      {project.map(([name, note]) => (
+        <div>
+          <dt>{name}</dt>
+          <dd>{note}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Built by', value: 'America’s School Trust Library, from the creator’s published files' },
+      { label: 'Sources', value: 'The plaque text in the field report of 15 June 2023; the sign draft of 20 October 2023; Rogers’s second journal; the 1987 draft’s biographical appendix; the creator’s project index and sponsors page' },
+      { label: 'Living people', value: 'Named only in the public project role the creator publishes. No contact details of any kind are published.' },
+      { label: 'The creator’s pages', value: 'orww.org/1828_Umpqua_Memorial/', href: SECTION },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href={`${base}/chronology/`}>Chronology</a> ·
+    <a href={`${base}/the-1828-record/`}>The 1828 record</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede { max-width: 64ch; font-size: 1rem; line-height: 1.68; }
+  .sm-note { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; color: #3f3a33; }
+  .sm-src {
+    margin: 0.3rem 0 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+    overflow-wrap: anywhere;
+  }
+  .sm-names {
+    list-style: none;
+    margin: 1rem 0 0.4rem;
+    padding: 0.9rem 1.1rem;
+    columns: 2 14rem;
+    column-gap: 2rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 4px;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+  .sm-names li { break-inside: avoid; }
+  .sm-names--roster { font-size: 0.9rem; }
+  .sm-bios { margin: 1.25rem 0; }
+  .sm-bios h3 { margin: 0 0 0.3rem; font-size: 0.96rem; }
+  .sm-bios__list, .sm-people { margin: 0.8rem 0 1rem; }
+  .sm-bios__list > div, .sm-people > div {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 0 1.1rem;
+    padding: 0.42rem 0;
+    border-top: 1px solid #ece5d5;
+  }
+  .sm-bios__list dt, .sm-people dt {
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .sm-bios__list dd, .sm-people dd {
+    margin: 0;
+    max-width: 62ch;
+    font-size: 0.92rem;
+    line-height: 1.58;
+  }
+  .sm-people__src {
+    display: block;
+    margin-top: 0.15rem;
+    font-family: var(--font-sans);
+    font-size: 0.73rem;
+    color: #6b6355;
+  }
+  .sm-see-also { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.84rem; }
+  @media (max-width: 40rem) {
+    .sm-bios__list > div, .sm-people > div { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>

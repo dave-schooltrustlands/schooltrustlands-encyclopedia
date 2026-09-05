@@ -1,0 +1,2712 @@
+{
+ "generated": "2026-09-04",
+ "series": "letitia-carson",
+ "counts": {
+  "entries": 253,
+  "from_the_creators_writing": 24,
+  "from_the_documents": 229
+ },
+ "periods": [
+  {
+   "slug": "kentucky-and-antrim",
+   "label": "Kentucky and Antrim, to 1844",
+   "count": 12,
+   "entries": [
+    {
+     "date": "1814/1818",
+     "year": 1814,
+     "text": "Letitia Carson is born, enslaved, in Kentucky — “sometime between 1814 and 1818”. Nothing is known of her early life, or how she came to Missouri before 1845.",
+     "kind": "narrative",
+     "hedged": true,
+     "source": "The Search for Letitia Carson, I, page 4",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p4",
+     "source_note": null
+    },
+    {
+     "date": "1818",
+     "year": 1818,
+     "text": "David Carson comes to America from County Antrim with his older brothers and sisters, at about eighteen. The creator writes that he was “most likely” raised Presbyterian.",
+     "kind": "narrative",
+     "hedged": true,
+     "source": "The Search for Letitia Carson, I, page 4",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p4",
+     "source_note": null
+    },
+    {
+     "date": "1824-10-25",
+     "year": 1824,
+     "text": "Declaration of intention to become a citizen — E. & S. Carson Declare US Citizenship Intent",
+     "kind": "document",
+     "hedged": false,
+     "source": "North Carolina, 1824–1851: 18241025_Citizenship_Declaration-1",
+     "href": "/collections/zybach/letitia-carson/documents/1824-1851-north-carolina/#18241025-citizenship-declaration-1",
+     "source_note": null
+    },
+    {
+     "date": "1824-10-30",
+     "year": 1824,
+     "text": "Declaration of intention to become a citizen — E. & S. Carson Declare US Citizenship Intent",
+     "kind": "document",
+     "hedged": false,
+     "source": "North Carolina, 1824–1851: 18241030_Citizenship_Declaration-2",
+     "href": "/collections/zybach/letitia-carson/documents/1824-1851-north-carolina/#18241030-citizenship-declaration-2",
+     "source_note": null
+    },
+    {
+     "date": "1826-10-30",
+     "year": 1826,
+     "text": "Oath of allegiance",
+     "kind": "document",
+     "hedged": false,
+     "source": "North Carolina, 1824–1851: 18261030_Oath_of_Allegiance",
+     "href": "/collections/zybach/letitia-carson/documents/1824-1851-north-carolina/#18261030-oath-of-allegiance",
+     "source_note": null
+    },
+    {
+     "date": "1830-04-15",
+     "year": 1830,
+     "text": "Citizenship record",
+     "kind": "document",
+     "hedged": false,
+     "source": "North Carolina, 1824–1851: 18300415_Citizenship",
+     "href": "/collections/zybach/letitia-carson/documents/1824-1851-north-carolina/#18300415-citizenship",
+     "source_note": null
+    },
+    {
+     "date": "1830-09",
+     "year": 1830,
+     "text": "Affidavit",
+     "kind": "document",
+     "hedged": false,
+     "source": "North Carolina, 1824–1851: 18300900_Affidavit-1",
+     "href": "/collections/zybach/letitia-carson/documents/1824-1851-north-carolina/#18300900-affidavit-1",
+     "source_note": null
+    },
+    {
+     "date": "1830-09",
+     "year": 1830,
+     "text": "Affidavit",
+     "kind": "document",
+     "hedged": false,
+     "source": "North Carolina, 1824–1851: 18300900_Affidavit-2",
+     "href": "/collections/zybach/letitia-carson/documents/1824-1851-north-carolina/#18300900-affidavit-2",
+     "source_note": null
+    },
+    {
+     "date": "1830-09",
+     "year": 1830,
+     "text": "Citizenship record",
+     "kind": "document",
+     "hedged": false,
+     "source": "North Carolina, 1824–1851: 18300900??_Citizenship",
+     "href": "/collections/zybach/letitia-carson/documents/1824-1851-north-carolina/#18300900-citizenship",
+     "source_note": null
+    },
+    {
+     "date": "1830-09",
+     "year": 1830,
+     "text": "Naturalization record",
+     "kind": "document",
+     "hedged": false,
+     "source": "North Carolina, 1824–1851: 18300900??_Naturalization",
+     "href": "/collections/zybach/letitia-carson/documents/1824-1851-north-carolina/#18300900-naturalization",
+     "source_note": null
+    },
+    {
+     "date": "1841-12-16",
+     "year": 1841,
+     "text": "Land deed — D. Carson Platte City Land Deed",
+     "kind": "document",
+     "hedged": false,
+     "source": "Platte County, Missouri, 1836–1851: 18411216_D_Carson_Land_Deed",
+     "href": "/collections/zybach/letitia-carson/documents/1836-1851-platte-county/#18411216-d-carson-land-deed",
+     "source_note": null
+    },
+    {
+     "date": "1844-10",
+     "year": 1844,
+     "text": "David Carson becomes an American citizen.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 6",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p6",
+     "source_note": null
+    }
+   ]
+  },
+  {
+   "slug": "the-crossing-and-soap-creek",
+   "label": "The crossing and Soap Creek, 1845–1852",
+   "count": 18,
+   "entries": [
+    {
+     "date": "1845",
+     "year": 1845,
+     "text": "The family settles in a cabin they build on David Carson’s 640-acre Soap Creek Valley provisional land claim.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 6",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p6",
+     "source_note": null
+    },
+    {
+     "date": "1845-05",
+     "year": 1845,
+     "text": "Letitia Carson begins the six-month crossing of the Oregon Trail with David Carson.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 4",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p4",
+     "source_note": null
+    },
+    {
+     "date": "1845-06-09",
+     "year": 1845,
+     "text": "Martha Josephine Carson is born near the crossing of the South Platte River.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 6",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p6",
+     "source_note": null
+    },
+    {
+     "date": "1849",
+     "year": 1849,
+     "text": "Adam Andrew Jackson (“Jack”) Carson is born. Oregon becomes a Territory in the same year.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 6",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p6",
+     "source_note": null
+    },
+    {
+     "date": "1850",
+     "year": 1850,
+     "text": "The Oregon Donation Land Act reduces the claim to 320 acres, because Letitia was not legally David’s wife — and, the creator adds, could not have held it in any case because she was black.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 6",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p6",
+     "source_note": null
+    },
+    {
+     "date": "1852",
+     "year": 1852,
+     "text": "Greenberry Smith is appointed administrator and declares that, as slaves, Letitia and the children are property and not entitled as heirs. The creator notes that, this being Oregon, they were not appraised or put up for sale.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 6",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p6",
+     "source_note": null
+    },
+    {
+     "date": "1852-09",
+     "year": 1852,
+     "text": "David Carson dies after a short illness.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 6",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p6",
+     "source_note": null
+    },
+    {
+     "date": "1852-10",
+     "year": 1852,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521000_Estate_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521000-estate-label",
+     "source_note": null
+    },
+    {
+     "date": "1852-11-25",
+     "year": 1852,
+     "text": "Application and bond of the administrator — G. Smith Applies as Estate Administrator",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521125_Administrator_Smith-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521125-administrator-smith-1",
+     "source_note": null
+    },
+    {
+     "date": "1852-11-25",
+     "year": 1852,
+     "text": "Application and bond of the administrator — G. Smith, J. Wiles & J. Hughart Sign Bond",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521125_Administrator_Smith-2",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521125-administrator-smith-2",
+     "source_note": null
+    },
+    {
+     "date": "1852-11-25",
+     "year": 1852,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521125_Affadavit_Label_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521125-affadavit-label-smith",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-04",
+     "year": 1852,
+     "text": "Inventory of the estate — J. Wiles, A. Carson Inventory Estate",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521204_Estate_Inventory",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521204-estate-inventory",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-06",
+     "year": 1852,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521206_Bond_Approval_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521206-bond-approval-label",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Appraisal of the estate — J. Modie, D. Davis Appraise Estate-1",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521207_Estate_Appraisal-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521207-estate-appraisal-1",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Appraisal of the estate — J. Modie, D. Davis Appraise Estate-2",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521207_Estate_Appraisal-2",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521207-estate-appraisal-2",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Appraisers’ sworn statements — J. Modie, J. Hughart & D. Davis",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521207_Appraiser_Statements",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521207-appraiser-statements",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521207_Affadavits_Label_Appraisers",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521207-affadavits-label-appraisers",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Inventory of the estate",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521207_Estate_Inventory_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521207-estate-inventory-label",
+     "source_note": null
+    }
+   ]
+  },
+  {
+   "slug": "the-estate-and-the-suits",
+   "label": "The estate and the suits, 1852–1859",
+   "count": 205,
+   "entries": [
+    {
+     "date": "1852",
+     "year": 1852,
+     "text": "Greenberry Smith is appointed administrator and declares that, as slaves, Letitia and the children are property and not entitled as heirs. The creator notes that, this being Oregon, they were not appraised or put up for sale.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 6",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p6",
+     "source_note": null
+    },
+    {
+     "date": "1852-09",
+     "year": 1852,
+     "text": "David Carson dies after a short illness.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 6",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p6",
+     "source_note": null
+    },
+    {
+     "date": "1852-10",
+     "year": 1852,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521000_Estate_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521000-estate-label",
+     "source_note": null
+    },
+    {
+     "date": "1852-11-25",
+     "year": 1852,
+     "text": "Application and bond of the administrator — G. Smith Applies as Estate Administrator",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521125_Administrator_Smith-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521125-administrator-smith-1",
+     "source_note": null
+    },
+    {
+     "date": "1852-11-25",
+     "year": 1852,
+     "text": "Application and bond of the administrator — G. Smith, J. Wiles & J. Hughart Sign Bond",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521125_Administrator_Smith-2",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521125-administrator-smith-2",
+     "source_note": null
+    },
+    {
+     "date": "1852-11-25",
+     "year": 1852,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521125_Affadavit_Label_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521125-affadavit-label-smith",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-04",
+     "year": 1852,
+     "text": "Inventory of the estate — J. Wiles, A. Carson Inventory Estate",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521204_Estate_Inventory",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521204-estate-inventory",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-06",
+     "year": 1852,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521206_Bond_Approval_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521206-bond-approval-label",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Appraisal of the estate — J. Modie, D. Davis Appraise Estate-1",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521207_Estate_Appraisal-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521207-estate-appraisal-1",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Appraisal of the estate — J. Modie, D. Davis Appraise Estate-2",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521207_Estate_Appraisal-2",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521207-estate-appraisal-2",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Appraisers’ sworn statements — J. Modie, J. Hughart & D. Davis",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18521207_Appraiser_Statements",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18521207-appraiser-statements",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521207_Affadavits_Label_Appraisers",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521207-affadavits-label-appraisers",
+     "source_note": null
+    },
+    {
+     "date": "1852-12-07",
+     "year": 1852,
+     "text": "Inventory of the estate",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18521207_Estate_Inventory_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18521207-estate-inventory-label",
+     "source_note": null
+    },
+    {
+     "date": "1853",
+     "year": 1853,
+     "text": "Letitia Carson leaves Soap Creek for the upper Cow Creek valley in Douglas County, where she works for the Elliff family as a midwife and housekeeper. When she moved on to South Myrtle Creek “is unknown”.",
+     "kind": "narrative",
+     "hedged": true,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1853-01-04",
+     "year": 1853,
+     "text": "Account of the estate sale — List of Items Sold by Purchaser-1",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530104_Estate_Sale-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530104-estate-sale-1",
+     "source_note": null
+    },
+    {
+     "date": "1853-01-04",
+     "year": 1853,
+     "text": "Account of the estate sale — List of Items Sold by Purchaser-2",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530104_Estate_Sale-2",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530104-estate-sale-2",
+     "source_note": null
+    },
+    {
+     "date": "1853-01-04",
+     "year": 1853,
+     "text": "Account of the estate sale — List of Items Sold by Purchaser-3",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530104_Estate_Sale-3",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530104-estate-sale-3",
+     "source_note": null
+    },
+    {
+     "date": "1853-01-04",
+     "year": 1853,
+     "text": "Appraiser’s bill",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530104_Hughart_Appraiser_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530104-hughart-appraiser-bill",
+     "source_note": null
+    },
+    {
+     "date": "1853-01-04",
+     "year": 1853,
+     "text": "Appraiser’s bill",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530104_Modie_Appraiser_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530104-modie-appraiser-bill",
+     "source_note": null
+    },
+    {
+     "date": "1853-01-10",
+     "year": 1853,
+     "text": "Physician’s bill — S.A. Smith Bills Attendance & Meds $40",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530110_Doctor_Billing",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530110-doctor-billing",
+     "source_note": null
+    },
+    {
+     "date": "1853-01-20",
+     "year": 1853,
+     "text": "Account of the estate sale",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18530120_Estate_Sale_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18530120-estate-sale-label",
+     "source_note": null
+    },
+    {
+     "date": "1853-02-20",
+     "year": 1853,
+     "text": "Record of a private sale — G. Smith Sells Calf & Hogs $27",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530220_Private_Sale_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530220-private-sale-smith",
+     "source_note": null
+    },
+    {
+     "date": "1853-03-04",
+     "year": 1853,
+     "text": "Bill — David Carson-2 $194 Labor Billing?",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530304_Billing_D_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530304-billing-d-carson",
+     "source_note": null
+    },
+    {
+     "date": "1853-04-04",
+     "year": 1853,
+     "text": "Bill",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530404_Billing_AJ_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530404-billing-aj-carson",
+     "source_note": null
+    },
+    {
+     "date": "1853-04-04",
+     "year": 1853,
+     "text": "Record of a private sale",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18530404_Private_Sale_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18530404-private-sale-label",
+     "source_note": null
+    },
+    {
+     "date": "1853-04-08",
+     "year": 1853,
+     "text": "Receipt",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530408_Receipt_D_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530408-receipt-d-carson",
+     "source_note": null
+    },
+    {
+     "date": "1853-05",
+     "year": 1853,
+     "text": "Land survey — D. Carson Land is Surveyed",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530500_Land_Survey_Hathorn",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530500-land-survey-hathorn",
+     "source_note": null
+    },
+    {
+     "date": "1853-05",
+     "year": 1853,
+     "text": "Land survey — D. Carson Land is Surveyed",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18530500_Land_Survey_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18530500-land-survey-label",
+     "source_note": null
+    },
+    {
+     "date": "1853-05",
+     "year": 1853,
+     "text": "Receipt for survey work — G. Smith Pays Hathorn $18.84",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530500_Survey_Receipt_Hathorn",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530500-survey-receipt-hathorn",
+     "source_note": null
+    },
+    {
+     "date": "1853-05-08",
+     "year": 1853,
+     "text": "Receipt",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18530508_Receipt_AJ_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18530508-receipt-aj-carson",
+     "source_note": null
+    },
+    {
+     "date": "1853-07-08",
+     "year": 1853,
+     "text": "Appraisers’ oaths — R. Mason, J. Farley, W. English",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18530708_Appraiser_Oaths",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18530708-appraiser-oaths",
+     "source_note": null
+    },
+    {
+     "date": "1853-10-02",
+     "year": 1853,
+     "text": "Receipt — D. Carson-2 Receives $242",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18531002_Receipt_D_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18531002-receipt-d-carson",
+     "source_note": null
+    },
+    {
+     "date": "1853-11-14",
+     "year": 1853,
+     "text": "Tax receipt — G. Smith Pays Estate Land Tax $0.45",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18531114_Tax_Receipt_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18531114-tax-receipt-smith",
+     "source_note": null
+    },
+    {
+     "date": "1853-12-15",
+     "year": 1853,
+     "text": "Account of the estate sale",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18531215_Estate_Sale_Labels",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18531215-estate-sale-labels",
+     "source_note": null
+    },
+    {
+     "date": "1853-12-15",
+     "year": 1853,
+     "text": "Bill — G. Smith Bills for Fence “Railes” $39.87 1/2",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18531215_Billing_D_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18531215-billing-d-carson",
+     "source_note": null
+    },
+    {
+     "date": "1854-02-27",
+     "year": 1854,
+     "text": "Complaint — A. Thayer Files Claim (cont.)",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540227_Complaint_L_Carson-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540227-complaint-l-carson-2",
+     "source_note": null
+    },
+    {
+     "date": "1854-02-27",
+     "year": 1854,
+     "text": "Complaint — A. Thayer Files Claim For Letitia Carson",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540227_Complaint_L_Carson-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540227-complaint-l-carson-1",
+     "source_note": null
+    },
+    {
+     "date": "1854-02-28",
+     "year": 1854,
+     "text": "Notice — Service of Complaint $10",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540228_Notice_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540228-notice-smith",
+     "source_note": null
+    },
+    {
+     "date": "1854-02-28",
+     "year": 1854,
+     "text": "Statement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: x-18540228_Statement_Label_L_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#x-18540228-statement-label-l-carson",
+     "source_note": null
+    },
+    {
+     "date": "1854-03",
+     "year": 1854,
+     "text": "Statement",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540300_Kelsay_Statement-7",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540300-kelsay-statement-7",
+     "source_note": null
+    },
+    {
+     "date": "1854-03",
+     "year": 1854,
+     "text": "Statement — J. Kelsay Refutes L. Carson's Testimony-1",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540300_Kelsay_Statement-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540300-kelsay-statement-2",
+     "source_note": null
+    },
+    {
+     "date": "1854-03",
+     "year": 1854,
+     "text": "Statement — J. Kelsay Refutes L. Carson's Testimony-2",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540300_Kelsay_Statement-3",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540300-kelsay-statement-3",
+     "source_note": null
+    },
+    {
+     "date": "1854-03",
+     "year": 1854,
+     "text": "Statement — J. Kelsay Refutes L. Carson's Testimony-3",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540300_Kelsay_Statement-4",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540300-kelsay-statement-4",
+     "source_note": null
+    },
+    {
+     "date": "1854-03",
+     "year": 1854,
+     "text": "Statement — J. Kelsay Refutes L. Carson's Testimony-4",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540300_Kelsay_Statement-5",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540300-kelsay-statement-5",
+     "source_note": null
+    },
+    {
+     "date": "1854-03",
+     "year": 1854,
+     "text": "Statement — J. Kelsay Refutes L. Carson's Testimony-5",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540300_Kelsay_Statement-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540300-kelsay-statement-1",
+     "source_note": null
+    },
+    {
+     "date": "1854-03",
+     "year": 1854,
+     "text": "Statement — J. Kelsay Refutes L. Carson's Testimony-6",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540300_Kelsay_Statement-6",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540300-kelsay-statement-6",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-01",
+     "year": 1854,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540301_Subpoena_D_Carson_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540301-subpoena-d-carson-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-01",
+     "year": 1854,
+     "text": "Subpoena — A.J. Carson Summoned by Locke",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540301_Subpoena_A_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540301-subpoena-a-carson",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-01",
+     "year": 1854,
+     "text": "Subpoena — A.J. Carson Summoned by Locke",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: x-18540301_Subpoena_AJ_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#x-18540301-subpoena-aj-carson",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-06",
+     "year": 1854,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540306_Subpoena_D_Carson_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540306-subpoena-d-carson-bill",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-07",
+     "year": 1854,
+     "text": "Subpoena — A.N. Locke Summons Knighton & Walker",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540307_Subpoena_Knighton_Walker",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540307-subpoena-knighton-walker",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-13",
+     "year": 1854,
+     "text": "Bill",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540313_Billing_Jackson",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540313-billing-jackson",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-13",
+     "year": 1854,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: x-18540313_Thayer_Affadavits_Label",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#x-18540313-thayer-affadavits-label",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-13",
+     "year": 1854,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18540313_Thayer_Affadavit_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18540313-thayer-affadavit-label",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-13",
+     "year": 1854,
+     "text": "Probate paper",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18540313?_Probate_Label?",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18540313-probate-label",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-13",
+     "year": 1854,
+     "text": "Sheriff’s bill for serving subpoenas — W. Jackson, Deputy Sheriff Bills $2",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: x-18540313_Subpoena_Billing",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#x-18540313-subpoena-billing",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-13",
+     "year": 1854,
+     "text": "Statement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18540313_Kelsay_Statement_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18540313-kelsay-statement-label",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-13",
+     "year": 1854,
+     "text": "Statement — A. Thayer Regarding (cont.)",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540313_Statement_L_Carson-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540313-statement-l-carson-2",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-13",
+     "year": 1854,
+     "text": "Statement — A. Thayer Regarding Knighton & Walker",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540313_Statement_L_Carson-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540313-statement-l-carson-1",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-13",
+     "year": 1854,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540313_Subpoena_A_Carson_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540313-subpoena-a-carson-bill",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-27",
+     "year": 1854,
+     "text": "Bill for taking a deposition",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540327_Walker_Deposition_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540327-walker-deposition-bill",
+     "source_note": null
+    },
+    {
+     "date": "1854-03-27",
+     "year": 1854,
+     "text": "Deposition",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540327_Walker_Deposition",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540327-walker-deposition",
+     "source_note": null
+    },
+    {
+     "date": "1854-05-08",
+     "year": 1854,
+     "text": "Receipt — Carson Estate Receives $11.36",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18540508_Receipt_Avery",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18540508-receipt-avery",
+     "source_note": null
+    },
+    {
+     "date": "1854-07-12",
+     "year": 1854,
+     "text": "Bill for labour",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540712_L_Carson_Labor_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540712-l-carson-labor-bill",
+     "source_note": null
+    },
+    {
+     "date": "1854-07-31",
+     "year": 1854,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540731_Label_GB_Smith_Refusal",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540731-label-gb-smith-refusal",
+     "source_note": null
+    },
+    {
+     "date": "1854-09",
+     "year": 1854,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540900_Subpoena_Read_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540900-subpoena-read-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1854-09-22",
+     "year": 1854,
+     "text": "Complaint",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540922_L_Carson_Complaint",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540922-l-carson-complaint",
+     "source_note": null
+    },
+    {
+     "date": "1854-09-22",
+     "year": 1854,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540922_Subpoena_Bill-a",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540922-subpoena-bill-a",
+     "source_note": null
+    },
+    {
+     "date": "1854-09-22",
+     "year": 1854,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540922_Subpoena_GB_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540922-subpoena-gb-smith",
+     "source_note": null
+    },
+    {
+     "date": "1854-09-22",
+     "year": 1854,
+     "text": "Testimony",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540922_Testimony_Thayer",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540922-testimony-thayer",
+     "source_note": null
+    },
+    {
+     "date": "1854-09-25",
+     "year": 1854,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540925_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540925-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1854-09-25",
+     "year": 1854,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540925_Subpoena_Read_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540925-subpoena-read-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1854-09-26",
+     "year": 1854,
+     "text": "Billing statement — Unpaid Advertising Bill $5",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18540926_Billing_Statement_Bush",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18540926-billing-statement-bush",
+     "source_note": null
+    },
+    {
+     "date": "1854-09-28",
+     "year": 1854,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18540928_Subpoena_Smith_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18540928-subpoena-smith-bill",
+     "source_note": null
+    },
+    {
+     "date": "1854-10",
+     "year": 1854,
+     "text": "Receipt — E. Taylor Rec. Horse Board & Feed $6",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18541000_Receipt_Taylor",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18541000-receipt-taylor",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-05",
+     "year": 1854,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541005_Subpoena_Hughart_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541005-subpoena-hughart-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-07",
+     "year": 1854,
+     "text": "Motion",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541007_Motion_Thayer",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541007-motion-thayer",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-07",
+     "year": 1854,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541007_Hughart_et_al_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541007-hughart-et-al-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-09",
+     "year": 1854,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541009_Subpoena_Writsman_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541009-subpoena-writsman-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-10",
+     "year": 1854,
+     "text": "Answer to the complaint",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541010_Answer_GB_Smith-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541010-answer-gb-smith-1",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-10",
+     "year": 1854,
+     "text": "Answer to the complaint",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541010_Answer_GB_Smith-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541010-answer-gb-smith-2",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-10",
+     "year": 1854,
+     "text": "Answer to the complaint",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541010_Answer_GB_Smith-3",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541010-answer-gb-smith-3",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-10",
+     "year": 1854,
+     "text": "Answer to the complaint",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541010_Answer_GB_Smith-4",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541010-answer-gb-smith-4",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-10",
+     "year": 1854,
+     "text": "Receipt — G. Smith Pays Statesman $5",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18541010_Receipt_Bush",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18541010-receipt-bush",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-11",
+     "year": 1854,
+     "text": "Response",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541011_Response_Thayer-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541011-response-thayer-1",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-11",
+     "year": 1854,
+     "text": "Response",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18541011_Response_Thayer-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18541011-response-thayer-2",
+     "source_note": null
+    },
+    {
+     "date": "1854-10-12",
+     "year": 1854,
+     "text": "Bill — D. Logan, Attorney Bills Smith $75",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18541012_Billing_Logan",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18541012-billing-logan",
+     "source_note": null
+    },
+    {
+     "date": "1854-11-07",
+     "year": 1854,
+     "text": "Receipt — Locke Rec. Probate Judge Fees $10.45",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18541107_Receipt_Locke",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18541107-receipt-locke",
+     "source_note": null
+    },
+    {
+     "date": "1854-11-07",
+     "year": 1854,
+     "text": "Tax receipt — G. Smith Pays Estate Taxes $11.58 & 5 mills",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18541107_Tax_Receipt_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18541107-tax-receipt-smith",
+     "source_note": null
+    },
+    {
+     "date": "1855-03-17",
+     "year": 1855,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550317_Subpoena_Hughart_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550317-subpoena-hughart-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-07",
+     "year": 1855,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550507_Subpoena_Bill_(1)",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550507-subpoena-bill-1",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-07",
+     "year": 1855,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550507_Subpoena_Bill_(2)",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550507-subpoena-bill-2",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-08",
+     "year": 1855,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550508_Subpoena_Hartless",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550508-subpoena-hartless",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-10",
+     "year": 1855,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550510_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550510-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-11",
+     "year": 1855,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550511_Subpoena_Read_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550511-subpoena-read-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-11",
+     "year": 1855,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550511_Subpoena_St_Clair",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550511-subpoena-st-clair",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-11",
+     "year": 1855,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550511_Subpoena_St_Clair_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550511-subpoena-st-clair-bill",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-12",
+     "year": 1855,
+     "text": "Certified copy of the judgment",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550512_Judgment_True_Copy",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550512-judgment-true-copy",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-12",
+     "year": 1855,
+     "text": "Judgment",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550512_Judgment",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550512-judgment",
+     "source_note": null
+    },
+    {
+     "date": "1855-05-31",
+     "year": 1855,
+     "text": "Receipt — G. Smith Pays Clerk Fees $7.05",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18550531_Receipt_Hovey",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18550531-receipt-hovey",
+     "source_note": null
+    },
+    {
+     "date": "1855-06",
+     "year": 1855,
+     "text": "Appraiser’s receipt — G. Smith $2 to Jacob Modie",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18550600_Modie_Appraiser_Receipt",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18550600-modie-appraiser-receipt",
+     "source_note": null
+    },
+    {
+     "date": "1855-06",
+     "year": 1855,
+     "text": "Receipt — G. Smith $2 to Jacob Modie",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550600_Receipt_Modie",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550600-receipt-modie",
+     "source_note": null
+    },
+    {
+     "date": "1855-06-03",
+     "year": 1855,
+     "text": "Receipt",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18550603_Receipt_Locke",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18550603-receipt-locke",
+     "source_note": null
+    },
+    {
+     "date": "1855-06-05",
+     "year": 1855,
+     "text": "Bill allowed by the court",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550605_Bill_Allowed",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550605-bill-allowed",
+     "source_note": null
+    },
+    {
+     "date": "1855-06-05",
+     "year": 1855,
+     "text": "Receipt",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18550605_Receipt_Locke_(1)",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18550605-receipt-locke-1",
+     "source_note": null
+    },
+    {
+     "date": "1855-06-05",
+     "year": 1855,
+     "text": "Receipt",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18550605_Receipt_Locke_(2)",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18550605-receipt-locke-2",
+     "source_note": null
+    },
+    {
+     "date": "1855-06-06",
+     "year": 1855,
+     "text": "Judgment",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550606_Judgment",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550606-judgment",
+     "source_note": null
+    },
+    {
+     "date": "1855-06-22",
+     "year": 1855,
+     "text": "Receipt — G. Smith Pays $529.50 Judgment to L. Carson",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18550622_Receipt_Wright",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18550622-receipt-wright",
+     "source_note": null
+    },
+    {
+     "date": "1855-06-24",
+     "year": 1855,
+     "text": "Bill of costs on the judgment",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550624_Judgment_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550624-judgment-bill",
+     "source_note": null
+    },
+    {
+     "date": "1855-07-04",
+     "year": 1855,
+     "text": "Receipt",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550704_Receipt_Hovey",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550704-receipt-hovey",
+     "source_note": null
+    },
+    {
+     "date": "1855-08-02",
+     "year": 1855,
+     "text": "Complaint",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550802_Complaint_Thayer-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550802-complaint-thayer-1",
+     "source_note": null
+    },
+    {
+     "date": "1855-08-02",
+     "year": 1855,
+     "text": "Complaint",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550802_Complaint_Thayer-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550802-complaint-thayer-2",
+     "source_note": null
+    },
+    {
+     "date": "1855-09",
+     "year": 1855,
+     "text": "Summons",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: x-18550900_Summons_Copy-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#x-18550900-summons-copy-1",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-20",
+     "year": 1855,
+     "text": "Notice of discontinuance",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550920_Discontinuence_Thayer",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550920-discontinuence-thayer",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-20",
+     "year": 1855,
+     "text": "Notice of discontinuance",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18550920_Label_Discontinue",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18550920-label-discontinue",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-20",
+     "year": 1855,
+     "text": "Notice of discontinuance",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18550920_Label_Discontinuence",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18550920-label-discontinuence",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-21",
+     "year": 1855,
+     "text": "Request for subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550921_L_Carson_Subpoenas_Request",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550921-l-carson-subpoenas-request",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-21",
+     "year": 1855,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550921_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550921-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-21",
+     "year": 1855,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550921_Subpoena_GB_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550921-subpoena-gb-smith",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-21",
+     "year": 1855,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550921_Subpoena_Read_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550921-subpoena-read-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-21",
+     "year": 1855,
+     "text": "Testimony",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550921_Testimony_Thayer-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550921-testimony-thayer-1",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-21",
+     "year": 1855,
+     "text": "Testimony",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550921_Testimony_Thayer-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550921-testimony-thayer-2",
+     "source_note": null
+    },
+    {
+     "date": "1855-09-25",
+     "year": 1855,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18550925_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18550925-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1855-10-04",
+     "year": 1855,
+     "text": "Response",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18551004_Response_Smith-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18551004-response-smith-1",
+     "source_note": null
+    },
+    {
+     "date": "1855-10-04",
+     "year": 1855,
+     "text": "Response",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18551004_Response_Smith-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18551004-response-smith-2",
+     "source_note": null
+    },
+    {
+     "date": "1856-02-25",
+     "year": 1856,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560225_Subpoena_Read_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560225-subpoena-read-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1856-02-29",
+     "year": 1856,
+     "text": "Statement of estate funds",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18560229_Estate_Funds",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18560229-estate-funds",
+     "source_note": null
+    },
+    {
+     "date": "1856-03-05",
+     "year": 1856,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560305_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560305-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1856-03-07",
+     "year": 1856,
+     "text": "Receipt — G. Smith Pays Statesman Ads $5",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18560307_Receipt_Bush",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18560307-receipt-bush",
+     "source_note": null
+    },
+    {
+     "date": "1856-05",
+     "year": 1856,
+     "text": "Bill for taking a deposition",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560500_A_Carson_Deposition_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560500-a-carson-deposition-bill",
+     "source_note": null
+    },
+    {
+     "date": "1856-05-03",
+     "year": 1856,
+     "text": "Deposition",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560503_Deposition_A_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560503-deposition-a-carson",
+     "source_note": null
+    },
+    {
+     "date": "1856-05-03",
+     "year": 1856,
+     "text": "Deposition",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18560503_Label_Deposition",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18560503-label-deposition",
+     "source_note": null
+    },
+    {
+     "date": "1856-05-03",
+     "year": 1856,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560503_Subpoena_Writsman_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560503-subpoena-writsman-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1856-05-17",
+     "year": 1856,
+     "text": "Sheriff’s fees",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560517_Sheriff_Fees",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560517-sheriff-fees",
+     "source_note": null
+    },
+    {
+     "date": "1856-05-19",
+     "year": 1856,
+     "text": "Response",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560519_Response_L_Carson-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560519-response-l-carson-1",
+     "source_note": null
+    },
+    {
+     "date": "1856-05-19",
+     "year": 1856,
+     "text": "Response",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560519_Response_L_Carson-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560519-response-l-carson-2",
+     "source_note": null
+    },
+    {
+     "date": "1856-05-22",
+     "year": 1856,
+     "text": "Motion for a continuance",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560522_Continuance_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560522-continuance-smith",
+     "source_note": null
+    },
+    {
+     "date": "1856-06",
+     "year": 1856,
+     "text": "Administrator’s accounting",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18560600_Estate_Accounting",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18560600-estate-accounting",
+     "source_note": null
+    },
+    {
+     "date": "1856-09-16",
+     "year": 1856,
+     "text": "Notification",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560916_Thayer_Notification",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560916-thayer-notification",
+     "source_note": null
+    },
+    {
+     "date": "1856-09-27",
+     "year": 1856,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560927_Subpoena_Read_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560927-subpoena-read-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1856-09-29",
+     "year": 1856,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18560929_Subpoena_Writsman_et_al",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18560929-subpoena-writsman-et-al",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-06",
+     "year": 1856,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561006_Subpoena_Bill_(1)",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561006-subpoena-bill-1",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-06",
+     "year": 1856,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561006_Subpoena_Bill_(2)",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561006-subpoena-bill-2",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-08",
+     "year": 1856,
+     "text": "Deposition",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561008_Deposition_Walker-1",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561008-deposition-walker-1",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-08",
+     "year": 1856,
+     "text": "Deposition",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561008_Deposition_Walker-2",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561008-deposition-walker-2",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-08",
+     "year": 1856,
+     "text": "Deposition",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561008_Deposition_Walker-3",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561008-deposition-walker-3",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-08",
+     "year": 1856,
+     "text": "Deposition",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561008_Deposition_Walker-4",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561008-deposition-walker-4",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-20",
+     "year": 1856,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561020_Judgment_Label_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561020-judgment-label-carson",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-20",
+     "year": 1856,
+     "text": "Judgment",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561020_Judgment_$1200",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561020-judgment-1200",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-20",
+     "year": 1856,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561020_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561020-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-20",
+     "year": 1856,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561020_Subpoena_Bear_Williams",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561020-subpoena-bear-williams",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-21",
+     "year": 1856,
+     "text": "Jury verdict and judgment",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561021_Jury_Judgment_$1200",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561021-jury-judgment-1200",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-21",
+     "year": 1856,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561021_A_Carson_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561021-a-carson-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-21",
+     "year": 1856,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561021_Modie_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561021-modie-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-21",
+     "year": 1856,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561021_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561021-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-21",
+     "year": 1856,
+     "text": "Sheriff’s bill for serving subpoenas",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: x-18561021_Subpoena_Bill",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#x-18561021-subpoena-bill",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-21",
+     "year": 1856,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561021_Subpoena_A_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561021-subpoena-a-carson",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-21",
+     "year": 1856,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561021_Subpoena_Modie",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561021-subpoena-modie",
+     "source_note": null
+    },
+    {
+     "date": "1856-10-21",
+     "year": 1856,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561021_Subpoena_Stewart",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561021-subpoena-stewart",
+     "source_note": null
+    },
+    {
+     "date": "1856-11-01",
+     "year": 1856,
+     "text": "Record of the collection of a judgment",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561101_Judgment_Collection_$1393",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561101-judgment-collection-1393",
+     "source_note": null
+    },
+    {
+     "date": "1856-12-02",
+     "year": 1856,
+     "text": "Order on the judgment",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561202_Judgment_Order",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561202-judgment-order",
+     "source_note": null
+    },
+    {
+     "date": "1856-12-02",
+     "year": 1856,
+     "text": "Subpoena",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18561202_Subpoena_GB_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18561202-subpoena-gb-smith",
+     "source_note": null
+    },
+    {
+     "date": "1856-12-04",
+     "year": 1856,
+     "text": "Court file endorsement",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18561204_Judgment_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18561204-judgment-label",
+     "source_note": null
+    },
+    {
+     "date": "1857-01",
+     "year": 1857,
+     "text": "Statement of estate expenses",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570100_Estate_Expenses_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570100-estate-expenses-smith",
+     "source_note": null
+    },
+    {
+     "date": "1857-01",
+     "year": 1857,
+     "text": "Summary of estate expenses",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570100_Estate_Summary-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570100-estate-summary-1",
+     "source_note": null
+    },
+    {
+     "date": "1857-01",
+     "year": 1857,
+     "text": "Summary of estate expenses",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570100_Estate_Summary-2",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570100-estate-summary-2",
+     "source_note": null
+    },
+    {
+     "date": "1857-01",
+     "year": 1857,
+     "text": "Summary of estate expenses",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570100_Estate_Summary-3",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570100-estate-summary-3",
+     "source_note": null
+    },
+    {
+     "date": "1857-01-06",
+     "year": 1857,
+     "text": "Petition for leave to sell land",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570106_Petition_To_Sell_Smith-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570106-petition-to-sell-smith-1",
+     "source_note": null
+    },
+    {
+     "date": "1857-01-06",
+     "year": 1857,
+     "text": "Petition for leave to sell land",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570106_Petition_To_Sell_Smith-2",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570106-petition-to-sell-smith-2",
+     "source_note": null
+    },
+    {
+     "date": "1857-01-06",
+     "year": 1857,
+     "text": "Petition for leave to sell land",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570106_Petition_To_Sell_Smith-3",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570106-petition-to-sell-smith-3",
+     "source_note": null
+    },
+    {
+     "date": "1857-01-09",
+     "year": 1857,
+     "text": "Bill for serving a citation — S.B. Fargo Serves Citation $2.90",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18570109_Citation_Billing_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18570109-citation-billing-smith",
+     "source_note": null
+    },
+    {
+     "date": "1857-02-23",
+     "year": 1857,
+     "text": "Bill — Smith & Dade Bill Legal Fees $100",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18570223_Billing_Dade",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18570223-billing-dade",
+     "source_note": null
+    },
+    {
+     "date": "1857-03",
+     "year": 1857,
+     "text": "Administrator’s bill of expenses",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570300_Administrator_Expenses-5",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570300-administrator-expenses-5",
+     "source_note": null
+    },
+    {
+     "date": "1857-03",
+     "year": 1857,
+     "text": "Administrator’s bill of expenses",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570300_Administrator_Expenses-6",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570300-administrator-expenses-6",
+     "source_note": null
+    },
+    {
+     "date": "1857-03",
+     "year": 1857,
+     "text": "Administrator’s bill of expenses — G Smith Bills 1852, 1853 $93",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570300_Administrator_Espenses-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570300-administrator-espenses-1",
+     "source_note": null
+    },
+    {
+     "date": "1857-03",
+     "year": 1857,
+     "text": "Administrator’s bill of expenses — G Smith Bills 1852, 1853 $93",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570300_Administrator_Expenses-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570300-administrator-expenses-1",
+     "source_note": null
+    },
+    {
+     "date": "1857-03",
+     "year": 1857,
+     "text": "Administrator’s bill of expenses — G. Smith Bills 1854, Oct 1855 $69",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570300_Administrator_Expenses-3",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570300-administrator-expenses-3",
+     "source_note": null
+    },
+    {
+     "date": "1857-03",
+     "year": 1857,
+     "text": "Administrator’s bill of expenses — G. Smith Bills 1856 $40",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570300_Administrator_Expenses-2",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570300-administrator-expenses-2",
+     "source_note": null
+    },
+    {
+     "date": "1857-03",
+     "year": 1857,
+     "text": "Administrator’s bill of expenses — G. Smith Bills Jun, Sep, Oct 1856 $40",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570300_Administrator_Expenses-4",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570300-administrator-expenses-4",
+     "source_note": null
+    },
+    {
+     "date": "1857-03",
+     "year": 1857,
+     "text": "Bill — I.N. Smith & D. Dade Bill $75",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570300_Billing_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570300-billing-smith",
+     "source_note": null
+    },
+    {
+     "date": "1857-03-01",
+     "year": 1857,
+     "text": "Bill",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570301_Billing_Smith",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570301-billing-smith",
+     "source_note": null
+    },
+    {
+     "date": "1857-03-02",
+     "year": 1857,
+     "text": "Power of attorney — B. Young Appoints Mathew Carson POA",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18570302_Power_of_Attorney",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18570302-power-of-attorney",
+     "source_note": null
+    },
+    {
+     "date": "1857-04-03",
+     "year": 1857,
+     "text": "Power of attorney — W. Carson Appoints Mathew Carson POA",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18570403_Power_of_Attorney",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18570403-power-of-attorney",
+     "source_note": null
+    },
+    {
+     "date": "1857-04-04",
+     "year": 1857,
+     "text": "Newspaper’s bill for a published notice — Platte Argus Publishes Estate Notice",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18570404_Newspaper_Billing",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18570404-newspaper-billing",
+     "source_note": null
+    },
+    {
+     "date": "1857-05-30",
+     "year": 1857,
+     "text": "Record of a land sale — G. Smith Sells DLC to G. Fogle",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570530_Land_Sale",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570530-land-sale",
+     "source_note": null
+    },
+    {
+     "date": "1857-06",
+     "year": 1857,
+     "text": "Confirmation of sale — D. Carson Land Sale Confirmed & Conveyed",
+     "kind": "document",
+     "hedged": false,
+     "source": "Oregon probate, 1852–1857: 18570600_Sale_Confirmation",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1857-oregon-probate/#18570600-sale-confirmation",
+     "source_note": null
+    },
+    {
+     "date": "1857-06-02",
+     "year": 1857,
+     "text": "Receipt — G. Smith Pay Judgment $778.80",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18570602_Receipt_L_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18570602-receipt-l-carson",
+     "source_note": null
+    },
+    {
+     "date": "1857-06-02",
+     "year": 1857,
+     "text": "Receipt — G. Smith Pays $48.67",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18570602_Receipt_Jackson",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18570602-receipt-jackson",
+     "source_note": null
+    },
+    {
+     "date": "1857-06-02",
+     "year": 1857,
+     "text": "Receipt — G. Smith Pays Attorney $81.12",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18570602_Receipt_Kelsay",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18570602-receipt-kelsay",
+     "source_note": null
+    },
+    {
+     "date": "1857-06-02",
+     "year": 1857,
+     "text": "Receipt — G. Smith Pays Land Sale Ads $5",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18570602_Receipt_Odeneal_(1)",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18570602-receipt-odeneal-1",
+     "source_note": null
+    },
+    {
+     "date": "1857-06-02",
+     "year": 1857,
+     "text": "Receipt — G. Smith Pays Land Sale Ads $5",
+     "kind": "document",
+     "hedged": false,
+     "source": "Carson v. Smith, 1854–1857: 18570602_Receipt_Odeneal_(2)",
+     "href": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/#18570602-receipt-odeneal-2",
+     "source_note": null
+    },
+    {
+     "date": "1857-06-02",
+     "year": 1857,
+     "text": "Record of a land sale",
+     "kind": "document",
+     "hedged": false,
+     "source": "File endorsements and superseded scans: 18570602_Land_Sale_Label",
+     "href": "/collections/zybach/letitia-carson/documents/archive/#18570602-land-sale-label",
+     "source_note": null
+    },
+    {
+     "date": "1857-08-17",
+     "year": 1857,
+     "text": "Oregon adopts its Constitution, making it illegal for black citizens to own land in Oregon or to marry white citizens, and illegal to hold slaves.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1858-05-03",
+     "year": 1858,
+     "text": "Power of attorney — A.J. Carson Appoints M.N.C. Robinson POA",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18580503_Power_of_Attorney",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18580503-power-of-attorney",
+     "source_note": null
+    },
+    {
+     "date": "1858-06-21",
+     "year": 1858,
+     "text": "Payment out of the estate — Estate Pays B. Young $259.60",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18580621_Estate_Payment",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18580621-estate-payment",
+     "source_note": null
+    },
+    {
+     "date": "1858-09-26",
+     "year": 1858,
+     "text": "Power of attorney — J. Blevins Appoints Mathew Carson POA",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18580926_Power_of_Attorney",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18580926-power-of-attorney",
+     "source_note": null
+    },
+    {
+     "date": "1858-11-16",
+     "year": 1858,
+     "text": "Power of attorney — J.H. Carson Appoints Mathew Carson POA",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18581116_Power_of_Attorney-1",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18581116-power-of-attorney-1",
+     "source_note": null
+    },
+    {
+     "date": "1858-11-16",
+     "year": 1858,
+     "text": "Power of attorney — James H. Carson",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18581116_Power_of_Attorney-2",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18581116-power-of-attorney-2",
+     "source_note": null
+    },
+    {
+     "date": "1859-02-14",
+     "year": 1859,
+     "text": "Oregon becomes a State.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1859-09-26",
+     "year": 1859,
+     "text": "Power of attorney — R. Carson et al Appoint Mathew Carson POA",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18590926_Power_of_Attorney",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18590926-power-of-attorney",
+     "source_note": null
+    },
+    {
+     "date": "1859-09-30",
+     "year": 1859,
+     "text": "Payment out of the estate — Estate pays R. Carson et al $197.58",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18590930_Estate_Payment",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18590930-estate-payment",
+     "source_note": null
+    },
+    {
+     "date": "1859-09-30",
+     "year": 1859,
+     "text": "Power of attorney — Andrew Carson Appoints M. Carson POA",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18590930_Power_of_Attorney",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18590930-power-of-attorney",
+     "source_note": null
+    },
+    {
+     "date": "1859-10-22",
+     "year": 1859,
+     "text": "Payment out of the estate",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18591022_Estate_Payment-A_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18591022-estate-payment-a-carson",
+     "source_note": null
+    },
+    {
+     "date": "1859-10-22",
+     "year": 1859,
+     "text": "Payment out of the estate",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18591022_Estate_Payment-Blevins",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18591022-estate-payment-blevins",
+     "source_note": null
+    },
+    {
+     "date": "1859-10-22",
+     "year": 1859,
+     "text": "Payment out of the estate",
+     "kind": "document",
+     "hedged": false,
+     "source": "Missouri probate, 1852–1859: 18591022_Estate_Payment-J_Carson",
+     "href": "/collections/zybach/letitia-carson/documents/1852-1859-missouri-probate/#18591022-estate-payment-j-carson",
+     "source_note": null
+    }
+   ]
+  },
+  {
+   "slug": "the-homestead",
+   "label": "The homestead, 1860–1888",
+   "count": 25,
+   "entries": [
+    {
+     "date": "1860",
+     "year": 1860,
+     "text": "Letitia and her children are not found in the census. The creator writes that this was “possibly by design”, and that they most likely continued to live in Douglas County.",
+     "kind": "narrative",
+     "hedged": true,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1862-05-20",
+     "year": 1862,
+     "text": "The Homestead Act is signed into law.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1863-01-01",
+     "year": 1863,
+     "text": "The Emancipation Proclamation.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1863-06-17",
+     "year": 1863,
+     "text": "Letitia Carson files a Homestead Act claim for 160 acres on South Myrtle Creek, as a widow and single mother of two. Martha is eighteen and pregnant; Jack is almost fourteen. Although the Act includes freed slaves, she does not identify herself as one.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1863-06-17",
+     "year": 1863,
+     "text": "Affidavit — L. Carson Citizenship Affidavit",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18630617_Affidavit",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18630617-affidavit",
+     "source_note": null
+    },
+    {
+     "date": "1863-06-17",
+     "year": 1863,
+     "text": "Application",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18630617_Application",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18630617-application",
+     "source_note": null
+    },
+    {
+     "date": "1863-06-17",
+     "year": 1863,
+     "text": "Receipt — L. Carson Initial Homestead Receipt",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18630617_Receipt",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18630617-receipt",
+     "source_note": null
+    },
+    {
+     "date": "1863-06-19",
+     "year": 1863,
+     "text": "Affidavit",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18630619_Affidavit",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18630619-affidavit",
+     "source_note": null
+    },
+    {
+     "date": "1864-11-26",
+     "year": 1864,
+     "text": "Mary Alice Bigham, Letitia Carson’s first grandchild of record, is born.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1868-01-15",
+     "year": 1868,
+     "text": "Sworn testament — J. Thorn Attests to M. Carson's Age",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18680115_Testament_Thorn",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18680115-testament-thorn",
+     "source_note": null
+    },
+    {
+     "date": "1868-01-18",
+     "year": 1868,
+     "text": "Sworn testament",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18680118_Testament_Grauslaus",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18680118-testament-grauslaus",
+     "source_note": null
+    },
+    {
+     "date": "1868-01-19",
+     "year": 1868,
+     "text": "Martha Carson marries Narcisse Lavadour.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1868-01-19",
+     "year": 1868,
+     "text": "Marriage certificate — N. Lavadour & M. Carson Married",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18680119_M_Carson_Marriage_Certificate",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18680119-m-carson-marriage-certificate",
+     "source_note": null
+    },
+    {
+     "date": "1868-06-19",
+     "year": 1868,
+     "text": "Letitia Carson’s homestead claim is certified. She is among the first seventy-one people in the United States so recognised, and the only black woman in Oregon known to have completed such a claim.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 8",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p8",
+     "source_note": null
+    },
+    {
+     "date": "1868-06-19",
+     "year": 1868,
+     "text": "Certificate — L. Carson Permit to Patent Homestead",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18680619_Certificate",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18680619-certificate",
+     "source_note": null
+    },
+    {
+     "date": "1868-06-19",
+     "year": 1868,
+     "text": "Proof — J.G. Clark & J. Wright Affirm L. Carson",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18680619_Proof",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18680619-proof",
+     "source_note": null
+    },
+    {
+     "date": "1868-06-19",
+     "year": 1868,
+     "text": "Receipt",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18680619_Receipt",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18680619-receipt",
+     "source_note": null
+    },
+    {
+     "date": "1869-10-01",
+     "year": 1869,
+     "text": "Homestead grant — L. Carson Homestead App. Approved",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18691001_L_Carson_Homestead_Grant",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18691001-l-carson-homestead-grant",
+     "source_note": null
+    },
+    {
+     "date": "1869-10-01",
+     "year": 1869,
+     "text": "Homestead grant — L. Carson Homstead Granted",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18691001_Homestead_Grant",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18691001-homestead-grant",
+     "source_note": null
+    },
+    {
+     "date": "1884-07-21",
+     "year": 1884,
+     "text": "Record of a land sale — L. Carson Sells Homestead to A. Carson",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18840721_Land_Sale_L_Carson-1",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18840721-land-sale-l-carson-1",
+     "source_note": null
+    },
+    {
+     "date": "1884-07-21",
+     "year": 1884,
+     "text": "Record of a land sale — L. Carson Sells Homestead to A. Carson",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18840721_Land_Sale_L_Carson-2",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18840721-land-sale-l-carson-2",
+     "source_note": null
+    },
+    {
+     "date": "1884-07-21",
+     "year": 1884,
+     "text": "Warranty deed — L. Carson Deeds Land to A.C. Carson",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18840721_L_Carson_Warranty_Deed-2",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18840721-l-carson-warranty-deed-2",
+     "source_note": null
+    },
+    {
+     "date": "1884-07-21",
+     "year": 1884,
+     "text": "Warranty deed — L. Carson Deeds Land to A.C. Carson",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 18840721_L_Csrson_Warranty_Deed-1",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#18840721-l-csrson-warranty-deed-1",
+     "source_note": null
+    },
+    {
+     "date": "1887",
+     "year": 1887,
+     "text": "The two Lavadour–Carson families move to the Umatilla Reservation to take up Dawes Act allotments. Jack stays with his mother, and she deeds her land to him.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 10",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p10",
+     "source_note": null
+    },
+    {
+     "date": "1888-02",
+     "year": 1888,
+     "text": "Letitia Carson dies and is buried in the Stephens family graveyard, a few miles from her homestead.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 10",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p10",
+     "source_note": null
+    }
+   ]
+  },
+  {
+   "slug": "after",
+   "label": "After, 1889–1922",
+   "count": 5,
+   "entries": [
+    {
+     "date": "1911",
+     "year": 1911,
+     "text": "Martha Carson Lavadour is buried in Umatilla County.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": null,
+     "href": null,
+     "source_note": "Stated in the creator’s own chapter headings on his section index page; the Library has not found the record behind it in this corpus."
+    },
+    {
+     "date": "1922",
+     "year": 1922,
+     "text": "Jack Carson dies and is buried in the Stephens graveyard next to his mother.",
+     "kind": "narrative",
+     "hedged": false,
+     "source": "The Search for Letitia Carson, I, page 10",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p10",
+     "source_note": null
+    },
+    {
+     "date": "1922-09-25",
+     "year": 1922,
+     "text": "Probate paper — Alice Lavadour and Agness Morrisette",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 19220925_Probate_AC_Carson-1",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#19220925-probate-ac-carson-1",
+     "source_note": null
+    },
+    {
+     "date": "1922-09-25",
+     "year": 1922,
+     "text": "Probate paper — Petition to Probate A.C. Carson Estate",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 19220925_Probate_AC_Carson-2",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#19220925-probate-ac-carson-2",
+     "source_note": null
+    },
+    {
+     "date": "1922-10-03",
+     "year": 1922,
+     "text": "Petition for an order of sale — McGilvray Petitions to Sell A.C. Carson Estate",
+     "kind": "document",
+     "hedged": false,
+     "source": "Douglas County, 1853–1922: 19221003_Petition_for_Sell_Order",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/#19221003-petition-for-sell-order",
+     "source_note": null
+    }
+   ]
+  }
+ ],
+ "disputes": [
+  {
+   "about": "When Letitia Carson passed the homestead to her son",
+   "positions": [
+    {
+     "says": "A warranty deed and a record of sale, both dated 21 July 1884, stand in the Douglas County group.",
+     "href": "/collections/zybach/letitia-carson/documents/1853-1922-douglas-county/"
+    },
+    {
+     "says": "The creator writes that Letitia deeded her land to Jack in 1887, when the Lavadour families left for the reservation, and his own chapter heading reads “Jack is Given the Land, 1887”.",
+     "href": "/collections/zybach/letitia-carson/writings/search-for-letitia-carson-i/#p10"
+    }
+   ],
+   "note": "Both are kept. The Library has not seen a document dated 1887, and does not know whether the creator is describing a second conveyance, a later recording, or a slip."
+  }
+ ]
+}

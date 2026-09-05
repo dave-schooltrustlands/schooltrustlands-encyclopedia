@@ -1,0 +1,120 @@
+---
+/* Register.astro — SMITH lane.
+ *
+ * A file register: what the creator has posted in one of his folders, with the
+ * name he gave it, the date it went up, its size, and a link to his copy. This
+ * is the plainest thing in the series and the most useful — a reader can check
+ * the Library's description against the file itself in one click.
+ *
+ * Rows may carry a `held` flag: the row stays, the link stays, and the note
+ * column prints the one hold notice this series uses.
+ *
+ * Owner: SMITH.
+ */
+import { HOLD_NOTICE, postedOn } from './data';
+
+export interface Row {
+  name: string;
+  url: string;
+  size?: string | null;
+  modified?: string | null;
+  note?: string | null;
+  held?: boolean;
+}
+
+interface Props {
+  rows: ReadonlyArray<Row>;
+  caption?: string;
+  /** Heading for the first column. */
+  nameLabel?: string;
+}
+
+const { rows, caption, nameLabel = 'File' } = Astro.props as Props;
+---
+
+{rows.length > 0 ? (
+  <div class="sm-reg__scroll">
+    <table class="sm-reg">
+      {caption && <caption>{caption}</caption>}
+      <thead>
+        <tr>
+          <th scope="col">{nameLabel}</th>
+          <th scope="col">Posted</th>
+          <th scope="col">Size</th>
+          <th scope="col">What it is</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr data-held={r.held ? 'true' : undefined}>
+            <th scope="row"><a href={r.url}>{r.name}</a></th>
+            <td>{postedOn(r.modified)}</td>
+            <td>{r.size ?? ''}</td>
+            <td>{r.held ? HOLD_NOTICE : (r.note ?? '')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+) : (
+  <p class="sm-reg__empty">Nothing is registered here yet.</p>
+)}
+
+<style>
+  .sm-reg__scroll {
+    overflow-x: auto;
+    margin: 1rem 0 1.5rem;
+  }
+  .sm-reg {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+  }
+  .sm-reg caption {
+    text-align: left;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #6b6355;
+    padding-bottom: 0.5rem;
+  }
+  .sm-reg th,
+  .sm-reg td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.45rem 0.7rem 0.45rem 0;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    line-height: 1.5;
+  }
+  .sm-reg thead th {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+    white-space: nowrap;
+  }
+  .sm-reg tbody th {
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+    font-size: 0.78rem;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+    min-width: 12rem;
+  }
+  .sm-reg td:nth-child(2),
+  .sm-reg td:nth-child(3) {
+    white-space: nowrap;
+    color: #6b6355;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+  }
+  .sm-reg tr[data-held] td:last-child {
+    color: #7a2e2e;
+  }
+  .sm-reg__empty {
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    color: #6b6355;
+  }
+</style>

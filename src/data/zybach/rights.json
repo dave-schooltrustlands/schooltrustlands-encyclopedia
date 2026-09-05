@@ -1,339 +1,512 @@
 {
-  "generated": "2026-09-04",
-  "edition": "Working edition, September 2026",
-  "vocabulary": "http://rightsstatements.org/",
-  "note": "Per-population rights statements for The Zybach Collection. The material here was made at different times, under different agreements, by different people, for different institutions, so there is no single collection-level statement and no collection-level licence. Each group carries its own. Values are drawn from the RightsStatements.org vocabulary and are limited to InC, UND and InC-RUU. InC-EDU is never used: it asserts an authority to permit third-party educational use that the Library does not hold. No Creative Commons licence is applied to any source material, because a CC grant is irrevocable and the Library cannot give away rights that are not its own.",
-  "populations": [
+ "generated": "2026-09-04",
+ "edition": "Working edition, September 2026",
+ "vocabulary": "http://rightsstatements.org/",
+ "note": "Per-population rights statements for The Zybach Collection. The material here was made at different times, under different agreements, by different people, for different institutions, so there is no single collection-level statement and no collection-level licence. Each group carries its own. Values are drawn from the RightsStatements.org vocabulary and are limited to InC, UND and InC-RUU. InC-EDU is never used: it asserts an authority to permit third-party educational use that the Library does not hold. No Creative Commons licence is applied to any source material, because a CC grant is irrevocable and the Library cannot give away rights that are not its own.",
+ "populations": [
+  {
+   "key": "monographs",
+   "label": "The fifteen printed monographs",
+   "dates": "1990–2009",
+   "code": "UND",
+   "statement": "Copyright Undetermined",
+   "uri": "http://rightsstatements.org/vocab/UND/1.0/",
+   "gloss": "Nobody's ownership of these printed volumes is documented, so the Library says so rather than guessing.",
+   "detail": "The volumes carry no copyright notice of any kind. That absence does not put them in the public domain — the rule that made a missing notice fatal reaches only works published before 1 March 1989, and every volume here is later. What the missing notice tells us is that ownership was never settled at the time. The title pages recite that the project was authorized and directed by the Director of the OSU Research Forests and funded by the OSU College of Forestry, but a funding recital is not an assignment.",
+   "pointers": [
     {
-      "key": "monographs",
-      "label": "The fifteen printed monographs",
-      "dates": "1990–2009",
-      "code": "UND",
-      "statement": "Copyright Undetermined",
-      "uri": "http://rightsstatements.org/vocab/UND/1.0/",
-      "gloss": "Nobody's ownership of these printed volumes is documented, so the Library says so rather than guessing.",
-      "detail": "The volumes carry no copyright notice of any kind. That absence does not put them in the public domain — the rule that made a missing notice fatal reaches only works published before 1 March 1989, and every volume here is later. What the missing notice tells us is that ownership was never settled at the time. The title pages recite that the project was authorized and directed by the Director of the OSU Research Forests and funded by the OSU College of Forestry, but a funding recital is not an assignment.",
-      "pointers": [
-        {
-          "label": "The creator, who publishes the volumes himself",
-          "note": "Bob Zybach, series editor; the fifteen monographs are downloadable as PDFs on his own site.",
-          "href": "http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/"
-        },
-        {
-          "label": "Oregon State University Research Forests and College of Forestry",
-          "note": "Authorized, directed and funded the project. Whether the University asserts ownership has not been answered."
-        },
-        {
-          "label": "OSU Special Collections and Archives Research Center, OH 006",
-          "note": "Holds the originals. Custody is not copyright.",
-          "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309"
-        }
-      ],
-      "never": "These volumes are not in the public domain and no page of this Library may say they are."
+     "label": "The creator, who publishes the volumes himself",
+     "note": "Bob Zybach, series editor; the fifteen monographs are downloadable as PDFs on his own site.",
+     "href": "http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/"
     },
     {
-      "key": "soap-creek-1978-1980",
-      "label": "Soap Creek interviews recorded 1978–1980",
-      "dates": "1978–1980",
-      "code": "InC",
-      "statement": "In Copyright",
-      "uri": "http://rightsstatements.org/vocab/InC/1.0/",
-      "gloss": "These interviews were recorded by Royal G. Jackson, Jennifer Lee and Karen Thomas, and the consents ran to the Horner Museum and to Jackson and Lee personally — not to this Library and not to Oregon State.",
-      "detail": "The 1979 release grants permission to the Horner Museum and to Royal Jackson and Jennifer Lee by name. The 1989 Horner Museum gift and release relinquishes literary rights and legal title to the Horner Museum. The Horner Museum closed in 1995 and its collections went to the Benton County Historical Society in Philomath. Which narrator signed which form is not established: the signed originals are at Oregon State and have not been digitized. We have asked for them.",
-      "pointers": [
-        {
-          "label": "Royal G. Jackson, Jennifer Lee and Karen Thomas",
-          "note": "The interviewers of record for this range, and — for Jackson and Lee — named grantees on the 1979 form. The Library has not been able to reach them and is trying."
-        },
-        {
-          "label": "Benton County Historical Society, Philomath, Oregon",
-          "note": "Successor to the Horner Museum, the institution the 1979 and 1989 forms name."
-        },
-        {
-          "label": "OSU Special Collections and Archives Research Center, OH 006",
-          "note": "Holds the tapes and the signed forms.",
-          "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309"
-        }
-      ],
-      "confirm": "Whether any transcript or report from this 1978–1980 work was distributed to the public before 1 March 1989, and with or without notice. Until that is answered the Library publishes no No-Copyright value for this material."
+     "label": "Oregon State University Research Forests and College of Forestry",
+     "note": "Authorized, directed and funded the project. Whether the University asserts ownership has not been answered."
     },
     {
-      "key": "soap-creek-1989-1991",
-      "label": "Soap Creek interviews recorded 1989–1991",
-      "dates": "1989–1991",
-      "code": "InC",
-      "statement": "In Copyright",
-      "uri": "http://rightsstatements.org/vocab/InC/1.0/",
-      "gloss": "The narrators gave their literary rights to Oregon State University's Research Forests, so Oregon State is the door to knock on — not the interviewer and not this Library.",
-      "detail": "The 1990 OSU Research Forests gift and release is the governing form for this range: \"I understand that I am giving away any literary rights or legal titles which I may possess to this gift.\" It kept two things back for the narrator — personal use, and a checkbox recording whether the narrator was willing to have copies of the transcript distributed to the general public. Where a narrator recorded a choice about public distribution, that choice governs. Which narrator signed which form is not yet established.",
-      "pointers": [
-        {
-          "label": "Oregon State University Research Forests",
-          "note": "Grantee under the 1990 and 1995 forms."
-        },
-        {
-          "label": "OSU Special Collections and Archives Research Center, OH 006",
-          "note": "Holds the tapes and the signed forms.",
-          "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309"
-        }
-      ]
-    },
-    {
-      "key": "soap-creek-1998",
-      "label": "The 1998-form interview series",
-      "dates": "c. 1998",
-      "code": "InC",
-      "statement": "In Copyright, with a royalty disclosure",
-      "uri": "http://rightsstatements.org/vocab/InC/1.0/",
-      "gloss": "A different form, limited to educational and research use, and carrying a payment obligation to a county museum that nobody can sign away.",
-      "detail": "The 1998 form gives permission to reproduce the memoirs for educational and research purposes, and attaches a condition: if content or reproductions are sold, an accurate accounting of total sales is to be made annually and ten per cent of all gross income paid to the Benton County Historical Museum in Philomath, Oregon. The Library discloses that obligation because it survives whatever anyone else signs afterwards, and because anyone contemplating commercial use of this material needs to know about it.",
-      "disclosure": "Ten per cent of gross income from any sale of this material, and an annual accounting, are owed to the Benton County Historical Museum in Philomath, Oregon. The permission itself is limited to educational and research purposes.",
-      "pointers": [
-        {
-          "label": "The creator, and the Benton County Historic Resources Commission",
-          "note": "The named recipients of the 1998 reproduction permission."
-        },
-        {
-          "label": "Benton County Historical Society / Benton County Historical Museum, Philomath, Oregon",
-          "note": "The royalty payee, and — as successor to the Horner Museum — a probable rights holder in the earlier material as well."
-        }
-      ],
-      "confirm": "Which narrators signed the 1998 form. That depends on an inspection of OH 006 that has not yet happened."
-    },
-    {
-      "key": "monographs-other-lead",
-      "label": "Monographs whose printed lead is not the creator",
-      "dates": "1990–2009",
-      "code": "InC",
-      "statement": "In Copyright",
-      "uri": "http://rightsstatements.org/vocab/InC/1.0/",
-      "gloss": "Five volumes were led by someone other than Bob Zybach, and the people who led them are rights holders this Library has not yet been able to reach.",
-      "detail": "Monographs #02, #04, #13 and #15 were led by Royal G. Jackson with Jennifer Lee or Karen Thomas, and rest on interviews recorded 1978–1980 under the Horner Museum forms. Monograph #11 was led by Judy Carlson and rests on sessions recorded in 1975, earlier than any of the consent forms the Library has seen. For these volumes the creator conducted no interview and holds no interviewer's copyright, and the Library names the people who do.",
-      "pointers": [
-        {
-          "label": "Royal G. Jackson, Jennifer Lee and Karen Thomas",
-          "note": "Leads of #02 (Jackson and Lee), #04 (Jackson and Thomas), #13 (Jackson and Lee) and #15 (Jackson and others)."
-        },
-        {
-          "label": "Judy Carlson",
-          "note": "Lead of #11, and one of the eight research assistants named in the Oregon State finding aid for OH 006."
-        },
-        {
-          "label": "Benton County Historical Society, Philomath, Oregon",
-          "note": "Successor to the Horner Museum, the grantee named on the 1979 and 1989 forms."
-        },
-        {
-          "label": "OSU Special Collections and Archives Research Center, OH 006",
-          "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309"
-        }
-      ],
-      "confirm": "What each of the eight named research assistants actually did — conducted interviews, transcribed, abstracted, drafted text, or none of these. Until that is answered each is a possible rights holder. Also unconfirmed: which consent instrument, if any, governs the 1975 sessions behind #11."
-    },
-    {
-      "key": "thesis",
-      "label": "The 1999 thesis",
-      "dates": "1999",
-      "code": "InC",
-      "statement": "In Copyright",
-      "uri": "http://rightsstatements.org/vocab/InC/1.0/",
-      "gloss": "The clearest title in the collection: the thesis carries the creator's own copyright notice, and he publishes it himself.",
-      "detail": "The thesis prints \"Copyright by Bob Zybach / March 5, 1999 / All Rights Reserved.\" Narrator material quoted inside it still carries the consents that govern the interviews it came from.",
-      "pointers": [
-        {
-          "label": "Robert (Bob) Zybach",
-          "note": "Author and rights holder; publishes the thesis by chapter on his own site.",
-          "href": "http://www.nwmapsco.com/ZybachB/Thesis/"
-        }
-      ],
-      "confirm": "Whether an Oregon State deposit agreement grants the University any rights in the thesis."
-    },
-    {
-      "key": "auto-tour",
-      "label": "The 1989 Auto Tour",
-      "dates": "1989",
-      "code": "UND",
-      "statement": "Copyright Undetermined",
-      "uri": "http://rightsstatements.org/vocab/UND/1.0/",
-      "gloss": "A 1989 booklet published by the Research Forests; the Library has not established who owns it.",
-      "detail": "The creator publishes the Auto Tour on his own site. The Library's rights review has not reached a settled position on this booklet, and says so rather than borrowing the answer from the monographs.",
-      "pointers": [
-        {
-          "label": "The creator, who publishes the booklet himself",
-          "href": "http://www.nwmapsco.com/ZybachB/Tours/Soap_Creek_Valley/"
-        },
-        {
-          "label": "Oregon State University Research Forests",
-          "note": "Named as publisher on the booklet."
-        }
-      ],
-      "confirm": "The Auto Tour is not covered by any population in the Library's rights schedule. Its ownership, and whether the 1 March 1989 notice rule reaches it, are both open."
-    },
-    {
-      "key": "elliott-transcripts",
-      "label": "Elliott State Forest transcripts",
-      "dates": "2017–2019",
-      "code": "InC",
-      "statement": "In Copyright",
-      "uri": "http://rightsstatements.org/vocab/InC/1.0/",
-      "gloss": "This is the least settled part of the collection: no signed release has been found for any of these interviews, and several of the narrators are living.",
-      "detail": "The creator has published these transcripts openly on his own site since 2019, with no rights language attached, and copies are at Oregon State under OH 047. A blank release form exists in the project's files, which suggests the intention was there, but a blank form is not evidence that any were signed. The Library publishes under a considered fair-use rationale with a documented search recorded for each narrator, and treats a narrator's or family's objection as dispositive.",
-      "pointers": [
-        {
-          "label": "The narrators, and the families of narrators who have died",
-          "note": "Whatever a narrator never conveyed, a narrator still holds. Jerry Phillips died in 2022."
-        },
-        {
-          "label": "The creator, who publishes the transcripts himself",
-          "href": "http://www.orww.org/Elliott_Forest/History/Oral/"
-        },
-        {
-          "label": "OSU Special Collections and Archives Research Center, OH 047",
-          "note": "Holds copies, donated by the creator in 2019.",
-          "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=3293"
-        }
-      ],
-      "escalation": {
-        "code": "InC-RUU",
-        "statement": "In Copyright — Rights-holder(s) Unlocatable or Unidentifiable",
-        "uri": "http://rightsstatements.org/vocab/InC-RUU/1.0/",
-        "note": "Applied to an individual item only where the diligence log shows that a specific search for a specific person was made and did not find them. Never applied across the series."
-      },
-      "confirm": "What the Oregon Department of State Lands and OSU College of Forestry funding agreements said about ownership. That one document decides the question for the whole Elliott series."
-    },
-    {
-      "key": "elliott-audio",
-      "label": "Elliott State Forest recordings",
-      "dates": "2017–2019",
-      "code": "InC",
-      "statement": "In Copyright",
-      "uri": "http://rightsstatements.org/vocab/InC/1.0/",
-      "gloss": "Same posture as the transcripts: no signed release found, living narrators, and the recordings already published by the creator on his own site.",
-      "pointers": [
-        {
-          "label": "The narrators, and the families of narrators who have died"
-        },
-        {
-          "label": "The creator, who publishes the recordings himself",
-          "href": "http://www.orww.org/Elliott_Forest/History/Oral/"
-        },
-        {
-          "label": "OSU Special Collections and Archives Research Center, OH 047",
-          "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=3293"
-        }
-      ],
-      "escalation": {
-        "code": "InC-RUU",
-        "statement": "In Copyright — Rights-holder(s) Unlocatable or Unidentifiable",
-        "uri": "http://rightsstatements.org/vocab/InC-RUU/1.0/",
-        "note": "Per narrator, on evidence in the diligence log."
-      }
-    },
-    {
-      "key": "elliott-images",
-      "label": "Elliott State Forest photographs and video",
-      "dates": "2017–2024",
-      "code": "UND",
-      "statement": "Copyright Undetermined",
-      "uri": "http://rightsstatements.org/vocab/UND/1.0/",
-      "gloss": "Who owns the photographs and the field-trip video has not been established; the Library links to the creator's copies rather than republishing them.",
-      "pointers": [
-        {
-          "label": "The creator, who publishes the photographs and video himself",
-          "href": "http://www.orww.org/Elliott_Forest/"
-        },
-        {
-          "label": "OSU Special Collections and Archives Research Center, OH 047",
-          "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=3293"
-        }
-      ],
-      "never": "No photograph of human remains or of a funerary or sacred object is published."
-    },
-    {
-      "key": "alberta-street",
-      "label": "The Alberta Street reports",
-      "dates": "1992; 2015",
-      "code": "UND",
-      "statement": "Copyright Undetermined for the 1992 report; In Copyright for the 2015 report",
-      "uri": "http://rightsstatements.org/vocab/UND/1.0/",
-      "gloss": "The 1992 report has named student authors the Library has not reached; the 2015 report is in copyright.",
-      "pointers": [
-        {
-          "label": "The named authors of the 1992 report",
-          "note": "Six students are named on the report. None has been contacted."
-        },
-        {
-          "label": "The creator, and Oregon Websites and Watershed Project, Inc.",
-          "note": "For the 2015 report."
-        }
-      ],
-      "confirm": "The 1992 report also has an unaccounted rights holder, Urban Forestry, Inc. The Library describes these reports and links to the creator's copies; it does not republish them."
-    },
-    {
-      "key": "described-only",
-      "label": "Series the Library describes but does not publish",
-      "dates": "various",
-      "code": "UND",
-      "statement": "Copyright Undetermined",
-      "uri": "http://rightsstatements.org/vocab/UND/1.0/",
-      "gloss": "For these the Library publishes its own description and a link to the creator's copy, and nothing else.",
-      "detail": "The reforestation business records are held at Oregon State as MSS Zybach and are not published here. The remaining inventory series are listed so a reader knows they exist and where to find them.",
-      "pointers": [
-        {
-          "label": "The creator",
-          "note": "Publishes these materials, where they are published at all, on his own sites."
-        },
-        {
-          "label": "OSU Special Collections and Archives Research Center, MSS Zybach",
-          "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=1303"
-        }
-      ],
-      "confirm": "The Library's rights schedule does not cover the Osbornes, Jedediah Smith, Letitia Carson or wildfire inventories. They are described from the creator's own public pages and nothing is republished from them."
+     "label": "OSU Special Collections and Archives Research Center, OH 006",
+     "note": "Holds the originals. Custody is not copyright.",
+     "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309"
     }
-  ],
-  "derived": {
-    "key": "derived",
-    "label": "The layer the Library built",
-    "dates": "2026–",
-    "code": null,
-    "statement": "The Library's own work. Licence terms to be announced.",
-    "uri": null,
-    "gloss": "The indexes, place and people pages, the timeline, the finding aid and the page anchoring are the Library's work, not the creator's, and the Library says so.",
-    "detail": "An open licence is under consideration for this layer and has not been granted. When the Library decides, it will say so here and date the decision. Whatever it decides covers only the layer the Library made: it does not, and cannot, cover the underlying sources, because the Library cannot give away rights that are not its own. Parts of this layer are built from material that carries a use limitation — the 1998-form series is limited to educational and research purposes and carries a royalty — and any licence must keep those parts separable.",
-    "built_with": "Built with AI assistance under human direction. No source text was generated, rewritten, summarised or enhanced.",
-    "pointers": [
-      {
-        "label": "America's School Trust Library",
-        "note": "An Oregon public benefit nonprofit corporation, Oregon Registry No. 259005891."
-      }
-    ]
+   ],
+   "never": "These volumes are not in the public domain and no page of this Library may say they are."
   },
-  "records": {
-    "m02-dunn": "monographs-other-lead",
-    "m04-sekermestrovich": "monographs-other-lead",
-    "m11-murphy": "monographs-other-lead",
-    "m13-davies": "monographs-other-lead",
-    "m15-rowley": "monographs-other-lead",
-    "m01-grabe": "monographs",
-    "m03-dickey": "monographs",
-    "m05-rohner": "monographs",
-    "m06-hanish": "monographs",
-    "m07-olson": "monographs",
-    "m08-vanderburg": "monographs",
-    "m09-glender": "monographs",
-    "m10-rawie": "monographs",
-    "m12-cook": "monographs",
-    "m14-hindes": "monographs",
-    "thesis": "thesis",
-    "auto-tour": "auto-tour"
+  {
+   "key": "soap-creek-1978-1980",
+   "label": "Soap Creek interviews recorded 1978–1980",
+   "dates": "1978–1980",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "These interviews were recorded by Royal G. Jackson, Jennifer Lee and Karen Thomas, and the consents ran to the Horner Museum and to Jackson and Lee personally — not to this Library and not to Oregon State.",
+   "detail": "The 1979 release grants permission to the Horner Museum and to Royal Jackson and Jennifer Lee by name. The 1989 Horner Museum gift and release relinquishes literary rights and legal title to the Horner Museum. The Horner Museum closed in 1995 and its collections went to the Benton County Historical Society in Philomath. Which narrator signed which form is not established: the signed originals are at Oregon State and have not been digitized. We have asked for them.",
+   "pointers": [
+    {
+     "label": "Royal G. Jackson, Jennifer Lee and Karen Thomas",
+     "note": "The interviewers of record for this range, and — for Jackson and Lee — named grantees on the 1979 form. The Library has not been able to reach them and is trying."
+    },
+    {
+     "label": "Benton County Historical Society, Philomath, Oregon",
+     "note": "Successor to the Horner Museum, the institution the 1979 and 1989 forms name."
+    },
+    {
+     "label": "OSU Special Collections and Archives Research Center, OH 006",
+     "note": "Holds the tapes and the signed forms.",
+     "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309"
+    }
+   ],
+   "confirm": "Whether any transcript or report from this 1978–1980 work was distributed to the public before 1 March 1989, and with or without notice. Until that is answered the Library publishes no No-Copyright value for this material."
   },
-  "series": {
-    "soap-creek": "monographs",
-    "elliott": "elliott-transcripts",
-    "alberta-street": "alberta-street",
-    "osbornes": "described-only",
-    "jedediah-smith": "described-only",
-    "letitia-carson": "described-only",
-    "wildfire": "described-only",
-    "reforestation-records": "described-only"
+  {
+   "key": "soap-creek-1989-1991",
+   "label": "Soap Creek interviews recorded 1989–1991",
+   "dates": "1989–1991",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "The narrators gave their literary rights to Oregon State University's Research Forests, so Oregon State is the door to knock on — not the interviewer and not this Library.",
+   "detail": "The 1990 OSU Research Forests gift and release is the governing form for this range: \"I understand that I am giving away any literary rights or legal titles which I may possess to this gift.\" It kept two things back for the narrator — personal use, and a checkbox recording whether the narrator was willing to have copies of the transcript distributed to the general public. Where a narrator recorded a choice about public distribution, that choice governs. Which narrator signed which form is not yet established.",
+   "pointers": [
+    {
+     "label": "Oregon State University Research Forests",
+     "note": "Grantee under the 1990 and 1995 forms."
+    },
+    {
+     "label": "OSU Special Collections and Archives Research Center, OH 006",
+     "note": "Holds the tapes and the signed forms.",
+     "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309"
+    }
+   ]
+  },
+  {
+   "key": "soap-creek-1998",
+   "label": "The 1998-form interview series",
+   "dates": "c. 1998",
+   "code": "InC",
+   "statement": "In Copyright, with a royalty disclosure",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "A different form, limited to educational and research use, and carrying a payment obligation to a county museum that nobody can sign away.",
+   "detail": "The 1998 form gives permission to reproduce the memoirs for educational and research purposes, and attaches a condition: if content or reproductions are sold, an accurate accounting of total sales is to be made annually and ten per cent of all gross income paid to the Benton County Historical Museum in Philomath, Oregon. The Library discloses that obligation because it survives whatever anyone else signs afterwards, and because anyone contemplating commercial use of this material needs to know about it.",
+   "disclosure": "Ten per cent of gross income from any sale of this material, and an annual accounting, are owed to the Benton County Historical Museum in Philomath, Oregon. The permission itself is limited to educational and research purposes.",
+   "pointers": [
+    {
+     "label": "The creator, and the Benton County Historic Resources Commission",
+     "note": "The named recipients of the 1998 reproduction permission."
+    },
+    {
+     "label": "Benton County Historical Society / Benton County Historical Museum, Philomath, Oregon",
+     "note": "The royalty payee, and — as successor to the Horner Museum — a probable rights holder in the earlier material as well."
+    }
+   ],
+   "confirm": "Which narrators signed the 1998 form. That depends on an inspection of OH 006 that has not yet happened."
+  },
+  {
+   "key": "monographs-other-lead",
+   "label": "Monographs whose printed lead is not the creator",
+   "dates": "1990–2009",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "Five volumes were led by someone other than Bob Zybach, and the people who led them are rights holders this Library has not yet been able to reach.",
+   "detail": "Monographs #02, #04, #13 and #15 were led by Royal G. Jackson with Jennifer Lee or Karen Thomas, and rest on interviews recorded 1978–1980 under the Horner Museum forms. Monograph #11 was led by Judy Carlson and rests on sessions recorded in 1975, earlier than any of the consent forms the Library has seen. For these volumes the creator conducted no interview and holds no interviewer's copyright, and the Library names the people who do.",
+   "pointers": [
+    {
+     "label": "Royal G. Jackson, Jennifer Lee and Karen Thomas",
+     "note": "Leads of #02 (Jackson and Lee), #04 (Jackson and Thomas), #13 (Jackson and Lee) and #15 (Jackson and others)."
+    },
+    {
+     "label": "Judy Carlson",
+     "note": "Lead of #11, and one of the eight research assistants named in the Oregon State finding aid for OH 006."
+    },
+    {
+     "label": "Benton County Historical Society, Philomath, Oregon",
+     "note": "Successor to the Horner Museum, the grantee named on the 1979 and 1989 forms."
+    },
+    {
+     "label": "OSU Special Collections and Archives Research Center, OH 006",
+     "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309"
+    }
+   ],
+   "confirm": "What each of the eight named research assistants actually did — conducted interviews, transcribed, abstracted, drafted text, or none of these. Until that is answered each is a possible rights holder. Also unconfirmed: which consent instrument, if any, governs the 1975 sessions behind #11."
+  },
+  {
+   "key": "thesis",
+   "label": "The 1999 thesis",
+   "dates": "1999",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "The clearest title in the collection: the thesis carries the creator's own copyright notice, and he publishes it himself.",
+   "detail": "The thesis prints \"Copyright by Bob Zybach / March 5, 1999 / All Rights Reserved.\" Narrator material quoted inside it still carries the consents that govern the interviews it came from.",
+   "pointers": [
+    {
+     "label": "Robert (Bob) Zybach",
+     "note": "Author and rights holder; publishes the thesis by chapter on his own site.",
+     "href": "http://www.nwmapsco.com/ZybachB/Thesis/"
+    }
+   ],
+   "confirm": "Whether an Oregon State deposit agreement grants the University any rights in the thesis."
+  },
+  {
+   "key": "auto-tour",
+   "label": "The 1989 Auto Tour",
+   "dates": "1989",
+   "code": "UND",
+   "statement": "Copyright Undetermined",
+   "uri": "http://rightsstatements.org/vocab/UND/1.0/",
+   "gloss": "A 1989 booklet published by the Research Forests; the Library has not established who owns it.",
+   "detail": "The creator publishes the Auto Tour on his own site. The Library's rights review has not reached a settled position on this booklet, and says so rather than borrowing the answer from the monographs.",
+   "pointers": [
+    {
+     "label": "The creator, who publishes the booklet himself",
+     "href": "http://www.nwmapsco.com/ZybachB/Tours/Soap_Creek_Valley/"
+    },
+    {
+     "label": "Oregon State University Research Forests",
+     "note": "Named as publisher on the booklet."
+    }
+   ],
+   "confirm": "The Auto Tour is not covered by any population in the Library's rights schedule. Its ownership, and whether the 1 March 1989 notice rule reaches it, are both open."
+  },
+  {
+   "key": "elliott-transcripts",
+   "label": "Elliott State Forest transcripts",
+   "dates": "2017–2019",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "This is the least settled part of the collection: no signed release has been found for any of these interviews, and several of the narrators are living.",
+   "detail": "The creator has published these transcripts openly on his own site since 2019, with no rights language attached, and copies are at Oregon State under OH 047. A blank release form exists in the project's files, which suggests the intention was there, but a blank form is not evidence that any were signed. The Library publishes under a considered fair-use rationale with a documented search recorded for each narrator, and treats a narrator's or family's objection as dispositive.",
+   "pointers": [
+    {
+     "label": "The narrators, and the families of narrators who have died",
+     "note": "Whatever a narrator never conveyed, a narrator still holds. Jerry Phillips died in 2022."
+    },
+    {
+     "label": "The creator, who publishes the transcripts himself",
+     "href": "http://www.orww.org/Elliott_Forest/History/Oral/"
+    },
+    {
+     "label": "OSU Special Collections and Archives Research Center, OH 047",
+     "note": "Holds copies, donated by the creator in 2019.",
+     "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=3293"
+    }
+   ],
+   "escalation": {
+    "code": "InC-RUU",
+    "statement": "In Copyright — Rights-holder(s) Unlocatable or Unidentifiable",
+    "uri": "http://rightsstatements.org/vocab/InC-RUU/1.0/",
+    "note": "Applied to an individual item only where the diligence log shows that a specific search for a specific person was made and did not find them. Never applied across the series."
+   },
+   "confirm": "What the Oregon Department of State Lands and OSU College of Forestry funding agreements said about ownership. That one document decides the question for the whole Elliott series."
+  },
+  {
+   "key": "elliott-audio",
+   "label": "Elliott State Forest recordings",
+   "dates": "2017–2019",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "Same posture as the transcripts: no signed release found, living narrators, and the recordings already published by the creator on his own site.",
+   "pointers": [
+    {
+     "label": "The narrators, and the families of narrators who have died"
+    },
+    {
+     "label": "The creator, who publishes the recordings himself",
+     "href": "http://www.orww.org/Elliott_Forest/History/Oral/"
+    },
+    {
+     "label": "OSU Special Collections and Archives Research Center, OH 047",
+     "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=3293"
+    }
+   ],
+   "escalation": {
+    "code": "InC-RUU",
+    "statement": "In Copyright — Rights-holder(s) Unlocatable or Unidentifiable",
+    "uri": "http://rightsstatements.org/vocab/InC-RUU/1.0/",
+    "note": "Per narrator, on evidence in the diligence log."
+   }
+  },
+  {
+   "key": "elliott-images",
+   "label": "Elliott State Forest photographs and video",
+   "dates": "2017–2024",
+   "code": "UND",
+   "statement": "Copyright Undetermined",
+   "uri": "http://rightsstatements.org/vocab/UND/1.0/",
+   "gloss": "Who owns the photographs and the field-trip video has not been established; the Library links to the creator's copies rather than republishing them.",
+   "pointers": [
+    {
+     "label": "The creator, who publishes the photographs and video himself",
+     "href": "http://www.orww.org/Elliott_Forest/"
+    },
+    {
+     "label": "OSU Special Collections and Archives Research Center, OH 047",
+     "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=3293"
+    }
+   ],
+   "never": "No photograph of human remains or of a funerary or sacred object is published."
+  },
+  {
+   "key": "alberta-street",
+   "label": "The Alberta Street reports",
+   "dates": "1992; 2015",
+   "code": "UND",
+   "statement": "Copyright Undetermined for the 1992 report; In Copyright for the 2015 report",
+   "uri": "http://rightsstatements.org/vocab/UND/1.0/",
+   "gloss": "The 1992 report has named student authors the Library has not reached; the 2015 report is in copyright.",
+   "pointers": [
+    {
+     "label": "The named authors of the 1992 report",
+     "note": "Six students are named on the report. None has been contacted."
+    },
+    {
+     "label": "The creator, and Oregon Websites and Watershed Project, Inc.",
+     "note": "For the 2015 report."
+    }
+   ],
+   "confirm": "The 1992 report also has an unaccounted rights holder, Urban Forestry, Inc. The Library describes these reports and links to the creator's copies; it does not republish them."
+  },
+  {
+   "key": "described-only",
+   "label": "Series the Library describes but does not publish",
+   "dates": "various",
+   "code": "UND",
+   "statement": "Copyright Undetermined",
+   "uri": "http://rightsstatements.org/vocab/UND/1.0/",
+   "gloss": "For these the Library publishes its own description and a link to the creator's copy, and nothing else.",
+   "detail": "The reforestation business records are held at Oregon State as MSS Zybach and are not published here. The remaining inventory series are listed so a reader knows they exist and where to find them.",
+   "pointers": [
+    {
+     "label": "The creator",
+     "note": "Publishes these materials, where they are published at all, on his own sites."
+    },
+    {
+     "label": "OSU Special Collections and Archives Research Center, MSS Zybach",
+     "href": "https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=1303"
+    }
+   ],
+   "confirm": "The Library's rights schedule does not cover the Osbornes or wildfire inventories. They are described from the creator's own public pages and nothing is republished from them."
+  },
+  {
+   "key": "carson-zybach-writings",
+   "label": "The creator's Letitia Carson writing",
+   "dates": "1989–2016",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "His own articles, columns and research reports. He wrote them and he publishes them himself; the Library's copy is a display copy.",
+   "detail": "Four of these carry a text layer and are reproduced page by page: the 2014 ORWW research report written with Janet Meranda, two long articles in The Umpqua Trapper, and his entry in the online encyclopedia at BlackPast.org. Where an article appeared inside somebody else's periodical, only the pages of his own article are reproduced; the cover, masthead, notices and advertisements belong to the society that printed them and stay on his scan. The remainder of his writing is scanned without a text layer, and is catalogued and linked rather than reproduced. The Letitia Carson series contains four further populations besides this one — the public records, the Merandas' transcriptions, his photographs, and the third-party works in his reference library — each with its own statement below.",
+   "pointers": [
+    {
+     "label": "The creator, who publishes these himself",
+     "note": "Bob Zybach; the Letitia Carson library at orww.org.",
+     "href": "http://www.orww.org/History/Letitia_Carson/Library/"
+    },
+    {
+     "label": "Douglas County Historical Society",
+     "note": "Printed two of the articles in its quarterly, The Umpqua Trapper, and holds its own rights in the rest of those issues."
+    },
+    {
+     "label": "BlackPast.org",
+     "note": "Publishes the encyclopedia entry he contributed, and holds its own rights in the site."
+    }
+   ],
+   "confirm": "Permission for the Library's display copies is being recorded with the creator. Nothing here has been cleared with the Douglas County Historical Society or with BlackPast.org, and the Library has reproduced only the pages the creator wrote."
+  },
+  {
+   "key": "carson-public-records",
+   "label": "The Letitia Carson public records",
+   "dates": "1824–1922",
+   "code": null,
+   "statement": "Public Domain in the United States",
+   "uri": null,
+   "gloss": "Court, probate, homestead, land and citizenship records made by government officers in the nineteenth century. Nobody owns them.",
+   "detail": "Two hundred and fifty files in the creator's documentation folders: Ashe County citizenship papers, a Platte County deed, the Benton County probate of David Carson's estate, the two suits Letitia Carson brought against Greenberry Smith, and her homestead file. The Library describes each one, shows the creator's thumbnail where he made one, and links his full-size scan rather than making a second copy. The same statement covers the works in his reference library that were published before 1929 or made by a government — Palmer, Chittenden, Paxton, Lockley, Cummins, the Oregon Spectator indexes made by the W.P.A. in 1941, the Bureau of Land Management's homesteading history, and the General Land Office and USGS map sheets.",
+   "pointers": [
+    {
+     "label": "Oregon State Archives",
+     "note": "Holds the Benton County probate and district court files."
+    },
+    {
+     "label": "National Archives",
+     "note": "Holds the homestead application, proof, certificate and patent."
+    },
+    {
+     "label": "Platte County, Missouri",
+     "note": "Holds the Missouri probate."
+    },
+    {
+     "label": "The creator, who scanned and publishes them",
+     "note": "Bob Zybach and Janet Meranda.",
+     "href": "http://www.orww.org/History/Letitia_Carson/Documentation/"
+    }
+   ],
+   "never": "No claim is made over these records by the Library or by anyone else, and no page of this Library may say otherwise."
+  },
+  {
+   "key": "carson-transcriptions",
+   "label": "The Meranda transcriptions",
+   "dates": "made ca. 2013–2022",
+   "code": "UND",
+   "statement": "Copyright Undetermined",
+   "uri": "http://rightsstatements.org/vocab/UND/1.0/",
+   "gloss": "The records transcribed are public domain; who, if anyone, holds rights in the transcription has not been settled.",
+   "detail": "Jan and John Meranda transcribed almost the whole of the probate and lawsuit files, heading each transcription with the filename of the scan it was made from. A faithful transcription of a manuscript may carry little or no copyright of its own; the Library has not asked the Merandas, and says so rather than assuming. The creator publishes the transcriptions on his own site and the Library reproduces them page by page, credited to them.",
+   "pointers": [
+    {
+     "label": "Jan and John Meranda",
+     "note": "Made the transcriptions."
+    },
+    {
+     "label": "The creator, who publishes them",
+     "note": "Bob Zybach.",
+     "href": "http://www.orww.org/History/Letitia_Carson/Documentation/"
+    }
+   ],
+   "confirm": "The Merandas have not been asked. If they would rather the Library not reproduce the transcriptions, they come down."
+  },
+  {
+   "key": "carson-photographs",
+   "label": "The creator's Letitia Carson photographs",
+   "dates": "ca. 1990–2024",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "His own photographs of the ground — Soap Creek, the burying ground, the homestead, Cow Creek, Umatilla County.",
+   "detail": "Registered folder by folder, with his filenames as captions. The Library displays two as plates and links the rest. Folders whose subject is a living person or family are recorded and counted but not listed file by file, and none is displayed. Where his filename names a living person, the Library repeats his filename and says nothing further.",
+   "pointers": [
+    {
+     "label": "The creator, who publishes them himself",
+     "note": "Bob Zybach.",
+     "href": "http://www.orww.org/History/Letitia_Carson/Photographs/"
+    }
+   ],
+   "never": "No photograph of a living person is displayed by this Library from this series."
+  },
+  {
+   "key": "carson-third-party",
+   "label": "Third-party works in the creator's Letitia Carson library",
+   "dates": "1933–2023",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "Other people's books, theses, articles and letters, which the creator keeps beside his own work. The Library names them and links his copy.",
+   "detail": "Identified by reference only: author, title where the Library could read one, date, and a link. Nothing is copied and nothing is quoted. Among them are two Portland State theses on Letitia Carson (Vallance 2021, Brink 2023), recent magazine and encyclopedia articles (Banks, Moyer, Stocks 2023), county historical files, promotional material for Jane Kirkpatrick's 2014 novel, and a folder of correspondence which the Library records only as existing. The commissioned portrait of Letitia Carson painted by Jeremy Okai Davis, and Alison Saar's woodcut on the creator's own front page, belong to the artists and are named and linked, never shown.",
+   "pointers": [
+    {
+     "label": "The creator, who hosts these on his own site",
+     "note": "Bob Zybach; the Letitia Carson library at orww.org.",
+     "href": "http://www.orww.org/History/Letitia_Carson/Library/"
+    }
+   ],
+   "never": "The Library does not reproduce any of these works, and does not quote from them."
+  },
+  {
+   "key": "jedediah-smith-creator",
+   "label": "The 1828 Umpqua Memorial Project — the creator's own work",
+   "dates": "1987–2023",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "The creator wrote these, publishes them himself, and holds the rights in them.",
+   "detail": "The guidebooks, the photographic reports, the journal article, the 1987 draft, the presentations, the sign drafts, the correspondence and the project's own photographs and maps are Bob Zybach's work, made for Oregon Websites and Watershed Project, Inc., NW Maps Co. and the Jedediah Smith Society. He has published all of them openly on his own site since 2023. The Library's copy is a display copy of what he already publishes, and it links to his files rather than replacing them. His permission is being recorded.",
+   "pointers": [
+    {
+     "label": "The creator, who publishes this material himself",
+     "note": "Bob Zybach, ORWW 1828 Umpqua Memorial Project.",
+     "href": "http://www.orww.org/1828_Umpqua_Memorial/"
+    },
+    {
+     "label": "Oregon Websites and Watershed Project, Inc.",
+     "note": "Carries the copyright notice on the project pages, with NW Maps Co."
+    }
+   ],
+   "never": "No page of this Library publishes a coordinate, a survey description, a road intersection, a site map or a photograph captioned as the place of the 1828 attack, of the Kelawatset village, or of the trappers' graves — not even where the creator has published it himself."
+  },
+  {
+   "key": "jedediah-smith-primary",
+   "label": "The 1828 record — journals, letters and government publications",
+   "dates": "1826–1928",
+   "code": null,
+   "statement": "No copyright — published before 1929, or a work of the United States government",
+   "uri": null,
+   "gloss": "Old enough, or official enough, that anyone may copy, print and quote them.",
+   "detail": "The Smith and Rogers journals, Smith's 1827 letter to William Clark, McLoughlin's 1828 report, McLeod's journals, the partners' 1830 letter to the Secretary of War, Dale's 1918 edition, the 1907 Washington Historical Quarterly article, the Smithsonian paper of 1938 and the National Park Service history of Fort Vancouver. The Library states this in plain words rather than by a vocabulary code, because the vocabulary's no-copyright statements assert a jurisdiction determination the Library is not making for anyone else.",
+   "pointers": [
+    {
+     "label": "The creator hosts copies of all of these",
+     "href": "http://www.orww.org/1828_Umpqua_Memorial/References%20/"
+    }
+   ]
+  },
+  {
+   "key": "jedediah-smith-third-party",
+   "label": "The 1828 Umpqua Memorial Project — work by other hands",
+   "dates": "1944–2023",
+   "code": "InC",
+   "statement": "In Copyright",
+   "uri": "http://rightsstatements.org/vocab/InC/1.0/",
+   "gloss": "Somebody else's work. The Library names it, says where the creator hosts it, and stops.",
+   "detail": "Twenty-five works on the project's reference shelf, the canine-search report and field map, the sign artwork, the sign fabricator's quotation, the Oregon Travel Information Council's committee papers, the newspaper reports, the museum finding aid and the tour script, and the photographs made by participants in the 2023 Rendezvous. None of these is reproduced here and none is quoted beyond a sentence. Each is identified by title, author, date and the address at which the creator hosts it, so a reader can go to it.",
+   "pointers": [
+    {
+     "label": "The named authors, artists and photographers",
+     "note": "Identified individually on the pages where each work appears. None has been contacted."
+    },
+    {
+     "label": "The creator, who hosts the copies",
+     "href": "http://www.orww.org/1828_Umpqua_Memorial/"
+    }
+   ],
+   "never": "The canine-search report and its field map are not reproduced at any length. Their subject is where human remains lie."
   }
+ ],
+ "derived": {
+  "key": "derived",
+  "label": "The layer the Library built",
+  "dates": "2026–",
+  "code": null,
+  "statement": "The Library's own work. Licence terms to be announced.",
+  "uri": null,
+  "gloss": "The indexes, place and people pages, the timeline, the finding aid and the page anchoring are the Library's work, not the creator's, and the Library says so.",
+  "detail": "An open licence is under consideration for this layer and has not been granted. When the Library decides, it will say so here and date the decision. Whatever it decides covers only the layer the Library made: it does not, and cannot, cover the underlying sources, because the Library cannot give away rights that are not its own. Parts of this layer are built from material that carries a use limitation — the 1998-form series is limited to educational and research purposes and carries a royalty — and any licence must keep those parts separable.",
+  "built_with": "Built with AI assistance under human direction. No source text was generated, rewritten, summarised or enhanced.",
+  "pointers": [
+   {
+    "label": "America's School Trust Library",
+    "note": "An Oregon public benefit nonprofit corporation, Oregon Registry No. 259005891."
+   }
+  ]
+ },
+ "records": {
+  "m02-dunn": "monographs-other-lead",
+  "m04-sekermestrovich": "monographs-other-lead",
+  "m11-murphy": "monographs-other-lead",
+  "m13-davies": "monographs-other-lead",
+  "m15-rowley": "monographs-other-lead",
+  "m01-grabe": "monographs",
+  "m03-dickey": "monographs",
+  "m05-rohner": "monographs",
+  "m06-hanish": "monographs",
+  "m07-olson": "monographs",
+  "m08-vanderburg": "monographs",
+  "m09-glender": "monographs",
+  "m10-rawie": "monographs",
+  "m12-cook": "monographs",
+  "m14-hindes": "monographs",
+  "thesis": "thesis",
+  "auto-tour": "auto-tour"
+ },
+ "series": {
+  "soap-creek": "monographs",
+  "elliott": "elliott-transcripts",
+  "alberta-street": "alberta-street",
+  "osbornes": "described-only",
+  "jedediah-smith": "jedediah-smith-creator",
+  "letitia-carson": "carson-zybach-writings",
+  "wildfire": "described-only",
+  "reforestation-records": "described-only"
+ }
 }

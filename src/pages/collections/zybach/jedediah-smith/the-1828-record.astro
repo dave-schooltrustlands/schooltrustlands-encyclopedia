@@ -1,0 +1,248 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import { references, rightsLine, SECTION, nativeAccount } from '../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+const primary = references.filter((r) => r.group === 'primary');
+const shelf = references.filter((r) => r.group === 'shelf');
+const pd = references.filter((r) => r.status === 'pd').length;
+const inc = references.filter((r) => r.status === 'inc').length;
+
+const STATUS_LABEL: Record<string, string> = {
+  pd: 'No longer in copyright',
+  inc: 'In copyright — by reference only',
+  bob: 'The creator’s own work',
+};
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="The 1828 record"
+  subtitle="The journals, letters and reports the whole story rests on, and the shelf of later writing built around them."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-1828-record"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-lede">
+    The creator keeps {references.length} of these on his own site, in a folder
+    he says himself “needs better organization.” This page is that organization:
+    what each one is, in a sentence, who wrote it, and whether it is old enough
+    that anyone may copy it. Every entry links to his copy.
+  </p>
+
+  <p class="sm-lede">
+    {pd} of them are past copyright — published before 1929, or made by the
+    United States government — and a reader may take them, print them and quote
+    them freely. {inc} are somebody else’s work and still in copyright: the
+    Library names them, says where the creator hosts them, and stops there. It
+    reproduces none of them and quotes none of them beyond a sentence.
+  </p>
+
+  {nativeAccount && (
+    <section class="sm-native" aria-labelledby="native-account">
+      <h2 id="native-account">The account given by an Umpqua chief</h2>
+      <p class="sm-note">
+        Almost everything in this series was written by the trappers, by the
+        Hudson’s Bay Company, or by people working from their papers. One passage
+        is not. On 11 October 1828 the Umpqua chief St. Arnoose came to McLeod’s
+        camp with eight of Smith’s horses, and gave his understanding of why the
+        attack had happened. McLeod wrote it into his journal that day.
+      </p>
+      <p class="sm-note">
+        It is printed here whole because it is the only account in this body of
+        work that reaches back to the other side of the event, and because the
+        creator’s own draft for the interpretive sign prints it under the heading
+        below. It still comes to us at one remove: a chief spoke, a company
+        officer wrote it down in his own words, and the words are his. It is not
+        a statement by the Confederated Tribes of Coos, Lower Umpqua and Siuslaw
+        Indians, who hold their own account; the Library has not been given that
+        and does not speak for them.
+      </p>
+      <figure class="sm-native__box">
+        <p class="sm-native__head">{nativeAccount.heading}</p>
+        <p class="sm-native__by">{nativeAccount.byline} · {nativeAccount.date_display}</p>
+        <blockquote><p>{nativeAccount.text}</p></blockquote>
+        <figcaption>
+          {nativeAccount.source}.
+          {' '}<a href={nativeAccount.url}>The creator’s file</a>. Transcribed
+          from his draft; the ligatures in his PDF do not survive text extraction
+          and have been restored. Nothing else is altered.
+        </figcaption>
+      </figure>
+      <p class="sm-note">
+        The cause St. Arnoose describes — a missing axe, a man of rank seized and
+        tied, and then ordered off a horse at gunpoint — is the same cause the
+        trappers’ own papers give. Rogers records the axe and the tying in his
+        journal on 12 July; McLoughlin reports that “the quarrel originated about
+        an axe.” Both passages are on the
+        {' '}<a href="/collections/zybach/jedediah-smith/markers/#sign">historical markers page</a>,
+        in the words the creator chose for the sign.
+      </p>
+    </section>
+  )}
+
+  <section aria-labelledby="primary">
+    <h2 id="primary">The primary sources</h2>
+    <p class="sm-note">
+      Ten items: what the men themselves and their employers wrote. Four of them
+      are photographed manuscripts with no searchable text — the Library says so
+      rather than pretending to have read them, and describes them from the
+      creator’s own naming and dating. Two of the journals stop before the
+      attack: Smith’s on 3 July 1828, Rogers’s on 13 July.
+    </p>
+    <ul class="sm-refs">
+      {primary.map((r) => (
+        <li>
+          <h3><a href={r.url}>{r.title}</a></h3>
+          <p class="sm-refs__meta">
+            {r.author}
+            {r.pdf_pages ? ` · ${r.pdf_pages} pages` : ''}
+            {r.size ? ` · ${r.size}` : ''}
+            {' · '}<span class="sm-refs__status" data-status={r.status}>{STATUS_LABEL[r.status]}</span>
+            {!r.searchable && <> · scanned, no searchable text</>}
+          </p>
+          <p class="sm-refs__note">{r.note}</p>
+          <p class="sm-refs__rights">{rightsLine(r.status)}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="shelf">
+    <h2 id="shelf">The reference shelf</h2>
+    <p class="sm-note">
+      Everything else in the folder: the standard editions, the scholarship, the
+      ethnographies, the newspaper files and the encyclopedia articles the
+      project worked from. They are listed here so that a reader can see what
+      the memorial project read. The Library publishes none of them.
+    </p>
+    <ul class="sm-refs">
+      {shelf.map((r) => (
+        <li>
+          <h3><a href={r.url}>{r.title}</a></h3>
+          <p class="sm-refs__meta">
+            {r.author}
+            {r.pdf_pages ? ` · ${r.pdf_pages} pages` : ''}
+            {r.size ? ` · ${r.size}` : ''}
+            {' · '}<span class="sm-refs__status" data-status={r.status}>{STATUS_LABEL[r.status]}</span>
+          </p>
+          <p class="sm-refs__note">{r.note}</p>
+          <p class="sm-refs__rights">{rightsLine(r.status)}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="what-is-not-here">
+    <h2 id="what-is-not-here">What is not here</h2>
+    <p class="sm-note">
+      Two of the works on this shelf are about the location of the site rather
+      than the event: Lancaster Pollard’s 1944 edition of the surveyor Harvey
+      Gordon’s account, and the 2014 reprint of it. They keep their entries above
+      and their links to the creator’s copies, and the Library quotes nothing out
+      of them. The same rule governs everything in this series.
+    </p>
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Where these are', value: 'The creator’s References folder', href: `${SECTION}References%20/` },
+      { label: 'Described from', value: 'The files themselves, read on 4 September 2026; where a file has no text layer, from its title page image, its name and its folder date' },
+      { label: 'Rights', value: `${pd} works past copyright; ${inc} third-party works identified by reference only` },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href={`${base}/chronology/`}>Chronology</a> ·
+    <a href={`${base}/people/`}>People</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede { max-width: 64ch; font-size: 1rem; line-height: 1.68; }
+  .sm-note { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; color: #3f3a33; }
+  .sm-refs { list-style: none; margin: 1rem 0 2rem; padding: 0; }
+  .sm-refs li { padding: 0.8rem 0; border-top: 1px solid #ece5d5; }
+  .sm-refs h3 { margin: 0 0 0.25rem; font-size: 0.99rem; line-height: 1.42; }
+  .sm-refs__meta {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+  }
+  .sm-refs__status[data-status='pd'] { color: #2f6b45; }
+  .sm-refs__status[data-status='inc'] { color: #7a2e2e; }
+  .sm-refs__note { margin: 0 0 0.25rem; max-width: 64ch; font-size: 0.92rem; line-height: 1.58; }
+  .sm-refs__rights {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: #6b6355;
+  }
+  .sm-see-also {
+    margin-top: 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+  }
+  .sm-native__box {
+    margin: 1.25rem 0 1.5rem;
+    padding: 1rem 1.2rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 3px solid var(--old-gold, #a87f2c);
+    border-radius: 4px;
+  }
+  .sm-native__head {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--deep-navy, #14243c);
+  }
+  .sm-native__by {
+    margin: 0.15rem 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+  }
+  .sm-native__box blockquote {
+    margin: 0;
+  }
+  .sm-native__box blockquote p {
+    margin: 0;
+    max-width: 64ch;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.95rem;
+    line-height: 1.66;
+    color: #2c2a26;
+  }
+  .sm-native__box figcaption {
+    margin-top: 0.8rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: #6b6355;
+    overflow-wrap: anywhere;
+  }
+</style>

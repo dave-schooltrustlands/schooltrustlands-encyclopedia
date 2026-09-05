@@ -1,0 +1,332 @@
+{
+ "generated": "2026-09-04",
+ "itinerary": [
+  {
+   "day": "Day 1 — Sunday 2 April 2023",
+   "stops": [
+    {
+     "time": "9:15–9:45",
+     "stop": "Crescent Beach Overlook",
+     "theme": "Smith’s history to this point"
+    },
+    {
+     "time": "9:45–10:30",
+     "stop": "Walker Road headquarters",
+     "theme": ""
+    },
+    {
+     "time": "10:30–11:15",
+     "stop": "Jedediah Smith State Park",
+     "theme": "Mural review; photographs"
+    },
+    {
+     "time": "11:15–11:30",
+     "stop": "Smith River camp",
+     "theme": "Templeman Grove / Tanoak Drive"
+    },
+    {
+     "time": "11:30–1:00",
+     "stop": "Brookings — lunch",
+     "theme": "Early trade relations"
+    },
+    {
+     "time": "1:00–2:00",
+     "stop": "Harris Beach",
+     "theme": "Topography and birds"
+    },
+    {
+     "time": "2:00–2:30",
+     "stop": "Cape Ferrelo Viewpoint",
+     "theme": "Smith’s route change; photographs"
+    },
+    {
+     "time": "2:30–3:15",
+     "stop": "Gold Beach",
+     "theme": "Rogue River viewpoint"
+    },
+    {
+     "time": "3:15–4:15",
+     "stop": "Humbug Mountain",
+     "theme": "Native foods, camping, pasture"
+    },
+    {
+     "time": "4:15–5:00",
+     "stop": "Nasomah Memorial",
+     "theme": "Beach Loop Road"
+    }
+   ]
+  },
+  {
+   "day": "Day 2 — Monday 3 April 2023",
+   "stops": [
+    {
+     "time": "9:00–9:45",
+     "stop": "Seven Devils Beach",
+     "theme": "Topography and pasture"
+    },
+    {
+     "time": "9:45–10:30",
+     "stop": "South Slough interpretive centre",
+     "theme": "Vegetation and topography"
+    },
+    {
+     "time": "10:30–11:00",
+     "stop": "Cape Arago Viewpoint",
+     "theme": "Photographs; topography"
+    },
+    {
+     "time": "11:00–12:00",
+     "stop": "Shore Acres and Sunset Bay",
+     "theme": "Trade and pasture"
+    },
+    {
+     "time": "12:00–12:30",
+     "stop": "The Hollering Place",
+     "theme": "A local village"
+    },
+    {
+     "time": "12:30–2:30",
+     "stop": "Coos History Museum — lunch",
+     "theme": "The Youst archive; McLeod’s history"
+    },
+    {
+     "time": "2:30–4:00",
+     "stop": "Umpqua Bay lighthouse",
+     "theme": "Topography and campsite"
+    },
+    {
+     "time": "4:00–5:00",
+     "stop": "The 1828 ground",
+     "theme": "Discussion: an appropriate memorial"
+    }
+   ]
+  },
+  {
+   "day": "Day 3 — Tuesday 4 April 2023",
+   "stops": [
+    {
+     "time": "9:00–9:30",
+     "stop": "BLM elk viewing",
+     "theme": "Pasturage"
+    },
+    {
+     "time": "9:30–11:00",
+     "stop": "Fort Umpqua",
+     "theme": "Hudson’s Bay Company fort construction"
+    },
+    {
+     "time": "11:00–11:20",
+     "stop": "Drain",
+     "theme": "The California Trail: the Forks"
+    },
+    {
+     "time": "11:20–11:45",
+     "stop": "Curtin",
+     "theme": "Elk (Pass) Creek staging area"
+    },
+    {
+     "time": "11:45–12:00",
+     "stop": "Lorane",
+     "theme": "Mountain La Biche"
+    },
+    {
+     "time": "12:00–12:30",
+     "stop": "Veneta",
+     "theme": "The Applegate Trail"
+    },
+    {
+     "time": "12:30–12:45",
+     "stop": "Cheshire",
+     "theme": "The California Trail"
+    },
+    {
+     "time": "12:45–2:00",
+     "stop": "Monroe — lunch",
+     "theme": "Long Tom camp"
+    },
+    {
+     "time": "2:00–3:00",
+     "stop": "Tampico",
+     "theme": "Soap Creek ford; County Road No. 1"
+    },
+    {
+     "time": "3:00–3:15",
+     "stop": "Airlie",
+     "theme": "The California Trail"
+    },
+    {
+     "time": "3:15–4:00",
+     "stop": "Bridgeport School",
+     "theme": "The Hudson’s Bay Company Luckiamute crossing"
+    },
+    {
+     "time": "4:00–4:30",
+     "stop": "Dallas",
+     "theme": "Lodging"
+    }
+   ]
+  },
+  {
+   "day": "Day 4 — Wednesday 5 April 2023",
+   "stops": [
+    {
+     "time": "9:00–11:00",
+     "stop": "Champoeg",
+     "theme": "Artifacts, campsites, horses"
+    },
+    {
+     "time": "11:00–12:15",
+     "stop": "Willamette Falls",
+     "theme": "Museum of the Oregon Territory"
+    },
+    {
+     "time": "12:15–2:30",
+     "stop": "Fort Vancouver",
+     "theme": "Tour and summaries"
+    },
+    {
+     "time": "2:45",
+     "stop": "The Beaches Restaurant",
+     "theme": "Final stop"
+    }
+   ]
+  }
+ ],
+ "itinerary_source": "http://www.orww.org/1828_Umpqua_Memorial/JSS_2023_Rendezvous/1-0_Itinerary/Zybach_JSS_20230330.pdf",
+ "documents": [
+  {
+   "folder": "JSS_2023_Rendezvous/1-0_Itinerary",
+   "file_name": "Zybach_JSS_20230330.pdf",
+   "status": "bob",
+   "title": "Daily itinerary, 2–4 April 2023",
+   "author": "Bob Zybach",
+   "note": "The working schedule for the four days: each stop, its theme, the driving distance and the person leading it. The Library prints the stops and themes below; one line giving a private telephone number is not reproduced.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/JSS_2023_Rendezvous/1-0_Itinerary/Zybach_JSS_20230330.pdf",
+   "size": "52k",
+   "pdf_pages": 3
+  },
+  {
+   "folder": "JSS_2023_Rendezvous/1-0_Itinerary",
+   "file_name": "Cimino_20230301.pdf",
+   "status": "inc",
+   "title": "Rendezvous circular, 1 March 2023",
+   "author": "Richard Cimino",
+   "note": "The announcement sent out before the Rendezvous. Third-party work; identified by reference.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/JSS_2023_Rendezvous/1-0_Itinerary/Cimino_20230301.pdf",
+   "size": "111k",
+   "pdf_pages": 1
+  },
+  {
+   "folder": "JSS_2023_Rendezvous/2-7_Coos_Museum",
+   "file_name": "Youst_20230322.pdf",
+   "status": "inc",
+   "title": "Notes for the Coos History Museum visit, 22 March 2023",
+   "author": "Lionel Youst",
+   "note": "Five pages prepared for the museum stop on the second day. Third-party work; identified by reference.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/JSS_2023_Rendezvous/2-7_Coos_Museum/Youst_20230322.pdf",
+   "size": "984k",
+   "pdf_pages": 5
+  },
+  {
+   "folder": "JSS_2023_Rendezvous/2-7_Coos_Museum",
+   "file_name": "Youst_Collection_Index_2023.pdf",
+   "status": "inc",
+   "title": "Index to the Youst Collection, Coos History Museum, 2023",
+   "author": "Lionel Youst",
+   "note": "A twenty-seven-page finding aid to the collection the party was shown. Third-party work; identified by reference.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/JSS_2023_Rendezvous/2-7_Coos_Museum/Youst_Collection_Index_2023.pdf",
+   "size": "254k",
+   "pdf_pages": 27
+  },
+  {
+   "folder": "JSS_2023_Rendezvous/3-2_Fort_Umpqua",
+   "file_name": "ECEC_Tour_Script_2023.pdf",
+   "status": "inc",
+   "title": "Fort Umpqua tour script, 2023",
+   "author": "Elkton Community Education Center",
+   "note": "The script used for the Fort Umpqua stop on the third day. Three pages, scanned without a text layer. Third-party work; identified by reference.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/JSS_2023_Rendezvous/3-2_Fort_Umpqua/ECEC_Tour_Script_2023.pdf",
+   "size": "1011k",
+   "pdf_pages": 3
+  },
+  {
+   "folder": "JSS_2023_Rendezvous/OCTA_Presentations",
+   "file_name": "Zybach_OCTA_20230210.pdf",
+   "status": "bob",
+   "title": "Presentation to the Northwest Chapter, Oregon-California Trails Association, 10 February 2023",
+   "author": "Bob Zybach",
+   "note": "The talk given seven weeks before the Rendezvous. 18.2 MB — above the Library’s copying threshold, so it is linked and described rather than published page by page.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/JSS_2023_Rendezvous/OCTA_Presentations/Zybach_OCTA_20230210.pdf",
+   "size": "18.2M",
+   "pdf_pages": null
+  }
+ ],
+ "illustrations": [
+  {
+   "n": 1,
+   "file_name": "1_Warre_1845-8.jpg",
+   "display": "shown",
+   "caption": "This painting of Fort Vancouver was made in 1845 or 1846 by British military spy, Henry Warre, while under orders to \"obtain a general knowledge of the capabilities of the Oregon Territory in a Military point of view\" in \"perfect secrecy, so far as possible.\" The fort was being constructed during Smith’s winter 1828-29 stay there and he may well have been among its first occupants.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/1_Warre_1845-8.jpg",
+   "size": "1.8M"
+  },
+  {
+   "n": 2,
+   "file_name": "2_Meyerhof-IMG-8.jpg",
+   "display": "reference",
+   "caption": "Harris Beach looking south. The geological effects of the 1700 Cascadia earthquake and subsequent tsunami are still apparent today and formed formidable barriers to Smith’s expedition. Note the people and driftwood at the base of the cliff for scale. April 2, 2023 photo by Peter Meyerhof.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/2_Meyerhof-IMG-8.jpg",
+   "size": "1.4M"
+  },
+  {
+   "n": 3,
+   "file_name": "3_Zybach-1422_Sunset_Bay-8.jpg",
+   "display": "shown",
+   "caption": "Sunset Bay. The expedition spent two days here, with good forage and need to forge a difficult two-mile path through coastal brush and bogs to reach present-day South Slough and Coos Bay. February 2, 2023 photo by Bob Zybach.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/3_Zybach-1422_Sunset_Bay-8.jpg",
+   "size": "3.4M"
+  },
+  {
+   "n": 4,
+   "file_name": "4_Tsp_21S_Rng_12W_1858-8.jpg",
+   "display": "held",
+   "caption": null,
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/4_Tsp_21S_Rng_12W_1858-8.jpg",
+   "size": "437k"
+  },
+  {
+   "n": 5,
+   "file_name": "5_Moore-Umpqua_Site-8.jpg",
+   "display": "held",
+   "caption": null,
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/5_Moore-Umpqua_Site-8.jpg",
+   "size": "3.0M"
+  },
+  {
+   "n": 6,
+   "file_name": "6_Meyerhof-IMG_9818-8.jpg",
+   "display": "reference",
+   "caption": "Fort Vancouver restoration by the National Park Service (NPS) as it appears today: to the same dimensions and appearance seen by Smith while being constructed in 1828, and as painted by Warre in 1845-46. April 5, 2023 photo by Peter Meyerhof.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/6_Meyerhof-IMG_9818-8.jpg",
+   "size": "2.2M"
+  },
+  {
+   "n": 7,
+   "file_name": "7_Zybach-1479-8.jpg",
+   "display": "shown",
+   "caption": "Aaron Ochoa, Fort Vancouver Chief of Interpretations, providing information about the cannons in front of the Chief Factor’s house. April 5, 2023 photo by Bob Zybach.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/7_Zybach-1479-8.jpg",
+   "size": "2.9M"
+  },
+  {
+   "n": 8,
+   "file_name": "8_Matt_Dalimata_1480-8.jpg",
+   "display": "reference",
+   "caption": "The final stop at Fort Vancouver Chief Factor’s house on the way to a parting regale at The Beaches Restaurant on the Columbia River. (L-R) Rob Foxcurran, me, Jim Anderson, Suzi Schoensee, Aaron Ochoa, Virginia Jaquez, Eric Tschuy, and Peter Meyerhof. April 5, 2023 photo by Matt Dalimata.",
+   "url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/8_Matt_Dalimata_1480-8.jpg",
+   "size": "2.1M"
+  }
+ ],
+ "illustrations_url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/",
+ "captions_url": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/Zybach_Captions_20230529.pdf"
+}

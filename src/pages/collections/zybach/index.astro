@@ -81,32 +81,35 @@ const QUOTES = [
 const elkhorn =
   elliottVideos.find((v: any) => /Elkhorn Ranch/i.test(v.title ?? '')) ?? elliottVideos[0] ?? null;
 
-/* The six series described at inventory level in this edition. One calm
-   sentence each: what it is, and what the Library has done with it so far. */
-const COMING = [
+/* The other series. Two are now described item by item; four are described
+   at inventory level, each with a plain statement of what the Library has
+   done and will not do. One calm sentence each. */
+const OPENED = [
   {
     title: 'Letitia Carson, 1845–1888',
     href: '/collections/zybach/letitia-carson/',
     line:
-      'Biography, genealogy, land and court records for a Black pioneer who settled in Soap Creek Valley — the next series the Library will describe item by item.',
-  },
-  {
-    title: 'The Alberta Street Project',
-    href: '/collections/zybach/alberta-street/',
-    line:
-      'Two cultural-resource inventories of the Alberta Street neighborhood in North and Northeast Portland, 1992 and 2015; described here, with item pages to come.',
-  },
-  {
-    title: 'The Osbornes Project',
-    href: '/collections/zybach/osbornes/',
-    line:
-      'Panoramas made from Oregon fire lookouts with an Osborne camera in the 1930s, rephotographed from the same points from 2006; described here, with item pages to come.',
+      'Born enslaved in Kentucky, over the Oregon Trail in 1845, twice a plaintiff against the man who administered her partner\u2019s estate, and a homesteader in her own name from 1863. 251 documents described; the case file and the probate files reproduced page by page, with the creator\u2019s own writings on her.',
   },
   {
     title: 'Jedediah Smith and the 1828 Umpqua Memorial',
     href: '/collections/zybach/jedediah-smith/',
     line:
-      'Research, maps, guidebooks and memorial-project records on the 1828 Umpqua River events; described here, with item pages to come.',
+      'The journals and letters of the 14 July 1828 attack at the mouth of the Smith River, and the record of a modern project to mark it \u2014 a state highway marker, a memorial stone, and a four-day rendezvous over the route of 1828. Eleven of the creator\u2019s writings, page by page; the site itself is not located here.',
+  },
+];
+const COMING = [
+  {
+    title: 'The Alberta Street Project',
+    href: '/collections/zybach/alberta-street/',
+    line:
+      'Two cultural-resource inventories of the Alberta Street neighborhood in North and Northeast Portland, 1992 and 2015. Described here only. The interviews are with living people and the 1992 report has authors other than the creator, so the Library will not open this series until the rights and the consents have been examined.',
+  },
+  {
+    title: 'The Osbornes Project',
+    href: '/collections/zybach/osbornes/',
+    line:
+      'Panoramas made from Oregon fire lookouts with an Osborne camera in the 1930s, rephotographed from the same points from 2006. Described here; the creator keeps this work with his wildfire and forest-restoration program on orww.org, and the Library points there rather than making a second copy.',
   },
   {
     title: 'Oregon wildfire and forest restoration',
@@ -118,7 +121,7 @@ const COMING = [
     title: 'Reforestation business records',
     href: '/collections/zybach/reforestation-records/',
     line:
-      'Contract reforestation business records, 1972–1990, held at Oregon State University; described here and published nowhere on this site.',
+      'Contract reforestation business records, 1972\u20131990, held at Oregon State University; described here and published nowhere on this site.',
   },
 ];
 
@@ -347,10 +350,19 @@ const MEASURE = [
   <section aria-labelledby="series">
     <h2 id="series">What else is in the collection</h2>
     <p class="fd-para">
-      Bob Zybach's work runs wider than these two forests. Six further bodies of
-      work are described here — what exists, where it is, and what it would take
-      to open it — without item pages yet.
+      Bob Zybach's work runs wider than these two forests. Two more bodies of
+      work are now described item by item, and four are described at inventory
+      level — what exists, where it is, and what the Library has decided about
+      each.
     </p>
+    <ul class="fd-coming fd-coming--opened">
+      {OPENED.map((s) => (
+        <li>
+          <a href={s.href}>{s.title}</a>
+          <span>{s.line}</span>
+        </li>
+      ))}
+    </ul>
     <ul class="fd-coming">
       {COMING.map((s) => (
         <li>

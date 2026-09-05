@@ -1,0 +1,202 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import Register from '../../../../../components/zybach/smith/Register.astro';
+import { works, worksInGroup, dataReady, SECTION } from '../../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+
+const GROUPS = [
+  {
+    id: 'reports',
+    heading: 'The three photographic reports',
+    lede:
+      'The creator’s own record of the memorial being made: choosing the stone at a quarry near North Bend, moving it to the mouth of the Smith River, casting the bronze plaque at a foundry at Wamic, and the dedication at sunset on 28 October 2023. Each is a run of photographs with his captions under them; what is printed here is the caption text, page by page.',
+    items: worksInGroup('reports'),
+  },
+  {
+    id: 'articles',
+    heading: 'Articles, drafts and talks',
+    lede:
+      'Thirty-six years of the creator’s own writing on this subject, from a student draft submitted to an English department in 1987 to the article that led the Jedediah Smith Society’s journal in spring 2023.',
+    items: worksInGroup('articles'),
+  },
+  {
+    id: 'guidebooks',
+    heading: 'The four 2023 guidebooks',
+    lede:
+      'One guidebook for each day of the 2023 Rendezvous, built around the journal entries for the corresponding days of 1826–1830, campsite by named campsite. The creator wrote in them that they are “fully intended to be used on a local basis for current and future research, recreational, and educational purposes.”',
+    items: worksInGroup('guidebooks'),
+  },
+];
+
+const totalPages = works.reduce((n, w) => n + w.pages_total, 0);
+const heldPages = works.reduce((n, w) => n + w.pages_held, 0);
+const totalWords = works.reduce((n, w) => n + w.words, 0);
+
+/* Work by another author that this project generated. Described, not published:
+   its subject is where a search dog indicated human remains. */
+const OTHER = [
+  {
+    name: 'Schneider_20230504.pdf',
+    url: `${SECTION}Reports/Schneider_20230504.pdf`,
+    size: '20.2M',
+    modified: '31-Jul-2023 00:36',
+    held: true,
+  },
+];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Reports and the creator’s writings"
+  subtitle="Eleven works by Bob Zybach, printed page by page, with links to his own copies."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-writings"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  {!dataReady ? (
+    <p class="sm-empty">The writings have not been generated yet.</p>
+  ) : (
+    <>
+      <p class="sm-lede">
+        {works.length} works, {totalPages.toLocaleString('en-US')} pages,
+        {' '}{totalWords.toLocaleString('en-US')} words. Each opens at its own
+        page, printed one page at a time with a permanent anchor on every page,
+        so a citation to page 7 of a report lands on page 7. The creator
+        publishes every one of these files himself; the Library prints his text
+        and links to his PDF rather than making a second copy of it.
+        {heldPages > 0 && (
+          <>
+            {' '}{heldPages} pages of the {totalPages.toLocaleString('en-US')} are
+            held: each keeps its number, its anchor and one notice saying so.
+          </>
+        )}
+      </p>
+
+      {GROUPS.map((g) => (
+        <section aria-labelledby={g.id}>
+          <h2 id={g.id}>{g.heading}</h2>
+          <p class="sm-group__lede">{g.lede}</p>
+          <ul class="sm-works">
+            {g.items.map((w) => (
+              <li>
+                <h3><a href={`${base}/writings/${w.slug}/`}>{w.title}</a></h3>
+                <p class="sm-works__meta">
+                  {w.author} · {w.date_display} · {w.pages_total} pages
+                  {w.pages_held > 0 && <> · {w.pages_held} held</>}
+                  {w.size && <> · {w.size} as he posts it</>}
+                </p>
+                <p class="sm-works__blurb">{w.blurb}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+
+      <section aria-labelledby="other-authors">
+        <h2 id="other-authors">A report by another author</h2>
+        <p class="sm-group__lede">
+          One of the four files in the creator’s Reports folder is not his. On
+          2 May 2023 Cathy Schneider of Northwest Canine Resources, Oakland,
+          Oregon, worked a trained cadaver dog over the ground and filed a report
+          two days later, with a field map that is kept in the Maps folder. The
+          creator’s index describes it as a report “on the success of Max, her
+          trained cadaver dog, to locate apparent human remains near the location
+          of the Gordon and Whereat surveys.”
+        </p>
+        <p class="sm-group__lede">
+          It is a third-party work, and its subject is where human remains lie.
+          The Library catalogues it — author, date, length, where the creator
+          hosts it — and publishes nothing out of it. The same applies to the
+          field map on the <a href={`${base}/maps/`}>maps page</a> and to the six
+          photographs on the
+          {' '}<a href={`${base}/photographs/#canine-search`}>photographs page</a>.
+        </p>
+        <Register
+          rows={OTHER}
+          caption="Cathy Schneider, Northwest Canine Resources. Report on a canine search, 4 May 2023. Third-party work; identified by reference."
+        />
+      </section>
+    </>
+  )}
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Creator', value: 'Bob Zybach; Oregon Websites and Watershed Project, Inc.; NW Maps Co.' },
+      { label: 'Published at', value: 'orww.org/1828_Umpqua_Memorial/', href: SECTION },
+      { label: 'Rights', value: 'In copyright. The creator publishes these himself; the Library’s copy is a display copy; permission being recorded.' },
+      { label: 'Held', value: `${heldPages} pages of ${totalPages} withheld pending review — all of them pages that give the location of the attack or the graves, or that name living private individuals` },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href={`${base}/the-1828-record/`}>The 1828 record</a> ·
+    <a href={`${base}/markers/`}>Historical markers</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede,
+  .sm-group__lede {
+    max-width: 64ch;
+    font-size: 0.98rem;
+    line-height: 1.66;
+  }
+  .sm-group__lede { color: #3f3a33; }
+  .sm-empty {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px dashed var(--rule-border, #d8d1c2);
+    color: #6b6355;
+  }
+  .sm-works {
+    list-style: none;
+    margin: 1rem 0 2rem;
+    padding: 0;
+  }
+  .sm-works li {
+    padding: 0.85rem 0;
+    border-top: 1px solid #ece5d5;
+  }
+  .sm-works h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.02rem;
+    line-height: 1.4;
+  }
+  .sm-works__meta {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: #6b6355;
+  }
+  .sm-works__blurb {
+    margin: 0;
+    max-width: 64ch;
+    font-size: 0.93rem;
+    line-height: 1.6;
+  }
+  .sm-see-also {
+    margin-top: 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+  }
+</style>

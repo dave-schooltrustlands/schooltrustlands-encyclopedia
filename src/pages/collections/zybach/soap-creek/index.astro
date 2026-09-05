@@ -10,6 +10,7 @@ import Opening from '../../../../components/zybach/frontdoor/Opening.astro';
 import Plate from '../../../../components/zybach/frontdoor/Plate.astro';
 import Voices from '../../../../components/zybach/frontdoor/Voices.astro';
 import CoverShelf from '../../../../components/zybach/frontdoor/CoverShelf.astro';
+import { allPortraits } from '../../../../components/zybach/_data';
 import Measure from '../../../../components/zybach/frontdoor/Measure.astro';
 import AboutStrip from '../../../../components/zybach/frontdoor/AboutStrip.astro';
 import {
@@ -274,6 +275,27 @@ const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' 
       afternoons across fifteen years. Each has a page: their sessions, the
       places they speak of, and everywhere else in the series they are
       mentioned.
+    </p>
+    {allPortraits.length > 0 && (
+      <ul class="sc-fd-portraits" aria-label="Photographs of the narrators as printed in the monographs">
+        {allPortraits.map((pt) => {
+          const m = monographs.find((x) => x.slug === pt.slug);
+          return (
+            <li>
+              <a href={m?.href ?? monoHref(pt.slug)} title={pt.who ?? undefined}>
+                <img src={pt.file} alt={pt.who ? `${pt.who}, as printed in Monograph #${String(pt.number).padStart(2, '0')}` : `Photograph printed in Monograph #${String(pt.number).padStart(2, '0')}`} loading="lazy" decoding="async" />
+              </a>
+              <span>#{String(pt.number).padStart(2, '0')}</span>
+            </li>
+          );
+        })}
+      </ul>
+    )}
+    <p class="sc-fd-caption">
+      The photographs the books themselves print of the people who talk in
+      them — twelve of the fifteen carry one — reproduced from the creator's
+      own scans. Some show the narrator as a child, with the family; the
+      caption on each book's page says who is who.
     </p>
     {narrators.length > 0 ? (
       <ul class="sc-fd-people">
@@ -689,5 +711,39 @@ const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' 
     font-family: var(--font-sans);
     font-size: 0.82rem;
     color: #6b6355;
+  }
+  .sc-fd-portraits {
+    list-style: none;
+    margin: 1rem 0 0.5rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 0.75rem 0.6rem;
+    max-width: 62rem;
+  }
+  .sc-fd-portraits li { text-align: center; }
+  .sc-fd-portraits img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    background: #f4efe4;
+  }
+  .sc-fd-portraits span {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: #6b6353;
+  }
+  .sc-fd-caption {
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: #4a4438;
+    max-width: 62ch;
+    margin: 0.25rem 0 1rem;
   }
 </style>

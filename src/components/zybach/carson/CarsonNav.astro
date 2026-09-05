@@ -1,0 +1,73 @@
+---
+/* CarsonNav.astro — the doors within the Letitia Carson series.
+ *
+ * One strip under the collection's own navigation, so that a reader who has
+ * gone into the documents can get back to the writings, the chronology, the
+ * people and the places without returning to the front door first.
+ *
+ * Contract: { current?: string } — the key of the page to mark as current.
+ * Keys: series · documents · writings · photographs · maps · chronology ·
+ *       people · places · files
+ */
+interface Props {
+  current?: string;
+}
+const { current } = Astro.props as Props;
+
+const BASE = '/collections/zybach/letitia-carson';
+const LINKS: ReadonlyArray<{ key: string; label: string; href: string }> = [
+  { key: 'series', label: 'The series', href: `${BASE}/` },
+  { key: 'documents', label: 'Documents', href: `${BASE}/documents/` },
+  { key: 'writings', label: 'Writings', href: `${BASE}/writings/` },
+  { key: 'chronology', label: 'Chronology', href: `${BASE}/chronology/` },
+  { key: 'people', label: 'People', href: `${BASE}/people/` },
+  { key: 'places', label: 'Places', href: `${BASE}/places/` },
+  { key: 'photographs', label: 'Photographs', href: `${BASE}/photographs/` },
+  { key: 'maps', label: 'Maps', href: `${BASE}/maps/` },
+  { key: 'files', label: 'In the Library’s files', href: `${BASE}/files/` },
+];
+---
+
+<nav class="lc-nav" aria-label="Letitia Carson series" data-pagefind-ignore>
+  <ul>
+    {LINKS.map((l) => (
+      <li>
+        {l.key === current ? (
+          <span class="lc-nav__current" aria-current="page">{l.label}</span>
+        ) : (
+          <a href={l.href}>{l.label}</a>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .lc-nav {
+    margin: 0 0 1.25rem;
+    padding: 0.4rem 0 0.55rem;
+    border-bottom: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+  }
+  .lc-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.05rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .lc-nav a {
+    color: var(--trust-blue, #1b3252);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .lc-nav a:hover {
+    border-bottom-color: currentColor;
+  }
+  .lc-nav__current {
+    font-weight: 700;
+    color: var(--deep-navy, #14243c);
+  }
+</style>

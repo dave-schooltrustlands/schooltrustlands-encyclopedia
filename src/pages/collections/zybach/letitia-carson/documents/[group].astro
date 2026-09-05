@@ -1,0 +1,207 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import Register from '../../../../../components/zybach/carson/Register.astro';
+import type { RegisterRow } from '../../../../../components/zybach/carson/data';
+import {
+  BASE,
+  docGroups,
+  docHref,
+  anchorId,
+} from '../../../../../components/zybach/carson/data';
+
+export function getStaticPaths() {
+  return docGroups.map((g) => ({ params: { group: g.slug }, props: { group: g } }));
+}
+
+const { group } = Astro.props as { group: (typeof docGroups)[number] };
+
+const order = docGroups.map((g) => g.slug);
+const here = order.indexOf(group.slug);
+const prev = here > 0 ? docGroups[here - 1] : null;
+const next = here >= 0 && here < docGroups.length - 1 ? docGroups[here + 1] : null;
+
+function metaOf(i: (typeof group.items)[number]): string {
+  const bits: Array<string | null> = [
+    i.date_display ? String(i.date_display) : 'undated',
+    i.sheet ? `sheet ${i.sheet}` : null,
+    i.format === 'PDF' ? 'PDF' : null,
+    i.superseded ? 'superseded by the creator' : null,
+  ];
+  return bits.filter(Boolean).join(' · ');
+}
+
+function noteOf(i: (typeof group.items)[number]): string | null {
+  if (i.compiled) return i.compiled;
+  const parts: string[] = [];
+  if (i.kind) parts.push(i.kind + '.');
+  if (i.parties.length === 1) parts.push(`Names ${i.parties[0]}.`);
+  else if (i.parties.length > 1)
+    parts.push(`Names ${i.parties.slice(0, -1).join(', ')} and ${i.parties[i.parties.length - 1]}.`);
+  return parts.length ? parts.join(' ') : null;
+}
+
+const rows: RegisterRow[] = group.items.map((i) => ({
+  id: anchorId(i.stem),
+  title: i.stem.replace(/^x-/, ''),
+  meta: metaOf(i),
+  note: noteOf(i),
+  creatorNote: i.creator_note,
+  thumb: i.thumb,
+  href: i.url,
+  linkLabel: i.format === 'PDF' ? 'The creator’s PDF' : 'The creator’s scan',
+  muted: i.superseded,
+  extra: i.transcription
+    ? {
+        label: `Transcription, page ${i.transcription.page}`,
+        href: `${BASE}/writings/${
+          i.transcription.work === 'carson-vs-smith'
+            ? 'carson-v-smith-transcriptions'
+            : i.transcription.work === 'oregon-probate'
+              ? 'oregon-probate-transcriptions'
+              : 'missouri-probate-transcriptions'
+        }/#p${i.transcription.page}`,
+      }
+    : null,
+}));
+
+const withTranscription = group.items.filter((i) => i.transcription).length;
+const withCatalog = group.items.filter((i) => i.creator_note).length;
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+  { label: 'Documents', href: `${BASE}/documents/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title={group.title}
+  subtitle={group.lede}
+  width="prose"
+  parents={parents}
+  sourceId={`zybach-letitia-carson-docs-${group.slug}`}
+>
+  <p slot="before-title" class="kicker">Letitia Carson · Documents</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="documents" />
+
+  <p class="lc-count">
+    {group.count === 0
+      ? 'The creator has opened this folder but not yet put anything in it.'
+      : `${group.count} ${group.count === 1 ? 'file' : 'files'} in the creator’s folder`}
+    {group.count > 0 && !group.restricted
+      ? `, ${withCatalog} of them carrying his own line of description and ${withTranscription} of them transcribed.`
+      : '.'}
+  </p>
+
+  {group.restricted && group.restriction_note && (
+    <aside class="lc-hold" aria-label="What is not published here">
+      <p class="lc-hold__label">Described, not reproduced</p>
+      <p>{group.restriction_note}</p>
+      <p class="lc-hold__link">
+        <a href={group.url}>The creator’s folder</a> — {group.count} files.
+      </p>
+    </aside>
+  )}
+
+  {rows.length > 0 && (
+    <Register
+      rows={rows}
+      caption="Filenames are the creator's. Where he numbered the sheets of one document, each sheet is listed on its own line, as he files them. A line in quotation marks is his own description from the 2013 index; the sentence above it is the Library's, written from what the filename says and from the transcription where one exists."
+    />
+  )}
+
+  {group.count === 0 && (
+    <p class="lc-note">
+      Recorded because it is part of his arrangement: the folder tells you where
+      he means the Soap Creek records to go, and that they are not there yet.
+      <br />
+      <a href={group.url}>The creator’s folder</a>
+    </p>
+  )}
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Records', value: 'Public records; not under copyright' },
+      { label: 'Scanned and published by', value: 'Bob Zybach and Janet Meranda' },
+      { label: 'This folder', value: group.folder, href: group.url },
+      { label: 'Described', value: 'By the Library, 4 September 2026' },
+    ]}
+  />
+
+  <nav class="lc-seq" aria-label="Other document groups">
+    {prev && <a href={docHref(prev.slug)}>← {prev.title}</a>}
+    <a href={`${BASE}/documents/`}>All groups</a>
+    {next && <a href={docHref(next.slug)}>{next.title} →</a>}
+  </nav>
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-count {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #4a4438;
+  }
+  .lc-note {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #6b6355;
+    max-width: 64ch;
+  }
+  .lc-hold {
+    margin: 1.25rem 0;
+    padding: 0.85rem 1.1rem;
+    background: rgba(122, 46, 46, 0.045);
+    border-left: 3px solid var(--oxblood, #7a2e2e);
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+  .lc-hold p {
+    margin: 0 0 0.5rem;
+    max-width: 64ch;
+  }
+  .lc-hold__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--oxblood, #7a2e2e);
+    font-weight: 700;
+  }
+  .lc-hold__link {
+    margin-bottom: 0;
+  }
+  .lc-seq {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin: 2rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+  }
+  .lc-corrections {
+    margin-top: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

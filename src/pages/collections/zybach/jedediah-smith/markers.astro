@@ -1,0 +1,451 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import Figure from '../../../../components/zybach/smith/Figure.astro';
+import Register from '../../../../components/zybach/smith/Register.astro';
+import { markers, people, SECTION } from '../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+const bolon = markers.bolon_island;
+const river = markers.smith_river;
+const sign = markers.sign_text;
+const letters = markers.letters ?? [];
+const thirdParty = markers.third_party ?? [];
+const sponsors = markers.sponsors ?? [];
+const dead = people.the_dead;
+
+const HELD_DESIGN = new Set(['5-Gordon_Map.pdf', '20230726_Pollard_1944-2.pdf', '20230726_Pollard_1944-3.pdf']);
+const designRows = (river?.sign_design ?? []).map((f) => ({
+  ...f,
+  held: HELD_DESIGN.has(f.name),
+  note: HELD_DESIGN.has(f.name)
+    ? null
+    : f.name.includes('Zybach')
+      ? 'A draft of the sign text by the creator.'
+      : f.name.includes('Mole')
+        ? 'Sign artwork by Ellyn Mole, Ellyn Amalia Designs. Third-party work; identified by reference.'
+        : f.name.includes('McLoughlin') || f.name.includes('Fort_Vancouver')
+          ? 'A candidate illustration for the sign. Third-party image; identified by reference.'
+          : 'A working file for the sign.',
+}));
+
+const stoneRows = (river?.stone ?? []).map((f) => ({
+  ...f,
+  note: f.name.startsWith('Williams')
+    ? 'Douglas County Public Works, 2 June 2023. Third-party record; identified by reference.'
+    : f.name.startsWith('Final_DRAFT')
+      ? 'The final draft of the plaque, as the creator posts it.'
+      : 'A template for the plaque layout.',
+}));
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Historical markers"
+  subtitle="A state highway panel the project wanted replaced, a memorial stone it raised, a bronze plaque with fourteen names, and an interpretive sign that got as far as artwork."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-markers"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-lede">
+    The creator sets out the aim on his own project index: “The 2023 Umpqua
+    Memorial Project is focused on three historical markers and an event: 1)
+    Replacement of the Bolon Island ‘Jedediah Smith’ historical marker with one
+    that is more relevant to signficiant local events that took place from 1826
+    to 1828; 2) Installation of an Umpqua Memorial Stone commemorating the 15 men
+    killed nearby on July 14, 1828; 3) Installation of an 1828 Historical Sign
+    interpreting events associated with the October 28, 1828 burial of their
+    remains; and 4) Dedication of the Memorial Stone on October 28, 2023.”
+  </p>
+  <p class="sm-note">
+    Three of the four happened. This page follows each in turn. Where the
+    project’s papers give the ground itself — a coordinate, a survey
+    description, a road intersection, a map with the place marked — the Library
+    catalogues the paper and publishes none of it.
+  </p>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section aria-labelledby="bolon-island">
+    <h2 id="bolon-island">The Bolon Island marker</h2>
+    <p class="sm-note">
+      On Highway 101 at Bolon Island, outside Reedsport, a stone marker with an
+      inset bronze plaque has stood for about ninety years. Beside it the State
+      put up a modern interpretive panel about Jedediah Smith. The committee
+      wanted that panel taken down and replaced, and said so to the state body
+      that owns it.
+    </p>
+
+    <div class="sm-plates">
+      <Figure
+        src="http://www.orww.org/1828_Umpqua_Memorial/Photos/Bolon_Island/101_Original_Monument.jpg"
+        href="http://www.orww.org/1828_Umpqua_Memorial/Photos/Bolon_Island/101_Original_Monument.jpg"
+        alt="A low stone monument beside a highway, with an inset metal plaque."
+        size="plate"
+        caption="The original stone marker at Bolon Island. The creator writes of it: “Note that it is inset, 90 years old, and along a major highway and never vandalized… The objective is to be respectful, with simplicity, large lettering, and elegance as guides.”"
+        credit="From the creator’s own Bolon Island photographs; his files do not name the photographer. Photographic Report of 15 June 2023, p. 6."
+      />
+      <Figure
+        src="http://www.orww.org/1828_Umpqua_Memorial/Photos/Bolon_Island/101_Replacement_Monument-text.jpg"
+        href="http://www.orww.org/1828_Umpqua_Memorial/Photos/Bolon_Island/101_Replacement_Monument-text.jpg"
+        alt="Close-up of the text on a modern roadside interpretive panel."
+        size="plate"
+        caption="The modern state panel that the committee asked to have replaced — the text at close range."
+        credit="From the creator’s own Bolon Island photographs; his files do not name the photographer."
+      />
+    </div>
+
+    {letters.map((l) => (
+      <article class="sm-letter" id={l.slug}>
+        <h3>{l.title}</h3>
+        <p class="sm-letter__meta">
+          Bob Zybach · {l.date_display} · {l.pages} pages ·
+          {' '}<a href={l.url}>{l.file_name}</a>, {l.size}
+        </p>
+        <p class="sm-letter__desc">{l.description}</p>
+        {l.quotes.map((q) => (
+          <blockquote class="sm-letter__q">
+            <p>{q.text}</p>
+            <cite>Page {q.page}</cite>
+          </blockquote>
+        ))}
+      </article>
+    ))}
+
+    <p class="sm-note">
+      The Library takes no view on whether the panel should be replaced, or on
+      what a sign should say. It publishes the committee’s argument because the
+      committee published it, and because a reader of this series ought to be
+      able to see the reasoning behind the project rather than only its results.
+    </p>
+
+    <Register
+      rows={(bolon?.items ?? []).map((f) => ({
+        ...f,
+        note: f.name.startsWith('Dehn')
+          ? 'Papers of the Oregon Travel Information Council’s historical marker committee. Third-party work; identified by reference.'
+          : f.name.includes('CTCLUSI')
+            ? 'The letter of 20 July 2023, above.'
+            : 'The letter of 27 July 2023, above.',
+      }))}
+      caption="The creator’s Bolon Island folder, as he posts it. Twelve photographs of the two markers sit alongside it."
+    />
+    <p class="sm-note">
+      Photographs: <a href={bolon?.photos_url ?? SECTION}>the creator’s Bolon Island folder</a>,
+      twelve files — the original monument, the replacement panel with a person
+      for scale, the text at close range, and eight general views made in June
+      and July 2023.
+    </p>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section aria-labelledby="the-stone">
+    <h2 id="the-stone">The memorial stone and its plaque</h2>
+    <p class="sm-note">
+      A stone was chosen at the Main Rock quarry near North Bend on 14 June 2023,
+      hauled and set at the mouth of the Smith River on 21 June, cut for a bronze
+      plaque in October, and dedicated at sunset on 28 October 2023 — the 195th
+      anniversary of the burial. The three photographic reports follow it step by
+      step:
+      {' '}<a href={`${base}/writings/report-1-stone-selection/`}>choosing the stone</a>,
+      {' '}<a href={`${base}/writings/report-2-stone-placement/`}>moving it</a>, and
+      {' '}<a href={`${base}/writings/report-3-dedication/`}>the plaque and the dedication</a>.
+      Every hour of labour, every machine and the stone itself were donated.
+    </p>
+
+    <Figure
+      src="http://www.orww.org/1828_Umpqua_Memorial/icons/Zybach-JSS_20230622-2.jpg"
+      href={`${SECTION}Reports/Zybach-JSS_20230622.pdf`}
+      alt="Small photograph of heavy equipment handling a large boulder."
+      size="thumb"
+      caption="The creator’s own thumbnail for the stone-placement report."
+      credit="Bob Zybach, Photographic Report #2, 22 June 2023."
+    />
+
+    {dead && (
+      <div class="sm-plaque">
+        <p class="sm-plaque__head">Smith, Jackson &amp; Sublette<br /><em>“Free Trappers”</em></p>
+        <ul class="sm-plaque__names">
+          {dead.names.map((n) => <li>{n}</li>)}
+        </ul>
+        <p class="sm-plaque__foot">
+          Died July 14, 1828<br />
+          Dedicated October 28, 2023<br />
+          Jedediah Smith Society
+        </p>
+      </div>
+    )}
+    {dead && (
+      <p class="sm-note sm-plaque__src">
+        The plaque text as the creator prints it in his field report.
+        {' '}<a href={dead.href}>Photographic Report of 15 June 2023, page 7</a>.
+        {' '}{dead.note}
+        {' '}Who each of these men was, in the creator’s own notes, is on the
+        {' '}<a href={`${base}/people/`}>people page</a>.
+      </p>
+    )}
+
+    <p class="sm-note">
+      The ground itself was listed with the Oregon Commission on Historic
+      Cemeteries on 29 March 2023. The Commission’s letter of confirmation says
+      only that “the Smith Jackson &amp; Sublette Burial Site in Douglas County is
+      listed with the Oregon Commission on Historic Cemeteries,” and that the
+      listing brings it under the state’s historic-cemetery law. The application
+      behind that listing is a different matter: it is the one document in this
+      series that sets out the site’s legal description and coordinates, and it
+      also carries private addresses and telephone numbers. It is catalogued
+      below and nothing out of it is published.
+    </p>
+
+    <Register rows={stoneRows} caption="The creator’s Stone folder." />
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section aria-labelledby="sign">
+    <h2 id="sign">The interpretive sign, and what it was to say</h2>
+    <p class="sm-note">
+      The fourth object was an interpretive sign on Douglas County right-of-way —
+      county rather than state, which the creator noted gave “far more leeway to
+      content and design.” Between February and November 2023 he drafted the text
+      four times, a quotation and a budget came in from the sign fabricator, and
+      a graphic artist laid out two sheets of artwork. The creator’s own files do
+      not record the sign being installed.
+    </p>
+    <p class="sm-note">
+      What the sign was to carry is the most substantial piece of history in this
+      whole series: five passages of Rogers’s journal from the week before the
+      attack, McLoughlin’s report of what Arthur Black told him, the account an
+      Umpqua chief gave McLeod that October, and McLeod’s own entry for the day
+      of the burial. They are printed here from the draft of 20 October 2023.
+    </p>
+
+    {sign && (
+      <div class="sm-sign">
+        {sign.passages.map((p) => (
+          <figure class="sm-sign__p">
+            <p class="sm-sign__head">{p.heading}</p>
+            <blockquote><p>{p.date}. {p.text}</p></blockquote>
+            <figcaption>Draft of 20 October 2023, page {p.page}</figcaption>
+          </figure>
+        ))}
+        <p class="sm-note">
+          The passage the creator heads “Native Account of Event by Umpqua Chief
+          Starnoose,” from the same draft, is printed in full on the
+          {' '}<a href={`${base}/the-1828-record/#native-account`}>1828 record page</a>.
+          Transcribed from
+          {' '}<a href={sign.url}>his draft</a>; the ligatures in his PDF do not
+          survive text extraction and have been restored. Nothing else is altered.
+          The draft dates McLoughlin’s report 11 August 1828; an earlier draft and
+          the file in his References folder date the same document 10 August.
+        </p>
+      </div>
+    )}
+
+    <Register
+      rows={designRows}
+      caption="The creator’s Sign / Design folder. Three files are withheld: they reproduce the 1857–58 General Land Office survey that marks the place."
+    />
+    <Register
+      rows={(river?.sign_budget ?? []).map((f) => ({
+        ...f,
+        note: 'Quotation and proof from the sign fabricator, Sea Reach. Third-party commercial document; identified by reference.',
+      }))}
+      caption="The creator’s Sign / Budget folder."
+    />
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section aria-labelledby="sponsors">
+    <h2 id="sponsors">Sponsors and acknowledgements</h2>
+    <p class="sm-note">
+      The creator keeps a sponsors page and updates it as the memorial develops.
+      Its own preamble reads: “The following individuals, organizations, and
+      businesses have contributed time, services, materials, and funding needed to
+      create and develop the Umpqua Memorial Project.” The table below is his,
+      reproduced as he publishes it: organisation, the person he names as the
+      contact, and the town the business is in. The Library adds nothing to it and
+      publishes no address, telephone number or email for anyone.
+    </p>
+    <div class="sm-sp__scroll">
+      <table class="sm-sp">
+        <thead>
+          <tr><th scope="col">Organisation</th><th scope="col">Contact</th><th scope="col">Location</th></tr>
+        </thead>
+        <tbody>
+          {sponsors.map((s) => (
+            <tr>
+              <th scope="row">{s.organization}</th>
+              <td>{s.contact}</td>
+              <td>{s.location}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="sm-note">
+      <a href={markers.sponsors_url ?? SECTION}>The creator’s sponsors page</a>.
+      He also records that “initial funding was also provided by the national
+      Jedediah Smith Society and the Oregon-California Trails Association.”
+    </p>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <section aria-labelledby="other-hands">
+    <h2 id="other-hands">Documents in other hands</h2>
+    <p class="sm-note">
+      Seven documents in the marker folders were made by someone other than the
+      creator, or contain material the Library does not publish. Each is
+      catalogued: who made it, when, what it is, and where his copy is.
+    </p>
+    <Register
+      rows={thirdParty.map((t) => ({
+        name: t.name, url: t.url, size: t.size,
+        modified: null,
+        note: `${t.note} ${t.pages} ${t.pages === 1 ? 'page' : 'pages'}.`,
+      }))}
+      caption="Third-party and withheld documents from the marker folders."
+    />
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Creator', value: 'Bob Zybach, chair of the Umpqua Memorial Committee' },
+      { label: 'Published at', value: 'orww.org/1828_Umpqua_Memorial/Historical_Markers/', href: `${SECTION}Historical_Markers/` },
+      { label: 'Sponsors', value: `${sponsors.length} organisations and contributors, as the creator publishes them` },
+      { label: 'Held', value: 'The Historic Cemeteries application; three sign-design files reproducing the 1857–58 survey; two sheets of sign artwork that reproduce the same map' },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href={`${base}/writings/`}>Reports</a> ·
+    <a href={`${base}/people/`}>People</a> ·
+    <a href={`${base}/photographs/`}>Photographs</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede { max-width: 64ch; font-size: 1rem; line-height: 1.68; }
+  .sm-note { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; color: #3f3a33; }
+  .sm-plates {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.25rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .sm-letter {
+    margin: 1.5rem 0;
+    padding: 1rem 1.2rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 4px;
+  }
+  .sm-letter h3 { margin: 0 0 0.2rem; font-size: 1rem; line-height: 1.4; }
+  .sm-letter__meta {
+    margin: 0 0 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+    overflow-wrap: anywhere;
+  }
+  .sm-letter__desc { margin: 0 0 0.8rem; max-width: 64ch; font-size: 0.93rem; line-height: 1.6; }
+  .sm-letter__q {
+    margin: 0 0 0.85rem;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--old-gold, #a87f2c);
+  }
+  .sm-letter__q p {
+    margin: 0;
+    max-width: 62ch;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.94rem;
+    line-height: 1.64;
+  }
+  .sm-letter__q cite {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-style: normal;
+    color: #6b6355;
+  }
+  .sm-plaque {
+    max-width: 22rem;
+    margin: 1.5rem 0 0.5rem;
+    padding: 1.3rem 1.5rem;
+    text-align: center;
+    background: #efe9dc;
+    border: 2px solid #a08d63;
+    border-radius: 3px;
+    font-family: var(--font-serif, Georgia, serif);
+  }
+  .sm-plaque__head { margin: 0 0 0.8rem; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; }
+  .sm-plaque__names { list-style: none; margin: 0 0 0.9rem; padding: 0; font-size: 0.92rem; line-height: 1.7; }
+  .sm-plaque__foot { margin: 0; font-size: 0.8rem; line-height: 1.65; color: #4e4638; }
+  .sm-plaque__src { margin-top: 0.6rem; }
+  .sm-sign { margin: 1.25rem 0; }
+  .sm-sign__p {
+    margin: 0 0 1.25rem;
+    padding: 0.85rem 1.05rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 4px;
+  }
+  .sm-sign__head {
+    margin: 0 0 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--deep-navy, #14243c);
+  }
+  .sm-sign__p blockquote { margin: 0; }
+  .sm-sign__p blockquote p {
+    margin: 0;
+    max-width: 64ch;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.94rem;
+    line-height: 1.66;
+  }
+  .sm-sign__p figcaption {
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: #6b6355;
+  }
+  .sm-sp__scroll { overflow-x: auto; margin: 1rem 0; }
+  .sm-sp { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .sm-sp th, .sm-sp td {
+    text-align: left;
+    padding: 0.4rem 0.9rem 0.4rem 0;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    vertical-align: top;
+  }
+  .sm-sp thead th {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+  }
+  .sm-sp tbody th { font-weight: 600; }
+  .sm-sp tbody td { color: #4e4638; font-family: var(--font-sans); font-size: 0.83rem; }
+  .sm-see-also { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.84rem; }
+</style>

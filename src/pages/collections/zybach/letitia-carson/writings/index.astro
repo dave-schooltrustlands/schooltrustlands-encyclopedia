@@ -1,0 +1,304 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import { BASE, ORWW, library, texts, workHref } from '../../../../../components/zybach/carson/data';
+
+const writings = library.writings ?? [];
+const references = library.references ?? [];
+const correspondence = library.correspondence ?? [];
+const counts = library.counts ?? {};
+
+const byWork = new Map(texts.map((w) => [w.slug, w]));
+const transcriptions = texts.filter((w) => w.population === 'public-records');
+
+const pdRefs = references.filter((r) => r.rights !== 'third-party');
+const tpRefs = references.filter((r) => r.rights === 'third-party');
+
+function refLine(r: (typeof references)[number]) {
+  const bits = [r.author, r.date].filter(Boolean).join(', ');
+  return bits;
+}
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Writings and the reference library"
+  subtitle="What the creator has published about Letitia Carson since 1989, the transcriptions made from the record, and the works by other people he keeps alongside them."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-letitia-carson-writings"
+>
+  <p slot="before-title" class="kicker">Letitia Carson · Register</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="writings" />
+
+  <p class="lc-lede">
+    Three different things sit in the creator’s <a href={library.url ?? `${ORWW}Library/`}>Library
+    folder</a>, and the Library treats them differently. His own writing is
+    reproduced where its text can be read and catalogued where it cannot. The
+    Merandas’ transcriptions of the court and probate files are reproduced page
+    by page. Everything else — other people’s books, articles, theses and
+    letters — is identified by author, title and date, and linked to his copy.
+    Nothing of anyone else’s is copied here.
+  </p>
+
+  <h2 id="reproduced">Reproduced here, page by page</h2>
+  <p>
+    {texts.length} works, {texts.reduce((n, w) => n + w.page_count, 0)} pages,
+    {' '}{texts.reduce((n, w) => n + w.words, 0).toLocaleString('en-US')} words.
+    Every page opens its own anchor, so a citation to a page resolves to a URL
+    that will not move.
+  </p>
+  <ul class="lc-works">
+    {texts.map((w) => (
+      <li>
+        <p class="lc-works__title"><a href={workHref(w.slug)}>{w.title}</a></p>
+        <p class="lc-works__meta">
+          {[w.series_title, w.by, w.date].filter(Boolean).join(' · ')}
+          {' · '}{w.page_count} {w.page_count === 1 ? 'page' : 'pages'}
+          {w.page_count !== w.pdf_pages ? ` of ${w.pdf_pages}` : ''}
+        </p>
+        <p class="lc-works__lede">{w.lede}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2 id="his-writing">The creator’s writing, 1989–2016</h2>
+  <p>
+    {counts.writings ?? writings.length} items in his own folder. Many are scans
+    of newspaper and newsletter pages with no text layer, which the Library
+    cannot read and therefore does not describe beyond what his filename says.
+  </p>
+  <ol class="lc-writings">
+    {writings.map((w) => (
+      <li>
+        <p class="lc-writings__title">
+          {w.text && byWork.has(w.text) ? (
+            <a href={workHref(w.text)}>{w.title}</a>
+          ) : (
+            <span>{w.title}</span>
+          )}
+        </p>
+        <p class="lc-writings__meta">{w.by} · {w.date}</p>
+        {w.note && <p class="lc-writings__note">{w.note}</p>}
+        <p class="lc-writings__links">
+          <a href={w.url}>The creator’s PDF</a>
+          {w.text && byWork.has(w.text) && (
+            <>
+              {' · '}
+              <a href={workHref(w.text)}>Read it here</a>
+            </>
+          )}
+        </p>
+      </li>
+    ))}
+  </ol>
+  <p class="lc-note">
+    Rights: these are the creator’s own work and remain his. He publishes them
+    himself; the Library’s copy is a display copy, and permission is being
+    recorded. Two of them appeared first in <em>The Umpqua Trapper</em>, the
+    quarterly of the Douglas County Historical Society, and one in the
+    encyclopedia at BlackPast.org — the Library reproduces only the pages of his
+    own article and points at his scan for the rest of the issue.
+  </p>
+
+  <h2 id="transcriptions">The transcriptions</h2>
+  <p>
+    Jan and John Meranda transcribed almost the whole of the probate and lawsuit
+    files. The records themselves are public records and are not under
+    copyright; the transcription is the Merandas’ work, published by the creator
+    and credited here to both.
+  </p>
+  <ul class="lc-links">
+    {transcriptions.map((w) => (
+      <li>
+        <a href={workHref(w.slug)}>{w.title}</a>
+        <span class="lc-links__meta">{w.page_count} pages · {w.by}</span>
+      </li>
+    ))}
+  </ul>
+
+  <h2 id="public-domain">Reference works out of copyright</h2>
+  <p>
+    {pdRefs.length} works in his reference library published before 1929, or by a
+    government and therefore never under copyright. The Library cites and links
+    his copy; it does not make a second one, because several run to hundreds of
+    megabytes.
+  </p>
+  <ul class="lc-refs">
+    {pdRefs.map((r) => (
+      <li>
+        <p class="lc-refs__title">
+          <a href={r.url}>{r.title ?? r.file.replace(/\.[a-z0-9]+$/i, '')}</a>
+        </p>
+        <p class="lc-refs__meta">
+          {refLine(r)}
+          {r.host ? ` · ${r.host}` : ''}
+          {r.read ? '' : ' · title not verified: the creator’s scan has no text layer'}
+        </p>
+        {r.extra && <p class="lc-refs__note">{r.extra}</p>}
+      </li>
+    ))}
+  </ul>
+
+  <h2 id="third-party">Works by other people, still in copyright</h2>
+  <p>
+    {tpRefs.length} works. These are identified by reference only — author,
+    title where the Library could read one, date, and a link to the creator’s
+    copy. Nothing is copied and nothing is quoted. Among them are the two
+    Portland State theses on Letitia Carson, the recent magazine and
+    encyclopedia articles, the county historical files, and the promotional
+    material for Jane Kirkpatrick’s novel.
+  </p>
+  <ul class="lc-refs">
+    {tpRefs.map((r) => (
+      <li>
+        <p class="lc-refs__title">
+          <a href={r.url}>{r.title ?? r.file.replace(/\.[a-z0-9]+$/i, '')}</a>
+        </p>
+        <p class="lc-refs__meta">
+          {refLine(r)}
+          {r.host ? ` · ${r.host}` : ''}
+          {r.kind === 'video' ? ' · video' : ''}
+          {r.read ? '' : ' · title not verified: the creator’s scan has no text layer'}
+        </p>
+      </li>
+    ))}
+  </ul>
+  <p class="lc-note">
+    Third-party works; identified by reference. If you hold rights in one of
+    these and would rather the Library not name it here,
+    {' '}<a href="/collections/zybach/rights/">tell us</a> and it comes down.
+  </p>
+
+  <h2 id="correspondence">Correspondence</h2>
+  <p>
+    {correspondence.length} letters and email threads in the creator’s
+    correspondence folder, on the graveyard restoration, the Lavadour family
+    line, the Platte County records and the Oregon State Bar article. They are
+    other people’s letters and carry personal contact details, so the Library
+    records only that they exist, and who they are between, as his own filenames
+    give it. Nothing from them is quoted.
+  </p>
+  <ul class="lc-corr">
+    {correspondence.map((c) => (
+      <li>
+        <a href={c.url}>{c.who}</a>
+        <span>{c.date}</span>
+      </li>
+    ))}
+  </ul>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Creator', value: 'Dr. Bob Zybach; with Janet Meranda' },
+      { label: 'Transcriptions', value: 'Jan and John Meranda' },
+      { label: 'Published at', value: 'orww.org/History/Letitia_Carson/Library/', href: `${ORWW}Library/` },
+      { label: 'Described', value: 'By the Library, 4 September 2026, from the creator’s file listing and from the text layer of the PDFs that have one' },
+      { label: 'Not reproduced', value: 'Every work by anybody other than the creator and the Merandas' },
+    ]}
+  />
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-lede {
+    font-size: 1.02rem;
+    line-height: 1.68;
+    max-width: 66ch;
+  }
+  .lc-note {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.58;
+    color: #6b6355;
+    max-width: 66ch;
+  }
+  .lc-works,
+  .lc-writings,
+  .lc-refs {
+    list-style: none;
+    margin: 1rem 0 1.5rem;
+    padding: 0;
+  }
+  .lc-works > li,
+  .lc-writings > li,
+  .lc-refs > li {
+    padding: 0.6rem 0;
+    border-top: 1px solid #ece5d5;
+  }
+  .lc-works__title,
+  .lc-writings__title,
+  .lc-refs__title {
+    margin: 0;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1rem;
+    line-height: 1.35;
+    color: var(--deep-navy, #14243c);
+  }
+  .lc-works__meta,
+  .lc-writings__meta,
+  .lc-refs__meta {
+    margin: 0.12rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+  }
+  .lc-works__lede,
+  .lc-writings__note,
+  .lc-refs__note {
+    margin: 0.3rem 0 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    max-width: 62ch;
+  }
+  .lc-writings__links {
+    margin: 0.3rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+  }
+  .lc-links,
+  .lc-corr {
+    list-style: none;
+    padding: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .lc-links > li,
+  .lc-corr > li {
+    margin-bottom: 0.55rem;
+  }
+  .lc-links__meta,
+  .lc-corr span {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+  }
+  .lc-corrections {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

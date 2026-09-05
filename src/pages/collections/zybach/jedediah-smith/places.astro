@@ -1,0 +1,143 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import { places, SECTION } from '../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Places"
+  subtitle="Public named places only — towns, rivers, museums, forts and roadside markers. No map, no pins, no coordinates."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-places"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-lede">
+    Every other series in this collection has a map. This one does not, and the
+    absence is deliberate. This series is about a killing, a burial and a search
+    for graves, and a map is the one form in which that material does the harm
+    the Library is trying to avoid. What follows instead is a plain list of the
+    public places the creator names — the towns, the rivers, the forts, the
+    museums and the roadside markers a reader could drive to today.
+  </p>
+  <p class="sm-note">
+    The finest the Library gets about the events of 1828 is “the mouth of the
+    Smith River, where it enters the Umpqua” — the creator’s own words on his own
+    front page, and the level of detail at which the story has been told in print
+    for two centuries. It publishes nothing finer: no coordinate, no township and
+    section, no road intersection, no aerial frame, no site map, and no
+    photograph captioned as the spot.
+  </p>
+
+  <dl class="sm-places">
+    {places.map((p) => (
+      <div>
+        <dt>{p.name}</dt>
+        <dd>
+          {p.note}
+          <span class="sm-places__src">{p.source}</span>
+        </dd>
+      </div>
+    ))}
+  </dl>
+
+  <section aria-labelledby="campsites">
+    <h2 id="campsites">The 1828 campsites</h2>
+    <p class="sm-note">
+      The four guidebooks name every camp of the journey and give the 1828 date
+      for each — Hogback Ridge, Gans Prairie, the Winchuck, the Rogue, the
+      Coquille, Sunset Bay, the Hollering Place, Umpqua Bay and the rest. Those
+      names, with their dates and the pages they stand on, are in the
+      {' '}<a href={`${base}/chronology/`}>chronology</a> and in the guidebooks
+      themselves, printed
+      {' '}<a href={`${base}/writings/#guidebooks`}>page by page</a>. They are
+      camps on a route, not sites, and the Library treats them as the creator
+      does.
+    </p>
+  </section>
+
+  <section aria-labelledby="homelands">
+    <h2 id="homelands">Whose country this was</h2>
+    <p class="sm-note">
+      The creator’s guidebooks name the peoples whose lands the party crossed, in
+      their own subtitles: Hoopa, Yurok and Tolowa in the first; Tolowa, Tututni,
+      Nasomah, Miluk, Hanis and Quuiich in the second; Chinook, Kalapuyan,
+      Umpqua, Quuiich, Siuslaw and Hanis in the third. His own sketch map, “Oregon
+      Coast Native Lands 1828,” sets out the coastal homelands as he understands
+      them; it is on the <a href={`${base}/maps/`}>maps page</a>.
+    </p>
+    <p class="sm-note">
+      The people at the mouth of the Umpqua in 1828 are called several things in
+      these documents — Kelawatset, Kellywasats, Quuiich, Lower Umpqua — and the
+      creator’s letter to the Oregon Travel Information Council argues at length
+      about which is right. The Library uses Lower Umpqua (Kelawatset) in its own
+      sentences and leaves every source’s spelling alone. The Confederated Tribes
+      of Coos, Lower Umpqua and Siuslaw Indians are the tribal government today.
+    </p>
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Built by', value: 'America’s School Trust Library, from the creator’s published files' },
+      { label: 'Scope', value: 'Public named places only: towns, rivers, forts, museums, quarries and roadside markers' },
+      { label: 'Not published', value: 'Any coordinate, survey description, road intersection or map that would locate the 1828 attack, the Kelawatset village or the trappers’ graves' },
+      { label: 'The creator’s pages', value: 'orww.org/1828_Umpqua_Memorial/', href: SECTION },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href={`${base}/maps/`}>Maps</a> ·
+    <a href={`${base}/chronology/`}>Chronology</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede { max-width: 64ch; font-size: 1rem; line-height: 1.68; }
+  .sm-note { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; color: #3f3a33; }
+  .sm-places { margin: 1.25rem 0 2rem; }
+  .sm-places > div {
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+    gap: 0 1.2rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid #ece5d5;
+  }
+  .sm-places dt {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .sm-places dd { margin: 0; max-width: 62ch; font-size: 0.93rem; line-height: 1.6; }
+  .sm-places__src {
+    display: block;
+    margin-top: 0.15rem;
+    font-family: var(--font-sans);
+    font-size: 0.73rem;
+    color: #6b6355;
+  }
+  .sm-see-also { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.84rem; }
+  @media (max-width: 42rem) {
+    .sm-places > div { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>

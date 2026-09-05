@@ -1,0 +1,94 @@
+---
+/* PageText.astro — a work reproduced page by page.
+ *
+ * Page anchors are the point: every page of the original opens its own
+ * `<section id="pNN">` and carries a folio permalink, so a citation to page 8
+ * resolves to a URL that will not move when the page around it is rewritten.
+ * Nothing is paraphrased; paragraphs are set as the extraction found them, with
+ * the line breaks of the printed column closed up.
+ */
+import type { TextPage } from './data';
+
+interface Props {
+  pages: ReadonlyArray<TextPage>;
+  /** The label a folio shows — "Umpqua Trapper, p." or just "p." */
+  folioPrefix?: string;
+  /** Where the reader is, for the permalink. */
+  pathname: string;
+}
+const { pages, folioPrefix = 'p.', pathname } = Astro.props as Props;
+---
+
+<div class="lc-text">
+  {pages.map((p) => (
+    <section class="lc-text__page" id={`p${p.n}`} aria-label={`Page ${p.n}`}>
+      <a class="lc-text__folio" href={`${pathname}#p${p.n}`}>
+        {folioPrefix}&nbsp;{p.n}
+      </a>
+      {(p as any).held ? (
+        <p class="lc-text__held">
+          [Withheld from this edition pending review. The page keeps its printed
+          number and its permanent link, so a citation to it still lands here.]
+        </p>
+      ) : p.paragraphs.length > 0 ? (
+        p.paragraphs.map((para) => <p>{para}</p>)
+      ) : (
+        <p class="lc-text__empty">
+          No text on this page of the original — a plate, a blank leaf, or a page
+          the scan reads as empty.
+        </p>
+      )}
+    </section>
+  ))}
+</div>
+
+<style>
+  .lc-text__held { font-style: italic; color: #6b6353; }
+  .lc-text {
+    margin: 1.5rem 0 2rem;
+  }
+  .lc-text__page {
+    position: relative;
+    padding: 0.65rem 0 0.65rem;
+    border-top: 1px solid #ece5d5;
+    scroll-margin-top: 5rem;
+  }
+  .lc-text__page:target {
+    background: rgba(168, 127, 44, 0.08);
+  }
+  .lc-text__folio {
+    display: inline-block;
+    margin-bottom: 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #8a8172;
+    text-decoration: none;
+  }
+  .lc-text__folio:hover {
+    color: var(--trust-blue, #1b3252);
+  }
+  .lc-text__page p {
+    max-width: 66ch;
+    font-size: 1rem;
+    line-height: 1.68;
+    margin: 0 0 0.75rem;
+  }
+  .lc-text__empty {
+    color: #6b6355;
+    font-size: 0.88rem !important;
+    font-style: italic;
+  }
+  @media (min-width: 62rem) {
+    .lc-text__page {
+      padding-left: 4.5rem;
+    }
+    .lc-text__folio {
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      margin: 0;
+    }
+  }
+</style>

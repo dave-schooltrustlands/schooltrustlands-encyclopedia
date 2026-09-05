@@ -1,0 +1,301 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import Figure from '../../../../components/zybach/smith/Figure.astro';
+import Register from '../../../../components/zybach/smith/Register.astro';
+import {
+  rendezvous, worksInGroup, photoSets, rightsLine, SECTION,
+} from '../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+const guidebooks = worksInGroup('guidebooks');
+const days = photoSets.filter((s) => s.folder.includes('2023_Rendezvous/Day_'));
+const itinerary = rendezvous.itinerary ?? [];
+const docs = rendezvous.documents ?? [];
+const illus = rendezvous.illustrations ?? [];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Guidebooks and the 2023 Rendezvous"
+  subtitle="Four days in April 2023 driving the route of 1828, with a guidebook for each day built out of the journals."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-rendezvous"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-lede">
+    The creator’s own summary: “The Jedediah Smith Society 2023 Rendezvous took
+    place over four days, from April 2 to 5, and replicated Smith’s routes from
+    Smith River, California to Fort Vancouver in 1828.” Fifty-odd stops in four
+    days, and at each one the party read what Smith, Rogers or McLeod had written
+    at that place on the corresponding day of 1828.
+  </p>
+
+  <section aria-labelledby="guidebooks">
+    <h2 id="guidebooks">The four guidebooks</h2>
+    <p class="sm-note">
+      One for each day. Each opens with the same introduction, then works through
+      the campsites in order — the name the project gave the place, the date in
+      1828, and the journal entries for that day. The creator wrote in his
+      instructions that they “were intentionally designed to be used on a local
+      basis in future times by JSS members, students, researchers, and others
+      with an interest in local history and historical locations.” All four are
+      printed here page by page.
+    </p>
+
+    <Figure
+      src="http://www.orww.org/1828_Umpqua_Memorial/icons/1-Zybach_JSS_20230326-1-2.jpg"
+      href={`${SECTION}2023_Guidebooks/1-Zybach_JSS_20230326.pdf`}
+      alt="Small reproduction of the cover of the first guidebook."
+      size="thumb"
+      caption="The creator’s own thumbnail for Guidebook #1."
+      credit="Its cover reproduces Paul Calle’s 1987 painting “In the Land of Giants” — a third-party work, identified by reference."
+    />
+
+    <ul class="sm-books">
+      {guidebooks.map((g) => (
+        <li>
+          <h3><a href={`${base}/writings/${g.slug}/`}>{g.title}</a></h3>
+          <p class="sm-books__meta">
+            {g.pages_total} pages{g.pages_held > 0 ? `, ${g.pages_held} held` : ''} ·
+            {' '}{g.size} as he posts it ·
+            {' '}<a href={g.url}>{g.file_name}</a>
+          </p>
+          <p class="sm-books__blurb">{g.blurb}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="sm-note">
+      Five indexed map sheets were made for the guidebooks by Vyla Grindberg of
+      Douglas County GIS. They are on the
+      {' '}<a href={`${base}/maps/`}>maps page</a>.
+    </p>
+  </section>
+
+  <section aria-labelledby="itinerary">
+    <h2 id="itinerary">The itinerary, stop by stop</h2>
+    <p class="sm-note">
+      From the creator’s working schedule of 30 March 2023. Each row is a stop
+      and the theme he set for it. His sheet also carries driving distances, the
+      names of the people leading each stop, and one telephone number; the
+      Library prints the stops and the themes, and no contact details.
+      {' '}<a href={rendezvous.itinerary_source ?? SECTION}>His own file</a>.
+    </p>
+    {itinerary.map((d) => (
+      <div class="sm-day">
+        <h3>{d.day}</h3>
+        <div class="sm-day__scroll">
+          <table class="sm-day__table">
+            <thead>
+              <tr><th scope="col">Time</th><th scope="col">Stop</th><th scope="col">Theme</th></tr>
+            </thead>
+            <tbody>
+              {d.stops.map((s) => (
+                <tr>
+                  <th scope="row">{s.time}</th>
+                  <td>{s.stop}</td>
+                  <td>{s.theme}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    ))}
+    <p class="sm-note">
+      One stop on the second day is given in his sheet as the ground of the 1828
+      events, with the theme “Discussion: Appropriate Memorial.” That discussion
+      is where the memorial stone came from. The Library names the stop and not
+      the place.
+    </p>
+  </section>
+
+  <section aria-labelledby="stops">
+    <h2 id="stops">The Coos History Museum, Fort Umpqua and the OCTA talks</h2>
+    <p class="sm-note">
+      Three stops generated papers of their own, and two talks were given to the
+      Northwest Chapter of the Oregon-California Trails Association — one seven
+      weeks before the Rendezvous and one three days after it ended. The April
+      talk is printed here
+      {' '}<a href={`${base}/writings/octa-presentation-2023/`}>slide by slide</a>.
+    </p>
+    <ul class="sm-docs">
+      {docs.map((d) => (
+        <li>
+          <h3><a href={d.url}>{d.title}</a></h3>
+          <p class="sm-docs__meta">
+            {d.author}{d.pdf_pages ? ` · ${d.pdf_pages} pages` : ''}{d.size ? ` · ${d.size}` : ''}
+          </p>
+          <p class="sm-docs__note">{d.note}</p>
+          <p class="sm-docs__rights">{rightsLine(d.status)}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="illustrations">
+    <h2 id="illustrations">The eight illustrations, and their captions</h2>
+    <p class="sm-note">
+      For his article in the Society’s journal the creator chose eight pictures
+      and wrote a caption for each. The captions are printed here as he wrote
+      them. Two pictures are his own and one is a painting from 1845; those are
+      shown. Three were made by other photographers on the trip, and those are
+      named and linked rather than reproduced. Two are withheld: their captions
+      give the place.
+      {' '}<a href={rendezvous.captions_url ?? SECTION}>His caption sheet</a>.
+    </p>
+    <ol class="sm-illus">
+      {illus.map((i) => (
+        <li>
+          {i.display === 'shown' ? (
+            <Figure
+              src={i.url}
+              href={i.url}
+              alt={`Illustration ${i.n} from the creator's 2023 article.`}
+              size="plate"
+              caption={i.caption ?? undefined}
+              credit={`Illustration ${i.n}; ${i.file_name}, ${i.size}.`}
+            />
+          ) : i.display === 'held' ? (
+            <Figure
+              held={true}
+              alt={`Illustration ${i.n}, withheld.`}
+              size="plate"
+              caption={`Illustration ${i.n}. Its caption identifies the place of the 1828 attack and the burials, and is not reproduced.`}
+              credit={`${i.file_name}, ${i.size}. The entry keeps its number and its link is not published.`}
+            />
+          ) : (
+            <div class="sm-illus__ref">
+              <p class="sm-illus__cap">{i.caption}</p>
+              <p class="sm-illus__credit">
+                Illustration {i.n}. Photograph by another hand; identified by
+                reference and not reproduced here.
+                {' '}<a href={i.url}>{i.file_name}</a>, {i.size}.
+              </p>
+            </div>
+          )}
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section aria-labelledby="photographs">
+    <h2 id="photographs">The photographs, day by day</h2>
+    <p class="sm-note">
+      Participants pooled their photographs into four folders, one per day. The
+      full registers — every file, its date and its size — are on the
+      {' '}<a href={`${base}/photographs/`}>photographs page</a>.
+    </p>
+    <ul class="sm-daycounts">
+      {days.map((d) => (
+        <li>
+          <a href={`${base}/photographs/#${d.folder.split('/').pop()?.toLowerCase()}`}>{d.title}</a>
+          <span>{d.count} photographs</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Creator', value: 'Bob Zybach, assisted by Joe Molter; for the Jedediah Smith Society' },
+      { label: 'Dates', value: '2–5 April 2023' },
+      { label: 'Published at', value: 'orww.org/1828_Umpqua_Memorial/JSS_2023_Rendezvous/', href: `${SECTION}JSS_2023_Rendezvous/` },
+      { label: 'Rights', value: 'The guidebooks, the itinerary and the OCTA talks are the creator’s own work. Everything else on this page is identified by reference.' },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href={`${base}/writings/#guidebooks`}>The guidebooks page by page</a> ·
+    <a href={`${base}/maps/`}>Maps</a> ·
+    <a href={`${base}/chronology/`}>Chronology</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede { max-width: 64ch; font-size: 1rem; line-height: 1.68; }
+  .sm-note { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; color: #3f3a33; }
+  .sm-books, .sm-docs { list-style: none; margin: 1rem 0 1.5rem; padding: 0; }
+  .sm-books li, .sm-docs li { padding: 0.75rem 0; border-top: 1px solid #ece5d5; }
+  .sm-books h3, .sm-docs h3 { margin: 0 0 0.2rem; font-size: 0.99rem; line-height: 1.42; }
+  .sm-books__meta, .sm-docs__meta {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+    overflow-wrap: anywhere;
+  }
+  .sm-books__blurb, .sm-docs__note { margin: 0 0 0.25rem; max-width: 64ch; font-size: 0.92rem; line-height: 1.58; }
+  .sm-docs__rights { margin: 0; font-family: var(--font-sans); font-size: 0.74rem; color: #6b6355; }
+  .sm-day { margin: 1.25rem 0; }
+  .sm-day h3 { margin: 0 0 0.35rem; font-size: 0.95rem; }
+  .sm-day__scroll { overflow-x: auto; }
+  .sm-day__table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  .sm-day__table th, .sm-day__table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.34rem 0.9rem 0.34rem 0;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+  }
+  .sm-day__table thead th {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+  }
+  .sm-day__table tbody th {
+    white-space: nowrap;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: #6b6355;
+  }
+  .sm-day__table tbody td:last-child { color: #4e4638; font-size: 0.83rem; }
+  .sm-illus { margin: 1rem 0 1.5rem 1.2rem; padding: 0; }
+  .sm-illus li { margin-bottom: 1.25rem; }
+  .sm-illus__ref {
+    padding: 0.75rem 1rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 3px;
+  }
+  .sm-illus__cap { margin: 0 0 0.35rem; max-width: 62ch; font-size: 0.9rem; line-height: 1.58; }
+  .sm-illus__credit {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    color: #6b6355;
+    overflow-wrap: anywhere;
+  }
+  .sm-daycounts { list-style: none; margin: 1rem 0; padding: 0; font-family: var(--font-sans); font-size: 0.88rem; }
+  .sm-daycounts li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 0.4rem 0;
+    border-top: 1px solid #ece5d5;
+  }
+  .sm-daycounts span { color: #6b6355; font-size: 0.8rem; }
+  .sm-see-also { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.84rem; }
+</style>

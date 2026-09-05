@@ -1,0 +1,147 @@
+{
+  "generated": "2026-09-04",
+  "series": "letitia-carson",
+  "source": "Google Drive upload, orww/Letitia_Carson/ (creator: Bob Zybach)",
+  "counts": {
+    "files": 1771,
+    "bytes": 4239807159,
+    "folders": 321
+  },
+  "folders": [
+    {
+      "path": "Letitia_Carson-2012",
+      "files": 712,
+      "bytes": 2051208776,
+      "class": "creator-working-files",
+      "note": "Bob's earliest full snapshot of the Carson research project: probate and court-case scans, GLO/USGS map scans, a legacy 17-chapter biography draft, and older transcripts. Superseded by the 2022 and 2024 copies below."
+    },
+    {
+      "path": "Presentations",
+      "files": 27,
+      "bytes": 978071237,
+      "class": "creator-working-files",
+      "note": "Video and slide-deck recordings of talks Bob has given about Letitia Carson (conferences, historical societies). Not on the public website."
+    },
+    {
+      "path": "Biography",
+      "files": 257,
+      "bytes": 674427077,
+      "class": "creator-working-files",
+      "note": "The full, unpublished 17-chapter book-length Letitia Carson biography manuscript, with three appendices (chronology, Carson family, Lavadour family). This is Bob's working manuscript, not yet published anywhere."
+    },
+    {
+      "path": "2024_Letitia",
+      "files": 380,
+      "bytes": 155163233,
+      "class": "published-on-orww",
+      "note": "Bob's most recent (2024) snapshot of the Carson project. Its Documentation, Library, Maps, Illustrations, and Photographs branches use the same folder names and general content as what is live on orww.org today, though we did not verify every file matches one-for-one (see report)."
+    },
+    {
+      "path": "Letitia_Carson-2022",
+      "files": 203,
+      "bytes": 95482601,
+      "class": "creator-working-files",
+      "note": "A 2022 snapshot of the same Documentation/Library/Maps/Illustrations/Photographs research material, now superseded by the 2024 snapshot above. Kept as a backup copy, not itself the live site."
+    },
+    {
+      "path": "Articles",
+      "files": 40,
+      "bytes": 63019597,
+      "class": "creator-working-files",
+      "note": "Draft magazine and journal articles about Letitia Carson."
+    },
+    {
+      "path": "Maps",
+      "files": 14,
+      "bytes": 48154684,
+      "class": "creator-working-files",
+      "note": "Douglas County surveyor cadastral map scans (saved from a county map website) plus a few draft cover/map PDFs titled \"Letitia Carson\". Not the same as the Maps folders nested inside the project snapshots below."
+    },
+    {
+      "path": "Illustrations",
+      "files": 9,
+      "bytes": 34381746,
+      "class": "creator-working-files",
+      "note": "A mixed folder of source images: family/exhibit photos, a historical slave-register page naming a \"Letitia\" (used as biographical source research, not a living person), and a few personal-looking snapshots (IMG_*.jpeg) whose subject we could not identify. Worth a look before anything from here is used publicly."
+    },
+    {
+      "path": "Exhibit",
+      "files": 7,
+      "bytes": 18342714,
+      "class": "creator-working-files",
+      "note": "A handful of large photographic exhibit images."
+    },
+    {
+      "path": "(root)",
+      "files": 12,
+      "bytes": 12879478,
+      "class": "creator-working-files",
+      "note": "Loose files sitting at the very top of the Drive folder: a word-count spreadsheet, a Ford Family Foundation article PDF, thesis drafts, and draft manuscript files."
+    },
+    {
+      "path": "Childrens_Books",
+      "files": 7,
+      "bytes": 4200610,
+      "class": "creator-working-files",
+      "note": "Draft materials for a children's book about Letitia Carson, plus unrelated stamp-collecting reference images that appear to have been saved into the same folder by mistake."
+    },
+    {
+      "path": "Letitia-Kentucky",
+      "files": 1,
+      "bytes": 269707,
+      "class": "creator-working-files",
+      "note": "A single historical document (an 1800s Kentucky will listing enslaved people) used as source research."
+    },
+    {
+      "path": "2025_K-12",
+      "files": 3,
+      "bytes": 96760,
+      "class": "creator-working-files",
+      "note": "Draft chapters for a middle-grade nonfiction book about Letitia Carson aimed at a school audience."
+    }
+  ],
+  "excluded": [
+    {
+      "path": "Billings",
+      "files": 13,
+      "bytes": 1192537,
+      "reason": "Bob's own invoices, billing records, and a signed funding agreement with a grant funder; financial paperwork, not history content."
+    },
+    {
+      "path": "Letitia-Lavadours",
+      "files": 35,
+      "bytes": 22102626,
+      "reason": "Genealogy research and family-history correspondence about the Lavadour family, who descend from Letitia Carson and may include living relatives."
+    },
+    {
+      "path": "Letitia_Carson-2012/Lavadours",
+      "files": 8,
+      "bytes": 67230439,
+      "reason": "Older-snapshot copy of the same Lavadour descendant-family genealogy research."
+    },
+    {
+      "path": "Letitia_Carson-2012/Genealogies",
+      "files": 16,
+      "bytes": 7278345,
+      "reason": "Older-snapshot genealogy charts and family-tree research, potentially naming living descendants."
+    },
+    {
+      "path": "Letitia_Carson-2022/Genealogies",
+      "files": 13,
+      "bytes": 1108610,
+      "reason": "Mid-snapshot copy of the same genealogy charts and family-tree research."
+    },
+    {
+      "path": "Letitia_Carson-2022/Correspondence",
+      "files": 11,
+      "bytes": 2704856,
+      "reason": "Personal correspondence bundled with the 2022 snapshot, largely duplicating the Library/Correspondence folder in the 2024 snapshot; kept out of the public count as a precaution since some items concern the Lavadour family."
+    },
+    {
+      "path": "Letitia_Carson-2022/Letitia-Zybach-Meranda_2014_DRAFT/Carson_Genealogy",
+      "files": 3,
+      "bytes": 2491526,
+      "reason": "Draft genealogy chart material for the unpublished 2014 co-authored manuscript."
+    }
+  ]
+}

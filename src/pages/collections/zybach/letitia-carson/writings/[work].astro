@@ -1,0 +1,149 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import CitationBlock from '../../../../../components/zybach/CitationBlock.astro';
+import ContentNote from '../../../../../components/zybach/ContentNote.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import PageText from '../../../../../components/zybach/carson/PageText.astro';
+import { BASE, texts, workHref } from '../../../../../components/zybach/carson/data';
+
+export function getStaticPaths() {
+  return texts.map((w) => ({ params: { work: w.slug }, props: { work: w } }));
+}
+
+const { work } = Astro.props as { work: (typeof texts)[number] };
+
+const here = texts.findIndex((w) => w.slug === work.slug);
+const prev = here > 0 ? texts[here - 1] : null;
+const next = here >= 0 && here < texts.length - 1 ? texts[here + 1] : null;
+
+const isRecord = work.population === 'public-records';
+const first = work.pages[0]?.n ?? 1;
+const last = work.pages[work.pages.length - 1]?.n ?? first;
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+  { label: 'Writings', href: `${BASE}/writings/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title={work.title}
+  subtitle={[work.series_title, work.by, work.date].filter(Boolean).join(' · ')}
+  width="prose"
+  parents={parents}
+  sourceId={`zybach-letitia-carson-work-${work.slug}`}
+>
+  <p slot="before-title" class="kicker">Letitia Carson · {work.kind}</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="writings" />
+
+  <p class="lc-lede">{work.lede}</p>
+
+  <p class="lc-meta">
+    {work.page_count} {work.page_count === 1 ? 'page' : 'pages'}
+    {work.page_count !== work.pdf_pages ? ` of ${work.pdf_pages}` : ''}
+    {' · '}{work.words.toLocaleString('en-US')} words
+    {' · '}pages {first}–{last}
+    {' · '}<a href={work.url}>the creator’s PDF</a>
+  </p>
+
+  {work.content_note && <ContentNote text={work.content_note} level="item" />}
+
+  {work.page_note && <p class="lc-note">{work.page_note}</p>}
+  {work.host && <p class="lc-note">{work.host}</p>}
+
+  <p class="lc-note">
+    The text below is the text layer of the creator’s own PDF, set out one
+    section per page of the original and nothing else. Spelling, punctuation and
+    the many spellings of Letitia Carson’s name are as they stand in the source.
+    Where a line of the printed column was broken with a hyphen, the word is
+    closed up; nothing else is touched.
+  </p>
+
+  <PageText pages={work.pages} pathname={Astro.url.pathname} />
+
+  <CitationBlock
+    canonical={work.citation}
+    short={`${work.by.split(' and ')[0]} ${work.year}`}
+    url={workHref(work.slug)}
+    pdfUrl={work.url}
+    thisPage={`Pages ${first}–${last}`}
+    passage={{
+      label: `${work.title}, p. ${first}`,
+      fragment: `#p${first}`,
+      note: 'Every page of this work has its own anchor: append #p and the page number.',
+    }}
+  />
+
+  <ProvenanceBlock
+    items={[
+      isRecord
+        ? { label: 'Records', value: '19th-century court and probate records — public records, not under copyright' }
+        : { label: 'Author', value: work.by },
+      { label: 'Transcribed by', value: isRecord ? work.by.replace(/^Transcribed by /, '') : '' },
+      { label: 'Published at', value: work.url.replace(/^https?:\/\//, ''), href: work.url },
+      { label: 'Rights', value: isRecord
+        ? 'The record is public domain; the transcription is the Merandas’ work, published by the creator'
+        : 'In copyright, the creator’s own. He publishes it himself; the Library’s copy is a display copy and permission is being recorded.' },
+      { label: 'Reproduced', value: `Pages ${first}–${last} of ${work.pdf_pages}, from the text layer of his PDF, 4 September 2026` },
+    ]}
+  />
+
+  <nav class="lc-seq" aria-label="Other works">
+    {prev && <a href={workHref(prev.slug)}>← {prev.title}</a>}
+    <a href={`${BASE}/writings/`}>All writings</a>
+    {next && <a href={workHref(next.slug)}>{next.title} →</a>}
+  </nav>
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-lede {
+    font-size: 1.02rem;
+    line-height: 1.68;
+    max-width: 66ch;
+  }
+  .lc-meta {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: #4a4438;
+  }
+  .lc-note {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.58;
+    color: #6b6355;
+    max-width: 66ch;
+  }
+  .lc-seq {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin: 2rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+  }
+  .lc-corrections {
+    margin-top: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

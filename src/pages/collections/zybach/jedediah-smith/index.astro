@@ -1,0 +1,350 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import CitationBlock from '../../../../components/zybach/CitationBlock.astro';
+import ContentNote from '../../../../components/zybach/ContentNote.astro';
+import Opening from '../../../../components/zybach/frontdoor/Opening.astro';
+import Doors from '../../../../components/zybach/frontdoor/Doors.astro';
+import Measure from '../../../../components/zybach/frontdoor/Measure.astro';
+import AboutStrip from '../../../../components/zybach/frontdoor/AboutStrip.astro';
+import Figure from '../../../../components/zybach/smith/Figure.astro';
+import {
+  series, works, references, maps, photoSets, chronology, places, people,
+  markers, rendezvous, dataReady, SECTION,
+} from '../../../../components/zybach/smith/data';
+
+const c = series.counts ?? {};
+const base = '/collections/zybach/jedediah-smith';
+
+/* Every hold in this series, counted where it is applied rather than typed
+   into a sentence, so the notice below can never drift from the pages. */
+const heldPages = works.reduce((n, w) => n + w.pages_held, 0);
+const heldMaps = maps.filter((m) => m.display === 'held').length;
+const heldSets = photoSets.filter((s) => s.display === 'held').length;
+const heldPhotos = 2; /* two files inside the second-day folder */
+const heldIllus = (rendezvous.illustrations ?? []).filter((i) => i.display === 'held').length;
+
+/* The creator's own narrative, mirrored verbatim from the index page of his
+   project site. He wrote it; the Library prints it and says so. The `About.html`
+   his own page links to returns "404 Not Found", so the index is the whole of
+   his published narrative for this project. */
+const CREATOR_NARRATIVE = [
+  'On July 14, 1828, 15 beaver trappers working for the Smith, Jackson & Sublette fur trading business and under the leadership of Jedediah Smith, were killed near the mouth of the Smith River, where it enters the Umpqua River. All of their horses, mules, guns, knives, trading goods, beaverskins, clothing, and supplies were stolen. Smith and three other men survived the attack and made it safely to Fort Vancouver, where John McLoughlin sent a Hudson’s Bay Company brigade under the direction of Alexander McLeod to retrieve the stolen property. The brigade, including Smith and his men, reached the mouth of "Defeat River" on October 28, where they found:',
+];
+const CREATOR_QUOTE =
+  '" . . the Skeletons of eleven of those Miserabl Sufferers lying bleaching in the Sun, after paying the last Service to their remains we continued forward and made the Coast . . ."';
+const CREATOR_NARRATIVE_2 = [
+  'The 1828 Umpqua Memorial Project had its official beginning on July 20, 2000 with a front page headline article in The Reedsport Courier about a series of local events centered on the history of Jedediah Smith. Several photographs accompanied the text, featuring and quoting Jedediah Smith Society (JSS) member Wayne Knauf; Smith historian, James C. Auld; Smith impersonator, Al LePage; Portia Harris, Director of the Umpqua Discovery Center; and Tom Hedgepeth, Mayor of Reedsport. LePage was finishing a journey, Auld was giving a lecture, Harris was dedicating a painting, and Knauf was there to remember the men who had died and were buried there. According to the news account: "A prayer and wreath was cast in the water while the names of the slain trappers were read."',
+  'The following year Knauf was joined in his research by good friend and business associate, Don Whereat, another Smith enthusiast and Quuiich Tribal Historian. Whereat was local and field mapped the July 13 and 14 routes most likely taken by Smith and his men. In later years, fellow JSS member and field researcher Joe Molter joined in the effort, and on March 29, 2023, the "Smith, Jackson & Sublette Burial Site" was officially listed with the Oregon Commission on Historic Cemeteries. The following week, on April 3, the site was visited by members of the JSS 2023 Rendezvous and consensus discussion was that a monument or marker should be established to honor the dead buried there. The next day of the Rendezvous, at Champoeg, ORWW Director David Gould offered to donate a large stone for that purpose. This account is continued in the Reports link below. A listing of project Sponsors and other contributors is also being maintained as the memorial develops.',
+];
+
+const DOORS = [
+  {
+    who: 'If you want the documents',
+    lede:
+      'The journals and letters the whole story rests on, the creator’s own reports and articles printed page by page, and the map series made for the 2023 guidebooks.',
+    links: [
+      { label: 'The 1828 record', href: `${base}/the-1828-record/`,
+        note: 'The Smith and Rogers journals, McLoughlin’s letter, McLeod’s journal, and the reference shelf around them.' },
+      { label: 'Reports and the creator’s writings', href: `${base}/writings/`,
+        note: 'Eleven works, page by page, from a 1987 student draft to the reports on the memorial stone.' },
+      { label: 'Maps', href: `${base}/maps/`,
+        note: 'The Zybach–Grindberg 2023 sheets and the creator’s map of the coastal homelands in 1828.' },
+    ],
+  },
+  {
+    who: 'If you want the memorial project',
+    lede:
+      'What was actually built between 2000 and 2023: two markers, a stone, a four-day rendezvous with guidebooks, and the photographs made along the way.',
+    links: [
+      { label: 'Historical markers', href: `${base}/markers/`,
+        note: 'The Bolon Island panel, the memorial stone and plaque, the interpretive sign, and the sponsors.' },
+      { label: 'Guidebooks and the 2023 Rendezvous', href: `${base}/rendezvous/`,
+        note: 'The itinerary stop by stop, the Coos History Museum, Fort Umpqua, and the OCTA presentations.' },
+      { label: 'Photographs', href: `${base}/photographs/`,
+        note: 'Fifteen registered sets, day by day and business by business.' },
+    ],
+  },
+  {
+    who: 'If you want to look something up',
+    lede:
+      'The Library’s own layer over the creator’s files: what happened when, who is named, where things are, and what has not been published.',
+    links: [
+      { label: 'Chronology', href: `${base}/chronology/`,
+        note: '1826 to 1828 from the journals, and 1987 to 2024 from the project’s own record.' },
+      { label: 'People', href: `${base}/people/`,
+        note: 'The men who died, the roll of the party, and the people who made the memorial.' },
+      { label: 'Places', href: `${base}/places/`, note: 'Named public places only.' },
+      { label: 'In the Library’s files', href: `${base}/files/`,
+        note: 'The creator’s unpublished working files, described but not published.' },
+    ],
+  },
+];
+
+const MEASURE = [
+  { n: c.files_published_by_the_creator, label: 'files the creator publishes' },
+  { n: c.works_page_by_page, label: 'works printed page by page' },
+  { n: c.pages_page_by_page, label: 'pages of his writing' },
+  { n: c.references_listed, label: 'sources on the reference shelf' },
+  { n: c.photographs_registered, label: 'photographs registered' },
+  { n: c.maps_listed, label: 'maps registered' },
+  { n: c.dated_statements, label: 'dated statements' },
+  { n: c.people_named, label: 'people named' },
+  { n: c.sponsors, label: 'sponsors and contributors' },
+];
+
+const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' }];
+---
+
+<RoomLayout
+  room="collections"
+  title="Jedediah Smith and the 1828 Umpqua Memorial"
+  subtitle="A memorial project's working record — the journals of 1828, the research that grew out of a newspaper article in 2000, and the marker, the stone and the four-day rendezvous that came of it in 2023."
+  width="full"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-series"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Series</p>
+
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-filter="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  {!dataReady && (
+    <p class="sm-empty">
+      The series data has not been generated yet. What follows will fill in when
+      it lands.
+    </p>
+  )}
+
+  <Opening>
+    <p>
+      This series is the working record of the 1828 Umpqua Memorial Project: the
+      documents a group of researchers assembled about what happened at the mouth
+      of the Smith River in July and October 1828, and everything they did about
+      it between 2000 and 2023.
+    </p>
+  </Opening>
+
+  <section class="sm-creator" aria-labelledby="in-his-words">
+    <h2 id="in-his-words">The project, in the creator’s own words</h2>
+    <p class="sm-creator__lede">
+      What follows is the text of the creator’s own project page, printed as he
+      wrote it. The Library has not paraphrased him and has added nothing to it.
+    </p>
+    {CREATOR_NARRATIVE.map((p) => <p>{p}</p>)}
+    <blockquote><p><em>{CREATOR_QUOTE}</em></p></blockquote>
+    {CREATOR_NARRATIVE_2.map((p) => <p>{p}</p>)}
+    <p class="sm-creator__credit">
+      Bob Zybach, <cite>ORWW 1828 Umpqua Memorial Project</cite>, Oregon Websites
+      and Watershed Project, Inc. and NW Maps Co., 2023.
+      {' '}<a href={SECTION}>orww.org/1828_Umpqua_Memorial/</a>. The
+      <span> </span><code>About.html</code> page his index links to is not on the
+      server; the index above is the whole of his published narrative for this
+      project.
+    </p>
+  </section>
+
+  <Figure
+    src="http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/1_Warre_1845-8.jpg"
+    alt="A painting of a stockaded fur-trade post on a river plain, with hills behind it."
+    href="http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/1_Warre_1845-8.jpg"
+    size="wide"
+    ratio="2400 / 1541"
+    loading="eager"
+    caption="Fort Vancouver. The creator's caption reads: &ldquo;This painting of Fort Vancouver was made in 1845 or 1846 by British military spy, Henry Warre, while under orders to &lsquo;obtain a general knowledge of the capabilities of the Oregon Territory in a Military point of view&rsquo; in &lsquo;perfect secrecy, so far as possible.&rsquo; The fort was being constructed during Smith's winter 1828-29 stay there and he may well have been among its first occupants.&rdquo;"
+    credit="Bob Zybach, illustration captions, 29 May 2023. The painting is long out of copyright; the file is the creator's own scan, and the Library shows a display copy."
+  />
+
+  <section class="sm-standing" aria-labelledby="whose-account">
+    <h2 id="whose-account">Whose account this is</h2>
+    <p>
+      This series is the memorial project’s record of an event between Jedediah
+      Smith’s party and the Lower Umpqua (Kelawatset) people. It is assembled
+      from the surviving journals and letters of the trappers and of the Hudson’s
+      Bay Company, and from two centuries of writing that rests on them. Those are
+      one side’s papers.
+    </p>
+    <p>
+      The Confederated Tribes of Coos, Lower Umpqua and Siuslaw Indians hold their
+      own account of what happened. Where a Native account appears in this body
+      of work, the Library gives it in its own words with its source. One does:
+      on 11 October 1828 the Umpqua chief St. Arnoose told Alexander McLeod what
+      he understood the cause to have been, and McLeod wrote it down. The
+      creator’s own draft for the interpretive sign prints that passage under the
+      heading “Native Account of Event by Umpqua Chief Starnoose,” and the
+      Library prints it whole:
+      {' '}<a href={`${base}/the-1828-record/#native-account`}>read it on the 1828 record page</a>.
+      It reaches us at one remove, in the hand of a Hudson’s Bay Company officer.
+    </p>
+    <p>
+      A statement by the Confederated Tribes themselves is a different thing, and
+      the Library does not have one. What the creator’s files record is the
+      project’s approach to the Tribes — a presentation to the Culture Committee
+      on 20 July 2023 and an invitation to co-sponsor the memorial stone. They do
+      not contain the Tribes’ answer, and the Library has not been given it. The
+      Library does not speak for the Tribes and will not summarise a position it
+      has not been told.
+    </p>
+    <p>
+      The creator’s folders and file names use the word <em>massacre</em>, and
+      so do the nineteenth-century sources. Those words stand wherever he or they
+      are being quoted or a file of his is being named. In its own sentences the
+      Library writes about the 1828 attack and the events of 14 July 1828.
+    </p>
+  </section>
+
+  <ContentNote
+    level="collection"
+    draft={true}
+    text={`This series concerns a killing, a burial and a search for graves. The Library publishes the memorial project as its creator publishes it — the markers, the rendezvous, the reports, the journals — but it does not publish anything that would locate the attack, the village or the graves: no coordinates, no survey description, no road intersection, no site map, no photograph captioned as the spot. ${heldPages} pages of otherwise published documents, ${heldMaps} maps, ${heldSets} photograph sets, ${heldPhotos} individual photographs, ${heldIllus} illustrations and a handful of other files are held on that ground. Each keeps its place in the register and its permanent link.`}
+  />
+
+  <Doors doors={DOORS} heading="Ways in" headingId="ways-in" />
+
+  <section aria-labelledby="how-big">
+    <h2 id="how-big">How big it is</h2>
+    <Measure
+      items={MEASURE}
+      note="Counted in the creator's own published folders on 4 September 2026, and in the Library's own registers built from them. His unpublished working files are counted separately, in the Library's files."
+    />
+  </section>
+
+  <AboutStrip heading="About this series">
+    <h3>What it is</h3>
+    <p>
+      The 1828 Umpqua Memorial Project, run by Bob Zybach for Oregon Websites and
+      Watershed Project, Inc. and the Jedediah Smith Society: a research file on
+      the events of 1828 at the mouth of the Smith River, and the record of a
+      campaign between 2000 and 2023 to replace a state highway marker, place a
+      memorial stone, and put up an interpretive sign. {references.length} works
+      sit on its reference shelf, {works.length} of the creator’s own writings
+      are printed here page by page, and {photoSets.length} sets of photographs,
+      {' '}{maps.length} maps and {places.length} named places are registered.
+    </p>
+
+    <h3>The originals</h3>
+    <p>
+      The creator publishes all of this himself, at
+      {' '}<a href={SECTION}>orww.org/1828_Umpqua_Memorial/</a>. The Library
+      mirrors what he publishes, links to his files rather than making second
+      copies of the large ones, and adds its own layer on top: registers, a
+      chronology, people, places. His unpublished working files are described,
+      not published.
+    </p>
+
+    <h3>What is held back</h3>
+    <p>
+      Nothing about this event’s location is published: not a coordinate, not a
+      township and section, not a road intersection, not a site map, and not a
+      photograph captioned as the place. That applies to the attack, to the
+      Kelawatset village and to the trappers’ graves alike. Held items keep
+      their entry in the register and their permanent link, so a citation still
+      lands, and one notice covers them all.
+      {' '}<a href="/collections/zybach/content-note/">Content note</a>.
+    </p>
+
+    <h3>Citing and rights</h3>
+    <p class="sm-aboutlinks">
+      <a href="/collections/zybach/how-to-cite/">How to cite</a> ·
+      <a href="/collections/zybach/rights/">Rights, use and takedown</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/about-the-creator/">About the creator</a> ·
+      <a href="/collections/zybach/">The whole collection</a>
+    </p>
+  </AboutStrip>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Creator', value: 'Bob Zybach; Oregon Websites and Watershed Project, Inc.; NW Maps Co.' },
+      { label: 'Project partners', value: 'Jedediah Smith Society; Oregon-California Trails Association; Douglas County; and the sponsors listed on the markers page' },
+      { label: 'Published at', value: 'orww.org/1828_Umpqua_Memorial/', href: SECTION },
+      { label: 'Described from', value: `The creator's own published pages and files, ${c.files_published_by_the_creator ?? ''} of them, read on 4 September 2026` },
+      { label: 'In this collection', value: `Described item by item; ${c.pages_held ?? 0} pages and a small number of maps, photographs and illustrations held pending review` },
+      { label: 'Consultation', value: 'The Confederated Tribes of Coos, Lower Umpqua and Siuslaw Indians have standing here. No site-location content is published.' },
+    ]}
+  />
+
+  <CitationBlock
+    canonical="Zybach, Bob. ORWW 1828 Umpqua Memorial Project. Oregon Websites and Watershed Project, Inc. and NW Maps Co., 2023. http://www.orww.org/1828_Umpqua_Memorial/"
+    short="Jedediah Smith and the 1828 Umpqua Memorial"
+    url="/collections/zybach/jedediah-smith/"
+    pdfUrl={SECTION}
+    thisPage="Series description"
+  />
+
+  <p class="sm-corrections" data-pagefind-ignore>
+    Something wrong on this page?
+    {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the
+    form opens with this page already filled in. Corrections are made in public:
+    {' '}<a href="/about/corrections/">how that works</a>.
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-empty {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px dashed var(--rule-border, #d8d1c2);
+    color: #6b6355;
+    font-size: 0.9rem;
+  }
+  .sm-creator {
+    margin: 2rem 0;
+    padding: 1.2rem 1.4rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 4px;
+  }
+  .sm-creator h2 {
+    margin-top: 0;
+  }
+  .sm-creator p {
+    max-width: 62ch;
+    font-size: 0.98rem;
+    line-height: 1.66;
+  }
+  .sm-creator__lede {
+    font-family: var(--font-sans);
+    font-size: 0.82rem !important;
+    line-height: 1.55 !important;
+    color: #6b6355;
+  }
+  .sm-creator blockquote {
+    margin: 1rem 0 1rem 1.25rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--old-gold, #a87f2c);
+  }
+  .sm-creator__credit {
+    margin-top: 1rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.78rem !important;
+    line-height: 1.55 !important;
+    color: #6b6355;
+    overflow-wrap: anywhere;
+  }
+  .sm-standing p {
+    max-width: 64ch;
+    font-size: 1rem;
+    line-height: 1.68;
+  }
+  .sm-aboutlinks {
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+  }
+  .sm-corrections {
+    margin-top: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

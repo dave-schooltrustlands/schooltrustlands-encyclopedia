@@ -1,0 +1,172 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import { BASE, places, media } from '../../../../../components/zybach/carson/data';
+
+const mapGroups = media.maps ?? [];
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Places"
+  subtitle="The ground this life was lived on, from County Antrim to the Umatilla Reservation."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-letitia-carson-places"
+>
+  <p slot="before-title" class="kicker">Letitia Carson · The Library’s own layer</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="places" />
+
+  <p class="lc-lede">
+    {places.length} places. Each one is here because the pages reproduced in this
+    series name it. Where the same place already has a page in the Soap Creek
+    gazetteer — built from what twenty-one narrators said about it a century
+    later — this list links there rather than making a second entry.
+  </p>
+
+  <p class="lc-note">
+    This page carries no coordinates and no map pins. The two things that could
+    be pinned here — the homestead ground and the burying ground — are the
+    creator’s own published photograph subjects and are named as he names them.
+    Nothing on this page locates a Native village, camp or burial site, and the
+    Library does not build a map layer that would. Where the creator writes that
+    the Lavadour family settled near an old Indian townsite, the Library records
+    that he wrote it and locates nothing.
+  </p>
+
+  <ul class="lc-places">
+    {places.map((p) => (
+      <li id={p.slug}>
+        <p class="lc-places__name">
+          {p.name}
+          {p.where && <span class="lc-places__where"> · {p.where}</span>}
+        </p>
+        {p.note && <p class="lc-places__note">{p.note}</p>}
+        <p class="lc-places__where-said">
+          {p.page_count > 0 ? (
+            <>
+              Named on {p.page_count} {p.page_count === 1 ? 'page' : 'pages'}
+              {' — '}
+              {p.pages.slice(0, 8).map((c, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <a href={c.href}>{c.short} p.{c.page}</a>
+                </>
+              ))}
+              {p.pages.length > 8 && ` and ${p.pages.length - 8} more`}.
+            </>
+          ) : (
+            <>Named in the creator’s own chapter headings; not in a page reproduced here.</>
+          )}
+          {p.gazetteer_href && (
+            <>
+              {' '}Also in the Soap Creek gazetteer:
+              {' '}<a href={p.gazetteer_href}>what the narrators said about it</a>.
+            </>
+          )}
+        </p>
+      </li>
+    ))}
+  </ul>
+
+  <h2 id="maps">The ground on paper</h2>
+  <p>
+    The creator has gathered General Land Office township plats and USGS
+    quadrangles for each of the Oregon places, several of them marked up to show
+    the Carson claim. They are registered under
+    {' '}<a href={`${BASE}/maps/`}>Maps</a>:
+    {' '}{mapGroups.map((m, i) => (
+      <>
+        {i > 0 && ' · '}
+        <a href={`${BASE}/maps/#${m.slug}`}>{m.title}</a>
+      </>
+    ))}.
+  </p>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Built by', value: 'The Library, by matching place names against the reproduced text' },
+      { label: 'Linked to', value: 'The Soap Creek gazetteer, where the same place is already described' },
+      { label: 'Withheld', value: 'Coordinates for any site; no map layer is built from this page' },
+      { label: 'Generated', value: '4 September 2026' },
+    ]}
+  />
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-lede {
+    font-size: 1.02rem;
+    line-height: 1.68;
+    max-width: 66ch;
+  }
+  .lc-note {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.58;
+    color: #6b6355;
+    max-width: 66ch;
+  }
+  .lc-places {
+    list-style: none;
+    margin: 1rem 0 1.75rem;
+    padding: 0;
+  }
+  .lc-places > li {
+    padding: 0.7rem 0;
+    border-top: 1px solid #ece5d5;
+    scroll-margin-top: 5rem;
+  }
+  .lc-places > li:target { background: rgba(168, 127, 44, 0.08); }
+  .lc-places__name {
+    margin: 0;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.05rem;
+    color: var(--deep-navy, #14243c);
+  }
+  .lc-places__where {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: #6b6355;
+  }
+  .lc-places__note {
+    margin: 0.3rem 0 0;
+    font-size: 0.93rem;
+    line-height: 1.58;
+    max-width: 62ch;
+  }
+  .lc-places__where-said {
+    margin: 0.3rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    line-height: 1.5;
+    color: #6b6355;
+    max-width: 68ch;
+  }
+  .lc-corrections {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

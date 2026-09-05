@@ -1,0 +1,233 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import { driveInventory, series, SECTION } from '../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+const c = series.counts ?? {};
+
+const folders = driveInventory?.folders ?? [];
+const invCounts = driveInventory?.counts ?? null;
+
+/** 8_456_789_012 → "8.46 GB". */
+function bytes(n: number | undefined): string {
+  if (!n && n !== 0) return '';
+  const units = ['bytes', 'KB', 'MB', 'GB', 'TB'];
+  let v = n;
+  let i = 0;
+  while (v >= 1024 && i < units.length - 1) { v /= 1024; i += 1; }
+  return `${i === 0 ? v : v.toFixed(v < 10 ? 2 : 1)} ${units[i]}`;
+}
+
+/* The earlier, depth-limited count of the creator's upload, kept until the
+   full walk lands. Every figure here was measured; none is an estimate, but
+   the folder totals are floors because subfolders were counted, not opened. */
+const EARLIER = [
+  ['Whole series', '135 files, 8.46 GB', 'A floor: 46 subfolders were counted but not opened.'],
+  ['References', '49 files, 198.7 MB', 'Secondary literature and source documents.'],
+  ['JSS', '19 files, 4.4 MB', 'Jedediah Smith Society material.'],
+  ['“Massacre Site”', '19 files, 63.9 MB', 'The creator’s own folder name. Site research, with subfolders for applications, maps, the memorial and the Umpqua memorial. Nothing from this folder is published.'],
+  ['Fort Umpqua photographs', '18 files, 4.9 MB', 'Photographs.'],
+  ['Reports', '15 files, 94.9 MB', 'Project reports.'],
+  ['1828 Umpqua Memorial', '1 file at the top level', 'Ten subfolders — guidebooks, historical markers, the 2023 rendezvous, maps, photographs, references, reports, video — none opened by that census.'],
+  ['2023 Rendezvous', '8 subfolders', 'Article, guidebooks, handouts, historical markers, itinerary, maps, OCTA, photographs.'],
+  ['Largest single file', '1 file, 8.5 GB', 'A 2024 video interview recording. Far too large for the Library to host; if it is ever published it would be linked from the creator’s own storage, not served here.'],
+];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="In the Library’s files"
+  subtitle="What the creator sent that he has not published himself — described so a reader knows it exists, and not published."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-files"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-lede">
+    Two different things sit behind this series. One is the {c.files_published_by_the_creator ?? ''}-file
+    project site the creator has published for years, which the rest of these
+    pages describe item by item. The other is his working folder — drafts,
+    correspondence, scans, photographs and a very large video — which he sent to
+    the Library and has not published anywhere. This page is about the second.
+  </p>
+  <p class="sm-note">
+    The Library’s rule for unpublished working files is the same in every series:
+    describe them at the level of the folder, so that a reader knows what exists
+    and can ask; publish nothing out of them until the creator has said which
+    parts may be opened. Nothing on this page is a quotation from an unpublished
+    file, and nothing links into one.
+  </p>
+
+  {folders.length > 0 ? (
+    <section aria-labelledby="inventory">
+      <h2 id="inventory">The folders</h2>
+      <p class="sm-note">
+        Counted {driveInventory?.generated ? `on ${driveInventory.generated}` : 'by the Library'}
+        {invCounts?.files ? `: ${invCounts.files.toLocaleString('en-US')} files` : ''}
+        {invCounts?.bytes ? `, ${bytes(invCounts.bytes)}` : ''}.
+      </p>
+      <div class="sm-inv__scroll">
+        <table class="sm-inv">
+          <thead>
+            <tr>
+              <th scope="col">Folder</th>
+              <th scope="col">Files</th>
+              <th scope="col">Size</th>
+              <th scope="col">What is in it</th>
+            </tr>
+          </thead>
+          <tbody>
+            {folders.map((f) => (
+              <tr>
+                <th scope="row">{f.path}</th>
+                <td>{f.files?.toLocaleString('en-US')}</td>
+                <td>{bytes(f.bytes)}</td>
+                <td>{f.note ?? ''}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ) : (
+    <section aria-labelledby="inventory">
+      <h2 id="inventory">The folders</h2>
+      <p class="sm-note">
+        The full walk of the creator’s upload is not finished. What follows is the
+        earlier count, made on 27 August 2026, which opened folders only three
+        levels deep. Every figure in it was measured, but the folder totals are
+        floors rather than totals: subfolders below that depth were counted and
+        not opened.
+      </p>
+      <div class="sm-inv__scroll">
+        <table class="sm-inv">
+          <thead>
+            <tr>
+              <th scope="col">Folder</th>
+              <th scope="col">Counted</th>
+              <th scope="col">What is in it</th>
+            </tr>
+          </thead>
+          <tbody>
+            {EARLIER.map(([name, count, note]) => (
+              <tr>
+                <th scope="row">{name}</th>
+                <td>{count}</td>
+                <td>{note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <section aria-labelledby="cautions">
+    <h2 id="cautions">What describing these properly will take</h2>
+    <ul class="sm-caut">
+      <li>
+        A complete folder walk. Until then the counts above are a floor and the
+        Library says so rather than rounding them up into a total.
+      </li>
+      <li>
+        A decision, with the creator, about the folder he has named for the site.
+        Its contents are exactly the material this Library does not publish, and
+        no part of it will be opened without that conversation — and, where the
+        material bears on the Kelawatset village or the graves, without
+        consultation with the Confederated Tribes of Coos, Lower Umpqua and
+        Siuslaw Indians.
+      </li>
+      <li>
+        Renaming. Several files in the upload have whole web addresses for names,
+        colons and slashes included. They cannot be served as they stand.
+      </li>
+      <li>
+        A home for the 2024 video. At 8.5 GB it is larger than everything else in
+        this series put together. The Library would link it from the creator’s own
+        storage rather than host it; that is what the earlier description of this
+        series said, and it is still true.
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="published-instead">
+    <h2 id="published-instead">What is published instead</h2>
+    <p class="sm-note">
+      Everything else in this series. The creator’s own project site carries
+      {' '}{c.files_published_by_the_creator ?? ''} files across
+      {' '}{c.folders ?? ''} folders, and the Library has described all of them:
+      {' '}{c.works_page_by_page ?? ''} of his writings printed page by page,
+      {' '}{c.references_listed ?? ''} sources on the reference shelf,
+      {' '}{c.maps_listed ?? ''} maps, {c.photographs_registered ?? ''} photographs
+      registered in {c.photograph_sets ?? ''} sets, and its own chronology, people
+      and places built on top.
+      {' '}<a href={`${base}/`}>Start at the series page</a>.
+    </p>
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Received', value: 'Uploaded by the creator; census of 27 August 2026, depth-limited' },
+      { label: 'Status', value: 'Described at folder level; nothing published' },
+      { label: 'The creator’s published site', value: 'orww.org/1828_Umpqua_Memorial/', href: SECTION },
+      { label: 'Also public', value: 'The creator’s own project and bookshop site at orww.store — a different domain from his orww.org archive', href: 'https://www.orww.store/umpqua-1828/' },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href="/collections/zybach/provenance/">Provenance</a> ·
+    <a href="/collections/zybach/rights/">Rights</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede { max-width: 64ch; font-size: 1rem; line-height: 1.68; }
+  .sm-note { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; color: #3f3a33; }
+  .sm-inv__scroll { overflow-x: auto; margin: 1rem 0 1.5rem; }
+  .sm-inv { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .sm-inv th, .sm-inv td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.45rem 0.8rem 0.45rem 0;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    line-height: 1.5;
+  }
+  .sm-inv thead th {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+    white-space: nowrap;
+  }
+  .sm-inv tbody th {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+    min-width: 10rem;
+  }
+  .sm-inv tbody td:nth-child(2) { white-space: nowrap; font-family: var(--font-sans); font-size: 0.8rem; color: #6b6355; }
+  .sm-caut { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; }
+  .sm-caut li { margin-bottom: 0.55rem; }
+  .sm-see-also { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.84rem; }
+</style>

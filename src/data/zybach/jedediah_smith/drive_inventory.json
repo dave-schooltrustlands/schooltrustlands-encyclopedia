@@ -1,0 +1,104 @@
+{
+  "generated": "2026-09-04",
+  "series": "jedediah-smith",
+  "source": "Google Drive upload, orww/Jedediah_Smith/ (creator: Bob Zybach)",
+  "counts": {
+    "files": 676,
+    "bytes": 10216985756,
+    "folders": 170
+  },
+  "folders": [
+    {
+      "path": "(root)",
+      "files": 5,
+      "bytes": 8693953153,
+      "class": "creator-working-files",
+      "note": "A handful of large loose files at the top of the Drive folder, dominated by one 8.5 GB video file (an interview/oral history recording) plus a large conference slide deck and a screenshot."
+    },
+    {
+      "path": "2023_Rendezvous",
+      "files": 159,
+      "bytes": 661136526,
+      "class": "creator-working-files",
+      "note": "Planning, handouts, itineraries, guidebooks, and photos for the 2023 Jedediah Smith commemorative rendezvous event."
+    },
+    {
+      "path": "2023_Archives",
+      "files": 158,
+      "bytes": 364380200,
+      "class": "creator-working-files",
+      "note": "Historical archive scans and reference material gathered for the 2023 rendezvous research."
+    },
+    {
+      "path": "References",
+      "files": 69,
+      "bytes": 247076273,
+      "class": "creator-working-files",
+      "note": "Reference documents and correspondence used in Jedediah Smith / 1828 Umpqua massacre research."
+    },
+    {
+      "path": "Reports copy",
+      "files": 15,
+      "bytes": 99538975,
+      "class": "creator-working-files",
+      "note": "A backup copy of research reports."
+    },
+    {
+      "path": "Massacre Site",
+      "files": 57,
+      "bytes": 99045576,
+      "class": "creator-working-files",
+      "note": "Research and site-survey material about the 1828 Umpqua massacre location, including a memorial-planning subfolder."
+    },
+    {
+      "path": "1828_Umpqua_Memorial",
+      "files": 109,
+      "bytes": 30198305,
+      "class": "published-on-orww",
+      "note": "This folder's subfolder names (Historical_Markers, Maps, Photos, Reports, References, 2023_Guidebooks, JSS_2023_Rendezvous, icons) match the live orww.org site's structure closely; this is the material that corresponds to what the public can already see on the website, plus one small Video subfolder we could not confirm is linked from a live page."
+    },
+    {
+      "path": "Fort_Umpqua-Photos",
+      "files": 39,
+      "bytes": 11371130,
+      "class": "creator-working-files",
+      "note": "Photographs related to the historical Fort Umpqua site."
+    },
+    {
+      "path": "JSS",
+      "files": 19,
+      "bytes": 4634032,
+      "class": "creator-working-files",
+      "note": "Jedediah Smith Society research and presentation material."
+    },
+    {
+      "path": "Jedediah_Smith_2023",
+      "files": 39,
+      "bytes": 3319026,
+      "class": "creator-working-files",
+      "note": "A 2023 working snapshot of Jedediah Smith research subfolders."
+    },
+    {
+      "path": "Molter",
+      "files": 2,
+      "bytes": 1754976,
+      "class": "creator-working-files",
+      "note": "A small set of reference files (named for a historical contact/source)."
+    },
+    {
+      "path": "Umpqua_Memorial",
+      "files": 2,
+      "bytes": 205219,
+      "class": "creator-working-files",
+      "note": "A couple of small reference files about the Umpqua memorial."
+    }
+  ],
+  "excluded": [
+    {
+      "path": "Funding",
+      "files": 3,
+      "bytes": 372365,
+      "reason": "A grant-funder receipt and agreement paperwork (Woodard Family Foundation); financial records, not history content."
+    }
+  ]
+}

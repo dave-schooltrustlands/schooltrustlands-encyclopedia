@@ -1,0 +1,398 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import ContentNote from '../../../../components/zybach/ContentNote.astro';
+import Opening from '../../../../components/zybach/frontdoor/Opening.astro';
+import Plate from '../../../../components/zybach/frontdoor/Plate.astro';
+import Measure from '../../../../components/zybach/frontdoor/Measure.astro';
+import AboutStrip from '../../../../components/zybach/frontdoor/AboutStrip.astro';
+import CarsonNav from '../../../../components/zybach/carson/CarsonNav.astro';
+import {
+  BASE,
+  ORWW,
+  series,
+  documents,
+  docGroups,
+  texts,
+  library,
+  media,
+  people,
+  places,
+  chronology,
+  driveInventory,
+  dataReady,
+} from '../../../../components/zybach/carson/data';
+
+const outline = (series?.outline ?? []) as Array<{ heading: string; sections: string | null }>;
+const intro = (series?.intro ?? []) as string[];
+
+const docCount = documents?.counts?.files_listed ?? 0;
+const describedCount = documents?.counts?.files_described ?? 0;
+const transcribedCount = documents?.counts?.with_transcription ?? 0;
+const reproducedWords = texts.reduce((n, w) => n + (w.words ?? 0), 0);
+const reproducedPages = texts.reduce((n, w) => n + (w.page_count ?? 0), 0);
+const photoFiles = media?.photograph_counts?.files ?? 0;
+const mapFiles = media?.map_counts?.files ?? 0;
+const chronEntries = chronology?.counts?.entries ?? 0;
+
+const MEASURE = [
+  { n: docCount, label: 'documents listed' },
+  { n: describedCount, label: 'documents described' },
+  { n: transcribedCount, label: 'of them transcribed' },
+  { n: reproducedPages, label: 'pages reproduced' },
+  { n: reproducedWords, label: 'words of text' },
+  { n: photoFiles, label: 'photographs registered' },
+  { n: mapFiles, label: 'maps registered' },
+  { n: chronEntries, label: 'dated statements' },
+  { n: people.length, label: 'people indexed' },
+  { n: places.length, label: 'places indexed' },
+];
+
+const DOORS = [
+  {
+    href: `${BASE}/documents/`,
+    label: 'Documents',
+    lede: `The primary record, group by group: North Carolina citizenship papers, a Platte County deed, the Oregon and Missouri probate files, the two suits, the homestead. ${docCount} files, ${describedCount} of them described one by one.`,
+  },
+  {
+    href: `${BASE}/writings/`,
+    label: 'The creator’s writings',
+    lede: `What Bob Zybach has published about Letitia Carson since 1989 — newspaper columns, two long articles in The Umpqua Trapper, an encyclopedia entry, and the ORWW research report he wrote with Janet Meranda. Four of them are reproduced here page by page; the rest are catalogued and linked.`,
+  },
+  {
+    href: `${BASE}/chronology/`,
+    label: 'Chronology',
+    lede: 'Every dated line, either from a document with a date on its face or from something the creator has written, each one carrying the page it came from.',
+  },
+  {
+    href: `${BASE}/people/`,
+    label: 'People',
+    lede: 'The historical people the record names — family, neighbours, appraisers, attorneys, judges — and where each of them appears.',
+  },
+  {
+    href: `${BASE}/places/`,
+    label: 'Places',
+    lede: 'Kentucky, Antrim, Platte County, Soap Creek, upper Cow Creek, South Myrtle Creek, the Umatilla Reservation. Where a place is already in the Soap Creek gazetteer, this page links there rather than making a second entry.',
+  },
+  {
+    href: `${BASE}/photographs/`,
+    label: 'Photographs',
+    lede: `The creator’s own photographs of the ground, 1990 to 2024: Soap Creek, the graveyard, the homestead, Cow Creek, Umatilla County.`,
+  },
+  {
+    href: `${BASE}/maps/`,
+    label: 'Maps',
+    lede: 'General Land Office township plats and USGS quadrangles for each place the family lived, with the claim picked out on the creator’s own copies.',
+  },
+  {
+    href: `${BASE}/files/`,
+    label: 'In the Library’s files',
+    lede: 'The creator’s working folders, which the Library holds but does not publish: what is in them, how much of it there is, and what is excluded.',
+  },
+];
+
+const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' }];
+---
+
+<RoomLayout
+  room="collections"
+  title="Letitia Carson"
+  subtitle="A woman born enslaved in Kentucky who crossed the Oregon Trail in 1845, sued the man who administered her partner's estate — twice — and won, and proved a homestead claim on South Myrtle Creek in her own name."
+  width="full"
+  parents={parents}
+  sourceId="zybach-letitia-carson-series"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Series</p>
+
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+  <span data-pagefind-filter="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="series" />
+
+  {!dataReady && (
+    <p class="lc-empty">
+      The series data has not been generated yet. What follows will fill in when
+      it lands.
+    </p>
+  )}
+
+  <Opening>
+    <p>
+      Letitia Carson lived on the same ground as the Soap Creek oral histories,
+      a century before the people in them were born. The difference is that
+      nobody recorded her. What survives is paper: citizenship declarations from
+      Ashe County, a probate file, two hundred sheets of a lawsuit, a homestead
+      application, a deed, a headstone.
+    </p>
+    <p>
+      Bob Zybach and Janet Meranda have been assembling that paper since the
+      1980s and publishing it openly since 2014. This series mirrors what he
+      publishes, describes it document by document, and adds the apparatus a
+      reader needs to use it: a chronology, an index of people and places, and a
+      register of every file with a link back to his copy.
+    </p>
+  </Opening>
+
+  <Plate
+    src="http://www.orww.org/History/Letitia_Carson/Photographs/Benton_County/Soap_Creek_Valley_1993-10.jpg"
+    alt="A wide view across open farmland in a valley, with wooded hills rising behind."
+    width={2000}
+    height={1418}
+    ratio="2000 / 1418"
+    size="wide"
+    loading="eager"
+    caption="Soap Creek Valley in 1993. David Carson claimed 640 acres here in 1845; the claim was cut to 320 in 1850 because Letitia was not legally his wife, and the estate that followed his death in 1852 is the reason most of the papers in this series exist."
+    credit="Photograph by Bob Zybach, from his own pages at orww.org."
+  />
+
+  <ContentNote
+    level="collection"
+    draft={true}
+    text="This series is about slavery, about a household the law refused to recognise, and about the racial exclusion clauses written into Oregon's first constitution. The 19th-century records use the language of their time, of Letitia Carson herself and of others; the clerks spelled her name a dozen different ways. The creator quotes his sources as they stand, including a Douglas County place name that was a racial slur until it was changed in the 1950s — he raises it in the course of arguing that two names there should be changed again in honour of the Carsons. Nothing is altered, and each reproduced work carries its own note. The family line reaches living descendants enrolled at Umatilla; the Library publishes nothing about anyone born after 1926."
+  />
+
+  <section aria-labelledby="his-words">
+    <h2 id="his-words">The creator’s own front page</h2>
+    <p class="lc-para">
+      Before anything the Library has written, here is what Bob Zybach says the
+      site is for, and the outline of the biography he is writing — his words,
+      as he set them at
+      {' '}<a href={ORWW}>orww.org/History/Letitia_Carson/</a>.
+    </p>
+
+    <blockquote class="lc-quote">
+      {series?.headline && <p class="lc-quote__head">{series.headline}</p>}
+      {intro.map((p) => <p>{p}</p>)}
+      <footer>
+        Bob Zybach, ORWW Letitia Carson site, section index. {series?.copyright_line}
+      </footer>
+    </blockquote>
+
+    {series?.intro_note && <p class="lc-note">{series.intro_note}</p>}
+
+    <h3 id="the-outline">The outline of the biography</h3>
+    <p class="lc-para">
+      The site is arranged as the working outline of the book. Each heading and
+      each list of sections below is his.
+    </p>
+    <ol class="lc-outline">
+      {outline.map((row) => (
+        <li>
+          <p class="lc-outline__head">{row.heading}</p>
+          {row.sections && <p class="lc-outline__sections">{row.sections}</p>}
+        </li>
+      ))}
+    </ol>
+    <p class="lc-note">
+      Chapter 10 and the appendices reach living descendants. The Library
+      reproduces his headings as he wrote them and stops there: it publishes no
+      genealogy past the historical generation, and no address, contact or
+      personal detail for anyone living.
+    </p>
+  </section>
+
+  <section aria-labelledby="doors">
+    <h2 id="doors">Ways in</h2>
+    <ul class="lc-doors">
+      {DOORS.map((d) => (
+        <li>
+          <a href={d.href}>{d.label}</a>
+          <span>{d.lede}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="how-big">
+    <h2 id="how-big">How big it is</h2>
+    <Measure
+      items={MEASURE}
+      note="Counted on 4 September 2026 against the creator's own published directories. 'Described' means the Library has written a catalogue line for that file; 'transcribed' means the Merandas' transcription of it is reproduced here and linked from the file's entry."
+    />
+    {!driveInventory && (
+      <p class="lc-note">
+        The count of the creator’s unpublished working folders is not in yet. It
+        will appear under <a href={`${BASE}/files/`}>In the Library’s files</a>
+        when it lands.
+      </p>
+    )}
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Creator', value: 'Dr. Bob Zybach; Oregon Websites and Watershed Project, Inc.' },
+      { label: 'Research', value: 'With Janet Meranda; transcriptions by Jan and John Meranda' },
+      { label: 'Published at', value: 'orww.org/History/Letitia_Carson/', href: ORWW },
+      { label: 'Copied', value: 'Mirrored and described from his public pages, 4 September 2026' },
+      { label: 'In this collection', value: 'Item-level: every published document described, his writings and the transcriptions reproduced page by page' },
+      { label: 'Not published', value: 'His unpublished working folders (described at inventory level); present-day parcel records; photographs whose subject is a living person; anything about anyone born after 1926' },
+    ]}
+  />
+
+  <AboutStrip heading="About this series">
+    <h3>What it is</h3>
+    <p>
+      The ORWW Letitia Carson project: primary records gathered from the Oregon
+      State Archives, the National Archives, the Platte County courthouse and
+      family hands; the creator’s own articles from 1989 to 2016; his
+      photographs of the ground; and a library of reference works he hosts.
+    </p>
+
+    <h3>How the Library publishes it</h3>
+    <p>
+      On the same basis as the monographs. The creator publishes this material
+      himself; the Library mirrors and indexes what he publishes, links his
+      originals rather than making second copies of the big files, and adds a
+      layer of its own — the registers, the chronology, the people and places —
+      which is the Library’s work and is labelled as such.
+      {' '}<a href="/collections/zybach/rights/">Rights, use and takedown</a>.
+    </p>
+
+    <h3>What is held back</h3>
+    <p>
+      Present-day assessor records for the homestead ground, which describe
+      private property now in other people’s hands. Photographs whose subject is
+      a living person or family — recorded as folders, with counts and a link to
+      the creator’s copy, not listed file by file. Third-party works in his
+      reference library, which are identified by author, title and date and
+      linked, never copied. And the commissioned portrait and the artwork on his
+      own front page, which belong to the artists who made them.
+    </p>
+
+    <h3>The originals</h3>
+    <p>
+      Everything here is on the creator’s own site at
+      {' '}<a href={ORWW}>orww.org/History/Letitia_Carson/</a>. The court and
+      probate files are held by the Oregon State Archives; the homestead papers
+      by the National Archives; the Missouri probate by Platte County. A reader
+      who needs the original rather than the scan should go to them.
+    </p>
+
+    <h3>Citing and rights</h3>
+    <p class="lc-aboutlinks">
+      <a href="/collections/zybach/how-to-cite/">How to cite</a> ·
+      <a href="/collections/zybach/rights/">Rights, use and takedown</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/about-the-creator/">About the creator</a> ·
+      <a href="/collections/zybach/">The whole collection</a>
+    </p>
+  </AboutStrip>
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    Something wrong on this page?
+    {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the
+    form opens with this page already filled in. Corrections are made in public:
+    {' '}<a href="/about/corrections/">how that works</a>.
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-para {
+    max-width: 66ch;
+    font-size: 1rem;
+    line-height: 1.68;
+  }
+  .lc-note {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: #6b6355;
+    max-width: 66ch;
+  }
+  .lc-empty {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px dashed var(--rule-border, #d8d1c2);
+    color: #6b6355;
+    font-size: 0.9rem;
+  }
+  .lc-quote {
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.9rem 0 0.3rem 1.1rem;
+    border-left: 3px solid var(--old-gold, #a87f2c);
+    max-width: 68ch;
+  }
+  .lc-quote p {
+    font-size: 0.97rem;
+    line-height: 1.65;
+    margin: 0 0 0.8rem;
+  }
+  .lc-quote__head {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.1rem !important;
+    color: var(--deep-navy, #14243c);
+  }
+  .lc-quote footer {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+  }
+  .lc-outline {
+    margin: 1rem 0 1.25rem;
+    padding: 0;
+    list-style: none;
+    columns: 2 20rem;
+    column-gap: 2.5rem;
+  }
+  .lc-outline li {
+    break-inside: avoid;
+    margin-bottom: 0.85rem;
+  }
+  .lc-outline__head {
+    margin: 0;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.98rem;
+    line-height: 1.35;
+    color: var(--deep-navy, #14243c);
+  }
+  .lc-outline__sections {
+    margin: 0.15rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #4a4438;
+  }
+  .lc-doors {
+    list-style: none;
+    margin: 1.1rem 0;
+    padding: 0;
+    max-width: 72ch;
+  }
+  .lc-doors > li {
+    padding: 0.65rem 0;
+    border-bottom: 1px solid #ece5d5;
+  }
+  .lc-doors > li:last-child {
+    border-bottom: 0;
+  }
+  .lc-doors > li > a {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.05rem;
+    color: var(--deep-navy, #14243c);
+  }
+  .lc-doors span {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #4a4438;
+  }
+  .lc-aboutlinks {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+  .lc-corrections {
+    margin: 2.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

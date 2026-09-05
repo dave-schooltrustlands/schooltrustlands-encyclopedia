@@ -1,0 +1,143 @@
+---
+import { mirrored } from '../_data';
+import type { RegisterRow } from './data';
+/* Register.astro — a list of files as the creator publishes them.
+ *
+ * One row per file: what it is, when it is dated, the thumbnail if he made one,
+ * and a link to his full-size copy. The thumbnail is served from the Library's
+ * display copy because his site is http and this one is https; the link always
+ * goes to his original.
+ *
+ * Contract:
+ *   { rows: Array<{ id?, title, meta?, note?, creatorNote?, thumb?, href,
+ *                   linkLabel?, extra? }> }
+ */
+interface Props {
+  rows: ReadonlyArray<RegisterRow>;
+  caption?: string;
+}
+const { rows, caption } = Astro.props as Props;
+---
+
+{caption && <p class="lc-reg__caption">{caption}</p>}
+
+<ul class="lc-reg">
+  {rows.map((r) => (
+    <li class:list={['lc-reg__row', { 'lc-reg__row--muted': r.muted }]} id={r.id}>
+      {r.thumb ? (
+        <a class="lc-reg__thumb" href={r.href}>
+          <img src={mirrored(r.thumb)} alt="" loading="lazy" width="72" height="72" />
+        </a>
+      ) : (
+        <span class="lc-reg__thumb lc-reg__thumb--none" aria-hidden="true"></span>
+      )}
+      <div class="lc-reg__body">
+        <p class="lc-reg__title">{r.title}</p>
+        {r.meta && <p class="lc-reg__meta">{r.meta}</p>}
+        {r.note && <p class="lc-reg__note">{r.note}</p>}
+        {r.creatorNote && (
+          <p class="lc-reg__creator">
+            The creator’s own index calls it: “{r.creatorNote}”
+          </p>
+        )}
+        <p class="lc-reg__links">
+          <a href={r.href}>{r.linkLabel ?? 'The creator’s copy'}</a>
+          {r.extra && (
+            <>
+              {' · '}
+              <a href={r.extra.href}>{r.extra.label}</a>
+            </>
+          )}
+        </p>
+      </div>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .lc-reg {
+    list-style: none;
+    margin: 1rem 0 1.75rem;
+    padding: 0;
+  }
+  .lc-reg__caption {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: #6b6355;
+    max-width: 66ch;
+  }
+  .lc-reg__row {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: 0.9rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid #ece5d5;
+    scroll-margin-top: 5rem;
+  }
+  .lc-reg__row:target {
+    background: rgba(168, 127, 44, 0.09);
+    box-shadow: -0.6rem 0 0 rgba(168, 127, 44, 0.09), 0.6rem 0 0 rgba(168, 127, 44, 0.09);
+  }
+  .lc-reg__row--muted .lc-reg__title {
+    color: #6b6355;
+  }
+  .lc-reg__thumb {
+    display: block;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: #f3eee1;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .lc-reg__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .lc-reg__thumb--none {
+    background:
+      repeating-linear-gradient(45deg, #f6f2e7, #f6f2e7 6px, #f1ebdc 6px, #f1ebdc 12px);
+  }
+  .lc-reg__title {
+    margin: 0;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1rem;
+    line-height: 1.35;
+    color: var(--deep-navy, #14243c);
+  }
+  .lc-reg__meta {
+    margin: 0.12rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+  }
+  .lc-reg__note,
+  .lc-reg__creator {
+    margin: 0.3rem 0 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    max-width: 62ch;
+  }
+  .lc-reg__creator {
+    color: #4a4438;
+    font-style: italic;
+  }
+  .lc-reg__links {
+    margin: 0.3rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 34rem) {
+    .lc-reg__row {
+      grid-template-columns: 3rem 1fr;
+    }
+    .lc-reg__thumb {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+</style>

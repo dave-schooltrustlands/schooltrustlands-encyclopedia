@@ -1,0 +1,228 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import { BASE, ORWW, driveInventory, bytes } from '../../../../../components/zybach/carson/data';
+
+const inv = driveInventory;
+const folders = inv?.folders ?? [];
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="In the Library’s files"
+  subtitle="The creator's working folders, which the Library holds and does not publish."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-letitia-carson-files"
+>
+  <p slot="before-title" class="kicker">Letitia Carson · Inventory</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="files" />
+
+  <p class="lc-lede">
+    Everything else in this series is on the creator’s own public site, and the
+    Library mirrors and indexes it. What is described on this page is different:
+    the working folders he uploaded to the Library, which he has not published.
+    They are described so that a researcher knows what exists and can ask; they
+    are not put online.
+  </p>
+
+  <h2 id="shape">What is in them</h2>
+  <p>
+    Its own arrangement tells you the shape of the story. There is a biography
+    file with seventeen subfolders arranged as chapters — Kentucky, Ireland,
+    Missouri, the Oregon Trail, Soap Creek, the Carson estate, Carson v. Smith,
+    Cow Creek, Letitia Creek, the Umatilla allotments — plus a chronology from
+    1845 to 1888, two family lines traced from 1775 to 1922, maps and
+    references. Beside it sit an earlier 2012 working file, descendant research
+    with the Lavadour family, newspaper articles sorted into four period runs
+    from 1853 to 1922, commissioned artwork, exhibit material, books for younger
+    readers, project administration, and recent drafts including a K–12 teaching
+    file.
+  </p>
+
+  {inv && folders.length > 0 ? (
+    <>
+      <h2 id="inventory">The count</h2>
+      <p class="lc-caption">
+        Counted in the creator’s uploaded folders{inv.generated ? `, ${inv.generated}` : ''}.
+        {inv.counts?.files ? ` ${inv.counts.files.toLocaleString('en-US')} files` : ''}
+        {inv.counts?.bytes ? `, ${bytes(inv.counts.bytes)}` : ''}.
+      </p>
+      <table class="lc-inv">
+        <thead>
+          <tr>
+            <th scope="col">Folder</th>
+            <th scope="col">Files</th>
+            <th scope="col">Size</th>
+            <th scope="col">What is in it</th>
+          </tr>
+        </thead>
+        <tbody>
+          {folders.map((f) => (
+            <tr>
+              <th scope="row">{f.path}</th>
+              <td>{f.files ?? '—'}</td>
+              <td>{bytes(f.bytes)}</td>
+              <td>{f.note ?? ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {inv.excluded && inv.excluded.length > 0 && (
+        <p class="lc-caption">
+          Counted but not described:{' '}
+          {(inv.excluded as any[])
+            .map((e) => (typeof e === 'string' ? e : `${e.path} (${e.files} files — ${e.reason})`))
+            .join('; ')}.
+        </p>
+      )}
+    </>
+  ) : (
+    <>
+      <h2 id="inventory">The count</h2>
+      <p class="lc-caption">
+        A file-by-file count of these folders is being made and is not in yet.
+        What the Library can say today, from the depth-limited census of 27
+        August 2026: about 153 files and 262.9 MB across 77 subfolders, of which
+        the biography file has eight items at its top level and seventeen
+        subfolders; the 2012 working file 19 files and 69.7 MB; the Lavadour
+        descendant research 33 files and 15.9 MB; the commissioned artwork 9
+        files and 32.8 MB; the exhibit material 7 files and 17.5 MB; the books
+        for younger readers 7 files and 4.0 MB; and project administration 13
+        files and 1.1 MB. Folders deeper than three levels were counted but not
+        opened. The figures will be replaced by a measured table when the full
+        count lands.
+      </p>
+    </>
+  )}
+
+  <h2 id="excluded">What is left out of the description</h2>
+  <ul>
+    <li>
+      Financial and billing records in the project folders. Described as a
+      category, never itemised, never published.
+    </li>
+    <li>
+      Personal information about living descendants. The genealogy files run to
+      people alive now; the Library describes the files as files and publishes
+      nothing from them.
+    </li>
+    <li>
+      Commissioned illustrations and the books for younger readers, which are
+      commercial work belonging to the artists and authors who made them.
+    </li>
+  </ul>
+
+  <h2 id="cautions">Known gaps and cautions</h2>
+  <ul>
+    <li>
+      Several drafts of the biography exist across folders dated from 2012 to
+      2025. Which one is the text has not been established.
+    </li>
+    <li>
+      The chapter folders and the site’s public outline are not identical, and
+      the Library has not reconciled them.
+    </li>
+    <li>
+      Some material appears both here and on his public site in a different
+      arrangement — the Jack’s house photographs, for instance, are filed twice
+      on the site itself.
+    </li>
+  </ul>
+
+  <h2 id="ask">Asking for something</h2>
+  <p>
+    A researcher who needs a file described on this page should write, saying
+    what they need and why. The Library will pass the request to the creator; it
+    is his material and his decision.
+    {' '}<a href="/collections/zybach/rights/">How to ask</a>.
+  </p>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Creator', value: 'Dr. Bob Zybach; Oregon Websites and Watershed Project, Inc.' },
+      { label: 'Received', value: 'Uploaded by the creator' },
+      { label: 'His public site', value: 'orww.org/History/Letitia_Carson/', href: ORWW },
+      { label: 'In this collection', value: 'Described at inventory level; nothing from these folders is published' },
+      { label: 'Excluded', value: 'Billing and financial records; personal information about living descendants; commissioned artwork and children’s books' },
+    ]}
+  />
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-lede {
+    font-size: 1.02rem;
+    line-height: 1.68;
+    max-width: 66ch;
+  }
+  .lc-caption {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #4e617c;
+    max-width: 68ch;
+  }
+  .lc-inv {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .lc-inv th,
+  .lc-inv td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem 0.65rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    line-height: 1.5;
+  }
+  .lc-inv thead th {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4e617c;
+    border-top: 0;
+  }
+  .lc-inv tbody th {
+    width: 14em;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+    overflow-wrap: anywhere;
+  }
+  .lc-corrections {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+  @media (max-width: 560px) {
+    .lc-inv tbody th { width: auto; }
+    .lc-inv, .lc-inv thead, .lc-inv tbody, .lc-inv tr, .lc-inv th, .lc-inv td { display: block; }
+    .lc-inv thead { display: none; }
+    .lc-inv tbody td { border-top: 0; padding-top: 0; }
+  }
+</style>

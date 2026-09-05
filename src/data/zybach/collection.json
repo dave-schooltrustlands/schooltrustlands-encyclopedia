@@ -94,42 +94,64 @@
    "slug": "jedediah-smith",
    "code": "js",
    "title": "Jedediah Smith and the 1828 Umpqua Memorial",
-   "kind": "inventory",
+   "kind": "item-level",
    "href": "/collections/zybach/jedediah-smith/",
-   "summary": "Research and memorial project on the July 14, 1828 killing of fifteen beaver trappers under Jedediah Smith at the mouth of the Smith River near Reedsport, Oregon, and the burial of eleven of them that October by a Hudson's Bay Company brigade. Includes reports, references, maps and Fort Umpqua photographs.",
-   "summary_basis": [
-    "ORWW home page project listing, '2023 1828 Umpqua Memorial'"
-   ],
+   "summary": "The 1828 Umpqua Memorial Project: the record of the 14 July 1828 attack in which beaver trappers travelling under Jedediah Smith were killed near the mouth of the Smith River in Douglas County, Oregon, and of the burial of eleven of them that October by a Hudson’s Bay Company brigade; and the record of a modern project, run by Bob Zybach for Oregon Websites and Watershed Project, Inc. and the Jedediah Smith Society between 2000 and 2023, to replace a state highway marker, raise a memorial stone and hold a four-day rendezvous over the route of 1828. Eleven of the creator’s writings are published page by page, with the 1828 primary sources, the reference shelf, the markers, the guidebooks, the maps and the photograph registers. No content that would locate the attack, the Kelawatset village or the graves is published.",
    "public_sources": [
-    "https://www.orww.store/umpqua-1828/",
     "http://www.orww.org/1828_Umpqua_Memorial/",
-    "http://www.orww.org/Jedediah_Smith/1828_Umpqua_Memorial/index.html"
+    "https://www.orww.store/umpqua-1828/"
    ],
-   "described_from": "public ORWW project pages and accessioned files",
+   "described_from": "the creator's own published project site at orww.org/1828_Umpqua_Memorial/, 375 files in 36 folders, read 4 September 2026",
    "counts": {
-    "accessioned_files_matching_name": 126
-   }
+    "files_published_by_the_creator": 375,
+    "folders": 36,
+    "works_page_by_page": 11,
+    "pages_page_by_page": 296,
+    "pages_held": 10,
+    "references_listed": 41,
+    "maps_listed": 9,
+    "photograph_sets": 15,
+    "photographs_registered": 246,
+    "dated_statements": 51,
+    "people_named": 44,
+    "places_named": 14,
+    "sponsors": 20
+   },
+   "dates": "1826–1830; 1987–2023"
   },
   {
    "slug": "letitia-carson",
    "code": "lc",
-   "title": "Letitia Carson, 1845–1888",
-   "kind": "inventory",
+   "title": "Letitia Carson, 1824–1922",
+   "kind": "item-level",
    "href": "/collections/zybach/letitia-carson/",
-   "summary": "Documentation of the life of Letitia Carson, a Black pioneer who settled in Soap Creek Valley, Benton County, in 1845: the ORWW Letitia Carson library and documentation archive, and current K–12 curriculum drafts.",
-   "summary_basis": [
-    "Demonstration finding aid, src/pages/collections/zybach.astro, Series III"
-   ],
+   "summary": "Letitia Carson was born enslaved in Kentucky between 1814 and 1818, crossed the Oregon Trail in 1845, and settled with David Carson on a claim in Soap Creek Valley. After his death in 1852 she sued the administrator of his estate twice and won both times, and in 1868 she proved a homestead claim on South Myrtle Creek in her own name. The series is the primary record the creator has assembled and published — citizenship papers, two probate files, the case file of Carson v. Smith, the homestead file — with the transcriptions made from it, his own writing about her from 1989 to 2016, his photographs of the ground, and the maps.",
    "public_sources": [
-    "https://www.orww.store/letitia-carson/",
     "http://www.orww.org/History/Letitia_Carson/",
+    "http://www.orww.org/History/Letitia_Carson/Documentation/",
     "http://www.orww.org/History/Letitia_Carson/Library/",
-    "http://www.orww.org/History/Letitia_Carson/Documentation/"
+    "http://www.orww.org/History/Letitia_Carson/Photographs/",
+    "http://www.orww.org/History/Letitia_Carson/Maps/"
    ],
-   "described_from": "public ORWW project pages and accessioned files",
+   "described_from": "the creator's own published pages at orww.org, mirrored and described item by item",
    "counts": {
-    "accessioned_files_matching_name": 118
-   }
+    "document_groups": 9,
+    "documents_listed": 251,
+    "documents_described": 246,
+    "documents_transcribed": 144,
+    "works_reproduced": 8,
+    "pages_reproduced": 219,
+    "words_reproduced": 44605,
+    "writings_catalogued": 15,
+    "reference_works": 43,
+    "photographs": 235,
+    "photograph_folders": 23,
+    "maps": 34,
+    "chronology_entries": 253,
+    "people_indexed": 32,
+    "places_indexed": 14
+   },
+   "dates": "1824–1922"
   },
   {
    "slug": "wildfire",

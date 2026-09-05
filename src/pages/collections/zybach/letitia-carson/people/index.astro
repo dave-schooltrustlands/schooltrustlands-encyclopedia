@@ -1,0 +1,233 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import { BASE, people } from '../../../../../components/zybach/carson/data';
+
+const FAMILY = new Set([
+  'letitia-carson', 'david-carson', 'martha-carson-lavadour', 'jack-carson',
+  'mary-alice-bigham-lavadour', 'narcisse-lavadour', 'joseph-lavadour',
+  'lisette-wallawalla', 'solomon-bigham', 'mathew-carson', 'jane-blevens',
+  'benjamin-young',
+]);
+const COURT = new Set([
+  'greenberry-smith', 'a-j-thayer', 'john-kelsay', 'a-n-locke', 'david-logan',
+  'joseph-hughart', 'jacob-modie', 'john-wiles', 'asahel-bush', 'john-robinson',
+  'julius-cardwell',
+]);
+
+const groups = [
+  { key: 'family', label: 'The family', people: people.filter((p) => FAMILY.has(p.slug)) },
+  { key: 'court', label: 'The estate and the courts', people: people.filter((p) => COURT.has(p.slug)) },
+  {
+    key: 'other', label: 'Neighbours, witnesses and others',
+    people: people.filter((p) => !FAMILY.has(p.slug) && !COURT.has(p.slug)),
+  },
+];
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="People"
+  subtitle="The historical people this record names, and where each of them appears in it."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-letitia-carson-people"
+>
+  <p slot="before-title" class="kicker">Letitia Carson · The Library’s own layer</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="people" />
+
+  <p class="lc-lede">
+    {people.length} people. Everyone here was born before 1900 and is long dead.
+    The line under each name is the Library’s summary of what the pages in this
+    series say about them, with a note of where it read that; the two counts are
+    the pages of reproduced text and the documents in the registers where the
+    name occurs.
+  </p>
+  <p class="lc-note">
+    The family line runs on past this page to descendants living now, several of
+    them enrolled at the Confederated Tribes of the Umatilla Indian Reservation.
+    The Library stops at the generation that is historical and publishes nothing
+    about anyone born after 1926. The genealogy is the family’s to tell.
+  </p>
+
+  {groups.filter((g) => g.people.length > 0).map((g) => (
+    <section aria-labelledby={`g-${g.key}`}>
+      <h2 id={`g-${g.key}`}>{g.label}</h2>
+      <ul class="lc-people">
+        {g.people.map((p) => (
+          <li id={p.slug}>
+            <p class="lc-people__name">
+              {p.name}
+              {p.dates && <span class="lc-people__dates"> {p.dates}</span>}
+            </p>
+            <p class="lc-people__role">{p.role}</p>
+            {p.note && <p class="lc-people__note">{p.note}</p>}
+            <p class="lc-people__src">
+              Read at: {p.source}
+            </p>
+            <p class="lc-people__where">
+              {p.page_count > 0 ? (
+                <>
+                  Named on {p.page_count} {p.page_count === 1 ? 'page' : 'pages'} of the
+                  reproduced text
+                  {p.pages.length > 0 && (
+                    <>
+                      {' — '}
+                      {p.pages.slice(0, 8).map((c, i) => (
+                        <>
+                          {i > 0 && ', '}
+                          <a href={c.href}>{c.short} p.{c.page}</a>
+                        </>
+                      ))}
+                      {p.pages.length > 8 && ` and ${p.pages.length - 8} more`}
+                    </>
+                  )}
+                  .
+                </>
+              ) : (
+                <>
+                  Not named on any page the Library reproduces; the citation above
+                  is to a work the Library links but does not copy.
+                </>
+              )}
+              {p.document_count > 0 && (
+                <>
+                  {' '}Named in {p.document_count}
+                  {' '}{p.document_count === 1 ? 'document' : 'documents'}
+                  {' '}in the registers
+                  {p.documents.length > 0 && (
+                    <>
+                      {' — '}
+                      {p.documents.slice(0, 4).map((d, i) => (
+                        <>
+                          {i > 0 && ', '}
+                          <a href={d.href}>{d.stem}</a>
+                        </>
+                      ))}
+                      {p.documents.length > 4 && ` and ${p.document_count - 4} more`}
+                    </>
+                  )}
+                  .
+                </>
+              )}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <h2 id="method">How this list was made</h2>
+  <p>
+    Names were matched against the text of the works reproduced in this series
+    and against the filenames the creator gave his scans. Where a clerk spelled
+    a name several ways — Letitia Carson’s own name is written at least eight
+    ways in the case file — every spelling was searched. A name occurring in a
+    filename means the creator put it there; a name occurring on a page means it
+    is in the source. Nothing on this page is inferred from anywhere else.
+  </p>
+  <p class="lc-note">
+    The people who made this record — Bob Zybach, Janet Meranda, John Meranda,
+    and the others he thanks — are living and are not indexed here. They are
+    named where they belong: on the pages of the work they made, and on
+    {' '}<a href="/collections/zybach/about-the-creator/">About the creator</a>.
+  </p>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Built by', value: 'The Library, by matching names against the reproduced text and the creator’s filenames' },
+      { label: 'Cut-off', value: 'Nobody born after 1926 appears' },
+      { label: 'Generated', value: '4 September 2026' },
+    ]}
+  />
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-lede {
+    font-size: 1.02rem;
+    line-height: 1.68;
+    max-width: 66ch;
+  }
+  .lc-note {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.58;
+    color: #6b6355;
+    max-width: 66ch;
+  }
+  .lc-people {
+    list-style: none;
+    margin: 0.75rem 0 1.75rem;
+    padding: 0;
+  }
+  .lc-people > li {
+    padding: 0.75rem 0;
+    border-top: 1px solid #ece5d5;
+    scroll-margin-top: 5rem;
+  }
+  .lc-people > li:target {
+    background: rgba(168, 127, 44, 0.08);
+  }
+  .lc-people__name {
+    margin: 0;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.05rem;
+    color: var(--deep-navy, #14243c);
+  }
+  .lc-people__dates {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: #6b6355;
+  }
+  .lc-people__role {
+    margin: 0.1rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--old-gold, #8a6a1f);
+  }
+  .lc-people__note {
+    margin: 0.35rem 0 0;
+    font-size: 0.93rem;
+    line-height: 1.58;
+    max-width: 62ch;
+  }
+  .lc-people__src,
+  .lc-people__where {
+    margin: 0.3rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    line-height: 1.5;
+    color: #6b6355;
+    max-width: 68ch;
+    overflow-wrap: anywhere;
+  }
+  .lc-corrections {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

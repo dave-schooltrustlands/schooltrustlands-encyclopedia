@@ -1,0 +1,253 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import Plate from '../../../../../components/zybach/frontdoor/Plate.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import Register from '../../../../../components/zybach/carson/Register.astro';
+import type { RegisterRow } from '../../../../../components/zybach/carson/data';
+import { BASE, ORWW, media } from '../../../../../components/zybach/carson/data';
+
+const groups = media.photographs ?? [];
+const counts = media.photograph_counts ?? {};
+const illustrations = media.illustrations ?? [];
+const warre = media.warre ?? [];
+const saar = media.saar;
+
+const listed = groups.filter((g) => !g.personal);
+const held = groups.filter((g) => g.personal);
+
+/* The creator's filenames carry his own captions: a number, then what the frame
+   is of. The Library sets the caption out and adds nothing. */
+function caption(file: string): string | null {
+  const stem = file.replace(/\.[A-Za-z0-9]+$/, '');
+  const words = stem
+    .replace(/^\d{2,4}[a-z]?[-_]/, '')
+    .replace(/^(IMG|DSC|DSCN|Resized)[-_]?\d*[-_]?/i, '')
+    .replace(/^\d{8}_\d+$/, '')
+    .replace(/[-_]+/g, ' ')
+    .trim();
+  return words && /[A-Za-z]{3}/.test(words) ? words : null;
+}
+
+function rowsFor(g: (typeof groups)[number]): RegisterRow[] {
+  return g.items.map((f) => ({
+    title: f.file,
+    meta: caption(f.file),
+    thumb: f.thumb,
+    href: f.url,
+    linkLabel: f.file.toLowerCase().endsWith('.pdf')
+      ? 'The creator’s PDF'
+      : /\.mov$/i.test(f.file)
+        ? 'The creator’s video'
+        : 'The creator’s photograph',
+  }));
+}
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Photographs and illustrations"
+  subtitle="The creator's own photographs of the ground, 1990 to 2024, and the historical illustrations he keeps with them."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-letitia-carson-photographs"
+>
+  <p slot="before-title" class="kicker">Letitia Carson · Register</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="photographs" />
+
+  <p class="lc-lede">
+    {counts.files ?? 0} files in {counts.folders ?? 0} folders on the creator’s
+    site. Captions are his filenames; the Library has invented none. Two rules
+    govern the rest. Where one of his filenames names a living person, the
+    Library repeats his filename and says nothing further about that person, and
+    shows no picture. Where a whole folder is given over to photographs of a
+    living person or family, the Library records the folder, counts it and
+    points at his copy, without listing the files — the photographs are his, and
+    the people in them are not this Library’s to publish.
+  </p>
+
+  <Plate
+    src="http://www.orww.org/History/Letitia_Carson/Photographs/Douglas_County/Myrtle_Creek/Stephens_Graveyard/19900000/Gravestone-2.jpg"
+    alt="A weathered upright headstone standing in rough grass, with trees behind."
+    width={1500}
+    height={980}
+    ratio="1500 / 980"
+    size="plate"
+    caption="A headstone in the Stephens graveyard, South Myrtle Creek, photographed about 1990. Letitia Carson was buried here in February 1888 and her son in 1922; the creator applied in 2014 to have the burying ground restored."
+    credit="Photograph by Bob Zybach, from his own pages at orww.org."
+  />
+
+  <h2 id="folders">The folders</h2>
+  {listed.map((g) => (
+    <section class="lc-fold" id={g.slug} aria-labelledby={`h-${g.slug}`}>
+      <h3 id={`h-${g.slug}`}>
+        {g.title} <span class="lc-fold__n">{g.count} {g.count === 1 ? 'file' : 'files'}</span>
+      </h3>
+      {g.note && <p class="lc-fold__note">{g.note}</p>}
+      {g.items.length > 0 && <Register rows={rowsFor(g)} />}
+      <p class="lc-fold__link"><a href={g.url}>The creator’s folder</a></p>
+    </section>
+  ))}
+
+  {held.length > 0 && (
+    <>
+      <h2 id="held">Folders recorded but not listed</h2>
+      <p>
+        These are photographs of living people, taken at project visits and
+        gatherings and published by the creator on his own site. The Library
+        records that they exist, how many there are, and where they are, and
+        stops there.
+      </p>
+      <ul class="lc-heldlist">
+        {held.map((g) => (
+          <li>
+            <a href={g.url}>{g.title}</a>
+            <span>{g.count} {g.count === 1 ? 'file' : 'files'}{g.dates ? ` · ${g.dates}` : ''}</span>
+            {g.note && <span class="lc-heldlist__note">{g.note}</span>}
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  <h2 id="illustrations">Illustrations</h2>
+  <p>
+    The creator’s illustration folder holds historical views and portraits he
+    uses on his pages: Belfast, the Nodaway ferry, the Oregon Trail, a plate
+    from <em>Uncle Tom’s Cabin</em>, a portrait of Greenberry Smith, the Red
+    Hand of Ulster, and a set of {warre.length} lithographs after Henry James
+    Warre’s 1845 journey. The Library links them and does not reproduce them:
+    for most of these the maker and the date of the image itself are not
+    established by anything on his site or in this corpus, and the Library will
+    not display a picture it cannot describe honestly.
+  </p>
+  <ul class="lc-files lc-files--wide">
+    {illustrations.map((i) => (
+      <li><a href={i.url}>{i.title}</a>{i.note && <span> — {i.note}</span>}</li>
+    ))}
+  </ul>
+  <p class="lc-note">
+    The Warre set is at
+    {' '}<a href={media.warre_url ?? `${ORWW}Illustrations/`}>Illustrations/</a>:
+    {' '}{warre.join(', ')}.
+  </p>
+
+  {saar && (
+    <>
+      <h2 id="saar">The print on his front page</h2>
+      <p>
+        <strong>{saar.by}</strong>, <em>{saar.title}</em>, {saar.date}.
+        {' '}{saar.medium} {saar.credit}
+      </p>
+      <p class="lc-note">{saar.note} <a href={saar.url}>His copy</a>.</p>
+    </>
+  )}
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Photographer', value: 'Bob Zybach, except where his filename names another' },
+      { label: 'Published at', value: 'orww.org/History/Letitia_Carson/Photographs/', href: `${ORWW}Photographs/` },
+      { label: 'Rights', value: 'In copyright, the creator’s own. He publishes them himself; the Library shows display copies of the few he made thumbnails for and links the rest.' },
+      { label: 'Not listed', value: `${counts.folders_held_as_personal ?? 0} folders whose subject is a living person or family` },
+      { label: 'Described', value: 'By the Library, 4 September 2026' },
+    ]}
+  />
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-lede {
+    font-size: 1.02rem;
+    line-height: 1.68;
+    max-width: 66ch;
+  }
+  .lc-note {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.58;
+    color: #6b6355;
+    max-width: 66ch;
+    overflow-wrap: anywhere;
+  }
+  .lc-fold {
+    padding: 0.6rem 0 0.4rem;
+    border-top: 1px solid #ece5d5;
+    scroll-margin-top: 5rem;
+  }
+  .lc-fold h3 {
+    margin: 0.4rem 0 0.2rem;
+    font-size: 1rem;
+  }
+  .lc-fold__n {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: #a39a88;
+  }
+  .lc-fold__note {
+    margin: 0.2rem 0 0.4rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    max-width: 62ch;
+  }
+  .lc-fold__link {
+    margin: 0.3rem 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+  }
+  .lc-files {
+    list-style: none;
+    margin: 0.3rem 0;
+    padding: 0;
+    columns: 2 16rem;
+    column-gap: 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  .lc-files--wide { columns: 1; font-size: 0.88rem; }
+  .lc-files li { break-inside: avoid; margin-bottom: 0.2rem; }
+  .lc-heldlist {
+    list-style: none;
+    margin: 0.75rem 0 1.5rem;
+    padding: 0;
+  }
+  .lc-heldlist > li {
+    padding: 0.5rem 0;
+    border-top: 1px solid #ece5d5;
+  }
+  .lc-heldlist span {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    color: #6b6355;
+  }
+  .lc-heldlist__note { max-width: 62ch; }
+  .lc-corrections {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

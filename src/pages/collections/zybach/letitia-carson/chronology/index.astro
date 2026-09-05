@@ -1,0 +1,217 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import { BASE, chronology } from '../../../../../components/zybach/carson/data';
+
+const periods = chronology.periods ?? [];
+const counts = chronology.counts ?? {};
+const disputes = chronology.disputes ?? [];
+
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+  'August', 'September', 'October', 'November', 'December'];
+
+function showDate(d: string): string {
+  const m = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(d);
+  if (!m) return d;
+  const [, y, mo, day] = m;
+  if (day && mo) return `${Number(day)} ${MONTHS[Number(mo) - 1]} ${y}`;
+  if (mo) return `${MONTHS[Number(mo) - 1]} ${y}`;
+  return y;
+}
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Chronology"
+  subtitle="Every dated line in this series, with the page it came from."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-letitia-carson-chronology"
+>
+  <p slot="before-title" class="kicker">Letitia Carson · The Library’s own layer</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="chronology" />
+
+  <p class="lc-lede">
+    Two kinds of line, and the difference matters.
+    {counts.from_the_documents ? ` ${counts.from_the_documents} of them` : ' Most'}
+    {' '}are documents: a paper with that date on its face, in a court or land
+    office file, which you can open and check.
+    {counts.from_the_creators_writing ? ` ${counts.from_the_creators_writing}` : ' The rest'}
+    {' '}are the creator’s: statements from what Bob Zybach has published, in his
+    words, keeping his hedges where he hedged. The Library has added nothing of
+    its own beyond the ordering.
+  </p>
+
+  <p class="lc-key">
+    <span class="lc-key__doc">◆</span> a dated document ·
+    <span class="lc-key__nar">●</span> the creator’s writing ·
+    <span class="lc-key__hedge">~</span> he marks it as uncertain
+  </p>
+
+  {periods.map((p) => (
+    <section class="lc-period" aria-labelledby={`period-${p.slug}`}>
+      <h2 id={`period-${p.slug}`}>
+        {p.label} <span class="lc-period__n">{p.count}</span>
+      </h2>
+      <ol class="lc-chron">
+        {p.entries.map((e) => (
+          <li class:list={['lc-chron__row', `lc-chron__row--${e.kind}`]}>
+            <p class="lc-chron__date">{showDate(e.date)}</p>
+            <p class="lc-chron__text">
+              {e.hedged && <span class="lc-chron__hedge" title="The creator marks this as uncertain">~</span>}
+              {e.text}
+            </p>
+            <p class="lc-chron__src">
+              {e.href ? <a href={e.href}>{e.source}</a> : <span>{e.source}</span>}
+              {e.source_note && <span class="lc-chron__note"> — {e.source_note}</span>}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+
+  {disputes.length > 0 && (
+    <section aria-labelledby="disagreements">
+      <h2 id="disagreements">Where the record and the account disagree</h2>
+      {disputes.map((d) => (
+        <div class="lc-dispute">
+          <h3>{d.about}</h3>
+          <ul>
+            {d.positions.map((pos) => (
+              <li>
+                {pos.says} <a href={pos.href}>See it</a>
+              </li>
+            ))}
+          </ul>
+          <p class="lc-note">{d.note}</p>
+        </div>
+      ))}
+    </section>
+  )}
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Built by', value: 'The Library, from the dates on the creator’s scans and from his published writing' },
+      { label: 'Sources', value: 'The document registers and the works reproduced in this series; every line links to one of them' },
+      { label: 'Not included', value: 'Anything the Library could not trace to a page a reader can open' },
+      { label: 'Generated', value: '4 September 2026' },
+    ]}
+  />
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-lede {
+    font-size: 1.02rem;
+    line-height: 1.68;
+    max-width: 66ch;
+  }
+  .lc-key {
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+  }
+  .lc-key__doc { color: var(--trust-blue, #1b3252); }
+  .lc-key__nar { color: var(--old-gold, #a87f2c); }
+  .lc-key__hedge { font-weight: 700; }
+  .lc-period__n {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: #a39a88;
+    font-weight: 400;
+  }
+  .lc-chron {
+    list-style: none;
+    margin: 0.75rem 0 2rem;
+    padding: 0;
+  }
+  .lc-chron__row {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 0.15rem 1rem;
+    padding: 0.5rem 0 0.5rem 0.85rem;
+    border-top: 1px solid #ece5d5;
+    border-left: 3px solid transparent;
+  }
+  .lc-chron__row--document { border-left-color: rgba(27, 50, 82, 0.35); }
+  .lc-chron__row--narrative { border-left-color: rgba(168, 127, 44, 0.6); }
+  .lc-chron__date {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--deep-navy, #14243c);
+  }
+  .lc-chron__text {
+    grid-column: 2;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 58ch;
+  }
+  .lc-chron__hedge {
+    color: #a39a88;
+    font-weight: 700;
+    margin-right: 0.25rem;
+  }
+  .lc-chron__src {
+    grid-column: 2;
+    margin: 0.15rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    color: #6b6355;
+    overflow-wrap: anywhere;
+  }
+  .lc-chron__note { font-style: italic; }
+  .lc-dispute {
+    margin: 1rem 0;
+    padding: 0.85rem 1.1rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-radius: 3px;
+  }
+  .lc-dispute h3 { margin-top: 0; font-size: 1rem; }
+  .lc-dispute ul { font-size: 0.92rem; line-height: 1.55; }
+  .lc-note {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: #6b6355;
+    max-width: 64ch;
+  }
+  .lc-corrections {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+  @media (max-width: 40rem) {
+    .lc-chron__row { grid-template-columns: 1fr; }
+    .lc-chron__date { grid-row: auto; }
+    .lc-chron__text, .lc-chron__src { grid-column: 1; }
+  }
+</style>

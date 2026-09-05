@@ -2,7 +2,7 @@
 export const prerender = true;
 
 import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
-import { mirrored } from '../../../../../components/zybach/_data';
+import { mirrored, portraitFor } from '../../../../../components/zybach/_data';
 import CitationBlock from '../../../../../components/zybach/soapcreek/CitationBlock.astro';
 import ProvenanceBlock from '../../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
 import ContentNote from '../../../../../components/zybach/soapcreek/ContentNote.astro';
@@ -196,6 +196,7 @@ const whatThisIs = `Monograph #${mono.number} in the Soap Creek Valley oral hist
   sessions.length ? ` between ${prettyDate(sessions[0]?.date)} and ${prettyDate(sessions[sessions.length - 1]?.date)}` : ''
 }, printed ${mono.year_printed ?? ''}.`;
 
+const portrait = portraitFor(mono.slug);
 const parents = [
   { label: 'The Zybach Collection', href: '/collections/zybach/' },
   { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
@@ -224,6 +225,25 @@ const parents = [
       <figcaption>
         The printed cover. <a href={mono.cover_url} rel="external">Full-size scan</a> on
         the creator's own site, nwmapsco.com.
+      </figcaption>
+    </figure>
+  )}
+
+  {portrait && (
+    <figure class="sc-portrait">
+      <img
+        src={portrait.file}
+        alt={portrait.who ? `Photograph printed in the monograph: ${portrait.who}` : 'Photograph printed in the front matter of the monograph'}
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>
+        {portrait.who && <strong>{portrait.who}.</strong>}{' '}
+        {portrait.printed_caption && <span class="sc-portrait__caption">As printed: “{portrait.printed_caption}”</span>}
+        <span class="sc-portrait__src">
+          {' '}From the front matter of the printed monograph{portrait.printed_page_label ? ` (${portrait.printed_page_label})` : ''}, reproduced from the creator's own scan.
+          {portrait.credit ? ` ${portrait.credit}.` : ''}
+        </span>
       </figcaption>
     </figure>
   )}
@@ -573,6 +593,25 @@ const parents = [
     width: min(200px, 55%);
     margin: 1.2rem 0;
   }
+  .sc-portrait {
+    margin: 1.25rem 0 1.5rem;
+    max-width: 34rem;
+  }
+  .sc-portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule-border, #d8d1c2);
+    background: #f4efe4;
+  }
+  .sc-portrait figcaption {
+    margin-top: 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: #4a4438;
+  }
+  .sc-portrait__src { color: #6b6353; }
   .sc-cover img {
     display: block;
     width: 100%;

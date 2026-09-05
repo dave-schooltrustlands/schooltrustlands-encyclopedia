@@ -1,0 +1,218 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../../components/zybach/ProvenanceBlock.astro';
+import Plate from '../../../../../components/zybach/frontdoor/Plate.astro';
+import CarsonNav from '../../../../../components/zybach/carson/CarsonNav.astro';
+import {
+  BASE,
+  documents,
+  docGroups,
+  texts,
+  docHref,
+} from '../../../../../components/zybach/carson/data';
+
+const counts = documents?.counts ?? {};
+const idx = documents?.creator_index;
+const loose = documents?.loose ?? [];
+
+const transcriptionWorks = texts.filter((w) => w.population === 'public-records');
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Letitia Carson', href: `${BASE}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="The documents"
+  subtitle="Every file in the creator's documentation folders, group by group, with what each one is and where to read it."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-letitia-carson-documents"
+>
+  <p slot="before-title" class="kicker">Letitia Carson · Register</p>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+  <span data-pagefind-meta="series:letitia-carson" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <CarsonNav current="documents" />
+
+  <p class="lc-lede">
+    Nine groups, arranged as the creator arranges them: by place and by period.
+    {counts.files_listed ? ` ${counts.files_listed} files in all` : ''}
+    {counts.files_described ? `, ${counts.files_described} of them described one by one` : ''}.
+    Nineteenth-century court, probate, land and citizenship records are public
+    records and are not under copyright. The Library describes each one, shows
+    the creator’s thumbnail where he made one, and links his full-size scan
+    rather than making a second copy of it.
+  </p>
+
+  <Plate
+    src="http://www.orww.org/History/Letitia_Carson/Documentation/1854-1857_Carson_vs_Smith/18540227_Complaint_L_Carson-2.jpg"
+    alt="A sheet of handwritten 1850s court paper in brown ink, the writing running the full width of the page."
+    width={1600}
+    height={1647}
+    ratio="1600 / 1647"
+    size="plate"
+    caption="The second sheet of the complaint filed for Letitia Carson on 27 February 1854 — the notice to Greenberry Smith that she would present her claim to the Probate Court at Corvallis, and the account she claimed on."
+    credit="Oregon State Archives; scanned and published by Bob Zybach at orww.org."
+    href={`${BASE}/documents/1854-1857-carson-vs-smith/`}
+  />
+
+  <h2 id="groups">The groups</h2>
+
+  <ol class="lc-groups">
+    {docGroups.map((g) => (
+      <li>
+        <p class="lc-groups__head">
+          <a href={docHref(g.slug)}>{g.title}</a>
+          <span class="lc-groups__n">
+            {g.count === 0 ? 'empty' : `${g.count} ${g.count === 1 ? 'file' : 'files'}`}
+            {g.restricted ? ' · described at folder level' : ''}
+          </span>
+        </p>
+        <p class="lc-groups__lede">{g.lede}</p>
+      </li>
+    ))}
+  </ol>
+
+  <h2 id="transcriptions">The transcriptions</h2>
+  <p>
+    Jan and John Meranda transcribed almost the whole of the probate and lawsuit
+    files, heading each transcription with the filename of the scan it was made
+    from. The Library reproduces them page by page, so that a reader can set the
+    reading beside the image. Each document’s entry links straight to the page
+    that carries it.
+  </p>
+  <ul class="lc-links">
+    {transcriptionWorks.map((w) => (
+      <li>
+        <a href={`${BASE}/writings/${w.slug}/`}>{w.title}</a>
+        <span class="lc-links__meta">
+          {w.page_count} pages · {w.words.toLocaleString('en-US')} words · {w.by}
+        </span>
+      </li>
+    ))}
+  </ul>
+
+  {idx && (
+    <>
+      <h2 id="creator-index">The creator’s own index</h2>
+      <p>
+        In January 2013 the creator and Janet Meranda made a table of the
+        documents then online, with a line of description against each. Where a
+        file in the registers below carries a line in quotation marks, it comes
+        from that table. Some of the filenames have changed since; where a
+        renamed file could not be matched to his line beyond doubt, the Library
+        prints nothing rather than the wrong description.
+      </p>
+      <ul class="lc-links">
+        <li>
+          <a href={idx.url}>{idx.title}</a>
+          <span class="lc-links__meta">{idx.by}, {idx.date} · {idx.rows} lines</span>
+        </li>
+        {loose.filter((f) => !f.file.startsWith('Index_to')).map((f) => (
+          <li><a href={f.url}>{f.file}</a></li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  <h2 id="where">Where the originals are</h2>
+  <p>
+    The Benton County probate and district court files are held by the Oregon
+    State Archives; the creator’s copies were made there. The homestead
+    application, proof, certificate and patent come from the National Archives.
+    The Missouri probate came through the Platte County courthouse and a
+    researcher’s correspondence. The North Carolina citizenship papers come from
+    Ashe County. A reader who needs the original document rather than a scan of
+    it should go to the holding institution.
+  </p>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Records', value: '19th-century court, probate, land and citizenship records — public records, not under copyright' },
+      { label: 'Scanned by', value: 'Bob Zybach and Janet Meranda; transcriptions by Jan and John Meranda' },
+      { label: 'Published at', value: 'orww.org/History/Letitia_Carson/Documentation/', href: documents?.source ?? 'http://www.orww.org/History/Letitia_Carson/Documentation/' },
+      { label: 'Described', value: 'By the Library, from the creator’s filenames, his 2013 index, and the transcriptions — 4 September 2026' },
+    ]}
+  />
+
+  <p class="lc-corrections" data-pagefind-ignore>
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> ·
+    <a href="/about/corrections/">How corrections work</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .lc-lede {
+    font-size: 1.02rem;
+    line-height: 1.68;
+    max-width: 66ch;
+  }
+  .lc-groups {
+    list-style: none;
+    margin: 1.1rem 0 2rem;
+    padding: 0;
+  }
+  .lc-groups > li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #ece5d5;
+  }
+  .lc-groups__head {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .lc-groups__head a {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.05rem;
+    color: var(--deep-navy, #14243c);
+  }
+  .lc-groups__n {
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #8a8172;
+  }
+  .lc-groups__lede {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.58;
+    max-width: 64ch;
+    color: #4a4438;
+  }
+  .lc-links {
+    list-style: none;
+    padding: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+  .lc-links > li {
+    margin-bottom: 0.6rem;
+  }
+  .lc-links__meta {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+  }
+  .lc-corrections {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b6355;
+  }
+</style>

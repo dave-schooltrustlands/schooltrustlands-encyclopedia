@@ -1,0 +1,157 @@
+---
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import ProvenanceBlock from '../../../../components/zybach/ProvenanceBlock.astro';
+import { maps, HOLD_NOTICE, postedOn, SECTION } from '../../../../components/zybach/smith/data';
+
+const base = '/collections/zybach/jedediah-smith';
+const shown = maps.filter((m) => m.display === 'shown');
+const held = maps.filter((m) => m.display === 'held');
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Jedediah Smith and the 1828 Umpqua Memorial', href: `${base}/` },
+];
+---
+
+<RoomLayout
+  room="collections"
+  title="Maps"
+  subtitle="Five GIS sheets made for the 2023 guidebooks, a sketch of the coastal homelands in 1828, and three maps that are not published."
+  width="prose"
+  parents={parents}
+  sourceId="zybach-jedediah-smith-maps"
+>
+  <p slot="before-title" class="kicker">The Zybach Collection · Jedediah Smith</p>
+  <span data-pagefind-meta="series:jedediah-smith" hidden></span>
+  <span data-pagefind-meta="collection:zybach" hidden></span>
+
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+
+  <p class="sm-lede">
+    The creator describes the series this way: “Indexed GIS Maps were created for
+    the Rendezvous Guidebooks that directly connected modern day locations and
+    landscapes with the individual campsites, travel routes, and daily journal
+    entries of Jedediah Smith, Harrison G. Rogers, and Alexander Roderick McLeod.
+    Maps were constructed by Vyla Grinberg, Douglas County GIS.” His own pages
+    spell the surname Grinberg in the text and Grindberg in the file names; the
+    Library has not been able to establish which he intends.
+  </p>
+  <p class="sm-note">
+    These are large PDFs — the first sheet is 22.7 MB — and the creator publishes
+    no thumbnail of any of them, so there is nothing here to show. Each entry
+    links to his file.
+  </p>
+
+  <section aria-labelledby="published">
+    <h2 id="published">The published sheets</h2>
+    <ul class="sm-maps">
+      {shown.map((m) => (
+        <li>
+          <h3><a href={m.url}>{m.title}</a></h3>
+          <p class="sm-maps__meta">
+            {m.author}{m.size ? ` · ${m.size}` : ''}{m.modified ? ` · posted ${postedOn(m.modified)}` : ''}
+            {' · '}<span class="sm-maps__file">{m.file_name}</span>
+          </p>
+          <p class="sm-maps__note">{m.note}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="not-published">
+    <h2 id="not-published">Three maps that are not published</h2>
+    <p class="sm-note">
+      Three of the nine maps in the creator’s folder show the ground of the 1828
+      attack and the burials at a scale at which it could be found. Two are his
+      own; the third is the field map from the 2023 canine search, made by
+      another author. The rule this Library works to is that it does not publish
+      anything that locates an archaeological site, a Native village site or an
+      unmarked grave — and that rule does not bend because the creator has
+      published it himself.
+    </p>
+    <p class="sm-note">
+      Each keeps its entry below, with its file name, its size and the date it
+      went up, so a reader knows exactly what exists and can ask for it. What is
+      not printed is the link.
+    </p>
+    <ul class="sm-maps sm-maps--held">
+      {held.map((m) => (
+        <li>
+          <h3>{m.title}</h3>
+          <p class="sm-maps__meta">
+            {m.author}{m.size ? ` · ${m.size}` : ''}{m.modified ? ` · posted ${postedOn(m.modified)}` : ''}
+            {' · '}<span class="sm-maps__file">{m.file_name}</span>
+          </p>
+          <p class="sm-maps__note">{m.note}</p>
+          <p class="sm-maps__hold">{HOLD_NOTICE}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="elsewhere">
+    <h2 id="elsewhere">Maps described elsewhere in this series</h2>
+    <p class="sm-note">
+      Three more maps sit in other folders and are catalogued where they belong:
+      the 1857–58 General Land Office survey sheet that the interpretive-sign
+      drafts reproduce, and Don Whereat and Wayne Knauf’s field map of 2001, are
+      on the <a href={`${base}/markers/#sign`}>markers page</a> and the
+      {' '}<a href={`${base}/the-1828-record/`}>1828 record page</a>. The 1987
+      draft’s own bibliography lists every county road map, atlas and quadrangle
+      the creator worked from; it is
+      {' '}<a href={`${base}/writings/pack-trails-1987/`}>printed page by page</a>,
+      with one page of it held.
+    </p>
+  </section>
+
+  <ProvenanceBlock
+    items={[
+      { label: 'Made by', value: 'Vyla Grindberg, Douglas County GIS, with Bob Zybach; the 1828 homelands sketch is the creator’s own' },
+      { label: 'Date', value: '25 March 2023 for the guidebook series; 31 July 2023 for the homelands sketch' },
+      { label: 'Published at', value: 'orww.org/1828_Umpqua_Memorial/Maps/', href: `${SECTION}Maps/` },
+      { label: 'Held', value: `${held.length} of ${maps.length} maps withheld: each shows the ground of the attack or the burials at a scale at which it could be found` },
+    ]}
+  />
+
+  <p class="sm-see-also">
+    <a href={`${base}/`}>Series</a> ·
+    <a href={`${base}/rendezvous/`}>Guidebooks</a> ·
+    <a href={`${base}/places/`}>Places</a> ·
+    <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a>
+  </p>
+</RoomLayout>
+
+<style>
+  .sm-lede { max-width: 64ch; font-size: 1rem; line-height: 1.68; }
+  .sm-note { max-width: 64ch; font-size: 0.95rem; line-height: 1.64; color: #3f3a33; }
+  .sm-maps { list-style: none; margin: 1rem 0 1.5rem; padding: 0; }
+  .sm-maps li { padding: 0.75rem 0; border-top: 1px solid #ece5d5; }
+  .sm-maps h3 { margin: 0 0 0.2rem; font-size: 0.99rem; line-height: 1.42; }
+  .sm-maps__meta {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: #6b6355;
+    overflow-wrap: anywhere;
+  }
+  .sm-maps__file { font-family: var(--font-mono, ui-monospace, Menlo, monospace); }
+  .sm-maps__note { margin: 0; max-width: 64ch; font-size: 0.92rem; line-height: 1.58; }
+  .sm-maps--held h3 { color: #4e4638; }
+  .sm-maps__hold {
+    margin: 0.45rem 0 0;
+    padding: 0.5rem 0.8rem;
+    font-family: var(--font-sans);
+    font-size: 0.79rem;
+    line-height: 1.5;
+    color: #5c5346;
+    background: rgba(122, 46, 46, 0.045);
+    border-left: 3px solid var(--oxblood, #7a2e2e);
+    border-radius: 3px;
+  }
+  .sm-see-also { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.84rem; }
+</style>

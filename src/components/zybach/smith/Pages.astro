@@ -1,0 +1,98 @@
+---
+/* Pages.astro — SMITH lane.
+ *
+ * A document printed the way it stands, one page at a time, each page carrying
+ * its own number and its own anchor so a citation can land on it. Held pages
+ * keep their number and their anchor and print the one notice this series uses;
+ * nothing is silently dropped, and the page count above the text always adds up.
+ *
+ * Owner: SMITH.
+ */
+import type { Page } from './data';
+import { HOLD_NOTICE } from './data';
+
+interface Props {
+  pages: ReadonlyArray<Page>;
+  /** Printed above each page number, e.g. "Page" or "Slide". */
+  unit?: string;
+}
+
+const { pages, unit = 'Page' } = Astro.props as Props;
+---
+
+<div class="sm-pages">
+  {pages.map((p) => (
+    <section class="sm-page" id={`p${p.n}`} data-held={p.held ? 'true' : undefined}>
+      <p class="sm-page__n">
+        <a href={`#p${p.n}`}>{unit} {p.n}</a>
+      </p>
+      {p.held ? (
+        <p class="sm-page__hold">{HOLD_NOTICE}</p>
+      ) : p.text ? (
+        <pre class="sm-page__text">{p.text}</pre>
+      ) : (
+        <p class="sm-page__blank">This page carries no text — it is a photograph, a map or a plate.</p>
+      )}
+    </section>
+  ))}
+</div>
+
+<style>
+  .sm-pages {
+    margin: 1.5rem 0;
+  }
+  .sm-page {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0 1.25rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid #ece5d5;
+    scroll-margin-top: 4rem;
+  }
+  .sm-page__n {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6b6355;
+  }
+  .sm-page__n a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .sm-page__n a:hover { text-decoration: underline; }
+  .sm-page__text {
+    margin: 0;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 0.94rem;
+    line-height: 1.62;
+    color: #2c2a26;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .sm-page__hold,
+  .sm-page__blank {
+    margin: 0;
+    padding: 0.6rem 0.85rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #5c5346;
+    background: rgba(122, 46, 46, 0.045);
+    border-left: 3px solid var(--oxblood, #7a2e2e);
+    border-radius: 3px;
+  }
+  .sm-page__blank {
+    background: transparent;
+    border-left-color: var(--rule-border, #d8d1c2);
+    color: #6b6355;
+    font-style: italic;
+  }
+  @media (max-width: 42rem) {
+    .sm-page {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+  }
+</style>
