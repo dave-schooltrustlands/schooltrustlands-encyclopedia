@@ -1,0 +1,103 @@
+---
+export const prerender = true;
+// Audience: curious readers, students and Bob's collaborators. Invite a short
+// listening visit that connects voices to evidence; avoid technical obstacles
+// and avoid presenting recollections or approximate timing as established fact.
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import { ZybachNav } from '../../../../../components/zybach/elliott/shared';
+import ListenRead from '../../../../../components/zybach/elliott/ListenRead.astro';
+import MapWithList from '../../../../../components/zybach/elliott/MapWithList.astro';
+import { geoJSONFor } from '../../../../../components/zybach/elliott/data';
+import pilot from '../../../../../data/zybach/elliott/listening/dean-mountain.json';
+const original = 'http://www.orww.org/Elliott_Forest/History/Oral/20171108/Recordings/Phillips-Zybach_20171108-7C.mp3';
+const pdf = 'http://www.orww.org/Elliott_Forest/History/Oral/20171108/Transcript/Phillips-Zybach_20191108.pdf';
+const photo = 'http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0989_Deans_Mountain_20171108-10.jpg';
+const excerpt = '/zybach/audio/dean-mountain-20171108-7c-1646-2154.mp3';
+---
+
+<RoomLayout room="collections" title="On the road to Dean Mountain" subtitle="A road, a forest, and forty years of change · Listen & read · 5 minutes" width="full" sourceId="zybach-elliott-listen-dean-mountain" parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }, { label: 'Elliott State Forest', href: '/collections/zybach/elliott/' }]}>
+  <p slot="before-title" class="kicker">The Zybach Collection · Elliott oral history · November 8, 2017</p>
+  <ZybachNav current="elliott" />
+  <span data-pagefind-meta="series:elliott" hidden></span>
+  <span data-pagefind-filter="series:elliott" hidden></span>
+
+  <div class="listening-opening">
+    <div class="opening-copy">
+      <p class="inviting-question">What changes when you return to a forest after forty years?</p>
+      <p>Ride toward Dean Mountain with Jerry Phillips, David Gould, Bob Zybach, Amber Ross and Randy Wiest. A road built by the Civilian Conservation Corps opens a conversation about work, changing forestry goals and a familiar landmark.</p>
+      <p>These are the participants’ memories and judgments. Hear their voices, follow the published words, and explore the place they are talking about.</p>
+      <a class="start-link" href="#listen-heading">Start listening <span aria-hidden="true">↓</span></a>
+      <p class="recording-label">November 8, 2017 · Tape 7-C · 16:46–21:54<br />One continuous excerpt from the original field recording.</p>
+    </div>
+    <figure>
+      <a href={photo}><img src="/zybach/mirror/058fed7de1dacd59.jpg" width="900" height="596" alt="A concrete remnant amid grass and low vegetation at a foggy Dean Mountain stop." fetchpriority="high" /></a>
+      <figcaption>“Deans Mountain,” frame 0989, November 8, 2017. One of four photographs listed for this stop in the published transcript. <a href="/collections/zybach/elliott/photos/#d20171108">Photographs from the tour</a>. Source: Bob Zybach / ORWW collection.</figcaption>
+    </figure>
+  </div>
+
+  <ListenRead cues={pilot.cues} chapters={pilot.chapters} audioSrc={excerpt} duration={pilot.duration} sourceStart={pilot.source_start} />
+
+  <section class="context-grid" aria-label="Explore the place and the question">
+    <div>
+      <h2>Find the place</h2>
+      <p>Dean Mountain is the destination named in the stop heading. This map shows the Library’s existing place record; it does not trace the vehicle’s position during the recording.</p>
+      <MapWithList id="dean-listening-map" features={geoJSONFor(['dean-mountain'])} height="300px" zoom={12} listTitle="Place in this recording" />
+      <p><a href="/collections/zybach/elliott/places/dean-mountain/">Explore Dean Mountain’s photographs, interviews and videos →</a></p>
+    </div>
+    <aside class="consider-card">
+      <p class="small-label">A question to carry with you</p>
+      <h2>What makes a forest successful?</h2>
+      <p>At 2:37, Bob asks whether Jerry would make the same decisions again. Listen for the difference between what a forester was asked to achieve then and what might be asked of a forester later.</p>
+      <p>Choose one sentence from Jerry’s answer. What goal does it express? What other goal might change the decision?</p>
+      <p class="term-note">In the transcript, <abbr title="Habitat Conservation Plan">HCP</abbr> means <strong>Habitat Conservation Plan</strong>. The expansion is a reader’s aid, separate from the recorded words.</p>
+      <a href="/collections/zybach/trails/dean-mountain/">Continue with the Dean Mountain guided trail →</a>
+    </aside>
+  </section>
+
+  <section id="sources" class="sources" aria-labelledby="sources-heading">
+    <h2 id="sources-heading">The voices and the original record</h2>
+    <p><strong>Contributors:</strong> Jerry Phillips and David Gould, narrators; Bob Zybach, interviewer; Amber Ross and Randy Wiest, participants. Recording, published transcript and photograph catalog: Bob Zybach / Oregon Websites &amp; Watersheds Project (ORWW). America’s School Trust Library prepared this excerpt, passage timing and listening page with AI assistance.</p>
+    <ul class="source-links">
+      <li><a href="/collections/zybach/elliott/interviews/20171108/#p140">Read the complete interview at printed page 140</a> · excerpt spans pages 140–142.</li>
+      <li><a href={`${pdf}#page=142`}>Open the original printed page in the PDF</a> · printed page 140 is PDF page 142.</li>
+      <li><a href={original}>Open ORWW’s complete tape 7-C recording</a> · this excerpt runs from 16:46 to 21:54.</li>
+      <li><a href={excerpt}>Open or download the 5:08 Library audio excerpt</a> · MP3, about 5 MB.</li>
+      <li><a href="/zybach/audio/dean-mountain-sources.json">Download the source record</a> · original file identifiers, checksums and excerpt boundaries.</li>
+    </ul>
+    <details>
+      <summary>How the text, timing and source fit together</summary>
+      <p>The displayed words and speaker names come from the published transcript, entries 2641–2675, with the wording preserved. Paragraphs are grouped for listening; the passage titles and learning question are the Library’s additions. Square brackets belong to the published transcript and need not represent spoken words.</p>
+      <p>The audio is a continuous 5:08 excerpt with no internal cuts; its level was reduced slightly to prevent distortion from encoding peaks. Two machine transcriptions were compared with the published text to place the passage markers. This is approximate passage alignment, not a verbatim caption track or a completed human listening review. Short or overlapping remarks may not match the highlight precisely. The native player lets you replay or adjust the position.</p>
+      <p>The four stop photographs are linked by their printed frame numbers, not by an exact second on the tape. The original PDF’s filename contains “20191108”; its interview title and page footers identify November 8, 2017.</p>
+    </details>
+    <details>
+      <summary>Recorded purposes and copyright</summary>
+      <p>In the opening of this tour, Bob describes Internet publication, transcription, education and research uses. The <a href="/collections/zybach/elliott/interviews/20171108/#p2">published opening transcript, page 2</a>, records David Gould’s assent; Bob describes earlier agreement by the other participants. Separate checks of the recording channels recovered the brief affirmative replies; speaker attribution follows the printed transcript.</p>
+      <p><strong>Recording and transcript: In Copyright.</strong> This educational listening page grants no general license to reuse the recording, transcript or photographs. See the <a href="/collections/zybach/rights/">Collection’s individual rights statements</a>, including the photograph’s status.</p>
+    </details>
+  </section>
+</RoomLayout>
+
+<style>
+  .listening-opening { display: grid; grid-template-columns: 1fr 1.05fr; gap: 2rem; align-items: center; margin: 1.8rem 0 2rem; }
+  .inviting-question { font-size: clamp(1.65rem, 2.5vw, 2.25rem); line-height: 1.25; color: #254a3a; margin-top: 0; }
+  .opening-copy > p:not(.inviting-question) { line-height: 1.7; }
+  .start-link { display: inline-block; background: #274f3d; color: #fff; padding: .7rem 1.2rem; border-radius: 6px; font: 700 .95rem/1.4 var(--font-sans, sans-serif); text-decoration: none; }
+  .start-link:hover { background: #183b2b; }
+  .recording-label { color: #526358; font: .8rem/1.6 var(--font-sans, sans-serif); }
+  figure { margin: 0; }
+  figure img { width: 100%; height: auto; border-radius: 8px; display: block; }
+  figcaption { font: .78rem/1.5 var(--font-sans, sans-serif); color: #586157; padding-top: .7rem; }
+  .context-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 2rem; border-top: 1px solid #cad3c7; padding-top: 1.5rem; margin: 2rem 0; }
+  .context-grid h2 { font-size: 1.5rem; margin-top: .2rem; }
+  .consider-card { background: #f4f0e2; padding: 1.5rem; border-radius: 8px; align-self: start; }
+  .small-label { font: 700 .73rem/1.5 var(--font-sans, sans-serif); text-transform: uppercase; letter-spacing: .08em; color: #71552a; }
+  .term-note { font-size: .9rem; padding-top: .7rem; border-top: 1px solid #d6ceb9; }
+  .sources { border-top: 1px solid #cad3c7; padding-top: 1rem; margin-top: 2rem; scroll-margin-top: 210px; max-width: 88ch; }
+  .source-links { padding-left: 1.4rem; }
+  .source-links li { padding-left: .2rem; margin: .7rem 0; }
+  .sources details { margin: 1rem 0; padding: .8rem 1rem; border: 1px solid #d8ded4; border-radius: 6px; font-size: .9rem; }
+  summary { cursor: pointer; font-weight: 700; }
+  a:focus-visible { outline: 3px solid #946511; outline-offset: 3px; }
+  @media (max-width: 48rem) { .listening-opening, .context-grid { grid-template-columns: 1fr; gap: 1.3rem; } .listening-opening figure { max-width: 42rem; } }
+</style>

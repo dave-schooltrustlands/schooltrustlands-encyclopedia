@@ -1,0 +1,351 @@
+{
+  "source_start": 1006,
+  "source_end": 1314,
+  "duration": 308,
+  "cues": [
+    {
+      "id": "passage-01",
+      "title": "On the CCC road",
+      "start": 2.2,
+      "end": 20.5,
+      "lines": [
+        {
+          "seq": 2641,
+          "speaker": "David Gould",
+          "text": "Part of the CCC route, here.",
+          "page": 140
+        },
+        {
+          "seq": 2642,
+          "speaker": "Bob Zybach",
+          "text": "So this is the CCC road up to Dean’s Mountain?",
+          "page": 140
+        },
+        {
+          "seq": 2643,
+          "speaker": "Jerry Phillips",
+          "text": "It is.",
+          "page": 140
+        },
+        {
+          "seq": 2644,
+          "speaker": "David Gould",
+          "text": "It doesn't look too much different when my grandparents brought me out here. Except it's got rock on it, it didn't have rock then.",
+          "page": 140
+        }
+      ],
+      "note": "Timing is approximate for quiet or overlapping remarks."
+    },
+    {
+      "id": "passage-02",
+      "title": "Reading the forest",
+      "start": 32.5,
+      "end": 47.1,
+      "lines": [
+        {
+          "seq": 2645,
+          "speaker": "David Gould",
+          "text": "They're filling [forested] holes. See how much opening you get in these groves? Guess that's what those birds need to land in.",
+          "page": 140
+        }
+      ],
+      "note": "Timing is approximate for quiet or overlapping remarks."
+    },
+    {
+      "id": "passage-03",
+      "title": "Remembering the CCC crews",
+      "start": 47.2,
+      "end": 99.5,
+      "lines": [
+        {
+          "seq": 2646,
+          "speaker": "Jerry Phillips",
+          "text": "It still amazes me, when they built their camps, they swore they were not going to lose a single day's work, ever. And they didn't. They carried that out for seven years. They never lost a day's work, and they took Sunday off. And they never killed a man. Here are all these 18, 19 year-old boys,",
+          "page": 140
+        },
+        {
+          "seq": 2647,
+          "speaker": "Jerry Phillips",
+          "text": "no hard hats, no canopies for the tractors, using explosives all the time, never killed a single kid.",
+          "page": 141,
+          "attributionNote": "Continued from page 140; speaker inferred from the printed paragraph."
+        },
+        {
+          "seq": 2648,
+          "speaker": "Bob Zybach",
+          "text": "Wow.",
+          "page": 141
+        },
+        {
+          "seq": 2649,
+          "speaker": "David Gould",
+          "text": "They got a lot done, too. It’s not a very big camp where we’re going.",
+          "page": 141
+        }
+      ],
+      "note": "Timing is approximate for quiet or overlapping remarks."
+    },
+    {
+      "id": "passage-04",
+      "title": "Work and recollection",
+      "start": 99.6,
+      "end": 142.8,
+      "lines": [
+        {
+          "seq": 2650,
+          "speaker": "Jerry Phillips",
+          "text": "They broke all of today's industrial accident rules.",
+          "page": 141
+        },
+        {
+          "seq": 2651,
+          "speaker": "David Gould",
+          "text": "That's why they're still alive, I guess.",
+          "page": 141
+        },
+        {
+          "seq": 2652,
+          "speaker": "Randy Wiest",
+          "text": "They focused on staying safe instead of being protected?",
+          "page": 141
+        },
+        {
+          "seq": 2653,
+          "speaker": "Jerry Phillips",
+          "text": "Well I went around and interviewed three of them for my book, and I found all those three.",
+          "page": 141
+        },
+        {
+          "seq": 2654,
+          "speaker": "David Gould",
+          "text": "Kids from the city, too, they got some of them.",
+          "page": 141
+        },
+        {
+          "seq": 2655,
+          "speaker": "Jerry Phillips",
+          "text": "Scattered all around western Oregon, and Charleston, Brownsville, all these different places. Of course some went back home again. Some were from Missouri.",
+          "page": 141
+        }
+      ],
+      "note": "Timing is approximate for quiet or overlapping remarks."
+    },
+    {
+      "id": "passage-05",
+      "title": "Would you manage it differently?",
+      "start": 157.2,
+      "end": 165.8,
+      "lines": [
+        {
+          "seq": 2656,
+          "speaker": "Bob Zybach",
+          "text": "Jerry, if you had to do it over, would you still have them convert the myrtle to fir, or would you tend to just leave the myrtle as it is?",
+          "page": 141
+        }
+      ]
+    },
+    {
+      "id": "passage-06",
+      "title": "The original mission",
+      "start": 165.8,
+      "end": 185.5,
+      "lines": [
+        {
+          "seq": 2657,
+          "speaker": "Jerry Phillips",
+          "text": "Well, we have so little of it that that was never really a question that we dealt with. We probably would have left it, since there's so little, but the mission was, originally, to try to grow pure Douglas fir on all the land that was available. ",
+          "page": 141
+        }
+      ]
+    },
+    {
+      "id": "passage-07",
+      "title": "The former management aims",
+      "start": 186.8,
+      "end": 215.0,
+      "lines": [
+        {
+          "seq": 2657,
+          "speaker": "Jerry Phillips",
+          "text": "Of course, you had to try to harvest all the old-growth fir, get rid of it, ‘cause it wasn't growing, and get rid of all the alder, ‘cause it was worthless, and then get pure Douglas fir in all the rest. So you would eliminate maple -- of course, we had very little maple -- and myrtle, which was also very, very little. ",
+          "page": 141
+        }
+      ]
+    },
+    {
+      "id": "passage-08",
+      "title": "A different emphasis",
+      "start": 216.4,
+      "end": 231.7,
+      "lines": [
+        {
+          "seq": 2657,
+          "speaker": "Jerry Phillips",
+          "text": "But we're living in this day and age where we're celebrating diversity of all kinds, so we probably would've been directed at an HCP [ESA Habitat Conservation Plan] to keep it.",
+          "page": 141
+        }
+      ]
+    },
+    {
+      "id": "passage-09",
+      "title": "Toward the lookout",
+      "start": 235.2,
+      "end": 249.6,
+      "lines": [
+        {
+          "seq": 2658,
+          "speaker": "David Gould",
+          "text": "You all want to go down to the waterhole first?",
+          "page": 141
+        },
+        {
+          "seq": 2659,
+          "speaker": "Bob Zybach",
+          "text": "Sure, and we got to come back this way too, don't we?",
+          "page": 141
+        },
+        {
+          "seq": 2660,
+          "speaker": "David Gould",
+          "text": "‘Cause the waterhole's down that way and the lookout's down that way.",
+          "page": 141
+        },
+        {
+          "seq": 2661,
+          "speaker": "Jerry Phillips",
+          "text": "Well, you want to turn right here.",
+          "page": 141
+        },
+        {
+          "seq": 2662,
+          "speaker": "Bob Zybach",
+          "text": "We'll get it on the way back.",
+          "page": 141
+        }
+      ],
+      "note": "Timing is approximate for quiet or overlapping remarks."
+    },
+    {
+      "id": "passage-10",
+      "title": "Can we get there?",
+      "start": 255.1,
+      "end": 266.8,
+      "lines": [
+        {
+          "seq": 2663,
+          "speaker": "Jerry Phillips",
+          "text": "You intend to go up to Deans Mountain?",
+          "page": 142
+        },
+        {
+          "seq": 2664,
+          "speaker": "David Gould",
+          "text": "I don't know if we can get up there or not, but we can see the road from here.",
+          "page": 142
+        },
+        {
+          "seq": 2665,
+          "speaker": "Jerry Phillips",
+          "text": "Probably a locked gate.",
+          "page": 142
+        },
+        {
+          "seq": 2666,
+          "speaker": "Amber Ross",
+          "text": "Yeah, we've got a key, we can get up there.",
+          "page": 142
+        }
+      ],
+      "note": "Timing is approximate for quiet or overlapping remarks."
+    },
+    {
+      "id": "passage-11",
+      "title": "After forty years",
+      "start": 267.0,
+      "end": 277.0,
+      "lines": [
+        {
+          "seq": 2667,
+          "speaker": "Jerry Phillips",
+          "text": "I haven't been up there for. . .well, I guess it's been forty years. And I know it's changed totally, but it's still there.",
+          "page": 142
+        }
+      ]
+    },
+    {
+      "id": "passage-12",
+      "title": "A familiar landmark",
+      "start": 279.5,
+      "end": 307.3,
+      "lines": [
+        {
+          "seq": 2668,
+          "speaker": "Bob Zybach",
+          "text": "Well that's one of the most historic places on the whole forest.",
+          "page": 142
+        },
+        {
+          "seq": 2669,
+          "speaker": "Jerry Phillips",
+          "text": "It's the most historic. I said in my book –",
+          "page": 142
+        },
+        {
+          "seq": 2670,
+          "speaker": "Amber Ross",
+          "text": "It’s clearcut now.",
+          "page": 142
+        },
+        {
+          "seq": 2671,
+          "speaker": "Bob Zybach",
+          "text": "What's that?",
+          "page": 142
+        },
+        {
+          "seq": 2672,
+          "speaker": "Amber Ross",
+          "text": "It's clear cut now.",
+          "page": 142
+        },
+        {
+          "seq": 2673,
+          "speaker": "Jerry Phillips",
+          "text": "It's probably the only. . .",
+          "page": 142
+        },
+        {
+          "seq": 2674,
+          "speaker": "David Gould",
+          "text": "We're here.",
+          "page": 142
+        },
+        {
+          "seq": 2675,
+          "speaker": "Jerry Phillips",
+          "text": ". . . it's the only landmark most people know on the forest.",
+          "page": 142
+        }
+      ],
+      "note": "Timing is approximate for quiet or overlapping remarks."
+    }
+  ],
+  "chapters": [
+    {
+      "label": "On the CCC road",
+      "start": 0
+    },
+    {
+      "label": "Remembering the CCC crews",
+      "start": 47.2
+    },
+    {
+      "label": "Would you manage it differently?",
+      "start": 157.2
+    },
+    {
+      "label": "After forty years",
+      "start": 267.0
+    }
+  ]
+}

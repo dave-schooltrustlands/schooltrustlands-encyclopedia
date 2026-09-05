@@ -1,0 +1,218 @@
+---
+interface Line { seq: number; speaker: string; text: string; page: number; attributionNote?: string }
+interface Cue { id: string; title: string; start: number; end: number; lines: Line[]; note?: string }
+interface Props {
+  cues: Cue[];
+  chapters: {label: string; start: number}[];
+  audioSrc: string;
+  duration: number;
+  sourceStart: number;
+}
+const { cues, chapters, audioSrc, duration, sourceStart } = Astro.props;
+const time = (n: number) => `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, '0')}`;
+---
+
+<section class="listen-read" data-listen-read data-duration={duration} data-source-start={sourceStart} aria-labelledby="listen-heading">
+  <div class="listening-console" data-pagefind-ignore>
+    <div class="console-heading">
+      <h2 id="listen-heading">Listen &amp; follow the conversation</h2>
+      <span class="length">{time(duration)} · original voices</span>
+    </div>
+    <audio controls preload="metadata" src={audioSrc} aria-label="Dean Mountain oral history, five minutes and eight seconds">
+      <a href={audioSrc}>Open the audio excerpt</a>
+    </audio>
+    <div class="enhanced-controls" hidden>
+      <div class="transport">
+        <button type="button" data-skip="-10" aria-label="Back ten seconds">↶ 10s</button>
+        <button type="button" data-skip="10" aria-label="Forward ten seconds">10s ↷</button>
+        <label>Speed <select data-speed aria-label="Playback speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label>
+        <label class="follow"><input type="checkbox" data-follow /> Follow text as it plays</label>
+      </div>
+      <div class="share-row">
+        <span class="clock"><span data-clock>0:00</span> in excerpt · <span data-source-clock>{time(sourceStart)}</span> on tape 7-C</span>
+        <button type="button" data-share>Copy link to this moment</button>
+      </div>
+      <p class="player-status" aria-live="polite" role="status" data-status></p>
+      <div data-copy-fallback hidden><label>Copy this link <input type="text" readonly data-copy-url aria-label="Link to this audio moment" /></label></div>
+    </div>
+    <p class="audio-error" data-error hidden>The audio could not load here. <a href={audioSrc}>Open the excerpt directly</a>, or use the <a href="#sources">original recording</a> below. The transcript remains available.</p>
+    <noscript><p>The audio and printed transcript work without JavaScript. Passage buttons, highlighting and time links need JavaScript.</p></noscript>
+  </div>
+
+  <nav class="audio-chapters enhanced-controls" aria-label="Jump to a part of the recording" data-pagefind-ignore hidden>
+    {chapters.map((chapter) => <button type="button" data-start={chapter.start}><span>{time(chapter.start)}</span> {chapter.label}</button>)}
+  </nav>
+  <p class="reading-note">Select a passage to hear it. The text below preserves the published transcript, including its edits and bracketed notes; spoken wording can differ. Highlighting follows passages, not individual words. <a href="#sources">About the source and timing</a></p>
+  <div class="passages">
+    {cues.map((cue) => (
+      <article class="passage" id={cue.id} data-cue data-start={cue.start} data-end={cue.end} aria-labelledby={`${cue.id}-title`}>
+        <div class="passage-heading">
+          <button type="button" class="passage-play enhanced-controls" data-start={cue.start} aria-label={`Play ${cue.title} at ${time(cue.start)}`} hidden>▶ <span>{time(cue.start)}</span></button>
+          <h3 id={`${cue.id}-title`}>{cue.title}</h3>
+          <span class="now-playing" aria-hidden="true">Current passage</span>
+        </div>
+        {cue.lines.map((line) => <div><p class="spoken-line"><strong>{line.speaker}:</strong> {line.text} <a class="printed-page" href={`/collections/zybach/elliott/interviews/20171108/#p${line.page}`} aria-label={`Read the original transcript at printed page ${line.page}`}>p. {line.page}</a></p>{line.attributionNote && <p class="timing-note">{line.attributionNote}</p>}</div>)}
+        {cue.note && <p class="timing-note">{cue.note}</p>}
+      </article>
+    ))}
+  </div>
+  <p class="end-note">End of the excerpt · 21:54 on tape 7-C. <a href="#sources">Continue with the original sources</a>.</p>
+  <div class="mini-player" data-mini hidden data-pagefind-ignore aria-label="Playback while reading">
+    <button type="button" data-toggle aria-label="Pause recording">Pause</button>
+    <span data-mini-clock>0:00 / {time(duration)}</span>
+    <a href="#listen-heading">Player &amp; speed ↑</a>
+  </div>
+</section>
+
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>('[data-listen-read]')) {
+    const audio = root.querySelector<HTMLAudioElement>('audio');
+    if (!audio) continue;
+    const limit = Number(root.dataset.duration);
+    const offset = Number(root.dataset.sourceStart);
+    const cues = Array.from(root.querySelectorAll<HTMLElement>('[data-cue]'));
+    const follow = root.querySelector<HTMLInputElement>('[data-follow]')!;
+    const status = root.querySelector<HTMLElement>('[data-status]')!;
+    const clock = root.querySelector<HTMLElement>('[data-clock]')!;
+    const sourceClock = root.querySelector<HTMLElement>('[data-source-clock]')!;
+    const error = root.querySelector<HTMLElement>('[data-error]')!;
+    const mini = root.querySelector<HTMLElement>('[data-mini]')!;
+    const toggle = root.querySelector<HTMLButtonElement>('[data-toggle]')!;
+    let consoleVisible = true;
+    const refreshMini = () => {
+      mini.hidden = consoleVisible || audio.currentTime === 0 || audio.ended;
+      toggle.textContent = audio.paused ? 'Play' : 'Pause';
+      toggle.setAttribute('aria-label', audio.paused ? 'Play recording' : 'Pause recording');
+      root.querySelector<HTMLElement>('[data-mini-clock]')!.textContent = `${format(audio.currentTime)} / ${format(limit)}`;
+    };
+    let active: HTMLElement | null = null;
+    let pendingTime: number | null = null;
+    const format = (n: number) => `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, '0')}`;
+    const clamp = (n: number) => Math.max(0, Math.min(Number.isFinite(n) ? n : 0, limit));
+    const readURL = () => {
+      const raw = new URL(location.href).searchParams.get('t');
+      return raw !== null && /^(?:\d+\.?\d*|\.\d+)$/.test(raw) ? clamp(Number(raw)) : 0;
+    };
+    const scrollToCue = (cue: HTMLElement) => {
+      const header = document.querySelector<HTMLElement>('header');
+      const headerBottom = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
+      const rect = cue.getBoundingClientRect();
+      if (rect.top < headerBottom + 16 || rect.top > innerHeight - 160) {
+        window.scrollTo({ top: Math.max(0, window.scrollY + rect.top - headerBottom - 20), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+      }
+    };
+    const render = () => {
+      const now = clamp(audio.currentTime);
+      clock.textContent = format(now);
+      sourceClock.textContent = format(offset + now);
+      refreshMini();
+      const next = audio.ended ? null : cues.find((cue) => now >= Number(cue.dataset.start) && now < Number(cue.dataset.end)) ?? null;
+      if (next !== active) {
+        active?.removeAttribute('aria-current');
+        active?.classList.remove('is-current');
+        active = next;
+        active?.setAttribute('aria-current', 'true');
+        active?.classList.add('is-current');
+        if (active && follow.checked && !audio.paused) scrollToCue(active);
+      }
+    };
+    const seek = (seconds: number, play = false) => {
+      const target = clamp(seconds);
+      if (audio.readyState >= 1) { audio.currentTime = target; pendingTime = null; }
+      else { pendingTime = target; audio.load(); }
+      if (play) audio.play().catch(() => { status.textContent = 'Use the audio player’s Play control to begin.'; });
+      render();
+    };
+    const remember = (seconds: number) => {
+      const url = new URL(location.href);
+      url.searchParams.set('t', String(Math.round(clamp(seconds) * 100) / 100));
+      url.hash = '';
+      if (url.href !== location.href) history.pushState(null, '', url);
+    };
+    root.querySelectorAll<HTMLElement>('.enhanced-controls').forEach((item) => item.hidden = false);
+    root.querySelectorAll<HTMLButtonElement>('button[data-start]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const seconds = Number(button.dataset.start);
+        remember(seconds);
+        seek(seconds, true);
+        status.textContent = `Playing from ${format(seconds)} in this excerpt.`;
+      });
+    });
+    root.querySelectorAll<HTMLElement>('.spoken-line').forEach((line) => line.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a') || window.getSelection()?.toString()) return;
+      const cue = line.closest<HTMLElement>('[data-cue]')!;
+      const seconds = Number(cue.dataset.start);
+      remember(seconds); seek(seconds, true);
+      status.textContent = `Playing from ${format(seconds)} in this excerpt.`;
+    }));
+    toggle.addEventListener('click', () => { if (audio.paused) audio.play().catch(() => { status.textContent = 'Use the main audio player to begin.'; }); else audio.pause(); });
+    new IntersectionObserver((entries) => { consoleVisible = entries[0].isIntersecting; refreshMini(); }).observe(root.querySelector('.listening-console')!);
+    root.querySelectorAll<HTMLButtonElement>('[data-skip]').forEach((button) => button.addEventListener('click', () => seek(audio.currentTime + Number(button.dataset.skip))));
+    root.querySelector<HTMLSelectElement>('[data-speed]')!.addEventListener('change', (event) => {
+      audio.playbackRate = Number((event.target as HTMLSelectElement).value);
+    });
+    follow.addEventListener('change', () => { if (follow.checked && active) scrollToCue(active); });
+    root.querySelector<HTMLButtonElement>('[data-share]')!.addEventListener('click', async () => {
+      const url = new URL(location.href);
+      url.searchParams.set('t', String(Math.round(audio.currentTime * 100) / 100));
+      url.hash = '';
+      try {
+        await navigator.clipboard.writeText(url.href);
+        status.textContent = `Link copied at ${format(audio.currentTime)} in the excerpt (${format(offset + audio.currentTime)} on tape 7-C).`;
+      } catch {
+        root.querySelector<HTMLElement>('[data-copy-fallback]')!.hidden = false;
+        const field = root.querySelector<HTMLInputElement>('[data-copy-url]')!;
+        field.value = url.href;
+        field.focus(); field.select();
+        status.textContent = 'Copy the selected link below.';
+      }
+    });
+    audio.addEventListener('loadedmetadata', () => { if (pendingTime !== null) { audio.currentTime = pendingTime; pendingTime = null; } render(); });
+    ['timeupdate', 'seeked', 'play', 'pause', 'ended'].forEach((event) => audio.addEventListener(event, render));
+    audio.addEventListener('error', () => { error.hidden = false; status.textContent = ''; });
+    audio.addEventListener('canplay', () => error.hidden = true);
+    window.addEventListener('popstate', () => { audio.pause(); seek(readURL()); });
+    window.addEventListener('pagehide', () => audio.pause());
+    seek(readURL());
+  }
+</script>
+
+<style>
+  .listen-read { --listen-ink: #173d38; margin-top: 2rem; }
+  .listening-console { background: #edf3ef; border: 1px solid #becdc3; border-radius: 12px; padding: 1.15rem 1.3rem; }
+  .console-heading { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem 1rem; flex-wrap: wrap; }
+  .console-heading h2 { font-size: 1.4rem; margin: 0 0 .65rem; }
+  .length, .clock { font: .85rem/1.5 var(--font-sans, sans-serif); font-variant-numeric: tabular-nums; }
+  audio { display: block; width: 100%; margin: .35rem 0 .75rem; }
+  .transport, .share-row { display: flex; gap: .6rem 1rem; flex-wrap: wrap; align-items: center; }
+  .share-row { justify-content: space-between; margin-top: .8rem; }
+  button, select { font: .88rem/1.3 var(--font-sans, sans-serif); color: var(--listen-ink); border: 1px solid #8ca69b; border-radius: 6px; background: #fff; padding: .65rem .8rem; min-height: 44px; cursor: pointer; }
+  button:hover { background: #dfebe4; }
+  button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #946511; outline-offset: 3px; }
+  label { font: .9rem/1.4 var(--font-sans, sans-serif); }
+  .follow { display: inline-flex; gap: .45rem; align-items: center; padding: .55rem 0; }
+  input[type="checkbox"] { width: 1.1rem; height: 1.1rem; accent-color: var(--listen-ink); }
+  [data-copy-url] { width: 100%; padding: .5rem; box-sizing: border-box; }
+  .player-status { font: .85rem/1.4 var(--font-sans, sans-serif); margin: .55rem 0 0; min-height: 1.2em; }
+  .audio-chapters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+  .audio-chapters button { text-align: left; }
+  .audio-chapters span { font-variant-numeric: tabular-nums; font-weight: 700; margin-right: .4rem; }
+  .reading-note { font-size: .95rem; color: #455451; max-width: 78ch; }
+  .passage { border-left: 4px solid #d5dfd8; padding: 1rem 1.3rem; margin: 1rem 0; border-radius: 0 8px 8px 0; background: #fafbf8; scroll-margin-top: 220px; }
+  .passage.is-current { background: #edf3df; border-left-color: #496a30; }
+  .passage-heading { display: flex; align-items: center; gap: .6rem .9rem; flex-wrap: wrap; }
+  .passage-heading h3 { margin: 0; font-size: 1.14rem; }
+  .passage-play { flex: 0 0 auto; font-variant-numeric: tabular-nums; }
+  .now-playing { display: none; text-transform: uppercase; letter-spacing: .05em; font: 700 .68rem var(--font-sans, sans-serif); color: #3d5c27; }
+  .is-current .now-playing { display: inline; }
+  .spoken-line { font-size: 1.05rem; line-height: 1.75; max-width: 78ch; margin: .85rem 0 .3rem; }
+  .spoken-line { cursor: pointer; }
+  .spoken-line strong { font-size: .9em; }
+  .printed-page { white-space: nowrap; font: .78rem var(--font-sans, sans-serif); margin-left: .3rem; }
+  .timing-note, .end-note { color: #526159; font: .84rem/1.5 var(--font-sans, sans-serif); }
+  .mini-player { position: fixed; z-index: 100; bottom: max(.75rem, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .4rem .8rem; width: max-content; max-width: calc(100% - 2rem); padding: .45rem .75rem; background: #173d38; color: white; border-radius: 10px; box-shadow: 0 4px 20px #0003; font: .8rem/1.5 var(--font-sans, sans-serif); }
+  .mini-player a { color: white; }
+  .mini-player span { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  [hidden] { display: none !important; }
+  @media (max-width: 40rem) { .listening-console { padding: .9rem; } .passage { padding: .85rem; } .share-row button { width: 100%; } .spoken-line { font-size: 1rem; } }
+</style>

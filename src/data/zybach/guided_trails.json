@@ -106,11 +106,11 @@
     "estimatedMinutes": 10,
     "series": "elliott",
     "image": {
-      "src": "/zybach/mirror/6372952c2214e607.jpg",
-      "alt": "Dean Mountain photograph from the November 8, 2017 Elliott tour.",
-      "caption": "Deans Mountain, frame 0990, November 8, 2017. Place and date from the creator’s filename.",
+      "src": "/zybach/mirror/058fed7de1dacd59.jpg",
+      "alt": "A concrete remnant and grass at a foggy Dean Mountain stop.",
+      "caption": "Deans Mountain, frame 0989, November 8, 2017. Place and date from the creator’s catalog.",
       "credit": "From Bob Zybach’s ORWW Elliott files; no separate photographer credit is recorded for this frame.",
-      "sourceUrl": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0990_Deans_Mountain_20171108-10.jpg"
+      "sourceUrl": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0989_Deans_Mountain_20171108-10.jpg"
     },
     "steps": [
       {
@@ -132,7 +132,9 @@
         "instruction": "Read pages 140–141 of the November 2017 interview. David Gould and Jerry Phillips discuss the Civilian Conservation Corps road and earlier forest work; Bob asks whether they would make the same management choices again.",
         "href": "/collections/zybach/elliott/interviews/20171108/#p140",
         "label": "The 2017 interview, pages 140–141",
-        "minutes": 3
+        "minutes": 3,
+        "secondaryHref": "/collections/zybach/elliott/listen/dean-mountain/",
+        "secondaryLabel": "Hear the original voices and follow the text (5:08)"
       },
       {
         "title": "Can the photograph sharpen your reading?",

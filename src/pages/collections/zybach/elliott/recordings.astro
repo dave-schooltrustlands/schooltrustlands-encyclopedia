@@ -3,6 +3,7 @@ export const prerender = true;
 
 import RoomLayout from '../../../../layouts/RoomLayout.astro';
 import { ZybachNav } from '../../../../components/zybach/elliott/shared';
+import ListeningInvitation from '../../../../components/zybach/elliott/ListeningInvitation.astro';
 import {
   BASE,
   RIGHTS,
@@ -45,10 +46,11 @@ const totalBytes = recordings.reduce((n, r) => n + (r.size_bytes ?? 0), 0);
     Every audio file published under Bob Zybach's Elliott oral history folders:
     {' '}{counts.recordings} files, {bytesLabel(totalBytes)} in all. Durations are
     estimated from the file's own bitrate and length, not measured by playing
-    it; each is marked as such. Nothing is copied into this library — the links
-    go to his server.
+    it; each is marked as such. The full-recording links below go to his server.
+    The Library also hosts the continuous five-minute listening excerpt featured here.
   </p>
   <p class="zy-rights-line">{RIGHTS.orww}</p>
+  <ListeningInvitation />
 
   {byDate.map((g) => (
     <section aria-labelledby={`d-${g.date.replace(/-/g, '')}`}>

@@ -4,6 +4,7 @@ export const prerender = true;
 import RoomLayout from '../../../../../layouts/RoomLayout.astro';
 import { ZybachNav, CitationBlock } from '../../../../../components/zybach/elliott/shared';
 import ItemIntro from '../../../../../components/zybach/elliott/ItemIntro.astro';
+import ListeningInvitation from '../../../../../components/zybach/elliott/ListeningInvitation.astro';
 import MapWithList from '../../../../../components/zybach/elliott/MapWithList.astro';
 import SegmentTable from '../../../../../components/zybach/elliott/SegmentTable.astro';
 import PhotoGrid from '../../../../../components/zybach/elliott/PhotoGrid.astro';
@@ -114,6 +115,7 @@ const summaryBits = [
   <ZybachNav current="elliott" />
   <span data-pagefind-meta="series:elliott" hidden></span>
   <span data-pagefind-filter="series:elliott" hidden></span>
+  {place.slug === 'dean-mountain' && <ListeningInvitation />}
 
   <ItemIntro
     whatThisIs={

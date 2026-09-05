@@ -4,6 +4,7 @@ export const prerender = true;
 import RoomLayout from '../../../../layouts/RoomLayout.astro';
 import { mirrored } from '../../../../components/zybach/_data';
 import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import ListeningInvitation from '../../../../components/zybach/elliott/ListeningInvitation.astro';
 import { ZybachNav } from '../../../../components/zybach/elliott/shared';
 import MapWithList from '../../../../components/zybach/elliott/MapWithList.astro';
 import Opening from '../../../../components/zybach/frontdoor/Opening.astro';
@@ -94,6 +95,7 @@ const MEASURE = [
   <span data-pagefind-filter="series:elliott" hidden></span>
 
   <WorkingEditionBanner />
+  <ListeningInvitation />
 
   <Opening>
     <p>

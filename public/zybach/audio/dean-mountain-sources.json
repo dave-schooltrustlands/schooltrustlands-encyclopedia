@@ -1,0 +1,52 @@
+{
+  "title": "On the road to Dean Mountain",
+  "interview_date": "2017-11-08",
+  "tape": "7-C",
+  "source": {
+    "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Recordings/Phillips-Zybach_20171108-7C.mp3",
+    "sha256": "c9080c82ef7c92099c17e952a37090721ed4fd65d36b224fb4b6cd0021cdbb46",
+    "bytes": 68164890,
+    "codec": "mp3float",
+    "sample_rate": 48000,
+    "channels": 2,
+    "container_duration_seconds": 2840.112,
+    "decoded_sample_count": 136325376,
+    "decoded_duration_seconds": 2840.112
+  },
+  "excerpt": {
+    "url": "https://schooltrusts.org/zybach/audio/dean-mountain-20171108-7c-1646-2154.mp3",
+    "sha256": "de6e738e5aedc81ebabc5ba3d7e3c70194de557d74196453dbcb7fd76498f624",
+    "bytes": 4929272,
+    "codec": "mp3float",
+    "sample_rate": 44100,
+    "channels": 1,
+    "container_duration_seconds": 308.0,
+    "decoded_sample_count": 13582800,
+    "decoded_duration_seconds": 308.0,
+    "float_peak": 0.8746501207351685,
+    "samples_at_or_above_full_scale": 0
+  },
+  "source_start_seconds": 1006,
+  "source_end_seconds": 1314,
+  "editing": "One continuous excerpt; no internal edits, denoising, voice synthesis, or speed changes. Level reduced by2dB to prevent encoding peaks from clipping; mono MP3 at128kbps/44.1kHz.",
+  "transcript": {
+    "url": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Transcript/Phillips-Zybach_20191108.pdf",
+    "printed_pages": [
+      140,
+      141,
+      142
+    ],
+    "pdf_pages": [
+      142,
+      143,
+      144
+    ],
+    "entries": [
+      2641,
+      2675
+    ],
+    "sha256": "fd95bb7f7cf1f88e2a13577291c4af9de3d63fdd40f4dcaa1b7d953cd1c80846"
+  },
+  "timing_method": "Approximate passage timing compared against two machine transcriptions and the published text. No by-ear listening verification claimed.",
+  "rights": "In Copyright; no general reuse license granted."
+}
