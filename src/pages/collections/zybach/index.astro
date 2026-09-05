@@ -7,6 +7,7 @@ import ZybachNav from '../../../components/zybach/ZybachNav.astro';
 import ZybachMap from '../../../components/zybach/ZybachMap.astro';
 import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
 import ContentNote from '../../../components/zybach/ContentNote.astro';
+import CollectionEntrance from '../../../components/zybach/CollectionEntrance.astro';
 import Opening from '../../../components/zybach/frontdoor/Opening.astro';
 import Plate from '../../../components/zybach/frontdoor/Plate.astro';
 import Voices from '../../../components/zybach/frontdoor/Voices.astro';
@@ -206,8 +207,10 @@ const MEASURE = [
   <span data-pagefind-meta="collection:zybach" hidden></span>
 
   <ZybachNav current="finding-aid" />
+  <CollectionEntrance />
   <WorkingEditionBanner />
 
+  <h2 id="soap-creek-stories">A valley remembered</h2>
   <Opening>
     <p>
       Soap Creek Valley is a small farming valley in northern Benton County,

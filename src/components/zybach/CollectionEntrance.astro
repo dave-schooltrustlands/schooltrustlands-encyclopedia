@@ -1,0 +1,54 @@
+---
+import { mirrored } from './_data';
+import { videos } from './elliott/data';
+const base = '/collections/zybach';
+const video = videos.find(v => v.video_id === 'g5ZEvQOaCwY');
+const series = [
+  {slug:'soap-creek', title:'Soap Creek Valley', type:'Listen to a valley through its people', text:'Oral histories, family photographs, a historic auto tour and the places they share.', image:'http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/Soap_Creek_Valley-7.jpg', credit:'Moore family farm, about 1899–1900 · Samuel H. Moore. Courtesy of Myra Moore Lauridson and the Soap Creek Schoolhouse Foundation.'},
+  {slug:'elliott', title:'Elliott State Forest', type:'Go into the forest with its historians', text:'Recorded journeys, field-trip videos and photographs, connected by stop and subject.', image:video?.thumbnail ?? 'https://i.ytimg.com/vi/g5ZEvQOaCwY/hqdefault.jpg', credit:'Elkhorn Ranch field trip, April 9, 2020 · frame from the creator’s ORWWmedia video.'},
+  {slug:'letitia-carson', title:'Letitia Carson', type:'Follow a life through the original record', text:'Court papers, land records and Bob’s published research, from the Oregon Trail to a home of her own.', image:'http://www.orww.org/History/Letitia_Carson/Photographs/Benton_County/Soap_Creek_Valley_1993-10.jpg', credit:'Soap Creek Valley, 1993 · photograph by Bob Zybach.'},
+  {slug:'jedediah-smith', title:'The 1828 Umpqua Memorial', type:'Compare the accounts of a contested past', text:'Journals, letters, Bob’s writings and the modern memorial project, including the recorded Native account.', image:'http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/1_Warre_1845-8.jpg', credit:'Fort Vancouver, 1845 or 1846 · Henry J. Warre, as dated in Bob’s caption.'},
+];
+---
+<section class="zc-entrance" aria-label="Explore Bob Zybach’s collection">
+  <div class="zc-welcome">
+    <div>
+      <p class="zc-eyebrow">Places. People. The record they leave.</p>
+      <p class="zc-lede">Explore Oregon through the work of historian Bob Zybach and the people who helped make it. Follow a question from a remembered landscape to a printed page, a photograph or a voice.</p>
+      <a class="zc-trail-link" href={`${base}/trails/`}>Take a short guided trail <span aria-hidden="true">↗</span></a>
+    </div>
+    <form class="zc-find" action={`${base}/explore/`} method="get" role="search" aria-label="Search the Zybach Collection">
+      <label for="zc-entrance-query">Find a person, place or subject</label>
+      <div><input id="zc-entrance-query" type="search" name="q" placeholder="Try oak, Carson or Elkhorn" /><button type="submit">Search</button></div>
+      <p>Search across all four open series. Results lead to the published record.</p>
+      <a href={`${base}/explore/`}>Browse the four series and research tools →</a>
+    </form>
+  </div>
+  <div class="zc-series-grid">
+    {series.map(s => <article class="zc-series-card">
+      <a href={`${base}/${s.slug}/`} class="zc-series-image"><img src={mirrored(s.image)} alt={s.credit} width="600" height="360" loading="eager" /></a>
+      <div class="zc-series-copy"><p class="zc-eyebrow">{s.type}</p><h2><a href={`${base}/${s.slug}/`}>{s.title}</a></h2><p>{s.text}</p></div>
+      <details><summary>Image credit</summary><p>{s.credit}</p></details>
+    </article>)}
+  </div>
+  <p class="zc-reading-note">This is a reading edition: transcribed pages are readable here, with links to the creator’s originals. A page link opens the cited passage in its surrounding text. <a href={`${base}/how-to-cite/`}>How to read and cite it →</a></p>
+</section>
+<style>
+  .zc-entrance{margin:1.8rem 0 3rem;font-family:var(--font-sans);color:#172b3d}
+  .zc-welcome{display:grid;grid-template-columns:1.15fr 1fr;gap:2rem;align-items:center;margin-bottom:2rem}
+  .zc-eyebrow{font-size:.82rem;letter-spacing:.045em;font-weight:650;margin:0 0 .55rem;color:#5e5d4d}
+  .zc-lede{font-size:1.22rem;line-height:1.6;margin:0 0 1rem;max-width:48ch}
+  .zc-trail-link{font-weight:700;text-underline-offset:5px}
+  .zc-find{background:#172f42;color:#fff;padding:1.4rem;border-radius:4px}
+  .zc-find label{font-size:1.07rem;display:block;font-weight:650;margin-bottom:.7rem}
+  .zc-find>div{display:flex;gap:.4rem}.zc-find input{min-width:0;width:100%;border:0;background:#fff;color:#172b3d;padding:.7rem;font-size:1rem;border-radius:2px}.zc-find button{background:#dbbd74;color:#14283a;border:0;font-weight:700;padding:.7rem 1rem;border-radius:2px;cursor:pointer}
+  .zc-find p{font-size:.9rem;line-height:1.5;margin:.7rem 0}.zc-find a{color:#fff;font-size:.9rem;text-underline-offset:4px}
+  .zc-series-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+  .zc-series-card{background:white;border:1px solid #cfcbbf;min-width:0;box-shadow:0 3px 10px #172b3d08;overflow:hidden}
+  .zc-series-image{display:block;aspect-ratio:5/2.7;overflow:hidden;background:#e6e3db}.zc-series-image img{width:100%;height:100%;object-fit:cover;transition:transform .2s}.zc-series-image:hover img{transform:scale(1.02)}
+  .zc-series-copy{padding:1.2rem 1.3rem .7rem}.zc-series-copy h2{font-family:var(--font-serif);font-size:1.55rem;line-height:1.2;margin:0 0 .65rem}.zc-series-copy h2 a{color:#172f42;text-decoration:none}.zc-series-copy p:not(.zc-eyebrow){font-size:1rem;line-height:1.55;margin:0}
+  details{padding:0 1.3rem 1rem;color:#625f53;font-size:.8rem}summary{cursor:pointer;padding:.3rem 0}details p{margin:.4rem 0;line-height:1.45}
+  .zc-reading-note{border-left:3px solid #b99d57;padding:.8rem 1.1rem;font-size:.95rem;line-height:1.6;background:#f4f3ee;margin-top:1.5rem}
+  @media(max-width:700px){.zc-welcome,.zc-series-grid{grid-template-columns:1fr}.zc-welcome{gap:1.2rem}.zc-lede{font-size:1.12rem}.zc-find{padding:1.1rem}}
+  @media(prefers-reduced-motion:reduce){.zc-series-image img{transition:none}}
+</style>

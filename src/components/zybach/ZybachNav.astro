@@ -16,16 +16,21 @@ interface Props {
 }
 
 const { current } = Astro.props;
+const path = Astro.url.pathname;
+const effectiveCurrent = path.startsWith('/collections/zybach/letitia-carson/') ? 'letitia-carson' : path.startsWith('/collections/zybach/jedediah-smith/') ? 'jedediah-smith' : current;
 
 const LINKS: ReadonlyArray<{ key: string; label: string; href: string }> = [
   { key: 'finding-aid', label: 'Overview', href: '/collections/zybach/' },
-  { key: 'start-here', label: 'Start here', href: '/collections/zybach/start-here/' },
+  { key: 'explore', label: 'Search & explore', href: '/collections/zybach/explore/' },
+  { key: 'trails', label: 'Guided trails', href: '/collections/zybach/trails/' },
   { key: 'soap-creek', label: 'Soap Creek', href: '/collections/zybach/soap-creek/' },
   { key: 'elliott', label: 'Elliott', href: '/collections/zybach/elliott/' },
-  { key: 'index', label: 'Series Index', href: '/collections/zybach/soap-creek/index/' },
-  { key: 'places', label: 'Places', href: '/collections/zybach/soap-creek/places/' },
-  { key: 'people', label: 'People', href: '/collections/zybach/soap-creek/people/' },
-  { key: 'timeline', label: 'Timeline', href: '/collections/zybach/soap-creek/timeline/' },
+  { key: 'letitia-carson', label: 'Letitia Carson', href: '/collections/zybach/letitia-carson/' },
+  { key: 'jedediah-smith', label: '1828 Umpqua Memorial', href: '/collections/zybach/jedediah-smith/' },
+  { key: 'index', label: 'Soap Creek index', href: '/collections/zybach/soap-creek/index/' },
+  { key: 'places', label: 'Soap Creek places', href: '/collections/zybach/soap-creek/places/' },
+  { key: 'people', label: 'Soap Creek people', href: '/collections/zybach/soap-creek/people/' },
+  { key: 'timeline', label: 'Soap Creek timeline', href: '/collections/zybach/soap-creek/timeline/' },
   { key: 'about-the-creator', label: 'The creator', href: '/collections/zybach/about-the-creator/' },
   { key: 'rights', label: 'Rights', href: '/collections/zybach/rights/' },
   { key: 'how-to-cite', label: 'How to cite', href: '/collections/zybach/how-to-cite/' },
@@ -36,7 +41,7 @@ const LINKS: ReadonlyArray<{ key: string; label: string; href: string }> = [
   <ul>
     {LINKS.map((link) => (
       <li>
-        {link.key === current ? (
+        {link.key === effectiveCurrent ? (
           <span class="zc-nav__current" aria-current="page">{link.label}</span>
         ) : (
           <a href={link.href}>{link.label}</a>
@@ -65,7 +70,7 @@ const LINKS: ReadonlyArray<{ key: string; label: string; href: string }> = [
   .zc-nav li {
     margin: 0;
     padding: 0;
-    font-size: 0.82rem;
+    font-size: 0.9rem;
   }
   .zc-nav a {
     color: var(--room-link, #14243c);

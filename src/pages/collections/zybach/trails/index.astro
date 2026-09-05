@@ -1,0 +1,22 @@
+---
+export const prerender = true;
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
+import trails from '../../../../data/zybach/guided_trails.json';
+---
+<RoomLayout room="collections" title="Follow a question into the collection" subtitle="Four short research trails through places, voices and original records." width="full" sourceId="zybach-guided-trails" parents={[{label:'The Zybach Collection',href:'/collections/zybach/'}]}>
+  <ZybachNav current="trails" />
+  <p class="intro">Start with a question. Each trail connects a few chosen sources and gives you something to look for as you read or watch. Allow about ten minutes for a first visit; the fuller record is always a link away.</p>
+  <div class="trail-grid">{trails.map(t=><article>
+    <a class="trail-image" href={`/collections/zybach/trails/${t.slug}/`}><img src={t.image.src} alt={t.image.alt} width="600" height="350" loading="eager" /></a>
+    <div class="trail-copy"><p class="eyebrow">4 stops · about {t.estimatedMinutes} minutes</p><h2><a href={`/collections/zybach/trails/${t.slug}/`}>{t.title}</a></h2><p>{t.description}</p><a class="trail-go" href={`/collections/zybach/trails/${t.slug}/`}>Begin this trail →</a></div>
+    <details><summary>About the image</summary><p>{t.image.caption} {t.image.credit}</p></details>
+  </article>)}</div>
+  <section class="teaching"><h2>Use a trail with a class or a family</h2><p>Ask each reader to bring back one observation and the page that supports it. Compare what a narrator remembers with what a document records. When sources disagree, keep both in view and ask what further evidence would help.</p><a href="/collections/zybach/explore/">Choose your own question and search the collection →</a></section>
+  <WorkingEditionBanner />
+  <p class="credit">Trail questions and source connections prepared by the Library with Codex assistance. Source texts and credits remain those of the original works. Reading times are estimates for the selected stops.</p>
+</RoomLayout>
+<style>
+.intro{font-family:var(--font-sans);font-size:1.12rem;line-height:1.65;max-width:75ch;margin:1.7rem 0 2rem}.trail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}.trail-grid article{background:#fff;border:1px solid #cfcbbf;overflow:hidden}.trail-image{display:block;aspect-ratio:12/6;overflow:hidden}.trail-image img{width:100%;height:100%;object-fit:cover}.trail-copy{padding:1.25rem;font-family:var(--font-sans)}.eyebrow{font-size:.85rem;color:#6d6346;font-weight:650;margin:0}.trail-copy h2{font-family:var(--font-serif);font-size:1.5rem;line-height:1.25;margin:.55rem 0 .8rem}.trail-copy h2 a{color:#193346;text-decoration:none}.trail-copy>p:not(.eyebrow){font-size:1rem;line-height:1.6}.trail-go{display:inline-block;margin-top:.6rem;font-weight:650}.trail-grid details{padding:0 1.25rem 1rem;font-family:var(--font-sans);font-size:.8rem;color:#656158}.trail-grid summary{cursor:pointer;padding:.3rem 0}.trail-grid details p{line-height:1.5}.teaching{margin:2.3rem 0;padding:1.6rem;background:#eaf0f1;border-left:4px solid #476c76;font-family:var(--font-sans);line-height:1.6}.teaching h2{margin:0 0 .8rem;font-size:1.3rem}.credit{font-family:var(--font-sans);font-size:.85rem;line-height:1.55;color:#59606a;margin:1rem 0 2rem}@media(max-width:650px){.trail-grid{grid-template-columns:1fr}.teaching{padding:1.2rem}}
+</style>

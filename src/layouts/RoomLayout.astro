@@ -81,6 +81,8 @@ interface Props {
   // creator) pass `noindex` and get <meta name="robots" content="noindex">.
   // Pagefind still indexes them, so site search keeps working.
   noindex?: boolean;
+  /** Exclude the entire page, including its URL and metadata, from site search. */
+  pagefindIgnore?: boolean;
 }
 
 const {
@@ -94,6 +96,7 @@ const {
   sourceId,
   pagefindEra,
   noindex = false,
+  pagefindIgnore = false,
 } = Astro.props;
 
 // v61 — Lower-nav room-tab strip retired. Sideways navigation moves to
@@ -168,6 +171,8 @@ const resolvedTitle =
     ? `${state.name} · ${roomNameMap[room]} · America's School Trust Library`
     : `${title} · America's School Trust Library`);
 
+// Collection search facets come from the public route, never from raw held data.
+const zybachSeries = /^\/collections\/zybach\/(soap-creek|elliott|letitia-carson|jedediah-smith)(?:\/|$)/.exec(Astro.url.pathname)?.[1];
 const mainClass =
   width === 'full'
     ? 'mx-auto max-w-5xl p-4 sm:p-8'
@@ -175,7 +180,7 @@ const mainClass =
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-pagefind-ignore={pagefindIgnore ? 'all' : undefined}>
   <head>
     <BaseHead title={resolvedTitle} />
     {noindex && <meta name="robots" content="noindex" />}
@@ -192,14 +197,17 @@ const mainClass =
     <span data-pagefind-filter={`room:${room}`} hidden></span>
     {pagefindEra && <span data-pagefind-meta={`era:${pagefindEra}`} hidden></span>}
     {pagefindEra && <span data-pagefind-filter={`era:${pagefindEra}`} hidden></span>}
+    {zybachSeries && !pagefindIgnore && <span data-pagefind-filter={`zybach_series:${zybachSeries}`} hidden></span>}
+    <div style="display:contents" data-pagefind-ignore={room === 'collections' ? 'all' : undefined}>
     <EAIUtilityBar />
     <Header />
 
     <Breadcrumb segments={breadcrumbSegments} />
+    </div>
 
     <main class={`${mainClass} room-main`}>
       <slot name="above-header">
-        {isBannerRoom(room) && <RoomBanner room={room} />}
+        {isBannerRoom(room) && room !== 'collections' && <RoomBanner room={room} />}
       </slot>
       {room === 'reading' && <RoomOrnament shape="book" />}
       {room === 'atlas' && <RoomOrnament shape="map" />}
@@ -219,8 +227,10 @@ const mainClass =
       <slot />
     </main>
 
+    <div style="display:contents" data-pagefind-ignore={room === 'collections' ? 'all' : undefined}>
     <PrepublicationFooter />
     <Footer />
     <SealLightbox />
+    </div>
   </body>
 </html>

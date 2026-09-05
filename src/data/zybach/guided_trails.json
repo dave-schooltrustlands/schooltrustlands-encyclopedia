@@ -1,0 +1,204 @@
+[
+  {
+    "slug": "a-valley-changes",
+    "title": "What changed in Soap Creek Valley?",
+    "description": "Follow a vanished town, a resident’s memory of Camp Adair, and the work of managing a research forest. These are different witnesses to a changing landscape.",
+    "estimatedMinutes": 10,
+    "series": "soap-creek",
+    "image": {
+      "src": "/zybach/mirror/2984d0a4ff298162.jpg",
+      "alt": "Historic photograph of the Moore family farm beside Soap Creek.",
+      "caption": "The Moore family farm on Soap Creek, about 1899 or 1900. Photograph by Samuel H. Moore.",
+      "credit": "Courtesy of Myra Moore Lauridson and the Soap Creek Schoolhouse Foundation, as credited on Bob Zybach’s original site.",
+      "sourceUrl": "http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/Soap_Creek_Valley-7.jpg"
+    },
+    "steps": [
+      {
+        "title": "Where did the town go?",
+        "instruction": "Read Bob’s short 1989 account of Tampico. Notice the difference between a place that disappears and stories that survive.",
+        "href": "/collections/zybach/soap-creek/auto-tour/stop-5/",
+        "label": "Tampico: Auto Tour stop 5",
+        "minutes": 2
+      },
+      {
+        "title": "What did change feel like to a resident?",
+        "instruction": "Read Velma Carter Rawie’s answer on page 43. Her response to Camp Adair is a personal judgment; keep her voice distinct from the tour writer’s account.",
+        "href": "/collections/zybach/soap-creek/m10-rawie/08-farm-life-and-wildlife/#p43",
+        "label": "Velma Carter Rawie, page 43",
+        "minutes": 2
+      },
+      {
+        "title": "Who else remembered Camp Adair?",
+        "instruction": "Open the Camp Adair place page and follow one other narrator’s page reference. Compare what each person chose to remember.",
+        "href": "/collections/zybach/soap-creek/places/camp-adair/",
+        "label": "Camp Adair: map and recollections",
+        "minutes": 3
+      },
+      {
+        "title": "How was the forest managed afterward?",
+        "instruction": "Read Marvin Rowley on thinning, salvage and the patchwork of forest the university had purchased. What kind of work does he describe?",
+        "href": "/collections/zybach/soap-creek/m15-rowley/part-iv-february-7-1979/#p47",
+        "label": "Marvin Rowley, page 47",
+        "minutes": 3
+      }
+    ],
+    "related": {
+      "label": "Follow the same valley into Letitia Carson’s records",
+      "href": "/collections/zybach/letitia-carson/places/#soap-creek-valley",
+      "instruction": "A century earlier, the Carson story survives in papers about this same valley."
+    }
+  },
+  {
+    "slug": "letitia-in-court",
+    "title": "What does Letitia Carson’s court record show?",
+    "description": "Follow a claim, an answer and two jury decisions. The spelling is the clerks’ own; Jan and John Meranda made the transcriptions.",
+    "estimatedMinutes": 9,
+    "series": "letitia-carson",
+    "image": {
+      "src": "/zybach/mirror/2c088a97aac758b8.jpg",
+      "alt": "Open farmland and wooded hills in Soap Creek Valley.",
+      "caption": "Soap Creek Valley in 1993, photographed by Bob Zybach.",
+      "credit": "From Bob Zybach’s published Letitia Carson research at orww.org.",
+      "sourceUrl": "http://www.orww.org/History/Letitia_Carson/Photographs/Benton_County/Soap_Creek_Valley_1993-10.jpg"
+    },
+    "steps": [
+      {
+        "title": "What did she ask the court to recognize?",
+        "instruction": "Read the September 1854 complaint on page 14. What work does it describe, over what years, and what payment does it seek?",
+        "href": "/collections/zybach/letitia-carson/writings/carson-v-smith-transcriptions/#p14",
+        "label": "The complaint, page 14",
+        "minutes": 2
+      },
+      {
+        "title": "How did the administrator answer?",
+        "instruction": "Read Green B. Smith’s answer on page 21. Separate what he alleged from what the court later decided. This page contains his assertion that Letitia was enslaved.",
+        "href": "/collections/zybach/letitia-carson/writings/carson-v-smith-transcriptions/#p21",
+        "label": "The answer, page 21",
+        "minutes": 2
+      },
+      {
+        "title": "What did the first jury decide?",
+        "instruction": "Read the May 1855 judgment on pages 32–33. Then use the document register to find the original scan: transcription and image are two ways of checking the record.",
+        "href": "/collections/zybach/letitia-carson/writings/carson-v-smith-transcriptions/#p32",
+        "label": "The first judgment, pages 32–33",
+        "minutes": 3,
+        "secondaryHref": "/collections/zybach/letitia-carson/documents/1854-1857-carson-vs-smith/",
+        "secondaryLabel": "Find the May 12, 1855 judgment scan"
+      },
+      {
+        "title": "What happened in the later case?",
+        "instruction": "Read the October 1856 jury decision on page 61. Compare the second decision with the first; follow the adjacent papers if you want the fuller case.",
+        "href": "/collections/zybach/letitia-carson/writings/carson-v-smith-transcriptions/#p61",
+        "label": "The later jury decision, page 61",
+        "minutes": 2
+      }
+    ],
+    "related": {
+      "label": "How to cite a page in the Library",
+      "href": "/collections/zybach/how-to-cite/",
+      "instruction": "Keep a permanent link to the exact page you used."
+    }
+  },
+  {
+    "slug": "dean-mountain",
+    "title": "What can one forest stop reveal?",
+    "description": "Visit Dean Mountain on film, then return to an earlier interview and the photographs taken on that earlier tour. The place connects the records; the recordings were made on different dates.",
+    "estimatedMinutes": 10,
+    "series": "elliott",
+    "image": {
+      "src": "/zybach/mirror/6372952c2214e607.jpg",
+      "alt": "Dean Mountain photograph from the November 8, 2017 Elliott tour.",
+      "caption": "Deans Mountain, frame 0990, November 8, 2017. Place and date from the creator’s filename.",
+      "credit": "From Bob Zybach’s ORWW Elliott files; no separate photographer credit is recorded for this frame.",
+      "sourceUrl": "http://www.orww.org/Elliott_Forest/History/Oral/20171108/Photos/0990_Deans_Mountain_20171108-10.jpg"
+    },
+    "steps": [
+      {
+        "title": "What do you see from the lookout?",
+        "instruction": "Watch the Dean’s Mountain Lookout stop, beginning at 10:46. Stop at 13:54 if you are following the short trail.",
+        "href": "/collections/zybach/elliott/videos/fz5alAxC7VI/",
+        "label": "The 2020 field trip: 10:46–13:54",
+        "minutes": 3.13,
+        "video": {
+          "id": "fz5alAxC7VI",
+          "startSeconds": 646,
+          "endSeconds": 834,
+          "embedUrl": "https://www.youtube.com/embed/fz5alAxC7VI?start=646&end=834",
+          "watchUrl": "https://www.youtube.com/watch?v=fz5alAxC7VI&t=646s"
+        }
+      },
+      {
+        "title": "What did the earlier visitors remember?",
+        "instruction": "Read pages 140–141 of the November 2017 interview. David Gould and Jerry Phillips discuss the Civilian Conservation Corps road and earlier forest work; Bob asks whether they would make the same management choices again.",
+        "href": "/collections/zybach/elliott/interviews/20171108/#p140",
+        "label": "The 2017 interview, pages 140–141",
+        "minutes": 3
+      },
+      {
+        "title": "Can the photograph sharpen your reading?",
+        "instruction": "Look at the Dean Mountain photographs, including frame 0990 from the 2017 tour. Compare the view with the interview and the later film; do not assume every image records the same moment.",
+        "href": "/collections/zybach/elliott/places/dean-mountain/#photographs",
+        "label": "Dean Mountain: map, records and photographs",
+        "minutes": 2
+      },
+      {
+        "title": "Why is the Elliott in a school-trust library?",
+        "instruction": "Read the collection’s explanation of the Elliott’s connection to the Common School Fund, then use the Library’s Oregon page for the wider school-trust record.",
+        "href": "/collections/zybach/elliott/",
+        "label": "The Elliott’s school-trust connection",
+        "minutes": 2,
+        "secondaryHref": "/reading/us-or/",
+        "secondaryLabel": "Oregon in the wider Library"
+      }
+    ]
+  },
+  {
+    "slug": "reading-1828",
+    "title": "How do we compare accounts of 1828?",
+    "description": "Read an expedition journal, a company report and a chief’s account preserved by a company officer. Ask who spoke, who wrote, and what each source can tell us.",
+    "estimatedMinutes": 10,
+    "series": "jedediah-smith",
+    "image": {
+      "src": "/zybach/mirror/dab4d7b701e21b0e.jpg",
+      "alt": "Henry Warre’s painting of Fort Vancouver.",
+      "caption": "Fort Vancouver, painted by Henry Warre in 1845 or 1846, as dated in Bob Zybach’s caption.",
+      "credit": "Creator’s scan; caption source: Bob Zybach, illustration captions, May 29, 2023.",
+      "sourceUrl": "http://www.orww.org/1828_Umpqua_Memorial/References%20/Zybach_20230522/Illustrations/1_Warre_1845-8.jpg"
+    },
+    "steps": [
+      {
+        "title": "What survives from the people involved?",
+        "instruction": "Scan the primary-source list. Notice which items are journals, which are reports, and which scans have no searchable text. A document’s date and author help define what it can support.",
+        "href": "/collections/zybach/jedediah-smith/the-1828-record/#primary",
+        "label": "The primary-source shelf",
+        "minutes": 2
+      },
+      {
+        "title": "What did Rogers and McLoughlin record?",
+        "instruction": "Read the passages Bob selected for the interpretive sign, especially Rogers on July 12 and McLoughlin’s August report. Notice the distinction between a journal entry and a report made after the event.",
+        "href": "/collections/zybach/jedediah-smith/markers/#sign",
+        "label": "Journal and report passages",
+        "minutes": 3
+      },
+      {
+        "title": "How does the chief’s account reach us?",
+        "instruction": "Read the account given by Chief St. Arnoose and recorded by Alexander McLeod on October 11. Compare the explanation with the previous passages, remembering that a company officer wrote these words down.",
+        "href": "/collections/zybach/jedediah-smith/the-1828-record/#native-account",
+        "label": "The account recorded from Chief St. Arnoose",
+        "minutes": 3
+      },
+      {
+        "title": "What remains unsettled?",
+        "instruction": "Use the chronology to see where dates and numbers disagree. Follow one citation back to its source before deciding which version you would repeat.",
+        "href": "/collections/zybach/jedediah-smith/chronology/#1826",
+        "label": "Dates, sources and disagreements",
+        "minutes": 2
+      }
+    ],
+    "related": {
+      "label": "Keep the source with your quotation",
+      "href": "/collections/zybach/how-to-cite/",
+      "instruction": "Use the work’s citation and the page link, and distinguish the original speaker from the person who recorded the account."
+    }
+  }
+]

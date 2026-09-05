@@ -4,6 +4,7 @@ import EAIUtilityBar from '../components/EAIUtilityBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PrepublicationFooter from '../components/PrepublicationFooter.astro';
+import { mirrored } from '../components/zybach/_data';
 import ReferenceDesk from '../components/ReferenceDesk.astro';
 ---
 <!doctype html>
@@ -130,6 +131,10 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
         </ul>
       </section>
 
+      <section class="zybach-home-feature" aria-labelledby="zybach-feature-title">
+        <a href="/collections/zybach/"><img src={mirrored('http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/Soap_Creek_Valley-7.jpg')} alt="Moore family farm on Soap Creek, photographed about 1899–1900 by Samuel H. Moore" width="504" height="345" loading="lazy" /></a>
+        <div><p class="zybach-home-kicker">Featured special collection</p><h2 id="zybach-feature-title"><a href="/collections/zybach/">Oregon history, through the people who knew it</a></h2><p>Bob Zybach’s collection brings together oral histories, photographs, field recordings and original documents. Explore Soap Creek, Elliott State Forest, Letitia Carson and the 1828 Umpqua Memorial.</p><a class="zybach-home-cta" href="/collections/zybach/trails/">Follow a short research trail →</a><a class="zybach-home-cta" href="/collections/zybach/explore/">Search the collection →</a><p class="zybach-home-credit">Photograph courtesy of Myra Moore Lauridson and the Soap Creek Schoolhouse Foundation, from the creator’s published collection.</p></div>
+      </section>
       <section class="mt-12" aria-label="Featured entry points" data-reveal>
         <h2 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
           Featured entries
@@ -237,3 +242,7 @@ import ReferenceDesk from '../components/ReferenceDesk.astro';
     </script>
   </body>
 </html>
+
+<style>
+.zybach-home-feature{display:grid;grid-template-columns:1fr 1.25fr;background:#193346;color:#fff;margin:2.6rem 0 0;overflow:hidden;border-radius:3px}.zybach-home-feature>a{display:block;min-height:100%}.zybach-home-feature img{width:100%;height:100%;object-fit:cover}.zybach-home-feature>div{padding:1.6rem}.zybach-home-feature h2{font-family:var(--font-serif);font-size:1.6rem;line-height:1.25;margin:.5rem 0 1rem}.zybach-home-feature h2 a{color:white;text-decoration:none}.zybach-home-feature p{font-size:1rem;line-height:1.6}.zybach-home-feature .zybach-home-kicker{color:#ead092;font-size:.85rem;letter-spacing:.05em;margin:0}.zybach-home-cta{color:#ffe6a7;display:inline-block;margin:.8rem 1rem .5rem 0;font-weight:650;text-underline-offset:4px}.zybach-home-feature .zybach-home-credit{font-size:.78rem;color:#d1dae0;margin-top:1rem}@media(max-width:650px){.zybach-home-feature{grid-template-columns:1fr}.zybach-home-feature img{max-height:230px}.zybach-home-feature>div{padding:1.2rem}}
+</style>

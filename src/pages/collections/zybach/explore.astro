@@ -1,0 +1,83 @@
+---
+export const prerender = true;
+import RoomLayout from '../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../components/zybach/ZybachNav.astro';
+import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
+const base='/collections/zybach';
+const doors=[
+  {name:'Soap Creek Valley',slug:'soap-creek',items:[['Books',''],['People','people/'],['Places & map','places/'],['Timeline','timeline/'],['Series Index','index/']]},
+  {name:'Elliott State Forest',slug:'elliott',items:[['Interviews','interviews/'],['Videos','videos/'],['Places','places/'],['Photographs','photos/']]},
+  {name:'Letitia Carson',slug:'letitia-carson',items:[['Documents','documents/'],['Writings','writings/'],['People','people/'],['Places','places/'],['Chronology','chronology/']]},
+  {name:'1828 Umpqua Memorial',slug:'jedediah-smith',items:[['The 1828 record','the-1828-record/'],['Writings','writings/'],['People','people/'],['Chronology','chronology/']]},
+];
+---
+<RoomLayout room="collections" title="Explore the Zybach Collection" subtitle="Find a name, follow a place, compare the sources." width="full" sourceId="zybach-explore" parents={[{label:'The Zybach Collection',href:`${base}/`}]}>
+  <ZybachNav current="explore" />
+  <section class="zc-search" data-pagefind-ignore>
+    <form id="zc-search-form" role="search" aria-label="Search the Zybach Collection" action={`${base}/explore/`} method="get">
+      <label for="zc-query">Search the published collection</label>
+      <div class="query-row"><input id="zc-query" name="q" type="search" placeholder="A name, place or subject" autocomplete="off" /><button type="submit">Search</button></div>
+      <div class="filter-row"><label for="zc-series">Look in</label><select id="zc-series" name="series"><option value="">All four series</option value="soap-creek">Soap Creek Valley</option><option value="elliott">Elliott State Forest</option><option value="letitia-carson">Letitia Carson</option><option value="jedediah-smith">1828 Umpqua Memorial</option></select><a href={`${base}/explore/`}>Clear search</a></div>
+    </form>
+    <p class="search-hint">Try <a href="?q=oak">oak</a>, <a href="?q=Carson">Carson</a>, <a href="?q=Elkhorn">Elkhorn</a> or <a href="?q=McLeod">McLeod</a>. Matching pages appear with their context. Search finds words in sources; it does not write answers.</p>
+    <p id="zc-search-status" role="status" aria-live="polite">Choose a series below, or search all four at once.</p>
+    <ol id="zc-results" class="zc-results"></ol>
+    <button id="zc-more" type="button" hidden>Show more results</button>
+    <p id="zc-share-status" role="status" aria-live="polite"></p>
+    <noscript><p>The search needs JavaScript. All books, indexes and source pages remain available through the links below.</p></noscript>
+  </section>
+  <section class="zc-browse" aria-labelledby="browse-title">
+    <h2 id="browse-title">Browse without a search</h2>
+    <div class="browse-grid">{doors.map(d=><article><h3><a href={`${base}/${d.slug}/`}>{d.name}</a></h3><ul>{d.items.map(([title,path])=><li><a href={`${base}/${d.slug}/${path}`}>{title}</a></li>)}</ul></article>)}</div>
+    <a class="trail-invitation" href={`${base}/trails/`}>Not sure where to start? Follow a guided research trail →</a>
+  </section>
+  <WorkingEditionBanner />
+  <p class="source-note">Search covers the published reading edition. Held passages are excluded. Some catalog entries describe sources that are available only on the creator’s site or at an archive. <a href={`${base}/how-to-cite/`}>Cite the original work and the printed page</a>; the web link lets another reader find it.</p>
+</RoomLayout>
+<script>
+  const form=document.querySelector<HTMLFormElement>('#zc-search-form')!;
+  const query=document.querySelector<HTMLInputElement>('#zc-query')!;
+  const series=document.querySelector<HTMLSelectElement>('#zc-series')!;
+  const status=document.querySelector<HTMLElement>('#zc-search-status')!;
+  const list=document.querySelector<HTMLOListElement>('#zc-results')!;
+  const more=document.querySelector<HTMLButtonElement>('#zc-more')!;
+  const shareStatus=document.querySelector<HTMLElement>('#zc-share-status')!;
+  const labels:Record<string,string>={'soap-creek':'Soap Creek Valley',elliott:'Elliott State Forest','letitia-carson':'Letitia Carson','jedediah-smith':'1828 Umpqua Memorial'};
+  let indexPromise:Promise<any>|undefined,results:any[]=[],shown=0,request=0;
+  const indexUrl='/pagefind/pagefind.js';
+  const getIndex=()=>indexPromise??=(import(/* @vite-ignore */ indexUrl).then(p=>{p.options({excerptLength:34});return p;}).catch(e=>{indexPromise=undefined;throw e;}));
+  const plain=(value:string)=>{const parsed=new DOMParser().parseFromString(value||'','text/html');return parsed.body.textContent||''};
+  async function showBatch(token:number){
+    const batch=results.slice(shown,shown+12);more.disabled=true;
+    try{
+      const data=await Promise.all(batch.map(r=>r.data()));if(token!==request)return;
+      for(const d of data){
+        if(!d.url.startsWith('/collections/zybach/'))continue;
+        const li=document.createElement('li');const meta=document.createElement('p');meta.className='result-series';meta.textContent=labels[d.url.split('/')[3]]||'Zybach Collection';
+        const h=document.createElement('h2'),a=document.createElement('a');a.href=d.url;a.textContent=d.meta?.title||'Source page';h.append(a);
+        const excerpt=document.createElement('p');excerpt.textContent=plain(d.excerpt);li.append(meta,h,excerpt);
+        const sub=(d.sub_results||[]).filter((s:any)=>s.url&&s.url.includes('#')).slice(0,3);
+        if(sub.length){const ul=document.createElement('ul');ul.className='result-passages';for(const s of sub){const row=document.createElement('li'),link=document.createElement('a');link.href=s.url;link.textContent=plain(s.title)||'Open matching passage';row.append(link);ul.append(row)}li.append(ul)}
+        const copy=document.createElement('button');copy.type='button';copy.className='copy-source';copy.textContent='Copy source link';copy.addEventListener('click',async()=>{const citation=`${d.meta?.title||'Source page'} — The Zybach Collection, America’s School Trust Library. ${new URL(d.url,location.origin).href}`;try{await navigator.clipboard.writeText(citation);shareStatus.textContent='Source title and link copied. Add the author, original title and printed page when citing.';}catch{shareStatus.textContent=citation}});li.append(copy);list.append(li);
+      }
+      shown+=batch.length;more.hidden=shown>=results.length;
+    }catch{if(token===request)status.textContent='These results could not load. Please run the search again, or use the series links below.'}
+    finally{if(token===request)more.disabled=false}
+  }
+  async function search(update=true){
+    const token=++request,q=query.value.trim(),s=series.value;
+    if(update){const params=new URLSearchParams();if(q)params.set('q',q);if(s)params.set('series',s);history.pushState({},'',location.pathname+(params.size?'?'+params:''));}
+    list.replaceChildren();more.hidden=true;shareStatus.textContent='';shown=0;results=[];
+    if(!q){status.textContent='Choose a series below, or enter a name, place or subject to search.';return}
+    status.textContent='Searching the published sources…';
+    try{const index=await getIndex();const response=await index.search(q,{filters:{zybach_series:s||{any:Object.keys(labels)}}});if(token!==request)return;results=response.results;
+      status.textContent=results.length?`${results.length.toLocaleString()} matching ${results.length===1?'page':'pages'}${s?' in '+labels[s]:''}. The address above saves this search.`:'No matching pages. Try a shorter name or another spelling, or select all four series.';await showBatch(token);
+    }catch{if(token===request)status.textContent='Search is temporarily unavailable. The books and indexes below are still open.'}
+  }
+  function restore(){const p=new URLSearchParams(location.search);query.value=p.get('q')||'';series.value=Object.hasOwn(labels,p.get('series')||'')?p.get('series')!:'';search(false)}
+  form.addEventListener('submit',e=>{e.preventDefault();search()});series.addEventListener('change',()=>search());more.addEventListener('click',()=>showBatch(request));window.addEventListener('popstate',restore);restore();
+</script>
+<style>
+  .zc-search,.zc-browse,.source-note{font-family:var(--font-sans);font-size:1rem;line-height:1.6}.zc-search{margin:1.7rem 0 2.5rem}#zc-search-form{background:#172f42;color:white;padding:1.5rem;border-radius:4px}#zc-search-form>label{font-size:1.12rem;font-weight:700;display:block;margin-bottom:.65rem}.query-row{display:flex;gap:.5rem}.query-row input{flex:1;min-width:0;color:#172f42;background:white;padding:.75rem;border:0;font-size:1.05rem}.query-row button,#zc-more{background:#ddc07a;color:#172f42;border:0;padding:.7rem 1.2rem;font-weight:700;cursor:pointer}.filter-row{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin-top:.85rem}.filter-row select{background:white;color:#172f42;padding:.4rem;font-size:1rem;max-width:100%}.filter-row a{color:white;font-size:.9rem}.search-hint,.source-note{color:#555f68;font-size:.95rem}.search-hint a{margin:0 .1rem}#zc-search-status{font-weight:600}.zc-results{list-style:none;padding:0;margin:1rem 0}.zc-results :global(>li){border-bottom:1px solid #d5d2c7;padding:1.2rem 0}.zc-results :global(h2){margin:.2rem 0 .55rem;font-size:1.35rem;line-height:1.35}.zc-results :global(p){margin:.4rem 0}.zc-results :global(.result-series){font-size:.82rem;letter-spacing:.04em;color:#666953;font-weight:650}.zc-results :global(.result-passages){margin:.5rem 0;padding-left:1.3rem}.zc-results :global(.copy-source){font-size:.85rem;color:#173e56;background:none;border:1px solid #bcc4c5;padding:.35rem .7rem;cursor:pointer;margin-top:.5rem}.browse-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem}.browse-grid article{background:white;padding:1.25rem;border:1px solid #d3cfc2}.browse-grid h3{font-size:1.22rem;margin:0 0 .7rem}.browse-grid ul{display:flex;flex-wrap:wrap;list-style:none;gap:.55rem 1.15rem;margin:0;padding:0}.trail-invitation{display:block;margin:1.5rem 0;font-weight:650}.source-note{margin:1rem 0 2rem}
+  @media(max-width:620px){.browse-grid{grid-template-columns:1fr}#zc-search-form{padding:1rem}.filter-row{align-items:flex-start}.query-row button{padding:.7rem}.zc-results :global(h2){font-size:1.15rem}}
+</style>

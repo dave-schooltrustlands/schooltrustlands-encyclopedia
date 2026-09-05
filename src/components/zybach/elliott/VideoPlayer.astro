@@ -147,6 +147,22 @@ const rows = video.segments.map((s) => ({
 </style>
 
 <script>
+  // A shared moment opens the existing player at the creator's indexed time.
+  function restoreVideoTime() {
+    const value = new URLSearchParams(location.search).get('t');
+    const parsed = value != null && /^\d+$/.test(value) ? Number(value) : null;
+    const seconds = parsed != null && Number.isSafeInteger(parsed) && parsed >= 0 && parsed <= 86400 ? parsed : null;
+    document.querySelectorAll<HTMLIFrameElement>('.zy-video-frame iframe').forEach(frame => {
+      const embed = frame.dataset.embed;
+      if (embed) frame.src = seconds == null ? `${embed}?rel=0` : `${embed}?start=${seconds}&rel=0`;
+    });
+    document.querySelectorAll<HTMLButtonElement>('button.tc').forEach(b => {
+      if (seconds != null && Number(b.dataset.start) === seconds) b.setAttribute('aria-current', 'true');
+      else b.removeAttribute('aria-current');
+    });
+  }
+  restoreVideoTime();
+  window.addEventListener('popstate', restoreVideoTime);
   // Re-point the iframe at ?start=<seconds>. No YouTube API, no third-party
   // script: the src swap is enough and keeps the page free of extra loads.
   document.querySelectorAll<HTMLButtonElement>('button.tc').forEach((btn) => {
@@ -163,6 +179,9 @@ const rows = video.segments.map((s) => ({
         ? `${btn.dataset.src}${btn.dataset.src.includes('?') ? '&' : '?'}rel=0&autoplay=1`
         : `${embed}?rel=0&autoplay=1&start=${start}`;
       frame.src = src;
+      const address = new URL(location.href);
+      address.searchParams.set('t', start);
+      history.pushState({}, '', address.pathname + address.search + address.hash);
       document
         .querySelectorAll<HTMLButtonElement>(`button.tc[data-target="${id}"]`)
         .forEach((b) => b.removeAttribute('aria-current'));
