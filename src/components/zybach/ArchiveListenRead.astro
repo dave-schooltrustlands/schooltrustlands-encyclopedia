@@ -1,0 +1,33 @@
+---
+interface Line {seq:number;speaker:string;text:string;page:number}
+interface Cue {id:string;title:string;sourceTime:string;lines:Line[]}
+interface Props {cues:Cue[];pageBase:string}
+const {cues,pageBase}=Astro.props;
+---
+<section class="archive-reading" aria-labelledby="listen-heading">
+  <div class="listening-card">
+    <p class="edition-label">First listening edition · Ready for Bob and Dave to try</p>
+    <h2 id="listen-heading">Hear the voices, then follow the words</h2>
+    <p>The original recording opens in Box in a separate tab, so you can listen there while reading here. It may ask you to sign in to the archive.</p>
+    <a class="open-recording" href="https://app.box.com/file/2413741893311" target="_blank" rel="noopener">Open recording 04 in Box ↗</a>
+    <ol>
+      <li>Move Box’s player to about <strong>9:03</strong> and press Play.</li>
+      <li>Return to this tab and follow the three passages below.</li>
+      <li>Stop at about <strong>11:08</strong>, before the question about grasslands.</li>
+    </ol>
+    <p class="edition-note">About two minutes. Times are approximate and await listening review. A player embedded here will follow once the audio download is available.</p>
+  </div>
+  <nav aria-label="Choose a passage" class="passage-nav">
+    {cues.map(cue=><a href={`#${cue.id}`}><span>{cue.sourceTime}</span> {cue.title}</a>)}
+  </nav>
+  <p class="reading-note">These are the published words. Spoken wording can differ. Times refer to the full recording; the links below move through this page.</p>
+  {cues.map(cue=><article id={cue.id} class="passage" aria-labelledby={`${cue.id}-heading`}>
+    <p class="source-time">About {cue.sourceTime} on recording 04</p>
+    <h3 id={`${cue.id}-heading`}>{cue.title}</h3>
+    {cue.lines.map(line=><p class="spoken-line"><strong>{line.speaker}:</strong> {line.text} <a class="page-link" href={`${pageBase}#p${line.page}`} aria-label={`Read the original transcript at printed page ${line.page}`}>p. {line.page}</a></p>)}
+  </article>)}
+</section>
+<style>
+  .archive-reading{margin-top:2rem}.listening-card{background:#edf3ef;border:1px solid #becdc3;border-radius:10px;padding:1.3rem 1.5rem}.listening-card h2{font-size:1.5rem;line-height:1.3;margin:.5rem 0}.listening-card p,.listening-card li{line-height:1.65;max-width:78ch}.edition-label,.source-time{font:700 .9rem/1.5 var(--font-sans,sans-serif);color:#47604e}.open-recording{display:inline-block;background:#244a3b;color:white;padding:.8rem 1.1rem;border-radius:5px;text-decoration:none;font:700 1rem/1.5 var(--font-sans,sans-serif);margin:.4rem 0}.open-recording:hover{background:#17392b}.listening-card ol{padding-left:1.6rem}.listening-card li{padding-left:.3rem;margin:.6rem 0}.edition-note,.reading-note{font-size:.95rem;color:#526159}.passage-nav{display:flex;flex-wrap:wrap;gap:.65rem;margin:1rem 0}.passage-nav a{padding:.65rem .85rem;border:1px solid #8ca69b;border-radius:5px;font:1rem/1.5 var(--font-sans,sans-serif);text-decoration:none}.passage-nav span{font-weight:700;margin-right:.35rem}.passage-nav a:hover{background:#edf3ef}.passage{border-left:4px solid #c2d1c5;background:#fafbf8;padding:1rem 1.3rem;margin:1rem 0;scroll-margin-top:220px}.passage:target{border-color:#496a30;background:#edf3df}.source-time{margin:0 0 .4rem;font-variant-numeric:tabular-nums}.passage h3{font-size:1.2rem;margin:.4rem 0}.spoken-line{font-size:1.05rem;line-height:1.75;max-width:78ch;margin:.85rem 0}.page-link{white-space:nowrap;font: .9rem var(--font-sans,sans-serif);margin-left:.3rem}a:focus-visible{outline:3px solid #946511;outline-offset:4px}
+  @media(max-width:40rem){.listening-card{padding:1rem}.passage{padding:1rem}.spoken-line{font-size:1rem}.passage-nav{flex-direction:column}}
+</style>

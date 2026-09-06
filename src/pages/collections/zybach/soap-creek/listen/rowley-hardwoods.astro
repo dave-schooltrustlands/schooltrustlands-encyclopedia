@@ -1,0 +1,97 @@
+---
+export const prerender = true;
+// Audience: curious students and woodland owners, with Bob and Dave reviewing
+// the first listening edition. Distinguish printed testimony from new prompts.
+import RoomLayout from '../../../../../layouts/RoomLayout.astro';
+import ZybachNav from '../../../../../components/zybach/ZybachNav.astro';
+import ArchiveListenRead from '../../../../../components/zybach/ArchiveListenRead.astro';
+import pilot from '../../../../../data/zybach/soap_creek/listening/rowley-hardwoods.json';
+const page = '/collections/zybach/soap-creek/m15-rowley/part-v-february-23-1991/';
+const pdf = 'http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/15_Rowley/Jackson_et_al_2009.pdf';
+const forestPhoto = '/zybach/listening/rowley-mcculloch-peak.jpg';
+---
+
+<RoomLayout room="collections" title="What can a fallen tree tell you?" subtitle="Bob Zybach and Marvin Rowley look at the trees, roots and soil · Listen & read" width="full" sourceId="zybach-soap-creek-listen-rowley-hardwoods" parents={[{label:'The Zybach Collection',href:'/collections/zybach/'},{label:'Soap Creek Valley',href:'/collections/zybach/soap-creek/'}]}>
+  <p slot="before-title" class="kicker">Soap Creek oral history · February 23, 1991 · A five-minute visit</p>
+  <ZybachNav current="soap-creek" />
+  <span data-pagefind-meta="series:soap-creek" hidden></span>
+  <span data-pagefind-filter="series:soap-creek" hidden></span>
+
+  <div class="first-look">
+    <div>
+      <p class="opening-question">The question is about trees.<br />The answer starts underground.</p>
+      <p>During a tour of Oregon State University’s research forest, Bob asks whether hardwoods deserve more attention. Marvin Rowley points to a fallen Douglas-fir and its shallow roots.</p>
+      <p>Hear their exchange, follow the published words, then look at the evidence behind the story.</p>
+      <a class="begin" href="#listen-heading">Listen to the conversation <span aria-hidden="true">↓</span></a>
+      <p class="time-note">About two minutes of original audio.<br />Allow a little longer to explore the page and place.</p>
+    </div>
+    <figure>
+      <a href={forestPhoto} aria-label="Open the full photograph of Marvin Rowley"><img src={forestPhoto} width="976" height="761" alt="Marvin Rowley stands on a grassy ridge and points across a landscape of wooded hills." fetchpriority="high" /></a>
+      <figcaption>Marvin Rowley on McCulloch Peak in McDonald Forest, from the monograph’s cover photograph. It shows the forest setting; it is not identified as the location of this conversation. Date and photographer are not credited in the book.</figcaption>
+    </figure>
+  </div>
+
+  <ArchiveListenRead cues={pilot.cues} pageBase={page} />
+
+  <section class="look-closer" aria-labelledby="look-heading">
+    <div class="evidence-question">
+      <p class="eyebrow">Look again</p>
+      <h2 id="look-heading">An observation becomes a question</h2>
+      <p>What does Rowley point to? What does he infer from it? Open each note, then decide what you would want to check on the ground.</p>
+      <details><summary>The fallen tree</summary><p>Rowley asks Bob to look at a blown-over Douglas-fir and its roots. His explanation connects that particular tree to shallow soil and a clay layer beneath it.</p><a href="#passage-01">Return to the opening exchange →</a></details>
+      <details><summary>A change up the slope</summary><p>He contrasts the hardwood patch with Douglas-fir growing farther up the slope. A useful next question is whether the soil changes as well. The recording gives his interpretation; it does not supply a soil survey.</p></details>
+      <details><summary>A management choice</summary><p>The conversation moves from which trees fit the ground to maple seedlings, timber quality and markets. Which reasons come from what Rowley observes here, and which come from his wider experience?</p></details>
+      <p class="question-to-keep">Keep one sentence from the interview and one question of your own. That is a starting point for using an oral history as evidence.</p>
+    </div>
+    <figure class="printed-leaf">
+      <a href="/zybach/listening/rowley-printed-page-82.png"><img src="/zybach/listening/rowley-printed-page-82.png" width="1275" height="1651" loading="lazy" alt="Original printed page 82, containing the complete eight-turn conversation displayed above and the discussion that follows it." /></a>
+      <figcaption>The whole exchange appears on <strong>printed page 82</strong>. Questions and answers have different type styles in the original.<br /><a href={`${pdf}#page=93`}>Open this page in the original book →</a><br /><a href={`${page}#p82`}>Read it with the surrounding interview →</a></figcaption>
+    </figure>
+  </section>
+
+  <section class="place-context" aria-labelledby="place-heading">
+    <div>
+      <p class="eyebrow">Put it in place</p>
+      <h2 id="place-heading">A conversation in McDonald Forest</h2>
+      <p>The printed session begins at <a href="/collections/zybach/soap-creek/places/oak-creek-guard-station/">Oak Creek Guard Station</a> and continues through the forest. The exact hardwood patch in this exchange remains to be identified.</p>
+      <p>The cover photograph gives a different view: Rowley on McCulloch Peak. Together, the picture, the place names and the conversation invite us to look at the forest at several scales.</p>
+      <a href="/collections/zybach/soap-creek/places/mcdonald-forest/">Explore McDonald Forest through other interviews →</a>
+    </div>
+    <aside class="continue-reading">
+      <h3>Carry the question into another source</h3>
+      <p>Why have a university forest? In a separate interview, Paul Dunn explains the teaching and demonstration purposes behind acquiring the Adair Tract.</p>
+      <a href="/collections/zybach/soap-creek/m02-dunn/adair-tract/#p22">Read Paul Dunn, page 22 →</a>
+      <p class="distinction">This is another place and another interview, conducted by Royal G. Jackson and Jennifer Lee.</p>
+      <a href="/collections/zybach/trails/a-valley-changes/">Continue the Soap Creek Valley trail →</a>
+    </aside>
+  </section>
+
+  <section id="sources" class="source-record" aria-labelledby="sources-heading">
+    <h2 id="sources-heading">The people and the original record</h2>
+    <p><strong>This conversation:</strong> Marvin Rowley, narrator; Bob Zybach, interviewer, February 23, 1991. The complete monograph credits oral-history interviews by Royal G. Jackson, Jennifer Lee and Bob Zybach. Published in 2009 by Oregon State University’s College of Forestry.</p>
+    <ul>
+      <li><a href={`${page}#p82`}>Published transcript, printed page 82</a> · all eight turns are preserved here. The printed session heading identifies Bob as interviewer.</li>
+      <li><a href="https://app.box.com/file/2413741893311">Original archive recording in Box</a> · archive access may be required. Source file: <span class="filename">OH06-rowley-marvin-19910224-04.wav</span>.</li>
+      <li><a href={`${pdf}#page=6`}>Photograph caption and contributor acknowledgments</a> · the landscape photograph was extracted from the original book’s cover.</li>
+      <li><a href="/zybach/listening/rowley-hardwoods-sources.json">Download this reading journey’s source record</a> · recording identity, approximate passage times and checksums of the book and images.</li>
+    </ul>
+    <details><summary>Printed words, recorded speech and passage timing</summary><p>The text is the published interview, not a replacement machine transcript. The retained machine transcription includes repeated words and short acknowledgments that the print omits. The speaker labels follow the printed question-and-answer typography and session heading. Titles, explanations and questions are the Library’s additions, prepared with Codex assistance.</p><p>This first edition links to the archive’s full recording. An embedded excerpt is still to come: the archive download did not complete during preparation. Passage times come from the retained machine transcription and remain approximate; Bob and Dave’s listening review is pending. No by-ear review is claimed. The filename says February 24; the printed session and the retained transcription of recording 01’s opening identify February 23, 1991.</p></details>
+    <details><summary>Source use and corrections</summary><p>The original recording was supplied by Oregon State University’s archives through Chris Petersen. This educational excerpt does not grant a general license to reuse the recording, printed text or photograph. The individual <a href="/collections/zybach/rights/">Collection rights statements</a> remain applicable. <a href="/collections/zybach/errata/">Corrections and the Library’s editorial policy →</a></p></details>
+  </section>
+</RoomLayout>
+
+<style>
+  .first-look{display:grid;grid-template-columns:.95fr 1.05fr;gap:2.2rem;align-items:center;margin:1.6rem 0 1.8rem}
+  .opening-question{font-size:clamp(1.7rem,2.5vw,2.35rem);line-height:1.2;color:#244a3b;margin:0 0 1rem}
+  .first-look p:not(.opening-question){line-height:1.65}.begin{display:inline-block;background:#244a3b;color:white;border-radius:5px;padding:.8rem 1.1rem;text-decoration:none;font:700 1rem/1.4 var(--font-sans,sans-serif)}.begin:hover{background:#17392b}
+  .time-note{font: .9rem/1.55 var(--font-sans,sans-serif);color:#526259}.first-look figure,.printed-leaf{margin:0}.first-look img{display:block;width:100%;height:auto;border-radius:6px}
+  figcaption{font:.9rem/1.55 var(--font-sans,sans-serif);color:#515e57;margin:.65rem 0}figcaption a{display:inline-block;margin-top:.3rem}
+  .look-closer{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;margin:2.4rem 0;border-top:1px solid #c9d3cc;padding-top:1.6rem;align-items:start}.eyebrow{font:700 .9rem/1.4 var(--font-sans,sans-serif);color:#52634e;letter-spacing:.04em;margin:.25rem 0 .6rem}.look-closer h2,.place-context h2{font-size:1.7rem;line-height:1.25;margin:.3rem 0 1rem}
+  .evidence-question>p,.place-context p{line-height:1.7}.evidence-question details{border-top:1px solid #c4cfc6;padding:.9rem 0}.evidence-question summary{cursor:pointer;font-size:1.12rem;font-weight:700}.evidence-question details p{line-height:1.65}.question-to-keep{border-left:3px solid #8b713c;padding-left:1rem;font-style:italic}
+  .printed-leaf img{display:block;width:100%;max-height:33rem;object-fit:contain;object-position:top;background:#fff;border:1px solid #d4d1c9;box-shadow:0 3px 13px #0000000c}
+  .place-context{display:grid;grid-template-columns:1.1fr 1fr;gap:2.5rem;padding-top:1.6rem;border-top:1px solid #c9d3cc;margin:2rem 0}.continue-reading{padding:1.4rem;background:#edf2ee;border-radius:6px}.continue-reading h3{font-size:1.3rem;line-height:1.3;margin:.2rem 0 .8rem}.distinction{font-size:.95rem;color:#526259}
+  .source-record{max-width:90ch;border-top:1px solid #c9d3cc;padding-top:1.2rem;margin:2rem 0;scroll-margin-top:210px}.source-record h2{font-size:1.5rem}.source-record p,.source-record li{line-height:1.65}.source-record ul{padding-left:1.3rem}.source-record li{margin:.75rem 0}.source-record details{border:1px solid #cad2cc;padding:.85rem 1rem;border-radius:5px;margin:1rem 0;font-size:1rem}.source-record summary{font-weight:700;cursor:pointer}.filename{overflow-wrap:anywhere;font-size:.9rem}
+  a:focus-visible,summary:focus-visible{outline:3px solid #8b6528;outline-offset:4px}
+  :global(.listen-read .length),:global(.listen-read .clock),:global(.listen-read .timing-note),:global(.listen-read .end-note),:global(.listen-read .player-status),:global(.listen-read .printed-page){font-size:.9rem}
+  @media(max-width:48rem){.first-look,.look-closer,.place-context{grid-template-columns:1fr;gap:1.3rem}.first-look figure{max-width:42rem}.opening-question{font-size:1.8rem}.printed-leaf{max-width:27rem;margin:0 auto}.source-record{scroll-margin-top:7rem}}
+</style>

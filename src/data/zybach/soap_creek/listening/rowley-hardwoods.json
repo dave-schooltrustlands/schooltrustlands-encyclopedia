@@ -1,0 +1,73 @@
+{
+  "cues": [
+    {
+      "id": "passage-01",
+      "title": "Which trees fit this ground?",
+      "sourceTime": "9:03",
+      "lines": [
+        {
+          "seq": 1230,
+          "speaker": "Bob Zybach",
+          "text": "When you were here, the concentration was more on growing softwoods. And we’re standing in a nice hardwood patch here. Do you think maybe the Forest should concentrate some more on hardwood growth?",
+          "page": 82
+        },
+        {
+          "seq": 1231,
+          "speaker": "Marvin Rowley",
+          "text": "This is probably a better hardwood site here than it is Douglas-fir site. Do you see that Doug-fir blew over right there? Look at the tap root on it.",
+          "page": 82
+        },
+        {
+          "seq": 1232,
+          "speaker": "Bob Zybach",
+          "text": "Shallow root.",
+          "page": 82
+        },
+        {
+          "seq": 1233,
+          "speaker": "Marvin Rowley",
+          "text": "It’s nonexistent. The root can go down only 24 inches into the ground, because this is shallow soil, got a clay pan underneath. But the oak and ash, they put their roots down and if we totally utilized the hardwoods you may find out that they put out more volume per acre on this in hardwoods than you could Douglas-fir. They don’t grow any good. Go up the slope a little bit and you get all kinds of Douglas-fir.",
+          "page": 82
+        }
+      ]
+    },
+    {
+      "id": "passage-02",
+      "title": "A possible maple stand",
+      "sourceTime": "9:56",
+      "lines": [
+        {
+          "seq": 1234,
+          "speaker": "Bob Zybach",
+          "text": "Do you think maybe some concentration on hardwoods would be a good function of the forest?",
+          "page": 82
+        },
+        {
+          "seq": 1235,
+          "speaker": "Marvin Rowley",
+          "text": "Well, that’s what John and I used to talk about there. There’s an area we’ll go by today, that is a second-growth maple stand. And we were talking about preserving and looking at making it a maple stand. One of the problems with maple in management is that it sprouts. The ones that come up from the sprouts, by the time they get to a merchantable size, they’ve got some kind of rot in them. Heart rot. red rot, they call it, red heart. And maybe one out of five of them would be merchantable. But a seedling that comes up and grows, it grows right on up and you hardly ever have rot in it. So if you come up from seedlings, you’d have probably a good usable material for everything that comes up.",
+          "page": 82
+        }
+      ]
+    },
+    {
+      "id": "passage-03",
+      "title": "Why Douglas-fir?",
+      "sourceTime": "10:57",
+      "lines": [
+        {
+          "seq": 1236,
+          "speaker": "Bob Zybach",
+          "text": "Do you know anybody that’s done any bigleaf maple plantation?",
+          "page": 82
+        },
+        {
+          "seq": 1237,
+          "speaker": "Marvin Rowley",
+          "text": "No. They haven’t because of Douglas-fir. It grows much better, and sells so quickly.",
+          "page": 82
+        }
+      ]
+    }
+  ]
+}

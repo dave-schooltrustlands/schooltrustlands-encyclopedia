@@ -3,7 +3,7 @@
     "slug": "a-valley-changes",
     "title": "What changed in Soap Creek Valley?",
     "description": "Follow a vanished town, a resident’s memory of Camp Adair, and the work of managing a research forest. These are different witnesses to a changing landscape.",
-    "estimatedMinutes": 10,
+    "estimatedMinutes": 11,
     "series": "soap-creek",
     "image": {
       "src": "/zybach/mirror/2984d0a4ff298162.jpg",
@@ -35,11 +35,13 @@
         "minutes": 3
       },
       {
-        "title": "How was the forest managed afterward?",
-        "instruction": "Read Marvin Rowley on thinning, salvage and the patchwork of forest the university had purchased. What kind of work does he describe?",
-        "href": "/collections/zybach/soap-creek/m15-rowley/part-iv-february-7-1979/#p47",
-        "label": "Marvin Rowley, page 47",
-        "minutes": 3
+        "title": "What can a fallen tree tell you?",
+        "instruction": "Hear Bob Zybach and Marvin Rowley discuss hardwoods, roots and soil. Follow the printed words, examine the original page and see Rowley in the forest. What would you want to check on the ground?",
+        "href": "/collections/zybach/soap-creek/listen/rowley-hardwoods/",
+        "label": "Listen and read with Bob and Marvin Rowley",
+        "minutes": 4,
+        "secondaryHref": "/collections/zybach/soap-creek/m15-rowley/part-iv-february-7-1979/#p47",
+        "secondaryLabel": "Read Rowley on the earlier forest management work"
       }
     ],
     "related": {

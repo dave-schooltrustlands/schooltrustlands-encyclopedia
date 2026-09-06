@@ -1,0 +1,76 @@
+{
+  "title": "What can a fallen tree tell you?",
+  "edition_date": "2026-09-06",
+  "edition": "Archive-linked first edition; no Library audio excerpt file yet",
+  "interview": {
+    "date": "1991-02-23",
+    "narrator": "Marvin Rowley",
+    "interviewer": "Bob Zybach",
+    "speaker_labels": "From published Q/A typography and session heading"
+  },
+  "archive_recording": {
+    "filename": "OH06-rowley-marvin-19910224-04.wav",
+    "url": "https://app.box.com/file/2413741893311",
+    "supplied_by": "Oregon State University archives through Chris Petersen",
+    "preview_duration_seconds": 1925.74,
+    "download_obtained": false,
+    "sha256": null,
+    "date_note": "Filename differs from printed session date; retained tape01 opening transcription also says February23,1991. Reason for filename discrepancy unverified."
+  },
+  "passage_times": {
+    "source": "Retained TS_OH06-rowley-marvin-19910224-04.srt",
+    "approximate_start": "09:03",
+    "approximate_end": "11:08",
+    "chapters": [
+      {
+        "title": "Which trees fit this ground?",
+        "approximate_source_time": "9:03"
+      },
+      {
+        "title": "A possible maple stand",
+        "approximate_source_time": "9:56"
+      },
+      {
+        "title": "Why Douglas-fir?",
+        "approximate_source_time": "10:57"
+      }
+    ],
+    "by_ear_review_completed": false,
+    "review_status": "Bob and Dave listening review pending; publish-first explicitly requested by Dave"
+  },
+  "text": {
+    "url": "https://schooltrusts.org/collections/zybach/soap-creek/m15-rowley/part-v-february-23-1991/#p82",
+    "printed_page": 82,
+    "pdf_page": 93,
+    "sequence_range": [
+      1230,
+      1237
+    ],
+    "turns": 8,
+    "words": 318,
+    "policy": "Published text preserved exactly; spoken wording differs."
+  },
+  "book": {
+    "url": "http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/15_Rowley/Jackson_et_al_2009.pdf",
+    "sha256": "8276f560785cef7e8528e2b2158a7debda60dc87a7fefd671856f3ace58932e3",
+    "year": 2009,
+    "interview_contributors": [
+      "Royal G. Jackson",
+      "Jennifer Lee",
+      "Bob Zybach"
+    ]
+  },
+  "images": [
+    {
+      "url": "https://schooltrusts.org/zybach/listening/rowley-mcculloch-peak.jpg",
+      "sha256": "524e38261b043d9f0807da9a73a9cdd89cf2820db59e54ea00b0b3fff5c3b55f",
+      "source": "Original monograph cover; caption printedp.v identifies Marvin Rowley on McCulloch Peak, McDonald Forest. Date and photographer not stated. Recording location not established."
+    },
+    {
+      "url": "https://schooltrusts.org/zybach/listening/rowley-printed-page-82.png",
+      "sha256": "523656f4c7152d52e043bae57bf52820d1f821a81addcaddd5a713c2d2cc5878",
+      "source": "Complete original PDFpage93, printedp.82, rendered150dpi."
+    }
+  ],
+  "rights": "Underlying recording, text and photograph rights remain with their respective holders. No general reuse license is granted."
+}

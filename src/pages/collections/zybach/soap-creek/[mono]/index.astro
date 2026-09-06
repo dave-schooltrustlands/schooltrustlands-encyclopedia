@@ -212,6 +212,15 @@ const parents = [
 >
   {mono.subtitle && <p class="sc-whatis"><em>{mono.subtitle}</em></p>}
 
+  {mono.slug === 'm15-rowley' && (
+  <aside class="rowley-listening-invite" aria-label="A short listening journey">
+    <p class="rowley-listening-label">Listen, read and look · A five-minute visit</p>
+    <h2><a href="/collections/zybach/soap-creek/listen/rowley-hardwoods/">What can a fallen tree tell you?</a></h2>
+    <p>Join Bob Zybach and Marvin Rowley for two minutes in the forest. Hear their original voices, follow the published words and explore the photograph and source page.</p>
+    <a href="/collections/zybach/soap-creek/listen/rowley-hardwoods/">Begin the listening journey →</a>
+  </aside>
+  )}
+
   {mono.cover_url && (
     <figure class="sc-cover">
       <a href={mono.cover_url} rel="external">
@@ -626,4 +635,10 @@ const parents = [
     line-height: 1.4;
     color: #6b6355;
   }
+</style>
+
+<style>
+
+  .rowley-listening-invite{border:1px solid #b9cbbf;border-left:4px solid #365b43;border-radius:6px;background:#edf3ee;padding:1.15rem 1.4rem;margin:1.5rem 0;max-width:78ch}
+  .rowley-listening-invite h2{font-size:1.4rem;line-height:1.3;margin:.4rem 0}.rowley-listening-invite p{line-height:1.65;margin:.5rem 0}.rowley-listening-invite .rowley-listening-label{font:700 .9rem/1.5 var(--font-sans,sans-serif);color:#455b4c}.rowley-listening-invite>a{display:inline-block;margin-top:.35rem}
 </style>
