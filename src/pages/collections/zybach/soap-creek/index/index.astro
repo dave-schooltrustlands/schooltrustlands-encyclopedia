@@ -43,6 +43,15 @@ const parents = [
   width="full"
   corrections={false}
 >
+  <form class="sc-index-search" role="search" aria-label="Search Soap Creek" action="/collections/zybach/explore/" method="get" data-pagefind-ignore>
+    <label for="sc-index-query">Search Soap Creek</label>
+    <input type="hidden" name="series" value="soap-creek" />
+    <div class="sc-index-search-row">
+      <input id="sc-index-query" name="q" type="search" placeholder="A name, place or subject" required />
+      <button type="submit">Search</button>
+    </div>
+    <p>Search the words in the published collection, or browse the books’ printed index headings below.</p>
+  </form>
   <nav class="sc-index-paths" aria-label="Explore the Soap Creek index">
     <a href="/collections/zybach/soap-creek/places/">Places</a> ·
     <a href="/collections/zybach/soap-creek/people/">People</a> ·
@@ -130,3 +139,13 @@ const parents = [
     </p>
   </section>
 </SoapCreekPage>
+
+<style>
+  .sc-index-search {margin:1.5rem 0;padding:1.15rem 1.25rem;border:1px solid #bcc6c5;background:#f1f4f2;font-family:var(--font-sans,sans-serif)}
+  .sc-index-search label {display:block;margin-bottom:.55rem;font-size:1.1rem;font-weight:700;color:#172f42}
+  .sc-index-search-row {display:flex;gap:.5rem;flex-wrap:wrap}
+  .sc-index-search input[type="search"] {flex:1 1 12rem;min-width:0;width:100%;border:1px solid #889ca5;background:#fff;color:#172f42;border-radius:2px;padding:.7rem;font:inherit;font-size:1rem}
+  .sc-index-search button {border:1px solid #172f42;border-radius:2px;padding:.7rem 1.25rem;background:#172f42;color:#fff;font:inherit;font-size:1rem;font-weight:650;cursor:pointer}
+  .sc-index-search input:focus-visible,.sc-index-search button:focus-visible {outline:3px solid #a87f2c;outline-offset:3px}
+  .sc-index-search p {margin:.65rem 0 0;font-size:.925rem;line-height:1.5;color:#374c55}
+</style>

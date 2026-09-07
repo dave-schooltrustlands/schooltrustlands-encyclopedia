@@ -185,17 +185,19 @@ const MEASURE = [
 const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' }];
 ---
 
-<RoomLayout room="collections" title="Soap Creek Valley"
+<RoomLayout room="collections" title="Soap Creek Valley: Oral Histories and Landscape History"
   subtitle="Fifteen oral histories of the people who farmed, logged, taught and kept house in one Oregon valley."
   width="full" parents={parents} sourceId="zybach-soap-creek-series">
   <Fragment slot="before-title"><ZybachNav current="soap-creek" /><p class="kicker">The Zybach Collection</p></Fragment>
   <span data-pagefind-meta="series:soap-creek" hidden></span><span data-pagefind-filter="series:soap-creek" hidden></span>
   <span data-pagefind-meta="collection:zybach" hidden></span>
   <div class="sc-introduction">
-    <p>North of Corvallis, Oregon, Soap Creek Valley holds the history of farms, one-room schools, sawmills, Camp Adair and university research forests. Twenty-one people recall that changing landscape in interviews recorded between 1975 and 1995. Their books, photographs and words are gathered here, alongside Bob Zybach’s 1989 Auto Tour and 1999 thesis.</p>
+    <p>North of Corvallis, Oregon, Soap Creek Valley holds the history of farms, one-room schools, sawmills, Camp Adair and university research forests. Twenty-one people recall that changing landscape in interviews recorded between 1975 and 1995.</p>
+    <p>Bob Zybach’s <a href={`${thesisHref()}#methodology`}>research method</a> brings residents’ memories together with photographs, maps, historical records and observations of the valley itself. Interviewees had lived or worked here and knew its farms, forests and communities firsthand. The transcripts were reviewed, edited and indexed by names, places and subjects. That <a href={indexHref()}>common index</a> lets readers follow a place or activity across several people’s accounts and compare their memories with other evidence. The aim was to understand how the valley’s forests and open lands changed, and why.</p>
+    <p>Two works connect these personal accounts to the larger landscape. Zybach’s <a href={tourHref()}><cite>Historic Soap Creek Valley Auto Tour</cite></a> (1989) links historical themes to eleven places in the valley. His thesis, <a href={thesisHref()}><cite>Using Oral Histories to Document Changing Forest Cover Patterns: Soap Creek Valley, Oregon, 1500–1999</cite></a> (1999), examines oral history as a way to reconstruct forest change and understand its causes.</p>
     <figure>
       <img src={mirrored("http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/Soap_Creek_Valley-7.jpg")} alt="The Moore family farm and open hills of Soap Creek Valley" width="504" height="345" loading="eager" />
-      <figcaption>Moore family farm, c. 1899–1900. Samuel H. Moore. Courtesy Myra Moore Lauridson and the Soap Creek Schoolhouse Foundation.</figcaption>
+      <figcaption>Moore family farm on Soap Creek, about 1899 or 1900. Photograph by Samuel H. Moore. Courtesy Myra Moore Lauridson and the Soap Creek Schoolhouse Foundation.</figcaption>
     </figure>
   </div>
   <section aria-labelledby="the-shelf">
@@ -507,10 +509,10 @@ const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' 
     margin: 0.25rem 0 1rem;
   }
 
-  .sc-introduction {display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:1.5rem;align-items:center;margin:1.5rem 0}
-  .sc-introduction p {font-size:1rem;line-height:1.65;margin:.4rem 0}
-  .sc-introduction figure {margin:0}.sc-introduction img {display:block;width:100%;height:auto}
+  .sc-introduction {margin:1.5rem 0 2.25rem}
+  .sc-introduction p {font-size:1rem;line-height:1.7;margin:0 0 1rem}
+  .sc-introduction figure {margin:1.5rem 0 0;width:100%;max-width:none}
+  .sc-introduction img {display:block;width:100%;max-width:none;height:auto}
   .sc-introduction figcaption {font: .875rem/1.5 var(--font-sans);margin-top:.5rem}
   .sc-fd-edition {font: .9rem/1.5 var(--font-sans);margin-top:2rem;padding-top:1rem;border-top:1px solid #d8d1c2}
-  @media(max-width:620px){.sc-introduction{grid-template-columns:1fr}.sc-introduction figure{max-width:300px}}
 </style>
