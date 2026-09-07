@@ -110,7 +110,7 @@ const config = JSON.stringify({
     class="zc-map"
     style={`height: ${height}`}
     data-zybach-map
-    role="img"
+    role="region"
     aria-label="Interactive map. An equivalent list of every mapped place follows below."
   >
   </div>
@@ -404,6 +404,18 @@ const config = JSON.stringify({
       }
     }
 
+    for (const f of fc.features ?? []) {
+      const n=Number(f.properties?.stop_number);
+      const href=f.properties?.href;
+      if(f.geometry?.type !== 'Point' || !Number.isInteger(n) || n<1 || n>11 || typeof href!=='string' || !href.startsWith('/collections/zybach/')) continue;
+      const link=document.createElement('a');
+      link.href=href;link.textContent=String(n);link.className='zc-numbered-stop';
+      link.style.setProperty('--stop-marker-color', cfg.colors?.[f.properties._group] ?? '#a87f2c');
+      link.setAttribute('aria-label',`Stop ${n}: ${f.properties.title || ''}`);
+      link.title=link.getAttribute('aria-label');
+      new maplibregl.Marker({element:link}).setLngLat(f.geometry.coordinates).addTo(map);
+    }
+
     const popup = new maplibregl.Popup({
       closeButton: true,
       closeOnClick: true,
@@ -444,6 +456,19 @@ const config = JSON.stringify({
   }
 
   for (const el of document.querySelectorAll('[data-zybach-map]')) {
-    buildMap(el);
+    const disclosure = el.closest('details');
+    if (disclosure && !disclosure.open) {
+      const initializeWhenOpened = () => {
+        if (!disclosure.open) return;
+        disclosure.removeEventListener('toggle', initializeWhenOpened);
+        requestAnimationFrame(() => buildMap(el));
+      };
+      disclosure.addEventListener('toggle', initializeWhenOpened);
+    } else buildMap(el);
   }
 </script>
+
+<style is:global>
+  .zc-numbered-stop{display:flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--stop-marker-color,#a87f2c);color:#000!important;border:2px solid #fff;border-radius:50%;font:700 14px/1 Arial,sans-serif;text-decoration:none!important;box-shadow:0 1px 4px #0005}
+  .zc-numbered-stop:hover,.zc-numbered-stop:focus-visible{background:#14243c;color:#fff!important;outline:3px solid #b78b32;outline-offset:2px;z-index:10}
+</style>

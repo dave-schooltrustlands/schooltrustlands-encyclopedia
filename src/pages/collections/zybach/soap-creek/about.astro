@@ -1,7 +1,6 @@
 ---
 export const prerender = true;
 
-import { mirrored } from '../../../../components/zybach/_data';
 import RoomLayout from '../../../../layouts/RoomLayout.astro';
 import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
 import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
@@ -185,114 +184,115 @@ const MEASURE = [
 const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' }];
 ---
 
-<RoomLayout room="collections" title="Soap Creek Valley"
-  subtitle="Fifteen oral histories of the people who farmed, logged, taught and kept house in one Oregon valley."
-  width="full" parents={parents} sourceId="zybach-soap-creek-series">
-  <Fragment slot="before-title"><ZybachNav current="soap-creek" /><p class="kicker">The Zybach Collection</p></Fragment>
-  <span data-pagefind-meta="series:soap-creek" hidden></span><span data-pagefind-filter="series:soap-creek" hidden></span>
-  <span data-pagefind-meta="collection:zybach" hidden></span>
-  <div class="sc-introduction">
-    <p>North of Corvallis, Oregon, Soap Creek Valley holds the history of farms, one-room schools, sawmills, Camp Adair and university research forests. Twenty-one people recall that changing landscape in interviews recorded between 1975 and 1995. Their books, photographs and words are gathered here, alongside Bob Zybach’s 1989 Auto Tour and 1999 thesis.</p>
-    <figure>
-      <img src={mirrored("http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/Soap_Creek_Valley-7.jpg")} alt="The Moore family farm and open hills of Soap Creek Valley" width="504" height="345" loading="eager" />
-      <figcaption>Moore family farm, c. 1899–1900. Samuel H. Moore. Courtesy Myra Moore Lauridson and the Soap Creek Schoolhouse Foundation.</figcaption>
-    </figure>
-  </div>
-  <section aria-labelledby="the-shelf">
-    <h2 id="the-shelf">The fifteen books</h2>
-    <p class="sc-fd-para">Published by Oregon State University Research Forests and the College of Forestry, 1990–2009.</p>
-    {monographs.length > 0 ? (
-      <CoverShelf
-        items={shelf}
-      />
-    ) : (
-      <p class="sc-fd-empty">The shelf is empty until the book records are generated.</p>
-    )}
-  </section>
-
-  <section aria-labelledby="the-narrators">
-    <h2 id="the-narrators">The people</h2>
-
-    {allPortraits.length > 0 && (
-      <ul class="sc-fd-portraits" aria-label="Photographs of the narrators as printed in the monographs">
-        {allPortraits.map((pt) => {
-          const m = monographs.find((x) => x.slug === pt.slug);
-          return (
-            <li>
-              <a href={m?.href ?? monoHref(pt.slug)} title={pt.who ?? undefined}>
-                <img src={pt.file} alt={pt.who ? `${pt.who}, as printed in Monograph #${String(pt.number).padStart(2, '0')}` : `Photograph printed in Monograph #${String(pt.number).padStart(2, '0')}`} loading="lazy" decoding="async" />
-              </a>
-              <span>#{String(pt.number).padStart(2, '0')}</span>
-            </li>
-          );
-        })}
-      </ul>
-    )}
-    <p class="sc-fd-caption">Photographs from twelve of the books; each book identifies the people pictured.</p>
-    <p class="sc-fd-more"><a href={peopleHref()}>Everyone named in the series</a></p>
-  </section>
-
-  <Voices
-    heading="What they said"
-    headingId="voices"
-    quotes={QUOTES}
-    lede="Each quotation links to the original passage in its book."
-  />
-
-
-  <aside class="rowley-listening-invite" aria-label="Example of exploring a question">
-    <p class="rowley-listening-label">An example of a question you can explore</p>
-    <h2><a href="/collections/zybach/soap-creek/listen/rowley-hardwoods/">What can a fallen tree tell you?</a></h2>
-    <p>Follow Bob Zybach and Marvin Rowley’s discussion of hardwoods and soil through the printed words, a photograph, a place and the archive recording.</p>
-  </aside>
-  <section aria-labelledby="the-ground">
-    <h2 id="the-ground">Explore the valley</h2>
-    <p class="sc-fd-para">Select a place to find the people and passages connected with it. The map includes the 1989 tour stops, home sites and other named places.</p>
-
-    {valleyGeoJSON.features.length > 0 ? (
-      <>
-        <ZybachMap
-          id="soap-creek-series-map"
-          center={[-123.25, 44.7]}
-          zoom={11}
-          features={valleyGeoJSON}
-          height="500px"
-          basemap="topo"
-          fit={true}
-        />
-
-        <details class="sc-fd-maplist">
-          <summary>Everything on this map ({mapPoints.length})</summary>
-          {mapGroups.map((g) => (
-            <div class="sc-fd-maplist__group">
-              <h3>{g.label} <span>({g.items.length})</span></h3>
-              <ul>
-                {g.items.map((i) => (
-                  <li>
-                    {i.href ? <a href={i.href}>{i.title}</a> : <span>{i.title}</span>}
-                    {i.subtitle && <span class="sub">{i.subtitle}</span>}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </details>
-
-        {outsideValleyCount > 0 && (
-          <p class="sc-fd-note">
-            {outsideValleyCount} further places the narrators named lie outside
-            the valley — Portland, the coast, the places they came from and went
-            to. They are on the <a href={placesHref()}>places index</a>.
-          </p>
+<RoomLayout room="collections" title="About the Soap Creek collection" width="full" parents={parents} sourceId="zybach-soap-creek-about">
+  <ZybachNav slot="before-title" current="about" />
+  <WorkingEditionBanner />
+  {contentNotes.collection_statement && <ContentNote text={contentNotes.collection_statement} level="collection" draft={true} />}
+  <section aria-labelledby="ways-in">
+    <h2 id="ways-in">Indexes and timeline</h2>
+    <ul class="sc-fd-ways">
+      <li>
+        <a href={indexHref()}>The Series Index</a>
+        <span>
+          {indexHeadings
+            ? `The back-of-book indexes of all fifteen books, merged and made live: ${indexHeadings.toLocaleString('en-US')} headings and ${indexRefs.toLocaleString('en-US')} page references, every one of them a link.`
+            : 'The back-of-book indexes of all fifteen books, merged and made live.'}
+        </span>
+      </li>
+      <li>
+        <a href={placesHref()}>Places</a>
+        <span>
+          {gazetteer.length
+            ? `${gazetteer.length.toLocaleString('en-US')} named places, ${geocoded.length} of them with coordinates — what every narrator said about each, with page citations.`
+            : 'Named places in the valley — what every narrator said about each, with page citations.'}
+        </span>
+      </li>
+      <li>
+        <a href={peopleHref()}>People</a>
+        <span>
+          Narrators, interviewers, transcribers and auditors: their sessions, the
+          places they speak of, and where others mention them.
+        </span>
+      </li>
+      <li>
+        <a href={timelineHref()}>Timeline</a>
+        <span>
+          {totalTimelineEntries > 0
+            ? `${totalTimelineEntries.toLocaleString('en-US')} dated statements, verbatim from the transcripts and the thesis chronology, sorted into the creator's own periods. Where two narrators remember a date differently, both are kept and the disagreement is marked.`
+            : 'Dated statements, verbatim, sorted by period.'}
+        </span>
+        {periods.length > 0 && (
+          <span class="sc-fd-periods">
+            {periods.map((p, i) => (
+              <Fragment>
+                {i > 0 && ' · '}
+                <a href={periodHref(p.slug)}>{p.label}</a>
+              </Fragment>
+            ))}
+          </span>
         )}
-      </>
-    ) : (
-      <p class="sc-fd-empty">The places list has not been generated yet.</p>
-    )}
+      </li>
+    </ul>
   </section>
 
+  <section aria-labelledby="how-big">
+    <h2 id="how-big">Collection at a glance</h2>
+    <Measure
+      items={MEASURE}
+      note="Two different things get counted about a place and they will never agree: how often the printed indexes point at it, and how often its name occurs in the transcripts. Both are true, and the place pages print both, labelled."
+    />
+  </section>
 
-  <p class="sc-fd-edition"><a href="/collections/zybach/soap-creek/about/">About this edition and its sources</a> · <a href="/collections/zybach/how-to-cite/">How to cite</a> · <a href="/collections/zybach/rights/">Use or removal requests</a></p>
+  <AboutStrip heading="About this series">
+    <h3>What it is</h3>
+    <p>
+      The Soap Creek Valley History Project: interviews recorded between 1975 and
+      1995 and printed as fifteen numbered books between 1990 and 2009 by the
+      Oregon State University Research Forests and the College of Forestry, with
+      the 1989 Auto Tour and the 1999 master's thesis that used them as evidence.
+    </p>
+
+    <h3>Who recorded it</h3>
+    <p>
+      Royal G. Jackson and Jennifer Lee began recording in 1978; Karen Thomas
+      joined in 1980; Bob Zybach, who edited the series and carried it into
+      print, recorded from 1989. Research assistants, students and transcribers
+      worked on the books as well, and each book names its own contributors on
+      its own pages.
+      {' '}<a href="/collections/zybach/about-the-creator/">About Bob Zybach</a>.
+    </p>
+
+    <h3>What is held back</h3>
+    <p>
+      A small number of pages carry personal details about named people — home
+      addresses, telephone numbers, tax lots, children's names. Those pages are
+      present and citable, but their text is replaced by a notice saying the page
+      is held. Nothing is silently removed, and a held page can be requested.
+      {' '}<a href="/collections/zybach/content-note/">Content note</a>.
+    </p>
+
+    <h3>The originals</h3>
+    <p>
+      The creator publishes every one of these books himself, as PDFs, at
+      nwmapsco.com; the pages here link to his copy rather than making a second
+      one. The tapes are at the Oregon State University Special Collections and
+      Archives Research Center, described as
+      {' '}<a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&id=2309">OH
+      006, Soap Creek Valley History Project Oral Histories, 1978–2009</a>. A
+      reader who needs the tape rather than the transcript should go there.
+    </p>
+
+    <h3>Citing and rights</h3>
+    <p class="sc-fd-aboutlinks">
+      <a href="/collections/zybach/how-to-cite/">How to cite</a> ·
+      <a href="/collections/zybach/rights/">Use or removal requests</a> ·
+      <a href="/collections/zybach/provenance/">Provenance</a> ·
+      <a href="/collections/zybach/errata/">Errata</a> ·
+      <a href="/collections/zybach/colophon/">Colophon</a> ·
+      <a href="/collections/zybach/">The whole collection</a>
+    </p>
+  </AboutStrip>
+
 </RoomLayout>
 <style>
 

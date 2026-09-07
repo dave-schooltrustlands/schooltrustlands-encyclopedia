@@ -28,7 +28,7 @@ import {
 } from '../../../../../components/zybach/soapcreek/links';
 
 export async function getStaticPaths() {
-  const stops = autotourStops;
+  const stops = [...autotourStops].sort((a,b) => Number(a.stop_number)-Number(b.stop_number));
   return stops
     .filter((s) => s.stop_number != null)
     .map((s, i) => ({
@@ -92,6 +92,7 @@ const features = {
             geometry: { type: 'Point', coordinates: here },
             properties: {
               kind: 'auto-tour-stop',
+              stop_number: Number(stop.stop_number),
               title: stop.title_in_contents ?? stop.title ?? `Stop #${stop.stop_number}`,
               subtitle: stop.theme ?? '',
               href: url,
@@ -158,61 +159,39 @@ const parents = [
 
 const source: any = a.source ?? {};
 const title = stop.title ?? stop.stop_label ?? `Stop #${stop.stop_number}`;
+const pdfPage = (Number(stop.page) + 3) / 2;
+const spreadUrl = `/images/zybach/soap-creek/auto-tour-1989/spread-${String(pdfPage).padStart(2,'0')}.jpg`;
+const printedPages = `${Number(stop.page)-1}–${stop.page}`;
+const originalPdf = `${source.public_url}#page=${pdfPage}`;
 ---
 <SoapCreekPage
   title={title}
   subtitle={`Stop ${stop.stop_number} of the 1989 Historic Soap Creek Valley Auto Tour${
     stop.page != null ? `, printed page ${stop.page}` : ''
-  }. The text below is Bob Zybach's, in full, as printed.`}
+  }.`}
   kicker="Soap Creek Valley · 1989 Auto Tour"
   parents={parents}
   sourceId={`zybach-sc-autotour-stop-${stop.stop_number}`}
   navCurrent="soap-creek"
   pageTitle={`${title} · Auto Tour · The Zybach Collection`}
 >
-  {a.citation_canonical && <p class="sc-canonical">{a.citation_canonical}</p>}
-
-  <ProvenanceBlock
-    items={[
-      { label: 'From', value: 'Historic Soap Creek Valley Auto Tour (1989)', href: tourHref() },
-      { label: 'Author', value: a.author ?? 'Bob Zybach' },
-      ...(stop.page != null ? [{ label: 'Printed page', value: String(stop.page) }] : []),
-      ...(stop.road_or_landmark ? [{ label: 'Where it is', value: stop.road_or_landmark }] : []),
-      ...(here && stop.geolocation_method
-        ? [
-            {
-              label: 'Coordinates',
-              value: `${here[1].toFixed(5)}, ${here[0].toFixed(5)} — ${stop.geolocation_method}${
-                stop.geolocation_confidence ? ` (${stop.geolocation_confidence})` : ''
-              }`,
-            },
-          ]
-        : []),
-      {
-        label: 'Accessioned',
-        value: 'From Bob Zybach’s upload, 23 August 2026',
-        href: '/collections/zybach/provenance/',
-      },
-    ]}
-  />
-
-  {stop.standing_notice && <p class="sc-list-meta">{stop.standing_notice}</p>}
-
-  {features.features.length > 0 ? (
-    <>
-      <ZybachMap
-        id={`stop-${stop.stop_number}-map`}
-        center={(here ?? [-123.29, 44.72]) as [number, number]}
-        zoom={13}
-        features={features}
-        height="360px"
-        fit={features.features.length > 1}
-      />
-      <MapList features={features} heading="On this map" headingLevel="h3" order={['auto-tour-stop']} />
-    </>
-  ) : (
-    <p class="sc-empty">This stop has not been given a coordinate.</p>
-  )}
+  <p class="stop-introduction">
+    {stop.cumulative_miles != null && <span>{Number(stop.cumulative_miles).toFixed(1)} miles from the Peavy Arboretum entrance on the 1989 route. </span>}
+    <a href={originalPdf}>Open these pages in the original PDF</a> · <a href="#stop-text">Read the text below</a>
+  </p>
+  <figure class="stop-original-spread">
+    <a href={spreadUrl} aria-label={`Enlarge the original pages ${printedPages} for ${title}`}>
+      <img src={spreadUrl} alt={`Original illustrated spread for ${title}, printed pages ${printedPages}. The transcribed text and picture captions follow below.`} width="2000" height="1546" loading="eager" />
+    </a>
+    <figcaption>Bob Zybach, <em>Historic Soap Creek Valley Auto Tour</em> (1989), pp. {printedPages}. <a href={spreadUrl}>Enlarge the pages</a>.</figcaption>
+  </figure>
+  {Number(stop.stop_number) === 5 && <details class="stop-extra-spread">
+    <summary>More Tampico illustrations, printed pages 16–17</summary>
+    <figure class="stop-original-spread">
+      <a href="/images/zybach/soap-creek/auto-tour-1989/spread-10.jpg"><img src="/images/zybach/soap-creek/auto-tour-1989/spread-10.jpg" alt="Additional Tampico illustrations and captions, original printed pages 16–17" width="2000" height="1546" loading="lazy" /></a>
+      <figcaption><a href="/images/zybach/soap-creek/auto-tour-1989/spread-10.jpg">Enlarge these pages</a> · <a href={`${tourHref()}booklet/#p16`}>Read their captions</a>.</figcaption>
+    </figure>
+  </details>}
 
   <section aria-labelledby="stop-text">
     <h2 id="stop-text">The text, as printed</h2>
@@ -231,6 +210,27 @@ const title = stop.title ?? stop.stop_label ?? `Stop #${stop.stop_number}`;
       <div class="sc-verbatim">{stop.text}</div>
     </section>
   </section>
+
+  <details class="stop-place-map">
+    <summary>Find this stop and nearby places on the map</summary>
+    <p class="sc-list-meta">Locations are approximate; the booklet describes 1989 conditions.</p>
+  {features.features.length > 0 ? (
+    <>
+      <ZybachMap
+        id={`stop-${stop.stop_number}-map`}
+        center={(here ?? [-123.29, 44.72]) as [number, number]}
+        zoom={13}
+        features={features}
+        height="360px"
+        fit={features.features.length > 1}
+      />
+      <MapList features={features} heading="On this map" headingLevel="h3" order={['auto-tour-stop']} />
+    </>
+  ) : (
+    <p class="sc-empty">This stop has not been given a coordinate.</p>
+  )}
+
+  </details>
 
   {(stop.people_named?.length || stop.places_named?.length) && (
     <section aria-labelledby="named-here">
@@ -275,7 +275,7 @@ const title = stop.title ?? stop.stop_label ?? `Stop #${stop.stop_number}`;
     {voices.length > 0 ? (
       <>
         <p class="sc-list-meta">
-          Every page in the fifteen monographs where a narrator names
+          Pages recorded in the collection index where a narrator names
           {uniquePlaces.length === 1
             ? ` ${uniquePlaces[0].name}`
             : ' one of the places this stop stands on'}. Each number opens that page
@@ -336,10 +336,21 @@ const title = stop.title ?? stop.stop_label ?? `Stop #${stop.stop_number}`;
     </span>
   </nav>
 
+  <details class="stop-source-details"><summary>Citation and source history</summary>
+  <p><a href="/collections/zybach/provenance/">Collection source history</a> · <a href={`${tourHref()}booklet/`}>The complete booklet and its credits</a></p>
   <CitationBlock
     canonical={a.citation_canonical ?? ''}
     short={a.citation_short ?? 'Zybach 1989'}
     url={url}
     pdfUrl={source.public_url ?? undefined}
   />
+  </details>
 </SoapCreekPage>
+
+<style>
+  .stop-introduction{font:.95rem/1.6 var(--font-sans);margin:1rem 0}
+  .stop-original-spread{margin:1.25rem 0 2rem}.stop-original-spread img{display:block;width:100%;height:auto;border:1px solid #d8d1c2}
+  .stop-original-spread figcaption{font:.875rem/1.5 var(--font-sans);color:#5b5549;margin-top:.5rem}
+  .stop-place-map,.stop-extra-spread,.stop-source-details{margin:1.5rem 0}
+  summary{cursor:pointer;font:600 1rem/1.6 var(--font-sans)}
+</style>

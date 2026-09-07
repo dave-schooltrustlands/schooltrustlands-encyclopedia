@@ -38,7 +38,7 @@ const {
   parents,
   sourceId,
   navCurrent = 'soap-creek',
-  width = 'prose',
+  width = 'full',
   pageTitle,
   corrections = true,
   pagefindIgnore = false,
@@ -78,10 +78,8 @@ const {
   {corrections && (
     <p class="sc-corrections" data-pagefind-ignore>
       Something wrong on this page?
-      {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> — the
-      form opens with this page already filled in, and the same
-      "Submit a correction" control sits at the foot of every page in the
-      Library. Corrections are made in public:
+      {' '}<a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> —
+      this page is already selected. See
       {' '}<a href="/about/corrections/">how that works</a>.
     </p>
   )}

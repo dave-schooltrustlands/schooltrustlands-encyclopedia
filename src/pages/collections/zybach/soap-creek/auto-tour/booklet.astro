@@ -1,0 +1,235 @@
+---
+export const prerender = true;
+
+import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
+import ZybachMap from '../../../../../components/zybach/soapcreek/ZybachMap.astro';
+import MapList from '../../../../../components/zybach/soapcreek/MapList.astro';
+import CitationBlock from '../../../../../components/zybach/soapcreek/CitationBlock.astro';
+import ProvenanceBlock from '../../../../../components/zybach/soapcreek/ProvenanceBlock.astro';
+import ContentNote from '../../../../../components/zybach/soapcreek/ContentNote.astro';
+import { autotour, autotourStops, gazetteer } from '../../../../../components/zybach/soapcreek/data';
+import { tourHref, stopHref, placeHref, folioId, folioLabel } from '../../../../../components/zybach/soapcreek/links';
+
+const a: any = autotour ?? {};
+const url = tourHref();
+const stops = [...autotourStops].sort((x,y) => Number(x.stop_number)-Number(y.stop_number));
+
+/** Coordinates for a stop: the record's own, else the gazetteer entry. */
+function stopLonLat(s: any): [number, number] | null {
+  if (typeof s?.lon === 'number' && typeof s?.lat === 'number') return [s.lon, s.lat];
+  const ll = s?.lat_lon;
+  if (Array.isArray(ll) && ll.length === 2) {
+    const [x, y] = ll as [number, number];
+    // Records store [lat, lon]; GeoJSON wants [lon, lat].
+    return Math.abs(x) > Math.abs(y) ? [x, y] : [y, x];
+  }
+  if (ll && typeof ll === 'object' && typeof ll.lat === 'number' && typeof ll.lon === 'number') {
+    return [ll.lon, ll.lat];
+  }
+  const g = gazetteer.find((p) => p.auto_tour_stop === s?.stop_number);
+  if (g && typeof g.lon === 'number' && typeof g.lat === 'number') return [g.lon, g.lat];
+  return null;
+}
+
+const stopFeatures = {
+  type: 'FeatureCollection',
+  features: stops
+    .map((s: any) => {
+      const ll = stopLonLat(s);
+      if (!ll) return null;
+      return {
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: ll },
+        properties: {
+          kind: 'auto-tour-stop',
+          stop_number: Number(s.stop_number),
+          title: s.title_in_contents ?? s.title ?? `Stop #${s.stop_number}`,
+          subtitle: s.theme ?? '',
+          href: stopHref(s.stop_number),
+        },
+      };
+    })
+    .filter(Boolean),
+};
+
+const centre =
+  (stopFeatures.features[0] as any)?.geometry?.coordinates ?? [-123.29, 44.72];
+
+/**
+ * The whole booklet, page by page. `pages_text` is the printed text keyed by
+ * folio, so every `#pNN` a citation points at exists on this page.
+ */
+const pageOrder = (k: string) =>
+  /^\d+$/.test(k) ? Number(k) : k === 'front-cover' ? -1 : 9999;
+const bookletPages: Array<{ page: string; entries: any[] }> = Object.entries(
+  (a.pages_text ?? {}) as Record<string, any[]>,
+)
+  .map(([page, entries]) => ({ page, entries: (entries ?? []).slice() }))
+  .sort((x, y) => pageOrder(x.page) - pageOrder(y.page));
+
+const fm: any = a.front_matter ?? {};
+const route: any = a.route ?? {};
+const notes: any[] = (a.content_notes ?? []).filter((n: any) => n && (n.display_note || n.note));
+const source: any = a.source ?? {};
+const photographs: any[] = a.photographs ?? [];
+const sourcesCited: any = a.sources_cited ?? null;
+
+const parents = [
+  { label: 'The Zybach Collection', href: '/collections/zybach/' },
+  { label: 'Soap Creek Valley', href: '/collections/zybach/soap-creek/' },
+];
+
+const fmOrder: Array<[string, string]> = [
+  ['cover_text', 'Cover, as printed'],
+  ['copyright_block', 'Copyright, as printed'],
+  ['acknowledgements', 'Acknowledgments'],
+  ['project_statement', 'Soap Creek Valley History Project'],
+  ['introduction', 'Introduction'],
+  ['driving_safety_note', 'A note on driving'],
+  ['map_note', 'The tour map'],
+];
+const frontMatter = fmOrder
+  .filter(([k]) => typeof fm[k] === 'string' && fm[k].trim())
+  .map(([k, label]) => ({ label, text: fm[k] as string }));
+
+const mileage: any[] = route.mileage_table ?? [];
+---
+
+<SoapCreekPage title="The original 1989 Auto Tour booklet" subtitle="Historical text as printed; driving directions and visitor information describe 1989 conditions." parents={parents} sourceId="zybach-sc-autotour-booklet" width="full">
+  <p><a href={tourHref()}>Back to the interactive tour</a> · <a href={source.public_url}>Open the complete scanned booklet (PDF)</a></p>
+  {frontMatter.length > 0 && (
+    <section aria-labelledby="tour-front-matter">
+      <h2 id="tour-front-matter">Front matter, as printed</h2>
+      {frontMatter.map((f) => (
+        <div class="sc-fm">
+          <h3>{f.label}</h3>
+          <div class="sc-verbatim">{f.text}</div>
+        </div>
+      ))}
+    </section>
+  )}
+
+  {route.driving_directions_as_printed && (
+    <section aria-labelledby="directions">
+      <h2 id="directions">Driving directions, as printed</h2>
+      <div class="sc-verbatim">
+        {Array.isArray(route.driving_directions_as_printed)
+          ? route.driving_directions_as_printed.join('\n')
+          : route.driving_directions_as_printed}
+      </div>
+    </section>
+  )}
+
+  {mileage.length > 0 && (
+    <section aria-labelledby="mileage">
+      <h2 id="mileage">Mileage table, as printed</h2>
+      <div class="sc-table-wrap">
+        <table class="sc-table">
+          <thead>
+            <tr><th scope="col">Stop</th><th scope="col">Miles</th><th scope="col">Paved route</th></tr>
+          </thead>
+          <tbody>
+            {mileage.map((r: any) => (
+              <tr>
+                <th scope="row">{r.item ?? r.stop ?? r.label ?? r.title ?? ''}</th>
+                <td>{r.miles ?? r.cumulative_miles ?? ''}</td>
+                <td>{r.paved ?? r.cumulative_miles_paved_route ?? ''}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  {photographs.length > 0 && (
+    <section aria-labelledby="tour-photographs">
+      <h2 id="tour-photographs">Photographs</h2>
+      <ul class="sc-list">
+        {photographs.map((p: any) => (
+          <li>
+            {p.caption ?? p.title}
+            <span class="sc-list-meta">
+              {[
+                p.page != null ? `Printed page ${p.page}` : null,
+                p.date,
+                p.photographer ? `Photograph by ${p.photographer}` : null,
+                p.courtesy ? `Courtesy ${p.courtesy}` : null,
+              ]
+                .filter(Boolean)
+                .join(' · ')}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {sourcesCited?.entries?.length > 0 && (
+    <section aria-labelledby="tour-sources">
+      <h2 id="tour-sources">{sourcesCited.heading ?? 'Sources'}</h2>
+      {sourcesCited.lead_in && <p class="sc-verbatim">{sourcesCited.lead_in}</p>}
+      <ul class="sc-list">
+        {sourcesCited.entries.map((e: any) => (
+          <li>{typeof e === 'string' ? e : e.entry ?? e.text ?? ''}</li>
+        ))}
+      </ul>
+      {sourcesCited.closing_note && <p class="sc-list-meta">{sourcesCited.closing_note}</p>}
+    </section>
+  )}
+
+  {bookletPages.length > 0 && (
+    <section aria-labelledby="booklet">
+      <h2 id="booklet">The booklet, page by page</h2>
+      <p class="sc-list-meta">
+        The 1989 booklet as printed, page by page. Every printed page has its
+        own permanent link, so a citation into the tour lands on the page it names.
+      </p>
+      <div class="sc-transcript">
+        {bookletPages.map((g) => (
+          <section id={folioId(g.page)} class="sc-page">
+            <a
+              class="sc-folio"
+              href={`#${folioId(g.page)}`}
+              aria-label={`Permanent link to printed page ${g.page}`}
+            >
+              {folioLabel(g.page)}
+            </a>
+            {g.entries.length === 0 && (
+              <p class="sc-page-empty">No transcribed text on this printed page.</p>
+            )}
+            {g.entries.map((e: any) =>
+              e.speaker === 'heading' ? (
+                <h3 class="sc-turn-heading">{e.text}</h3>
+              ) : e.speaker === 'caption' ? (
+                <figure class="sc-caption-fig">
+                  <figcaption>
+                    {e.text}
+                    <span class="sc-cap-meta">Caption as printed, {folioLabel(g.page)}.</span>
+                  </figcaption>
+                </figure>
+              ) : (
+                <p class="sc-turn">{e.text}</p>
+              ),
+            )}
+          </section>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section aria-labelledby="tour-original">
+    <h2 id="tour-original">The printed original</h2>
+    <ul class="sc-list">
+      {source.public_url && (
+        <li>
+          <a href={source.public_url} rel="external">The whole booklet as a PDF</a>
+          <span class="sc-list-meta">On the creator's own site, nwmapsco.com.</span>
+        </li>
+      )}
+    </ul>
+  </section>
+
+
+  <CitationBlock canonical={a.citation_canonical ?? ''} short={a.citation_short ?? 'Zybach 1989'} url={`${tourHref()}booklet/`} pdfUrl={source.public_url ?? undefined} />
+</SoapCreekPage>

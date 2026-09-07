@@ -173,6 +173,7 @@ const resolvedTitle =
 
 // Collection search facets come from the public route, never from raw held data.
 const zybachSeries = /^\/collections\/zybach\/(soap-creek|elliott|letitia-carson|jedediah-smith)(?:\/|$)/.exec(Astro.url.pathname)?.[1];
+const isZybach = Astro.url.pathname.startsWith('/collections/zybach/');
 const mainClass =
   width === 'full'
     ? 'mx-auto max-w-5xl p-4 sm:p-8'
@@ -199,10 +200,14 @@ const mainClass =
     {pagefindEra && <span data-pagefind-filter={`era:${pagefindEra}`} hidden></span>}
     {zybachSeries && !pagefindIgnore && <span data-pagefind-filter={`zybach_series:${zybachSeries}`} hidden></span>}
     <div style="display:contents" data-pagefind-ignore={room === 'collections' ? 'all' : undefined}>
-    <EAIUtilityBar />
-    <Header />
+    {isZybach ? (
+      <header class="zybach-library-masthead">
+        <a href="/explore/">America’s School Trust Library</a>
+        <a href="/collections/zybach/">The Zybach Collection</a>
+      </header>
+    ) : <><EAIUtilityBar /><Header /></>}
 
-    <Breadcrumb segments={breadcrumbSegments} />
+    <Breadcrumb segments={isZybach ? breadcrumbSegments.filter(s => s.label !== "Collections").map(s => s.label === "Lobby" ? {...s,label:"Library home"} : s) : breadcrumbSegments} />
     </div>
 
     <main class={`${mainClass} room-main`}>
@@ -234,3 +239,8 @@ const mainClass =
     </div>
   </body>
 </html>
+
+<style>
+  .zybach-library-masthead {max-width:64rem;margin:auto;padding:1rem 2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-bottom:1px solid #d8d1c2;font: .95rem/1.5 var(--font-sans)}
+  .zybach-library-masthead a {color:#14243c;text-decoration:underline;text-underline-offset:3px}
+</style>

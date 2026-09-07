@@ -63,7 +63,7 @@ const Heading = headingLevel;
     {finalLabels.map((label) => {
       const items = (groups.get(label) ?? []).slice().sort((a: any, b: any) =>
         String(a?.properties?.title ?? a?.properties?.name ?? '').localeCompare(
-          String(b?.properties?.title ?? b?.properties?.name ?? ''),
+          String(b?.properties?.title ?? b?.properties?.name ?? ''), undefined, { numeric: true },
         ),
       );
       return (

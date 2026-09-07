@@ -17,9 +17,9 @@ interface Props {
 
 const { current } = Astro.props;
 const path = Astro.url.pathname;
-const effectiveCurrent = path.startsWith('/collections/zybach/letitia-carson/') ? 'letitia-carson' : path.startsWith('/collections/zybach/jedediah-smith/') ? 'jedediah-smith' : current;
+const oldEffectiveCurrent = path.startsWith('/collections/zybach/letitia-carson/') ? 'letitia-carson' : path.startsWith('/collections/zybach/jedediah-smith/') ? 'jedediah-smith' : current;
 
-const LINKS: ReadonlyArray<{ key: string; label: string; href: string }> = [
+const ALL_LINKS: ReadonlyArray<{ key: string; label: string; href: string }> = [
   { key: 'finding-aid', label: 'Overview', href: '/collections/zybach/' },
   { key: 'explore', label: 'Search & explore', href: '/collections/zybach/explore/' },
   { key: 'trails', label: 'Guided trails', href: '/collections/zybach/trails/' },
@@ -35,9 +35,20 @@ const LINKS: ReadonlyArray<{ key: string; label: string; href: string }> = [
   { key: 'rights', label: 'Rights', href: '/collections/zybach/rights/' },
   { key: 'how-to-cite', label: 'How to cite', href: '/collections/zybach/how-to-cite/' },
 ];
+const inSoapCreek = path.startsWith('/collections/zybach/soap-creek/');
+const LOCAL_LINKS = [
+  {key:'soap-creek',label:'Soap Creek home',href:'/collections/zybach/soap-creek/'},
+  {key:'index',label:'Index, people & places',href:'/collections/zybach/soap-creek/index/'},
+  {key:'tour',label:'1989 Auto Tour',href:'/collections/zybach/soap-creek/auto-tour/'},
+  {key:'thesis',label:'1999 thesis',href:'/collections/zybach/soap-creek/thesis/'},
+  {key:'about',label:'About & sources',href:'/collections/zybach/soap-creek/about/'},
+];
+const LINKS = inSoapCreek ? LOCAL_LINKS : ALL_LINKS;
+const activeLink = LINKS.find((link) => path === link.href);
+const effectiveCurrent = inSoapCreek ? activeLink?.key : oldEffectiveCurrent;
 ---
 
-<nav class="zc-nav" aria-label="The Zybach Collection" data-pagefind-ignore>
+<nav class="zc-nav" aria-label={inSoapCreek ? "Soap Creek navigation" : "The Zybach Collection"} data-pagefind-ignore>
   <ul>
     {LINKS.map((link) => (
       <li>
