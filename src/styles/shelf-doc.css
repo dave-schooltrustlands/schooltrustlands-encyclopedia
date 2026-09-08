@@ -1,0 +1,796 @@
+/* shelf-doc.css — the Library Shelf house stylesheet, scoped for the site.
+ *
+ * Source: booklet.css as emitted by the Library Shelf renderer into each
+ * piece's `<slug>_sitefonts.html` (identical in all twelve pieces of the
+ * September 2026 set). It is reproduced here with three mechanical changes
+ * and nothing else:
+ *
+ *   1. every selector is scoped to `.shelf-doc`, the container the document
+ *      text is wrapped in, so the print design system cannot reach the rest
+ *      of the site (`:root`, `html` and `body` become `.shelf-doc`; the body
+ *      classes `.kind-*` / `.layout-*` ride on the same element);
+ *   2. the page furniture is dropped — cover, colophon, title page, page
+ *      shell, blank pad pages — because the renderer's `<main class="flow">`
+ *      is the only part carried onto the web page;
+ *   3. `@media print`, `@page` and the `@font-face` block are dropped; the
+ *      faces are declared once at the foot of this file against the woff2
+ *      files in `public/fonts/`.
+ *
+ * Everything else — the palette, the type scale, the block treatments — is
+ * the renderer's, unedited, so the web text and the PDFs are one design.
+ */
+
+/* the faces the renderer's `_sitefonts.html` output expects at /fonts/ */
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/source-serif-4-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/source-serif-4-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/source-serif-4-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:600;font-display:swap;src:url(/fonts/source-serif-4-latin-600-italic.woff2) format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/source-sans-3-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/source-sans-3-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/source-sans-3-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibm-plex-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/ibm-plex-mono-latin-600-normal.woff2) format('woff2')}
+/* ==========================================================================
+   booklet.css — America's School Trust Library, house stylesheet
+   For the Library Shelf renderer (render.py). Serves three surfaces from one
+   design system: the web PDF, the press PDF, and the self-contained web page.
+
+   What render.py injects around this file (and NOT here, because both depend
+   on the output mode):
+     1. an @font-face block  — Source Serif 4 / Source Sans 3 / IBM Plex Mono,
+        either as data: URIs or as /fonts/… references
+     2. an @page block       — page size, bleed outset and margins
+     3. :root { --outset: … } — trim inset for full-bleed pages
+
+   Palette and type are the print set from Family_Design_Standards_v1
+   (2026-07-10) §3.2 / §4. Grid and page furniture follow the August 2026
+   booklet's art program (System A, "The Township Grid").
+   ========================================================================== *//* --------------------------------------------------------------- 1. tokens */
+
+
+
+
+.shelf-doc {
+  /* print palette — Family Design Standards §3.2 */
+  --navy:        #1b2a4a;   /* deep navy (print): headings, rules, linework   */
+  --cover-navy:  #0b2545;   /* cover-weight dark grounds                      */
+  --slate:       #2b2b2b;   /* body text                                      */
+  --cream:       #fbf8f1;   /* page colour                                    */
+  --gold:        #be9b2e;   /* rules, section identity, emphasis              */
+  --sepia:       #7a5c3e;   /* archival texture                               */
+  --barn:        #9a3324;   /* SIGNAL ONLY — loss, diversion. Never decor.    */
+
+  /* verified tint ladder over cream (art program §A.3) */
+  --navy-08:     #e9e8e4;   /* the only permitted panel fill                  */
+  --navy-20:     #cecfd0;
+  --navy-35:     #adb0b7;
+  --navy-60:     #757c8d;
+  --gold-18:     #f0e7ce;
+  --grey:        #6f7076;   /* eyebrows, credits, status lines                */
+
+  /* families */
+  --serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+  --sans:  "Source Sans 3", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  --mono:  "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* the grid: live area 7.000in = main 3.9375 + gutter 0.3125 + aside 2.750 */
+  --live:    7in;
+  --measure: 3.9375in;
+  --gutter:  0.3125in;
+  --aside:   2.75in;
+
+  /* type scale (print) */
+  --fs-display: 54pt;  --lh-display: 60pt;
+  --fs-title:   33pt;  --lh-title:   37pt;
+  --fs-deck:    17pt;  --lh-deck:    23pt;
+  --fs-lead:    13pt;  --lh-lead:    18pt;
+  --fs-body:  10.5pt;  --lh-body:  13.5pt;
+  --fs-sub:      9pt;  --lh-sub:   13.5pt;
+  --fs-cap:      8pt;  --lh-cap:  11.25pt;
+  --fs-credit:   7pt;  --lh-credit:   9pt;
+  --fs-mono:   6.5pt;  --lh-mono:     9pt;
+  --fs-quote:   19pt;  --lh-quote:   25pt;
+  --fs-folio:    9pt;
+
+  --track-caps: 0.10em;   /* small-print letterspacing                        */
+  --track-mark: 0.16em;   /* the wordmark                                     */
+
+  --outset: 0in;          /* overwritten by render.py in press mode           */
+}/* ------------------------------------------------------------- 2. document */
+
+
+
+
+.shelf-doc *, .shelf-doc *::before, .shelf-doc *::after { box-sizing: border-box; }/* the cream is the paper: put it on the root so it fills the whole sheet,
+   margins included, and not merely the content box */
+
+
+
+.shelf-doc {
+  background: var(--cream);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.shelf-doc {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--slate);
+  font-family: var(--serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-variant-numeric: oldstyle-num proportional-nums;
+  font-kerning: normal;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  hyphens: none;
+}
+
+.shelf-doc .flow { width: var(--live); }/* ------------------------------------------------------- 3. block measures *//* Body copy holds the 3.9375in main measure. Side blocks float into the
+   2.75in outer column. Because the two never overlap, text keeps one measure
+   down the whole page — which is what makes the August pages read as a set. */
+
+
+
+
+
+.shelf-doc .flow > p, .shelf-doc .flow > ul, .shelf-doc .flow > ol, .shelf-doc .flow > h2, .shelf-doc .flow > h3, .shelf-doc .flow > blockquote, .shelf-doc .flow > .dropline { width: var(--measure); }
+
+.shelf-doc .side {
+  float: right;
+  clear: right;
+  width: var(--aside);
+  margin: 0 0 16pt var(--gutter);
+  break-inside: avoid;
+}
+
+.shelf-doc .full { width: var(--live); clear: both; }/* ------------------------------------------------------------ 4. headings */
+
+
+
+
+.shelf-doc h1, .shelf-doc h2, .shelf-doc h3, .shelf-doc h4 {
+  font-family: var(--serif);
+  color: var(--navy);
+  font-weight: 600;
+  margin: 0;
+  break-after: avoid;
+  text-wrap: balance;
+}/* section opener ---------------------------------------------------------- */
+
+
+
+
+.shelf-doc .section-open { break-before: page; clear: both; margin: 0 0 4pt; }
+
+.shelf-doc .kicker {
+  font-family: var(--sans);
+  font-size: var(--fs-credit);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--grey);
+  margin: 0 0 11pt;
+}
+
+.shelf-doc h1 {
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  letter-spacing: -0.004em;
+  max-width: 5.2in;
+  margin: 0;
+}
+
+.shelf-doc .rule-gold {
+  width: 0.72in;
+  height: 2.5pt;
+  background: var(--gold);
+  margin: 15pt 0 17pt;
+  break-after: avoid;
+}/* subheads ---------------------------------------------------------------- */
+
+
+
+
+.shelf-doc h2 {
+  font-family: var(--sans);
+  font-size: var(--fs-sub);
+  line-height: var(--lh-sub);
+  font-weight: 600;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 18pt 0 6pt;
+  padding-top: 7pt;
+  border-top: 0.5pt solid var(--gold);
+  max-width: var(--measure);
+}
+.shelf-doc h2:first-child { margin-top: 0; }
+
+.shelf-doc h3 {
+  font-size: 11pt;
+  line-height: 14pt;
+  font-style: italic;
+  font-weight: 600;
+  margin: 14pt 0 4pt;
+}/* -------------------------------------------------------------- 5. text */
+
+
+
+
+.shelf-doc p { margin: 0 0 8pt; orphans: 2; widows: 2; }
+.shelf-doc p:last-child { margin-bottom: 0; }
+
+.shelf-doc .lead {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+  color: var(--navy);
+}
+
+.shelf-doc strong { font-weight: 600; color: var(--navy); }
+.shelf-doc em { font-style: italic; }
+.shelf-doc a { color: var(--navy); text-decoration: none; border-bottom: 0.5pt solid var(--navy-35); }
+
+.shelf-doc ul, .shelf-doc ol { margin: 0 0 10pt; padding-left: 15pt; }
+.shelf-doc li { margin: 0 0 5pt; padding-left: 2pt; }
+.shelf-doc li::marker { color: var(--gold); }
+.shelf-doc ol > li::marker { font-family: var(--sans); font-size: 0.86em; font-weight: 600; }
+
+.shelf-doc blockquote {
+  margin: 12pt 0;
+  padding-left: 12pt;
+  border-left: 2pt solid var(--gold);
+  font-style: italic;
+  color: var(--navy);
+}
+
+.shelf-doc code, .shelf-doc .num { font-family: var(--mono); font-size: 0.88em; font-variant-numeric: tabular-nums slashed-zero; }
+
+.shelf-doc hr { border: 0; border-top: 0.5pt solid var(--navy-20); margin: 14pt 0; clear: both; }/* ------------------------------------------------------------ 6. figures */
+
+
+
+
+.shelf-doc figure { margin: 0 0 16pt; }
+.shelf-doc figure img { display: block; width: 100%; height: auto; }/* Nothing may run off the live area. A plate keeps its aspect and is pulled
+   in by height when it is taller than the page can hold. */
+
+
+
+.shelf-doc figure.full img, .shelf-doc figure.side img {
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.shelf-doc figure.full img { max-height: 6.6in; }
+.shelf-doc figure.side img { max-height: 5.6in; }/* A full-page plate: its own page, the picture centred, the caption beneath
+   at a reading measure. This is what the tall plates want — a map or a
+   screenshot at 1 : 1.3 or steeper cannot share a page with running text. */
+
+
+
+.shelf-doc figure.pagefig {
+  break-inside: avoid;
+  clear: both;
+  width: var(--live);
+  margin: 0 0 14pt;
+}/* No forced break: a plate that fits under a section opener takes that page
+   rather than stranding the opener on a page of its own. 7.0in leaves room
+   for a two-line title, the gold rule and the caption on the same sheet. */
+
+
+.shelf-doc figure.pagefig img { max-height: 7in; }
+.shelf-doc figure.pagefig figcaption { max-width: 5.9in; margin: 12pt auto 0; }
+
+.shelf-doc figcaption { margin-top: 7pt; }/* a figure whose art has not been drawn yet still sets, at its true size */
+
+
+
+.shelf-doc .fig-missing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5pt;
+  min-height: 1.9in;
+  padding: 14pt;
+  background: var(--navy-08);
+  border: 0.75pt dashed var(--navy-35);
+  text-align: center;
+  font-family: var(--sans);
+  font-size: var(--fs-cap);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--navy-60);
+}
+.shelf-doc figure.full .fig-missing { min-height: 3.1in; }
+.shelf-doc .fig-missing-src {
+  font-family: var(--mono);
+  font-size: var(--fs-mono);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--grey);
+}
+
+.shelf-doc .fig-num {
+  font-family: var(--sans);
+  font-size: var(--fs-cap);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.shelf-doc .cap {
+  font-family: var(--sans);
+  font-size: var(--fs-cap);
+  line-height: var(--lh-cap);
+  color: var(--slate);
+  margin: 0;
+}
+.shelf-doc .cap .lead-in { font-weight: 600; color: var(--navy); }
+
+.shelf-doc .credit {
+  font-family: var(--mono);
+  font-size: var(--fs-mono);
+  line-height: var(--lh-mono);
+  color: var(--grey);
+  margin: 5pt 0 0;
+  padding-top: 4pt;
+  border-top: 0.5pt solid var(--gold);
+  font-variant-numeric: slashed-zero;
+  letter-spacing: -0.01em;
+}/* --------------------------------------------------------- 7. pull quote */
+
+
+
+
+.shelf-doc .pullquote { margin: 4pt 0 18pt; break-inside: avoid; }
+.shelf-doc .pullquote .q {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--fs-quote);
+  line-height: var(--lh-quote);
+  color: var(--gold);
+  margin: 0;
+  text-wrap: pretty;
+}
+.shelf-doc .pullquote .attrib {
+  font-family: var(--sans);
+  font-size: var(--fs-credit);
+  font-weight: 400;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--grey);
+  margin: 9pt 0 0;
+}
+.shelf-doc .pullquote.full .q { font-size: 17.5pt; line-height: 24pt; max-width: 6.1in; }
+.shelf-doc .pullquote.full { margin: 16pt 0 18pt; }/* ------------------------------------------------------------ 8. sidebar */
+
+
+
+
+.shelf-doc .sidebar {
+  background: var(--navy-08);
+  padding: 13pt 14pt 14pt;
+  margin: 0 0 16pt;
+  break-inside: avoid;
+}
+.shelf-doc .sidebar .blk-title {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 600;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0 0 8pt;
+  padding-bottom: 6pt;
+  border-bottom: 0.5pt solid var(--gold);
+}
+.shelf-doc .sidebar p, .shelf-doc .sidebar li { font-size: 9.5pt; line-height: 13pt; }
+.shelf-doc .sidebar ul, .shelf-doc .sidebar ol { padding-left: 13pt; }/* ------------------------------------------------------------ 9. callout */
+
+
+
+
+.shelf-doc .callout {
+  border-top: 2.5pt solid var(--gold);
+  border-bottom: 0.5pt solid var(--navy-20);
+  padding: 11pt 0 12pt;
+  margin: 14pt 0 16pt;
+  break-inside: avoid;
+}
+.shelf-doc .callout .blk-title {
+  font-family: var(--sans);
+  font-size: var(--fs-sub);
+  font-weight: 600;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0 0 7pt;
+}
+.shelf-doc .callout > p, .shelf-doc .callout > ul, .shelf-doc .callout > ol { max-width: 6.1in; }
+.shelf-doc .callout.side > p, .shelf-doc .callout.side > ul { max-width: none; }/* -------------------------------------------------------- 10. author slot */
+
+
+
+
+.shelf-doc .slot {
+  border: 1pt dashed var(--navy-35);
+  padding: 12pt 14pt 14pt;
+  margin: 14pt 0 16pt;
+  min-height: 1.45in;
+  break-inside: avoid;
+  background: transparent;
+}
+.shelf-doc .slot .slot-for {
+  font-family: var(--sans);
+  font-size: var(--fs-credit);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0 0 6pt;
+}
+.shelf-doc .slot .blk-title {
+  font-family: var(--serif);
+  font-size: 12pt;
+  line-height: 15pt;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 5pt;
+}
+.shelf-doc .slot .prompt {
+  font-style: italic;
+  font-size: 9.5pt;
+  line-height: 13pt;
+  color: var(--grey);
+  margin: 0;
+  max-width: 5.4in;
+}/* --------------------------------------------------- 11. quotation slot */
+
+
+
+
+.shelf-doc .quote-slot {
+  margin: 14pt 0 16pt;
+  padding-left: 13pt;
+  border-left: 2.5pt solid var(--gold);
+  break-inside: avoid;
+}
+.shelf-doc .quote-slot p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12pt;
+  line-height: 16.5pt;
+  color: var(--navy);
+  margin: 0 0 6pt;
+  max-width: 5.6in;
+}
+.shelf-doc .quote-slot .status {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: var(--fs-credit);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin: 8pt 0 0;
+}/* -------------------------------------------------------------- 12. table */
+
+
+
+
+.shelf-doc .blk-table { margin: 12pt 0 16pt; break-inside: avoid; }
+.shelf-doc .blk-table .blk-title {
+  font-family: var(--sans);
+  font-size: var(--fs-cap);
+  font-weight: 600;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0 0 7pt;
+}/* the note under a table belongs to the table: never let a page break
+   between them and strand a lone "Table 4. …" line at the top of a sheet */
+
+
+.shelf-doc p.tablenote { break-before: avoid; }
+.shelf-doc .blk-table table { width: 100%; border-collapse: collapse; }
+.shelf-doc .blk-table th {
+  font-family: var(--sans);
+  font-size: var(--fs-cap);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--navy);
+  text-align: left;
+  vertical-align: bottom;
+  padding: 0 10pt 5pt 0;
+  border-bottom: 1.5pt solid var(--gold);
+}
+.shelf-doc .blk-table td {
+  font-size: 9.5pt;
+  line-height: 12.5pt;
+  vertical-align: top;
+  padding: 5pt 10pt 5pt 0;
+  border-bottom: 0.5pt solid var(--navy-20);
+}
+.shelf-doc .blk-table th:last-child, .shelf-doc .blk-table td:last-child { padding-right: 0; }
+.shelf-doc .blk-table td.n {
+  font-family: var(--mono);
+  font-size: 8.5pt;
+  font-variant-numeric: tabular-nums slashed-zero;
+  white-space: nowrap;
+}/* --------------------------------------------------------- 13. cover page *//* Chromium cannot paint into a printed page's margin box, so a full-bleed
+   page is built as: page box -> .bleedbox (the sheet, out to the bleed edge)
+   -> .trimbox (the trimmed page, which is where type is positioned). The
+   --outset and --mark-inset values are injected per output by render.py. */
+/* a closing gold mark at the foot of a cover that carries no photograph */
+/* --------------------------------------------------------- 14. title page */
+/* ---------------------------------------------------------- 15. colophon */
+/* -------------------------------------------------------- 16. card format *//* A card is a four-page letter document, not a short booklet, so it is set
+   the way a leaflet is set: two columns across the live area. Two columns of
+   3.35in hold about 1,200 words on two text pages, which is what a card is.
+   Sections do not start new pages here — there is no room for that. */
+
+
+
+
+
+.shelf-doc.kind-card {
+  /* a 3.35in column wants tighter leading than a 3.94in one */
+  --lh-body: 12.8pt;
+}
+.shelf-doc.kind-card .flow {
+  column-count: 2;
+  column-gap: 0.3in;
+  column-fill: auto;
+}
+.shelf-doc.kind-card .flow > p, .shelf-doc.kind-card .flow > ul, .shelf-doc.kind-card .flow > ol, .shelf-doc.kind-card .flow > h2, .shelf-doc.kind-card .flow > h3, .shelf-doc.kind-card .flow > blockquote, .shelf-doc.kind-card .side, .shelf-doc.kind-card .full, .shelf-doc.kind-card figure.pagefig { width: auto; float: none; margin-left: 0; margin-right: 0; }
+.shelf-doc.kind-card figure img { max-height: 4.2in; }/* a plate in a card spans both columns — a data figure in a 3.35in column
+   is a picture of a figure, not a figure */
+
+
+.shelf-doc.kind-card figure.full, .shelf-doc.kind-card figure.pagefig { column-span: all; width: 100%; margin: 4pt 0 12pt; }
+.shelf-doc.kind-card figure.full img, .shelf-doc.kind-card figure.pagefig img { max-height: 5.4in; width: auto; max-width: 100%; margin: 0 auto; }
+.shelf-doc.kind-card figure.pagefig figcaption { max-width: 100%; margin: 9pt 0 0; }
+
+.shelf-doc.kind-card .section-open { break-before: auto; break-inside: avoid; margin-top: 11pt; }
+.shelf-doc.kind-card .section-open:first-of-type { margin-top: 0; }
+.shelf-doc.kind-card h1 { font-size: 16pt; line-height: 19.5pt; max-width: 100%; }
+.shelf-doc.kind-card .rule-gold { margin: 7pt 0 9pt; width: 0.5in; height: 2pt; }
+.shelf-doc.kind-card .kicker { margin-bottom: 7pt; }
+.shelf-doc.kind-card h2 { margin: 10pt 0 4pt; padding-top: 5pt; }
+.shelf-doc.kind-card p { margin-bottom: 4pt; }
+.shelf-doc.kind-card li { margin-bottom: 3pt; }
+.shelf-doc.kind-card .callout { padding: 8pt 0 8pt; margin: 9pt 0 10pt; }
+.shelf-doc.kind-card .sidebar { padding: 10pt 11pt 11pt; margin-bottom: 12pt; }
+.shelf-doc.kind-card .sidebar p, .shelf-doc.kind-card .sidebar li { font-size: 9pt; line-height: 12.2pt; }
+.shelf-doc.kind-card .quote-slot { margin: 10pt 0 12pt; }
+.shelf-doc.kind-card .quote-slot p { font-size: 10.5pt; line-height: 14pt; }
+.shelf-doc.kind-card .slot { margin: 10pt 0 12pt; min-height: 1.15in; padding: 10pt 11pt 11pt; }
+.shelf-doc.kind-card .callout > p, .shelf-doc.kind-card .callout > ul, .shelf-doc.kind-card .quote-slot p, .shelf-doc.kind-card .slot .prompt, .shelf-doc.kind-card .pullquote.full .q { max-width: none; }
+.shelf-doc.kind-card .pullquote .q { font-size: 15pt; line-height: 20pt; }/* ------------------------------------------------------------- 17. print *//* ------------------------------------------------------------ 18. screen */
+
+
+
+
+
+
+
+@media screen {
+  .shelf-doc {
+    --live: 100%;
+    --measure: 100%;
+    --gutter: 2rem;
+    --aside: 17rem;
+
+    --fs-display: clamp(2.1rem, 6.2vw, 3.4rem);  --lh-display: 1.06;
+    --fs-title:   clamp(1.65rem, 4vw, 2.2rem);   --lh-title:   1.16;
+    --fs-deck:    clamp(1.05rem, 2.4vw, 1.3rem); --lh-deck:    1.45;
+    --fs-lead:    1.2rem;    --lh-lead:   1.62;
+    --fs-body:    1.0625rem; --lh-body:   1.68;
+    --fs-sub:     0.82rem;   --lh-sub:    1.4;
+    --fs-cap:     0.85rem;   --lh-cap:    1.45;
+    --fs-credit:  0.72rem;   --lh-credit: 1.4;
+    --fs-mono:    0.7rem;    --lh-mono:   1.5;
+    --fs-quote:   clamp(1.2rem, 3vw, 1.55rem);   --lh-quote: 1.38;
+  }
+
+  .shelf-doc { font-size: var(--fs-body); line-height: var(--lh-body); }/* masthead replaces the printed cover */
+/* column-reverse puts the plate under the masthead, as it sits on the cover */
+
+
+  .shelf-doc .section-open { margin: 3.4rem 0 0; }
+  .shelf-doc .rule-gold { width: 3.4rem; height: 3px; margin: 1rem 0 1.3rem; }
+  .shelf-doc h2 { margin: 2rem 0 0.55rem; padding-top: 0.6rem; }
+  .shelf-doc p { margin: 0 0 0.95rem; }
+  .shelf-doc .lead { font-size: var(--fs-lead); line-height: var(--lh-lead); }
+
+  .shelf-doc.kind-card .flow { column-count: 1; }
+  .shelf-doc.kind-card h1 { font-size: var(--fs-title); line-height: var(--lh-title); }
+  .shelf-doc .side { width: 100%; float: none; margin: 1.6rem 0; }
+  .shelf-doc .full { width: 100%; }
+  .shelf-doc figure { margin: 1.6rem 0; }
+  .shelf-doc figure.pagefig { width: 100%; break-before: auto; }
+  .shelf-doc.kind-card figure img { max-height: none; }
+  .shelf-doc figure.full img, .shelf-doc figure.side img, .shelf-doc figure.pagefig img { max-height: none; width: 100%; }
+  .shelf-doc figure.pagefig figcaption { max-width: 100%; margin-left: 0; }
+  .shelf-doc .credit { border-top-width: 1px; }
+  .shelf-doc .callout > p, .shelf-doc .callout > ul, .shelf-doc .pullquote.full p, .shelf-doc .quote-slot p, .shelf-doc .slot .prompt { max-width: 100%; }
+  .shelf-doc .sidebar { padding: 1.2rem 1.3rem; }
+  .shelf-doc .sidebar p, .shelf-doc .sidebar li { font-size: 0.98rem; line-height: 1.6; }
+  .shelf-doc .blk-table { overflow-x: auto; }
+  .shelf-doc .blk-table table { min-width: 28rem; }
+  .shelf-doc .slot { min-height: 0; padding: 1.1rem 1.2rem 1.3rem; }
+  .shelf-doc .callout { padding: 0.9rem 0 1rem; }/* side blocks return to the outer column on a wide screen */
+
+
+  
+  @media (min-width: 62rem) {/* masthead aligns with the text below */
+   
+    .shelf-doc .flow > p, .shelf-doc .flow > ul, .shelf-doc .flow > ol, .shelf-doc .flow > h2, .shelf-doc .flow > h3, .shelf-doc .flow > blockquote { max-width: 38rem; }
+    .shelf-doc .side { float: right; width: var(--aside); margin: 0 0 1.6rem var(--gutter); clear: right; }
+    .shelf-doc .full { width: 100%; }
+  }
+}/* ---------------------------------------------------------- 19. dark mode *//* The Library's paper is cream in every medium; the web page keeps it, and
+   only lifts the ink slightly so a dark-mode browser does not invert it. */
+
+
+
+
+@media screen and (prefers-color-scheme: dark) {
+  .shelf-doc { --grey: #6a6b70; }
+}/* ============================================================ 20. TEXT MODE
+   The default here. These pieces are text documents, not the August photo
+   booklet: a 5.25in measure at 11/14.5 with a mirrored 1.125in gutter margin
+   and a 2.125in outer margin (0.25 gutter + 1.5in marginal column + 0.375
+   fore-edge) that carries marginal notes, small side figures and the folio.
+   The page furniture and the @page margins are injected by render.py; this
+   block sets the type and the block placements that go with them.
+   Opt out per piece with `layout: picture` in the front matter.
+   ========================================================================= */
+
+
+
+
+.shelf-doc.layout-text {
+  --measure:  5.25in;
+  --gutter:   0.25in;
+  --aside:    1.5in;
+
+  --fs-body:    11pt;   --lh-body:   14.5pt;
+  --fs-lead:    13pt;   --lh-lead:   18.5pt;
+  --fs-title:   32pt;   --lh-title:    36pt;
+  --fs-sub:    9.5pt;   --lh-sub:    14.5pt;
+  --fs-cap:    8.5pt;   --lh-cap:      12pt;
+  --fs-credit: 7.5pt;   --lh-credit:   10pt;
+  --fs-mono:     7pt;   --lh-mono:     10pt;
+  --fs-quote:   17pt;   --lh-quote:    23pt;
+}/* full-measure blocks stop at the measure; only a plate crosses into the
+   outer column, and then it takes the whole live width */
+
+
+
+.shelf-doc.layout-text .full { width: var(--measure); }
+.shelf-doc.layout-text figure.pagefig { width: var(--live); }/* sidebars and callouts run inline in the measure, set off by a light rule —
+   never in the margin, which belongs to notes, small figures and the folio */
+
+
+
+.shelf-doc.layout-text .sidebar.side, .shelf-doc.layout-text .callout.side, .shelf-doc.layout-text .pullquote.side, .shelf-doc.layout-text .quote-slot.side, .shelf-doc.layout-text .slot.side, .shelf-doc.layout-text .blk-table.side {
+  float: none; clear: both; width: var(--measure); margin-left: 0; margin-right: 0;
+}
+.shelf-doc.layout-text .sidebar {
+  background: transparent;
+  padding: 10pt 0 11pt;
+  border-top: 0.5pt solid var(--navy-20);
+  border-bottom: 0.5pt solid var(--navy-20);
+  margin: 14pt 0 16pt;
+}
+.shelf-doc.layout-text .sidebar .blk-title { border-bottom-color: var(--gold); }
+.shelf-doc.layout-text .sidebar p, .shelf-doc.layout-text .sidebar li { font-size: 10pt; line-height: 13.5pt; }
+.shelf-doc.layout-text .callout > p, .shelf-doc.layout-text .callout > ul, .shelf-doc.layout-text .callout > ol, .shelf-doc.layout-text .quote-slot p, .shelf-doc.layout-text .slot .prompt, .shelf-doc.layout-text .pullquote.full .q { max-width: none; }/* the outer column: marginal notes, credits and small side figures */
+
+
+
+.shelf-doc.layout-text .side { font-size: var(--fs-cap); line-height: var(--lh-cap); }
+.shelf-doc.layout-text figure.side img { max-height: 4.4in; }/* a screenshot runs the full 5.25in measure; a plate marked width="page"
+   crosses into the outer column and takes the whole 7in live width */
+
+
+.shelf-doc.layout-text figure.full img { max-height: 6.3in; }
+.shelf-doc.layout-text figure.pagefig img { max-height: 6.3in; }/* opener + plate + caption = 8.9in */
+   
+.shelf-doc.layout-text figure.pagefig figcaption { max-width: 5.25in; }/* A section title no longer takes a fresh page: only the first section after
+   the title page does, and any the author marks with `::: pagebreak :::`.
+   The rest flow, on about three lines of air, kept with their opening
+   paragraphs. Forcing every section onto a new page was costing half a sheet
+   per section in documents whose sections run a page and a bit. */
+
+
+
+.shelf-doc.layout-text .section-open {
+  break-before: auto;
+  break-after: avoid;
+  break-inside: avoid;
+  margin-top: 42pt;
+}
+.shelf-doc.layout-text .flow > .section-open:first-child { break-before: page; margin-top: 0; }
+.shelf-doc.layout-text .section-open + p, .shelf-doc.layout-text .section-open + p + p { break-after: avoid; }/* headings: a subhead never opens a page, and every heading keeps its first
+   paragraph; no paragraph leaves fewer than two lines on either side */
+
+
+
+.shelf-doc.layout-text h1 { max-width: var(--measure); }
+.shelf-doc.layout-text h2 { max-width: var(--measure); break-before: avoid; break-after: avoid; }
+.shelf-doc.layout-text h3 { break-before: avoid; break-after: avoid; }
+.shelf-doc.layout-text .rule-gold { break-before: avoid; }
+.shelf-doc.layout-text p, .shelf-doc.layout-text li { orphans: 2; widows: 2; }
+.shelf-doc.layout-text p { margin-bottom: 8pt; }
+.shelf-doc.layout-text .rule-gold { margin: 13pt 0 15pt; }
+.shelf-doc.layout-text .kicker { margin-bottom: 9pt; }
+.shelf-doc.layout-text h2 { margin: 16pt 0 5pt; padding-top: 6pt; }
+.shelf-doc.layout-text blockquote { max-width: var(--measure); }/* the title page is centred between two gutter margins, so it does not sit
+   0.375in from a trimmed edge on a verso */
+/* a long table, callout or quotation breaks across a page rather than jumping
+   to the next one whole and leaving a third of a sheet blank; a pipe table's
+   header row repeats itself on the continuation */
+
+
+
+.shelf-doc.layout-text .blk-table, .shelf-doc.layout-text .callout, .shelf-doc.layout-text .quote-slot, .shelf-doc.layout-text .blk-table table { break-inside: auto; }
+.shelf-doc.layout-text .blk-table thead { display: table-header-group; }
+.shelf-doc.layout-text .blk-table tr, .shelf-doc.layout-text .callout .blk-title { break-inside: avoid; }
+.shelf-doc.layout-text .blk-table .blk-title { break-after: avoid; }
+
+.shelf-doc.layout-text .tablenote { font-size: 8.5pt; line-height: 12pt; color: var(--grey); }
+.shelf-doc.layout-text .blk-table td { font-size: 10pt; line-height: 13pt; }
+.shelf-doc.layout-text .blk-table th { font-size: 8.5pt; }
+
+@media screen {
+  .shelf-doc.layout-text {
+    --measure: 100%; --aside: 17rem; --gutter: 2rem;
+    --fs-body: 1.0625rem; --lh-body: 1.68;
+    --fs-title: clamp(1.65rem, 4vw, 2.2rem); --lh-title: 1.16;
+    --fs-sub: 0.82rem;  --lh-sub: 1.4;
+    --fs-cap: 0.85rem;  --lh-cap: 1.45;
+    --fs-credit: 0.72rem; --lh-credit: 1.4;
+    --fs-mono: 0.7rem;  --lh-mono: 1.5;
+    --fs-quote: clamp(1.2rem, 3vw, 1.55rem); --lh-quote: 1.38;
+    --fs-lead: 1.2rem;  --lh-lead: 1.62;
+  }
+  .shelf-doc.layout-text .full, .shelf-doc.layout-text figure.pagefig { width: 100%; }
+  .shelf-doc.layout-text figure.side img, .shelf-doc.layout-text figure.full img, .shelf-doc.layout-text figure.pagefig img { max-height: none; }
+  .shelf-doc.layout-text .sidebar p, .shelf-doc.layout-text .sidebar li { font-size: 0.98rem; line-height: 1.6; }
+}
+
+
+/* --------------------------------------------------------- site fit-up */
+/* The site's `main` is one reading column, so the renderer's outer margin
+   has nowhere to go: side blocks run inline in the measure, as they already
+   do in the printed text pieces. Nothing else about the design changes. */
+.shelf-doc { max-width: 100%; }
+.shelf-doc .flow { width: 100%; }
+.shelf-doc .flow > p,
+.shelf-doc .flow > ul,
+.shelf-doc .flow > ol,
+.shelf-doc .flow > h2,
+.shelf-doc .flow > h3,
+.shelf-doc .flow > blockquote { max-width: 100%; }
+.shelf-doc .side { float: none; clear: both; width: 100%; margin: 1.6rem 0; }
+.shelf-doc .full { width: 100%; }
+.shelf-doc figure.pagefig { width: 100%; }
+.shelf-doc img { max-width: 100%; height: auto; }
+.shelf-doc .blk-table { overflow-x: auto; }
+
+/* the document sits on its own paper inside the page */
+.shelf-doc {
+  padding: 1.75rem 1.5rem 2.25rem;
+  border: 1px solid var(--navy-20);
+  border-radius: 3px;
+  margin: 2rem 0 0;
+}
+.shelf-doc .flow > .section-open:first-child { margin-top: 0; }
+.shelf-doc a { color: #1d4ed8; }

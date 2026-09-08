@@ -1,0 +1,211 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { DOCUMENTS, CARDS, COLOPHON, readingMinutes } from '../../data/participate';
+
+const byline: Record<string, string> = {
+  'six-months-of-a-library': 'Report',
+  'the-next-three-years': 'Plan',
+  'a-record-with-a-keeper': 'The case for support',
+  'ways-to-help': 'Invitation',
+  'how-a-collection-comes-in': 'An account of one accession',
+  'six-months-of-a-library-the-timeline': 'Handout',
+};
+---
+<BaseLayout
+  title="Participate · America's School Trust Library"
+  description="The Library's September 2026 shelf: a six-month report, a three-year plan, the case for support, the invitations, an account of one collection arriving, and a one-page timeline. Each in web text and as a PDF."
+  sourceId="participate-index"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="kicker">Participate</p>
+    <h1>Participate</h1>
+
+    <p>
+      In 1785, two years before the Constitutional Convention, Congress decided
+      that one square mile in every township of the western surveys would
+      belong to the schools &mdash; a township being the six-mile survey square
+      the country was laid out in. Not to a church, not to a governor: to the
+      children who would live there.
+    </p>
+
+    <p>
+      These are the Library&rsquo;s own documents about that work and about
+      itself: what it did in its first six months, what it plans to do next,
+      the case it makes for being kept, the ways in for five kinds of reader,
+      and one account of a collection arriving. Each is on this site as web
+      text and as a PDF you can print. The Library is not asking you for money.
+      It asks for documents and hands.
+    </p>
+  </article>
+
+  <section class="doc-list not-prose">
+    {DOCUMENTS.map((doc) => (
+      <article class="doc-card">
+        <p class="doc-kind">{byline[doc.slug]}</p>
+        <h2 class="doc-title">
+          <a href={`/participate/${doc.slug}/`}>{doc.title}</a>
+        </h2>
+        <p class="doc-blurb">{doc.blurb}</p>
+        <p class="doc-links">
+          <a href={`/participate/${doc.slug}/`}>Read on this site</a>
+          &nbsp;·&nbsp;
+          <a href={`/participate/${doc.slug}.pdf`}>web PDF</a>
+          &nbsp;·&nbsp;
+          <a href={`/participate/${doc.slug}-press.pdf`}>press PDF</a>
+          <span class="doc-stat">
+            {doc.pages} pages &middot; about {readingMinutes(doc.pages)} minutes
+          </span>
+        </p>
+        {doc.slug === 'ways-to-help' && (
+          <div class="doc-children">
+            <p class="doc-children-label">
+              Five cards travel with it, one for each way in. Each is four
+              pages and stands on its own:
+            </p>
+            <ul>
+              {CARDS.map((card) => (
+                <li>
+                  <a href={`/participate/${card.slug}/`}>{card.title}</a>
+                  &nbsp;&mdash;&nbsp;<span class="card-blurb">{card.blurb}</span>
+                  &nbsp;(<a href={`/participate/${card.slug}.pdf`}>web PDF</a>
+                  &nbsp;·&nbsp;
+                  <a href={`/participate/${card.slug}-press.pdf`}>press PDF</a>)
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </article>
+    ))}
+  </section>
+
+  <article class="prose prose-slate mt-10 max-w-none prose-a:text-blue-700 prose-a:underline">
+    <h2>A note on the two PDFs</h2>
+    <p>
+      The web copy is the one to read on a screen or print at home. The press
+      copy is print-ready, with bleed and crop marks, and is the file to hand a
+      printer; it is larger and will look wrong on screen, because the page is
+      bigger than the paper by the width of the trim.
+    </p>
+
+    <h2>How to say yes</h2>
+    <p>
+      Write to the Library at
+      <a href="mailto:library@schooltrusts.net">library@schooltrusts.net</a>,
+      addressed to the Secretary, Kenneth Magee. Say what you have done that
+      bears on this and what you would take on. The lighter ways in &mdash; a
+      source, a correction, a state to watch &mdash; are on the
+      <a href="/contribute/">Contribute</a> page.
+    </p>
+    <p>
+      The Library has not yet filed its application for federal tax-exempt
+      recognition; it is being prepared. No federal tax-exemption determination
+      has been issued, and until one is, the Library does not describe
+      contributions as tax-deductible.
+    </p>
+    <p class="colophon-note">{COLOPHON}</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a88a4e;
+    margin: 0 0 0.4rem;
+  }
+  .doc-list {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.1rem;
+  }
+  .doc-card {
+    background: var(--linen-card);
+    border: 1px solid var(--rule-border);
+    border-left: 4px solid #c9a24a;
+    border-radius: 3px;
+    padding: 1rem 1.15rem 1.1rem;
+  }
+  .doc-kind {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a7340;
+    margin: 0 0 0.3rem;
+  }
+  .doc-title {
+    font-family: var(--font-serif);
+    font-size: 1.28rem;
+    line-height: 1.25;
+    margin: 0 0 0.45rem;
+  }
+  .doc-title a {
+    color: var(--trust-blue);
+    text-decoration: none;
+  }
+  .doc-title a:hover {
+    text-decoration: underline;
+  }
+  .doc-blurb {
+    margin: 0 0 0.6rem;
+    font-size: 0.99rem;
+    line-height: 1.55;
+  }
+  .doc-links {
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    color: #4e617c;
+    margin: 0;
+  }
+  .doc-links a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+  .doc-stat {
+    display: block;
+    margin-top: 0.25rem;
+    color: #6b7a8d;
+  }
+  .doc-children {
+    margin-top: 0.9rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--rule-border);
+  }
+  .doc-children-label {
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    color: #4e617c;
+    margin: 0 0 0.5rem;
+  }
+  .doc-children ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    list-style: disc;
+  }
+  .doc-children li {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 0.45rem;
+  }
+  .doc-children a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+  .card-blurb {
+    color: #4a5568;
+  }
+  .colophon-note {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b7a8d;
+    border-top: 1px solid var(--rule-border);
+    padding-top: 0.9rem;
+  }
+</style>

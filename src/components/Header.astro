@@ -9,7 +9,7 @@ import { SITE_PREVIEW } from '../site.config';
 // v63 — task-first relabel (2026-08-13 restructure):
 //   - Primary labels name the task, not the room: Start here · Your
 //     state · The cases · The money · Reading · Catalog · News ·
-//     Contribute · About.
+//     Contribute · Participate · About.
 //   - Room names stay as flavor inside two small dropdowns (Your
 //     state ▾: Atlas, Map Room; Reading ▾: Writing Room, The booklet),
 //     reusing the v50/v55 details-disclosure mechanics unchanged.
@@ -70,6 +70,7 @@ const NAV_TAIL = [
   { href: '/collections/', label: 'Collections' },
   { href: '/newsroom/', label: 'News' },
   { href: '/contribute/', label: 'Contribute', icon: 'HandHeart' },
+  { href: '/participate/', label: 'Participate', icon: 'ScrollText' },
   { href: '/about/', label: 'About', icon: 'Building2' },
 ];
 
@@ -132,7 +133,8 @@ const isInReadingSection = READING_PREFIXES.some(
         wordmark + hamburger + search fit on a single mobile row.
 
         Order (v63): Start here · Your state ▾ · The cases · The money ·
-        Reading ▾ · Catalog · News · Contribute · About · More ▾ ·
+        Reading ▾ · Catalog · News · Contribute · Participate · About ·
+        More ▾ ·
         Library Card · search-icon. */}
     <nav class="hidden flex-wrap items-center gap-x-1 gap-y-2 text-sm lg:flex sm:gap-x-3">
       {NAV_START.map((link) => (
@@ -410,7 +412,8 @@ const isInReadingSection = READING_PREFIXES.some(
         same reading order as the desktop nav: Start here, then the
         "Your state" group (All states · Atlas · Map Room), The cases ·
         The money, the "Reading" group (Reading Room · Writing Room ·
-        The booklet), then Catalog · News · Contribute · About, then the
+        The booklet), then Catalog · News · Contribute · Participate ·
+        About, then the
         More disclosure entries. */}
     <ul class="mobile-nav-overlay__list">
       {NAV_START.map((link) => (

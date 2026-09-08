@@ -1,0 +1,89 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/shelf-doc.css';
+import { DOCS, COLOPHON, readingMinutes } from '../../data/participate';
+
+// The renderer's web text, one fragment per piece. These are the
+// `<main class="flow">` of each piece's `_sitefonts.html`, with the cover,
+// the colophon and the blank pad pages removed and the plates written out to
+// /participate/figures/. Nothing in the prose is changed.
+const fragments = import.meta.glob('../../data/participate/*.html', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+export function getStaticPaths() {
+  return DOCS.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }));
+}
+
+const { doc } = Astro.props;
+const body = fragments[`../../data/participate/${doc.slug}.html`];
+const minutes = readingMinutes(doc.pages);
+const web = `/participate/${doc.slug}.pdf`;
+const press = `/participate/${doc.slug}-press.pdf`;
+---
+<BaseLayout
+  title={`${doc.title} · America's School Trust Library`}
+  description={doc.description.slice(0, 300)}
+  sourceId={`participate-${doc.slug}`}
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="kicker">Participate</p>
+    <h1>{doc.title}</h1>
+
+    <p>{doc.description}</p>
+
+    <p class="doc-meta">
+      Read or download: <a href={web}>web copy (PDF)</a> ·
+      <a href={press}>press copy (PDF)</a> — print-ready, with bleed and crop
+      marks. {doc.pages} pages; about {minutes} minutes to read.
+    </p>
+
+    {doc.card && (
+      <p class="doc-meta">
+        One of the five cards that travel with
+        <a href="/participate/ways-to-help/">Ways to Help</a>.
+      </p>
+    )}
+  </article>
+
+  <div class:list={['shelf-doc', doc.bodyClass]}>
+    <div class="flow" set:html={body} />
+  </div>
+
+  <article class="prose prose-slate mt-10 max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="doc-meta">
+      The whole shelf is at <a href="/participate/">Participate</a>. Mistakes
+      are corrected in public, with a number, in the
+      <a href="/about/corrections/log/">corrections log</a>.
+    </p>
+    <p class="colophon-note">{COLOPHON}</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a88a4e;
+    margin: 0 0 0.4rem;
+  }
+  .doc-meta {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    color: #4e617c;
+  }
+  .colophon-note {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b7a8d;
+    border-top: 1px solid var(--rule-border);
+    padding-top: 0.9rem;
+  }
+</style>
