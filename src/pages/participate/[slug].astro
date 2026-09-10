@@ -48,6 +48,12 @@ const press = `/participate/${doc.slug}-press.pdf`;
         <a href="/participate/ways-to-help/">Ways to Help</a>.
       </p>
     )}
+
+    {doc.notes && doc.notes.map((n) => (
+      <p class="editors-note">
+        <strong>Editor's note, {n.date}.</strong> <span set:html={n.html} />
+      </p>
+    ))}
   </article>
 
   <div class:list={['shelf-doc', doc.bodyClass]}>
@@ -78,6 +84,13 @@ const press = `/participate/${doc.slug}-press.pdf`;
     font-family: var(--font-sans);
     font-size: 0.92rem;
     color: #4e617c;
+  }
+  .editors-note {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    background: #fffdf7;
+    border-left: 4px solid #C9A24A;
+    padding: 0.75rem 1rem;
   }
   .colophon-note {
     font-family: var(--font-sans);

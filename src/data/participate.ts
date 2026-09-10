@@ -25,6 +25,12 @@ export interface ShelfDoc {
   blurb: string;
   /** a card in the Ways to Help family rather than a document of its own */
   card?: boolean;
+  /**
+   * Dated editor's notes shown above the text. A numbered edition is not
+   * silently rewritten (Constitution, Article VII); when events overtake a
+   * sentence, the note says so and the sentence stands.
+   */
+  notes?: { date: string; html: string }[];
 }
 
 export const READING_MINUTES_PER_PAGE = 1.5;
@@ -53,6 +59,12 @@ export const DOCS: ShelfDoc[] = [
       'This plan covers 2027, 2028 and 2029. It is for the Library’s board, which may adopt, amend or set it aside; and for anyone outside who would rather judge the Library by something it can fail than by the way it describes itself. Every figure here is a planning assumption until the board adopts a budget. Where a number rests on an estimate the sentence says so; where the record holds no number, this plan says that instead of supplying one.',
     blurb:
       'A plan for 2027, 2028 and 2029, for anyone who would rather judge the Library by something it can fail than by the way it describes itself.',
+    notes: [
+      {
+        date: 'September 10, 2026',
+        html: 'Two things this plan describes as pending have since happened. The board acted by unanimous written consent on September 10, 2026 — adopting this plan and its companions as Version 1, directing the federal filing, and directing that the presidency pass from the founder by December 31, 2027; its two directors with no interest in either advocacy organization accepted the alliance with Oregon Advocates for School Trust Lands on the Library’s side, the founder taking no part — and the postings for the three open seats this plan says were not yet published were published on September 10, 2026 at <a href="/participate/open-seats/">Open seats</a>. The text below stands as adopted; the <a href="/organizing/">organizational record</a> carries the action.',
+      },
+    ],
   },
   {
     slug: 'a-record-with-a-keeper',
