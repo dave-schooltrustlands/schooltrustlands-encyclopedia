@@ -64,6 +64,10 @@ export const DOCS: ShelfDoc[] = [
         date: 'September 10, 2026',
         html: 'Two things this plan describes as pending have since happened. The board acted by unanimous written consent on September 10, 2026 — adopting this plan and its companions as Version 1, directing the federal filing, and directing that the presidency pass from the founder by December 31, 2027; its two directors with no interest in either advocacy organization accepted the alliance with Oregon Advocates for School Trust Lands on the Library’s side, the founder taking no part — and the postings for the three open seats this plan says were not yet published were published on September 10, 2026 at <a href="/participate/open-seats/">Open seats</a>. The text below stands as adopted; the <a href="/organizing/">organizational record</a> carries the action.',
       },
+      {
+        date: 'September 10, 2026',
+        html: 'Replies about the three open seats go to the President, Dave Sullivan, at <a href="mailto:drdavesullivan@gmail.com">drdavesullivan@gmail.com</a>, not to the Secretary as this edition says; the change was made September 10, 2026 and the postings at <a href="/participate/open-seats/">Open seats</a> carry it.',
+      },
     ],
   },
   {
@@ -85,6 +89,12 @@ export const DOCS: ShelfDoc[] = [
       'America’s School Trust Library keeps the public record of America’s school lands — freely, neutrally, and permanently. It is not asking you for money. It asks for documents and hands. Five ways in: librarians and archivists · lawyers · legislators, trustees and agency staff · teachers · families and historians who hold records.',
     blurb:
       'It is not asking you for money. It asks for documents and hands. Five ways in, and how to say yes to each.',
+    notes: [
+      {
+        date: 'September 10, 2026',
+        html: 'Replies about the three open seats go to the President, Dave Sullivan, at <a href="mailto:drdavesullivan@gmail.com">drdavesullivan@gmail.com</a>, not to the Secretary as this edition says; the change was made September 10, 2026 and the postings at <a href="/participate/open-seats/">Open seats</a> carry it.',
+      },
+    ],
   },
   {
     slug: 'how-a-collection-comes-in',
@@ -115,6 +125,12 @@ export const DOCS: ShelfDoc[] = [
     description:
       'The gap, stated plainly. The Library’s catalog held 72 holdings on August 10, 2026, and not one of them carried the label Verified — including the ones its own founders wrote. A data point on a state page may carry a Verified badge for that figure; the catalog’s Verified label, for a whole holding checked by a second reader, has not yet been earned by any holding.',
     blurb: 'The gap, stated plainly, and the shelves that need a keeper.',
+    notes: [
+      {
+        date: 'September 10, 2026',
+        html: 'Replies about the three open seats go to the President, Dave Sullivan, at <a href="mailto:drdavesullivan@gmail.com">drdavesullivan@gmail.com</a>, not to the Secretary as this edition says; the change was made September 10, 2026 and the postings at <a href="/participate/open-seats/">Open seats</a> carry it.',
+      },
+    ],
   },
   {
     slug: 'for-lawyers',
@@ -125,6 +141,12 @@ export const DOCS: ShelfDoc[] = [
     description:
       'The law of this field is not gathered anywhere. It is old and settled in its main lines, and a lawyer who wants to read it has to reconstruct it from six decisions of the United States Supreme Court spanning 137 years, the enabling acts and constitutional clauses of roughly twenty states, and a century of state cases that nobody has ever put in one place.',
     blurb: 'The law of this field is not gathered anywhere. The Library is gathering it.',
+    notes: [
+      {
+        date: 'September 10, 2026',
+        html: 'Replies about the three open seats go to the President, Dave Sullivan, at <a href="mailto:drdavesullivan@gmail.com">drdavesullivan@gmail.com</a>, not to the Secretary as this edition says; the change was made September 10, 2026 and the postings at <a href="/participate/open-seats/">Open seats</a> carry it.',
+      },
+    ],
   },
   {
     slug: 'for-legislators-trustees-and-agency-staff',
@@ -135,6 +157,12 @@ export const DOCS: ShelfDoc[] = [
     description:
       'Your state’s page is your state’s record. You are among the people who already hold this record. The Library asks two things of you, and neither is a position. Read what it says about your state. Tell it what it has wrong.',
     blurb: 'Read what the Library says about your state. Tell it what it has wrong.',
+    notes: [
+      {
+        date: 'September 10, 2026',
+        html: 'Replies about the three open seats go to the President, Dave Sullivan, at <a href="mailto:drdavesullivan@gmail.com">drdavesullivan@gmail.com</a>, not to the Secretary as this edition says; the change was made September 10, 2026 and the postings at <a href="/participate/open-seats/">Open seats</a> carry it.',
+      },
+    ],
   },
   {
     slug: 'for-teachers',
@@ -145,6 +173,12 @@ export const DOCS: ShelfDoc[] = [
     description:
       'The oldest school-funding decision in American history is a shape on a map. And it is probably within a few miles of your classroom.',
     blurb: 'The oldest school-funding decision in American history is a shape on a map.',
+    notes: [
+      {
+        date: 'September 10, 2026',
+        html: 'Replies about the three open seats go to the President, Dave Sullivan, at <a href="mailto:drdavesullivan@gmail.com">drdavesullivan@gmail.com</a>, not to the Secretary as this edition says; the change was made September 10, 2026 and the postings at <a href="/participate/open-seats/">Open seats</a> carry it.',
+      },
+    ],
   },
   {
     slug: 'for-families-and-historians-who-hold-records',
@@ -155,6 +189,12 @@ export const DOCS: ShelfDoc[] = [
     description:
       'Somebody in your family kept the papers. A career’s worth of field notes; agency reports from an office that no longer exists; interviews on cassette; a shelf of printed monographs; photographs with names on the back. Those files do not survive a move, a failed drive, or a funeral. This is not a failure of care. It is the ordinary fate of a record with no keeper.',
     blurb: 'Somebody in your family kept the papers. What happens to them next.',
+    notes: [
+      {
+        date: 'September 10, 2026',
+        html: 'Replies about the three open seats go to the President, Dave Sullivan, at <a href="mailto:drdavesullivan@gmail.com">drdavesullivan@gmail.com</a>, not to the Secretary as this edition says; the change was made September 10, 2026 and the postings at <a href="/participate/open-seats/">Open seats</a> carry it.',
+      },
+    ],
   },
 ];
 
