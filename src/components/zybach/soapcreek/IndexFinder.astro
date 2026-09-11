@@ -1,0 +1,126 @@
+---
+import { monographs } from './data';
+---
+<section class="sc-finder" id="find-heading" aria-labelledby="sc-find-title" data-pagefind-ignore>
+  <h2 id="sc-find-title">Find an index heading</h2>
+  <p>Look up a family name, place or subject in the books’ printed indexes. Open a heading to see its original page references.</p>
+  <form id="sc-find-form" role="search" aria-label="Find a Soap Creek index heading" action="/collections/zybach/soap-creek/index/" method="get">
+    <label for="sc-find-query">Name, place or subject</label>
+    <div class="sc-find-query-row">
+      <input id="sc-find-query" type="search" name="q" maxlength="200" placeholder="For example, Moore or oak" autocomplete="off" aria-describedby="sc-find-help" />
+      <button type="submit">Find headings</button>
+    </div>
+    <div class="sc-find-filter-row">
+      <label for="sc-find-book">Look in</label>
+      <select id="sc-find-book" name="book">
+        <option value="">All fifteen books</option>
+        {monographs.map(m => <option value={m.slug}>{String(m.number).padStart(2, '0')} · {m.title}</option>)}
+      </select>
+      <a id="sc-find-clear" href="/collections/zybach/soap-creek/index/#find-heading">Clear</a>
+    </div>
+  </form>
+  <p id="sc-find-help" class="sc-find-help">Try <a data-index-example="Moore" href="?q=Moore#find-heading">Moore</a>, <a data-index-example="oak" href="?q=oak#find-heading">oak</a> or <a data-index-example="school" href="?q=school#find-heading">school</a>. Headings and subheadings are searched together.</p>
+  <p id="sc-find-status" role="status" aria-live="polite" aria-atomic="true">Enter a word above, or browse A–Z below.</p>
+  <ol id="sc-find-results" class="sc-find-results"></ol>
+  <button id="sc-find-more" type="button" hidden>Show more headings</button>
+  <p class="sc-find-text-link"><a id="sc-find-fulltext" href="/collections/zybach/explore/?series=soap-creek">Search the words in the full Soap Creek collection →</a></p>
+  <p class="sc-find-help">An index heading is a finding aid chosen for the book. A word can appear in the text without having its own heading.</p>
+  <noscript><p>The heading finder needs JavaScript. The complete A–Z index and every printed page reference remain available below.</p></noscript>
+</section>
+
+<script>
+  import { findIndexEntries, normalizeIndexQuery } from './index-search.mjs';
+  const form = document.querySelector<HTMLFormElement>('#sc-find-form')!;
+  const query = document.querySelector<HTMLInputElement>('#sc-find-query')!;
+  const book = document.querySelector<HTMLSelectElement>('#sc-find-book')!;
+  const status = document.querySelector<HTMLElement>('#sc-find-status')!;
+  const list = document.querySelector<HTMLOListElement>('#sc-find-results')!;
+  const more = document.querySelector<HTMLButtonElement>('#sc-find-more')!;
+  const fulltext = document.querySelector<HTMLAnchorElement>('#sc-find-fulltext')!;
+  const validBooks = new Set(Array.from(book.options, o => o.value));
+  let payload: Promise<any> | undefined, results: any[] = [], shown = 0, request = 0;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  let editing = false;
+  const readIndex = () => payload ??= fetch('/collections/zybach/soap-creek/index/find.json')
+    .then(async response => { if (!response.ok) throw Error('Index unavailable'); const data = await response.json(); if (data.version !== 1 || !Array.isArray(data.entries)) throw Error('Invalid index'); return data.entries; })
+    .catch(error => { payload = undefined; throw error; });
+
+  function addBatch() {
+    const start = shown;
+    for (const result of results.slice(shown, shown + 20)) {
+      const { entry, matchingSubheadings } = result;
+      const li = document.createElement('li');
+      const heading = document.createElement('h3'), link = document.createElement('a');
+      link.href = entry.href; link.textContent = entry.heading; heading.append(link); li.append(heading);
+      const refs = book.value ? entry.books[book.value] : entry.refs;
+      const count = book.value ? 1 : Object.keys(entry.books).length;
+      const meta = document.createElement('p'); meta.className = 'sc-find-result-meta';
+      meta.textContent = refs ? `${refs.toLocaleString()} ${refs === 1 ? 'reference' : 'references'} in ${count} ${count === 1 ? 'book' : 'books'} · Open the index entry` : 'Cross-reference · Open the index entry';
+      li.append(meta);
+      if (matchingSubheadings.length) {
+        const context = document.createElement('p'); context.className = 'sc-find-result-context';
+        context.textContent = `Under this heading: ${matchingSubheadings.slice(0, 3).join('; ')}${matchingSubheadings.length > 3 ? `; and ${matchingSubheadings.length - 3} more` : ''}.`;
+        li.append(context);
+      }
+      list.append(li);
+    }
+    shown = Math.min(shown + 20, results.length);
+    more.hidden = shown >= results.length;
+    return list.children[start]?.querySelector<HTMLAnchorElement>('a');
+  }
+
+  async function search(historyMode: 'push' | 'replace' | 'none' = 'push') {
+    clearTimeout(timer);
+    const token = ++request, q = query.value.trim(), selectedBook = book.value;
+    const params = new URLSearchParams();
+    if (q) params.set('q', q); if (selectedBook) params.set('book', selectedBook);
+    const url = `${location.pathname}${params.size ? '?' + params : ''}${location.hash}`;
+    if (historyMode !== 'none' && url !== location.pathname + location.search + location.hash) history[historyMode === 'push' ? 'pushState' : 'replaceState']({}, '', url);
+    fulltext.href = '/collections/zybach/explore/?' + new URLSearchParams({ series: 'soap-creek', ...(q ? { q } : {}) });
+    fulltext.textContent = q ? `Search the full Soap Creek text for “${q}” →` : 'Search the words in the full Soap Creek collection →';
+    list.replaceChildren(); more.hidden = true; shown = 0; results = [];
+    if (!normalizeIndexQuery(q)) { status.textContent = 'Enter a name, place or subject, or browse A–Z below.'; return; }
+    status.textContent = 'Finding index headings…';
+    try {
+      const entries = await readIndex(); if (token !== request) return;
+      results = findIndexEntries(entries, q, selectedBook);
+      const where = selectedBook ? ` in ${book.selectedOptions[0].textContent}` : ' across the fifteen books';
+      status.textContent = results.length ? `${results.length.toLocaleString()} matching ${results.length === 1 ? 'heading' : 'headings'}${where}. This page’s address saves your search.` : `No index headings match${where}. Try another spelling${selectedBook ? ' or all fifteen books' : ''}, or search the full text below.`;
+      addBatch();
+    } catch {
+      if (token === request) status.textContent = 'The heading finder could not load. Try Find headings again, or use the A–Z index below.';
+    }
+  }
+
+  function restore() {
+    editing = false;
+    const params = new URLSearchParams(location.search);
+    query.value = (params.get('q') || '').slice(0, 200);
+    book.value = validBooks.has(params.get('book') || '') ? params.get('book') || '' : '';
+    search('none');
+  }
+  form.addEventListener('submit', event => { event.preventDefault(); editing = false; search(); });
+  query.addEventListener('input', () => { clearTimeout(timer); ++request; timer = setTimeout(() => { search(editing ? 'replace' : 'push'); editing = true; }, 180); });
+  query.addEventListener('blur', () => { editing = false; });
+  book.addEventListener('change', () => { editing = false; search(); });
+  more.addEventListener('click', () => { const first = addBatch(); first?.focus(); });
+  document.querySelector('#sc-find-clear')!.addEventListener('click', event => { event.preventDefault(); editing = false; query.value = ''; book.value = ''; search(); query.focus(); });
+  document.querySelectorAll<HTMLAnchorElement>('[data-index-example]').forEach(link => link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault(); editing = false; query.value = link.dataset.indexExample!; book.value = ''; search();
+  }));
+  window.addEventListener('popstate', restore);
+  restore();
+</script>
+
+<style>
+  .sc-finder{margin:1.5rem 0 2rem;padding:1.25rem 1.5rem;border:1px solid #bcc6c5;border-top:4px solid #a87f2c;background:#f1f4f2;font-family:var(--font-sans,sans-serif);font-size:1rem;line-height:1.55;scroll-margin-top:5rem}
+  .sc-finder h2{margin:0 0 .65rem;font-size:1.5rem;color:#172f42}.sc-finder p{margin:.65rem 0}.sc-finder a{color:#174660;overflow-wrap:anywhere}
+  #sc-find-form>label{display:block;font-weight:650;margin:1rem 0 .4rem}.sc-find-query-row{display:flex;gap:.5rem;flex-wrap:wrap}
+  .sc-find-query-row input{flex:1 1 15rem;min-width:0;width:100%;border:1px solid #889ca5;background:#fff;color:#172f42;border-radius:2px;padding:.7rem;font:inherit;font-size:1rem}
+  .sc-finder button{border:1px solid #172f42;border-radius:2px;padding:.7rem 1rem;background:#172f42;color:#fff;font:inherit;font-size:1rem;font-weight:650;cursor:pointer;min-height:44px}
+  .sc-find-filter-row{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem .7rem;margin-top:.8rem}.sc-find-filter-row label{font-weight:650}.sc-find-filter-row select{min-width:0;max-width:100%;padding:.55rem;border:1px solid #889ca5;background:white;color:#172f42;font:inherit;font-size:1rem;min-height:44px}.sc-find-filter-row a{padding:.55rem .25rem}
+  .sc-find-help{font-size:.925rem;color:#374c55}#sc-find-status{font-weight:600}#sc-find-results{list-style:none;padding:0;margin:1rem 0}.sc-find-results :global(li){padding:.85rem 0;border-top:1px solid #c8d1ce;overflow-wrap:anywhere}.sc-find-results :global(h3){font-size:1.1rem;line-height:1.4;margin:0 0 .25rem}.sc-find-results :global(p){margin:.25rem 0}.sc-find-results :global(.sc-find-result-meta){font-size:.85rem;color:#374c55}.sc-find-results :global(.sc-find-result-context){font-size:.95rem;color:#263d47}
+  .sc-find-text-link{padding-top:.8rem;border-top:1px solid #c8d1ce;font-weight:650}.sc-finder :global(:focus-visible){outline:3px solid #a87f2c;outline-offset:3px}.sc-finder [hidden]{display:none}
+  @media(max-width:520px){.sc-finder{padding:1rem}.sc-find-query-row button{width:100%}.sc-find-filter-row select{flex:1 1 100%}.sc-find-query-row input{flex-basis:100%}}
+</style>
