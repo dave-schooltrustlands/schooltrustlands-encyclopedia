@@ -1,0 +1,246 @@
+---
+export const prerender = true;
+// The Library edition of Recording 23: the September 13, 2026 telephone call in which
+// Bob Zybach answered the three boxes of "How a Collection Comes In" and the two
+// speakers agreed the call itself should go into the Library as a recording about the
+// process. Data: src/data/participate/how-a-collection-comes-in-conversation.json,
+// built from the reviewed draft by /home/claude/work/recording23/build_turns.py.
+// Published September 14, 2026 on Dave Sullivan's instruction; under the Library's
+// September 13 rule a recorded conversation is the speakers' approval, and either
+// speaker may strike or restore anything afterward.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import data from '../../../data/participate/how-a-collection-comes-in-conversation.json';
+
+type Turn = { p: number; who: 'Dave' | 'Bob'; uncertain: boolean; text: string };
+type Omitted = { omitted: string; why: string; part?: boolean };
+type Note = { note: string; date: string };
+const turns = data.turns as Array<Turn | Omitted | Note>;
+
+// One anchor per original paragraph number, on its first turn.
+const seen = new Set<number>();
+function anchorFor(t: Turn): string | undefined {
+  if (seen.has(t.p)) return undefined;
+  seen.add(t.p);
+  return `p${t.p}`;
+}
+
+const corrections: Array<[string, string, string]> = [
+  ['Silk Creek Valley', 'Soap Creek Valley', '15, 21, 23, 24, 63'],
+  ['Socrick Valley', 'Soap Creek Valley', '144'],
+  ['OSU Research Forum', 'OSU Research Forests', '24'],
+  ['writing mower', 'riding mower', '49'],
+  ['buggy webs', 'buggy whips', '44'],
+  ['Coal Bill', 'Colville', '147'],
+  ['Zybeck collection', 'Zybach Collection', '84'],
+  ['OSTL', 'OASTL', '155'],
+  ['Thudding Library', 'School Trust Library', '126'],
+  ['Carl (the OSU archivist)', 'Karl', '110, 122'],
+  ['Bend County Library', 'Benton County Library', '112'],
+  ['all our WW', 'ORWW', '104'],
+  ['As your presentation master', 'as your preservation master', '160'],
+  ['Cope / cope (Wayne Knopp’s brother)', 'Tope (the spelling used elsewhere on the tape; not yet confirmed)', '147, 183'],
+  ['Elliot', 'Elliott', '136'],
+  ['America School Trust Library', 'America’s School Trust Library', '165, 169'],
+  ['theseologists', 'these ologists', '108'],
+  ['Chris Quit', 'Chris quit', '110'],
+  ['AI&I', '[unclear]', '85'],
+  ["92' Berkeley … is 94'.", "92, Berkeley … is 94.", "143"],
+];
+
+const title = 'How a Collection Comes In: The Conversation';
+const description =
+  'The recorded telephone conversation of September 13, 2026 in which Bob Zybach answered the three questions of How a Collection Comes In, and he and Dave Sullivan agreed the call itself should go into the Library as a recording about the process. Published as spoken, lightly edited for print, with nine passages omitted under the Library’s rules and marked where they fell.';
+---
+<BaseLayout
+  title={`${title} · America's School Trust Library`}
+  description={description}
+  sourceId="participate-how-a-collection-comes-in-conversation"
+>
+  <article class="prose prose-slate max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="kicker">Participate · A recording about the process</p>
+    <h1>{title}</h1>
+    <p class="byline">Dave Sullivan and Bob Zybach · Sunday, September 13, 2026 · one hour and thirty-three minutes, by telephone</p>
+
+    <p>
+      Dave turned on a sound recorder at the start of a working call. The first part of the call works
+      through the three questions Bob owed the Library booklet
+      <a href="/participate/how-a-collection-comes-in/">How a Collection Comes In</a> — what he was trying to
+      build, what surprised him, and what he wants a reader to do with it — and the three answers printed there
+      are taken from this recording. Partway through, the two agreed that the conversation should itself become
+      a recording in the Library. At ¶169 Dave says: <em>“this actually ought to almost be an oral recording
+      that would be similar to the other recordings, except this one is a recording about the process of setting
+      up a collection within the America’s School Trust Library.”</em> Bob agrees. So here it is.
+    </p>
+
+    <p>
+      It is published as spoken. Filler was removed only where removal changes no meaning, and obvious
+      mishearings by the transcription machine were corrected; the corrections are listed below. Twelve passages
+      were omitted under the Library’s publication rules — a matter in pending litigation, characterizations of
+      named people, other people’s private circumstances, and one personal aside — and two names were withheld.
+      Every omission is marked where it fell. Both speakers hold the unedited text. Either may strike or restore
+      anything: what he strikes comes down, what he restores goes up, in public, with a date.
+    </p>
+
+    <p class="doc-meta">
+      <strong>How it was made.</strong> Dave set his Pixel phone on the keyboard of his laptop and recorded the
+      call with the Windows sound recorder; the file was transcribed by a machine (Turbo AI, at its
+      highest-quality setting), which produced no speaker labels. The labels here were assigned by the Library
+      from context; the ten turns marked † are the ones it is least sure of, and either speaker can correct
+      them. Punctuation at the seams of cuts and speaker splits is the Library’s: where the machine ran two
+      speakers into one sentence, the comma at the split became a period. The numbers in the margin (¶) key each
+      turn to the paragraphs of the machine transcript, which the Library keeps with the recording. Square
+      brackets are the Library’s: the omission markers, […] where a sentence resumes after a cut, [unclear] and
+      [word — unclear on the tape] where the machine’s rendering could not be recovered, and the two withheld
+      names. Dated Library notes,
+      set apart in the text, say where the Library has since learned something the speakers did not know at the
+      time; the sentences they annotate stand as spoken. The recording itself will follow once the omitted
+      passages have been cut from the audio.
+    </p>
+
+    <details class="corrections">
+      <summary>Corrections made in place ({corrections.length})</summary>
+      <table>
+        <thead><tr><th>Machine transcript</th><th>Corrected to</th><th>Paragraphs</th></tr></thead>
+        <tbody>
+          {corrections.map(([from, to, where]) => (
+            <tr><td>{from}</td><td>{to}</td><td>{where}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </details>
+  </article>
+
+  <section class="transcript" aria-label="The conversation">
+    {turns.map((t) => {
+      if ('omitted' in t) {
+        return (
+          <p class="omitted" id={`p${t.omitted.split('–')[0]}`}>
+            <span class="pn">¶{t.omitted}{'part' in t && t.part ? ', in part' : ''}</span> <em>Omitted.</em> {t.why}
+          </p>
+        );
+      }
+      if ('note' in t) {
+        return (
+          <p class="lib-note"><strong>Library note, {t.date}.</strong> {t.note}</p>
+        );
+      }
+      const id = anchorFor(t);
+      return (
+        <p class:list={['turn', t.who.toLowerCase()]} id={id}>
+          <span class="pn">¶{t.p}</span>
+          <span class="who">{t.who}{t.uncertain && <sup title="speaker uncertain; assigned from context">†</sup>}</span>
+          {' '}{t.text}
+        </p>
+      );
+    })}
+    <p class="end">End of recording.</p>
+  </section>
+
+  <article class="prose prose-slate mt-10 max-w-none prose-a:text-blue-700 prose-a:underline">
+    <p class="doc-meta">
+      <strong>Source.</strong> Recording 23, September 13, 2026, kept by the Library with its machine transcript
+      and the unedited text of the omitted passages. Published September 14, 2026. Edited for print by the
+      Library with an AI system, on the president’s instruction; a second, independent AI pass checked every
+      turn against the machine transcript and the omissions against the cut list before it went up. No one has
+      yet checked it by ear against the recording; the speakers’ corrections are invited. The three answers
+      drawn from it appear in
+      <a href="/participate/how-a-collection-comes-in/">How a Collection Comes In</a>; the collection the two are
+      talking about is the <a href="/collections/zybach/">Zybach Collection</a>.
+    </p>
+    <p class="doc-meta">
+      The whole shelf is at <a href="/participate/">Participate</a>. Mistakes are corrected in public, with a
+      number, in the <a href="/about/corrections/log/">corrections log</a>.
+    </p>
+    <p class="colophon-note">Prepared by America’s School Trust Library with an AI system from the Library’s own recording and transcript, and checked against them by a second, independent pass. Bob Zybach and Dave Sullivan may strike or restore anything; the change is made in public, with a date.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a88a4e;
+    margin: 0 0 0.4rem;
+  }
+  .byline {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: #4e617c;
+    margin-top: -0.5rem;
+  }
+  .doc-meta {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    color: #4e617c;
+  }
+  .corrections {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: #4e617c;
+    margin: 1rem 0 0;
+  }
+  .corrections summary { cursor: pointer; }
+  .corrections table { font-size: 0.85rem; margin-top: 0.5rem; }
+  .corrections th, .corrections td { padding: 0.15rem 0.6rem 0.15rem 0; vertical-align: top; }
+
+  .transcript {
+    max-width: 44rem;
+    margin: 2.25rem 0 0;
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+  .transcript .turn { margin: 0 0 0.85rem; }
+  .transcript .pn {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    color: #9aa6b5;
+    display: inline-block;
+    min-width: 2.6rem;
+    letter-spacing: 0.02em;
+    vertical-align: 0.12em;
+  }
+  .transcript .who {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 0.15rem;
+  }
+  .transcript .dave .who { color: #1b2a4a; }
+  .transcript .bob .who { color: #6b4a1e; }
+  .transcript .who sup { font-weight: 400; font-size: 0.7em; margin-left: 0.1em; }
+  .transcript .omitted {
+    margin: 0.4rem 0 1.1rem;
+    padding: 0.5rem 0.9rem;
+    border-left: 3px solid #cfd6e0;
+    color: #5d6b7c;
+    font-size: 0.93rem;
+  }
+  .transcript .lib-note {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    background: #fffdf7;
+    border-left: 4px solid #C9A24A;
+    padding: 0.6rem 0.9rem;
+    margin: 0.6rem 0 1.1rem;
+    color: #3d4a5c;
+  }
+  .transcript .end {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #6b7a8d;
+    margin-top: 1.5rem;
+    font-style: italic;
+  }
+  .colophon-note {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: #6b7a8d;
+    border-top: 1px solid var(--rule-border);
+    padding-top: 0.9rem;
+  }
+</style>

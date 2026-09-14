@@ -105,6 +105,12 @@ export const DOCS: ShelfDoc[] = [
       'America’s School Trust Library is an Oregon nonprofit public benefit corporation, Oregon Registry No. 259005891, incorporated July 21, 2026. It keeps the documentary record of America’s school trust lands — the land Congress granted each new state to support its public schools, and the permanent funds that land feeds. Much of that record was never in an archive: it sits in basements, filing cabinets and aging websites, and when the person who kept it dies, most of it goes too. What follows is one collection arriving, dated so it can be checked, and it includes the parts that went badly. It was written for the Library’s board, and for two readers after it: the next person deciding whether to trust the Library with an archive, and anyone who might serve it.',
     blurb:
       'One collection arriving, dated so it can be checked — and it includes the parts that went badly.',
+    notes: [
+      {
+        date: 'September 14, 2026',
+        html: 'The three answers printed in this booklet under Bob Zybach’s name were given aloud in a recorded telephone conversation on September 13, 2026. The Library has now published that conversation, as spoken and lightly edited for print, at <a href="/participate/how-a-collection-comes-in/the-conversation/">How a Collection Comes In: The Conversation</a>, so that a reader can see the answers in the setting they came from.',
+      },
+    ],
   },
   {
     slug: 'six-months-of-a-library-the-timeline',
