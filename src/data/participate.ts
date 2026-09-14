@@ -100,9 +100,9 @@ export const DOCS: ShelfDoc[] = [
     slug: 'how-a-collection-comes-in',
     title: 'How a Collection Comes In',
     bodyClass: 'kind-booklet layout-text',
-    pages: 12,
+    pages: 15,
     description:
-      'America’s School Trust Library is an Oregon nonprofit public benefit corporation, Oregon Registry No. 259005891, incorporated July 21, 2026. It keeps the documentary record of America’s school trust lands — the land Congress granted each new state to support its public schools, and the permanent funds that land feeds. Much of that record was never in an archive: it sits in basements, filing cabinets and aging websites, and when the person who kept it dies, most of it goes too. What follows is one collection arriving, dated so it can be checked, and it includes the parts that went badly.',
+      'America’s School Trust Library is an Oregon nonprofit public benefit corporation, Oregon Registry No. 259005891, incorporated July 21, 2026. It keeps the documentary record of America’s school trust lands — the land Congress granted each new state to support its public schools, and the permanent funds that land feeds. Much of that record was never in an archive: it sits in basements, filing cabinets and aging websites, and when the person who kept it dies, most of it goes too. What follows is one collection arriving, dated so it can be checked, and it includes the parts that went badly. It was written for the Library’s board, and for two readers after it: the next person deciding whether to trust the Library with an archive, and anyone who might serve it.',
     blurb:
       'One collection arriving, dated so it can be checked — and it includes the parts that went badly.',
   },
