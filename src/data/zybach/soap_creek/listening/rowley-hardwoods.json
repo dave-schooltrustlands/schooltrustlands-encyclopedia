@@ -3,7 +3,7 @@
     {
       "id": "passage-01",
       "title": "Which trees fit this ground?",
-      "sourceTime": "9:03",
+      "tapeSeconds": 544.2,
       "lines": [
         {
           "seq": 1230,
@@ -34,7 +34,7 @@
     {
       "id": "passage-02",
       "title": "A possible maple stand",
-      "sourceTime": "9:56",
+      "tapeSeconds": 594.7,
       "lines": [
         {
           "seq": 1234,
@@ -53,7 +53,7 @@
     {
       "id": "passage-03",
       "title": "Why Douglas-fir?",
-      "sourceTime": "10:57",
+      "tapeSeconds": 658.2,
       "lines": [
         {
           "seq": 1236,

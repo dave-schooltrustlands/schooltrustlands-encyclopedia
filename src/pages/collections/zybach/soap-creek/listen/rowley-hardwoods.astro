@@ -9,6 +9,12 @@ import pilot from '../../../../../data/zybach/soap_creek/listening/rowley-hardwo
 const page = '/collections/zybach/soap-creek/m15-rowley/part-v-february-23-1991/';
 const pdf = 'http://www.nwmapsco.com/ZybachB/Oral_Histories/Soap_Creek_Valley/15_Rowley/Jackson_et_al_2009.pdf';
 const forestPhoto = '/zybach/listening/rowley-mcculloch-peak.jpg';
+// The Library's two-minute excerpt, cut September 13, 2026 from its preservation
+// copy of tape side 04. Measured boundaries 9:03.80 - 11:09.02 on the tape.
+const excerpt = '/zybach/audio/rowley-hardwoods-excerpt.mp3';
+const clipStart = 543.8;
+const clipDuration = 125.22;
+const findingAid = 'https://scarc.library.oregonstate.edu/findingaids/index.php?p=collections/findingaid&id=2309';
 ---
 
 <RoomLayout room="collections" title="What can a fallen tree tell you?" subtitle="Bob Zybach and Marvin Rowley look at the trees, roots and soil · Listen & read" width="full" sourceId="zybach-soap-creek-listen-rowley-hardwoods" parents={[{label:'The Zybach Collection',href:'/collections/zybach/'},{label:'Soap Creek Valley',href:'/collections/zybach/soap-creek/'}]}>
@@ -31,7 +37,7 @@ const forestPhoto = '/zybach/listening/rowley-mcculloch-peak.jpg';
     </figure>
   </div>
 
-  <ArchiveListenRead cues={pilot.cues} pageBase={page} />
+  <ArchiveListenRead cues={pilot.cues} pageBase={page} audioSrc={excerpt} clipStart={clipStart} duration={clipDuration} findingAid={findingAid} />
 
   <section class="look-closer" aria-labelledby="look-heading">
     <div class="evidence-question">
@@ -71,11 +77,11 @@ const forestPhoto = '/zybach/listening/rowley-mcculloch-peak.jpg';
     <p><strong>This conversation:</strong> Marvin Rowley, narrator; Bob Zybach, interviewer, February 23, 1991. The complete monograph credits oral-history interviews by Royal G. Jackson, Jennifer Lee and Bob Zybach. Published in 2009 by Oregon State University’s College of Forestry.</p>
     <ul>
       <li><a href={`${page}#p82`}>Published transcript, printed page 82</a> · all eight turns are preserved here. The printed session heading identifies Bob as interviewer.</li>
-      <li><a href="https://app.box.com/file/2413741893311">Original archive recording in Box</a> · archive access may be required. Source file: <span class="filename">OH06-rowley-marvin-19910224-04.wav</span>.</li>
+      <li><a href={findingAid}>The archive’s record of this recording</a> · Soap Creek Valley oral histories, OH 006, Oregon State University Special Collections and Archives Research Center. Tape side: <span class="filename">OH06-rowley-marvin-19910224-04.wav</span>. The Library holds a preservation copy of this side in private storage; the two-minute excerpt above is cut from it.</li>
       <li><a href={`${pdf}#page=6`}>Photograph caption and contributor acknowledgments</a> · the landscape photograph was extracted from the original book’s cover.</li>
-      <li><a href="/zybach/listening/rowley-hardwoods-sources.json">Download this reading journey’s source record</a> · recording identity, approximate passage times and checksums of the book and images.</li>
+      <li><a href="/zybach/listening/rowley-hardwoods-sources.json">Download this reading journey’s source record</a> · recording identity, measured passage times and checksums of the preservation copy, the excerpt, the book and the images.</li>
     </ul>
-    <details><summary>Printed words, recorded speech and passage timing</summary><p>The text is the published interview, not a replacement machine transcript. The retained machine transcription includes repeated words and short acknowledgments that the print omits. The speaker labels follow the printed question-and-answer typography and session heading. Titles, explanations and questions are the Library’s additions, prepared with Codex assistance.</p><p>This first edition links to the archive’s full recording. An embedded excerpt is still to come: the archive download did not complete during preparation. Passage times come from the retained machine transcription and remain approximate; Bob and Dave’s listening review is pending. No by-ear review is claimed. The filename says February 24; the printed session and the retained transcription of recording 01’s opening identify February 23, 1991.</p></details>
+    <details><summary>Printed words, recorded speech and passage timing</summary><p>The text is the published interview, not a replacement machine transcript. The retained machine transcription includes repeated words and short acknowledgments that the print omits. The speaker labels follow the printed question-and-answer typography and session heading. Titles, explanations and questions are the Library’s additions, prepared with Codex assistance.</p><p>The two-minute excerpt on this page was cut on September 13, 2026 from the Library’s preservation copy of tape side 04, which it obtained that day and keeps in private storage. Its boundaries — 9:03.80 to 11:09.02 on the tape — were measured from the waveform, and the words were checked against a second-pass machine transcription that matched the printed lines. The passage times were corrected at the same time; the earlier times, taken from a retained machine transcription, were about a second early at each cue, and the earlier stop of 11:08 clipped the last word. Bob and Dave’s review by ear is still pending, and no by-ear review is claimed. The filename says February 24; the printed session and the retained transcription of recording 01’s opening identify February 23, 1991.</p></details>
     <details><summary>Source use and corrections</summary><p>The original recording was supplied by Oregon State University’s archives through Chris Petersen. This educational excerpt does not grant a general license to reuse the recording, printed text or photograph. The individual <a href="/collections/zybach/rights/">Collection rights statements</a> remain applicable. <a href="/collections/zybach/errata/">Corrections and the Library’s editorial policy →</a></p></details>
   </section>
 </RoomLayout>

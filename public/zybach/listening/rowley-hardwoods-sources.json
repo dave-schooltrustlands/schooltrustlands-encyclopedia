@@ -1,7 +1,7 @@
 {
   "title": "What can a fallen tree tell you?",
-  "edition_date": "2026-09-06",
-  "edition": "Archive-linked first edition; no Library audio excerpt file yet",
+  "edition_date": "2026-09-13",
+  "edition": "Second edition; two-minute excerpt published from the Library’s preservation copy",
   "interview": {
     "date": "1991-02-23",
     "narrator": "Marvin Rowley",
@@ -10,33 +10,46 @@
   },
   "archive_recording": {
     "filename": "OH06-rowley-marvin-19910224-04.wav",
-    "url": "https://app.box.com/file/2413741893311",
     "supplied_by": "Oregon State University archives through Chris Petersen",
-    "preview_duration_seconds": 1925.74,
-    "download_obtained": false,
-    "sha256": null,
-    "date_note": "Filename differs from printed session date; retained tape01 opening transcription also says February23,1991. Reason for filename discrepancy unverified."
+    "download_obtained": true,
+    "sha256": "12e13bd06a36bc3d72f6ad744c4b67416aa9649b8df33acbc47595bddc893a12",
+    "date_note": "Filename differs from printed session date; retained tape01 opening transcription also says February23,1991. Reason for filename discrepancy unverified.",
+    "finding_aid": "https://scarc.library.oregonstate.edu/findingaids/index.php?p=collections/findingaid&id=2309",
+    "archive": "Oregon State University Special Collections and Archives Research Center, Soap Creek Valley oral histories, OH 006",
+    "duration_seconds": 1925.74,
+    "duration": "32:05.74",
+    "preservation_copy_obtained": "2026-09-13",
+    "size_bytes": 369742124,
+    "format": "WAV, 48 kHz, stereo, 16-bit PCM",
+    "storage": "Private storage. Not published while rights and notification questions are settled."
   },
   "passage_times": {
-    "source": "Retained TS_OH06-rowley-marvin-19910224-04.srt",
-    "approximate_start": "09:03",
-    "approximate_end": "11:08",
+    "source": "Measured from the waveform of the Library’s preservation copy, 2026-09-13",
     "chapters": [
       {
         "title": "Which trees fit this ground?",
-        "approximate_source_time": "9:03"
+        "tape_time": "9:04.2",
+        "tape_seconds": 544.2,
+        "excerpt_seconds": 0.4
       },
       {
         "title": "A possible maple stand",
-        "approximate_source_time": "9:56"
+        "tape_time": "9:54.7",
+        "tape_seconds": 594.7,
+        "excerpt_seconds": 50.9
       },
       {
         "title": "Why Douglas-fir?",
-        "approximate_source_time": "10:57"
+        "tape_time": "10:58.2",
+        "tape_seconds": 658.2,
+        "excerpt_seconds": 114.4
       }
     ],
     "by_ear_review_completed": false,
-    "review_status": "Bob and Dave listening review pending; publish-first explicitly requested by Dave"
+    "review_status": "Bob and Dave listening review pending; publish-first explicitly requested by Dave",
+    "measured_start": "9:03.80",
+    "measured_end": "11:09.02",
+    "superseded_times": "The first edition gave 9:03 to 11:08 from a retained machine transcription. Each cue ran about a second early and the 11:08 stop clipped the last word. All were labelled approximate."
   },
   "text": {
     "url": "https://schooltrusts.org/collections/zybach/soap-creek/m15-rowley/part-v-february-23-1991/#p82",
@@ -72,5 +85,23 @@
       "source": "Complete original PDFpage93, printedp.82, rendered150dpi."
     }
   ],
-  "rights": "Underlying recording, text and photograph rights remain with their respective holders. No general reuse license is granted."
+  "rights": "Underlying recording, text and photograph rights remain with their respective holders. No general reuse license is granted.",
+  "excerpt": {
+    "url": "https://schooltrusts.org/zybach/audio/rowley-hardwoods-excerpt.mp3",
+    "filename": "rowley-hardwoods-excerpt.mp3",
+    "sha256": "eb0be731fb81520122267b3d4df93a3c2a20bd4bd958e0a62675c45411a12b76",
+    "size_bytes": 1503819,
+    "format": "MP3, 48 kHz, mono, 96 kb/s",
+    "duration_seconds": 125.22,
+    "cut_on": "2026-09-13",
+    "cut_from": "The Library’s preservation copy of tape side 04",
+    "tape_start": "9:03.80",
+    "tape_end": "11:09.02",
+    "tape_start_seconds": 543.8,
+    "tape_end_seconds": 669.02,
+    "fades_seconds": 0.3,
+    "boundary_method": "Measured from the waveform.",
+    "word_check": "Second-pass machine transcription matched the printed lines.",
+    "by_ear_review_completed": false
+  }
 }
