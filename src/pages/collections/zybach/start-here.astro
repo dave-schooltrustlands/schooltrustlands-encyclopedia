@@ -5,7 +5,10 @@ import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
 import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 
-/* Every link on this page points at a page that exists in
+/* Audience: a first-time reader, family researcher or teacher choosing a
+   useful source. Offer a concrete first reading in plain language, without
+   assuming knowledge of the collection's catalog or project history.
+   Every link on this page points at a page that exists in
    src/pages/collections/zybach/ (or one of its dynamic routes). Nothing here
    is a promise about a page that has not been built. */
 ---
@@ -13,7 +16,7 @@ import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanne
 <RoomLayout
   room="collections"
   title="Start here"
-  subtitle="Three ways in, depending on why you came."
+  subtitle="Choose a question, read the sources, and keep the evidence with your notes."
   width="prose"
   sourceId="collections-zybach-start-here"
   parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }]}
@@ -25,12 +28,39 @@ import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanne
     <ZybachNav current="start-here" />
 
     <p>
-      The oral histories begin with people talking. Farmers, loggers,
-      foresters, a schoolteacher and a botanist sat down with a tape
-      recorder and described the country they had lived in. Their words were typed up,
-      checked, and printed as books. Everything else here — the indexes, the
-      maps, the dates — was built to get you to those words.
+      Bob Zybach’s collection connects people and Oregon landscapes through
+      oral histories, photographs, maps, court papers and journals. Begin with
+      one question in any of the four published series. The links below take
+      you to short guided readings, with the fuller sources close at hand.
     </p>
+
+    <section class="zc-first-reading" aria-labelledby="first-question">
+      <h2 id="first-question">A first question to follow</h2>
+      <ul class="zc-guide">
+        <li>
+          <a href="/collections/zybach/trails/a-valley-changes/">What changed
+          in Soap Creek Valley?</a> — compare residents’ memories with the
+          historic Auto Tour and an account of managing the research forest.
+        </li>
+        <li>
+          <a href="/collections/zybach/trails/letitia-in-court/">What does
+          Letitia Carson’s court record show?</a> — follow a claim, an answer
+          and two jury decisions through the transcribed documents.
+        </li>
+        <li>
+          <a href="/collections/zybach/trails/dean-mountain/">What can one
+          Elliott forest stop reveal?</a> — connect a field-trip video, an
+          earlier interview and photographs of Dean Mountain.
+        </li>
+        <li>
+          <a href="/collections/zybach/trails/reading-1828/">How do we compare
+          accounts of the 1828 Umpqua events?</a> — read a journal, a company
+          report and a chief’s account recorded by a company officer.
+        </li>
+      </ul>
+      <p>Each trail has four stops. Use it on your own, with a class or with a
+        family member; bring back one observation and the source that supports it.</p>
+    </section>
 
     <h2 id="neighbor">If you live nearby, or you are simply curious</h2>
 
@@ -69,6 +99,12 @@ import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanne
         <a href="/collections/zybach/soap-creek/places/">Places</a> — farms and
         landmarks, connected to the accounts that mention them.
       </li>
+      <li>
+        <a href="/collections/zybach/letitia-carson/people/">People in the
+        Letitia Carson records</a> — historical family members and others named
+        in the documents, with links to the evidence. The collection does not
+        publish living descendants’ personal details.
+      </li>
     </ul>
 
     <p>
@@ -82,15 +118,36 @@ import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanne
 
     <h2 id="researcher">If you are researching or teaching</h2>
 
+    <p>
+      Use a guided trail as a source-comparison exercise. At each stop, record
+      who is speaking or writing, when the record was made, and what it supports.
+      Then compare two sources: where do they agree, where do they differ, and
+      what would you need to check next? Keep a quotation separate from your
+      own interpretation.
+    </p>
+
     <ul class="zc-guide">
       <li>
-        <a href="/collections/zybach/soap-creek/timeline/">Timeline</a> — dated
+        <a href="/collections/zybach/soap-creek/timeline/">Soap Creek timeline</a> — dated
         statements in the narrators' own words, arranged by period.
       </li>
       <li>
-        <a href="/collections/zybach/soap-creek/thesis/">The 1999 thesis</a> —
-        the study built on these interviews, including the chapter on how they
-        were made.
+        <a href="/collections/zybach/soap-creek/thesis/#methodology">Bob’s
+        research method in the 1999 thesis</a> — how interviews, maps,
+        photographs and historical records were brought together to study
+        changes in the valley.
+      </li>
+      <li>
+        <a href="/collections/zybach/letitia-carson/documents/">Letitia Carson
+        documents</a> — court, estate and homestead records. Distinguish a
+        person’s claim from an answer or a decision, and follow the
+        transcriptions back to the scans.
+      </li>
+      <li>
+        <a href="/collections/zybach/jedediah-smith/the-1828-record/">The 1828
+        record</a> — compare accounts of the Umpqua events and keep track of
+        who preserved whose words. The chief’s account comes through a
+        company officer’s written record.
       </li>
       <li>
         <a href="/collections/zybach/how-to-cite/">How to cite</a> — cite the
@@ -103,18 +160,22 @@ import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanne
         each part, who published it, and what the Library did to it.
       </li>
       <li>
-        <a href="/collections/zybach/elliott/">The Elliott interviews</a> — the
-        second series in this collection: Oregon's Elliott State Forest,
-        recorded 2017–2019.
+        <a href="/collections/zybach/elliott/">The Elliott interviews and
+        field trips</a> — follow a place through recordings, photographs and
+        video, checking the date of each visit.
       </li>
     </ul>
 
     <p>
-      <strong>Where the tapes are.</strong> The recordings are held at Oregon
-      State University's Special Collections and Archives Research Center — OH
-      006 for Soap Creek, OH 047 for the Elliott — and you request them from
-      SCARC. Two Soap Creek interviews have no surviving cassette; for those the
-      printed transcript is the only record.
+      <strong>Finding the recordings.</strong> The Library has preserved copies
+      of the Soap Creek and Elliott recordings supplied by Oregon State
+      University. Those copies remain private during rights review. For archive
+      access, use Oregon State’s
+      <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&amp;id=2309">Soap
+      Creek finding aid (OH 006)</a> or
+      <a href="https://scarc.library.oregonstate.edu/findingaids/?p=collections/findingaid&amp;id=3293">Elliott
+      finding aid (OH 047)</a>. Where a cassette has not survived, start with the
+      printed transcript.
     </p>
 
     <p>
@@ -149,6 +210,24 @@ import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanne
 </RoomLayout>
 
 <style>
+  .zc-first-reading {
+    margin: 1.75rem 0 2rem;
+    padding: 1.2rem 1.35rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 4px solid var(--old-gold, #a87f2c);
+    border-radius: 4px;
+  }
+  .zc-first-reading h2 {
+    margin-top: 0;
+  }
+  .zc-first-reading p:last-child {
+    margin-bottom: 0;
+  }
+  .zc-first-reading a:focus-visible {
+    outline: 3px solid var(--deep-navy, #14243c);
+    outline-offset: 3px;
+  }
   .zc-guide {
     margin: 1rem 0 1.4rem;
     padding-left: 1.2rem;

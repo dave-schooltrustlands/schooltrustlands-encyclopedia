@@ -1,6 +1,8 @@
 ---
 export const prerender = true;
 
+/* Reader route: help a first-time student or researcher compare published
+   accounts, without changing source narratives, consultation or location holds. */
 import RoomLayout from '../../../../layouts/RoomLayout.astro';
 import WorkingEditionBanner from '../../../../components/zybach/WorkingEditionBanner.astro';
 import ZybachNav from '../../../../components/zybach/ZybachNav.astro';
@@ -132,6 +134,24 @@ const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' 
       it between 2000 and 2023.
     </p>
   </Opening>
+
+  <section class="sm-first-reading" aria-labelledby="first-reading">
+    <p class="sm-first-reading__label">A first reading · four stops</p>
+    <h2 id="first-reading">
+      <a href="/collections/zybach/trails/reading-1828/">How do we compare
+      accounts of 1828?</a>
+    </h2>
+    <p>Read an expedition journal, a company report and an Umpqua chief’s
+      account recorded by a company officer. Ask who spoke, who wrote, and
+      what each source can tell us.</p>
+    <a class="sm-first-reading__begin" href="/collections/zybach/trails/reading-1828/">Begin
+      the guided reading →</a>
+    <p class="sm-first-reading__more">
+      <a href="#in-his-words">Bob’s account of the memorial project</a> ·
+      <a href="#whose-account">Whose account this is</a> ·
+      <a href="#ways-in">Browse all the sources</a>
+    </p>
+  </section>
 
   <section class="sm-creator" aria-labelledby="in-his-words">
     <h2 id="in-his-words">The project, in the creator’s own words</h2>
@@ -289,6 +309,45 @@ const parents = [{ label: 'The Zybach Collection', href: '/collections/zybach/' 
 </RoomLayout>
 
 <style>
+  .sm-first-reading {
+    margin: 1.5rem 0 2rem;
+    padding: 1.35rem 1.5rem;
+    max-width: 72ch;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 4px solid var(--old-gold, #a87f2c);
+    border-radius: 4px;
+  }
+  .sm-first-reading h2 {
+    margin: 0.35rem 0 0.75rem;
+    font-size: clamp(1.3rem, 3vw, 1.65rem);
+    line-height: 1.3;
+  }
+  .sm-first-reading p {
+    line-height: 1.65;
+  }
+  .sm-first-reading__label {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--deep-navy, #14243c);
+  }
+  .sm-first-reading__begin {
+    display: inline-block;
+    padding: 0.55rem 0;
+    font-weight: 700;
+  }
+  .sm-first-reading__more {
+    margin: 0.85rem 0 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--rule-border, #d8d1c2);
+    font-size: 0.88rem;
+  }
+  .sm-first-reading a:focus-visible {
+    outline: 3px solid var(--deep-navy, #14243c);
+    outline-offset: 3px;
+  }
   .sm-empty {
     margin: 2rem 0;
     padding: 1rem;

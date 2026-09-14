@@ -1,0 +1,177 @@
+---
+interface Step { title: string; instruction: string; href: string; label: string; secondaryHref?: string; secondaryLabel?: string; video?: { startSeconds: number }; }
+interface Props { trail: { slug: string; title: string; description: string; steps: Step[] }; }
+const { trail } = Astro.props;
+const canonical = 'https://schooltrusts.org';
+const trailUrl = `${canonical}/collections/zybach/trails/${trail.slug}/`;
+const linksFor = (s: Step) => [{ label: s.label, href: canonical + s.href + (s.video ? `?t=${s.video.startSeconds}` : '') }, ...(s.secondaryHref ? [{ label: s.secondaryLabel, href: canonical + s.secondaryHref }] : [])];
+---
+<section id="trail-notebook" class="trail-notebook" data-trail-slug={trail.slug} data-pagefind-ignore>
+  <div class="notebook-screen">
+    <p class="notebook-kicker">Your reading notebook</p>
+    <h2>Put the sources together</h2>
+    <p>Keep an observation at each stop, then compare what you found. A useful note names the speaker or author, the original work, and a page or recording time. Distinguish what the source says from what you think it means.</p>
+    <label for="trail-comparison">What do the sources show together? What would you check next?</label>
+    <textarea id="trail-comparison" data-note-field="comparison" rows="5" maxlength="6000" placeholder="Two sources agree about… They differ on… To check this, I would look for…"></textarea>
+    <p class="notebook-help">Notes stay in this browser; the Library does not receive them. They do not travel with a shared link or move to another device. Download a copy to keep them.</p>
+    <div class="notebook-actions" hidden>
+      <button type="button" data-notebook-download>Download notes and sources</button>
+      <button type="button" data-notebook-copy>Copy notes and sources</button>
+      <button type="button" data-notebook-print>Print a reading sheet</button>
+    </div>
+    <p id="notebook-status" role="status" aria-live="polite"></p>
+    <div class="notebook-copy-fallback" hidden>
+      <label for="notebook-copy-text">Select and copy this text</label>
+      <textarea id="notebook-copy-text" readonly rows="8"></textarea>
+    </div>
+    <noscript><p>With JavaScript off, notes cannot be saved or downloaded. Use your browser’s Print command for a blank reading sheet with all four questions and their source links.</p></noscript>
+    <a href="/collections/zybach/how-to-cite/">See a worked citation example →</a>
+  </div>
+  <div class="notebook-print">
+    <p class="print-kicker">America’s School Trust Library · The Zybach Collection</p>
+    <h1>{trail.title}</h1>
+    <p>{trail.description}</p>
+    <p class="print-address"><a href={trailUrl}>{trailUrl}</a></p>
+    <p class="print-instructions">Read the sources, keep an observation from each, and compare them. Add the original author or speaker, work, and printed page or recording time to each note. The links below help another reader find your evidence.</p>
+    {trail.steps.map((s, i) => <section class="print-stop">
+      <h2>{i + 1}. {s.title}</h2>
+      <p>{s.instruction}</p>
+      <ul>{linksFor(s).map(link => <li><strong>{link.label}</strong><br/><a href={link.href}>{link.href}</a></li>)}</ul>
+      <p class="print-note-label">Observation and citation</p>
+      <p class="print-note" data-print-note={`stop-${i + 1}`}>________________________________________________________________<br/>________________________________________________________________</p>
+    </section>)}
+    <section class="print-comparison"><h2>What do the sources show together?</h2><p>Where do they agree or differ? What would you check next?</p><p class="print-note" data-print-note="comparison">________________________________________________________________<br/>________________________________________________________________</p></section>
+    <p class="print-credit">Reading questions prepared by the Library with Codex assistance. Notes are the reader’s own. Source links are reading aids; add the original work’s citation before using them in your research. Source texts retain their authorship and rights.</p>
+  </div>
+</section>
+<script>
+  const notebook = document.querySelector<HTMLElement>('#trail-notebook');
+  if (notebook) {
+    const fields = [...document.querySelectorAll<HTMLTextAreaElement>('[data-note-field]')];
+    const status = document.querySelector<HTMLElement>('#notebook-status')!;
+    const packet = notebook.querySelector<HTMLElement>('.notebook-print')!;
+    const fallback = notebook.querySelector<HTMLElement>('.notebook-copy-fallback')!;
+    const fallbackText = notebook.querySelector<HTMLTextAreaElement>('#notebook-copy-text')!;
+    const key = 'zybach-reading-notes:v1:' + notebook.dataset.trailSlug;
+    let storageWorks = true;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    function updatePrint() {
+      for (const field of fields) {
+        const target = packet.querySelector<HTMLElement>(`[data-print-note="${field.dataset.noteField}"]`);
+        if (target) target.textContent = field.value.trim() || '________________________________________________________________\n________________________________________________________________';
+      }
+    }
+    function save() {
+      timer = undefined;
+      const notes = Object.fromEntries(fields.map(f => [f.dataset.noteField!, f.value]));
+      try {
+        localStorage.setItem(key, JSON.stringify({ version: 1, notes }));
+        storageWorks = true;
+        status.textContent = 'Notes saved in this browser. Download a copy to keep them elsewhere.';
+      } catch {
+        storageWorks = false;
+        status.textContent = 'This browser could not save your notes. They are still here in this tab; download a copy before leaving.';
+      }
+      updatePrint();
+    }
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved.version !== 1 || !saved.notes || typeof saved.notes !== 'object') throw new Error('Invalid notes');
+        for (const field of fields) {
+          const value = saved.notes[field.dataset.noteField!];
+          if (typeof value === 'string') field.value = value.slice(0, field.maxLength);
+        }
+        status.textContent = 'Your saved notes are restored in this browser.';
+      } else {
+        status.textContent = 'Begin a note at any stop. Your source links will be included when you download or print.';
+      }
+    } catch {
+      storageWorks = false;
+      status.textContent = 'Saved notes could not be loaded. You can still write here and download a copy.';
+    }
+    updatePrint();
+    for (const field of fields) field.addEventListener('input', () => {
+      clearTimeout(timer);
+      status.textContent = storageWorks ? 'Saving your notes…' : 'Notes are in this tab. Download a copy to keep them.';
+      updatePrint();
+      timer = setTimeout(save, 250);
+    });
+    window.addEventListener('pagehide', () => { if (timer) { clearTimeout(timer); save(); } });
+    window.addEventListener('beforeprint', updatePrint);
+    function textCopy() {
+      updatePrint();
+      const lines = [packet.querySelector('h1')!.textContent!, 'The Zybach Collection · America’s School Trust Library', packet.querySelector<HTMLAnchorElement>('.print-address a')!.href, '', notebook.querySelector<HTMLElement>('.print-instructions')!.textContent!, ''];
+      for (const section of packet.querySelectorAll<HTMLElement>('.print-stop, .print-comparison')) {
+        lines.push(section.querySelector('h2')!.textContent!);
+        lines.push(section.querySelector('p')!.textContent!);
+        for (const link of section.querySelectorAll<HTMLAnchorElement>('a')) lines.push(`${link.closest('li')?.querySelector('strong')?.textContent || 'Source'}: ${link.href}`);
+        const note = fields.find(f => f.dataset.noteField === section.querySelector<HTMLElement>('[data-print-note]')!.dataset.printNote);
+        lines.push('', note?.value.trim() || '[No note entered]', '');
+      }
+      lines.push(packet.querySelector('.print-credit')!.textContent!);
+      return lines.join('\n');
+    }
+    notebook.querySelector<HTMLElement>('.notebook-actions')!.hidden = false;
+    notebook.querySelector('[data-notebook-download]')!.addEventListener('click', () => {
+      const blob = new Blob([textCopy()], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `zybach-${notebook.dataset.trailSlug}-reading-notes.txt`;
+      document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      status.textContent = 'Download started: your notes, the questions and all source links are in one text file.';
+    });
+    notebook.querySelector('[data-notebook-copy]')!.addEventListener('click', async () => {
+      const text = textCopy();
+      try {
+        await navigator.clipboard.writeText(text);
+        fallback.hidden = true;
+        status.textContent = 'Notes, questions and source links copied.';
+      } catch {
+        fallback.hidden = false; fallbackText.value = text;
+        fallbackText.focus(); fallbackText.select();
+        status.textContent = 'Automatic copying is unavailable. Your notes and sources are selected below for copying.';
+      }
+    });
+    notebook.querySelector('[data-notebook-print]')!.addEventListener('click', () => { updatePrint(); window.print(); });
+  }
+</script>
+<style>
+  .trail-notebook{background:#f0efe7;border-left:4px solid #a58a45;padding:1.5rem;margin:2rem 0;font-family:var(--font-sans);line-height:1.6;scroll-margin-top:2rem}
+  .notebook-kicker{font-size:.8rem;font-weight:700;letter-spacing:.06em;color:#5a5945;margin:0 0 .3rem}
+  .trail-notebook h2{font-size:1.4rem;margin:0 0 .8rem}
+  .trail-notebook label{font-weight:650;display:block;margin:1.2rem 0 .5rem}
+  .trail-notebook textarea{display:block;width:100%;max-width:100%;box-sizing:border-box;background:white;color:#193346;border:1px solid #879a9f;border-radius:3px;padding:.8rem;font:1rem/1.6 var(--font-sans);resize:vertical}
+  .notebook-help{font-size:.88rem;color:#47565c}
+  .notebook-actions{display:flex;gap:.65rem;flex-wrap:wrap;margin:1.2rem 0}
+  .notebook-actions[hidden],.notebook-copy-fallback[hidden],.notebook-print{display:none}
+  .notebook-actions button{font:600 .95rem/1.4 var(--font-sans);background:#193346;color:white;padding:.7rem 1rem;border:1px solid #193346;cursor:pointer;border-radius:3px}
+  .notebook-actions button:not(:first-child){background:white;color:#193346}
+  #notebook-status{font-size:.9rem;min-height:1.5em}
+  .trail-notebook :is(button,textarea,a):focus-visible{outline:3px solid #1e718d;outline-offset:3px}
+  @media(max-width:500px){.trail-notebook{padding:1rem}.notebook-actions{flex-direction:column}}
+  @media print{
+    @page{margin:16mm}
+    :global(body > *){display:none!important}
+    :global(body > main.room-main){display:block!important;max-width:none!important;width:auto!important;padding:0!important;margin:0!important}
+    :global(main.room-main > *){display:none!important}
+    :global(main.room-main > #trail-notebook){display:block!important}
+    .trail-notebook{background:white!important;border:0!important;margin:0!important;padding:0!important;color:#000!important;font:10pt/1.4 Georgia,serif}
+    .notebook-screen{display:none!important}
+    .notebook-print{display:block!important}
+    .notebook-print h1{font-size:20pt;line-height:1.2;margin:.4rem 0 1rem}
+    .notebook-print h2{font-size:13pt;line-height:1.3;margin:1rem 0 .4rem;break-after:avoid}
+    .notebook-print p{margin:.45rem 0}
+    .notebook-print ul{padding-left:1.2rem;margin:.6rem 0}
+    .notebook-print li{margin:.4rem 0}
+    .notebook-print a{color:#000;text-decoration:underline;overflow-wrap:anywhere;font-size:8.5pt}
+    .notebook-print a::after{content:none!important}
+    .print-kicker,.print-credit{font-size:8pt}
+    .print-note-label{font-weight:bold}
+    .print-note{white-space:pre-wrap;overflow-wrap:anywhere;min-height:2.5rem}
+    .print-stop{break-inside:avoid}
+    .print-credit{border-top:1px solid #888;padding-top:.6rem;margin-top:1rem!important}
+  }
+</style>
