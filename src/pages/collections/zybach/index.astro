@@ -105,7 +105,7 @@ const COMING = [
     title: 'The Alberta Street Project',
     href: '/collections/zybach/alberta-street/',
     line:
-      'Two cultural-resource inventories of the Alberta Street neighborhood in North and Northeast Portland, 1992 and 2015. Described here only. The interviews are with living people and the 1992 report has authors other than the creator, so the Library will not open this series until the rights and the consents have been examined.',
+      'Student research and community history in North and Northeast Portland. A source guide helps you compare the 1992 and 2015 neighborhood reports, with reading questions and links to the originals on ORWW. The reports and interviews are not republished here.',
   },
   {
     title: 'The Osbornes Project',
@@ -211,6 +211,15 @@ const MEASURE = [
   <CollectionEntrance />
   <ListeningInvitation />
   <WorkingEditionBanner />
+
+  <aside class="fd-source-guide" aria-labelledby="alberta-guide">
+    <p class="fd-source-guide-label">Students study a neighborhood</p>
+    <h2 id="alberta-guide"><a href="/collections/zybach/alberta-street/">Alberta Street, 1992 and 2015</a></h2>
+    <p class="fd-para">What would you look for if you studied the same neighborhood
+      twenty-three years apart? Compare the two Alberta Street reports with a
+      source guide that connects the questions to the originals on ORWW.</p>
+    <p class="fd-more"><a href="/collections/zybach/alberta-street/">Explore the Alberta Street source guide →</a></p>
+  </aside>
 
   <h2 id="soap-creek-stories">A valley remembered</h2>
   <Opening>
@@ -340,6 +349,7 @@ const MEASURE = [
           'Start with the evidence. Every printed page has its own permanent link, the 1999 thesis shows how these interviews were tested against maps and photographs, and the timeline sets the narrators’ dated statements side by side, disagreements included.',
         links: [
           { label: 'Read, compare and keep your sources', href: '/collections/zybach/trails/', note: 'Four guided trails with a reading notebook and printable source sheet' },
+          { label: 'Alberta Street: students study a neighborhood', href: '/collections/zybach/alberta-street/', note: 'A source guide to the 1992 and 2015 reports on ORWW' },
           { label: 'The 1999 thesis', href: '/collections/zybach/soap-creek/thesis/', note: 'How the informants were chosen and how their memories were checked' },
           { label: 'Timeline', href: '/collections/zybach/soap-creek/timeline/', note: 'Dated statements, verbatim, by period' },
           { label: 'The Elliott videos', href: '/collections/zybach/elliott/videos/', note: 'Time-coded, so a class can jump to the minute' },
@@ -538,6 +548,35 @@ const MEASURE = [
 </RoomLayout>
 
 <style>
+  .fd-source-guide {
+    margin: 1.5rem 0 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--linen-card, #fffdf7);
+    border: 1px solid var(--rule-border, #d8d1c2);
+    border-left: 4px solid var(--old-gold, #a87f2c);
+    border-radius: 4px;
+  }
+  .fd-source-guide-label {
+    margin: 0 0 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6b6355;
+  }
+  .fd-source-guide h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.3rem;
+  }
+  .fd-source-guide .fd-para {
+    margin: 0;
+  }
+  .fd-source-guide .fd-more {
+    margin-bottom: 0;
+  }
+  .fd-source-guide a:focus-visible {
+    outline: 3px solid var(--deep-navy, #14243c);
+    outline-offset: 3px;
+  }
   .fd-para {
     max-width: 66ch;
     font-size: 1rem;

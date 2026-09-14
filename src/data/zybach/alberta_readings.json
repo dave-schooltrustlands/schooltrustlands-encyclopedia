@@ -1,0 +1,36 @@
+{
+  "verified": "2026-09-14",
+  "questions": [
+    {
+      "id": "methods",
+      "title": "How did the teams learn about the neighborhood?",
+      "prompt": "Compare the sources of information in each study. Continue to the next page for interview methods. Which kinds of evidence could answer your own question about a neighborhood?",
+      "sources": [
+        { "label": "1992 · Sources of Information · printed p. 5 (PDF 21)", "href": "http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Gardner_et_al_19920918.pdf#page=21" },
+        { "label": "2015 · Sources of Information · printed p. 8 (PDF 21)", "href": "http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Davis_et_al_20151020.pdf#page=21" }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "What counted as a community resource?",
+      "prompt": "Begin with people, then compare the categories the teams chose to inventory. The 2015 report explains that some earlier categories were not surveyed again because of limited time and resources. What can you conclude, and what remains unknown?",
+      "sources": [
+        { "label": "1992 · Cultural Resources / People · printed p. 40 (PDF 60)", "href": "http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Gardner_et_al_19920918.pdf#page=60" },
+        { "label": "2015 · Cultural Resources / People · printed p. 89 (PDF 102)", "href": "http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Davis_et_al_20151020.pdf#page=102" }
+      ]
+    },
+    {
+      "id": "recommendations",
+      "title": "What did the teams want to happen next?",
+      "prompt": "Choose one recommendation from 1992 and follow the 2015 team’s review of the earlier proposals. What did the later authors say had changed? Keep their assessment separate from what you would need to verify today.",
+      "sources": [
+        { "label": "1992 · Recommendations · printed p. 133 (PDF 157)", "href": "http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Gardner_et_al_19920918.pdf#page=157" },
+        { "label": "2015 · 1992 Recommendations Revisited · printed p. 116 (PDF 129)", "href": "http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Davis_et_al_20151020.pdf#page=129" }
+      ]
+    }
+  ],
+  "interviewForms": [
+    { "label": "1992 · Interview Questions · printed p. 143 (PDF 169)", "href": "http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Gardner_et_al_19920918.pdf#page=169" },
+    { "label": "2015 · Interview Questions · printed p. 129 (PDF 142)", "href": "http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Davis_et_al_20151020.pdf#page=142" }
+  ]
+}

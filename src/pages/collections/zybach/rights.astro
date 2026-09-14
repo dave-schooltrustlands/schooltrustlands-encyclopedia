@@ -138,7 +138,7 @@ const CONTACT_MAILTO = `mailto:${CONTACT}?subject=${encodeURIComponent(
     )}
 
     {populations.map((p) => (
-      <section class="zc-pop" aria-label={p.label}>
+      <section class="zc-pop" aria-label={p.label} id={p.key === 'alberta-street' ? 'alberta-street' : undefined}>
         <h3 class="zc-pop__head">
           {p.label}
           {p.dates && <span class="zc-pop__dates">{p.dates}</span>}

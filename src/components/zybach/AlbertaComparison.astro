@@ -1,0 +1,137 @@
+---
+interface Source { label: string; href: string; }
+interface Question { id: string; title: string; prompt: string; sources: Source[]; }
+interface Props { questions: Question[]; }
+const { questions } = Astro.props;
+const address = 'https://schooltrusts.org/collections/zybach/alberta-street/#compare';
+---
+<section id="compare" class="alberta-comparison" aria-labelledby="compare-title">
+  <h1 class="print-heading">Alberta Street: one neighborhood, two surveys</h1>
+  <p class="eyebrow">Read the two surveys together</p>
+  <h2 id="compare-title">What changed? What would you check?</h2>
+  <p class="comparison-intro">Choose one question or work through all three. Open the sources, record a detail from each report, and keep its printed page number with your observation. Source links open in a new tab.</p>
+  <p class="comparison-help">These are historical studies. A difference between reports may reflect a different question, boundary or method, as well as a change in the neighborhood.</p>
+  <div class="comparison-questions">
+    {questions.map((q, i) => <section class="comparison-question" id={q.id} aria-labelledby={`${q.id}-title`}>
+      <p class="question-number">Question {i + 1}</p>
+      <h3 id={`${q.id}-title`}>{q.title}</h3>
+      <p>{q.prompt}</p>
+      <ul class="paired-sources">{q.sources.map(s => <li><a href={s.href} target="_blank" rel="noopener">{s.label}<span aria-hidden="true"> ↗</span></a><span class="print-source">{s.href}</span></li>)}</ul>
+      <div class="observation" data-pagefind-ignore>
+        <label for={`${q.id}-note`}>Your evidence from each report</label>
+        <p id={`${q.id}-help`} class="field-help">1992: detail + printed page. 2015: detail + printed page. Then add what the comparison suggests.</p>
+        <textarea id={`${q.id}-note`} data-alberta-note={q.id} rows="4" maxlength="6000" aria-describedby={`${q.id}-help`} placeholder="1992, p. …: I noticed …&#10;2015, p. …: I noticed …&#10;This suggests …" />
+        <p class="print-note" data-print-alberta={q.id}>__________________________________________________________<br/>__________________________________________________________</p>
+      </div>
+    </section>)}
+  </div>
+  <div class="comparison-finish" data-pagefind-ignore>
+    <label for="alberta-conclusion">One finding to share, and one thing to investigate next</label>
+    <textarea id="alberta-conclusion" data-alberta-note="conclusion" rows="4" maxlength="6000" placeholder="The reports show …&#10;I would next look for … because …" />
+    <p class="print-note" data-print-alberta="conclusion">__________________________________________________________<br/>__________________________________________________________</p>
+    <p class="local-note">Notes stay in this browser; the Library does not receive them. They are not included in a shared link. Download a copy to keep them or use them on another device.</p>
+    <div class="comparison-actions" hidden>
+      <button type="button" data-alberta-download>Download notes and sources</button>
+      <button type="button" data-alberta-copy>Copy notes and sources</button>
+      <button type="button" data-alberta-print>Print a comparison sheet</button>
+    </div>
+    <p class="comparison-status" role="status" aria-live="polite"></p>
+    <div class="copy-fallback" hidden><label for="alberta-copy-text">Select and copy your notes</label><textarea id="alberta-copy-text" readonly rows="8" /></div>
+    <noscript><p>With JavaScript off, the sources and questions still work. Notes will not be saved; use your browser’s Print command for a blank comparison sheet.</p></noscript>
+  </div>
+  <p class="comparison-credit">Reading questions by America’s School Trust Library with Codex assistance. Your observations are your own. Cite the original report authors and printed pages; these questions do not replace the sources.</p>
+  <p class="print-address">Alberta Street · The Zybach Collection<br/><a href={address}>{address}</a></p>
+</section>
+<script>
+  const sheet = document.querySelector<HTMLElement>('#compare.alberta-comparison');
+  if (sheet) {
+    const fields = [...sheet.querySelectorAll<HTMLTextAreaElement>('[data-alberta-note]')];
+    const status = sheet.querySelector<HTMLElement>('.comparison-status')!;
+    const key = 'zybach-alberta-comparison:v1';
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    function updatePrint() {
+      for (const field of fields) sheet!.querySelector<HTMLElement>(`[data-print-alberta="${field.dataset.albertaNote}"]`)!.textContent = field.value.trim() || '__________________________________________________________\n__________________________________________________________';
+    }
+    function save() {
+      timer = undefined;
+      try {
+        localStorage.setItem(key, JSON.stringify({ version: 1, notes: Object.fromEntries(fields.map(f => [f.dataset.albertaNote!, f.value])) }));
+        status.textContent = 'Notes saved in this browser. Download a copy to keep them elsewhere.';
+      } catch { status.textContent = 'This browser could not save your notes. Download a copy before leaving this tab.'; }
+      updatePrint();
+    }
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved.version !== 1 || !saved.notes || typeof saved.notes !== 'object') throw Error('Invalid notes');
+        for (const field of fields) if (typeof saved.notes[field.dataset.albertaNote!] === 'string') field.value = saved.notes[field.dataset.albertaNote!].slice(0, field.maxLength);
+        status.textContent = 'Your saved comparison notes are restored.';
+      } else status.textContent = 'Begin with a detail from each report. Your source links will travel with downloaded notes.';
+    } catch { status.textContent = 'Saved notes could not be loaded. You can still write here and download a copy.'; }
+    updatePrint();
+    fields.forEach(field => field.addEventListener('input', () => { clearTimeout(timer); updatePrint(); status.textContent = 'Saving your notes…'; timer = setTimeout(save, 250); }));
+    window.addEventListener('pagehide', () => { if (timer) { clearTimeout(timer); save(); } });
+    window.addEventListener('beforeprint', updatePrint);
+    function exportText() {
+      const lines = ['Alberta Street: one neighborhood, two surveys', 'America’s School Trust Library · The Zybach Collection', 'https://schooltrusts.org/collections/zybach/alberta-street/#compare', '', sheet!.querySelector('.comparison-intro')!.textContent!, sheet!.querySelector('.comparison-help')!.textContent!, ''];
+      for (const block of sheet!.querySelectorAll<HTMLElement>('.comparison-question')) {
+        lines.push(block.querySelector('h3')!.textContent!, block.querySelector('h3 + p')!.textContent!);
+        for (const link of block.querySelectorAll<HTMLAnchorElement>('.paired-sources a')) lines.push(`${link.textContent!.replace(' ↗', '')}: ${link.href}`);
+        lines.push('', block.querySelector<HTMLTextAreaElement>('textarea')!.value.trim() || '[No observation entered]', '');
+      }
+      lines.push(sheet!.querySelector('label[for="alberta-conclusion"]')!.textContent!, fields.find(f => f.dataset.albertaNote === 'conclusion')!.value.trim() || '[No conclusion entered]', '', sheet!.querySelector('.comparison-credit')!.textContent!);
+      return lines.join('\n');
+    }
+    sheet.querySelector<HTMLElement>('.comparison-actions')!.hidden = false;
+    sheet.querySelector('[data-alberta-download]')!.addEventListener('click', () => {
+      const url = URL.createObjectURL(new Blob([exportText()], { type: 'text/plain;charset=utf-8' }));
+      const a = document.createElement('a'); a.href = url; a.download = 'alberta-street-comparison-notes.txt'; document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000); status.textContent = 'Download started with your notes, questions and original-source links.';
+    });
+    sheet.querySelector('[data-alberta-copy]')!.addEventListener('click', async () => {
+      const text = exportText(); const fallback = sheet!.querySelector<HTMLElement>('.copy-fallback')!;
+      try { await navigator.clipboard.writeText(text); fallback.hidden = true; status.textContent = 'Notes, questions and source links copied.'; }
+      catch { const area = fallback.querySelector<HTMLTextAreaElement>('textarea')!; fallback.hidden = false; area.value = text; area.focus(); area.select(); status.textContent = 'Automatic copying is unavailable. Your notes are selected below for copying.'; }
+    });
+    sheet.querySelector('[data-alberta-print]')!.addEventListener('click', () => { updatePrint(); window.print(); });
+  }
+</script>
+<style>
+  .alberta-comparison{max-width:76rem;margin:2.4rem auto;color:var(--deep-navy,#14243c);line-height:1.65;scroll-margin-top:5rem}
+  .eyebrow,.question-number{font:700 .78rem/1.5 var(--font-sans);text-transform:uppercase;letter-spacing:.08em;color:#665121}
+  .alberta-comparison h2{font-size:clamp(1.65rem,3vw,2.2rem);line-height:1.2;margin:.4rem 0 1rem}
+  .comparison-intro,.comparison-help{max-width:70ch}.comparison-help{font-size:.93rem;color:#485963}
+  .comparison-questions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:1.4rem 0}
+  .comparison-question{background:#f6f3e9;border-top:3px solid #a5843d;padding:1.25rem;scroll-margin-top:5rem;min-width:0}
+  .comparison-question h3{font-size:1.35rem;line-height:1.3;margin:.35rem 0 .8rem}.comparison-question p{margin:.6rem 0}
+  .paired-sources{padding-left:1.15rem;margin:1rem 0}.paired-sources li{margin:.7rem 0;overflow-wrap:anywhere}
+  .paired-sources a{font-family:var(--font-sans);font-size:.94rem;font-weight:650;text-underline-offset:.15em}
+  .alberta-comparison label{display:block;font:650 .94rem/1.5 var(--font-sans);margin:1rem 0 .5rem}
+  .field-help,.local-note,.comparison-status,.comparison-credit{font:.85rem/1.6 var(--font-sans);color:#485963}
+  .alberta-comparison textarea{width:100%;box-sizing:border-box;background:#fff;color:#14243c;border:1px solid #819098;border-radius:3px;resize:vertical;padding:.7rem;font:1rem/1.55 var(--font-sans)}
+  .comparison-finish{background:#edf2f1;padding:1.4rem;max-width:76ch;margin:1.6rem auto}.comparison-finish label{margin-top:0}
+  .comparison-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin:1rem 0}.comparison-actions button{background:#193346;color:#fff;border:1px solid #193346;border-radius:3px;padding:.7rem .9rem;font:600 .9rem/1.4 var(--font-sans);cursor:pointer}
+  .comparison-actions button:not(:first-child){background:#fff;color:#193346}.comparison-status{min-height:1.5em}
+  .comparison-actions[hidden],.copy-fallback[hidden],.print-note,.print-source,.print-address,.print-heading{display:none}
+  .comparison-credit{max-width:90ch;margin:1.5rem auto}.alberta-comparison :is(a,button,textarea):focus-visible{outline:3px solid #1e718d;outline-offset:3px}
+  @media(max-width:900px){.comparison-questions{grid-template-columns:1fr}.comparison-question{padding:1.2rem}.comparison-finish{max-width:none}}
+  @media(max-width:440px){.comparison-actions{flex-direction:column}}
+  @media print{
+    @page{margin:15mm}
+    :global(html),:global(body){background:white!important;border:0!important;box-shadow:none!important}
+    :global(body > *){display:none!important}:global(body > main.room-main){display:block!important;width:auto!important;max-width:none!important;padding:0!important;margin:0!important}
+    :global(main.room-main > *){display:none!important}:global(main.room-main > #compare){display:block!important}
+    .alberta-comparison{margin:0!important;max-width:none!important;color:#000!important;font:10pt/1.35 Georgia,serif}
+    .alberta-comparison h2{font-size:20pt}.alberta-comparison h3{font-size:13pt;break-after:avoid}
+    .print-heading{display:block;font-size:20pt;line-height:1.2;margin:0 0 1rem}.eyebrow{display:none}.alberta-comparison h2{font-size:14pt}
+    .comparison-questions{display:block;margin:1rem 0}.comparison-question{background:white;border:0;border-top:1px solid #777;padding:.7rem 0;break-inside:avoid}
+    .question-number{display:none}.comparison-finish{background:white;padding:.5rem 0;margin:1rem 0;max-width:none;break-inside:avoid}
+    .paired-sources{margin:.3rem 0}.paired-sources li{margin:.4rem 0}.paired-sources a{color:#000;font-size:9pt}
+    .print-source,.print-address{display:block;font:8pt/1.25 var(--font-sans);overflow-wrap:anywhere}
+    .print-note{display:block;white-space:pre-wrap;overflow-wrap:anywhere;min-height:2rem}
+    .alberta-comparison textarea,.comparison-actions,.local-note,.comparison-status,.copy-fallback,.field-help,noscript{display:none!important}
+    .comparison-credit{font-size:8pt;margin:.7rem 0}.print-address{border-top:1px solid #777;padding-top:.5rem}
+    .alberta-comparison a::after{content:none!important}
+  }
+</style>

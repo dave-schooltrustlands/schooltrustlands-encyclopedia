@@ -1,244 +1,105 @@
 ---
 export const prerender = true;
-
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
 import WorkingEditionBanner from '../../../components/zybach/WorkingEditionBanner.astro';
 import ProvenanceBlock from '../../../components/zybach/ProvenanceBlock.astro';
-import { seriesBySlug, clean } from '../../../components/zybach/_data';
-
-const s = seriesBySlug('alberta-street');
-const title = clean(s?.title) || 'Alberta Street Project';
-const summary =
-  clean(s?.summary) ||
-  'Two cultural-resource inventories of the Alberta Street neighborhood in North and Northeast Portland, 1992 and 2015, and the working files behind them.';
-
-/* What the generator recorded about how this series was described, and how
-   many accessioned files carry its name. Both are shown as measured. */
-const describedFrom = clean(s?.described_from);
-const matchingFiles = s?.counts?.accessioned_files_matching_name;
+import AlbertaComparison from '../../../components/zybach/AlbertaComparison.astro';
+import readings from '../../../data/zybach/alberta_readings.json';
+const base = 'http://www.orww.org/Alberta_Street_Project/2015_Report/';
+const earlier = base + '10_References/Gardner_et_al_19920918.pdf';
+const later = base + '10_References/Davis_et_al_20151020.pdf';
+// Audience: students, neighbors and researchers. Help them compare the two
+// public reports and form a source-supported question. No interview release.
 ---
-
-<RoomLayout
-  room="collections"
-  title={title}
-  subtitle="Series — described at inventory level"
-  width="prose"
-  sourceId="collections-zybach-alberta-street"
-  parents={[
-    { label: 'The Zybach Collection', href: '/collections/zybach/' },
-  ]}
->
+<RoomLayout room="collections" title="The Alberta Street Project" subtitle="One neighborhood, two surveys · Portland, 1992 and 2015" width="full" sourceId="collections-zybach-alberta-street" parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }]}>
   <span data-pagefind-meta="collection:zybach" hidden></span>
   <span data-pagefind-meta="series:alberta-street" hidden></span>
-
-  <div class="source-page">
-    <ZybachNav current="finding-aid" />
-
-    <WorkingEditionBanner />
-
-    <p class="kicker">Series · inventory level</p>
-
-    <p>{summary}</p>
-
-    <h2 id="what">What this is</h2>
-
-    <p>
-      In 1992 African American high-school students from Portland surveyed the
-      cultural resources of the Alberta Street corridor in North and Northeast
-      Portland, and the inventory and its recommendations were published through
-      Urban Forestry, Inc. In 2015 a second team repeated the survey, updating
-      its methods and its recommendations and adding a chapter history of the
-      neighborhood from the Chinookan villages to the gentrification of the
-      2010s. The two reports, twenty-three years apart, are the same
-      neighborhood measured twice by the people who live in it.
-    </p>
-
-    <p>
-      The 1992 inventory matters to the rest of this collection for a second
-      reason: Bob Zybach's 1999 thesis cites it as one of the projects that led
-      him toward what he calls a <em>geographical oral history</em> — asking
-      people about places rather than about themselves.
-    </p>
-
-    <h2 id="inventory">Inventory</h2>
-
-    <table class="zc-inv">
-      <thead>
-        <tr><th scope="col">What</th><th scope="col">Detail</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1992 report</th>
-          <td>
-            Gardner, Clark, Foster, Horn, Owens, Stroud and Ward, <em>1992
-            Alberta Street Cultural Resource Inventory with Recommendations</em>.
-            Urban Forestry, Inc., Portland. 150 pp. Online as one PDF.
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2015 report</th>
-          <td>
-            Davis, Arigbon, Williams, Mandley and May, <em>2015 Alberta Street
-            Cultural Resource Inventory With Recommendations</em>. 140 pp.
-            Online as one PDF (about 20 MB) and as a section-by-section web
-            edition.
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2015 web edition</th>
-          <td>
-            Thirteen sections, 00_Preface through 12_Archives_2014, mirroring
-            the printed report's table of contents.
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Interviews</th>
-          <td>
-            The 2015 site's interviews section holds three scanned images of a
-            single 2014 page. No interview audio and no transcripts are online.
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2014 planning files</th>
-          <td>Planning documents in the 2014 archives section, as PDFs.</td>
-        </tr>
-        <tr>
-          <th scope="row">Video</th>
-          <td>The project page promises videos; none are posted.</td>
-        </tr>
-        <tr>
-          <th scope="row">Accessioned</th>
-          <td>
-            {typeof matchingFiles === 'number' ? `${matchingFiles} files` : 'No files'}
-            {' '}whose names match this series were accessioned in the 2026
-            upload.{describedFrom ? ` Described from: ${describedFrom}.` : ''}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2 id="originals">The originals</h2>
-
-    <ul class="zc-links">
-      <li>
-        <a href="http://www.orww.org/Alberta_Street_Project/">Alberta Street Project</a>
-        — the project landing page.
-      </li>
-      <li>
-        <a href="http://www.orww.org/Alberta_Street_Project/2015_Report/index.html">
-          2015 report, web edition
-        </a> — the sectioned table of contents.
-      </li>
-      <li>
-        <a href="http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Davis_et_al_20151020.pdf">
-          Davis et al. 2015 (PDF, about 20 MB)
-        </a>
-      </li>
-      <li>
-        <a href="http://www.orww.org/Alberta_Street_Project/2015_Report/10_References/Gardner_et_al_19920918.pdf">
-          Gardner et al. 1992 (PDF)
-        </a>
-      </li>
-    </ul>
-
-    <h2 id="gaps">Known gaps</h2>
-
-    <ul>
-      <li>
-        <strong>The interviews are not online.</strong> The 2015 project
-        conducted interviews; what is published is one scanned page. Whether
-        recordings survive, and where, is not established.
-      </li>
-      <li>
-        <strong>Recordings possibly at the Oregon Historical Society.</strong>
-        The creator has mentioned this; the Library has not confirmed it, and no
-        catalogue record has been found. Unverified.
-      </li>
-      <li>
-        <strong>No Oregon State finding aid.</strong> No SCARC collection for
-        the Alberta Street Project has been located. Files were reportedly
-        transferred to a cloud folder in August 2026; no collection identifier
-        is known. Unverified.
-      </li>
-      <li>
-        <strong>The project's own site is incomplete</strong>, by its creator's
-        description.
-      </li>
-    </ul>
-
-    <h2 id="next">Why this series stays at inventory level</h2>
-
-    <p>
-      The Library has decided not to open this series for now, and to say so
-      rather than leave it as a promise. The interviews are with living people,
-      recorded in 1992 and 2015 by survey teams who were largely residents of
-      the neighborhood; the 1992 report has six authors, none of them the
-      creator; and no consent chain has been examined. This is a community's
-      record of itself. Before any item is published, two things have to happen
-      in order: find out whether the recordings exist and who holds them, and
-      obtain permission from the people who made the reports and from the
-      people in them. Until then the Library describes the series and links to
-      the creator's copies, and nothing more.
-    </p>
-
-    <ProvenanceBlock
-      items={[
-        { label: 'Creator', value: 'Oregon Websites and Watershed Project, Inc.; Dr. Bob Zybach' },
-        { label: 'Report authors', value: 'Gardner et al. (1992); Davis et al. (2015)' },
-        { label: 'Published at', value: 'orww.org/Alberta_Street_Project/', href: 'http://www.orww.org/Alberta_Street_Project/' },
-        { label: 'In this collection', value: 'Inventory-level description only; no items published' },
-        { label: 'Rights', value: 'Working edition. The creator publishes this material himself and retains all rights; the Library describes it with his participation and links to his originals. Per-series rights statements: /collections/zybach/rights/.' },
-      ]}
-    />
-
-    <p class="see-also">
-      <a href="/collections/zybach/">Finding aid</a> ·
-      <a href="/collections/zybach/provenance/">Provenance</a> ·
-      <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a> · <a href="/about/corrections/">How corrections work</a>
-    </p>
+  <ZybachNav current="finding-aid" />
+  <WorkingEditionBanner />
+  <div class="alberta-opening" id="what">
+    <div>
+      <p class="kicker">Students studying their community</p>
+      <h2>What makes a neighborhood worth remembering?</h2>
+      <p class="lead">People, meeting places, businesses, trees, stories. Two teams of young Portland researchers studied the Alberta Street neighborhood twenty-three years apart. Their reports let you compare what they found, how they worked, and what they hoped would happen next.</p>
+      <p>This guide takes you into the reports already published by Oregon Websites and Watersheds Project (ORWW). Start with one question below, then return with a detail from each study.</p>
+      <a class="start-button" href="#compare">Compare the two surveys ↓</a>
+      <p class="opening-note">For a class, a neighborhood history project, or a first visit. The reports open on ORWW’s website; the Library supplies the guide and your comparison sheet.</p>
+    </div>
+    <aside class="years" aria-label="The two study years">
+      <p><strong>1992</strong><span>A neighborhood inventory</span></p>
+      <div class="year-bridge"><span>23 years</span><span aria-hidden="true">↓</span></div>
+      <p><strong>2015</strong><span>A return to the same community</span></p>
+      <a href="#originals">Meet the research teams ↓</a>
+    </aside>
   </div>
-</RoomLayout>
 
+  <section id="originals" class="report-section" aria-labelledby="reports-title">
+    <h2 id="reports-title">The two reports</h2>
+    <div class="report-grid">
+      <article class="report-card">
+        <p class="kicker">The first survey · 1992</p>
+        <h3>Alberta Street Cultural Resource Inventory with Recommendations</h3>
+        <p>Gardner and colleagues describe the area’s history and resources, map what they found, and recommend neighborhood improvements. Begin with the project’s purposes on printed page 1.</p>
+        <a class="report-button" href={earlier + '#page=17'} target="_blank" rel="noopener">Read the 1992 report · PDF ↗</a>
+        <details><summary>Authors and edition</summary><p>Deborah Gardner, Andrew Clark, Delana Foster, Saretta Horn, Monica Owens, Samona Stroud and Tyran Ward. Report submitted to Urban Forestry, Inc., Portland, 1992.</p><p>Names follow the <a href={earlier + '#page=7'} target="_blank" rel="noopener">signed title page (PDF page 7)</a>. The scan also contains a front cover with six names and a later, 2011 reprint title page with different credits. The original pages remain as published.</p></details>
+      </article>
+      <article class="report-card">
+        <p class="kicker">The return study · 2015</p>
+        <h3>Alberta Street Cultural Resource Inventory With Recommendations</h3>
+        <p>Davis and colleagues revisit the neighborhood and the earlier recommendations. Their report explains the later study’s methods and limits, helping readers judge what can be compared.</p>
+        <a class="report-button" href={later + '#page=1'} target="_blank" rel="noopener">Read the 2015 report · PDF ↗</a>
+        <details><summary>Authors and edition</summary><p>Joshua Davis, Olabode Arigbon, Dominic Williams, Malachi Mandley and Cade May. October 20, 2015. The report credits ORWW and World Arts Foundation, Inc.; its methods chapter is by Bob Zybach.</p><p>Use the <a href={later + '#page=10'} target="_blank" rel="noopener">contents (PDF pages 10–11)</a> to explore beyond this guide.</p></details>
+      </article>
+    </div>
+    <p class="source-help">The 1992 report is a scan; text search may not work. Links below give both the printed page and its position in the PDF. If your viewer ignores the jump, enter the PDF page number in its page control.</p>
+  </section>
+
+  <AlbertaComparison questions={readings.questions} />
+
+  <section class="beyond-guide" aria-labelledby="further-title">
+    <h2 id="further-title">Take the question further</h2>
+    <div class="further-grid">
+      <article><h3>Study how an interview works</h3><p>What would a question invite a resident to remember? Compare the two reports’ interview questions before drafting a question of your own.</p><ul>{readings.interviewForms.map(s => <li><a href={s.href} target="_blank" rel="noopener">{s.label} ↗</a></li>)}</ul></article>
+      <article><h3>Follow Bob’s method into another landscape</h3><p>In Soap Creek Valley, memories of a place meet printed sources and landscape evidence. Try a short reading and listening experience, or read Bob’s account of how his collection began.</p><ul><li><a href="/collections/zybach/soap-creek/listen/rowley-hardwoods/">Marvin Rowley: hardwoods, soil and a fallen tree</a></li><li><a href="/participate/how-a-collection-comes-in/the-conversation/">Bob and Dave: how a collection comes in</a></li></ul></article>
+    </div>
+    <p class="historical-note">Read these reports as records of their times. Names, descriptions, business listings and recommendations may have changed. The studies’ language and interpretations belong to their authors; a historical listing is not present-day visiting or safety advice.</p>
+  </section>
+
+  <section class="inventory-section" id="inventory" aria-labelledby="inventory-title">
+    <h2 id="inventory-title">What is available, and where</h2>
+    <dl class="availability">
+      <div><dt>Read now</dt><dd>The complete 1992 and 2015 reports at ORWW. This Library page offers reading paths and a comparison sheet; it does not republish either report.</dd></div>
+      <div><dt>Supporting files</dt><dd>The <a href={base + 'index.html'}>2015 project contents and bibliography</a> link to source folders as well as reports. Some links open directory listings of images and working material, rather than a readable chapter.</dd></div>
+      <div><dt>Recordings</dt><dd>As of September 14, 2026, recordings have been identified in materials shared by Oregon State University. Copying and permissions review are in progress. The recordings are not available for playback here.</dd></div>
+    </dl>
+    <h3 id="gaps">What still needs work</h3>
+    <p>Matching recordings to interviews, completing and verifying preservation copies, and checking the permissions for public use remain separate tasks. Finding a recording is a useful step; it does not establish permission to publish it.</p>
+    <h3 id="next">Care for a community’s record</h3>
+    <p>The reports and interviews involve several creators and community members. The Library keeps their credits and source distinctions visible. The <a href="/collections/zybach/rights/#alberta-street">Alberta Street rights statement</a> explains the current access limits.</p>
+    <ProvenanceBlock items={[
+      { label: 'Source reports', value: 'Gardner and colleagues (1992); Davis and colleagues (2015). Original report pages and ORWW’s bibliography supply the credits and reading destinations.' },
+      { label: 'Published originals', value: 'Alberta Street Project at ORWW', href: 'http://www.orww.org/Alberta_Street_Project/' },
+      { label: 'This guide', value: 'Original editorial navigation and reading questions prepared by America’s School Trust Library with Codex assistance, September 14, 2026. No report or interview is republished here.' },
+      { label: 'Rights', value: 'Source materials have their own authors and rights. See the collection’s item-specific statements.', href: '/collections/zybach/rights/' },
+    ]} />
+    <p class="see-also"><a href="/collections/zybach/">The collection</a> · <a href="/collections/zybach/start-here/">Find another starting point</a> · <a href="/collections/zybach/errata/#log">Corrections to this collection</a> · <a href={`/correct${Astro.url.pathname}`}>Submit a correction</a></p>
+  </section>
+</RoomLayout>
 <style>
-  .zc-inv {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.92rem;
-    margin: 1rem 0 1.5rem;
-  }
-  .zc-inv th,
-  .zc-inv td {
-    text-align: left;
-    vertical-align: top;
-    padding: 0.5rem 0.65rem;
-    border-top: 1px solid var(--rule-border, #d8d1c2);
-    line-height: 1.5;
-  }
-  .zc-inv thead th {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #4e617c;
-    border-top: 0;
-  }
-  .zc-inv tbody th {
-    width: 11em;
-    font-family: var(--font-sans);
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--deep-navy, #14243c);
-  }
-  .zc-links {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    overflow-wrap: anywhere;
-  }
-  @media (max-width: 560px) {
-    .zc-inv tbody th { width: auto; }
-    .zc-inv, .zc-inv thead, .zc-inv tbody, .zc-inv tr, .zc-inv th, .zc-inv td { display: block; }
-    .zc-inv thead { display: none; }
-    .zc-inv tbody td { border-top: 0; padding-top: 0; }
-  }
+  .alberta-opening,.report-section,.beyond-guide,.inventory-section{max-width:76rem;margin:2rem auto;line-height:1.65;color:var(--deep-navy,#14243c)}
+  .alberta-opening{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(220px,1fr);gap:3rem;padding-bottom:2rem;border-bottom:1px solid #cbd1cc}
+  .kicker{font:700 .76rem/1.5 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:#665121;margin:0 0 .6rem}
+  .alberta-opening h2{font-size:clamp(1.8rem,3.8vw,3rem);line-height:1.13;margin:.5rem 0 1.2rem;max-width:20ch}
+  .lead{font-size:1.17rem}.alberta-opening p{max-width:66ch}.opening-note,.source-help,.historical-note{font:.9rem/1.6 var(--font-sans);color:#4b5d66}
+  .start-button,.report-button{display:inline-block;background:#193346;color:#fff!important;padding:.7rem 1rem;border-radius:3px;font:650 .95rem/1.5 var(--font-sans);text-decoration:none;margin:.5rem 0}
+  .years{background:#f2ede0;border:1px solid #d7cdb7;padding:1.8rem;text-align:center;align-self:start}.years p{margin:0}.years strong{display:block;font:4rem/1.15 Georgia,serif;color:#193346}.years span{display:block;font:.9rem/1.5 var(--font-sans)}
+  .year-bridge{margin:1rem 0;color:#665121}.year-bridge span:last-child{font-size:1.8rem}.years a{display:inline-block;font:.85rem/1.5 var(--font-sans);margin-top:1.3rem}
+  .report-section h2,.beyond-guide h2,.inventory-section h2{font-size:1.7rem;line-height:1.25}.report-grid,.further-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+  .report-card{background:#fff;border:1px solid #c3ccc8;padding:1.5rem;min-width:0}.report-card h3{font-size:1.5rem;line-height:1.3;margin:.4rem 0 1rem}.report-card details{font-size:.92rem;border-top:1px solid #d6dbd7;margin-top:1rem;padding-top:.8rem}.report-card summary{font-family:var(--font-sans);font-weight:650;cursor:pointer}.report-card details p{margin:.8rem 0}
+  .source-help{max-width:92ch;margin:1rem 0}.beyond-guide{border-top:1px solid #cbd1cc;padding-top:1.5rem}.further-grid article{padding-right:1.5rem}.further-grid h3{font-size:1.25rem;line-height:1.35}.further-grid ul{padding-left:1.25rem}.further-grid li{margin:.7rem 0}.historical-note{max-width:90ch;margin:1.5rem 0}
+  .inventory-section{max-width:76ch;margin-top:3rem;border-top:1px solid #cbd1cc;padding-top:1.5rem}.inventory-section h3{font-size:1.2rem}.availability{margin:1rem 0 2rem}.availability>div{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid #d6dbd7}.availability dt{font:700 .9rem/1.6 var(--font-sans)}.availability dd{margin:0}.see-also{font-size:.9rem}
+  :is(.alberta-opening,.report-section,.beyond-guide,.inventory-section) a:focus-visible,.report-card summary:focus-visible{outline:3px solid #1e718d;outline-offset:3px}
+  @media(max-width:800px){.alberta-opening{grid-template-columns:1fr;gap:1.4rem}.years{display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;gap:1rem;padding:1.3rem}.years strong{font-size:2.8rem}.year-bridge span:last-child{display:none}.years a{width:100%;margin-top:0}.report-grid,.further-grid{grid-template-columns:1fr}.alberta-opening h2{max-width:24ch}}
+  @media(max-width:440px){.report-card{padding:1.1rem}.availability>div{grid-template-columns:1fr;gap:.3rem}.years{gap:.6rem}.years strong{font-size:2.3rem}.years span{font-size:.8rem}}
 </style>
