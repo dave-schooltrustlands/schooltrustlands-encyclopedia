@@ -13,6 +13,7 @@ import mississippiAppendix from '../../../content/hornbook/mississippi-appendix.
 import idahoAppendix from '../../../content/hornbook/idaho-appendix.md?raw';
 import newMexicoAppendix from '../../../content/hornbook/new-mexico-appendix.md?raw';
 import oklahomaAppendix from '../../../content/hornbook/oklahoma-appendix.md?raw';
+import southDakotaAppendix from '../../../content/hornbook/south-dakota-appendix.md?raw';
 
 // NOTE: documents must live inside getStaticPaths — Astro executes
 // getStaticPaths in isolation and cannot see other frontmatter variables.
@@ -78,6 +79,11 @@ export function getStaticPaths() {
       subtitle: 'State appendix, v2 and first publication. Three opinions read against the full primary text; the entry records a case the Library had described with the wrong posture and the wrong remedy on five live pages, and a judicial anecdote that has no source.',
       content: oklahomaAppendix,
     },
+    'south-dakota-appendix': {
+      title: 'Appendix A - South Dakota',
+      subtitle: 'State appendix, v2 and first publication. Three opinions read against the full primary text; the entry records a remedy the court never ordered that three of the Library\'s own live pages had published as one it granted, and a quotation the Library\'s internal register had placed inside quotation marks that no court wrote.',
+      content: southDakotaAppendix,
+    },
   } as const;
   return Object.entries(documents).map(([slug, doc]) => ({
     params: { slug },
@@ -121,6 +127,7 @@ const { slug, doc } = Astro.props;
     <a href="/writing/hornbook/idaho-appendix/">Idaho appendix</a>
     <a href="/writing/hornbook/new-mexico-appendix/">New Mexico appendix</a>
     <a href="/writing/hornbook/oklahoma-appendix/">Oklahoma appendix</a>
+    <a href="/writing/hornbook/south-dakota-appendix/">South Dakota appendix</a>
     <a href="/for-lawyers/">For lawyers</a>
   </nav>
 
