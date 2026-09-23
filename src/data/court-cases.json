@@ -110,11 +110,11 @@
     "citation": "642 P.2d 230",
     "court": "Okla.",
     "year": 1982,
-    "holding": "The Legislature cannot divert school trust revenues to non-school purposes consistent with the trust obligation. The grant-and-acceptance creates an 'irrevocable compact.'",
-    "whyItMatters": "Oklahoma's anti-diversion ruling. Cited (with Andrus) in Kanaly v. State for the 'irrevocable compact' / 'solemn agreement' / 'contract' triad.",
-    "supports": ["anti-diversion", "compact"],
+    "holding": "Five statutes held unconstitutional under Article XI, Sections 1, 2 and 5 of the Oklahoma Constitution and the Enabling Act: they capped the rent the Commissioners of the Land Office could charge on preference-right leases, capped the interest on farm loans and land-sale contracts, and let a sitting lessee renew without matching competing bids. The vice was a subsidy, not a diversion of collected revenue \u2014 'Just as a State may not use school land trust funds assets to subsidize its highway construction program, a State may not use school land trust assets to subsidize farming and ranching,' at 236. The acceptance provisions 'constitute an irrevocable compact between the United States and Oklahoma ... which cannot be altered or abrogated,' at 235. The decision operates prospectively only: no injunction issued and nothing was ordered restored, at 239.",
+    "whyItMatters": "Oklahoma's anti-subsidy ruling \u2014 the field's cleanest holding that a legislature may not require the trustee to manage school trust assets for less than full value in order to benefit a favoured private class. Corrected September 22, 2026: this entry formerly described Nigh as an anti-diversion case striking appropriation legislation that redirected trust revenue to general state-government purposes. It is not that case, and the court enjoined nothing. Cited (with Andrus) in Kanaly v. State for the 'irrevocable compact' / 'solemn agreement' / 'contract' triad. An original proceeding in the Supreme Court of Oklahoma: there was no trial and no factual record.",
+    "supports": ["anti-subsidy", "full-value", "compact"],
     "state": "OK",
-    "topics": ["diversion", "compact"],
+    "topics": ["leasing", "full-value", "compact"],
     "url": "http://law.justia.com/cases/oklahoma/supreme-court/1982/5326.html"
   },
   "idaho-watersheds-1999": {
@@ -146,8 +146,8 @@
     "citation": "368 N.W.2d 819",
     "court": "S.D.",
     "year": 1985,
-    "holding": "The school-land grant and its acceptance constitute an irrevocable compact, a solemn agreement, and a contract between the receiving state and the United States.",
-    "whyItMatters": "South Dakota's principal trust-formation precedent. The case aggregates three authorities into a single triadic formulation: Andrus v. Utah (U.S. 1980), Oklahoma Education Ass'n v. Nigh (Okla. 1982), and State v. Platte Valley Public Power & Irrigation District (Neb. 1946). Only Andrus is a decision of the Supreme Court of the United States.",
+    "holding": "'That these provisions create a special, permanent and perpetual trust ... and that the state is the trustee is beyond question,' at 823. S.B. 221, which transferred trust property to another state agency without compensating the trust, violates the permanent trust fund provisions of the Enabling Act and Article VIII, Section 7, at 829. The remedy was a declaration and a deadline, not a decree: no injunction issued and no money judgment was entered; 'the legislature will have to reimburse the trust fund for the full market value,' and '[w]hether this should be done through an appropriation or other additional legislation is a determination for the legislature,' at 824.",
+    "whyItMatters": "South Dakota's principal trust-formation precedent. Corrected September 22, 2026: this entry formerly stated the 'irrevocable compact / solemn agreement / contract' triad as Kanaly's own holding. The opinion reports those descriptions rather than adopting them \u2014 'Such a procedure has been said to create' them, at 823 \u2014 and in its own voice, in the next sentence, it uses only compact and contract ('this trust, compact, and contract', at 823-24). 'Irrevocable' and 'solemn agreement' never appear in the court's own voice. The string cite collects three authorities: Andrus v. Utah (U.S. 1980), Oklahoma Education Ass'n v. Nigh (Okla. 1982), and State v. Platte Valley Public Power & Irrigation District (Neb. 1946). Only Andrus is a decision of the Supreme Court of the United States.",
     "supports": ["compact", "trust-formation"],
     "state": "SD",
     "topics": ["compact", "trust-formation"]
