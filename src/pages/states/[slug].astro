@@ -1,0 +1,58 @@
+---
+export const prerender = true;
+
+import { getCollection } from 'astro:content';
+import EAIUtilityBar from '../../components/EAIUtilityBar.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PrepublicationFooter from '../../components/PrepublicationFooter.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('states');
+
+  return entries.flatMap((entry) => {
+    const abbr = entry.data.iso.toLowerCase().replace(/^us-/, '');
+    const slug = entry.data.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+    const target = `/reading/${entry.data.iso.toLowerCase()}/`;
+    const props = {
+      name: entry.data.name,
+      target,
+    };
+
+    return [
+      { params: { slug }, props },
+      { params: { slug: abbr }, props },
+    ];
+  });
+}
+
+const { name, target } = Astro.props;
+const canonical = new URL(target, Astro.site ?? 'https://schooltrusts.org').toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{name} state dossier redirect · America's School Trust Library</title>
+    <meta name="description" content={`Redirect to the ${name} state dossier in the Reading Room.`} />
+    <link rel="canonical" href={canonical} />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+  </head>
+  <body class="min-h-screen bg-archive-paper text-ink mode-library">
+    <EAIUtilityBar />
+    <Header />
+    <main class="mx-auto max-w-prose p-4 sm:p-8">
+      <h1>{name} state dossier</h1>
+      <p>
+        Continue to the <a href={target}>{name} state dossier</a>.
+      </p>
+    </main>
+    <PrepublicationFooter />
+    <Footer />
+  </body>
+</html>
