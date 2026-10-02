@@ -18,7 +18,7 @@ import texasAppendix from '../../../content/hornbook/texas-appendix.md?raw';
 import minnesotaAppendix from '../../../content/hornbook/minnesota-appendix.md?raw';
 import wisconsinAppendix from '../../../content/hornbook/wisconsin-appendix.md?raw';
 
-// NOTE: documents must live inside getStaticPaths — Astro executes
+// NOTE: documents must live inside getStaticPaths â€” Astro executes
 // getStaticPaths in isolation and cannot see other frontmatter variables.
 export function getStaticPaths() {
   const documents = {
@@ -99,7 +99,7 @@ export function getStaticPaths() {
     },
     'wisconsin-appendix': {
       title: 'Appendix A - Wisconsin',
-      subtitle: 'State appendix, v2 and first publication. Three opinions read against the full primary text; the entry records how the Wisconsin court located the school trust in its constitution, where it drew the line between two classes of school land, and a word the Library\'s Court Atlas had put in its mouth.',
+      subtitle: 'State appendix, v2, revised. Six opinions read against the full primary text; the entry records how the Wisconsin court located the school trust in its constitution, where it drew the line between two classes of school land, that the statutes of limitation still run against the State\'s suits to collect what is owed the fund, and a word the Library\'s Court Atlas had put in its mouth.',
       content: wisconsinAppendix,
     },
   } as const;
