@@ -1,6 +1,8 @@
-// Site middleware. Its ONLY job is the passcode gate on the private
-// Forever Promise review tree (/writing/forever-promise/...). Every other
-// path — the whole public site — passes straight through untouched.
+// Site middleware. Its job is the passcode gate on the private Forever
+// Promise review tree (/writing/forever-promise/...), plus two small address
+// rules that run first: the clean-address guard and the trailing-slash
+// normalizer. Every other path — the whole public site — passes straight
+// through untouched.
 // The gated pages are all server-rendered (prerender = false), so this
 // runs for them on every request; prerendered public pages are never
 // affected at runtime.
@@ -48,6 +50,25 @@ function gatePage(wrong: boolean): Response {
 export const onRequest = defineMiddleware(async (context, next) => {
   const { pathname, search } = context.url;
 
+  // Clean-address guard (2026-10-06). The router forgives a doubled slash in an
+  // address ("//writing/forever-promise/", also reachable by typing "/\writing/...")
+  // and serves the page anyway, but the checks below compare the address as it
+  // was typed. That mismatch let the gated review copy open with no passcode.
+  // No real address on this site contains "//", so never serve one under that
+  // spelling: a GET or HEAD is sent to the clean address, where every check
+  // below applies; anything else is refused. This also guarantees the redirect
+  // further down can never produce a "//host/..." Location.
+  if (pathname.includes('//')) {
+    const reqMethod = context.request.method;
+    if (reqMethod === 'GET' || reqMethod === 'HEAD') {
+      return new Response(null, {
+        status: 301,
+        headers: { location: pathname.replace(/\/{2,}/g, '/') + (search || ''), 'X-Robots-Tag': ROBOTS, 'Cache-Control': 'no-store' },
+      });
+    }
+    return new Response('Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'X-Robots-Tag': ROBOTS, 'Cache-Control': 'no-store' } });
+  }
+
   // Trailing-slash normalizer (2026-08-14). Bare paths like /start reach this
   // worker when no static asset matches them, and the worker's route matching
   // has served them unreliably (the same defect that 404ed /booklet on
@@ -70,7 +91,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
     });
   }
 
-  if (!pathname.startsWith(FP_PREFIX)) return next();
+  // Gate by the page the router actually matched as well as by the typed
+  // address, so a spelling the router accepts can never step around the gate.
+  const routed = String((context as any).routePattern || '');
+  if (!pathname.startsWith(FP_PREFIX) && !routed.startsWith(FP_PREFIX)) return next();
 
   const env: any = (context.locals as any)?.runtime?.env || {};
   const passcode = env.FP_PASSCODE;
