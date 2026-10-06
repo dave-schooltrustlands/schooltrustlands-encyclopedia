@@ -1,0 +1,82 @@
+---
+// The writing desk: type, record, attach, send. Used for a new request (with
+// the bot picker) and for a follow-up inside a thread. All behaviour lives in
+// /office/office.js, which finds this by its data-composer attribute.
+import { LIMITS } from '../../lib/office/config';
+import { ALLOWED_EXTENSIONS } from '../../lib/office/files';
+
+interface Props {
+  mode: 'new' | 'followup';
+  bots?: { id: string; name: string; description: string }[];
+  requestId?: string;
+  botName?: string;
+  /** False when the Workers AI binding is missing; recordings then go to the bot as audio only. */
+  canTranscribe: boolean;
+}
+const { mode, bots = [], requestId = '', botName = '', canTranscribe } = Astro.props;
+const accept = ALLOWED_EXTENSIONS.map((e) => '.' + e).join(',');
+const maxMb = Math.round(LIMITS.fileBytes / (1024 * 1024));
+---
+<section
+  class="of-card of-composer"
+  data-composer
+  data-mode={mode}
+  data-request-id={requestId}
+  data-max-bytes={LIMITS.fileBytes}
+  data-max-files={LIMITS.filesPerMessage}
+  data-transcribe={canTranscribe ? '1' : '0'}
+  aria-labelledby={`of-composer-h-${mode}`}
+>
+  <h2 class="of-h2" id={`of-composer-h-${mode}`}>{mode === 'new' ? 'New request' : `Reply to ${botName}`}</h2>
+
+  {mode === 'new' && (
+    <fieldset class="of-bots">
+      <legend class="of-label">Send to</legend>
+      <div class="of-bot-grid">
+        {bots.map((b, i) => (
+          <label class="of-bot">
+            <input type="radio" name="of-bot" value={b.id} data-bot-name={b.name} checked={i === 0} />
+            <span class="of-bot-face">
+              <span class="of-bot-name">{b.name}</span>
+              {b.description && <span class="of-bot-desc">{b.description}</span>}
+            </span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  )}
+
+  {mode === 'new' && (
+    <>
+      <label class="of-label" for="of-title">Subject <small>(optional)</small></label>
+      <input class="of-input" id="of-title" type="text" maxlength={LIMITS.titleChars} autocomplete="off" data-title />
+    </>
+  )}
+
+  <label class="of-label" for={`of-body-${mode}`}>{mode === 'new' ? 'What do you need?' : 'Your message'}</label>
+  <textarea class="of-textarea" id={`of-body-${mode}`} rows={mode === 'new' ? 7 : 5} maxlength={LIMITS.ownerBodyChars} data-body></textarea>
+
+  <div class="of-row of-tools">
+    <button type="button" class="of-btn" data-record aria-pressed="false">Record your voice</button>
+    <span class="of-rec-time" data-rec-time hidden>0:00</span>
+    <label class="of-btn">
+      Attach files
+      <input type="file" multiple hidden accept={accept} data-file-input />
+    </label>
+    <span class="of-meta">Up to {LIMITS.filesPerMessage} files, {maxMb} MB each.</span>
+  </div>
+
+  <ul class="of-files" data-files aria-label="Attached files"></ul>
+  <p class="of-status" data-status role="status" aria-live="polite"></p>
+
+  <div class="of-row of-send-row">
+    <span class="of-meta">
+      {canTranscribe
+        ? 'A recording is turned into text here so you can correct it before sending.'
+        : 'A recording is sent to the bot as audio.'}
+    </span>
+    <button type="button" class="of-btn of-btn--primary" data-send>
+      {mode === 'new' ? 'Send request' : 'Send message'}
+    </button>
+  </div>
+</section>

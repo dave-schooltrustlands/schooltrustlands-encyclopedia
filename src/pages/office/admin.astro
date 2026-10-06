@@ -1,0 +1,255 @@
+---
+// The private research office: administrator's page.
+// Bots (the registry that feeds the picker), bot tokens, replies suggested for
+// the Library, and the recent activity log. The gate in src/middleware.ts
+// only lets people on the admin list reach /office/admin/.
+export const prerender = false;
+import Layout from '../../layouts/OfficeLayout.astro';
+import { formatWhen, isTrue, officeEnv, officeTitle, officeUser } from '../../lib/office/config';
+import { listBots, listPublications, parseIdArray, type Row } from '../../lib/office/db';
+import { renderMarkdown } from '../../lib/office/markdown';
+
+const env = officeEnv(Astro.locals);
+const user = officeUser(Astro.locals);
+if (!user || !user.isAdmin) return new Response('Administrators only.', { status: 403 });
+
+const db = env.OFFICE_DB;
+const officeName = officeTitle(env);
+const bots = await listBots(db, false);
+const tokens: Row[] =
+  (await db
+    .prepare('SELECT id, bot_id, label, created_at, created_by, expires_at, last_used_at, revoked_at FROM bot_tokens ORDER BY created_at DESC LIMIT 200')
+    .all()).results || [];
+const waiting = await listPublications(db, ['nominated']);
+const approved = await listPublications(db, ['approved']);
+const fileRows: Row[] = waiting.length
+  ? (await db
+      .prepare(`SELECT id, message_id, filename, size FROM attachments WHERE kind = 'file' AND message_id IN (${waiting.map(() => '?').join(', ')})`)
+      .bind(...waiting.map((p) => p.message_id))
+      .all()).results || []
+  : [];
+const log: Row[] =
+  (await db.prepare('SELECT at, actor_kind, actor_id, action, request_id, target_id, meta FROM audit_log ORDER BY id DESC LIMIT 60').all()).results || [];
+
+const tokenState = (t: Row): string =>
+  t.revoked_at ? 'revoked' : t.expires_at && t.expires_at < new Date().toISOString() ? 'revoked' : 'approved';
+const tokenLabel = (t: Row): string =>
+  t.revoked_at ? 'Revoked' : t.expires_at && t.expires_at < new Date().toISOString() ? 'Expired' : 'Active';
+const defaultCredit = (p: Row): string =>
+  `Research reply prepared by ${p.bot_name}, an AI research assistant of America’s School Trust Library, at the request of the collection’s author. Reviewed and approved for publication by the Library.`;
+---
+<Layout title="Admin" officeName={officeName} user={user} page="admin" adminCanRead={isTrue(env.OFFICE_ADMIN_CAN_READ)}>
+  <span class="of-eyebrow">Administrator</span>
+  <h1 class="of-h1">Office admin</h1>
+  <p class="of-lede">Bots, their tokens, and replies waiting for a publication decision.</p>
+  <p class="of-status" data-admin-status role="status" aria-live="polite"></p>
+
+  <section class="of-card" aria-labelledby="of-pubs-h" data-admin>
+    <h2 class="of-h2" id="of-pubs-h">Suggested for the Library ({waiting.length})</h2>
+    {waiting.length === 0 && <p class="of-meta">Nothing is waiting for a decision.</p>}
+    {waiting.map((p) => {
+      const offered = parseIdArray(p.attachment_ids);
+      const files = fileRows.filter((f) => f.message_id === p.message_id && offered.includes(f.id));
+      return (
+        <div class="of-pub" data-pub={p.id}>
+          <p class="of-meta">
+            From the thread &ldquo;{p.request_title}&rdquo; · reply by {p.bot_name}, {formatWhen(p.message_at, env)} · suggested by {p.nominated_by}
+          </p>
+          {p.note && <p class="of-note">{p.note}</p>}
+          <details>
+            <summary class="of-meta">Read the reply</summary>
+            <div class="of-prose" set:html={renderMarkdown(p.message_body)} />
+          </details>
+          {files.length > 0 && (
+            <div>
+              <span class="of-label">Files offered with it <small>(untick any that should stay private)</small></span>
+              {files.map((f) => (
+                <label class="of-check">
+                  <input type="checkbox" value={f.id} checked data-pub-file />
+                  <a href={`/api/office/attachments/${f.id}`} target="_blank" rel="noopener">{f.filename}</a>
+                </label>
+              ))}
+            </div>
+          )}
+          <div class="of-grid">
+            <div>
+              <label class="of-label" for={`t-${p.id}`}>Public title</label>
+              <input class="of-input" id={`t-${p.id}`} type="text" maxlength="140" value={p.request_title} data-pub-title />
+            </div>
+            <div>
+              <label class="of-label" for={`s-${p.id}`}>Short address <small>(optional)</small></label>
+              <input class="of-input" id={`s-${p.id}`} type="text" maxlength="100" placeholder="made-from-the-title" data-pub-slug />
+            </div>
+          </div>
+          <label class="of-label" for={`c-${p.id}`}>Credit line</label>
+          <input class="of-input" id={`c-${p.id}`} type="text" maxlength="600" value={defaultCredit(p)} data-pub-credit />
+          <label class="of-label" for={`n-${p.id}`}>Note back to the person who suggested it <small>(optional)</small></label>
+          <input class="of-input" id={`n-${p.id}`} type="text" maxlength="1000" data-pub-note />
+          <div class="of-row of-tools">
+            <button type="button" class="of-btn of-btn--primary" data-pub-decide="approve">Approve</button>
+            <button type="button" class="of-btn of-btn--danger" data-pub-decide="reject">Decline</button>
+          </div>
+        </div>
+      );
+    })}
+
+    {approved.length > 0 && (
+      <>
+        <h3 class="of-label">Approved</h3>
+        <p class="of-meta">
+          Approving publishes nothing by itself. Download the packet and add it to the Library through the usual review; then record the public address so the owner can see it.
+        </p>
+        <div class="of-table-wrap">
+          <table class="of-table">
+            <thead><tr><th>Title</th><th>Approved</th><th>Packet</th><th>Public address</th></tr></thead>
+            <tbody>
+              {approved.map((p) => (
+                <tr data-pub={p.id}>
+                  <td>{p.title}</td>
+                  <td>{formatWhen(p.decided_at, env)}</td>
+                  <td><a href={`/api/office/admin/packet?id=${p.id}`}>Download</a>{p.exported_at ? ' (downloaded)' : ''}</td>
+                  <td>
+                    <span class="of-row">
+                      <input class="of-input" type="text" maxlength="300" value={p.public_url || ''} placeholder="/collections/zybach/..." aria-label="Public address" data-pub-url />
+                      <button type="button" class="of-btn" data-pub-url-save>Save</button>
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )}
+  </section>
+
+  <section class="of-card" aria-labelledby="of-bots-h" data-admin>
+    <h2 class="of-h2" id="of-bots-h">Bots</h2>
+    <div class="of-table-wrap">
+      <table class="of-table">
+        <thead><tr><th>Id</th><th>Name</th><th>In the picker</th><th>Order</th><th>Doorbell</th><th></th></tr></thead>
+        <tbody>
+          {bots.length === 0 && <tr><td colspan="6">No bots yet. Add the first one below.</td></tr>}
+          {bots.map((b) => (
+            <tr>
+              <td>{b.id}</td>
+              <td>{b.name}{b.description && <><br /><span class="of-meta">{b.description}</span></>}</td>
+              <td><span class="of-chip" data-status={b.enabled ? 'approved' : 'off'}>{b.enabled ? 'Shown' : 'Hidden'}</span></td>
+              <td>{b.sort}</td>
+              <td>
+                {b.webhook_url ? 'On' : 'Off'}
+                {b.webhook_url && <button type="button" class="of-btn of-btn--quiet" data-webhook-key={b.id}>Show key</button>}
+              </td>
+              <td>
+                <button
+                  type="button" class="of-btn of-btn--quiet" data-bot-edit
+                  data-id={b.id} data-name={b.name} data-description={b.description} data-sort={b.sort}
+                  data-enabled={b.enabled ? '1' : '0'} data-webhook={b.webhook_url || ''}
+                >Edit</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="of-label">Add or change a bot</h3>
+    <div class="of-grid" data-bot-form>
+      <div>
+        <label class="of-label" for="of-bot-id">Id <small>(lowercase, e.g. herald)</small></label>
+        <input class="of-input" id="of-bot-id" type="text" maxlength="32" autocomplete="off" data-bot-id />
+      </div>
+      <div>
+        <label class="of-label" for="of-bot-name">Name</label>
+        <input class="of-input" id="of-bot-name" type="text" maxlength="60" autocomplete="off" data-bot-name-input />
+      </div>
+      <div>
+        <label class="of-label" for="of-bot-sort">Order</label>
+        <input class="of-input" id="of-bot-sort" type="number" min="0" max="9999" value="100" data-bot-sort />
+      </div>
+    </div>
+    <label class="of-label" for="of-bot-desc">One-line description <small>(shown in the picker)</small></label>
+    <input class="of-input" id="of-bot-desc" type="text" maxlength="200" data-bot-desc />
+    <label class="of-label" for="of-bot-hook">Doorbell address <small>(optional; an https address the site pings when a request is queued)</small></label>
+    <input class="of-input" id="of-bot-hook" type="url" maxlength="500" placeholder="https://" data-bot-hook />
+    <label class="of-check"><input type="checkbox" checked data-bot-enabled /> Show this bot in the picker and let its tokens work</label>
+    <label class="of-check"><input type="checkbox" data-bot-rotate /> Replace the doorbell signing key (the bot must be given the new one)</label>
+    <div class="of-row of-tools"><button type="button" class="of-btn of-btn--primary" data-bot-save>Save bot</button></div>
+  </section>
+
+  <section class="of-card" aria-labelledby="of-tokens-h" data-admin>
+    <h2 class="of-h2" id="of-tokens-h">Bot tokens</h2>
+    <p class="of-meta">
+      A token lets one bot read and answer the requests addressed to it, and nothing else. The site keeps only a fingerprint of each token, so a token is shown once, when it is made.
+    </p>
+    <div class="of-table-wrap">
+      <table class="of-table">
+        <thead><tr><th>Bot</th><th>Token id</th><th>Label</th><th>Made</th><th>Last used</th><th>Expires</th><th>State</th><th></th></tr></thead>
+        <tbody>
+          {tokens.length === 0 && <tr><td colspan="8">No tokens yet.</td></tr>}
+          {tokens.map((t) => (
+            <tr>
+              <td>{t.bot_id}</td>
+              <td><code>{t.id}</code></td>
+              <td>{t.label}</td>
+              <td>{formatWhen(t.created_at, env)}</td>
+              <td>{t.last_used_at ? formatWhen(t.last_used_at, env) : 'Never'}</td>
+              <td>{t.expires_at ? formatWhen(t.expires_at, env) : 'Never'}</td>
+              <td><span class="of-chip" data-status={tokenState(t)}>{tokenLabel(t)}</span></td>
+              <td>{!t.revoked_at && <button type="button" class="of-btn of-btn--quiet" data-token-revoke={t.id}>Revoke</button>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="of-label">Make a token</h3>
+    <div class="of-grid">
+      <div>
+        <label class="of-label" for="of-tok-bot">Bot</label>
+        <select class="of-select" id="of-tok-bot" data-token-bot>
+          {bots.map((b) => <option value={b.id}>{b.name}</option>)}
+        </select>
+      </div>
+      <div>
+        <label class="of-label" for="of-tok-label">Label <small>(where it will live)</small></label>
+        <input class="of-input" id="of-tok-label" type="text" maxlength="80" data-token-label />
+      </div>
+      <div>
+        <label class="of-label" for="of-tok-days">Expires after <small>(days; blank = never)</small></label>
+        <input class="of-input" id="of-tok-days" type="number" min="1" max="3650" data-token-days />
+      </div>
+    </div>
+    <div class="of-row of-tools"><button type="button" class="of-btn of-btn--primary" data-token-mint disabled={bots.length === 0}>Make token</button></div>
+    <div data-token-result hidden>
+      <p class="of-note of-note--warn">Copy this now. It will not be shown again. Put it in the bot&rsquo;s environment and nowhere else.</p>
+      <code class="of-secret" data-token-value></code>
+      <p class="of-meta">Suggested environment variable: <code data-token-env></code></p>
+    </div>
+    <div data-key-result hidden>
+      <p class="of-note">Doorbell signing key for <strong data-key-bot></strong>. Give it to that bot so it can check that a doorbell really came from this site.</p>
+      <code class="of-secret" data-key-value></code>
+    </div>
+  </section>
+
+  <section class="of-card of-card--plain" aria-labelledby="of-log-h">
+    <h2 class="of-h2" id="of-log-h">Recent activity</h2>
+    <p class="of-meta">Who did what, and when. The log never holds the text of a request, a reply, or a file.</p>
+    <div class="of-table-wrap">
+      <table class="of-table">
+        <thead><tr><th>When</th><th>Who</th><th>What</th><th>Thread</th><th>Details</th></tr></thead>
+        <tbody>
+          {log.map((e) => (
+            <tr>
+              <td class="of-nowrap">{formatWhen(e.at, env)}</td>
+              <td>{e.actor_kind}{e.actor_id ? ` · ${e.actor_id}` : ''}</td>
+              <td>{e.action}</td>
+              <td>{e.request_id ? <code>{String(e.request_id).slice(0, 10)}</code> : ''}</td>
+              <td><span class="of-meta">{e.meta || ''}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Layout>

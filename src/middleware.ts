@@ -1,11 +1,17 @@
-// Site middleware. Its ONLY job is the passcode gate on the private
-// Forever Promise review tree (/writing/forever-promise/...). Every other
-// path — the whole public site — passes straight through untouched.
-// The gated pages are all server-rendered (prerender = false), so this
-// runs for them on every request; prerendered public pages are never
+// Site middleware. It does three things, in this order:
+//   1. Trailing-slash normalizer for slash-less page paths (see below).
+//   2. The door to the private research office (/office/... and
+//      /api/office/...): sign-in, bot tokens, and the cross-site check all
+//      live in src/lib/office/gate.ts. See docs/office/ARCHITECTURE.md.
+//   3. The passcode gate on the private Forever Promise review tree
+//      (/writing/forever-promise/...), unchanged.
+// Every other path — the whole public site — passes straight through
+// untouched. The gated pages are all server-rendered (prerender = false), so
+// this runs for them on every request; prerendered public pages are never
 // affected at runtime.
 import { defineMiddleware } from 'astro:middleware';
 import { FP_PREFIX, fpToken, readCookie } from './lib/fp';
+import { isOfficePath, officeGate } from './lib/office/gate';
 
 
 const ROBOTS = 'noindex, nofollow, noarchive';
@@ -69,6 +75,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
       headers: { location: pathname + '/' + (search || '') },
     });
   }
+
+  // Private research office. Handled entirely by its own gate, which fails
+  // closed; nothing below this line applies to office paths.
+  if (isOfficePath(pathname)) return officeGate(context, next);
 
   if (!pathname.startsWith(FP_PREFIX)) return next();
 
