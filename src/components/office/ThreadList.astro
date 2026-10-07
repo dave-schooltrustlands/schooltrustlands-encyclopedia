@@ -1,0 +1,32 @@
+---
+// The list of requests on the desk: newest first, a plain status word, and a
+// clear mark when an answer is waiting to be read.
+import { STATUS_LABEL, formatWhen, type OfficeEnv, type OfficeUser, type RequestStatus } from '../../lib/office/config';
+import type { Row } from '../../lib/office/db';
+
+interface Props { threads: Row[]; user: OfficeUser; env: OfficeEnv; test?: boolean }
+const { threads, user, env, test = false } = Astro.props;
+---
+<ul class="of-threads">
+  {threads.map((t) => {
+    const unread = !!t.owner_unread && t.owner_email === user.email;
+    const answeredish = t.status === 'answered' || t.status === 'needs_info';
+    return (
+      <li class="of-thread" data-unread={unread ? '1' : '0'}>
+        <a href={`/office/${t.id}/`}>
+          <span class="of-dot" aria-hidden="true"></span>
+          <span class="of-thread-title">
+            {unread && <span class="of-new">{answeredish ? 'New answer' : 'New'}</span>}
+            {test && <span class="of-chip of-chip--test">Test</span>}
+            {t.title}
+          </span>
+          <span class="of-chip" data-status={t.status}>{STATUS_LABEL[t.status as RequestStatus] || t.status}</span>
+          <span class="of-thread-sub">
+            To {t.bot_name} · last change {formatWhen(t.updated_at, env)}
+            {t.owner_email !== user.email && <> · from {t.owner_email}</>}
+          </span>
+        </a>
+      </li>
+    );
+  })}
+</ul>

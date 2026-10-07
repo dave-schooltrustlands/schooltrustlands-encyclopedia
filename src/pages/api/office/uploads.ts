@@ -5,7 +5,7 @@
 // pending files nobody sends are removed after 24 hours.
 // Sign-in and the same-site check are enforced by the gate in src/middleware.ts.
 import type { APIRoute } from 'astro';
-import { RATE, officeEnv, officeUser } from '../../../lib/office/config';
+import { RATE, canSendRequests, officeEnv, officeUser } from '../../../lib/office/config';
 import { audit, overLimit } from '../../../lib/office/db';
 import { storeUpload } from '../../../lib/office/files';
 import { apiError, clientIp, json } from '../../../lib/office/util';
@@ -15,7 +15,7 @@ export const POST: APIRoute = async (ctx) => {
   const env = officeEnv(ctx.locals);
   const user = officeUser(ctx.locals);
   if (!user) return apiError(401, 'unauthorized', 'Please sign in.');
-  if (!user.isOwner) return apiError(403, 'forbidden', 'Only the office owner can add files.');
+  if (!canSendRequests(user)) return apiError(403, 'forbidden', 'Only the office owner can add files.');
   if (await overLimit(env.OFFICE_DB, 'upload:' + user.email, RATE.ownerUploads)) {
     return apiError(429, 'rate_limited', 'That is a lot of files in one hour. Please wait a little and try again.');
   }
@@ -32,7 +32,7 @@ export const POST: APIRoute = async (ctx) => {
   if (stored instanceof Response) return stored;
 
   await audit(env.OFFICE_DB, {
-    actor_kind: 'owner', actor_id: user.email, action: 'file.uploaded', target_id: stored.id, ip: clientIp(ctx.request),
+    actor_kind: user.isOwner ? 'owner' : 'admin', actor_id: user.email, action: 'file.uploaded', target_id: stored.id, ip: clientIp(ctx.request),
     meta: { kind, size: stored.size, type: stored.content_type },
   });
   return json(201, { ok: true, attachment: stored });

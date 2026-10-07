@@ -1,0 +1,80 @@
+---
+// The private research office: plain-language help. What the desk is for,
+// how to use it, what happens to a request, who can read it, how to get help.
+export const prerender = false;
+import Layout from '../../layouts/OfficeLayout.astro';
+import { LIMITS, STATUS_LABEL, isTrue, listOf, officeEnv, officeTitle, officeUser } from '../../lib/office/config';
+import { adminCanReadSetting } from '../../lib/office/policy';
+
+const env = officeEnv(Astro.locals);
+const user = officeUser(Astro.locals);
+if (!user) return new Response('Sign-in required.', { status: 401 });
+
+const officeName = officeTitle(env);
+const adminCanRead = adminCanReadSetting(env);
+const helpEmail = listOf(env.OFFICE_ADMIN_EMAILS)[0] || '';
+const emailsOn = isTrue(env.OFFICE_NOTIFY);
+const maxMb = Math.round(LIMITS.fileBytes / (1024 * 1024));
+---
+<Layout title="Help" officeName={officeName} user={user} page="help" adminCanRead={adminCanRead}>
+  <a class="of-back" href="/office/">&larr; Back to the desk</a>
+  <span class="of-eyebrow">Help</span>
+  <h1 class="of-h1">How this desk works</h1>
+  <p class="of-lede">
+    This is a private desk at America&rsquo;s School Trust Library. You use it to ask the Library&rsquo;s helpers for research,
+    writing, transcription, and similar work. The helpers are AI assistants that work for the Library. They write their answers back here.
+  </p>
+
+  <section class="of-card of-help">
+    <h2 class="of-h2">Asking for something</h2>
+    <ol class="of-help-list">
+      <li><strong>Write what you need</strong> in the big box on the desk, the way you would say it to a research assistant. Or press <em>Talk instead of typing</em>, speak, and press it again to stop. Your words appear in the box so you can fix anything the machine got wrong.</li>
+      <li><strong>Attach files</strong> if they help: photos, scans, PDFs, Word documents, spreadsheets, recordings, maps. Up to {LIMITS.filesPerMessage} files, {maxMb} MB each.</li>
+      <li><strong>Press Send.</strong> Your request goes to <strong>Herald</strong> unless you choose another helper under <em>Ask a different helper instead</em>. Herald is the right choice for almost everything.</li>
+    </ol>
+    <p>If the first answer is not quite right, open the request and write back at the bottom: &ldquo;shorter, please&rdquo;, &ldquo;add the sources&rdquo;, &ldquo;try the 1870s instead&rdquo;. The helper sees the whole conversation.</p>
+  </section>
+
+  <section class="of-card of-help">
+    <h2 class="of-h2">What happens after you press Send</h2>
+    <p>Your request waits for the helper on the desk. The helper picks it up, does the work, and writes back on the request&rsquo;s own page. Each request shows one of these words:</p>
+    <dl class="of-dl">
+      <dt><span class="of-chip" data-status="queued">{STATUS_LABEL.queued}</span></dt><dd>Sent, and in line. Nothing for you to do.</dd>
+      <dt><span class="of-chip" data-status="in_progress">{STATUS_LABEL.in_progress}</span></dt><dd>A helper has it and is working on it.</dd>
+      <dt><span class="of-chip" data-status="answered">{STATUS_LABEL.answered}</span></dt><dd>The answer is ready. Open the request to read it and download any files.</dd>
+      <dt><span class="of-chip" data-status="needs_info">{STATUS_LABEL.needs_info}</span></dt><dd>The helper needs something from you first. Open it and answer in the box at the bottom.</dd>
+      <dt><span class="of-chip" data-status="failed">{STATUS_LABEL.failed}</span></dt><dd>Something went wrong. Open it and press <em>Send it again</em>, or email Dave.</dd>
+    </dl>
+    <p>
+      An answer can take a while: helpers work through requests as they come in. You do not need to keep the page open.
+      {emailsOn ? 'You will get a short email when an answer is ready (it says only that there is an answer, not what it says).' : 'Come back to the desk later to see the answer.'}
+    </p>
+  </section>
+
+  <section class="of-card of-help" id="privacy">
+    <h2 class="of-h2">Who can see your requests</h2>
+    <ul class="of-help-list">
+      <li><strong>You.</strong> You sign in with your email address and a code that is emailed to you.</li>
+      {adminCanRead && <li><strong>Dave Sullivan</strong>, as the Library&rsquo;s administrator, can read what is here, so he can help if something goes wrong.</li>}
+      <li><strong>The helper you send it to</strong> sees that request and its files, and nothing else on the desk.</li>
+      <li><strong>Nobody else.</strong> Nothing on this desk is public, and search engines cannot see it.</li>
+    </ul>
+    <p>
+      An answer becomes part of the public Library only if it is suggested for publication (you can do that with the
+      &ldquo;Suggest this reply for the Library&rdquo; link under an answer) and the Library approves it. Your own messages, recordings, and files are never published that way.
+    </p>
+    <p>You can delete any request, with its files, from the bottom of its page. Deleting is for good.</p>
+  </section>
+
+  <section class="of-card of-help">
+    <h2 class="of-h2">Getting help</h2>
+    <p>
+      If anything is confusing or does not work, email Dave{helpEmail ? <> at <a href={`mailto:${helpEmail}`}>{helpEmail}</a></> : ''}.
+      It helps to say what you pressed and what happened.
+    </p>
+    <p>
+      From time to time the desk will ask you to sign in again with a new emailed code. That is normal. If you were in the middle of
+      typing something long, copy it first.
+    </p>
+  </section>
+</Layout>

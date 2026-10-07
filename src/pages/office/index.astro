@@ -1,13 +1,20 @@
 ---
-import { adminCanReadSetting } from '../../lib/office/policy';
-// The private research office: the desk. A composer for a new request and the
-// list of threads. Server-rendered on every visit; the gate in
-// src/middleware.ts has already checked who is asking.
+// The private research office: the desk. A short welcome, the box for a new
+// request, and the list of requests with their answers. Server-rendered on
+// every visit; the gate in src/middleware.ts has already checked who is asking.
+//
+// The owner (Bob) sees his desk. An administrator (Dave) sees the same desk,
+// with a strip at the top explaining that anything sent from here is a test,
+// and with test threads listed apart from the owner's. ?view=owner shows the
+// administrator exactly what the owner sees, without the extras.
 export const prerender = false;
 import Composer from '../../components/office/Composer.astro';
+import ThreadList from '../../components/office/ThreadList.astro';
 import Layout from '../../layouts/OfficeLayout.astro';
-import { STATUS_LABEL, defer, formatWhen, isTrue, officeEnv, officeTitle, officeUser, type RequestStatus } from '../../lib/office/config';
+import { defer, listOf, officeEnv, officeTitle, officeUser } from '../../lib/office/config';
 import { expireStale, listUsableBots, listRequests, sweep, type Row } from '../../lib/office/db';
+import { adminCanReadSetting } from '../../lib/office/policy';
+import { isTestThread } from '../../lib/office/rules';
 
 const env = officeEnv(Astro.locals);
 const user = officeUser(Astro.locals);
@@ -18,58 +25,99 @@ await expireStale(db);
 defer(Astro.locals, sweep(env));
 
 const officeName = officeTitle(env);
-const bots = user.isOwner ? await listUsableBots(db, env) : [];
-// An owner sees their own threads. An admin who may read sees every thread.
-const canSeeThreads = user.isOwner || user.adminCanRead;
-const threads: Row[] = canSeeThreads ? await listRequests(db, user.adminCanRead ? null : user.email) : [];
-const waiting = threads.filter((t) => t.owner_unread && t.owner_email === user.email).length;
----
-<Layout title="Desk" officeName={officeName} user={user} page="desk" adminCanRead={adminCanReadSetting(env)}>
-  <span class="of-eyebrow">Private research office</span>
-  <h1 class="of-h1">{officeName}</h1>
-  <p class="of-lede">
-    {user.isOwner
-      ? 'Ask one of the Library’s research bots for something. Type it, say it, or attach files. The answer comes back here, in a thread of its own.'
-      : 'You manage this office. Requests are written by its owner.'}
-  </p>
+const ownerName = String(env.OFFICE_DISPLAY_NAME || '').trim().slice(0, 40);
+const adminView = user.isAdmin && !user.isOwner;
+const preview = adminView && Astro.url.searchParams.get('view') === 'owner';
+const helpEmail = listOf(env.OFFICE_ADMIN_EMAILS)[0] || '';
 
-  {user.isOwner && bots.length > 0 && <Composer mode="new" canTranscribe={!!env.AI} bots={bots.map((b) => ({ id: b.id, name: b.name, description: b.description }))} />}
-  {user.isOwner && bots.length === 0 && (
-    <p class="of-note">No bots are switched on yet, so there is nobody to send a request to. The administrator can add them.</p>
+const bots = (await listUsableBots(db, env)).map((b) => ({ id: String(b.id), name: String(b.name), description: String(b.description || '') }));
+
+// The owner sees his own threads. An administrator who may read sees every
+// thread (the owner's first, tests apart); one who may not sees only the
+// tests they sent themselves.
+const all: Row[] = user.isOwner ? await listRequests(db, user.email) : await listRequests(db, user.adminCanRead ? null : user.email);
+const ownerThreads = adminView ? all.filter((t) => !isTestThread(t, env.OFFICE_OWNER_EMAILS)) : all;
+const testThreads = adminView ? all.filter((t) => isTestThread(t, env.OFFICE_OWNER_EMAILS)) : [];
+const newReplies = ownerThreads.filter((t) => t.owner_unread && t.owner_email === user.email).length;
+const who = ownerName || 'the owner';
+---
+<Layout title="Desk" officeName={officeName} user={user} page="desk" adminCanRead={adminCanReadSetting(env)} preview={preview}>
+  {adminView && !preview && (
+    <aside class="of-admin-strip" aria-label="Administrator">
+      <p>
+        <strong>You are signed in as the administrator.</strong> This is {who}&rsquo;s desk as {who} sees it, with two extras for you:
+        anything you send from here is a <strong>test</strong> (it goes to the helper like a real request, marked as a test, and {who} never sees it),
+        and test threads are listed separately at the bottom.
+      </p>
+      <p class="of-row">
+        <a class="of-btn" href="/office/?view=owner">See it exactly as {who} does</a>
+        <a class="of-btn" href="/office/admin/">Helpers and keys (admin)</a>
+      </p>
+    </aside>
+  )}
+  {preview && (
+    <aside class="of-admin-strip of-admin-strip--preview" aria-label="Preview">
+      <p><strong>Preview:</strong> this is exactly what {who} sees. Anything you send from here is still a test from you. <a href="/office/">Back to the administrator&rsquo;s view</a></p>
+    </aside>
   )}
 
-  {canSeeThreads ? (
-    <section aria-labelledby="of-threads-h">
-      <h2 class="of-h2" id="of-threads-h">
-        Threads
-        {waiting > 0 && <span class="of-meta"> · {waiting} new {waiting === 1 ? 'reply' : 'replies'}</span>}
-      </h2>
-      {threads.length === 0 ? (
-        <p class="of-empty">Nothing here yet. Your first request will appear in this list.</p>
-      ) : (
-        <ul class="of-threads">
-          {threads.map((t) => (
-            <li class="of-thread" data-unread={t.owner_unread && t.owner_email === user.email ? '1' : '0'}>
-              <a href={`/office/${t.id}/`}>
-                <span class="of-dot" aria-hidden="true"></span>
-                <span class="of-thread-title">
-                  {t.owner_unread && t.owner_email === user.email ? <span class="of-meta">New · </span> : null}{t.title}
-                </span>
-                <span class="of-chip" data-status={t.status}>{STATUS_LABEL[t.status as RequestStatus] || t.status}</span>
-                <span class="of-thread-sub">
-                  {t.bot_name} · {t.message_count} {t.message_count === 1 ? 'message' : 'messages'} · {formatWhen(t.updated_at, env)}
-                  {t.owner_email !== user.email && <> · from {t.owner_email}</>}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
-    </section>
-  ) : (
-    <p class="of-note">
-      Reading this office is switched off for administrators. You can still manage bots, tokens, and publication decisions on the
-      <a href="/office/admin/">admin page</a>.
+  <header class="of-welcome">
+    <span class="of-eyebrow">America&rsquo;s School Trust Library · private desk</span>
+    <h1 class="of-h1">{ownerName ? `Welcome, ${ownerName}` : officeName}</h1>
+    <p class="of-lede">
+      This is your private desk for asking the Library&rsquo;s helpers for research, writing, transcription, and more.
+      The helpers are AI assistants that work for the Library. Their answers come back here.
     </p>
+    <ol class="of-steps">
+      <li><span class="of-step-n" aria-hidden="true">1</span><span><strong>Say what you need.</strong> Type it in the box below, or press <em>Talk instead of typing</em> and just speak.</span></li>
+      <li><span class="of-step-n" aria-hidden="true">2</span><span><strong>Add files if you have them.</strong> Photos, PDFs, documents, recordings. This is optional.</span></li>
+      <li><span class="of-step-n" aria-hidden="true">3</span><span><strong>Press Send.</strong> The answer appears under <em>Your requests</em>, further down this page. You can close the page and come back any time.</span></li>
+    </ol>
+    <p class="of-help-link"><a href="/office/help/">How this desk works, and who can see it</a></p>
+  </header>
+
+  {bots.length > 0 ? (
+    <Composer
+      mode="new"
+      canTranscribe={!!env.AI}
+      bots={bots}
+      testNote={adminView ? `Test mode: this request will come from you (${user.email}), not from ${who}. ${who} will not see it.` : ''}
+    />
+  ) : (
+    <p class="of-note of-note--warn">
+      The helpers are not switched on yet, so there is nobody to send a request to. {helpEmail ? <>Please email Dave at <a href={`mailto:${helpEmail}`}>{helpEmail}</a>.</> : 'Please let Dave know.'}
+    </p>
+  )}
+
+  <section aria-labelledby="of-threads-h" class="of-threads-wrap">
+    <h2 class="of-h2" id="of-threads-h">
+      {adminView ? `${who}’s requests` : 'Your requests'}
+      {newReplies > 0 && <span class="of-new-count"> · {newReplies} new {newReplies === 1 ? 'answer' : 'answers'}</span>}
+    </h2>
+    {adminView && !user.adminCanRead ? (
+      <p class="of-note">Reading {who}&rsquo;s requests is switched off for administrators.</p>
+    ) : ownerThreads.length === 0 ? (
+      <p class="of-empty">
+        {adminView
+          ? `${who} has not sent a request yet.`
+          : 'Nothing here yet. When you send your first request, it will appear here, newest first, and the answer will come back inside it.'}
+      </p>
+    ) : (
+      <ThreadList threads={ownerThreads} user={user} env={env} />
+    )}
+  </section>
+
+  {adminView && !preview && (
+    <section aria-labelledby="of-tests-h" class="of-threads-wrap">
+      <details class="of-tests">
+        <summary><h2 class="of-h2 of-inline" id="of-tests-h">Tests and setup checks ({testThreads.length})</h2> <span class="of-meta">{who} does not see these.</span></summary>
+        {testThreads.length === 0 ? (
+          <p class="of-empty">No test threads.</p>
+        ) : (
+          <ThreadList threads={testThreads} user={user} env={env} test />
+        )}
+        <p class="of-meta">Open a test thread to read it or delete it.</p>
+      </details>
+    </section>
   )}
 </Layout>

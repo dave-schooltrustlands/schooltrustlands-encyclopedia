@@ -2,7 +2,7 @@
 //   GET  /api/office/requests/<id>/state      status + counters, for the page's quiet refresh
 //   POST /api/office/requests/<id>/messages   add a follow-up        { body, attachment_ids, client_key }
 //   POST /api/office/requests/<id>/retry      send a failed request again
-//   POST /api/office/requests/<id>/delete     delete the thread and its files, for good
+//   POST /api/office/requests/<id>/delete     delete the thread and its files, for good (the writer; an admin also for test threads)
 //   POST /api/office/requests/<id>/nominate   suggest a bot reply for the Library  { message_id, note, attachment_ids }
 //   POST /api/office/requests/<id>/withdraw   take a suggestion back               { publication_id }
 // A thread that is not yours looks exactly like one that does not exist: 404.
@@ -13,7 +13,7 @@ import {
 } from '../../../../../lib/office/db';
 import { botUsable } from '../../../../../lib/office/policy';
 import { ringDoorbell } from '../../../../../lib/office/notify';
-import { canNominate, canReadRequest, canWriteRequest } from '../../../../../lib/office/rules';
+import { canDeleteRequest, canNominate, canReadRequest, canWriteRequest } from '../../../../../lib/office/rules';
 import {
   apiError, bodyErrorResponse, cleanText, clientIp, idList, isId, json, newId, nowIso, readJson,
 } from '../../../../../lib/office/util';
@@ -43,7 +43,7 @@ export const POST: APIRoute = async (ctx) => {
   const request = await getRequest(db, id);
   if (!request || !canReadRequest(user, request)) return notFound();
   const ip = clientIp(ctx.request);
-  const actorKind = canWriteRequest(user, request) ? 'owner' : 'admin';
+  const actorKind = user.isOwner && canWriteRequest(user, request) ? 'owner' : 'admin';
 
   let body: Record<string, any> = {};
   if (action === 'messages' || action === 'nominate' || action === 'withdraw') {
@@ -87,16 +87,16 @@ export const POST: APIRoute = async (ctx) => {
         return apiError(422, 'bot_not_allowed', 'That bot is not available to this office any more. Start a new request with another bot.');
       }
       if (!(await retryRequest(db, request.id))) return apiError(409, 'conflict', 'Only a request that did not finish can be sent again.');
-      await audit(db, { actor_kind: 'owner', actor_id: user.email, action: 'request.retried', request_id: request.id, ip });
+      await audit(db, { actor_kind: actorKind, actor_id: user.email, action: 'request.retried', request_id: request.id, ip });
       const bot = await getBot(db, request.bot_id);
       if (bot) defer(ctx.locals, ringDoorbell(env, bot, request.id, 'request.queued'));
       return json(200, { ok: true, status: 'queued' });
     }
 
     case 'delete': {
-      if (!canWriteRequest(user, request)) return apiError(403, 'forbidden', 'Only the owner of this thread can delete it.');
+      if (!canDeleteRequest(user, request, env.OFFICE_OWNER_EMAILS)) return apiError(403, 'forbidden', 'Only the owner of this thread can delete it.');
       const removed = await deleteRequest(env, request.id);
-      await audit(db, { actor_kind: 'owner', actor_id: user.email, action: 'request.deleted', request_id: request.id, ip, meta: removed });
+      await audit(db, { actor_kind: actorKind, actor_id: user.email, action: 'request.deleted', request_id: request.id, ip, meta: removed });
       return json(200, { ok: true, deleted: request.id });
     }
 

@@ -256,6 +256,9 @@ One rule worth calling out: **no message from Bob goes unseen.** If he adds to a
 | A reply suggested for the Library, and its offered files | Yes | Yes |
 | Bob's threads and files | No | Yes, read-only, each read logged, and Bob is told in the page footer |
 | Write, delete, or send as Bob | No | No |
+| Send a test request from the desk (it comes from Dave's address, is marked `sent_by: "test"` for the bot, and Bob never sees it) | Yes | Yes |
+| Delete a test thread (one not written by an owner address) | Yes | Yes |
+| See the desk exactly as Bob does (`/office/?view=owner`) | Yes | Yes |
 
 ---
 
@@ -309,8 +312,10 @@ Built and run on Oct 5, 2026 in a scratch project with the same versions as the 
 | `src/lib/office/rules.ts` | Who may read and write what |
 | `src/lib/office/util.ts` | Small helpers |
 | `src/layouts/OfficeLayout.astro` | The private layout and all office styles |
-| `src/components/office/Composer.astro` | Type, record, attach, send |
-| `src/pages/office/index.astro` | The desk: composer and thread list |
+| `src/components/office/Composer.astro` | Type or talk, attach (button or drag and drop), examples, helper picker (Herald by default), send |
+| `src/components/office/ThreadList.astro` | The list of requests with plain status words |
+| `src/pages/office/index.astro` | The desk: welcome and three steps, composer, requests; admin strip, test threads, and the "as Bob sees it" view |
+| `src/pages/office/help.astro` | Plain-language help: how to ask, what happens, who can see it, how to get help |
 | `src/pages/office/[id].astro` | One thread |
 | `src/pages/office/admin.astro` | Bots, tokens, publication decisions, activity |
 | `src/pages/api/office/*` | Owner and admin endpoints |

@@ -122,6 +122,7 @@ curl -sS -X POST "https://schooltrusts.org/api/office/bot/requests/$ID/claim" \
     "status": "claimed",
     "bot": "herald",
     "attempts": 1,
+    "sent_by": "owner",
     "created_at": "2026-10-06T01:18:44.762Z",
     "updated_at": "2026-10-06T01:18:44.806Z",
     "queued_at": "2026-10-06T01:18:44.762Z",
@@ -150,6 +151,7 @@ curl -sS -X POST "https://schooltrusts.org/api/office/bot/requests/$ID/claim" \
   ]
 }
 ```
+- `request.sent_by` is `"owner"` for a real request from the office owner, or `"test"` for one sent by the administrator from the desk (or a setup check). Answer a test the same way; it shows only on the administrator's desk.
 - `messages` is the whole thread in order. `author` is `owner` or `bot`; `kind` is `prompt`, `followup`, `reply`, `progress`, `needs_info`, or `failure`.
 - A voice recording has `"kind": "voice"`. Its `transcript` is the machine transcript before the owner corrected it. The owner's corrected words are the message `body`. Treat the body as what the owner meant.
 

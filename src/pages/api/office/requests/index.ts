@@ -5,18 +5,27 @@
 // The request goes into that bot's queue as 'queued'. client_key makes a
 // double-click or a retried send land as one request, not two.
 import type { APIRoute } from 'astro';
-import { LIMITS, RATE, defer, officeEnv, officeUser } from '../../../../lib/office/config';
+import { LIMITS, RATE, canSendRequests, defer, officeEnv, officeUser } from '../../../../lib/office/config';
 import { botUsable } from '../../../../lib/office/policy';
 import { createRequest, getBot, overLimit, pendingOwnerUploads } from '../../../../lib/office/db';
 import { ringDoorbell } from '../../../../lib/office/notify';
 import { apiError, bodyErrorResponse, cleanLine, cleanText, clientIp, idList, json, readJson } from '../../../../lib/office/util';
 export const prerender = false;
 
+/** The first line, cut at a word boundary so a title never ends mid-word. */
+function shortTitle(line: string, max: number): string {
+  if (line.length <= max) return line;
+  const cut = line.slice(0, max + 1);
+  const space = cut.lastIndexOf(' ');
+  return (space > max * 0.6 ? cut.slice(0, space) : line.slice(0, max)).replace(/[\s,;:.\-]+$/, '') + '…';
+}
+
 export const POST: APIRoute = async (ctx) => {
   const env = officeEnv(ctx.locals);
   const user = officeUser(ctx.locals);
   if (!user) return apiError(401, 'unauthorized', 'Please sign in.');
-  if (!user.isOwner) return apiError(403, 'forbidden', 'Only the office owner can send requests.');
+  // The owner sends real requests; an administrator may send a test from the desk.
+  if (!canSendRequests(user)) return apiError(403, 'forbidden', 'Only the office owner can send requests.');
   const db = env.OFFICE_DB;
 
   let body: Record<string, any>;
@@ -50,7 +59,7 @@ export const POST: APIRoute = async (ctx) => {
   const firstLine = (text.split('\n').find((l) => l.trim()) || '').replace(/^[#>*\-\s]+/, '');
   const title =
     cleanLine(body.title, LIMITS.titleChars) ||
-    cleanLine(firstLine, 80) ||
+    shortTitle(cleanLine(firstLine, 400), 90) ||
     (pending.some((p) => p.kind === 'voice') ? 'Voice request' : 'Request with attachments');
 
   const created = await createRequest(db, {
@@ -58,5 +67,5 @@ export const POST: APIRoute = async (ctx) => {
   });
   if (!created.replayed) defer(ctx.locals, ringDoorbell(env, bot, created.id, 'request.queued'));
 
-  return json(created.replayed ? 200 : 201, { ok: true, id: created.id, url: `/office/${created.id}/`, replayed: created.replayed });
+  return json(created.replayed ? 200 : 201, { ok: true, id: created.id, url: `/office/${created.id}/?sent=1`, replayed: created.replayed });
 };
