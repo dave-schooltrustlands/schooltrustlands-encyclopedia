@@ -1,0 +1,51 @@
+---
+// An approved reply from Bob's office, published to the Zybach Collection.
+// Data: src/data/zybach_desk/<slug>.json, written by scripts/office/publish-packet.mjs.
+// The reply is bot-written text, so it goes through the office's safe markdown
+// renderer (no raw HTML, no remote images, http/https/mailto links only).
+export const prerender = true;
+
+import RoomLayout from '../../../../layouts/RoomLayout.astro';
+import { renderMarkdown } from '../../../../lib/office/markdown';
+
+export function getStaticPaths() {
+  const files = import.meta.glob('../../../../data/zybach_desk/*.json', { eager: true }) as Record<string, any>;
+  return Object.values(files)
+    .map((m) => (m && m.default) || m)
+    .filter((d) => d && d.format === 'zybach-desk-page/v1' && /^[a-z0-9][a-z0-9-]{0,78}[a-z0-9]$/.test(String(d.slug)))
+    .map((d) => ({ params: { slug: d.slug }, props: { page: d } }));
+}
+
+const { page } = Astro.props as { page: any };
+const html = renderMarkdown(page.body_markdown);
+const when = (iso: string | null) => {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? '' : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/Los_Angeles' });
+};
+const human = (n: number) => (n >= 1048576 ? `${(n / 1048576).toFixed(1)} MB` : n >= 1024 ? `${Math.round(n / 1024)} KB` : `${n} bytes`);
+---
+<RoomLayout
+  room="collections"
+  title={page.title}
+  subtitle="From the research desk"
+  width="prose"
+  noindex={!!page.noindex}
+  parents={[{ label: 'The Zybach Collection', href: '/collections/zybach/' }]}
+>
+  <div class="source-page" data-pagefind-ignore={page.noindex ? 'all' : undefined}>
+    <p class="text-sm">
+      {page.attribution || 'Prepared by a research assistant; reviewed by the Library.'}
+      {page.approved_at && <> Approved for the Library {when(page.approved_at)}.</>}
+    </p>
+    <article set:html={html} />
+    {page.files && page.files.length > 0 && (
+      <section>
+        <h2>Files</h2>
+        <ul>
+          {page.files.map((f: any) => <li><a href={f.href}>{f.filename}</a> ({human(f.size)})</li>)}
+        </ul>
+      </section>
+    )}
+  </div>
+</RoomLayout>
