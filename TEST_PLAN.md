@@ -35,8 +35,8 @@ Write down for each step: date/time (PT), device, pass/fail, and anything odd.
 | # | Do this | Expected |
 |---|---|---|
 | B1 | Open the picker on the desk. | Shows Herald, Librarian, Chronicle, Chronicle Builder, Chronicle Reviewer, Chronicle Reference Desk, Chronicle Ops, Farm ChatGPT, Farm Grok, Farm Gemini, Farm Fable (and any bot Bob made). |
-| B2 | Look for Social, Sullishak, Bunny Art, Bunny Writer, Chaney, Masthead, New Bot. | None are listed. |
-| B3 | As Dave, open `/office/admin/`. | Each bot row has an "Office policy" chip: "Allowed" for the 11; anything else says "Not on allow list" or "Blocked". |
+| B2 | Look for Social, Sullishak, Bunny Art, Bunny Writer, Masthead, New Bot. | None are listed. |
+| B3 | As Dave, open `/office/admin/`. | Each bot row has an "Office policy" chip: "Allowed" for the 12 (including Chaney); anything else says "Not on allow list" or "Blocked". |
 
 ## C. Typed request with a file (Mac, then iPhone)
 

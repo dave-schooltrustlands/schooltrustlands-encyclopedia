@@ -102,7 +102,7 @@ Fallback if the admin page is not reachable yet: `node scripts/office/mint-bot-t
 
 ## 7a. Bot policy (Dave, Oct 6, 2026)
 
-`src/lib/office/policy.ts` decides which bots the office may use: the 11 allow-listed agent ids, or a bot Bob created himself (`POST /api/office/bots`). The 4 blocked agent ids are refused everywhere. Anything else (including Chaney, Masthead, New Bot) is refused by default. The admin page shows each bot's verdict in the "Office policy" column, and refuses to mint a token for a bot that is not allowed. Sign-in addresses are compared case-insensitively.
+`src/lib/office/policy.ts` decides which bots the office may use: the 12 allow-listed agent ids (including Chaney), or a bot Bob created himself (`POST /api/office/bots`). The 4 blocked agent ids are refused everywhere. Anything else (including Masthead, New Bot) is refused by default. The admin page shows each bot's verdict in the "Office policy" column, and refuses to mint a token for a bot that is not allowed. Sign-in addresses are compared case-insensitively.
 
 ## 7b. Publishing an approved reply
 

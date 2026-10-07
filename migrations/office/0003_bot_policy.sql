@@ -26,4 +26,5 @@ INSERT OR IGNORE INTO bots (id, name, description, enabled, sort, agent_id, crea
   ('farm-chatgpt',       'Farm ChatGPT',             '', 1, 40, '02ed0bba-b794-4136-a971-320cd3881dbb', '', strftime('%Y-%m-%dT%H:%M:%fZ','now'), strftime('%Y-%m-%dT%H:%M:%fZ','now')),
   ('farm-grok',          'Farm Grok',                '', 1, 41, '317a7ef0-2083-4e5d-be40-17f4cafcc88c', '', strftime('%Y-%m-%dT%H:%M:%fZ','now'), strftime('%Y-%m-%dT%H:%M:%fZ','now')),
   ('farm-gemini',        'Farm Gemini',              '', 1, 42, '480ec19b-be3c-44e6-8e3b-dd551c736cad', '', strftime('%Y-%m-%dT%H:%M:%fZ','now'), strftime('%Y-%m-%dT%H:%M:%fZ','now')),
-  ('farm-fable',         'Farm Fable',               '', 1, 43, 'd6c99e17-0597-49d7-b728-b2b89a3230c4', '', strftime('%Y-%m-%dT%H:%M:%fZ','now'), strftime('%Y-%m-%dT%H:%M:%fZ','now'));
+  ('farm-fable',         'Farm Fable',               '', 1, 43, 'd6c99e17-0597-49d7-b728-b2b89a3230c4', '', strftime('%Y-%m-%dT%H:%M:%fZ','now'), strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+  ('chaney',             'Chaney',                   '', 1, 50, '620cd4d3-81ea-435f-b2fd-2aa2ae073176', '', strftime('%Y-%m-%dT%H:%M:%fZ','now'), strftime('%Y-%m-%dT%H:%M:%fZ','now'));

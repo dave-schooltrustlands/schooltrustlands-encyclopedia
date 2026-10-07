@@ -13,13 +13,14 @@ const ALLOW = {
   ops: 'cfa34469-26a0-4768-95fb-d9b31cd88c0f', fchatgpt: '02ed0bba-b794-4136-a971-320cd3881dbb',
   fgrok: '317a7ef0-2083-4e5d-be40-17f4cafcc88c', fgemini: '480ec19b-be3c-44e6-8e3b-dd551c736cad',
   ffable: 'd6c99e17-0597-49d7-b728-b2b89a3230c4',
+  chaney: '620cd4d3-81ea-435f-b2fd-2aa2ae073176',
 };
 const BLOCK = ['3fd9e184-04f6-4e2a-91ce-a2ee7ed43b14', '586a0801-ba61-4c2c-b4cf-ca29d99860fc', '6a8bc53a-7bdd-4964-ac47-aa2137f57d66', '9b36b41d-8ed0-4596-bbf8-e6a78130c43a'];
-const CHANEY = '620cd4d3-81ea-435f-b2fd-2aa2ae073176';
 // Synthetic addresses with the same case pattern as the real ones (real ones live in Cloudflare settings, not this public repo).
+const CHANEY = ALLOW.chaney;
 const env = { OFFICE_OWNER_EMAILS: 'owner@example.org, OwnerB@Example.com' };
 
-test('allow list is exactly the 11 agents Dave named', () => {
+test('allow list is exactly the 12 agents Dave named', () => {
   assert.deepEqual(new Set(P.BOT_ALLOW_LIST.map((a) => a.agentId)), new Set(Object.values(ALLOW)));
   for (const id of Object.values(ALLOW)) assert.equal(P.botVerdict({ enabled: 1, agent_id: id }, env), 'ok', id);
 });
@@ -42,12 +43,16 @@ test('allow and block lists do not overlap', () => {
   for (const a of P.BOT_ALLOW_LIST) assert.equal(P.isBlockedAgent(a.agentId), false);
 });
 
-test('Chaney, Masthead, New Bot and unknown agents are not allowed (default deny)', () => {
-  assert.equal(P.botVerdict({ enabled: 1, agent_id: CHANEY }, env), 'not_allowed');
+test('Chaney is on the allow list (Dave, Oct 7, 2026)', () => {
+  assert.equal(P.botVerdict({ enabled: 1, agent_id: CHANEY }, env), 'ok');
+  assert.ok(P.BOT_ALLOW_LIST.some((a) => a.name === 'Chaney' && a.agentId === CHANEY));
+});
+
+test('Masthead, New Bot and unknown agents are not allowed (default deny)', () => {
   assert.equal(P.botVerdict({ enabled: 1, agent_id: '00000000-0000-0000-0000-000000000000' }, env), 'not_allowed');
   assert.equal(P.botVerdict({ enabled: 1, agent_id: null, created_by: '' }, env), 'not_allowed');
   assert.equal(P.botVerdict({ enabled: 1, agent_id: null, created_by: 'dave@example.net' }, env), 'not_allowed');
-  for (const name of ['Chaney', 'Masthead', 'New Bot']) assert.ok(!P.BOT_ALLOW_LIST.some((a) => a.name === name));
+  for (const name of ['Masthead', 'New Bot']) assert.ok(!P.BOT_ALLOW_LIST.some((a) => a.name === name));
 });
 
 test('a bot the owner created is allowed, matching his email case-insensitively', () => {
@@ -57,7 +62,7 @@ test('a bot the owner created is allowed, matching his email case-insensitively'
 });
 
 test('an owner-created row cannot borrow an unlisted agent id', () => {
-  assert.equal(P.botVerdict({ enabled: 1, agent_id: CHANEY, created_by: 'owner@example.org' }, env), 'not_allowed');
+  assert.equal(P.botVerdict({ enabled: 1, agent_id: '00000000-0000-0000-0000-000000000001', created_by: 'owner@example.org' }, env), 'not_allowed');
 });
 
 test('disabled and missing bots are refused', () => {

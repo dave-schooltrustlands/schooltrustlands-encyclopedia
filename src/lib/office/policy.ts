@@ -32,6 +32,8 @@ export const BOT_ALLOW_LIST: readonly AllowedAgent[] = Object.freeze([
   { agentId: '317a7ef0-2083-4e5d-be40-17f4cafcc88c', slug: 'farm-grok', name: 'Farm Grok', group: 'Farm' },
   { agentId: '480ec19b-be3c-44e6-8e3b-dd551c736cad', slug: 'farm-gemini', name: 'Farm Gemini', group: 'Farm' },
   { agentId: 'd6c99e17-0597-49d7-b728-b2b89a3230c4', slug: 'farm-fable', name: 'Farm Fable', group: 'Farm' },
+  // Added Oct 7, 2026 (12:27 AM PT): Dave put Chaney on the allow list.
+  { agentId: '620cd4d3-81ea-435f-b2fd-2aa2ae073176', slug: 'chaney', name: 'Chaney', group: 'Chaney' },
 ]);
 
 /** Agent ids that may never be used from the office. */
