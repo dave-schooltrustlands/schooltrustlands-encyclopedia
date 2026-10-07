@@ -1,4 +1,5 @@
 ---
+import { adminCanReadSetting } from '../../lib/office/policy';
 // The private research office: the desk. A composer for a new request and the
 // list of threads. Server-rendered on every visit; the gate in
 // src/middleware.ts has already checked who is asking.
@@ -6,7 +7,7 @@ export const prerender = false;
 import Composer from '../../components/office/Composer.astro';
 import Layout from '../../layouts/OfficeLayout.astro';
 import { STATUS_LABEL, defer, formatWhen, isTrue, officeEnv, officeTitle, officeUser, type RequestStatus } from '../../lib/office/config';
-import { expireStale, listBots, listRequests, sweep, type Row } from '../../lib/office/db';
+import { expireStale, listUsableBots, listRequests, sweep, type Row } from '../../lib/office/db';
 
 const env = officeEnv(Astro.locals);
 const user = officeUser(Astro.locals);
@@ -17,13 +18,13 @@ await expireStale(db);
 defer(Astro.locals, sweep(env));
 
 const officeName = officeTitle(env);
-const bots = user.isOwner ? await listBots(db, true) : [];
+const bots = user.isOwner ? await listUsableBots(db, env) : [];
 // An owner sees their own threads. An admin who may read sees every thread.
 const canSeeThreads = user.isOwner || user.adminCanRead;
 const threads: Row[] = canSeeThreads ? await listRequests(db, user.adminCanRead ? null : user.email) : [];
 const waiting = threads.filter((t) => t.owner_unread && t.owner_email === user.email).length;
 ---
-<Layout title="Desk" officeName={officeName} user={user} page="desk" adminCanRead={isTrue(env.OFFICE_ADMIN_CAN_READ)}>
+<Layout title="Desk" officeName={officeName} user={user} page="desk" adminCanRead={adminCanReadSetting(env)}>
   <span class="of-eyebrow">Private research office</span>
   <h1 class="of-h1">{officeName}</h1>
   <p class="of-lede">

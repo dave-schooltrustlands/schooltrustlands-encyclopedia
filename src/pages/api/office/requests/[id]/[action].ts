@@ -11,6 +11,7 @@ import { LIMITS, RATE, defer, officeEnv, officeUser } from '../../../../../lib/o
 import {
   addOwnerMessage, audit, deleteRequest, getBot, getRequest, overLimit, pendingOwnerUploads, retryRequest,
 } from '../../../../../lib/office/db';
+import { botUsable } from '../../../../../lib/office/policy';
 import { ringDoorbell } from '../../../../../lib/office/notify';
 import { canNominate, canReadRequest, canWriteRequest } from '../../../../../lib/office/rules';
 import {
@@ -62,6 +63,9 @@ export const POST: APIRoute = async (ctx) => {
       if (!attachmentIds) return apiError(422, 'invalid', `Attach at most ${LIMITS.filesPerMessage} files.`);
       if (text.length > LIMITS.ownerBodyChars) return apiError(422, 'invalid', 'That message is too long. Put the long part in an attached file.');
       if (!text && attachmentIds.length === 0) return apiError(422, 'invalid', 'Write a message, record one, or attach a file.');
+      if (!botUsable(await getBot(db, request.bot_id), env)) {
+        return apiError(422, 'bot_not_allowed', 'That bot is not available to this office any more. Start a new request with another bot.');
+      }
       const pending = await pendingOwnerUploads(db, user.email, attachmentIds);
       if (pending.length !== attachmentIds.length) {
         return apiError(422, 'invalid', 'One of the attached files is no longer available. Remove it and attach it again.');
@@ -79,6 +83,9 @@ export const POST: APIRoute = async (ctx) => {
 
     case 'retry': {
       if (!canWriteRequest(user, request)) return apiError(403, 'forbidden', 'Only the owner of this thread can send it again.');
+      if (!botUsable(await getBot(db, request.bot_id), env)) {
+        return apiError(422, 'bot_not_allowed', 'That bot is not available to this office any more. Start a new request with another bot.');
+      }
       if (!(await retryRequest(db, request.id))) return apiError(409, 'conflict', 'Only a request that did not finish can be sent again.');
       await audit(db, { actor_kind: 'owner', actor_id: user.email, action: 'request.retried', request_id: request.id, ip });
       const bot = await getBot(db, request.bot_id);

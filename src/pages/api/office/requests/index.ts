@@ -6,6 +6,7 @@
 // double-click or a retried send land as one request, not two.
 import type { APIRoute } from 'astro';
 import { LIMITS, RATE, defer, officeEnv, officeUser } from '../../../../lib/office/config';
+import { botUsable } from '../../../../lib/office/policy';
 import { createRequest, getBot, overLimit, pendingOwnerUploads } from '../../../../lib/office/db';
 import { ringDoorbell } from '../../../../lib/office/notify';
 import { apiError, bodyErrorResponse, cleanLine, cleanText, clientIp, idList, json, readJson } from '../../../../lib/office/util';
@@ -35,7 +36,7 @@ export const POST: APIRoute = async (ctx) => {
   if (!text && attachmentIds.length === 0) return apiError(422, 'invalid', 'Write what you need, record it, or attach a file.');
 
   const bot = await getBot(db, botId);
-  if (!bot || !bot.enabled) return apiError(422, 'invalid', 'Choose who to send this to.');
+  if (!bot || !botUsable(bot, env)) return apiError(422, 'invalid', 'Choose who to send this to.');
 
   const pending = await pendingOwnerUploads(db, user.email, attachmentIds);
   if (pending.length !== attachmentIds.length) {

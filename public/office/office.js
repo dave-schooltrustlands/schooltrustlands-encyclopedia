@@ -397,6 +397,7 @@
         $('[data-bot-desc]').value = btn.getAttribute('data-description');
         $('[data-bot-sort]').value = btn.getAttribute('data-sort');
         $('[data-bot-hook]').value = btn.getAttribute('data-webhook');
+        $('[data-bot-agent]').value = btn.getAttribute('data-agent') || '';
         $('[data-bot-enabled]').checked = btn.getAttribute('data-enabled') === '1';
         $('[data-bot-rotate]').checked = false;
         $('[data-bot-name-input]').focus();
@@ -410,6 +411,7 @@
         description: $('[data-bot-desc]').value.trim(),
         sort: Number($('[data-bot-sort]').value) || 100,
         webhook_url: $('[data-bot-hook]').value.trim(),
+        agent_id: $('[data-bot-agent]').value.trim().toLowerCase(),
         enabled: $('[data-bot-enabled]').checked,
         rotate_webhook_key: $('[data-bot-rotate]').checked,
       }).then(reloadSoon);

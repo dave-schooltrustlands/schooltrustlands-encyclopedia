@@ -1,4 +1,5 @@
 ---
+import { adminCanReadSetting } from '../../lib/office/policy';
 // The private research office: one request and its reply thread.
 // Server-rendered on every visit. Sign-in is checked by the gate in
 // src/middleware.ts; this page then checks that the thread belongs to the
@@ -20,7 +21,7 @@ if (!user) return new Response('Sign-in required.', { status: 401 });
 
 const db = env.OFFICE_DB;
 const officeName = officeTitle(env);
-const adminCanRead = isTrue(env.OFFICE_ADMIN_CAN_READ);
+const adminCanRead = adminCanReadSetting(env);
 const id = Astro.params.id;
 
 await expireStale(db);

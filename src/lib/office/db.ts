@@ -5,6 +5,7 @@
 // guards in the WHERE clause, so two bot runs can never both win a request.
 import { LIMITS, type OfficeEnv, type RequestStatus } from './config';
 import { deleteObjects } from './files';
+import { botUsable } from './policy';
 import { isoIn, newId, nowIso, randomToken, sha256Hex } from './util';
 
 export type Row = Record<string, any>;
@@ -71,10 +72,15 @@ export async function overLimit(db: DB, key: string, limit: readonly [number, nu
 
 export async function listBots(db: DB, enabledOnly: boolean): Promise<Row[]> {
   const res = await db
-    .prepare(`SELECT id, name, description, enabled, sort, webhook_url, webhook_key_version, created_at, updated_at
+    .prepare(`SELECT id, name, description, enabled, sort, webhook_url, webhook_key_version, agent_id, created_by, created_at, updated_at
               FROM bots ${enabledOnly ? 'WHERE enabled = 1' : ''} ORDER BY sort, name`)
     .all();
   return res.results || [];
+}
+
+/** Bots the owner may pick: enabled and allowed by the office bot policy. */
+export async function listUsableBots(db: DB, env: Pick<OfficeEnv, 'OFFICE_OWNER_EMAILS'>): Promise<Row[]> {
+  return (await listBots(db, true)).filter((b) => botUsable(b, env));
 }
 
 export async function getBot(db: DB, id: string): Promise<Row | null> {

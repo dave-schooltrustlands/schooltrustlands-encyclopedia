@@ -12,6 +12,7 @@
 // person then commits that packet to the Library through the normal process.
 import type { APIRoute } from 'astro';
 import { LIMITS, RATE, officeEnv, officeUser } from '../../../../lib/office/config';
+import { botUsable, isBlockedAgent, normAgentId } from '../../../../lib/office/policy';
 import { audit, getBot, getPublication, overLimit, parseIdArray } from '../../../../lib/office/db';
 import { validWebhookUrl, webhookKey } from '../../../../lib/office/notify';
 import {
@@ -98,6 +99,9 @@ export const POST: APIRoute = async (ctx) => {
       const sort = Math.max(0, Math.min(9999, Math.floor(Number(body.sort)) || 100));
       const enabled = body.enabled === false || body.enabled === 0 ? 0 : 1;
       const webhookUrl = cleanLine(body.webhook_url, 500);
+      const agentId = normAgentId(cleanLine(body.agent_id, 64));
+      if (agentId && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(agentId)) return apiError(422, 'invalid', 'The agent id must be a UUID.');
+      if (isBlockedAgent(agentId)) return apiError(422, 'bot_blocked', 'That agent is blocked from this office.');
       if (!BOT_ID_RE.test(id)) return apiError(422, 'invalid', 'The id must be 2 to 32 lowercase letters, digits, or hyphens, starting with a letter.');
       if (!name) return apiError(422, 'invalid', 'Give the bot a name.');
       if (webhookUrl && !validWebhookUrl(webhookUrl)) return apiError(422, 'invalid', 'The doorbell address must be a public https:// address.');
@@ -105,13 +109,13 @@ export const POST: APIRoute = async (ctx) => {
       const rotate = !!existing && body.rotate_webhook_key === true;
       await db
         .prepare(
-          `INSERT INTO bots (id, name, description, enabled, sort, webhook_url, webhook_key_version, created_at, updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?)
+          `INSERT INTO bots (id, name, description, enabled, sort, webhook_url, webhook_key_version, agent_id, created_by, created_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?)
            ON CONFLICT(id) DO UPDATE SET name = excluded.name, description = excluded.description, enabled = excluded.enabled,
-             sort = excluded.sort, webhook_url = excluded.webhook_url, updated_at = excluded.updated_at,
+             sort = excluded.sort, webhook_url = excluded.webhook_url, agent_id = excluded.agent_id, updated_at = excluded.updated_at,
              webhook_key_version = bots.webhook_key_version + ?`,
         )
-        .bind(id, name, description, enabled, sort, webhookUrl || null, now, now, rotate ? 1 : 0)
+        .bind(id, name, description, enabled, sort, webhookUrl || null, agentId || null, user.email, now, now, rotate ? 1 : 0)
         .run();
       await audit(db, { actor_kind: 'admin', actor_id: user.email, action: existing ? 'bot.updated' : 'bot.created', target_id: id, ip, meta: { enabled, doorbell: !!webhookUrl, rotated: rotate } });
       return json(200, { ok: true, id, created: !existing });
@@ -121,6 +125,7 @@ export const POST: APIRoute = async (ctx) => {
       const botId = cleanLine(body.bot_id, 40);
       const bot = await getBot(db, botId);
       if (!bot) return apiError(422, 'invalid', 'Choose a bot.');
+      if (!botUsable(bot, env)) return apiError(422, 'bot_not_allowed', 'That bot is not on the office allow list, so it cannot get a token.');
       const days = Math.floor(Number(body.expires_days));
       const expiresAt = Number.isFinite(days) && days > 0 ? new Date(Date.now() + Math.min(days, 3650) * 86400 * 1000).toISOString() : null;
       const tokenId = randomHex(8);

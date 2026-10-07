@@ -12,6 +12,7 @@
 //          of each token is stored.
 //
 // Fails closed: anything missing or wrong ends in a refusal, never a pass.
+import { adminCanReadSetting, botUsable, emailListed } from './policy';
 import type { APIContext, MiddlewareNext } from 'astro';
 import { normalizeTeamDomain, parseAudiences, verifyAccessJwt } from './access';
 import {
@@ -134,14 +135,15 @@ async function signInPerson(context: APIContext, env: OfficeEnv): Promise<Office
     email = result.identity.email;
   }
 
-  const isOwner = listOf(env.OFFICE_OWNER_EMAILS).includes(email);
-  const isAdmin = listOf(env.OFFICE_ADMIN_EMAILS).includes(email);
+  email = email.trim().toLowerCase();
+  const isOwner = emailListed(email, env.OFFICE_OWNER_EMAILS);
+  const isAdmin = emailListed(email, env.OFFICE_ADMIN_EMAILS);
   if (!isOwner && !isAdmin) {
     // Signed in through Access but not on either list. Worth a record.
     await audit(env.OFFICE_DB, { actor_kind: 'unknown', actor_id: email, action: 'auth.not_listed', ip: clientIp(context.request) });
     return { refused: 'not_listed' };
   }
-  return { kind: 'user', email, isOwner, isAdmin, adminCanRead: isAdmin && isTrue(env.OFFICE_ADMIN_CAN_READ) };
+  return { kind: 'user', email, isOwner, isAdmin, adminCanRead: isAdmin && adminCanReadSetting(env) };
 }
 
 const BOT_TOKEN_RE = /^Bearer (ofb_([a-f0-9]{16})_[A-Za-z0-9_-]{43})$/;
@@ -164,7 +166,7 @@ async function signInBot(context: APIContext, env: OfficeEnv): Promise<OfficeBot
 
   const row = await db
     .prepare(
-      `SELECT t.id, t.token_hash, t.expires_at, t.revoked_at, t.last_used_at, b.id AS bot_id, b.name AS bot_name, b.enabled
+      `SELECT t.id, t.token_hash, t.expires_at, t.revoked_at, t.last_used_at, b.id AS bot_id, b.name AS bot_name, b.enabled, b.agent_id, b.created_by
        FROM bot_tokens t JOIN bots b ON b.id = t.bot_id WHERE t.id = ?`,
     )
     .bind(tokenId)
@@ -180,6 +182,7 @@ async function signInBot(context: APIContext, env: OfficeEnv): Promise<OfficeBot
   else if (row.revoked_at) reason = 'revoked';
   else if (row.expires_at && row.expires_at < now) reason = 'expired';
   else if (!row.enabled) reason = 'bot_disabled';
+  else if (!botUsable(row, env)) reason = 'bot_not_allowed';
   if (reason) {
     await rateHit(db, 'botfail:' + ip, failWindow);
     await audit(db, { actor_kind: 'unknown', actor_id: row ? String(row.bot_id) : '', action: 'bot.auth_failed', target_id: row ? tokenId : null, ip, meta: { reason } });

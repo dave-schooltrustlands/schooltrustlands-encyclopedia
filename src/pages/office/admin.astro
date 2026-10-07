@@ -1,4 +1,5 @@
 ---
+import { adminCanReadSetting, botVerdict } from '../../lib/office/policy';
 // The private research office: administrator's page.
 // Bots (the registry that feeds the picker), bot tokens, replies suggested for
 // the Library, and the recent activity log. The gate in src/middleware.ts
@@ -16,6 +17,7 @@ if (!user || !user.isAdmin) return new Response('Administrators only.', { status
 const db = env.OFFICE_DB;
 const officeName = officeTitle(env);
 const bots = await listBots(db, false);
+const VERDICT_LABEL: Record<string, string> = { ok: 'Allowed', disabled: 'Hidden', blocked: 'Blocked', not_allowed: 'Not on allow list' };
 const tokens: Row[] =
   (await db
     .prepare('SELECT id, bot_id, label, created_at, created_by, expires_at, last_used_at, revoked_at FROM bot_tokens ORDER BY created_at DESC LIMIT 200')
@@ -38,7 +40,7 @@ const tokenLabel = (t: Row): string =>
 const defaultCredit = (p: Row): string =>
   `Research reply prepared by ${p.bot_name}, an AI research assistant of America’s School Trust Library, at the request of the collection’s author. Reviewed and approved for publication by the Library.`;
 ---
-<Layout title="Admin" officeName={officeName} user={user} page="admin" adminCanRead={isTrue(env.OFFICE_ADMIN_CAN_READ)}>
+<Layout title="Admin" officeName={officeName} user={user} page="admin" adminCanRead={adminCanReadSetting(env)}>
   <span class="of-eyebrow">Administrator</span>
   <h1 class="of-h1">Office admin</h1>
   <p class="of-lede">Bots, their tokens, and replies waiting for a publication decision.</p>
@@ -127,14 +129,15 @@ const defaultCredit = (p: Row): string =>
     <h2 class="of-h2" id="of-bots-h">Bots</h2>
     <div class="of-table-wrap">
       <table class="of-table">
-        <thead><tr><th>Id</th><th>Name</th><th>In the picker</th><th>Order</th><th>Doorbell</th><th></th></tr></thead>
+        <thead><tr><th>Id</th><th>Name</th><th>In the picker</th><th>Office policy</th><th>Order</th><th>Doorbell</th><th></th></tr></thead>
         <tbody>
-          {bots.length === 0 && <tr><td colspan="6">No bots yet. Add the first one below.</td></tr>}
+          {bots.length === 0 && <tr><td colspan="7">No bots yet. Add the first one below.</td></tr>}
           {bots.map((b) => (
             <tr>
               <td>{b.id}</td>
               <td>{b.name}{b.description && <><br /><span class="of-meta">{b.description}</span></>}</td>
               <td><span class="of-chip" data-status={b.enabled ? 'approved' : 'off'}>{b.enabled ? 'Shown' : 'Hidden'}</span></td>
+              <td><span class="of-chip" data-status={botVerdict(b, env) === 'ok' ? 'approved' : 'off'}>{VERDICT_LABEL[botVerdict(b, env)]}</span></td>
               <td>{b.sort}</td>
               <td>
                 {b.webhook_url ? 'On' : 'Off'}
@@ -144,7 +147,7 @@ const defaultCredit = (p: Row): string =>
                 <button
                   type="button" class="of-btn of-btn--quiet" data-bot-edit
                   data-id={b.id} data-name={b.name} data-description={b.description} data-sort={b.sort}
-                  data-enabled={b.enabled ? '1' : '0'} data-webhook={b.webhook_url || ''}
+                  data-enabled={b.enabled ? '1' : '0'} data-webhook={b.webhook_url || ''} data-agent={b.agent_id || ''}
                 >Edit</button>
               </td>
             </tr>
@@ -168,6 +171,8 @@ const defaultCredit = (p: Row): string =>
         <input class="of-input" id="of-bot-sort" type="number" min="0" max="9999" value="100" data-bot-sort />
       </div>
     </div>
+    <label class="of-label" for="of-bot-agent">Agent id <small>(must be on the office allow list; leave empty only for a bot Bob created)</small></label>
+    <input class="of-input" id="of-bot-agent" type="text" maxlength="36" autocomplete="off" data-bot-agent />
     <label class="of-label" for="of-bot-desc">One-line description <small>(shown in the picker)</small></label>
     <input class="of-input" id="of-bot-desc" type="text" maxlength="200" data-bot-desc />
     <label class="of-label" for="of-bot-hook">Doorbell address <small>(optional; an https address the site pings when a request is queued)</small></label>
