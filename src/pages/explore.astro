@@ -14,35 +14,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       A directory of the Library's main pages.
     </p>
 
-    <h2>The subject</h2>
+    <h2>School Trusts</h2>
     <ul class="room-list">
-      <li><a href="/start/"><strong>Start here</strong></a> — school trust lands: a primer.</li>
-      <li><a href="/states/"><strong>Your state</strong></a> — the state-by-state record.</li>
-      <li><a href="/atlas/"><strong>Atlas</strong></a> — what every federal-grant state did with its school-trust lands.</li>
-      <li><a href="/maps/"><strong>Map Room</strong></a> — state-by-state cartography of the trust geography.</li>
-      <li><a href="/court/"><strong>The cases</strong></a> — the court record.</li>
-      <li><a href="/counting/"><strong>Counting House</strong></a> — the financial record. How much, where, and what was lost.</li>
-      <li><a href="/reading/"><strong>Reading Room</strong></a> — book-length works on America's school trust lands.</li>
-      <li><a href="/booklet/"><strong>The booklet</strong></a> — the Library in brief.</li>
+      <li><a href="/start/"><strong>School trust basics</strong></a> — school trust lands: a primer.</li>
+      <li><a href="/states/"><strong>Find your state</strong></a> — the state-by-state record.</li>
+      <li><a href="/atlas/"><strong>Compare states</strong></a> — what every federal-grant state did with its school-trust lands.</li>
+      <li><a href="/maps/"><strong>State land maps</strong></a> — state-by-state cartography of the trust geography.</li>
+      <li><a href="/court/"><strong>Law &amp; court cases</strong></a> — the court record.</li>
+      <li><a href="/counting/"><strong>Trust finances</strong></a> — the financial record. How much, where, and what was lost.</li>
+    </ul>
+
+    <h2>Read &amp; Research</h2>
+    <ul class="room-list">
+      <li><a href="/reading/"><strong>Books &amp; documents</strong></a> — book-length works on America's school trust lands.</li>
+      <li><a href="/writing/"><strong>Writing Room</strong></a> — where the long-form arguments live.</li>
+      <li><a href="https://parcelchronicle-refdesk.drdavesullivan.workers.dev" target="_blank" rel="noopener"><strong>Research your land's history</strong> <span class="beta-badge">Beta</span><span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
       <li><a href="/catalog/"><strong>Catalog</strong></a> — the Library's full index.</li>
+      <li><a href="/search/"><strong>Search</strong></a> — search the whole collection.</li>
     </ul>
 
     <h2>News</h2>
     <ul class="room-list">
-      <li><a href="/newsroom/"><strong>Newsroom</strong></a> — a weekly survey of what's changing across the fifty states.</li>
-      <li><a href="/voices/"><strong>Voices</strong></a> — signed editorial pieces from named contributors.</li>
-      <li><a href="/updates/"><strong>Updates</strong></a> — the Library's milestones.</li>
+      <li><a href="/newsroom/"><strong>School trust news</strong></a> — a weekly survey of what's changing across the fifty states.</li>
+      <li><a href="/voices/"><strong>Commentary</strong></a> — signed editorial pieces from named contributors.</li>
+      <li><a href="/updates/"><strong>Library updates</strong></a> — the Library's milestones.</li>
     </ul>
 
-    <h2>The Library</h2>
+    <h2>Get Involved</h2>
     <ul class="room-list">
-      <li><a href="/about/"><strong>About</strong></a> — who runs the Library, and how to reach us.</li>
-      <li><a href="/contribute/"><strong>Contribute</strong></a> — send a source, correct a page, help maintain a state.</li>
-      <li><a href="/search/"><strong>Search</strong></a> — search the whole collection.</li>
+      <li><a href="/contribute/"><strong>Ways to help</strong></a> — send a source, correct a page, help maintain a state.</li>
+    </ul>
+
+    <h2>About</h2>
+    <ul class="room-list">
+      <li><a href="/about/"><strong>About the Library</strong></a> — who runs the Library, and how to reach us.</li>
+      <li><a href="/booklet/"><strong>Library introduction (booklet)</strong></a> — the Library in brief.</li>
+      <li><a href="/librarians/"><strong>How the Library is made</strong></a> — how this library is made.</li>
+      <li><a href="/pro/"><strong>Standards &amp; policies</strong></a> — governance, editorial standards, collection-development policy, roles.</li>
       <li><a href="/about/corrections/"><strong>Corrections</strong></a> — the corrections ledger.</li>
       <li><a href="/about/cite/"><strong>How to cite</strong></a> — citation formats for Library pages.</li>
-      <li><a href="/librarians/"><strong>For librarians</strong></a> — how this library is made.</li>
-      <li><a href="/pro/"><strong>Pro Wing</strong></a> — governance, editorial standards, collection-development policy, roles.</li>
     </ul>
   </article>
 </BaseLayout>
@@ -52,6 +62,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     list-style: disc;
     padding-left: 1.25rem;
     margin: 1rem 0;
+  }
+  .beta-badge {
+    margin-left: 0.25rem;
+    padding: 0 0.35rem;
+    border: 1px solid var(--old-gold, #b08d57);
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #7a5c1e;
+    white-space: nowrap;
   }
   .room-list li {
     margin: 0.4rem 0;

@@ -20,13 +20,20 @@ import CorrectionLink from './CorrectionLink.astro';
       nonprofit public benefit corporation (Registry No. 259005891).
     </p>
     <p class="footer-pro-links">
-      <a href="/about/">About</a> ·
+      <span class="footer-group">Read &amp; Research:</span>
       <a href="/catalog/">Catalog</a> ·
+      <a href="https://parcelchronicle-refdesk.drdavesullivan.workers.dev" target="_blank" rel="noopener">Research your land's history <span class="footer-beta">Beta</span><span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+      <br />
+      <span class="footer-group">Get Involved:</span>
+      <a href="/contribute/">Ways to help</a>
+      <br />
+      <span class="footer-group">About:</span>
+      <a href="/about/">About</a> ·
+      <a href="/independence/">Independence</a> ·
       <a href="/about/corrections/">Corrections</a> ·
       <a href="/about/cite/">How to cite</a> ·
-      <a href="/contribute/">Contribute</a> ·
-      <a href="/librarians/">For librarians</a> ·
-      <a href="/permissions/">Rights &amp; takedown</a>
+      <a href="/librarians/">How the Library is made</a> ·
+      <a href="/permissions/">Rights &amp; permissions</a>
     </p>
   </div>
   <div class="footer-meta">
@@ -59,3 +66,19 @@ import CorrectionLink from './CorrectionLink.astro';
     </p>
   </div>
 </footer>
+
+<style>
+  .footer-group {
+    font-weight: 600;
+  }
+  .footer-beta {
+    margin-left: 0.2rem;
+    padding: 0 0.3rem;
+    border: 1px solid var(--old-gold, #b08d57);
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+</style>
