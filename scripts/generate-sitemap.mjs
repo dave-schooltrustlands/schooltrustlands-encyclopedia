@@ -58,6 +58,8 @@ for await (const filePath of walk(DIST)) {
   const canonical = canonicalFromHtml(html);
 
   if (canonical && canonical !== loc) continue;
+  // Office desk pages ship noindex until checked; keep them out of the sitemap until then.
+  if (pathname.startsWith('/collections/zybach/desk/') && /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html)) continue;
   locs.push(loc);
 }
 
