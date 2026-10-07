@@ -655,3 +655,27 @@ export async function sweep(env: OfficeEnv): Promise<void> {
     }
   }
 }
+
+// -------------------------------------------------------------- settings
+// Small switches the administrator can flip on /office/admin/. The table is
+// created on first write, so no manual migration is needed (it is also in
+// migrations/office/0004_settings.sql). A missing table reads as "not set".
+
+export const SETTING_HELPER_PICKER = 'owner_helper_picker';
+
+export async function getSetting(db: DB, key: string): Promise<string | null> {
+  try {
+    const row = await db.prepare('SELECT v FROM office_settings WHERE k = ?').bind(key).first();
+    return row ? String(row.v) : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function setSetting(db: DB, key: string, value: string): Promise<void> {
+  await db.prepare('CREATE TABLE IF NOT EXISTS office_settings (k TEXT PRIMARY KEY, v TEXT NOT NULL, updated_at TEXT NOT NULL)').run();
+  await db
+    .prepare('INSERT INTO office_settings (k, v, updated_at) VALUES (?, ?, ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v, updated_at = excluded.updated_at')
+    .bind(key, value, nowIso())
+    .run();
+}

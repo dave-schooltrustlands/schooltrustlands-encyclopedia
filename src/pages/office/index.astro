@@ -1,18 +1,21 @@
 ---
-// The private research office: the desk. A short welcome, the box for a new
-// request, and the list of requests with their answers. Server-rendered on
-// every visit; the gate in src/middleware.ts has already checked who is asking.
+// Bob's Office: the home page. Server-rendered on every visit; the gate in
+// src/middleware.ts has already checked who is asking.
 //
-// The owner (Bob) sees his desk. An administrator (Dave) sees the same desk,
-// with a strip at the top explaining that anything sent from here is a test,
-// and with test threads listed apart from the owner's. ?view=owner shows the
-// administrator exactly what the owner sees, without the extras.
+// First visit: a welcome, three steps, then the box for a new request.
+// Once there are requests: a "New answer" banner when one is waiting, the
+// list of requests first, and the box for a new request one tap away below.
+//
+// The administrator sees the same page with a strip explaining that anything
+// sent from here is a test, the choice of helpers, and test threads listed
+// apart. ?view=owner shows the administrator exactly what the owner sees.
 export const prerender = false;
 import Composer from '../../components/office/Composer.astro';
 import ThreadList from '../../components/office/ThreadList.astro';
 import Layout from '../../layouts/OfficeLayout.astro';
 import { defer, listOf, officeEnv, officeTitle, officeUser } from '../../lib/office/config';
-import { expireStale, listUsableBots, listRequests, sweep, type Row } from '../../lib/office/db';
+import { SETTING_HELPER_PICKER, expireStale, getSetting, listUsableBots, listRequests, sweep, type Row } from '../../lib/office/db';
+import { answerEmailStatus } from '../../lib/office/notify';
 import { adminCanReadSetting } from '../../lib/office/policy';
 import { isTestThread } from '../../lib/office/rules';
 
@@ -26,32 +29,49 @@ defer(Astro.locals, sweep(env));
 
 const officeName = officeTitle(env);
 const ownerName = String(env.OFFICE_DISPLAY_NAME || '').trim().slice(0, 40);
+const who = ownerName || 'the owner';
 const adminView = user.isAdmin && !user.isOwner;
 const preview = adminView && Astro.url.searchParams.get('view') === 'owner';
 const helpEmail = listOf(env.OFFICE_ADMIN_EMAILS)[0] || '';
 
 const bots = (await listUsableBots(db, env)).map((b) => ({ id: String(b.id), name: String(b.name), description: String(b.description || '') }));
+// The owner's requests go to Herald unless the administrator has let him choose.
+const pickerOn = (await getSetting(db, SETTING_HELPER_PICKER)) === 'on';
+const showPicker = adminView && !preview ? true : pickerOn;
 
-// The owner sees his own threads. An administrator who may read sees every
-// thread (the owner's first, tests apart); one who may not sees only the
-// tests they sent themselves.
 const all: Row[] = user.isOwner ? await listRequests(db, user.email) : await listRequests(db, user.adminCanRead ? null : user.email);
 const ownerThreads = adminView ? all.filter((t) => !isTestThread(t, env.OFFICE_OWNER_EMAILS)) : all;
 const testThreads = adminView ? all.filter((t) => isTestThread(t, env.OFFICE_OWNER_EMAILS)) : [];
-const newReplies = ownerThreads.filter((t) => t.owner_unread && t.owner_email === user.email).length;
-const who = ownerName || 'the owner';
+const hasRequests = ownerThreads.length > 0;
+const emailOn = answerEmailStatus(env).ready;
+const step3 = emailOn ? 'The answer comes back to this page, and you get an email when it is ready.' : 'The answer comes back to this page. You can close it and come back any time.';
+
+// "New answer" banner: the owner's unread answers and questions (in preview,
+// the ones the owner has not read yet).
+const waiting = (user.isOwner || preview)
+  ? ownerThreads.filter((t) => t.owner_unread && (t.status === 'answered' || t.status === 'needs_info'))
+  : [];
+const firstWaiting = waiting[0];
+const answeredCount = waiting.filter((t) => t.status === 'answered').length;
+const askingCount = waiting.length - answeredCount;
+const botNames = Array.from(new Set(waiting.map((t) => String(t.bot_name))));
+const fromWho = botNames.length === 1 ? botNames[0] : 'Your helpers';
+const bannerText = [
+  answeredCount > 0 ? `${fromWho} ${answeredCount === 1 ? 'has answered 1 request' : `has answered ${answeredCount} requests`}.` : '',
+  askingCount > 0 ? (askingCount === 1 ? `${firstWaiting?.bot_name} has a question for you.` : `${askingCount} requests have a question for you.`) : '',
+].filter(Boolean).join(' ');
 ---
-<Layout title="Desk" officeName={officeName} user={user} page="desk" adminCanRead={adminCanReadSetting(env)} preview={preview}>
+<Layout title={officeName} officeName={officeName} user={user} page="desk" adminCanRead={adminCanReadSetting(env)} preview={preview}>
   {adminView && !preview && (
     <aside class="of-admin-strip" aria-label="Administrator">
       <p>
-        <strong>You are signed in as the administrator.</strong> This is {who}&rsquo;s desk as {who} sees it, with two extras for you:
-        anything you send from here is a <strong>test</strong> (it goes to the helper like a real request, marked as a test, and {who} never sees it),
-        and test threads are listed separately at the bottom.
+        <strong>You are signed in as the administrator.</strong> This is {officeName} as {who} sees it, with extras for you:
+        anything you send from here is a <strong>test</strong> (it goes to the helper like a real request, marked as a test; {who} never sees it and no email goes out),
+        you can pick any helper, and test threads are listed separately at the bottom.
       </p>
       <p class="of-row">
         <a class="of-btn" href="/office/?view=owner">See it exactly as {who} does</a>
-        <a class="of-btn" href="/office/admin/">Helpers and keys (admin)</a>
+        <a class="of-btn" href="/office/admin/">Helpers, keys and settings (admin)</a>
       </p>
     </aside>
   )}
@@ -61,27 +81,68 @@ const who = ownerName || 'the owner';
     </aside>
   )}
 
+  {firstWaiting && (
+    <div class="of-banner" role="status">
+      <p class="of-banner-text">
+        <span class="of-new">New</span> {bannerText}
+      </p>
+      <a class="of-btn of-btn--primary of-btn--big" href={`/office/${firstWaiting.id}/`}>
+        {firstWaiting.status === 'needs_info' ? 'Read the question' : 'Read the answer'}
+      </a>
+    </div>
+  )}
+
   <header class="of-welcome">
-    <span class="of-eyebrow">America&rsquo;s School Trust Library · private desk</span>
-    <h1 class="of-h1">{ownerName ? `Welcome, ${ownerName}` : officeName}</h1>
-    <p class="of-lede">
-      This is your private desk for asking the Library&rsquo;s helpers for research, writing, transcription, and more.
-      The helpers are AI assistants that work for the Library. Their answers come back here.
-    </p>
-    <ol class="of-steps">
-      <li><span class="of-step-n" aria-hidden="true">1</span><span><strong>Say what you need.</strong> Type it in the box below, or press <em>Talk instead of typing</em> and just speak.</span></li>
-      <li><span class="of-step-n" aria-hidden="true">2</span><span><strong>Add files if you have them.</strong> Photos, PDFs, documents, recordings. This is optional.</span></li>
-      <li><span class="of-step-n" aria-hidden="true">3</span><span><strong>Press Send.</strong> The answer appears under <em>Your requests</em>, further down this page. You can close the page and come back any time.</span></li>
-    </ol>
-    <p class="of-help-link"><a href="/office/help/">How this desk works, and who can see it</a></p>
+    <h1 class="of-h1">{officeName}</h1>
+    {hasRequests ? (
+      <p class="of-lede">
+        {ownerName && !adminView ? `Welcome back, ${ownerName}. ` : ''}Your requests and their answers are below.
+      </p>
+    ) : (
+      <p class="of-lede">
+        {ownerName ? `Welcome, ${ownerName}. ` : ''}This is where you ask the Library&rsquo;s helpers for research, writing, transcription, and more.
+        The helpers are AI assistants that work for the Library. Their answers come back here.
+      </p>
+    )}
+    {hasRequests && bots.length > 0 && (
+      <p><a class="of-btn of-btn--big" href="#of-new" data-jump-new>+ Ask for something new</a></p>
+    )}
+    {hasRequests ? (
+      <details class="of-howto">
+        <summary>How this works</summary>
+        <ol class="of-steps">
+          <li><span class="of-step-n" aria-hidden="true">1</span><span><strong>Say what you need.</strong> Type it in the box, or press <em>Talk instead of typing</em> and just speak.</span></li>
+          <li><span class="of-step-n" aria-hidden="true">2</span><span><strong>Add files if you have them.</strong> Photos, PDFs, documents, recordings. This is optional.</span></li>
+          <li><span class="of-step-n" aria-hidden="true">3</span><span><strong>Press Send.</strong> {step3}</span></li>
+        </ol>
+      </details>
+    ) : (
+      <ol class="of-steps">
+        <li><span class="of-step-n" aria-hidden="true">1</span><span><strong>Say what you need.</strong> Type it in the box below, or press <em>Talk instead of typing</em> and just speak.</span></li>
+        <li><span class="of-step-n" aria-hidden="true">2</span><span><strong>Add files if you have them.</strong> Photos, PDFs, documents, recordings. This is optional.</span></li>
+        <li><span class="of-step-n" aria-hidden="true">3</span><span><strong>Press Send.</strong> {step3}</span></li>
+      </ol>
+    )}
   </header>
+
+  {hasRequests && (
+    <section aria-labelledby="of-threads-h" class="of-threads-wrap">
+      <h2 class="of-h2" id="of-threads-h">{adminView && !preview ? `${who}’s requests` : 'Your requests'}</h2>
+      {adminView && !user.adminCanRead ? (
+        <p class="of-note">Reading {who}&rsquo;s requests is switched off for administrators.</p>
+      ) : (
+        <ThreadList threads={ownerThreads} user={user} env={env} />
+      )}
+    </section>
+  )}
 
   {bots.length > 0 ? (
     <Composer
       mode="new"
       canTranscribe={!!env.AI}
       bots={bots}
-      testNote={adminView ? `Test mode: this request will come from you (${user.email}), not from ${who}. ${who} will not see it.` : ''}
+      showPicker={showPicker}
+      testNote={adminView ? `Test mode: this request will come from you (${user.email}), not from ${who}. ${who} will not see it, and no email goes out.` : ''}
     />
   ) : (
     <p class="of-note of-note--warn">
@@ -89,23 +150,16 @@ const who = ownerName || 'the owner';
     </p>
   )}
 
-  <section aria-labelledby="of-threads-h" class="of-threads-wrap">
-    <h2 class="of-h2" id="of-threads-h">
-      {adminView ? `${who}’s requests` : 'Your requests'}
-      {newReplies > 0 && <span class="of-new-count"> · {newReplies} new {newReplies === 1 ? 'answer' : 'answers'}</span>}
-    </h2>
-    {adminView && !user.adminCanRead ? (
-      <p class="of-note">Reading {who}&rsquo;s requests is switched off for administrators.</p>
-    ) : ownerThreads.length === 0 ? (
+  {!hasRequests && (
+    <section aria-labelledby="of-threads-h" class="of-threads-wrap">
+      <h2 class="of-h2" id="of-threads-h">{adminView && !preview ? `${who}’s requests` : 'Your requests'}</h2>
       <p class="of-empty">
-        {adminView
+        {adminView && !preview
           ? `${who} has not sent a request yet.`
-          : 'Nothing here yet. When you send your first request, it will appear here, newest first, and the answer will come back inside it.'}
+          : 'Nothing here yet. When you send your first request, it will appear here with its answer.'}
       </p>
-    ) : (
-      <ThreadList threads={ownerThreads} user={user} env={env} />
-    )}
-  </section>
+    </section>
+  )}
 
   {adminView && !preview && (
     <section aria-labelledby="of-tests-h" class="of-threads-wrap">

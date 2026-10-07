@@ -1,30 +1,43 @@
 ---
-// The list of requests on the desk: newest first, a plain status word, and a
-// clear mark when an answer is waiting to be read.
-import { STATUS_LABEL, formatWhen, type OfficeEnv, type OfficeUser, type RequestStatus } from '../../lib/office/config';
+// The list of requests: newest first, a plain status word, a "New" badge when
+// an answer is waiting, a friendly time, and a real button on every row so it
+// is obvious each one opens.
+import { STATUS_LABEL, friendlyWhen, type OfficeEnv, type OfficeUser, type RequestStatus } from '../../lib/office/config';
 import type { Row } from '../../lib/office/db';
+import { shortTitle } from '../../lib/office/util';
 
 interface Props { threads: Row[]; user: OfficeUser; env: OfficeEnv; test?: boolean }
 const { threads, user, env, test = false } = Astro.props;
+
+function action(t: Row): string {
+  if (t.status === 'answered') return 'Read the answer';
+  if (t.status === 'needs_info') return `Answer ${t.bot_name}’s question`;
+  return 'Open';
+}
+function when(t: Row): string {
+  if (t.status === 'answered' && t.answered_at) return `Answered ${friendlyWhen(t.answered_at, env)}`;
+  return `Sent ${friendlyWhen(t.created_at, env)}`;
+}
 ---
 <ul class="of-threads">
   {threads.map((t) => {
     const unread = !!t.owner_unread && t.owner_email === user.email;
-    const answeredish = t.status === 'answered' || t.status === 'needs_info';
     return (
       <li class="of-thread" data-unread={unread ? '1' : '0'}>
         <a href={`/office/${t.id}/`}>
-          <span class="of-dot" aria-hidden="true"></span>
-          <span class="of-thread-title">
-            {unread && <span class="of-new">{answeredish ? 'New answer' : 'New'}</span>}
-            {test && <span class="of-chip of-chip--test">Test</span>}
-            {t.title}
+          <span class="of-thread-main">
+            <span class="of-thread-title">
+              {unread && <span class="of-new">New</span>}
+              {test && <span class="of-chip of-chip--test">Test</span>}
+              {shortTitle(String(t.title), 90)}
+            </span>
+            <span class="of-thread-sub">
+              <span class="of-chip" data-status={t.status}>{STATUS_LABEL[t.status as RequestStatus] || t.status}</span>
+              <span>{when(t)}</span>
+              {t.owner_email !== user.email && <span>from {t.owner_email}</span>}
+            </span>
           </span>
-          <span class="of-chip" data-status={t.status}>{STATUS_LABEL[t.status as RequestStatus] || t.status}</span>
-          <span class="of-thread-sub">
-            To {t.bot_name} · last change {formatWhen(t.updated_at, env)}
-            {t.owner_email !== user.email && <> · from {t.owner_email}</>}
-          </span>
+          <span class={`of-btn ${t.status === 'answered' || t.status === 'needs_info' ? 'of-btn--primary' : ''} of-thread-btn`} aria-hidden="true">{action(t)}</span>
         </a>
       </li>
     );

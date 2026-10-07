@@ -142,7 +142,7 @@ export const POST: APIRoute = async (ctx) => {
           const row = await getBot(db, bot.botId);
           if (row) defer(ctx.locals, ringDoorbell(env, row, id, 'request.queued'));
         } else {
-          defer(ctx.locals, notifyOwner(env, request, new URL(ctx.request.url)));
+          defer(ctx.locals, notifyOwner(env, request, new URL(ctx.request.url), status));
         }
       }
       return json(result.replayed ? 200 : 201, {

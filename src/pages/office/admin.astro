@@ -1,13 +1,15 @@
 ---
+import { answerEmailStatus } from '../../lib/office/notify';
 import { adminCanReadSetting, botVerdict } from '../../lib/office/policy';
-// The private research office: administrator's page.
-// Bots (the registry that feeds the picker), bot tokens, replies suggested for
-// the Library, and the recent activity log. The gate in src/middleware.ts
+// Bob's Office: administrator's page.
+// Settings (answer-ready email, the owner's choice of helpers), bots (the
+// registry that feeds the picker), bot tokens, answers offered to the
+// Library, and the recent activity log. The gate in src/middleware.ts
 // only lets people on the admin list reach /office/admin/.
 export const prerender = false;
 import Layout from '../../layouts/OfficeLayout.astro';
-import { formatWhen, isTrue, officeEnv, officeTitle, officeUser } from '../../lib/office/config';
-import { listBots, listPublications, parseIdArray, type Row } from '../../lib/office/db';
+import { formatWhen, listOf, officeEnv, officeTitle, officeUser } from '../../lib/office/config';
+import { SETTING_HELPER_PICKER, getSetting, listBots, listPublications, parseIdArray, type Row } from '../../lib/office/db';
 import { renderMarkdown } from '../../lib/office/markdown';
 
 const env = officeEnv(Astro.locals);
@@ -17,6 +19,10 @@ if (!user || !user.isAdmin) return new Response('Administrators only.', { status
 const db = env.OFFICE_DB;
 const officeName = officeTitle(env);
 const bots = await listBots(db, false);
+const mail = answerEmailStatus(env);
+const ownerList = listOf(env.OFFICE_OWNER_EMAILS);
+const pickerOn = (await getSetting(db, SETTING_HELPER_PICKER)) === 'on';
+const ownerShort = officeName.replace(/’s? Office$/, '') || 'The owner';
 const VERDICT_LABEL: Record<string, string> = { ok: 'Allowed', disabled: 'Hidden', blocked: 'Blocked', not_allowed: 'Not on allow list' };
 const tokens: Row[] =
   (await db
@@ -41,18 +47,37 @@ const defaultCredit = (p: Row): string =>
   `Research reply prepared by ${p.bot_name}, an AI research assistant of America’s School Trust Library, at the request of the collection’s author. Reviewed and approved for publication by the Library.`;
 ---
 <Layout title="Admin" officeName={officeName} user={user} page="admin" adminCanRead={adminCanReadSetting(env)}>
-  <span class="of-eyebrow">Administrator</span>
-  <h1 class="of-h1">Office admin</h1>
+  <h1 class="of-h1">{officeName}: admin</h1>
   <p class="of-note">
-    <strong>For the Library&rsquo;s administrator only. {officeName.replace(/’s? Office$/, '') || 'The owner'} never sees this page.</strong>
-    It holds the helpers (bots), the keys (tokens) that let each helper read and answer the requests sent to it, and replies suggested for publication.
-    To see the desk the way the owner does, or to send a test request, use <a href="/office/?view=owner">the owner&rsquo;s view</a> or <a href="/office/">the desk</a>.
+    <strong>For the Library&rsquo;s administrator only. {ownerShort} never sees this page.</strong>
+    It holds the settings, the helpers (bots), the keys (tokens) that let each helper read and answer the requests sent to it, and answers offered to the Library.
+    To see {officeName} the way {ownerShort} does, or to send a test request, use <a href="/office/?view=owner">the owner&rsquo;s view</a> or <a href="/office/">the main page</a>.
   </p>
-  <p class="of-lede">Bots, their tokens, and replies waiting for a publication decision.</p>
   <p class="of-status" data-admin-status role="status" aria-live="polite"></p>
 
+  <section class="of-card" aria-labelledby="of-settings-h" data-admin>
+    <h2 class="of-h2" id="of-settings-h">Settings</h2>
+    <h3 class="of-label">Answer-ready email</h3>
+    {mail.ready ? (
+      <p class="of-note"><span class="of-chip" data-status="approved">On</span> When a helper answers or asks a question, {ownerShort} gets a short email from <code>{mail.from}</code> with a button that opens the answer. The email never contains the request or the answer. Test requests never send email.{ownerList.length === 0 && ' (No owner address is set in OFFICE_OWNER_EMAILS, so nobody is emailed yet.)'}</p>
+    ) : (
+      <p class="of-note of-note--warn"><span class="of-chip" data-status="off">Off</span> {mail.reason} Answers still appear in {officeName}; only the email is missing.</p>
+    )}
+    <p class="of-row">
+      <button type="button" class="of-btn" data-notify-test disabled={!mail.ready}>Send me a test email</button>
+      <span class="of-meta">Sends the same email, marked [Test], to {user.email} only.</span>
+    </p>
+    <h3 class="of-label">Helpers {ownerShort} can choose</h3>
+    <label class="of-check">
+      <input type="checkbox" data-setting-picker checked={pickerOn} />
+      Let {ownerShort} choose a helper other than Herald when sending a request
+    </label>
+    <p class="of-meta">Off (the default): every request {ownerShort} sends goes to Herald, and no choice is shown. Your own view always shows every helper so you can test them.</p>
+    <div class="of-row of-tools"><button type="button" class="of-btn of-btn--primary" data-settings-save>Save settings</button></div>
+  </section>
+
   <section class="of-card" aria-labelledby="of-pubs-h" data-admin>
-    <h2 class="of-h2" id="of-pubs-h">Suggested for the Library ({waiting.length})</h2>
+    <h2 class="of-h2" id="of-pubs-h">Offered to the Library ({waiting.length})</h2>
     {waiting.length === 0 && <p class="of-meta">Nothing is waiting for a decision.</p>}
     {waiting.map((p) => {
       const offered = parseIdArray(p.attachment_ids);
@@ -60,7 +85,7 @@ const defaultCredit = (p: Row): string =>
       return (
         <div class="of-pub" data-pub={p.id}>
           <p class="of-meta">
-            From the thread &ldquo;{p.request_title}&rdquo; · reply by {p.bot_name}, {formatWhen(p.message_at, env)} · suggested by {p.nominated_by}
+            From the thread &ldquo;{p.request_title}&rdquo; · reply by {p.bot_name}, {formatWhen(p.message_at, env)} · offered by {p.nominated_by}
           </p>
           {p.note && <p class="of-note">{p.note}</p>}
           <details>
@@ -90,7 +115,7 @@ const defaultCredit = (p: Row): string =>
           </div>
           <label class="of-label" for={`c-${p.id}`}>Credit line</label>
           <input class="of-input" id={`c-${p.id}`} type="text" maxlength="600" value={defaultCredit(p)} data-pub-credit />
-          <label class="of-label" for={`n-${p.id}`}>Note back to the person who suggested it <small>(optional)</small></label>
+          <label class="of-label" for={`n-${p.id}`}>Note back to the person who offered it <small>(optional)</small></label>
           <input class="of-input" id={`n-${p.id}`} type="text" maxlength="1000" data-pub-note />
           <div class="of-row of-tools">
             <button type="button" class="of-btn of-btn--primary" data-pub-decide="approve">Approve</button>

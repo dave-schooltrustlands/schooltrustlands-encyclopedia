@@ -8,7 +8,9 @@ import { pathToFileURL, fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 export async function loadTs(rel) {
-  const out = await build({ entryPoints: [path.join(ROOT, rel)], bundle: true, format: 'esm', platform: 'node', write: false, logLevel: 'silent' });
+  const out = await build({ entryPoints: [path.join(ROOT, rel)], bundle: true, format: 'esm', platform: 'node', write: false, logLevel: 'silent',
+    // Astro fills import.meta.env at build time; under node:test it is empty.
+    define: { 'import.meta.env': '{}' } });
   const dir = mkdtempSync(path.join(tmpdir(), 'office-test-'));
   const file = path.join(dir, path.basename(rel).replace(/\.ts$/, '.mjs'));
   writeFileSync(file, out.outputFiles[0].text);
