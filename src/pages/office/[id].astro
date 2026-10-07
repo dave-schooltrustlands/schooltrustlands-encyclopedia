@@ -1,0 +1,190 @@
+---
+import { adminCanReadSetting } from '../../lib/office/policy';
+// The private research office: one request and its reply thread.
+// Server-rendered on every visit. Sign-in is checked by the gate in
+// src/middleware.ts; this page then checks that the thread belongs to the
+// person asking. Someone else's thread and a thread that does not exist get
+// the same answer.
+export const prerender = false;
+import Composer from '../../components/office/Composer.astro';
+import Layout from '../../layouts/OfficeLayout.astro';
+import { STATUS_LABEL, formatWhen, isTrue, officeEnv, officeTitle, officeUser, type RequestStatus } from '../../lib/office/config';
+import { audit, expireStale, getThread, markRead, parseIdArray } from '../../lib/office/db';
+import { isAudio, isImage } from '../../lib/office/files';
+import { renderMarkdown } from '../../lib/office/markdown';
+import { canNominate, canReadRequest, canWriteRequest } from '../../lib/office/rules';
+import { clientIp, humanSize, isId } from '../../lib/office/util';
+
+const env = officeEnv(Astro.locals);
+const user = officeUser(Astro.locals);
+if (!user) return new Response('Sign-in required.', { status: 401 });
+
+const db = env.OFFICE_DB;
+const officeName = officeTitle(env);
+const adminCanRead = adminCanReadSetting(env);
+const id = Astro.params.id;
+
+await expireStale(db);
+const thread = isId('r', id) ? await getThread(db, id) : null;
+const visible = !!thread && canReadRequest(user, thread.request);
+if (!visible) Astro.response.status = 404;
+
+const request = visible ? thread!.request : null;
+const mine = !!request && canWriteRequest(user, request);
+const mayNominate = !!request && canNominate(user, request);
+if (request && mine && request.owner_unread) await markRead(db, request.id);
+if (request && !mine) {
+  await audit(db, { actor_kind: 'admin', actor_id: user.email, action: 'admin.thread_read', request_id: request.id, ip: clientIp(Astro.request) });
+}
+
+const status = (request?.status || 'queued') as RequestStatus;
+const working = ['queued', 'claimed', 'in_progress'].includes(status);
+const statusLine: Record<RequestStatus, string> = {
+  queued: `Waiting for ${request?.bot_name} to pick this up. Bots check in every few minutes.`,
+  claimed: `${request?.bot_name} has picked this up.`,
+  in_progress: `${request?.bot_name} is working on this.`,
+  answered: `${request?.bot_name} has answered. Reply below to ask for more.`,
+  needs_info: `${request?.bot_name} needs something from you before going on. Reply below.`,
+  failed:
+    request?.status_note === 'lease_expired'
+      ? `${request?.bot_name} started this several times and did not finish. You can send it again.`
+      : `${request?.bot_name} could not complete this. You can send it again, or reply with a change.`,
+};
+const pubChip: Record<string, string> = { nominated: 'Suggested', approved: 'Approved', rejected: 'Not approved', withdrawn: 'Withdrawn' };
+const pubLabel: Record<string, string> = {
+  nominated: 'Suggested for the Library. Waiting for a decision.',
+  approved: 'Approved for the Library.',
+  rejected: 'Not approved for the Library.',
+  withdrawn: 'Suggestion withdrawn.',
+};
+---
+<Layout title={request ? request.title : 'Not found'} officeName={officeName} user={user} page="thread" adminCanRead={adminCanRead}>
+  <a class="of-back" href="/office/">&larr; Back to the desk</a>
+
+  {!request && (
+    <>
+      <h1 class="of-h1">Nothing here</h1>
+      <p class="of-lede">There is no thread at this address, or it has been deleted.</p>
+    </>
+  )}
+
+  {request && thread && (
+    <div data-thread data-request-id={request.id} data-version={`${request.status}|${thread.messages.length}`} data-watch={working ? '1' : '0'}>
+      <header class="of-thread-head">
+        <span class="of-eyebrow">Request to {request.bot_name}</span>
+        <h1 class="of-h1">{request.title}</h1>
+        <div class="of-row">
+          <span class="of-chip" data-status={status}>{STATUS_LABEL[status]}</span>
+          <span class="of-meta">Started {formatWhen(request.created_at, env)}{!mine && <> · from {request.owner_email}</>}</span>
+        </div>
+      </header>
+
+      <p class={`of-note ${status === 'failed' ? 'of-note--warn' : ''}`}>{statusLine[status]}</p>
+      <p class="of-note" data-fresh hidden>
+        There is something new in this thread. <button type="button" class="of-btn of-btn--quiet" data-reload>Show it</button>
+      </p>
+
+      {thread.messages.map((m) => {
+        const files = thread.files.get(m.id) || [];
+        const pub = thread.publications.get(m.id);
+        const fromBot = m.author_kind === 'bot';
+        const who = fromBot ? request.bot_name : mine ? 'You' : m.author_id;
+        const offered = files.filter((f) => f.kind === 'file');
+        const included = pub ? parseIdArray(pub.attachment_ids) : [];
+        return (
+          <article class={`of-msg ${fromBot ? 'of-msg--bot' : 'of-msg--owner'}`} id={m.id}>
+            <header class="of-msg-head">
+              <span class="of-msg-who">{who}</span>
+              <span class="of-meta">{formatWhen(m.created_at, env)}</span>
+              {m.kind === 'needs_info' && <span class="of-chip" data-status="needs_info">Question for you</span>}
+              {m.kind === 'failure' && <span class="of-chip" data-status="failed">Did not finish</span>}
+              {m.kind === 'progress' && <span class="of-chip" data-status="in_progress">Progress note</span>}
+            </header>
+
+            {m.body ? <div class="of-prose" set:html={renderMarkdown(m.body)} /> : <p class="of-meta">(No text. See the attachments.)</p>}
+
+            {files.length > 0 && (
+              <ul class="of-files" aria-label="Attachments">
+                {files.map((f) => (
+                  <li class="of-file">
+                    <a class="of-file-name" href={`/api/office/attachments/${f.id}`} target="_blank" rel="noopener">{f.filename}</a>
+                    <span class="of-file-size">{f.kind === 'voice' ? 'Voice recording · ' : ''}{humanSize(f.size)}</span>
+                    {isAudio(f) && <audio controls preload="none" src={`/api/office/attachments/${f.id}`}></audio>}
+                    {isImage(f.content_type) && (
+                      <a href={`/api/office/attachments/${f.id}`} target="_blank" rel="noopener">
+                        <img class="of-thumb" src={`/api/office/attachments/${f.id}`} alt={f.filename} loading="lazy" />
+                      </a>
+                    )}
+                    {f.transcript && (
+                      <details class="of-transcript">
+                        <summary>Machine transcript, before any corrections</summary>
+                        <p>{f.transcript}</p>
+                      </details>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {fromBot && m.kind === 'reply' && (pub || mayNominate) && (
+              <footer class="of-msg-foot">
+                {pub && (
+                  <p>
+                    <span class="of-chip" data-status={pub.state}>{pubChip[pub.state] || pub.state}</span>{' '}
+                    {pubLabel[pub.state] || ''}
+                    {pub.state === 'approved' && pub.public_url && <> <a href={pub.public_url} target="_blank" rel="noopener">See it in the Library</a>.</>}
+                    {pub.decision_note && pub.state !== 'withdrawn' && <> Note: {pub.decision_note}</>}
+                    {pub.state === 'nominated' && mayNominate && (
+                      <button type="button" class="of-btn of-btn--quiet" data-withdraw={pub.id}>Take it back</button>
+                    )}
+                  </p>
+                )}
+                {pub && pub.state === 'approved' && included.length > 0 && (
+                  <p>{included.length} {included.length === 1 ? 'file is' : 'files are'} cleared to go with it.</p>
+                )}
+                {mayNominate && (!pub || pub.state === 'rejected' || pub.state === 'withdrawn') && (
+                  <details data-nominate={m.id}>
+                    <summary>Suggest this reply for the Library</summary>
+                    <p>
+                      This asks the Library&rsquo;s administrator to review the reply for publication. Nothing becomes public
+                      unless it is approved. Your own messages and recordings are never included.
+                    </p>
+                    {offered.length > 0 && (
+                      <div>
+                        <span class="of-label">Files that may go with it</span>
+                        {offered.map((f) => (
+                          <label class="of-check"><input type="checkbox" value={f.id} data-nominate-file /> {f.filename}</label>
+                        ))}
+                      </div>
+                    )}
+                    <label class="of-label" for={`of-note-${m.id}`}>A note for the reviewer <small>(optional)</small></label>
+                    <input class="of-input" id={`of-note-${m.id}`} type="text" maxlength="1000" data-nominate-note />
+                    <div class="of-row of-tools">
+                      <button type="button" class="of-btn" data-nominate-send>Suggest it</button>
+                    </div>
+                  </details>
+                )}
+              </footer>
+            )}
+          </article>
+        );
+      })}
+
+      <p class="of-status" data-thread-status role="status" aria-live="polite"></p>
+
+      {mine && <Composer mode="followup" canTranscribe={!!env.AI} requestId={request.id} botName={request.bot_name} />}
+
+      {mine && (
+        <div class="of-row">
+          {status === 'failed' && <button type="button" class="of-btn" data-retry>Send it again</button>}
+          <button type="button" class="of-btn of-btn--danger" data-delete>Delete this thread</button>
+          <span class="of-row" data-delete-confirm hidden>
+            <span class="of-meta">Delete the thread and its files for good?</span>
+            <button type="button" class="of-btn of-btn--danger" data-delete-yes>Yes, delete</button>
+            <button type="button" class="of-btn" data-delete-no>Keep it</button>
+          </span>
+        </div>
+      )}
+    </div>
+  )}
+</Layout>

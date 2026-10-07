@@ -13,7 +13,8 @@
     "build:data": "node scripts/sync-catalog-from-substrate.mjs && node scripts/build-map-layers.mjs && node scripts/build-finance-data.mjs",
     "build:layers": "node scripts/build-map-layers.mjs",
     "build:finance": "node scripts/build-finance-data.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "test:office": "node --test tests/office/policy.test.mjs tests/office/publish.test.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",

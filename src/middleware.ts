@@ -8,6 +8,7 @@
 // affected at runtime.
 import { defineMiddleware } from 'astro:middleware';
 import { FP_PREFIX, fpToken, readCookie } from './lib/fp';
+import { isOfficePath, officeGate } from './lib/office/gate';
 
 
 const ROBOTS = 'noindex, nofollow, noarchive';
@@ -94,6 +95,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // Gate by the page the router actually matched as well as by the typed
   // address, so a spelling the router accepts can never step around the gate.
   const routed = String((context as any).routePattern || '');
+  if (isOfficePath(pathname) || routed === '/office' || routed.startsWith('/office/') || routed.startsWith('/api/office/')) return officeGate(context, next);
   if (!pathname.startsWith(FP_PREFIX) && !routed.startsWith(FP_PREFIX)) return next();
 
   const env: any = (context.locals as any)?.runtime?.env || {};

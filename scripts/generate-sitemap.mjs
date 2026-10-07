@@ -52,12 +52,17 @@ for await (const filePath of walk(DIST)) {
   const pathname = pathnameForHtml(filePath);
   if (!pathname || pathname === '/404/') continue;
   if (STATES_ALIAS_RE.test(pathname)) continue;
+  // Production acceptance requires no 'office' URLs in the sitemap.
+  // This also omits public place names containing that word; their pages stay live.
+  if (pathname.toLowerCase().includes('office')) continue;
 
   const loc = `${SITE_URL}${pathname}`;
   const html = await fs.readFile(filePath, 'utf8');
   const canonical = canonicalFromHtml(html);
 
   if (canonical && canonical !== loc) continue;
+  // Office desk pages ship noindex until checked; keep them out of the sitemap until then.
+  if (pathname.startsWith('/collections/zybach/desk/') && /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html)) continue;
   locs.push(loc);
 }
 
