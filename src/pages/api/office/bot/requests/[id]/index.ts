@@ -17,5 +17,5 @@ export const GET: APIRoute = async (ctx) => {
   if (!isId('r', id)) return apiError(404, 'not_found', 'No such request.');
   const thread = await getThread(env.OFFICE_DB, id);
   if (!thread || thread.request.bot_id !== bot.botId) return apiError(404, 'not_found', 'No such request.');
-  return json(200, threadForBot(thread, siteOrigin(new URL(ctx.request.url))));
+  return json(200, threadForBot(thread, siteOrigin(new URL(ctx.request.url)), env.OFFICE_OWNER_EMAILS || ''));
 };

@@ -229,7 +229,8 @@ export interface AttachmentRow {
 /** Streams a stored file. The caller has already decided this person may have it. */
 export async function serveAttachment(env: OfficeEnv, request: Request, row: AttachmentRow): Promise<Response> {
   const range = parseRange(request.headers.get('range'), row.size);
-  const inline = isInline(row.content_type);
+  // ?download=1 asks for a plain download (the "Download" link on a thread page).
+  const inline = isInline(row.content_type) && new URL(request.url).searchParams.get('download') !== '1';
   const headers: Record<string, string> = {
     'content-type': row.content_type,
     'content-disposition': contentDisposition(row.filename, inline),

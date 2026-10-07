@@ -1,8 +1,10 @@
 ---
-// The writing desk: type, record, attach, send. Used for a new request (with
-// the bot picker) and for a follow-up inside a thread. All behaviour lives in
-// /office/office.js, which finds this by its data-composer attribute.
-import { LIMITS } from '../../lib/office/config';
+// The writing desk: type or talk, attach, pick a helper, send. Used for a new
+// request (with examples and the helper picker) and for a reply inside a
+// thread. All behaviour lives in /office/office.js, which finds this by its
+// data-composer attribute. Written for a reader who is not technical: big
+// controls, plain words, one obvious path (type or talk, then Send).
+import { DEFAULT_HELPER_ID, LIMITS, helperBlurb } from '../../lib/office/config';
 import { ALLOWED_EXTENSIONS } from '../../lib/office/files';
 
 interface Props {
@@ -10,12 +12,28 @@ interface Props {
   bots?: { id: string; name: string; description: string }[];
   requestId?: string;
   botName?: string;
-  /** False when the Workers AI binding is missing; recordings then go to the bot as audio only. */
+  /** False when the Workers AI binding is missing; recordings then go to the helper as audio only. */
   canTranscribe: boolean;
+  /** Shown above the box for an administrator sending a test. */
+  testNote?: string;
 }
-const { mode, bots = [], requestId = '', botName = '', canTranscribe } = Astro.props;
+const { mode, bots = [], requestId = '', botName = '', canTranscribe, testNote = '' } = Astro.props;
 const accept = ALLOWED_EXTENSIONS.map((e) => '.' + e).join(',');
 const maxMb = Math.round(LIMITS.fileBytes / (1024 * 1024));
+
+// The default helper (Herald) is shown on its own; everyone else sits behind
+// "Ask a different helper", so the usual case needs no choice at all.
+const main = bots.find((b) => b.id === DEFAULT_HELPER_ID) || bots[0];
+const others = bots.filter((b) => b !== main);
+
+const examples = [
+  'Find what the 1850s GLO survey notes say about Soap Creek Valley, and list the sources.',
+  'Transcribe the attached interview recording, and mark any words you are unsure of.',
+  'Turn my attached notes into a short newsletter article, about 600 words.',
+  'Check this draft for mistakes in dates, names, and places.',
+];
+const mic = '<svg aria-hidden="true" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>';
+const clip = '<svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.1l-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg>';
 ---
 <section
   class="of-card of-composer"
@@ -27,56 +45,87 @@ const maxMb = Math.round(LIMITS.fileBytes / (1024 * 1024));
   data-transcribe={canTranscribe ? '1' : '0'}
   aria-labelledby={`of-composer-h-${mode}`}
 >
-  <h2 class="of-h2" id={`of-composer-h-${mode}`}>{mode === 'new' ? 'New request' : `Reply to ${botName}`}</h2>
+  <h2 class="of-h2 of-composer-h" id={`of-composer-h-${mode}`}>{mode === 'new' ? 'Ask for something new' : `Write back to ${botName}`}</h2>
+  {testNote && <p class="of-note of-note--test">{testNote}</p>}
+
+  <label class="of-big-label" for={`of-body-${mode}`}>
+    {mode === 'new' ? 'What would you like help with? Write it the way you would say it.' : 'Ask for a change, answer a question, or say thank you.'}
+  </label>
+  <textarea
+    class="of-textarea"
+    id={`of-body-${mode}`}
+    rows={mode === 'new' ? 8 : 5}
+    maxlength={LIMITS.ownerBodyChars}
+    placeholder={mode === 'new' ? 'Type here, or press “Talk instead of typing” below.' : 'Type here, or press “Talk instead of typing”.'}
+    data-body
+  ></textarea>
+
+  <div class="of-tools" data-drop>
+    <button type="button" class="of-btn of-btn--big of-btn--talk" data-record aria-pressed="false">
+      <Fragment set:html={mic} /><span data-record-label>Talk instead of typing</span>
+    </button>
+    <span class="of-rec-time" data-rec-time hidden>0:00</span>
+    <label class="of-btn of-btn--big">
+      <Fragment set:html={clip} /><span>Attach files</span>
+      <input type="file" multiple hidden accept={accept} data-file-input />
+    </label>
+  </div>
+  <p class="of-hint">
+    {canTranscribe
+      ? 'To talk: press the button, speak, then press it again to stop. Your words appear in the box so you can fix anything before sending.'
+      : 'To talk: press the button, speak, then press it again to stop. The recording is sent along with your request.'}
+    {' '}Files: photos, PDFs, Word documents, spreadsheets, recordings, maps. Up to {LIMITS.filesPerMessage} files, {maxMb} MB each. On a computer you can also drag files onto this box.
+  </p>
+  <p class="of-drop-hint" data-drop-hint hidden>Let go to attach.</p>
+
+  <ul class="of-files" data-files aria-label="Attached files"></ul>
 
   {mode === 'new' && (
-    <fieldset class="of-bots">
-      <legend class="of-label">Send to</legend>
-      <div class="of-bot-grid">
-        {bots.map((b, i) => (
-          <label class="of-bot">
-            <input type="radio" name="of-bot" value={b.id} data-bot-name={b.name} checked={i === 0} />
-            <span class="of-bot-face">
-              <span class="of-bot-name">{b.name}</span>
-              {b.description && <span class="of-bot-desc">{b.description}</span>}
-            </span>
-          </label>
+    <div class="of-examples">
+      <p class="of-examples-h">Not sure how to start? Tap an example to put it in the box, then change it to suit:</p>
+      <div class="of-example-list">
+        {examples.map((x) => (
+          <button type="button" class="of-example" data-example={x}>{x}</button>
         ))}
       </div>
+    </div>
+  )}
+
+
+  {mode === 'new' && main && (
+    <fieldset class="of-bots">
+      <legend class="of-big-label">Who should answer?</legend>
+      <label class="of-bot of-bot--main">
+        <input type="radio" name="of-bot" value={main.id} data-bot-name={main.name} checked />
+        <span class="of-bot-face">
+          <span class="of-bot-name">{main.name}{main.id === DEFAULT_HELPER_ID && <span class="of-bot-tag"> · usually the right choice</span>}</span>
+          {helperBlurb(main) && <span class="of-bot-desc">{helperBlurb(main)}</span>}
+        </span>
+      </label>
+      {others.length > 0 && (
+        <details class="of-more-helpers">
+          <summary>Ask a different helper instead</summary>
+          <div class="of-bot-grid">
+            {others.map((b) => (
+              <label class="of-bot">
+                <input type="radio" name="of-bot" value={b.id} data-bot-name={b.name} />
+                <span class="of-bot-face">
+                  <span class="of-bot-name">{b.name}</span>
+                  {helperBlurb(b) && <span class="of-bot-desc">{helperBlurb(b)}</span>}
+                </span>
+              </label>
+            ))}
+          </div>
+        </details>
+      )}
     </fieldset>
   )}
 
-  {mode === 'new' && (
-    <>
-      <label class="of-label" for="of-title">Subject <small>(optional)</small></label>
-      <input class="of-input" id="of-title" type="text" maxlength={LIMITS.titleChars} autocomplete="off" data-title />
-    </>
-  )}
-
-  <label class="of-label" for={`of-body-${mode}`}>{mode === 'new' ? 'What do you need?' : 'Your message'}</label>
-  <textarea class="of-textarea" id={`of-body-${mode}`} rows={mode === 'new' ? 7 : 5} maxlength={LIMITS.ownerBodyChars} data-body></textarea>
-
-  <div class="of-row of-tools">
-    <button type="button" class="of-btn" data-record aria-pressed="false">Record your voice</button>
-    <span class="of-rec-time" data-rec-time hidden>0:00</span>
-    <label class="of-btn">
-      Attach files
-      <input type="file" multiple hidden accept={accept} data-file-input />
-    </label>
-    <span class="of-meta">Up to {LIMITS.filesPerMessage} files, {maxMb} MB each.</span>
-  </div>
-
-  <ul class="of-files" data-files aria-label="Attached files"></ul>
   <p class="of-status" data-status role="status" aria-live="polite"></p>
 
-  <div class="of-row of-send-row">
-    <span class="of-meta">
-      {canTranscribe
-        ? 'A recording is turned into text here so you can correct it before sending.'
-        : 'A recording is sent to the bot as audio.'}
-    </span>
-    <button type="button" class="of-btn of-btn--primary" data-send>
-      {mode === 'new' ? 'Send request' : 'Send message'}
+  <div class="of-send-row">
+    <button type="button" class="of-btn of-btn--primary of-btn--send" data-send>
+      {mode === 'new' ? <>Send to <span data-send-name>{main ? main.name : 'the helper'}</span></> : `Send to ${botName}`}
     </button>
   </div>
 </section>

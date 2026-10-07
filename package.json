@@ -14,7 +14,7 @@
     "build:layers": "node scripts/build-map-layers.mjs",
     "build:finance": "node scripts/build-finance-data.mjs",
     "astro": "astro",
-    "test:office": "node --test tests/office/policy.test.mjs tests/office/publish.test.mjs"
+    "test:office": "node --test tests/office/policy.test.mjs tests/office/publish.test.mjs tests/office/rules.test.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",

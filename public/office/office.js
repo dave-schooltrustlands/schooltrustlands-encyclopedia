@@ -83,6 +83,9 @@
     var recBtn = $('[data-record]', root);
     var recTime = $('[data-rec-time]', root);
     var fileInput = $('[data-file-input]', root);
+    var recLabel = $('[data-record-label]', root);
+    var dropHint = $('[data-drop-hint]', root);
+    function setRecLabel(text) { if (recLabel) recLabel.textContent = text; else recBtn.textContent = text; }
 
     var items = [];      // { id, name, size, kind, blobUrl }
     var busy = 0;        // uploads or transcriptions in flight
@@ -197,7 +200,7 @@
     }
     function resetRecordButton() {
       clearInterval(timer);
-      recBtn.textContent = 'Record your voice';
+      setRecLabel('Talk instead of typing');
       recBtn.classList.remove('of-btn--recording');
       recBtn.setAttribute('aria-pressed', 'false');
       recTime.hidden = true;
@@ -216,7 +219,7 @@
         }
         bodyEl.value = (bodyEl.value.trim() ? bodyEl.value.replace(/\s+$/, '') + '\n\n' : '') + text;
         bodyEl.focus();
-        say(statusEl, 'Your words are in the box above. Read them over and fix anything that came out wrong, then send.', 'good');
+        say(statusEl, 'Your words are in the box above. Read them over, fix anything that came out wrong, then press Send.', 'good');
       }).catch(function (err) {
         say(statusEl, err.message, err.code === 'transcription_unavailable' ? null : 'error');
       }).then(function () { setBusy(-1); });
@@ -226,7 +229,7 @@
       recBtn.addEventListener('click', function () {
         if (recorder && recorder.state === 'recording') { stopRecording(); return; }
         if (!navigator.mediaDevices || !window.MediaRecorder) {
-          say(statusEl, 'This browser cannot record audio. You can attach a recording as a file instead.', 'error');
+          say(statusEl, 'This browser cannot record sound. Please type instead, or attach a recording as a file.', 'error');
           return;
         }
         navigator.mediaDevices.getUserMedia({ audio: true }).then(function (s) {
@@ -244,22 +247,64 @@
             upload(file, 'voice').then(function (it) {
               if (!it) return;
               if (canTranscribe) return transcribe(it);
-              say(statusEl, 'Recording attached. The bot will receive it as audio; add a typed note if you like.', 'good');
+              say(statusEl, 'Recording attached. The helper will receive it as audio. You can add a typed note too.', 'good');
             });
           };
           recorder.start();
           startedAt = Date.now();
-          recBtn.textContent = 'Stop recording';
+          setRecLabel('Stop recording');
           recBtn.classList.add('of-btn--recording');
           recBtn.setAttribute('aria-pressed', 'true');
           recTime.hidden = false; recTime.textContent = '0:00';
           timer = setInterval(tick, 500);
-          say(statusEl, 'Recording. Press Stop when you are done (10 minutes at most).');
+          say(statusEl, 'Recording now. Speak, then press “Stop recording” when you are done (10 minutes at most).');
         }).catch(function () {
-          say(statusEl, 'The microphone could not be used. Check that this page is allowed to use it, then try again.', 'error');
+          say(statusEl, 'The microphone could not be used. If your browser asked about the microphone, choose Allow, then press the button again.', 'error');
         });
       });
     }
+
+    // ---- examples: tap one to put it in the box, ready to change
+    $all('[data-example]', root).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.getAttribute('data-example') || '';
+        if (bodyEl.value.trim() && bodyEl.value.trim() !== text) bodyEl.value = bodyEl.value.replace(/\s+$/, '') + '\n\n' + text;
+        else bodyEl.value = text;
+        dirty = true;
+        bodyEl.focus();
+        try { bodyEl.setSelectionRange(bodyEl.value.length, bodyEl.value.length); } catch (e) { /* older browsers */ }
+        say(statusEl, 'The example is in the box. Change it to say exactly what you need, then press Send.');
+      });
+    });
+
+    // ---- the send button names the chosen helper
+    var sendName = $('[data-send-name]', root);
+    $all('input[name="of-bot"]', root).forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        if (radio.checked && sendName) sendName.textContent = radio.getAttribute('data-bot-name') || 'the helper';
+      });
+    });
+
+    // ---- drag and drop files anywhere on the box
+    var dragDepth = 0;
+    function hasFiles(e) {
+      var types = e.dataTransfer && e.dataTransfer.types;
+      return !!types && Array.prototype.indexOf.call(types, 'Files') > -1;
+    }
+    function dragState(on) {
+      if (on) root.setAttribute('data-dragging', '1'); else root.removeAttribute('data-dragging');
+      if (dropHint) dropHint.hidden = !on;
+    }
+    root.addEventListener('dragenter', function (e) { if (!hasFiles(e)) return; e.preventDefault(); dragDepth++; dragState(true); });
+    root.addEventListener('dragover', function (e) { if (!hasFiles(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
+    root.addEventListener('dragleave', function (e) { if (!hasFiles(e)) return; dragDepth = Math.max(0, dragDepth - 1); if (!dragDepth) dragState(false); });
+    root.addEventListener('drop', function (e) {
+      if (!hasFiles(e)) return;
+      e.preventDefault();
+      dragDepth = 0; dragState(false);
+      var files = Array.prototype.slice.call(e.dataTransfer.files || []);
+      files.reduce(function (chain, f) { return chain.then(function () { return upload(f, 'file'); }); }, Promise.resolve());
+    });
 
     // ---- send
 
@@ -274,7 +319,7 @@
       if (recorder && recorder.state === 'recording') { say(statusEl, 'Stop the recording first.', 'error'); return; }
       var text = bodyEl.value.trim();
       if (!text && !items.length) {
-        say(statusEl, mode === 'new' ? 'Write what you need, record it, or attach a file.' : 'Write a message, record one, or attach a file.', 'error');
+        say(statusEl, mode === 'new' ? 'The box is empty. Type what you need, press “Talk instead of typing”, or attach a file.' : 'The box is empty. Type a message, talk, or attach a file.', 'error');
         bodyEl.focus();
         return;
       }
@@ -282,7 +327,7 @@
       var path;
       if (mode === 'new') {
         var chosen = $('input[name="of-bot"]:checked', root);
-        if (!chosen) { say(statusEl, 'Choose who to send this to.', 'error'); return; }
+        if (!chosen) { say(statusEl, 'Choose a helper to send this to.', 'error'); return; }
         payload.bot_id = chosen.value;
         payload.title = titleEl ? titleEl.value.trim() : '';
         path = '/api/office/requests';
@@ -291,13 +336,15 @@
       }
       sending = true; refreshSend();
       say(statusEl, 'Sending…');
+      sendBtn.setAttribute('aria-busy', 'true');
       api(path, { method: 'POST', json: payload }).then(function (data) {
         dirty = false;
-        say(statusEl, 'Sent.', 'good');
+        say(statusEl, 'Sent. Opening your request…', 'good');
         if (mode === 'new') window.location.assign(data.url);
         else window.location.reload();
       }).catch(function (err) {
         sending = false; refreshSend();
+        sendBtn.removeAttribute('aria-busy');
         say(statusEl, err.message + ' Nothing was lost: your text and files are still here.', 'error');
       });
     });
@@ -483,7 +530,19 @@
 
   // ---------------------------------------------------------------- start
 
+  function guardPageDrops() {
+    if (!document.querySelector('[data-composer]')) return;
+    ['dragover', 'drop'].forEach(function (type) {
+      window.addEventListener(type, function (e) {
+        if (e.defaultPrevented) return;
+        var types = e.dataTransfer && e.dataTransfer.types;
+        if (types && Array.prototype.indexOf.call(types, 'Files') > -1) e.preventDefault();
+      });
+    });
+  }
+
   function start() {
+    guardPageDrops();
     $all('[data-composer]').forEach(setupComposer);
     var thread = $('[data-thread]');
     if (thread) setupThread(thread);

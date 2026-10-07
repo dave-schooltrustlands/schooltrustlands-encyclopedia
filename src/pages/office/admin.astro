@@ -43,6 +43,11 @@ const defaultCredit = (p: Row): string =>
 <Layout title="Admin" officeName={officeName} user={user} page="admin" adminCanRead={adminCanReadSetting(env)}>
   <span class="of-eyebrow">Administrator</span>
   <h1 class="of-h1">Office admin</h1>
+  <p class="of-note">
+    <strong>For the Library&rsquo;s administrator only. {officeName.replace(/’s? Office$/, '') || 'The owner'} never sees this page.</strong>
+    It holds the helpers (bots), the keys (tokens) that let each helper read and answer the requests sent to it, and replies suggested for publication.
+    To see the desk the way the owner does, or to send a test request, use <a href="/office/?view=owner">the owner&rsquo;s view</a> or <a href="/office/">the desk</a>.
+  </p>
   <p class="of-lede">Bots, their tokens, and replies waiting for a publication decision.</p>
   <p class="of-status" data-admin-status role="status" aria-live="polite"></p>
 

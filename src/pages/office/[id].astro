@@ -8,11 +8,11 @@ import { adminCanReadSetting } from '../../lib/office/policy';
 export const prerender = false;
 import Composer from '../../components/office/Composer.astro';
 import Layout from '../../layouts/OfficeLayout.astro';
-import { STATUS_LABEL, formatWhen, isTrue, officeEnv, officeTitle, officeUser, type RequestStatus } from '../../lib/office/config';
+import { STATUS_LABEL, formatWhen, isTrue, listOf, officeEnv, officeTitle, officeUser, type RequestStatus } from '../../lib/office/config';
 import { audit, expireStale, getThread, markRead, parseIdArray } from '../../lib/office/db';
 import { isAudio, isImage } from '../../lib/office/files';
 import { renderMarkdown } from '../../lib/office/markdown';
-import { canNominate, canReadRequest, canWriteRequest } from '../../lib/office/rules';
+import { canDeleteRequest, canNominate, canReadRequest, canWriteRequest, isTestThread } from '../../lib/office/rules';
 import { clientIp, humanSize, isId } from '../../lib/office/util';
 
 const env = officeEnv(Astro.locals);
@@ -31,6 +31,11 @@ if (!visible) Astro.response.status = 404;
 
 const request = visible ? thread!.request : null;
 const mine = !!request && canWriteRequest(user, request);
+const mayDelete = !!request && canDeleteRequest(user, request, env.OFFICE_OWNER_EMAILS);
+const isTest = !!request && user.isAdmin && isTestThread(request, env.OFFICE_OWNER_EMAILS);
+const justSent = !!request && mine && Astro.url.searchParams.get('sent') === '1';
+const helpEmail = listOf(env.OFFICE_ADMIN_EMAILS)[0] || '';
+const emailsOn = isTrue(env.OFFICE_NOTIFY);
 const mayNominate = !!request && canNominate(user, request);
 if (request && mine && request.owner_unread) await markRead(db, request.id);
 if (request && !mine) {
@@ -39,16 +44,17 @@ if (request && !mine) {
 
 const status = (request?.status || 'queued') as RequestStatus;
 const working = ['queued', 'claimed', 'in_progress'].includes(status);
+const bn = request?.bot_name || 'The helper';
 const statusLine: Record<RequestStatus, string> = {
-  queued: `Waiting for ${request?.bot_name} to pick this up. Bots check in every few minutes.`,
-  claimed: `${request?.bot_name} has picked this up.`,
-  in_progress: `${request?.bot_name} is working on this.`,
-  answered: `${request?.bot_name} has answered. Reply below to ask for more.`,
-  needs_info: `${request?.bot_name} needs something from you before going on. Reply below.`,
+  queued: `Waiting for ${bn} to pick this up. Helpers check the desk from time to time; the answer will appear on this page. You do not need to keep it open.`,
+  claimed: `${bn} has picked this up and is working on it. The answer will appear on this page.`,
+  in_progress: `${bn} is working on this. The answer will appear on this page.`,
+  answered: `${bn} has answered (below). To ask for a change or more, write back in the box at the bottom.`,
+  needs_info: `${bn} has a question for you before going on. Please read it below and answer in the box at the bottom.`,
   failed:
     request?.status_note === 'lease_expired'
-      ? `${request?.bot_name} started this several times and did not finish. You can send it again.`
-      : `${request?.bot_name} could not complete this. You can send it again, or reply with a change.`,
+      ? `${bn} started this several times and did not finish. Press “Send it again” at the bottom, or email Dave.`
+      : `${bn} could not finish this. Press “Send it again” at the bottom, or write back with a change.`,
 };
 const pubChip: Record<string, string> = { nominated: 'Suggested', approved: 'Approved', rejected: 'Not approved', withdrawn: 'Withdrawn' };
 const pubLabel: Record<string, string> = {
@@ -71,15 +77,30 @@ const pubLabel: Record<string, string> = {
   {request && thread && (
     <div data-thread data-request-id={request.id} data-version={`${request.status}|${thread.messages.length}`} data-watch={working ? '1' : '0'}>
       <header class="of-thread-head">
-        <span class="of-eyebrow">Request to {request.bot_name}</span>
+        <span class="of-eyebrow">{mine ? 'Your request to' : 'Request to'} {request.bot_name}</span>
         <h1 class="of-h1">{request.title}</h1>
         <div class="of-row">
+          {isTest && <span class="of-chip of-chip--test">Test</span>}
           <span class="of-chip" data-status={status}>{STATUS_LABEL[status]}</span>
           <span class="of-meta">Started {formatWhen(request.created_at, env)}{!mine && <> · from {request.owner_email}</>}</span>
         </div>
       </header>
 
-      <p class={`of-note ${status === 'failed' ? 'of-note--warn' : ''}`}>{statusLine[status]}</p>
+      {justSent && (
+        <div class="of-sent" role="status">
+          <p class="of-sent-h">Sent. Your request is with {request.bot_name}.</p>
+          <p>
+            The answer will appear right here, and this request is listed on your desk under <em>Your requests</em>.
+            You can close this page and come back any time.{emailsOn && ' You will also get a short email when the answer is ready.'}
+          </p>
+          <p>
+            Helpers work through requests as they come in, so an answer can take a while.
+            {helpEmail ? <> If nothing has happened by tomorrow, email Dave at <a href={`mailto:${helpEmail}`}>{helpEmail}</a>.</> : ' If nothing has happened by tomorrow, let Dave know.'}
+          </p>
+          <p><a class="of-btn" href="/office/">Back to your desk</a></p>
+        </div>
+      )}
+      {!justSent && <p class={`of-note ${status === 'failed' ? 'of-note--warn' : ''} ${status === 'needs_info' ? 'of-note--ask' : ''}`}>{statusLine[status]}</p>}
       <p class="of-note" data-fresh hidden>
         There is something new in this thread. <button type="button" class="of-btn of-btn--quiet" data-reload>Show it</button>
       </p>
@@ -97,6 +118,7 @@ const pubLabel: Record<string, string> = {
               <span class="of-msg-who">{who}</span>
               <span class="of-meta">{formatWhen(m.created_at, env)}</span>
               {m.kind === 'needs_info' && <span class="of-chip" data-status="needs_info">Question for you</span>}
+              {m.kind === 'reply' && fromBot && <span class="of-chip" data-status="answered">Answer</span>}
               {m.kind === 'failure' && <span class="of-chip" data-status="failed">Did not finish</span>}
               {m.kind === 'progress' && <span class="of-chip" data-status="in_progress">Progress note</span>}
             </header>
@@ -109,6 +131,7 @@ const pubLabel: Record<string, string> = {
                   <li class="of-file">
                     <a class="of-file-name" href={`/api/office/attachments/${f.id}`} target="_blank" rel="noopener">{f.filename}</a>
                     <span class="of-file-size">{f.kind === 'voice' ? 'Voice recording · ' : ''}{humanSize(f.size)}</span>
+                    <a class="of-btn of-btn--small" href={`/api/office/attachments/${f.id}?download=1`} download={f.filename}>Download</a>
                     {isAudio(f) && <audio controls preload="none" src={`/api/office/attachments/${f.id}`}></audio>}
                     {isImage(f.content_type) && (
                       <a href={`/api/office/attachments/${f.id}`} target="_blank" rel="noopener">
@@ -174,12 +197,12 @@ const pubLabel: Record<string, string> = {
 
       {mine && <Composer mode="followup" canTranscribe={!!env.AI} requestId={request.id} botName={request.bot_name} />}
 
-      {mine && (
-        <div class="of-row">
-          {status === 'failed' && <button type="button" class="of-btn" data-retry>Send it again</button>}
-          <button type="button" class="of-btn of-btn--danger" data-delete>Delete this thread</button>
+      {(mine || mayDelete) && (
+        <div class="of-row of-thread-actions">
+          {mine && status === 'failed' && <button type="button" class="of-btn" data-retry>Send it again</button>}
+          <button type="button" class="of-btn of-btn--danger" data-delete>{isTest ? 'Delete this test thread' : 'Delete this request'}</button>
           <span class="of-row" data-delete-confirm hidden>
-            <span class="of-meta">Delete the thread and its files for good?</span>
+            <span class="of-meta">Delete it and its files for good? This cannot be undone.</span>
             <button type="button" class="of-btn of-btn--danger" data-delete-yes>Yes, delete</button>
             <button type="button" class="of-btn" data-delete-no>Keep it</button>
           </span>

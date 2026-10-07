@@ -8,7 +8,7 @@
 // If the AI binding is missing this answers 501 and the office carries on
 // without transcription (the bot still receives the recording).
 import type { APIRoute } from 'astro';
-import { DEFAULT_WHISPER_MODEL, LIMITS, RATE, officeEnv, officeUser } from '../../../lib/office/config';
+import { DEFAULT_WHISPER_MODEL, LIMITS, RATE, canSendRequests, officeEnv, officeUser } from '../../../lib/office/config';
 import { audit, overLimit } from '../../../lib/office/db';
 import { isAudio } from '../../../lib/office/files';
 import { canReadAttachment } from '../../../lib/office/rules';
@@ -19,7 +19,7 @@ export const POST: APIRoute = async (ctx) => {
   const env = officeEnv(ctx.locals);
   const user = officeUser(ctx.locals);
   if (!user) return apiError(401, 'unauthorized', 'Please sign in.');
-  if (!user.isOwner) return apiError(403, 'forbidden', 'Only the office owner can transcribe recordings.');
+  if (!canSendRequests(user)) return apiError(403, 'forbidden', 'Only the office owner can transcribe recordings.');
 
   let body: Record<string, any>;
   try {

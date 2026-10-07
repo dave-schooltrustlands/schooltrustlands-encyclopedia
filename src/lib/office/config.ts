@@ -56,13 +56,40 @@ export type RequestStatus = (typeof REQUEST_STATUSES)[number];
 
 /** Plain-language labels shown to the owner. */
 export const STATUS_LABEL: Record<RequestStatus, string> = {
-  queued: 'Waiting for the bot',
-  claimed: 'Picked up',
-  in_progress: 'Working on it',
+  queued: 'Waiting for a helper',
+  claimed: 'Being worked on',
+  in_progress: 'Being worked on',
   answered: 'Answered',
   failed: 'Did not finish',
-  needs_info: 'Needs your answer',
+  needs_info: 'Helper has a question',
 };
+
+/**
+ * One plain-English line about each helper, shown in the picker when the
+ * administrator has not written a description for that bot on /office/admin/.
+ * A description saved on the admin page always wins.
+ */
+export const HELPER_BLURB: Record<string, string> = {
+  herald: 'Your research and writing helper. Start here for anything: finding sources, drafting, editing, transcribing.',
+  librarian: 'Looks things up in the Library’s own collections and catalog.',
+  chronicle: 'Land Histories: the county-by-county record of school lands.',
+  'chronicle-refdesk': 'Answers questions about Land History sources and records.',
+  'chronicle-builder': 'Builds and updates Land History pages.',
+  'chronicle-reviewer': 'Checks Land History pages for mistakes.',
+  'chronicle-ops': 'Keeps the Land History project running.',
+  'farm-chatgpt': 'Asks ChatGPT and brings back its answer, for a second opinion.',
+  'farm-fable': 'Asks Fable and brings back its answer, for a second opinion.',
+  'farm-gemini': 'Asks Gemini and brings back its answer, for a second opinion.',
+  'farm-grok': 'Asks Grok and brings back its answer, for a second opinion.',
+};
+
+/** The helper every new request goes to unless someone picks another. */
+export const DEFAULT_HELPER_ID = 'herald';
+
+export function helperBlurb(bot: { id: string; description?: string | null }): string {
+  const own = String(bot.description || '').trim();
+  return own || HELPER_BLURB[bot.id] || '';
+}
 
 export interface OfficeEnv {
   // Bindings
@@ -99,6 +126,15 @@ export interface OfficeUser {
   isAdmin: boolean;
   /** True when this admin may read threads that are not their own. */
   adminCanRead: boolean;
+}
+
+/**
+ * Who may write a request. The owner, for real work; an administrator, to send
+ * a test from the same desk (it lands in the helper's queue like any other,
+ * marked as coming from the administrator, and the owner never sees it).
+ */
+export function canSendRequests(user: OfficeUser | null): boolean {
+  return !!user && (user.isOwner || user.isAdmin);
 }
 
 export interface OfficeBot {

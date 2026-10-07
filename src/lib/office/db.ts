@@ -5,7 +5,7 @@
 // guards in the WHERE clause, so two bot runs can never both win a request.
 import { LIMITS, type OfficeEnv, type RequestStatus } from './config';
 import { deleteObjects } from './files';
-import { botUsable } from './policy';
+import { botUsable, emailListed } from './policy';
 import { isoIn, newId, nowIso, randomToken, sha256Hex } from './util';
 
 export type Row = Record<string, any>;
@@ -551,11 +551,13 @@ export async function botReply(db: DB, input: BotReplyInput): Promise<BotReplyRe
 }
 
 /** The thread as a bot sees it. Attachment links point at the bot download route. */
-export function threadForBot(thread: Thread, origin: string): Record<string, unknown> {
+export function threadForBot(thread: Thread, origin: string, ownerEmails?: string): Record<string, unknown> {
   const r = thread.request;
   return {
     request: {
       id: r.id, title: r.title, status: r.status, bot: r.bot_id, attempts: r.attempts,
+      // "owner" for the office owner's real requests; "test" for one sent by the administrator or a setup check.
+      ...(ownerEmails === undefined ? {} : { sent_by: emailListed(r.owner_email, ownerEmails) ? 'owner' : 'test' }),
       created_at: r.created_at, updated_at: r.updated_at, queued_at: r.queued_at,
       claimed_at: r.claimed_at, lease_expires_at: r.lease_expires_at,
     },

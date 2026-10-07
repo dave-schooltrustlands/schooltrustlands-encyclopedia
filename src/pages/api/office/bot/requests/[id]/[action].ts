@@ -88,7 +88,7 @@ export const POST: APIRoute = async (ctx) => {
       const thread = await getThread(db, id);
       if (!thread) return notFound();
       await audit(db, { actor_kind: 'bot', actor_id: bot.botId, action: 'bot.claimed', request_id: id, ip, meta: { attempt: thread.request.attempts, lease_seconds: leaseSeconds } });
-      return json(200, { ok: true, lease_token: claim.leaseToken, lease_expires_at: claim.leaseExpiresAt, ...threadForBot(thread, origin) });
+      return json(200, { ok: true, lease_token: claim.leaseToken, lease_expires_at: claim.leaseExpiresAt, ...threadForBot(thread, origin, env.OFFICE_OWNER_EMAILS || '') });
     }
 
     case 'heartbeat': {
