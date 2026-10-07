@@ -152,7 +152,7 @@ Recommendation: start with polling only. Turn a doorbell on later for any bot wh
 | Files | Two steps. Upload each file (`POST .../attachments?filename=...`, body is the file), then name the returned ids in the reply. Chosen over multipart because Workers buffer a multipart body in memory; a raw body streams |
 | Reply | `POST .../reply` with `lease_token`, `status`, `body` (markdown), `attachment_ids` |
 | Idempotency | `Idempotency-Key` header, scoped to one bot, one request, and one lease. A repeated POST under the same lease returns the reply already stored and stores nothing twice, even though that reply ended the lease. The same key on a later claim is a new reply |
-| Notify Bob | Optional email through Resend: "A new reply is waiting in your office", with a link and nothing else. No title, no text, no bot name. At most one per 15 minutes. Off unless `OFFICE_NOTIFY=on` |
+| Notify Bob | Email through Resend when a helper answers or asks a question on one of Bob's requests: "Your answer from Herald is ready", with one "Read the answer" button linking to that request. No request title and no text. At most one per request per 10 minutes. On whenever `RESEND_API_KEY` is set; `OFFICE_NOTIFY=off` stops it. Never for test requests. Bob's Office also shows a "New" banner at the top when an answer is waiting |
 
 ### Status transitions
 

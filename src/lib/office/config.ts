@@ -107,7 +107,7 @@ export interface OfficeEnv {
   OFFICE_DISPLAY_NAME?: string; // e.g. "Bob" -> "Bob's Office"
   OFFICE_TIMEZONE?: string; // IANA zone for displayed times
   // Optional features
-  OFFICE_NOTIFY?: string; // "on" sends a content-free email when a reply lands
+  OFFICE_NOTIFY?: string; // "off" stops the content-free answer-ready email (on whenever Resend is configured)
   OFFICE_FROM_EMAIL?: string;
   OFFICE_WEBHOOK_SECRET?: string; // only needed if a bot uses the doorbell webhook
   OFFICE_WHISPER_MODEL?: string;
@@ -214,12 +214,45 @@ export function formatWhen(iso: string | null | undefined, env: OfficeEnv): stri
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return '';
   const zone = String(env.OFFICE_TIMEZONE || 'America/Los_Angeles');
+  // No time-zone label: every time in the office is in OFFICE_TIMEZONE.
   const opts: Intl.DateTimeFormatOptions = {
-    month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
+    month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit',
   };
   try {
     return new Intl.DateTimeFormat('en-US', { ...opts, timeZone: zone }).format(d);
   } catch {
     return new Intl.DateTimeFormat('en-US', { ...opts, timeZone: 'UTC' }).format(d);
   }
+}
+
+function zoneOf(env: OfficeEnv): string {
+  const zone = String(env.OFFICE_TIMEZONE || 'America/Los_Angeles');
+  try { new Intl.DateTimeFormat('en-US', { timeZone: zone }); return zone; } catch { return 'UTC'; }
+}
+
+function dayKey(d: Date, zone: string): string {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+}
+
+/** "today, 3:21 PM", "yesterday, 9:05 AM", "Oct 5, 3:21 PM", or "Oct 5, 2025" for an older year. */
+export function friendlyWhen(iso: string | null | undefined, env: OfficeEnv, now: Date = new Date()): string {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  const zone = zoneOf(env);
+  const time = new Intl.DateTimeFormat('en-US', { timeZone: zone, hour: 'numeric', minute: '2-digit' }).format(d);
+  const key = dayKey(d, zone);
+  if (key === dayKey(now, zone)) return `today, ${time}`;
+  if (key === dayKey(new Date(now.getTime() - 86400000), zone)) return `yesterday, ${time}`;
+  const sameYear = key.slice(0, 4) === dayKey(now, zone).slice(0, 4);
+  const date = new Intl.DateTimeFormat('en-US', { timeZone: zone, month: 'short', day: 'numeric', ...(sameYear ? {} : { year: 'numeric' }) }).format(d);
+  return sameYear ? `${date}, ${time}` : date;
+}
+
+/** "Oct 7" in the office's time zone, for naming voice notes. */
+export function shortDate(iso: string | null | undefined, env: OfficeEnv): string {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  return new Intl.DateTimeFormat('en-US', { timeZone: zoneOf(env), month: 'short', day: 'numeric' }).format(d);
 }

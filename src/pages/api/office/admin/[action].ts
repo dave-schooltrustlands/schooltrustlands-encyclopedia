@@ -6,6 +6,8 @@
 //   POST /api/office/admin/webhook-key         show a bot's doorbell signing key
 //   POST /api/office/admin/publication-decide  approve or decline a nominated reply
 //   POST /api/office/admin/publication-url     record where an approved reply was published
+//   POST /api/office/admin/settings-save       { helper_picker: true|false } let the owner choose helpers other than Herald
+//   POST /api/office/admin/notify-test         send the answer-ready email, marked [Test], to the admin's own address
 //   GET  /api/office/admin/packet?id=p_...     download the publication packet for an approved reply
 //
 // Approving a reply publishes nothing. It allows a packet to be exported; a
@@ -13,8 +15,8 @@
 import type { APIRoute } from 'astro';
 import { LIMITS, RATE, officeEnv, officeUser } from '../../../../lib/office/config';
 import { botUsable, isBlockedAgent, normAgentId } from '../../../../lib/office/policy';
-import { audit, getBot, getPublication, overLimit, parseIdArray } from '../../../../lib/office/db';
-import { validWebhookUrl, webhookKey } from '../../../../lib/office/notify';
+import { SETTING_HELPER_PICKER, audit, getBot, getPublication, overLimit, parseIdArray, setSetting } from '../../../../lib/office/db';
+import { sendTestAnswerEmail, validWebhookUrl, webhookKey } from '../../../../lib/office/notify';
 import {
   apiError, bodyErrorResponse, cleanLine, cleanText, clientIp, idList, isId, json, nowIso, randomHex, randomToken, readJson,
   sha256Hex, slugify,
@@ -201,6 +203,20 @@ export const POST: APIRoute = async (ctx) => {
       if (Number(res.meta?.changes || 0) !== 1) return apiError(404, 'not_found', 'There is no approved reply with that id.');
       await audit(db, { actor_kind: 'admin', actor_id: user.email, action: 'publication.url_set', target_id: body.id, ip });
       return json(200, { ok: true });
+    }
+
+    case 'settings-save': {
+      const on = body.helper_picker === true;
+      await setSetting(db, SETTING_HELPER_PICKER, on ? 'on' : 'off');
+      await audit(db, { actor_kind: 'admin', actor_id: user.email, action: 'settings.saved', ip, meta: { helper_picker: on } });
+      return json(200, { ok: true, helper_picker: on });
+    }
+
+    case 'notify-test': {
+      const result = await sendTestAnswerEmail(env, user.email, new URL(ctx.request.url));
+      await audit(db, { actor_kind: 'admin', actor_id: user.email, action: result.ok ? 'notify.test_sent' : 'notify.test_failed', ip });
+      if (!result.ok) return apiError(422, 'not_sent', `The test email was not sent: ${result.reason}.`);
+      return json(200, { ok: true, to: user.email });
     }
 
     default:

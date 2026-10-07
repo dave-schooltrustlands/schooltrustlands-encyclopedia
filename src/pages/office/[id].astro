@@ -1,6 +1,5 @@
 ---
-import { adminCanReadSetting } from '../../lib/office/policy';
-// The private research office: one request and its reply thread.
+// Bob's Office: one request and its answers.
 // Server-rendered on every visit. Sign-in is checked by the gate in
 // src/middleware.ts; this page then checks that the thread belongs to the
 // person asking. Someone else's thread and a thread that does not exist get
@@ -8,12 +7,14 @@ import { adminCanReadSetting } from '../../lib/office/policy';
 export const prerender = false;
 import Composer from '../../components/office/Composer.astro';
 import Layout from '../../layouts/OfficeLayout.astro';
-import { STATUS_LABEL, formatWhen, isTrue, listOf, officeEnv, officeTitle, officeUser, type RequestStatus } from '../../lib/office/config';
+import { STATUS_LABEL, friendlyWhen, listOf, officeEnv, officeTitle, officeUser, shortDate, type RequestStatus } from '../../lib/office/config';
 import { audit, expireStale, getThread, markRead, parseIdArray } from '../../lib/office/db';
 import { isAudio, isImage } from '../../lib/office/files';
 import { renderMarkdown } from '../../lib/office/markdown';
+import { answerEmailStatus } from '../../lib/office/notify';
+import { adminCanReadSetting } from '../../lib/office/policy';
 import { canDeleteRequest, canNominate, canReadRequest, canWriteRequest, isTestThread } from '../../lib/office/rules';
-import { clientIp, humanSize, isId } from '../../lib/office/util';
+import { clientIp, isId } from '../../lib/office/util';
 
 const env = officeEnv(Astro.locals);
 const user = officeUser(Astro.locals);
@@ -35,7 +36,9 @@ const mayDelete = !!request && canDeleteRequest(user, request, env.OFFICE_OWNER_
 const isTest = !!request && user.isAdmin && isTestThread(request, env.OFFICE_OWNER_EMAILS);
 const justSent = !!request && mine && Astro.url.searchParams.get('sent') === '1';
 const helpEmail = listOf(env.OFFICE_ADMIN_EMAILS)[0] || '';
-const emailsOn = isTrue(env.OFFICE_NOTIFY);
+// The answer-ready email goes only to the owner, and only when email is set up.
+const emailsOn = answerEmailStatus(env).ready && !!request && !isTestThread(request, env.OFFICE_OWNER_EMAILS);
+const cap = (x: string): string => x.charAt(0).toUpperCase() + x.slice(1);
 const mayNominate = !!request && canNominate(user, request);
 if (request && mine && request.owner_unread) await markRead(db, request.id);
 if (request && !mine) {
@@ -46,7 +49,7 @@ const status = (request?.status || 'queued') as RequestStatus;
 const working = ['queued', 'claimed', 'in_progress'].includes(status);
 const bn = request?.bot_name || 'The helper';
 const statusLine: Record<RequestStatus, string> = {
-  queued: `Waiting for ${bn} to pick this up. Helpers check the desk from time to time; the answer will appear on this page. You do not need to keep it open.`,
+  queued: `Waiting for ${bn} to pick this up. Helpers check for new requests from time to time; the answer will appear on this page. You do not need to keep it open.`,
   claimed: `${bn} has picked this up and is working on it. The answer will appear on this page.`,
   in_progress: `${bn} is working on this. The answer will appear on this page.`,
   answered: `${bn} has answered (below). To ask for a change or more, write back in the box at the bottom.`,
@@ -56,16 +59,18 @@ const statusLine: Record<RequestStatus, string> = {
       ? `${bn} started this several times and did not finish. Press “Send it again” at the bottom, or email Dave.`
       : `${bn} could not finish this. Press “Send it again” at the bottom, or write back with a change.`,
 };
-const pubChip: Record<string, string> = { nominated: 'Suggested', approved: 'Approved', rejected: 'Not approved', withdrawn: 'Withdrawn' };
+const pubChip: Record<string, string> = { nominated: 'Offered', approved: 'Approved', rejected: 'Not taken', withdrawn: 'Taken back' };
 const pubLabel: Record<string, string> = {
-  nominated: 'Suggested for the Library. Waiting for a decision.',
-  approved: 'Approved for the Library.',
-  rejected: 'Not approved for the Library.',
-  withdrawn: 'Suggestion withdrawn.',
+  nominated: 'You offered this answer to the public Library. Dave has not decided yet.',
+  approved: 'Dave approved this answer for the public Library.',
+  rejected: 'Dave decided not to put this answer in the public Library.',
+  withdrawn: 'You took back your offer. Nothing was published.',
 };
+const fileLabel = (f: { kind: string; filename: string }, at: string): string =>
+  f.kind === 'voice' ? `Voice note, ${shortDate(at, env)}` : f.filename;
 ---
 <Layout title={request ? request.title : 'Not found'} officeName={officeName} user={user} page="thread" adminCanRead={adminCanRead}>
-  <a class="of-back" href="/office/">&larr; Back to the desk</a>
+  <a class="of-back" href="/office/">&larr; Back to {officeName}</a>
 
   {!request && (
     <>
@@ -77,27 +82,26 @@ const pubLabel: Record<string, string> = {
   {request && thread && (
     <div data-thread data-request-id={request.id} data-version={`${request.status}|${thread.messages.length}`} data-watch={working ? '1' : '0'}>
       <header class="of-thread-head">
-        <span class="of-eyebrow">{mine ? 'Your request to' : 'Request to'} {request.bot_name}</span>
         <h1 class="of-h1">{request.title}</h1>
         <div class="of-row">
           {isTest && <span class="of-chip of-chip--test">Test</span>}
           <span class="of-chip" data-status={status}>{STATUS_LABEL[status]}</span>
-          <span class="of-meta">Started {formatWhen(request.created_at, env)}{!mine && <> · from {request.owner_email}</>}</span>
+          <span class="of-meta">Sent to {request.bot_name} {friendlyWhen(request.created_at, env)}{!mine && <> · from {request.owner_email}</>}</span>
         </div>
       </header>
 
       {justSent && (
         <div class="of-sent" role="status">
-          <p class="of-sent-h">Sent. Your request is with {request.bot_name}.</p>
+          <p class="of-sent-h">Sent to {request.bot_name} {friendlyWhen(request.created_at, env)}.</p>
           <p>
-            The answer will appear right here, and this request is listed on your desk under <em>Your requests</em>.
-            You can close this page and come back any time.{emailsOn && ' You will also get a short email when the answer is ready.'}
+            The answer will appear right here, and this request is listed in {officeName} under <em>Your requests</em>.
+            You can close this page and come back any time.{emailsOn && ' We will send you a short email when the answer is ready.'}
           </p>
           <p>
             Helpers work through requests as they come in, so an answer can take a while.
             {helpEmail ? <> If nothing has happened by tomorrow, email Dave at <a href={`mailto:${helpEmail}`}>{helpEmail}</a>.</> : ' If nothing has happened by tomorrow, let Dave know.'}
           </p>
-          <p><a class="of-btn" href="/office/">Back to your desk</a></p>
+          <p><a class="of-btn" href="/office/">Back to {officeName}</a></p>
         </div>
       )}
       {!justSent && <p class={`of-note ${status === 'failed' ? 'of-note--warn' : ''} ${status === 'needs_info' ? 'of-note--ask' : ''}`}>{statusLine[status]}</p>}
@@ -116,9 +120,8 @@ const pubLabel: Record<string, string> = {
           <article class={`of-msg ${fromBot ? 'of-msg--bot' : 'of-msg--owner'}`} id={m.id}>
             <header class="of-msg-head">
               <span class="of-msg-who">{who}</span>
-              <span class="of-meta">{formatWhen(m.created_at, env)}</span>
+              <span class="of-meta">{cap(friendlyWhen(m.created_at, env))}</span>
               {m.kind === 'needs_info' && <span class="of-chip" data-status="needs_info">Question for you</span>}
-              {m.kind === 'reply' && fromBot && <span class="of-chip" data-status="answered">Answer</span>}
               {m.kind === 'failure' && <span class="of-chip" data-status="failed">Did not finish</span>}
               {m.kind === 'progress' && <span class="of-chip" data-status="in_progress">Progress note</span>}
             </header>
@@ -127,25 +130,31 @@ const pubLabel: Record<string, string> = {
 
             {files.length > 0 && (
               <ul class="of-files" aria-label="Attachments">
-                {files.map((f) => (
-                  <li class="of-file">
-                    <a class="of-file-name" href={`/api/office/attachments/${f.id}`} target="_blank" rel="noopener">{f.filename}</a>
-                    <span class="of-file-size">{f.kind === 'voice' ? 'Voice recording · ' : ''}{humanSize(f.size)}</span>
-                    <a class="of-btn of-btn--small" href={`/api/office/attachments/${f.id}?download=1`} download={f.filename}>Download</a>
-                    {isAudio(f) && <audio controls preload="none" src={`/api/office/attachments/${f.id}`}></audio>}
-                    {isImage(f.content_type) && (
-                      <a href={`/api/office/attachments/${f.id}`} target="_blank" rel="noopener">
-                        <img class="of-thumb" src={`/api/office/attachments/${f.id}`} alt={f.filename} loading="lazy" />
-                      </a>
-                    )}
-                    {f.transcript && (
-                      <details class="of-transcript">
-                        <summary>Machine transcript, before any corrections</summary>
-                        <p>{f.transcript}</p>
-                      </details>
-                    )}
-                  </li>
-                ))}
+                {files.map((f) => {
+                  const url = `/api/office/attachments/${f.id}`;
+                  const label = fileLabel(f, m.created_at);
+                  return (
+                    <li class="of-file">
+                      <span class="of-file-name">{label}</span>
+                      <span class="of-file-actions">
+                        {!isAudio(f) && <a class="of-btn of-btn--small" href={url} target="_blank" rel="noopener">Open</a>}
+                        <a class="of-btn of-btn--small" href={`${url}?download=1`} download={f.kind === 'voice' ? undefined : f.filename}>Save a copy</a>
+                      </span>
+                      {isAudio(f) && <audio controls preload="metadata" src={url} data-voice aria-label={label}></audio>}
+                      {isImage(f.content_type) && (
+                        <a href={url} target="_blank" rel="noopener">
+                          <img class="of-thumb" src={url} alt={label} loading="lazy" />
+                        </a>
+                      )}
+                      {f.transcript && (
+                        <details class="of-transcript">
+                          <summary>What the machine heard</summary>
+                          <p>{f.transcript}</p>
+                        </details>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             )}
 
@@ -167,23 +176,23 @@ const pubLabel: Record<string, string> = {
                 )}
                 {mayNominate && (!pub || pub.state === 'rejected' || pub.state === 'withdrawn') && (
                   <details data-nominate={m.id}>
-                    <summary>Suggest this reply for the Library</summary>
+                    <summary>Offer this answer to the public Library</summary>
                     <p>
-                      This asks the Library&rsquo;s administrator to review the reply for publication. Nothing becomes public
-                      unless it is approved. Your own messages and recordings are never included.
+                      If this answer would be useful to other readers, you can offer it to the public Library website.
+                      Dave reviews it first, and nothing becomes public unless he approves it. Your own messages and recordings are never included.
                     </p>
                     {offered.length > 0 && (
                       <div>
                         <span class="of-label">Files that may go with it</span>
                         {offered.map((f) => (
-                          <label class="of-check"><input type="checkbox" value={f.id} data-nominate-file /> {f.filename}</label>
+                          <label class="of-check"><input type="checkbox" value={f.id} data-nominate-file /> {fileLabel(f, m.created_at)}</label>
                         ))}
                       </div>
                     )}
-                    <label class="of-label" for={`of-note-${m.id}`}>A note for the reviewer <small>(optional)</small></label>
+                    <label class="of-label" for={`of-note-${m.id}`}>A note for Dave <small>(optional)</small></label>
                     <input class="of-input" id={`of-note-${m.id}`} type="text" maxlength="1000" data-nominate-note />
                     <div class="of-row of-tools">
-                      <button type="button" class="of-btn" data-nominate-send>Suggest it</button>
+                      <button type="button" class="of-btn" data-nominate-send>Offer it to the Library</button>
                     </div>
                   </details>
                 )}
@@ -198,14 +207,16 @@ const pubLabel: Record<string, string> = {
       {mine && <Composer mode="followup" canTranscribe={!!env.AI} requestId={request.id} botName={request.bot_name} />}
 
       {(mine || mayDelete) && (
-        <div class="of-row of-thread-actions">
-          {mine && status === 'failed' && <button type="button" class="of-btn" data-retry>Send it again</button>}
-          <button type="button" class="of-btn of-btn--danger" data-delete>{isTest ? 'Delete this test thread' : 'Delete this request'}</button>
-          <span class="of-row" data-delete-confirm hidden>
-            <span class="of-meta">Delete it and its files for good? This cannot be undone.</span>
-            <button type="button" class="of-btn of-btn--danger" data-delete-yes>Yes, delete</button>
-            <button type="button" class="of-btn" data-delete-no>Keep it</button>
-          </span>
+        <div class="of-thread-actions">
+          {mine && status === 'failed' && <p><button type="button" class="of-btn of-btn--primary" data-retry>Send it again</button></p>}
+          <button type="button" class="of-link-btn" data-delete>{isTest ? 'Delete this test thread' : 'Delete this request'}</button>
+          <div class="of-confirm" data-delete-confirm hidden role="alertdialog" aria-labelledby="of-del-q">
+            <p id="of-del-q"><strong>Delete this request and its files for good?</strong> This cannot be undone.</p>
+            <p class="of-row">
+              <button type="button" class="of-btn" data-delete-no>Keep it</button>
+              <button type="button" class="of-btn of-btn--danger" data-delete-yes>Delete it</button>
+            </p>
+          </div>
         </div>
       )}
     </div>

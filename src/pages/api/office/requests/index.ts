@@ -9,16 +9,8 @@ import { LIMITS, RATE, canSendRequests, defer, officeEnv, officeUser } from '../
 import { botUsable } from '../../../../lib/office/policy';
 import { createRequest, getBot, overLimit, pendingOwnerUploads } from '../../../../lib/office/db';
 import { ringDoorbell } from '../../../../lib/office/notify';
-import { apiError, bodyErrorResponse, cleanLine, cleanText, clientIp, idList, json, readJson } from '../../../../lib/office/util';
+import { apiError, bodyErrorResponse, cleanLine, cleanText, clientIp, idList, json, readJson, shortTitle } from '../../../../lib/office/util';
 export const prerender = false;
-
-/** The first line, cut at a word boundary so a title never ends mid-word. */
-function shortTitle(line: string, max: number): string {
-  if (line.length <= max) return line;
-  const cut = line.slice(0, max + 1);
-  const space = cut.lastIndexOf(' ');
-  return (space > max * 0.6 ? cut.slice(0, space) : line.slice(0, max)).replace(/[\s,;:.\-]+$/, '') + '…';
-}
 
 export const POST: APIRoute = async (ctx) => {
   const env = officeEnv(ctx.locals);

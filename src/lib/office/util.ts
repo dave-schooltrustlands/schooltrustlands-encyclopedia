@@ -175,3 +175,12 @@ export function humanSize(bytes: number): string {
   if (bytes < 1024 * 1024) return `${Math.max(1, Math.round(bytes / 1024))} KB`;
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
+
+/** Cuts text at a word boundary and adds an ellipsis, so it never ends mid-word. */
+export function shortTitle(line: string, max: number): string {
+  const t = String(line || '').trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max + 1);
+  const space = cut.lastIndexOf(' ');
+  return (space > max * 0.6 ? cut.slice(0, space) : t.slice(0, max)).replace(/[\s,;:.\-]+$/, '') + '…';
+}
