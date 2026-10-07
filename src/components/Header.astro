@@ -37,63 +37,85 @@ import { SITE_PREVIEW } from '../site.config';
 // v38 — header search rebuilt as a plain <form action="/search/" method="get">.
 // v36 — view toggle removed, mobile nav replaced with a hamburger overlay.
 
-// v63 — primary nav, task-first. Split into segments so the two
-// dropdowns (Your state ▾, Reading ▾) can sit in reading order between
-// the plain links, mirroring the desktop order on mobile.
-const NAV_START = [
-  { href: '/start/', label: 'Start here' },
+// v64 — five-section top menu (approved 2026-10-06). Every top item is
+// a one-level dropdown. Each section lists its links plus the path
+// prefixes used for the active-section underline.
+const LAND_HISTORY_URL = 'https://parcelchronicle-refdesk.drdavesullivan.workers.dev';
+type NavLink = { href: string; label: string; external?: boolean; beta?: boolean };
+type NavSection = { id: string; label: string; links: NavLink[]; prefixes: string[] };
+const NAV_SECTIONS: NavSection[] = [
+  {
+    id: 'trusts',
+    label: 'School Trusts',
+    links: [
+      { href: '/start/', label: 'School trust basics' },
+      { href: '/states/', label: 'Find your state' },
+      { href: '/atlas/', label: 'Compare states' },
+      { href: '/maps/', label: 'State land maps' },
+      { href: '/court/', label: 'Law & court cases' },
+      { href: '/counting/', label: 'Trust finances' },
+    ],
+    prefixes: ['/start', '/states', '/atlas', '/maps', '/court', '/counting'],
+  },
+  {
+    id: 'read',
+    label: 'Read & Research',
+    links: [
+      { href: '/reading/', label: 'Books & documents' },
+      { href: '/writing/', label: 'Writing Room' },
+      { href: LAND_HISTORY_URL, label: "Research your land's history", external: true, beta: true },
+      { href: '/collections/', label: 'Collections' },
+      { href: '/catalog/', label: 'Catalog' },
+      { href: '/lectures/', label: 'Talks & videos' },
+      { href: '/reference-desk/', label: 'Ask the librarian' },
+    ],
+    prefixes: ['/reading', '/writing', '/collections', '/catalog', '/lectures', '/reference-desk'],
+  },
+  {
+    id: 'news',
+    label: 'News',
+    links: [
+      { href: '/newsroom/', label: 'School trust news' },
+      { href: '/voices/', label: 'Commentary' },
+      { href: '/updates/', label: 'Library updates' },
+    ],
+    prefixes: ['/newsroom', '/voices', '/updates'],
+  },
+  {
+    id: 'involved',
+    label: 'Get Involved',
+    links: [
+      { href: '/contribute/', label: 'Ways to help' },
+      { href: '/pro/roles/', label: 'Volunteer roles' },
+      { href: '/for-lawyers/', label: 'For lawyers' },
+      { href: '/discussions/', label: 'Reader discussions' },
+      { href: '/participate/', label: 'Reports & invitations' },
+    ],
+    prefixes: ['/contribute', '/pro/roles', '/for-lawyers', '/discussions', '/participate'],
+  },
+  {
+    id: 'about',
+    label: 'About',
+    links: [
+      { href: '/about/', label: 'About the Library' },
+      { href: '/booklet/', label: 'Library introduction (booklet)' },
+      { href: '/how-the-library-works/', label: 'How the Library works' },
+      { href: '/pro/', label: 'Standards & policies' },
+      { href: '/governance/', label: 'Governance' },
+      { href: '/independence/', label: 'Independence' },
+    ],
+    prefixes: ['/about', '/booklet', '/how-the-library-works', '/librarians', '/pro', '/governance', '/independence'],
+  },
 ];
 
-// "Your state ▾" — the state pages are the destination; the Atlas and
-// the Map Room ride along as the rooms that serve them.
-const STATE_LINKS = [
-  { href: '/states/', label: 'All states', icon: 'Map' },
-  { href: '/atlas/', label: 'Atlas', icon: 'Compass' },
-  { href: '/maps/', label: 'Map Room', icon: 'Map' },
-];
-
-const NAV_MIDDLE = [
-  { href: '/court/', label: 'The cases' },
-  { href: '/counting/', label: 'The money' },
-];
-
-// "Reading ▾" — the Reading Room is the destination; the Writing Room
-// and the booklet ride along.
-const READING_LINKS = [
-  { href: '/reading/', label: 'Reading Room', icon: 'BookOpen' },
-  { href: '/writing/', label: 'Writing Room', icon: 'BookOpen' },
-  { href: '/booklet/', label: 'The booklet', icon: 'BookOpen' },
-];
-
-const NAV_TAIL = [
-  { href: '/catalog/', label: 'Catalog' },
-  { href: '/collections/', label: 'Collections' },
-  { href: '/newsroom/', label: 'News' },
-  { href: '/contribute/', label: 'Contribute', icon: 'HandHeart' },
-  { href: '/participate/', label: 'Participate', icon: 'ScrollText' },
-  { href: '/about/', label: 'About', icon: 'Building2' },
-];
-
-const MORE_LINKS = [
-  { href: '/for-lawyers/', label: 'For Lawyers', icon: 'Scale' },
-  { href: '/librarians/', label: 'Librarians', icon: 'BookOpen' },
-  { href: '/pro/', label: 'Pro', icon: 'Building2' },
-  { href: '/voices/', label: 'Voices', icon: 'Mic' },
-  { href: '/updates/', label: 'Updates' },
-];
-
-// Active-state detection: which top-nav surface the current page belongs to.
-// Trailing-slash normalized so /reading and /reading/ both match.
+// Active-state detection: which top-nav section the current page belongs to.
+// Trailing-slash normalized so /reading and /reading/ both match. First
+// match wins (so /pro/roles lands in Get Involved, other /pro in About).
 const rawPath = Astro.url.pathname;
 const path = rawPath.replace(/\/$/, '') || '/';
-const STATE_PREFIXES = ['/states', '/atlas', '/maps'];
-const READING_PREFIXES = ['/reading', '/writing', '/booklet'];
-const isInStateSection = STATE_PREFIXES.some(
-  (prefix) => path === prefix || path.startsWith(`${prefix}/`),
-);
-const isInReadingSection = READING_PREFIXES.some(
-  (prefix) => path === prefix || path.startsWith(`${prefix}/`),
-);
+const activeSectionId = NAV_SECTIONS.find((s) =>
+  s.prefixes.some((prefix) => path === prefix || path.startsWith(`${prefix}/`)),
+)?.id;
 ---
 {SITE_PREVIEW ? <SiteWidePreviewBanner correctHref="/correct/" /> : <LivingEditionLabel />}
 <header
@@ -137,98 +159,32 @@ const isInReadingSection = READING_PREFIXES.some(
         More ▾ ·
         Library Card · search-icon. */}
     <nav class="hidden flex-wrap items-center gap-x-1 gap-y-2 text-sm lg:flex sm:gap-x-3">
-      {NAV_START.map((link) => (
-        <a
-          href={link.href}
-          class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        >
-          {link.icon && <NavIcon name={link.icon} />}
-          {link.label.replace(/ /g, ' ')}
-        </a>
+      {NAV_SECTIONS.map((section) => (
+        <details class="header-more header-rooms relative" data-header-menu={section.id}>
+          <summary
+            class:list={[
+              'inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center px-2 text-blue-700 hover:underline',
+              activeSectionId === section.id && 'header-rooms--active',
+            ]}
+            aria-label={section.label}
+          >{section.label.replace(/ /g, '\u00a0')}&nbsp;▾</summary>
+          <div class="header-more__panel" role="menu">
+            {section.links.map((link) => (
+              <a
+                href={link.href}
+                role="menuitem"
+                class="header-more__link"
+                {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}
+              >
+                <span>{link.label}</span>
+                {link.beta && <span class="nav-beta-badge">Beta</span>}
+                {link.external && <span aria-hidden="true"> ↗</span>}
+                {link.external && <span class="sr-only"> (opens in a new tab)</span>}
+              </a>
+            ))}
+          </div>
+        </details>
       ))}
-
-      <details class="header-more header-rooms relative" data-header-state>
-        <summary
-          class:list={[
-            'inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center px-2 text-blue-700 hover:underline',
-            isInStateSection && 'header-rooms--active',
-          ]}
-          aria-label="State pages"
-        >Your&nbsp;state&nbsp;▾</summary>
-        <div class="header-more__panel" role="menu">
-          {STATE_LINKS.map((room) => (
-            <a
-              href={room.href}
-              role="menuitem"
-              class="header-more__link"
-            >
-              <NavIcon name={room.icon} />
-              <span>{room.label}</span>
-            </a>
-          ))}
-        </div>
-      </details>
-
-      {NAV_MIDDLE.map((link) => (
-        <a
-          href={link.href}
-          class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        >
-          {link.icon && <NavIcon name={link.icon} />}
-          {link.label.replace(/ /g, ' ')}
-        </a>
-      ))}
-
-      <details class="header-more header-rooms relative" data-header-reading>
-        <summary
-          class:list={[
-            'inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center px-2 text-blue-700 hover:underline',
-            isInReadingSection && 'header-rooms--active',
-          ]}
-          aria-label="Reading"
-        >Reading&nbsp;▾</summary>
-        <div class="header-more__panel" role="menu">
-          {READING_LINKS.map((room) => (
-            <a
-              href={room.href}
-              role="menuitem"
-              class="header-more__link"
-            >
-              <NavIcon name={room.icon} />
-              <span>{room.label}</span>
-            </a>
-          ))}
-        </div>
-      </details>
-
-      {NAV_TAIL.map((link) => (
-        <a
-          href={link.href}
-          class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center px-2 text-blue-700 hover:underline"
-        >
-          {link.icon && <NavIcon name={link.icon} />}
-          {link.label.replace(/ /g, ' ')}
-        </a>
-      ))}
-
-      <details class="header-more relative" data-header-more>
-        <summary
-          class="inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center px-2 text-blue-700 hover:underline"
-          aria-label="More navigation"
-        >More&nbsp;▾</summary>
-        <div class="header-more__panel" role="menu">
-          {MORE_LINKS.map((link) => (
-            <a
-              href={link.href}
-              role="menuitem"
-              class="header-more__link"
-            >
-              {link.icon && <NavIcon name={link.icon} />}
-              <span>{link.label}</span>
-            </a>
-          ))}
-        </div>
-      </details>
 
       <a
         id="library-card-link"
@@ -416,56 +372,24 @@ const isInReadingSection = READING_PREFIXES.some(
         About, then the
         More disclosure entries. */}
     <ul class="mobile-nav-overlay__list">
-      {NAV_START.map((link) => (
-        <li>
-          <a href={link.href} class="mobile-nav-overlay__link">
-            {link.icon && <NavIcon name={link.icon} />}
-            <span>{link.label}</span>
-          </a>
-        </li>
-      ))}
-      <li class="mobile-nav-overlay__group-label" aria-hidden="true">Your state</li>
-      {STATE_LINKS.map((room) => (
-        <li>
-          <a href={room.href} class="mobile-nav-overlay__link">
-            <NavIcon name={room.icon} />
-            <span>{room.label}</span>
-          </a>
-        </li>
-      ))}
-      {NAV_MIDDLE.map((link) => (
-        <li>
-          <a href={link.href} class="mobile-nav-overlay__link">
-            {link.icon && <NavIcon name={link.icon} />}
-            <span>{link.label}</span>
-          </a>
-        </li>
-      ))}
-      <li class="mobile-nav-overlay__group-label" aria-hidden="true">Reading</li>
-      {READING_LINKS.map((room) => (
-        <li>
-          <a href={room.href} class="mobile-nav-overlay__link">
-            <NavIcon name={room.icon} />
-            <span>{room.label}</span>
-          </a>
-        </li>
-      ))}
-      {NAV_TAIL.map((link) => (
-        <li>
-          <a href={link.href} class="mobile-nav-overlay__link">
-            {link.icon && <NavIcon name={link.icon} />}
-            <span>{link.label}</span>
-          </a>
-        </li>
-      ))}
-      <li class="mobile-nav-overlay__divider"></li>
-      {MORE_LINKS.map((link) => (
-        <li>
-          <a href={link.href} class="mobile-nav-overlay__link">
-            {link.icon && <NavIcon name={link.icon} />}
-            <span>{link.label}</span>
-          </a>
-        </li>
+      {NAV_SECTIONS.map((section) => (
+        <>
+          <li class="mobile-nav-overlay__group-label" aria-hidden="true">{section.label}</li>
+          {section.links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="mobile-nav-overlay__link"
+                {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}
+              >
+                <span>{link.label}</span>
+                {link.beta && <span class="nav-beta-badge">Beta</span>}
+                {link.external && <span aria-hidden="true"> ↗</span>}
+                {link.external && <span class="sr-only"> (opens in a new tab)</span>}
+              </a>
+            </li>
+          ))}
+        </>
       ))}
       <li class="mobile-nav-overlay__divider"></li>
       <li>
@@ -532,6 +456,20 @@ const isInReadingSection = READING_PREFIXES.some(
 
   /* v55 — Rooms disclosure: divider between live rooms and coming-soon
      placeholders inside the dropdown panel. */
+  /* v64 — small Beta badge for in-development destinations. */
+  .nav-beta-badge {
+    margin-left: 0.4rem;
+    padding: 0 0.35rem;
+    border: 1px solid var(--old-gold, #b08d57);
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #7a5c1e;
+    white-space: nowrap;
+  }
   .header-more__divider {
     height: 1px;
     background: #e5e7eb;
@@ -892,7 +830,7 @@ const isInReadingSection = READING_PREFIXES.some(
     // share the same UX contract: clicking outside closes; activating a link
     // closes so the destination renders without the panel still hanging open.
     const headerDisclosures = Array.from(
-      document.querySelectorAll('[data-header-state], [data-header-reading], [data-header-more]'),
+      document.querySelectorAll('[data-header-menu]'),
     );
     if (headerDisclosures.length > 0) {
       document.addEventListener('click', (ev) => {
@@ -912,9 +850,7 @@ const isInReadingSection = READING_PREFIXES.some(
       }
     }
     // Preserve the disclosure references for the Escape handler below.
-    const moreDetails = document.querySelector('[data-header-more]');
-    const stateDetails = document.querySelector('[data-header-state]');
-    const readingDetails = document.querySelector('[data-header-reading]');
+
 
     // ---- v50 — Collapsing desktop search ----
     const searchWrap = document.querySelector('[data-search-wrap]');
@@ -979,16 +915,11 @@ const isInReadingSection = READING_PREFIXES.some(
           if (toggleBtn && typeof toggleBtn.focus === 'function') toggleBtn.focus();
           return;
         }
-        if (stateDetails && stateDetails.hasAttribute('open')) {
-          stateDetails.removeAttribute('open');
-          return;
-        }
-        if (readingDetails && readingDetails.hasAttribute('open')) {
-          readingDetails.removeAttribute('open');
-          return;
-        }
-        if (moreDetails && moreDetails.hasAttribute('open')) {
-          moreDetails.removeAttribute('open');
+        const openMenu = headerDisclosures.find((d) => d.hasAttribute('open'));
+        if (openMenu) {
+          openMenu.removeAttribute('open');
+          const summary = openMenu.querySelector('summary');
+          if (summary && typeof summary.focus === 'function') summary.focus();
           return;
         }
         if (searchWrap && searchWrap.getAttribute('data-expanded') === 'true') {
