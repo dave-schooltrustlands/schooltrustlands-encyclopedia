@@ -11,11 +11,13 @@ npx wrangler d1 create stl-office-preview
 npx wrangler d1 create stl-office
 
 npx wrangler d1 execute stl-office-preview --remote --file=migrations/office/0001_init.sql
-npx wrangler d1 execute stl-office-preview --remote --file=migrations/office/0002_seed_bots.sql   # optional starter bots
+npx wrangler d1 execute stl-office-preview --remote --file=migrations/office/0002_seed_bots.sql   # starter bots
+npx wrangler d1 execute stl-office-preview --remote --file=migrations/office/0003_bot_policy.sql  # REQUIRED: agent ids + allow-listed bots
 
 # before going live:
 npx wrangler d1 execute stl-office --remote --file=migrations/office/0001_init.sql
-npx wrangler d1 execute stl-office --remote --file=migrations/office/0002_seed_bots.sql           # optional
+npx wrangler d1 execute stl-office --remote --file=migrations/office/0002_seed_bots.sql
+npx wrangler d1 execute stl-office --remote --file=migrations/office/0003_bot_policy.sql          # REQUIRED
 ```
 
 No `wrangler.toml` is needed: with no config file, wrangler 4 finds the database by name through the API (checked in wrangler's source, not against a live account). If that fails, open the database in the dashboard (Storage & Databases, then D1, then Console) and paste the SQL file.
@@ -50,7 +52,7 @@ Pages project, then Settings, then Variables and Secrets. Set per environment.
 | `OFFICE_ALLOWED_HOSTS` | Text | Production: `schooltrusts.org`. Preview: `*.schooltrustlands-encyclopedia.pages.dev` |
 | `OFFICE_OWNER_EMAILS` | Secret | Bob's sign-in email |
 | `OFFICE_ADMIN_EMAILS` | Secret | Dave's sign-in email |
-| `OFFICE_ADMIN_CAN_READ` | Text | `true` or `false` (Dave's decision) |
+| `OFFICE_ADMIN_CAN_READ` | Text, optional | Dave decided (Oct 6) that he sees everything: leave unset or `true`. Only `false` turns it off |
 | `OFFICE_DISPLAY_NAME` | Text | `Bob` (the pages then say "Bob's Office") |
 | `OFFICE_NOTIFY` | Text | `on` to email Bob when a reply lands; leave unset for no email |
 | `OFFICE_FROM_EMAIL` | Text, optional | Sender for that email. If unset, the existing `FEEDBACK_FROM_EMAIL` is used. Needs the existing `RESEND_API_KEY` |
@@ -97,6 +99,17 @@ In Zero Trust:
 5. Point the bot's routine at the API. `scripts/office/example-routine.sh` is a working model; `docs/office/BOT_API.md` is the full contract.
 
 Fallback if the admin page is not reachable yet: `node scripts/office/mint-bot-token.mjs herald --label "Linux box"` prints a token and one SQL statement to run with `npx wrangler d1 execute <database> --remote --command "..."`.
+
+## 7a. Bot policy (Dave, Oct 6, 2026)
+
+`src/lib/office/policy.ts` decides which bots the office may use: the 11 allow-listed agent ids, or a bot Bob created himself (`POST /api/office/bots`). The 4 blocked agent ids are refused everywhere. Anything else (including Chaney, Masthead, New Bot) is refused by default. The admin page shows each bot's verdict in the "Office policy" column, and refuses to mint a token for a bot that is not allowed. Sign-in addresses are compared case-insensitively.
+
+## 7b. Publishing an approved reply
+
+1. On `/office/admin/`, approve the nomination, then "Download packet" (a JSON file). Download each cleared file into one folder.
+2. `node scripts/office/publish-packet.mjs office-publication-<slug>.json --files <folder>`
+3. Review `git diff` (`src/data/zybach_desk/<slug>.json`, `public/collections/zybach/desk/<slug>/`), commit, and ship through the normal process. The page `/collections/zybach/desk/<slug>/` ships `noindex` and stays out of the sitemap and search. When it has been checked live, re-run with `--index` and commit.
+4. To take it down: delete both paths and commit.
 
 ## 8. Test on a preview before `main`
 
