@@ -72,6 +72,13 @@ const clip = '<svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24"
     <input type="hidden" name="of-bot" value={main.id} data-bot-name={main.name} data-default-bot />
   )}
 
+  {mode === 'new' && (
+    <>
+      <label class="of-big-label" for="of-title">Subject (optional)</label>
+      <input class="of-input" id="of-title" type="text" maxlength={LIMITS.titleChars} autocomplete="off" data-title style="margin-bottom: 1.2rem" />
+    </>
+  )}
+
   <label class="of-big-label" for={`of-body-${mode}`}>
     {mode === 'new'
       ? `What would you like ${sendTo} to do? Write it the way you would say it.`
