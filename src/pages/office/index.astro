@@ -15,7 +15,7 @@ import ThreadList from '../../components/office/ThreadList.astro';
 import Layout from '../../layouts/OfficeLayout.astro';
 import { defer, listOf, officeEnv, officeTitle, officeUser } from '../../lib/office/config';
 import { SETTING_HELPER_PICKER, expireStale, getSetting, listUsableBots, listRequests, sweep, type Row } from '../../lib/office/db';
-import { answerEmailStatus } from '../../lib/office/notify';
+import { answerReadyWording } from '../../lib/office/notify';
 import { adminCanReadSetting } from '../../lib/office/policy';
 import { isTestThread } from '../../lib/office/rules';
 
@@ -43,8 +43,8 @@ const all: Row[] = user.isOwner ? await listRequests(db, user.email) : await lis
 const ownerThreads = adminView ? all.filter((t) => !isTestThread(t, env.OFFICE_OWNER_EMAILS)) : all;
 const testThreads = adminView ? all.filter((t) => isTestThread(t, env.OFFICE_OWNER_EMAILS)) : [];
 const hasRequests = ownerThreads.length > 0;
-const emailOn = answerEmailStatus(env).ready;
-const step3 = emailOn ? 'The answer comes back to this page, and you get an email when it is ready.' : 'The answer comes back to this page. You can close it and come back any time.';
+// Promise an email only when one can actually go out.
+const step3 = answerReadyWording(env, { officeName }).step3;
 
 // "New answer" banner: the owner's unread answers and questions (in preview,
 // the ones the owner has not read yet).

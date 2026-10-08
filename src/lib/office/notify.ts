@@ -38,6 +38,32 @@ export function answerEmailStatus(env: OfficeEnv): EmailStatus {
   return { ready: true, from: fromAddress(env) };
 }
 
+/**
+ * Everything Bob's pages say about being told when an answer is ready. The
+ * email is promised only when it can actually go out (the same check as the
+ * admin page's Settings card); otherwise the pages say to check back.
+ * `test` forces the no-email wording (test requests never send email).
+ */
+export function answerReadyWording(env: OfficeEnv, opts: { officeName: string; botName?: string; test?: boolean }) {
+  const ready = answerEmailStatus(env).ready && !opts.test;
+  const bot = opts.botName || 'Herald';
+  return {
+    ready,
+    /** Step 3 of "How this works" on the main page. */
+    step3: ready
+      ? 'The answer comes back to this page, and you get an email when it is ready.'
+      : 'The answer comes back to this page. Check back here later.',
+    /** The panel shown right after sending. */
+    sent: ready
+      ? 'You can close this page. We will send you a short email when the answer is ready.'
+      : 'You can close this page. Check back here later.',
+    /** The Help page. */
+    help: ready
+      ? `You will get a short email saying “Your answer from ${bot} is ready”, with a button that opens it. The email never contains the answer itself.`
+      : `The answer comes back to ${opts.officeName}. Check back here later: when an answer is waiting, a green “New” notice is at the top of the page.`,
+  };
+}
+
 function esc(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
