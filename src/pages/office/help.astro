@@ -5,7 +5,7 @@ export const prerender = false;
 import Layout from '../../layouts/OfficeLayout.astro';
 import { LIMITS, STATUS_LABEL, listOf, officeEnv, officeTitle, officeUser } from '../../lib/office/config';
 import { SETTING_HELPER_PICKER, getSetting } from '../../lib/office/db';
-import { answerEmailStatus } from '../../lib/office/notify';
+import { answerReadyWording } from '../../lib/office/notify';
 import { adminCanReadSetting } from '../../lib/office/policy';
 
 const env = officeEnv(Astro.locals);
@@ -15,7 +15,7 @@ if (!user) return new Response('Sign-in required.', { status: 401 });
 const officeName = officeTitle(env);
 const adminCanRead = adminCanReadSetting(env);
 const helpEmail = listOf(env.OFFICE_ADMIN_EMAILS)[0] || '';
-const emailsOn = answerEmailStatus(env).ready;
+const wording = answerReadyWording(env, { officeName });
 const pickerOn = (await getSetting(env.OFFICE_DB, SETTING_HELPER_PICKER)) === 'on';
 const maxMb = Math.round(LIMITS.fileBytes / (1024 * 1024));
 ---
@@ -50,9 +50,7 @@ const maxMb = Math.round(LIMITS.fileBytes / (1024 * 1024));
     </dl>
     <p>
       An answer can take a while: helpers work through requests as they come in. You do not need to keep the page open.
-      {emailsOn
-        ? 'You will get a short email saying “Your answer from Herald is ready”, with a button that opens it. The email never contains the answer itself.'
-        : `Come back to ${officeName} later to see the answer. When an answer is waiting, a green “New” notice is at the top of the page.`}
+      {wording.help}
     </p>
   </section>
 

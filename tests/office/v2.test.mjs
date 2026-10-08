@@ -65,3 +65,29 @@ test('local test fixtures never appear in the site code', () => {
   walk(path.join(ROOT, 'public', 'office'));
   assert.deepEqual(hits, []);
 });
+
+test('Bob’s pages promise an email only when it can go out', () => {
+  const off = N.answerReadyWording({}, { officeName: 'Bob’s Office' });
+  assert.equal(off.ready, false);
+  for (const k of ['step3', 'sent', 'help']) {
+    assert.ok(!/email/i.test(off[k]), `${k}: ${off[k]}`);
+    assert.match(off[k], /Check back here later/);
+  }
+  const on = N.answerReadyWording({ RESEND_API_KEY: 'x' }, { officeName: 'Bob’s Office' });
+  assert.equal(on.ready, true);
+  for (const k of ['step3', 'sent', 'help']) assert.match(on[k], /email/i);
+  const test = N.answerReadyWording({ RESEND_API_KEY: 'x' }, { officeName: 'Bob’s Office', test: true });
+  assert.ok(!/email/i.test(test.sent));
+  const offSwitch = N.answerReadyWording({ RESEND_API_KEY: 'x', OFFICE_NOTIFY: 'off' }, { officeName: 'Bob’s Office' });
+  assert.equal(offSwitch.ready, false);
+});
+
+test('no Bob-facing page hard-codes an answer-ready email promise', () => {
+  const files = ['src/pages/office/index.astro', 'src/pages/office/[id].astro', 'src/pages/office/help.astro',
+    'src/components/office/Composer.astro', 'src/components/office/ThreadList.astro', 'src/layouts/OfficeLayout.astro', 'public/office/office.js'];
+  const promise = /(get|send you|receive)[^.'"`]{0,30}email[^.'"`]{0,40}(ready|answer)/i;
+  for (const f of files) {
+    const text = readFileSync(path.join(ROOT, f), 'utf8');
+    assert.ok(!promise.test(text), `${f} promises an email; use answerReadyWording() instead`);
+  }
+});

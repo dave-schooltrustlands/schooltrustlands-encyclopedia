@@ -11,7 +11,7 @@ import { STATUS_LABEL, friendlyWhen, listOf, officeEnv, officeTitle, officeUser,
 import { audit, expireStale, getThread, markRead, parseIdArray } from '../../lib/office/db';
 import { isAudio, isImage } from '../../lib/office/files';
 import { renderMarkdown } from '../../lib/office/markdown';
-import { answerEmailStatus } from '../../lib/office/notify';
+import { answerReadyWording } from '../../lib/office/notify';
 import { adminCanReadSetting } from '../../lib/office/policy';
 import { canDeleteRequest, canNominate, canReadRequest, canWriteRequest, isTestThread } from '../../lib/office/rules';
 import { clientIp, isId } from '../../lib/office/util';
@@ -36,8 +36,13 @@ const mayDelete = !!request && canDeleteRequest(user, request, env.OFFICE_OWNER_
 const isTest = !!request && user.isAdmin && isTestThread(request, env.OFFICE_OWNER_EMAILS);
 const justSent = !!request && mine && Astro.url.searchParams.get('sent') === '1';
 const helpEmail = listOf(env.OFFICE_ADMIN_EMAILS)[0] || '';
-// The answer-ready email goes only to the owner, and only when email is set up.
-const emailsOn = answerEmailStatus(env).ready && !!request && !isTestThread(request, env.OFFICE_OWNER_EMAILS);
+// The answer-ready email goes only to the owner, and only when email is set
+// up; the Sent panel promises it only then.
+const wording = answerReadyWording(env, {
+  officeName,
+  botName: request?.bot_name,
+  test: !request || isTestThread(request, env.OFFICE_OWNER_EMAILS),
+});
 const cap = (x: string): string => x.charAt(0).toUpperCase() + x.slice(1);
 const mayNominate = !!request && canNominate(user, request);
 if (request && mine && request.owner_unread) await markRead(db, request.id);
@@ -95,7 +100,7 @@ const fileLabel = (f: { kind: string; filename: string }, at: string): string =>
           <p class="of-sent-h">Sent to {request.bot_name} {friendlyWhen(request.created_at, env)}.</p>
           <p>
             The answer will appear right here, and this request is listed in {officeName} under <em>Your requests</em>.
-            You can close this page and come back any time.{emailsOn && ' We will send you a short email when the answer is ready.'}
+            {wording.sent}
           </p>
           <p>
             Helpers work through requests as they come in, so an answer can take a while.
