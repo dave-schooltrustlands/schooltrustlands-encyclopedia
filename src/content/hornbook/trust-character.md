@@ -23,7 +23,7 @@ The state of the authority can be stated at the outset: every appellate court â€
 
 The United States Supreme Court has addressed the character of federal school-lands grants in six principal decisions across one hundred thirty-seven years. Read in sequence, they establish the trust framework, its exclusivity, its application to the state's own internal dealings, its extension to proceeds, and its supremacy over inconsistent state statutes.
 
-**Trustees of Vincennes University v. Indiana, 55 U.S. (14 How.) 268 (1852).** The earliest characterization. The Court described federal grants of land for educational purposes as creating a trust in which the state holds title "as the trustee to administer the trust."[^3] Three years before *Cooper*, the framework already had its name.
+**Trustees of Vincennes University v. Indiana, 55 U.S. (14 How.) 268 (1852).** The earliest characterization, and a caution about it. The McLean majority wrote that title to lands reserved for schools "has never been considered as vested in the State," which has "no inherent power to sell them, or appropriate them to any other purpose than for the benefit of schools"; the trust the Court enforced vested in the chartered university, "in which the State has no property, and can exercise no power to defeat the trust." The sentence placing title in the State "as the trustee to administer the trust" is Chief Justice Taney's, in dissent.[^3] Three years before *Cooper*, the trust framework was already the Court's shared vocabularyâ€”majority and dissent dividing only over who held the trustee's title. The receiving state as trustee of school lands rests on *Cooper v. Roberts* and the cases after it, not on this one.
 
 **Cooper v. Roberts, 59 U.S. (18 How.) 173 (1855).** The foundational decision on the section-sixteen school grant as compact: the arrangements are "unalterable except by consent" of both parties, so a state legislature cannot unilaterally modify the framework its state accepted at admission.[^4]
 
@@ -37,7 +37,7 @@ The United States Supreme Court has addressed the character of federal school-la
 
 The companion holding of **Alamo Land & Cattle Co. v. Arizona, 424 U.S. 295 (1976)** completes the structure: proceeds of trust lands remain subject to the same trust as the lands, and the United States retains "a continuing interest in the administration of both the lands and the funds which derive from them."[^9]
 
-[^3]: *Trustees of Vincennes University v. Indiana*, 55 U.S. (14 How.) 268, 280 (1852).
+[^3]: *Trustees of Vincennes University v. Indiana*, 55 U.S. (14 How.) 268 (1852) (McLean, J., for the Court, at 274 and 277). The phrase "as the trustee to administer the trust" is Taney, C.J., dissenting, at 279 (the dissent runs 278-82, joined by Catron and Daniel, JJ.); the pin formerly given here, 280, lands in the dissent. Attribution corrected against the full opinion 2026-06-10 and re-certified against the official report 2026-10-14. See correction 041, and *Alabama v. Schmidt*, 232 U.S. 168, 174 (1914), reading the case on this ground.
 [^4]: *Cooper v. Roberts*, 59 U.S. (18 How.) 173 (1855).
 [^5]: *Ervien v. United States*, 251 U.S. 41, 47 (1919).
 [^6]: *Lassen v. Arizona ex rel. Arizona Highway Department*, 385 U.S. 458, 466-67, 469 (1967) (quoting, for the exclusivity rule, *Ervien*, 251 U.S. at 47, and, for the "[w]ords more clearly designed" assessment, the court of appeals' decision in the same litigation, *United States v. Ervien*, 246 F. 277, 279, as cited in *Lassen*).
