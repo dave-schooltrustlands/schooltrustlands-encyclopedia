@@ -1,33 +1,5 @@
 {
   "_note": "Genuine findings that are reported, not fixed, because fixing them changes public wording and needs the Library's decision. Each one is printed on every run as KNOWN. Remove an entry as soon as the content is fixed; a stale entry also fails the run.",
-  "versions": [
-    {
-      "id": "BS-011",
-      "where": "src/data/state_versions/us-wi.json v1",
-      "reason": "Archived Wisconsin snapshot quotes the noun \"impress\" of trust for State ex rel. Owen v. Donald with no correction note (correction 035 fixed the Court Atlas only; banned_strings.md BS-011 names the us-wi panels). Found 2026-10-16."
-    },
-    {
-      "id": "BS-011",
-      "where": "src/data/state_versions/us-wi.json v2",
-      "reason": "As v1."
-    },
-    {
-      "id": "BS-011",
-      "where": "src/data/state_versions/us-wi.json v3",
-      "reason": "As v1."
-    },
-    {
-      "id": "BS-011",
-      "where": "src/data/state_versions/us-wi.json v4",
-      "reason": "As v1."
-    }
-  ],
-  "corrections": [
-    {
-      "id": "040",
-      "page": "/drafts/hornbook-working-edition-v1.docx",
-      "string": "Sixteenth Section lease consideration measured by the reasonable market value of the land",
-      "reason": "Entry 040 quotes the corrected Clark gloss as reading this; the download instead says Mississippi 'benchmarks Sixteenth Section lease consideration to \"the reasonable market value of the leased land.\"' Substance matches; the log's quotation of the new wording is not verbatim. Found 2026-10-16."
-    }
-  ]
+  "versions": [],
+  "corrections": []
 }
