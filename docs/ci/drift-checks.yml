@@ -1,0 +1,25 @@
+name: Drift checks (corrections log + stored versions)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: check:versions (banned strings in stored page versions)
+        run: npm run check:versions
+      - name: Build site
+        run: npm run build
+      - name: check:corrections (corrections log vs. built pages)
+        run: npm run check:corrections

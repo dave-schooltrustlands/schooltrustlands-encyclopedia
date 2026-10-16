@@ -1,0 +1,21 @@
+{
+  "_source": "Mirror of the enforceable rows of banned_strings.md (Claude Cowork Drive, file id 1fVrTubcKTFg3YwkJIYOuqEwkocXEXYjf), copied 2026-10-16. When a row is added there, add it here. BS-005 is retired upstream (too ordinary to enforce) and is deliberately absent.",
+  "rows": [
+    { "id": "BS-001", "type": "ABSENT", "needle": "they admit of no substitution", "guards": ["sometimes attributed", "does not app"] },
+    { "id": "BS-002", "type": "ABSENT", "needle": "admit of no addition", "guards": ["sometimes attributed", "does not app"] },
+    { "id": "BS-003", "type": "MISATTRIBUTED", "needle": "affirming its result", "guards": ["finding 3", "plainest", "district court's reasoning"] },
+    { "id": "BS-004", "type": "INVERTED", "needle": "taxpayer-citizen plaintiffs had standing", "guards": ["finding 2", "held the opposite", "withdrew"] },
+    { "id": "BS-006", "type": "WRONG-CITATION", "needle": "397 N.W.2d 374", "guards": ["401 n.w.2d 551", "real sequel"] },
+    { "id": "BS-007", "type": "ABSENT", "needle": "eye single", "guards": [] },
+    { "id": "BS-008", "type": "MISATTRIBUTED", "needle": "as the trustee to administer the trust", "guards": ["dissent", "taney"] },
+    { "id": "BS-009", "type": "INVERTED", "needle": "mistakenly paid", "guards": ["made knowingly", "not-legally-entitled"] },
+    { "id": "BS-010", "type": "INVERTED", "needle": "omission of in-trust language as decisive", "guards": [] },
+    { "id": "BS-011", "type": "ABSENT", "needle": "\"impress\" of trust", "guards": ["quotes an"] },
+    { "id": "BS-012", "type": "MISATTRIBUTED", "needle": "binding and perpetual", "guards": ["powell", "dissent"] },
+    { "id": "BS-013", "type": "WRONG-CITATION", "needle": "Banvard (1867)", "guards": ["1863", "not 1867"] },
+    { "id": "BS-014", "type": "WRONG-CITATION", "needle": "Banvard in 1867", "guards": ["1863", "not 1867"] },
+    { "id": "BS-015", "type": "WRONG-CITATION", "needle": "1867 (Wyman", "guards": ["1863", "not 1867"] },
+    { "id": "BS-016", "type": "ABSENT", "needle": "unconditional grant,\" not a trust", "guards": [] },
+    { "id": "BS-017", "type": "INVERTED", "needle": "dispose of as it pleases", "guards": [] }
+  ]
+}

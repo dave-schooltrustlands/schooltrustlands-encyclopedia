@@ -1,0 +1,702 @@
+{
+ "_about": "Machine-readable before/after for each entry of /about/corrections/log/ (src/pages/about/corrections/log.astro). check:corrections confirms each named page no longer carries an `absent` string (unless a dated correction note sits beside it, the Library's annotation convention) and does carry every `present` string. Strings come from the log's own quotations. Entries whose text gives no checkable string are `unchecked` with a reason. Add an object here whenever a log entry is added; the check fails if the log has an entry this file does not mention.",
+ "entries": [
+  {
+   "id": "042",
+   "checks": [
+    {
+     "page": "/writing/hornbook/trust-character/",
+     "present": [
+      "it was competent to Michigan to sell the school reservations without the consent of congress",
+      "such was the view of the district court"
+     ]
+    },
+    {
+     "page": "/reading/us-nm/",
+     "absent": [
+      "The lands and the moneys which the State received from them are dedicated to specific purposes",
+      "they admit of no substitution"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "041",
+   "checks": [
+    {
+     "page": "/writing/hornbook/trust-character/",
+     "absent": [
+      "The Court described federal grants of land for educational purposes as creating a trust in which the state holds title as the trustee"
+     ],
+     "present": [
+      "Alabama v. Schmidt, 232 U.S. 168, 174 (1914)",
+      "Taney"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "040",
+   "checks": [
+    {
+     "page": "/writing/hornbook/trust-character/",
+     "present": [
+      "403 N.W.2d 33"
+     ]
+    },
+    {
+     "page": "/drafts/hornbook-working-edition-v1.docx",
+     "absent": [
+      "created a binding permanent trust",
+      "fair-market-value floor under the 1817 instrument"
+     ],
+     "present": [
+      "Sixteenth Section lease consideration measured by the reasonable market value of the land"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "039",
+   "checks": [
+    {
+     "page": "/writing/schools-of-the-republic/antebellum-doubling/",
+     "absent": [
+      "installed a durable irreducible permanent-fund clause comparable to"
+     ],
+     "present": [
+      "shall be and remain a perpetual fund"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "038",
+   "checks": [
+    {
+     "page": "/writing/schools-of-the-republic/prologue/",
+     "absent": [
+      "Banvard in 1867",
+      "would later read the omission as decisive"
+     ],
+     "present": [
+      "without discussing the omission"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "037",
+   "checks": [
+    {
+     "page": "/writing/schools-of-the-republic/antebellum-doubling/",
+     "absent": [
+      "The case that fixed the doctrine for California's school grant was Sherman",
+      "omission of in-trust language as decisive",
+      "the doctrinal floor on which every California school-grant case"
+     ]
+    },
+    {
+     "page": "/writing/schools-of-the-republic/conclusion/",
+     "absent": [
+      "would later read as decisive in Sherman v. Buick"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "036",
+   "checks": [
+    {
+     "page": "/writing/schools-of-the-republic/antebellum-doubling/",
+     "absent": [
+      "mistakenly paid"
+     ],
+     "present": [
+      "Royalties had been paid to the state under a lakebed mineral lease"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "035",
+   "checks": [
+    {
+     "page": "/court/atlas/wi/",
+     "absent": [
+      "Sweet to a reforestation and water-power scheme",
+      "\"impress\" of trust"
+     ],
+     "present": [
+      "impressed with a special constitutional trust"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "034",
+   "checks": [
+    {
+     "page": "/writing/hornbook/chapter-1/",
+     "absent": [
+      "two-section generation, 1859"
+     ],
+     "present": [
+      "two-section generation, 1857"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "033",
+   "checks": [
+    {
+     "page": "/court/atlas/",
+     "absent": [
+      "the anti-diversion precedent",
+      "the SCOTUS authorities"
+     ]
+    },
+    {
+     "page": "/catalog/",
+     "absent": [
+      "the Court recounting the District Court's view while affirming its result"
+     ]
+    },
+    {
+     "page": "/reading/library/ervien-v-united-states-1919/",
+     "absent": [
+      "Ervien holds that such reasoning",
+      "the Tenth Circuit reversed"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "032",
+   "checks": [
+    {
+     "page": "/court/reading-wing/why-the-courts-have-mostly-held-the-line/",
+     "absent": [
+      "characterized the obligation as 'binding and perpetual.'",
+      "the trustee could administer the trust but could not redefine it"
+     ]
+    },
+    {
+     "page": "/court/reading-wing/the-beneficiaries-who-cannot-speak/",
+     "absent": [
+      "Andrus and Kanaly are explicit"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "031",
+   "checks": [
+    {
+     "page": "/court/reading-wing/why-the-courts-have-mostly-held-the-line/",
+     "absent": [
+      "The Court reaffirmed that Congress had imposed on the states a 'binding and perpetual obligation'"
+     ]
+    },
+    {
+     "page": "/court/reading-wing/how-the-trust-was-broken/",
+     "absent": [
+      "has affirmed and reaffirmed that the school land grants are 'in the nature of a bilateral compact entered into between two sovereigns.'"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "030",
+   "checks": [
+    {
+     "page": "/reading/library/pollards-lessee-v-hagan-1845/",
+     "present": [
+      "the constitution, laws, and compact, to the contrary notwithstanding"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "029",
+   "checks": [
+    {
+     "page": "/writing/hornbook/chapter-1/",
+     "absent": [
+      "has treated the school-grant compacts as 'unalterable except by consent'"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "028",
+   "checks": [
+    {
+     "page": "/reading/library/cooper-v-roberts-1855/",
+     "absent": [
+      "is bound to administer the trust with fidelity",
+      "that the trust purpose constrained the state's authority to dispose of the land",
+      "from Justice Catron's opinion"
+     ],
+     "present": [
+      "Campbell"
+     ]
+    },
+    {
+     "page": "/reading/us-mi/",
+     "absent": [
+      "declared that such grants are not ordinary state property but a trust"
+     ],
+     "present": [
+      "Campbell"
+     ]
+    },
+    {
+     "page": "/court/case-file/cooper-v-roberts-1855/",
+     "absent": [
+      "vested in the state of Michigan at the moment of admission",
+      "language quoted by every subsequent school-trust-lands opinion"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "027",
+   "checks": [
+    {
+     "page": "/participate/how-a-collection-comes-in/the-conversation/",
+     "present": [
+      "beef ranch"
+     ]
+    },
+    {
+     "page": "/participate/how-a-collection-comes-in/",
+     "present": [
+      "beef ranch"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "026",
+   "checks": [
+    {
+     "page": "/participate/how-a-collection-comes-in/the-conversation/",
+     "present": [
+      "Wayne Knauf",
+      "probably 1898"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "025",
+   "checks": [
+    {
+     "page": "/reading/library/andrus-v-utah-1980/",
+     "absent": [
+      "has been adopted by the supreme courts of Utah, Montana, Idaho"
+     ],
+     "present": [
+      "to give the State the benefit of the bargain"
+     ]
+    },
+    {
+     "page": "/court/case-file/andrus-v-utah-1980/",
+     "absent": [
+      "Federal Land Policy and Management Act"
+     ],
+     "present": [
+      "Taylor Grazing"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "024",
+   "checks": [
+    {
+     "page": "/writing/hornbook/chapter-1/",
+     "absent": [
+      "365 Or 750, 752"
+     ],
+     "present": [
+      "to give the State the benefit of the bargain",
+      "As Utah correctly emphasizes"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "023",
+   "checks": [
+    {
+     "page": "/reading/us-sd/",
+     "absent": [
+      "ordered the state to reimburse the trust the full market value of what was transferred"
+     ]
+    },
+    {
+     "page": "/court/atlas/sd/",
+     "absent": [
+      "synthesized federal and sister-state precedent"
+     ]
+    },
+    {
+     "page": "/court/case-file/kanaly-v-janklow-1985/",
+     "absent": [
+      "The restoration remedy is operative"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "022",
+   "checks": [
+    {
+     "page": "/about/",
+     "present": [
+      "has not yet filed its application for federal tax-exempt recognition"
+     ]
+    },
+    {
+     "page": "/about/becoming/",
+     "absent": [
+      "grew out of Oregon Advocates for School Trust Lands"
+     ],
+     "present": [
+      "has not yet filed its application for federal tax-exempt recognition",
+      "was founded by people who also serve Oregon Advocates"
+     ]
+    },
+    {
+     "page": "/organizing/",
+     "present": [
+      "has not yet filed its application for federal tax-exempt recognition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "021",
+   "checks": [
+    {
+     "page": "/catalog/",
+     "absent": [
+      "Boys, the party is over"
+     ]
+    },
+    {
+     "page": "/court/case-file/nigh-v-okla-1982/",
+     "absent": [
+      "permanently enjoined the diversion"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "020",
+   "checks": [
+    {
+     "page": "/reading/us-nm/",
+     "absent": [
+      "admit of no addition"
+     ]
+    },
+    {
+     "page": "/writing/schools-of-the-republic/twentieth-century-high-water-mark/",
+     "absent": [
+      "they admit of no substitution"
+     ],
+     "present": [
+      "the enumeration is necessarily exclusive of any other purpose"
+     ]
+    },
+    {
+     "page": "/court/case-file/asplund-v-hannett-1926/",
+     "absent": [
+      "taxpayer-citizen plaintiffs had standing"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "019",
+   "checks": [
+    {
+     "page": "/court/atlas/id/",
+     "absent": [
+      "133 Idaho 64, 982 P.2d 358"
+     ]
+    },
+    {
+     "page": "/court/case-file/idaho-watersheds-1999/",
+     "absent": [
+      "had breached its fiduciary duty by leasing school trust lands",
+      "133 Idaho 64, 982 P.2d 358"
+     ]
+    },
+    {
+     "page": "/reading/us-id/",
+     "absent": [
+      "struck it down the next spring"
+     ]
+    },
+    {
+     "page": "/court/reading-wing/why-the-courts-have-mostly-held-the-line/",
+     "absent": [
+      "had breached its fiduciary duty by leasing school trust lands"
+     ]
+    },
+    {
+     "page": "/court/reading-wing/the-beneficiaries-who-cannot-speak/",
+     "absent": [
+      "only the Attorney General could pursue such claims"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "018",
+   "checks": [
+    {
+     "page": "/reading/us-ne/",
+     "absent": [
+      "reportedly gained more than $4 million"
+     ]
+    },
+    {
+     "page": "/court/atlas/ne/",
+     "absent": [
+      "shifted to other state offices"
+     ]
+    },
+    {
+     "page": "/writing/hornbook/nebraska-appendix/",
+     "absent": [
+      "shifted to other state offices"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "017",
+   "checks": [
+    {
+     "page": "/writing/hornbook/chapter-1/",
+     "absent": [
+      "is now stated as unsettled rather than asserted"
+     ]
+    },
+    {
+     "page": "/catalog/",
+     "absent": [
+      "\"is not state land\""
+     ]
+    }
+   ]
+  },
+  {
+   "id": "016",
+   "checks": [
+    {
+     "page": "/court/atlas/sd/",
+     "absent": [
+      "including by the Skamania court"
+     ]
+    },
+    {
+     "page": "/reading/us-ak/",
+     "absent": [
+      "it did so for Alaska's Mental Health Trust in the very same Statehood Act"
+     ]
+    },
+    {
+     "page": "/court/atlas/ms/",
+     "absent": [
+      "functions as trustee for the Sixteenth Section lands",
+      "fair-market-value floor"
+     ]
+    },
+    {
+     "page": "/writing/hornbook/chapter-1/",
+     "absent": [
+      "without Enabling Act § 28 compliance"
+     ]
+    },
+    {
+     "page": "/court/case-file/deer-valley-v-superior-court-1988/",
+     "absent": [
+      "full compensation at appraised value"
+     ]
+    },
+    {
+     "page": "/writing/hornbook/nebraska-appendix/",
+     "absent": [
+      "preference right but no absolute right\" formulation be verified"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "015",
+   "checks": [
+    {
+     "page": "/reading/us-ut/",
+     "absent": [
+      "the auditor lost",
+      "ruled for the trust"
+     ]
+    },
+    {
+     "page": "/court/atlas/ut/",
+     "absent": [
+      "Held that nothing in the Jones Act removed or modified the trust restriction"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "014",
+   "checks": [
+    {
+     "page": "/court/lineage/vincennes-v-indiana-1852/",
+     "absent": [
+      "a clear case of a contract by which the state has been brought under solemn obligations"
+     ]
+    },
+    {
+     "page": "/reading/library/vincennes-v-indiana-1852/",
+     "absent": [
+      "From Justice McLean's opinion",
+      "ordered the state to account for the value of the lands"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "013",
+   "checks": [
+    {
+     "page": "/reading/library/branson-v-romer-1998/",
+     "present": [
+      "Ebel"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "012",
+   "checks": [
+    {
+     "page": "/",
+     "absent": [
+      "240 years of receipts",
+      "one substrate beneath them all"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "011",
+   "checks": [
+    {
+     "page": "/about/",
+     "absent": [
+      "will be published here when he supplies them"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "010",
+   "unchecked": "Removed a badge, two rows and file-path shorthand; the log quotes no string to test."
+  },
+  {
+   "id": "009",
+   "checks": [
+    {
+     "page": "/court/filings/2026-07-24-combs-summary-judgment-letter-24cv38372.pdf",
+     "present": []
+    }
+   ]
+  },
+  {
+   "id": "008",
+   "unchecked": "Records the merge of two ledgers; nothing on another page changed."
+  },
+  {
+   "id": "007",
+   "checks": [
+    {
+     "page": "/organizing/",
+     "absent": [
+      "Nothing here has been filed or adopted yet"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "006",
+   "checks": [
+    {
+     "page": "/about/",
+     "absent": [
+      "Barbara K. Sullivan, Treasurer"
+     ],
+     "present": [
+      "Barry Shane"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "005",
+   "unchecked": "The fix filled blanks in a certificate; the log gives no before/after string."
+  },
+  {
+   "id": "004",
+   "checks": [
+    {
+     "page": "/about/corrections/log/",
+     "present": [
+      "Corrections log"
+     ]
+    },
+    {
+     "page": "/about/corrections/",
+     "absent": [
+      "It ships in a follow-up update"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "003",
+   "unchecked": "Names the how-to-help page without a path, and the retired phrase (\"not yet complete\") is too ordinary to test."
+  },
+  {
+   "id": "002",
+   "checks": [
+    {
+     "page": "/bylaws/",
+     "absent": [
+      "not adopted by any board"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "001",
+   "checks": [
+    {
+     "page": "/about/",
+     "absent": [
+      "is organizing as a nonprofit public benefit corporation"
+     ]
+    }
+   ]
+  }
+ ]
+}

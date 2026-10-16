@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run build:data && astro dev",
     "start": "npm run build:data && astro dev",
-    "build": "npm run build:data && astro build && node scripts/generate-sitemap.mjs && pagefind --site dist",
+    "build": "npm run build:data && astro build && node scripts/generate-sitemap.mjs && pagefind --site dist && npm run check:drift",
     "preview": "astro preview",
     "sync:writing-drafts": "node scripts/sync-writing-drafts.mjs",
     "sync:catalog": "node scripts/sync-catalog-from-substrate.mjs",
@@ -14,7 +14,11 @@
     "build:layers": "node scripts/build-map-layers.mjs",
     "build:finance": "node scripts/build-finance-data.mjs",
     "astro": "astro",
-    "test:office": "node --test tests/office/policy.test.mjs tests/office/publish.test.mjs tests/office/rules.test.mjs tests/office/v2.test.mjs"
+    "test:office": "node --test tests/office/policy.test.mjs tests/office/publish.test.mjs tests/office/rules.test.mjs tests/office/v2.test.mjs",
+    "check:corrections": "node scripts/checks/check-corrections.mjs",
+    "check:corrections:live": "node scripts/checks/check-corrections.mjs --live",
+    "check:versions": "node scripts/checks/check-versions.mjs",
+    "check:drift": "npm run check:versions && npm run check:corrections"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
