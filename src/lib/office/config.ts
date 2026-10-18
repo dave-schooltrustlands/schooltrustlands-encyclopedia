@@ -230,23 +230,22 @@ function zoneOf(env: OfficeEnv): string {
   try { new Intl.DateTimeFormat('en-US', { timeZone: zone }); return zone; } catch { return 'UTC'; }
 }
 
-function dayKey(d: Date, zone: string): string {
-  return new Intl.DateTimeFormat('en-CA', { timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
-}
-
-/** "today, 3:21 PM", "yesterday, 9:05 AM", "Oct 5, 3:21 PM", or "Oct 5, 2025" for an older year. */
-export function friendlyWhen(iso: string | null | undefined, env: OfficeEnv, now: Date = new Date()): string {
+/**
+ * The full date and time in the office's time zone, e.g. "Oct 18, 2026, 4:26 PM PT".
+ * Always absolute (never "today" or "yesterday"), per Bob's request.
+ */
+export function friendlyWhen(iso: string | null | undefined, env: OfficeEnv): string {
   if (!iso) return '';
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return '';
   const zone = zoneOf(env);
-  const time = new Intl.DateTimeFormat('en-US', { timeZone: zone, hour: 'numeric', minute: '2-digit' }).format(d);
-  const key = dayKey(d, zone);
-  if (key === dayKey(now, zone)) return `today, ${time}`;
-  if (key === dayKey(new Date(now.getTime() - 86400000), zone)) return `yesterday, ${time}`;
-  const sameYear = key.slice(0, 4) === dayKey(now, zone).slice(0, 4);
-  const date = new Intl.DateTimeFormat('en-US', { timeZone: zone, month: 'short', day: 'numeric', ...(sameYear ? {} : { year: 'numeric' }) }).format(d);
-  return sameYear ? `${date}, ${time}` : date;
+  const text = new Intl.DateTimeFormat('en-US', {
+    timeZone: zone, month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit',
+  }).format(d);
+  const label = zone === 'America/Los_Angeles' ? 'PT'
+    : (new Intl.DateTimeFormat('en-US', { timeZone: zone, timeZoneName: 'short' })
+        .formatToParts(d).find((p) => p.type === 'timeZoneName')?.value || zone);
+  return `${text} ${label}`;
 }
 
 /** "Oct 7" in the office's time zone, for naming voice notes. */

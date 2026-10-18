@@ -19,13 +19,12 @@ test('titles are cut at a word, with an ellipsis', () => {
   assert.ok(!/list the s…$/.test(U.shortTitle('Find what the 1850s GLO survey notes say about Soap Creek Valley, and list the sources', 80)));
 });
 
-test('friendly times: today, yesterday, a date; never a zone label', () => {
+test('friendly times: always the full date and time, labelled PT', () => {
   const env = { OFFICE_TIMEZONE: 'America/Los_Angeles' };
-  const now = new Date('2026-10-07T22:30:00Z'); // 3:30 PM PDT
-  assert.equal(C.friendlyWhen('2026-10-07T22:21:00Z', env, now), 'today, 3:21 PM');
-  assert.equal(C.friendlyWhen('2026-10-06T16:05:00Z', env, now), 'yesterday, 9:05 AM');
-  assert.equal(C.friendlyWhen('2026-10-05T22:21:00Z', env, now), 'Oct 5, 3:21 PM');
-  assert.equal(C.friendlyWhen('2025-10-05T22:21:00Z', env, now), 'Oct 5, 2025');
+  assert.equal(C.friendlyWhen('2026-10-18T23:26:00Z', env), 'Oct 18, 2026, 4:26 PM PT');
+  assert.equal(C.friendlyWhen('2026-10-06T16:05:00Z', env), 'Oct 6, 2026, 9:05 AM PT');
+  assert.equal(C.friendlyWhen('2025-12-05T22:21:00Z', env), 'Dec 5, 2025, 2:21 PM PT');
+  assert.ok(!/today|yesterday/i.test(C.friendlyWhen(new Date().toISOString(), env)));
   assert.equal(C.shortDate('2026-10-07T22:21:00Z', env), 'Oct 7');
   assert.ok(!/P[DS]T/.test(C.formatWhen('2026-10-07T22:21:00Z', env)));
 });
