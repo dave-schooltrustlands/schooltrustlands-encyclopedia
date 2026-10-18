@@ -1,8 +1,9 @@
 // Shared helpers for the Library's drift checks (check:corrections, check:versions).
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
+export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', rsquo: "'", lsquo: "'",
   rdquo: '"', ldquo: '"', mdash: '—', ndash: '–', hellip: '…', middot: '·', sect: '§', shy: '' };
