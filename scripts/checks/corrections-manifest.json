@@ -51,6 +51,16 @@
       "Alabama v. Schmidt, 232 U.S. 168, 174 (1914)",
       "Taney"
      ]
+    },
+    {
+     "page": "/catalog/",
+     "absent": [
+      "279-80"
+     ],
+     "present": [
+      "\"as the trustee to administer the trust,\" at *279, is Taney"
+     ],
+     "_note": "Vincennes trustee-title pin on the Authority Register row; the sentence is at 279 in Taney's dissent. The row's own dated note ('corrected ... June 10, 2026') sits in the absent-check window and would excuse the old pin, so the present string is what holds the fix."
     }
    ]
   },
@@ -437,6 +447,13 @@
      "absent": [
       "taxpayer-citizen plaintiffs had standing"
      ]
+    },
+    {
+     "page": "/about/corrections/log/",
+     "present": [
+      "October 17, 2026 amendment: the statement above that the chapter is held back from publication under the Library's standing rule is withdrawn"
+     ],
+     "_note": "Entry 020's held-back claim is retracted by 041 and 042 (amendment of October 17, 2026)."
     }
    ]
   },
@@ -591,6 +608,13 @@
       "From Justice McLean's opinion",
       "ordered the state to account for the value of the lands"
      ]
+    },
+    {
+     "page": "/about/corrections/log/",
+     "present": [
+      "October 17, 2026 amendment: the statement above that the trust-character chapter is held for review is withdrawn"
+     ],
+     "_note": "Entry 014's held-for-review claim is retracted by 041 and 042 (amendment of October 17, 2026; packet 2026-10-18_Librarian_amendments_014_020_vincennes_pin)."
     }
    ]
   },
