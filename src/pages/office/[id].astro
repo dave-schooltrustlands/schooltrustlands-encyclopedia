@@ -7,7 +7,7 @@
 export const prerender = false;
 import Composer from '../../components/office/Composer.astro';
 import Layout from '../../layouts/OfficeLayout.astro';
-import { STATUS_LABEL, friendlyWhen, listOf, officeEnv, officeTitle, officeUser, shortDate, type RequestStatus } from '../../lib/office/config';
+import { STATUS_LABEL, friendlyWhen, officeEnv, officeTitle, officeUser, shortDate, type RequestStatus } from '../../lib/office/config';
 import { audit, expireStale, getThread, markRead, parseIdArray } from '../../lib/office/db';
 import { isAudio, isImage } from '../../lib/office/files';
 import { renderMarkdown } from '../../lib/office/markdown';
@@ -35,7 +35,6 @@ const mine = !!request && canWriteRequest(user, request);
 const mayDelete = !!request && canDeleteRequest(user, request, env.OFFICE_OWNER_EMAILS);
 const isTest = !!request && user.isAdmin && isTestThread(request, env.OFFICE_OWNER_EMAILS);
 const justSent = !!request && mine && Astro.url.searchParams.get('sent') === '1';
-const helpEmail = listOf(env.OFFICE_ADMIN_EMAILS)[0] || '';
 // The answer-ready email goes only to the owner, and only when email is set
 // up; the Sent panel promises it only then.
 const wording = answerReadyWording(env, {
@@ -104,7 +103,7 @@ const fileLabel = (f: { kind: string; filename: string }, at: string): string =>
           </p>
           <p>
             Helpers work through requests as they come in, so an answer can take a while.
-            {helpEmail ? <> If nothing has happened by tomorrow, email Dave at <a href={`mailto:${helpEmail}`}>{helpEmail}</a>.</> : ' If nothing has happened by tomorrow, let Dave know.'}
+            Thanks, Bob. {request.bot_name} has your request, and you'll see the answer here (and by email) when it's ready.
           </p>
           <p><a class="of-btn" href="/office/">Back to {officeName}</a></p>
         </div>
