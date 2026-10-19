@@ -94,7 +94,8 @@ test('no Bob-facing page hard-codes an answer-ready email promise', () => {
 test('sent confirmation: thanks Bob and names the bot; no "email Dave by tomorrow" line', () => {
   const text = readFileSync(path.join(ROOT, 'src/pages/office/[id].astro'), 'utf8');
   assert.ok(!/nothing has happened by tomorrow/i.test(text));
-  assert.ok(text.includes("Thanks, Bob. {request.bot_name} has your request, and you'll see the answer here (and by email) when it's ready."));
+  assert.ok(!text.includes('(and by email)'));
+  assert.ok(text.includes("Thanks, Bob. {request.bot_name} has your request, and you'll see the answer here when it's ready."));
   for (const f of ['src/components/office/ThreadList.astro', 'src/pages/office/index.astro', 'src/pages/office/help.astro', 'public/office/office.js']) {
     assert.ok(!/nothing has happened by tomorrow/i.test(readFileSync(path.join(ROOT, f), 'utf8')), f);
   }
