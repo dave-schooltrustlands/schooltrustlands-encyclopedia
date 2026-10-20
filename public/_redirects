@@ -75,8 +75,8 @@
 /map   /atlas/  301
 /reading/comparative-atlas/  /atlas/  301
 /reading/comparative-atlas   /atlas/  301
-/reading/enforcement-beneficiary-cannot-sue/  /reading/sacred-compact/  301
-/reading/enforcement-beneficiary-cannot-sue   /reading/sacred-compact/  301
+/reading/enforcement-beneficiary-cannot-sue/  /writing/eighth-anchor/  301
+/reading/enforcement-beneficiary-cannot-sue   /writing/eighth-anchor/  301
 /reading/founders-library/hawkes-oregon-school-land-grant-1949/  /reading/founders-library/hawk-irreducible-school-fund-oregon-1949/  301
 /reading/founders-library/hawkes-oregon-school-land-grant-1949   /reading/founders-library/hawk-irreducible-school-fund-oregon-1949/  301
 /reading/library/hawkes-oregon-school-land-grant-1949/  /reading/library/hawk-irreducible-school-fund-oregon-1949/  301
@@ -138,12 +138,15 @@
 /reading/conclusion/                                                  /writing/schools-of-the-republic/conclusion/                       301
 /reading/conclusion                                                   /writing/schools-of-the-republic/conclusion/                       301
 
-# The Eighth Anchor — landing + 13 sections (prologue, 8 numbered,
-# v-5 supplement, 3 interludes). The Sacred Compact title retires; the
-# Reading Room enforcement-beneficiary-cannot-sue redirect (above) still
-# points at the old /reading/sacred-compact/ URL, which itself now
-# redirects to /writing/eighth-anchor/ — Cloudflare Pages follows the
-# chain transparently.
+# The Eighth Anchor - landing + 13 sections (prologue, 8 numbered,
+# v-5 supplement, 3 interludes). The Sacred Compact title retires.
+#
+# 2026-10-20: the Reading Room enforcement-beneficiary-cannot-sue rules
+# above now point STRAIGHT at /writing/eighth-anchor/. They used to point
+# at /reading/sacred-compact/, which is itself only a rule in this file.
+# The claim that Pages follows such a chain transparently was never
+# measured and the note at the foot of this file says the opposite; no
+# rule here relies on chaining any more. No rules added: two retargeted.
 /reading/sacred-compact/                                              /writing/eighth-anchor/                                            301
 /reading/sacred-compact                                               /writing/eighth-anchor/                                            301
 /reading/sacred-compact-prologue/                                     /writing/eighth-anchor/prologue/                                   301
@@ -227,10 +230,9 @@
 # This note sits BELOW the last rule so its bytes cannot count against
 # anything.
 #
-# One pre-existing defect left alone on purpose:
-# /reading/enforcement-beneficiary-cannot-sue/ targets
-# /reading/sacred-compact/, which is itself a rule in this file. Pages does
-# not chain rules, so that address costs the reader extra hops. Fixing it
-# means deciding where that essay now lives - a content judgement, not a
-# routing repair.
+# The pre-existing chained-rule defect noted here through 2026-10-19 is
+# fixed: /reading/enforcement-beneficiary-cannot-sue/ now targets
+# /writing/eighth-anchor/ directly. It was left alone on the ground that
+# fixing it meant deciding where that essay now lives; that ground had
+# lapsed, because both rules already named the same destination.
 # ===========================================================================

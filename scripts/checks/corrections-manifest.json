@@ -2,6 +2,45 @@
  "_about": "Machine-readable before/after for each entry of /about/corrections/log/ (src/pages/about/corrections/log.astro). check:corrections confirms each named page no longer carries an `absent` string (unless a dated correction note sits beside it, the Library's annotation convention) and does carry every `present` string. Strings come from the log's own quotations. Entries whose text gives no checkable string are `unchecked` with a reason. Add an object here whenever a log entry is added; the check fails if the log has an entry this file does not mention.",
  "entries": [
   {
+   "id": "045",
+   "checks": [
+    {
+     "page": "/reading/library/asarco-v-kadish-1989/",
+     "absent": [
+      "inconsistent with the federal compact unconstitutional"
+     ],
+     "present": [
+      "must substantially conform to the Enabling Act",
+      "authorizing departures from them is invalid",
+      "corrected October 20, 2026"
+     ]
+    },
+    {
+     "page": "/reading/library/vincennes-v-indiana-1852/",
+     "absent": [
+      "inconsistent with the federal compact unconstitutional"
+     ],
+     "present": [
+      "must substantially conform to the Enabling Act",
+      "authorizing departures from them is invalid",
+      "corrected October 20, 2026"
+     ]
+    },
+    {
+     "page": "/court/case-file/conservation-northwest-v-commissioner-2022/",
+     "absent": [
+      "inconsistent with the federal compact unconstitutional"
+     ],
+     "present": [
+      "must substantially conform to the Enabling Act",
+      "a nonconforming statute is invalid",
+      "corrected October 20, 2026"
+     ]
+    }
+   ],
+   "_note": "Entry 044 named three Asarco surfaces and corrected them, but keyed its absent strings to two phrasings of the overstatement. A third phrasing - 'inconsistent with the federal compact unconstitutional' - survived on the two doctrinal-arc paragraphs and on the Conservation Northwest case file. The assertions here are keyed to that phrasing; for Asarco the log now covers the proposition rather than one sentence."
+  },
+  {
    "id": "044",
    "checks": [
     {
