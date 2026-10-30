@@ -7,32 +7,46 @@ import CrossSiteBridge from '../../components/CrossSiteBridge.astro';
 import BookmarkButton from '../../components/BookmarkButton.astro';
 import PrepublicationBanner from '../../components/PrepublicationBanner.astro';
 import { confidenceLabel, confidenceBadgeClass } from '../../lib/confidence';
+import { isMigratedWork, legacyTarget } from '../../lib/legacy-redirects.mjs';
 
 type EssayProps = { kind: 'essay'; entry: CollectionEntry<'essays'> };
 type StateProps = { kind: 'state'; entry: CollectionEntry<'states'> };
-type Props = EssayProps | StateProps;
+type RedirectProps = { kind: 'redirect'; target: string };
+type Props = EssayProps | StateProps | RedirectProps;
 
 export async function getStaticPaths() {
   // v60b — Three book series migrated out of the Reading Room into
   // the Writing Room. The Reading Room's dynamic [slug].astro route
   // still serves any other essay-collection content (none today) plus
   // state dossiers, but no longer generates pages for the migrated
-  // books. Old URLs are 301-redirected via public/_redirects.
-  const isMigrated = (sw: string): boolean =>
-    sw === 'Schools of the Republic v1.3' ||
-    sw === 'Sacred Compact white paper v5.0' ||
-    sw.startsWith('The Eighth Anchor') ||
-    sw.startsWith('Who Steals from Children');
+  // books. Each old address is answered instead by a prerendered redirect page
+  // built below from the table in src/lib/legacy-redirects.mjs.
+  // public/_redirects cannot be relied on for them, and middleware does not run
+  // for them - both measured 2026-10-29; see that table's header.
+  // The predicate is shared with that table, so the entries this route stops
+  // rendering and the addresses that get redirect pages are one list.
+  const isMigrated = isMigratedWork;
 
   const essays = await getCollection('essays');
   const states = await getCollection('states');
 
-  const essayPaths = essays
-    .filter((entry) => !isMigrated(entry.data.sourceWork))
-    .map((entry) => ({
-      params: { slug: entry.slug.replace(/^\d+-/, '') },
-      props: { kind: 'essay' as const, entry },
-    }));
+  // A migrated entry is NOT dropped from the route. Dropping it only stopped
+  // the page being prerendered; the old address went on answering 200 with a
+  // byte-identical copy of the Writing Room page, measured on 30 of the 36
+  // addresses on 2026-10-29. The address is kept and answered with a redirect
+  // to where the chapter now lives - the pattern src/pages/states/[slug].astro
+  // already uses for the hundred /states/ addresses.
+  const essayPaths = essays.map((entry) => {
+    const slug = entry.slug.replace(/^\d+-/, '');
+    if (!isMigrated(entry.data.sourceWork)) {
+      return { params: { slug }, props: { kind: 'essay' as const, entry } };
+    }
+    const target = legacyTarget(`/reading/${slug}/`);
+    if (!target) throw new Error(
+      `/reading/${slug}/ is a migrated book address with no entry in src/lib/legacy-redirects.mjs`,
+    );
+    return { params: { slug }, props: { kind: 'redirect' as const, target } };
+  });
 
   const statePaths = states.map((entry) => ({
     params: { slug: entry.data.iso.toLowerCase() },
@@ -43,6 +57,11 @@ export async function getStaticPaths() {
 }
 
 const props = Astro.props as Props;
+
+// Retired Reading Room addresses answer with a redirect and nothing else.
+// Prerendered, this writes a redirect page; served from the Worker, it is a
+// 301. Either way the chapter is published at exactly one address.
+if (props.kind === 'redirect') return Astro.redirect(props.target, 301);
 
 // Sacred Compact interludes carry a distinct visual register (cream
 // background, italic display header) marking them apart from the analytic

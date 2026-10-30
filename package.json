@@ -15,10 +15,12 @@
     "build:finance": "node scripts/build-finance-data.mjs",
     "astro": "astro",
     "test:office": "node --test tests/office/policy.test.mjs tests/office/publish.test.mjs tests/office/rules.test.mjs tests/office/v2.test.mjs",
+    "test:routes": "node --test tests/routes/legacy-redirects.test.mjs",
     "check:corrections": "node scripts/checks/check-corrections.mjs",
     "check:corrections:live": "node scripts/checks/check-corrections.mjs --live",
     "check:versions": "node scripts/checks/check-versions.mjs",
-    "check:drift": "npm run check:versions && npm run check:corrections"
+    "check:routes": "node scripts/checks/check-routes.mjs",
+    "check:drift": "npm run check:versions && npm run check:corrections && npm run check:routes"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",

@@ -2,11 +2,22 @@
 # ===========================================================================
 # RULE BUDGET — read before adding anything here.
 #
-# Cloudflare Pages honours roughly the first 100 rules in this file and
-# silently ignores the rest. Measured on a preview deployment 2026-08-09: an
-# identical canary rule returned 301 at position 1 and did not fire at
-# position ~128. Before the prune below, the tail of the Who-Steals-From-
-# Children block had been dead since the day it was written.
+# Cloudflare honours roughly the first 100 rules in this file and silently
+# ignores the rest. Measured on a preview deployment 2026-08-09: an identical
+# canary rule returned 301 at position 1 and did not fire at position ~128.
+# Before the prune below, the tail of the Who-Steals-From-Children block had
+# been dead since the day it was written.
+#
+# 2026-10-29: the mechanism behind that measurement, found at last, and it is
+# not in this file. Only requests the Worker does not claim reach the asset
+# layer that reads this file, and dist/_routes.json decides which those are.
+# Cloudflare caps _routes.json at 100 entries; the Astro adapter fills its
+# `exclude` list from this file IN FILE ORDER and stops at the cap. So the
+# budget is 100 _routes.json entries, not 100 rules here (Cloudflare allows
+# 2,000 static and 100 dynamic rules in a _redirects file), and a rule added
+# anywhere above silently kills the last rule below. Comments cost nothing.
+# `npm run check:routes` now fails the build on a rule nothing serves, and
+# the overflow is answered in the Worker instead: src/lib/legacy-redirects.mjs.
 #
 # Two other things learned by measurement, both counter-intuitive:
 #   * BOTH slash forms are required. A rule written only as `/foo/` does not
@@ -75,8 +86,8 @@
 /map   /atlas/  301
 /reading/comparative-atlas/  /atlas/  301
 /reading/comparative-atlas   /atlas/  301
-/reading/enforcement-beneficiary-cannot-sue/  /writing/eighth-anchor/  301
-/reading/enforcement-beneficiary-cannot-sue   /writing/eighth-anchor/  301
+/reading/enforcement-beneficiary-cannot-sue/  /writing/stewards-of-the-republic/  301
+/reading/enforcement-beneficiary-cannot-sue   /writing/stewards-of-the-republic/  301
 /reading/founders-library/hawkes-oregon-school-land-grant-1949/  /reading/founders-library/hawk-irreducible-school-fund-oregon-1949/  301
 /reading/founders-library/hawkes-oregon-school-land-grant-1949   /reading/founders-library/hawk-irreducible-school-fund-oregon-1949/  301
 /reading/library/hawkes-oregon-school-land-grant-1949/  /reading/library/hawk-irreducible-school-fund-oregon-1949/  301
@@ -119,66 +130,43 @@
 # Schools of the Republic — landing + 8 chapter pages (prologue, 6 era
 # chapters, conclusion). Per-state dossiers /reading/us-XX/ are NOT
 # migrated and have no rule here.
+#
+# 2026-10-29: the forty per-chapter rules that used to sit in this block and
+# the two below it are GONE, and deliberately. Each of those addresses now
+# answers for itself: src/pages/reading/[slug].astro prerenders a redirect
+# page for every migrated chapter, from the table in
+# src/lib/legacy-redirects.mjs. A rule here could not serve them anyway -
+# the request was reaching the Worker, which published the chapter a second
+# time at the old address (measured on 30 of the 36) - and deleting them is
+# what freed the _routes.json slots that brought the rules below back to
+# life. Do not re-add them: `npm run check:routes` fails if an address is
+# answered in both channels, and fails if a chapter loses its redirect page.
 /reading/schools-of-the-republic/                                     /writing/schools-of-the-republic/                                  301
 /reading/schools-of-the-republic                                      /writing/schools-of-the-republic/                                  301
-/reading/prologue/                                                    /writing/schools-of-the-republic/prologue/                         301
-/reading/prologue                                                     /writing/schools-of-the-republic/prologue/                         301
-/reading/founding-floor/                                              /writing/schools-of-the-republic/founding-floor/                   301
-/reading/founding-floor                                               /writing/schools-of-the-republic/founding-floor/                   301
-/reading/statehood-without-federal-floor/                             /writing/schools-of-the-republic/statehood-without-federal-floor/  301
-/reading/statehood-without-federal-floor                              /writing/schools-of-the-republic/statehood-without-federal-floor/  301
-/reading/northwest-ordinance-template/                                /writing/schools-of-the-republic/northwest-ordinance-template/     301
-/reading/northwest-ordinance-template                                 /writing/schools-of-the-republic/northwest-ordinance-template/     301
-/reading/antebellum-doubling/                                         /writing/schools-of-the-republic/antebellum-doubling/              301
-/reading/antebellum-doubling                                          /writing/schools-of-the-republic/antebellum-doubling/              301
-/reading/reconstruction-western-stack/                                /writing/schools-of-the-republic/reconstruction-western-stack/     301
-/reading/reconstruction-western-stack                                 /writing/schools-of-the-republic/reconstruction-western-stack/     301
-/reading/twentieth-century-high-water-mark/                           /writing/schools-of-the-republic/twentieth-century-high-water-mark/ 301
-/reading/twentieth-century-high-water-mark                            /writing/schools-of-the-republic/twentieth-century-high-water-mark/ 301
-/reading/conclusion/                                                  /writing/schools-of-the-republic/conclusion/                       301
-/reading/conclusion                                                   /writing/schools-of-the-republic/conclusion/                       301
 
 # The Eighth Anchor - landing + 13 sections (prologue, 8 numbered,
 # v-5 supplement, 3 interludes). The Sacred Compact title retires.
 #
 # 2026-10-20: the Reading Room enforcement-beneficiary-cannot-sue rules
-# above now point STRAIGHT at /writing/eighth-anchor/. They used to point
-# at /reading/sacred-compact/, which is itself only a rule in this file.
-# The claim that Pages follows such a chain transparently was never
-# measured and the note at the foot of this file says the opposite; no
-# rule here relies on chaining any more. No rules added: two retargeted.
-/reading/sacred-compact/                                              /writing/eighth-anchor/                                            301
-/reading/sacred-compact                                               /writing/eighth-anchor/                                            301
-/reading/sacred-compact-prologue/                                     /writing/eighth-anchor/prologue/                                   301
-/reading/sacred-compact-prologue                                      /writing/eighth-anchor/prologue/                                   301
-/reading/sacred-compact-i-the-question/                               /writing/eighth-anchor/i/                                          301
-/reading/sacred-compact-i-the-question                                /writing/eighth-anchor/i/                                          301
-/reading/sacred-compact-ii-the-sacred-compact/                        /writing/eighth-anchor/ii/                                         301
-/reading/sacred-compact-ii-the-sacred-compact                         /writing/eighth-anchor/ii/                                         301
-/reading/sacred-compact-iii-the-drift/                                /writing/eighth-anchor/iii/                                        301
-/reading/sacred-compact-iii-the-drift                                 /writing/eighth-anchor/iii/                                        301
-/reading/sacred-compact-iv-the-pattern/                               /writing/eighth-anchor/iv/                                         301
-/reading/sacred-compact-iv-the-pattern                                /writing/eighth-anchor/iv/                                         301
-/reading/sacred-compact-v-the-counter-architecture/                   /writing/eighth-anchor/v/                                          301
-/reading/sacred-compact-v-the-counter-architecture                    /writing/eighth-anchor/v/                                          301
-/reading/sacred-compact-v-5-knowledge-stack-as-demonstration/         /writing/eighth-anchor/v-5/                                        301
-/reading/sacred-compact-v-5-knowledge-stack-as-demonstration          /writing/eighth-anchor/v-5/                                        301
-/reading/sacred-compact-vi-the-coming-trusts/                         /writing/eighth-anchor/vi/                                         301
-/reading/sacred-compact-vi-the-coming-trusts                          /writing/eighth-anchor/vi/                                         301
-/reading/sacred-compact-vii-civic-practice/                           /writing/eighth-anchor/vii/                                        301
-/reading/sacred-compact-vii-civic-practice                            /writing/eighth-anchor/vii/                                        301
-/reading/sacred-compact-viii-letter-to-architects/                    /writing/eighth-anchor/viii/                                       301
-/reading/sacred-compact-viii-letter-to-architects                     /writing/eighth-anchor/viii/                                       301
+# above were retargeted from /reading/sacred-compact/ to
+# /writing/eighth-anchor/ to stop relying on a chain.
+# 2026-10-29: that did not end the chain, it moved it, and the run that made
+# the change could not see it because its client followed redirects silently.
+# /writing/eighth-anchor/ is itself a 301 (src/pages/writing/eighth-anchor/
+# index.astro) to /writing/stewards-of-the-republic/. All four landing-page
+# rules now name that destination, so they are one hop. The per-section
+# addresses keep their /writing/eighth-anchor/<section>/ targets, which serve
+# 200 directly, and are answered by prerendered redirect pages rather than by
+# rules here. `npm run check:routes` fails on any target that is itself a
+# redirect, so this cannot be reintroduced unnoticed.
+/reading/sacred-compact/                                              /writing/stewards-of-the-republic/                                            301
+/reading/sacred-compact                                               /writing/stewards-of-the-republic/                                            301
 # The three interludes keep their slugs, so a pattern covers all six rules.
-/reading/sacred-compact-interlude-*/   /writing/eighth-anchor/interlude-:splat/   301
-/reading/sacred-compact-interlude-*    /writing/eighth-anchor/interlude-:splat/   301
 
 # Who Steals from Children — the whole Vol 1 chapter family moves by pattern.
 # Every /reading/wsfc-vol1-<slug>/ has a twin at
 # /writing/who-steals-from-children/<slug>/, so one splat replaces thirty rules.
 # This matters: this file is at Cloudflare's ceiling and rules past it are dead.
-/reading/wsfc-vol1-*/   /writing/who-steals-from-children/:splat/   301
-/reading/wsfc-vol1-*    /writing/who-steals-from-children/:splat/   301
 
 # Who Steals from Children — series landing + Vol 1 landing collapsed
 # into a single page under /writing/who-steals-from-children/. The 14
@@ -230,9 +218,10 @@
 # This note sits BELOW the last rule so its bytes cannot count against
 # anything.
 #
-# The pre-existing chained-rule defect noted here through 2026-10-19 is
-# fixed: /reading/enforcement-beneficiary-cannot-sue/ now targets
-# /writing/eighth-anchor/ directly. It was left alone on the ground that
-# fixing it meant deciding where that essay now lives; that ground had
-# lapsed, because both rules already named the same destination.
+# The chained-rule defect noted here through 2026-10-19 was reported fixed on
+# 2026-10-20, when /reading/enforcement-beneficiary-cannot-sue/ was pointed at
+# /writing/eighth-anchor/. Measured 2026-10-29: /writing/eighth-anchor/ is
+# itself a 301, so the chain had been moved rather than removed. Fixed for
+# real: all four landing-page rules now name /writing/stewards-of-the-republic/
+# and check:routes guards the property.
 # ===========================================================================
