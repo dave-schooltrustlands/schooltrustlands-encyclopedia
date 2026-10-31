@@ -1,4 +1,5 @@
 ---
+import PlacesInStory from '../../components/PlacesInStory.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import RoomLayout from '../../layouts/RoomLayout.astro';
 import StateDossier from '../../components/StateDossier.astro';
@@ -57,6 +58,18 @@ export async function getStaticPaths() {
 }
 
 const props = Astro.props as Props;
+
+// B196 Affirmed vocabulary: "Places in this story" for state pages cleared
+// so far. Other states await page-author judgment (e.g. us-ms township wording,
+// states with little or no trust land).
+const STATE_PLACES: Record<string, string[]> = {
+  or: ['State (Oregon)', 'Park or public land (state trust land, including Elliott State Forest)'],
+  ut: ['State (Utah)', 'Park or public land (state trust land)'],
+  az: ['State (Arizona)', 'Park or public land (state trust land)'],
+  co: ['State (Colorado)', 'Park or public land (state trust land)'],
+  ak: ['State (Alaska)', 'Park or public land (state trust land)'],
+};
+const statePlaces = props.kind === 'state' ? STATE_PLACES[props.entry.data.iso.toLowerCase().replace(/^us-/, '')] : undefined;
 
 // Retired Reading Room addresses answer with a redirect and nothing else.
 // Prerendered, this writes a redirect page; served from the Worker, it is a
@@ -238,6 +251,7 @@ const layoutProps =
 
   {props.kind === 'state' && (
     <Fragment slot="header-extras">
+      {statePlaces && <PlacesInStory places={statePlaces} />}
       <p class="state-id-strip mt-3 text-slate-700">
         <span>{props.entry.data.iso}</span>
         <span class="sep"> · </span>

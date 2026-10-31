@@ -1,0 +1,13 @@
+---
+// B196 (Affirmed Shared Place Vocabulary, Oct 2026): a plain line naming
+// the kinds of place a story touches, so readers can attach by park, path,
+// watershed, neighborhood, county, state or historic site, not only parcel.
+interface Props { places: string[] }
+const { places } = Astro.props;
+---
+<p class="places-in-story text-sm text-slate-700" data-places-in-story>
+  <strong>Places in this story:</strong> {places.join(' · ')}
+</p>
+<style>
+.places-in-story{margin:.75rem 0 1rem;line-height:1.5}
+</style>

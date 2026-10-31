@@ -1,4 +1,5 @@
 ---
+import PlacesInStory from '../../../../../components/PlacesInStory.astro';
 export const prerender = true;
 
 import SoapCreekPage from '../../../../../components/zybach/soapcreek/SoapCreekPage.astro';
@@ -99,6 +100,7 @@ const mileage: any[] = route.mileage_table ?? [];
   subtitle="Explore the valley through eleven stops in Bob Zybach’s 1989 tour."
   parents={parents} sourceId="zybach-sc-autotour-1989" width="full">
   <p class="tour-citation">{a.citation_canonical}</p>
+  <PlacesInStory places={["Path or trail (driving tour)", "Watershed, creek, or valley (Soap Creek Valley)"]} />
   <p>From Berry Creek to the Old-Growth Trail, the tour connects places with stories of trapping, settlement, farming and forestry. Choose a numbered stop to see the original illustrated pages and read its account.</p>
   <p class="tour-links"><a href={`${tourHref()}booklet/`}>Read the original booklet</a> · <a href={source.public_url}>Scanned booklet (PDF)</a> · <a href={`${tourHref()}booklet/#p31`}>Additional sources</a></p>
   <p class="tour-note">Locations are approximate. Mileage is cumulative from the Peavy Arboretum entrance along the 1989 route; it is historical information, not current driving or access advice.</p>

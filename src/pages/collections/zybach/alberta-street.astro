@@ -1,4 +1,5 @@
 ---
+import PlacesInStory from '../../../components/PlacesInStory.astro';
 export const prerender = true;
 import RoomLayout from '../../../layouts/RoomLayout.astro';
 import ZybachNav from '../../../components/zybach/ZybachNav.astro';
@@ -16,6 +17,7 @@ const later = base + '10_References/Davis_et_al_20151020.pdf';
   <span data-pagefind-meta="collection:zybach" hidden></span>
   <span data-pagefind-meta="series:alberta-street" hidden></span>
   <ZybachNav current="finding-aid" />
+  <PlacesInStory places={["Neighborhood or town (Alberta Street neighborhood, Portland)", "State (Oregon)"]} />
   <WorkingEditionBanner />
   <div class="alberta-opening" id="what">
     <div>
