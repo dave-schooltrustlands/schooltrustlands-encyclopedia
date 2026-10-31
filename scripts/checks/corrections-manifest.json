@@ -2,6 +2,41 @@
  "_about": "Machine-readable before/after for each entry of /about/corrections/log/ (src/pages/about/corrections/log.astro). check:corrections confirms each named page no longer carries an `absent` string (unless a dated correction note sits beside it, the Library's annotation convention) and does carry every `present` string. Strings come from the log's own quotations. Entries whose text gives no checkable string are `unchecked` with a reason. Add an object here whenever a log entry is added; the check fails if the log has an entry this file does not mention.",
  "entries": [
   {
+   "id": "046",
+   "checks": [
+    {
+     "page": "/start/",
+     "absent": [
+      "which is state trust land"
+     ],
+     "present": [
+      "was school trust land until the State Land Board decoupled it"
+     ]
+    },
+    {
+     "page": "/collections/zybach/elliott/",
+     "absent": [
+      "state trust forest, which is state trust land"
+     ],
+     "present": [
+      "school trust land until the 2022 decoupling"
+     ]
+    },
+    {
+     "page": "/reading/us-or/",
+     "absent": [
+      "state trust land, including Elliott State Forest"
+     ]
+    },
+    {
+     "page": "/reading/us-ak/",
+     "absent": [
+      "Park or public land (state trust land)"
+     ]
+    }
+   ]
+  },
+  {
    "id": "045",
    "checks": [
     {
