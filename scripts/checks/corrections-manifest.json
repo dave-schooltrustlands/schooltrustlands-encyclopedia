@@ -750,6 +750,9 @@
    "checks": [
     {
      "page": "/reading/library/branson-v-romer-1998/",
+     "absent": [
+      "We conclude that the school land grants were intended by Congress to confer benefits on the state in trust."
+     ],
      "present": [
       "Ebel"
      ]
